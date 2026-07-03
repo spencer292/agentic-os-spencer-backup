@@ -1,0 +1,116 @@
+@import 'tailwindcss';
+
+/* Got Moles Design Tokens */
+@theme {
+  /* Colors — Brand */
+  --color-grass-50: #E8F0F0;
+  --color-grass-100: #C5D8D8;
+  --color-grass-200: #9BBCBB;
+  --color-grass-300: #6E9E9D;
+  --color-grass-400: #3D7473;
+  --color-grass-500: #1E524F;
+  --color-grass-600: #184241;
+  --color-grass-700: #133634;
+  --color-grass-800: #0E2A28;
+  --color-grass-900: #091E1D;
+  --color-grass-950: #051312;
+
+  --color-blue-50: #EAEDF3;
+  --color-blue-100: #C8CEE0;
+  --color-blue-200: #9BA5C4;
+  --color-blue-300: #6E7DA8;
+  --color-blue-400: #3F4E7A;
+  --color-blue-500: #1E2D52;
+  --color-blue-600: #182034;
+  --color-blue-700: #131A2A;
+  --color-blue-800: #0E1420;
+  --color-blue-900: #090E16;
+  --color-blue-950: #05080D;
+
+  --color-cream-50: #FFFBF2;
+  --color-cream-100: #FFF7E8;
+  --color-cream-200: #FFF1D9;
+  --color-cream-300: #FFE8C2;
+  --color-cream-400: #FFDEA8;
+  --color-cream-500: #F5CE86;
+
+  --color-gold-50: #FFF4E0;
+  --color-gold-100: #FFE4B3;
+  --color-gold-200: #FFD080;
+  --color-gold-300: #FFBB4D;
+  --color-gold-400: #F5A31A;
+  --color-gold-500: #E68C04;
+  --color-gold-600: #C47603;
+  --color-gold-700: #A26103;
+  --color-gold-800: #7A4902;
+  --color-gold-900: #523201;
+
+  --color-rust-50: #F8EAEA;
+  --color-rust-100: #E8C4C5;
+  --color-rust-200: #D49597;
+  --color-rust-300: #BF6568;
+  --color-rust-400: #A74548;
+  --color-rust-500: #8F2A2D;
+  --color-rust-600: #782325;
+  --color-rust-700: #611C1E;
+  --color-rust-800: #4A1517;
+  --color-rust-900: #330E10;
+
+  /* Colors — Neutrals (Grass-tinted) */
+  --color-neutral-50: #F7F9F8;
+  --color-neutral-100: #EEF1F0;
+  --color-neutral-200: #DCE0DF;
+  --color-neutral-300: #B8BFBE;
+  --color-neutral-400: #8A9493;
+  --color-neutral-500: #5E6A69;
+  --color-neutral-600: #3D4A49;
+  --color-neutral-700: #2A3433;
+  --color-neutral-800: #1A2423;
+  --color-neutral-900: #0D1413;
+
+  /* Typography */
+  --font-heading: 'Lexend', system-ui, -apple-system, sans-serif;
+  --font-body: 'Zilla Slab', Georgia, 'Times New Roman', serif;
+
+  --text-display: clamp(2.25rem, 1.5rem + 3.75vw, 4.188rem);
+  --text-h1: clamp(2rem, 1.5rem + 2.5vw, 3.125rem);
+  --text-h2: clamp(1.625rem, 1.25rem + 1.875vw, 2.375rem);
+  --text-h3: clamp(1.375rem, 1.15rem + 1.125vw, 1.75rem);
+  --text-h4: clamp(1.125rem, 1rem + 0.625vw, 1.313rem);
+  --text-body-lg: clamp(1.125rem, 1rem + 0.25vw, 1.25rem);    /* 18px → 20px */
+  --text-body: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);       /* 16px → 18px */
+  --text-small: clamp(0.875rem, 0.85rem + 0.125vw, 0.9375rem); /* 14px → 15px */
+  --text-xs: 0.75rem;
+
+  /* Spacing */
+  --max-w-container: 1280px;
+  --max-w-text: 65ch;
+
+  /* Gradients */
+  --gradient-cta: linear-gradient(to bottom, #182034, #8F2A2D);
+}
+
+/* Font loading */
+@font-face {
+  font-family: 'Lexend';
+  src: url('/fonts/lexend-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Zilla Slab';
+  src: url('/fonts/zilla-slab-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Zilla Slab';
+  src: url('/fonts/zilla-slab-semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}

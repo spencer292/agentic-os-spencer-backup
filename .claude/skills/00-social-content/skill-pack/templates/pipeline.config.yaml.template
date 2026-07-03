@@ -1,0 +1,91 @@
+# Social Content Pipeline Configuration
+# Edit this file to customize the automated pipeline.
+# Run: /sys-social-content [topic | URL | file path | nothing]
+
+# Onboarding flag lives in skill-pack/config/sys-config.md (`_customized: true`),
+# not here. This file is purely pipeline behaviour.
+
+# --- INPUT / DEFAULTS --------------------------------------------------------
+defaults:
+  platform: "linkedin"                # Default target platform when not specified in the trigger
+                                      #   "linkedin"  | "instagram" | "twitter" | "threads"
+                                      # If you publish elsewhere too, choose your most-used one.
+
+  language: "en"                      # Default post language
+                                      #   "en"    = English
+                                      #   "pt-BR" = Portuguese (Brazil)
+                                      #   "es"    = Spanish
+                                      #   "other" = specify in onboarding
+
+  format: "auto"                      # Default post format
+                                      #   "auto"     = decide from content length and structure
+                                      #   "single"   = always one image
+                                      #   "carousel" = always multi-slide (3-5)
+                                      #   "text"     = no images
+
+# --- IMAGES ------------------------------------------------------------------
+images:
+  provider: "gemini"                  # Image generation backend
+                                      #   "gemini" = Google Gemini 3 Pro Image (needs GEMINI_API_KEY)
+                                      #   "openai" = OpenAI gpt-image-2 (needs OPENAI_API_KEY)
+                                      # Falls back to the other provider automatically if the key is missing.
+
+  style: "color"                      # Default image style
+                                      #   "technical" = annotated diagrams, clean schematics
+                                      #   "notebook"  = hand-drawn sketchnotes, educational
+                                      #   "comic"     = B&W storyboard panels, sequential narrative
+                                      #   "color"     = warm illustrated, marketing-friendly
+                                      #   "mono"      = minimal ink sketches, dark-mode friendly
+                                      # Auto-overridden per post structure unless you pin it here.
+
+  carousel_min_slides: 3              # Minimum slides per carousel
+  carousel_max_slides: 5              # Maximum slides per carousel
+                                      # Final count is decided from the post's distinct concepts/steps.
+
+# --- DRAFTING / VOICE --------------------------------------------------------
+drafting:
+  brand_voice: "auto"                 # How to source brand voice
+                                      #   "auto"   = read .claude/skills/mkt-brand-voice/brand_context/voice-profile.md
+                                      #   "skip"   = no voice file, draft from generic best practices
+
+  humanizer_mode: "auto"              # Tool-humanizer pass mode
+                                      #   "auto"     = "deep" if voice-profile exists, else "standard"
+                                      #   "quick"    = obvious AI patterns only
+                                      #   "standard" = full scan + score
+                                      #   "deep"     = voice-matched (needs voice-profile.md)
+
+  hashtag_strategy: "trailing"        # Where hashtags go in the post
+                                      #   "trailing" = end of post, separated by blank line
+                                      #   "inline"   = woven into the body
+                                      #   "none"     = strip hashtags entirely
+
+# --- SCENARIOS / SOURCES -----------------------------------------------------
+sources:
+  linkedin_scraper: "enabled"         # Scenario D — scrape LinkedIn profiles for inspiration
+                                      #   "enabled"  | "disabled"
+                                      # Needs APIFY_API_KEY and a sources.md file in tool-linkedin-scraper/config/
+
+  youtube_digest: "enabled"           # Scenario D — pull recent YouTube uploads for inspiration
+                                      #   "enabled"  | "disabled"
+                                      # Needs YOUTUBE_API_KEY and a sources.md file in tool-youtube/config/
+
+  trending_research_freshness_days: 7 # Reuse cached str-trending-research briefs newer than N days
+                                      # Older briefs are re-run automatically. Set to 0 to always re-run.
+
+# --- PUBLISHING --------------------------------------------------------------
+publishing:
+  mode: "skip"                        # What happens after the post + images are ready
+                                      #   "auto-post" = publish immediately to the target platform via Zernio
+                                      #   "draft"     = save as draft in Zernio for manual approval
+                                      #   "skip"      = stop after saving locally, you publish manually
+                                      # "auto-post" and "draft" need ZERNIO_API_KEY.
+
+  pdf_carousel: "ask"                 # Generate a PDF version of carousels (LinkedIn document carousels)
+                                      #   "ask"      = prompt before publishing
+                                      #   "always"   = always render PDF
+                                      #   "never"    = never render PDF
+
+# --- PERFORMANCE -------------------------------------------------------------
+performance:
+  parallel_image_slides: 1            # Carousel slides generated simultaneously
+                                      # Most providers rate-limit aggressively — keep at 1 unless you have a paid tier.

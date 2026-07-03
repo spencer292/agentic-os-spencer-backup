@@ -1,0 +1,44 @@
+# Video Studio configuration
+# Defaults used when a job's note.txt does not override them.
+
+drive:
+  root_folder: "31_Studio"
+  # IDs are cached in references/drive-ids.md on first run (Phase 0).
+  inbox: "1_inbox"
+  processing: "2_processing"
+  review: "3_Review"
+  approved: "4_Approved"
+  posted: "5_Posted"
+  assets: "6_Assets"
+
+output:
+  format: "9x16"          # vertical
+  resolution: "1080x1920"
+  layout: "stacked"        # talking-head reframe layout (stacked | split-screen | face-track)
+
+talking_head:
+  min_score: 70            # reuse vid-clip-selection scoring
+  duration_range: [12, 60] # seconds per clip
+  captions: true           # kinetic burned-in captions
+  caption_style: "gold"    # matches podcast lane until personal visual-identity exists
+
+highlight:
+  target_duration: 30      # seconds for the finished reel
+  min_segment: 1.5         # shortest usable visual beat
+  max_segment: 6.0         # longest single beat before it drags
+  motion_weight: 0.55      # how much raw movement matters in scoring
+  audio_weight: 0.45       # how much audio energy (engine, cheers, impact) matters
+  music: true              # bed from 6_Assets/music/
+  overlays: true           # text overlays from note.txt (title, tags, lap times)
+
+assembly:
+  photo_duration: 2.5      # seconds per still (Ken Burns)
+  crossfade: 0.4           # seconds of crossfade between segments
+  keep_narration: "auto"   # auto | always | never — auto keeps voice if narration detected
+
+review:
+  contact_sheet: true      # upload a frame grid alongside the clip for fast approval
+
+post:
+  mode: "draft"            # draft | auto — Phase 6 only; draft is safest for personal brand
+  platforms: ["youtube", "instagram", "tiktok"]

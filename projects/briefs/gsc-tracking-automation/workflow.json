@@ -1,0 +1,123 @@
+{
+  "name": "Got Moles GSC Daily Tracking",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 9 * * *"
+            }
+          ]
+        }
+      },
+      "name": "Daily 09:00 UTC",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [200, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Date math: yesterday (GSC has 1-2 day lag, so target day-2)\nconst now = new Date();\nconst targetDate = new Date(now.getTime() - 2 * 24 * 60 * 60 * 1000);\nconst windowStart = new Date(now.getTime() - 9 * 24 * 60 * 60 * 1000);\nconst fmt = (d) => d.toISOString().split('T')[0];\nreturn [{ json: { targetDate: fmt(targetDate), windowStart: fmt(windowStart), windowEnd: fmt(targetDate) } }];"
+      },
+      "name": "Calc Dates",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [400, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Refresh GSC OAuth access token\nconst res = await this.helpers.httpRequest({\n  method: 'POST',\n  url: 'https://oauth2.googleapis.com/token',\n  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },\n  body: new URLSearchParams({\n    client_id: $env.GSC_CLIENT_ID,\n    client_secret: $env.GSC_CLIENT_SECRET,\n    refresh_token: $env.GSC_REFRESH_TOKEN,\n    grant_type: 'refresh_token'\n  }).toString()\n});\nconst data = typeof res === 'string' ? JSON.parse(res) : res;\nreturn [{ json: { ...$json, accessToken: data.access_token } }];"
+      },
+      "name": "Refresh GSC Token",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [600, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Pre-build the GSC API payload (per feedback_n8n_json_golden_rule)\nconst body = {\n  startDate: $json.windowStart,\n  endDate: $json.windowEnd,\n  dimensions: ['date'],\n  rowLimit: 30\n};\nreturn [{ json: { ...$json, gscBody: body } }];"
+      },
+      "name": "Build GSC Body",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [800, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://www.googleapis.com/webmasters/v3/sites/sc-domain%3Agot-moles.com/searchAnalytics/query",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "=Bearer {{ $json.accessToken }}" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.gscBody) }}",
+        "options": {}
+      },
+      "name": "GSC searchAnalytics",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1000, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Compute deltas + 7-day avg for the target date row\nconst rows = $json.rows || [];\nif (rows.length === 0) {\n  throw new Error('No GSC data returned for window');\n}\n\n// Find the target date in the returned rows\nconst targetDate = $('Calc Dates').first().json.targetDate;\nconst targetIdx = rows.findIndex(r => r.keys[0] === targetDate);\nif (targetIdx === -1) {\n  throw new Error(`Target date ${targetDate} not in GSC response`);\n}\nconst target = rows[targetIdx];\nconst prev = targetIdx > 0 ? rows[targetIdx - 1] : null;\n\n// 7-day rolling avg ending on target\nconst window = rows.slice(Math.max(0, targetIdx - 6), targetIdx + 1);\nconst avg7Clicks = Math.round(window.reduce((s, r) => s + r.clicks, 0) / window.length);\nconst avg7Imp = Math.round(window.reduce((s, r) => s + r.impressions, 0) / window.length);\n\n// Status auto-flagging\nlet status = 'stable';\nconst dC = prev ? target.clicks - prev.clicks : 0;\nconst dP = prev ? +(target.position - prev.position).toFixed(2) : 0;\nif (dC <= -25 && Math.abs(dC / Math.max(prev?.clicks || 1, 1)) > 0.5) status = 'click-collapse';\nelse if (dP >= 1.0) status = 'position-drop';\nelse if (dC > 10 && dP < 0) status = 'growth';\n\n// Build Notion properties payload\nconst notionProps = {\n  Name: { title: [{ text: { content: targetDate } }] },\n  Date: { date: { start: targetDate } },\n  Clicks: { number: target.clicks },\n  Impressions: { number: target.impressions },\n  CTR: { number: +target.ctr.toFixed(4) },\n  'Avg Position': { number: +target.position.toFixed(2) },\n  'Δ Clicks': prev ? { number: dC } : { number: null },\n  'Δ Impressions': prev ? { number: target.impressions - prev.impressions } : { number: null },\n  'Δ Position': prev ? { number: dP } : { number: null },\n  '7-day Avg Clicks': { number: avg7Clicks },\n  '7-day Avg Impressions': { number: avg7Imp },\n  Period: { select: { name: 'daily' } },\n  Status: { select: { name: status } },\n  Notes: { rich_text: [] }\n};\n\nreturn [{ json: { targetDate, notionProps } }];"
+      },
+      "name": "Transform → Notion Props",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1200, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Query Notion DB to check if target date row already exists\nconst dsId = '3543d42c-4a9c-8083-b92a-000bad01dce2';\nconst res = await this.helpers.httpRequest({\n  method: 'POST',\n  url: `https://api.notion.com/v1/data_sources/${dsId}/query`,\n  headers: {\n    'Authorization': `Bearer ${$env.NOTION_TOKEN}`,\n    'Notion-Version': '2026-03-11',\n    'Content-Type': 'application/json'\n  },\n  body: JSON.stringify({\n    filter: {\n      property: 'Date',\n      date: { equals: $json.targetDate }\n    }\n  }),\n  json: false\n});\nconst data = typeof res === 'string' ? JSON.parse(res) : res;\nconst existingId = data.results?.[0]?.id || null;\nreturn [{ json: { ...$json, existingId } }];"
+      },
+      "name": "Check Existing Row",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1400, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Upsert: PATCH if existing, POST if new\nconst props = $json.notionProps;\nconst existingId = $json.existingId;\nconst dsId = '3543d42c-4a9c-8083-b92a-000bad01dce2';\n\nif (existingId) {\n  const res = await this.helpers.httpRequest({\n    method: 'PATCH',\n    url: `https://api.notion.com/v1/pages/${existingId}`,\n    headers: {\n      'Authorization': `Bearer ${$env.NOTION_TOKEN}`,\n      'Notion-Version': '2026-03-11',\n      'Content-Type': 'application/json'\n    },\n    body: JSON.stringify({ properties: props }),\n    json: false\n  });\n  return [{ json: { action: 'updated', date: $json.targetDate, response: typeof res === 'string' ? JSON.parse(res) : res } }];\n} else {\n  const res = await this.helpers.httpRequest({\n    method: 'POST',\n    url: 'https://api.notion.com/v1/pages',\n    headers: {\n      'Authorization': `Bearer ${$env.NOTION_TOKEN}`,\n      'Notion-Version': '2026-03-11',\n      'Content-Type': 'application/json'\n    },\n    body: JSON.stringify({\n      parent: { type: 'data_source_id', data_source_id: dsId },\n      properties: props\n    }),\n    json: false\n  });\n  return [{ json: { action: 'created', date: $json.targetDate, response: typeof res === 'string' ? JSON.parse(res) : res } }];\n}"
+      },
+      "name": "Upsert Notion Row",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1600, 300]
+    }
+  ],
+  "connections": {
+    "Daily 09:00 UTC": {
+      "main": [[{ "node": "Calc Dates", "type": "main", "index": 0 }]]
+    },
+    "Calc Dates": {
+      "main": [[{ "node": "Refresh GSC Token", "type": "main", "index": 0 }]]
+    },
+    "Refresh GSC Token": {
+      "main": [[{ "node": "Build GSC Body", "type": "main", "index": 0 }]]
+    },
+    "Build GSC Body": {
+      "main": [[{ "node": "GSC searchAnalytics", "type": "main", "index": 0 }]]
+    },
+    "GSC searchAnalytics": {
+      "main": [[{ "node": "Transform → Notion Props", "type": "main", "index": 0 }]]
+    },
+    "Transform → Notion Props": {
+      "main": [[{ "node": "Check Existing Row", "type": "main", "index": 0 }]]
+    },
+    "Check Existing Row": {
+      "main": [[{ "node": "Upsert Notion Row", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "UTC"
+  }
+}

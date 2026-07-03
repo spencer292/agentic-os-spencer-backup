@@ -1,0 +1,24 @@
+{
+  "_comment": "Cadence governor rate dials. The feed RAMPS as the audience grows — raise the quotas (or set ramp.weekly_increment) from the Monday review. Conservative defaults: 1 clip/day/source, hard ceilings, 75-min stagger.",
+
+  "sources_live": ["podcast"],
+  "_sources_note": "Which sources autopilot publishes. Add 'daily' to start draining the standalone-clip backlog. Podcast clips and daily clips get independent daily quotas.",
+
+  "posting_window": { "start_hour": 8, "end_hour": 20, "tz_assumed": "machine-local (Europe/London)" },
+
+  "daily_clip_quota": { "podcast": 1, "daily": 1 },
+  "_quota_note": "Clips approved per day per source. One clip fans out to its eligible spillover platforms. This is the main throughput dial — raise it as the audience builds.",
+
+  "ramp": { "start_date": "2026-06-24", "weekly_increment": 0, "max_daily_clip_quota": 3 },
+  "_ramp_note": "Auto-grow: effective quota = base + floor(weeks_since_start * weekly_increment), capped at max. Default increment 0 = manual control. Set to e.g. 1 to add one clip/day/source each week up to the cap.",
+
+  "per_platform_daily_cap": { "X/Twitter": 3, "Instagram Reels": 2, "TikTok": 2, "Facebook Reels": 2, "YouTube Shorts": 2 },
+  "_cap_note": "Hard ceiling per platform per day — a safety net so no single channel ever floods regardless of quota.",
+
+  "min_minutes_between_posts": 75,
+  "_stagger_note": "Minimum gap between approvals so clips never fire same-minute (anti-bot-blast). Combined with a frequent cron, this spaces the feed naturally across the day.",
+
+  "max_per_run": 2,
+  "priority": "playbook",
+  "_priority_note": "playbook = bandit exploit: bias release toward format x topic the ledger shows winning (reads content-playbook.md); falls back to score then oldest. Alternatives: 'score_then_oldest', 'oldest' (FIFO), 'newest'."
+}

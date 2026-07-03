@@ -1,0 +1,98 @@
+# Social Content Pipeline Configuration
+# Edit this file to customize the automated pipeline.
+# Run: /00-social-content [topic | URL | file path | nothing]
+
+# Onboarding flag lives in skill-pack/config/sys-config.md (`_customized: true`),
+# not here. This file is purely pipeline behaviour.
+
+# --- INPUT / DEFAULTS --------------------------------------------------------
+defaults:
+  platform: "linkedin"                # Default target platform when not specified in the trigger
+                                      #   "linkedin"  | "instagram" | "twitter" | "threads"
+                                      # If you publish elsewhere too, choose your most-used one.
+
+  language: "en"                      # Default post language
+                                      #   "en"    = English
+                                      #   "pt-BR" = Portuguese (Brazil)
+                                      #   "es"    = Spanish
+                                      #   "other" = specify in onboarding
+
+  format: "carousel"                  # Default post format
+                                      #   "auto"     = decide from content length and structure
+                                      #   "single"   = always one image
+                                      #   "carousel" = always multi-slide (3-5)
+                                      #   "text"     = no images
+
+# --- IMAGES ------------------------------------------------------------------
+# NOTE: provider selection is no longer configured here. The orchestrator's
+# Phase 1 step 2 detects available providers by validating .env every run, and
+# ssc-image-generator's Step 3 applies per-slide criteria (ai_style + render_mode)
+# to pick GPT or Gemini when both are available. See `references/pipeline-phases.md`
+# Phase 1 and `.claude/agents/ssc-image-generator.md` Step 3 for the full rules.
+#
+# Optional soft tie-breaker preference lives in `skill-pack/config/sys-config.md`
+# under `## Generation > image_provider`. Delete that line to use defaults.
+
+# NOTE: No `style` knob. Visual style (palette, typography, template_id per
+# slide, render mode mix) is decided per post by Phase 5 "Content Inference"
+# + Phase 5.7 "Image Sourcing Strategy". The orchestrator pulls palette/type
+# cues from brand_context if present, otherwise infers them from the post
+# itself (brand names, sport teams, products, tone). Pinning a single global
+# style was the source of "every post looks the same" feedback.
+
+  carousel_min_slides: 3              # Minimum slides per carousel
+  carousel_max_slides: 7              # Maximum slides per carousel
+                                      # Up to 7 only — beyond this the read-through rate drops sharply on IG.
+                                      # Final count comes from the narrative arc, not a fixed target.
+
+  diversity_required: true            # Hard rule: no carousel where every content slide uses the same
+                                      # render_mode. Phase 5.3b mixes TEMPLATE / HYBRID_REAL / HYBRID_AI /
+                                      # HYBRID_FROM_REAL across slides so the carousel has visual rhythm.
+
+# --- DRAFTING / VOICE --------------------------------------------------------
+drafting:
+  brand_voice: "auto"                 # How to source brand voice
+                                      #   "auto"   = read .claude/skills/mkt-brand-voice/brand_context/voice-profile.md
+                                      #   "skip"   = no voice file, draft from generic best practices
+
+  humanizer_mode: "auto"              # Tool-humanizer pass mode
+                                      #   "auto"     = "deep" if voice-profile exists, else "standard"
+                                      #   "quick"    = obvious AI patterns only
+                                      #   "standard" = full scan + score
+                                      #   "deep"     = voice-matched (needs voice-profile.md)
+
+  hashtag_strategy: "trailing"        # Where hashtags go in the post
+                                      #   "trailing" = end of post, separated by blank line
+                                      #   "inline"   = woven into the body
+                                      #   "none"     = strip hashtags entirely
+
+# --- SCENARIOS / SOURCES -----------------------------------------------------
+sources:
+  linkedin_scraper: "enabled"         # Scenario D — scrape LinkedIn profiles for inspiration
+                                      #   "enabled"  | "disabled"
+                                      # Needs APIFY_API_KEY and a sources.md file in tool-linkedin-scraper/config/
+
+  youtube_digest: "enabled"           # Scenario D — pull recent YouTube uploads for inspiration
+                                      #   "enabled"  | "disabled"
+                                      # Needs YOUTUBE_API_KEY and a sources.md file in tool-youtube/config/
+
+  trending_research_freshness_days: 7 # Reuse cached str-trending-research briefs newer than N days
+                                      # Older briefs are re-run automatically. Set to 0 to always re-run.
+
+# --- PUBLISHING --------------------------------------------------------------
+publishing:
+  mode: "skip"                        # What happens after the post + images are ready
+                                      #   "auto-post" = publish immediately to the target platform via Zernio
+                                      #   "draft"     = save as draft in Zernio for manual approval
+                                      #   "skip"      = stop after saving locally, you publish manually
+                                      # "auto-post" and "draft" need ZERNIO_API_KEY.
+
+  pdf_carousel: "ask"                 # Generate a PDF version of carousels (LinkedIn document carousels)
+                                      #   "ask"      = prompt before publishing
+                                      #   "always"   = always render PDF
+                                      #   "never"    = never render PDF
+
+# --- PERFORMANCE -------------------------------------------------------------
+performance:
+  parallel_image_slides: 1            # Carousel slides generated simultaneously
+                                      # Most providers rate-limit aggressively — keep at 1 unless you have a paid tier.

@@ -1,0 +1,105 @@
+# Config schema — 00-longform-to-shortform
+#
+# See lib/config-merge.js for how this drives schema-driven merge on update.
+
+version: 1.1.0
+
+files:
+  skill-pack/config/sys-config.md:
+    format: markdown
+    keys:
+      - section: Platform
+        key: Default
+        default: youtube
+        version_added: 1.0.0
+
+      - section: Clip Selection
+        key: Max clips per run
+        default: 3
+        version_added: 1.0.0
+      - section: Clip Selection
+        key: Min clips per run
+        default: 2
+        version_added: 1.0.0
+      - section: Clip Selection
+        key: Min score threshold
+        default: 65
+        version_added: 1.0.0
+      - section: Clip Selection
+        key: Duration range
+        default: 45-60 seconds
+        version_added: 1.0.0
+
+      - section: Publishing
+        key: Default mode
+        default: skip
+        version_added: 1.0.0
+
+      - section: Format
+        key: Default
+        default: 9x16
+        version_added: 1.0.0
+      - section: Format
+        key: Layout
+        default: split-screen
+        version_added: 1.0.0
+      - section: Format
+        key: Illustrations
+        default: on (image-gen, notebook-sketch, spotlight mode)
+        version_added: 1.0.0
+
+      - section: Caption Style
+        key: Font
+        default: Montserrat
+        version_added: 1.0.0
+      - section: Caption Style
+        key: Size
+        default: 120px (extra-large — professional short-form scale)
+        version_added: 1.0.0
+      - section: Caption Style
+        key: Animation
+        default: highlight (word-by-word phrase groups)
+        version_added: 1.0.0
+      - section: Caption Style
+        key: Position
+        default: center (alignment 5, margin-v 0)
+        version_added: 1.0.0
+
+      - section: Overlay Controls
+        key: Hook enabled
+        default: true
+        version_added: 1.1.0
+      - section: Overlay Controls
+        key: Hook duration
+        default: 3.0
+        version_added: 1.1.0
+      - section: Overlay Controls
+        key: Subtitles enabled
+        default: true
+        version_added: 1.1.0
+      - section: Overlay Controls
+        key: CTA enabled
+        default: true
+        version_added: 1.1.0
+      - section: Overlay Controls
+        key: CTA duration
+        default: 4.0
+        version_added: 1.1.0
+      - section: Overlay Controls
+        key: Speaker card enabled
+        default: true
+        version_added: 1.1.0
+
+      - section: Music
+        key: Music
+        default: none
+        version_added: 1.0.0
+
+      - section: Watermark / Logo
+        key: Logo placement
+        default: top-right
+        version_added: 1.0.0
+      - section: Watermark / Logo
+        key: Watermark opacity
+        default: 80%
+        version_added: 1.0.0

@@ -1,0 +1,88 @@
+# Secrets
+.env
+.mcp.json
+**/.env.local
+
+# Loose credential dumps — never commit token/PAT files
+github_pat_*
+ghp_*
+npm_*.txt
+*token*.txt
+*.pat
+
+# Local settings (per-machine Claude permissions)
+.claude/settings.local.json
+**/.claude/settings.local.json
+.claude/hooks_info/ccnotify.db
+.claude/hooks_info/ccnotify.log*
+
+# Installer state
+.claude/skills/_catalog/installed.json
+**/.claude/skills/_catalog/installed.json
+
+# Local planning state
+.planning/
+**/.planning/
+
+# Dev-only skills (not shipped to main)
+.claude/skills/ops-new-feature/
+.claude/skills/ops-release/
+
+# System
+.DS_Store
+.backup/
+.tmp/
+scripts/gmail/.last-run.json
+
+# Next.js / Node (inside project folders)
+**/node_modules/
+**/.next/
+**/next-env.d.ts
+**/tsconfig.tsbuildinfo
+
+# Command Centre data (inside project folders)
+**/.command-centre/
+
+# Agent worktrees (temporary, per-machine)
+.worktrees/
+.claude/worktrees/
+
+# Playwright MCP scratch (page snapshots, logs, screenshots — rebuildable)
+**/.playwright-mcp/
+
+# SQLite databases (inside project folders)
+**/data.db
+
+# Cron runtime (logs and status are generated at runtime)
+cron/logs/
+cron/status/
+
+# Raw session transcripts (archived locally, not committed)
+context/transcripts/
+
+# Auto-captured memory summaries under context/memory/*.aos.md are tracked.
+# They are the source files used to rebuild the memory index and should be
+# included in private GitHub backups. Raw transcripts above stay local.
+
+# memsearch shadow index (rebuildable — do not commit)
+.memsearch/
+
+# Memory database backups (dumps/tarballs from `npm run memory:backup` — never commit)
+backups/
+
+# Client / user data dirs.
+# CLIENT-REPO OVERRIDE: in the master OS these are gitignored, but this is the
+# dedicated Got Moles install — brand_context/ and projects/ ARE this client's
+# data and MUST travel with the repo, so the ignores below are disabled.
+# (Leading slash anchors to repo ROOT only; nested command-centre/.../projects/
+# source is unaffected.)
+# /brand_context/
+# /projects/
+
+# Python bytecode (rebuildable — never commit)
+__pycache__/
+*.pyc
+
+# Per-user overrides — each machine owns its own; never shared via the repo
+CLAUDE.local.md
+**/SKILL.local.md

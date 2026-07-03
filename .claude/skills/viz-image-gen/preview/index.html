@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preview · LinkedIn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=JetBrains+Mono:wght@400..600&display=swap">
+<style>
+  /* ─── LinkedIn-accurate visual tokens ───────────────────────── */
+  :root {
+    --li-bg:       #f4f2ee;
+    --li-card:     #ffffff;
+    --li-border:   #e0e0e0;
+    --li-ink:      #000000e6;
+    --li-ink-2:    #00000099;
+    --li-ink-3:    #00000060;
+    --li-link:     #0a66c2;
+    --li-shadow:   0 0 0 1px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.03);
+    --font-ui:     -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+    --font-mono:   "JetBrains Mono", ui-monospace, "Consolas", monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--li-bg);
+    color: var(--li-ink);
+    font-family: var(--font-ui);
+    font-size: 14px;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── Top thin tools bar ────────────────────────────────────── */
+  .toolbar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--li-card);
+    border-bottom: 1px solid var(--li-border);
+    padding: 12px 24px;
+    display: flex; align-items: center; gap: 16px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--li-ink-2);
+  }
+  .toolbar .label { color: var(--li-ink); font-weight: 600; }
+  .toolbar .spacer { flex: 1; }
+  .toolbar button {
+    font-family: var(--font-ui);
+    font-size: 13px; font-weight: 600;
+    border: 1px solid var(--li-link);
+    color: var(--li-link);
+    background: transparent;
+    padding: 6px 14px;
+    border-radius: 99px;
+    cursor: pointer;
+    text-transform: none;
+    letter-spacing: 0;
+    transition: background 120ms;
+  }
+  .toolbar button:hover { background: rgba(10, 102, 194, 0.06); }
+  .toolbar button.primary {
+    background: var(--li-link); color: #fff; border-color: var(--li-link);
+  }
+  .toolbar button.primary:hover { background: #084c8d; }
+
+  /* ─── Page layout ───────────────────────────────────────────── */
+  main {
+    max-width: 552px;
+    margin: 24px auto;
+    padding: 0 16px;
+  }
+
+  /* ─── LinkedIn post card ────────────────────────────────────── */
+  .post {
+    background: var(--li-card);
+    border-radius: 8px;
+    box-shadow: var(--li-shadow);
+    overflow: hidden;
+  }
+  .post-head {
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    gap: 8px;
+    padding: 12px 16px 8px;
+    align-items: center;
+  }
+  .avatar {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--li-link);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    font-size: 20px;
+    border: 2px solid var(--li-card);
+  }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .author-meta { line-height: 1.2; min-width: 0; }
+  .author-name {
+    font-weight: 700;
+    color: var(--li-ink);
+    font-size: 14px;
+  }
+  .author-name .badge {
+    color: var(--li-ink-3);
+    font-weight: 400;
+    font-size: 13px;
+  }
+  .author-role {
+    font-size: 12px;
+    color: var(--li-ink-2);
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .author-time {
+    font-size: 12px;
+    color: var(--li-ink-3);
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .author-time svg { fill: var(--li-ink-3); }
+  .post-head .menu {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--li-ink-3);
+    cursor: pointer;
+    transition: background 120ms;
+  }
+  .post-head .menu:hover { background: rgba(0,0,0,0.06); }
+
+  /* ─── Caption ───────────────────────────────────────────────── */
+  .caption {
+    padding: 0 16px 12px;
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--li-ink);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    border: 1px dashed transparent;
+    margin: 0 12px;
+    border-radius: 4px;
+    cursor: text;
+    transition: border-color 180ms, background 180ms;
+    outline: none;
+  }
+  .caption:hover { border-color: var(--li-border); }
+  .caption:focus {
+    border-color: var(--li-link);
+    border-style: solid;
+    background: #fafafa;
+  }
+  .caption.dirty { border-color: #c4543b; border-style: solid; }
+  .caption-actions {
+    padding: 4px 16px 12px;
+    display: none;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--li-ink-2);
+  }
+  .caption.dirty + .caption-actions { display: flex; }
+  .caption-actions button {
+    font-family: inherit;
+    font-size: 12px;
+    border: 1px solid var(--li-border);
+    background: var(--li-card);
+    padding: 4px 12px;
+    border-radius: 99px;
+    cursor: pointer;
+    color: var(--li-ink);
+  }
+  .caption-actions button.primary {
+    background: var(--li-link); color: #fff; border-color: var(--li-link);
+  }
+  .caption-actions .hint { margin-left: auto; align-self: center; color: var(--li-ink-3); }
+
+  /* ─── Carousel viewer ───────────────────────────────────────── */
+  .carousel {
+    position: relative;
+    background: #0a0a0a;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+  }
+  .carousel-track {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transform: translateX(0);
+    transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .carousel-slide {
+    flex: 0 0 100%;
+    height: 100%;
+    background: #fff;
+    display: grid;
+    place-items: center;
+    position: relative;
+  }
+  .carousel-slide img {
+    width: 100%; height: 100%; object-fit: contain;
+  }
+  .carousel-slide .placeholder {
+    color: var(--li-ink-3);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.95);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    display: grid;
+    place-items: center;
+    color: var(--li-ink);
+    z-index: 2;
+    transition: transform 120ms;
+  }
+  .nav-btn:hover { transform: translateY(-50%) scale(1.06); }
+  .nav-btn.prev { left: 12px; }
+  .nav-btn.next { right: 12px; }
+  .nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .nav-btn svg { width: 18px; height: 18px; }
+
+  .slide-counter {
+    position: absolute;
+    bottom: 12px; left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.55);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 99px;
+    font-size: 11px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.08em;
+    z-index: 2;
+  }
+  .dots {
+    position: absolute;
+    bottom: 12px; right: 12px;
+    display: flex; gap: 4px;
+    z-index: 2;
+  }
+  .dots span {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    transition: background 200ms, width 200ms;
+  }
+  .dots span.active { background: #fff; width: 18px; border-radius: 99px; }
+
+  /* ─── Engagement counts strip ───────────────────────────────── */
+  .engagement {
+    padding: 8px 16px;
+    border-top: 1px solid var(--li-border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    color: var(--li-ink-2);
+  }
+  .engagement .reactions {
+    display: flex; align-items: center; gap: 2px;
+  }
+  .engagement .reactions .pill {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--li-card);
+    margin-left: -4px;
+    display: grid;
+    place-items: center;
+    font-size: 9px;
+  }
+  .engagement .reactions .pill:first-child { margin-left: 0; }
+  .engagement .reactions .pill.like { background: var(--li-link); color: #fff; }
+  .engagement .reactions .pill.celebrate { background: #f5b800; color: #fff; }
+  .engagement .reactions .pill.insightful { background: #b24020; color: #fff; }
+  .engagement .count-link { color: var(--li-ink-2); cursor: default; }
+
+  /* ─── Action bar ─────────────────────────────────────────────── */
+  .actions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--li-border);
+  }
+  .action-btn {
+    padding: 10px 4px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--li-ink-2);
+    transition: background 120ms;
+  }
+  .action-btn:hover { background: rgba(0,0,0,0.05); color: var(--li-ink); }
+  .action-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+  /* ─── Per-slide edit panel ───────────────────────────────────── */
+  .slide-editor {
+    background: var(--li-card);
+    border-radius: 8px;
+    box-shadow: var(--li-shadow);
+    padding: 16px;
+    margin-top: 16px;
+    transition: opacity 240ms;
+  }
+  .slide-editor.hidden { display: none; }
+  .slide-editor h3 {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--li-ink-3);
+    margin: 0 0 12px;
+    font-weight: 500;
+  }
+  .slide-editor h3 .id { color: #c4543b; }
+  .field-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+  .field-row label {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--li-ink-3);
+  }
+  .field-row textarea, .field-row input {
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.4;
+    border: 1px solid var(--li-border);
+    border-radius: 4px;
+    padding: 8px 10px;
+    color: var(--li-ink);
+    width: 100%;
+    resize: vertical;
+    transition: border-color 180ms;
+  }
+  .field-row textarea:focus, .field-row input:focus {
+    outline: none;
+    border-color: var(--li-link);
+  }
+  .field-row textarea.dirty, .field-row input.dirty { border-color: #c4543b; }
+  .editor-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    align-items: center;
+  }
+  .editor-actions .spacer { flex: 1; }
+  .status-line {
+    font-size: 12px;
+    color: var(--li-ink-3);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .status-line .dot { width: 6px; height: 6px; border-radius: 50%; background: #aaa; }
+  .status-line.saved .dot { background: #4a6b3c; }
+  .status-line.rendering .dot { background: #c4d600; animation: pulse 1s infinite; }
+  .status-line.error .dot { background: #c4543b; }
+  @keyframes pulse { 50% { opacity: 0.3; } }
+
+  /* ─── Brand context footer (subtle, read-only) ──────────────── */
+  .brand-context {
+    margin-top: 20px;
+    padding: 12px 16px;
+    background: var(--li-card);
+    border-radius: 8px;
+    box-shadow: var(--li-shadow);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+    align-items: center;
+    font-size: 12px;
+    color: var(--li-ink-2);
+    font-family: var(--font-mono);
+    letter-spacing: 0.06em;
+  }
+  .brand-context .label {
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--li-ink-3);
+  }
+  .brand-context .swatches {
+    display: flex; gap: 4px;
+  }
+  .brand-context .swatch {
+    width: 18px; height: 18px;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+  .brand-context .fonts {
+    color: var(--li-ink-2);
+    font-size: 11px;
+  }
+  .brand-context a {
+    color: var(--li-link);
+    text-decoration: none;
+    font-size: 11px;
+  }
+
+  /* ─── Toast ──────────────────────────────────────────────────── */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    padding: 10px 18px;
+    border-radius: 99px;
+    background: rgba(0,0,0,0.85);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 200ms, transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    z-index: 100;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .toast.error { background: #c4543b; }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="label" id="t-platform">LinkedIn</span>
+  <span>·</span>
+  <span id="t-brand">…</span>
+  <span>·</span>
+  <span id="t-date">…</span>
+  <span class="spacer"></span>
+  <button onclick="reload()">Reload</button>
+  <button class="primary" onclick="rerenderAll()">Re-render all</button>
+</div>
+
+<main>
+  <!-- Post card -->
+  <div class="post" id="post">
+    <div class="post-head">
+      <div class="avatar" id="avatar">A</div>
+      <div class="author-meta">
+        <div class="author-name" id="author-name">Author</div>
+        <div class="author-role" id="author-role">—</div>
+        <div class="author-time">
+          <span id="author-time">Just now</span>
+          <span>·</span>
+          <svg width="12" height="12" viewBox="0 0 16 16"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 1a6 6 0 1 1 0 12A6 6 0 0 1 8 2zm-2 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1H6zm0 3a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1H6zm0 3a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1H6z"/></svg>
+        </div>
+      </div>
+      <div class="menu">⋯</div>
+    </div>
+
+    <div class="caption" id="caption" contenteditable="true" spellcheck="false">Loading…</div>
+    <div class="caption-actions">
+      <button class="primary" onclick="saveCaption()">Save caption</button>
+      <button onclick="resetCaption()">Cancel</button>
+      <span class="hint">Cmd+Enter to save</span>
+    </div>
+
+    <div class="carousel" id="carousel">
+      <div class="carousel-track" id="carousel-track"></div>
+      <button class="nav-btn prev" onclick="navSlide(-1)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.4 7.4 14 6l-6 6 6 6 1.4-1.4L10.8 12z"/></svg></button>
+      <button class="nav-btn next" onclick="navSlide(1)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.6 16.6 10 18l6-6-6-6-1.4 1.4L13.2 12z"/></svg></button>
+      <div class="slide-counter" id="slide-counter">1 / 1</div>
+      <div class="dots" id="dots"></div>
+    </div>
+
+    <div class="engagement">
+      <div class="reactions">
+        <span class="pill like">👍</span>
+        <span class="pill celebrate">🎉</span>
+        <span class="pill insightful">💡</span>
+      </div>
+      <span class="count-link">47 reactions · 12 comments · 3 reposts</span>
+    </div>
+
+    <div class="actions">
+      <button class="action-btn"><svg viewBox="0 0 24 24"><path d="M19.5 4h-7L11 5.5V20l1 1 6.5-3.5h1c1.4 0 2.5-1.1 2.5-2.5V6.5C22 5.1 20.9 4 19.5 4zM10 5.5 8.5 4h-4C3.1 4 2 5.1 2 6.5V15c0 1.4 1.1 2.5 2.5 2.5h1L12 21V5.5zM6 11H4V7h2v4z"/></svg> Like</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24"><path d="M7 9h10v2H7zm0 4h7v2H7zm5-9C6.5 4 2 7.6 2 12c0 1.7.7 3.3 1.8 4.6L2 22l5.6-1.8C8.9 21.3 10.4 22 12 22c5.5 0 10-3.6 10-8s-4.5-10-10-10zm0 18c-1.5 0-3-.4-4.3-1.3l-.4-.2-3 1 1-3-.3-.3C4.4 16 4 14 4 12c0-3.3 3.6-6 8-6s8 2.7 8 6-3.6 6-8 6z"/></svg> Comment</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24"><path d="M17 4v6h2V4c0-1.1-.9-2-2-2H7v2h10zM5 8h2V6L3 10l4 4v-2H5V8zm14 8h-2v2H7v-2H5v2c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-2zm0-4 4-4-4-4v2h-2v4h2v2z"/></svg> Repost</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24"><path d="M3 3v8l16 1L3 13v8l20-9z"/></svg> Send</button>
+    </div>
+  </div>
+
+  <!-- Per-slide edit panel (shows when a slide is selected) -->
+  <div class="slide-editor hidden" id="editor">
+    <h3>Edit slide <span id="editor-slide-num"></span> · template <span class="id" id="editor-template-id"></span></h3>
+    <div class="field-row">
+      <label>Headline</label>
+      <input type="text" id="editor-headline" data-key="headline">
+    </div>
+    <div class="field-row" id="editor-body-row">
+      <label>Body</label>
+      <textarea id="editor-body" rows="3" data-key="body"></textarea>
+    </div>
+    <div class="editor-actions">
+      <div class="status-line" id="editor-status"><span class="dot"></span><span class="msg">Ready</span></div>
+      <div class="spacer"></div>
+      <button class="action-btn" style="font-weight:500; color:var(--li-ink); padding:6px 14px; border-radius:99px; border:1px solid var(--li-border);" onclick="saveCurrentSlideText()">Save text</button>
+      <button class="action-btn" style="font-weight:600; color:#fff; background:var(--li-link); padding:6px 14px; border-radius:99px;" onclick="rerenderCurrentSlide()">Re-render image</button>
+    </div>
+  </div>
+
+  <!-- Brand context footer -->
+  <div class="brand-context" id="brand-footer">
+    <span class="label">brand</span>
+    <div>
+      <div class="swatches" id="brand-swatches"></div>
+      <div class="fonts" id="brand-fonts" style="margin-top:6px"></div>
+    </div>
+    <a href="#" onclick="event.preventDefault();showRunDir()" id="run-dir-link">run dir →</a>
+  </div>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+
+let state = {
+  run: null,
+  current: 0,
+  caption_original: "",
+  slide_dirty: {},
+};
+
+function toast(msg, error = false) {
+  const t = $("#toast");
+  t.textContent = msg;
+  t.classList.toggle("error", error);
+  t.classList.add("show");
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => t.classList.remove("show"), 2200);
+}
+
+function setStatus(cls, msg) {
+  const s = $("#editor-status");
+  s.className = "status-line " + cls;
+  s.querySelector(".msg").textContent = msg;
+}
+
+async function reload() {
+  const r = await fetch("/api/run");
+  const j = await r.json();
+  state.run = j;
+  if (j.error) {
+    $("#caption").textContent = j.error;
+    return;
+  }
+  render();
+}
+
+function render() {
+  const r = state.run;
+  // Toolbar
+  $("#t-platform").textContent = (r.platform || "linkedin").charAt(0).toUpperCase() + (r.platform || "linkedin").slice(1);
+  $("#t-brand").textContent = r.brand_name || "—";
+  const m = (r.run_dir || "").match(/(\d{4}-\d{2}-\d{2})/);
+  $("#t-date").textContent = m ? m[1] : "—";
+
+  // Author card
+  const name = r.author_name || r.brand_name || "Author";
+  $("#author-name").textContent = name;
+  const av = $("#avatar");
+  av.innerHTML = "";
+  const headshot = r.brand_summary?.logo_path;
+  if (headshot && headshot.startsWith("logos/")) {
+    av.innerHTML = `<img src="/runfiles/../../../brand_context/${headshot}" alt="">`;
+  } else {
+    av.textContent = (name[0] || "A").toUpperCase();
+  }
+  $("#author-role").textContent = r.author_role || "Brand · Design system";
+  $("#author-time").textContent = "Just now";
+
+  // Caption
+  const cap = r.caption || "";
+  state.caption_original = cap;
+  $("#caption").textContent = cap;
+  $("#caption").classList.remove("dirty");
+
+  // Carousel
+  const track = $("#carousel-track");
+  track.innerHTML = "";
+  const dots = $("#dots");
+  dots.innerHTML = "";
+  (r.slides || []).forEach((s, i) => {
+    const slide = document.createElement("div");
+    slide.className = "carousel-slide";
+    slide.innerHTML = s.image_url
+      ? `<img src="${s.image_url}" alt="slide ${i + 1}">`
+      : `<span class="placeholder">slide ${i + 1} · not yet rendered</span>`;
+    slide.addEventListener("click", () => selectSlide(i));
+    track.appendChild(slide);
+    const dot = document.createElement("span");
+    if (i === 0) dot.className = "active";
+    dots.appendChild(dot);
+  });
+  updateCarousel();
+
+  // Brand footer
+  renderBrandFooter();
+
+  // Open editor for first slide by default
+  if ((r.slides || []).length > 0) selectSlide(0);
+}
+
+function renderBrandFooter() {
+  const bs = state.run.brand_summary || {};
+  const swatches = $("#brand-swatches");
+  swatches.innerHTML = "";
+  ["primary", "secondary", "background", "text"].forEach(k => {
+    if (bs[k]) {
+      const sw = document.createElement("div");
+      sw.className = "swatch";
+      sw.style.background = bs[k];
+      sw.title = `${k}: ${bs[k]}`;
+      swatches.appendChild(sw);
+    }
+  });
+  (bs.accents || []).forEach(hex => {
+    const sw = document.createElement("div");
+    sw.className = "swatch";
+    sw.style.background = hex;
+    sw.title = `accent: ${hex}`;
+    swatches.appendChild(sw);
+  });
+  const fonts = bs.fonts || {};
+  $("#brand-fonts").textContent = `Fonts: ${fonts.headline || "default"} / ${fonts.body || "default"}`;
+}
+
+function updateCarousel() {
+  $("#carousel-track").style.transform = `translateX(-${state.current * 100}%)`;
+  const total = (state.run.slides || []).length;
+  $("#slide-counter").textContent = `${state.current + 1} / ${total}`;
+  $$(".dots span").forEach((d, i) => d.classList.toggle("active", i === state.current));
+  $(".nav-btn.prev").disabled = state.current === 0;
+  $(".nav-btn.next").disabled = state.current >= total - 1;
+}
+
+function navSlide(delta) {
+  const total = (state.run.slides || []).length;
+  state.current = Math.max(0, Math.min(total - 1, state.current + delta));
+  updateCarousel();
+  selectSlide(state.current);
+}
+
+function selectSlide(i) {
+  state.current = i;
+  updateCarousel();
+  const s = state.run.slides[i];
+  if (!s) return;
+  $("#editor").classList.remove("hidden");
+  $("#editor-slide-num").textContent = String(i + 1).padStart(2, "0");
+  $("#editor-template-id").textContent = s.template_id || s.template_family || "—";
+  $("#editor-headline").value = s.headline || "";
+  $("#editor-body").value = s.body || "";
+  $("#editor-body-row").style.display = s.body !== undefined ? "flex" : "none";
+  setStatus("", "Ready");
+  $$("#editor input, #editor textarea").forEach(el => el.classList.remove("dirty"));
+}
+
+// Caption editing
+$("#caption").addEventListener("input", () => {
+  $("#caption").classList.toggle("dirty",
+    $("#caption").textContent.trim() !== state.caption_original.trim());
+});
+$("#caption").addEventListener("keydown", e => {
+  if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
+    e.preventDefault();
+    saveCaption();
+  }
+});
+
+async function saveCaption() {
+  const newCaption = $("#caption").textContent.trim();
+  const res = await fetch("/api/save-caption", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ caption: newCaption }),
+  });
+  const j = await res.json();
+  if (!j.ok) { toast(j.error || "save failed", true); return; }
+  state.caption_original = newCaption;
+  $("#caption").classList.remove("dirty");
+  toast("Caption saved");
+}
+function resetCaption() {
+  $("#caption").textContent = state.caption_original;
+  $("#caption").classList.remove("dirty");
+}
+
+// Slide editing
+$$("#editor input, #editor textarea").forEach(el => {
+  el.addEventListener("input", () => {
+    el.classList.add("dirty");
+    setStatus("", "Unsaved changes");
+  });
+  el.addEventListener("keydown", e => {
+    if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault();
+      saveCurrentSlideText();
+    }
+  });
+});
+
+async function saveCurrentSlideText() {
+  const updates = {};
+  $$("#editor input, #editor textarea").forEach(el => {
+    updates[el.dataset.key] = el.value.trim();
+  });
+  setStatus("rendering", "Saving…");
+  const res = await fetch("/api/save-slide", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ index: state.current, updates }),
+  });
+  const j = await res.json();
+  if (!j.ok) { setStatus("error", "Error"); toast(j.error || "save failed", true); return; }
+  state.run.slides[state.current] = { ...state.run.slides[state.current], ...updates };
+  setStatus("saved", "Saved");
+  $$("#editor input, #editor textarea").forEach(el => el.classList.remove("dirty"));
+  toast(`Slide ${state.current + 1} saved`);
+}
+
+async function rerenderCurrentSlide() {
+  await saveCurrentSlideText();
+  setStatus("rendering", "Rendering…");
+  const res = await fetch("/api/regenerate-slide", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ index: state.current }),
+  });
+  const j = await res.json();
+  if (!j.ok) {
+    setStatus("error", "Error");
+    toast((j.error || "render failed") + (j.manual ? "\n\n" + j.manual : ""), true);
+    console.error(j);
+    return;
+  }
+  setStatus("saved", "Rendered");
+  toast(`Slide ${state.current + 1} re-rendered`);
+  setTimeout(reload, 400);
+}
+
+async function rerenderAll() {
+  for (let i = 0; i < state.run.slides.length; i++) {
+    state.current = i;
+    selectSlide(i);
+    await rerenderCurrentSlide();
+  }
+}
+
+function showRunDir() {
+  toast(state.run.run_dir);
+}
+
+// Keyboard nav
+document.addEventListener("keydown", e => {
+  if (e.target.matches("input, textarea, [contenteditable]")) return;
+  if (e.key === "ArrowLeft") navSlide(-1);
+  if (e.key === "ArrowRight") navSlide(1);
+});
+
+reload();
+</script>
+</body>
+</html>

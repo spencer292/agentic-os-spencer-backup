@@ -1,0 +1,922 @@
+[
+  {
+    "city": "Arlington",
+    "remVol": 20,
+    "conVol": 0,
+    "maxVol": 20,
+    "comp": "HIGH",
+    "compIdx": 71,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Fairfax",
+    "remVol": 20,
+    "conVol": 0,
+    "maxVol": 20,
+    "comp": "HIGH",
+    "compIdx": 79,
+    "bidLo": 1.146561,
+    "bidHi": 4.162267
+  },
+  {
+    "city": "Tacoma",
+    "remVol": 0,
+    "conVol": 10,
+    "maxVol": 10,
+    "comp": "LOW",
+    "compIdx": 0,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Kent",
+    "remVol": 0,
+    "conVol": 10,
+    "maxVol": 10,
+    "comp": "LOW",
+    "compIdx": 0,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Snohomish",
+    "remVol": 0,
+    "conVol": 10,
+    "maxVol": 10,
+    "comp": "HIGH",
+    "compIdx": 93,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Gig Harbor",
+    "remVol": 0,
+    "conVol": 10,
+    "maxVol": 10,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Bremerton",
+    "remVol": 0,
+    "conVol": 10,
+    "maxVol": 10,
+    "comp": "LOW",
+    "compIdx": 0,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Bainbridge Island",
+    "remVol": 0,
+    "conVol": 10,
+    "maxVol": 10,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Poulsbo",
+    "remVol": 0,
+    "conVol": 10,
+    "maxVol": 10,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Fife",
+    "remVol": 0,
+    "conVol": 10,
+    "maxVol": 10,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Sammamish",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Bellevue",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Kirkland",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Seattle",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Puyallup",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Enumclaw",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Renton",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Auburn",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Federal Way",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Issaquah",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Redmond",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Woodinville",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Maple Valley",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Covington",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Black Diamond",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Buckley",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Lakewood",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Bonney Lake",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Graham",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Spanaway",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "University Place",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Sumner",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Orting",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Olympia",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Lacey",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Tumwater",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Yelm",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Everett",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Marysville",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Lake Stevens",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Shoreline",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Burien",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Bothell",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "SeaTac",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Des Moines",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Mercer Island",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Kenmore",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Tukwila",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Edgewood",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Snoqualmie",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Lake Forest Park",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Newcastle",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Duvall",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "North Bend",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Pacific",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Normandy Park",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Carnation",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "South Hill",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Parkland",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Frederickson",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Elk Plain",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "DuPont",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Milton",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Fircrest",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Steilacoom",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Lynnwood",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Edmonds",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Mountlake Terrace",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Mukilteo",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Mill Creek",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Monroe",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Stanwood",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Sultan",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Brier",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Granite Falls",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Rainier",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Tenino",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Silverdale",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Port Orchard",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Algona",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Clyde Hill",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Fairwood",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Green River",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Lake City",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Medina",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Ravensdale",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "White Center",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Lake Tapps",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Prairie Ridge",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Roy",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Centralia",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  },
+  {
+    "city": "Eatonville",
+    "remVol": 0,
+    "conVol": 0,
+    "maxVol": 0,
+    "comp": "-",
+    "compIdx": null,
+    "bidLo": null,
+    "bidHi": null
+  }
+]

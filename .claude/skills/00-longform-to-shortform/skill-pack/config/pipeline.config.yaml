@@ -1,0 +1,108 @@
+# Long-Form to Short-Form Pipeline Configuration
+# Edit this file to customize the automated pipeline.
+# Run: /sys-longform-to-shortform [youtube_url_or_video_path]
+
+_customized: false                    # Set to true after first-run config walkthrough
+
+# --- INPUT -------------------------------------------------------------------
+input:
+  format: "9x16"                    # Output aspect ratio
+                                    #   "9x16"  = vertical portrait (YouTube Shorts, Reels, TikTok)
+                                    #   "1x1"   = square (Instagram feed, LinkedIn)
+                                    #   "split"  = podcast/interview split-screen layout
+
+  layout: "stacked"                 # How the video is cropped and framed for portrait
+                                    #   "auto"          = analyses each clip for faces and screen content, picks the best layout automatically
+                                    #   "face-track"    = always crops to follow the speaker's face (talking head videos)
+                                    #   "split-screen"  = top half shows screen content, bottom half shows the speaker (tutorials, demos)
+                                    #   "cursor-track"  = screen segments follow the cursor, face segments follow the speaker
+                                    #   "stacked"       = two-person side-by-side grid -> stacked 9:16, both speakers visible (Zoom/Riverside interviews)
+                                    #   "content-focus" = full frame on screen content, speaker minimised (pure screencasts)
+                                    #   "split-podcast" = active speaker gets 70% of frame, other person gets 30% (interviews)
+
+  whisper_model: "small"            # Speech-to-text model used for transcription (WhisperX)
+                                    # Bigger models are more accurate but slower and use more memory
+                                    #   "tiny"     = fastest, least accurate — good for testing (~1GB RAM)
+                                    #   "base"     = fast, reasonable accuracy (~1GB RAM)
+                                    #   "small"    = good balance of speed and accuracy (~2GB RAM) [recommended]
+                                    #   "medium"   = high accuracy, noticeably slower (~5GB RAM)
+                                    #   "large-v3" = best accuracy, slowest — needs a powerful machine (~10GB RAM)
+
+# --- CLIP SELECTION ----------------------------------------------------------
+selection:
+  max_clips: 8                      # Maximum number of clips to produce from one video
+  min_clips: 1                      # Never lower the quality threshold to hit a count — one amazing clip ships alone
+  min_score: 70                     # Quality threshold (0-100). Clips scoring below this are rejected.
+                                    # Lower = more clips but lower average quality. Higher = fewer but stronger clips.
+  duration_range: [25, 90]          # [min_seconds, max_seconds] for each clip
+                                    # 25-45s gut-punch moments perform strongly on TikTok/Reels; don't reject
+                                    # above-threshold clips on duration alone.
+
+# --- MICRO-CLIP LANE (15s one-liners) ----------------------------------------
+# A SECOND selection pass over the same transcript, hunting single screenshot-able
+# lines for TikTok/Reels. Framework: vid-clip-selection/references/micro-clip-framework.md
+# Set enabled: false to skip the micro pass entirely.
+micro_selection:
+  enabled: true
+  max_clips: 6                      # Micros are abundant; cap the strongest few
+  min_clips: 0                      # A flat episode may yield zero micros — that's fine
+  min_score: 72                     # micro_score threshold (0-100). Keep high — one-liners are plentiful
+  duration_range: [10, 22]          # [min, max] seconds. Sweet spot 12-18s. <10s reads as a glitch
+  overlap_with_arcs: true           # A micro may sit inside an arc clip already selected
+  filename_tag: "micro"             # Output names use {ep}_{Guest}_micro{N}.mp4 (arcs use _clip{N})
+  platform_priority: ["TikTok", "Instagram Reels", "YouTube Shorts"]
+
+# --- EDITING -----------------------------------------------------------------
+editing:
+  subtitle_font: "Montserrat"       # Font used for ASS subtitle captions
+                                    # Must be installed on the system for FFmpeg to render correctly
+
+  subtitle_size: 48                 # Font size for ASS subtitle captions (points)
+                                    # Adjust for readability on different clip lengths and aspect ratios
+
+  highlight_color: ""               # Accent colour for caption highlights (hex, e.g. "#FF6B00")
+                                    # Empty = auto-detected from brand design-tokens if available
+
+  illustrations: true               # Overlay illustration PNGs during key moments?
+                                    # true = visual variety with branded illustration overlays | false = captions only
+
+  illustration_count: 4             # How many illustration PNGs to overlay per clip
+                                    # Illustrations are placed at evenly-spaced intervals through the clip
+
+# --- PUBLISHING --------------------------------------------------------------
+publishing:
+  mode: "skip"                      # What happens after clips are rendered
+                                    #   "auto-post" = automatically publish to all configured platforms
+                                    #   "draft"     = upload as drafts so you can review before publishing
+                                    #   "skip"      = don't upload anywhere, just save the rendered files locally
+
+  profile: "default"                # Which account profile to use (from the profiles section below)
+
+  platforms:                        # Which platforms to publish to (only used when mode is "auto-post" or "draft")
+    - youtube
+    - instagram
+    - tiktok
+
+  thumbnail_offset_ms: 3000         # Milliseconds into the clip to grab the thumbnail frame
+
+  profiles:
+    default:
+      youtube_account_id: ""        # Your Zernio account IDs — find these in your Zernio dashboard
+      instagram_account_id: ""
+      tiktok_account_id: ""
+      linkedin_account_id: ""
+      social_links:                 # Your social profile URLs — added to video descriptions
+        youtube: ""
+        linkedin: ""
+        instagram: ""
+        tiktok: ""
+      lead_magnet_url: ""           # Optional link added to video descriptions (e.g. newsletter signup)
+
+# --- PERFORMANCE -------------------------------------------------------------
+performance:
+  parallel_edits: 3                 # How many clips to edit simultaneously
+                                    # Higher = faster but uses more CPU/memory. 3 is safe for most machines.
+
+  parallel_reframes: 3              # How many clips to render simultaneously
+                                    # Higher = faster throughput but uses more RAM.
+                                    # 3 is optimal for 16GB+ machines. Drop to 2 if you hit memory pressure.

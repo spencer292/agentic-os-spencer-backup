@@ -1,0 +1,34 @@
+{
+  "_comment": "High-confidence sender -> AREA mapping for auto-filing. First matching rule wins. Google is matched by exact sender (one domain spans four areas); everything else by domain SUFFIX so sub-domains (updates.zernio.com, comms.assemblyai.com) still match. Area labels are the FILING layer and are orthogonal to Triage/* (the ACTION layer) — a message can carry both. Archiving is owned by triage, except an explicit --file bulk move.",
+  "areas": ["Got-Moles", "Finance", "Marketing", "Notification", "Newsletters", "Clients/Normal", "Clients/Urgent", "Leads"],
+  "_humanAreas": "Clients/Normal, Clients/Urgent, Leads, and the action label 'Missed Response' are assigned by judgement (cron Claude turn or by hand), NOT by the high-confidence sender rules below.",
+  "rules": [
+    {
+      "area": "Got-Moles",
+      "senders": ["businessprofile-noreply@google.com", "sc-noreply@google.com"],
+      "domains": ["callrail.com", "getjobber.com"],
+      "subjects": ["got moles", "got-moles"]
+    },
+    {
+      "area": "Finance",
+      "senders": ["payments-noreply@google.com"],
+      "domains": ["stripe.com", "wise.com"]
+    },
+    {
+      "area": "Marketing",
+      "senders": ["ads-noreply@google.com", "ads-account-noreply@google.com"],
+      "domains": ["gohighlevel.com", "clickfunnelsnotifications.com", "microsoftsupport.com"]
+    },
+    {
+      "area": "Notification",
+      "senders": ["googlecloud@google.com", "workspace-noreply@google.com"],
+      "_note": "Automated system/app alerts (Vercel, hosting/DNS, AI tools, Zernio notifications). crisp.email is DELIBERATELY excluded — elean@/ana@zernio.on.crisp.email are real humans (partnership/podcast), routed to Clients/Leads by hand, never auto-filed.",
+      "domains": ["vercel.com", "cloudfloordns.com", "sanity.io", "squarespace.com", "godaddy.com", "zillizcloud.com", "assemblyai.com", "shotstack.io", "firecrawl.dev", "serpapi.com", "wispr.ai", "perplexity.ai", "openai.com", "zernio.com"],
+      "workflowSelf": true
+    },
+    {
+      "area": "Newsletters",
+      "domains": ["redditmail.com", "reddit.com"]
+    }
+  ]
+}

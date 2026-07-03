@@ -1,0 +1,46 @@
+name: Meeting Video Archive
+
+# Rescues Zoom meeting recordings into the private "Meeting Recordings" folder on the
+# Elevate 360 Drive before Zoom expires them, and links each video on its Notion row.
+#
+# SUPERSEDED 2026-06-25: the daily schedule is OFF. Archiving now runs on the local cron
+# host (cron/jobs/meeting-video-archive.md, active) via the same archive-video.cjs sweep
+# and the local .env — so NO Zoom/Notion secrets live in GitHub. This workflow is kept as a
+# manual-only fallback to clear a backlog after the local machine has been off for a long
+# stretch. To use it you'd first add the repo secrets below, then run it from the Actions
+# tab. Re-add the `schedule:` trigger only if you move archiving back off-machine.
+#
+# Repo secrets needed ONLY to manually run this fallback (Settings → Secrets → Actions):
+#   ZOOM_ACCOUNT_ID, ZOOM_CLIENT_ID, ZOOM_CLIENT_SECRET, NOTION_API_TOKEN, N8N_API_KEY
+
+on:
+  workflow_dispatch:            # manual-only fallback — daily schedule removed (archiving is local now; see header)
+    inputs:
+      days:
+        description: 'Lookback window in days'
+        default: '60'
+      batch:
+        description: 'Max meetings to archive this run'
+        default: '8'
+
+concurrency:
+  group: meeting-video-archive
+  cancel-in-progress: false
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Sweep Zoom recordings to Drive
+        env:
+          ZOOM_ACCOUNT_ID: ${{ secrets.ZOOM_ACCOUNT_ID }}
+          ZOOM_CLIENT_ID: ${{ secrets.ZOOM_CLIENT_ID }}
+          ZOOM_CLIENT_SECRET: ${{ secrets.ZOOM_CLIENT_SECRET }}
+          NOTION_API_TOKEN: ${{ secrets.NOTION_API_TOKEN }}
+          N8N_API_KEY: ${{ secrets.N8N_API_KEY }}
+        run: node scripts/meetings/archive-video.cjs --sweep --days "${{ github.event.inputs.days || '60' }}" --batch "${{ github.event.inputs.batch || '8' }}"

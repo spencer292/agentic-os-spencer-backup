@@ -1,0 +1,4855 @@
+{
+  "tested_at": "2026-04-20 15:35:21",
+  "staging_url": "https://project-pf8c6.vercel.app",
+  "old_host": "https://got-moles.com",
+  "total_tested": 334,
+  "by_status": {
+    "200": 225,
+    "404": 109
+  },
+  "results": [
+    {
+      "old_url": "https://got-moles.com/",
+      "path": "/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "200 https://project-pf8c6.vercel.app/"
+      ],
+      "keyword_count": 214,
+      "top3_count": 142
+    },
+    {
+      "old_url": "https://got-moles.com/?page_id=192",
+      "path": "/?page_id=192",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "200 https://project-pf8c6.vercel.app/?page_id=192"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/about-us/",
+      "path": "/about-us/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/about-us/ -> /about-us",
+        "308 https://project-pf8c6.vercel.app/about-us -> /about",
+        "200 https://project-pf8c6.vercel.app/about"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/algona-mole-control/",
+      "path": "/algona-mole-control/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/algona-mole-control/ -> /algona-mole-control",
+        "404 https://project-pf8c6.vercel.app/algona-mole-control -> "
+      ],
+      "keyword_count": 2,
+      "top3_count": 2
+    },
+    {
+      "old_url": "https://got-moles.com/algona/",
+      "path": "/algona/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/algona/ -> /algona",
+        "404 https://project-pf8c6.vercel.app/algona -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/are-moles-nocturnal/",
+      "path": "/are-moles-nocturnal/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/are-moles-nocturnal/ -> /are-moles-nocturnal",
+        "308 https://project-pf8c6.vercel.app/are-moles-nocturnal -> /blog/are-moles-nocturnal",
+        "404 https://project-pf8c6.vercel.app/blog/are-moles-nocturnal -> "
+      ],
+      "keyword_count": 17,
+      "top3_count": 4
+    },
+    {
+      "old_url": "https://got-moles.com/are-moles-poisonous-or-venomous/",
+      "path": "/are-moles-poisonous-or-venomous/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/are-moles-poisonous-or-venomous/ -> /are-moles-poisonous-or-venomous",
+        "404 https://project-pf8c6.vercel.app/are-moles-poisonous-or-venomous -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/are-moles-venomous/",
+      "path": "/are-moles-venomous/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/are-moles-venomous/ -> /are-moles-venomous",
+        "308 https://project-pf8c6.vercel.app/are-moles-venomous -> /blog/are-moles-venomous",
+        "404 https://project-pf8c6.vercel.app/blog/are-moles-venomous -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/auburn-mole-exterminator",
+      "path": "/auburn-mole-exterminator",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "404 https://project-pf8c6.vercel.app/auburn-mole-exterminator -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/auburn/",
+      "path": "/auburn/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/auburn/ -> /auburn",
+        "308 https://project-pf8c6.vercel.app/auburn -> /mole-control-auburn",
+        "200 https://project-pf8c6.vercel.app/mole-control-auburn"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/bellevue-mole-extermination",
+      "path": "/bellevue-mole-extermination",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "404 https://project-pf8c6.vercel.app/bellevue-mole-extermination -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/bellevue-mole-removal",
+      "path": "/bellevue-mole-removal",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/bellevue-mole-removal -> /mole-control-bellevue",
+        "200 https://project-pf8c6.vercel.app/mole-control-bellevue"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/bellevue/",
+      "path": "/bellevue/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/bellevue/ -> /bellevue",
+        "308 https://project-pf8c6.vercel.app/bellevue -> /mole-control-bellevue",
+        "200 https://project-pf8c6.vercel.app/mole-control-bellevue"
+      ],
+      "keyword_count": 7,
+      "top3_count": 1
+    },
+    {
+      "old_url": "https://got-moles.com/black-diamond/",
+      "path": "/black-diamond/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/black-diamond/ -> /black-diamond",
+        "308 https://project-pf8c6.vercel.app/black-diamond -> /mole-control-black-diamond",
+        "200 https://project-pf8c6.vercel.app/mole-control-black-diamond"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/blog/",
+      "path": "/blog/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/blog/ -> /blog",
+        "200 https://project-pf8c6.vercel.app/blog"
+      ],
+      "keyword_count": 5,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/bonney-lake/",
+      "path": "/bonney-lake/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/bonney-lake/ -> /bonney-lake",
+        "308 https://project-pf8c6.vercel.app/bonney-lake -> /mole-control-bonney-lake",
+        "200 https://project-pf8c6.vercel.app/mole-control-bonney-lake"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/bothell-mole-extermination",
+      "path": "/bothell-mole-extermination",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "404 https://project-pf8c6.vercel.app/bothell-mole-extermination -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/bothell/",
+      "path": "/bothell/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/bothell/ -> /bothell",
+        "308 https://project-pf8c6.vercel.app/bothell -> /mole-control-bothell",
+        "200 https://project-pf8c6.vercel.app/mole-control-bothell"
+      ],
+      "keyword_count": 11,
+      "top3_count": 5
+    },
+    {
+      "old_url": "https://got-moles.com/buckley-mole-exterminator",
+      "path": "/buckley-mole-exterminator",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "404 https://project-pf8c6.vercel.app/buckley-mole-exterminator -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/buckley/",
+      "path": "/buckley/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/buckley/ -> /buckley",
+        "308 https://project-pf8c6.vercel.app/buckley -> /mole-control-buckley",
+        "200 https://project-pf8c6.vercel.app/mole-control-buckley"
+      ],
+      "keyword_count": 2,
+      "top3_count": 1
+    },
+    {
+      "old_url": "https://got-moles.com/burien/",
+      "path": "/burien/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/burien/ -> /burien",
+        "308 https://project-pf8c6.vercel.app/burien -> /mole-control-burien",
+        "200 https://project-pf8c6.vercel.app/mole-control-burien"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/can-moles-swim/",
+      "path": "/can-moles-swim/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/can-moles-swim/ -> /can-moles-swim",
+        "308 https://project-pf8c6.vercel.app/can-moles-swim -> /blog/can-moles-swim",
+        "404 https://project-pf8c6.vercel.app/blog/can-moles-swim -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/centralia/",
+      "path": "/centralia/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/centralia/ -> /centralia",
+        "404 https://project-pf8c6.vercel.app/centralia -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/cities-served/",
+      "path": "/cities-served/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/cities-served/ -> /cities-served",
+        "308 https://project-pf8c6.vercel.app/cities-served -> /service-areas",
+        "200 https://project-pf8c6.vercel.app/service-areas"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/algona/",
+      "path": "/city/algona/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/algona/ -> /city/algona",
+        "404 https://project-pf8c6.vercel.app/city/algona -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/auburn/",
+      "path": "/city/auburn/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/auburn/ -> /city/auburn",
+        "308 https://project-pf8c6.vercel.app/city/auburn -> /mole-control-auburn",
+        "200 https://project-pf8c6.vercel.app/mole-control-auburn"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/bellevue/",
+      "path": "/city/bellevue/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/bellevue/ -> /city/bellevue",
+        "308 https://project-pf8c6.vercel.app/city/bellevue -> /mole-control-bellevue",
+        "200 https://project-pf8c6.vercel.app/mole-control-bellevue"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/black-diamond/",
+      "path": "/city/black-diamond/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/black-diamond/ -> /city/black-diamond",
+        "308 https://project-pf8c6.vercel.app/city/black-diamond -> /mole-control-black-diamond",
+        "200 https://project-pf8c6.vercel.app/mole-control-black-diamond"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/bonney-lake/",
+      "path": "/city/bonney-lake/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/bonney-lake/ -> /city/bonney-lake",
+        "308 https://project-pf8c6.vercel.app/city/bonney-lake -> /mole-control-bonney-lake",
+        "200 https://project-pf8c6.vercel.app/mole-control-bonney-lake"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/bothell/",
+      "path": "/city/bothell/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/bothell/ -> /city/bothell",
+        "308 https://project-pf8c6.vercel.app/city/bothell -> /mole-control-bothell",
+        "200 https://project-pf8c6.vercel.app/mole-control-bothell"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/buckley/",
+      "path": "/city/buckley/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/buckley/ -> /city/buckley",
+        "308 https://project-pf8c6.vercel.app/city/buckley -> /mole-control-buckley",
+        "200 https://project-pf8c6.vercel.app/mole-control-buckley"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/burien/",
+      "path": "/city/burien/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/burien/ -> /city/burien",
+        "308 https://project-pf8c6.vercel.app/city/burien -> /mole-control-burien",
+        "200 https://project-pf8c6.vercel.app/mole-control-burien"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/centralia/",
+      "path": "/city/centralia/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/centralia/ -> /city/centralia",
+        "404 https://project-pf8c6.vercel.app/city/centralia -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/clyde-hill/",
+      "path": "/city/clyde-hill/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/clyde-hill/ -> /city/clyde-hill",
+        "404 https://project-pf8c6.vercel.app/city/clyde-hill -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/covington/",
+      "path": "/city/covington/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/covington/ -> /city/covington",
+        "308 https://project-pf8c6.vercel.app/city/covington -> /mole-control-covington",
+        "200 https://project-pf8c6.vercel.app/mole-control-covington"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/des-moines/",
+      "path": "/city/des-moines/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/des-moines/ -> /city/des-moines",
+        "308 https://project-pf8c6.vercel.app/city/des-moines -> /mole-control-des-moines",
+        "200 https://project-pf8c6.vercel.app/mole-control-des-moines"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/dupont/",
+      "path": "/city/dupont/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/dupont/ -> /city/dupont",
+        "308 https://project-pf8c6.vercel.app/city/dupont -> /mole-control-dupont",
+        "200 https://project-pf8c6.vercel.app/mole-control-dupont"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/duvall/",
+      "path": "/city/duvall/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/duvall/ -> /city/duvall",
+        "308 https://project-pf8c6.vercel.app/city/duvall -> /mole-control-duvall",
+        "200 https://project-pf8c6.vercel.app/mole-control-duvall"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/eatonville/",
+      "path": "/city/eatonville/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/eatonville/ -> /city/eatonville",
+        "404 https://project-pf8c6.vercel.app/city/eatonville -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/edgewood/",
+      "path": "/city/edgewood/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/edgewood/ -> /city/edgewood",
+        "308 https://project-pf8c6.vercel.app/city/edgewood -> /mole-control-edgewood",
+        "200 https://project-pf8c6.vercel.app/mole-control-edgewood"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/edmonds/",
+      "path": "/city/edmonds/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/edmonds/ -> /city/edmonds",
+        "308 https://project-pf8c6.vercel.app/city/edmonds -> /mole-control-edmonds",
+        "200 https://project-pf8c6.vercel.app/mole-control-edmonds"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/enumclaw/",
+      "path": "/city/enumclaw/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/enumclaw/ -> /city/enumclaw",
+        "308 https://project-pf8c6.vercel.app/city/enumclaw -> /mole-control-enumclaw",
+        "200 https://project-pf8c6.vercel.app/mole-control-enumclaw"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/fairfax/",
+      "path": "/city/fairfax/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/fairfax/ -> /city/fairfax",
+        "404 https://project-pf8c6.vercel.app/city/fairfax -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/fairwood/",
+      "path": "/city/fairwood/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/fairwood/ -> /city/fairwood",
+        "404 https://project-pf8c6.vercel.app/city/fairwood -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/federal-way/",
+      "path": "/city/federal-way/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/federal-way/ -> /city/federal-way",
+        "308 https://project-pf8c6.vercel.app/city/federal-way -> /mole-control-federal-way",
+        "200 https://project-pf8c6.vercel.app/mole-control-federal-way"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/fife/",
+      "path": "/city/fife/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/fife/ -> /city/fife",
+        "404 https://project-pf8c6.vercel.app/city/fife -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/fircrest/",
+      "path": "/city/fircrest/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/fircrest/ -> /city/fircrest",
+        "308 https://project-pf8c6.vercel.app/city/fircrest -> /mole-control-fircrest",
+        "200 https://project-pf8c6.vercel.app/mole-control-fircrest"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/gig-harbor/",
+      "path": "/city/gig-harbor/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/gig-harbor/ -> /city/gig-harbor",
+        "308 https://project-pf8c6.vercel.app/city/gig-harbor -> /mole-control-gig-harbor",
+        "200 https://project-pf8c6.vercel.app/mole-control-gig-harbor"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/graham/",
+      "path": "/city/graham/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/graham/ -> /city/graham",
+        "308 https://project-pf8c6.vercel.app/city/graham -> /mole-control-graham",
+        "200 https://project-pf8c6.vercel.app/mole-control-graham"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/green-river/",
+      "path": "/city/green-river/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/green-river/ -> /city/green-river",
+        "404 https://project-pf8c6.vercel.app/city/green-river -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/issaquah/",
+      "path": "/city/issaquah/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/issaquah/ -> /city/issaquah",
+        "308 https://project-pf8c6.vercel.app/city/issaquah -> /mole-control-issaquah",
+        "200 https://project-pf8c6.vercel.app/mole-control-issaquah"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/kenmore/",
+      "path": "/city/kenmore/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/kenmore/ -> /city/kenmore",
+        "308 https://project-pf8c6.vercel.app/city/kenmore -> /mole-control-kenmore",
+        "200 https://project-pf8c6.vercel.app/mole-control-kenmore"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/kent/",
+      "path": "/city/kent/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/kent/ -> /city/kent",
+        "308 https://project-pf8c6.vercel.app/city/kent -> /mole-control-kent",
+        "200 https://project-pf8c6.vercel.app/mole-control-kent"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/king-county/",
+      "path": "/city/king-county/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/king-county/ -> /city/king-county",
+        "404 https://project-pf8c6.vercel.app/city/king-county -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/kirkland/",
+      "path": "/city/kirkland/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/kirkland/ -> /city/kirkland",
+        "308 https://project-pf8c6.vercel.app/city/kirkland -> /mole-control-kirkland",
+        "200 https://project-pf8c6.vercel.app/mole-control-kirkland"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/lacey/",
+      "path": "/city/lacey/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/lacey/ -> /city/lacey",
+        "308 https://project-pf8c6.vercel.app/city/lacey -> /mole-control-lacey",
+        "200 https://project-pf8c6.vercel.app/mole-control-lacey"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/lake-city/",
+      "path": "/city/lake-city/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/lake-city/ -> /city/lake-city",
+        "404 https://project-pf8c6.vercel.app/city/lake-city -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/lake-stevens/",
+      "path": "/city/lake-stevens/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/lake-stevens/ -> /city/lake-stevens",
+        "308 https://project-pf8c6.vercel.app/city/lake-stevens -> /mole-control-lake-stevens",
+        "200 https://project-pf8c6.vercel.app/mole-control-lake-stevens"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/lake-tapps/",
+      "path": "/city/lake-tapps/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/lake-tapps/ -> /city/lake-tapps",
+        "404 https://project-pf8c6.vercel.app/city/lake-tapps -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/lakewood/",
+      "path": "/city/lakewood/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/lakewood/ -> /city/lakewood",
+        "308 https://project-pf8c6.vercel.app/city/lakewood -> /mole-control-lakewood",
+        "200 https://project-pf8c6.vercel.app/mole-control-lakewood"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/lewis-county/",
+      "path": "/city/lewis-county/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/lewis-county/ -> /city/lewis-county",
+        "404 https://project-pf8c6.vercel.app/city/lewis-county -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/lynnwood/",
+      "path": "/city/lynnwood/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/lynnwood/ -> /city/lynnwood",
+        "308 https://project-pf8c6.vercel.app/city/lynnwood -> /mole-control-lynnwood",
+        "200 https://project-pf8c6.vercel.app/mole-control-lynnwood"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/maple-valley/",
+      "path": "/city/maple-valley/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/maple-valley/ -> /city/maple-valley",
+        "308 https://project-pf8c6.vercel.app/city/maple-valley -> /mole-control-maple-valley",
+        "200 https://project-pf8c6.vercel.app/mole-control-maple-valley"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/medina/",
+      "path": "/city/medina/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/medina/ -> /city/medina",
+        "404 https://project-pf8c6.vercel.app/city/medina -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/mercer-island/",
+      "path": "/city/mercer-island/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/mercer-island/ -> /city/mercer-island",
+        "308 https://project-pf8c6.vercel.app/city/mercer-island -> /mole-control-mercer-island",
+        "200 https://project-pf8c6.vercel.app/mole-control-mercer-island"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/mill-creek/",
+      "path": "/city/mill-creek/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/mill-creek/ -> /city/mill-creek",
+        "308 https://project-pf8c6.vercel.app/city/mill-creek -> /mole-control-mill-creek",
+        "200 https://project-pf8c6.vercel.app/mole-control-mill-creek"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/mukilteo/",
+      "path": "/city/mukilteo/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/mukilteo/ -> /city/mukilteo",
+        "308 https://project-pf8c6.vercel.app/city/mukilteo -> /mole-control-mukilteo",
+        "200 https://project-pf8c6.vercel.app/mole-control-mukilteo"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/newcastle/",
+      "path": "/city/newcastle/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/newcastle/ -> /city/newcastle",
+        "308 https://project-pf8c6.vercel.app/city/newcastle -> /mole-control-newcastle",
+        "200 https://project-pf8c6.vercel.app/mole-control-newcastle"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/north-bend/",
+      "path": "/city/north-bend/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/north-bend/ -> /city/north-bend",
+        "308 https://project-pf8c6.vercel.app/city/north-bend -> /mole-control-north-bend",
+        "200 https://project-pf8c6.vercel.app/mole-control-north-bend"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/olympia/",
+      "path": "/city/olympia/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/olympia/ -> /city/olympia",
+        "308 https://project-pf8c6.vercel.app/city/olympia -> /mole-control-olympia",
+        "200 https://project-pf8c6.vercel.app/mole-control-olympia"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/orting/",
+      "path": "/city/orting/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/orting/ -> /city/orting",
+        "308 https://project-pf8c6.vercel.app/city/orting -> /mole-control-orting",
+        "200 https://project-pf8c6.vercel.app/mole-control-orting"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/pierce-county/",
+      "path": "/city/pierce-county/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/pierce-county/ -> /city/pierce-county",
+        "404 https://project-pf8c6.vercel.app/city/pierce-county -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/prairie-ridge/",
+      "path": "/city/prairie-ridge/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/prairie-ridge/ -> /city/prairie-ridge",
+        "404 https://project-pf8c6.vercel.app/city/prairie-ridge -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/puyallup/",
+      "path": "/city/puyallup/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/puyallup/ -> /city/puyallup",
+        "308 https://project-pf8c6.vercel.app/city/puyallup -> /mole-control-puyallup",
+        "200 https://project-pf8c6.vercel.app/mole-control-puyallup"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/ravensdale/",
+      "path": "/city/ravensdale/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/ravensdale/ -> /city/ravensdale",
+        "404 https://project-pf8c6.vercel.app/city/ravensdale -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/redmond/",
+      "path": "/city/redmond/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/redmond/ -> /city/redmond",
+        "308 https://project-pf8c6.vercel.app/city/redmond -> /mole-control-redmond",
+        "200 https://project-pf8c6.vercel.app/mole-control-redmond"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/renton/",
+      "path": "/city/renton/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/renton/ -> /city/renton",
+        "308 https://project-pf8c6.vercel.app/city/renton -> /mole-control-renton",
+        "200 https://project-pf8c6.vercel.app/mole-control-renton"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/roy/",
+      "path": "/city/roy/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/roy/ -> /city/roy",
+        "404 https://project-pf8c6.vercel.app/city/roy -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/sammamish/",
+      "path": "/city/sammamish/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/sammamish/ -> /city/sammamish",
+        "308 https://project-pf8c6.vercel.app/city/sammamish -> /mole-control-sammamish",
+        "200 https://project-pf8c6.vercel.app/mole-control-sammamish"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/seatac/",
+      "path": "/city/seatac/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/seatac/ -> /city/seatac",
+        "308 https://project-pf8c6.vercel.app/city/seatac -> /mole-control-seatac",
+        "200 https://project-pf8c6.vercel.app/mole-control-seatac"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/seattle/",
+      "path": "/city/seattle/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/seattle/ -> /city/seattle",
+        "308 https://project-pf8c6.vercel.app/city/seattle -> /mole-control-seattle",
+        "200 https://project-pf8c6.vercel.app/mole-control-seattle"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/shoreline/",
+      "path": "/city/shoreline/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/shoreline/ -> /city/shoreline",
+        "308 https://project-pf8c6.vercel.app/city/shoreline -> /mole-control-shoreline",
+        "200 https://project-pf8c6.vercel.app/mole-control-shoreline"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/snohomish-county/",
+      "path": "/city/snohomish-county/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/snohomish-county/ -> /city/snohomish-county",
+        "404 https://project-pf8c6.vercel.app/city/snohomish-county -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/snoqualmie/",
+      "path": "/city/snoqualmie/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/snoqualmie/ -> /city/snoqualmie",
+        "308 https://project-pf8c6.vercel.app/city/snoqualmie -> /mole-control-snoqualmie",
+        "200 https://project-pf8c6.vercel.app/mole-control-snoqualmie"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/south-hill/",
+      "path": "/city/south-hill/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/south-hill/ -> /city/south-hill",
+        "308 https://project-pf8c6.vercel.app/city/south-hill -> /mole-control-south-hill",
+        "200 https://project-pf8c6.vercel.app/mole-control-south-hill"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/spanaway/",
+      "path": "/city/spanaway/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/spanaway/ -> /city/spanaway",
+        "308 https://project-pf8c6.vercel.app/city/spanaway -> /mole-control-spanaway",
+        "200 https://project-pf8c6.vercel.app/mole-control-spanaway"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/steilacoom/",
+      "path": "/city/steilacoom/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/steilacoom/ -> /city/steilacoom",
+        "308 https://project-pf8c6.vercel.app/city/steilacoom -> /mole-control-steilacoom",
+        "200 https://project-pf8c6.vercel.app/mole-control-steilacoom"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/sumner/",
+      "path": "/city/sumner/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/sumner/ -> /city/sumner",
+        "308 https://project-pf8c6.vercel.app/city/sumner -> /mole-control-sumner",
+        "200 https://project-pf8c6.vercel.app/mole-control-sumner"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/tacoma/",
+      "path": "/city/tacoma/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/tacoma/ -> /city/tacoma",
+        "308 https://project-pf8c6.vercel.app/city/tacoma -> /mole-control-tacoma",
+        "200 https://project-pf8c6.vercel.app/mole-control-tacoma"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/thurston-county/",
+      "path": "/city/thurston-county/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/thurston-county/ -> /city/thurston-county",
+        "404 https://project-pf8c6.vercel.app/city/thurston-county -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/tukwila/",
+      "path": "/city/tukwila/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/tukwila/ -> /city/tukwila",
+        "308 https://project-pf8c6.vercel.app/city/tukwila -> /mole-control-tukwila",
+        "200 https://project-pf8c6.vercel.app/mole-control-tukwila"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/tumwater/",
+      "path": "/city/tumwater/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/tumwater/ -> /city/tumwater",
+        "308 https://project-pf8c6.vercel.app/city/tumwater -> /mole-control-tumwater",
+        "200 https://project-pf8c6.vercel.app/mole-control-tumwater"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/university-place/",
+      "path": "/city/university-place/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/university-place/ -> /city/university-place",
+        "308 https://project-pf8c6.vercel.app/city/university-place -> /mole-control-university-place",
+        "200 https://project-pf8c6.vercel.app/mole-control-university-place"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/white-center/",
+      "path": "/city/white-center/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/white-center/ -> /city/white-center",
+        "404 https://project-pf8c6.vercel.app/city/white-center -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/woodinville/",
+      "path": "/city/woodinville/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/woodinville/ -> /city/woodinville",
+        "308 https://project-pf8c6.vercel.app/city/woodinville -> /mole-control-woodinville",
+        "200 https://project-pf8c6.vercel.app/mole-control-woodinville"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/city/yelm/",
+      "path": "/city/yelm/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/city/yelm/ -> /city/yelm",
+        "308 https://project-pf8c6.vercel.app/city/yelm -> /mole-control-yelm",
+        "200 https://project-pf8c6.vercel.app/mole-control-yelm"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/clyde-hill-mole-control/",
+      "path": "/clyde-hill-mole-control/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/clyde-hill-mole-control/ -> /clyde-hill-mole-control",
+        "404 https://project-pf8c6.vercel.app/clyde-hill-mole-control -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/clyde-hill/",
+      "path": "/clyde-hill/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/clyde-hill/ -> /clyde-hill",
+        "404 https://project-pf8c6.vercel.app/clyde-hill -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/contact-us/",
+      "path": "/contact-us/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/contact-us/ -> /contact-us",
+        "308 https://project-pf8c6.vercel.app/contact-us -> /contact",
+        "200 https://project-pf8c6.vercel.app/contact"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/covington/",
+      "path": "/covington/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/covington/ -> /covington",
+        "308 https://project-pf8c6.vercel.app/covington -> /mole-control-covington",
+        "200 https://project-pf8c6.vercel.app/mole-control-covington"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/des-moines/",
+      "path": "/des-moines/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/des-moines/ -> /des-moines",
+        "308 https://project-pf8c6.vercel.app/des-moines -> /mole-control-des-moines",
+        "200 https://project-pf8c6.vercel.app/mole-control-des-moines"
+      ],
+      "keyword_count": 10,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/do-moles-bite/",
+      "path": "/do-moles-bite/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/do-moles-bite/ -> /do-moles-bite",
+        "308 https://project-pf8c6.vercel.app/do-moles-bite -> /blog/do-moles-bite",
+        "404 https://project-pf8c6.vercel.app/blog/do-moles-bite -> "
+      ],
+      "keyword_count": 33,
+      "top3_count": 14
+    },
+    {
+      "old_url": "https://got-moles.com/do-moles-carry-diseases/",
+      "path": "/do-moles-carry-diseases/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/do-moles-carry-diseases/ -> /do-moles-carry-diseases",
+        "308 https://project-pf8c6.vercel.app/do-moles-carry-diseases -> /blog/do-moles-carry-diseases",
+        "404 https://project-pf8c6.vercel.app/blog/do-moles-carry-diseases -> "
+      ],
+      "keyword_count": 25,
+      "top3_count": 4
+    },
+    {
+      "old_url": "https://got-moles.com/do-moles-hibernate/",
+      "path": "/do-moles-hibernate/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/do-moles-hibernate/ -> /do-moles-hibernate",
+        "308 https://project-pf8c6.vercel.app/do-moles-hibernate -> /blog/do-moles-hibernate",
+        "404 https://project-pf8c6.vercel.app/blog/do-moles-hibernate -> "
+      ],
+      "keyword_count": 35,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/do-moles-live-in-groups/",
+      "path": "/do-moles-live-in-groups/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/do-moles-live-in-groups/ -> /do-moles-live-in-groups",
+        "308 https://project-pf8c6.vercel.app/do-moles-live-in-groups -> /blog/do-moles-live-in-groups",
+        "404 https://project-pf8c6.vercel.app/blog/do-moles-live-in-groups -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/dupont/",
+      "path": "/dupont/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/dupont/ -> /dupont",
+        "308 https://project-pf8c6.vercel.app/dupont -> /mole-control-dupont",
+        "200 https://project-pf8c6.vercel.app/mole-control-dupont"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/duvall-mole-control",
+      "path": "/duvall-mole-control",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/duvall-mole-control -> /mole-control-duvall",
+        "200 https://project-pf8c6.vercel.app/mole-control-duvall"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/eatonville/",
+      "path": "/eatonville/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/eatonville/ -> /eatonville",
+        "404 https://project-pf8c6.vercel.app/eatonville -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/edgewood/",
+      "path": "/edgewood/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/edgewood/ -> /edgewood",
+        "308 https://project-pf8c6.vercel.app/edgewood -> /mole-control-edgewood",
+        "200 https://project-pf8c6.vercel.app/mole-control-edgewood"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/edmonds-mole-control/",
+      "path": "/edmonds-mole-control/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/edmonds-mole-control/ -> /edmonds-mole-control",
+        "308 https://project-pf8c6.vercel.app/edmonds-mole-control -> /mole-control-edmonds",
+        "200 https://project-pf8c6.vercel.app/mole-control-edmonds"
+      ],
+      "keyword_count": 2,
+      "top3_count": 1
+    },
+    {
+      "old_url": "https://got-moles.com/edmonds-mole-extermination",
+      "path": "/edmonds-mole-extermination",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "404 https://project-pf8c6.vercel.app/edmonds-mole-extermination -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/edmonds/",
+      "path": "/edmonds/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/edmonds/ -> /edmonds",
+        "308 https://project-pf8c6.vercel.app/edmonds -> /mole-control-edmonds",
+        "200 https://project-pf8c6.vercel.app/mole-control-edmonds"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/enumclaw-mole-extermination",
+      "path": "/enumclaw-mole-extermination",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "404 https://project-pf8c6.vercel.app/enumclaw-mole-extermination -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/enumclaw/",
+      "path": "/enumclaw/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/enumclaw/ -> /enumclaw",
+        "308 https://project-pf8c6.vercel.app/enumclaw -> /mole-control-enumclaw",
+        "200 https://project-pf8c6.vercel.app/mole-control-enumclaw"
+      ],
+      "keyword_count": 7,
+      "top3_count": 4
+    },
+    {
+      "old_url": "https://got-moles.com/exterminators/",
+      "path": "/exterminators/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/exterminators/ -> /exterminators",
+        "404 https://project-pf8c6.vercel.app/exterminators -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/fairfax-mole-control/",
+      "path": "/fairfax-mole-control/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/fairfax-mole-control/ -> /fairfax-mole-control",
+        "404 https://project-pf8c6.vercel.app/fairfax-mole-control -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/fairfax/",
+      "path": "/fairfax/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/fairfax/ -> /fairfax",
+        "404 https://project-pf8c6.vercel.app/fairfax -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/fairwood/",
+      "path": "/fairwood/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/fairwood/ -> /fairwood",
+        "404 https://project-pf8c6.vercel.app/fairwood -> "
+      ],
+      "keyword_count": 1,
+      "top3_count": 1
+    },
+    {
+      "old_url": "https://got-moles.com/faq/",
+      "path": "/faq/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/faq/ -> /faq",
+        "200 https://project-pf8c6.vercel.app/faq"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/federal-way-mole-exterminator",
+      "path": "/federal-way-mole-exterminator",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "404 https://project-pf8c6.vercel.app/federal-way-mole-exterminator -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/federal-way/",
+      "path": "/federal-way/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/federal-way/ -> /federal-way",
+        "308 https://project-pf8c6.vercel.app/federal-way -> /mole-control-federal-way",
+        "200 https://project-pf8c6.vercel.app/mole-control-federal-way"
+      ],
+      "keyword_count": 2,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/fife/",
+      "path": "/fife/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/fife/ -> /fife",
+        "404 https://project-pf8c6.vercel.app/fife -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/fircrest-mole-control",
+      "path": "/fircrest-mole-control",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/fircrest-mole-control -> /mole-control-fircrest",
+        "200 https://project-pf8c6.vercel.app/mole-control-fircrest"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/gig-harbor-mole-control",
+      "path": "/gig-harbor-mole-control",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/gig-harbor-mole-control -> /mole-control-gig-harbor",
+        "200 https://project-pf8c6.vercel.app/mole-control-gig-harbor"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/gig-harbor-mole-control/",
+      "path": "/gig-harbor-mole-control/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/gig-harbor-mole-control/ -> /gig-harbor-mole-control",
+        "308 https://project-pf8c6.vercel.app/gig-harbor-mole-control -> /mole-control-gig-harbor",
+        "200 https://project-pf8c6.vercel.app/mole-control-gig-harbor"
+      ],
+      "keyword_count": 1,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/gig-harbor-mole-exterminator",
+      "path": "/gig-harbor-mole-exterminator",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "404 https://project-pf8c6.vercel.app/gig-harbor-mole-exterminator -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/gig-harbor/",
+      "path": "/gig-harbor/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/gig-harbor/ -> /gig-harbor",
+        "308 https://project-pf8c6.vercel.app/gig-harbor -> /mole-control-gig-harbor",
+        "200 https://project-pf8c6.vercel.app/mole-control-gig-harbor"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/graham-mole-control/",
+      "path": "/graham-mole-control/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/graham-mole-control/ -> /graham-mole-control",
+        "308 https://project-pf8c6.vercel.app/graham-mole-control -> /mole-control-graham",
+        "200 https://project-pf8c6.vercel.app/mole-control-graham"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/graham/",
+      "path": "/graham/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/graham/ -> /graham",
+        "308 https://project-pf8c6.vercel.app/graham -> /mole-control-graham",
+        "200 https://project-pf8c6.vercel.app/mole-control-graham"
+      ],
+      "keyword_count": 2,
+      "top3_count": 2
+    },
+    {
+      "old_url": "https://got-moles.com/green-river-mole-control/",
+      "path": "/green-river-mole-control/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/green-river-mole-control/ -> /green-river-mole-control",
+        "404 https://project-pf8c6.vercel.app/green-river-mole-control -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/green-river/",
+      "path": "/green-river/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/green-river/ -> /green-river",
+        "404 https://project-pf8c6.vercel.app/green-river -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/how-deep-do-moles-dig/",
+      "path": "/how-deep-do-moles-dig/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/how-deep-do-moles-dig/ -> /how-deep-do-moles-dig",
+        "308 https://project-pf8c6.vercel.app/how-deep-do-moles-dig -> /blog/how-deep-do-moles-dig",
+        "404 https://project-pf8c6.vercel.app/blog/how-deep-do-moles-dig -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/how-many-babies-do-moles-have/",
+      "path": "/how-many-babies-do-moles-have/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/how-many-babies-do-moles-have/ -> /how-many-babies-do-moles-have",
+        "308 https://project-pf8c6.vercel.app/how-many-babies-do-moles-have -> /blog/how-many-babies-do-moles-have",
+        "404 https://project-pf8c6.vercel.app/blog/how-many-babies-do-moles-have -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/how-many-eyes-do-moles-have/",
+      "path": "/how-many-eyes-do-moles-have/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/how-many-eyes-do-moles-have/ -> /how-many-eyes-do-moles-have",
+        "308 https://project-pf8c6.vercel.app/how-many-eyes-do-moles-have -> /blog/how-many-eyes-do-moles-have",
+        "404 https://project-pf8c6.vercel.app/blog/how-many-eyes-do-moles-have -> "
+      ],
+      "keyword_count": 90,
+      "top3_count": 46
+    },
+    {
+      "old_url": "https://got-moles.com/how-to-get-rid-of-ground-moles-with-vinegar/",
+      "path": "/how-to-get-rid-of-ground-moles-with-vinegar/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/how-to-get-rid-of-ground-moles-with-vinegar/ -> /how-to-get-rid-of-ground-moles-with-vinegar",
+        "308 https://project-pf8c6.vercel.app/how-to-get-rid-of-ground-moles-with-vinegar -> /blog/how-to-get-rid-of-ground-moles-with-vinegar",
+        "404 https://project-pf8c6.vercel.app/blog/how-to-get-rid-of-ground-moles-with-vinegar -> "
+      ],
+      "keyword_count": 9,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/how-to-get-rid-of-moles-in-your-yard/",
+      "path": "/how-to-get-rid-of-moles-in-your-yard/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/how-to-get-rid-of-moles-in-your-yard/ -> /how-to-get-rid-of-moles-in-your-yard",
+        "308 https://project-pf8c6.vercel.app/how-to-get-rid-of-moles-in-your-yard -> /blog/how-to-get-rid-of-moles-in-your-yard",
+        "404 https://project-pf8c6.vercel.app/blog/how-to-get-rid-of-moles-in-your-yard -> "
+      ],
+      "keyword_count": 3,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/is-a-mole-a-rodent/",
+      "path": "/is-a-mole-a-rodent/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/is-a-mole-a-rodent/ -> /is-a-mole-a-rodent",
+        "308 https://project-pf8c6.vercel.app/is-a-mole-a-rodent -> /blog/is-a-mole-a-rodent",
+        "404 https://project-pf8c6.vercel.app/blog/is-a-mole-a-rodent -> "
+      ],
+      "keyword_count": 1,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/issaquah-mole-control/",
+      "path": "/issaquah-mole-control/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/issaquah-mole-control/ -> /issaquah-mole-control",
+        "308 https://project-pf8c6.vercel.app/issaquah-mole-control -> /mole-control-issaquah",
+        "200 https://project-pf8c6.vercel.app/mole-control-issaquah"
+      ],
+      "keyword_count": 7,
+      "top3_count": 6
+    },
+    {
+      "old_url": "https://got-moles.com/issaquah-mole-exterminator",
+      "path": "/issaquah-mole-exterminator",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "404 https://project-pf8c6.vercel.app/issaquah-mole-exterminator -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/issaquah/",
+      "path": "/issaquah/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/issaquah/ -> /issaquah",
+        "308 https://project-pf8c6.vercel.app/issaquah -> /mole-control-issaquah",
+        "200 https://project-pf8c6.vercel.app/mole-control-issaquah"
+      ],
+      "keyword_count": 8,
+      "top3_count": 5
+    },
+    {
+      "old_url": "https://got-moles.com/kenmore-mole-control",
+      "path": "/kenmore-mole-control",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/kenmore-mole-control -> /mole-control-kenmore",
+        "200 https://project-pf8c6.vercel.app/mole-control-kenmore"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/kenmore-mole-control/",
+      "path": "/kenmore-mole-control/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/kenmore-mole-control/ -> /kenmore-mole-control",
+        "308 https://project-pf8c6.vercel.app/kenmore-mole-control -> /mole-control-kenmore",
+        "200 https://project-pf8c6.vercel.app/mole-control-kenmore"
+      ],
+      "keyword_count": 7,
+      "top3_count": 6
+    },
+    {
+      "old_url": "https://got-moles.com/kenmore-mole-extermination/",
+      "path": "/kenmore-mole-extermination/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/kenmore-mole-extermination/ -> /kenmore-mole-extermination",
+        "404 https://project-pf8c6.vercel.app/kenmore-mole-extermination -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/kenmore/",
+      "path": "/kenmore/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/kenmore/ -> /kenmore",
+        "308 https://project-pf8c6.vercel.app/kenmore -> /mole-control-kenmore",
+        "200 https://project-pf8c6.vercel.app/mole-control-kenmore"
+      ],
+      "keyword_count": 6,
+      "top3_count": 6
+    },
+    {
+      "old_url": "https://got-moles.com/kent-mole-exterminator",
+      "path": "/kent-mole-exterminator",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "404 https://project-pf8c6.vercel.app/kent-mole-exterminator -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/kent/",
+      "path": "/kent/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/kent/ -> /kent",
+        "308 https://project-pf8c6.vercel.app/kent -> /mole-control-kent",
+        "200 https://project-pf8c6.vercel.app/mole-control-kent"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/kirkland-mole-extermination",
+      "path": "/kirkland-mole-extermination",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "404 https://project-pf8c6.vercel.app/kirkland-mole-extermination -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/kirkland/",
+      "path": "/kirkland/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/kirkland/ -> /kirkland",
+        "308 https://project-pf8c6.vercel.app/kirkland -> /mole-control-kirkland",
+        "200 https://project-pf8c6.vercel.app/mole-control-kirkland"
+      ],
+      "keyword_count": 31,
+      "top3_count": 5
+    },
+    {
+      "old_url": "https://got-moles.com/lacey/",
+      "path": "/lacey/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/lacey/ -> /lacey",
+        "308 https://project-pf8c6.vercel.app/lacey -> /mole-control-lacey",
+        "200 https://project-pf8c6.vercel.app/mole-control-lacey"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/lake-city-mole-control",
+      "path": "/lake-city-mole-control",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "404 https://project-pf8c6.vercel.app/lake-city-mole-control -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/lake-city-mole-control-2",
+      "path": "/lake-city-mole-control-2",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "404 https://project-pf8c6.vercel.app/lake-city-mole-control-2 -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/lake-city-mole-extermination/",
+      "path": "/lake-city-mole-extermination/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/lake-city-mole-extermination/ -> /lake-city-mole-extermination",
+        "404 https://project-pf8c6.vercel.app/lake-city-mole-extermination -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/lake-city/",
+      "path": "/lake-city/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/lake-city/ -> /lake-city",
+        "404 https://project-pf8c6.vercel.app/lake-city -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/lake-stevens/",
+      "path": "/lake-stevens/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/lake-stevens/ -> /lake-stevens",
+        "308 https://project-pf8c6.vercel.app/lake-stevens -> /mole-control-lake-stevens",
+        "200 https://project-pf8c6.vercel.app/mole-control-lake-stevens"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/lake-tapps-mole-control/",
+      "path": "/lake-tapps-mole-control/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/lake-tapps-mole-control/ -> /lake-tapps-mole-control",
+        "404 https://project-pf8c6.vercel.app/lake-tapps-mole-control -> "
+      ],
+      "keyword_count": 2,
+      "top3_count": 2
+    },
+    {
+      "old_url": "https://got-moles.com/lake-tapps/",
+      "path": "/lake-tapps/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/lake-tapps/ -> /lake-tapps",
+        "404 https://project-pf8c6.vercel.app/lake-tapps -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/lakewood/",
+      "path": "/lakewood/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/lakewood/ -> /lakewood",
+        "308 https://project-pf8c6.vercel.app/lakewood -> /mole-control-lakewood",
+        "200 https://project-pf8c6.vercel.app/mole-control-lakewood"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/locations/",
+      "path": "/locations/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/locations/ -> /locations",
+        "404 https://project-pf8c6.vercel.app/locations -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/lynnwood-mole-control/",
+      "path": "/lynnwood-mole-control/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/lynnwood-mole-control/ -> /lynnwood-mole-control",
+        "308 https://project-pf8c6.vercel.app/lynnwood-mole-control -> /mole-control-lynnwood",
+        "200 https://project-pf8c6.vercel.app/mole-control-lynnwood"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/lynnwood/",
+      "path": "/lynnwood/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/lynnwood/ -> /lynnwood",
+        "308 https://project-pf8c6.vercel.app/lynnwood -> /mole-control-lynnwood",
+        "200 https://project-pf8c6.vercel.app/mole-control-lynnwood"
+      ],
+      "keyword_count": 1,
+      "top3_count": 1
+    },
+    {
+      "old_url": "https://got-moles.com/maple-valley/",
+      "path": "/maple-valley/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/maple-valley/ -> /maple-valley",
+        "308 https://project-pf8c6.vercel.app/maple-valley -> /mole-control-maple-valley",
+        "200 https://project-pf8c6.vercel.app/mole-control-maple-valley"
+      ],
+      "keyword_count": 4,
+      "top3_count": 3
+    },
+    {
+      "old_url": "https://got-moles.com/medina-mole-control",
+      "path": "/medina-mole-control",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "404 https://project-pf8c6.vercel.app/medina-mole-control -> "
+      ],
+      "keyword_count": 1,
+      "top3_count": 1
+    },
+    {
+      "old_url": "https://got-moles.com/medina-mole-extermination/",
+      "path": "/medina-mole-extermination/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/medina-mole-extermination/ -> /medina-mole-extermination",
+        "404 https://project-pf8c6.vercel.app/medina-mole-extermination -> "
+      ],
+      "keyword_count": 1,
+      "top3_count": 1
+    },
+    {
+      "old_url": "https://got-moles.com/medina/",
+      "path": "/medina/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/medina/ -> /medina",
+        "404 https://project-pf8c6.vercel.app/medina -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mercer-island/",
+      "path": "/mercer-island/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mercer-island/ -> /mercer-island",
+        "308 https://project-pf8c6.vercel.app/mercer-island -> /mole-control-mercer-island",
+        "200 https://project-pf8c6.vercel.app/mole-control-mercer-island"
+      ],
+      "keyword_count": 4,
+      "top3_count": 1
+    },
+    {
+      "old_url": "https://got-moles.com/mill-creek-mole-extermination",
+      "path": "/mill-creek-mole-extermination",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "404 https://project-pf8c6.vercel.app/mill-creek-mole-extermination -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mill-creek-mole-extermination/",
+      "path": "/mill-creek-mole-extermination/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mill-creek-mole-extermination/ -> /mill-creek-mole-extermination",
+        "404 https://project-pf8c6.vercel.app/mill-creek-mole-extermination -> "
+      ],
+      "keyword_count": 2,
+      "top3_count": 2
+    },
+    {
+      "old_url": "https://got-moles.com/mole-catcher-olympia/",
+      "path": "/mole-catcher-olympia/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-catcher-olympia/ -> /mole-catcher-olympia",
+        "308 https://project-pf8c6.vercel.app/mole-catcher-olympia -> /mole-control-olympia",
+        "200 https://project-pf8c6.vercel.app/mole-control-olympia"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-catcher-seattle/",
+      "path": "/mole-catcher-seattle/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-catcher-seattle/ -> /mole-catcher-seattle",
+        "308 https://project-pf8c6.vercel.app/mole-catcher-seattle -> /mole-control-seattle",
+        "200 https://project-pf8c6.vercel.app/mole-control-seattle"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-catcher/",
+      "path": "/mole-catcher/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-catcher/ -> /mole-catcher",
+        "308 https://project-pf8c6.vercel.app/mole-catcher -> /services/one-time-mole-removal",
+        "200 https://project-pf8c6.vercel.app/services/one-time-mole-removal"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-auburn/",
+      "path": "/mole-control-auburn/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-auburn/ -> /mole-control-auburn",
+        "200 https://project-pf8c6.vercel.app/mole-control-auburn"
+      ],
+      "keyword_count": 14,
+      "top3_count": 9
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-bellevue/",
+      "path": "/mole-control-bellevue/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-bellevue/ -> /mole-control-bellevue",
+        "200 https://project-pf8c6.vercel.app/mole-control-bellevue"
+      ],
+      "keyword_count": 54,
+      "top3_count": 31
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-black-diamond/",
+      "path": "/mole-control-black-diamond/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-black-diamond/ -> /mole-control-black-diamond",
+        "200 https://project-pf8c6.vercel.app/mole-control-black-diamond"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-bonney-lake/",
+      "path": "/mole-control-bonney-lake/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-bonney-lake/ -> /mole-control-bonney-lake",
+        "200 https://project-pf8c6.vercel.app/mole-control-bonney-lake"
+      ],
+      "keyword_count": 18,
+      "top3_count": 12
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-bothell/",
+      "path": "/mole-control-bothell/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-bothell/ -> /mole-control-bothell",
+        "200 https://project-pf8c6.vercel.app/mole-control-bothell"
+      ],
+      "keyword_count": 1,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-buckley/",
+      "path": "/mole-control-buckley/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-buckley/ -> /mole-control-buckley",
+        "200 https://project-pf8c6.vercel.app/mole-control-buckley"
+      ],
+      "keyword_count": 30,
+      "top3_count": 30
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-burien/",
+      "path": "/mole-control-burien/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-burien/ -> /mole-control-burien",
+        "200 https://project-pf8c6.vercel.app/mole-control-burien"
+      ],
+      "keyword_count": 61,
+      "top3_count": 54
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-centralia/",
+      "path": "/mole-control-centralia/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-centralia/ -> /mole-control-centralia",
+        "404 https://project-pf8c6.vercel.app/mole-control-centralia -> "
+      ],
+      "keyword_count": 18,
+      "top3_count": 12
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-covington/",
+      "path": "/mole-control-covington/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-covington/ -> /mole-control-covington",
+        "200 https://project-pf8c6.vercel.app/mole-control-covington"
+      ],
+      "keyword_count": 34,
+      "top3_count": 31
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-des-moines/",
+      "path": "/mole-control-des-moines/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-des-moines/ -> /mole-control-des-moines",
+        "200 https://project-pf8c6.vercel.app/mole-control-des-moines"
+      ],
+      "keyword_count": 27,
+      "top3_count": 12
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-dupont/",
+      "path": "/mole-control-dupont/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-dupont/ -> /mole-control-dupont",
+        "200 https://project-pf8c6.vercel.app/mole-control-dupont"
+      ],
+      "keyword_count": 2,
+      "top3_count": 2
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-eatonville/",
+      "path": "/mole-control-eatonville/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-eatonville/ -> /mole-control-eatonville",
+        "404 https://project-pf8c6.vercel.app/mole-control-eatonville -> "
+      ],
+      "keyword_count": 1,
+      "top3_count": 1
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-edgewood-2/",
+      "path": "/mole-control-edgewood-2/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-edgewood-2/ -> /mole-control-edgewood-2",
+        "404 https://project-pf8c6.vercel.app/mole-control-edgewood-2 -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-edgewood/",
+      "path": "/mole-control-edgewood/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-edgewood/ -> /mole-control-edgewood",
+        "200 https://project-pf8c6.vercel.app/mole-control-edgewood"
+      ],
+      "keyword_count": 1,
+      "top3_count": 1
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-enumclaw/",
+      "path": "/mole-control-enumclaw/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-enumclaw/ -> /mole-control-enumclaw",
+        "200 https://project-pf8c6.vercel.app/mole-control-enumclaw"
+      ],
+      "keyword_count": 36,
+      "top3_count": 36
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-fairwood/",
+      "path": "/mole-control-fairwood/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-fairwood/ -> /mole-control-fairwood",
+        "200 https://project-pf8c6.vercel.app/mole-control-fairwood"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-federal-way/",
+      "path": "/mole-control-federal-way/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-federal-way/ -> /mole-control-federal-way",
+        "200 https://project-pf8c6.vercel.app/mole-control-federal-way"
+      ],
+      "keyword_count": 30,
+      "top3_count": 22
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-fife/",
+      "path": "/mole-control-fife/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-fife/ -> /mole-control-fife",
+        "200 https://project-pf8c6.vercel.app/mole-control-fife"
+      ],
+      "keyword_count": 37,
+      "top3_count": 35
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-gig-harbor/",
+      "path": "/mole-control-gig-harbor/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-gig-harbor/ -> /mole-control-gig-harbor",
+        "200 https://project-pf8c6.vercel.app/mole-control-gig-harbor"
+      ],
+      "keyword_count": 4,
+      "top3_count": 2
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-issaquah/",
+      "path": "/mole-control-issaquah/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-issaquah/ -> /mole-control-issaquah",
+        "200 https://project-pf8c6.vercel.app/mole-control-issaquah"
+      ],
+      "keyword_count": 53,
+      "top3_count": 41
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-kent/",
+      "path": "/mole-control-kent/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-kent/ -> /mole-control-kent",
+        "200 https://project-pf8c6.vercel.app/mole-control-kent"
+      ],
+      "keyword_count": 43,
+      "top3_count": 41
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-kirkland/",
+      "path": "/mole-control-kirkland/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-kirkland/ -> /mole-control-kirkland",
+        "200 https://project-pf8c6.vercel.app/mole-control-kirkland"
+      ],
+      "keyword_count": 19,
+      "top3_count": 6
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-lacey-2/",
+      "path": "/mole-control-lacey-2/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-lacey-2/ -> /mole-control-lacey-2",
+        "404 https://project-pf8c6.vercel.app/mole-control-lacey-2 -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-lacey/",
+      "path": "/mole-control-lacey/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-lacey/ -> /mole-control-lacey",
+        "200 https://project-pf8c6.vercel.app/mole-control-lacey"
+      ],
+      "keyword_count": 4,
+      "top3_count": 1
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-lake-stevens/",
+      "path": "/mole-control-lake-stevens/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-lake-stevens/ -> /mole-control-lake-stevens",
+        "200 https://project-pf8c6.vercel.app/mole-control-lake-stevens"
+      ],
+      "keyword_count": 1,
+      "top3_count": 1
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-lakewood/",
+      "path": "/mole-control-lakewood/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-lakewood/ -> /mole-control-lakewood",
+        "200 https://project-pf8c6.vercel.app/mole-control-lakewood"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-maple-valley/",
+      "path": "/mole-control-maple-valley/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-maple-valley/ -> /mole-control-maple-valley",
+        "200 https://project-pf8c6.vercel.app/mole-control-maple-valley"
+      ],
+      "keyword_count": 51,
+      "top3_count": 48
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-mercer-island/",
+      "path": "/mole-control-mercer-island/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-mercer-island/ -> /mole-control-mercer-island",
+        "200 https://project-pf8c6.vercel.app/mole-control-mercer-island"
+      ],
+      "keyword_count": 6,
+      "top3_count": 1
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-newcastle/",
+      "path": "/mole-control-newcastle/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-newcastle/ -> /mole-control-newcastle",
+        "200 https://project-pf8c6.vercel.app/mole-control-newcastle"
+      ],
+      "keyword_count": 1,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-olympia/",
+      "path": "/mole-control-olympia/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-olympia/ -> /mole-control-olympia",
+        "200 https://project-pf8c6.vercel.app/mole-control-olympia"
+      ],
+      "keyword_count": 4,
+      "top3_count": 3
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-orting/",
+      "path": "/mole-control-orting/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-orting/ -> /mole-control-orting",
+        "200 https://project-pf8c6.vercel.app/mole-control-orting"
+      ],
+      "keyword_count": 11,
+      "top3_count": 10
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-puyallup/",
+      "path": "/mole-control-puyallup/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-puyallup/ -> /mole-control-puyallup",
+        "200 https://project-pf8c6.vercel.app/mole-control-puyallup"
+      ],
+      "keyword_count": 61,
+      "top3_count": 38
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-redmond/",
+      "path": "/mole-control-redmond/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-redmond/ -> /mole-control-redmond",
+        "200 https://project-pf8c6.vercel.app/mole-control-redmond"
+      ],
+      "keyword_count": 6,
+      "top3_count": 5
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-renton/",
+      "path": "/mole-control-renton/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-renton/ -> /mole-control-renton",
+        "200 https://project-pf8c6.vercel.app/mole-control-renton"
+      ],
+      "keyword_count": 78,
+      "top3_count": 74
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-sammamish/",
+      "path": "/mole-control-sammamish/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-sammamish/ -> /mole-control-sammamish",
+        "200 https://project-pf8c6.vercel.app/mole-control-sammamish"
+      ],
+      "keyword_count": 48,
+      "top3_count": 44
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-seatac-2/",
+      "path": "/mole-control-seatac-2/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-seatac-2/ -> /mole-control-seatac-2",
+        "404 https://project-pf8c6.vercel.app/mole-control-seatac-2 -> "
+      ],
+      "keyword_count": 31,
+      "top3_count": 31
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-seatac/",
+      "path": "/mole-control-seatac/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-seatac/ -> /mole-control-seatac",
+        "200 https://project-pf8c6.vercel.app/mole-control-seatac"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-seattle/",
+      "path": "/mole-control-seattle/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-seattle/ -> /mole-control-seattle",
+        "200 https://project-pf8c6.vercel.app/mole-control-seattle"
+      ],
+      "keyword_count": 1,
+      "top3_count": 1
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-shoreline/",
+      "path": "/mole-control-shoreline/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-shoreline/ -> /mole-control-shoreline",
+        "200 https://project-pf8c6.vercel.app/mole-control-shoreline"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-snoqualmie/",
+      "path": "/mole-control-snoqualmie/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-snoqualmie/ -> /mole-control-snoqualmie",
+        "200 https://project-pf8c6.vercel.app/mole-control-snoqualmie"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-southhill/",
+      "path": "/mole-control-southhill/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-southhill/ -> /mole-control-southhill",
+        "404 https://project-pf8c6.vercel.app/mole-control-southhill -> "
+      ],
+      "keyword_count": 40,
+      "top3_count": 40
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-spanaway-2/",
+      "path": "/mole-control-spanaway-2/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-spanaway-2/ -> /mole-control-spanaway-2",
+        "404 https://project-pf8c6.vercel.app/mole-control-spanaway-2 -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-spanaway/",
+      "path": "/mole-control-spanaway/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-spanaway/ -> /mole-control-spanaway",
+        "200 https://project-pf8c6.vercel.app/mole-control-spanaway"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-steilacoom/",
+      "path": "/mole-control-steilacoom/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-steilacoom/ -> /mole-control-steilacoom",
+        "200 https://project-pf8c6.vercel.app/mole-control-steilacoom"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-sumner-2/",
+      "path": "/mole-control-sumner-2/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-sumner-2/ -> /mole-control-sumner-2",
+        "404 https://project-pf8c6.vercel.app/mole-control-sumner-2 -> "
+      ],
+      "keyword_count": 5,
+      "top3_count": 5
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-sumner/",
+      "path": "/mole-control-sumner/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-sumner/ -> /mole-control-sumner",
+        "200 https://project-pf8c6.vercel.app/mole-control-sumner"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-tacoma/",
+      "path": "/mole-control-tacoma/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-tacoma/ -> /mole-control-tacoma",
+        "200 https://project-pf8c6.vercel.app/mole-control-tacoma"
+      ],
+      "keyword_count": 25,
+      "top3_count": 15
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-tukwila/",
+      "path": "/mole-control-tukwila/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-tukwila/ -> /mole-control-tukwila",
+        "200 https://project-pf8c6.vercel.app/mole-control-tukwila"
+      ],
+      "keyword_count": 35,
+      "top3_count": 35
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-tumwater/",
+      "path": "/mole-control-tumwater/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-tumwater/ -> /mole-control-tumwater",
+        "200 https://project-pf8c6.vercel.app/mole-control-tumwater"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-university-place/",
+      "path": "/mole-control-university-place/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-university-place/ -> /mole-control-university-place",
+        "200 https://project-pf8c6.vercel.app/mole-control-university-place"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-woodinville/",
+      "path": "/mole-control-woodinville/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-woodinville/ -> /mole-control-woodinville",
+        "200 https://project-pf8c6.vercel.app/mole-control-woodinville"
+      ],
+      "keyword_count": 37,
+      "top3_count": 37
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control-yelm/",
+      "path": "/mole-control-yelm/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control-yelm/ -> /mole-control-yelm",
+        "200 https://project-pf8c6.vercel.app/mole-control-yelm"
+      ],
+      "keyword_count": 4,
+      "top3_count": 1
+    },
+    {
+      "old_url": "https://got-moles.com/mole-control/",
+      "path": "/mole-control/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-control/ -> /mole-control",
+        "308 https://project-pf8c6.vercel.app/mole-control -> /services/total-mole-control-program",
+        "200 https://project-pf8c6.vercel.app/services/total-mole-control-program"
+      ],
+      "keyword_count": 25,
+      "top3_count": 9
+    },
+    {
+      "old_url": "https://got-moles.com/mole-exterminator-olympia",
+      "path": "/mole-exterminator-olympia",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-exterminator-olympia -> /mole-control-olympia",
+        "200 https://project-pf8c6.vercel.app/mole-control-olympia"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-exterminator/",
+      "path": "/mole-exterminator/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-exterminator/ -> /mole-exterminator",
+        "308 https://project-pf8c6.vercel.app/mole-exterminator -> /services/one-time-mole-removal",
+        "200 https://project-pf8c6.vercel.app/services/one-time-mole-removal"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-exterminators-seattle/",
+      "path": "/mole-exterminators-seattle/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-exterminators-seattle/ -> /mole-exterminators-seattle",
+        "308 https://project-pf8c6.vercel.app/mole-exterminators-seattle -> /mole-control-seattle",
+        "200 https://project-pf8c6.vercel.app/mole-control-seattle"
+      ],
+      "keyword_count": 2,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-removal-kirkland",
+      "path": "/mole-removal-kirkland",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-removal-kirkland -> /mole-control-kirkland",
+        "200 https://project-pf8c6.vercel.app/mole-control-kirkland"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-removal/",
+      "path": "/mole-removal/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-removal/ -> /mole-removal",
+        "308 https://project-pf8c6.vercel.app/mole-removal -> /services/one-time-mole-removal",
+        "200 https://project-pf8c6.vercel.app/services/one-time-mole-removal"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-repellant-bellevue/",
+      "path": "/mole-repellant-bellevue/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-repellant-bellevue/ -> /mole-repellant-bellevue",
+        "308 https://project-pf8c6.vercel.app/mole-repellant-bellevue -> /mole-control-bellevue",
+        "200 https://project-pf8c6.vercel.app/mole-control-bellevue"
+      ],
+      "keyword_count": 1,
+      "top3_count": 1
+    },
+    {
+      "old_url": "https://got-moles.com/mole-repellant-enumclaw/",
+      "path": "/mole-repellant-enumclaw/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-repellant-enumclaw/ -> /mole-repellant-enumclaw",
+        "308 https://project-pf8c6.vercel.app/mole-repellant-enumclaw -> /mole-control-enumclaw",
+        "200 https://project-pf8c6.vercel.app/mole-control-enumclaw"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-repellant-federal-way/",
+      "path": "/mole-repellant-federal-way/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-repellant-federal-way/ -> /mole-repellant-federal-way",
+        "308 https://project-pf8c6.vercel.app/mole-repellant-federal-way -> /mole-control-federal-way",
+        "200 https://project-pf8c6.vercel.app/mole-control-federal-way"
+      ],
+      "keyword_count": 15,
+      "top3_count": 15
+    },
+    {
+      "old_url": "https://got-moles.com/mole-repellant-issaquah/",
+      "path": "/mole-repellant-issaquah/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-repellant-issaquah/ -> /mole-repellant-issaquah",
+        "308 https://project-pf8c6.vercel.app/mole-repellant-issaquah -> /mole-control-issaquah",
+        "200 https://project-pf8c6.vercel.app/mole-control-issaquah"
+      ],
+      "keyword_count": 2,
+      "top3_count": 2
+    },
+    {
+      "old_url": "https://got-moles.com/mole-repellant-kent/",
+      "path": "/mole-repellant-kent/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-repellant-kent/ -> /mole-repellant-kent",
+        "308 https://project-pf8c6.vercel.app/mole-repellant-kent -> /mole-control-kent",
+        "200 https://project-pf8c6.vercel.app/mole-control-kent"
+      ],
+      "keyword_count": 1,
+      "top3_count": 1
+    },
+    {
+      "old_url": "https://got-moles.com/mole-repellant-kirkland/",
+      "path": "/mole-repellant-kirkland/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-repellant-kirkland/ -> /mole-repellant-kirkland",
+        "308 https://project-pf8c6.vercel.app/mole-repellant-kirkland -> /mole-control-kirkland",
+        "200 https://project-pf8c6.vercel.app/mole-control-kirkland"
+      ],
+      "keyword_count": 2,
+      "top3_count": 2
+    },
+    {
+      "old_url": "https://got-moles.com/mole-repellant-olympia/",
+      "path": "/mole-repellant-olympia/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-repellant-olympia/ -> /mole-repellant-olympia",
+        "308 https://project-pf8c6.vercel.app/mole-repellant-olympia -> /mole-control-olympia",
+        "200 https://project-pf8c6.vercel.app/mole-control-olympia"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-repellant-orting/",
+      "path": "/mole-repellant-orting/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-repellant-orting/ -> /mole-repellant-orting",
+        "308 https://project-pf8c6.vercel.app/mole-repellant-orting -> /mole-control-orting",
+        "200 https://project-pf8c6.vercel.app/mole-control-orting"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-repellant-puyallup/",
+      "path": "/mole-repellant-puyallup/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-repellant-puyallup/ -> /mole-repellant-puyallup",
+        "308 https://project-pf8c6.vercel.app/mole-repellant-puyallup -> /mole-control-puyallup",
+        "200 https://project-pf8c6.vercel.app/mole-control-puyallup"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-repellant-renton/",
+      "path": "/mole-repellant-renton/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-repellant-renton/ -> /mole-repellant-renton",
+        "308 https://project-pf8c6.vercel.app/mole-repellant-renton -> /mole-control-renton",
+        "200 https://project-pf8c6.vercel.app/mole-control-renton"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-repellant-seattle/",
+      "path": "/mole-repellant-seattle/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-repellant-seattle/ -> /mole-repellant-seattle",
+        "308 https://project-pf8c6.vercel.app/mole-repellant-seattle -> /mole-control-seattle",
+        "200 https://project-pf8c6.vercel.app/mole-control-seattle"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-repellant-tacoma/",
+      "path": "/mole-repellant-tacoma/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-repellant-tacoma/ -> /mole-repellant-tacoma",
+        "308 https://project-pf8c6.vercel.app/mole-repellant-tacoma -> /mole-control-tacoma",
+        "200 https://project-pf8c6.vercel.app/mole-control-tacoma"
+      ],
+      "keyword_count": 7,
+      "top3_count": 7
+    },
+    {
+      "old_url": "https://got-moles.com/mole-repellant/",
+      "path": "/mole-repellant/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-repellant/ -> /mole-repellant",
+        "308 https://project-pf8c6.vercel.app/mole-repellant -> /faq",
+        "200 https://project-pf8c6.vercel.app/faq"
+      ],
+      "keyword_count": 1,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-repellent-snoqualmie/",
+      "path": "/mole-repellent-snoqualmie/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-repellent-snoqualmie/ -> /mole-repellent-snoqualmie",
+        "404 https://project-pf8c6.vercel.app/mole-repellent-snoqualmie -> "
+      ],
+      "keyword_count": 6,
+      "top3_count": 6
+    },
+    {
+      "old_url": "https://got-moles.com/mole-repellent-sumner/",
+      "path": "/mole-repellent-sumner/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-repellent-sumner/ -> /mole-repellent-sumner",
+        "404 https://project-pf8c6.vercel.app/mole-repellent-sumner -> "
+      ],
+      "keyword_count": 2,
+      "top3_count": 2
+    },
+    {
+      "old_url": "https://got-moles.com/mole-repellent/",
+      "path": "/mole-repellent/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-repellent/ -> /mole-repellent",
+        "308 https://project-pf8c6.vercel.app/mole-repellent -> /faq",
+        "200 https://project-pf8c6.vercel.app/faq"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-auburn/",
+      "path": "/mole-trapping-auburn/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-auburn/ -> /mole-trapping-auburn",
+        "308 https://project-pf8c6.vercel.app/mole-trapping-auburn -> /mole-control-auburn",
+        "200 https://project-pf8c6.vercel.app/mole-control-auburn"
+      ],
+      "keyword_count": 1,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-bellevue/",
+      "path": "/mole-trapping-bellevue/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-bellevue/ -> /mole-trapping-bellevue",
+        "308 https://project-pf8c6.vercel.app/mole-trapping-bellevue -> /mole-control-bellevue",
+        "200 https://project-pf8c6.vercel.app/mole-control-bellevue"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-bonney-lake/",
+      "path": "/mole-trapping-bonney-lake/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-bonney-lake/ -> /mole-trapping-bonney-lake",
+        "308 https://project-pf8c6.vercel.app/mole-trapping-bonney-lake -> /mole-control-bonney-lake",
+        "200 https://project-pf8c6.vercel.app/mole-control-bonney-lake"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-burien/",
+      "path": "/mole-trapping-burien/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-burien/ -> /mole-trapping-burien",
+        "308 https://project-pf8c6.vercel.app/mole-trapping-burien -> /mole-control-burien",
+        "200 https://project-pf8c6.vercel.app/mole-control-burien"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-centralia/",
+      "path": "/mole-trapping-centralia/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-centralia/ -> /mole-trapping-centralia",
+        "404 https://project-pf8c6.vercel.app/mole-trapping-centralia -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-enumclaw/",
+      "path": "/mole-trapping-enumclaw/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-enumclaw/ -> /mole-trapping-enumclaw",
+        "308 https://project-pf8c6.vercel.app/mole-trapping-enumclaw -> /mole-control-enumclaw",
+        "200 https://project-pf8c6.vercel.app/mole-control-enumclaw"
+      ],
+      "keyword_count": 4,
+      "top3_count": 1
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-federal-way/",
+      "path": "/mole-trapping-federal-way/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-federal-way/ -> /mole-trapping-federal-way",
+        "308 https://project-pf8c6.vercel.app/mole-trapping-federal-way -> /mole-control-federal-way",
+        "200 https://project-pf8c6.vercel.app/mole-control-federal-way"
+      ],
+      "keyword_count": 4,
+      "top3_count": 4
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-issaquah/",
+      "path": "/mole-trapping-issaquah/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-issaquah/ -> /mole-trapping-issaquah",
+        "308 https://project-pf8c6.vercel.app/mole-trapping-issaquah -> /mole-control-issaquah",
+        "200 https://project-pf8c6.vercel.app/mole-control-issaquah"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-kent/",
+      "path": "/mole-trapping-kent/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-kent/ -> /mole-trapping-kent",
+        "308 https://project-pf8c6.vercel.app/mole-trapping-kent -> /mole-control-kent",
+        "200 https://project-pf8c6.vercel.app/mole-control-kent"
+      ],
+      "keyword_count": 1,
+      "top3_count": 1
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-kirkland/",
+      "path": "/mole-trapping-kirkland/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-kirkland/ -> /mole-trapping-kirkland",
+        "308 https://project-pf8c6.vercel.app/mole-trapping-kirkland -> /mole-control-kirkland",
+        "200 https://project-pf8c6.vercel.app/mole-control-kirkland"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-maple-valley/",
+      "path": "/mole-trapping-maple-valley/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-maple-valley/ -> /mole-trapping-maple-valley",
+        "308 https://project-pf8c6.vercel.app/mole-trapping-maple-valley -> /mole-control-maple-valley",
+        "200 https://project-pf8c6.vercel.app/mole-control-maple-valley"
+      ],
+      "keyword_count": 5,
+      "top3_count": 2
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-mercer-island/",
+      "path": "/mole-trapping-mercer-island/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-mercer-island/ -> /mole-trapping-mercer-island",
+        "308 https://project-pf8c6.vercel.app/mole-trapping-mercer-island -> /mole-control-mercer-island",
+        "200 https://project-pf8c6.vercel.app/mole-control-mercer-island"
+      ],
+      "keyword_count": 2,
+      "top3_count": 2
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-olympia/",
+      "path": "/mole-trapping-olympia/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-olympia/ -> /mole-trapping-olympia",
+        "308 https://project-pf8c6.vercel.app/mole-trapping-olympia -> /mole-control-olympia",
+        "200 https://project-pf8c6.vercel.app/mole-control-olympia"
+      ],
+      "keyword_count": 11,
+      "top3_count": 11
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-orting/",
+      "path": "/mole-trapping-orting/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-orting/ -> /mole-trapping-orting",
+        "308 https://project-pf8c6.vercel.app/mole-trapping-orting -> /mole-control-orting",
+        "200 https://project-pf8c6.vercel.app/mole-control-orting"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-puyallup/",
+      "path": "/mole-trapping-puyallup/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-puyallup/ -> /mole-trapping-puyallup",
+        "308 https://project-pf8c6.vercel.app/mole-trapping-puyallup -> /mole-control-puyallup",
+        "200 https://project-pf8c6.vercel.app/mole-control-puyallup"
+      ],
+      "keyword_count": 10,
+      "top3_count": 2
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-redmond/",
+      "path": "/mole-trapping-redmond/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-redmond/ -> /mole-trapping-redmond",
+        "308 https://project-pf8c6.vercel.app/mole-trapping-redmond -> /mole-control-redmond",
+        "200 https://project-pf8c6.vercel.app/mole-control-redmond"
+      ],
+      "keyword_count": 90,
+      "top3_count": 85
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-renton/",
+      "path": "/mole-trapping-renton/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-renton/ -> /mole-trapping-renton",
+        "308 https://project-pf8c6.vercel.app/mole-trapping-renton -> /mole-control-renton",
+        "200 https://project-pf8c6.vercel.app/mole-control-renton"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-sammamish/",
+      "path": "/mole-trapping-sammamish/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-sammamish/ -> /mole-trapping-sammamish",
+        "308 https://project-pf8c6.vercel.app/mole-trapping-sammamish -> /mole-control-sammamish",
+        "200 https://project-pf8c6.vercel.app/mole-control-sammamish"
+      ],
+      "keyword_count": 8,
+      "top3_count": 5
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-seattle/",
+      "path": "/mole-trapping-seattle/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-seattle/ -> /mole-trapping-seattle",
+        "308 https://project-pf8c6.vercel.app/mole-trapping-seattle -> /mole-control-seattle",
+        "200 https://project-pf8c6.vercel.app/mole-control-seattle"
+      ],
+      "keyword_count": 3,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-snoqualmie/",
+      "path": "/mole-trapping-snoqualmie/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-snoqualmie/ -> /mole-trapping-snoqualmie",
+        "308 https://project-pf8c6.vercel.app/mole-trapping-snoqualmie -> /mole-control-snoqualmie",
+        "200 https://project-pf8c6.vercel.app/mole-control-snoqualmie"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-sumner/",
+      "path": "/mole-trapping-sumner/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-sumner/ -> /mole-trapping-sumner",
+        "308 https://project-pf8c6.vercel.app/mole-trapping-sumner -> /mole-control-sumner",
+        "200 https://project-pf8c6.vercel.app/mole-control-sumner"
+      ],
+      "keyword_count": 3,
+      "top3_count": 3
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping-tacoma/",
+      "path": "/mole-trapping-tacoma/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping-tacoma/ -> /mole-trapping-tacoma",
+        "308 https://project-pf8c6.vercel.app/mole-trapping-tacoma -> /mole-control-tacoma",
+        "200 https://project-pf8c6.vercel.app/mole-control-tacoma"
+      ],
+      "keyword_count": 36,
+      "top3_count": 30
+    },
+    {
+      "old_url": "https://got-moles.com/mole-trapping/",
+      "path": "/mole-trapping/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mole-trapping/ -> /mole-trapping",
+        "308 https://project-pf8c6.vercel.app/mole-trapping -> /services/one-time-mole-removal",
+        "200 https://project-pf8c6.vercel.app/services/one-time-mole-removal"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/moles-vs-gopher-mounds/",
+      "path": "/moles-vs-gopher-mounds/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/moles-vs-gopher-mounds/ -> /moles-vs-gopher-mounds",
+        "308 https://project-pf8c6.vercel.app/moles-vs-gopher-mounds -> /blog/moles-vs-gopher-mounds",
+        "404 https://project-pf8c6.vercel.app/blog/moles-vs-gopher-mounds -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mukilteo-mole-control/",
+      "path": "/mukilteo-mole-control/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mukilteo-mole-control/ -> /mukilteo-mole-control",
+        "308 https://project-pf8c6.vercel.app/mukilteo-mole-control -> /mole-control-mukilteo",
+        "200 https://project-pf8c6.vercel.app/mole-control-mukilteo"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/mukilteo/",
+      "path": "/mukilteo/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/mukilteo/ -> /mukilteo",
+        "308 https://project-pf8c6.vercel.app/mukilteo -> /mole-control-mukilteo",
+        "200 https://project-pf8c6.vercel.app/mole-control-mukilteo"
+      ],
+      "keyword_count": 6,
+      "top3_count": 6
+    },
+    {
+      "old_url": "https://got-moles.com/newcastle/",
+      "path": "/newcastle/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/newcastle/ -> /newcastle",
+        "308 https://project-pf8c6.vercel.app/newcastle -> /mole-control-newcastle",
+        "200 https://project-pf8c6.vercel.app/mole-control-newcastle"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/north-bend-mole-control",
+      "path": "/north-bend-mole-control",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/north-bend-mole-control -> /mole-control-north-bend",
+        "200 https://project-pf8c6.vercel.app/mole-control-north-bend"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/olympia-mole-exterminator/",
+      "path": "/olympia-mole-exterminator/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/olympia-mole-exterminator/ -> /olympia-mole-exterminator",
+        "404 https://project-pf8c6.vercel.app/olympia-mole-exterminator -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/olympia/",
+      "path": "/olympia/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/olympia/ -> /olympia",
+        "308 https://project-pf8c6.vercel.app/olympia -> /mole-control-olympia",
+        "200 https://project-pf8c6.vercel.app/mole-control-olympia"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/orting/",
+      "path": "/orting/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/orting/ -> /orting",
+        "308 https://project-pf8c6.vercel.app/orting -> /mole-control-orting",
+        "200 https://project-pf8c6.vercel.app/mole-control-orting"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/our-process/",
+      "path": "/our-process/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/our-process/ -> /our-process",
+        "308 https://project-pf8c6.vercel.app/our-process -> /how-it-works",
+        "200 https://project-pf8c6.vercel.app/how-it-works"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/our-services/",
+      "path": "/our-services/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/our-services/ -> /our-services",
+        "308 https://project-pf8c6.vercel.app/our-services -> /services/total-mole-control-program",
+        "200 https://project-pf8c6.vercel.app/services/total-mole-control-program"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/pest-control/",
+      "path": "/pest-control/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/pest-control/ -> /pest-control",
+        "404 https://project-pf8c6.vercel.app/pest-control -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/prairie-ridge-mole-control/",
+      "path": "/prairie-ridge-mole-control/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/prairie-ridge-mole-control/ -> /prairie-ridge-mole-control",
+        "404 https://project-pf8c6.vercel.app/prairie-ridge-mole-control -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/prairie-ridge/",
+      "path": "/prairie-ridge/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/prairie-ridge/ -> /prairie-ridge",
+        "404 https://project-pf8c6.vercel.app/prairie-ridge -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/puyallup-mole-extermination",
+      "path": "/puyallup-mole-extermination",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "404 https://project-pf8c6.vercel.app/puyallup-mole-extermination -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/puyallup-mole-extermination/",
+      "path": "/puyallup-mole-extermination/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/puyallup-mole-extermination/ -> /puyallup-mole-extermination",
+        "404 https://project-pf8c6.vercel.app/puyallup-mole-extermination -> "
+      ],
+      "keyword_count": 6,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/puyallup/",
+      "path": "/puyallup/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/puyallup/ -> /puyallup",
+        "308 https://project-pf8c6.vercel.app/puyallup -> /mole-control-puyallup",
+        "200 https://project-pf8c6.vercel.app/mole-control-puyallup"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/ravensdale-mole-control/",
+      "path": "/ravensdale-mole-control/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/ravensdale-mole-control/ -> /ravensdale-mole-control",
+        "404 https://project-pf8c6.vercel.app/ravensdale-mole-control -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/ravensdale/",
+      "path": "/ravensdale/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/ravensdale/ -> /ravensdale",
+        "404 https://project-pf8c6.vercel.app/ravensdale -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/redmond-mole-extermination",
+      "path": "/redmond-mole-extermination",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "404 https://project-pf8c6.vercel.app/redmond-mole-extermination -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/redmond-mole-removal/",
+      "path": "/redmond-mole-removal/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/redmond-mole-removal/ -> /redmond-mole-removal",
+        "308 https://project-pf8c6.vercel.app/redmond-mole-removal -> /mole-control-redmond",
+        "200 https://project-pf8c6.vercel.app/mole-control-redmond"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/redmond/",
+      "path": "/redmond/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/redmond/ -> /redmond",
+        "308 https://project-pf8c6.vercel.app/redmond -> /mole-control-redmond",
+        "200 https://project-pf8c6.vercel.app/mole-control-redmond"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/renton/",
+      "path": "/renton/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/renton/ -> /renton",
+        "308 https://project-pf8c6.vercel.app/renton -> /mole-control-renton",
+        "200 https://project-pf8c6.vercel.app/mole-control-renton"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/roy-mole-control/",
+      "path": "/roy-mole-control/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/roy-mole-control/ -> /roy-mole-control",
+        "404 https://project-pf8c6.vercel.app/roy-mole-control -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/roy/",
+      "path": "/roy/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/roy/ -> /roy",
+        "404 https://project-pf8c6.vercel.app/roy -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/sammamish/",
+      "path": "/sammamish/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/sammamish/ -> /sammamish",
+        "308 https://project-pf8c6.vercel.app/sammamish -> /mole-control-sammamish",
+        "200 https://project-pf8c6.vercel.app/mole-control-sammamish"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/seatac/",
+      "path": "/seatac/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/seatac/ -> /seatac",
+        "308 https://project-pf8c6.vercel.app/seatac -> /mole-control-seatac",
+        "200 https://project-pf8c6.vercel.app/mole-control-seatac"
+      ],
+      "keyword_count": 25,
+      "top3_count": 25
+    },
+    {
+      "old_url": "https://got-moles.com/seattle-mole-removal",
+      "path": "/seattle-mole-removal",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/seattle-mole-removal -> /mole-control-seattle",
+        "200 https://project-pf8c6.vercel.app/mole-control-seattle"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/seattle/",
+      "path": "/seattle/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/seattle/ -> /seattle",
+        "308 https://project-pf8c6.vercel.app/seattle -> /mole-control-seattle",
+        "200 https://project-pf8c6.vercel.app/mole-control-seattle"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/service/exterminators/",
+      "path": "/service/exterminators/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/service/exterminators/ -> /service/exterminators",
+        "308 https://project-pf8c6.vercel.app/service/exterminators -> /services/total-mole-control-program",
+        "200 https://project-pf8c6.vercel.app/services/total-mole-control-program"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/service/mole-catcher/",
+      "path": "/service/mole-catcher/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/service/mole-catcher/ -> /service/mole-catcher",
+        "308 https://project-pf8c6.vercel.app/service/mole-catcher -> /services/total-mole-control-program",
+        "200 https://project-pf8c6.vercel.app/services/total-mole-control-program"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/service/mole-control/",
+      "path": "/service/mole-control/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/service/mole-control/ -> /service/mole-control",
+        "308 https://project-pf8c6.vercel.app/service/mole-control -> /services/total-mole-control-program",
+        "200 https://project-pf8c6.vercel.app/services/total-mole-control-program"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/service/mole-extermination/",
+      "path": "/service/mole-extermination/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/service/mole-extermination/ -> /service/mole-extermination",
+        "308 https://project-pf8c6.vercel.app/service/mole-extermination -> /services/one-time-mole-removal",
+        "200 https://project-pf8c6.vercel.app/services/one-time-mole-removal"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/service/mole-exterminator/",
+      "path": "/service/mole-exterminator/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/service/mole-exterminator/ -> /service/mole-exterminator",
+        "308 https://project-pf8c6.vercel.app/service/mole-exterminator -> /services/one-time-mole-removal",
+        "200 https://project-pf8c6.vercel.app/services/one-time-mole-removal"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/service/mole-removal/",
+      "path": "/service/mole-removal/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/service/mole-removal/ -> /service/mole-removal",
+        "308 https://project-pf8c6.vercel.app/service/mole-removal -> /services/one-time-mole-removal",
+        "200 https://project-pf8c6.vercel.app/services/one-time-mole-removal"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/service/mole-repellent/",
+      "path": "/service/mole-repellent/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/service/mole-repellent/ -> /service/mole-repellent",
+        "308 https://project-pf8c6.vercel.app/service/mole-repellent -> /services/total-mole-control-program",
+        "200 https://project-pf8c6.vercel.app/services/total-mole-control-program"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/service/mole-trapping/",
+      "path": "/service/mole-trapping/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/service/mole-trapping/ -> /service/mole-trapping",
+        "308 https://project-pf8c6.vercel.app/service/mole-trapping -> /services/one-time-mole-removal",
+        "200 https://project-pf8c6.vercel.app/services/one-time-mole-removal"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/service/pest-control/",
+      "path": "/service/pest-control/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/service/pest-control/ -> /service/pest-control",
+        "308 https://project-pf8c6.vercel.app/service/pest-control -> /services/total-mole-control-program",
+        "200 https://project-pf8c6.vercel.app/services/total-mole-control-program"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/shoreline-mole-extermination/",
+      "path": "/shoreline-mole-extermination/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/shoreline-mole-extermination/ -> /shoreline-mole-extermination",
+        "404 https://project-pf8c6.vercel.app/shoreline-mole-extermination -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/shoreline/",
+      "path": "/shoreline/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/shoreline/ -> /shoreline",
+        "308 https://project-pf8c6.vercel.app/shoreline -> /mole-control-shoreline",
+        "200 https://project-pf8c6.vercel.app/mole-control-shoreline"
+      ],
+      "keyword_count": 57,
+      "top3_count": 50
+    },
+    {
+      "old_url": "https://got-moles.com/snoqualmie/",
+      "path": "/snoqualmie/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/snoqualmie/ -> /snoqualmie",
+        "308 https://project-pf8c6.vercel.app/snoqualmie -> /mole-control-snoqualmie",
+        "200 https://project-pf8c6.vercel.app/mole-control-snoqualmie"
+      ],
+      "keyword_count": 4,
+      "top3_count": 4
+    },
+    {
+      "old_url": "https://got-moles.com/south-hill/",
+      "path": "/south-hill/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/south-hill/ -> /south-hill",
+        "308 https://project-pf8c6.vercel.app/south-hill -> /mole-control-south-hill",
+        "200 https://project-pf8c6.vercel.app/mole-control-south-hill"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/spanaway-mole-exterminator",
+      "path": "/spanaway-mole-exterminator",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "404 https://project-pf8c6.vercel.app/spanaway-mole-exterminator -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/spanaway-mole-exterminator/",
+      "path": "/spanaway-mole-exterminator/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/spanaway-mole-exterminator/ -> /spanaway-mole-exterminator",
+        "404 https://project-pf8c6.vercel.app/spanaway-mole-exterminator -> "
+      ],
+      "keyword_count": 7,
+      "top3_count": 7
+    },
+    {
+      "old_url": "https://got-moles.com/spanaway-mole-trapping",
+      "path": "/spanaway-mole-trapping",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "404 https://project-pf8c6.vercel.app/spanaway-mole-trapping -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/spanaway/",
+      "path": "/spanaway/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/spanaway/ -> /spanaway",
+        "308 https://project-pf8c6.vercel.app/spanaway -> /mole-control-spanaway",
+        "200 https://project-pf8c6.vercel.app/mole-control-spanaway"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/steilacoom/",
+      "path": "/steilacoom/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/steilacoom/ -> /steilacoom",
+        "308 https://project-pf8c6.vercel.app/steilacoom -> /mole-control-steilacoom",
+        "200 https://project-pf8c6.vercel.app/mole-control-steilacoom"
+      ],
+      "keyword_count": 1,
+      "top3_count": 1
+    },
+    {
+      "old_url": "https://got-moles.com/sumner/",
+      "path": "/sumner/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/sumner/ -> /sumner",
+        "308 https://project-pf8c6.vercel.app/sumner -> /mole-control-sumner",
+        "200 https://project-pf8c6.vercel.app/mole-control-sumner"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/tacoma-mole-extermination",
+      "path": "/tacoma-mole-extermination",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "404 https://project-pf8c6.vercel.app/tacoma-mole-extermination -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/tacoma-mole-removal",
+      "path": "/tacoma-mole-removal",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/tacoma-mole-removal -> /mole-control-tacoma",
+        "200 https://project-pf8c6.vercel.app/mole-control-tacoma"
+      ],
+      "keyword_count": 3,
+      "top3_count": 3
+    },
+    {
+      "old_url": "https://got-moles.com/tacoma/",
+      "path": "/tacoma/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/tacoma/ -> /tacoma",
+        "308 https://project-pf8c6.vercel.app/tacoma -> /mole-control-tacoma",
+        "200 https://project-pf8c6.vercel.app/mole-control-tacoma"
+      ],
+      "keyword_count": 27,
+      "top3_count": 21
+    },
+    {
+      "old_url": "https://got-moles.com/thank-you/",
+      "path": "/thank-you/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/thank-you/ -> /thank-you",
+        "308 https://project-pf8c6.vercel.app/thank-you -> /contact",
+        "200 https://project-pf8c6.vercel.app/contact"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/tukwila/",
+      "path": "/tukwila/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/tukwila/ -> /tukwila",
+        "308 https://project-pf8c6.vercel.app/tukwila -> /mole-control-tukwila",
+        "200 https://project-pf8c6.vercel.app/mole-control-tukwila"
+      ],
+      "keyword_count": 25,
+      "top3_count": 25
+    },
+    {
+      "old_url": "https://got-moles.com/tumwater/",
+      "path": "/tumwater/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/tumwater/ -> /tumwater",
+        "308 https://project-pf8c6.vercel.app/tumwater -> /mole-control-tumwater",
+        "200 https://project-pf8c6.vercel.app/mole-control-tumwater"
+      ],
+      "keyword_count": 1,
+      "top3_count": 1
+    },
+    {
+      "old_url": "https://got-moles.com/university-place/",
+      "path": "/university-place/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/university-place/ -> /university-place",
+        "308 https://project-pf8c6.vercel.app/university-place -> /mole-control-university-place",
+        "200 https://project-pf8c6.vercel.app/mole-control-university-place"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/voles-vs-moles-whats-the-difference/",
+      "path": "/voles-vs-moles-whats-the-difference/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/voles-vs-moles-whats-the-difference/ -> /voles-vs-moles-whats-the-difference",
+        "308 https://project-pf8c6.vercel.app/voles-vs-moles-whats-the-difference -> /blog/voles-vs-moles-whats-the-difference",
+        "404 https://project-pf8c6.vercel.app/blog/voles-vs-moles-whats-the-difference -> "
+      ],
+      "keyword_count": 80,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/what-attracts-moles-to-your-yard/",
+      "path": "/what-attracts-moles-to-your-yard/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/what-attracts-moles-to-your-yard/ -> /what-attracts-moles-to-your-yard",
+        "308 https://project-pf8c6.vercel.app/what-attracts-moles-to-your-yard -> /blog/what-attracts-moles-to-your-yard",
+        "404 https://project-pf8c6.vercel.app/blog/what-attracts-moles-to-your-yard -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/what-do-mole-holes-look-like/",
+      "path": "/what-do-mole-holes-look-like/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/what-do-mole-holes-look-like/ -> /what-do-mole-holes-look-like",
+        "308 https://project-pf8c6.vercel.app/what-do-mole-holes-look-like -> /blog/what-do-mole-holes-look-like",
+        "404 https://project-pf8c6.vercel.app/blog/what-do-mole-holes-look-like -> "
+      ],
+      "keyword_count": 3,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/what-do-moles-eat/",
+      "path": "/what-do-moles-eat/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/what-do-moles-eat/ -> /what-do-moles-eat",
+        "308 https://project-pf8c6.vercel.app/what-do-moles-eat -> /blog/what-do-moles-eat",
+        "200 https://project-pf8c6.vercel.app/blog/what-do-moles-eat"
+      ],
+      "keyword_count": 102,
+      "top3_count": 7
+    },
+    {
+      "old_url": "https://got-moles.com/what-eats-moles/",
+      "path": "/what-eats-moles/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/what-eats-moles/ -> /what-eats-moles",
+        "308 https://project-pf8c6.vercel.app/what-eats-moles -> /blog/what-eats-moles",
+        "404 https://project-pf8c6.vercel.app/blog/what-eats-moles -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/what-species-of-moles-live-in-washington-state/",
+      "path": "/what-species-of-moles-live-in-washington-state/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/what-species-of-moles-live-in-washington-state/ -> /what-species-of-moles-live-in-washington-state",
+        "308 https://project-pf8c6.vercel.app/what-species-of-moles-live-in-washington-state -> /blog/what-species-of-moles-live-in-washington-state",
+        "404 https://project-pf8c6.vercel.app/blog/what-species-of-moles-live-in-washington-state -> "
+      ],
+      "keyword_count": 9,
+      "top3_count": 2
+    },
+    {
+      "old_url": "https://got-moles.com/what-works-for-mole-extermination/",
+      "path": "/what-works-for-mole-extermination/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/what-works-for-mole-extermination/ -> /what-works-for-mole-extermination",
+        "308 https://project-pf8c6.vercel.app/what-works-for-mole-extermination -> /blog/what-works-for-mole-extermination",
+        "404 https://project-pf8c6.vercel.app/blog/what-works-for-mole-extermination -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/when-are-moles-most-active/",
+      "path": "/when-are-moles-most-active/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/when-are-moles-most-active/ -> /when-are-moles-most-active",
+        "308 https://project-pf8c6.vercel.app/when-are-moles-most-active -> /blog/when-are-moles-most-active",
+        "404 https://project-pf8c6.vercel.app/blog/when-are-moles-most-active -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/white-center-mole-control/",
+      "path": "/white-center-mole-control/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/white-center-mole-control/ -> /white-center-mole-control",
+        "404 https://project-pf8c6.vercel.app/white-center-mole-control -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/white-center/",
+      "path": "/white-center/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/white-center/ -> /white-center",
+        "404 https://project-pf8c6.vercel.app/white-center -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/why-do-moles-make-molehills/",
+      "path": "/why-do-moles-make-molehills/",
+      "final_status": 404,
+      "final_location": "",
+      "real_status": 404,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/why-do-moles-make-molehills/ -> /why-do-moles-make-molehills",
+        "308 https://project-pf8c6.vercel.app/why-do-moles-make-molehills -> /blog/why-do-moles-make-molehills",
+        "404 https://project-pf8c6.vercel.app/blog/why-do-moles-make-molehills -> "
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    },
+    {
+      "old_url": "https://got-moles.com/woodinville/",
+      "path": "/woodinville/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/woodinville/ -> /woodinville",
+        "308 https://project-pf8c6.vercel.app/woodinville -> /mole-control-woodinville",
+        "200 https://project-pf8c6.vercel.app/mole-control-woodinville"
+      ],
+      "keyword_count": 30,
+      "top3_count": 22
+    },
+    {
+      "old_url": "https://got-moles.com/yelm/",
+      "path": "/yelm/",
+      "final_status": 200,
+      "final_location": "",
+      "real_status": 200,
+      "real_location": "",
+      "chain": [
+        "308 https://project-pf8c6.vercel.app/yelm/ -> /yelm",
+        "308 https://project-pf8c6.vercel.app/yelm -> /mole-control-yelm",
+        "200 https://project-pf8c6.vercel.app/mole-control-yelm"
+      ],
+      "keyword_count": 0,
+      "top3_count": 0
+    }
+  ]
+}

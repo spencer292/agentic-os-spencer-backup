@@ -1,0 +1,47 @@
+node_modules/
+dist/
+out/
+
+# Video files (too large for git)
+public/videos/**/*.mp4
+public/videos/**/*.mov
+public/videos/**/*.webm
+*.mp4
+*.mov
+*.webm
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Installer state (per-skill manifests, per-machine)
+**/.installed.json
+
+# Renders
+output/
+
+# Test/preview HTML files
+tools/test_*.html
+tools/preview_*.html
+tools/preview_overlays/
+
+# Screenshots / images
+public/videos/**/*.png
+public/videos/**/*.jpg
+*.png
+*.jpg
+
+# Exceptions -- tracked assets
+!public/logos/*.svg
+!public/logos/*.png
+!public/logos/*.webp

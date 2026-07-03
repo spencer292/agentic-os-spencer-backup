@@ -1,0 +1,26 @@
+# Config schema — 00-slides
+#
+# See lib/config-merge.js for how this drives schema-driven merge on update.
+
+version: 1.0.0
+
+files:
+  skill-pack/config/sys-config.md:
+    format: markdown
+    keys:
+      - section: Defaults
+        key: Style preset
+        default: auto
+        version_added: 1.0.0
+      - section: Defaults
+        key: Max slide count
+        default: 20
+        version_added: 1.0.0
+      - section: Defaults
+        key: PDF export
+        default: on request only
+        version_added: 1.0.0
+      - section: Defaults
+        key: Auto-open browser
+        default: yes
+        version_added: 1.0.0

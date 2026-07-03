@@ -1,0 +1,11 @@
+# Config schema — tool-youtube (in 00-social-content)
+#
+# Declares config/sources.md as a user-data file: the user curates a list
+# of YouTube channels to digest. On update we never overwrite their list
+# but if we ship a new default we append it (.env-style append-missing).
+
+version: 1.0.0
+
+user_data_files:
+  - path: config/sources.md
+    template: config/sources.md

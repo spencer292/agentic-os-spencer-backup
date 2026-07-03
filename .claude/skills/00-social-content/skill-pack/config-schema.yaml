@@ -1,0 +1,90 @@
+# Config schema — 00-social-content
+#
+# Drives the schema-driven merge in lib/config-merge.js. Lists every key
+# the skill knows about. On update, only keys missing from the user's
+# config get added; existing keys (and their values, comments, formatting)
+# are never touched.
+#
+# Update this file whenever a new config key ships, with the version it
+# was added in. The user will be told "added N options in vX.Y.Z" on the
+# next update and pointed at the file to pick values.
+
+version: 1.0.0
+
+files:
+  skill-pack/config/sys-config.md:
+    format: markdown
+    keys:
+      - section: Sources
+        key: linkedin_scraper
+        default: enabled
+        version_added: 1.0.0
+      - section: Sources
+        key: youtube_digest
+        default: enabled
+        version_added: 1.0.0
+      - section: Generation
+        key: image_provider
+        default: gemini
+        version_added: 1.0.0
+      - section: Publishing
+        key: pdf_carousel
+        default: ask
+        version_added: 1.0.0
+
+  skill-pack/config/pipeline.config.yaml:
+    format: yaml
+    keys:
+      - path: defaults.platform
+        default: linkedin
+        version_added: 1.0.0
+      - path: defaults.language
+        default: en
+        version_added: 1.0.0
+      - path: defaults.format
+        default: auto
+        version_added: 1.0.0
+
+      # images.provider removed in v2.0.1+ — orchestrator auto-detects providers
+      # from .env each run (Phase 1 step 2). Soft preference lives in
+      # sys-config.md > Generation > image_provider as a tie-breaker only.
+      - path: images.style
+        default: color
+        version_added: 1.0.0
+      - path: images.carousel_min_slides
+        default: 3
+        version_added: 1.0.0
+      - path: images.carousel_max_slides
+        default: 5
+        version_added: 1.0.0
+
+      - path: drafting.brand_voice
+        default: auto
+        version_added: 1.0.0
+      - path: drafting.humanizer_mode
+        default: auto
+        version_added: 1.0.0
+      - path: drafting.hashtag_strategy
+        default: trailing
+        version_added: 1.0.0
+
+      - path: sources.linkedin_scraper
+        default: enabled
+        version_added: 1.0.0
+      - path: sources.youtube_digest
+        default: enabled
+        version_added: 1.0.0
+      - path: sources.trending_research_freshness_days
+        default: 7
+        version_added: 1.0.0
+
+      - path: publishing.mode
+        default: skip
+        version_added: 1.0.0
+      - path: publishing.pdf_carousel
+        default: ask
+        version_added: 1.0.0
+
+      - path: performance.parallel_image_slides
+        default: 1
+        version_added: 1.0.0
