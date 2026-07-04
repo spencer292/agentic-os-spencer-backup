@@ -388,6 +388,7 @@ End-to-end orchestrators that chain multiple skills.
 | `tool-humanizer` | "humanize this", "de-AI this", "make this sound human", "remove AI patterns" |
 | `tool-image-search` | "find images of", "search images", "stock photo of" |
 | `tool-linkedin-scraper` | "scrape linkedin", "linkedin posts", "fetch linkedin profile" |
+| `tool-n8n` | "n8n", "build a workflow", "automation workflow", "make a workflow that", "connect to n8n", "check my workflows" |
 | `tool-pdf-generator` | "generate PDF", "convert to PDF", "markdown to PDF" |
 | `tool-platform-security` | "security audit", "scan for secrets", "secret scan", "any leaked keys", "audit dependencies", "is this repo safe to push", "security check before commit", "check git history for secrets" |
 | `tool-publisher` | "post this", "publish this", "post now" |
@@ -482,6 +483,7 @@ Load only the `brand_context/` files listed for each skill.
 | `viz-component-library` | — | — | — | — | tokens (full) | `## viz-component-library` |
 | `viz-design-system` | tone only | summary | summary | — | **writes** | `## viz-design-system` |
 | `viz-page-architect` | — | summary | full | — | — | `## viz-page-architect` |
+| `tool-n8n` | — | — | — | — | — | `## tool-n8n` |
 
 **Matrix key:** `writes` = creates file | `full` = entire file | `summary` = 1-2 sentences | `tone only` = tone + vocabulary | `language section` = words-they-use section | `## skill-name` = read only that section from `context/learnings.md`
 
