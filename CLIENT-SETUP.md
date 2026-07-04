@@ -34,7 +34,7 @@ Start the system:
 claude
 ```
 
-On first run it walks you through a short onboarding (`/start-here`) — this builds YOUR profile so the assistant knows who it's working with. Two people on the same repo each get their own profile, own memory, own preferences. Nothing personal is shared.
+On first run, tell the assistant who you are — for example: **"I'm Spencer — load my profile."** Ready-made team profiles ship in `context/profiles/`; the assistant copies yours into place as your personal `context/USER.md` and works for YOU from then on. Two people on the same repo each get their own profile, own memory, own preferences — nothing personal is shared. (Joining the team and don't have a profile yet? Say `/start-here` and it will interview you instead.)
 
 ## Staying up to date
 
