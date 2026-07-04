@@ -1,6 +1,7 @@
 # n8n Public API — local quick reference
 
-Stored locally so no web fetch is needed. Source: docs.n8n.io (Public API v1).
+Stored locally so no web fetch is needed. Verified against the n8n source OpenAPI spec
+(github.com/n8n-io/n8n, packages/cli/src/public-api/v1) on 2026-07-04.
 If something here fails against the live instance, verify at https://docs.n8n.io/api/ and update this file.
 
 ## Auth
@@ -18,13 +19,24 @@ Every request: header `X-N8N-API-KEY: <key>`. Base path: `{N8N_BASE_URL}/api/v1`
 | DELETE | `/workflows/{id}` | Delete (confirm with user first) |
 | POST | `/workflows/{id}/activate` | Turn on |
 | POST | `/workflows/{id}/deactivate` | Turn off |
+| POST | `/workflows/{id}/archive` / `/unarchive` | Archive/restore |
+| GET / PUT | `/workflows/{id}/tags` | Read/set a workflow's tags |
 | GET | `/executions` | Recent runs (`?workflowId=`, `?status=error/success/waiting`) |
 | GET | `/executions/{id}` | One run's detail (`?includeData=true` for node output) |
+| POST | `/executions/{id}/retry` / `/{id}/stop` | Retry or stop a run |
+| GET / POST | `/credentials` | List / create credentials (values are WRITE-ONLY — never readable back) |
 | GET | `/credentials/schema/{credentialTypeName}` | Field schema for a credential type |
-| GET | `/tags`, POST `/tags` | Workflow tags |
+| POST | `/credentials/{id}/test` | Test a credential |
+| GET / POST | `/tags` | Workflow tags |
 
-Notes: the API cannot CREATE credentials with secrets or read credential values — users connect
-accounts in the n8n UI. Nodes reference credentials by `{ "credentialType": { "id": "...", "name": "..." } }`.
+Credential notes: the API CAN create simple credentials (e.g. SMTP, API-key types) by POSTing
+values — but values can never be read back, and OAuth credentials (Gmail, Google Sheets, etc.)
+still require the user to click "connect" in the n8n UI to complete sign-in. Default to UI
+connection; only create credentials via API when the user hands you the values explicitly.
+
+Workflow schema facts (from source spec): required fields are exactly `name, nodes, connections,
+settings`; `active`, `id`, `isArchived` are read-only (workflows CANNOT be created active — n8n
+enforces arrive-inactive); extra top-level fields are rejected (`additionalProperties: false`).
 
 ## Workflow JSON anatomy
 
