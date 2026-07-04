@@ -318,6 +318,7 @@ End-to-end orchestrators that chain multiple skills.
 
 | Skill | Triggers on |
 |-------|-------------|
+| `mkt-authority-content` | "authority content", "SEO blog post", "GEO article", "write a blog article from the knowledge base" |
 | `mkt-content-analytics` | "check analytics", "how did my post do", "post performance", "compare my posts" |
 | `mkt-content-repurposing` | "repurpose this", "turn this into social posts", "atomize this", "LinkedIn post from this", "thread from this" |
 | `mkt-copywriting` | "write copy for", "landing page copy", "sales page", "make this convert", "ad copy", "score this copy" |
@@ -331,6 +332,14 @@ End-to-end orchestrators that chain multiple skills.
 
 | Skill | Triggers on |
 |-------|-------------|
+| `str-ai-seo-local` | "local SEO audit", "GBP", "city pages audit", "local AI visibility", "review signals" |
+| `str-authority-strategy` | "authority strategy", "backlink strategy", "brand mentions", "entity graph" |
+| `str-cro-audit` | "CRO audit", "conversion audit", "LIFT model", "why isn't this page converting" |
+| `str-internal-links` | "internal links", "internal linking audit", "link sweep", "orphan pages" |
+| `str-keyword-strategy` | "keyword strategy", "keyword plan", "page map", "GSC keywords", "target keywords" |
+| `str-onpage-audit` | "on-page audit", "page SEO audit", "audit this page", "SEO/GEO/AEO audit" |
+| `str-question-harvester` | "question harvesting", "People Also Ask", "PAA questions", "FAQ gaps" |
+| `str-security-audit` | "website security audit", "security audit the site", "probe the site", "security scan" |
 | `str-ai-seo` | "AI SEO", "AEO", "GEO", "LLMO", "answer engine optimization", "AI citations", "AI visibility", "optimize for ChatGPT/Perplexity/Claude", "show up in AI answers" |
 | `str-trending-research` | "research", "what's trending", "what are people saying about", "last 30 days", "community sentiment on" |
 
@@ -338,6 +347,9 @@ End-to-end orchestrators that chain multiple skills.
 
 | Skill | Triggers on |
 |-------|-------------|
+| `viz-component-library` | "component library", "build the components", "UI component specs" |
+| `viz-design-system` | "design system", "design tokens for the site", "site design foundation" |
+| `viz-page-architect` | "page structure", "page blueprint", "section order", "what sections does this page need" |
 | `viz-excalidraw-diagram` | "excalidraw diagram", "draw a diagram", "architecture diagram", "visualize this workflow" |
 | `viz-frontend-slides` | "build slides", "render presentation", "HTML deck", "slide design" |
 | `viz-hyperframes` | "make a motion graphics video", "product video", "launch teaser", "animated explainer" |
@@ -360,6 +372,8 @@ End-to-end orchestrators that chain multiple skills.
 
 | Skill | Triggers on |
 |-------|-------------|
+| `ops-blog-pipeline` | "blog pipeline", "publish a blog post", "topic to post", "new blog article end to end" |
+| `ops-cms-content` | "CMS content", "Payload", "city pages", "seed the CMS", "testimonials", "add to the blog" |
 | `ops-new-feature` | "new feature", "start feature", "add feature", "begin work on", "start working on", "finish feature", "done with feature", "merge feature", "feature done", "merge this" |
 | `ops-release` | "release", "cut a release", "bump version", "ship it", "new version", "tag a release" |
 | `ops-cron` | "schedule a job", "cron job", "run this every morning", "automate daily", "recurring task", "scheduled job", "check scheduled jobs", "list jobs", "run job manually", "start crons", "stop crons", "cron status", "cron logs" |
@@ -454,6 +468,20 @@ Load only the `brand_context/` files listed for each skill.
 | `viz-hyperframes` | tone only | — | — | — | tokens (full) | `## viz-hyperframes` |
 | `viz-image-gen` | — | — | — | — | — | `## viz-image-gen` |
 | `viz-nano-banana` | — | — | — | — | — | `## viz-nano-banana` |
+| `mkt-authority-content` | tone only | summary | summary | — | — | `## mkt-authority-content` |
+| `ops-blog-pipeline` | tone only | — | summary | — | — | `## ops-blog-pipeline` |
+| `ops-cms-content` | — | — | — | — | — | `## ops-cms-content` |
+| `str-ai-seo-local` | — | summary | summary | — | — | `## str-ai-seo-local` |
+| `str-authority-strategy` | — | summary | summary | — | — | `## str-authority-strategy` |
+| `str-cro-audit` | — | summary | full | — | — | `## str-cro-audit` |
+| `str-internal-links` | — | — | — | — | — | `## str-internal-links` |
+| `str-keyword-strategy` | — | summary | summary | — | — | `## str-keyword-strategy` |
+| `str-onpage-audit` | — | summary | summary | — | — | `## str-onpage-audit` |
+| `str-question-harvester` | — | — | language section | — | — | `## str-question-harvester` |
+| `str-security-audit` | — | — | — | — | — | `## str-security-audit` |
+| `viz-component-library` | — | — | — | — | tokens (full) | `## viz-component-library` |
+| `viz-design-system` | tone only | summary | summary | — | **writes** | `## viz-design-system` |
+| `viz-page-architect` | — | summary | full | — | — | `## viz-page-architect` |
 
 **Matrix key:** `writes` = creates file | `full` = entire file | `summary` = 1-2 sentences | `tone only` = tone + vocabulary | `language section` = words-they-use section | `## skill-name` = read only that section from `context/learnings.md`
 
@@ -533,6 +561,7 @@ Some skills use external services for enhanced functionality. API keys are store
 | Service | API Key | Used by | What it enables | Without it |
 |---------|---------|---------|-----------------|------------|
 | Firecrawl | `FIRECRAWL_API_KEY` | `tool-firecrawl-scraper`, `mkt-brand-voice` (Auto-Scrape) | JS-heavy site scraping, anti-bot bypass, brand asset extraction | Falls back to WebFetch and then manual paste |
+| SerpAPI | `SERPAPI_API_KEY` | `str-question-harvester` | Google "People Also Ask" question harvesting | Falls back to manual/WebSearch PAA gathering |
 | OpenAI | `OPENAI_API_KEY` | `str-trending-research`, `viz-remotion-video` (image fallback) | Reddit search via Responses API with `web_search`; `gpt-image-1` illustration fallback | Falls back to WebSearch / Gemini images |
 | xAI | `XAI_API_KEY` | `str-trending-research` | X/Twitter search via xAI API with `x_search` | Falls back to WebSearch without engagement metrics |
 | YouTube Data API v3 | `YOUTUBE_API_KEY` | `tool-youtube` | Channel video listing, handle resolution, search | Direct URL transcript mode still works |
