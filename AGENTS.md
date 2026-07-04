@@ -84,20 +84,27 @@ When the user asks to add a client:
 
 ### Branching Policy — CONSUMER INSTALL (Claude: read carefully)
 
-This is a pull-only consumer copy of the Got Moles Agentic OS. The GitHub repository is managed
-by Roy (All The Power). Updates arrive via `git pull` — nothing ever goes the other way.
+This machine runs a consumer copy of the Got Moles Agentic OS with a **split-direction git setup**:
 
-- **NEVER `git push` from this install.** Not to origin, not anywhere, not during wrap-up.
-  If a push ever seems needed, stop and tell the user to contact Roy instead.
-- **NEVER `git commit` from this install** — including in `meta-wrap-up` (skip its commit/push
-  steps here). Personal working state (session memory, learnings, drafts, projects output) lives
-  as files on this machine and is NOT version-controlled. Committing creates divergence from the
-  upstream and breaks future pulls.
-- If `git status` shows modified tracked files, do NOT commit them. Mention it to the user; the
-  usual fix is personal rules into CLAUDE.local.md / SKILL.local.md, or `git stash` before a pull
-  (see CLIENT-SETUP.md).
-- Everything else about saving work is unchanged: memory, learnings and deliverables are written
-  to their normal files — they simply never enter git.
+- **Pull from `origin`** (the shared Got Moles repo) — this is where Roy (All The Power) publishes
+  skills, brand context, and system updates. Origin's push URL is deliberately disabled on this
+  machine: pushing to it is impossible, by design.
+- **Push to `backup`** (this user's own private GitHub repo) — personal session memory, learnings,
+  and deliverables are backed up there. `git push` goes to `backup` automatically
+  (`remote.pushDefault`); nothing this machine does can reach the shared repo.
+
+Rules:
+
+- **Commit freely, as designed.** `meta-wrap-up` commits session work to local `main` and pushes —
+  the push lands on `backup`. Full wrap-up behavior is correct on this install.
+- **Never edit shipped files** (`.claude/skills/` shipped skills, `brand_context/`, `docs/`,
+  `AGENTS.md`, `CLIENT-SETUP.md`). Personal rules go in `CLAUDE.local.md` or a skill's
+  `SKILL.local.md`. Shipped-file edits are the one thing that can make a pull conflict.
+- `git pull` rebases local personal commits on top of Roy's updates (`pull.rebase=true`). If a
+  pull ever conflicts, a shipped file was edited locally — undo that edit (or stash), pull again,
+  and mention it to the user.
+- If the `backup` remote isn't configured yet, wrap-up still commits locally — skip the push and
+  tell the user their backup repo needs setting up (see CLIENT-SETUP.md "Personal backup").
 
 ### Before Major Deliverables
 

@@ -49,6 +49,23 @@ That's it. Your `.env`, your memory, and your local notes are never touched by a
 
 **If `git pull` ever complains about local changes:** you (or Claude) edited a shared file directly. Ask Claude to "stash my local changes and pull the update" — or message Roy. The rule of thumb: put personal rules in `CLAUDE.local.md` (or a skill's `SKILL.local.md`), never edit the shared files, and pulls will always be clean.
 
+## Personal backup (one-time, per team member)
+
+Your session memory, learnings, and work output get committed on your machine (the assistant does this when you wrap up a session) and backed up to a private GitHub repo that belongs to YOU — completely separate from the shared company repo, which stays read-only.
+
+1. On your own GitHub account, create a **private** repo named `agentic-os-{yourname}-backup` (empty — no README).
+2. In your install folder, run (swap in your account and repo name):
+
+```
+git remote set-url --push origin DISABLED
+git remote add backup https://github.com/{YOUR-ACCOUNT}/agentic-os-{yourname}-backup.git
+git config remote.pushDefault backup
+git config pull.rebase true
+git push backup main
+```
+
+What this does: pulls still come FROM the company repo; pushes now go TO your backup — and pushing to the company repo becomes physically impossible from your machine. Your assistant knows this setup and wraps up accordingly.
+
 ## The rules of the road
 
 - **Pull, don't push.** This repository is read-only for the team — updates flow from Roy. Your day-to-day work (content drafts, reports, session memory) lives on your machine.
