@@ -387,6 +387,7 @@ End-to-end orchestrators that chain multiple skills.
 | `tool-firecrawl-scraper` | "scrape website", "crawl site", "monitor content changes", "extract brand/design systems" |
 | `tool-humanizer` | "humanize this", "de-AI this", "make this sound human", "remove AI patterns" |
 | `tool-image-search` | "find images of", "search images", "stock photo of" |
+| `tool-jobber` | "jobber", "check my jobs", "today's visits", "create a quote in jobber", "jobber clients", "jobber report" |
 | `tool-linkedin-scraper` | "scrape linkedin", "linkedin posts", "fetch linkedin profile" |
 | `tool-n8n` | "n8n", "build a workflow", "automation workflow", "make a workflow that", "connect to n8n", "check my workflows" |
 | `tool-pdf-generator` | "generate PDF", "convert to PDF", "markdown to PDF" |
@@ -484,6 +485,7 @@ Load only the `brand_context/` files listed for each skill.
 | `viz-design-system` | tone only | summary | summary | — | **writes** | `## viz-design-system` |
 | `viz-page-architect` | — | summary | full | — | — | `## viz-page-architect` |
 | `tool-n8n` | — | — | — | — | — | `## tool-n8n` |
+| `tool-jobber` | — | — | — | — | — | `## tool-jobber` |
 
 **Matrix key:** `writes` = creates file | `full` = entire file | `summary` = 1-2 sentences | `tone only` = tone + vocabulary | `language section` = words-they-use section | `## skill-name` = read only that section from `context/learnings.md`
 
