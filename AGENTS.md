@@ -85,16 +85,16 @@ When the user asks to add a client:
 ### Branching Policy — CONSUMER INSTALL (Claude: read carefully)
 
 This is a pull-only consumer copy of the Got Moles Agentic OS. The GitHub repository is managed
-by Roy (All The Power). Updates arrive via  — nothing ever goes the other way.
+by Roy (All The Power). Updates arrive via `git pull` — nothing ever goes the other way.
 
-- **NEVER  from this install.** Not to origin, not anywhere, not during wrap-up.
+- **NEVER `git push` from this install.** Not to origin, not anywhere, not during wrap-up.
   If a push ever seems needed, stop and tell the user to contact Roy instead.
-- **NEVER  from this install** — including in  (skip its commit/push
+- **NEVER `git commit` from this install** — including in `meta-wrap-up` (skip its commit/push
   steps here). Personal working state (session memory, learnings, drafts, projects output) lives
   as files on this machine and is NOT version-controlled. Committing creates divergence from the
   upstream and breaks future pulls.
-- If  shows modified tracked files, do NOT commit them. Mention it to the user; the
-  usual fix is personal rules into CLAUDE.local.md / SKILL.local.md, or  before a pull
+- If `git status` shows modified tracked files, do NOT commit them. Mention it to the user; the
+  usual fix is personal rules into CLAUDE.local.md / SKILL.local.md, or `git stash` before a pull
   (see CLIENT-SETUP.md).
 - Everything else about saving work is unchanged: memory, learnings and deliverables are written
   to their normal files — they simply never enter git.
