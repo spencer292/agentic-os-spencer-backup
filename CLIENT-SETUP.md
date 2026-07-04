@@ -14,8 +14,8 @@ Open a terminal (PowerShell on Windows) and run:
 
 ```
 cd C:\
-git clone https://github.com/{OWNER}/agentic-os-got-moles.git
-cd agentic-os-got-moles
+git clone https://github.com/Got-moles/Agentic-os-got-moles.git
+cd Agentic-os-got-moles
 ```
 
 Git will ask you to sign in to GitHub in the browser the first time.
