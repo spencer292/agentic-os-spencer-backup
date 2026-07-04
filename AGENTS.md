@@ -82,26 +82,22 @@ When the user asks to add a client:
 3. Tell them how to switch: `cd {absolute path}/clients/{slug} && claude`
 4. Link to `docs/multi-client-guide.md` for the full structure.
 
-### Branching Policy
+### Branching Policy — CONSUMER INSTALL (Claude: read carefully)
 
-**Trunk-based. `main` is the only long-lived branch — commit everything directly to it.**
+This is a pull-only consumer copy of the Got Moles Agentic OS. The GitHub repository is managed
+by Roy (All The Power). Updates arrive via  — nothing ever goes the other way.
 
-There are no `dev` or `feature/*` branches in the normal workflow. Content, config, and code all
-commit straight to `main`. Push after committing so work is backed up to GitHub.
-
-**What "protected" means here (soft-safe, not a PR gate):**
-- **CI runs on every push to `main`** (`.github/workflows/ci.yml`) — that is the safety net.
-- Every commit is pushed to `origin` so nothing lives only on the local machine.
-- **Never force-push and never delete `main`.**
-- There is no GitHub-enforced PR gate (the repo is private on a free plan, so branch protection
-  rules are unavailable — and a hard PR gate would contradict committing directly to `main`).
-
-**The one judgement call:** for a genuinely risky, multi-commit **code** change (`command-centre/src/**`,
-`.claude/hooks/*.js`) that could leave `main` broken mid-way, use a short-lived local branch and merge
-it back when it's green. Everything else — content, skills, docs, config — goes straight to `main`.
-
-**Note:** the `ops-new-feature` and `ops-release` skills still exist and work if invoked directly, but
-the default workflow no longer routes through them. Don't auto-suggest creating feature branches.
+- **NEVER  from this install.** Not to origin, not anywhere, not during wrap-up.
+  If a push ever seems needed, stop and tell the user to contact Roy instead.
+- **NEVER  from this install** — including in  (skip its commit/push
+  steps here). Personal working state (session memory, learnings, drafts, projects output) lives
+  as files on this machine and is NOT version-controlled. Committing creates divergence from the
+  upstream and breaks future pulls.
+- If  shows modified tracked files, do NOT commit them. Mention it to the user; the
+  usual fix is personal rules into CLAUDE.local.md / SKILL.local.md, or  before a pull
+  (see CLIENT-SETUP.md).
+- Everything else about saving work is unchanged: memory, learnings and deliverables are written
+  to their normal files — they simply never enter git.
 
 ### Before Major Deliverables
 
