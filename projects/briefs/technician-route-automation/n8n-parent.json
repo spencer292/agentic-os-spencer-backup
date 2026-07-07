@@ -1,0 +1,238 @@
+{
+  "name": "Route Sync WEEKLY (parent) — Jobber ⇄ OptimoRoute",
+  "nodes": [
+    {
+      "id": "man",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -600,
+        -160
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "hook",
+      "name": "Webhook (test)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -600,
+        -20
+      ],
+      "webhookId": "route-sync-week-hook",
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "route-sync-week",
+        "responseMode": "lastNode",
+        "responseData": "firstEntryJson",
+        "options": {}
+      }
+    },
+    {
+      "id": "schE",
+      "name": "Schedule evening",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -600,
+        140
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 18 * * *"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "schM",
+      "name": "Schedule morning",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -600,
+        300
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 5 * * *"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "days",
+      "name": "Days",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -360,
+        20
+      ],
+      "parameters": {
+        "jsCode": "const body = ($json && $json.body) || {};\nconst dryRun = body.dryRun !== undefined ? body.dryRun : false;\nconst maxWrites = body.maxWrites !== undefined ? body.maxWrites : 500;\nconst days = body.days || 7;\nconst TZ = 'America/Los_Angeles';\nconst base = DateTime.now().setZone(TZ);\nconst out = [];\nfor (let i = 1; i <= days; i++) out.push({ json: { runDate: base.plus({ days: i }).toFormat('yyyy-LL-dd'), dryRun, maxWrites } });\nreturn out;"
+      }
+    },
+    {
+      "id": "run",
+      "name": "Run child per day",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -120,
+        20
+      ],
+      "parameters": {
+        "source": "database",
+        "workflowId": {
+          "__rl": true,
+          "value": "gr8kf904tjC2ckcA",
+          "mode": "id"
+        },
+        "mode": "each",
+        "options": {}
+      }
+    },
+    {
+      "id": "agg",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        120,
+        20
+      ],
+      "parameters": {
+        "jsCode": "const runs = $input.all().map(i => i.json);\nconst sum = (f) => runs.reduce((s, r) => s + ((r.metrics && r.metrics[f]) || 0), 0);\nconst mode = runs.some(r => r.metrics && r.metrics.mode === 'LIVE') ? 'Live' : 'Dry-run';\nconst scheduled = sum('scheduled'), timeFixed = sum('timeFixed'), errors = sum('errors');\nconst head = ['Weekly route sync — ' + runs.length + ' day(s) — ' + mode, ''];\nfor (const r of runs) head.push('• ' + (r.subject || '(no subject)'));\nconst full = runs.map(r => r.text || JSON.stringify(r)).join('\\n\\n--------\\n\\n');\nconst text = head.join('\\n') + '\\n\\n========\\n\\n' + full;\nconst title = 'Week sync — ' + runs.length + 'd — ' + mode + ' — ' + scheduled + ' scheduled, ' + timeFixed + ' fixed' + (errors ? ', ' + errors + ' ERR' : '');\nreturn [{ json: { title, mode, days: runs.length, scheduled, timeFixed, errors, text } }];"
+      }
+    },
+    {
+      "id": "notion",
+      "name": "Notion log",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        360,
+        20
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.notion.com/v1/pages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Notion-Version",
+              "value": "2022-06-28"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ parent: { database_id: '19265c126f534b8fa59b98856c42531d' }, properties: { Run: { title: [{ text: { content: $json.title } }] }, Mode: { select: { name: $json.mode } }, Days: { number: $json.days }, Scheduled: { number: $json.scheduled }, 'Time-fixed': { number: $json.timeFixed }, Errors: { number: $json.errors }, Summary: { rich_text: [{ text: { content: ($json.text || '').slice(0, 1900) } }] } } }) }}",
+        "options": {}
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "3O7pd2vMtCIPXUqu",
+          "name": "Notion API"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Days",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook (test)": {
+      "main": [
+        [
+          {
+            "node": "Days",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule evening": {
+      "main": [
+        [
+          {
+            "node": "Days",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule morning": {
+      "main": [
+        [
+          {
+            "node": "Days",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Days": {
+      "main": [
+        [
+          {
+            "node": "Run child per day",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run child per day": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Notion log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Los_Angeles"
+  }
+}

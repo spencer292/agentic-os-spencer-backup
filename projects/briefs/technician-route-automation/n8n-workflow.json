@@ -1,0 +1,595 @@
+{
+  "name": "Route Sync — Jobber ⇄ OptimoRoute (v1, dry-run)",
+  "nodes": [
+    {
+      "id": "trig",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -980,
+        -80
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "hook",
+      "name": "Webhook (test)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -980,
+        120
+      ],
+      "webhookId": "route-sync-test-hook",
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "route-sync-test",
+        "responseMode": "lastNode",
+        "responseData": "firstEntryJson",
+        "options": {}
+      }
+    },
+    {
+      "id": "ewt",
+      "name": "When called by parent",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        -980,
+        320
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "cfg",
+      "name": "Config",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -760,
+        0
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c1",
+              "name": "runDate",
+              "value": "={{ $json.runDate ? $json.runDate : (($json.body && $json.body.runDate) ? $json.body.runDate : $now.setZone('America/Los_Angeles').plus({ days: 1 }).toFormat('yyyy-LL-dd')) }}",
+              "type": "string"
+            },
+            {
+              "id": "c3",
+              "name": "dryRun",
+              "value": "={{ $json.dryRun !== undefined ? $json.dryRun : (($json.body && $json.body.dryRun !== undefined) ? $json.body.dryRun : true) }}",
+              "type": "boolean"
+            },
+            {
+              "id": "c4",
+              "name": "maxWrites",
+              "value": "={{ $json.maxWrites !== undefined ? $json.maxWrites : (($json.body && $json.body.maxWrites !== undefined) ? $json.body.maxWrites : 0) }}",
+              "type": "number"
+            },
+            {
+              "id": "c5",
+              "name": "customerWindowHours",
+              "value": 3,
+              "type": "number"
+            },
+            {
+              "id": "c6",
+              "name": "allowPast",
+              "value": "={{ $json.allowPast !== undefined ? $json.allowPast : (($json.body && $json.body.allowPast !== undefined) ? $json.body.allowPast : false) }}",
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "orr",
+      "name": "OR get_routes",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -540,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "=https://api.optimoroute.com/v1/get_routes?date={{ $('Config').item.json.runDate }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "options": {}
+      },
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "cA1fagf9j84ZWxnu",
+          "name": "OptimoRoute API"
+        }
+      }
+    },
+    {
+      "id": "visitsp1",
+      "name": "Visits p1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -320,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.getjobber.com/api/graphql",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-JOBBER-GRAPHQL-VERSION",
+              "value": "2025-04-16"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query: 'query { visits(first: 100, filter: { startAt: { after: \"' + $('Config').first().json.runDate + 'T07:00:00Z\", before: \"' + DateTime.fromISO($('Config').first().json.runDate).plus({ days: 1 }).toFormat('yyyy-LL-dd') + 'T07:00:00Z\" } }) { nodes { id startAt endAt job { jobNumber } } pageInfo { hasNextPage endCursor } } }' }) }}",
+        "options": {}
+      },
+      "credentials": {
+        "oAuth2Api": {
+          "id": "NitrghZSAjZamvqp",
+          "name": "Jobber OAuth2 (native)"
+        }
+      }
+    },
+    {
+      "id": "visitsp2",
+      "name": "Visits p2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -100,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.getjobber.com/api/graphql",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-JOBBER-GRAPHQL-VERSION",
+              "value": "2025-04-16"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query: 'query { visits(first: 100' + ', after: \"' + $('Visits p1').first().json.data.visits.pageInfo.endCursor + '\"' + ', filter: { startAt: { after: \"' + $('Config').first().json.runDate + 'T07:00:00Z\", before: \"' + DateTime.fromISO($('Config').first().json.runDate).plus({ days: 1 }).toFormat('yyyy-LL-dd') + 'T07:00:00Z\" } }) { nodes { id startAt endAt job { jobNumber } } pageInfo { hasNextPage endCursor } } }' }) }}",
+        "options": {}
+      },
+      "credentials": {
+        "oAuth2Api": {
+          "id": "NitrghZSAjZamvqp",
+          "name": "Jobber OAuth2 (native)"
+        }
+      }
+    },
+    {
+      "id": "visitsp3",
+      "name": "Visits p3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        120,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.getjobber.com/api/graphql",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-JOBBER-GRAPHQL-VERSION",
+              "value": "2025-04-16"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query: 'query { visits(first: 100' + ', after: \"' + $('Visits p2').first().json.data.visits.pageInfo.endCursor + '\"' + ', filter: { startAt: { after: \"' + $('Config').first().json.runDate + 'T07:00:00Z\", before: \"' + DateTime.fromISO($('Config').first().json.runDate).plus({ days: 1 }).toFormat('yyyy-LL-dd') + 'T07:00:00Z\" } }) { nodes { id startAt endAt job { jobNumber } } pageInfo { hasNextPage endCursor } } }' }) }}",
+        "options": {}
+      },
+      "credentials": {
+        "oAuth2Api": {
+          "id": "NitrghZSAjZamvqp",
+          "name": "Jobber OAuth2 (native)"
+        }
+      }
+    },
+    {
+      "id": "jusr",
+      "name": "Jobber users",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        340,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.getjobber.com/api/graphql",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-JOBBER-GRAPHQL-VERSION",
+              "value": "2025-04-16"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query: \"query { users(first: 100) { nodes { id name { full } } } }\" }) }}",
+        "options": {}
+      },
+      "credentials": {
+        "oAuth2Api": {
+          "id": "NitrghZSAjZamvqp",
+          "name": "Jobber OAuth2 (native)"
+        }
+      }
+    },
+    {
+      "id": "plan",
+      "name": "Plan",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        560,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const cfg = $('Config').first().json;\nconst runDate = cfg.runDate;\nconst TZ = 'America/Los_Angeles';\nconst allowPast = cfg.allowPast === true || cfg.allowPast === 'true';\nconst today = DateTime.now().setZone(TZ).toFormat('yyyy-LL-dd');\nif (!allowPast && runDate <= today) throw new Error('Freeze guard: runDate ' + runDate + ' is today or in the past.');\n\nconst orResp = $('OR get_routes').first().json;\nif (!orResp || orResp.success === false) throw new Error('OptimoRoute error: ' + JSON.stringify(orResp));\n\n// visits: flatten 3 cursor-chained pages, dedup by id\nconst byId = {};\nfor (const nm of ['Visits p1', 'Visits p2', 'Visits p3']) {\n  const j = $(nm).first().json;\n  if (j.errors) throw new Error('Jobber ' + nm + ' error: ' + JSON.stringify(j.errors));\n  const v = j.data && j.data.visits;\n  if (v && v.nodes) for (const n of v.nodes) byId[n.id] = n;\n}\nconst visits = Object.values(byId);\n\nconst usersJson = $('Jobber users').first().json;\nif (usersJson.errors) throw new Error('Jobber users error: ' + JSON.stringify(usersJson.errors));\nconst nameToUser = {};\nfor (const u of usersJson.data.users.nodes) if (u.name && u.name.full) nameToUser[u.name.full.trim().toLowerCase()] = u.id;\n\nconst planByOrder = {}; const stopsByDriver = {};\nfor (const route of orResp.routes || []) {\n  const driver = route.driverName || '(unassigned)';\n  for (const s of route.stops || []) { stopsByDriver[driver] = (stopsByDriver[driver] || 0) + 1; planByOrder[String(s.orderNo)] = { driver, scheduledAtDt: s.scheduledAtDt }; }\n}\nconst toPac = (iso) => DateTime.fromISO(iso, { zone: 'utc' }).setZone(TZ).toFormat('HH:mm');\nconst writeBack = [], timeFix = [], timedNotPlanned = [], unmatchedDriver = []; const seen = new Set();\nfor (const vis of visits) {\n  const jn = vis.job && vis.job.jobNumber; if (jn == null) continue; seen.add(String(jn));\n  const startP = toPac(vis.startAt); const anytime = startP === '00:00';\n  const plan = planByOrder[String(jn)];\n  if (plan) {\n    const jobberUserId = nameToUser[plan.driver.trim().toLowerCase()] || null;\n    if (!jobberUserId) unmatchedDriver.push({ job: String(jn), driver: plan.driver });\n    const planTime = plan.scheduledAtDt ? plan.scheduledAtDt.slice(11, 16) : null;\n    writeBack.push({ visitId: vis.id, job: String(jn), driver: plan.driver, jobberUserId, scheduledAtDt: plan.scheduledAtDt, planTime,\n      curTime: anytime ? 'anytime' : startP, timeChange: (anytime ? 'anytime' : startP) !== planTime });\n  } else if (anytime) { timeFix.push({ visitId: vis.id, job: String(jn) }); }\n  else { timedNotPlanned.push({ visitId: vis.id, job: String(jn), time: startP }); }\n}\nconst orphanOrders = Object.keys(planByOrder).filter(o => !seen.has(o));\nreturn [{ json: { runDate, counts: { orStops: Object.keys(planByOrder).length, jobberVisits: visits.length,\n  writeBack: writeBack.length, timeFix: timeFix.length, timedNotPlanned: timedNotPlanned.length,\n  orphanOrders: orphanOrders.length, unmatchedDriver: unmatchedDriver.length },\n  stopsByDriver, writeBack, timeFix, timedNotPlanned, unmatchedDriver, orphanOrders } }];"
+      }
+    },
+    {
+      "id": "iflive",
+      "name": "Live?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        780,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "x1",
+              "leftValue": "={{ $('Config').first().json.dryRun }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "apply",
+      "name": "Apply",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        -140
+      ],
+      "parameters": {
+        "jsCode": "const plan = $('Plan').first().json;\nlet setTime = 0, assignable = 0;\nfor (const w of plan.writeBack) { if (w.timeChange) setTime++; if (w.jobberUserId) assignable++; }\nreturn [{ json: { apply: { mode: 'DRY-RUN', setTime, assignable, timeFixed: plan.timeFix.length, errors: [] }, counts: plan.counts, runDate: plan.runDate } }];"
+      }
+    },
+    {
+      "id": "summ",
+      "name": "Summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1220,
+        -140
+      ],
+      "parameters": {
+        "jsCode": "const a = $('Apply').first().json; const c = a.counts;\nconst L = [];\nL.push('Route sync — ' + a.runDate + ' — ' + a.apply.mode);\nL.push('');\nL.push('OptimoRoute stops: ' + c.orStops + '  |  Jobber visits: ' + c.jobberVisits);\nL.push('Write-back (in plan): ' + c.writeBack + '  -> set time on ' + a.apply.setTime + ', assign ' + a.apply.assignable);\nL.push('Time-fix (anytime -> 07:00-19:00): ' + c.timeFix);\nL.push('Timed-but-not-routed (overflow?): ' + c.timedNotPlanned);\nL.push('Unmatched driver: ' + c.unmatchedDriver + '  |  Orphan OR orders: ' + c.orphanOrders);\nreturn [{ json: { subject: 'Route sync ' + a.runDate + ' — ' + a.apply.mode, text: L.join('\\n'), counts: c,\n  metrics: { mode: 'DRY-RUN', scheduled: a.apply.setTime, timeFixed: a.apply.timeFixed, errors: 0 } } }];"
+      }
+    },
+    {
+      "id": "emit",
+      "name": "Emit writes",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        160
+      ],
+      "parameters": {
+        "jsCode": "const cfg = $('Config').first().json;\nconst maxWrites = Number(cfg.maxWrites || 0);\nconst windowH = Number(cfg.customerWindowHours || 3);\nconst TZ = 'America/Los_Angeles';\nconst plan = $('Plan').first().json;\nfunction sched(visitId, dt, hrs) {\n  const s = DateTime.fromFormat(dt, 'yyyy-LL-dd HH:mm:ss', { zone: TZ });\n  const e = s.plus({ hours: hrs });\n  return 'mutation { visitEditSchedule(id: \"' + visitId + '\", input: { startAt: { date: \"' + s.toFormat('yyyy-LL-dd') + '\", time: \"' + s.toFormat('HH:mm:ss') + '\", timezone: \"' + TZ + '\" }, endAt: { date: \"' + e.toFormat('yyyy-LL-dd') + '\", time: \"' + e.toFormat('HH:mm:ss') + '\", timezone: \"' + TZ + '\" } }) { userErrors { message } } }';\n}\nconst items = [];\nfor (const w of plan.writeBack) if (w.timeChange && w.scheduledAtDt) items.push({ kind: 'schedule', visitId: w.visitId, job: w.job, mutation: sched(w.visitId, w.scheduledAtDt, windowH) });\nfor (const t of plan.timeFix) items.push({ kind: 'timefix', visitId: t.visitId, job: t.job, mutation: sched(t.visitId, plan.runDate + ' 07:00:00', 12) });\nconst capped = items.slice(0, maxWrites);\nif (!capped.length) return [{ json: { noop: true, wouldWrite: items.length } }];\nreturn capped.map(i => ({ json: i }));"
+      }
+    },
+    {
+      "id": "mutate",
+      "name": "Jobber mutate",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1220,
+        160
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.getjobber.com/api/graphql",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-JOBBER-GRAPHQL-VERSION",
+              "value": "2025-04-16"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query: $json.noop ? 'query { __typename }' : $json.mutation }) }}",
+        "options": {}
+      },
+      "credentials": {
+        "oAuth2Api": {
+          "id": "NitrghZSAjZamvqp",
+          "name": "Jobber OAuth2 (native)"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "summlive",
+      "name": "Summary live",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1440,
+        160
+      ],
+      "parameters": {
+        "jsCode": "const emitted = $('Emit writes').all().map(i => i.json);\nconst results = $('Jobber mutate').all().map(i => i.json);\nlet ok = 0, failed = 0, noop = 0, okSched = 0, okFix = 0; const errors = []; const written = [];\nfor (let i = 0; i < emitted.length; i++) {\n  if (emitted[i].noop) { noop++; continue; }\n  const j = results[i] || {}; const ue = [];\n  if (j.errors) ue.push(...j.errors.map(e => e.message));\n  const d = j.data || {}; for (const k of Object.keys(d)) if (d[k] && d[k].userErrors) ue.push(...d[k].userErrors.map(e => e.message));\n  if (ue.length) { failed++; errors.push(emitted[i].job + ': ' + ue.join('; ')); written.push(emitted[i].kind + ' job ' + emitted[i].job + ' FAILED'); }\n  else { ok++; if (emitted[i].kind === 'timefix') okFix++; else okSched++; written.push(emitted[i].kind + ' job ' + emitted[i].job + ' (visit ' + emitted[i].visitId + ') OK'); }\n}\nconst plan = $('Plan').first().json; const c = plan.counts;\nconst L = ['Route sync — ' + plan.runDate + ' — LIVE', ''];\nL.push('Writes: ' + (emitted.length - noop) + ' attempted  |  ok ' + ok + '  |  failed ' + failed);\nif (written.length) L.push('Written: ' + written.join(' ; '));\nif (errors.length) L.push('errors: ' + errors.slice(0, 20).join(' | '));\nL.push('', 'Plan: OR stops ' + c.orStops + ', visits ' + c.jobberVisits + ', write-back ' + c.writeBack + ', time-fix ' + c.timeFix + ', overflow ' + c.timedNotPlanned);\nreturn [{ json: { subject: 'Route sync ' + plan.runDate + ' — LIVE (' + ok + ' ok, ' + failed + ' failed)', text: L.join('\\n'),\n  metrics: { mode: 'LIVE', scheduled: okSched, timeFixed: okFix, errors: failed } } }];"
+      }
+    },
+    {
+      "id": "mail",
+      "name": "Email summary (wire SMTP)",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        1680,
+        0
+      ],
+      "disabled": true,
+      "parameters": {
+        "fromEmail": "routes@got-moles.com",
+        "toEmail": "spencer@got-moles.com",
+        "subject": "={{ $json.subject }}",
+        "emailFormat": "text",
+        "text": "={{ $json.text }}",
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook (test)": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When called by parent": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config": {
+      "main": [
+        [
+          {
+            "node": "OR get_routes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OR get_routes": {
+      "main": [
+        [
+          {
+            "node": "Visits p1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Visits p1": {
+      "main": [
+        [
+          {
+            "node": "Visits p2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Visits p2": {
+      "main": [
+        [
+          {
+            "node": "Visits p3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Visits p3": {
+      "main": [
+        [
+          {
+            "node": "Jobber users",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Jobber users": {
+      "main": [
+        [
+          {
+            "node": "Plan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Plan": {
+      "main": [
+        [
+          {
+            "node": "Live?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Live?": {
+      "main": [
+        [
+          {
+            "node": "Apply",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Emit writes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Apply": {
+      "main": [
+        [
+          {
+            "node": "Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summary": {
+      "main": [
+        [
+          {
+            "node": "Email summary (wire SMTP)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Emit writes": {
+      "main": [
+        [
+          {
+            "node": "Jobber mutate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Jobber mutate": {
+      "main": [
+        [
+          {
+            "node": "Summary live",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summary live": {
+      "main": [
+        [
+          {
+            "node": "Email summary (wire SMTP)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

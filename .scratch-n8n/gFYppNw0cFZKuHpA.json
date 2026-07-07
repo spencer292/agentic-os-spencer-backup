@@ -1,0 +1,103 @@
+{
+  "updatedAt": "2026-03-06T15:47:33.696Z",
+  "createdAt": "2026-03-06T15:46:59.672Z",
+  "id": "gFYppNw0cFZKuHpA",
+  "name": "My workflow",
+  "description": null,
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "79c0c1f5-dc0e-4a10-a14a-8684778c5b0d",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "7cb0af5c-ae80-4e50-a154-9c394ff139db",
+      "name": "Webhook",
+      "webhookId": "79c0c1f5-dc0e-4a10-a14a-8684778c5b0d"
+    }
+  ],
+  "connections": {},
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "staticData": null,
+  "meta": null,
+  "nodeGroups": [],
+  "pinData": {},
+  "versionId": "bda6bf46-21b6-4295-9772-fecb5fb0a712",
+  "activeVersionId": "bda6bf46-21b6-4295-9772-fecb5fb0a712",
+  "versionCounter": 8,
+  "triggerCount": 1,
+  "sourceWorkflowId": null,
+  "shared": [
+    {
+      "updatedAt": "2026-03-06T15:46:59.675Z",
+      "createdAt": "2026-03-06T15:46:59.675Z",
+      "role": "workflow:owner",
+      "workflowId": "gFYppNw0cFZKuHpA",
+      "projectId": "RK2DpgVpkPwdB2Sb",
+      "project": {
+        "updatedAt": "2026-03-06T15:28:15.078Z",
+        "createdAt": "2026-03-06T15:28:09.526Z",
+        "id": "RK2DpgVpkPwdB2Sb",
+        "name": "Spencer Hill <spencer@got-moles.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "1a39722e-05fa-4653-9ddb-26abb0723f76"
+      }
+    }
+  ],
+  "tags": [],
+  "activeVersion": {
+    "updatedAt": "2026-03-06T17:51:59.000Z",
+    "createdAt": "2026-03-06T15:47:33.697Z",
+    "versionId": "bda6bf46-21b6-4295-9772-fecb5fb0a712",
+    "workflowId": "gFYppNw0cFZKuHpA",
+    "nodes": [
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "79c0c1f5-dc0e-4a10-a14a-8684778c5b0d",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2.1,
+        "position": [
+          0,
+          0
+        ],
+        "id": "7cb0af5c-ae80-4e50-a154-9c394ff139db",
+        "name": "Webhook",
+        "webhookId": "79c0c1f5-dc0e-4a10-a14a-8684778c5b0d"
+      }
+    ],
+    "connections": {},
+    "nodeGroups": [],
+    "authors": "Spencer Hill",
+    "name": "Version bda6bf46",
+    "description": "",
+    "autosaved": true,
+    "workflowPublishHistory": [
+      {
+        "createdAt": "2026-03-06T17:51:59.688Z",
+        "id": 1,
+        "workflowId": "gFYppNw0cFZKuHpA",
+        "versionId": "bda6bf46-21b6-4295-9772-fecb5fb0a712",
+        "event": "activated",
+        "userId": "1a39722e-05fa-4653-9ddb-26abb0723f76"
+      }
+    ]
+  }
+}

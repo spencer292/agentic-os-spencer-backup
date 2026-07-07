@@ -1,0 +1,118 @@
+{
+  "updatedAt": "2026-06-28T06:41:45.946Z",
+  "createdAt": "2026-06-28T06:12:33.756Z",
+  "id": "fGNPaCBprD82GG02",
+  "name": "Jobber → OptimoRoute push",
+  "description": null,
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "963dffd7-0b6f-4ea1-bc70-011e93d366ea",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "10c640f3-f477-444a-b290-666d164a3832",
+              "name": "runDate",
+              "value": "={{ '2026-06-30' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "2a45622d-7e16-44e1-86a5-935bd70149b6",
+      "name": "Compute Date"
+    },
+    {
+      "parameters": {
+        "jsCode": "const runDate = $('Compute Date').first().json.runDate;\nconst after  = `${runDate}T07:00:00Z`;\nconst before = DateTime.fromISO(runDate).plus({ days: 1 }).toFormat('yyyy-MM-dd') + 'T07:00:00Z';\n\nconst allNodes = [];\nlet cursor = null;\nlet hasNext = true;\nlet page = 0;\n\nwhile (hasNext && page < 10) {\n  page++;\n\n  const afterArg = cursor ? `\"${cursor}\"` : 'null';\n  const query = `query { visits(first: 30, after: ${afterArg}, filter: { startAt: { after: \"${after}\", before: \"${before}\" } }) { nodes { id startAt job { jobNumber } assignedUsers { nodes { name { full } } } property { address { street city province postalCode } } } pageInfo { hasNextPage endCursor } } }`;\n\n  const response = await this.helpers.httpRequestWithAuthentication.call(\n    this,\n    'oAuth2Api',\n    {\n      method: 'POST',\n      url: 'https://api.getjobber.com/api/graphql',\n      headers: {\n        'X-JOBBER-GRAPHQL-VERSION': '2025-04-16',\n        'Content-Type': 'application/json',\n      },\n      body: JSON.stringify({ query }),\n      json: false,\n    },\n  );\n\n  const parsed = typeof response === 'string' ? JSON.parse(response) : response;\n\n  if (parsed.errors) {\n    throw new Error('Jobber error: ' + JSON.stringify(parsed.errors));\n  }\n\n  const visits = parsed.data.visits;\n  allNodes.push(...visits.nodes);\n\n  hasNext = visits.pageInfo.hasNextPage;\n  cursor  = visits.pageInfo.endCursor;\n\n  // small breather so we never hammer the throttle bucket\n  if (hasNext) {\n    await new Promise(r => setTimeout(r, 300));\n  }\n}\n\nreturn allNodes.map(n => ({ json: n }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "42c7439e-8877-4ea3-a45e-02ad1d259b6e",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Compute Date",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compute Date": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "staticData": null,
+  "meta": null,
+  "nodeGroups": [],
+  "pinData": {},
+  "versionId": "6dc5b797-51c4-4a92-b906-0fa9565325e2",
+  "activeVersionId": null,
+  "versionCounter": 64,
+  "triggerCount": 0,
+  "sourceWorkflowId": null,
+  "shared": [
+    {
+      "updatedAt": "2026-06-28T06:12:33.759Z",
+      "createdAt": "2026-06-28T06:12:33.759Z",
+      "role": "workflow:owner",
+      "workflowId": "fGNPaCBprD82GG02",
+      "projectId": "RK2DpgVpkPwdB2Sb",
+      "project": {
+        "updatedAt": "2026-03-06T15:28:15.078Z",
+        "createdAt": "2026-03-06T15:28:09.526Z",
+        "id": "RK2DpgVpkPwdB2Sb",
+        "name": "Spencer Hill <spencer@got-moles.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "1a39722e-05fa-4653-9ddb-26abb0723f76"
+      }
+    }
+  ],
+  "tags": [],
+  "activeVersion": null
+}
