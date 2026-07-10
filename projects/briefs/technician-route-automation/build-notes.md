@@ -132,6 +132,26 @@ time-fix visitEditSchedule] → Email summary.
   re-auth `jobber-api.mjs auth` if CLI tools wanted; delete leftover `.scratch-n8n/`; added `allowPast`
   override for past-date testing (default false).
 
+## SUPERVISED ONE-DAY MANUAL RUN — Friday 2026-07-10 (2026-07-09 session)
+
+NOT the scheduled automation (parent `XLhh2TB89NwSlBRX` stayed OFF) and NOT the rebuild — a manual,
+checkpointed run of the correct end-to-end flow for a single day, done by hand under Spencer's eye.
+
+- **Ingest→optimize→write-back all executed cleanly.** Jobber 07-10 had 91 visits on correct techs
+  (Cammeron 35, Luke 29, Cory 27). Pushed 90 to OptimoRoute (deduped the 7494 double-booking),
+  optimized, wrote 90 optimized times back to Jobber. 90/90 verified.
+- **Key method fix (do this in the rebuild):** create orders with a UNIQUE orderNo per run
+  (`<job>-0710`) + `operation:CREATE` via **`create_order`** (the only endpoint that geocodes).
+  Plain orderNo=jobNumber is UNSAFE — recurring customers reuse job numbers across dates, so
+  `create_or_update_orders` update-matches by orderNo and can DRAG another date's order onto the
+  target day (observed live: orders 8061/8084 moved onto 07-10; cleaned up). Bulk endpoint also does
+  not geocode. Lock techs with `assignedTo.serial = <tech full name>` (OR driver serial == full name).
+- **Write-back:** `visitEditSchedule` start=optimized Pacific time, endAt=+3h window, TZ
+  America/Los_Angeles, via sanctioned `jobber-api.mjs`. Jobber cost-throttles heavy visit reads —
+  paginate at 25/page with backoff.
+- **Left for Spencer:** delete duplicate visit for job 7494 (`…MjI0MDE2Njg0Ng==`; kept `…Njc0NA==`).
+- Reusable scripts staged in scratchpad (fetch-visits / build-orders / create-all / writeback).
+
 ## (RESOLVED) durable Jobber auth — kept for history
 - Jobber tokens are short-lived (~1h) AND the app uses **refresh-token rotation**. The bootstrap
   (minting from the CLI's `.env` refresh token into an n8n credential) is NOT durable: n8n doesn't
