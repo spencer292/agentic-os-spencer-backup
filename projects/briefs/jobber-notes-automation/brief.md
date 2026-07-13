@@ -133,12 +133,16 @@ can read job form submissions at all.
   token were exposed in a 07-06 chat transcript. They are no longer embedded in any n8n
   workflow, but the credentials themselves should still be regenerated (breaks `.env` CLI
   auth + nothing else now — update `.env` in the same step).
-- **Both nightly halves are live as of 2026-07-10 evening:** n8n report wf `2dxtg73X1JUvLUTr`
-  ACTIVE (daily 18:00 PT) + local cron `jobber-visit-followups` (18:15 PT, scheduling
-  dry-run only — trimmed so it can't double-write the report). The local cron runtime was
-  fixed with a stopgap: `AGENTIC_OS_CLAUDE_BIN` → native `claude.exe` (persisted via setx;
-  see learnings `### ops-cron`). Manual trigger verified 07-10: success, 77s, correct
-  review output. Daemon must be re-started (`start-crons`) after a reboot.
+- **Nightly status (verified 2026-07-12):** local cron `jobber-visit-followups` (18:15 PT,
+  scheduling dry-run) is HEALTHY — 4 runs, 0 failures since the 07-10 stopgap fix
+  (`AGENTIC_OS_CLAUDE_BIN` → native `claude.exe`, setx-persisted; see learnings
+  `### ops-cron`; re-run `start-crons` after a reboot). The n8n report wf `2dxtg73X1JUvLUTr`
+  is ACTIVE but **every scheduled run has FAILED** (07-10/11/12, all "Authorization failed"
+  at the first Jobber node) — the native Jobber OAuth2 credential is dead, same failure the
+  route session hit twice. Fix is UI-only: reconnect the credential (durable fix = the
+  pending dedicated second Jobber app for n8n), ideally before Mon 07-13 18:00 PT.
+  Gap already closed manually: `report-sync.mjs --date=2026-07-10 --write` → 91 jobs
+  (07-11/12 = weekend, 0 visits). Report is current through 07-12.
 
 ## Status (2026-07-06 — superseded)
 

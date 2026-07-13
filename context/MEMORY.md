@@ -4,7 +4,7 @@
 
 ## Active Threads
 - **Route automation (Got Moles):** n8n OFF — do not reactivate. home-slots.json = source of truth (grid for new customers). POLICY (07-12): ALL OR orders priority M — priority makes OR serve high-prio EARLIER, warping routes (~20% worse); real promises = OR timeWindows only; visit times never carry week-to-week. Push scripts fixed, 70 stray C/H normalized, 07-14..17 re-planned locked to day+tech (−371 km/wk) + written to Jobber. Next: (1) WF-1/WF-2 rebuild w/ daily DRIFT CHECK (new Jobber bookings absent from OR: #8158/#8138/#7546; diff boards); (2) push wk 07-20 to OR; (3) arrival-window per-job sweep ~5k jobs (canary #7778). Tavis out (ZIPs→Cory temp); Brayden gone (→Luke).
-- **Jobber notes automation:** n8n report wf `2dxtg73X1JUvLUTr` active daily 18:00 PT + cron `jobber-visit-followups` 18:15 — confirm recent runs succeeded. `engine.mjs --execute` proven live 07-10 but not yet unattended. Pending: regenerate leaked Jobber client secret/refresh token.
+- **Jobber notes automation:** cron 18:15 PT healthy (4/4). n8n report wf `2dxtg73X1JUvLUTr` failing — dead Jobber cred; reconnect in n8n UI before Mon 07-13 18:00 PT. Report backfilled thru 07-12. engine `--execute` proven, not unattended. Regenerate leaked Jobber secret.
 - **Cash-flow projection:** n8n wf `Aly1V11tqwSQhTls` (INACTIVE) → Notion "Cash-Flow Snapshots" DB. Next: user connects Notion cred + shares DB, then Execute.
 - **TMCP tagging gap:** signups #8030+ aren't auto-tagged `TMCP - Active`. Leak candidate: Karen Porter #5007 (~$2,900 owed, uninvoiced since 2024-02) — Spencer to review. Drop Mike Kaiser's `TMCP Churned` + 6 stale tags (audit 07-10; TMCP $66.8k/mo).
 
