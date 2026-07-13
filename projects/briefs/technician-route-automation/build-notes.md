@@ -1,4 +1,86 @@
-# Build notes — Phase 1 & 2 progress
+# Build notes
+
+## v2 REBUILD (2026-07-10) — multi-workflow architecture
+
+Spencer's rules locked in (see brief v2 section): 07:00–18:00 hard work window all 3 techs;
+jobs slide to any day in window EXCEPT sets (first visits) which are date-pinned + priority C
+(unfit sets come back unscheduled + flagged, never silently moved); 10 min/check, 20 min/set;
+2×/day cadence — evening ~19:00 (tomorrow→+7) + morning finishing by 05:00 (day-ahead).
+**New freeze rule: today is writable only BEFORE 05:00 PT; frozen after.**
+
+### WF-1 CREATED (inactive): `YxKaiU1IAAmMkDLh` "Route v2 WF-1 — Push Jobber → OptimoRoute"
+https://gotmoles.app.n8n.cloud/workflow/YxKaiU1IAAmMkDLh
+
+- Nodes: Manual/parent triggers → Config → Window (freeze guard) → Fetch visits (Jobber GraphQL,
+  native cursor pagination 50/page, max 30 pages) → Build orders (Code) → IF dry → Summary → Notion log;
+  live branch: Emit orders (maxOrders cap, 0=noop) → create_order per order (batch 4, 600ms) → Summary live.
+- **Key mechanics:** `operation: SYNC` + orderNo = `<jobNumber>-<visitNumericId>` (visit-unique —
+  idempotent re-push, immune to the job-number collision that scrambled the board);
+  `assignedTo.serial = tech full name` (territory hard lock, no-tech visits skipped+flagged);
+  `allowedDates` = window for regular visits, pinned single day for sets; durations 10/20;
+  `acceptPartialMatch/acceptMultipleResults: true` (job-6028-class addresses geocode);
+  set detection = visit PT date == job.startAt PT date (verified against live data — ongoing trap
+  checks all have job.startAt months back).
+- API facts verified against live OR docs: create_order `operation` ∈ CREATE/UPDATE/SYNC/MERGE
+  (SYNC = create-or-update, replaces all sent fields); `allowedDates {from,to}` (empty = UNRESTRICTED —
+  must always set it, incl. pinning sets); start_planning supports `dateRange`, `balanceBy: WT`,
+  `clustering: true`; driver `workTimeFrom/To` = hard route ceiling (verify 07:00–18:00 once in OR UI —
+  `update_driver_parameters` unschedules routes, never set per-run).
+- Untested plumbing (check on first editor run): n8n pagination merging `variables.after` into the
+  JSON body; Jobber cost at 50/page with nested assignedUsers (drop to 25 if throttled).
+- Safety: no webhook trigger this time (v1's open webhook was a hole). dryRun=true, maxOrders=0
+  defaults; live push requires explicit maxOrders>0.
+
+### v2.1 update (same session) — email-freeze + week window + pin rule (WF-1 updated in place)
+Spencer's operating model: Friday slates ALL of next week (before day-before-14:00 customer emails);
+slated people never move days after; new bookings fill into existing routes; 2×/day sync continues.
+Encoded in WF-1:
+- **Email-freeze guard (Window):** date D locks 14:00 PT on D-1. Today never writable; after 14:00
+  tomorrow locked too (minOffset 2). `lateOverride` bypass for testing only.
+- **Week window (Window):** `days=-1` (default) → Mon–Thu: through this Sunday; Fri–Sun: through
+  NEXT Sunday. Friday run = whole-next-week batch baseline, emergent, no special mode.
+- **Pin rule (Build orders) — window-width sentinel (v2.2):** `pinned = isSet || (time != 00:00
+  && window <= 6h)`. Tight window (+3h optimizer writes) = committed day. WIDE window (12h
+  placeholder) or anytime = floats. Convention: placeholder = **07:00–19:00 PT** — Spencer will
+  hand-set the same on new jobs; changing the convention requires updating WF-1's pin rule.
+- **WF-3 CONFIRMED NEEDED (Spencer):** Jobber only emails arrival windows if visits have time
+  windows — ALL future visits need one. One-time backfill, then manual placeholder on new jobs.
+  Scale: 64,821 UPCOMING future visits (recurring jobs generate far ahead) → too big for n8n;
+  built as supervised script `backfill-time-windows.mjs` (scan → report → live --max N;
+  resumable state in `backfill-state.json`; single sanctioned token refresh with rotation
+  persisted; 200ms write throttle + THROTTLED backoff). Run pattern: scan (read-only) →
+  live --max 20 canary (check no tech/customer notification storm) → drain in chunks.
+- Cadence target: ~04:30 + ~13:00 PT (13:00 = final pass for tomorrow before its emails).
+- Explicit `fromOffset`/`days` overrides still accepted via trigger body for testing.
+
+### WF-2 CREATED (inactive): `QEKz72NTP8YRZsUS` "Route v2 WF-2 — Optimize + write-back OR → Jobber"
+https://gotmoles.app.n8n.cloud/workflow/QEKz72NTP8YRZsUS
+
+- Flow: Config → Window (same email-freeze + week-window as WF-1) → [skipPlanning bypass] →
+  `start_planning` (dateRange = window, balancing ON, balanceBy WT, clustering true, startWith
+  CURRENT, lockType NONE) → poll `get_planning_status` every 15s (guard: throw on status E*/
+  >40 polls) → `get_routes` per date → Collect → Fetch Jobber visits (paginated 50/pg) →
+  Build plan (Code) → dry Summary / live Emit→`visitEditSchedule` (batch 4, userErrors) → Notion.
+- **Join:** orderNo `<job>-<visitNum>` → decode Jobber visit gid → match by visit numeric.
+  Unparseable/unmatched orderNos = orphans (counted, never written).
+- **DELTA GUARD:** committed visits (tight ≤6h window) or sets that would CHANGE DAYS —
+  >5 of them aborts the run before any write (pins should make this impossible; tripping it
+  means an upstream bug). Day-moves of floating visits = normal slating, reported not blocked.
+- **Move report in Notion:** every day-move listed (SET!/WAS-COMMITTED! flagged), unrouted sets
+  called out as "DECIDE", tech mismatches (should be 0 — hard-locked), orphans, unrouted count.
+- Config: dryRun=true/maxWrites=0 defaults; `skipPlanning=true` re-reads existing OR plan +
+  writes back without re-optimizing (useful for retry-after-inspection).
+- Untested plumbing (first-run checks): start_planning response field `planningId` + status
+  enum ('F…' assumed = finished), Wait-node loop-back, pagination merge (same as WF-1).
+- Write-back sets optimized start + 3h window (`windowHours` in Config) — this tight window is
+  what flips a visit to "committed" for all future runs (pin rule).
+
+### WF-3 (parked): evening time-fix for anytime visits. WF-4 (parked): tech-added-visit watcher —
+Jobber events already stream into n8n via `gFYppNw0cFZKuHpA` (QUOTE_UPDATE observed, HMAC-signed).
+
+---
+
+# v1 build notes — Phase 1 & 2 progress (superseded by v2 above)
 
 ## Validated against live data
 

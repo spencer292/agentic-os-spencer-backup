@@ -63,10 +63,12 @@ export function parseNote(msg) {
   r.inventoryStr = inv.map(x => `${x.n} ${x.type}${x.pos ? ' ' + x.pos : ''}`).join(', ');
 
   // next action (priority order)
+  // "ad visit" tolerates the field misspelling of "Add visit" (seen live 2026-07-06,
+  // Lynn Clapp #7247 — "Ad visit" silently parsed as no next-action).
   r.nextAction =
     /convert to annual/i.test(t) ? 'Convert to annual' :
     /return visit scheduled/i.test(t) ? 'Return visit scheduled' :
-    /add visit/i.test(t) ? 'Add visit' :
+    /\bad{1,2}\s+visit/i.test(t) ? 'Add visit' :
     /monthly/i.test(t) ? 'Monthly' :
     /visit\s*2\s*weeks|2\s*weeks/i.test(t) ? '2 weeks' :
     /weekly/i.test(t) ? 'Weekly' : null;

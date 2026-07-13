@@ -1,0 +1,266 @@
+{
+ "_comment": "Service-area calendar v3 — ONE day per area, hard (Spencer 2026-07-10 late). Heavy area-days = multiple trucks, same day. Day assignment balances THIS-week demand against trucks present (Mon/Wed=3, Tue/Thu/Fri=4).",
+ "zones": {
+  "Olympia": [
+   "mon"
+  ],
+  "Lacey": [
+   "mon"
+  ],
+  "Tumwater": [
+   "mon"
+  ],
+  "Bellevue": [
+   "mon"
+  ],
+  "Kirkland": [
+   "mon"
+  ],
+  "Medina": [
+   "mon"
+  ],
+  "Clyde Hill": [
+   "mon"
+  ],
+  "Bothell": [
+   "mon"
+  ],
+  "Kenmore": [
+   "mon"
+  ],
+  "Yarrow Point": [
+   "mon"
+  ],
+  "Hunts Point": [
+   "mon"
+  ],
+  "Mercer Island": [
+   "mon"
+  ],
+  "Newcastle": [
+   "mon"
+  ],
+  "Redmond": [
+   "mon"
+  ],
+  "Federal Way": [
+   "mon"
+  ],
+  "Des Moines": [
+   "mon"
+  ],
+  "Milton": [
+   "mon"
+  ],
+  "Seattle": [
+   "tue"
+  ],
+  "Shoreline": [
+   "tue"
+  ],
+  "Lake Forest Park": [
+   "tue"
+  ],
+  "Burien": [
+   "tue"
+  ],
+  "Normandy Park": [
+   "tue"
+  ],
+  "SeaTac": [
+   "tue"
+  ],
+  "Tukwila": [
+   "tue"
+  ],
+  "Tacoma": [
+   "tue"
+  ],
+  "University Place": [
+   "tue"
+  ],
+  "Lakewood": [
+   "tue"
+  ],
+  "Steilacoom": [
+   "tue"
+  ],
+  "Fircrest": [
+   "tue"
+  ],
+  "DuPont": [
+   "tue"
+  ],
+  "Gig Harbor": [
+   "tue"
+  ],
+  "Port Orchard": [
+   "tue"
+  ],
+  "Bremerton": [
+   "tue"
+  ],
+  "Olalla": [
+   "tue"
+  ],
+  "Vaughn": [
+   "tue"
+  ],
+  "Longbranch": [
+   "tue"
+  ],
+  "Fox Island": [
+   "tue"
+  ],
+  "Lakebay": [
+   "tue"
+  ],
+  "Key Center": [
+   "tue"
+  ],
+  "Yelm": [
+   "tue"
+  ],
+  "Roy": [
+   "tue"
+  ],
+  "Tenino": [
+   "tue"
+  ],
+  "Renton": [
+   "tue"
+  ],
+  "Kent": [
+   "wed"
+  ],
+  "Puyallup": [
+   "wed"
+  ],
+  "Sumner": [
+   "wed"
+  ],
+  "Edgewood": [
+   "wed"
+  ],
+  "Pacific": [
+   "wed"
+  ],
+  "Graham": [
+   "wed"
+  ],
+  "Orting": [
+   "wed"
+  ],
+  "Spanaway": [
+   "wed"
+  ],
+  "Eatonville": [
+   "wed"
+  ],
+  "Woodinville": [
+   "wed"
+  ],
+  "Duvall": [
+   "wed"
+  ],
+  "Carnation": [
+   "wed"
+  ],
+  "Maltby": [
+   "wed"
+  ],
+  "Snohomish": [
+   "wed"
+  ],
+  "Everett": [
+   "wed"
+  ],
+  "Mill Creek": [
+   "wed"
+  ],
+  "Sammamish": [
+   "thu"
+  ],
+  "Auburn": [
+   "thu"
+  ],
+  "Enumclaw": [
+   "thu"
+  ],
+  "Maple Valley": [
+   "thu"
+  ],
+  "Covington": [
+   "thu"
+  ],
+  "Black Diamond": [
+   "thu"
+  ],
+  "Ravensdale": [
+   "thu"
+  ],
+  "Kanaskat": [
+   "thu"
+  ],
+  "Issaquah": [
+   "thu"
+  ],
+  "Buckley": [
+   "fri"
+  ],
+  "Bonney Lake": [
+   "fri"
+  ],
+  "BonneyLake": [
+   "fri"
+  ],
+  "Lake Tapps": [
+   "fri"
+  ],
+  "Tehaleh": [
+   "fri"
+  ],
+  "South Prairie": [
+   "fri"
+  ],
+  "Wilkeson": [
+   "fri"
+  ],
+  "North Bend": [
+   "fri"
+  ],
+  "Snoqualmie": [
+   "fri"
+  ],
+  "Fall City": [
+   "fri"
+  ],
+  "Preston": [
+   "fri"
+  ]
+ },
+ "techOwnership": {
+  "_comment": "city|weekday -> owner. Applied when a stop lands on that day; all other stops are optimizer-assigned within their allowed days.",
+  "Olympia|mon": "Luke LaVergne",
+  "Lacey|mon": "Luke LaVergne",
+  "Tumwater|mon": "Luke LaVergne",
+  "Federal Way|mon": "Cammeron Anderson",
+  "Gig Harbor|tue": "Spencer Hill",
+  "Port Orchard|tue": "Spencer Hill",
+  "Bremerton|tue": "Spencer Hill",
+  "Olalla|tue": "Spencer Hill",
+  "Vaughn|tue": "Spencer Hill",
+  "Longbranch|tue": "Spencer Hill",
+  "Fox Island|tue": "Spencer Hill",
+  "Lakebay|tue": "Spencer Hill",
+  "Key Center|tue": "Spencer Hill",
+  "North Bend|fri": "Cammeron Anderson",
+  "Snoqualmie|fri": "Cammeron Anderson",
+  "Fall City|fri": "Cammeron Anderson",
+  "Preston|fri": "Cammeron Anderson",
+  "Buckley|fri": "Luke LaVergne",
+  "Bonney Lake|fri": "Luke LaVergne",
+  "Lake Tapps|fri": "Luke LaVergne",
+  "Tehaleh|fri": "Luke LaVergne"
+ }
+}

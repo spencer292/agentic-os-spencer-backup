@@ -74,6 +74,25 @@ Hard rules:
   nothing (already handled — safe to re-run).
 - Keep the same assigned technician; new visits inherit the tech from the next scheduled visit.
 
+## Scope additions (2026-07-10, from Spencer)
+
+The checklist database was doing THREE jobs, and all three must survive its retirement:
+1. **Status report** → covered: Jobber Job Custom Fields (live).
+2. **Reporting/trends** (checklist rows → database → reports) → planned: append one
+   database row per parsed visit (Notion DB or similar) alongside the custom-field write.
+3. **Week-ahead schedule verification** → `audit-schedule.mjs` (new): expected-vs-actual
+   check that catches (a) follow-ups implied by a note but missing from the schedule,
+   (b) recently visited jobs with no upcoming visit (stranded cadence), and (c) **double
+   visits** — same-day pairs = definite dupes, pairs ≤10 days apart = probable (correct
+   state never has two visits that close, per the pull-don't-add rule). REPORT ONLY —
+   removing a duplicate stays a human decision.
+
+Also flagged by Spencer: misspelled/nonconforming notes currently fail silently (field
+skipped). Fix = exceptions lane — unparseable notes go to a daily review list instead of
+being dropped. Not yet built. A structured Job Form input was considered as an alternative
+to note parsing; parked pending (a) exception-rate evidence and (b) whether Jobber's API
+can read job form submissions at all.
+
 ## Deliverables
 
 - `parse-note.mjs` — pure parser: note string → structured record. ✅ built
@@ -88,7 +107,40 @@ Hard rules:
 - Custom field WRITE into the engine — ⛔ blocked on Jobber scope (see Status).
 - Report sync target = **Jobber custom fields** (decided 2026-07-06).
 
-## Status (2026-07-06)
+## Status (2026-07-10)
+
+- **Read layer rebuilt (v2) — visits-first.** The original `jobs(first: N)` unfiltered pull
+  was silently missing most of a day's visited jobs (07-09: found 0 of 65; 07-06: the
+  "proven live" run synced 31 of what was really 85). Both `report-sync.mjs` and `engine.mjs`
+  now page the day's visits (cheap), dedup to jobs, and fetch notes/fields for only those
+  jobs in aliased batches of 15 — full coverage, and stays under Jobber's cost throttle.
+- **Both scripts now use direct-fetch auth** (sanctioned pattern from the route-automation
+  backfill script), NOT the tool-jobber CLI: Jobber returns partial "RequestNote … hidden
+  due to permissions" errors alongside good data, and the CLI treats any GraphQL error as
+  fatal. The scripts tolerate permission-hides and keep the JobNote data.
+- **Report backfilled + current:** 07-06 re-synced (85 jobs), 07-07 (77), 07-08 (68),
+  07-09 (65) all written live on 2026-07-10.
+- **n8n workflow `2dxtg73X1JUvLUTr` rebuilt (v2), INACTIVE pending activation.** Now:
+  daily 6pm PT trigger (the old trigger was misconfigured as hourly) → Visits p1+p2 →
+  build job batches → batch reads → build writes → jobEdit writes. Uses the native
+  "Jobber OAuth2" n8n credential (`NitrghZSAjZamvqp`) — the token node with the pasted
+  client secret + refresh token is GONE from the workflow. Retry-on-fail + request
+  spacing on all HTTP nodes. Editor: https://gotmoles.app.n8n.cloud/workflow/2dxtg73X1JUvLUTr
+- **Scheduling half validated on real data:** 07-09 dry-run — 65 jobs, 33 "already
+  scheduled" (engine matches techs' manual choices), 3 ADDs the techs missed, 0 PULLs,
+  0 errors. Log: `runs/2026-07-09-dryrun.txt`. Still dry-run per the go-live gate.
+- **Security (still pending, coordinated step):** the Jobber app client secret + refresh
+  token were exposed in a 07-06 chat transcript. They are no longer embedded in any n8n
+  workflow, but the credentials themselves should still be regenerated (breaks `.env` CLI
+  auth + nothing else now — update `.env` in the same step).
+- **Both nightly halves are live as of 2026-07-10 evening:** n8n report wf `2dxtg73X1JUvLUTr`
+  ACTIVE (daily 18:00 PT) + local cron `jobber-visit-followups` (18:15 PT, scheduling
+  dry-run only — trimmed so it can't double-write the report). The local cron runtime was
+  fixed with a stopgap: `AGENTIC_OS_CLAUDE_BIN` → native `claude.exe` (persisted via setx;
+  see learnings `### ops-cron`). Manual trigger verified 07-10: success, 77s, correct
+  review output. Daemon must be re-started (`start-crons`) after a reboot.
+
+## Status (2026-07-06 — superseded)
 
 - **Report half: LIVE. No scope needed after all.** The custom-fields *config* scope stays
   blocked, but that turned out not to matter: field VALUES are written via `jobEdit { customFields }`

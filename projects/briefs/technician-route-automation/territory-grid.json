@@ -1,0 +1,970 @@
+{
+ "_comment": "TERRITORY GRID (rough draft v1, Spencer 2026-07-11). ZIP -> (day, tech). Tavis ZIPs temporarily Cory. Overflow ZIPs (98024/98065/98045): Friday, Spencer or Cammeron.",
+ "approvedAt": "2026-07-11",
+ "sealed": true,
+ "zips": {
+  "98001": {
+   "day": "mon",
+   "tech": "Cammeron Anderson",
+   "cities": "Auburn/auburn",
+   "visitsPerYear": 184,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98002": {
+   "day": "wed",
+   "tech": "Cammeron Anderson",
+   "cities": "Auburn",
+   "visitsPerYear": 61,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98003": {
+   "day": "mon",
+   "tech": "Cammeron Anderson",
+   "cities": "Federal Way",
+   "visitsPerYear": 92,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98004": {
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "cities": "Bellevue/Clyde Hill/Beaux Arts Village/Yarrow Point",
+   "visitsPerYear": 143,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98005": {
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "cities": "Bellevue",
+   "visitsPerYear": 298,
+   "decided": false
+  },
+  "98006": {
+   "day": "thu",
+   "tech": "Spencer Hill",
+   "cities": "Bellevue",
+   "visitsPerYear": 213,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98007": {
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "cities": "Bellevue",
+   "visitsPerYear": 55,
+   "decided": false
+  },
+  "98008": {
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "cities": "Bellevue",
+   "visitsPerYear": 73,
+   "decided": false
+  },
+  "98010": {
+   "day": "thu",
+   "tech": "Luke LaVergne",
+   "cities": "Black Diamond",
+   "visitsPerYear": 146,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98011": {
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "cities": "Bothell",
+   "visitsPerYear": 16,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98012": {
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "cities": "Bothell/Mill Creek",
+   "visitsPerYear": 25,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98014": {
+   "day": "wed",
+   "tech": "Cory Ventura",
+   "cities": "Carnation",
+   "visitsPerYear": 160,
+   "decided": true,
+   "note": "temp — Tavis out (reverts on return)"
+  },
+  "98019": {
+   "day": "wed",
+   "tech": "Cory Ventura",
+   "cities": "Duvall",
+   "visitsPerYear": 98,
+   "decided": true,
+   "note": "temp — Tavis out (reverts on return)"
+  },
+  "98021": {
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "cities": "Bothell",
+   "visitsPerYear": 30,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98022": {
+   "day": "thu",
+   "tech": "Luke LaVergne",
+   "cities": "Enumclaw/enumclaw",
+   "visitsPerYear": 892,
+   "decided": false
+  },
+  "98023": {
+   "day": "mon",
+   "tech": "Cammeron Anderson",
+   "cities": "Federal Way",
+   "visitsPerYear": 145,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98024": {
+   "day": "fri",
+   "tech": "Spencer Hill",
+   "cities": "Fall City",
+   "visitsPerYear": 178,
+   "decided": true,
+   "note": "Spencer Friday corridor (your call 7/11)"
+  },
+  "98027": {
+   "day": "thu",
+   "tech": "Cory Ventura",
+   "cities": "Issaquah",
+   "visitsPerYear": 293,
+   "decided": true,
+   "note": "as proposed"
+  },
+  "98028": {
+   "cities": "Kenmore",
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98029": {
+   "day": "thu",
+   "tech": "Cory Ventura",
+   "cities": "Issaquah",
+   "visitsPerYear": 98,
+   "decided": false
+  },
+  "98030": {
+   "day": "wed",
+   "tech": "Cammeron Anderson",
+   "cities": "Kent",
+   "visitsPerYear": 73,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98031": {
+   "day": "wed",
+   "tech": "Cammeron Anderson",
+   "cities": "Kent",
+   "visitsPerYear": 107,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98032": {
+   "day": "wed",
+   "tech": "Cammeron Anderson",
+   "cities": "Kent",
+   "visitsPerYear": 90,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98033": {
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "cities": "Kirkland",
+   "visitsPerYear": 79,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98034": {
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "cities": "Kirkland",
+   "visitsPerYear": 78,
+   "decided": false
+  },
+  "98038": {
+   "day": "thu",
+   "tech": "Cammeron Anderson",
+   "cities": "Maple Valley/Maple valley",
+   "visitsPerYear": 580,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98039": {
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "cities": "Medina",
+   "visitsPerYear": 126,
+   "decided": false
+  },
+  "98040": {
+   "day": "thu",
+   "tech": "Spencer Hill",
+   "cities": "Mercer Island",
+   "visitsPerYear": 125,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98042": {
+   "day": "thu",
+   "tech": "Cammeron Anderson",
+   "cities": "Kent/Covington",
+   "visitsPerYear": 420,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98045": {
+   "day": "fri",
+   "tech": "Spencer Hill",
+   "cities": "North Bend/North bend/north bend",
+   "visitsPerYear": 375,
+   "decided": true,
+   "note": "Spencer Friday corridor (your call 7/11)"
+  },
+  "98047": {
+   "day": "mon",
+   "tech": "Cammeron Anderson",
+   "cities": "Pacific",
+   "visitsPerYear": 32,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98051": {
+   "day": "thu",
+   "tech": "Luke LaVergne",
+   "cities": "Ravensdale",
+   "visitsPerYear": 127,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98052": {
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "cities": "Redmond",
+   "visitsPerYear": 138,
+   "decided": false
+  },
+  "98053": {
+   "day": "wed",
+   "tech": "Cory Ventura",
+   "cities": "Redmond",
+   "visitsPerYear": 289,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98055": {
+   "day": "wed",
+   "tech": "Cammeron Anderson",
+   "cities": "Renton",
+   "visitsPerYear": 48,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98056": {
+   "day": "thu",
+   "tech": "Spencer Hill",
+   "cities": "Renton/Newcastle",
+   "visitsPerYear": 141,
+   "decided": false
+  },
+  "98057": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Renton",
+   "visitsPerYear": 42,
+   "decided": true,
+   "note": "temp — Tavis out (reverts on return)"
+  },
+  "98058": {
+   "day": "wed",
+   "tech": "Cammeron Anderson",
+   "cities": "Renton",
+   "visitsPerYear": 323,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98059": {
+   "day": "thu",
+   "tech": "Spencer Hill",
+   "cities": "Renton/Newcastle",
+   "visitsPerYear": 602,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98065": {
+   "day": "fri",
+   "tech": "Spencer Hill",
+   "cities": "Snoqualmie",
+   "visitsPerYear": 135,
+   "decided": true,
+   "note": "Spencer Friday corridor (your call 7/11)"
+  },
+  "98072": {
+   "day": "wed",
+   "tech": "Cory Ventura",
+   "cities": "Woodinville",
+   "visitsPerYear": 130,
+   "decided": true,
+   "note": "moved to Wednesday"
+  },
+  "98074": {
+   "day": "thu",
+   "tech": "Cory Ventura",
+   "cities": "Sammamish",
+   "visitsPerYear": 244,
+   "decided": false
+  },
+  "98075": {
+   "day": "thu",
+   "tech": "Cory Ventura",
+   "cities": "Sammamish/Issaquah",
+   "visitsPerYear": 350,
+   "decided": false
+  },
+  "98077": {
+   "day": "wed",
+   "tech": "Cory Ventura",
+   "cities": "Woodinville",
+   "visitsPerYear": 141,
+   "decided": true,
+   "note": "moved to Wednesday"
+  },
+  "98092": {
+   "day": "thu",
+   "tech": "Cammeron Anderson",
+   "cities": "Auburn/Issaquah",
+   "visitsPerYear": 496,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98102": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle",
+   "visitsPerYear": 10,
+   "decided": false
+  },
+  "98105": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle",
+   "visitsPerYear": 45,
+   "decided": true,
+   "note": "temp — Tavis out (reverts on return)"
+  },
+  "98106": {
+   "day": "tue",
+   "tech": "Cammeron Anderson",
+   "cities": "Seattle",
+   "visitsPerYear": 62,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98108": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle",
+   "visitsPerYear": 80,
+   "decided": false
+  },
+  "98109": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle",
+   "visitsPerYear": 18,
+   "decided": false
+  },
+  "98112": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle",
+   "visitsPerYear": 49,
+   "decided": false
+  },
+  "98115": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle",
+   "visitsPerYear": 41,
+   "decided": false
+  },
+  "98116": {
+   "day": "tue",
+   "tech": "Cammeron Anderson",
+   "cities": "Seattle",
+   "visitsPerYear": 74,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98117": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle",
+   "visitsPerYear": 45,
+   "decided": false
+  },
+  "98118": {
+   "day": "tue",
+   "tech": "Cammeron Anderson",
+   "cities": "Seattle",
+   "visitsPerYear": 10,
+   "decided": true,
+   "note": "Cammeron for now"
+  },
+  "98119": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle",
+   "visitsPerYear": 4,
+   "decided": false
+  },
+  "98125": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle",
+   "visitsPerYear": 15,
+   "decided": false
+  },
+  "98126": {
+   "day": "tue",
+   "tech": "Cammeron Anderson",
+   "cities": "Seattle",
+   "visitsPerYear": 36,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98133": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle/Shoreline",
+   "visitsPerYear": 47,
+   "decided": true,
+   "note": "temp — Tavis out (reverts on return)"
+  },
+  "98136": {
+   "day": "tue",
+   "tech": "Cammeron Anderson",
+   "cities": "Seattle",
+   "visitsPerYear": 86,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98144": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle",
+   "visitsPerYear": 31,
+   "decided": false
+  },
+  "98146": {
+   "day": "tue",
+   "tech": "Cammeron Anderson",
+   "cities": "Seattle/Burien",
+   "visitsPerYear": 147,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98148": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Burien",
+   "visitsPerYear": 48,
+   "decided": true,
+   "note": "temp — Tavis out (reverts on return)"
+  },
+  "98155": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Shoreline/Lake Forest Park",
+   "visitsPerYear": 12,
+   "decided": false
+  },
+  "98166": {
+   "day": "tue",
+   "tech": "Cammeron Anderson",
+   "cities": "Normandy Park/Burien",
+   "visitsPerYear": 186,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98168": {
+   "day": "tue",
+   "tech": "Cammeron Anderson",
+   "cities": "SeaTac/Tukwila/Seattle/Burien",
+   "visitsPerYear": 148,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98177": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle/Shoreline",
+   "visitsPerYear": 70,
+   "decided": false
+  },
+  "98178": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle",
+   "visitsPerYear": 79,
+   "decided": true,
+   "note": "temp — Tavis out (reverts on return)"
+  },
+  "98188": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "SeaTac/Tukwila",
+   "visitsPerYear": 40,
+   "decided": true,
+   "note": "temp — Tavis out (reverts on return)"
+  },
+  "98198": {
+   "day": "tue",
+   "tech": "Cammeron Anderson",
+   "cities": "Normandy Park/SeaTac/Des Moines",
+   "visitsPerYear": 84,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98199": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle",
+   "visitsPerYear": 45,
+   "decided": true,
+   "note": "temp — Tavis out (reverts on return)"
+  },
+  "98272": {
+   "day": "wed",
+   "tech": "Cory Ventura",
+   "cities": "Monroe",
+   "visitsPerYear": 4,
+   "decided": true,
+   "note": "temp — Tavis out (reverts on return)"
+  },
+  "98296": {
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "cities": "Snohomish",
+   "visitsPerYear": 22,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98310": {
+   "day": "tue",
+   "tech": "Spencer Hill",
+   "cities": "Bremerton",
+   "visitsPerYear": 9,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98312": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Bremerton",
+   "visitsPerYear": 6,
+   "decided": false
+  },
+  "98321": {
+   "day": "fri",
+   "tech": "Luke LaVergne",
+   "cities": "Buckley",
+   "visitsPerYear": 759,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98327": {
+   "day": "mon",
+   "tech": "Luke LaVergne",
+   "cities": "DuPont",
+   "visitsPerYear": 12,
+   "decided": false
+  },
+  "98328": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Eatonville",
+   "visitsPerYear": 112,
+   "decided": true,
+   "note": "Eatonville -> Wednesday"
+  },
+  "98329": {
+   "day": "tue",
+   "tech": "Spencer Hill",
+   "cities": "Gig Harbor",
+   "visitsPerYear": 15,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98332": {
+   "day": "tue",
+   "tech": "Spencer Hill",
+   "cities": "Gig Harbor",
+   "visitsPerYear": 17,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98333": {
+   "day": "tue",
+   "tech": "Spencer Hill",
+   "cities": "Fox Island",
+   "visitsPerYear": 16,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98335": {
+   "day": "tue",
+   "tech": "(unknown)",
+   "cities": "Gig Harbor",
+   "visitsPerYear": 5,
+   "decided": false
+  },
+  "98338": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Graham/graham",
+   "visitsPerYear": 477,
+   "decided": false
+  },
+  "98351": {
+   "day": "tue",
+   "tech": "Spencer Hill",
+   "cities": "Longbranch",
+   "visitsPerYear": 19,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98354": {
+   "day": "mon",
+   "tech": "Cammeron Anderson",
+   "cities": "Milton",
+   "visitsPerYear": 25,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98359": {
+   "day": "tue",
+   "tech": "Spencer Hill",
+   "cities": "Olalla",
+   "visitsPerYear": 22,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98360": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Orting/Pierce County",
+   "visitsPerYear": 254,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98363": {
+   "day": "tue",
+   "tech": "Luke LaVergne",
+   "cities": "Puyallup",
+   "visitsPerYear": 18,
+   "decided": false
+  },
+  "98367": {
+   "day": "tue",
+   "tech": "(unknown)",
+   "cities": "Port Orchard",
+   "visitsPerYear": 5,
+   "decided": false
+  },
+  "98371": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Edgewood/Puyallup",
+   "visitsPerYear": 119,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98372": {
+   "day": "tue",
+   "tech": "Cammeron Anderson",
+   "cities": "Edgewood/Puyallup",
+   "visitsPerYear": 315,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98373": {
+   "day": "tue",
+   "tech": "Luke LaVergne",
+   "cities": "Puyallup/South Hill",
+   "visitsPerYear": 103,
+   "decided": false
+  },
+  "98374": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Puyallup/South Hill",
+   "visitsPerYear": 241,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98375": {
+   "day": "tue",
+   "tech": "Luke LaVergne",
+   "cities": "Puyallup",
+   "visitsPerYear": 111,
+   "decided": false
+  },
+  "98385": {
+   "day": "fri",
+   "tech": "Luke LaVergne",
+   "cities": "South Prairie",
+   "visitsPerYear": 22,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98387": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Spanaway",
+   "visitsPerYear": 102,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98388": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Steilacoom",
+   "visitsPerYear": 48,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98390": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Sumner",
+   "visitsPerYear": 121,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98391": {
+   "day": "fri",
+   "tech": "Luke LaVergne",
+   "cities": "Bonney Lake/Sumner/Pierce County/Lake Tapps/BonneyLake/Tehaleh/bonney/Bonney lake",
+   "visitsPerYear": 603,
+   "decided": false
+  },
+  "98394": {
+   "day": "tue",
+   "tech": "Spencer Hill",
+   "cities": "Vaughn",
+   "visitsPerYear": 14,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98396": {
+   "day": "fri",
+   "tech": "Luke LaVergne",
+   "cities": "Wilkeson",
+   "visitsPerYear": 20,
+   "decided": true,
+   "note": "Brayden gone — Luke took south"
+  },
+  "98403": {
+   "day": "tue",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma",
+   "visitsPerYear": 9,
+   "decided": false
+  },
+  "98404": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma",
+   "visitsPerYear": 13,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98405": {
+   "day": "tue",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma",
+   "visitsPerYear": 20,
+   "decided": false
+  },
+  "98406": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma",
+   "visitsPerYear": 26,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98407": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma",
+   "visitsPerYear": 42,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98422": {
+   "day": "mon",
+   "tech": "Cammeron Anderson",
+   "cities": "Tacoma",
+   "visitsPerYear": 60,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98424": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Fife",
+   "visitsPerYear": 13,
+   "decided": true,
+   "note": "Brayden gone — Luke took south"
+  },
+  "98443": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma",
+   "visitsPerYear": 48,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98445": {
+   "day": "tue",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma",
+   "visitsPerYear": 76,
+   "decided": false
+  },
+  "98446": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma",
+   "visitsPerYear": 42,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98465": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma",
+   "visitsPerYear": 30,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98466": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Fircrest/University Place",
+   "visitsPerYear": 62,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98467": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "University Place/Tacoma",
+   "visitsPerYear": 28,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98498": {
+   "day": "tue",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma/Lakewood",
+   "visitsPerYear": 86,
+   "decided": false
+  },
+  "98499": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma/Lakewood",
+   "visitsPerYear": 43,
+   "decided": true,
+   "note": "your call 7/11"
+  },
+  "98501": {
+   "day": "mon",
+   "tech": "Luke LaVergne",
+   "cities": "Olympia/Tumwater",
+   "visitsPerYear": 139,
+   "decided": false
+  },
+  "98502": {
+   "day": "mon",
+   "tech": "Luke LaVergne",
+   "cities": "Olympia",
+   "visitsPerYear": 105,
+   "decided": false
+  },
+  "98503": {
+   "day": "mon",
+   "tech": "Luke LaVergne",
+   "cities": "Olympia/Lacey",
+   "visitsPerYear": 46,
+   "decided": false
+  },
+  "98506": {
+   "day": "mon",
+   "tech": "Luke LaVergne",
+   "cities": "Olympia",
+   "visitsPerYear": 63,
+   "decided": false
+  },
+  "98512": {
+   "day": "mon",
+   "tech": "Luke LaVergne",
+   "cities": "Olympia/Tumwater",
+   "visitsPerYear": 107,
+   "decided": false
+  },
+  "98513": {
+   "day": "mon",
+   "tech": "Luke LaVergne",
+   "cities": "Olympia/Lacey",
+   "visitsPerYear": 184,
+   "decided": false
+  },
+  "98516": {
+   "day": "mon",
+   "tech": "Luke LaVergne",
+   "cities": "Olympia/Lacey",
+   "visitsPerYear": 94,
+   "decided": false
+  },
+  "98580": {
+   "day": "mon",
+   "tech": "Luke LaVergne",
+   "cities": "Roy",
+   "visitsPerYear": 59,
+   "decided": false
+  },
+  "98589": {
+   "day": "mon",
+   "tech": "Luke LaVergne",
+   "cities": "Tenino",
+   "visitsPerYear": 10,
+   "decided": false
+  },
+  "98597": {
+   "day": "mon",
+   "tech": "Luke LaVergne",
+   "cities": "Yelm",
+   "visitsPerYear": 111,
+   "decided": false
+  }
+ },
+ "status": "rough-draft-v1"
+}

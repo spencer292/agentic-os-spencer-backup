@@ -1,19 +1,35 @@
 # Memory — Working Scratchpad
 
 > Curated durable facts, loaded at session start. Capped at 2,500 characters.
-> Fresh client install — start empty.
 
 ## Active Threads
-- **Route automation: n8n scheduled automation stays OFF — do NOT reactivate** (parent `XLhh2TB89NwSlBRX` + child `gr8kf904tjC2ckcA` deactivated after a live run scrambled the board). 2026-07-09: ran a SUPERVISED manual one-day route for Fri 07-10 (Jobber→OptimoRoute→optimize→write times back) = 90/90 OK. **Rebuild method (proven):** create OR orders with UNIQUE orderNo `<job>-<date>` + `operation:CREATE` via `create_order` (geocodes; bulk doesn't + orderNo update-matches across dates → drags other days' orders in). Lock techs: `assignedTo.serial=<full name>`. Detail in build-notes.md.
-
-- **Cash-flow projection (Got Moles):** repeatable model in `projects/briefs/cash-flow-projection/`. Weekly automation = n8n Cloud wf `Aly1V11tqwSQhTls` (INACTIVE) → Notion "Cash-Flow Snapshots" DB (`8020d3e9-b096-4d08-a9a5-eeb848ab4c1d`). Next: user connects Notion cred + shares DB, then Execute.
+- **Route automation (Got Moles):** n8n scheduled automation OFF — do not reactivate. 508/508 visits live in Jobber on `home-slots.json` (source of truth; `territory-grid.json` ~125 ZIPs for new customers only). Arrival-window backfill COMPLETE (07-12): 64,156 visits written, 273 failed (deleted visits, ~0.4%) — every future visit now has a window. Next: rebuild n8n WF-1/WF-2 around home-slots+grid (04:30+13:00, needs dedicated Jobber app — credential died 2x).
+- **Jobber notes automation:** n8n report wf `2dxtg73X1JUvLUTr` active daily 18:00 PT + cron `jobber-visit-followups` 18:15 — confirm recent runs succeeded. `engine.mjs --execute` proven live 07-10 (follow-ups/dedupe/Sunday sweep, Spencer-approved) but not yet unattended. Pending: regenerate leaked Jobber client secret/refresh token.
+- **Cash-flow projection (Got Moles):** weekly automation = n8n Cloud wf `Aly1V11tqwSQhTls` (INACTIVE) → Notion "Cash-Flow Snapshots" DB. Next: user connects Notion cred + shares DB, then Execute.
+- **TMCP tagging gap:** signups #8030+ aren't auto-tagged `TMCP - Active`. Leak candidate: Karen Porter #5007 (~$2,900 owed, uninvoiced since 2024-02) — Spencer to review.
 
 ## Environment Notes
-- **Scheduling host = n8n Cloud, NOT local cron.** Local cron can't launch Claude on Windows (missing launcher; escalated to Roy). Use n8n for unattended jobs.
-- Browser control: `tool-browser` skill drives visible Chrome via zero-dep CDP. `node browser/launch.mjs` then `node browser/cdp.mjs <goto|shot|text|eval|click|type>`. Persistent profile `C:\Users\spenc\.agentic-chrome-profile` (logins persist). Real LinkedIn `/in/spencer-hill-2132b92ab/`. Never bulk-automate LinkedIn (ban risk).
-- Jobber n8n auth = credential `NitrghZSAjZamvqp` "Jobber OAuth2 (native)", Authentication=**Body** (Jobber wants client creds in body, not header). Notion DB Route Sync Log `19265c126f534b8fa59b98856c42531d`.
-- OptimoRoute API live — `OPTIMOROUTE_API_KEY` in `.env`; test via `optimoroute-api.mjs test`.
-- viz-image-gen `sys-config.md` Paths are stale (point to `C:/Claude/agent-os-v3/...`) — ignore, use real repo root `C:/Agentic-os-got-moles`. Image scripts auto-load `.env`. For true 16:9 (YouTube banners) use the Gemini backend; GPT can't exceed 3:2.
+- Local cron runtime fixed (stopgap, 07-10): daemon launches Claude via `AGENTIC_OS_CLAUDE_BIN=C:\Users\spenc\.local\bin\claude.exe` (setx-persisted) — bypasses ENOENT launcher bug. Rerun `start-crons` after reboot.
+- Browser control: `tool-browser` skill drives visible Chrome via zero-dep CDP (`node browser/launch.mjs` then `node browser/cdp.mjs <goto|shot|text|eval|click|type>`). Profile `C:\Users\spenc\.agentic-chrome-profile`. Never bulk-automate LinkedIn.
+- Jobber n8n auth = credential `NitrghZSAjZamvqp` "Jobber OAuth2 (native)", Auth=Body. Jobber `job.notes` returns OLDEST-first — fetch `notes(last: 40)`, never `notes(first: N)`.
+- OptimoRoute API live — `OPTIMOROUTE_API_KEY` in `.env`; account now on Pro (needed for dateRange planning).
 
 ## Pending Decisions
-- LinkedIn growth (Got Moles, from 2026-07-06): user to paste new headline+About & fix profile, then start daily connecting. Full plan + ~55-target list + 22 outreach drafts in `projects/tool-browser/`. Hubs: Patrick LaCroix, Nick Granberg, Brandon Sechrist, Mark Pyrah, Michael Lai, Chris Timpson.
+- LinkedIn growth (Got Moles, from 2026-07-06): user to paste new headline+About & fix profile, then start daily connecting. Full plan + ~55-target list + 22 outreach drafts in `projects/tool-browser/`.- **Route automation v2 (2026-07-12): WEEK OF 7/13 LIVE IN JOBBER (508/508: days+techs+times+3h windows).** Board = Spencer-approved; captured as `projects/briefs/technician-route-automation/home-slots.json` (THE template: existing customers keep this day+tech; new customers via territory-grid.json; optimizer sequences ONLY). Backfill DONE: 64,156 future visits have 7-7 placeholder windows. NEXT: (1) arrival-window per-job sweep (~5k jobs; jobEdit accepts arrivalWindow — canary #7778 first); (2) rebuild n8n WF-1/WF-2 around home-slots+grid, schedule 04:30+13:00 (needs NEW dedicated Jobber app — old cred dies); (3) freeze rule: date locks 14:00 D-1 (customer emails). OR is Pro now. Tavis out (his ZIPs→Cory temp); Brayden gone (→Luke).
+
+> Curated durable facts, loaded at session start. Capped at 2,500 characters.
+
+## Active Threads
+- **Route automation (Got Moles):** n8n scheduled automation OFF — do not reactivate. 508/508 visits live in Jobber on `home-slots.json` (source of truth; `territory-grid.json` ~125 ZIPs for new customers only). Arrival-window backfill COMPLETE (07-12): 64,156 visits written, 273 failed (deleted visits, ~0.4%) — every future visit now has a window. Next: rebuild n8n WF-1/WF-2 around home-slots+grid (04:30+13:00, needs dedicated Jobber app — credential died 2x).
+- **Jobber notes automation:** n8n report wf `2dxtg73X1JUvLUTr` active daily 18:00 PT + cron `jobber-visit-followups` 18:15 — confirm recent runs succeeded. `engine.mjs --execute` proven live 07-10 (follow-ups/dedupe/Sunday sweep, Spencer-approved) but not yet unattended. Pending: regenerate leaked Jobber client secret/refresh token.
+- **Cash-flow projection (Got Moles):** weekly automation = n8n Cloud wf `Aly1V11tqwSQhTls` (INACTIVE) → Notion "Cash-Flow Snapshots" DB. Next: user connects Notion cred + shares DB, then Execute.
+- **TMCP tagging gap:** signups #8030+ aren't auto-tagged `TMCP - Active`. Leak candidate: Karen Porter #5007 (~$2,900 owed, uninvoiced since 2024-02) — Spencer to review.
+
+## Environment Notes
+- Local cron runtime fixed (stopgap, 07-10): daemon launches Claude via `AGENTIC_OS_CLAUDE_BIN=C:\Users\spenc\.local\bin\claude.exe` (setx-persisted) — bypasses ENOENT launcher bug. Rerun `start-crons` after reboot.
+- Browser control: `tool-browser` skill drives visible Chrome via zero-dep CDP (`node browser/launch.mjs` then `node browser/cdp.mjs <goto|shot|text|eval|click|type>`). Profile `C:\Users\spenc\.agentic-chrome-profile`. Never bulk-automate LinkedIn.
+- Jobber n8n auth = credential `NitrghZSAjZamvqp` "Jobber OAuth2 (native)", Auth=Body. Jobber `job.notes` returns OLDEST-first — fetch `notes(last: 40)`, never `notes(first: N)`.
+- OptimoRoute API live — `OPTIMOROUTE_API_KEY` in `.env`; account now on Pro (needed for dateRange planning).
+
+## Pending Decisions
+- LinkedIn growth (Got Moles, from 2026-07-06): user to paste new headline+About & fix profile, then start daily connecting. Full plan + ~55-target list + 22 outreach drafts in `projects/tool-browser/`.

@@ -4,12 +4,18 @@
 // follow-up visit plan per the CANONICAL scheduling rules in brief.md. Dry-run by default;
 // pass --execute to perform the reschedules/adds against the live Jobber account.
 //
-// Usage (run from repo root):
-//   node projects/briefs/jobber-notes-automation/engine.mjs [--date=YYYY-MM-DD] [--jobs=40] [--execute] [--json]
+// Read strategy (v2, 2026-07-10): visits-first, same as report-sync.mjs. Page the day's
+// visits (cheap), dedup to their jobs, then fetch notes + upcoming visits for ONLY those
+// jobs in aliased batches. The old unfiltered jobs(first: N) pull missed most of a day's
+// visited jobs (0 of 65 on 2026-07-09).
 //
-// Reuses the tool-jobber skill's authenticated GraphQL client (token refresh handled there).
+// Auth: sanctioned direct-fetch pattern (refresh at start, rotated token persisted to
+// .env, re-refresh on 401) — NOT the tool-jobber CLI, which treats Jobber's partial
+// "RequestNote ... hidden due to permissions" errors as fatal and drops the data.
+//
+// Usage (run from repo root):
+//   node projects/briefs/jobber-notes-automation/engine.mjs [--date=YYYY-MM-DD] [--execute] [--json] [--log]
 
-import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import fs from 'node:fs';
@@ -17,13 +23,16 @@ import { parseNote } from './parse-note.mjs';
 import { decideVisit } from './decide.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const JOBBER = path.resolve(__dirname, '../../../.claude/skills/tool-jobber/scripts/jobber-api.mjs');
+const ENV_PATH = path.resolve(__dirname, '../../../.env');
+const TOKEN_URL = 'https://api.getjobber.com/api/oauth/token';
+const GQL_URL = 'https://api.getjobber.com/api/graphql';
+const GQL_VERSION = '2025-04-16';
 const TZ = 'America/Los_Angeles';
 
 const argv = process.argv.slice(2);
 const arg = k => (argv.find(a => a.startsWith(`--${k}=`)) || '').split('=')[1];
-const TODAY = arg('date') || new Date().toISOString().slice(0, 10);
-const JOBS_N = +arg('jobs') || 40;
+const TODAY = arg('date') || new Date().toLocaleString('sv-SE', { timeZone: TZ }).slice(0, 10);
+const CHUNK = +arg('chunk') || 15;
 const EXECUTE = argv.includes('--execute');
 const JSON_OUT = argv.includes('--json');
 const LOG = argv.includes('--log');
@@ -32,42 +41,130 @@ const LOG = argv.includes('--log');
 const buf = [];
 const say = (...a) => { const line = a.join(' '); buf.push(line); console.log(line); };
 
-// --- Jobber GraphQL via the skill's CLI ---
-// Retries transient token/refresh races (rotation can 401 a concurrent refresh).
-function gql(query, attempt = 0) {
-  try {
-    const out = execFileSync('node', [JOBBER, 'query', query], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
-    if (/GraphQL errors/i.test(out)) throw new Error(out.trim());
-    const i = out.indexOf('{');
-    if (i < 0) throw new Error('No JSON from jobber-api: ' + out.slice(0, 300));
-    const j = JSON.parse(out.slice(i));
-    return j.data || j;
-  } catch (e) {
-    const transient = /HTTP 401|Token request failed|ECONNRESET|ETIMEDOUT|handle->flags/i.test(e.message || '');
-    if (transient && attempt < 3) {
-      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 500 * (attempt + 1)); // sync backoff
-      return gql(query, attempt + 1);
-    }
-    throw e;
+// ---------- auth (persist rotated refresh token, same as jobber-api.mjs) ----------
+function loadEnv() {
+  const env = {};
+  for (const line of fs.readFileSync(ENV_PATH, 'utf8').split(/\r?\n/)) {
+    const m = line.match(/^([A-Z0-9_]+)=(.*)$/);
+    if (m) env[m[1]] = m[2].trim();
   }
+  return env;
+}
+function saveEnvKey(key, value) {
+  let txt = fs.readFileSync(ENV_PATH, 'utf8');
+  const re = new RegExp(`^${key}=.*$`, 'm');
+  txt = re.test(txt) ? txt.replace(re, `${key}=${value}`) : txt + `\n${key}=${value}\n`;
+  fs.writeFileSync(ENV_PATH, txt);
+}
+let accessToken = null, tokenAt = 0;
+async function getToken(force = false) {
+  if (!force && accessToken && Date.now() - tokenAt < 50 * 60 * 1000) return accessToken;
+  const env = loadEnv();
+  const res = await fetch(TOKEN_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      client_id: env.JOBBER_CLIENT_ID,
+      client_secret: env.JOBBER_CLIENT_SECRET,
+      grant_type: 'refresh_token',
+      refresh_token: env.JOBBER_REFRESH_TOKEN,
+    }),
+  });
+  const d = await res.json().catch(() => ({}));
+  if (!res.ok) { console.error(`Token refresh failed HTTP ${res.status}`, JSON.stringify(d)); process.exit(1); }
+  if (d.refresh_token && d.refresh_token !== env.JOBBER_REFRESH_TOKEN) saveEnvKey('JOBBER_REFRESH_TOKEN', d.refresh_token);
+  accessToken = d.access_token;
+  tokenAt = Date.now();
+  return accessToken;
 }
 
-// --- date helper (Jobber startAt is midnight-local, so the date part is the local date) ---
-const localDate = startAt => String(startAt).slice(0, 10);
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const onlyPermissionHides = errs => errs.every(e => /hidden due to permissions/i.test(e.message || ''));
 
-// --- pull jobs + latest note + upcoming visits ---
-function fetchJobs() {
-  const q = `query { jobs(first: ${JOBS_N}) { nodes {
-    id jobNumber client { name }
-    notes(first: 50) { nodes { __typename ... on JobNote { message createdAt } } }
-    visits(first: 4, filter: { status: UPCOMING }) { nodes { id startAt assignedUsers(first: 3) { nodes { id } } } }
-  } } }`;
-  return gql(q).jobs.nodes;
+async function gql(query, attempt = 0) {
+  const token = await getToken();
+  const res = await fetch(GQL_URL, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+      'X-JOBBER-GRAPHQL-VERSION': GQL_VERSION,
+    },
+    body: JSON.stringify({ query }),
+  });
+  if (res.status === 401 && attempt < 2) { await getToken(true); return gql(query, attempt + 1); }
+  const data = await res.json().catch(() => ({}));
+  const throttled = res.status === 429 || (data.errors && JSON.stringify(data.errors).includes('THROTTLED'));
+  if (throttled && attempt < 6) {
+    const wait = Math.min(60000, 2000 * 2 ** attempt);
+    console.log(`  … throttled — backing off ${wait / 1000}s`);
+    await sleep(wait);
+    return gql(query, attempt + 1);
+  }
+  if (!res.ok) throw new Error(`HTTP ${res.status}: ${JSON.stringify(data).slice(0, 300)}`);
+  if (data.errors && !(data.data && onlyPermissionHides(data.errors))) {
+    throw new Error(`GraphQL: ${JSON.stringify(data.errors).slice(0, 300)}`);
+  }
+  return data.data;
+}
+
+// --- date helpers ---
+const localDate = startAt => String(startAt).slice(0, 10);
+// PT day [00:00, 24:00) expressed in UTC (handles PDT/PST).
+function ptDayBoundsUtc(date) {
+  const mk = (yy, mm, dd) => {
+    const noonUtc = new Date(Date.UTC(yy, mm - 1, dd, 12));
+    const ptHour = +noonUtc.toLocaleString('en-US', { timeZone: TZ, hour: '2-digit', hour12: false });
+    return new Date(Date.UTC(yy, mm - 1, dd, 12 - ptHour)).toISOString();
+  };
+  const [y, m, d] = date.split('-').map(Number);
+  const next = new Date(Date.UTC(y, m - 1, d + 1));
+  return { after: mk(y, m, d), before: mk(next.getUTCFullYear(), next.getUTCMonth() + 1, next.getUTCDate()) };
+}
+
+// --- pull the day's visited jobs (visits-first), then notes + upcoming visits per job ---
+// Visit scan reaches 2 days BACK from the run date: techs sometimes write the note the
+// day after the visit (seen live: visited 07-09, note created 07-10 — invisible to both
+// days' runs when the scan covered only the run date). The latest-note-date == run-date
+// check below still decides which jobs actually get processed.
+async function fetchJobs() {
+  const scanFrom = (d => { const [y, m, dd] = d.split('-').map(Number); return new Date(Date.UTC(y, m - 1, dd - 2)).toISOString().slice(0, 10); })(TODAY);
+  const { after } = ptDayBoundsUtc(scanFrom);
+  const { before } = ptDayBoundsUtc(TODAY);
+  const jobsById = new Map();
+  let cursor = null, pages = 0;
+  for (;;) {
+    pages++;
+    const afterArg = cursor ? `, after: "${cursor}"` : '';
+    const v = (await gql(`query { visits(first: 100${afterArg}, filter: { startAt: { after: "${after}", before: "${before}" } }) {
+      nodes { id job { id } }
+      pageInfo { hasNextPage endCursor } } }`)).visits;
+    for (const n of v.nodes) if (n.job) jobsById.set(n.job.id, true);
+    if (!v.pageInfo.hasNextPage || pages >= 10) break;
+    cursor = v.pageInfo.endCursor;
+    await sleep(400);
+  }
+  // Follow-up check = visits by DATE (anything after the noted day), NOT status UPCOMING:
+  // a follow-up that's happening today or already completed isn't UPCOMING anymore and
+  // would be falsely reported missing (the Mike Coile case, 2026-07-10).
+  const JOB_SEL = `id jobNumber jobType jobStatus jobberWebUri client { name }
+    notes(last: 40) { nodes { __typename ... on JobNote { message createdAt } } }
+    visits(first: 6, filter: { startAt: { after: "${before}" } }) { nodes { id startAt assignedUsers(first: 3) { nodes { id } } } }`;
+  const ids = [...jobsById.keys()];
+  const jobs = [];
+  for (let i = 0; i < ids.length; i += CHUNK) {
+    const chunk = ids.slice(i, i + CHUNK);
+    const q = `query { ${chunk.map((id, k) => `j${k}: job(id: ${JSON.stringify(id)}) { ${JOB_SEL} }`).join(' ')} }`;
+    const d = await gql(q);
+    for (const k of Object.keys(d)) if (d[k]) jobs.push(d[k]);
+    if (i + CHUNK < ids.length) await sleep(600);
+  }
+  return jobs;
 }
 
 // --- decide the action for one job ---
 function planFor(job) {
-  const jobNotes = (job.notes.nodes || []).filter(n => n.__typename === 'JobNote' && n.message);
+  const jobNotes = (job.notes.nodes || []).filter(n => n && n.__typename === 'JobNote' && n.message);
   if (!jobNotes.length) return null;
   const latest = jobNotes.reduce((a, b) => (a.createdAt > b.createdAt ? a : b));
   const completed = localDate(latest.createdAt);
@@ -89,6 +186,7 @@ function planFor(job) {
 
   return {
     jobNumber: job.jobNumber, jobId: job.id,
+    jobType: job.jobType, jobStatus: job.jobStatus, webUri: job.jobberWebUri,
     client: job.client?.name || '(no client)',
     completed, nextAction: parsed.nextAction || '(none)',
     activity: parsed.activity, moles: parsed.moles,
@@ -98,38 +196,39 @@ function planFor(job) {
 }
 
 // --- executors ---
-function execPull(p) {
+async function execPull(p) {
   const m = `mutation { visitEditSchedule(id: "${p.visitId}", input: {
     startAt: { date: "${p.target}", timezone: "${TZ}" }, endAt: { date: "${p.target}", timezone: "${TZ}" }
   }) { visit { startAt } userErrors { message } } }`;
-  const r = gql(m).visitEditSchedule;
+  const r = (await gql(m)).visitEditSchedule;
   if (r.userErrors?.length) throw new Error(JSON.stringify(r.userErrors));
   return r.visit.startAt;
 }
-function execAdd(p) {
+async function execAdd(p) {
   const tech = p.tech?.length ? `, teamMemberIdsToAssign: [${p.tech.map(t => `"${t}"`).join(', ')}]` : '';
   const m = `mutation { visitCreate(jobId: "${p.jobId}", input: { visits: [{ title: ${JSON.stringify(p.client)}, schedule: {
     startAt: { date: "${p.target}", timezone: "${TZ}" }, endAt: { date: "${p.target}", timezone: "${TZ}" }${tech}
   } }] }) { createdVisits { startAt } userErrors { message } } }`;
-  const r = gql(m).visitCreate;
+  const r = (await gql(m)).visitCreate;
   if (r.userErrors?.length) throw new Error(JSON.stringify(r.userErrors));
   return r.createdVisits[0].startAt;
 }
 
 // --- run ---
-const jobs = fetchJobs();
+const jobs = await fetchJobs();
 const plans = jobs.map(planFor).filter(Boolean);
 
 if (JSON_OUT) { console.log(JSON.stringify({ date: TODAY, plans }, null, 2)); process.exit(0); }
 
 const tag = { PULL: '⏪ PULL ', ADD: '➕ ADD  ', LEAVE: '   leave', ALREADY: '✓ done  ', TASK: '📋 task ' };
 say(`\nGot Moles — visit-note automation ${EXECUTE ? '⚡ EXECUTE' : '🔍 DRY RUN'} — completed ${TODAY}`);
-say(`Scanned ${jobs.length} recent jobs; ${plans.length} were visited on ${TODAY}.\n`);
+say(`Day's visited jobs: ${jobs.length}; ${plans.length} have a note from ${TODAY}.\n`);
 for (const p of plans) {
   let status = tag[p.action] || p.action;
   if (EXECUTE && (p.action === 'PULL' || p.action === 'ADD')) {
-    try { const at = p.action === 'PULL' ? execPull(p) : execAdd(p); status = (p.action === 'PULL' ? '⏪ PULLED' : '➕ ADDED ') + ` @${localDate(at)}`; }
+    try { const at = p.action === 'PULL' ? await execPull(p) : await execAdd(p); status = (p.action === 'PULL' ? '⏪ PULLED' : '➕ ADDED ') + ` @${localDate(at)}`; }
     catch (e) { status = '❌ FAIL: ' + e.message.slice(0, 120); }
+    await sleep(300);
   }
   say(`${status} | ${String(p.jobNumber).padEnd(5)} ${p.client.slice(0, 22).padEnd(22)} | ${p.nextAction.padEnd(22)} | ${p.detail}`);
 }
