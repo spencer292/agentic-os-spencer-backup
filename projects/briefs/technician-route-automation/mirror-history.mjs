@@ -174,7 +174,7 @@ for (const v of visits) {
   dayTotals[floats ? 'floating' : targetDate] = (dayTotals[floats ? 'floating' : targetDate] || 0) + 1;
   const payload = {
     operation: 'SYNC', orderNo: no, type: d.type || 'T', date: targetDate,
-    duration: d.duration, priority: d.priority || 'M',
+    duration: d.duration, priority: 'M', // uniform — priority warps route shape (serves high-prio earlier)
     location: { address: d.location.address, locationName: d.location.locationName, latitude: d.location.latitude, longitude: d.location.longitude, acceptPartialMatch: true, acceptMultipleResults: true },
     allowedDates: floats ? { from: DATES[0], to: DATES[4] } : { from: targetDate, to: targetDate },
     allowedWeekdays: ['mon', 'tue', 'wed', 'thu', 'fri'],

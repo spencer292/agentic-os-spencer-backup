@@ -184,7 +184,9 @@ for (const vis of Object.values(byId)) {
       type: 'T',
       date: visitDate,
       duration: isSet ? 20 : 10,
-      priority: isSet ? 'C' : 'M',
+      // Uniform priority: OptimoRoute serves higher-priority orders earlier in the day,
+      // which warps the route shape. Promises are made FROM the plan, never fed in as priority.
+      priority: 'M',
       location: {
         address: `${a.street}, ${a.city}, ${a.province || 'WA'} ${a.postalCode || ''}`,
         locationName: (((vis.title || 'Unknown') + '').trim().replace(/\s+/g, ' ') + ' · #' + jn).slice(0, 60),

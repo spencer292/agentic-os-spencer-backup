@@ -107,7 +107,7 @@ for (const s of stops) {
   const targetDate = DATES[day];
   const payload = {
     operation: 'SYNC', orderNo: s.orderNo, type: d.type || 'T', date: targetDate,
-    duration: d.duration, priority: d.priority || 'M',
+    duration: d.duration, priority: 'M', // uniform — priority warps route shape (serves high-prio earlier)
     location: { address: d.location.address, locationName: d.location.locationName, latitude: d.location.latitude, longitude: d.location.longitude, acceptPartialMatch: true, acceptMultipleResults: true },
     allowedDates: { from: targetDate, to: targetDate },
     allowedWeekdays: ['mon', 'tue', 'wed', 'thu', 'fri'],
