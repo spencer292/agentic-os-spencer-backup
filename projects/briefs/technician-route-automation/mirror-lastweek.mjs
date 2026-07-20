@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // MIRROR LAST WEEK (Spencer: "everything I want is on the right days from last week").
-// Each job visited last week (7/06-7/10, completed) -> SAME weekday + SAME tech next week.
+// Each job visited last week (7/13-7/17, completed) -> SAME weekday + SAME tech next week.
 // Jobs not on last week's board -> rough-draft grid (day+tech by ZIP). Sets/committed untouched.
 // Usage: node mirror-lastweek.mjs dry|live   (then optimize-week.mjs plan --fresh)
 import fs from 'node:fs';
@@ -16,7 +16,7 @@ const key = process.env.OPTIMOROUTE_API_KEY;
 const TZ = 'America/Los_Angeles';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const GRID = JSON.parse(fs.readFileSync(path.join(__dirname, 'territory-grid.json'), 'utf8')).zips;
-const DATES = { Monday: '2026-07-13', Tuesday: '2026-07-14', Wednesday: '2026-07-15', Thursday: '2026-07-16', Friday: '2026-07-17' };
+const DATES = { Monday: '2026-07-20', Tuesday: '2026-07-21', Wednesday: '2026-07-22', Thursday: '2026-07-23', Friday: '2026-07-24' };
 const DAYK = { mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday' };
 
 function saveEnvKey(k, v) {
@@ -52,7 +52,7 @@ async function jgql(q, v, a = 0) {
 const lastWeek = {};
 let cursor = null, n = 0;
 for (;;) {
-  const q = `query($after: String) { visits(first: 25, after: $after, filter: { status: COMPLETED, startAt: { after: "2026-07-06T06:59:59Z", before: "2026-07-11T07:00:00Z" } }) { nodes { startAt assignedUsers(first: 1) { nodes { name { full } } } job { jobNumber } } pageInfo { hasNextPage endCursor } } }`;
+  const q = `query($after: String) { visits(first: 25, after: $after, filter: { status: COMPLETED, startAt: { after: "2026-07-13T06:59:59Z", before: "2026-07-18T07:00:00Z" } }) { nodes { startAt assignedUsers(first: 1) { nodes { name { full } } } job { jobNumber } } pageInfo { hasNextPage endCursor } } }`;
   const d = await jgql(q, { after: cursor });
   for (const v of d.visits.nodes) {
     n++;
@@ -60,7 +60,7 @@ for (;;) {
     const tech = v.assignedUsers?.nodes?.[0]?.name?.full;
     if (jn == null || !tech) continue;
     const wd = new Date(v.startAt).toLocaleDateString('en-US', { timeZone: TZ, weekday: 'long' });
-    if (DATES[wd]) lastWeek[jn] = { day: (tech === 'Spencer Hill' && wd === 'Wednesday') ? 'Friday' : wd, tech }; // Spencer's last-week Wed (mountain corridor) = his Friday this week
+    if (DATES[wd]) lastWeek[jn] = { day: wd, tech }; // straight mirror: last week's actual day IS the wanted day (the Wed->Fri remap was a one-time 07-13 correction)
   }
   if (!d.visits.pageInfo.hasNextPage) break;
   cursor = d.visits.pageInfo.endCursor;

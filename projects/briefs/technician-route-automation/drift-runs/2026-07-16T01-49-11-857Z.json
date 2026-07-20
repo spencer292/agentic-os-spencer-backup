@@ -1,0 +1,56 @@
+{
+ "ranAt": "2026-07-16T01:49:11.857Z",
+ "mode": "check",
+ "plannedDays": [
+  "2026-07-16",
+  "2026-07-17"
+ ],
+ "counts": {
+  "activeVisits": 231,
+  "scheduledStops": 229,
+  "missing": 2,
+  "dayDrift": 0,
+  "techDrift": 1,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 0
+ },
+ "missing": [
+  {
+   "orderNo": "8176-2254358393",
+   "job": "8176",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNTQzNTgzOTM=",
+   "date": "2026-07-16",
+   "hm": "08:42",
+   "tech": "Spencer Hill",
+   "title": "Mark & Lois Parhaniemei",
+   "address": "1039 North 41st Place, Renton, Washington 98056",
+   "isSet": true
+  },
+  {
+   "orderNo": "8174-2254186635",
+   "job": "8174",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNTQxODY2MzU=",
+   "date": "2026-07-16",
+   "hm": "15:30",
+   "tech": "Cory Ventura",
+   "title": "Gina Beam (set)",
+   "address": "3531 Sahalee Drive West, Sammamish, Washington 98074",
+   "isSet": true
+  }
+ ],
+ "dayDrift": [],
+ "techDrift": [
+  {
+   "orderNo": "8169-2253062256",
+   "job": "8169",
+   "date": "2026-07-16",
+   "jobber": "Cory Ventura",
+   "optimo": "Spencer Hill"
+  }
+ ],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [],
+ "fixes": []
+}

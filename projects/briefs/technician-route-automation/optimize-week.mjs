@@ -292,7 +292,7 @@ if (mode === 'plan') {
       ops.push(`mutation { visitEditSchedule(id: "${w.visitId}", input: { startAt: { date: "${w.date}", time: "${w.time}", timezone: "${TZ}" }, endAt: { date: "${endPT.slice(0, 10)}", time: "${endPT.slice(11, 19)}", timezone: "${TZ}" } }) { userErrors { message } } }`);
     }
     if (w.doAssign) {
-      ops.push(`mutation { visitEditAssignedUsers(id: "${w.visitId}", input: { assignedUsers: ["${w.newUserId}"] }) { userErrors { message } } }`);
+      ops.push(`mutation { visitEditAssignedUsers(visitId: "${w.visitId}", input: { assignedUserIds: ["${w.newUserId}"] }) { userErrors { message } } }`);
     }
     let bad = null;
     for (const op of ops) {

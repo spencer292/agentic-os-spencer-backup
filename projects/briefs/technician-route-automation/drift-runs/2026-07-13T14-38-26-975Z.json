@@ -1,0 +1,50 @@
+{
+ "ranAt": "2026-07-13T14:38:26.974Z",
+ "mode": "check",
+ "plannedDays": [
+  "2026-07-14",
+  "2026-07-15",
+  "2026-07-16",
+  "2026-07-17"
+ ],
+ "counts": {
+  "activeVisits": 419,
+  "scheduledStops": 417,
+  "missing": 2,
+  "dayDrift": 0,
+  "techDrift": 0,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 0
+ },
+ "missing": [
+  {
+   "orderNo": "6116-1986408289",
+   "job": "6116",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE5ODY0MDgyODk=",
+   "date": "2026-07-16",
+   "hm": "17:40",
+   "tech": "Spencer Hill",
+   "title": "Noel Murphy",
+   "address": "11041 Southeast 26th Street, Bellevue, Washington 98004",
+   "isSet": false
+  },
+  {
+   "orderNo": "4979-2249346626",
+   "job": "4979",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNDkzNDY2MjY=",
+   "date": "2026-07-17",
+   "hm": "08:00",
+   "tech": "Luke LaVergne",
+   "title": "Marcus Andy",
+   "address": "23312 54th Street East, Buckley, Washington 98321",
+   "isSet": false
+  }
+ ],
+ "dayDrift": [],
+ "techDrift": [],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [],
+ "fixes": []
+}

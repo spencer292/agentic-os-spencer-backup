@@ -22,9 +22,12 @@ Create OR orders for active future visits in the window (today+1 → +7; morning
 - **Territory lock:** `assignedTo.serial = <Jobber tech full name>` — hard constraint; the optimizer
   can never hand a job to a different tech. Visit with no tech → flagged in Notion log, never guessed.
 - **Day flexibility:** regular visits get `allowedDates {from: today+1, to: +7}` (any day that week).
-  **Sets (first visits) are date-fixed** with `priority: C` — promised days hold; if a set doesn't
-  fit its day, it comes back *unscheduled* and is flagged for Spencer's decision (toggle available
-  to let sets slide instead).
+  **Sets (first visits) are date-fixed** via `allowedDates {from: <day>, to: <day>}` — promised days
+  hold; if a set doesn't fit its day, it comes back *unscheduled* and is flagged for Spencer's
+  decision (toggle available to let sets slide instead).
+- **Priority is ALWAYS `M`, on every order (policy 2026-07-12).** OR serves higher-priority orders
+  earlier in the day, which warps routes (~20% worse — root cause of the Kenmore zigzag). Never
+  encode promises as priority; real promised times go in as order `timeWindows` only.
 - **Durations:** standard trap check = 10 min; set = 20 min (adjustable — Spencer said "a little longer").
 - **Hygiene:** before pushing, delete only orders this automation created (own orderNo pattern) in
   the window. Never `delete_all_orders`. Never touch foreign orders.
@@ -44,6 +47,16 @@ Create OR orders for active future visits in the window (today+1 → +7; morning
 ### WF-3 — Time-fix (parked until WF-1/2 proven)
 Set a time on every future "anytime" visit. Runs only in the evening after field hours so no
 customer gets a same-day notification about a visit that isn't coming.
+
+### Drift check — LIVE as an Agentic OS cron (2026-07-13, interim until WF-1/2)
+`cron/jobs/route-drift-check.md` runs `drift-check.mjs fix` every 2h, 09:00–17:00 PT daily
+(Spencer authorized auto-fix). Diffs the Jobber board vs the OR plan for every OR-planned future
+day: new Jobber bookings missing from OR are created (SYNC, geocoded, locked to Jobber day+tech,
+priority M), that day is re-planned with all existing stops locked to day+tech (balancing OFF),
+verified (any day/tech change on an existing stop aborts with zero writes), and times written back
+to Jobber. Day/tech/time drift on EXISTING orders is report-only — a hand-move in Jobber may be
+deliberate. Frozen days (14:00 PT D-1 email cutoff): order created in OR, no re-plan, no writes,
+flagged. Max 15 creations/run. Reports in `drift-runs/`. This logic folds into WF-2 at rebuild.
 
 ### WF-4 — Tech-added-visit watcher (parked / later)
 Jobber events already stream into n8n (`gFYppNw0cFZKuHpA` webhook, HMAC-signed) — future trigger source.

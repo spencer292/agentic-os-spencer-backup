@@ -1,0 +1,339 @@
+{
+ "ranAt": "2026-07-13T14:39:35.272Z",
+ "mode": "fix",
+ "plannedDays": [
+  "2026-07-14",
+  "2026-07-15",
+  "2026-07-16",
+  "2026-07-17"
+ ],
+ "counts": {
+  "activeVisits": 419,
+  "scheduledStops": 417,
+  "missing": 2,
+  "dayDrift": 0,
+  "techDrift": 0,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 0
+ },
+ "missing": [
+  {
+   "orderNo": "6116-1986408289",
+   "job": "6116",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE5ODY0MDgyODk=",
+   "date": "2026-07-16",
+   "hm": "17:40",
+   "tech": "Spencer Hill",
+   "title": "Noel Murphy",
+   "address": "11041 Southeast 26th Street, Bellevue, Washington 98004",
+   "isSet": false
+  },
+  {
+   "orderNo": "4979-2249346626",
+   "job": "4979",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNDkzNDY2MjY=",
+   "date": "2026-07-17",
+   "hm": "08:00",
+   "tech": "Luke LaVergne",
+   "title": "Marcus Andy",
+   "address": "23312 54th Street East, Buckley, Washington 98321",
+   "isSet": false
+  }
+ ],
+ "dayDrift": [],
+ "techDrift": [],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [],
+ "fixes": [
+  {
+   "day": "2026-07-16",
+   "writable": true,
+   "created": [
+    "6116-1986408289"
+   ],
+   "replanned": true,
+   "writes": [
+    {
+     "orderNo": "6355-2247104335",
+     "from": "2026-07-16 09:28",
+     "to": "2026-07-16 09:18",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "7011-2247105727",
+     "from": "2026-07-16 09:17",
+     "to": "2026-07-16 09:29",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "6116-1986408289",
+     "from": "2026-07-16 17:40",
+     "to": "2026-07-16 10:45",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8045-2226612901",
+     "from": "2026-07-16 10:48",
+     "to": "2026-07-16 11:07",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "5106-2247435183",
+     "from": "2026-07-16 11:14",
+     "to": "2026-07-16 11:33",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "5751-1870719595",
+     "from": "2026-07-16 11:29",
+     "to": "2026-07-16 11:48",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7960-2248792241",
+     "from": "2026-07-16 11:47",
+     "to": "2026-07-16 12:06",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7995-2215833874",
+     "from": "2026-07-16 12:07",
+     "to": "2026-07-16 12:26",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8113-2247356213",
+     "from": "2026-07-16 12:27",
+     "to": "2026-07-16 12:46",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "5411-2248792233",
+     "from": "2026-07-16 12:40",
+     "to": "2026-07-16 13:00",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7531-2246181781",
+     "from": "2026-07-16 12:58",
+     "to": "2026-07-16 13:17",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7988-2247355298",
+     "from": "2026-07-16 13:12",
+     "to": "2026-07-16 13:31",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "5726-2247354304",
+     "from": "2026-07-16 13:25",
+     "to": "2026-07-16 13:45",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7826-2248792222",
+     "from": "2026-07-16 13:42",
+     "to": "2026-07-16 14:01",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7351-1916912724",
+     "from": "2026-07-16 13:53",
+     "to": "2026-07-16 14:12",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7904-2166561931",
+     "from": "2026-07-16 14:10",
+     "to": "2026-07-16 14:29",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8115-2241202521",
+     "from": "2026-07-16 14:27",
+     "to": "2026-07-16 14:47",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7998-2216284513",
+     "from": "2026-07-16 14:45",
+     "to": "2026-07-16 15:04",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "5034-1662807311",
+     "from": "2026-07-16 15:02",
+     "to": "2026-07-16 15:21",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "5594-1613400115",
+     "from": "2026-07-16 15:16",
+     "to": "2026-07-16 15:35",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8130-2244174003",
+     "from": "2026-07-16 15:32",
+     "to": "2026-07-16 15:51",
+     "driver": "Spencer Hill"
+    }
+   ],
+   "failures": [],
+   "aborted": null
+  },
+  {
+   "day": "2026-07-17",
+   "writable": true,
+   "created": [
+    "4979-2249346626"
+   ],
+   "replanned": true,
+   "writes": [
+    {
+     "orderNo": "4979-2249346626",
+     "from": "2026-07-17 08:00",
+     "to": "2026-07-17 11:05",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5227-2248086792",
+     "from": "2026-07-17 11:10",
+     "to": "2026-07-17 11:25",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7694-2046040967",
+     "from": "2026-07-17 11:26",
+     "to": "2026-07-17 11:40",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8123-2242795931",
+     "from": "2026-07-17 11:45",
+     "to": "2026-07-17 11:59",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8031-2223768136",
+     "from": "2026-07-17 11:59",
+     "to": "2026-07-17 12:14",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7371-1918993239",
+     "from": "2026-07-17 12:16",
+     "to": "2026-07-17 12:31",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8000-2216962716",
+     "from": "2026-07-17 12:29",
+     "to": "2026-07-17 12:44",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "4994-2248766341",
+     "from": "2026-07-17 12:45",
+     "to": "2026-07-17 12:59",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8017-2219818308",
+     "from": "2026-07-17 12:57",
+     "to": "2026-07-17 13:12",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8079-2234758915",
+     "from": "2026-07-17 13:10",
+     "to": "2026-07-17 13:24",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5424-2240278217",
+     "from": "2026-07-17 13:25",
+     "to": "2026-07-17 13:39",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7616-2015178393",
+     "from": "2026-07-17 13:38",
+     "to": "2026-07-17 13:52",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "4335-2116352978",
+     "from": "2026-07-17 13:51",
+     "to": "2026-07-17 14:06",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7848-2129407788",
+     "from": "2026-07-17 14:05",
+     "to": "2026-07-17 14:20",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7610-2015093863",
+     "from": "2026-07-17 14:18",
+     "to": "2026-07-17 14:33",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7611-2015101377",
+     "from": "2026-07-17 14:32",
+     "to": "2026-07-17 14:47",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7612-2015114587",
+     "from": "2026-07-17 14:46",
+     "to": "2026-07-17 15:01",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7613-2015123178",
+     "from": "2026-07-17 15:01",
+     "to": "2026-07-17 15:15",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7614-2015166009",
+     "from": "2026-07-17 15:17",
+     "to": "2026-07-17 15:31",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7615-2015172796",
+     "from": "2026-07-17 15:30",
+     "to": "2026-07-17 15:44",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8013-2219367573",
+     "from": "2026-07-17 11:14",
+     "to": "2026-07-17 10:50",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8044-2226611750",
+     "from": "2026-07-17 11:03",
+     "to": "2026-07-17 11:02",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7691-2044538233",
+     "from": "2026-07-17 10:50",
+     "to": "2026-07-17 11:14",
+     "driver": "Spencer Hill"
+    }
+   ],
+   "failures": [],
+   "aborted": null
+  }
+ ]
+}

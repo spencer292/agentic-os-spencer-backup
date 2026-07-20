@@ -1,0 +1,40 @@
+{
+ "ranAt": "2026-07-20T04:42:54.015Z",
+ "mode": "check",
+ "plannedDays": [
+  "2026-07-20",
+  "2026-07-21",
+  "2026-07-22",
+  "2026-07-23",
+  "2026-07-24"
+ ],
+ "counts": {
+  "activeVisits": 526,
+  "scheduledStops": 525,
+  "missing": 1,
+  "dayDrift": 0,
+  "techDrift": 0,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 0
+ },
+ "missing": [
+  {
+   "orderNo": "8186-2258086569",
+   "job": "8186",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNTgwODY1Njk=",
+   "date": "2026-07-21",
+   "hm": "00:00",
+   "tech": "Luke LaVergne",
+   "title": "Sarah Arnold (SET)",
+   "address": "2517 10th Street Southwest, Puyallup, Washington 98373",
+   "isSet": true
+  }
+ ],
+ "dayDrift": [],
+ "techDrift": [],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [],
+ "fixes": []
+}
