@@ -3,10 +3,10 @@
 > Curated durable facts, loaded at session start. Capped at 2,500 characters.
 
 ## Active Threads
-- **Route automation (Got Moles):** n8n OFF — do not reactivate. **Weekly flow (MANDATORY): push-week → mirror-lastweek → optimize plan → verify-mirror → Spencer review → write. NEVER present the raw optimize baseline — it floats everything.** Territory map+rules: `projects/briefs/technician-route-automation/2026-07-19_week-0720-territory-map.md`. Mirror = last completed weekday+tech per job (hand edits persist). Committed: day=Jobber promise; tech needs explicit assignedTo. New customers → territory-grid.json. Spencer = overflow — ask first. Priority always M. Wk 07-20 WRITTEN to Jobber 07-19 (525/525) + verified. #8162 Montano = Luke Mondays. Jobber churns visits — diff manifest vs live before writes. Weekly write lands BEFORE 14:00 PT Sun. Drift cron 9-17 PT/2h auto-fix. Next: WF-1/2 rebuild (mirror+tech-lock+churn-diff+drift); Spencer calls 8102/8175/8185; arrival-window sweep (canary #7778). EOD tag = last stop → `eod-reroute.mjs`.
-- **Cash-flow projection:** n8n wf `Aly1V11tqwSQhTls` (INACTIVE) → Notion "Cash-Flow Snapshots" DB; user to connect cred + share DB.
-- **TMCP tagging gap:** signups #8030+ aren't auto-tagged `TMCP - Active`. Leak: Karen Porter #5007 (~$2,900 uninvoiced since 2024-02) — Spencer to review. Drop Kaiser's `TMCP Churned` + 6 stale tags (TMCP $66.8k/mo).
-- **Wk 07-20 reconciled (07-19, notes+forms):** 31 dupes deleted, 19 visits added, 3 pulled, techs set; form beats note (Cavanaugh). Open: new jobs Chirillo #7992/Foth #7993/Charles #8096 (Spencer). Drift-check 21:45: 526/526, 0 drift (#8186→Luke Tue).
+- **Route automation (Got Moles):** n8n OFF. **Weekly flow: push-week → mirror-lastweek → optimize → verify-mirror → Spencer review → write. NEVER present raw optimize baseline.** Territory map+rules in tech-route-automation brief folder (07-19 file). Mirror=last completed weekday+tech (hand edits persist); day=Jobber promise; tech needs explicit assignedTo; new customers→territory-grid.json; Spencer=overflow, ask first; priority always M. Wk 07-20 written+verified+reconciled (drift 21:45: 526/526 clean). Jobber churns visits — diff manifest vs live before writes; write BEFORE 14:00 PT Sun. Drift cron 9-17/2h auto-fix. Open: WF-1/2 rebuild; Spencer calls 8102/8175/8185 + new jobs Chirillo/Foth/Charles; arrival-window sweep (canary #7778). EOD tag=last stop→`eod-reroute.mjs`.
+- **Cash-flow projection:** n8n wf `Aly1V11tqwSQhTls` INACTIVE → Notion DB; Spencer to connect cred.
+- **TMCP gap:** #8030+ not auto-tagged `TMCP - Active`; Karen Porter #5007 ~$2.9k uninvoiced (Spencer to review); drop Kaiser `TMCP Churned` + 6 stale tags.
+- **Route Ready (zero-touch biz, LAUNCHED 07-19):** routereadykits.com live = Cloudflare Worker (`cf-deploy.mjs` one-call deploy, acct routereadykits@gmail.com — Drive masters + Apps Script + Chrome session). Gumroad `routeready`: kit $49 `/l/xolvu`, free cheatsheet `/l/vvgis` (email capture). Tokens stored: GUMROAD_* + CLOUDFLARE_* (env file). Crons ACTIVE: content M/W/F 06:30, digest Mon 07:00 (ads dormant). Brief: `projects/briefs/zero-touch-business/`. Next: PW kit (publish on traffic signal), GSC+sitemap, DNSSEC, verify KYC. 70 Spencer-min.
 
 ## Environment Notes
 - Cron stopgap (07-10): daemon launches Claude via `AGENTIC_OS_CLAUDE_BIN=C:\Users\spenc\.local\bin\claude.exe` (setx-persisted). Rerun `start-crons` after reboot.
@@ -15,4 +15,4 @@
 - OptimoRoute Pro (`OPTIMOROUTE_API_KEY`): start_planning `{dateRange:{from,to},balancing:'OFF'}`; SYNC unschedules, op UPDATE safe on planned orders; verify via get_routes.
 
 ## Pending Decisions
-- LinkedIn growth (07-06): Spencer fixes profile, then daily connecting. Plan in `projects/tool-browser/`.
+- LinkedIn growth (07-06): Spencer fixes profile → daily connecting; plan in `projects/tool-browser/`.
