@@ -1,0 +1,251 @@
+{
+ "ranAt": "2026-07-20T04:43:36.692Z",
+ "mode": "fix",
+ "plannedDays": [
+  "2026-07-20",
+  "2026-07-21",
+  "2026-07-22",
+  "2026-07-23",
+  "2026-07-24"
+ ],
+ "counts": {
+  "activeVisits": 526,
+  "scheduledStops": 525,
+  "missing": 1,
+  "dayDrift": 0,
+  "techDrift": 0,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 0
+ },
+ "missing": [
+  {
+   "orderNo": "8186-2258086569",
+   "job": "8186",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNTgwODY1Njk=",
+   "date": "2026-07-21",
+   "hm": "00:00",
+   "tech": "Luke LaVergne",
+   "title": "Sarah Arnold (SET)",
+   "address": "2517 10th Street Southwest, Puyallup, Washington 98373",
+   "isSet": true
+  }
+ ],
+ "dayDrift": [],
+ "techDrift": [],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [],
+ "fixes": [
+  {
+   "day": "2026-07-21",
+   "writable": true,
+   "created": [
+    "8186-2258086569"
+   ],
+   "replanned": true,
+   "writes": [
+    {
+     "orderNo": "8186-2258086569",
+     "from": "2026-07-21 00:00",
+     "to": "2026-07-21 07:24",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8158-2249343426",
+     "from": "2026-07-21 07:24",
+     "to": "2026-07-21 07:44",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8179-2255660319",
+     "from": "2026-07-21 07:42",
+     "to": "2026-07-21 08:02",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5344-1771976192",
+     "from": "2026-07-21 08:10",
+     "to": "2026-07-21 08:30",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7737-2243760031",
+     "from": "2026-07-21 08:25",
+     "to": "2026-07-21 08:45",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7884-2251988445",
+     "from": "2026-07-21 08:41",
+     "to": "2026-07-21 09:01",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8118-2242590332",
+     "from": "2026-07-21 08:52",
+     "to": "2026-07-21 09:12",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7674-2252231368",
+     "from": "2026-07-21 09:22",
+     "to": "2026-07-21 09:42",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5121-2252237810",
+     "from": "2026-07-21 09:48",
+     "to": "2026-07-21 10:08",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "4935-2252332540",
+     "from": "2026-07-21 10:16",
+     "to": "2026-07-21 10:36",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "4674-2252333809",
+     "from": "2026-07-21 10:36",
+     "to": "2026-07-21 10:56",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7728-2244163458",
+     "from": "2026-07-21 11:16",
+     "to": "2026-07-21 11:36",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8001-2252448691",
+     "from": "2026-07-21 12:23",
+     "to": "2026-07-21 12:43",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "6737-1803511647",
+     "from": "2026-07-21 13:04",
+     "to": "2026-07-21 13:24",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "6246-2252540933",
+     "from": "2026-07-21 13:16",
+     "to": "2026-07-21 13:36",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7693-2045669312",
+     "from": "2026-07-21 13:35",
+     "to": "2026-07-21 13:55",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7829-2244119965",
+     "from": "2026-07-21 13:52",
+     "to": "2026-07-21 14:12",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5192-2252626514",
+     "from": "2026-07-21 14:38",
+     "to": "2026-07-21 14:58",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "6619-1776930415",
+     "from": "2026-07-21 15:08",
+     "to": "2026-07-21 15:28",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7795-2244474045",
+     "from": "2026-07-21 15:46",
+     "to": "2026-07-21 16:06",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8067-2252717545",
+     "from": "2026-07-21 16:08",
+     "to": "2026-07-21 16:28",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5044-2252823685",
+     "from": "2026-07-21 16:21",
+     "to": "2026-07-21 16:41",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "6784-2244583460",
+     "from": "2026-07-21 16:39",
+     "to": "2026-07-21 16:59",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7725-2057513404",
+     "from": "2026-07-21 16:58",
+     "to": "2026-07-21 17:18",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5077-2252874822",
+     "from": "2026-07-21 17:14",
+     "to": "2026-07-21 17:34",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5727-2244844637",
+     "from": "2026-07-21 17:35",
+     "to": "2026-07-21 17:55",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8004-2252867443",
+     "from": "2026-07-21 17:51",
+     "to": "2026-07-21 18:11",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5954-2252862192",
+     "from": "2026-07-21 18:06",
+     "to": "2026-07-21 18:26",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7740-2246156524",
+     "from": "2026-07-21 18:22",
+     "to": "2026-07-21 18:42",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7836-2115796365",
+     "from": "2026-07-21 18:38",
+     "to": "2026-07-21 18:58",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8165-2251634174",
+     "from": "2026-07-21 19:06",
+     "to": "2026-07-21 19:26",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7574-2252295969",
+     "from": "2026-07-21 12:46",
+     "to": "2026-07-21 12:36",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7470-2252298286",
+     "from": "2026-07-21 12:36",
+     "to": "2026-07-21 12:46",
+     "driver": "Cammeron Anderson"
+    }
+   ],
+   "failures": [],
+   "aborted": null
+  }
+ ]
+}
