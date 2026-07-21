@@ -12,6 +12,9 @@
 
 ## Individual Skills
 
+### meta-wrap-up
+- 2026-07-20: No feedback — routine advisory session (audiobook path for *The Route*; research + recommendation only, no deliverables).
+
 ### ops-phone-roleplay
 - 2026-07-20: Skill created for Muhammad's phone onboarding. Scenario pack + answer key + progress log live in projects/briefs/callrail-faq/. Registered in CLAUDE.local.md (AGENTS.md is shipped/uneditable on this install).
 - 2026-07-20: First two live reps (Spencer, scenarios #1 and #6, 91 + 82): debrief format landed as-is. Demo reps for onlookers still get scored and logged — the log is the training record. When pricing/policy changes mid-day (CLAUDE.local.md rules), the FAQ answer key AND the muhammad-portable bundle + Downloads zip must be refreshed in the same session — a stale answer key fails the skill's own hard gate.
