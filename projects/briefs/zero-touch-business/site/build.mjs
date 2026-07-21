@@ -620,11 +620,16 @@ ${latest.map(guideCardHtml).join('\n')}
 <h2><a href="/free-pricing-cheat-sheet/">Free Pricing Cheat Sheet</a></h2>
 <p>Realistic price ranges for cleaning, pressure washing, and lawn care jobs — free, no fluff.</p>
 </div>
+<div class="card">
+<h2><a href="/book">The Route — the book</a></h2>
+<p>The founder's book on turning one-off customers into recurring revenue: <em>The Route: Stop Renting Your Customers and Start Owning Them</em>. Paperback on Amazon.</p>
+</div>
 </div>
 ${latestHtml}
 <section class="credibility">
 <h2>Built by an operator, not a template shop</h2>
 <p>Route Ready templates come from someone who actually ran the routes. The founder grew a route-based service company to 5,000 clients — the contracts, pricing math, and checklists in these kits are the ones that survived contact with real customers, real cancellations, and real crews. No theory, no filler.</p>
+<p>The full story — and the recurring-revenue playbook behind it — is in the founder's book, <a href="/book"><em>The Route: Stop Renting Your Customers and Start Owning Them</em></a>.</p>
 </section>`;
 
   const jsonld = [{

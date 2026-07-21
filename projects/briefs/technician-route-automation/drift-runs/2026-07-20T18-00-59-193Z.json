@@ -1,0 +1,92 @@
+{
+ "ranAt": "2026-07-20T18:00:59.193Z",
+ "mode": "fix",
+ "plannedDays": [
+  "2026-07-21",
+  "2026-07-22",
+  "2026-07-23",
+  "2026-07-24"
+ ],
+ "counts": {
+  "activeVisits": 433,
+  "scheduledStops": 434,
+  "missing": 0,
+  "dayDrift": 0,
+  "techDrift": 0,
+  "timeDrift": 8,
+  "noTime": 0,
+  "orphans": 1
+ },
+ "missing": [],
+ "dayDrift": [],
+ "techDrift": [],
+ "timeDrift": [
+  {
+   "orderNo": "6567-2252805516",
+   "job": "6567",
+   "date": "2026-07-21",
+   "jobber": "07:13",
+   "optimo": "15:35"
+  },
+  {
+   "orderNo": "8116-2242159762",
+   "job": "8116",
+   "date": "2026-07-21",
+   "jobber": "07:27",
+   "optimo": "15:22"
+  },
+  {
+   "orderNo": "7681-2039896927",
+   "job": "7681",
+   "date": "2026-07-21",
+   "jobber": "07:41",
+   "optimo": "15:07"
+  },
+  {
+   "orderNo": "4975-1608390848",
+   "job": "4975",
+   "date": "2026-07-21",
+   "jobber": "07:54",
+   "optimo": "14:54"
+  },
+  {
+   "orderNo": "5280-1733113313",
+   "job": "5280",
+   "date": "2026-07-21",
+   "jobber": "08:07",
+   "optimo": "14:41"
+  },
+  {
+   "orderNo": "7475-1956036742",
+   "job": "7475",
+   "date": "2026-07-21",
+   "jobber": "08:18",
+   "optimo": "14:18"
+  },
+  {
+   "orderNo": "8163-2251433822",
+   "job": "8163",
+   "date": "2026-07-21",
+   "jobber": "08:29",
+   "optimo": "14:29"
+  },
+  {
+   "orderNo": "7317-2257572475",
+   "job": "7317",
+   "date": "2026-07-21",
+   "jobber": "08:46",
+   "optimo": "14:02"
+  }
+ ],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "8158-2249343426",
+   "date": "2026-07-21",
+   "driver": "Luke LaVergne",
+   "driverSerial": "Luke LaVergne",
+   "hm": "07:24"
+  }
+ ],
+ "fixes": []
+}

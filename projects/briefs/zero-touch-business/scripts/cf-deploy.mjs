@@ -42,11 +42,49 @@ const totalKB = Math.round(Object.values(files).reduce((s, f) => s + f.b64.lengt
 console.log(`Embedding ${Object.keys(files).length} files (~${totalKB} KB)`);
 if (totalKB > 900) { console.error('FAIL: bundle exceeding Worker free-plan 1MB limit — move to Pages direct upload.'); process.exit(1); }
 
+// Outbound redirects served by the Worker; each hit is counted in KV (daily buckets)
+// so the weekly digest can report clicks. /book -> Amazon listing for The Route.
+const REDIRECTS = {
+  '/book': 'https://www.amazon.com/dp/B0H6ZX85DK',
+};
+
+// Ensure the metrics KV namespace exists (idempotent) and get its id
+const KV_TITLE = 'route-ready-metrics';
+let kvId;
+{
+  const list = await (await fetch(`https://api.cloudflare.com/client/v4/accounts/${ACCT}/storage/kv/namespaces?per_page=100`, {
+    headers: { Authorization: 'Bearer ' + TOKEN },
+  })).json();
+  kvId = list.success ? (list.result.find((n) => n.title === KV_TITLE) || {}).id : undefined;
+  if (!kvId) {
+    const made = await (await fetch(`https://api.cloudflare.com/client/v4/accounts/${ACCT}/storage/kv/namespaces`, {
+      method: 'POST', headers: { Authorization: 'Bearer ' + TOKEN, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title: KV_TITLE }),
+    })).json();
+    if (made.success) kvId = made.result.id;
+    else console.log('KV namespace create failed (deploying without click tracking): ' + JSON.stringify(made.errors).slice(0, 200));
+  }
+  if (kvId) console.log(`KV metrics namespace: ${kvId}`);
+}
+
 const worker = `const FILES = ${JSON.stringify(files)};
+const REDIRECTS = ${JSON.stringify(REDIRECTS)};
 function b64ToBytes(b64) { const bin = atob(b64); const a = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) a[i] = bin.charCodeAt(i); return a; }
+async function bump(kv, path) {
+  try {
+    const key = 'clicks:' + path + ':' + new Date().toISOString().slice(0, 10);
+    const cur = parseInt(await kv.get(key), 10) || 0;
+    await kv.put(key, String(cur + 1), { expirationTtl: 60 * 60 * 24 * 400 });
+  } catch (e) {}
+}
 export default {
-  async fetch(request) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    const rTarget = REDIRECTS[url.pathname.replace(/\\/+$/, '') || '/'];
+    if (rTarget) {
+      if (env && env.METRICS && ctx) ctx.waitUntil(bump(env.METRICS, url.pathname.replace(/\\/+$/, '')));
+      return Response.redirect(rTarget, 302);
+    }
     let p = url.pathname;
     if (p.endsWith('/')) p += 'index.html';
     let f = FILES[p] || FILES[p + '/index.html'] || FILES[p + '.html'];
@@ -58,8 +96,10 @@ export default {
   }
 };`;
 
+const metadata = { main_module: 'worker.js', compatibility_date: '2026-01-01' };
+if (kvId) metadata.bindings = [{ type: 'kv_namespace', name: 'METRICS', namespace_id: kvId }];
 const form = new FormData();
-form.append('metadata', new Blob([JSON.stringify({ main_module: 'worker.js', compatibility_date: '2026-01-01' })], { type: 'application/json' }));
+form.append('metadata', new Blob([JSON.stringify(metadata)], { type: 'application/json' }));
 form.append('worker.js', new Blob([worker], { type: 'application/javascript+module' }), 'worker.js');
 
 const res = await fetch(`https://api.cloudflare.com/client/v4/accounts/${ACCT}/workers/scripts/${WORKER_NAME}`, {

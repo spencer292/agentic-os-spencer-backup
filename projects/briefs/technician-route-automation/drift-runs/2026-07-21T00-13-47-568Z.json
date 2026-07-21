@@ -1,0 +1,152 @@
+{
+ "ranAt": "2026-07-21T00:13:43.975Z",
+ "mode": "fix",
+ "plannedDays": [
+  "2026-07-21",
+  "2026-07-22",
+  "2026-07-23",
+  "2026-07-24"
+ ],
+ "counts": {
+  "activeVisits": 447,
+  "scheduledStops": 444,
+  "missing": 4,
+  "dayDrift": 0,
+  "techDrift": 0,
+  "timeDrift": 8,
+  "noTime": 0,
+  "orphans": 1
+ },
+ "missing": [
+  {
+   "orderNo": "8192-2259494135",
+   "job": "8192",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNTk0OTQxMzU=",
+   "date": "2026-07-21",
+   "hm": "00:00",
+   "tech": "Spencer Hill",
+   "title": "Mark Fetters (SET)",
+   "address": "10237 Sentinel Loop, Gig Harbor, Washington 98332",
+   "isSet": true
+  },
+  {
+   "orderNo": "7805-2099670558",
+   "job": "7805",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIwOTk2NzA1NTg=",
+   "date": "2026-07-21",
+   "hm": "13:08",
+   "tech": "Luke LaVergne",
+   "title": "Dave Combs",
+   "address": "16923 452nd Street East, Eatonville, Washington 98328",
+   "isSet": false
+  },
+  {
+   "orderNo": "8199-2259571762",
+   "job": "8199",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNTk1NzE3NjI=",
+   "date": "2026-07-21",
+   "hm": "17:00",
+   "tech": "Cammeron Anderson",
+   "title": "Mary Greco (set)",
+   "address": "5264 46th Avenue Southwest, Seattle, Washington 98136",
+   "isSet": true
+  },
+  {
+   "orderNo": "8201-2259577842",
+   "job": "8201",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNTk1Nzc4NDI=",
+   "date": "2026-07-21",
+   "hm": "17:00",
+   "tech": "Cammeron Anderson",
+   "title": "Jenna Elberts (set)",
+   "address": "10224 39th Avenue Southwest, Seattle, Washington 98146",
+   "isSet": false
+  }
+ ],
+ "dayDrift": [],
+ "techDrift": [],
+ "timeDrift": [
+  {
+   "orderNo": "6567-2252805516",
+   "job": "6567",
+   "date": "2026-07-21",
+   "jobber": "07:13",
+   "optimo": "15:35"
+  },
+  {
+   "orderNo": "8116-2242159762",
+   "job": "8116",
+   "date": "2026-07-21",
+   "jobber": "07:27",
+   "optimo": "15:22"
+  },
+  {
+   "orderNo": "7681-2039896927",
+   "job": "7681",
+   "date": "2026-07-21",
+   "jobber": "07:41",
+   "optimo": "15:07"
+  },
+  {
+   "orderNo": "4975-1608390848",
+   "job": "4975",
+   "date": "2026-07-21",
+   "jobber": "07:54",
+   "optimo": "14:54"
+  },
+  {
+   "orderNo": "5280-1733113313",
+   "job": "5280",
+   "date": "2026-07-21",
+   "jobber": "08:07",
+   "optimo": "14:41"
+  },
+  {
+   "orderNo": "7475-1956036742",
+   "job": "7475",
+   "date": "2026-07-21",
+   "jobber": "08:18",
+   "optimo": "14:18"
+  },
+  {
+   "orderNo": "8163-2251433822",
+   "job": "8163",
+   "date": "2026-07-21",
+   "jobber": "08:29",
+   "optimo": "14:29"
+  },
+  {
+   "orderNo": "7317-2257572475",
+   "job": "7317",
+   "date": "2026-07-21",
+   "jobber": "08:46",
+   "optimo": "14:02"
+  }
+ ],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "8158-2249343426",
+   "date": "2026-07-21",
+   "driver": "Luke LaVergne",
+   "driverSerial": "Luke LaVergne",
+   "hm": "07:24"
+  }
+ ],
+ "fixes": [
+  {
+   "day": "2026-07-21",
+   "writable": false,
+   "created": [
+    "8192-2259494135",
+    "7805-2099670558",
+    "8199-2259571762",
+    "8201-2259577842"
+   ],
+   "replanned": false,
+   "writes": [],
+   "failures": [],
+   "aborted": null
+  }
+ ]
+}
