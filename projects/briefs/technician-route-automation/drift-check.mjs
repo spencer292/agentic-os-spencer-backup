@@ -417,7 +417,7 @@ for (const day of Object.keys(byDay).sort()) {
     const curUsers = ((vis.assignedUsers || {}).nodes || []);
     const curTech = curUsers[0] && curUsers[0].name && curUsers[0].name.full;
     if (!curTech && ns.driver && users[ns.driver.trim().toLowerCase()])
-      opsList.push(`mutation { visitEditAssignedUsers(id: "${vis.id}", input: { assignedUsers: ["${users[ns.driver.trim().toLowerCase()]}"] }) { userErrors { message } } }`);
+      opsList.push(`mutation { visitEditAssignedUsers(visitId: "${vis.id}", input: { assignedUserIds: ["${users[ns.driver.trim().toLowerCase()]}"] }) { userErrors { message } } }`);
     let bad = null;
     for (const op of opsList) {
       const r = await jgql(op, {});

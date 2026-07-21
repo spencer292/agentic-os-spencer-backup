@@ -10,7 +10,7 @@ _Everything on this list is identity/KYC work only you can do. Nothing here bloc
 
 ## Do second (~45 min)
 - [x] **Hosting** — DONE 2026-07-19: Vercel skipped (Hobby ToS); Cloudflare free plan, site deployed as Worker `route-ready-site`, live on routereadykits.com
-- [ ] **Google Ads**: new account under the business Google login. Add billing + set a $75/mo budget cap at account level. I'll wire it into the ops-google-ads engine after (same creds pattern as Got Moles, separate account).
+- [x] **Google Ads** — DONE 2026-07-20 night: account 763-085-7815 (billing in, no campaign yet), MCC 143-307-0544, developer token (Test level), GCP project route-ready-ads/377890328473, Basic Access application submitted (~5 business days). Budget cap enforced at campaign level ($2.47/day) when campaign is built — account-level caps aren't available on non-invoiced accounts.
 
 ## Post-launch (added 2026-07-20)
 - [x] **GSC property + sitemap** — DONE 2026-07-20: sc-domain:routereadykits.com verified via Cloudflare TXT record; sitemap.xml submitted (status will read "Couldn't fetch" until first crawl)

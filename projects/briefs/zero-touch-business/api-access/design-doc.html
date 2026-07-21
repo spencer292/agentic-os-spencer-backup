@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Route Ready — Google Ads API Tool Design Document</title>
+<style>
+  body { font-family: Georgia, 'Times New Roman', serif; color: #1a1a1a; max-width: 7.2in; margin: 0 auto; padding: 24px 0; font-size: 11.5pt; line-height: 1.55; }
+  h1 { font-size: 19pt; margin: 0 0 2px; }
+  .sub { color: #555; margin: 0 0 18px; font-size: 10.5pt; }
+  h2 { font-size: 13pt; margin: 22px 0 6px; border-bottom: 1px solid #ccc; padding-bottom: 3px; }
+  table { border-collapse: collapse; width: 100%; font-size: 10.5pt; margin: 8px 0; }
+  td, th { border: 1px solid #bbb; padding: 5px 9px; text-align: left; vertical-align: top; }
+  th { background: #f2f2f2; }
+  code, pre { font-family: Consolas, monospace; font-size: 9.5pt; background: #f6f6f6; }
+  pre { padding: 10px; border: 1px solid #ddd; white-space: pre-wrap; }
+  ul { margin: 6px 0; padding-left: 22px; }
+</style>
+</head>
+<body>
+<h1>Google Ads API Tool — Design Document</h1>
+<p class="sub">Route Ready (routereadykits.com) &nbsp;•&nbsp; Internal advertiser tool &nbsp;•&nbsp; July 2026</p>
+
+<h2>1. Overview</h2>
+<p>Route Ready sells digital business-template kits for route-based service businesses (cleaning, pressure washing, lawn care) at <strong>https://routereadykits.com</strong>. This document describes a small internal automation tool that manages <strong>our own single Google Ads account</strong> via the Google Ads API. The tool is not a product; it is not offered to clients or the public, and no third parties access it or its data.</p>
+
+<table>
+  <tr><th>Item</th><th>Value</th></tr>
+  <tr><td>Company / website</td><td>Route Ready — https://routereadykits.com</td></tr>
+  <tr><td>Manager account (MCC) holding the developer token</td><td>143-307-0544 ("Route Ready Manager")</td></tr>
+  <tr><td>Managed advertiser account (only one)</td><td>763-085-7815 ("Route Ready")</td></tr>
+  <tr><td>Google Cloud project</td><td>route-ready-ads (project number 377890328473)</td></tr>
+  <tr><td>API contact email</td><td>routereadykits@gmail.com</td></tr>
+  <tr><td>Users</td><td>Internal only — the business owner and the owner's scheduled automation jobs</td></tr>
+</table>
+
+<h2>2. Architecture</h2>
+<p>The tool is a set of Node.js scripts that run on the owner's workstation, either manually or on a local scheduler (weekly review job). There is no hosted service, no public endpoint, and no multi-tenant component.</p>
+<ul>
+  <li><strong>Auth:</strong> OAuth 2.0 installed-application flow. A refresh token is generated once for the manager account login and stored locally in an environment file on the owner's machine. Requests use the developer token from MCC 143-307-0544 with <code>login-customer-id</code> set to the MCC.</li>
+  <li><strong>Transport:</strong> Direct REST calls to <code>googleads.googleapis.com</code> (current API version; GAQL via <code>googleAds:search</code>, mutations via the standard <code>:mutate</code> services). No SDK, no third-party wrapper.</li>
+  <li><strong>Scope:</strong> All calls target customer 763-085-7815 exclusively.</li>
+</ul>
+
+<h2>3. Features</h2>
+<ul>
+  <li><strong>Campaign management:</strong> create and maintain Search campaigns, ad groups, responsive search ads, and sitelink/callout assets for our kit and guide pages.</li>
+  <li><strong>Keyword hygiene:</strong> add/pause keywords; maintain shared negative keyword lists (our niche needs extensive negatives to exclude unrelated queries).</li>
+  <li><strong>Budget guard:</strong> read daily spend and enforce a fixed monthly cap (US$75/month) by pausing campaigns if the cap is reached.</li>
+  <li><strong>Reporting:</strong> weekly GAQL reports (impressions, clicks, cost, conversions per campaign/keyword) rendered into a local markdown digest for the owner.</li>
+  <li><strong>Conversion upload:</strong> upload our own first-party purchase conversions (click-id based) from our checkout provider's sales records.</li>
+</ul>
+
+<h2>4. Sample report output (CLI)</h2>
+<pre>$ node ads-report.mjs --last 7d
+Campaign                     Impr   Clicks   Cost     Conv
+Search — Cleaning Kit        1,204     38   $21.40      2
+Search — Pricing Guides        870     22   $11.05      1
+Total                        2,074     60   $32.45      3
+Monthly cap: $75.00 — spent to date: $54.20 (72%)</pre>
+
+<h2>5. Data handling &amp; compliance</h2>
+<ul>
+  <li>Only our own account's advertising data is accessed. No client, public, or third-party access of any kind.</li>
+  <li>Reports are stored locally on the owner's machine; nothing is resold, redistributed, or exposed via any API or UI.</li>
+  <li>No Required Minimum Functionality obligations apply (internal advertiser tool, single account), but standard API terms, rate limits, and policy requirements are followed.</li>
+  <li>Credentials (developer token, OAuth client secret, refresh token) are stored in a local, non-committed environment file readable only by the owner.</li>
+</ul>
+</body>
+</html>
