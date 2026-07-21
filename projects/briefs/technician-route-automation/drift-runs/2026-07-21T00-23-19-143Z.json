@@ -1,0 +1,471 @@
+{
+ "ranAt": "2026-07-21T00:21:25.357Z",
+ "mode": "fix",
+ "plannedDays": [
+  "2026-07-21",
+  "2026-07-22",
+  "2026-07-23",
+  "2026-07-24"
+ ],
+ "counts": {
+  "activeVisits": 447,
+  "scheduledStops": 444,
+  "missing": 4,
+  "dayDrift": 0,
+  "techDrift": 0,
+  "timeDrift": 8,
+  "noTime": 0,
+  "orphans": 1
+ },
+ "missing": [
+  {
+   "orderNo": "8192-2259494135",
+   "job": "8192",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNTk0OTQxMzU=",
+   "date": "2026-07-21",
+   "hm": "00:00",
+   "tech": "Spencer Hill",
+   "title": "Mark Fetters (SET)",
+   "address": "10237 Sentinel Loop, Gig Harbor, Washington 98332",
+   "isSet": true
+  },
+  {
+   "orderNo": "7805-2099670558",
+   "job": "7805",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIwOTk2NzA1NTg=",
+   "date": "2026-07-21",
+   "hm": "13:08",
+   "tech": "Luke LaVergne",
+   "title": "Dave Combs",
+   "address": "16923 452nd Street East, Eatonville, Washington 98328",
+   "isSet": false
+  },
+  {
+   "orderNo": "8199-2259571762",
+   "job": "8199",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNTk1NzE3NjI=",
+   "date": "2026-07-21",
+   "hm": "17:00",
+   "tech": "Cammeron Anderson",
+   "title": "Mary Greco (set)",
+   "address": "5264 46th Avenue Southwest, Seattle, Washington 98136",
+   "isSet": true
+  },
+  {
+   "orderNo": "8201-2259577842",
+   "job": "8201",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNTk1Nzc4NDI=",
+   "date": "2026-07-21",
+   "hm": "17:00",
+   "tech": "Cammeron Anderson",
+   "title": "Jenna Elberts (set)",
+   "address": "10224 39th Avenue Southwest, Seattle, Washington 98146",
+   "isSet": false
+  }
+ ],
+ "dayDrift": [],
+ "techDrift": [],
+ "timeDrift": [
+  {
+   "orderNo": "6567-2252805516",
+   "job": "6567",
+   "date": "2026-07-21",
+   "jobber": "07:13",
+   "optimo": "15:35"
+  },
+  {
+   "orderNo": "8116-2242159762",
+   "job": "8116",
+   "date": "2026-07-21",
+   "jobber": "07:27",
+   "optimo": "15:22"
+  },
+  {
+   "orderNo": "7681-2039896927",
+   "job": "7681",
+   "date": "2026-07-21",
+   "jobber": "07:41",
+   "optimo": "15:07"
+  },
+  {
+   "orderNo": "4975-1608390848",
+   "job": "4975",
+   "date": "2026-07-21",
+   "jobber": "07:54",
+   "optimo": "14:54"
+  },
+  {
+   "orderNo": "5280-1733113313",
+   "job": "5280",
+   "date": "2026-07-21",
+   "jobber": "08:07",
+   "optimo": "14:41"
+  },
+  {
+   "orderNo": "7475-1956036742",
+   "job": "7475",
+   "date": "2026-07-21",
+   "jobber": "08:18",
+   "optimo": "14:18"
+  },
+  {
+   "orderNo": "8163-2251433822",
+   "job": "8163",
+   "date": "2026-07-21",
+   "jobber": "08:29",
+   "optimo": "14:29"
+  },
+  {
+   "orderNo": "7317-2257572475",
+   "job": "7317",
+   "date": "2026-07-21",
+   "jobber": "08:46",
+   "optimo": "14:02"
+  }
+ ],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "8158-2249343426",
+   "date": "2026-07-21",
+   "driver": "Luke LaVergne",
+   "driverSerial": "Luke LaVergne",
+   "hm": "07:24"
+  }
+ ],
+ "fixes": [
+  {
+   "day": "2026-07-21",
+   "writable": true,
+   "created": [
+    "8192-2259494135",
+    "7805-2099670558",
+    "8199-2259571762",
+    "8201-2259577842"
+   ],
+   "replanned": true,
+   "writes": [
+    {
+     "orderNo": "8186-2258086569",
+     "from": "2026-07-21 07:34",
+     "to": "2026-07-21 07:24",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7805-2099670558",
+     "from": "2026-07-21 13:08",
+     "to": "2026-07-21 15:56",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7795-2244474045",
+     "from": "2026-07-21 16:06",
+     "to": "2026-07-21 16:46",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8067-2252717545",
+     "from": "2026-07-21 16:28",
+     "to": "2026-07-21 17:09",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5044-2252823685",
+     "from": "2026-07-21 16:41",
+     "to": "2026-07-21 17:22",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "6784-2244583460",
+     "from": "2026-07-21 16:59",
+     "to": "2026-07-21 17:40",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7725-2057513404",
+     "from": "2026-07-21 17:18",
+     "to": "2026-07-21 17:59",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5077-2252874822",
+     "from": "2026-07-21 17:34",
+     "to": "2026-07-21 18:15",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5727-2244844637",
+     "from": "2026-07-21 17:55",
+     "to": "2026-07-21 18:36",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8004-2252867443",
+     "from": "2026-07-21 18:11",
+     "to": "2026-07-21 18:52",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5954-2252862192",
+     "from": "2026-07-21 18:26",
+     "to": "2026-07-21 19:07",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7740-2246156524",
+     "from": "2026-07-21 18:42",
+     "to": "2026-07-21 19:23",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7836-2115796365",
+     "from": "2026-07-21 18:58",
+     "to": "2026-07-21 19:39",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8165-2251634174",
+     "from": "2026-07-21 19:26",
+     "to": "2026-07-21 20:07",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8167-2252512246",
+     "from": "2026-07-21 13:47",
+     "to": "2026-07-21 09:00",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8117-2242207172",
+     "from": "2026-07-21 13:33",
+     "to": "2026-07-21 09:15",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7788-2252584581",
+     "from": "2026-07-21 13:18",
+     "to": "2026-07-21 09:29",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "4705-2252557232",
+     "from": "2026-07-21 13:02",
+     "to": "2026-07-21 09:46",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8104-2239910107",
+     "from": "2026-07-21 12:51",
+     "to": "2026-07-21 09:57",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8112-2240793666",
+     "from": "2026-07-21 12:37",
+     "to": "2026-07-21 10:11",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7608-2014279990",
+     "from": "2026-07-21 12:24",
+     "to": "2026-07-21 10:25",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "6447-1669497925",
+     "from": "2026-07-21 12:12",
+     "to": "2026-07-21 10:36",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8041-2252483999",
+     "from": "2026-07-21 11:59",
+     "to": "2026-07-21 10:48",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8201-2259577842",
+     "from": "2026-07-21 17:00",
+     "to": "2026-07-21 11:00",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "6581-1757684339",
+     "from": "2026-07-21 11:46",
+     "to": "2026-07-21 11:13",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8142-2246410267",
+     "from": "2026-07-21 11:32",
+     "to": "2026-07-21 11:27",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8089-2235904361",
+     "from": "2026-07-21 11:17",
+     "to": "2026-07-21 11:42",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7470-2252298286",
+     "from": "2026-07-21 10:51",
+     "to": "2026-07-21 11:57",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7574-2252295969",
+     "from": "2026-07-21 11:02",
+     "to": "2026-07-21 12:08",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8199-2259571762",
+     "from": "2026-07-21 17:00",
+     "to": "2026-07-21 12:22",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8015-2219806781",
+     "from": "2026-07-21 10:35",
+     "to": "2026-07-21 12:46",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7976-2252214683",
+     "from": "2026-07-21 10:19",
+     "to": "2026-07-21 13:02",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "6297-1615026606",
+     "from": "2026-07-21 10:05",
+     "to": "2026-07-21 13:16",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7171-1886765300",
+     "from": "2026-07-21 09:49",
+     "to": "2026-07-21 13:30",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "5947-2252151399",
+     "from": "2026-07-21 09:34",
+     "to": "2026-07-21 13:47",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8070-2232221190",
+     "from": "2026-07-21 09:19",
+     "to": "2026-07-21 14:03",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8078-2234721731",
+     "from": "2026-07-21 09:00",
+     "to": "2026-07-21 14:22",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8065-2232218311",
+     "from": "2026-07-21 08:36",
+     "to": "2026-07-21 14:45",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "5700-1821393243",
+     "from": "2026-07-21 08:19",
+     "to": "2026-07-21 15:03",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7303-2252038825",
+     "from": "2026-07-21 08:02",
+     "to": "2026-07-21 15:20",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8030-2243812083",
+     "from": "2026-07-21 07:50",
+     "to": "2026-07-21 15:32",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "6239-2251965519",
+     "from": "2026-07-21 07:35",
+     "to": "2026-07-21 15:46",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8086-2234989520",
+     "from": "2026-07-21 07:14",
+     "to": "2026-07-21 16:06",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8050-2228088587",
+     "from": "2026-07-21 08:15",
+     "to": "2026-07-21 08:03",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8111-2240793325",
+     "from": "2026-07-21 07:57",
+     "to": "2026-07-21 08:21",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8192-2259494135",
+     "from": "2026-07-21 00:00",
+     "to": "2026-07-21 08:35",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7560-2253029198",
+     "from": "2026-07-21 08:40",
+     "to": "2026-07-21 09:04",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7689-2253029793",
+     "from": "2026-07-21 09:22",
+     "to": "2026-07-21 09:46",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7933-2253031502",
+     "from": "2026-07-21 09:55",
+     "to": "2026-07-21 10:20",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7640-2253031638",
+     "from": "2026-07-21 10:37",
+     "to": "2026-07-21 11:01",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7908-2253031703",
+     "from": "2026-07-21 11:13",
+     "to": "2026-07-21 11:38",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7696-2253032174",
+     "from": "2026-07-21 12:25",
+     "to": "2026-07-21 12:49",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8056-2254378840",
+     "from": "2026-07-21 13:24",
+     "to": "2026-07-21 13:48",
+     "driver": "Spencer Hill"
+    }
+   ],
+   "failures": [],
+   "aborted": null
+  }
+ ]
+}

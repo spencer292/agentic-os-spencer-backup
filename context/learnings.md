@@ -14,6 +14,11 @@
 
 ### ops-phone-roleplay
 - 2026-07-20: Skill created for Muhammad's phone onboarding. Scenario pack + answer key + progress log live in projects/briefs/callrail-faq/. Registered in CLAUDE.local.md (AGENTS.md is shipped/uneditable on this install).
+- 2026-07-20: First two live reps (Spencer, scenarios #1 and #6, 91 + 82): debrief format landed as-is. Demo reps for onlookers still get scored and logged — the log is the training record. When pricing/policy changes mid-day (CLAUDE.local.md rules), the FAQ answer key AND the muhammad-portable bundle + Downloads zip must be refreshed in the same session — a stale answer key fails the skill's own hard gate.
+- 2026-07-20: Portable delivery pattern for trainees without repo access: claude.ai Project — `muhammad-portable/project-instructions.md` pasted as Project instructions + the two .md docs uploaded as Files; trainee sends scorecard blocks back for pasting into roleplay-log.md. Chosen over giving a new hire a session on this install (full Jobber/Ads/memory access).
+
+### tool-pdf-generator
+- 2026-07-20: Chrome-headless fallback re-verified (md2html.mjs pattern in scratchpad: tables, nested bold-in-cells, blockquotes all clean). Gotcha: a PDF open in a Windows viewer file-locks its Downloads copy (`cp: Device or resource busy`) — copy the regenerated file under a new name instead of failing the refresh.
 
 ### viz-image-gen
 - 2026-07-04: For YouTube banners (and anything needing true 16:9), use the **Gemini** backend, not GPT. GPT/gpt-image maxes out at 3:2 (1536×1024) and cannot output 16:9. Gemini at `--resolution 2K --aspect-ratio 16:9` produced a clean 2752×1536 banner first try, above YouTube's 2560×1440 recommendation.
