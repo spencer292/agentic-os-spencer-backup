@@ -1,0 +1,236 @@
+{
+ "ranAt": "2026-07-22T04:48:11.970Z",
+ "mode": "check",
+ "plannedDays": [
+  "2026-07-22",
+  "2026-07-23",
+  "2026-07-24"
+ ],
+ "counts": {
+  "activeVisits": 344,
+  "scheduledStops": 339,
+  "missing": 6,
+  "dayDrift": 2,
+  "techDrift": 17,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 1
+ },
+ "missing": [
+  {
+   "orderNo": "7634-2019950705",
+   "job": "7634",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIwMTk5NTA3MDU=",
+   "date": "2026-07-22",
+   "hm": "07:00",
+   "tech": "Luke LaVergne",
+   "title": "Michael Blondin",
+   "address": "2311 Carnbee Court Southeast, Olympia, Washington 98513",
+   "isSet": false
+  },
+  {
+   "orderNo": "8212-2261153687",
+   "job": "8212",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNjExNTM2ODc=",
+   "date": "2026-07-22",
+   "hm": "08:00",
+   "tech": "Luke LaVergne",
+   "title": "Cindy Holshouser (SET)",
+   "address": "522 1st Street, Steilacoom, Washington 98388",
+   "isSet": true
+  },
+  {
+   "orderNo": "8211-2261152965",
+   "job": "8211",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNjExNTI5NjU=",
+   "date": "2026-07-22",
+   "hm": "13:00",
+   "tech": "Spencer Hill",
+   "title": "Vicki Yoshioka (SET)",
+   "address": "1507 105th Avenue East, Edgewood, Washington 98372",
+   "isSet": false
+  },
+  {
+   "orderNo": "8056-2254378840",
+   "job": "8056",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNTQzNzg4NDA=",
+   "date": "2026-07-22",
+   "hm": "15:08",
+   "tech": "Spencer Hill",
+   "title": "Madera West Condos",
+   "address": "31500 33rd Place Southwest, Federal Way, Washington 98023",
+   "isSet": false
+  },
+  {
+   "orderNo": "8210-2261152125",
+   "job": "8210",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNjExNTIxMjU=",
+   "date": "2026-07-22",
+   "hm": "22:00",
+   "tech": "Luke LaVergne",
+   "title": "David Preston (SET)",
+   "address": "8004 Mountain Aire Court Southeast, Olympia, Washington 98503",
+   "isSet": false
+  },
+  {
+   "orderNo": "8213-2261156479",
+   "job": "8213",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNjExNTY0Nzk=",
+   "date": "2026-07-23",
+   "hm": "22:00",
+   "tech": "Cory Ventura",
+   "title": "Cindy Kamrin (SET)",
+   "address": "3415 Northeast Madison Way, Issaquah, Washington 98029",
+   "isSet": true
+  }
+ ],
+ "dayDrift": [
+  {
+   "orderNo": "4926-2248874237",
+   "job": "4926",
+   "jobber": "2026-07-24",
+   "optimo": "2026-07-22",
+   "driver": "Luke LaVergne"
+  },
+  {
+   "orderNo": "7858-2136202669",
+   "job": "7858",
+   "jobber": "2026-07-24",
+   "optimo": "2026-07-22",
+   "driver": "Luke LaVergne"
+  }
+ ],
+ "techDrift": [
+  {
+   "orderNo": "5672-2257634966",
+   "job": "5672",
+   "date": "2026-07-22",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "7617-2015185246",
+   "job": "7617",
+   "date": "2026-07-22",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "7949-2254321121",
+   "job": "7949",
+   "date": "2026-07-22",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "4425-1850020020",
+   "job": "4425",
+   "date": "2026-07-22",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "7172-2244563352",
+   "job": "7172",
+   "date": "2026-07-22",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "5413-2246074735",
+   "job": "5413",
+   "date": "2026-07-22",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "7747-2236483585",
+   "job": "7747",
+   "date": "2026-07-22",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "5540-2244784167",
+   "job": "5540",
+   "date": "2026-07-22",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "7496-2254346617",
+   "job": "7496",
+   "date": "2026-07-22",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "7997-2216283364",
+   "job": "7997",
+   "date": "2026-07-22",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "7853-2134723227",
+   "job": "7853",
+   "date": "2026-07-22",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "7087-2254365366",
+   "job": "7087",
+   "date": "2026-07-22",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "6986-2254498985",
+   "job": "6986",
+   "date": "2026-07-22",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "4644-1888756077",
+   "job": "4644",
+   "date": "2026-07-22",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "5565-1770754281",
+   "job": "5565",
+   "date": "2026-07-22",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "8012-2254402831",
+   "job": "8012",
+   "date": "2026-07-22",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "4941-2254499739",
+   "job": "4941",
+   "date": "2026-07-22",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  }
+ ],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "8190-2259447195",
+   "date": "2026-07-23",
+   "driver": "Cammeron Anderson",
+   "driverSerial": "Cammeron Anderson",
+   "hm": "09:53"
+  }
+ ],
+ "fixes": []
+}

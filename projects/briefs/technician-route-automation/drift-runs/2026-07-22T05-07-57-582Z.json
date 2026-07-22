@@ -1,0 +1,97 @@
+{
+ "ranAt": "2026-07-22T05:07:57.582Z",
+ "mode": "check",
+ "plannedDays": [
+  "2026-07-22",
+  "2026-07-23",
+  "2026-07-24"
+ ],
+ "counts": {
+  "activeVisits": 345,
+  "scheduledStops": 345,
+  "missing": 1,
+  "dayDrift": 3,
+  "techDrift": 4,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 1
+ },
+ "missing": [
+  {
+   "orderNo": "8214-2261162871",
+   "job": "8214",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNjExNjI4NzE=",
+   "date": "2026-07-23",
+   "hm": "00:00",
+   "tech": "Cammeron Anderson",
+   "title": "Joseph Syejoon Lee (SET)",
+   "address": "16012 Southeast 140th Street, Renton, Washington 98059",
+   "isSet": true
+  }
+ ],
+ "dayDrift": [
+  {
+   "orderNo": "7735-2254957236",
+   "job": "7735",
+   "jobber": "2026-07-24",
+   "optimo": "2026-07-23",
+   "driver": "Luke LaVergne"
+  },
+  {
+   "orderNo": "6409-2255182374",
+   "job": "6409",
+   "jobber": "2026-07-24",
+   "optimo": "2026-07-23",
+   "driver": "Cammeron Anderson"
+  },
+  {
+   "orderNo": "5829-2255248341",
+   "job": "5829",
+   "jobber": "2026-07-24",
+   "optimo": "2026-07-23",
+   "driver": "Cammeron Anderson"
+  }
+ ],
+ "techDrift": [
+  {
+   "orderNo": "7382-2254865375",
+   "job": "7382",
+   "date": "2026-07-23",
+   "jobber": "Cammeron Anderson",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "5022-2245317803",
+   "job": "5022",
+   "date": "2026-07-23",
+   "jobber": "Cammeron Anderson",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "5040-1651220344",
+   "job": "5040",
+   "date": "2026-07-23",
+   "jobber": "Cammeron Anderson",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8204-2259775819",
+   "job": "8204",
+   "date": "2026-07-24",
+   "jobber": "Cammeron Anderson",
+   "optimo": "Spencer Hill"
+  }
+ ],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "8190-2259447195",
+   "date": "2026-07-23",
+   "driver": "Cammeron Anderson",
+   "driverSerial": "Cammeron Anderson",
+   "hm": "09:53"
+  }
+ ],
+ "fixes": []
+}
