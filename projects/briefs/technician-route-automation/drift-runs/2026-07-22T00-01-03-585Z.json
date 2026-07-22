@@ -1,0 +1,58 @@
+{
+ "ranAt": "2026-07-22T00:01:02.267Z",
+ "mode": "fix",
+ "plannedDays": [
+  "2026-07-22",
+  "2026-07-23",
+  "2026-07-24"
+ ],
+ "counts": {
+  "activeVisits": 339,
+  "scheduledStops": 339,
+  "missing": 1,
+  "dayDrift": 0,
+  "techDrift": 0,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 1
+ },
+ "missing": [
+  {
+   "orderNo": "7634-2019950705",
+   "job": "7634",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIwMTk5NTA3MDU=",
+   "date": "2026-07-22",
+   "hm": "07:00",
+   "tech": "Luke LaVergne",
+   "title": "Michael Blondin",
+   "address": "2311 Carnbee Court Southeast, Olympia, Washington 98513",
+   "isSet": false
+  }
+ ],
+ "dayDrift": [],
+ "techDrift": [],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "8190-2259447195",
+   "date": "2026-07-23",
+   "driver": "Cammeron Anderson",
+   "driverSerial": "Cammeron Anderson",
+   "hm": "09:53"
+  }
+ ],
+ "fixes": [
+  {
+   "day": "2026-07-22",
+   "writable": false,
+   "created": [
+    "7634-2019950705"
+   ],
+   "replanned": false,
+   "writes": [],
+   "failures": [],
+   "aborted": null
+  }
+ ]
+}

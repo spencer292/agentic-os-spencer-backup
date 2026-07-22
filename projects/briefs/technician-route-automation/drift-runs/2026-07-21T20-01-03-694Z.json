@@ -1,0 +1,63 @@
+{
+ "ranAt": "2026-07-21T20:01:03.693Z",
+ "mode": "fix",
+ "plannedDays": [
+  "2026-07-22",
+  "2026-07-23",
+  "2026-07-24"
+ ],
+ "counts": {
+  "activeVisits": 337,
+  "scheduledStops": 338,
+  "missing": 0,
+  "dayDrift": 4,
+  "techDrift": 0,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 1
+ },
+ "missing": [],
+ "dayDrift": [
+  {
+   "orderNo": "8202-2259592331",
+   "job": "8202",
+   "jobber": "2026-07-22",
+   "optimo": "2026-07-23",
+   "driver": "Cammeron Anderson"
+  },
+  {
+   "orderNo": "7857-2254744698",
+   "job": "7857",
+   "jobber": "2026-07-24",
+   "optimo": "2026-07-23",
+   "driver": "Cammeron Anderson"
+  },
+  {
+   "orderNo": "7813-2104533928",
+   "job": "7813",
+   "jobber": "2026-07-24",
+   "optimo": "2026-07-23",
+   "driver": "Cammeron Anderson"
+  },
+  {
+   "orderNo": "8185-2256881869",
+   "job": "8185",
+   "jobber": "2026-07-24",
+   "optimo": "2026-07-23",
+   "driver": "Cammeron Anderson"
+  }
+ ],
+ "techDrift": [],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "8190-2259447195",
+   "date": "2026-07-23",
+   "driver": "Cammeron Anderson",
+   "driverSerial": "Cammeron Anderson",
+   "hm": "09:53"
+  }
+ ],
+ "fixes": []
+}

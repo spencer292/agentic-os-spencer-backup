@@ -1,0 +1,182 @@
+{
+ "ranAt": "2026-07-21T22:01:04.496Z",
+ "mode": "fix",
+ "plannedDays": [
+  "2026-07-22",
+  "2026-07-23",
+  "2026-07-24"
+ ],
+ "counts": {
+  "activeVisits": 339,
+  "scheduledStops": 338,
+  "missing": 2,
+  "dayDrift": 4,
+  "techDrift": 0,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 1
+ },
+ "missing": [
+  {
+   "orderNo": "7634-2019950705",
+   "job": "7634",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIwMTk5NTA3MDU=",
+   "date": "2026-07-22",
+   "hm": "07:00",
+   "tech": "Luke LaVergne",
+   "title": "Michael Blondin",
+   "address": "2311 Carnbee Court Southeast, Olympia, Washington 98513",
+   "isSet": false
+  },
+  {
+   "orderNo": "8207-2260758905",
+   "job": "8207",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNjA3NTg5MDU=",
+   "date": "2026-07-23",
+   "hm": "13:30",
+   "tech": "Spencer Hill",
+   "title": "Amy Tang (set)",
+   "address": "11013 Southeast 66th Street, Newcastle, Washington 98056",
+   "isSet": true
+  }
+ ],
+ "dayDrift": [
+  {
+   "orderNo": "8202-2259592331",
+   "job": "8202",
+   "jobber": "2026-07-22",
+   "optimo": "2026-07-23",
+   "driver": "Cammeron Anderson"
+  },
+  {
+   "orderNo": "7857-2254744698",
+   "job": "7857",
+   "jobber": "2026-07-24",
+   "optimo": "2026-07-23",
+   "driver": "Cammeron Anderson"
+  },
+  {
+   "orderNo": "7813-2104533928",
+   "job": "7813",
+   "jobber": "2026-07-24",
+   "optimo": "2026-07-23",
+   "driver": "Cammeron Anderson"
+  },
+  {
+   "orderNo": "8185-2256881869",
+   "job": "8185",
+   "jobber": "2026-07-24",
+   "optimo": "2026-07-23",
+   "driver": "Cammeron Anderson"
+  }
+ ],
+ "techDrift": [],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "8190-2259447195",
+   "date": "2026-07-23",
+   "driver": "Cammeron Anderson",
+   "driverSerial": "Cammeron Anderson",
+   "hm": "09:53"
+  }
+ ],
+ "fixes": [
+  {
+   "day": "2026-07-22",
+   "writable": false,
+   "created": [
+    "7634-2019950705"
+   ],
+   "replanned": false,
+   "writes": [],
+   "failures": [],
+   "aborted": null
+  },
+  {
+   "day": "2026-07-23",
+   "writable": true,
+   "created": [
+    "8207-2260758905"
+   ],
+   "replanned": true,
+   "writes": [
+    {
+     "orderNo": "8207-2260758905",
+     "from": "2026-07-23 13:30",
+     "to": "2026-07-23 14:00",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8147-2255781733",
+     "from": "2026-07-23 14:03",
+     "to": "2026-07-23 14:23",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8054-2257572497",
+     "from": "2026-07-23 14:14",
+     "to": "2026-07-23 14:34",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8176-2255781981",
+     "from": "2026-07-23 14:25",
+     "to": "2026-07-23 14:45",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8019-2255782021",
+     "from": "2026-07-23 14:36",
+     "to": "2026-07-23 14:56",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8008-2255782408",
+     "from": "2026-07-23 14:46",
+     "to": "2026-07-23 15:07",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7986-2254863864",
+     "from": "2026-07-23 15:03",
+     "to": "2026-07-23 15:23",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8135-2245293568",
+     "from": "2026-07-23 15:18",
+     "to": "2026-07-23 15:38",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7857-2254744698",
+     "from": "2026-07-24 06:57",
+     "to": "2026-07-23 06:57",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7813-2104533928",
+     "from": "2026-07-24 07:16",
+     "to": "2026-07-23 07:16",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8185-2256881869",
+     "from": "2026-07-24 07:37",
+     "to": "2026-07-23 07:37",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8202-2259592331",
+     "from": "2026-07-22 10:25",
+     "to": "2026-07-23 10:25",
+     "driver": "Cammeron Anderson"
+    }
+   ],
+   "failures": [],
+   "aborted": null
+  }
+ ]
+}
