@@ -1,0 +1,1406 @@
+{
+  "counts": {
+    "activeTmcJobs": 622,
+    "distinctClients": 602,
+    "variants": 11,
+    "otherActiveRecurring": 101,
+    "taggedClients": 597,
+    "multiJobClients": [
+      {
+        "name": "Prologis - Sumner Landing",
+        "jobs": [
+          7617,
+          7614,
+          7613,
+          7611,
+          4335,
+          7615,
+          7612,
+          7610,
+          7848,
+          7616
+        ]
+      },
+      {
+        "name": "Tom Schlimme",
+        "jobs": [
+          6720,
+          6890
+        ]
+      },
+      {
+        "name": "Kelly Kunz",
+        "jobs": [
+          4515,
+          7961
+        ]
+      },
+      {
+        "name": "Clint Bjornson",
+        "jobs": [
+          7371,
+          6389
+        ]
+      },
+      {
+        "name": "HyperGreen Landscaping",
+        "jobs": [
+          4926,
+          7462,
+          7548
+        ]
+      },
+      {
+        "name": "Cruz Rodriguez",
+        "jobs": [
+          6325,
+          6323,
+          7789
+        ]
+      },
+      {
+        "name": "Mike Kaiser",
+        "jobs": [
+          8166,
+          5390
+        ]
+      },
+      {
+        "name": "Clark Potter",
+        "jobs": [
+          5676,
+          5536
+        ]
+      },
+      {
+        "name": "Ganesh   Thirumalai",
+        "jobs": [
+          7834,
+          5087
+        ]
+      },
+      {
+        "name": "SLPPLLC",
+        "jobs": [
+          6653,
+          5511
+        ]
+      }
+    ]
+  },
+  "cadence": {
+    "monthly_last_day": {
+      "count": 594,
+      "totalPerPeriod": 66518,
+      "monthlyEquiv": 66518
+    },
+    "monthly_other": {
+      "count": 3,
+      "totalPerPeriod": 4008.33,
+      "monthlyEquiv": 4008.33
+    },
+    "yearly": {
+      "count": 13,
+      "totalPerPeriod": 6800,
+      "monthlyEquiv": 566.67
+    },
+    "never": {
+      "count": 7,
+      "totalPerPeriod": 175,
+      "monthlyEquiv": 0
+    },
+    "on_completion": {
+      "count": 3,
+      "totalPerPeriod": 200,
+      "monthlyEquiv": 0
+    },
+    "quarterly": {
+      "count": 2,
+      "totalPerPeriod": 1698,
+      "monthlyEquiv": 566
+    }
+  },
+  "value": {
+    "mrrEquiv": 71659,
+    "annualRunRate": 859908
+  },
+  "rollOff": {
+    "tmc": {
+      "endsByJul31": {
+        "count": 2,
+        "totalPerPeriod": 100,
+        "monthlyEquiv": 100,
+        "jobs": [
+          {
+            "job": 6900,
+            "client": "Jeff Hunter",
+            "endAt": "2026-07-24T06:59:59Z",
+            "total": 0,
+            "sched": "Don't remind me to invoice",
+            "lineItems": [
+              "Total Mole Control Package"
+            ]
+          },
+          {
+            "job": 5639,
+            "client": "Larry Lemmon",
+            "endAt": "2026-08-01T06:59:59Z",
+            "total": 100,
+            "sched": "Monthly on the last day of the month",
+            "lineItems": [
+              "Total Mole Control Program -- Year round protection"
+            ]
+          }
+        ]
+      },
+      "endsInAug": {
+        "count": 0,
+        "totalPerPeriod": 0,
+        "monthlyEquiv": 0,
+        "jobs": []
+      }
+    },
+    "variants": {
+      "endsByJul31": {
+        "count": 0,
+        "totalPerPeriod": 0,
+        "monthlyEquiv": 0,
+        "jobs": []
+      },
+      "endsInAug": {
+        "count": 1,
+        "totalPerPeriod": 0,
+        "monthlyEquiv": 0,
+        "jobs": [
+          {
+            "job": 8117,
+            "client": "Patty Dills",
+            "endAt": "2026-08-11T06:59:59Z",
+            "total": 0,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "Warranty"
+            ]
+          }
+        ]
+      }
+    },
+    "other": {
+      "endsByJul31": {
+        "count": 15,
+        "totalPerPeriod": 6150,
+        "monthlyEquiv": 0,
+        "jobs": [
+          {
+            "job": 8013,
+            "client": "Julie Dance",
+            "endAt": "2026-07-22T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8040,
+            "client": "Matt Mcbride",
+            "endAt": "2026-07-30T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8061,
+            "client": "Kevin Mabin",
+            "endAt": "2026-07-31T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8062,
+            "client": "Ann Carpenter",
+            "endAt": "2026-07-31T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8008,
+            "client": "David Ducharme",
+            "endAt": "2026-07-23T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Barbee Mill HOA discount"
+            ]
+          },
+          {
+            "job": 8037,
+            "client": "Marian and Phil Thom",
+            "endAt": "2026-07-27T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8049,
+            "client": "Chad Buckley",
+            "endAt": "2026-07-28T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8052,
+            "client": "Tom & Sarah Long",
+            "endAt": "2026-07-31T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8032,
+            "client": "Jim Poff",
+            "endAt": "2026-07-28T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 7995,
+            "client": "Michael Warner",
+            "endAt": "2026-07-23T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8047,
+            "client": "Jay Poole",
+            "endAt": "2026-07-29T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8051,
+            "client": "Albert Mooney",
+            "endAt": "2026-07-28T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8043,
+            "client": "Teagan Eldridge",
+            "endAt": "2026-07-29T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8027,
+            "client": "Shelly Coleman",
+            "endAt": "2026-07-23T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8059,
+            "client": "Jared Barrett",
+            "endAt": "2026-07-30T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          }
+        ]
+      },
+      "endsInAug": {
+        "count": 79,
+        "totalPerPeriod": 32325,
+        "monthlyEquiv": 750,
+        "jobs": [
+          {
+            "job": 8216,
+            "client": "John & Jasmine Foth",
+            "endAt": "2026-08-27T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8215,
+            "client": "Mike Schuppert",
+            "endAt": "2026-08-25T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8165,
+            "client": "Blake  Sanderson",
+            "endAt": "2026-08-18T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8186,
+            "client": "Sarah Arnold",
+            "endAt": "2026-08-25T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8205,
+            "client": "Jake Fox",
+            "endAt": "2026-08-25T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8211,
+            "client": "Vicki Yoshioka",
+            "endAt": "2026-08-24T06:59:59Z",
+            "total": 400,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Senior Discount"
+            ]
+          },
+          {
+            "job": 8204,
+            "client": "Michael Marquez",
+            "endAt": "2026-08-28T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8125,
+            "client": "Carly Klee",
+            "endAt": "2026-08-13T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8073,
+            "client": "Jacquie Nielsen",
+            "endAt": "2026-08-03T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8195,
+            "client": "Joanna Chou",
+            "endAt": "2026-08-27T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8174,
+            "client": "Gina Beam",
+            "endAt": "2026-08-20T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8188,
+            "client": "Ravi Kumar Balachandran",
+            "endAt": "2026-08-24T06:59:59Z",
+            "total": 500,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8101,
+            "client": "Toni Jabson",
+            "endAt": "2026-08-06T06:59:59Z",
+            "total": 375,
+            "sched": "Monthly on the last day of the month",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8119,
+            "client": "Tom Clary",
+            "endAt": "2026-08-13T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8182,
+            "client": "Sanjay Dey",
+            "endAt": "2026-08-20T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8079,
+            "client": "Jenna Larson",
+            "endAt": "2026-08-07T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8180,
+            "client": "Tami Wooding",
+            "endAt": "2026-08-20T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8140,
+            "client": "Hugh Downer",
+            "endAt": "2026-08-14T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8144,
+            "client": "David Barney",
+            "endAt": "2026-08-13T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8129,
+            "client": "Kiersten Podolak",
+            "endAt": "2026-08-14T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8181,
+            "client": "Tony Whetstine",
+            "endAt": "2026-08-21T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8212,
+            "client": "Cindy Holshouser",
+            "endAt": "2026-08-26T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8109,
+            "client": "Dave Gunovich",
+            "endAt": "2026-08-12T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8196,
+            "client": "Lisa Politeo",
+            "endAt": "2026-08-26T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8075,
+            "client": "Jill Robinson",
+            "endAt": "2026-08-04T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8208,
+            "client": "Jakob Laroche",
+            "endAt": "2026-08-25T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8086,
+            "client": "Tony Dimartino",
+            "endAt": "2026-08-03T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8103,
+            "client": "Cindy Joaquin",
+            "endAt": "2026-08-07T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8118,
+            "client": "Patty  Ring",
+            "endAt": "2026-08-11T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8185,
+            "client": "Virgil Holman",
+            "endAt": "2026-08-26T06:59:59Z",
+            "total": 0,
+            "sched": "When the job is marked closed",
+            "lineItems": []
+          },
+          {
+            "job": 8207,
+            "client": "Amy Tang",
+            "endAt": "2026-08-27T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8078,
+            "client": "Deep Sangvi",
+            "endAt": "2026-08-04T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8179,
+            "client": "Sharon Young",
+            "endAt": "2026-08-25T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8070,
+            "client": "Dan Schointuch",
+            "endAt": "2026-08-04T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8107,
+            "client": "Chris Higgs",
+            "endAt": "2026-08-11T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8199,
+            "client": "Mary Greco",
+            "endAt": "2026-08-25T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8206,
+            "client": "Aaron Rutledge",
+            "endAt": "2026-08-25T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8089,
+            "client": "Klaudia Elam",
+            "endAt": "2026-08-04T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8142,
+            "client": "Kevin Shaver",
+            "endAt": "2026-08-18T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8108,
+            "client": "Mike Marinella",
+            "endAt": "2026-08-11T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8110,
+            "client": "Chris Roby",
+            "endAt": "2026-08-11T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8104,
+            "client": "Erik Guttridge",
+            "endAt": "2026-08-11T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8151,
+            "client": "Chuck Blevens",
+            "endAt": "2026-08-18T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8148,
+            "client": "Michelle  Wantuch",
+            "endAt": "2026-08-14T06:59:59Z",
+            "total": 375,
+            "sched": "Monthly on the last day of the month",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8120,
+            "client": "Huong Le",
+            "endAt": "2026-08-11T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8167,
+            "client": "Sig Ratkoviak",
+            "endAt": "2026-08-18T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8192,
+            "client": "Mark Fetters",
+            "endAt": "2026-08-25T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8163,
+            "client": "Ryan Jaffe",
+            "endAt": "2026-08-18T06:59:59Z",
+            "total": 0,
+            "sched": "When the job is marked closed",
+            "lineItems": []
+          },
+          {
+            "job": 8116,
+            "client": "Tim Banning",
+            "endAt": "2026-08-11T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8152,
+            "client": "Stella Sun",
+            "endAt": "2026-08-17T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8121,
+            "client": "Paul Watson",
+            "endAt": "2026-08-14T06:59:59Z",
+            "total": 400,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Senior Discount"
+            ]
+          },
+          {
+            "job": 8145,
+            "client": "Jane Molenda",
+            "endAt": "2026-08-14T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8198,
+            "client": "Lori  Morin",
+            "endAt": "2026-08-28T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8127,
+            "client": "Gary  Koessler",
+            "endAt": "2026-08-12T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8132,
+            "client": "Arash Mirhosseini",
+            "endAt": "2026-08-12T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8141,
+            "client": "Stan Salvatto",
+            "endAt": "2026-08-17T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8068,
+            "client": "Kyle Rancourt",
+            "endAt": "2026-08-03T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8191,
+            "client": "Nancy Collinsworth",
+            "endAt": "2026-08-24T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8187,
+            "client": "Joe Pruitt",
+            "endAt": "2026-08-24T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8139,
+            "client": "David Jones",
+            "endAt": "2026-08-17T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8102,
+            "client": "Heidi Wilson",
+            "endAt": "2026-08-10T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8171,
+            "client": "Patrick Kennedy",
+            "endAt": "2026-08-20T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8189,
+            "client": "Judy Revas",
+            "endAt": "2026-08-24T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8175,
+            "client": "Terry Yoshimura",
+            "endAt": "2026-08-24T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8066,
+            "client": "Ted Rudd",
+            "endAt": "2026-08-03T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8081,
+            "client": "Simmons Mill HOA",
+            "endAt": "2026-08-03T06:59:59Z",
+            "total": 750,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8177,
+            "client": "Mike Morrow",
+            "endAt": "2026-08-17T06:59:59Z",
+            "total": 0,
+            "sched": "Monthly on the last day of the month",
+            "lineItems": []
+          },
+          {
+            "job": 8071,
+            "client": "Danny Gorbun",
+            "endAt": "2026-08-04T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8149,
+            "client": "Shielin Tzong",
+            "endAt": "2026-08-14T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8126,
+            "client": "Timothy Walsh",
+            "endAt": "2026-08-10T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8162,
+            "client": "Kevin Montano",
+            "endAt": "2026-08-17T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Military Discount"
+            ]
+          },
+          {
+            "job": 8131,
+            "client": "Kalen Radford",
+            "endAt": "2026-08-14T06:59:59Z",
+            "total": 375,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program",
+              "Repeat Customer Discount"
+            ]
+          },
+          {
+            "job": 8099,
+            "client": "Michele Dague",
+            "endAt": "2026-08-06T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8164,
+            "client": "1st Baptist Church",
+            "endAt": "2026-08-20T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8134,
+            "client": "Riena Terada",
+            "endAt": "2026-08-13T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8094,
+            "client": "Kristin Cruse",
+            "endAt": "2026-08-05T06:59:59Z",
+            "total": 650,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8153,
+            "client": "Mike Sherman",
+            "endAt": "2026-08-19T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          },
+          {
+            "job": 8184,
+            "client": "Dick Nielsen",
+            "endAt": "2026-08-26T06:59:59Z",
+            "total": 0,
+            "sched": "Monthly on the last day of the month",
+            "lineItems": []
+          },
+          {
+            "job": 8168,
+            "client": "Joydeep Kant",
+            "endAt": "2026-08-19T06:59:59Z",
+            "total": 450,
+            "sched": "When the job is marked closed",
+            "lineItems": [
+              "The Quick Fix — One-Month Mole Control Program"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "tagGaps": {
+    "jobsMissingTag": [
+      {
+        "job": 8156,
+        "client": "Deborah Berger",
+        "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU5NzIxNTk=",
+        "status": "upcoming",
+        "startAt": "2026-07-16T07:00:00Z",
+        "tags": []
+      },
+      {
+        "job": 8213,
+        "client": "Cindy  Kamrin",
+        "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTc5MTYzNzU=",
+        "status": "upcoming",
+        "startAt": "2026-07-23T07:00:00Z",
+        "tags": []
+      },
+      {
+        "job": 8157,
+        "client": "Charles",
+        "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDUxNjYwMDA=",
+        "status": "upcoming",
+        "startAt": "2026-07-15T07:00:00Z",
+        "tags": []
+      },
+      {
+        "job": 5639,
+        "client": "Larry Lemmon",
+        "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC84NjgxMzQwNw==",
+        "status": "active",
+        "startAt": "2024-07-30T07:00:00Z",
+        "tags": [
+          "TMCP Churned"
+        ]
+      },
+      {
+        "job": 8209,
+        "client": "Charlie Allaire",
+        "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8zMjU3NjM2MQ==",
+        "status": "upcoming",
+        "startAt": "2026-07-21T07:00:00Z",
+        "tags": []
+      },
+      {
+        "job": 8176,
+        "client": "Mark & Lois Parhaniemei",
+        "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI0MjQ3MzM=",
+        "status": "upcoming",
+        "startAt": "2026-07-16T07:00:00Z",
+        "tags": []
+      },
+      {
+        "job": 8178,
+        "client": "Leslie Bratrud",
+        "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC81OTIyMzQ3OQ==",
+        "status": "upcoming",
+        "startAt": "2026-07-21T07:00:00Z",
+        "tags": []
+      },
+      {
+        "job": 8190,
+        "client": "Kevin Bohnert",
+        "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMwMTY4MzU=",
+        "status": "upcoming",
+        "startAt": "2026-07-20T07:00:00Z",
+        "tags": [
+          "Schedule requested",
+          "Voice Assist - Call Answered",
+          "Voice Assist - Message Taken"
+        ]
+      },
+      {
+        "job": 7150,
+        "client": "Justin Muir",
+        "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC84NzExODI4MA==",
+        "status": "upcoming",
+        "startAt": "2025-09-12T07:00:00Z",
+        "tags": [
+          "TMCP Churned"
+        ]
+      },
+      {
+        "job": 8159,
+        "client": "Jonae",
+        "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYwODEyNDg=",
+        "status": "upcoming",
+        "startAt": "2026-07-13T07:00:00Z",
+        "tags": []
+      }
+    ],
+    "taggedNoActiveJob": [
+      "Marcus Andy",
+      "Tyler Smythe",
+      "Barbee Mill HOA",
+      "Connie Schlimgen",
+      "Aziz El-solh"
+    ]
+  },
+  "flags": {
+    "badBilling": [
+      {
+        "job": 7767,
+        "client": "Jamie Randall",
+        "status": "upcoming",
+        "freq": "NEVER",
+        "sched": "Don't remind me to invoice",
+        "total": 0,
+        "startAt": "2026-03-12T07:00:00Z",
+        "endAt": "2027-03-12T07:59:59Z",
+        "invoices": 0,
+        "invoicedTotal": 0,
+        "startedLast7d": false
+      },
+      {
+        "job": 6900,
+        "client": "Jeff Hunter",
+        "status": "upcoming",
+        "freq": "NEVER",
+        "sched": "Don't remind me to invoice",
+        "total": 0,
+        "startAt": "2025-07-24T07:00:00Z",
+        "endAt": "2026-07-24T06:59:59Z",
+        "invoices": 0,
+        "invoicedTotal": 0,
+        "startedLast7d": false
+      },
+      {
+        "job": 5433,
+        "client": "Susan Newby",
+        "status": "upcoming",
+        "freq": "NEVER",
+        "sched": "Don't remind me to invoice",
+        "total": 0,
+        "startAt": "2024-06-28T07:00:00Z",
+        "endAt": "2027-02-01T07:59:59Z",
+        "invoices": 0,
+        "invoicedTotal": 0,
+        "startedLast7d": false
+      },
+      {
+        "job": 8058,
+        "client": "Samantha Sieverling",
+        "status": "upcoming",
+        "freq": "ON_COMPLETION",
+        "sched": "When the job is marked closed",
+        "total": 100,
+        "startAt": "2026-06-25T07:00:00Z",
+        "endAt": "2036-06-24T06:59:59Z",
+        "invoices": 0,
+        "invoicedTotal": 0,
+        "startedLast7d": false
+      },
+      {
+        "job": 8197,
+        "client": "Erin Irvine",
+        "status": "upcoming",
+        "freq": "ON_COMPLETION",
+        "sched": "When the job is marked closed",
+        "total": 100,
+        "startAt": "2026-07-22T07:00:00Z",
+        "endAt": "2036-07-22T06:59:59Z",
+        "invoices": 0,
+        "invoicedTotal": 0,
+        "startedLast7d": true
+      },
+      {
+        "job": 7701,
+        "client": "Susan Mcdonald",
+        "status": "upcoming",
+        "freq": "NEVER",
+        "sched": "Don't remind me to invoice",
+        "total": 75,
+        "startAt": "2026-02-25T08:00:00Z",
+        "endAt": "2027-02-25T07:59:59Z",
+        "invoices": 1,
+        "invoicedTotal": 900,
+        "startedLast7d": false
+      },
+      {
+        "job": 5007,
+        "client": "Karen Porter",
+        "status": "upcoming",
+        "freq": "NEVER",
+        "sched": "Don't remind me to invoice",
+        "total": 100,
+        "startAt": "2024-02-29T08:00:00Z",
+        "endAt": "2034-02-28T07:59:59Z",
+        "invoices": 0,
+        "invoicedTotal": 0,
+        "startedLast7d": false
+      },
+      {
+        "job": 7449,
+        "client": "Sally  Gasser",
+        "status": "upcoming",
+        "freq": "NEVER",
+        "sched": "Don't remind me to invoice",
+        "total": 0,
+        "startAt": "2025-10-30T07:00:00Z",
+        "endAt": "2035-10-30T06:59:59Z",
+        "invoices": 4,
+        "invoicedTotal": 340,
+        "startedLast7d": false
+      },
+      {
+        "job": 4754,
+        "client": "Barry Heimbigner",
+        "status": "upcoming",
+        "freq": "NEVER",
+        "sched": "Don't remind me to invoice",
+        "total": 0,
+        "startAt": "2023-11-30T08:00:00Z",
+        "endAt": "2026-12-30T07:59:59Z",
+        "invoices": 0,
+        "invoicedTotal": 0,
+        "startedLast7d": false
+      },
+      {
+        "job": 5440,
+        "client": "Steve Hewitt",
+        "status": "upcoming",
+        "freq": "ON_COMPLETION",
+        "sched": "When the job is marked closed",
+        "total": 0,
+        "startAt": "2024-07-01T07:00:00Z",
+        "endAt": "2027-02-01T07:59:59Z",
+        "invoices": 2,
+        "invoicedTotal": 160,
+        "startedLast7d": false
+      }
+    ]
+  }
+}
