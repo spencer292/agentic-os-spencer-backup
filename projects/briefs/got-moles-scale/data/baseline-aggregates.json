@@ -1,0 +1,453 @@
+{
+  "generated_at": "2026-07-22T06:04:35.517Z",
+  "row_counts": {
+    "invoices": 8716,
+    "clients": 4243,
+    "quotes": 1130,
+    "visits": 4344
+  },
+  "revenue_by_month": {
+    "2026-07": {
+      "total": 42688,
+      "count": 248
+    },
+    "2026-06": {
+      "total": 78278.87,
+      "count": 567
+    },
+    "2026-04": {
+      "total": 74439.29,
+      "count": 501
+    },
+    "2026-03": {
+      "total": 64521.29,
+      "count": 469
+    },
+    "2026-05": {
+      "total": 69263.04,
+      "count": 522
+    },
+    "2026-02": {
+      "total": 58072.04,
+      "count": 429
+    },
+    "2026-01": {
+      "total": 54362.27,
+      "count": 390
+    },
+    "2025-01": {
+      "total": 50506.5,
+      "count": 264
+    },
+    "2025-12": {
+      "total": 57637.24,
+      "count": 402
+    },
+    "2025-11": {
+      "total": 80076.49,
+      "count": 446
+    },
+    "2025-10": {
+      "total": 83751.99,
+      "count": 433
+    },
+    "2025-08": {
+      "total": 75861.74,
+      "count": 316
+    },
+    "2025-09": {
+      "total": 94999.22,
+      "count": 525
+    },
+    "2025-07": {
+      "total": 66048.48,
+      "count": 356
+    },
+    "2025-06": {
+      "total": 53717,
+      "count": 312
+    },
+    "2025-05": {
+      "total": 39554.75,
+      "count": 279
+    },
+    "2025-04": {
+      "total": 44209.75,
+      "count": 282
+    },
+    "2025-03": {
+      "total": 40734.75,
+      "count": 272
+    },
+    "2025-02": {
+      "total": 47599.75,
+      "count": 268
+    },
+    "2024-10": {
+      "total": 55622.75,
+      "count": 286
+    },
+    "2024-11": {
+      "total": 38604,
+      "count": 180
+    },
+    "2024-12": {
+      "total": 51385.25,
+      "count": 324
+    },
+    "2024-08": {
+      "total": 75152.88,
+      "count": 335
+    },
+    "2024-09": {
+      "total": 61785.75,
+      "count": 303
+    }
+  },
+  "bad_debt_total": 1600,
+  "trailing_12mo_revenue": 857311.96,
+  "trailing_12mo_months": [
+    "2025-07",
+    "2025-08",
+    "2025-09",
+    "2025-10",
+    "2025-11",
+    "2025-12",
+    "2026-01",
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05",
+    "2026-06"
+  ],
+  "ar": {
+    "open_balance_total": 19731.75,
+    "open_invoices": 54,
+    "past_due_total": 5589,
+    "past_due_invoices": 29
+  },
+  "top_line_items": [
+    {
+      "name": "1 month of mole control service",
+      "count": 641,
+      "revenue": 287185
+    },
+    {
+      "name": "total mole control package",
+      "count": 2146,
+      "revenue": 241085
+    },
+    {
+      "name": "annual mole control service",
+      "count": 1644,
+      "revenue": 192502
+    },
+    {
+      "name": "total mole control program -- year round protection",
+      "count": 991,
+      "revenue": 134331.06
+    },
+    {
+      "name": "annual mole control service (centeral location- parcels less",
+      "count": 1396,
+      "revenue": 128527.9
+    },
+    {
+      "name": "1 month of mole control service (north)",
+      "count": 236,
+      "revenue": 104835
+    },
+    {
+      "name": "1 month of mole control service (central)",
+      "count": 190,
+      "revenue": 83925
+    },
+    {
+      "name": "1 month of mole control service (valley)",
+      "count": 187,
+      "revenue": 71037.5
+    },
+    {
+      "name": "annual mole control service (north)",
+      "count": 419,
+      "revenue": 50337.99
+    },
+    {
+      "name": "the quick fix — one-month mole control program",
+      "count": 106,
+      "revenue": 49275
+    },
+    {
+      "name": "annual mole control service for 15 homes",
+      "count": 21,
+      "revenue": 31500
+    },
+    {
+      "name": "setup / service fee",
+      "count": 108,
+      "revenue": 28025
+    },
+    {
+      "name": "1 month of mole control service (south)",
+      "count": 56,
+      "revenue": 24137.5
+    },
+    {
+      "name": "annual mole control service (south)",
+      "count": 131,
+      "revenue": 19450
+    },
+    {
+      "name": "annual mole control service (central location- parcels less ",
+      "count": 184,
+      "revenue": 15665
+    },
+    {
+      "name": "friends and family",
+      "count": 39,
+      "revenue": 9325
+    },
+    {
+      "name": "quick fix",
+      "count": 19,
+      "revenue": 8125
+    },
+    {
+      "name": "trip charge",
+      "count": 45,
+      "revenue": 6275
+    },
+    {
+      "name": "annual mole control service (central)",
+      "count": 20,
+      "revenue": 6195
+    },
+    {
+      "name": "annual mole control service (central location)",
+      "count": 49,
+      "revenue": 5025
+    },
+    {
+      "name": "annual mole control service (south location)",
+      "count": 19,
+      "revenue": 3800
+    },
+    {
+      "name": "annual",
+      "count": 29,
+      "revenue": 2825
+    },
+    {
+      "name": "total mole control package (10 sites)",
+      "count": 5,
+      "revenue": 2500
+    },
+    {
+      "name": "neighboring property half price",
+      "count": 17,
+      "revenue": 1850
+    },
+    {
+      "name": "annual mole control service (billed monthly)",
+      "count": 19,
+      "revenue": 1710
+    },
+    {
+      "name": "neighboring property",
+      "count": 26,
+      "revenue": 1340
+    },
+    {
+      "name": "non-refundable service deposit",
+      "count": 12,
+      "revenue": 1300
+    },
+    {
+      "name": "additional properties",
+      "count": 2,
+      "revenue": 1200
+    },
+    {
+      "name": "total mole control package 6/1/25 - 3/31/26",
+      "count": 1,
+      "revenue": 1000
+    },
+    {
+      "name": "additional month of mole control service (valley)",
+      "count": 3,
+      "revenue": 900
+    },
+    {
+      "name": "ann",
+      "count": 10,
+      "revenue": 892.5
+    },
+    {
+      "name": "annual mole control service (north) q1",
+      "count": 1,
+      "revenue": 849.99
+    },
+    {
+      "name": "4 months of mole control service",
+      "count": 4,
+      "revenue": 700
+    },
+    {
+      "name": "moms property",
+      "count": 5,
+      "revenue": 425
+    },
+    {
+      "name": "2nd month of mole control service (valley)",
+      "count": 2,
+      "revenue": 400
+    },
+    {
+      "name": "setup fee",
+      "count": 2,
+      "revenue": 350
+    },
+    {
+      "name": "1 month of mole control service (initial)",
+      "count": 1,
+      "revenue": 350
+    },
+    {
+      "name": "1 month of mole control service (continuation)",
+      "count": 1,
+      "revenue": 300
+    },
+    {
+      "name": "august additional properties",
+      "count": 1,
+      "revenue": 300
+    },
+    {
+      "name": "additional month of mole control service (central)",
+      "count": 1,
+      "revenue": 250
+    }
+  ],
+  "clients_invoiced_24mo": 1546,
+  "clients_active_last3mo": 636,
+  "avg_revenue_per_invoiced_client_24mo": 944,
+  "client_revenue_p50": 475,
+  "client_revenue_top10pct_share": 37,
+  "clients_total": 4243,
+  "clients_leads": 831,
+  "clients_archived": 1448,
+  "clients_with_open_balance": 53,
+  "tag_counts": {
+    "TMCP - Active": 597,
+    "Voice Assist - Call Answered": 325,
+    "Schedule requested": 194,
+    "Voice Assist - Message Taken": 112,
+    "Autopay": 87,
+    "LARGE PROPERTY": 46,
+    "noreview": 44,
+    "Schedule booked": 26,
+    "TMCP Churned": 20,
+    "Commercial Property": 11,
+    "DO NOT SERVICE": 10,
+    "paid in full": 9,
+    "TMCP - BARTER": 6,
+    "Cash": 4,
+    "Commercial Client": 3,
+    "Voice Assist - Test Call": 2
+  },
+  "lead_sources": {
+    "unknown": 3591,
+    "callrail": 410,
+    "google": 86,
+    "website-client": 74,
+    "existing client": 10,
+    "barbee mill": 10,
+    "chatgpt": 8,
+    "rambo": 7,
+    "cascade pest control": 7,
+    "referral": 6,
+    "mole busters": 6,
+    "facebook": 6,
+    "thumbtack": 5,
+    "gemini": 2,
+    "other": 2,
+    "lawn pro's landscaping": 1,
+    "vehicle wrap": 1,
+    "z lawns": 1,
+    "mole lady": 1,
+    "joe the sprinkler guy": 1
+  },
+  "new_clients_by_month": {
+    "2024-08": 65,
+    "2024-09": 49,
+    "2024-10": 62,
+    "2024-11": 26,
+    "2024-12": 30,
+    "2025-01": 47,
+    "2025-02": 28,
+    "2025-03": 25,
+    "2025-04": 24,
+    "2025-05": 33,
+    "2025-06": 50,
+    "2025-07": 91,
+    "2025-08": 76,
+    "2025-09": 108,
+    "2025-10": 84,
+    "2025-11": 23,
+    "2025-12": 19,
+    "2026-01": 51,
+    "2026-02": 49,
+    "2026-03": 41,
+    "2026-04": 37,
+    "2026-05": 186,
+    "2026-06": 259,
+    "2026-07": 204
+  },
+  "quotes": {
+    "total_12mo": 1130,
+    "by_status": {
+      "converted": 785,
+      "awaiting_response": 97,
+      "archived": 248
+    },
+    "close_rate_pct": 69,
+    "avg_quote_value": 925,
+    "won_value_12mo": 668489
+  },
+  "capacity": {
+    "completed_visits_12wk": 4344,
+    "avg_visit_minutes": 15,
+    "per_tech": {
+      "Luke LaVergne": {
+        "visits_12wk": 1503,
+        "per_week": 125
+      },
+      "Tavis Alexander": {
+        "visits_12wk": 328,
+        "per_week": 27
+      },
+      "Cory Ventura": {
+        "visits_12wk": 1233,
+        "per_week": 103
+      },
+      "Spencer Hill": {
+        "visits_12wk": 515,
+        "per_week": 43
+      },
+      "Cammeron Anderson": {
+        "visits_12wk": 933,
+        "per_week": 78
+      },
+      "Alias Franks": {
+        "visits_12wk": 31,
+        "per_week": 3
+      }
+    }
+  },
+  "calls_by_month": {
+    "2026-04": 1,
+    "2026-05": 193,
+    "2026-06": 286,
+    "2026-07": 213
+  }
+}
