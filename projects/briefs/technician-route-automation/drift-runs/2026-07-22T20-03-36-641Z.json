@@ -1,0 +1,426 @@
+{
+ "ranAt": "2026-07-22T20:01:08.901Z",
+ "mode": "fix",
+ "plannedDays": [
+  "2026-07-23",
+  "2026-07-24"
+ ],
+ "counts": {
+  "activeVisits": 226,
+  "scheduledStops": 226,
+  "missing": 3,
+  "dayDrift": 0,
+  "techDrift": 0,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 3
+ },
+ "missing": [
+  {
+   "orderNo": "8193-2259501953",
+   "job": "8193",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNTk1MDE5NTM=",
+   "date": "2026-07-23",
+   "hm": "00:00",
+   "tech": "Spencer Hill",
+   "title": "Erica Benson",
+   "address": "4746 50th Avenue Southwest, Seattle, Washington 98116",
+   "isSet": false
+  },
+  {
+   "orderNo": "8220-2261874112",
+   "job": "8220",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNjE4NzQxMTI=",
+   "date": "2026-07-23",
+   "hm": "12:00",
+   "tech": "Spencer Hill",
+   "title": "Lily Tsai",
+   "address": "8012 148th Avenue Southeast, Newcastle, Washington 98059",
+   "isSet": true
+  },
+  {
+   "orderNo": "8221-2261906271",
+   "job": "8221",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNjE5MDYyNzE=",
+   "date": "2026-07-23",
+   "hm": "12:30",
+   "tech": "Cory Ventura",
+   "title": "Stan Adams",
+   "address": "3211 263rd Court Southeast, Sammamish, Washington 98075",
+   "isSet": true
+  }
+ ],
+ "dayDrift": [],
+ "techDrift": [],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "7630-2019745199",
+   "date": "2026-07-23",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "08:15"
+  },
+  {
+   "orderNo": "8190-2259447195",
+   "date": "2026-07-23",
+   "driver": "Cammeron Anderson",
+   "driverSerial": "Cammeron Anderson",
+   "hm": "11:19"
+  },
+  {
+   "orderNo": "8214-2261162871",
+   "date": "2026-07-23",
+   "driver": "Cammeron Anderson",
+   "driverSerial": "Cammeron Anderson",
+   "hm": "11:54"
+  }
+ ],
+ "fixes": [
+  {
+   "day": "2026-07-23",
+   "writable": true,
+   "created": [
+    "8193-2259501953",
+    "8220-2261874112",
+    "8221-2261906271"
+   ],
+   "replanned": true,
+   "writes": [
+    {
+     "orderNo": "8220-2261874112",
+     "from": "2026-07-23 12:00",
+     "to": "2026-07-23 09:31",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7988-2255449025",
+     "from": "2026-07-23 09:32",
+     "to": "2026-07-23 09:52",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7531-2255448290",
+     "from": "2026-07-23 09:45",
+     "to": "2026-07-23 10:06",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8175-2254221221",
+     "from": "2026-07-23 10:02",
+     "to": "2026-07-23 10:22",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8113-2240794168",
+     "from": "2026-07-23 10:28",
+     "to": "2026-07-23 10:48",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "5411-2255447291",
+     "from": "2026-07-23 10:41",
+     "to": "2026-07-23 11:02",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7995-2255445891",
+     "from": "2026-07-23 11:00",
+     "to": "2026-07-23 11:20",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7960-2257572493",
+     "from": "2026-07-23 11:21",
+     "to": "2026-07-23 11:41",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7823-2107377275",
+     "from": "2026-07-23 11:37",
+     "to": "2026-07-23 11:58",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "5106-2257572491",
+     "from": "2026-07-23 11:52",
+     "to": "2026-07-23 12:12",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8189-2259023224",
+     "from": "2026-07-23 12:13",
+     "to": "2026-07-23 12:33",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8193-2259501953",
+     "from": "2026-07-23 00:00",
+     "to": "2026-07-23 13:08",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7485-1951575706",
+     "from": "2026-07-23 12:39",
+     "to": "2026-07-23 13:42",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8171-2253064590",
+     "from": "2026-07-23 12:53",
+     "to": "2026-07-23 13:56",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8102-2239814481",
+     "from": "2026-07-23 13:18",
+     "to": "2026-07-23 14:21",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8026-2257634977",
+     "from": "2026-07-23 13:33",
+     "to": "2026-07-23 14:36",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8069-2255013210",
+     "from": "2026-07-23 13:49",
+     "to": "2026-07-23 14:52",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8207-2260758905",
+     "from": "2026-07-23 14:00",
+     "to": "2026-07-23 15:03",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8147-2255781733",
+     "from": "2026-07-23 14:23",
+     "to": "2026-07-23 15:27",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8054-2257572497",
+     "from": "2026-07-23 14:34",
+     "to": "2026-07-23 15:37",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8176-2255781981",
+     "from": "2026-07-23 14:45",
+     "to": "2026-07-23 15:49",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8019-2255782021",
+     "from": "2026-07-23 14:56",
+     "to": "2026-07-23 15:59",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8008-2255782408",
+     "from": "2026-07-23 15:07",
+     "to": "2026-07-23 16:10",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7986-2254863864",
+     "from": "2026-07-23 15:23",
+     "to": "2026-07-23 16:26",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "8135-2245293568",
+     "from": "2026-07-23 15:38",
+     "to": "2026-07-23 16:42",
+     "driver": "Spencer Hill"
+    },
+    {
+     "orderNo": "7882-2254900535",
+     "from": "2026-07-23 08:40",
+     "to": "2026-07-23 08:28",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8182-2255778877",
+     "from": "2026-07-23 08:28",
+     "to": "2026-07-23 08:39",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8221-2261906271",
+     "from": "2026-07-23 12:30",
+     "to": "2026-07-23 08:54",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "7417-2247506123",
+     "from": "2026-07-23 08:55",
+     "to": "2026-07-23 09:17",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8046-2239700492",
+     "from": "2026-07-23 09:10",
+     "to": "2026-07-23 09:32",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "5441-2254920269",
+     "from": "2026-07-23 09:22",
+     "to": "2026-07-23 09:44",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8119-2242636310",
+     "from": "2026-07-23 09:36",
+     "to": "2026-07-23 09:58",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8156-2248882003",
+     "from": "2026-07-23 09:47",
+     "to": "2026-07-23 10:09",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "6355-2255093231",
+     "from": "2026-07-23 10:01",
+     "to": "2026-07-23 10:23",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "7011-2255094608",
+     "from": "2026-07-23 10:13",
+     "to": "2026-07-23 10:35",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8101-2239511789",
+     "from": "2026-07-23 10:29",
+     "to": "2026-07-23 10:51",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8188-2258955482",
+     "from": "2026-07-23 10:43",
+     "to": "2026-07-23 11:05",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8080-2234763001",
+     "from": "2026-07-23 10:57",
+     "to": "2026-07-23 11:19",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8064-2232047207",
+     "from": "2026-07-23 11:10",
+     "to": "2026-07-23 11:32",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8040-2225767909",
+     "from": "2026-07-23 11:23",
+     "to": "2026-07-23 11:45",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8174-2254186642",
+     "from": "2026-07-23 11:37",
+     "to": "2026-07-23 11:59",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "7262-2255150723",
+     "from": "2026-07-23 11:52",
+     "to": "2026-07-23 12:13",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8195-2259510577",
+     "from": "2026-07-23 12:03",
+     "to": "2026-07-23 12:25",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "4614-2255172329",
+     "from": "2026-07-23 12:25",
+     "to": "2026-07-23 12:47",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8014-2219801337",
+     "from": "2026-07-23 12:40",
+     "to": "2026-07-23 13:02",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "7589-2255350589",
+     "from": "2026-07-23 12:51",
+     "to": "2026-07-23 13:13",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "7676-2257572496",
+     "from": "2026-07-23 13:04",
+     "to": "2026-07-23 13:26",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "6450-2255383817",
+     "from": "2026-07-23 13:17",
+     "to": "2026-07-23 13:39",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "6810-2255392815",
+     "from": "2026-07-23 13:31",
+     "to": "2026-07-23 13:53",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "7817-2255404890",
+     "from": "2026-07-23 13:43",
+     "to": "2026-07-23 14:05",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "5415-2255441348",
+     "from": "2026-07-23 13:57",
+     "to": "2026-07-23 14:19",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "7525-2255517681",
+     "from": "2026-07-23 14:14",
+     "to": "2026-07-23 14:36",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8169-2253062398",
+     "from": "2026-07-23 14:27",
+     "to": "2026-07-23 14:49",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8073-2232628920",
+     "from": "2026-07-23 14:42",
+     "to": "2026-07-23 15:04",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "4953-2255532347",
+     "from": "2026-07-23 15:00",
+     "to": "2026-07-23 15:22",
+     "driver": "Cory Ventura"
+    }
+   ],
+   "failures": [],
+   "aborted": null
+  }
+ ]
+}

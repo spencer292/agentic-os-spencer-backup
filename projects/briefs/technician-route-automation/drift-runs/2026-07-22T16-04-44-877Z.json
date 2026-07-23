@@ -1,0 +1,246 @@
+{
+ "ranAt": "2026-07-22T16:02:25.276Z",
+ "mode": "fix",
+ "plannedDays": [
+  "2026-07-23",
+  "2026-07-24"
+ ],
+ "counts": {
+  "activeVisits": 223,
+  "scheduledStops": 225,
+  "missing": 1,
+  "dayDrift": 0,
+  "techDrift": 0,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 3
+ },
+ "missing": [
+  {
+   "orderNo": "8216-2261177316",
+   "job": "8216",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNjExNzczMTY=",
+   "date": "2026-07-23",
+   "hm": "00:00",
+   "tech": "Cammeron Anderson",
+   "title": "John & Jasmine Foth",
+   "address": "21405 Southeast 292nd Place, Kent, Washington 98042",
+   "isSet": true
+  }
+ ],
+ "dayDrift": [],
+ "techDrift": [],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "7630-2019745199",
+   "date": "2026-07-23",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "08:15"
+  },
+  {
+   "orderNo": "8190-2259447195",
+   "date": "2026-07-23",
+   "driver": "Cammeron Anderson",
+   "driverSerial": "Cammeron Anderson",
+   "hm": "11:48"
+  },
+  {
+   "orderNo": "8214-2261162871",
+   "date": "2026-07-23",
+   "driver": "Cammeron Anderson",
+   "driverSerial": "Cammeron Anderson",
+   "hm": "12:23"
+  }
+ ],
+ "fixes": [
+  {
+   "day": "2026-07-23",
+   "writable": true,
+   "created": [
+    "8216-2261177316"
+   ],
+   "replanned": true,
+   "writes": [
+    {
+     "orderNo": "8173-2255497451",
+     "from": "2026-07-23 08:09",
+     "to": "2026-07-23 07:40",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "4701-2254977059",
+     "from": "2026-07-23 08:27",
+     "to": "2026-07-23 07:58",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7626-2254949204",
+     "from": "2026-07-23 08:44",
+     "to": "2026-07-23 08:15",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "6900-1829454980",
+     "from": "2026-07-23 08:59",
+     "to": "2026-07-23 08:31",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "4515-2254923601",
+     "from": "2026-07-23 09:13",
+     "to": "2026-07-23 08:44",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7697-2255526562",
+     "from": "2026-07-23 09:28",
+     "to": "2026-07-23 08:59",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "4930-2254802266",
+     "from": "2026-07-23 09:43",
+     "to": "2026-07-23 09:14",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "6674-2247661723",
+     "from": "2026-07-23 09:59",
+     "to": "2026-07-23 09:30",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7712-2054364447",
+     "from": "2026-07-23 10:16",
+     "to": "2026-07-23 09:47",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "4711-2254898008",
+     "from": "2026-07-23 10:31",
+     "to": "2026-07-23 10:02",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8122-2254874329",
+     "from": "2026-07-23 10:44",
+     "to": "2026-07-23 10:15",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8202-2259592331",
+     "from": "2026-07-23 11:04",
+     "to": "2026-07-23 10:35",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7382-2254865375",
+     "from": "2026-07-23 12:59",
+     "to": "2026-07-23 12:30",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "5040-1651220344",
+     "from": "2026-07-23 13:14",
+     "to": "2026-07-23 12:45",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "5022-2245317803",
+     "from": "2026-07-23 13:28",
+     "to": "2026-07-23 12:59",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7896-2255282855",
+     "from": "2026-07-23 13:51",
+     "to": "2026-07-23 13:22",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7644-2024390316",
+     "from": "2026-07-23 14:11",
+     "to": "2026-07-23 13:42",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "4880-2255122703",
+     "from": "2026-07-23 14:26",
+     "to": "2026-07-23 13:57",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8125-2242850679",
+     "from": "2026-07-23 14:42",
+     "to": "2026-07-23 14:13",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "4545-2246745664",
+     "from": "2026-07-23 14:58",
+     "to": "2026-07-23 14:29",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "5458-2255023625",
+     "from": "2026-07-23 15:10",
+     "to": "2026-07-23 14:41",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "6275-2255004571",
+     "from": "2026-07-23 15:23",
+     "to": "2026-07-23 14:54",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7306-2255047935",
+     "from": "2026-07-23 15:36",
+     "to": "2026-07-23 15:07",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "6287-2255343108",
+     "from": "2026-07-23 15:52",
+     "to": "2026-07-23 15:23",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7767-2255381357",
+     "from": "2026-07-23 16:07",
+     "to": "2026-07-23 15:38",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7646-2025070089",
+     "from": "2026-07-23 16:24",
+     "to": "2026-07-23 15:55",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7819-2248748432",
+     "from": "2026-07-23 16:43",
+     "to": "2026-07-23 16:14",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8216-2261177316",
+     "from": "2026-07-23 00:00",
+     "to": "2026-07-23 16:32",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8185-2256881869",
+     "from": "2026-07-23 07:37",
+     "to": "2026-07-23 16:59",
+     "driver": "Cammeron Anderson"
+    }
+   ],
+   "failures": [],
+   "aborted": null
+  }
+ ]
+}

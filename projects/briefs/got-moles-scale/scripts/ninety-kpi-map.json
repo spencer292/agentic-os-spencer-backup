@@ -1,0 +1,23 @@
+{
+  "weekStartDay": 0,
+  "timezone": "America/Los_Angeles",
+  "metrics": {
+    "phone_calls": { "kpiId": "68c43bbaee2b0f4086bf0f1e", "label": "Phone Calls", "enabled": true, "source": "callrail" },
+    "missed_calls": { "kpiId": null, "label": "Missed Calls", "enabled": false, "source": "callrail", "note": "KPI not created in Ninety yet — set kpiId and enable after Spencer's UI pass" },
+    "new_clients": { "kpiId": "68c43c40ee2b0f4086bf0fd3", "label": "New Clients", "enabled": true, "source": "jobber" },
+    "total_revenue": { "kpiId": "69c5640dac5904cd09f444ce", "label": "TOTAL REVENUE", "enabled": true, "source": "jobber" },
+    "client_visits": { "kpiId": "68c43ca3ee2b0f4086bf10c0", "label": "Client visits", "enabled": true, "source": "jobber" },
+    "tmcp_quoted": { "kpiId": "68c43cfeee2b0f4086bf1160", "label": "TMCP - Quoted", "enabled": true, "source": "jobber" },
+    "tmcp_converted": { "kpiId": "68c43d5bee2b0f4086bf1203", "label": "TCMP - Converted", "enabled": true, "source": "jobber" },
+    "qf_quoted": { "kpiId": "6984f163e05d0ee69a2c255d", "label": "Quick Fix - Quoted", "enabled": true, "source": "jobber" },
+    "qf_converted": { "kpiId": "6984f181e05d0ee69a2c2a9e", "label": "Quick Fix - Converted", "enabled": true, "source": "jobber" },
+    "quick_fix_created": { "kpiId": "69c562b8ac5904cd09f41788", "label": "Quick fix created", "enabled": true, "source": "jobber" },
+    "qf_job_closed": { "kpiId": "68c8968eafa8207dc6deb332", "label": "Quick fix Job closed", "enabled": true, "source": "jobber" },
+    "total_jobs_created": { "kpiId": "69331deb1c81133280bb5b39", "label": "Total Jobs created", "enabled": true, "source": "jobber" },
+    "tmcp_active": { "kpiId": "68ffb70bd1b9801458ee1fbf", "label": "Total TMCP Jobs active", "enabled": true, "source": "jobber" },
+    "tmcp_net_new": { "kpiId": "69c560e4ac5904cd09f3d948", "label": "TMCP Net New", "enabled": true, "source": "jobber" },
+    "tmcp_cancellations": { "kpiId": "69c5609dac5904cd09f3cea1", "label": "TMCP Cancellations", "enabled": true, "source": "jobber" },
+    "tmcp_mrr": { "kpiId": "69cadbd1386fa68ae083cf8d", "label": "TMCP MRR", "enabled": true, "source": "jobber" },
+    "past_due_invoices": { "kpiId": "69c567efae5469d8e458e8bb", "label": "Past-Due Invoices", "enabled": true, "source": "jobber", "currentWeekOnly": true, "note": "count of past_due invoices; dollar total pushed as a note" }
+  }
+}

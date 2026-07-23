@@ -19,16 +19,20 @@ for (const line of fs.readFileSync(resolve(repoRoot, '.env'), 'utf8').split(/\r?
 }
 
 const ROUTE_READY_ID = '7630857815';
-const MCC = env.GOOGLE_ADS_LOGIN_CUSTOMER_ID;
+// Route Ready creds are namespaced ROUTE_READY_ADS_* — the generic GOOGLE_ADS_*
+// keys are reserved for the Got Moles account (see GOT-MOLES.md).
+const missing = ['ROUTE_READY_ADS_CLIENT_ID', 'ROUTE_READY_ADS_CLIENT_SECRET', 'ROUTE_READY_ADS_REFRESH_TOKEN', 'ROUTE_READY_ADS_DEVELOPER_TOKEN', 'ROUTE_READY_ADS_LOGIN_CUSTOMER_ID'].filter(k => !env[k]);
+if (missing.length) { console.error('FAIL: missing .env keys:', missing.join(', ')); process.exit(1); }
+const MCC = env.ROUTE_READY_ADS_LOGIN_CUSTOMER_ID;
 const API = 'https://googleads.googleapis.com/v23';
 
 const tokenRes = await fetch('https://oauth2.googleapis.com/token', {
   method: 'POST',
   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
   body: new URLSearchParams({
-    client_id: env.GOOGLE_ADS_CLIENT_ID,
-    client_secret: env.GOOGLE_ADS_CLIENT_SECRET,
-    refresh_token: env.GOOGLE_ADS_REFRESH_TOKEN,
+    client_id: env.ROUTE_READY_ADS_CLIENT_ID,
+    client_secret: env.ROUTE_READY_ADS_CLIENT_SECRET,
+    refresh_token: env.ROUTE_READY_ADS_REFRESH_TOKEN,
     grant_type: 'refresh_token',
   }),
 });
@@ -37,7 +41,7 @@ if (!access_token) { console.error('FAIL: could not get OAuth access token'); pr
 
 const headers = {
   Authorization: `Bearer ${access_token}`,
-  'developer-token': env.GOOGLE_ADS_DEVELOPER_TOKEN,
+  'developer-token': env.ROUTE_READY_ADS_DEVELOPER_TOKEN,
   'login-customer-id': MCC,
   'Content-Type': 'application/json',
 };

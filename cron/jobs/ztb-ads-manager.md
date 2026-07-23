@@ -13,7 +13,7 @@ You are running as a scheduled job for Agentic OS: the Route Ready ads manager.
 
 Context: `projects/briefs/zero-touch-business/keyword-backlog.md` (the ★ ad seed list + the pre-agreed rule) and the ops-google-ads skill (SDK-free GAQL engine — reuse its request pattern with the ROUTE READY account creds, NOT the Got Moles account).
 
-0. Gate: `.env` must contain `ROUTE_READY_ADS_CUSTOMER_ID`. If missing, report "ads account not set up" and stop. NEVER touch `GOOGLE_ADS_CUSTOMER_ID` (that is Got Moles' account) — the Route Ready customer id is the only account this job may query or mutate.
+0. Gate: `.env` must contain `ROUTE_READY_ADS_CUSTOMER_ID` plus the namespaced creds `ROUTE_READY_ADS_DEVELOPER_TOKEN`, `ROUTE_READY_ADS_CLIENT_ID`, `ROUTE_READY_ADS_CLIENT_SECRET`, `ROUTE_READY_ADS_REFRESH_TOKEN`, `ROUTE_READY_ADS_LOGIN_CUSTOMER_ID` (MCC 1433070544). If any are missing, report "ads account not set up" and stop. NEVER use the generic `GOOGLE_ADS_*` keys — those are reserved for the Got Moles account — and the Route Ready customer id is the only account this job may query or mutate.
 
 1. Pull last-14-day search-terms report + per-keyword spend/clicks/conversions via GAQL.
 

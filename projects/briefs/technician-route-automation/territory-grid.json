@@ -1,6 +1,6 @@
 {
- "_comment": "TERRITORY GRID (rough draft v1, Spencer 2026-07-11). ZIP -> (day, tech). Tavis ZIPs temporarily Cory. Overflow ZIPs (98024/98065/98045): Friday, Spencer or Cammeron.",
- "approvedAt": "2026-07-11",
+ "_comment": "TERRITORY GRID v2 (Spencer-approved 2026-07-22 density plan): far-south 2x/wk (Luke Mon Oly-west + Thu Lacey/Yelm arc; Enumclaw->Tue; Tacoma/Puyallup/Graham belt Wed; Orting/Sumner Fri), far-north 2x/wk (Cory Tue Shoreline + Wed everything-north-of-Kirkland; Mon pure Eastside core). Peninsula stays WEEKLY (biweekly rejected). v1 was 2026-07-11.",
+ "approvedAt": "2026-07-22",
  "sealed": true,
  "zips": {
   "98001": {
@@ -65,28 +65,28 @@
    "decided": false
   },
   "98010": {
-   "day": "thu",
+   "day": "tue",
    "tech": "Luke LaVergne",
    "cities": "Black Diamond",
    "visitsPerYear": 146,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "your call 7/11; density-plan v2 thu->tue (Spencer 2026-07-22)"
   },
   "98011": {
-   "day": "mon",
+   "day": "wed",
    "tech": "Cory Ventura",
    "cities": "Bothell",
    "visitsPerYear": 16,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "your call 7/11; density-plan v2 mon->wed (Spencer 2026-07-22)"
   },
   "98012": {
-   "day": "mon",
+   "day": "wed",
    "tech": "Cory Ventura",
    "cities": "Bothell/Mill Creek",
    "visitsPerYear": 25,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "your call 7/11; density-plan v2 mon->wed (Spencer 2026-07-22)"
   },
   "98014": {
    "day": "wed",
@@ -105,19 +105,20 @@
    "note": "temp — Tavis out (reverts on return)"
   },
   "98021": {
-   "day": "mon",
+   "day": "wed",
    "tech": "Cory Ventura",
    "cities": "Bothell",
    "visitsPerYear": 30,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "your call 7/11; density-plan v2 mon->wed (Spencer 2026-07-22)"
   },
   "98022": {
-   "day": "thu",
+   "day": "tue",
    "tech": "Luke LaVergne",
    "cities": "Enumclaw/enumclaw",
    "visitsPerYear": 892,
-   "decided": false
+   "decided": false,
+   "note": "density-plan v2 thu->tue (Spencer 2026-07-22)"
   },
   "98023": {
    "day": "mon",
@@ -145,10 +146,10 @@
   },
   "98028": {
    "cities": "Kenmore",
-   "day": "mon",
+   "day": "wed",
    "tech": "Cory Ventura",
    "decided": true,
-   "note": "your call 7/11"
+   "note": "your call 7/11; density-plan v2 mon->wed (Spencer 2026-07-22)"
   },
   "98029": {
    "day": "thu",
@@ -244,12 +245,12 @@
    "note": "your call 7/11"
   },
   "98051": {
-   "day": "thu",
+   "day": "tue",
    "tech": "Luke LaVergne",
    "cities": "Ravensdale",
    "visitsPerYear": 127,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "your call 7/11; density-plan v2 thu->tue (Spencer 2026-07-22)"
   },
   "98052": {
    "day": "mon",
@@ -557,12 +558,12 @@
    "note": "temp — Tavis out (reverts on return)"
   },
   "98296": {
-   "day": "mon",
+   "day": "wed",
    "tech": "Cory Ventura",
    "cities": "Snohomish",
    "visitsPerYear": 22,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "your call 7/11; density-plan v2 mon->wed (Spencer 2026-07-22)"
   },
   "98310": {
    "day": "tue",
@@ -665,19 +666,20 @@
    "note": "your call 7/11"
   },
   "98360": {
-   "day": "wed",
+   "day": "fri",
    "tech": "Luke LaVergne",
    "cities": "Orting/Pierce County",
    "visitsPerYear": 254,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "your call 7/11; density-plan v2 wed->fri (Spencer 2026-07-22)"
   },
   "98363": {
-   "day": "tue",
+   "day": "wed",
    "tech": "Luke LaVergne",
    "cities": "Puyallup",
    "visitsPerYear": 18,
-   "decided": false
+   "decided": false,
+   "note": "density-plan v2 tue->wed (Spencer 2026-07-22)"
   },
   "98367": {
    "day": "tue",
@@ -703,11 +705,12 @@
    "note": "your call 7/11"
   },
   "98373": {
-   "day": "tue",
+   "day": "wed",
    "tech": "Luke LaVergne",
    "cities": "Puyallup/South Hill",
    "visitsPerYear": 103,
-   "decided": false
+   "decided": false,
+   "note": "density-plan v2 tue->wed (Spencer 2026-07-22)"
   },
   "98374": {
    "day": "wed",
@@ -718,11 +721,12 @@
    "note": "your call 7/11"
   },
   "98375": {
-   "day": "tue",
+   "day": "wed",
    "tech": "Luke LaVergne",
    "cities": "Puyallup",
    "visitsPerYear": 111,
-   "decided": false
+   "decided": false,
+   "note": "density-plan v2 tue->wed (Spencer 2026-07-22)"
   },
   "98385": {
    "day": "fri",
@@ -749,12 +753,12 @@
    "note": "your call 7/11"
   },
   "98390": {
-   "day": "wed",
+   "day": "fri",
    "tech": "Luke LaVergne",
    "cities": "Sumner",
    "visitsPerYear": 121,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "your call 7/11; density-plan v2 wed->fri (Spencer 2026-07-22)"
   },
   "98391": {
    "day": "fri",
@@ -780,11 +784,12 @@
    "note": "Brayden gone — Luke took south"
   },
   "98403": {
-   "day": "tue",
+   "day": "wed",
    "tech": "Luke LaVergne",
    "cities": "Tacoma",
    "visitsPerYear": 9,
-   "decided": false
+   "decided": false,
+   "note": "density-plan v2 tue->wed (Spencer 2026-07-22)"
   },
   "98404": {
    "day": "wed",
@@ -795,11 +800,12 @@
    "note": "your call 7/11"
   },
   "98405": {
-   "day": "tue",
+   "day": "wed",
    "tech": "Luke LaVergne",
    "cities": "Tacoma",
    "visitsPerYear": 20,
-   "decided": false
+   "decided": false,
+   "note": "density-plan v2 tue->wed (Spencer 2026-07-22)"
   },
   "98406": {
    "day": "wed",
@@ -842,11 +848,12 @@
    "note": "your call 7/11"
   },
   "98445": {
-   "day": "tue",
+   "day": "wed",
    "tech": "Luke LaVergne",
    "cities": "Tacoma",
    "visitsPerYear": 76,
-   "decided": false
+   "decided": false,
+   "note": "density-plan v2 tue->wed (Spencer 2026-07-22)"
   },
   "98446": {
    "day": "wed",
@@ -881,11 +888,12 @@
    "note": "your call 7/11"
   },
   "98498": {
-   "day": "tue",
+   "day": "wed",
    "tech": "Luke LaVergne",
    "cities": "Tacoma/Lakewood",
    "visitsPerYear": 86,
-   "decided": false
+   "decided": false,
+   "note": "density-plan v2 tue->wed (Spencer 2026-07-22)"
   },
   "98499": {
    "day": "wed",
@@ -910,18 +918,20 @@
    "decided": false
   },
   "98503": {
-   "day": "mon",
+   "day": "thu",
    "tech": "Luke LaVergne",
    "cities": "Olympia/Lacey",
    "visitsPerYear": 46,
-   "decided": false
+   "decided": false,
+   "note": "density-plan v2 mon->thu (Spencer 2026-07-22)"
   },
   "98506": {
-   "day": "mon",
+   "day": "thu",
    "tech": "Luke LaVergne",
    "cities": "Olympia",
    "visitsPerYear": 63,
-   "decided": false
+   "decided": false,
+   "note": "density-plan v2 mon->thu (Spencer 2026-07-22)"
   },
   "98512": {
    "day": "mon",
@@ -931,39 +941,44 @@
    "decided": false
   },
   "98513": {
-   "day": "mon",
+   "day": "thu",
    "tech": "Luke LaVergne",
    "cities": "Olympia/Lacey",
    "visitsPerYear": 184,
-   "decided": false
+   "decided": false,
+   "note": "density-plan v2 mon->thu (Spencer 2026-07-22)"
   },
   "98516": {
-   "day": "mon",
+   "day": "thu",
    "tech": "Luke LaVergne",
    "cities": "Olympia/Lacey",
    "visitsPerYear": 94,
-   "decided": false
+   "decided": false,
+   "note": "density-plan v2 mon->thu (Spencer 2026-07-22)"
   },
   "98580": {
-   "day": "mon",
+   "day": "thu",
    "tech": "Luke LaVergne",
    "cities": "Roy",
    "visitsPerYear": 59,
-   "decided": false
+   "decided": false,
+   "note": "density-plan v2 mon->thu (Spencer 2026-07-22)"
   },
   "98589": {
-   "day": "mon",
+   "day": "thu",
    "tech": "Luke LaVergne",
    "cities": "Tenino",
    "visitsPerYear": 10,
-   "decided": false
+   "decided": false,
+   "note": "density-plan v2 mon->thu (Spencer 2026-07-22)"
   },
   "98597": {
-   "day": "mon",
+   "day": "thu",
    "tech": "Luke LaVergne",
    "cities": "Yelm",
    "visitsPerYear": 111,
-   "decided": false
+   "decided": false,
+   "note": "density-plan v2 mon->thu (Spencer 2026-07-22)"
   }
  },
  "status": "rough-draft-v1"

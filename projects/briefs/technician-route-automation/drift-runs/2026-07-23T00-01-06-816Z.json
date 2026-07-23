@@ -1,0 +1,47 @@
+{
+ "ranAt": "2026-07-23T00:01:06.816Z",
+ "mode": "fix",
+ "plannedDays": [
+  "2026-07-23",
+  "2026-07-24"
+ ],
+ "counts": {
+  "activeVisits": 226,
+  "scheduledStops": 229,
+  "missing": 0,
+  "dayDrift": 0,
+  "techDrift": 0,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 3
+ },
+ "missing": [],
+ "dayDrift": [],
+ "techDrift": [],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "7630-2019745199",
+   "date": "2026-07-23",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "08:15"
+  },
+  {
+   "orderNo": "8190-2259447195",
+   "date": "2026-07-23",
+   "driver": "Cammeron Anderson",
+   "driverSerial": "Cammeron Anderson",
+   "hm": "11:19"
+  },
+  {
+   "orderNo": "8214-2261162871",
+   "date": "2026-07-23",
+   "driver": "Cammeron Anderson",
+   "driverSerial": "Cammeron Anderson",
+   "hm": "11:54"
+  }
+ ],
+ "fixes": []
+}

@@ -1,0 +1,2886 @@
+{
+  "teams": [
+    {
+      "_id": "68891ac048d4e21f0bc7f075",
+      "name": "Leadership Team",
+      "companyId": "68891ac048d4e21f0bc7f071",
+      "project": false,
+      "deleted": false
+    },
+    {
+      "_id": "69667ee7f1701574bbd6052f",
+      "name": "Marketing",
+      "companyId": "68891ac048d4e21f0bc7f071",
+      "project": true,
+      "deleted": false
+    }
+  ],
+  "kpis": [
+    {
+      "_id": "69fceea1622b98a9c04de5e3",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "Total TMCP Churned",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": "2026-05-07T20:13:19.972Z",
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "69f0eea34b070d58d82bf571",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "monthly",
+      "title": "Roy",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dc",
+          "name": "Monthly",
+          "periodInterval": "monthly"
+        }
+      ]
+    },
+    {
+      "_id": "69f0e9e34b070d58d82abb4f",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "monthly",
+      "title": "401K",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dc",
+          "name": "Monthly",
+          "periodInterval": "monthly"
+        }
+      ]
+    },
+    {
+      "_id": "69f0e99c4b070d58d82aa762",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "monthly",
+      "title": "Equipment / Traps",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dc",
+          "name": "Monthly",
+          "periodInterval": "monthly"
+        }
+      ]
+    },
+    {
+      "_id": "69f0e97788b29a70f6d34e8f",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "monthly",
+      "title": "Supplies / Consumables",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dc",
+          "name": "Monthly",
+          "periodInterval": "monthly"
+        }
+      ]
+    },
+    {
+      "_id": "69f0e8b988b29a70f6d313b9",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "monthly",
+      "title": "Vehicle Maintenance & Repairs",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dc",
+          "name": "Monthly",
+          "periodInterval": "monthly"
+        }
+      ]
+    },
+    {
+      "_id": "69f0e8494b070d58d82a4103",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "monthly",
+      "title": "Cell Phones / Tablets",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dc",
+          "name": "Monthly",
+          "periodInterval": "monthly"
+        }
+      ]
+    },
+    {
+      "_id": "69f0e81f88b29a70f6d2e834",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "monthly",
+      "title": "Accountant",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dc",
+          "name": "Monthly",
+          "periodInterval": "monthly"
+        }
+      ]
+    },
+    {
+      "_id": "69f0e80d4b070d58d82a31d3",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "monthly",
+      "title": "Marketing",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dc",
+          "name": "Monthly",
+          "periodInterval": "monthly"
+        }
+      ]
+    },
+    {
+      "_id": "69f0e7e24b070d58d82a25a6",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "monthly",
+      "title": "Software & Technology",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dc",
+          "name": "Monthly",
+          "periodInterval": "monthly"
+        }
+      ]
+    },
+    {
+      "_id": "69f0e7684b070d58d82a02e9",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "monthly",
+      "title": "Vehicle Insurance",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dc",
+          "name": "Monthly",
+          "periodInterval": "monthly"
+        }
+      ]
+    },
+    {
+      "_id": "69f0e7134b070d58d829ee48",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "monthly",
+      "title": "Vehicle Payments",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dc",
+          "name": "Monthly",
+          "periodInterval": "monthly"
+        }
+      ]
+    },
+    {
+      "_id": "69f0e6424b070d58d829bada",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "monthly",
+      "title": "Fuel",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dc",
+          "name": "Monthly",
+          "periodInterval": "monthly"
+        }
+      ]
+    },
+    {
+      "_id": "69f0e6284b070d58d829b474",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "monthly",
+      "title": "Payroll",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dc",
+          "name": "Monthly",
+          "periodInterval": "monthly"
+        }
+      ]
+    },
+    {
+      "_id": "69cadbd1386fa68ae083cf8d",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "TMCP MRR",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "69c56818ae5469d8e458ee5d",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "TMCP Retention Rate",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "69c567efae5469d8e458e8bb",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "Past-Due Invoices",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "69c567b2ac5904cd09f4d433",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "Gross Profit ",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "69c56790ac5904cd09f4ce83",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "Fleet Expenses",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "69c56776ac5904cd09f4c9e0",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "Cost Per Acquired Customer ",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "69c56559ae5469d8e4588147",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "Marketing Spend",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "69c56535ac5904cd09f47190",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "Payroll %",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "69c56512ac5904cd09f46bb2",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "Total Payroll ",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "69c564e9ac5904cd09f4654c",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "TMCP MRR ",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "69c56435ae5469d8e4585496",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "TMCP MRR",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [],
+      "scorecards": []
+    },
+    {
+      "_id": "69c5640dac5904cd09f444ce",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "TOTAL REVENUE",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "69c562b8ac5904cd09f41788",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 11
+      },
+      "periodInterval": "weekly",
+      "title": "Quick fix created",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": "2026-06-26T17:00:47.833Z",
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "69c56117ac5904cd09f3df78",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "TMCP Conversion Rate %",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "69c560e4ac5904cd09f3d948",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "TMCP Net New ",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "69c5609dac5904cd09f3cea1",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "TMCP Cancellations ",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "6994a95d93b9f1c3e1cddc9d",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 16
+      },
+      "periodInterval": "weekly",
+      "title": "quick fix jobs created",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": "2026-03-26T16:44:19.100Z",
+      "teams": [],
+      "scorecards": []
+    },
+    {
+      "_id": "6984f181e05d0ee69a2c2a9e",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 9
+      },
+      "periodInterval": "weekly",
+      "title": "Quick Fix - Converted",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": "2026-06-26T17:00:24.198Z",
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "6984f163e05d0ee69a2c255d",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 13
+      },
+      "periodInterval": "weekly",
+      "title": "Quick Fix - Quoted",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": "2026-06-26T16:59:56.690Z",
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "69334b351c81133280be2174",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "Open up hiring and begin interviews",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [],
+      "scorecards": []
+    },
+    {
+      "_id": "69331deb1c81133280bb5b39",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 30
+      },
+      "periodInterval": "weekly",
+      "title": "Total Jobs created",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": "2026-02-09T18:38:27.806Z",
+      "teams": [],
+      "scorecards": []
+    },
+    {
+      "_id": "690240f171cac6f7ca880f8c",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "Referral converted",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [],
+      "scorecards": []
+    },
+    {
+      "_id": "690240d457b5f906b1334a5a",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "Email converted",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [],
+      "scorecards": []
+    },
+    {
+      "_id": "690240c271cac6f7ca880ad9",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "Google Converted",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [],
+      "scorecards": []
+    },
+    {
+      "_id": "690240ad71cac6f7ca8807ca",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "Website Converted",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [],
+      "scorecards": []
+    },
+    {
+      "_id": "6902409d71cac6f7ca88060e",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "Facebook Converted",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [],
+      "scorecards": []
+    },
+    {
+      "_id": "6902408e57b5f906b13342f0",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "Phone Converted",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [],
+      "scorecards": []
+    },
+    {
+      "_id": "6902405a57b5f906b1333d25",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "Referral lead",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [],
+      "scorecards": []
+    },
+    {
+      "_id": "6902404557b5f906b1333b2f",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "Email Leads",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [],
+      "scorecards": []
+    },
+    {
+      "_id": "6902403a71cac6f7ca87fc06",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "Google Leads",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [],
+      "scorecards": []
+    },
+    {
+      "_id": "6902402e57b5f906b133382d",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "Website Leads",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [],
+      "scorecards": []
+    },
+    {
+      "_id": "6902401e71cac6f7ca87f83a",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "Facebook leads",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [],
+      "scorecards": []
+    },
+    {
+      "_id": "68ffb70bd1b9801458ee1fbf",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 524
+      },
+      "periodInterval": "weekly",
+      "title": "Total TMCP Jobs active",
+      "unit": "number",
+      "userId": "68891ac048d4e21f0bc7f07e",
+      "userFullName": "Spencer Hill",
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": "2026-07-05T17:27:04.298Z",
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "68d6b31e0e7192513db96b1f",
+      "currency": "USD",
+      "defaultGoal": {
+        "max": 0,
+        "min": 0,
+        "orientation": "gte",
+        "value": 0
+      },
+      "periodInterval": "weekly",
+      "title": "Leads of Phone",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [],
+      "scorecards": []
+    },
+    {
+      "_id": "68c8968eafa8207dc6deb332",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 14
+      },
+      "periodInterval": "weekly",
+      "title": "Quick fix Job closed",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": "2026-06-26T17:01:10.111Z",
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "68c43d5bee2b0f4086bf1203",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 11
+      },
+      "periodInterval": "weekly",
+      "title": "TCMP - Converted",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": "2026-06-26T16:59:38.776Z",
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "68c43cfeee2b0f4086bf1160",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 25
+      },
+      "periodInterval": "weekly",
+      "title": "TMCP - Quoted",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": "2026-06-26T16:59:04.567Z",
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "68c43ca3ee2b0f4086bf10c0",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 464
+      },
+      "periodInterval": "weekly",
+      "title": "Client visits",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": "2026-06-26T16:58:39.570Z",
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "68c43c40ee2b0f4086bf0fd3",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 23
+      },
+      "periodInterval": "weekly",
+      "title": "New Clients",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": "2026-06-26T16:57:55.589Z",
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "68c43bbaee2b0f4086bf0f1e",
+      "currency": "USD",
+      "defaultGoal": {
+        "orientation": "gte",
+        "value": 40
+      },
+      "periodInterval": "weekly",
+      "title": "Phone Calls",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": "2026-06-26T17:01:55.718Z",
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0db",
+          "name": "Weekly",
+          "periodInterval": "weekly"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f0a8",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "annual",
+      "title": "Competency Average Scores",
+      "unit": "percentage",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0de",
+          "name": "Annual",
+          "periodInterval": "annual"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f0a7",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "annual",
+      "title": "Competency - Vision",
+      "unit": "percentage",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0de",
+          "name": "Annual",
+          "periodInterval": "annual"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f0a6",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "annual",
+      "title": "Comptency - Process",
+      "unit": "percentage",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0de",
+          "name": "Annual",
+          "periodInterval": "annual"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f0a5",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "annual",
+      "title": "Competency - Goals",
+      "unit": "percentage",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0de",
+          "name": "Annual",
+          "periodInterval": "annual"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f0a4",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "annual",
+      "title": "Competency - People",
+      "unit": "percentage",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0de",
+          "name": "Annual",
+          "periodInterval": "annual"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f0a3",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "annual",
+      "title": "Competency - Meetings",
+      "unit": "percentage",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0de",
+          "name": "Annual",
+          "periodInterval": "annual"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f0a2",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "annual",
+      "title": "Competency - Enterprise-Value",
+      "unit": "percentage",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0de",
+          "name": "Annual",
+          "periodInterval": "annual"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f0a1",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "annual",
+      "title": "Competency - Data",
+      "unit": "percentage",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0de",
+          "name": "Annual",
+          "periodInterval": "annual"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f0a0",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "annual",
+      "title": "Competency - Customer",
+      "unit": "percentage",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0de",
+          "name": "Annual",
+          "periodInterval": "annual"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f09f",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "annual",
+      "title": "Competency - Structure",
+      "unit": "percentage",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0de",
+          "name": "Annual",
+          "periodInterval": "annual"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f09e",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": 0,
+        "max": 0,
+        "value": 0,
+        "orientation": "inside"
+      },
+      "periodInterval": "annual",
+      "title": "Total workforce",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0de",
+          "name": "Annual",
+          "periodInterval": "annual"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f09d",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": 0,
+        "max": 0,
+        "value": 0,
+        "orientation": "inside"
+      },
+      "periodInterval": "annual",
+      "title": "Revenue per FTE",
+      "unit": "dollar",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0de",
+          "name": "Annual",
+          "periodInterval": "annual"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f09c",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "annual",
+      "title": "Revenue TTM",
+      "unit": "dollar",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0de",
+          "name": "Annual",
+          "periodInterval": "annual"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f09b",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "annual",
+      "title": "Revenue Annual",
+      "unit": "dollar",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0de",
+          "name": "Annual",
+          "periodInterval": "annual"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f09a",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "annual",
+      "title": "Rock Performance (1-10)",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0de",
+          "name": "Annual",
+          "periodInterval": "annual"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f099",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "annual",
+      "title": "On track to hit Budget (1-10)",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0de",
+          "name": "Annual",
+          "periodInterval": "annual"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f098",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "annual",
+      "title": "Achieved Budget (1-10)",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0de",
+          "name": "Annual",
+          "periodInterval": "annual"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f097",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "annual",
+      "title": "Net Income TTM",
+      "unit": "dollar",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0de",
+          "name": "Annual",
+          "periodInterval": "annual"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f096",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "annual",
+      "title": "Net Income Annual",
+      "unit": "dollar",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0de",
+          "name": "Annual",
+          "periodInterval": "annual"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f095",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "annual",
+      "title": "Enterprise Value",
+      "unit": "dollar",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0de",
+          "name": "Annual",
+          "periodInterval": "annual"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f094",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": 0,
+        "max": 0,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "annual",
+      "title": "EBITDA",
+      "unit": "dollar",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0de",
+          "name": "Annual",
+          "periodInterval": "annual"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f093",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "quarterly",
+      "title": "Competency Average Scores",
+      "unit": "percentage",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dd",
+          "name": "Quarterly",
+          "periodInterval": "quarterly"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f092",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "quarterly",
+      "title": "Competency - Vision",
+      "unit": "percentage",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dd",
+          "name": "Quarterly",
+          "periodInterval": "quarterly"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f091",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "quarterly",
+      "title": "Comptency - Process",
+      "unit": "percentage",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dd",
+          "name": "Quarterly",
+          "periodInterval": "quarterly"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f090",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "quarterly",
+      "title": "Competency - Goals",
+      "unit": "percentage",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dd",
+          "name": "Quarterly",
+          "periodInterval": "quarterly"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f08f",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "quarterly",
+      "title": "Competency - People",
+      "unit": "percentage",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dd",
+          "name": "Quarterly",
+          "periodInterval": "quarterly"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f08e",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "quarterly",
+      "title": "Competency - Meetings",
+      "unit": "percentage",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dd",
+          "name": "Quarterly",
+          "periodInterval": "quarterly"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f08d",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "quarterly",
+      "title": "Competency - Enterprise-Value",
+      "unit": "percentage",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dd",
+          "name": "Quarterly",
+          "periodInterval": "quarterly"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f08c",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "quarterly",
+      "title": "Competency - Data",
+      "unit": "percentage",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dd",
+          "name": "Quarterly",
+          "periodInterval": "quarterly"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f08b",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "quarterly",
+      "title": "Competency - Customer",
+      "unit": "percentage",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dd",
+          "name": "Quarterly",
+          "periodInterval": "quarterly"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f08a",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "quarterly",
+      "title": "Competency - Structure",
+      "unit": "percentage",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dd",
+          "name": "Quarterly",
+          "periodInterval": "quarterly"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f089",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": 0,
+        "max": 0,
+        "value": 0,
+        "orientation": "inside"
+      },
+      "periodInterval": "quarterly",
+      "title": "Total workforce",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dd",
+          "name": "Quarterly",
+          "periodInterval": "quarterly"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f088",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": 0,
+        "max": 0,
+        "value": 0,
+        "orientation": "inside"
+      },
+      "periodInterval": "quarterly",
+      "title": "Revenue per FTE",
+      "unit": "dollar",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dd",
+          "name": "Quarterly",
+          "periodInterval": "quarterly"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f087",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "quarterly",
+      "title": "Revenue TTM",
+      "unit": "dollar",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dd",
+          "name": "Quarterly",
+          "periodInterval": "quarterly"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f086",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "quarterly",
+      "title": "Revenue Quarter",
+      "unit": "dollar",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dd",
+          "name": "Quarterly",
+          "periodInterval": "quarterly"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f085",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "quarterly",
+      "title": "Rock Performance (1-10)",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dd",
+          "name": "Quarterly",
+          "periodInterval": "quarterly"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f084",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "quarterly",
+      "title": "On track to hit Budget (1-10)",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dd",
+          "name": "Quarterly",
+          "periodInterval": "quarterly"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f083",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "quarterly",
+      "title": "Quarterly Number Performance (1-10)",
+      "unit": "number",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dd",
+          "name": "Quarterly",
+          "periodInterval": "quarterly"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f082",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "quarterly",
+      "title": "Net Income TTM",
+      "unit": "dollar",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dd",
+          "name": "Quarterly",
+          "periodInterval": "quarterly"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f081",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "quarterly",
+      "title": "Net Income Quarterly",
+      "unit": "dollar",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dd",
+          "name": "Quarterly",
+          "periodInterval": "quarterly"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f080",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "quarterly",
+      "title": "Enterprise Value",
+      "unit": "dollar",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dd",
+          "name": "Quarterly",
+          "periodInterval": "quarterly"
+        }
+      ]
+    },
+    {
+      "_id": "68891ac048d4e21f0bc7f07f",
+      "currency": "USD",
+      "defaultGoal": {
+        "min": null,
+        "max": null,
+        "value": 0,
+        "orientation": "gte"
+      },
+      "periodInterval": "quarterly",
+      "title": "EBITDA",
+      "unit": "dollar",
+      "userId": null,
+      "userFullName": null,
+      "type": "active",
+      "attachmentCount": 0,
+      "isSmart": false,
+      "isUsedInFormula": false,
+      "lastScoreUpdatedAt": null,
+      "teams": [
+        {
+          "id": "68891ac048d4e21f0bc7f075",
+          "name": "Leadership Team"
+        }
+      ],
+      "scorecards": [
+        {
+          "id": "68891ac048d4e21f0bc7f0dd",
+          "name": "Quarterly",
+          "periodInterval": "quarterly"
+        }
+      ]
+    }
+  ]
+}
