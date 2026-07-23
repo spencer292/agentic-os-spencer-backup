@@ -133,11 +133,19 @@ warm TMCP membership prospect at close.
 Not included: any quarterly (Madera $3,825) or annual invoices whose cycle happens to fall in
 July/August — cycle anchor dates weren't pulled.
 
-## Recommended fixes (need Spencer's go-ahead)
+## Final status (all items dispositioned 7/22)
 
-1. **Verify Karen Porter (#5007)** — top leak candidate; if unbilled, decide back-bill vs write-off, and set monthly/last-day.
-2. Fix the 3 ON_COMPLETION jobs → monthly/last-day (Sieverling, Irvine, Hewitt).
-3. Review the 8 suspicious $50–100 "Yearly" jobs → likely monthly/last-day at the same figure.
-4. Tag the 8 new signups `TMCP - Active`; resolve Muir churned-vs-active; clean 3 stale tags (Andy, Schlimgen, El-solh).
-5. Susan Mcdonald → schedule Yearly (prepaid) so 2027 renewal reminds.
-6. Add "apply TMCP - Active tag + set monthly/last-day billing" to the signup checklist — this is the second audit in a row where every fresh signup was missing the tag.
+- Billing flags: Karen Porter, Steve Hewitt, Jim McGowan, Rich Porter, Cheryl Davis, Charles Hahn,
+  Briana Watson, Michael Shapiro, Shari Butt, Howard Goodman = **annual payers** (invoices run 12x
+  the shown monthly rate; job.total displays the monthly rate). Jamie Randall = trade; Susan Newby =
+  cash deal. No pricing leak found. McGowan ($85 once, 10/2025) closed as annual payer per Spencer.
+- Schedules set 7/22: Mcdonald #7701 -> Yearly, Newby #5433 -> Every 6 months, Heimbigner #4754 -> Yearly.
+  Newby/Heimbigner line items are $0 — office to add real rates so reminders carry amounts.
+- Sieverling + Irvine fixed to monthly/last-day (verified). One-off TMC jobs rebuilt as recurring
+  (#8217/#8218/#8219); old jobs deleted by Spencer.
+- Tags: 8 signups + Wickland + Bryan handled; Connie Schlimgen + Bryan removed; final tagged count 606.
+- Anne Nguyen $450: superseded — converted to TMCP (#8069, $100/mo, tagged). Dup client record
+  "Nguyen Anne" (0 jobs) is a merge candidate.
+- Lemmon + Muir canceling; final bills 7/31. **Muir #7150: close job after 7/31 bill** (open task).
+- Process fix still recommended: signup checklist — apply TMCP - Active tag + monthly-last-day
+  billing + RECURRING job type at signup. Two audits in a row found identical gaps.
