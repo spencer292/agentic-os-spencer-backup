@@ -9,7 +9,7 @@
 - **Mole Busters referral (Mackenzie Parshall):** contract FINAL $100/close, excl W.WA (`projects/ops-contracts/`); next: sign, CallRail #, W-9.
 - **NORTH STAR 2 — $100K side project (`side-project-100k`):** Spencer: letters/podcasts/legal only. Store live (kit `/l/xolvu`, `/book`→Amazon w/ KV clicks). Ads acct 763-085-7815 (MCC 143-307-0544), Basic Access ~5bd. Next: Search campaign via UI ($2.47/day + med negatives), kits 2-3 + bundle, OAuth when API clears.
 - **Jobber comms:** 3-hr window std; Mon 06:10 sweep cron. Spencer: tick "set default" next UI job.
-- **Route Book:** Amazon dp/B0H6ZX85DK. Spencer: mail 10 copies. AI: audiobook next.
+- **Route Book:** Amazon dp/B0H6ZX85DK. Spencer: mail 10 copies. AI: audiobook.
 - **Phone ops:** CallRail VA per CLAUDE.local tiers; sync cron hourly 7-18. Open: Muhammad zip email; post-call SMS; pool alert. **DMARC:** p=none; mid-Aug check → quarantine.
 
 ## Environment Notes
@@ -20,4 +20,4 @@
 
 ## Pending Decisions
 - LinkedIn growth: Spencer fixes profile → daily connecting (`projects/tool-browser/`).
-- Ninety financial block: rec monthly-only (audit doc) — Spencer to confirm.
+- Ninety financial block: rec monthly-only — Spencer to confirm.
