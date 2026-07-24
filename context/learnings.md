@@ -11,6 +11,7 @@
 
 ### What doesn't work well
 
+- 2026-07-23: Email triage (skill gap - candidate ops-email-triage): Gmail-connector cloud routine processes a bounded chunk per run, so multi-hundred-thread backlogs need repeated RemoteTrigger run calls; Gmail search `label:Label_N` by internal ID can return empty even when labelIds prove the label - filter with has:userlabels / has:nouserlabels instead. Draft-only reply policy + "! Action Needed stays in inbox" worked well; sender-pattern rules classified 300+ threads with no misfiles flagged.
 ## Individual Skills
 
 ### meta-wrap-up
@@ -128,6 +129,8 @@
 ## tool-jobber
 - 2026-07-21 (bulk pulls): 24-mo invoice pull (8.7K rows w/ lineItems first:15) hits the query-cost throttle hard — expect "Throttled" every ~10-15 pages; 60s backoff + cursor-state resume (pull-diagnostic.mjs pattern) grinds through in ~45 min. clients/quotes/visits at first:75 without nesting barely throttle. Filters verified: invoices=issuedDate range, quotes=createdAt, visits=startAt (all Iso8601DateTimeRangeInput). Client has leadSource/sourceAttribution/utmMedium/tags/balance — attribution + AR live on the Client object. Quote statuses: draft/awaiting_response/archived/approved/converted (close rate = (approved+converted)/non-draft).
 
+- 2026-07-23: No quote-send/resend mutation exists in the GraphQL API (only quoteCreate/Edit + line-item/note ops) - to "resend" a quote, fetch its clientHubUri and email the client-hub link directly.
+- 2026-07-23: client.requests can fail whole-query with "An object of type Request was hidden due to permissions" (app lacks read-requests scope) - omit requests from client queries; a hidden-object error still proves a request EXISTS.
 ## ops-google-ads
 
 - 2026-07-22 (Route Ready build): REST v23 field-name traps — Maximize Clicks bidding is `targetSpend` (not `maximizeClicks`); geo campaign criterion is `location: {geoTargetConstant}` (not `geoTarget`). Both fail with "Unknown name ... Cannot find field".
