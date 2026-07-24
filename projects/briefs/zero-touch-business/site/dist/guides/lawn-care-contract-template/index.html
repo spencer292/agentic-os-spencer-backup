@@ -158,5 +158,17 @@
     <p>&copy; 2026 Route Ready &middot; <a href="/guides/">Guides</a> &middot; <a href="/kits/">Kits</a> &middot; <a href="/free-pricing-cheat-sheet/">Free Pricing Cheat Sheet</a></p>
   </div>
 </footer>
+<script>(function(){try{
+var K=['gclid','gbraid','wbraid'],p=new URLSearchParams(location.search),
+s=JSON.parse(localStorage.getItem('rr_click')||'{}'),f=false;
+K.forEach(function(k){var v=p.get(k);if(v){s[k]=v;f=true}});
+if(f){s.ts=Date.now();localStorage.setItem('rr_click',JSON.stringify(s))}
+if(!s.ts||Date.now()-s.ts>90*864e5)return;
+document.addEventListener('click',function(e){
+var a=e.target&&e.target.closest&&e.target.closest('a[href*="gumroad.com"]');
+if(!a)return;try{var u=new URL(a.href);
+K.forEach(function(k){if(s[k])u.searchParams.set(k,s[k])});
+a.href=u.href}catch(_){}} ,true);
+}catch(_){}})();</script>
 </body>
 </html>

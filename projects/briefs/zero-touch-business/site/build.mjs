@@ -39,6 +39,22 @@ const LOGO_SVG = `<svg class="brand-mark" width="28" height="28" viewBox="0 0 32
 const FAVICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M21 3C16 3 12 7 12 12c0 6.5 9 16 9 16s9-9.5 9-16c0-5-4-9-9-9z" fill="#1a7f4b"/><path d="M17.5 12.2l2.6 2.6 5-5.2" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`;
 const FAVICON_LINK = `<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,${encodeURIComponent(FAVICON_SVG)}">`;
 
+// Ad-click attribution: store Google click ids (gclid/gbraid/wbraid) for 90 days
+// and append them to any Gumroad link at click time, so purchases can be matched
+// back to ad clicks and uploaded as conversions (see scripts/rr-upload-conversions.mjs).
+const TRACK_SNIPPET = `<script>(function(){try{
+var K=['gclid','gbraid','wbraid'],p=new URLSearchParams(location.search),
+s=JSON.parse(localStorage.getItem('rr_click')||'{}'),f=false;
+K.forEach(function(k){var v=p.get(k);if(v){s[k]=v;f=true}});
+if(f){s.ts=Date.now();localStorage.setItem('rr_click',JSON.stringify(s))}
+if(!s.ts||Date.now()-s.ts>90*864e5)return;
+document.addEventListener('click',function(e){
+var a=e.target&&e.target.closest&&e.target.closest('a[href*="gumroad.com"]');
+if(!a)return;try{var u=new URL(a.href);
+K.forEach(function(k){if(s[k])u.searchParams.set(k,s[k])});
+a.href=u.href}catch(_){}} ,true);
+}catch(_){}})();</script>`;
+
 const failures = []; // { file, error }
 const built = [];    // relative output paths
 
@@ -294,21 +310,28 @@ function extractFaq(body) {
 // Token replacement
 // ---------------------------------------------------------------------------
 
+const CTA_TEXT = {
+  CTA_CLEANING: 'Get the Cleaning Business Starter Kit — $49',
+  CTA_PW: 'Get the Pressure Washing Business Starter Kit — $49',
+  CTA_LAWN: 'Get the Lawn Care Business Starter Kit — $49',
+};
+
 function ctaBlockHtml(ctaKey) {
   const key = config.tokens[ctaKey] !== undefined ? ctaKey : 'CTA_GENERIC';
   const href = config.tokens[key] || '/';
-  const text = key === 'CTA_CLEANING'
-    ? 'Get the Cleaning Business Starter Kit — $49'
-    : 'Get the free Pricing Cheat Sheet';
+  const text = CTA_TEXT[key] || 'Get the free Pricing Cheat Sheet';
   return `<div class="cta-block"><a class="btn" href="${escapeHtml(href)}">${escapeHtml(text)}</a></div>`;
 }
 
-function buyButtonHtml() {
-  const url = config.tokens.GUMROAD_CLEANING_KIT_URL || '';
+// Per-kit buy button: pages set `buy_token` (config.tokens key holding the
+// Gumroad URL) and `buy_text` in frontmatter; defaults keep Kit 1 pages working.
+function buyButtonHtml(fm = {}) {
+  const url = config.tokens[fm.buy_token || 'GUMROAD_CLEANING_KIT_URL'] || '';
+  const label = fm.buy_text || 'Get the Cleaning Business Starter Kit — $49';
   if (!url || url.startsWith('PENDING')) {
     return `<div class="cta-block"><button class="btn btn-disabled" disabled aria-disabled="true">Coming this week</button></div>`;
   }
-  return `<div class="cta-block"><a class="btn" href="${escapeHtml(url)}">Get the Cleaning Business Starter Kit — $49</a></div>`;
+  return `<div class="cta-block"><a class="btn" href="${escapeHtml(url)}">${escapeHtml(label)}</a></div>`;
 }
 
 function emailFormHtml() {
@@ -335,7 +358,7 @@ function replaceTokens(html, fm = {}) {
   const cta = ctaBlockHtml(fm.cta || 'CTA_GENERIC');
   return html
     .replaceAll('<p>{{CTA}}</p>', cta).replaceAll('{{CTA}}', cta)
-    .replaceAll('<p>{{BUY_BUTTON}}</p>', buyButtonHtml()).replaceAll('{{BUY_BUTTON}}', buyButtonHtml())
+    .replaceAll('<p>{{BUY_BUTTON}}</p>', buyButtonHtml(fm)).replaceAll('{{BUY_BUTTON}}', buyButtonHtml(fm))
     .replaceAll('<p>{{EMAIL_FORM}}</p>', emailFormHtml()).replaceAll('{{EMAIL_FORM}}', emailFormHtml())
     .replaceAll('<p>{{GUARANTEE}}</p>', GUARANTEE_HTML).replaceAll('{{GUARANTEE}}', GUARANTEE_HTML);
 }
@@ -389,6 +412,7 @@ ${bodyHtml}
     <p>&copy; ${year} ${escapeHtml(BRAND)} &middot; <a href="/guides/">Guides</a> &middot; <a href="/kits/">Kits</a> &middot; <a href="/free-pricing-cheat-sheet/">Free Pricing Cheat Sheet</a></p>
   </div>
 </footer>
+${TRACK_SNIPPET}
 </body>
 </html>
 `;
@@ -565,15 +589,17 @@ function renderKitsIndex() {
 <p class="price">$49</p>
 <p><a class="btn" href="/kits/cleaning-business-starter-kit/">See what&#39;s inside</a></p>
 </div>
-<div class="card card-muted">
-<h2>Pressure Washing Starter Kit</h2>
-<p>Coming soon. Grab the free Pricing Cheat Sheet and we&#39;ll let you know when it ships.</p>
-<p><a href="/free-pricing-cheat-sheet/">Get the free cheat sheet &rarr;</a></p>
+<div class="card">
+<h2><a href="/kits/pressure-washing-business-starter-kit/">Pressure Washing Business Starter Kit</a></h2>
+<p>Contracts, liability waiver, bid templates, pricing calculator, and job checklists for a pressure washing business — surface risks and overspray covered in writing.</p>
+<p class="price">$49</p>
+<p><a class="btn" href="/kits/pressure-washing-business-starter-kit/">See what&#39;s inside</a></p>
 </div>
-<div class="card card-muted">
-<h2>Lawn Care Starter Kit</h2>
-<p>Coming soon. Grab the free Pricing Cheat Sheet and we&#39;ll let you know when it ships.</p>
-<p><a href="/free-pricing-cheat-sheet/">Get the free cheat sheet &rarr;</a></p>
+<div class="card">
+<h2><a href="/kits/lawn-care-business-starter-kit/">Lawn Care Business Starter Kit</a></h2>
+<p>Seasonal contracts, estimates, property waiver, pricing calculator, and route tools for a lawn care business — recurring mowing done as a business, not a side gig.</p>
+<p class="price">$49</p>
+<p><a class="btn" href="/kits/lawn-care-business-starter-kit/">See what&#39;s inside</a></p>
 </div>
 </div>`;
 

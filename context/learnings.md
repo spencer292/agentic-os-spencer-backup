@@ -126,3 +126,13 @@
 
 ## tool-jobber
 - 2026-07-21 (bulk pulls): 24-mo invoice pull (8.7K rows w/ lineItems first:15) hits the query-cost throttle hard — expect "Throttled" every ~10-15 pages; 60s backoff + cursor-state resume (pull-diagnostic.mjs pattern) grinds through in ~45 min. clients/quotes/visits at first:75 without nesting barely throttle. Filters verified: invoices=issuedDate range, quotes=createdAt, visits=startAt (all Iso8601DateTimeRangeInput). Client has leadSource/sourceAttribution/utmMedium/tags/balance — attribution + AR live on the Client object. Quote statuses: draft/awaiting_response/archived/approved/converted (close rate = (approved+converted)/non-draft).
+
+## ops-google-ads
+
+- 2026-07-22 (Route Ready build): REST v23 field-name traps — Maximize Clicks bidding is `targetSpend` (not `maximizeClicks`); geo campaign criterion is `location: {geoTargetConstant}` (not `geoTarget`). Both fail with "Unknown name ... Cannot find field".
+- 2026-07-22: NEVER use a bare criteria-count as an "already configured" check — new campaigns auto-create 3 DEVICE criteria, so the check passes while geo/language/negatives are missing (campaign would target WORLDWIDE). Check by criterion type instead, and always re-audit live state after a partial/resumed build (also caught an orphan duplicate budget).
+- 2026-07-22: Route Ready creds are namespaced `ROUTE_READY_ADS_*` in the env file; generic `GOOGLE_ADS_*` reserved for Got Moles. MCC link acceptance can be done fully via API from the client side: query `customer_manager_link`, then `customerManagerLinks:mutate` status→ACTIVE with `login-customer-id` = the CLIENT id.
+
+## meta-wrap-up
+
+- 2026-07-23: Routine wrap, no user feedback (credit-limit day — kept wrap minimal per Spencer's 'take it easy'). Kit 2/3 build parked mid-flight with file-level resume state in the daily log; that pattern (state block in memory before stopping) made the pause cheap.

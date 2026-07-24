@@ -2,7 +2,7 @@
 name: Route Ready Ads Manager
 time: '07:30'
 days: tue
-active: 'false'
+active: 'true'
 model: sonnet
 notify: on_finish
 description: 'Route Ready (zero-touch-business): weekly Google Ads tune — pull search terms, add negatives, pause losers per pre-agreed rules, report. Created dormant 2026-07-19 — flip active only after the Route Ready ads account exists and Spencer signs off on the launch campaign. Hard cap $75/mo lives at account level.'
@@ -15,7 +15,9 @@ Context: `projects/briefs/zero-touch-business/keyword-backlog.md` (the ★ ad se
 
 0. Gate: `.env` must contain `ROUTE_READY_ADS_CUSTOMER_ID` plus the namespaced creds `ROUTE_READY_ADS_DEVELOPER_TOKEN`, `ROUTE_READY_ADS_CLIENT_ID`, `ROUTE_READY_ADS_CLIENT_SECRET`, `ROUTE_READY_ADS_REFRESH_TOKEN`, `ROUTE_READY_ADS_LOGIN_CUSTOMER_ID` (MCC 1433070544). If any are missing, report "ads account not set up" and stop. NEVER use the generic `GOOGLE_ADS_*` keys — those are reserved for the Got Moles account — and the Route Ready customer id is the only account this job may query or mutate.
 
-1. Pull last-14-day search-terms report + per-keyword spend/clicks/conversions via GAQL.
+1. FIRST run `node projects/briefs/zero-touch-business/scripts/rr-upload-conversions.mjs` — it matches recent Gumroad sales to stored ad-click ids and uploads them as conversions (idempotent; keeps its own ledger). Report its summary line. If it reports sales WITHOUT click ids, run it again with `--dump` and include the sale field shape in the report so the field-mapping can be fixed.
+
+1b. Pull last-14-day search-terms report + per-keyword spend/clicks/conversions via GAQL.
 
 2. Apply ONLY these pre-agreed mutations (Spencer signed off on the ruleset at launch; anything outside it is report-only):
    - Add obvious irrelevant search terms as exact negatives (job-seeker terms: "jobs", "hiring", "salary"; DIY-only informational terms with zero purchase intent; other-industry homographs).

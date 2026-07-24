@@ -1,6 +1,6 @@
 {
- "_comment": "TERRITORY GRID v2 (Spencer-approved 2026-07-22 density plan): far-south 2x/wk (Luke Mon Oly-west + Thu Lacey/Yelm arc; Enumclaw->Tue; Tacoma/Puyallup/Graham belt Wed; Orting/Sumner Fri), far-north 2x/wk (Cory Tue Shoreline + Wed everything-north-of-Kirkland; Mon pure Eastside core). Peninsula stays WEEKLY (biweekly rejected). v1 was 2026-07-11.",
- "approvedAt": "2026-07-22",
+ "_comment": "TERRITORY GRID v2 (Spencer-approved 2026-07-22 density plan): far-south 2x/wk (Luke Mon Oly-west + Thu Lacey/Yelm arc; Enumclaw->Tue; Tacoma/Puyallup/Graham belt Wed; Orting/Sumner Fri), far-north 2x/wk (Cory Tue Shoreline + Wed everything-north-of-Kirkland; Mon pure Eastside core). Peninsula stays WEEKLY (biweekly rejected). v1 was 2026-07-11. | v3 (2026-07-23): Cory+Alias ride as ONE CREW (OR driver = Cory Ventura); Spencer keeps ONLY the weekly Tue peninsula run — his Renton/Newcastle->Cammeron Thu, Mercer/Bellevue-S->Crew Thu, North Bend/Snoqualmie/Fall City->Crew Wed. Tavis not currently working — no territory until he returns.",
+ "approvedAt": "2026-07-23",
  "sealed": true,
  "zips": {
   "98001": {
@@ -44,11 +44,11 @@
   },
   "98006": {
    "day": "thu",
-   "tech": "Spencer Hill",
+   "tech": "Cory Ventura",
    "cities": "Bellevue",
    "visitsPerYear": 213,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "your call 7/11; v3 Spencer-out-of-field thu/Spencer->thu/Cory (Spencer 2026-07-23)"
   },
   "98007": {
    "day": "mon",
@@ -129,12 +129,12 @@
    "note": "your call 7/11"
   },
   "98024": {
-   "day": "fri",
-   "tech": "Spencer Hill",
+   "day": "thu",
+   "tech": "Cory Ventura",
    "cities": "Fall City",
    "visitsPerYear": 178,
    "decided": true,
-   "note": "Spencer Friday corridor (your call 7/11)"
+   "note": "Spencer Friday corridor (your call 7/11); v3 Spencer-out-of-field fri/Spencer->wed/Cory (Spencer 2026-07-23); v3.1 wed->thu (I-90 w/ Issaquah day, Spencer 2026-07-23)"
   },
   "98027": {
    "day": "thu",
@@ -214,11 +214,11 @@
   },
   "98040": {
    "day": "thu",
-   "tech": "Spencer Hill",
+   "tech": "Cory Ventura",
    "cities": "Mercer Island",
    "visitsPerYear": 125,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "your call 7/11; v3 Spencer-out-of-field thu/Spencer->thu/Cory (Spencer 2026-07-23)"
   },
   "98042": {
    "day": "thu",
@@ -229,12 +229,12 @@
    "note": "your call 7/11"
   },
   "98045": {
-   "day": "fri",
-   "tech": "Spencer Hill",
+   "day": "thu",
+   "tech": "Cory Ventura",
    "cities": "North Bend/North bend/north bend",
    "visitsPerYear": 375,
    "decided": true,
-   "note": "Spencer Friday corridor (your call 7/11)"
+   "note": "Spencer Friday corridor (your call 7/11); v3 Spencer-out-of-field fri/Spencer->wed/Cory (Spencer 2026-07-23); v3.1 wed->thu (I-90 w/ Issaquah day, Spencer 2026-07-23)"
   },
   "98047": {
    "day": "mon",
@@ -277,10 +277,11 @@
   },
   "98056": {
    "day": "thu",
-   "tech": "Spencer Hill",
+   "tech": "Cammeron Anderson",
    "cities": "Renton/Newcastle",
    "visitsPerYear": 141,
-   "decided": false
+   "decided": false,
+   "note": "v3 Spencer-out-of-field thu/Spencer->thu/Cammeron (Spencer 2026-07-23)"
   },
   "98057": {
    "day": "tue",
@@ -300,19 +301,19 @@
   },
   "98059": {
    "day": "thu",
-   "tech": "Spencer Hill",
+   "tech": "Cammeron Anderson",
    "cities": "Renton/Newcastle",
    "visitsPerYear": 602,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "your call 7/11; v3 Spencer-out-of-field thu/Spencer->thu/Cammeron (Spencer 2026-07-23)"
   },
   "98065": {
-   "day": "fri",
-   "tech": "Spencer Hill",
+   "day": "thu",
+   "tech": "Cory Ventura",
    "cities": "Snoqualmie",
    "visitsPerYear": 135,
    "decided": true,
-   "note": "Spencer Friday corridor (your call 7/11)"
+   "note": "Spencer Friday corridor (your call 7/11); v3 Spencer-out-of-field fri/Spencer->wed/Cory (Spencer 2026-07-23); v3.1 wed->thu (I-90 w/ Issaquah day, Spencer 2026-07-23)"
   },
   "98072": {
    "day": "wed",
@@ -639,7 +640,8 @@
    "tech": "Luke LaVergne",
    "cities": "Graham/graham",
    "visitsPerYear": 477,
-   "decided": false
+   "decided": false,
+   "note": "v3.1 relief: may float tue-wed at push time (Spencer 2026-07-23)"
   },
   "98351": {
    "day": "tue",
@@ -742,7 +744,7 @@
    "cities": "Spanaway",
    "visitsPerYear": 102,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "your call 7/11; v3.1 relief: may float tue-wed at push time (Spencer 2026-07-23)"
   },
   "98388": {
    "day": "wed",

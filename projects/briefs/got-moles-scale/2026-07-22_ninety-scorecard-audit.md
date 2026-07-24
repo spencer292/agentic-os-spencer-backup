@@ -82,3 +82,19 @@ Resulting weekly board: **~15 auto + 2 manual** (reviews semi-auto, hiring pipel
 3. Backfill: compute weeks from 2026-05-01 (CallRail history floor) and push, so the L10 board has a
    trend line from day one.
 4. Register the Monday cron via ops-cron; log runs to `scorecard-runs/`; never push a guessed number.
+
+## Build status (2026-07-23)
+
+- **DONE:** `scripts/ninety-weekly-push.mjs` + `scripts/ninety-kpi-map.json` built; **backfill pushed —
+  166 scores across 12 weeks (2026-04-26 .. 2026-07-12), 13 metrics, 0 failures.** Sunday-start weeks
+  (Spencer-confirmed), Pacific-time bucketing, run logs in `scorecard-runs/`.
+- Call metrics floored at week 2026-05-17 (CallRail numbers went fully live mid-May; earlier weeks undercount).
+- Past-due pushed to current week only (point-in-time): 30 invoices / $6,339, dollar total as a KPI note.
+- **TMCP Cancellations intentionally NOT pushed** — computes 0 every week because early-cancelled jobs keep a
+  future endAt in Jobber. Blocked on churn-tagging hygiene; disabled in the map with a note.
+- Revenue is genuinely lumpy weekly ($55–70K month-end TMCP batch invoicing, small mid-month weeks) — sums to
+  baseline pace (~$78K/4wk). Consider a "revenue (rolling 4wk)" KPI if the L10 finds the spikes noisy.
+- **Still open:** Spencer UI pass (archives + new KPIs → then fill kpiIds in the map and enable missed_calls);
+  Monday cron registration; OptimoRoute density metric (needs its KPI created first).
+- Engineering notes: Jobber GraphQL sweeps must pass the cursor as a variable and cap nested `lineItems(first:15)` —
+  an uncapped nested connection at first:100 exceeds Jobber's query-cost bucket and throttles forever.

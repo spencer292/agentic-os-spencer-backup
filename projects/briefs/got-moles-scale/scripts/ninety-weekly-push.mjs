@@ -46,8 +46,9 @@ const currentWeekStart = weekStartOf(today);
 const defaultFrom = addDays(currentWeekStart, -21);
 const from = weekStartOf(argVal('--from') || defaultFrom);
 const toArg = argVal('--to');
-// last completed week = the week before the current one
-const lastCompletedStart = addDays(currentWeekStart, -7);
+// last completed week = the week before the current one; --include-current also
+// pushes the in-progress week (flow metrics update as the week fills in)
+const lastCompletedStart = args.includes('--include-current') ? currentWeekStart : addDays(currentWeekStart, -7);
 const lastWeekStart = toArg ? weekStartOf(toArg) : lastCompletedStart;
 
 const weeks = [];
@@ -95,8 +96,8 @@ async function gql(query, variables, attempt = 0) {
   });
   const data = await res.json().catch(() => ({}));
   const throttled = data.errors?.some((e) => e.extensions?.code === 'THROTTLED');
-  if ((res.status === 429 || throttled) && attempt < 6) {
-    await sleep(3000 * (attempt + 1));
+  if ((res.status === 429 || throttled) && attempt < 12) {
+    await sleep(Math.min(8000 * (attempt + 1), 60000));
     return gql(query, variables, attempt + 1);
   }
   if (res.status === 401 && attempt < 2) { jobberToken = null; return gql(query, variables, attempt + 1); }
@@ -126,32 +127,43 @@ console.log('Pulling Jobber…');
 const invoices = await sweep('invoices', (after) => gql(
   `query($after:String){ invoices(first:100, after:$after, filter:{ issuedDate:{ after:"${rangeStartISO}" } }){
      nodes{ invoiceNumber issuedDate invoiceStatus amounts{ total invoiceBalance } }
-     pageInfo{ hasNextPage endCursor } } }`, {}), 'invoices (in window)');
+     pageInfo{ hasNextPage endCursor } } }`, { after }), 'invoices (in window)');
 
 const pastDueInvoices = await sweep('invoices', (after) => gql(
   `query($after:String){ invoices(first:100, after:$after, filter:{ status: past_due }){
      nodes{ invoiceNumber amounts{ invoiceBalance } }
-     pageInfo{ hasNextPage endCursor } } }`, {}), 'invoices (past due)');
+     pageInfo{ hasNextPage endCursor } } }`, { after }), 'invoices (past due)');
 
 const quotes = await sweep('quotes', (after) => gql(
-  `query($after:String){ quotes(first:100, after:$after, filter:{ createdAt:{ after:"2026-02-01T00:00:00Z" } }){
-     nodes{ quoteNumber createdAt sentAt transitionedAt quoteStatus amounts{ total } lineItems{ nodes{ name } } }
-     pageInfo{ hasNextPage endCursor } } }`, {}), 'quotes (since Feb)');
+  `query($after:String){ quotes(first:50, after:$after, filter:{ createdAt:{ after:"2026-02-01T00:00:00Z" } }){
+     nodes{ quoteNumber createdAt sentAt transitionedAt quoteStatus amounts{ total } lineItems(first:15){ nodes{ name } } }
+     pageInfo{ hasNextPage endCursor } } }`, { after }), 'quotes (since Feb)');
 
 const visits = await sweep('visits', (after) => gql(
-  `query($after:String){ visits(first:100, after:$after, filter:{ startAt:{ after:"${rangeStartISO}" } }){
+  `query($after:String){ visits(first:100, after:$after, filter:{ startAt:{ after:"${rangeStartISO}", before:"${new Date(addDays(lastWeekStart, 7) + 'T00:00:00-07:00').toISOString()}" } }){
      nodes{ startAt isComplete }
-     pageInfo{ hasNextPage endCursor } } }`, {}), 'visits (in window)');
+     pageInfo{ hasNextPage endCursor } } }`, { after }), 'visits (in window)');
 
 const clients = await sweep('clients', (after) => gql(
-  `query($after:String){ clients(first:100, after:$after){
+  `query($after:String){ clients(first:100, after:$after, filter:{ createdAt:{ after:"${rangeStartISO}" } }){
      nodes{ createdAt isLead }
-     pageInfo{ hasNextPage endCursor } } }`, {}), 'clients (all, light)');
+     pageInfo{ hasNextPage endCursor } } }`, { after }), 'clients (in window)');
 
-const jobs = await sweep('jobs', (after) => gql(
-  `query($after:String){ jobs(first:100, after:$after){
-     nodes{ jobNumber title createdAt startAt endAt completedAt jobStatus jobType lineItems{ nodes{ name totalPrice } } }
-     pageInfo{ hasNextPage endCursor } } }`, {}), 'jobs (all)');
+const JOB_FIELDS = 'jobNumber title createdAt startAt endAt completedAt jobStatus jobType lineItems(first:15){ nodes{ name totalPrice } }';
+const jobsRecurring = await sweep('jobs', (after) => gql(
+  `query($after:String){ jobs(first:50, after:$after, filter:{ jobType: RECURRING, endAt:{ after:"${rangeStartISO}" } }){
+     nodes{ ${JOB_FIELDS} }
+     pageInfo{ hasNextPage endCursor } } }`, { after }), 'jobs (recurring, endAt in/after window)');
+
+const jobsCreated = await sweep('jobs', (after) => gql(
+  `query($after:String){ jobs(first:50, after:$after, filter:{ createdAt:{ after:"${rangeStartISO}" } }){
+     nodes{ ${JOB_FIELDS} }
+     pageInfo{ hasNextPage endCursor } } }`, { after }), 'jobs (created in window)');
+
+const jobsCompleted = await sweep('jobs', (after) => gql(
+  `query($after:String){ jobs(first:50, after:$after, filter:{ completedAt:{ after:"${rangeStartISO}" } }){
+     nodes{ ${JOB_FIELDS} }
+     pageInfo{ hasNextPage endCursor } } }`, { after }), 'jobs (completed in window)');
 
 console.log('Pulling CallRail…');
 const crApi = async (p, params) => {
@@ -179,7 +191,7 @@ const TMC_RE = /total mole control|tmcp/i;
 const QF_RE = /quick fix/i;
 const hasLine = (obj, re) => (obj.lineItems?.nodes || []).some((li) => re.test(li.name || '')) || re.test(obj.title || '');
 
-const tmcRecurring = jobs.filter((j) => hasLine(j, TMC_RE) && j.startAt && j.endAt && (new Date(j.endAt) - new Date(j.startAt)) > 45 * 86400000);
+const tmcRecurring = jobsRecurring.filter((j) => hasLine(j, TMC_RE) && j.startAt && j.endAt && (new Date(j.endAt) - new Date(j.startAt)) > 45 * 86400000);
 // monthly $ for a TMC job: max line price that looks like a monthly rate (25..400)
 const monthlyOf = (j) => {
   const prices = (j.lineItems?.nodes || []).map((li) => li.totalPrice).filter((p) => p >= 25 && p <= 400);
@@ -205,9 +217,9 @@ for (const w of weeks) {
     tmcp_converted: convertedIn(TMC_RE),
     qf_quoted: quotedIn(QF_RE),
     qf_converted: convertedIn(QF_RE),
-    quick_fix_created: jobs.filter((j) => hasLine(j, QF_RE) && inWeek(j.createdAt, w)).length,
-    qf_job_closed: jobs.filter((j) => hasLine(j, QF_RE) && j.completedAt && inWeek(j.completedAt, w)).length,
-    total_jobs_created: jobs.filter((j) => inWeek(j.createdAt, w)).length,
+    quick_fix_created: jobsCreated.filter((j) => hasLine(j, QF_RE) && inWeek(j.createdAt, w)).length,
+    qf_job_closed: jobsCompleted.filter((j) => hasLine(j, QF_RE) && j.completedAt && inWeek(j.completedAt, w)).length,
+    total_jobs_created: jobsCreated.filter((j) => inWeek(j.createdAt, w)).length,
     tmcp_active: tmcActiveOn(wEnd).length,
     tmcp_net_new: tmcRecurring.filter((j) => inWeek(j.startAt, w)).length - tmcRecurring.filter((j) => inWeek(j.endAt, w)).length,
     tmcp_cancellations: tmcRecurring.filter((j) => inWeek(j.endAt, w)).length,
@@ -248,7 +260,7 @@ if (!DRY) {
       continue;
     }
     for (const w of weeks) {
-      if ((key === 'phone_calls' || key === 'missed_calls') && w < '2026-05-03') continue; // CallRail history floor
+      if ((key === 'phone_calls' || key === 'missed_calls') && w < '2026-05-17') continue; // CallRail numbers fully live mid-May
       try {
         await nApi('POST', `/scorecard/kpis/${m.kpiId}/scores`, { value: rows[w][key], periodStartDate: w });
         pushed++;
@@ -266,7 +278,7 @@ const log = {
   ranAt: new Date().toISOString(), dryRun: DRY, weeks, rows,
   pastDue: { count: pastDueCount, total: pastDueTotal, week: currentWeekStart },
   pushed, skipped, failed,
-  pullCounts: { invoices: invoices.length, pastDueInvoices: pastDueInvoices.length, quotes: quotes.length, visits: visits.length, clients: clients.length, jobs: jobs.length, calls: calls.length },
+  pullCounts: { invoices: invoices.length, pastDueInvoices: pastDueInvoices.length, quotes: quotes.length, visits: visits.length, clients: clients.length, jobsRecurring: jobsRecurring.length, jobsCreated: jobsCreated.length, jobsCompleted: jobsCompleted.length, calls: calls.length },
 };
 writeFileSync(path.join(runDir, `${stamp}.json`), JSON.stringify(log, null, 2));
 appendFileSync(path.join(runDir, 'runs.log'), `${log.ranAt} ${DRY ? 'DRY' : 'PUSH'} weeks=${weeks[0]}..${weeks[weeks.length - 1]} pushed=${pushed} failed=${failed.length} skipped=${skipped.join(',') || '-'}\n`);
