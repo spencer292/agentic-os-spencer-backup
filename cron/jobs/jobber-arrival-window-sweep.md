@@ -3,7 +3,7 @@ name: Jobber Arrival Window Sweep
 time: '06:10'
 days: mon
 active: 'true'
-model: haiku
+model: opus
 notify: on_error
 description: 'Weekly safety net: ensures every Jobber job with timed visits in the next 14 days has the standard 3-hour arrival window, so client texts show a window instead of an exact route-ETA time. Mutation (jobEdit arrivalWindow 180min) pre-approved by Spencer 2026-07-20.'
 timeout: 15m

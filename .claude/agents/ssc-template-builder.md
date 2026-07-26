@@ -3,7 +3,7 @@ name: ssc-template-builder
 version: 2.1.0
 description: "Turns ONE canonical family ref into ONE ship-ready template. Spawned by mkt-visual-identity Phase 5 / the analyze-templates protocol — ONE invocation per FAMILY. The ref image IS the composition guide: it is fed back as --input-image and the AI prompt only describes the delta (what changes per post). Flow: quick vision read → Template Card → icon assets → hero image (edit-from-ref) → template.html → preview → self-QA. Delivers Template Card + template.html + preview.png. No validation scripts, no measurement YAML, no nested QA sub-agent — the orchestrator is the QA."
 tools: Read, Write, Edit, Glob, Grep, Bash
-model: sonnet
+model: fable
 color: purple
 ---
 

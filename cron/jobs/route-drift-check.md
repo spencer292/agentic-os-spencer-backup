@@ -3,7 +3,7 @@ name: Route Drift Check (Jobber vs OptimoRoute)
 time: '09:00,11:00,13:00,15:00,17:00'
 days: daily
 active: 'true'
-model: sonnet
+model: opus
 notify: on_finish
 description: 'Every 2h 9am-5pm PT: diff the Jobber board against the OptimoRoute plan for all planned future days. New bookings missing from OR are auto-fixed (order created locked to day+tech, that day re-planned with everyone else locked, times written back to Jobber). Day/tech/time drift on existing orders is report-only. Spencer authorized auto-fix 2026-07-13.'
 timeout: 20m

@@ -3,7 +3,7 @@ name: ssc-designer
 version: 1.1.0
 description: "Plans the visual layer for the social content pipeline. Spawned by 00-social-content between Phase 5.0 and Phase 5.5. Owns three things — (1) Visual Inventory: scan logos/icons/screenshots/user assets available BEFORE the slide plan exists; (2) Slide Planning: arc → hook → outline with diversity/visual-floor/icon-anchor/white-space audits enforced; (3) Image Source Resolution: for every slide that needs an image, walk the 7-tier image-source-matrix and resolve to a concrete source before the AI image generator runs. Returns slide_plan + visual_inventory + reasoning. Read-only with respect to the project — does not write images or final output, only the slide plan object the orchestrator consumes."
 tools: Read, Bash, Glob, Write
-model: sonnet
+model: fable
 color: cyan
 ---
 

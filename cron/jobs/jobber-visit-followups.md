@@ -3,7 +3,7 @@ name: Jobber Visit Notes Automation (daily)
 time: '18:15'
 days: daily
 active: 'true'
-model: haiku
+model: opus
 notify: on_finish
 description: 'Daily Got Moles visit-note scheduling review: dry-runs the follow-up scheduling engine for review. The REPORT half moved to n8n (workflow 2dxtg73X1JUvLUTr, daily 18:00 PT, activated 2026-07-10) — do NOT run report-sync here, it would double-write.'
 timeout: 15m

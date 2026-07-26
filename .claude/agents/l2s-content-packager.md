@@ -2,6 +2,7 @@
 name: l2s-content-packager
 description: Generates platform-specific content packages (titles, descriptions, hashtags, metadata) for rendered short-form clips and handles publishing via Zernio. Spawned by 00-longform-to-shortform at the final phase (POST). Receives rendered clip paths, target platforms, and publishing mode (skip / draft / auto-post) — defers platform rules to mkt-short-form-posting and returns a status summary with draft/post URLs.
 tools: Read, Bash, Glob, Write
+model: sonnet
 color: orange
 ---
 

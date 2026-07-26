@@ -3,7 +3,7 @@ name: CallRail Voice Assist → Jobber Sync
 time: '07:15,08:15,09:15,10:15,11:15,12:15,13:15,14:15,15:15,16:15,17:15,18:15'
 days: daily
 active: 'true'
-model: haiku
+model: opus
 notify: on_error
 description: 'Hourly 7am-6pm PT: pulls structured Voice Assist intake (correct name, real street address, email, property size/type, lead source) from CallRail and repairs/creates the matching Jobber client. Fixes caller-ID junk names ("Last,First N/A"), fills empty CID-only property addresses, adds emails, attaches an intake note with call link. Ambiguous name mismatches are noted, never overwritten. Spencer authorized apply mode 2026-07-20.'
 timeout: 15m
