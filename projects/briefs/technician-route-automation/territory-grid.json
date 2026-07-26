@@ -1,5 +1,5 @@
 {
- "_comment": "TERRITORY GRID v2 (Spencer-approved 2026-07-22 density plan): far-south 2x/wk (Luke Mon Oly-west + Thu Lacey/Yelm arc; Enumclaw->Tue; Tacoma/Puyallup/Graham belt Wed; Orting/Sumner Fri), far-north 2x/wk (Cory Tue Shoreline + Wed everything-north-of-Kirkland; Mon pure Eastside core). Peninsula stays WEEKLY (biweekly rejected). v1 was 2026-07-11. | v3 (2026-07-23): Cory+Alias ride as ONE CREW (OR driver = Cory Ventura); Spencer keeps ONLY the weekly Tue peninsula run — his Renton/Newcastle->Cammeron Thu, Mercer/Bellevue-S->Crew Thu, North Bend/Snoqualmie/Fall City->Crew Wed. Tavis not currently working — no territory until he returns.",
+ "_comment": "TERRITORY GRID v2 (Spencer-approved 2026-07-22 density plan): far-south 2x/wk (Luke Mon Oly-west + Thu Lacey/Yelm arc; Enumclaw->Tue; Tacoma/Puyallup/Graham belt Wed; Orting/Sumner Fri), far-north 2x/wk (Cory Tue Shoreline + Wed everything-north-of-Kirkland; Mon pure Eastside core). Peninsula stays WEEKLY (biweekly rejected). v1 was 2026-07-11. | v3 (2026-07-23): Cory+Alias ride as ONE CREW (OR driver = Cory Ventura); Spencer keeps ONLY the weekly Tue peninsula run — his Renton/Newcastle->Cammeron Thu, Mercer/Bellevue-S->Crew Thu, North Bend/Snoqualmie/Fall City->Crew Wed. Tavis not currently working — no territory until he returns. | 2026-07-26: peninsula zip fix — 98312 Bremerton (was Luke/wed), 98335 Gig Harbor + 98367 Port Orchard (were tech \"(unknown)\") -> Spencer/tue. Root cause of the Darren Corliss #7933 Bremerton stop landing on Luke Wed. | jobOverrides added 2026-07-26: JOB-level tech exceptions that beat the zip rule (first entry: 8056 Madera West Condos -> Spencer). NOTE: nothing enforces tech assignment yet — optimize-week runs lockTechs=false, so overrides are advisory until tech-locking is built.",
  "approvedAt": "2026-07-23",
  "sealed": true,
  "zips": {
@@ -575,11 +575,12 @@
    "note": "your call 7/11"
   },
   "98312": {
-   "day": "wed",
-   "tech": "Luke LaVergne",
+   "day": "tue",
+   "tech": "Spencer Hill",
    "cities": "Bremerton",
    "visitsPerYear": 6,
-   "decided": false
+   "decided": true,
+   "note": "peninsula = Spencer weekly tue (sealed rule); auto-assign error corrected (Spencer 2026-07-26)"
   },
   "98321": {
    "day": "fri",
@@ -630,10 +631,11 @@
   },
   "98335": {
    "day": "tue",
-   "tech": "(unknown)",
+   "tech": "Spencer Hill",
    "cities": "Gig Harbor",
    "visitsPerYear": 5,
-   "decided": false
+   "decided": true,
+   "note": "peninsula = Spencer weekly tue (sealed rule); auto-assign error corrected (Spencer 2026-07-26)"
   },
   "98338": {
    "day": "wed",
@@ -685,10 +687,11 @@
   },
   "98367": {
    "day": "tue",
-   "tech": "(unknown)",
+   "tech": "Spencer Hill",
    "cities": "Port Orchard",
    "visitsPerYear": 5,
-   "decided": false
+   "decided": true,
+   "note": "peninsula = Spencer weekly tue (sealed rule); auto-assign error corrected (Spencer 2026-07-26)"
   },
   "98371": {
    "day": "wed",
@@ -983,5 +986,17 @@
    "note": "density-plan v2 mon->thu (Spencer 2026-07-22)"
   }
  },
- "status": "rough-draft-v1"
+ "status": "rough-draft-v1",
+ "jobOverrides": {
+  "8056": {
+   "client": "Madera West Condos",
+   "zip": "98023",
+   "gridSaysTech": "Cammeron Anderson",
+   "gridSaysDay": "mon",
+   "tech": "Spencer Hill",
+   "day": "mon",
+   "decided": true,
+   "note": "Spencer keeps this account personally — exception to peninsula-only (Spencer 2026-07-26). Zip 98023 stays Cammeron/mon for every other job."
+  }
+ }
 }
