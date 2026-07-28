@@ -1,7 +1,7 @@
 # Memory — Working Scratchpad (cap 2,500)
 
 ## Active Threads
-- **Routes:** CUT OVER 7/27 (grid v12, wk written, 0 unrouted). Order: move→push-week --grid→lock-techs→plan→write→verify. Spencer NOT overflow: tue peninsula/thu Bellevue-S/fri I-90. DELETE 12 one-week jobOverrides after 7/29.
+- **Routes:** CUT OVER 7/27 (grid v12, wk written, 0 unrouted). Order: move→push --grid→lock-techs→plan→write→verify. Spencer NOT overflow: tue peninsula/thu Bellevue-S/fri I-90. DELETE 12 one-week jobOverrides after 7/29.
 - **Cash-flow:** ~$69.7K MRR/625 mem. Open: Aug1 Muir #7150; signup fix tag+monthly+RECURRING.
 - **NS1 — Got Moles $5-10M:** $857K T12 +37%; 69% close = lead-constrained; $5M≈2,900 mem/21 techs/1,100 leads-mo. NOW: LSA (gated) + pricing A-F (+$10 ARPU≈$72K/yr). Ninety cron Mon05:30; await Spencer UI pass. Org chart: roles 1-3 FINAL, RESUME Role 4; Spencer=ZERO bids→Cory.
 - **Mole Busters:** FINAL $100/close; sign, CallRail #, W-9.
@@ -20,5 +20,5 @@
 
 ## Pending Decisions
 - Add driver externalIds in OR UI → unlocks 10h cap by API.
-- LinkedIn: Spencer fixes profile, then daily connecting.
+- LinkedIn: Spencer fixes profile, then daily connects.
 - Route Ready ads: keep or cut after a full week of CPC/conversion data.
