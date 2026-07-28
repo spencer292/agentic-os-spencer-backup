@@ -20,5 +20,5 @@
 
 ## Pending Decisions
 - Add driver externalIds in OR UI → unlocks 10h cap by API.
-- LinkedIn: Spencer fixes profile → daily connecting.
+- LinkedIn: Spencer fixes profile, then daily connecting.
 - Route Ready ads: keep or cut after a full week of CPC/conversion data.
