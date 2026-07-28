@@ -13,7 +13,7 @@
 - Cron: AGENTIC_OS_CLAUDE_BIN (setx). Restarted 7/26 — dies on reboot, check `runtime:` first.
 - Codex `/codex-check` review-only. Bridge=`~/.codex/AGENTS.md` — HAND-SYNC on CLAUDE.local.md change.
 - CallRail API READ-ONLY. Jobber phone=253-326-1740.
-- tool-browser: CDP Chrome, profile ~\.agentic-chrome-profile; never bulk-automate LinkedIn.
+- tool-browser: CDP Chrome, profile ~\.agentic-chrome-profile; no bulk LinkedIn.
 - Jobber: notes OLDEST-first use notes(last:40); visit filter=interval-overlap; visitEditAssignedUsers REPLACES.
 - OptimoRoute: SYNC unschedules, UPDATE safe. Driver params PER-DATE by serial; 10h cap needs externalIds (blank), UI-only. lockTechs=false → re-run lock-techs after every push.
 - Google Ads: `LAST_7_DAYS` EXCLUDES today — cross-check THIS_MONTH before calling a campaign broken.
