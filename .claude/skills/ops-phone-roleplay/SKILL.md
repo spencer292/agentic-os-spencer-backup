@@ -11,7 +11,7 @@ Turn Claude into a realistic Got Moles caller so a trainee (currently Muhammad) 
 
 | File | Purpose |
 |------|---------|
-| `projects/briefs/callrail-faq/2026-07-20_roleplay-scenarios.md` | The 15 scenarios + rapid-fire drill + scoring rubric |
+| `projects/briefs/callrail-faq/2026-07-20_roleplay-scenarios.md` | The 20 scenarios (Tier 4 = curveball stack) + both rapid-fire drills + the mole knowledge answer key + scoring rubric |
 | `projects/briefs/callrail-faq/2026-07-20_muhammad-faq-training.md` | The answer key — correct pricing, policies, script arc |
 | `projects/briefs/callrail-faq/roleplay-log.md` | Progress log (create on first session) |
 | `projects/briefs/callrail-faq/data/calls.jsonl` | Optional: real transcripts for verbatim caller flavor |
@@ -24,6 +24,7 @@ Load the first two ALWAYS before starting. Check the log to pick up where the tr
 Ask at most two questions if not stated: who is training (default Muhammad), and which mode:
 
 - **drill** — the 20-question rapid-fire list, one at a time, instant verdict per answer
+- **facts** — the mole facts drill (biology, myths, ID), same format; grade against the mole knowledge answer key
 - **scenario** — one full call from the pack (named, e.g. "the no-show", or picked for them)
 - **shift** — 3 random calls back-to-back, weighted toward scenarios they haven't passed
 - **exam** — 5 calls, curveballs stacked, no hints, formal scorecard at the end
@@ -61,7 +62,10 @@ Debrief format, in order: (1) one-line verdict with score, (2) the single most c
 - Promising an exact arrival time
 - Claiming moles are hauled away by default (they go double-bagged into the customer's garbage can; taken along only on special request)
 - Any legality claim beyond Spencer's framing, or any "WA's #1" claim
+- **Any I-713 / initiative compliance claim, in either direction** ("we're compliant" or "that law doesn't apply to us"), or narrating trap mechanics to a caller (scenario 16)
 - Agreeing to service voles/gophers or out-of-area jobs
+- Promising a refund, credit, or weekend visit (refunds/credits are Spencer's call; there are no weekend visits)
+- Bluffing a mole fact — a confidently wrong answer on biology scores below "I don't know, I'll get that from Spencer," even if the guess turns out right
 
 ## Step 4: Log the session
 
@@ -70,7 +74,7 @@ Append to `projects/briefs/callrail-faq/roleplay-log.md`:
 ```markdown
 ## {YYYY-MM-DD} — {trainee} — {mode}
 - {scenario}: {score}/100 — {one-line gap}
-- Passed to date: {n}/15 · Weakest area: {dimension}
+- Passed to date: {n}/20 · Weakest area: {dimension}
 - Next session: {recommendation}
 ```
 

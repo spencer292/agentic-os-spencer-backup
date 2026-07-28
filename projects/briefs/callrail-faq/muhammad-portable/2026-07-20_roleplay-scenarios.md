@@ -1,6 +1,6 @@
 # Got Moles Phone Role-Play Pack
 
-Fifteen scenarios built from real recorded calls (April–July 2026). Every opening line is something an actual caller said. Use this pack two ways:
+Twenty scenarios. Tiers 1–3 are built from real recorded calls (April–July 2026) — every opening line is something an actual caller said. Tier 4 (added 2026-07-27) is the curveball stack: harder calls that test what Muhammad actually knows about moles and about how we work, not just whether he can recite the price sheet. Use this pack two ways:
 
 - **Live with Spencer:** Spencer plays the caller, Muhammad answers as Got Moles. Run 2–3 scenarios per session, debrief after each.
 - **Solo with Claude:** say **"phone role-play"** in a Claude session — Claude plays the caller, stays in character, then scores the call and tracks progress.
@@ -141,11 +141,96 @@ Fifteen scenarios built from real recorded calls (April–July 2026). Every open
 
 ---
 
+## Tier 4 — Curveball stack (mole knowledge under fire)
+
+Added 2026-07-27. These five stack two to four curveballs per call and are scored the same way, with one addition: **a confident wrong fact about moles costs more than "I don't know, let me get you the exact answer from Spencer."** Bluffing is a fail even when the guess happens to be right. Answer key for the biology is at the bottom of this pack.
+
+### 16. Catch and release
+**Caller:** Marisol, Issaquah. Soft-spoken, moral framing, and sharper than she sounds. She has done reading.
+**Opens with:** *"Before we go any further — do you kill them? Because I'd want them relocated, not killed."*
+**Wants:** to hire someone she doesn't feel bad about hiring.
+**Curveballs, in this order:** 1) "Can't you just live-trap them and drop them at a park?" 2) "I'm fairly sure Washington voted to ban those kill traps — Initiative 713. So how is what you do legal?" 3) "Then just tell me exactly what kind of trap you use and I'll look it up myself."
+**Pass:** leads with what we *are* — chemical-free, no poisons or gas, safe for pets and kids, professional trapping — so nothing goes into her yard or near her animals. Answers the relocation question honestly and without drama: moles are solitary and territorial, so a mole dropped into ground another mole already owns doesn't survive, and it makes the problem someone else's; we don't haul wildlife around the county. On the legality push, uses Spencer's framing **only** — pest-control trapping is legal; the restrictions people remember concern fur-trapping of furbearers — then bridges back to methods. When she presses for trap specifics or keeps litigating the law, hands it to Spencer and captures the callback.
+**The trap he must not spring:** we do **not** claim I-713 compliance, we do **not** argue that the initiative "doesn't apply to us," and we do **not** narrate trap mechanics. Any of those is an automatic hard-gate fail. Matter-of-fact is required; graphic is not the same as matter-of-fact — "it snaps their spine" loses this caller and violates the tone standard both.
+**Common mistake:** trying to win the ethics argument. She isn't asking to be debated, she's asking whether we're the kind of company that's straight with her. Honest disqualification is an acceptable outcome here; a legal claim is not.
+
+### 17. The landscaper crossfire
+**Caller:** Trevor, Sumner. New build, talks fast, $14K of sod going down Thursday.
+**Opens with:** *"My landscaper says if I just do a grub treatment the moles will leave. Is that true, or is he blowing smoke?"*
+**Wants:** the cheapest thing that works before Thursday.
+**Curveballs:** 1) "So I'll do the grub control and skip you, right?" 2) "Sod goes in Thursday — can you come Saturday once it's down?" 3) "Won't your traps tear up brand-new sod?"
+**Pass:** the food-supply answer, which is the whole conversion — **earthworms are the staple; grubs are a side dish.** Grub treatments kill grubs; nothing kills earthworms, so the food source and the mole both stay. Then the sequencing: trap **first, then** landscape — laying sod over an active tunnel network buys fresh mounds in a brand-new lawn, and new sod gets watered hard, which pulls worms up (*"you basically rang the dinner bell"*). No weekend visits — M–F only — so offers Thursday or Friday and pushes to get in **before** the sod. Traps go into existing runs, covered and staked, not dug at random. Gives the prep instruction: knock the mounds down, mow, leave it a couple of days so fresh activity shows. Still runs the arc — residential, acreage, how long he's had them — before quoting.
+**Common mistake:** hedging with "the grub treatment might help as a first step" to sound agreeable. That sentence loses the job and costs him money. Second mistake: saying yes to Saturday.
+
+### 18. Four visits, no moles
+**Caller:** Denise, Bonney Lake. Quick Fix customer, week 4 of 5, $150 deposit paid. Cold and businesslike, which is worse than shouting.
+**Opens with:** *"Your guy has been out four times and hasn't caught a single mole. I've got a new mound this morning. What exactly am I paying for?"*
+**Wants:** to stop feeling like she got taken.
+**Curveballs:** 1) "So do I get my $150 back or not?" 2) "How do I even know he's been here?" 3) "If I don't get a straight answer I'll dispute the charge with my bank and put this on Google."
+**Pass:** acknowledges before explaining, then gets the guarantee out early because **the guarantee is the good news** — if nothing is caught, the $150 setup is all she pays; the balance only comes due on a job that catches. Handles the new mound as a diagnostic, not a defense: fresh mounds are dark, damp, crumbly soil; old ones are crusted and flat — knock them down so we can read what's actually new. Explains without excusing: it's usually one mole, it patrols a tunnel network, and a trap set in an active run waits for it. Then escalates properly — pulls the tech's visit notes, gets Spencer on it **today**, gives a specific callback time and keeps it. Never invents a refund or a credit; says plainly that Spencer makes that call and that he'll hear it from him today.
+**Common mistake:** defending the tech before acknowledging her, or blurting "we'll refund you" to make the anger stop. Both cost more than they save — the first escalates her, the second commits Spencer's money.
+
+### 19. It's coming from the field behind me
+**Caller:** Hank, Enumclaw. Two acres backing onto a greenbelt and a horse pasture. Friendly, stubborn, wants this solved permanently.
+**Opens with:** *"I can trap all day in my yard, but they're marching in from the field behind me. Can't you just go set some traps back there?"*
+**Wants:** the source shut off.
+**Curveballs:** 1) "Nobody's going to know. It's just a greenbelt." 2) "So you're telling me I'll be paying you forever?" 3) "Two of my neighbors have the same problem — what do you do about that?" 4) mentions, in passing, that there are horses in the pasture next door.
+**Pass:** clean no on trapping ground we don't have permission for, and protected greenbelts are off-limits — delivered as professionalism, not as rule-quoting. Then redirects to what actually works: perimeter trapping along his line plus ongoing coverage. This is the purest annual-plan case in the pack — a re-invasion corridor is *"not if, but when"* in its most literal form, so **Total Mole Control at the 1–3 acre tier ($125/mo)**, not a Quick Fix he'll be re-invaded out of by fall. Answers "forever?" honestly: the moles next door aren't going away, so this is maintenance, not a failed cure — $3-something a day for a yard that stays flat. Picks up the neighbor thread (group rates: $85 each for two yards, $75 for three; referral = a free month). Logs the livestock as a hazard note **before** anything gets scheduled.
+**Common mistake:** selling him the Quick Fix because it's the easier yes, or agreeing to "just take a look" at the greenbelt.
+
+### 20. The gauntlet
+**Caller:** Alan, Gig Harbor. Retired science teacher. Pleasant, relentless, no transitions between questions. He will buy from whoever convinces him they know the animal. Two of his questions contain false premises.
+**Opens with:** *"Before I hire anybody — humor me. How much do you actually know about moles?"*
+**The gauntlet** (fire them in order; don't wait for a perfect answer before moving on):
+1. "I've got about thirty mounds. How many moles is that?"
+2. "They're rodents, right?" ← **false premise**
+3. "Are they blind?"
+4. "Do they hibernate? Should I just wait until winter?"
+5. "They're eating my hosta roots." ← **false premise**
+6. "How much does one eat?"
+7. "What are all those tunnels actually for?"
+8. "Honestly — aren't moles good for the soil?"
+9. "Then why did I get a fresh mound the day after the last guy trapped one?"
+**Curveball:** at some point, whatever he answers, say *"You're guessing on that one, aren't you?"* The right response to a question he doesn't know is *"I don't know — I'll get you the exact answer from Spencer,"* then actually capture the callback. Bluffing is a fail even if the guess is correct.
+**Pass:** at least 7 of 9 right, **both** false premises caught without making him feel stupid (*"that's the common one — they're insectivores, closer to a shrew than a rat, which is exactly why the poison worms people buy don't work on them"*), and — the part he'll actually fail — he **converts the education into the sale**. Worm supply → nothing removes the food → that's why trapping is the only thing that works → acreage, how long you've had them, both options, name, cell, email, address, "how did you find me?"
+**Common mistake:** enjoying the conversation and never asking for the job. Alan will happily talk for twenty minutes and hang up unbooked, and he'll say nice things about the call while he hires someone else.
+
+---
+
+## Mole knowledge answer key (Tier 4)
+
+General mole biology, and it lines up with how Spencer talks on calls. If a caller pushes past this level of detail, escalate rather than improvise — the phones are not the place to freestyle.
+
+| Question | The answer | Why it matters on the phone |
+|----------|-----------|------------------------------|
+| How many moles is 30 mounds? | Usually **one**. Moles are solitary and territorial; a single busy mole builds a lot of mounds. Typically one to a few per acre. | Kills the "I must have an infestation" panic and sets up the flat rate — one mole or a million, the price doesn't move. |
+| Are moles rodents? | **No** — they're insectivores, related to shrews, not to rats, gophers, or voles. | This is *why* rodent baits and poison worms fail. Best single fact in the pack. |
+| Are they blind? | Near-blind, not eyeless. Tiny eyes, poor vision; they hunt by touch and smell underground. | Explains why gimmicks aimed at sight or noise do nothing. |
+| Do they hibernate / go away in winter? | **No.** Active year-round; in cold or dry spells they work deeper runs, so you see fewer fresh mounds. | The most common myth on the phones. "Wait until spring" is how a small problem becomes a big one. |
+| Do they eat plant roots or bulbs? | **No.** The staple is earthworms, plus grubs and insect larvae. Root and bulb damage is voles; damage from moles is incidental to tunneling. | Caller may have both. It's also the honest-ID moment that earns trust and referrals. |
+| How much do they eat? | Roughly **70% of body weight a day** — they can't go long without eating. | Sets up "you can't starve them out." |
+| What are the tunnels for? | A worm net. Deep permanent runs plus shallow feeding tunnels; the mole patrols the runs and eats what falls in. Mounds are the spoil from digging the deep runs. | Explains why traps go **in active runs** and why the network outlives the mole. |
+| Are moles good for the soil? | Genuinely yes — aeration, and they eat some pest larvae. The problem is the lawn damage and the tunnel network, not the animal. | Conceding this makes everything else more credible. |
+| Why a fresh mound right after one was trapped? | Vacant territory gets claimed — the tunnel network is still there and it's prime real estate. Also, existing runs keep producing spoil. | The single best annual-plan pitch: *"not if, but when."* |
+| Fresh mound or old mound? | Fresh = dark, damp, crumbly soil sitting proud. Old = crusted, flattened, weathered. | Turns an angry "it's not working" call into a diagnostic. |
+| Will grub treatment get rid of them? | No. Nothing removes earthworms, so nothing removes the food supply. | Landscapers say this constantly. Don't hedge on it. |
+| Why does watering make it worse? | Irrigation pulls worms up into the top few inches of an irrigated lawn — *"you basically rang the dinner bell."* | Explains the summer spike and why the nicest lawn on the street gets hit. |
+| Can you relocate them? | We don't. A mole moved into another mole's territory doesn't survive, and it hands the problem to someone else. | Answer it plainly, no drama, no graphic detail. |
+| Is it legal in Washington? | **Spencer's framing only:** pest-control trapping is legal; the restrictions people remember concern fur-trapping of furbearers. Nothing beyond that sentence. No compliance claims about any initiative. Press it further → Spencer. | Hard gate. This is the one place where "I'll have Spencer call you" is a better answer than a confident one. |
+
+---
+
 ## Rapid-fire drill (5 minutes, any session)
 
 Fire these back-to-back; each answer in under 20 seconds, accurate:
 
 1. How much does it cost? · 2. Is that per mole? · 3. What if you don't catch anything? · 4. How soon can you come? · 5. What time will you be here? · 6. Do I need to be home? · 7. Is it safe for my dog? · 8. Do you use poison? · 9. Are these moles or voles? · 10. Can I cancel the annual plan? · 11. Do you service [Everett / Vashon / Kenmore]? (three different answers!) · 12. Do moles go away in winter? · 13. How many moles do I have? · 14. What do you do with them after? · 15. Is this even legal in Washington? · 16. Any discounts? · 17. Do you do weekends? · 18. Can someone come look first? · 19. How do I pay? · 20. Why did they come back after you trapped one?
+
+## Mole facts drill (5 minutes — the knowledge half)
+
+Same rules, but these test the animal, not the price sheet. Under 20 seconds each, and **"I'll get that exact answer from Spencer" beats a confident guess.**
+
+1. Are moles rodents? · 2. What do they eat? · 3. Do they eat plant roots? · 4. How much do they eat in a day? · 5. Are they blind? · 6. Do they hibernate? · 7. Thirty mounds — how many moles? · 8. Why do the mounds keep coming after you trap one? · 9. What's the difference between a fresh mound and an old one? · 10. Will a grub treatment get rid of them? · 11. Why doesn't poison work? · 12. Why do they get worse when I water? · 13. What are the tunnels actually for? · 14. Mole, vole, or gopher — how do I tell? · 15. Can you relocate them instead? · 16. Do moles do anything good? · 17. Do they come inside the house? (no — they live underground; it's a lawn problem, not a home-invasion one) · 18. Is it legal in Washington? · 19. Should I wait until winter? · 20. Do I have one mole or an infestation?
 
 ---
 
@@ -154,6 +239,7 @@ Fire these back-to-back; each answer in under 20 seconds, accurate:
 - **Week 1:** Tier 1 only + rapid-fire daily. Pass all five twice before moving on.
 - **Week 2:** Tier 2, one new scenario per day, re-run any Tier 1 that scored under 90.
 - **Week 3:** Tier 3 + curveball stacking (two per call) + outbound callback reps.
-- **Ongoing:** one random scenario per week, cold. When a real call goes sideways, turn it into scenario #16, #17, ... — this pack should grow.
+- **Week 4:** Tier 4 + the mole facts drill daily. Run #20 (the gauntlet) cold before anything else — it exposes exactly which facts aren't solid yet, and the rest of the tier gets easier once they are.
+- **Ongoing:** one random scenario per week, cold. When a real call goes sideways, turn it into scenario #21, #22, ... — this pack should grow.
 
 *Companion doc: `2026-07-20_muhammad-faq-training.md` (the answer key for every scenario above). Real transcripts: `data/calls.jsonl`.*

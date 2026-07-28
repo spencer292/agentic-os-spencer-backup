@@ -166,15 +166,32 @@ const maxIdx = args.indexOf('--max');
 const maxWrites = maxIdx >= 0 ? Number(args[maxIdx + 1]) : Infinity;
 const noReplan = args.includes('--no-replan');
 
+function applyFromOverride(win) {
+  const a = args.find(x => x.startsWith('--from='));
+  if (a) {
+    win.fromDate = a.split('=')[1];
+    // MUST move the Jobber query bound too — otherwise the overridden days are absent from the
+    // visit fetch and every stop on them is misreported as an orphan (92 of them, 2026-07-27).
+    win.afterIso = `${addDaysPT(win.fromDate, -1)}T23:59:59-07:00`;
+    console.log(`!! window start overridden to ${win.fromDate}`);
+  }
+  return win;
+}
 if (mode === 'plan') {
-  const win = computeWindow();
+  const win = applyFromOverride(computeWindow());
   console.log(`Window: ${win.fromDate} -> ${win.toDate}`);
 
   if (!noReplan) {
     console.log('Starting OptimoRoute planning (balancing ON/WT, clustering)…');
     const sp = await orCall('start_planning', {
       dateRange: { from: win.fromDate, to: win.toDate },
-      balancing: 'ON_FORCE', balanceBy: 'WT', clustering: !args.includes('--overlap'), // ON_FORCE: every enabled driver gets a route every day; --overlap disables clustering so balancing can cross territory gravity when one side of the map is overloaded
+      // ON_FORCE gives EVERY ENABLED DRIVER A ROUTE EVERY DAY. That is wrong whenever a driver is
+      // meant to work only some days — on 2026-07-26 it handed Spencer 124 stops across all five
+      // days when he works Tuesday peninsula only. Use --balancing=ON (or OFF) to let the optimizer
+      // leave a driver empty. Override with --balancing=<OFF|ON|ON_FORCE>.
+      balancing: (args.find(a => a.startsWith('--balancing=')) || '--balancing=ON_FORCE').split('=')[1],
+      balanceBy: (args.find(a => a.startsWith('--balance-by=')) || '--balance-by=WT').split('=')[1],
+      clustering: !args.includes('--overlap'), // --overlap disables clustering so balancing can cross territory gravity when one side of the map is overloaded
       // --fresh: re-sequence from scratch (fixes stale ordering from stacked re-plans); default CURRENT for incremental stability
       startWith: args.includes('--fresh') ? 'EMPTY' : 'CURRENT', lockType: 'NONE',
     });
@@ -217,6 +234,8 @@ if (mode === 'plan') {
     byNum[num] = v;
   }
 
+  // ride-alongs are crew who ride with a driver, never their own route
+  const RIDE_ALONG = /norton|franks/i;
   const writes = [], moves = [], committedMoves = [], orphans = [], techChanges = [];
   const matched = new Set();
   for (const s of stops) {
@@ -237,7 +256,10 @@ if (mode === 'plan') {
     const newUserId = users[s.driver.trim().toLowerCase()] || null;
     const dayMove = planDate !== cur.date;
     const timeChange = dayMove || planTime !== cur.hm;
-    const techChange = (curTech || '') !== s.driver;
+    // Compare against ALL assigned users, not just the first. A visit crewed as [Franks, Cory]
+    // returns Franks at index 0, so a curTechs[0] test reports a tech change forever and the same
+    // 55 writes replay on every run without ever converging (seen 2026-07-26).
+    const techChange = !curTechs.some(u => ((u.name && u.name.full) || '') === s.driver);
     if (dayMove) {
       const rec = { job: jn, from: cur.date, to: planDate, driver: s.driver, isSet, committed };
       moves.push(rec);
@@ -248,6 +270,9 @@ if (mode === 'plan') {
       visitId: vis.id, job: jn, date: planDate, time: s.scheduledAtDt.slice(11, 19),
       driver: s.driver, newUserId, curUserIds: curTechs.map(u => u.id),
       doSchedule: timeChange, doAssign: techChange && !!newUserId, dayMove, isSet,
+      // Franks/Norton ride WITH a driver — they are not trucks. Keep them on the visit instead of
+      // letting the driver assignment overwrite them (Spencer 2026-07-26).
+      rideAlongIds: curTechs.filter(u => RIDE_ALONG.test((u.name && u.name.full) || '')).map(u => u.id),
     });
   }
   const unrouted = visits.filter(v => !v.isComplete && !matched.has(v.id)).map(v => {
@@ -278,9 +303,20 @@ if (mode === 'plan') {
   console.log(`\nPlan saved: ${PLAN_PATH}`);
 } else if (mode === 'write') {
   const plan = JSON.parse(fs.readFileSync(PLAN_PATH, 'utf8'));
-  const todo = plan.writes.filter(w => emailCutoffOk(w.date)).slice(0, maxWrites);
-  const skippedCutoff = plan.writes.length - plan.writes.filter(w => emailCutoffOk(w.date)).length;
-  console.log(`Executing ${todo.length} of ${plan.writes.length} writes (${skippedCutoff} blocked by email cutoff, cap ${maxWrites === Infinity ? 'none' : maxWrites})`);
+  // --date YYYY-MM-DD : write ONE day only. Used when a day's email freeze is imminent and the
+  // rest of the week can still be revised (Spencer 2026-07-26: "push Monday").
+  const onlyArg = args.find(a => a.startsWith('--date='));
+  const onlyDate = onlyArg ? onlyArg.split('=')[1] : (args.includes('--date') ? args[args.indexOf('--date') + 1] : null);
+  const scoped = onlyDate ? plan.writes.filter(w => w.date === onlyDate) : plan.writes;
+  // --ignore-freeze writes a day whose 14:00 email cutoff has passed. Only correct when the
+  // customers were notified another way — it is the operator's call, never a default.
+  const ignoreFreeze = args.includes('--ignore-freeze');
+  if (ignoreFreeze) console.log('!! EMAIL FREEZE BYPASSED — writing dates past their 14:00 cutoff');
+  const pass = w => ignoreFreeze || emailCutoffOk(w.date);
+  const todo = scoped.filter(pass).slice(0, maxWrites);
+  const skippedCutoff = scoped.length - scoped.filter(pass).length;
+  if (onlyDate) console.log(`SCOPED to ${onlyDate}: ${scoped.length} of ${plan.writes.length} plan writes`);
+  console.log(`Executing ${todo.length} of ${scoped.length} writes (${skippedCutoff} blocked by email cutoff, cap ${maxWrites === Infinity ? 'none' : maxWrites})`);
   let ok = 0, failed = 0;
   const errs = [];
   for (let i = 0; i < todo.length; i++) {
@@ -292,7 +328,8 @@ if (mode === 'plan') {
       ops.push(`mutation { visitEditSchedule(id: "${w.visitId}", input: { startAt: { date: "${w.date}", time: "${w.time}", timezone: "${TZ}" }, endAt: { date: "${endPT.slice(0, 10)}", time: "${endPT.slice(11, 19)}", timezone: "${TZ}" } }) { userErrors { message } } }`);
     }
     if (w.doAssign) {
-      ops.push(`mutation { visitEditAssignedUsers(visitId: "${w.visitId}", input: { assignedUserIds: ["${w.newUserId}"] }) { userErrors { message } } }`);
+      const ids = [w.newUserId, ...((w.rideAlongIds || []).filter(id => id !== w.newUserId))];
+      ops.push(`mutation { visitEditAssignedUsers(visitId: "${w.visitId}", input: { assignedUserIds: [${ids.map(i => `"${i}"`).join(', ')}] }) { userErrors { message } } }`);
     }
     let bad = null;
     for (const op of ops) {
@@ -311,5 +348,5 @@ if (mode === 'plan') {
   console.log(`\nWRITE-BACK DONE: ok ${ok}, failed ${failed} of ${todo.length}`);
   if (errs.length) console.log('Errors:', errs.slice(0, 20).join(' | '));
 } else {
-  console.log('Usage: optimize-week.mjs plan [--no-replan] | write [--max N]');
+  console.log('Usage: optimize-week.mjs plan [--no-replan] | write [--max N] [--date YYYY-MM-DD]');
 }

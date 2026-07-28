@@ -1,6 +1,6 @@
 {
- "_comment": "TERRITORY GRID v2 (Spencer-approved 2026-07-22 density plan): far-south 2x/wk (Luke Mon Oly-west + Thu Lacey/Yelm arc; Enumclaw->Tue; Tacoma/Puyallup/Graham belt Wed; Orting/Sumner Fri), far-north 2x/wk (Cory Tue Shoreline + Wed everything-north-of-Kirkland; Mon pure Eastside core). Peninsula stays WEEKLY (biweekly rejected). v1 was 2026-07-11. | v3 (2026-07-23): Cory+Alias ride as ONE CREW (OR driver = Cory Ventura); Spencer keeps ONLY the weekly Tue peninsula run — his Renton/Newcastle->Cammeron Thu, Mercer/Bellevue-S->Crew Thu, North Bend/Snoqualmie/Fall City->Crew Wed. Tavis not currently working — no territory until he returns. | 2026-07-26: peninsula zip fix — 98312 Bremerton (was Luke/wed), 98335 Gig Harbor + 98367 Port Orchard (were tech \"(unknown)\") -> Spencer/tue. Root cause of the Darren Corliss #7933 Bremerton stop landing on Luke Wed. | jobOverrides added 2026-07-26: JOB-level tech exceptions that beat the zip rule (first entry: 8056 Madera West Condos -> Spencer). NOTE: nothing enforces tech assignment yet — optimize-week runs lockTechs=false, so overrides are advisory until tech-locking is built.",
- "approvedAt": "2026-07-23",
+ "_comment": "TERRITORY GRID v2 (Spencer-approved 2026-07-22 density plan): far-south 2x/wk (Luke Mon Oly-west + Thu Lacey/Yelm arc; Enumclaw->Tue; Tacoma/Puyallup/Graham belt Wed; Orting/Sumner Fri), far-north 2x/wk (Cory Tue Shoreline + Wed everything-north-of-Kirkland; Mon pure Eastside core). Peninsula stays WEEKLY (biweekly rejected). v1 was 2026-07-11. | v3 (2026-07-23): Cory+Alias ride as ONE CREW (OR driver = Cory Ventura); Spencer keeps ONLY the weekly Tue peninsula run — his Renton/Newcastle->Cammeron Thu, Mercer/Bellevue-S->Crew Thu, North Bend/Snoqualmie/Fall City->Crew Wed. Tavis not currently working — no territory until he returns. | 2026-07-26: peninsula zip fix — 98312 Bremerton (was Luke/wed), 98335 Gig Harbor + 98367 Port Orchard (were tech \"(unknown)\") -> Spencer/tue. Root cause of the Darren Corliss #7933 Bremerton stop landing on Luke Wed. | jobOverrides added 2026-07-26: JOB-level tech exceptions that beat the zip rule (first entry: 8056 Madera West Condos -> Spencer). NOTE: nothing enforces tech assignment yet — optimize-week runs lockTechs=false, so overrides are advisory until tech-locking is built. | v4 (2026-07-26) DAY-BALANCE: grid v3 forced 149 stops onto Thursday vs ~105 of 4-truck capacity while Mon sat at 60 and Fri at 40. Root cause: 10 zips the crews actually work on FRIDAY (verified in Jobber 7/10, 7/17, 7/24) were assigned thu/tue. With Cammeron blocked Fri and Spencer peninsula-only, Friday drops from 4 trucks to 2 (Luke + Cory), so the I-90 corridor moved to Friday/Cory and Auburn+Bellevue-S+Redmond moved to Monday. Result mon 89 / tue 101 / wed 103 / thu 106 / fri 64 against 105/115/105/105/70. Franks + Norton are RIDE-ALONGS, not extra trucks (Spencer 2026-07-26). | 2026-07-26 walkthrough: Cory mon was 44 stops/10.5h vs thu 29/7.0h -> 98006+98008 (10 stops) moved mon->thu. | v5 (2026-07-26) DAY SPLITS from the live day-by-day review: Luke Tacoma block wed->mon (17 stops), Cammeron Maple Valley thu->wed (18 stops). Rule: when a tech-day is way overfilled, split it across that SAME tech's light day rather than reassigning to another tech. | v6 (2026-07-26): FRIDAY rebuilt — Spencer takes the I-90 Snoqualmie/Fall City run (98045/98024/98065/98027), Cory splits the south belt with Luke (Cory=Buckley 98321, Luke=Bonney Lake/Lake Tapps/Sumner/Orting). 98372 Edgewood consolidated tue->mon. NOTE: Spencer now works TUE peninsula + FRI I-90, not Tuesday only. | v7 (2026-07-26): 98092 Auburn -> tue/Luke (was mon/Cammeron) per Spencer day-review. | v8 (2026-07-26): Luke intra-week balance — South Hill 98373/74/75 wed->fri, Olympia 98502 + Tumwater 98512 mon->thu. Luke was 34.8h across mon-wed vs 13.5h thu-fri. | v9 (2026-07-26): TWO-DAY ZONES introduced — a zip may carry days:[a,b] and push-week --grid sets allowedDates across both plus allowedWeekdays, letting the optimizer split a zip too big for one day. First: 98092 Auburn tue+fri (Luke). | v10 (2026-07-26): 7 job-level overrides onto Cammeron's Monday (#8116,#6567,#4975,#8163,#8086,#7725,#7736) — his Monday was the lightest day in the fleet at 6.8h. | v11 (2026-07-26 eve): 12 job-level overrides from Spencer's second day-review pass. | v12 (2026-07-26 eve): Spencer takes a 16-stop Bellevue-S/Mercer Island/Newcastle block on THURSDAY. Spencer now works tue (peninsula), thu (this block), fri (I-90) — no longer Tuesday-only. | 2026-07-27: Spencer's peninsula run moved tue->wed for the week of 7/27 via jobOverrides (zip rule unchanged). REMOVE those 10 overrides after 7/29.",
+ "approvedAt": "2026-07-26",
  "sealed": true,
  "zips": {
   "98001": {
@@ -48,7 +48,7 @@
    "cities": "Bellevue",
    "visitsPerYear": 213,
    "decided": true,
-   "note": "your call 7/11; v3 Spencer-out-of-field thu/Spencer->thu/Cory (Spencer 2026-07-23)"
+   "note": "mon->thu; restored to thu (Spencer 2026-07-26): 10-stop Bellevue overflow off Cory mon 10.5h onto his thu 7.0h; sits on the Issaquah-Sammamish-Mercer arc"
   },
   "98007": {
    "day": "mon",
@@ -58,11 +58,12 @@
    "decided": false
   },
   "98008": {
-   "day": "mon",
+   "day": "thu",
    "tech": "Cory Ventura",
    "cities": "Bellevue",
    "visitsPerYear": 73,
-   "decided": false
+   "decided": true,
+   "note": "mon->thu; mon->thu (Spencer 2026-07-26): east Bellevue/Lake Hills, adjacent to Issaquah on Cory thu"
   },
   "98010": {
    "day": "tue",
@@ -129,20 +130,20 @@
    "note": "your call 7/11"
   },
   "98024": {
-   "day": "thu",
-   "tech": "Cory Ventura",
+   "day": "fri",
+   "tech": "Spencer Hill",
    "cities": "Fall City",
    "visitsPerYear": 178,
    "decided": true,
-   "note": "Spencer Friday corridor (your call 7/11); v3 Spencer-out-of-field fri/Spencer->wed/Cory (Spencer 2026-07-23); v3.1 wed->thu (I-90 w/ Issaquah day, Spencer 2026-07-23)"
+   "note": "fri/Cory->fri/Spencer (Spencer 2026-07-26): Spencer runs the Snoqualmie/Fall City I-90 route on Friday himself."
   },
   "98027": {
-   "day": "thu",
-   "tech": "Cory Ventura",
+   "day": "fri",
+   "tech": "Spencer Hill",
    "cities": "Issaquah",
    "visitsPerYear": 293,
    "decided": true,
-   "note": "as proposed"
+   "note": "fri/Cory->fri/Spencer (Spencer 2026-07-26): Spencer runs the Snoqualmie/Fall City I-90 route on Friday himself."
   },
   "98028": {
    "cities": "Kenmore",
@@ -198,12 +199,12 @@
    "decided": false
   },
   "98038": {
-   "day": "thu",
+   "day": "wed",
    "tech": "Cammeron Anderson",
    "cities": "Maple Valley/Maple valley",
    "visitsPerYear": 580,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "thu->wed day-split v5: Cammeron thu was 46 stops/11.9h with 9 Maple Valley unroutable. Maple Valley split onto his Wednesday Kent/Renton belt. Spencer 2026-07-26 day-review."
   },
   "98039": {
    "day": "mon",
@@ -229,12 +230,12 @@
    "note": "your call 7/11"
   },
   "98045": {
-   "day": "thu",
-   "tech": "Cory Ventura",
+   "day": "fri",
+   "tech": "Spencer Hill",
    "cities": "North Bend/North bend/north bend",
    "visitsPerYear": 375,
    "decided": true,
-   "note": "Spencer Friday corridor (your call 7/11); v3 Spencer-out-of-field fri/Spencer->wed/Cory (Spencer 2026-07-23); v3.1 wed->thu (I-90 w/ Issaquah day, Spencer 2026-07-23)"
+   "note": "fri/Cory->fri/Spencer (Spencer 2026-07-26): Spencer runs the Snoqualmie/Fall City I-90 route on Friday himself."
   },
   "98047": {
    "day": "mon",
@@ -260,12 +261,12 @@
    "decided": false
   },
   "98053": {
-   "day": "wed",
+   "day": "mon",
    "tech": "Cory Ventura",
    "cities": "Redmond",
    "visitsPerYear": 289,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "wed->mon day-balance v4 (Spencer 2026-07-26): Redmond — Eastside core, belongs with Cory Monday (Bellevue/Kirkland/Redmond/Medina), not the far-north Wed loop."
   },
   "98055": {
    "day": "wed",
@@ -308,12 +309,12 @@
    "note": "your call 7/11; v3 Spencer-out-of-field thu/Spencer->thu/Cammeron (Spencer 2026-07-23)"
   },
   "98065": {
-   "day": "thu",
-   "tech": "Cory Ventura",
+   "day": "fri",
+   "tech": "Spencer Hill",
    "cities": "Snoqualmie",
    "visitsPerYear": 135,
    "decided": true,
-   "note": "Spencer Friday corridor (your call 7/11); v3 Spencer-out-of-field fri/Spencer->wed/Cory (Spencer 2026-07-23); v3.1 wed->thu (I-90 w/ Issaquah day, Spencer 2026-07-23)"
+   "note": "fri/Cory->fri/Spencer (Spencer 2026-07-26): Spencer runs the Snoqualmie/Fall City I-90 route on Friday himself."
   },
   "98072": {
    "day": "wed",
@@ -346,12 +347,15 @@
    "note": "moved to Wednesday"
   },
   "98092": {
-   "day": "thu",
-   "tech": "Cammeron Anderson",
+   "tech": "Luke LaVergne",
    "cities": "Auburn/Issaquah",
    "visitsPerYear": 496,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "TWO-DAY ZONE tue+fri (Spencer 2026-07-26): 11 Auburn stops pushed Luke's Tuesday to 11.0h/18:15. East Auburn is ~10 mi from his Lake Tapps/Sumner Friday belt, so the optimizer splits the zip across both of his days.",
+   "days": [
+    "tue",
+    "fri"
+   ]
   },
   "98102": {
    "day": "tue",
@@ -584,11 +588,11 @@
   },
   "98321": {
    "day": "fri",
-   "tech": "Luke LaVergne",
+   "tech": "Cory Ventura",
    "cities": "Buckley",
    "visitsPerYear": 759,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "fri/Luke->fri/Cory (Spencer 2026-07-26): Cory SPLITS the Friday south belt with Luke — Cory takes Buckley, Luke keeps Bonney Lake/Lake Tapps/Sumner/Orting. Matches actual practice 7/10, 7/17, 7/24."
   },
   "98327": {
    "day": "mon",
@@ -702,36 +706,36 @@
    "note": "your call 7/11"
   },
   "98372": {
-   "day": "tue",
+   "day": "mon",
    "tech": "Cammeron Anderson",
    "cities": "Edgewood/Puyallup",
    "visitsPerYear": 315,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "tue->mon (Spencer 2026-07-26 day-review): zip was fragmenting across mon/tue/wed/fri (#7774,#7701,#8165,#4941,#7614). Consolidated onto Cammeron's Monday Auburn-Federal Way-Pacific-Edgewood belt."
   },
   "98373": {
-   "day": "wed",
+   "day": "fri",
    "tech": "Luke LaVergne",
    "cities": "Puyallup/South Hill",
    "visitsPerYear": 103,
-   "decided": false,
-   "note": "density-plan v2 tue->wed (Spencer 2026-07-22)"
+   "decided": true,
+   "note": "wed->fri v8 balance (Spencer 2026-07-26): Luke wed was 12.7h vs his fri 5.8h/117mi. South Hill adjoins his Lake Tapps/Sumner Friday belt."
   },
   "98374": {
-   "day": "wed",
+   "day": "fri",
    "tech": "Luke LaVergne",
    "cities": "Puyallup/South Hill",
    "visitsPerYear": 241,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "wed->fri v8 balance (Spencer 2026-07-26): Luke wed was 12.7h vs his fri 5.8h/117mi. South Hill adjoins his Lake Tapps/Sumner Friday belt."
   },
   "98375": {
-   "day": "wed",
+   "day": "fri",
    "tech": "Luke LaVergne",
    "cities": "Puyallup",
    "visitsPerYear": 111,
-   "decided": false,
-   "note": "density-plan v2 tue->wed (Spencer 2026-07-22)"
+   "decided": true,
+   "note": "wed->fri v8 balance (Spencer 2026-07-26): Luke wed was 12.7h vs his fri 5.8h/117mi. South Hill adjoins his Lake Tapps/Sumner Friday belt."
   },
   "98385": {
    "day": "fri",
@@ -789,12 +793,12 @@
    "note": "Brayden gone — Luke took south"
   },
   "98403": {
-   "day": "wed",
+   "day": "mon",
    "tech": "Luke LaVergne",
    "cities": "Tacoma",
    "visitsPerYear": 9,
-   "decided": false,
-   "note": "density-plan v2 tue->wed (Spencer 2026-07-22)"
+   "decided": true,
+   "note": "wed->mon day-split v5: Luke wed was 48 stops/13.5h with a Tacoma tail running to 20:43. Tacoma proper split onto his Monday Olympia run (same I-5 corridor). Spencer 2026-07-26 day-review."
   },
   "98404": {
    "day": "wed",
@@ -813,20 +817,20 @@
    "note": "density-plan v2 tue->wed (Spencer 2026-07-22)"
   },
   "98406": {
-   "day": "wed",
+   "day": "mon",
    "tech": "Luke LaVergne",
    "cities": "Tacoma",
    "visitsPerYear": 26,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "wed->mon day-split v5: Luke wed was 48 stops/13.5h with a Tacoma tail running to 20:43. Tacoma proper split onto his Monday Olympia run (same I-5 corridor). Spencer 2026-07-26 day-review."
   },
   "98407": {
-   "day": "wed",
+   "day": "mon",
    "tech": "Luke LaVergne",
    "cities": "Tacoma",
    "visitsPerYear": 42,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "wed->mon day-split v5: Luke wed was 48 stops/13.5h with a Tacoma tail running to 20:43. Tacoma proper split onto his Monday Olympia run (same I-5 corridor). Spencer 2026-07-26 day-review."
   },
   "98422": {
    "day": "mon",
@@ -845,28 +849,28 @@
    "note": "Brayden gone — Luke took south"
   },
   "98443": {
-   "day": "wed",
+   "day": "mon",
    "tech": "Luke LaVergne",
    "cities": "Tacoma",
    "visitsPerYear": 48,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "wed->mon day-split v5: Luke wed was 48 stops/13.5h with a Tacoma tail running to 20:43. Tacoma proper split onto his Monday Olympia run (same I-5 corridor). Spencer 2026-07-26 day-review."
   },
   "98445": {
-   "day": "wed",
+   "day": "mon",
    "tech": "Luke LaVergne",
    "cities": "Tacoma",
    "visitsPerYear": 76,
-   "decided": false,
-   "note": "density-plan v2 tue->wed (Spencer 2026-07-22)"
+   "decided": true,
+   "note": "wed->mon day-split v5: Luke wed was 48 stops/13.5h with a Tacoma tail running to 20:43. Tacoma proper split onto his Monday Olympia run (same I-5 corridor). Spencer 2026-07-26 day-review."
   },
   "98446": {
-   "day": "wed",
+   "day": "mon",
    "tech": "Luke LaVergne",
    "cities": "Tacoma",
    "visitsPerYear": 42,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "wed->mon day-split v5: Luke wed was 48 stops/13.5h with a Tacoma tail running to 20:43. Tacoma proper split onto his Monday Olympia run (same I-5 corridor). Spencer 2026-07-26 day-review."
   },
   "98465": {
    "day": "wed",
@@ -877,12 +881,12 @@
    "note": "your call 7/11"
   },
   "98466": {
-   "day": "wed",
+   "day": "mon",
    "tech": "Luke LaVergne",
    "cities": "Fircrest/University Place",
    "visitsPerYear": 62,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "wed->mon day-split v5: Luke wed was 48 stops/13.5h with a Tacoma tail running to 20:43. Tacoma proper split onto his Monday Olympia run (same I-5 corridor). Spencer 2026-07-26 day-review."
   },
   "98467": {
    "day": "wed",
@@ -901,12 +905,12 @@
    "note": "density-plan v2 tue->wed (Spencer 2026-07-22)"
   },
   "98499": {
-   "day": "wed",
+   "day": "mon",
    "tech": "Luke LaVergne",
    "cities": "Tacoma/Lakewood",
    "visitsPerYear": 43,
    "decided": true,
-   "note": "your call 7/11"
+   "note": "wed->mon day-split v5: Luke wed was 48 stops/13.5h with a Tacoma tail running to 20:43. Tacoma proper split onto his Monday Olympia run (same I-5 corridor). Spencer 2026-07-26 day-review."
   },
   "98501": {
    "day": "mon",
@@ -916,11 +920,12 @@
    "decided": false
   },
   "98502": {
-   "day": "mon",
+   "day": "thu",
    "tech": "Luke LaVergne",
    "cities": "Olympia",
    "visitsPerYear": 105,
-   "decided": false
+   "decided": true,
+   "note": "mon->thu v8 balance (Spencer 2026-07-26): Luke mon was 11.1h (Tacoma + Olympia, 252mi). Olympia/Tumwater joins his Thursday Lacey/Yelm/Roy far-south run."
   },
   "98503": {
    "day": "thu",
@@ -939,11 +944,12 @@
    "note": "density-plan v2 mon->thu (Spencer 2026-07-22)"
   },
   "98512": {
-   "day": "mon",
+   "day": "thu",
    "tech": "Luke LaVergne",
    "cities": "Olympia/Tumwater",
    "visitsPerYear": 107,
-   "decided": false
+   "decided": true,
+   "note": "mon->thu v8 balance (Spencer 2026-07-26): Luke mon was 11.1h (Tacoma + Olympia, 252mi). Olympia/Tumwater joins his Thursday Lacey/Yelm/Roy far-south run."
   },
   "98513": {
    "day": "thu",
@@ -997,6 +1003,596 @@
    "day": "mon",
    "decided": true,
    "note": "Spencer keeps this account personally — exception to peninsula-only (Spencer 2026-07-26). Zip 98023 stays Cammeron/mon for every other job."
+  },
+  "7736": {
+   "client": "Rita Conger",
+   "zip": "98031",
+   "city": "Kent",
+   "gridSays": "wed/Cammeron",
+   "tech": "Cammeron Anderson",
+   "day": "mon",
+   "decided": true,
+   "note": "Moved to Cammeron's Monday (Spencer 2026-07-26 day-review). SUPERSEDES the earlier same-day override putting Rita on Spencer."
+  },
+  "8116": {
+   "client": "Tim Banning",
+   "zip": "98198",
+   "city": "SeaTac",
+   "gridSays": "tue/Cammeron",
+   "tech": "Cammeron Anderson",
+   "day": "mon",
+   "decided": true,
+   "note": "Moved to Cammeron's Monday (Spencer 2026-07-26 day-review)."
+  },
+  "6567": {
+   "client": "Sharon Da-Dalto",
+   "zip": "98198",
+   "city": "Normandy Park",
+   "gridSays": "tue/Cammeron",
+   "tech": "Cammeron Anderson",
+   "day": "mon",
+   "decided": true,
+   "note": "Moved to Cammeron's Monday (Spencer 2026-07-26 day-review)."
+  },
+  "4975": {
+   "client": "Brian Beans",
+   "zip": "98166",
+   "city": "Normandy Park",
+   "gridSays": "tue/Cammeron",
+   "tech": "Cammeron Anderson",
+   "day": "mon",
+   "decided": true,
+   "note": "Moved to Cammeron's Monday (Spencer 2026-07-26 day-review)."
+  },
+  "8163": {
+   "client": "Ryan Jaffe",
+   "zip": "98166",
+   "city": "Normandy Park",
+   "gridSays": "tue/Cammeron",
+   "tech": "Cammeron Anderson",
+   "day": "mon",
+   "decided": true,
+   "note": "Moved to Cammeron's Monday (Spencer 2026-07-26 day-review)."
+  },
+  "8086": {
+   "client": "Tony Dimartino",
+   "zip": "98188",
+   "city": "SeaTac",
+   "gridSays": "tue/Cory",
+   "tech": "Cammeron Anderson",
+   "day": "mon",
+   "decided": true,
+   "note": "Moved to Cammeron's Monday (Spencer 2026-07-26 day-review)."
+  },
+  "7725": {
+   "client": "Suzanne Gullace",
+   "zip": "98360",
+   "city": "Orting",
+   "gridSays": "fri/Luke",
+   "tech": "Cammeron Anderson",
+   "day": "mon",
+   "decided": true,
+   "note": "Moved to Cammeron's Monday (Spencer 2026-07-26 day-review). No visit scheduled next week — override applies when one is created."
+  },
+  "7475": {
+   "client": "Hannah Jacobson",
+   "zip": "98166",
+   "city": "Normandy Park",
+   "gridSays": "tue/Cammeron",
+   "tech": "Cammeron Anderson",
+   "day": "mon",
+   "decided": true,
+   "note": "Moved to Cammeron's Monday with the Normandy Park/SeaTac/Burien group (Spencer 2026-07-26 day-review)."
+  },
+  "7724": {
+   "client": "Seattle Rental Management",
+   "zip": "98148",
+   "city": "Burien",
+   "gridSays": "tue/Cory",
+   "tech": "Cammeron Anderson",
+   "day": "mon",
+   "decided": true,
+   "note": "Moved to Cammeron's Monday with the Normandy Park/SeaTac/Burien group (Spencer 2026-07-26 day-review)."
+  },
+  "7758": {
+   "client": "Joe Kelley",
+   "zip": "98296",
+   "city": "Snohomish",
+   "gridSays": "wed/Cory Ventura",
+   "tech": "Cory Ventura",
+   "day": "mon",
+   "decided": true,
+   "note": "Moved to Monday (Spencer 2026-07-26). Snohomish 98296 stays wed/Cory for every other job."
+  },
+  "6418": {
+   "client": "Diana Silva",
+   "zip": "98092",
+   "city": "Auburn",
+   "gridSays": "tue,fri/Luke",
+   "tech": "Luke LaVergne",
+   "day": "tue",
+   "decided": true,
+   "note": "Spencer 2026-07-26 day-review pass 3."
+  },
+  "6737": {
+   "client": "Kristina Rollings",
+   "zip": "98597",
+   "city": "Yelm",
+   "gridSays": "thu/Luke",
+   "tech": "Luke LaVergne",
+   "day": "wed",
+   "decided": true,
+   "note": "pinned to wed (Spencer 2026-07-26)."
+  },
+  "6246": {
+   "client": "Lisa Miles",
+   "zip": "98597",
+   "city": "Yelm",
+   "gridSays": "thu/Luke",
+   "tech": "Luke LaVergne",
+   "day": "wed",
+   "decided": true,
+   "note": "pinned to wed (Spencer 2026-07-26)."
+  },
+  "7829": {
+   "client": "Joey Russo",
+   "zip": "98597",
+   "city": "Yelm",
+   "gridSays": "thu/Luke",
+   "tech": "Luke LaVergne",
+   "day": "wed",
+   "decided": true,
+   "note": "pinned to wed (Spencer 2026-07-26)."
+  },
+  "4674": {
+   "client": "Noe Cerda",
+   "zip": "98580",
+   "city": "Roy",
+   "gridSays": "thu/Luke",
+   "tech": "Luke LaVergne",
+   "day": "wed",
+   "decided": true,
+   "note": "pinned to wed (Spencer 2026-07-26)."
+  },
+  "4935": {
+   "client": "Maja Haloway",
+   "zip": "98580",
+   "city": "Roy",
+   "gridSays": "thu/Luke",
+   "tech": "Luke LaVergne",
+   "day": "wed",
+   "decided": true,
+   "note": "pinned to wed (Spencer 2026-07-26)."
+  },
+  "8212": {
+   "client": "Cindy Holshouser",
+   "zip": "98388",
+   "city": "Steilacoom",
+   "gridSays": "wed/Luke",
+   "tech": "Spencer Hill",
+   "day": "wed",
+   "decided": true,
+   "note": "Spencer took these off Luke's Wednesday (2026-07-27) — Steilacoom sits on his peninsula run, which is on Wednesday this week."
+  },
+  "5529": {
+   "client": "Christina McDougall",
+   "zip": "98388",
+   "city": "Steilacoom",
+   "gridSays": "wed/Luke",
+   "tech": "Spencer Hill",
+   "day": "wed",
+   "decided": true,
+   "note": "Spencer took these off Luke's Wednesday (2026-07-27) — Steilacoom sits on his peninsula run, which is on Wednesday this week."
+  },
+  "8197": {
+   "client": "Erin Irvine",
+   "zip": "98406",
+   "city": "Tacoma",
+   "gridSays": "mon/Luke",
+   "tech": "Luke LaVergne",
+   "day": "mon",
+   "decided": true,
+   "note": "pinned to mon (Spencer 2026-07-26). Monday — moved after the email freeze, at Spencer's direction."
+  },
+  "8196": {
+   "client": "Lisa Politeo",
+   "zip": "98407",
+   "city": "Tacoma",
+   "gridSays": "mon/Luke",
+   "tech": "Luke LaVergne",
+   "day": "mon",
+   "decided": true,
+   "note": "pinned to mon (Spencer 2026-07-26). Monday — moved after the email freeze, at Spencer's direction."
+  },
+  "7951": {
+   "client": "Peter Kupu",
+   "zip": "98371",
+   "city": "Edgewood",
+   "gridSays": "wed/Luke",
+   "tech": "Cammeron Anderson",
+   "day": "mon",
+   "decided": true,
+   "note": "moved to Cammeron Monday (Spencer 2026-07-26 day-review)."
+  },
+  "8237": {
+   "client": "Effie Weaver",
+   "zip": "98407",
+   "city": "Tacoma",
+   "gridSays": "mon/Luke",
+   "tech": "Luke LaVergne",
+   "day": "mon",
+   "decided": true,
+   "note": "SET — Monday MORNING window 08:00-11:00 (Spencer 2026-07-26 day-review). Morning window."
+  },
+  "7662": {
+   "client": "James Harnish",
+   "zip": "98092",
+   "city": "Auburn",
+   "gridSays": "tue,fri/Luke",
+   "tech": "Cammeron Anderson",
+   "day": "thu",
+   "decided": true,
+   "note": "Spencer 2026-07-26 day-review pass 3."
+  },
+  "7010": {
+   "client": "Charles Lindsey",
+   "zip": "98092",
+   "city": "Auburn",
+   "gridSays": "tue,fri/Luke",
+   "tech": "Cammeron Anderson",
+   "day": "thu",
+   "decided": true,
+   "note": "Spencer 2026-07-26 day-review pass 3."
+  },
+  "5415": {
+   "client": "Rick Conces",
+   "zip": "98027",
+   "city": "Issaquah",
+   "gridSays": "fri/Spencer",
+   "tech": "Cory Ventura",
+   "day": "thu",
+   "decided": true,
+   "note": "Issaquah -> Cory Thursday, his Sammamish/Issaquah day (Spencer 2026-07-26). Was briefly on Cammeron wed, which sat 25 mi off his Kent/Renton belt."
+  },
+  "6663": {
+   "client": "Don Petricic",
+   "zip": "98027",
+   "city": "Issaquah",
+   "gridSays": "fri/Spencer",
+   "tech": "Cammeron Anderson",
+   "day": "wed",
+   "decided": true,
+   "note": "Spencer 2026-07-26 day-review pass 3."
+  },
+  "7382": {
+   "client": "Jason Nault",
+   "zip": "98027",
+   "city": "Issaquah",
+   "gridSays": "fri/Spencer",
+   "tech": "Cammeron Anderson",
+   "day": "wed",
+   "decided": true,
+   "note": "Spencer 2026-07-26 day-review pass 3."
+  },
+  "6475": {
+   "client": "Amber Owen",
+   "zip": "98027",
+   "city": "Issaquah",
+   "gridSays": "fri/Spencer",
+   "tech": "Cammeron Anderson",
+   "day": "wed",
+   "decided": true,
+   "note": "Spencer 2026-07-26 day-review pass 3."
+  },
+  "5022": {
+   "client": "Liz Jones",
+   "zip": "98027",
+   "city": "Issaquah",
+   "gridSays": "fri/Spencer",
+   "tech": "Cammeron Anderson",
+   "day": "wed",
+   "decided": true,
+   "note": "Spencer 2026-07-26 day-review pass 3."
+  },
+  "7960": {
+   "client": "Danielle Steele",
+   "zip": "98006",
+   "city": "Bellevue",
+   "gridSays": "thu/Cory",
+   "tech": "Spencer Hill",
+   "day": "thu",
+   "decided": true,
+   "note": "Spencer takes the Bellevue-S / Mercer Island / Newcastle block on Thursday (Spencer 2026-07-26). Relieves Cory thu 10.4h and Cammeron thu 10.9h."
+  },
+  "5940": {
+   "client": "Don Severide",
+   "zip": "98006",
+   "city": "Bellevue",
+   "gridSays": "thu/Cory",
+   "tech": "Spencer Hill",
+   "day": "thu",
+   "decided": true,
+   "note": "Spencer takes the Bellevue-S / Mercer Island / Newcastle block on Thursday (Spencer 2026-07-26). Relieves Cory thu 10.4h and Cammeron thu 10.9h."
+  },
+  "5138": {
+   "client": "Shelley Bensussen",
+   "zip": "98006",
+   "city": "Bellevue",
+   "gridSays": "thu/Cory",
+   "tech": "Spencer Hill",
+   "day": "thu",
+   "decided": true,
+   "note": "Spencer takes the Bellevue-S / Mercer Island / Newcastle block on Thursday (Spencer 2026-07-26). Relieves Cory thu 10.4h and Cammeron thu 10.9h."
+  },
+  "8113": {
+   "client": "Max Ye",
+   "zip": "98006",
+   "city": "Bellevue",
+   "gridSays": "thu/Cory",
+   "tech": "Spencer Hill",
+   "day": "thu",
+   "decided": true,
+   "note": "Spencer takes the Bellevue-S / Mercer Island / Newcastle block on Thursday (Spencer 2026-07-26). Relieves Cory thu 10.4h and Cammeron thu 10.9h."
+  },
+  "8241": {
+   "client": "Zhaohui Tang (SET)",
+   "zip": "98006",
+   "city": "Bellevue",
+   "gridSays": "thu/Cory",
+   "tech": "Spencer Hill",
+   "day": "thu",
+   "decided": true,
+   "note": "Spencer takes the Bellevue-S / Mercer Island / Newcastle block on Thursday (Spencer 2026-07-26). Relieves Cory thu 10.4h and Cammeron thu 10.9h."
+  },
+  "8175": {
+   "client": "Terry Yoshimura",
+   "zip": "98006",
+   "city": "Bellevue",
+   "gridSays": "thu/Cory",
+   "tech": "Spencer Hill",
+   "day": "thu",
+   "decided": true,
+   "note": "Spencer takes the Bellevue-S / Mercer Island / Newcastle block on Thursday (Spencer 2026-07-26). Relieves Cory thu 10.4h and Cammeron thu 10.9h."
+  },
+  "8226": {
+   "client": "Cliff Weiss",
+   "zip": "98006",
+   "city": "Bellevue",
+   "gridSays": "thu/Cory",
+   "tech": "Spencer Hill",
+   "day": "thu",
+   "decided": true,
+   "note": "Spencer takes the Bellevue-S / Mercer Island / Newcastle block on Thursday (Spencer 2026-07-26). Relieves Cory thu 10.4h and Cammeron thu 10.9h."
+  },
+  "5106": {
+   "client": "Todd Davis",
+   "zip": "98006",
+   "city": "Bellevue",
+   "gridSays": "thu/Cory",
+   "tech": "Spencer Hill",
+   "day": "thu",
+   "decided": true,
+   "note": "Spencer takes the Bellevue-S / Mercer Island / Newcastle block on Thursday (Spencer 2026-07-26). Relieves Cory thu 10.4h and Cammeron thu 10.9h."
+  },
+  "6757": {
+   "client": "Ryan Tacher",
+   "zip": "98040",
+   "city": "Mercer Island",
+   "gridSays": "thu/Cory",
+   "tech": "Spencer Hill",
+   "day": "thu",
+   "decided": true,
+   "note": "Spencer takes the Bellevue-S / Mercer Island / Newcastle block on Thursday (Spencer 2026-07-26). Relieves Cory thu 10.4h and Cammeron thu 10.9h."
+  },
+  "8045": {
+   "client": "Melissa Bay",
+   "zip": "98040",
+   "city": "Mercer Island",
+   "gridSays": "thu/Cory",
+   "tech": "Spencer Hill",
+   "day": "thu",
+   "decided": true,
+   "note": "Spencer takes the Bellevue-S / Mercer Island / Newcastle block on Thursday (Spencer 2026-07-26). Relieves Cory thu 10.4h and Cammeron thu 10.9h."
+  },
+  "8171": {
+   "client": "Patrick Kennedy",
+   "zip": "98040",
+   "city": "Mercer Island",
+   "gridSays": "thu/Cory",
+   "tech": "Spencer Hill",
+   "day": "thu",
+   "decided": true,
+   "note": "Spencer takes the Bellevue-S / Mercer Island / Newcastle block on Thursday (Spencer 2026-07-26). Relieves Cory thu 10.4h and Cammeron thu 10.9h."
+  },
+  "6303": {
+   "client": "Patrick Tanner",
+   "zip": "98040",
+   "city": "Mercer Island",
+   "gridSays": "thu/Cory",
+   "tech": "Spencer Hill",
+   "day": "thu",
+   "decided": true,
+   "note": "Spencer takes the Bellevue-S / Mercer Island / Newcastle block on Thursday (Spencer 2026-07-26). Relieves Cory thu 10.4h and Cammeron thu 10.9h."
+  },
+  "8240": {
+   "client": "Joyce Moen (SET)",
+   "zip": "98006",
+   "city": "Bellevue",
+   "gridSays": "thu/Cory",
+   "tech": "Spencer Hill",
+   "day": "thu",
+   "decided": true,
+   "note": "Spencer takes the Bellevue-S / Mercer Island / Newcastle block on Thursday (Spencer 2026-07-26). Relieves Cory thu 10.4h and Cammeron thu 10.9h."
+  },
+  "8102": {
+   "client": "Heidi Wilson",
+   "zip": "98006",
+   "city": "Bellevue",
+   "gridSays": "thu/Cory",
+   "tech": "Spencer Hill",
+   "day": "thu",
+   "decided": true,
+   "note": "Spencer takes the Bellevue-S / Mercer Island / Newcastle block on Thursday (Spencer 2026-07-26). Relieves Cory thu 10.4h and Cammeron thu 10.9h."
+  },
+  "8207": {
+   "client": "Amy Tang",
+   "zip": "98056",
+   "city": "Newcastle",
+   "gridSays": "thu/Cammeron",
+   "tech": "Spencer Hill",
+   "day": "thu",
+   "decided": true,
+   "note": "Spencer takes the Bellevue-S / Mercer Island / Newcastle block on Thursday (Spencer 2026-07-26). Relieves Cory thu 10.4h and Cammeron thu 10.9h."
+  },
+  "8069": {
+   "client": "Anne Nguyen",
+   "zip": "98056",
+   "city": "Newcastle",
+   "gridSays": "thu/Cammeron",
+   "tech": "Spencer Hill",
+   "day": "thu",
+   "decided": true,
+   "note": "Spencer takes the Bellevue-S / Mercer Island / Newcastle block on Thursday (Spencer 2026-07-26). Relieves Cory thu 10.4h and Cammeron thu 10.9h."
+  },
+  "7696": {
+   "client": "Mary Cooper",
+   "gridSays": "tue/Spencer (peninsula standing run)",
+   "tech": "Spencer Hill",
+   "day": "wed",
+   "decided": true,
+   "note": "THIS WEEK ONLY: Spencer's Tuesday peninsula run moved to Wednesday (Spencer 2026-07-27, customers already notified). The standing peninsula rule stays tue/Spencer — remove these overrides after 2026-07-29."
+  },
+  "7902": {
+   "client": "Stratton Felker",
+   "gridSays": "tue/Spencer (peninsula standing run)",
+   "tech": "Spencer Hill",
+   "day": "wed",
+   "decided": true,
+   "note": "THIS WEEK ONLY: Spencer's Tuesday peninsula run moved to Wednesday (Spencer 2026-07-27, customers already notified). The standing peninsula rule stays tue/Spencer — remove these overrides after 2026-07-29."
+  },
+  "8050": {
+   "client": "Isaiah Scheel",
+   "gridSays": "tue/Spencer (peninsula standing run)",
+   "tech": "Spencer Hill",
+   "day": "wed",
+   "decided": true,
+   "note": "THIS WEEK ONLY: Spencer's Tuesday peninsula run moved to Wednesday (Spencer 2026-07-27, customers already notified). The standing peninsula rule stays tue/Spencer — remove these overrides after 2026-07-29."
+  },
+  "8111": {
+   "client": "Debra Enneking",
+   "gridSays": "tue/Spencer (peninsula standing run)",
+   "tech": "Spencer Hill",
+   "day": "wed",
+   "decided": true,
+   "note": "THIS WEEK ONLY: Spencer's Tuesday peninsula run moved to Wednesday (Spencer 2026-07-27, customers already notified). The standing peninsula rule stays tue/Spencer — remove these overrides after 2026-07-29."
+  },
+  "8192": {
+   "client": "Mark Fetters",
+   "gridSays": "tue/Spencer (peninsula standing run)",
+   "tech": "Spencer Hill",
+   "day": "wed",
+   "decided": true,
+   "note": "THIS WEEK ONLY: Spencer's Tuesday peninsula run moved to Wednesday (Spencer 2026-07-27, customers already notified). The standing peninsula rule stays tue/Spencer — remove these overrides after 2026-07-29."
+  },
+  "8206": {
+   "client": "Aaron Rutledge",
+   "gridSays": "tue/Spencer (peninsula standing run)",
+   "tech": "Spencer Hill",
+   "day": "wed",
+   "decided": true,
+   "note": "THIS WEEK ONLY: Spencer's Tuesday peninsula run moved to Wednesday (Spencer 2026-07-27, customers already notified). The standing peninsula rule stays tue/Spencer — remove these overrides after 2026-07-29."
+  },
+  "7689": {
+   "client": "James Mczynski",
+   "gridSays": "tue/Spencer (peninsula standing run)",
+   "tech": "Spencer Hill",
+   "day": "wed",
+   "decided": true,
+   "note": "THIS WEEK ONLY: Spencer's Tuesday peninsula run moved to Wednesday (Spencer 2026-07-27, customers already notified). The standing peninsula rule stays tue/Spencer — remove these overrides after 2026-07-29."
+  },
+  "7933": {
+   "client": "Darren Corliss",
+   "gridSays": "tue/Spencer (peninsula standing run)",
+   "tech": "Spencer Hill",
+   "day": "wed",
+   "decided": true,
+   "note": "THIS WEEK ONLY: Spencer's Tuesday peninsula run moved to Wednesday (Spencer 2026-07-27, customers already notified). The standing peninsula rule stays tue/Spencer — remove these overrides after 2026-07-29."
+  },
+  "7640": {
+   "client": "Sarah Templin",
+   "gridSays": "tue/Spencer (peninsula standing run)",
+   "tech": "Spencer Hill",
+   "day": "wed",
+   "decided": true,
+   "note": "THIS WEEK ONLY: Spencer's Tuesday peninsula run moved to Wednesday (Spencer 2026-07-27, customers already notified). The standing peninsula rule stays tue/Spencer — remove these overrides after 2026-07-29."
+  },
+  "7908": {
+   "client": "Jill Robinson",
+   "gridSays": "tue/Spencer (peninsula standing run)",
+   "tech": "Spencer Hill",
+   "day": "wed",
+   "decided": true,
+   "note": "THIS WEEK ONLY: Spencer's Tuesday peninsula run moved to Wednesday (Spencer 2026-07-27, customers already notified). The standing peninsula rule stays tue/Spencer — remove these overrides after 2026-07-29."
+  },
+  "8247": {
+   "client": "Terry Wirth (set)",
+   "zip": "98004",
+   "city": "Bellevue",
+   "gridSays": "mon/Cory",
+   "tech": "Cory Ventura",
+   "day": "thu",
+   "decided": true,
+   "note": "SET booked for Thursday; grid day (mon) is already past so it could not route. Cory works Bellevue and has room Thursday (Spencer 2026-07-27)."
+  },
+  "7971": {
+   "client": "David Marsh",
+   "zip": "98042",
+   "city": "Kent",
+   "gridSays": "thu/Cammeron",
+   "tech": "Spencer Hill",
+   "day": "thu",
+   "decided": true,
+   "note": "Spencer is handling this one personally — went Mon 7/27, returning Thu 7/30 (Spencer 2026-07-27). Kent 98042 stays Cammeron for every other job."
+  },
+  "7820": {
+   "client": "David Sprague",
+   "zip": "98047",
+   "city": "Pacific",
+   "gridSays": "mon/Cammeron",
+   "tech": "Luke LaVergne",
+   "day": "fri",
+   "decided": true,
+   "note": "Missed on Mon 7/27 (Cammeron ran out of day at 35 stops/9.6h). Rerouted to Luke's Friday south belt — Cammeron has no Friday route (Spencer 2026-07-27)."
+  },
+  "7840": {
+   "client": "Sam Wrisley",
+   "zip": "98047",
+   "city": "Pacific",
+   "gridSays": "mon/Cammeron",
+   "tech": "Luke LaVergne",
+   "day": "fri",
+   "decided": true,
+   "note": "Missed on Mon 7/27 (Cammeron ran out of day at 35 stops/9.6h). Rerouted to Luke's Friday south belt — Cammeron has no Friday route (Spencer 2026-07-27)."
+  },
+  "7614": {
+   "client": "Prologis - Sumner Landing",
+   "zip": "98372",
+   "city": "Edgewood",
+   "gridSays": "mon/Cammeron",
+   "tech": "Luke LaVergne",
+   "day": "fri",
+   "decided": true,
+   "note": "Missed on Mon 7/27 (Cammeron ran out of day at 35 stops/9.6h). Rerouted to Luke's Friday south belt — Cammeron has no Friday route (Spencer 2026-07-27)."
+  },
+  "8165": {
+   "client": "Blake Sanderson",
+   "zip": "98372",
+   "city": "Puyallup",
+   "gridSays": "mon/Cammeron",
+   "tech": "Luke LaVergne",
+   "day": "fri",
+   "decided": true,
+   "note": "Missed on Mon 7/27 (Cammeron ran out of day at 35 stops/9.6h). Rerouted to Luke's Friday south belt — Cammeron has no Friday route (Spencer 2026-07-27)."
   }
  }
 }

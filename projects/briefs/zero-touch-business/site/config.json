@@ -6,15 +6,31 @@
   "author": "Route Ready",
   "tokens": {
     "CTA_CLEANING": "/kits/cleaning-business-starter-kit/",
+    "CTA_PW": "/kits/pressure-washing-business-starter-kit/",
+    "CTA_LAWN": "/kits/lawn-care-business-starter-kit/",
     "CTA_GENERIC": "/free-pricing-cheat-sheet/",
     "GUMROAD_CLEANING_KIT_URL": "https://routeready.gumroad.com/l/xolvu",
+    "GUMROAD_PW_KIT_URL": "https://routeready.gumroad.com/l/hntns",
+    "GUMROAD_LAWN_KIT_URL": "https://routeready.gumroad.com/l/hjesto",
     "LEAD_MAGNET_URL": "https://routeready.gumroad.com/l/vvgis"
   },
   "nav": [
-    { "label": "Kits", "href": "/kits/" },
-    { "label": "Guides", "href": "/guides/" },
-    { "label": "Free Pricing Cheat Sheet", "href": "/free-pricing-cheat-sheet/" },
-    { "label": "The Book", "href": "/book" }
+    {
+      "label": "Kits",
+      "href": "/kits/"
+    },
+    {
+      "label": "Guides",
+      "href": "/guides/"
+    },
+    {
+      "label": "Free Pricing Cheat Sheet",
+      "href": "/free-pricing-cheat-sheet/"
+    },
+    {
+      "label": "The Book",
+      "href": "/book"
+    }
   ],
   "footer_note": "Templates are starting points, not legal advice. Have a local attorney review contracts before use."
 }

@@ -1,19 +1,23 @@
 {
   "weekStartDay": 1,
   "timezone": "America/Los_Angeles",
+  "_dataFloorNote": "dataFloor = first week a metric has real data. Weeks before it are skipped, not pushed as 0, so the board shows a blank instead of a false flat line. Quick Fix line items first appear in Jobber 2026-01-20; CallRail's first call is 2026-04-30.",
   "metrics": {
     "phone_calls": {
       "kpiId": "68c43bbaee2b0f4086bf0f1e",
       "label": "Phone Calls",
       "enabled": true,
-      "source": "callrail"
+      "source": "callrail",
+      "dataFloor": "2026-05-18",
+      "note": "CallRail has no calls before 2026-04-30 and only went fully live the week of 05-18; earlier weeks would push a false 0"
     },
     "missed_calls": {
-      "kpiId": null,
+      "kpiId": "6a663cd93bb8238f576331cf",
       "label": "Missed Calls",
-      "enabled": false,
+      "enabled": true,
       "source": "callrail",
-      "note": "KPI not created in Ninety yet — set kpiId and enable after Spencer's UI pass"
+      "dataFloor": "2026-05-18",
+      "note": "created 2026-07-26 via UI (public API has no KPI-create); goal <=2/wk, orientation lte. answered==false on inbound calls"
     },
     "new_clients": {
       "kpiId": "68c43c40ee2b0f4086bf0fd3",
@@ -49,25 +53,29 @@
       "kpiId": "6984f163e05d0ee69a2c255d",
       "label": "Quick Fix - Quoted",
       "enabled": true,
-      "source": "jobber"
+      "source": "jobber",
+      "dataFloor": "2026-01-19"
     },
     "qf_converted": {
       "kpiId": "6984f181e05d0ee69a2c2a9e",
       "label": "Quick Fix - Converted",
       "enabled": true,
-      "source": "jobber"
+      "source": "jobber",
+      "dataFloor": "2026-01-19"
     },
     "quick_fix_created": {
       "kpiId": "69c562b8ac5904cd09f41788",
       "label": "Quick fix created",
       "enabled": true,
-      "source": "jobber"
+      "source": "jobber",
+      "dataFloor": "2026-01-19"
     },
     "qf_job_closed": {
       "kpiId": "68c8968eafa8207dc6deb332",
       "label": "Quick fix Job closed",
       "enabled": true,
-      "source": "jobber"
+      "source": "jobber",
+      "dataFloor": "2026-01-19"
     },
     "total_jobs_created": {
       "kpiId": "69331deb1c81133280bb5b39",
@@ -90,9 +98,10 @@
     "tmcp_cancellations": {
       "kpiId": "69c5609dac5904cd09f3cea1",
       "label": "TMCP Cancellations",
-      "enabled": false,
-      "source": "jobber",
-      "note": "disabled: early-cancelled jobs not distinguishable in Jobber (endAt stays future) — computes 0 every week; enable after churn-tagging hygiene"
+      "enabled": true,
+      "source": "jobber-tag",
+      "tagDelta": true,
+      "note": "fed by the 'TMCP Churned' client tag, not by job endAt (endAt stays in the future after a silent cancellation, which is why the job-derived version computed 0 every week). Jobber's Tag type is {id,label} with no timestamp, so weekly churn cannot be backfilled — each run snapshots the tag count to data/tmcp-tag-snapshots.json and pushes the week-over-week delta. Baseline recorded 2026-07-26 at 20 tagged; first real number lands the following week."
     },
     "tmcp_mrr": {
       "kpiId": "69cadbd1386fa68ae083cf8d",

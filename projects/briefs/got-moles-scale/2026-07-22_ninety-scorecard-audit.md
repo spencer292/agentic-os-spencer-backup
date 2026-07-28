@@ -94,7 +94,19 @@ Resulting weekly board: **~15 auto + 2 manual** (reviews semi-auto, hiring pipel
   future endAt in Jobber. Blocked on churn-tagging hygiene; disabled in the map with a note.
 - Revenue is genuinely lumpy weekly ($55–70K month-end TMCP batch invoicing, small mid-month weeks) — sums to
   baseline pace (~$78K/4wk). Consider a "revenue (rolling 4wk)" KPI if the L10 finds the spikes noisy.
-- **Still open:** Spencer UI pass (archives + new KPIs → then fill kpiIds in the map and enable missed_calls);
-  Monday cron registration; OptimoRoute density metric (needs its KPI created first).
+- **Still open:** Spencer UI pass (archives + remaining new KPIs); Monday cron registration;
+  OptimoRoute density metric (needs its KPI created first).
+
+## Superseded by the 52-week backfill (2026-07-26)
+
+See `2026-07-26_ninety-52week-backfill.md`. Corrections to the notes above:
+
+- The 166-score backfill was **Sunday-keyed and landed one week early** — the board is Monday-start.
+  Re-pushed correctly as part of a **597-score, 52-week backfill (2025-07-28 .. 2026-07-20, 0 failures)**.
+- Backfill floor moved from "2026-05-01 (CallRail history floor)" to **2025-07-28** — only the *call*
+  metrics are limited by CallRail; every Jobber metric goes back a full year.
+- **Missed Calls now exists** (`6a663cd93bb8238f576331cf`, goal ≤2). Confirmed the public API cannot
+  create KPIs (`POST /scorecard/kpis` → 404), so it was created through the UI.
+- TMCP active goal note: actual is now **645** (was 597 at audit time), still against a stale 524 goal.
 - Engineering notes: Jobber GraphQL sweeps must pass the cursor as a variable and cap nested `lineItems(first:15)` —
   an uncapped nested connection at first:100 exceeds Jobber's query-cost bucket and throttles forever.

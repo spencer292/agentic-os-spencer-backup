@@ -31,7 +31,10 @@ const status = {
   lead_magnet_endpoint: cfg.tokens.LEAD_MAGNET_URL !== 'PENDING_EMAIL_SETUP',
   site_deploy_hook: Boolean(env.CLOUDFLARE_API_TOKEN && env.CLOUDFLARE_ACCOUNT_ID),
   ads_account: Boolean(env.ROUTE_READY_ADS_CUSTOMER_ID),
-  ga_or_gsc: Boolean(env.ROUTE_READY_GSC_SITE_URL),
+  // A site URL string alone proved misleading — it reported "GSC ✅" for days while no
+  // API access existed and organic performance was an outright blind spot (2026-07-26).
+  // Real access needs the property URL AND a minted read-only token.
+  ga_or_gsc: Boolean(env.ROUTE_READY_GSC_SITE_URL && env.ROUTE_READY_GSC_REFRESH_TOKEN),
 };
 status.launch_ready = status.gumroad_product_url && status.site_deploy_hook;
 status.pending = Object.entries(status)

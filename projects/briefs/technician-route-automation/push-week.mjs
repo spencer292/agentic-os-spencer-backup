@@ -135,6 +135,14 @@ const mode = process.argv[2];
 if (!['dry', 'live'].includes(mode)) { console.log('Usage: push-week.mjs dry|live'); process.exit(1); }
 
 const win = computeWindow();
+// --from=YYYY-MM-DD overrides the freeze-derived start. Needed when a day past its 14:00 email
+// cutoff still has to be re-planned because the customers were notified another way.
+const fromArg = process.argv.find(a => a.startsWith('--from='));
+if (fromArg) {
+  win.fromDate = fromArg.split('=')[1];
+  win.afterIso = `${addDaysPT(win.fromDate, -1)}T23:59:59-07:00`;
+  console.log(`!! window start overridden to ${win.fromDate} (past its email freeze)`);
+}
 console.log(`Window: ${win.fromDate} -> ${win.toDate} (${mode.toUpperCase()})`);
 
 // fetch visits (25/page cursor loop)
@@ -153,8 +161,46 @@ for (;;) {
 }
 console.log(`Jobber visits in window: ${visits.length}`);
 
+// ---------- grid-day enforcement (--grid) ----------
+// Without --grid: flexible orders float the whole window and the optimizer picks the day
+// (the grid is advisory only). With --grid: each flexible order is pinned to its zip's
+// territory day, so far-south/far-north 2x-per-week holds by construction instead of by luck.
+// jobOverrides (job-level) beat the zip rule. Pinned/committed visits are NEVER moved.
+const useGrid = process.argv.includes('--grid');
+let GRID = null;
+if (useGrid) GRID = JSON.parse(fs.readFileSync(path.join(__dirname, 'territory-grid.json'), 'utf8'));
+const DAY_IDX = { mon: 0, tue: 1, wed: 2, thu: 3, fri: 4 };
+// Monday of the plan week = first weekday on/after win.fromDate
+function weekMonday(fromDate) {
+  const [y, m, d] = fromDate.split('-').map(Number);
+  const wd = new Date(Date.UTC(y, m - 1, d)).getUTCDay(); // 0=Sun
+  const back = wd === 0 ? 6 : wd - 1;
+  return addDaysPT(fromDate, -back);
+}
+const MONDAY = weekMonday(win.fromDate);
+// Returns {from, to, weekdays} or null to float.
+// A zip may carry `days: ['tue','fri']` — a TWO-DAY ZONE. Then the order is allowed on either of
+// those weekdays and the optimizer balances between them, which is how a zip too big for one day
+// gets split without hand-assigning stops (e.g. 98092 Auburn across Luke's Tue and Fri).
+function gridDateFor(zip, jobNo) {
+  if (!GRID) return null;
+  const ov = GRID.jobOverrides && GRID.jobOverrides[String(jobNo)];
+  const z = GRID.zips[zip];
+  let days = (ov && (ov.days || (ov.day && [ov.day]))) || (z && (z.days || (z.day && [z.day])));
+  if (!days || !days.length) return null;
+  days = days.filter(d => d in DAY_IDX);
+  if (!days.length) return null;
+  const dates = days.map(d => addDaysPT(MONDAY, DAY_IDX[d]))
+                    .filter(dt => dt >= win.fromDate && dt <= win.toDate);
+  if (!dates.length) return null;   // whole zone is frozen — let it float
+  dates.sort();
+  const kept = days.filter(d => dates.includes(addDaysPT(MONDAY, DAY_IDX[d])));
+  return { from: dates[0], to: dates[dates.length - 1], weekdays: kept };
+}
+
 // build orders (same rules as WF-1 Build orders)
 const orders = [], skipped = [];
+const gridStats = { forced: 0, noZip: 0, frozen: 0, pinnedKept: 0, split: 0 };
 const byId = {};
 for (const v of visits) byId[v.id] = v;
 for (const vis of Object.values(byId)) {
@@ -176,8 +222,25 @@ for (const vis of Object.values(byId)) {
     windowHrs = (new Date(vis.endAt) - new Date(vis.startAt)) / 3600000;
   }
   const pinned = isSet || (startHM !== '00:00' && windowHrs <= 6);
+  // grid day for this order (null = float the window)
+  const zip = ((a.postalCode || '') + '').trim().slice(0, 5);
+  let gridDate = null;
+  if (useGrid) {
+    if (pinned) { gridStats.pinnedKept++; }
+    else {
+      gridDate = gridDateFor(zip, jn);
+      if (gridDate) { gridStats.forced++; if (gridDate.weekdays.length > 1) gridStats.split++; }
+      else if (!GRID.zips[zip]) gridStats.noZip++;
+      else gridStats.frozen++;
+    }
+  }
+  const allowed = pinned ? { from: visitDate, to: visitDate }
+    : gridDate ? { from: gridDate.from, to: gridDate.to }
+    : { from: win.fromDate, to: win.toDate };
+  // two-day zones must also constrain the WEEKDAYS, otherwise the date range lets mid-week days in
+  const allowedWeekdays = (!pinned && gridDate) ? gridDate.weekdays : ['mon','tue','wed','thu','fri'];
   orders.push({
-    meta: { job: String(jn), visitDate, tech, isSet, pinned },
+    meta: { job: String(jn), visitDate, tech, isSet, pinned, zip, gridDate },
     order: {
       operation: 'SYNC',
       orderNo: jn + '-' + visitNum,
@@ -193,8 +256,8 @@ for (const vis of Object.values(byId)) {
         acceptPartialMatch: true,
         acceptMultipleResults: true,
       },
-      allowedDates: pinned ? { from: visitDate, to: visitDate } : { from: win.fromDate, to: win.toDate },
-      allowedWeekdays: ['mon', 'tue', 'wed', 'thu', 'fri'],
+      allowedDates: allowed,
+      allowedWeekdays,
       notes: 'Jobber job ' + jn + (isSet ? ' (SET)' : pinned ? ' (committed)' : ''),
     },
   });
@@ -208,7 +271,16 @@ const sets = orders.filter(o => o.meta.isSet), pinned = orders.filter(o => o.met
 const perDay = {};
 for (const o of orders) perDay[o.meta.visitDate] = (perDay[o.meta.visitDate] || 0) + 1;
 console.log(`Orders: ${orders.length} — ${pinned.length} pinned (${sets.length} sets), ${orders.length - pinned.length} flexible`);
-console.log('Per day:', Object.keys(perDay).sort().map(d => `${d}:${perDay[d]}`).join('  '));
+console.log('Per day (Jobber dates):', Object.keys(perDay).sort().map(d => `${d}:${perDay[d]}`).join('  '));
+if (useGrid) {
+  const perGrid = {};
+  for (const o of orders) {
+    const k = o.meta.gridDate ? (o.meta.gridDate.weekdays.length>1 ? o.meta.gridDate.weekdays.join('/') : o.meta.gridDate.from) : (o.meta.pinned ? `pinned:${o.meta.visitDate}` : 'float');
+    perGrid[k] = (perGrid[k] || 0) + 1;
+  }
+  console.log(`GRID MODE — forced ${gridStats.forced} (${gridStats.split} in two-day zones), pinned kept ${gridStats.pinnedKept}, zip-not-in-grid ${gridStats.noZip}, grid-day frozen ${gridStats.frozen}`);
+  console.log('Per grid day:', Object.keys(perGrid).sort().map(d => `${d}:${perGrid[d]}`).join('  '));
+}
 if (skipped.length) console.log(`Skipped ${skipped.length}:`, JSON.stringify(skipped.slice(0, 10)));
 if (sets.length) console.log('Sets:', sets.map(s => `job ${s.meta.job} ${s.meta.visitDate}`).join(', '));
 

@@ -9,7 +9,7 @@ WHAT'S IN THIS FOLDER
 ---------------------
 1. project-instructions.md ........ paste this into Claude (step 3 below)
 2. 2026-07-20_muhammad-faq-training.pdf ... THE ANSWER KEY - read this first
-3. 2026-07-20_roleplay-scenarios.pdf ...... the 15 scenarios you'll face
+3. 2026-07-20_roleplay-scenarios.pdf ...... the 20 scenarios you'll face
    (.md copies of both are included too - these are for uploading in step 4)
 
 SETUP
