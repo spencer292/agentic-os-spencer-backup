@@ -25,17 +25,28 @@ SETUP
 
 HOW A SESSION WORKS
 -------------------
-- Claude asks which mode: drill / scenario / shift / exam.
-  Start with "drill" (rapid-fire questions), then "scenario".
+- Claude asks which mode: drill / facts / scenario / shift / exam.
+  "drill" = rapid-fire phone questions. "facts" = the mole facts drill
+  (biology, myths, mole vs vole vs gopher). Then "scenario".
 - The phone "rings" and Claude plays a caller. Answer exactly as you
   would on the real Got Moles line. Say "pause" anytime to stop a call.
 - After each call you get a score out of 100 and coaching. 80+ = pass.
 - At the end of each session Claude prints a scorecard block.
   COPY IT AND TEXT/EMAIL IT TO SPENCER - that's how progress is tracked.
 
+IF YOU ALREADY SET THIS UP
+--------------------------
+The pack grew from 15 scenarios to 20 (Tier 4 = curveball calls that
+test what you know about moles). To get them:
+  1. In your Phone Training project, DELETE the old
+     2026-07-20_roleplay-scenarios.md file and upload the new one.
+  2. Replace the project Instructions with the new
+     project-instructions.md - paste over everything that's there.
+
 WEEK 1 GOAL
 -----------
 Read the FAQ guide PDF cover to cover, run the rapid-fire drill daily,
-and pass all five Tier 1 scenarios twice.
+and pass all five Tier 1 scenarios twice. Tier 4 is week 4 - run
+scenario 20 ("the gauntlet") cold first, it shows what you don't know yet.
 
 Questions -> Spencer.
