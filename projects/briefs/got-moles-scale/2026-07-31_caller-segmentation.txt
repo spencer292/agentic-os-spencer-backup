@@ -1,0 +1,35 @@
+
+================ CALLER SEGMENTATION (2026-05-01 → 2026-07-31) ================
+Jobber client phone book: 4336 clients, 4328 distinct phone numbers
+Unique inbound callers in window: 588
+
+segment          callers   %ofcallers   with a job   book rate
+existing             45        7.7%          25      55.6%
+new-in-window       505       85.9%         133      26.3%
+no-record            38        6.5%           0       0.0%
+
+NEW LEADS (new-in-window + no-record) = 543 callers, 133 booked a job = 24.5%
+Filtered to answered + ≥30s conversation: 474 callers, 132 booked = 27.8%
+
+By month of first call (maturity matters — July callers may still convert):
+month     newleads  booked   rate     (answered ≥30s only)  booked   rate
+2026-05        146      22   15.1%                 117      22   18.8%
+2026-06        194      43   22.2%                 178      43   24.2%
+2026-07        203      68   33.5%                 179      67   37.4%
+
+Existing-customer calls (service/billing/rebook traffic, not new sales):
+  45 callers / 67 calls = 8.5% of all inbound call volume
+
+Product booked by NEW-LEAD callers:
+  QF       80  56.7%
+  TMC      57  40.4%
+  other     4  2.8%
+  QF vs TMC among classified: QF 58.4% / TMC 41.6%
+
+Jobs created in window: 355 | traceable to a tracked inbound call: 167 (47.0%)
+Untraced jobs by source (existing customers, web forms, manual adds):
+  QUOTE_CONVERT        78
+  CLIENT               54
+  GQL_API              54
+  PROPERTY              1
+  REQUEST_CONVERT       1

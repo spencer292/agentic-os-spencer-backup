@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getPayloadClient } from '@/lib/payload'
-import { createJobberClient, isJobberConfigured, type JobberLead } from '@/lib/jobber'
+import {
+  createJobberClient,
+  createJobberRequest,
+  createJobberRequestNote,
+  isJobberConfigured,
+  type JobberLead,
+} from '@/lib/jobber'
 
 interface ContactFormData {
   name: string
@@ -120,11 +126,29 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-      // Create Jobber Client — this record appears in Jobber's 'Leads' UI
-      // section where Spencer triages new inbound contacts. Jobber removed
-      // their Request-creation mutations in Aug 2023 so there's no API
-      // equivalent — clientCreate → Leads view is the correct path.
+      // Create the Jobber Client, then raise a Request against it. The Client
+      // on its own is a SILENT record — it lands in a list of 4,000+ names and
+      // notifies nobody, which is how website leads were being missed. The
+      // Request is what surfaces in the Requests dashboard for triage.
+      // (An earlier comment here claimed Jobber removed request-creation
+      // mutations in Aug 2023. That is wrong: requestCreate is live on API
+      // version 2025-04-16.)
       const client = await createJobberClient(jobberLead)
+
+      // Request creation must never lose the lead: the Client already exists
+      // and the Payload lead record is saved, so a failure here is logged and
+      // reported, not thrown.
+      let requestId: string | undefined
+      try {
+        const jobberRequest = await createJobberRequest(client.id, jobberLead)
+        requestId = jobberRequest.id
+        await createJobberRequestNote(jobberRequest.id, jobberLead)
+      } catch (requestErr) {
+        console.error(
+          '[contact] Jobber client created but request/note failed:\n' +
+            (requestErr instanceof Error ? requestErr.message : String(requestErr)),
+        )
+      }
 
       try {
         const payload = await getPayloadClient()
@@ -138,6 +162,9 @@ export async function POST(request: NextRequest) {
               {
                 destination: 'jobber',
                 success: true,
+                // Surfaces in the Payload admin when a lead reached Jobber as a
+                // client but never made it into the Requests queue.
+                error: requestId ? undefined : 'Client created; Request NOT created (see function logs)',
                 timestamp: new Date().toISOString(),
               },
             ],

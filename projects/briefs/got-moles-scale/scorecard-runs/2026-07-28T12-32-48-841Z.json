@@ -1,0 +1,85 @@
+{
+  "ranAt": "2026-07-28T12:32:48.841Z",
+  "dryRun": false,
+  "weeks": [
+    "2026-07-06",
+    "2026-07-13",
+    "2026-07-20"
+  ],
+  "rows": {
+    "2026-07-06": {
+      "phone_calls": 66,
+      "missed_calls": 5,
+      "new_clients": 23,
+      "total_revenue": 3660,
+      "client_visits": 512,
+      "tmcp_quoted": 22,
+      "tmcp_converted": 10,
+      "qf_quoted": 18,
+      "qf_converted": 15,
+      "quick_fix_created": 24,
+      "qf_job_closed": 15,
+      "total_jobs_created": 38,
+      "tmcp_active": 620,
+      "tmcp_net_new": 12,
+      "tmcp_cancellations": 0,
+      "tmcp_mrr": 61326
+    },
+    "2026-07-13": {
+      "phone_calls": 61,
+      "missed_calls": 6,
+      "new_clients": 20,
+      "total_revenue": 3300,
+      "client_visits": 517,
+      "tmcp_quoted": 9,
+      "tmcp_converted": 7,
+      "qf_quoted": 17,
+      "qf_converted": 9,
+      "quick_fix_created": 15,
+      "qf_job_closed": 9,
+      "total_jobs_created": 25,
+      "tmcp_active": 631,
+      "tmcp_net_new": 11,
+      "tmcp_cancellations": 0,
+      "tmcp_mrr": 62326
+    },
+    "2026-07-20": {
+      "phone_calls": 68,
+      "missed_calls": 10,
+      "new_clients": 19,
+      "total_revenue": 11998,
+      "client_visits": 561,
+      "tmcp_quoted": 21,
+      "tmcp_converted": 17,
+      "qf_quoted": 25,
+      "qf_converted": 18,
+      "quick_fix_created": 26,
+      "qf_job_closed": 17,
+      "total_jobs_created": 54,
+      "tmcp_active": 644,
+      "tmcp_net_new": 13,
+      "tmcp_cancellations": 1,
+      "tmcp_mrr": 63786
+    }
+  },
+  "pastDue": {
+    "count": 27,
+    "total": 7119,
+    "week": "2026-07-27"
+  },
+  "pushed": 47,
+  "skipped": [],
+  "failed": [],
+  "floored": {},
+  "pullCounts": {
+    "invoices": 57,
+    "pastDueInvoices": 27,
+    "quotes": 644,
+    "visits": 1594,
+    "clients": 216,
+    "jobsRecurring": 836,
+    "jobsCreated": 125,
+    "jobsCompleted": 55,
+    "calls": 196
+  }
+}

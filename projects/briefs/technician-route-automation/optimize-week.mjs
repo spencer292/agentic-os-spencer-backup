@@ -167,6 +167,12 @@ const maxWrites = maxIdx >= 0 ? Number(args[maxIdx + 1]) : Infinity;
 const noReplan = args.includes('--no-replan');
 
 function applyFromOverride(win) {
+  const t = args.find(x => x.startsWith('--to='));
+  if (t) {
+    win.toDate = t.split('=')[1];
+    win.beforeIso = `${win.toDate}T23:59:59-07:00`;
+    console.log(`!! window end overridden to ${win.toDate}`);
+  }
   const a = args.find(x => x.startsWith('--from='));
   if (a) {
     win.fromDate = a.split('=')[1];

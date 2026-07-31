@@ -1,0 +1,296 @@
+[
+ {
+  "label": "A: grid-days + incremental (current production)",
+  "from": "2026-08-03",
+  "to": "2026-08-07",
+  "stops": 434,
+  "miles": 2003,
+  "driveH": 53.8,
+  "commuteH": 11.9,
+  "milesPerStop": 4.62,
+  "perDay": [
+   {
+    "date": "2026-08-03",
+    "stops": 87,
+    "miles": 413,
+    "driveH": 10.9
+   },
+   {
+    "date": "2026-08-04",
+    "stops": 105,
+    "miles": 392,
+    "driveH": 10.2
+   },
+   {
+    "date": "2026-08-05",
+    "stops": 94,
+    "miles": 547,
+    "driveH": 15.4
+   },
+   {
+    "date": "2026-08-06",
+    "stops": 80,
+    "miles": 402,
+    "driveH": 9.7
+   },
+   {
+    "date": "2026-08-07",
+    "stops": 68,
+    "miles": 250,
+    "driveH": 7.6
+   }
+  ]
+ },
+ {
+  "label": "B: grid-days + FRESH re-sequence",
+  "from": "2026-08-03",
+  "to": "2026-08-07",
+  "stops": 434,
+  "miles": 2005,
+  "driveH": 53.8,
+  "commuteH": 11.9,
+  "milesPerStop": 4.62,
+  "perDay": [
+   {
+    "date": "2026-08-03",
+    "stops": 87,
+    "miles": 413,
+    "driveH": 10.9
+   },
+   {
+    "date": "2026-08-04",
+    "stops": 105,
+    "miles": 394,
+    "driveH": 10.3
+   },
+   {
+    "date": "2026-08-05",
+    "stops": 94,
+    "miles": 546,
+    "driveH": 15.3
+   },
+   {
+    "date": "2026-08-06",
+    "stops": 80,
+    "miles": 402,
+    "driveH": 9.7
+   },
+   {
+    "date": "2026-08-07",
+    "stops": 68,
+    "miles": 250,
+    "driveH": 7.6
+   }
+  ]
+ },
+ {
+  "label": "C: FREE days + grid techs + fresh",
+  "from": "2026-08-03",
+  "to": "2026-08-07",
+  "stops": 434,
+  "miles": 2415,
+  "driveH": 64,
+  "commuteH": 11.1,
+  "milesPerStop": 5.56,
+  "perDay": [
+   {
+    "date": "2026-08-03",
+    "stops": 93,
+    "miles": 560,
+    "driveH": 13.8
+   },
+   {
+    "date": "2026-08-04",
+    "stops": 105,
+    "miles": 479,
+    "driveH": 12.7
+   },
+   {
+    "date": "2026-08-05",
+    "stops": 84,
+    "miles": 603,
+    "driveH": 16.1
+   },
+   {
+    "date": "2026-08-06",
+    "stops": 62,
+    "miles": 414,
+    "driveH": 9.8
+   },
+   {
+    "date": "2026-08-07",
+    "stops": 90,
+    "miles": 359,
+    "driveH": 11.5
+   }
+  ]
+ },
+ {
+  "label": "D: grid-days + grid techs + balancing OFF + fresh",
+  "from": "2026-08-03",
+  "to": "2026-08-07",
+  "stops": 434,
+  "miles": 1978,
+  "driveH": 53,
+  "commuteH": 12,
+  "milesPerStop": 4.56,
+  "perDay": [
+   {
+    "date": "2026-08-03",
+    "stops": 87,
+    "miles": 391,
+    "driveH": 10.3
+   },
+   {
+    "date": "2026-08-04",
+    "stops": 107,
+    "miles": 406,
+    "driveH": 10.7
+   },
+   {
+    "date": "2026-08-05",
+    "stops": 94,
+    "miles": 546,
+    "driveH": 15.3
+   },
+   {
+    "date": "2026-08-06",
+    "stops": 80,
+    "miles": 405,
+    "driveH": 9.8
+   },
+   {
+    "date": "2026-08-07",
+    "stops": 66,
+    "miles": 230,
+    "driveH": 6.9
+   }
+  ]
+ },
+ {
+  "label": "E: Jobber days + Jobber techs + balancing OFF + fresh",
+  "from": "2026-08-03",
+  "to": "2026-08-07",
+  "stops": 371,
+  "miles": 2105,
+  "driveH": 54.7,
+  "commuteH": 10.5,
+  "milesPerStop": 5.67,
+  "perDay": [
+   {
+    "date": "2026-08-03",
+    "stops": 77,
+    "miles": 445,
+    "driveH": 11.2
+   },
+   {
+    "date": "2026-08-04",
+    "stops": 97,
+    "miles": 502,
+    "driveH": 12.8
+   },
+   {
+    "date": "2026-08-05",
+    "stops": 83,
+    "miles": 562,
+    "driveH": 15.8
+   },
+   {
+    "date": "2026-08-06",
+    "stops": 57,
+    "miles": 370,
+    "driveH": 8.1
+   },
+   {
+    "date": "2026-08-07",
+    "stops": 57,
+    "miles": 226,
+    "driveH": 6.7
+   }
+  ]
+ },
+ {
+  "label": "D-restored (staged for next week)",
+  "from": "2026-08-03",
+  "to": "2026-08-07",
+  "stops": 371,
+  "miles": 1828,
+  "driveH": 46.3,
+  "commuteH": 12.4,
+  "milesPerStop": 4.93,
+  "perDay": [
+   {
+    "date": "2026-08-03",
+    "stops": 77,
+    "miles": 367,
+    "driveH": 9.1
+   },
+   {
+    "date": "2026-08-04",
+    "stops": 96,
+    "miles": 383,
+    "driveH": 9.6
+   },
+   {
+    "date": "2026-08-05",
+    "stops": 83,
+    "miles": 507,
+    "driveH": 13.7
+   },
+   {
+    "date": "2026-08-06",
+    "stops": 57,
+    "miles": 340,
+    "driveH": 7.4
+   },
+   {
+    "date": "2026-08-07",
+    "stops": 58,
+    "miles": 232,
+    "driveH": 6.5
+   }
+  ]
+ },
+ {
+  "label": "D-final (staged for next week)",
+  "from": "2026-08-03",
+  "to": "2026-08-07",
+  "stops": 434,
+  "miles": 1983,
+  "driveH": 53,
+  "commuteH": 12.1,
+  "milesPerStop": 4.57,
+  "perDay": [
+   {
+    "date": "2026-08-03",
+    "stops": 87,
+    "miles": 391,
+    "driveH": 10.3
+   },
+   {
+    "date": "2026-08-04",
+    "stops": 107,
+    "miles": 406,
+    "driveH": 10.7
+   },
+   {
+    "date": "2026-08-05",
+    "stops": 94,
+    "miles": 554,
+    "driveH": 15.3
+   },
+   {
+    "date": "2026-08-06",
+    "stops": 80,
+    "miles": 402,
+    "driveH": 9.7
+   },
+   {
+    "date": "2026-08-07",
+    "stops": 66,
+    "miles": 230,
+    "driveH": 6.9
+   }
+  ]
+ }
+]

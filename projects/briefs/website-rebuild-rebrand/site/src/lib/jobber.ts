@@ -177,8 +177,15 @@ interface RequestCreateResult {
 
 /**
  * Create a Jobber Request linked to an existing Client. Requests appear in
- * Spencer's Jobber 'Requests' dashboard — that's where he triages new leads.
- * Must be called after createJobberClient returns a client ID.
+ * Spencer's Jobber 'Requests' dashboard — that's where he triages new leads,
+ * and unlike a bare Client they raise a notification. Must be called after
+ * createJobberClient returns a client ID.
+ *
+ * RequestCreateInput accepts ONLY: clientId, propertyId, assessment,
+ * referringClientId, requestDetails, lineItems, formIds, title, salespersonId.
+ * There is no `description` or `source` field — the lead detail goes into a
+ * note via createJobberRequestNote below. (Schema verified 2026-07-28 against
+ * API version 2025-04-16.)
  */
 export async function createJobberRequest(
   clientId: string,
@@ -186,22 +193,9 @@ export async function createJobberRequest(
 ): Promise<{ id: string }> {
   const accessToken = await getAccessToken()
 
-  const description = [
-    `Service requested: ${lead.service}`,
-    `ZIP: ${lead.zipCode}`,
-    lead.email ? `Email: ${lead.email}` : null,
-    `Phone: ${lead.phone}`,
-    lead.message ? `\nMessage:\n${lead.message}` : null,
-    `\nSource: Got Moles website contact form`,
-  ]
-    .filter(Boolean)
-    .join('\n')
-
   const input: Record<string, unknown> = {
     clientId,
     title: `Website inquiry — ${lead.service}`,
-    description,
-    source: 'Website Contact Form',
   }
 
   const mutation = `
@@ -255,4 +249,79 @@ export async function createJobberRequest(
   }
 
   return request
+}
+
+interface RequestCreateNoteResult {
+  data?: {
+    requestCreateNote?: {
+      userErrors?: Array<{ message: string; path: string[] }>
+    }
+  }
+  errors?: Array<{ message: string }>
+}
+
+/**
+ * Attach the full form submission to a Request as a pinned note. Everything the
+ * form captured beyond the title lives here — service, ZIP, contact details and
+ * the customer's own message — because RequestCreateInput has nowhere to put it.
+ */
+export async function createJobberRequestNote(
+  requestId: string,
+  lead: JobberLead,
+): Promise<void> {
+  const accessToken = await getAccessToken()
+
+  const message = [
+    `Service requested: ${lead.service}`,
+    `ZIP: ${lead.zipCode}`,
+    `Phone: ${lead.phone}`,
+    lead.email ? `Email: ${lead.email}` : null,
+    lead.message ? `\nMessage:\n${lead.message}` : null,
+    `\nSource: Got Moles website contact form`,
+  ]
+    .filter(Boolean)
+    .join('\n')
+
+  const mutation = `
+    mutation RequestCreateNote($requestId: EncodedId!, $input: RequestCreateNoteInput!) {
+      requestCreateNote(requestId: $requestId, input: $input) {
+        userErrors {
+          message
+          path
+        }
+      }
+    }
+  `
+
+  const res = await fetch(`${JOBBER_API_BASE}/graphql`, {
+    method: 'POST',
+    headers: {
+      Authorization: `bearer ${accessToken}`,
+      'Content-Type': 'application/json',
+      'X-JOBBER-GRAPHQL-VERSION': JOBBER_API_VERSION,
+    },
+    body: JSON.stringify({
+      query: mutation,
+      variables: { requestId, input: { message, pinned: true } },
+    }),
+  })
+
+  const rawBody = await res.text()
+  let json: RequestCreateNoteResult
+  try {
+    json = JSON.parse(rawBody) as RequestCreateNoteResult
+  } catch {
+    throw new Error(`Jobber requestCreateNote non-JSON response (${res.status}): ${rawBody.slice(0, 500)}`)
+  }
+
+  if (json.errors?.length) {
+    throw new Error(`Jobber requestCreateNote GraphQL errors: ${json.errors.map((e) => e.message).join('; ')}`)
+  }
+
+  const userErrors = json.data?.requestCreateNote?.userErrors ?? []
+  if (userErrors.length) {
+    throw new Error(
+      `Jobber requestCreateNote rejected: ${userErrors.map((e) => `${e.message} (${e.path.join('.')})`).join('; ')}`,
+    )
+  }
 }

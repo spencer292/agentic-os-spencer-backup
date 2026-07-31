@@ -1,0 +1,4139 @@
+{
+  "generatedAt": "2026-07-30T04:31:42.045Z",
+  "totals": {
+    "clients": 4311,
+    "duplicateGroups": 97,
+    "extraRecords": 114,
+    "originTotals": {
+      "full-record": 3823,
+      "website-form": 61,
+      "other": 192,
+      "callrail-stub": 235
+    },
+    "pairShape": {
+      "full-record + full-record + full-record + full-record + full-record + full-record + full-record + full-record": 1,
+      "full-record + full-record + full-record": 4,
+      "full-record + full-record": 23,
+      "full-record + other": 35,
+      "full-record + website-form": 9,
+      "website-form + website-form + website-form + website-form": 1,
+      "callrail-stub + full-record": 13,
+      "callrail-stub + callrail-stub": 1,
+      "callrail-stub + callrail-stub + callrail-stub": 1,
+      "website-form + website-form + website-form": 1,
+      "full-record + other + website-form": 1,
+      "website-form + website-form": 4,
+      "other + other + other": 1,
+      "callrail-stub + other": 1,
+      "full-record + other + other + other + other + other + other + website-form": 1
+    }
+  },
+  "groups": [
+    {
+      "keys": [
+        "2533261740",
+        "spencer@got-moles.com",
+        "thatguy@usethatguy.com",
+        "cory@got-moles.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8yMzkyMzI4NA==",
+          "numericId": "23923284",
+          "name": "Walter  Howard",
+          "origin": "full-record",
+          "createdAt": "2019-07-10T15:58:25Z",
+          "isLead": false,
+          "isArchived": true,
+          "emails": [
+            "Walterhoward113@gmail.com"
+          ],
+          "phones": [
+            "2533261740",
+            "2069209258"
+          ],
+          "street": "27952 214th Avenue Southeast"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8yNjE3NTMyNA==",
+          "numericId": "26175324",
+          "name": "Spencer Hill",
+          "origin": "full-record",
+          "createdAt": "2019-11-12T03:23:29Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "spencer@got-moles.com"
+          ],
+          "phones": [
+            "2533261740"
+          ],
+          "street": "35712 Cumberland Way Southeast"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC80ODY2MDg1Mw==",
+          "numericId": "48660853",
+          "name": "Tino Perrina",
+          "origin": "full-record",
+          "createdAt": "2022-01-31T03:57:12Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "jperrina@comcast.net",
+            "spencer@got-moles.com"
+          ],
+          "phones": [
+            "425-503-7355",
+            "4258025117"
+          ],
+          "street": "10603 Upper Preston Road Southeast"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC82OTM2MzQ3NA==",
+          "numericId": "69363474",
+          "name": "Spencer Hill",
+          "origin": "full-record",
+          "createdAt": "2023-06-21T23:30:17Z",
+          "isLead": false,
+          "isArchived": true,
+          "emails": [
+            "spencer@got-moles.com"
+          ],
+          "phones": [
+            "2533261740"
+          ],
+          "street": "35712 Cumberland Way Southeast"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC83NDQyNzQ3Ng==",
+          "numericId": "74427476",
+          "name": "Waters Edge",
+          "origin": "full-record",
+          "createdAt": "2023-10-19T00:47:21Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "spencer@got-moles.com",
+            "thatguy@usethatguy.com",
+            "Cory@got-moles.com",
+            "cory@got-moles.com"
+          ],
+          "phones": [
+            "(253) 569-4822",
+            "9515435742"
+          ],
+          "street": "6305 South 238th Place"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC83OTY1NTMyNw==",
+          "numericId": "79655327",
+          "name": "Cory Ventura",
+          "origin": "full-record",
+          "createdAt": "2024-02-20T06:41:17Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "cory@got-moles.com"
+          ],
+          "phones": [
+            "2535694822"
+          ],
+          "street": "27009 155th Street East"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC84NDQwMTc3MA==",
+          "numericId": "84401770",
+          "name": "City of Olympia",
+          "origin": "full-record",
+          "createdAt": "2024-05-03T21:06:32Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "crambo@ci.olympia.wa.us",
+            "spencer@got-moles.com"
+          ],
+          "phones": [
+            "3607538367"
+          ],
+          "street": "Yauger Park 3100 Capital Mall Drive Southwest"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTA5NTE0NDQ=",
+          "numericId": "110951444",
+          "name": "Forest Creek",
+          "origin": "full-record",
+          "createdAt": "2025-06-17T18:21:14Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "thatguy@usethatguy.com"
+          ],
+          "phones": [
+            "9515435742"
+          ],
+          "street": "24802 99th Place South"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2538401200",
+        "tamesey@asofwa.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8yOTY1NDg4MQ==",
+          "numericId": "29654881",
+          "name": "Thomas Spring Estates",
+          "origin": "full-record",
+          "createdAt": "2020-05-15T18:24:49Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "Invoices@asofwa.com",
+            "invoices@asofwa.com",
+            "TameseY@asofwa.com"
+          ],
+          "phones": [
+            "253 840-1200"
+          ],
+          "street": "8804 199th St E"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC83MzE2NzU2Ng==",
+          "numericId": "73167566",
+          "name": "Tamese Yeary",
+          "origin": "full-record",
+          "createdAt": "2023-09-19T17:05:25Z",
+          "isLead": false,
+          "isArchived": true,
+          "emails": [
+            "tamesey@asofwa.com"
+          ],
+          "phones": [
+            "2538401200"
+          ],
+          "street": "17409 118th Avenue Court East Unit A"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC84NzExNTY1NQ==",
+          "numericId": "87115655",
+          "name": "Grecia Mendoza",
+          "origin": "full-record",
+          "createdAt": "2024-06-20T20:49:54Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "greciam@asofwa.com"
+          ],
+          "phones": [
+            "2538401200"
+          ],
+          "street": "4319 Beaumont Lane Southeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "4258973400",
+        "amanda.sakai@managementtrust.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8zODEzNTI1Mg==",
+          "numericId": "38135252",
+          "name": "Gayla Hocker",
+          "origin": "full-record",
+          "createdAt": "2021-03-24T03:22:38Z",
+          "isLead": true,
+          "isArchived": true,
+          "emails": [
+            "gayla.hocker@managementtrust.com"
+          ],
+          "phones": [
+            "4258973400"
+          ],
+          "street": "1099 Southeast 10th Street"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC80ODA0NzY5NQ==",
+          "numericId": "48047695",
+          "name": "Grand Firs HOA",
+          "origin": "full-record",
+          "createdAt": "2022-01-15T16:26:34Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "mike@grandfirshoa.org",
+            "amanda.sakai@managementtrust.com"
+          ],
+          "phones": [
+            "+1 (253) 226-3979"
+          ],
+          "street": "23110 Snellstron Bush Road"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMjY3ODg5Njk=",
+          "numericId": "126788969",
+          "name": "Simmons Mill HOA",
+          "origin": "full-record",
+          "createdAt": "2026-01-07T21:17:28Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "amanda.sakai@managementtrust.com"
+          ],
+          "phones": [
+            "425897-3489.",
+            "425-897-3400"
+          ],
+          "street": "3568 Simmons Mill Court Southwest"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2066174114",
+        "reid1015@comcast.net"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC81NTg4NDAzNQ==",
+          "numericId": "55884035",
+          "name": "Reid McNair",
+          "origin": "full-record",
+          "createdAt": "2022-07-25T16:55:49Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "reid1015@comcast.net"
+          ],
+          "phones": [
+            "2066174114"
+          ],
+          "street": "20812 Military Road South"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC84NTgyNTQ3NA==",
+          "numericId": "85825474",
+          "name": "Reid McNair",
+          "origin": "full-record",
+          "createdAt": "2024-05-28T21:42:13Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "reid1015@comcast.net"
+          ],
+          "phones": [
+            "2066174114"
+          ],
+          "street": "20812 Military Road South"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2535274547"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC81NjIzODU4OQ==",
+          "numericId": "56238589",
+          "name": "Larry Gasser",
+          "origin": "full-record",
+          "createdAt": "2022-08-02T22:45:20Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "larry.g@cnilocates.com"
+          ],
+          "phones": [
+            "(253) 261-1868",
+            "2535274547"
+          ],
+          "street": "2614 214th Avenue East"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMjE5MzI3MDg=",
+          "numericId": "121932708",
+          "name": "Sally  Gasser",
+          "origin": "full-record",
+          "createdAt": "2025-10-30T17:37:01Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "larryandsally4@hotmail.com"
+          ],
+          "phones": [
+            "(253) 527-4547"
+          ],
+          "street": "30655 Kanaskat Kangley Road Southeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2065512252",
+        "karla@bethbillington.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC81OTQwMzg3MQ==",
+          "numericId": "59403871",
+          "name": "Isaac Alshihabi",
+          "origin": "full-record",
+          "createdAt": "2022-10-23T20:00:04Z",
+          "isLead": false,
+          "isArchived": true,
+          "emails": [
+            "karla@bethbillington.com",
+            "isaac@alshihabi.com"
+          ],
+          "phones": [
+            "2066818073",
+            "2065512252"
+          ],
+          "street": "2638 134th Avenue Northeast"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC82NzQ5NjAzMw==",
+          "numericId": "67496033",
+          "name": "Eric Michelman",
+          "origin": "full-record",
+          "createdAt": "2023-05-10T04:16:48Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "ericmic@hotmail.com",
+            "homes@bethbillington.com"
+          ],
+          "phones": [
+            "2065512252"
+          ],
+          "street": "12227 Northeast 36th Street"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC83MDk5NTY5NA==",
+          "numericId": "70995694",
+          "name": "Amy Kwan",
+          "origin": "full-record",
+          "createdAt": "2023-07-31T18:51:50Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "amyokwan@yahoo.com",
+            "karla@bethbillington.com"
+          ],
+          "phones": [
+            "2065512252"
+          ],
+          "street": "13549 Northeast 54th Place"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "4256154533"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC83MTA2MjQwNA==",
+          "numericId": "71062404",
+          "name": "Steve Charles",
+          "origin": "full-record",
+          "createdAt": "2023-08-01T22:09:32Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "steve@stevegcharles.net"
+          ],
+          "phones": [
+            "(425) 615-4533"
+          ],
+          "street": "15121 116th Avenue Court East"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTE4NzI5OTg=",
+          "numericId": "111872998",
+          "name": "Mary Takaki",
+          "origin": "full-record",
+          "createdAt": "2025-06-27T22:15:52Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "paa@holydisciples.org"
+          ],
+          "phones": [
+            "(773) 383-6554",
+            "4256154533"
+          ],
+          "street": "16420 90 Avenue Court East"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2536863855"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC83MTIzNTQ4OQ==",
+          "numericId": "71235489",
+          "name": "Alex Stevenson",
+          "origin": "full-record",
+          "createdAt": "2023-08-05T21:20:48Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "alex.stevenson253@gmail.com"
+          ],
+          "phones": [
+            "2536863855"
+          ],
+          "street": "13824 197th Ave East"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTU5MjQ5NDI=",
+          "numericId": "115924942",
+          "name": "Tehaleh Owners Association",
+          "origin": "full-record",
+          "createdAt": "2025-08-13T15:33:03Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "astevenson@coherelife.com"
+          ],
+          "phones": [
+            "2536863855"
+          ],
+          "street": "Cascadia Boulevard East"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2534397877"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC83MTMwNTY1Mg==",
+          "numericId": "71305652",
+          "name": "Daniel Gorbun",
+          "origin": "full-record",
+          "createdAt": "2023-08-07T23:40:39Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "Danielgorbun@gmail.com"
+          ],
+          "phones": [
+            "2534397877"
+          ],
+          "street": "4539 Heron Ridge Drive Northeast"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ1ODM2NzY=",
+          "numericId": "144583676",
+          "name": "Danny Gorbun",
+          "origin": "full-record",
+          "createdAt": "2026-06-25T16:59:18Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "dannygorbun@gmail.com"
+          ],
+          "phones": [
+            "2534397877"
+          ],
+          "street": "4539 Heron Ridge Drive Northeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2064918741",
+        "michaeln@nussbaum-group.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC83MTM0NDMzOA==",
+          "numericId": "71344338",
+          "name": "Nussbaum Group",
+          "origin": "full-record",
+          "createdAt": "2023-08-08T20:14:32Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "michaeln@nussbaum-group.com"
+          ],
+          "phones": [
+            "425-753-2120",
+            "206-491-8741"
+          ],
+          "street": "111 84th Avenue Northeast"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTcwMzE5MzA=",
+          "numericId": "117031930",
+          "name": "Fade Residence",
+          "origin": "full-record",
+          "createdAt": "2025-08-27T22:15:13Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "michaeln@nussbaum-group.com"
+          ],
+          "phones": [
+            "206-491-8741"
+          ],
+          "street": "3448 78th Place Northeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2062182167"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC83MzM3ODE4MA==",
+          "numericId": "73378180",
+          "name": "Jim  Pettigrew.com",
+          "origin": "full-record",
+          "createdAt": "2023-09-24T18:14:46Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "Jim@jimpettigrew.com"
+          ],
+          "phones": [
+            "2062182167"
+          ],
+          "street": "8816 Northeast 161st Place"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC83MzM4MzUwMw==",
+          "numericId": "73383503",
+          "name": "Vivek govinvan",
+          "origin": "full-record",
+          "createdAt": "2023-09-25T01:54:07Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "vivek.govinvan@gmail.com"
+          ],
+          "phones": [
+            "2062182167"
+          ],
+          "street": "28938 239th Avenue Southeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2062353365",
+        "lourdes@orive.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC83MzYzODk3Mw==",
+          "numericId": "73638973",
+          "name": "Lourdes Orive",
+          "origin": "full-record",
+          "createdAt": "2023-09-29T22:05:18Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "lourdes@orive.com"
+          ],
+          "phones": [
+            "2062353365"
+          ],
+          "street": "9413 110th Street Southwest"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYyMjUwMzU=",
+          "numericId": "146225035",
+          "name": "Lourdes Orive",
+          "origin": "other",
+          "createdAt": "2026-07-14T17:19:27Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "lourdes@orive.com"
+          ],
+          "phones": [
+            "206-235-3365"
+          ],
+          "street": ""
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2535694822",
+        "9515435742"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC83NDQyNzQ3Ng==",
+          "numericId": "74427476",
+          "name": "Waters Edge",
+          "origin": "full-record",
+          "createdAt": "2023-10-19T00:47:21Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "spencer@got-moles.com",
+            "thatguy@usethatguy.com",
+            "Cory@got-moles.com",
+            "cory@got-moles.com"
+          ],
+          "phones": [
+            "(253) 569-4822",
+            "9515435742"
+          ],
+          "street": "6305 South 238th Place"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC83OTY1NTMyNw==",
+          "numericId": "79655327",
+          "name": "Cory Ventura",
+          "origin": "full-record",
+          "createdAt": "2024-02-20T06:41:17Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "cory@got-moles.com"
+          ],
+          "phones": [
+            "2535694822"
+          ],
+          "street": "27009 155th Street East"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTA5NTE0NDQ=",
+          "numericId": "110951444",
+          "name": "Forest Creek",
+          "origin": "full-record",
+          "createdAt": "2025-06-17T18:21:14Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "thatguy@usethatguy.com"
+          ],
+          "phones": [
+            "9515435742"
+          ],
+          "street": "24802 99th Place South"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2063839903",
+        "eric.schumacher@gmail.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC83NzM3NDc5NQ==",
+          "numericId": "77374795",
+          "name": "Eric Schumacher",
+          "origin": "full-record",
+          "createdAt": "2024-01-03T16:12:31Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "eric.schumacher@gmail.com"
+          ],
+          "phones": [
+            "2063839903"
+          ],
+          "street": "1505 Cedar Butte Avenue Southeast"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMjk5OTM2OTk=",
+          "numericId": "129993699",
+          "name": "Eric Schumacher",
+          "origin": "full-record",
+          "createdAt": "2026-02-10T00:27:36Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "Eric.schumacher@gmail.com",
+            "eric.schumacher@gmail.com"
+          ],
+          "phones": [
+            "2063839903"
+          ],
+          "street": "1505 Cedar Butte Avenue Southeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "4257853710",
+        "greg.christensen@hotmail.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC83ODgwODQ0MA==",
+          "numericId": "78808440",
+          "name": "Greg Christensen",
+          "origin": "full-record",
+          "createdAt": "2024-02-01T21:01:25Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "greg.christensen@hotmail.com"
+          ],
+          "phones": [
+            "4257853710"
+          ],
+          "street": "28021 Retreat Kanasket Road Southeast"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMjYxMzYyNzM=",
+          "numericId": "126136273",
+          "name": "Greg Christensen",
+          "origin": "full-record",
+          "createdAt": "2025-12-29T20:03:49Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "greg.christensen@hotmail.com"
+          ],
+          "phones": [
+            "4257853710"
+          ],
+          "street": "28021 Retreat-Kanaskat Road"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "6513574664",
+        "supplejs@gmail.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC84NzM3NjQ3MQ==",
+          "numericId": "87376471",
+          "name": "Shannon Supple",
+          "origin": "full-record",
+          "createdAt": "2024-06-25T23:54:39Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "Supplejs@gmail.com"
+          ],
+          "phones": [
+            "6513574664"
+          ],
+          "street": "21603 Northeast 22nd Court"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDcyNDc1NDI=",
+          "numericId": "147247542",
+          "name": "Shannon Supple",
+          "origin": "full-record",
+          "createdAt": "2026-07-24T22:35:29Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "supplejs@gmail.com"
+          ],
+          "phones": [
+            "6513574664"
+          ],
+          "street": "21310 Southeast 11th Street"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "3608886106",
+        "lumchovack1@comcast.net"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC84OTM4MDAxNQ==",
+          "numericId": "89380015",
+          "name": "Dave Kenney",
+          "origin": "full-record",
+          "createdAt": "2024-07-30T22:39:17Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "lumchovack1@comcast.net"
+          ],
+          "phones": [
+            "3608886106"
+          ],
+          "street": "2215 Yelm Highway Southeast"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY4MTA1NDA=",
+          "numericId": "146810540",
+          "name": "David Kenney",
+          "origin": "full-record",
+          "createdAt": "2026-07-21T01:32:27Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "lumchovack1@comcast.net",
+            "dkenny1@comcast.net"
+          ],
+          "phones": [
+            "3608886106"
+          ],
+          "street": "2215 Yelm Highway Southeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "4789187162",
+        "taradog@peoplepc.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMDI0NDE2MzA=",
+          "numericId": "102441630",
+          "name": "Daniel Issacs",
+          "origin": "full-record",
+          "createdAt": "2025-03-06T20:11:41Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "taradog@peoplepc.com"
+          ],
+          "phones": [
+            "478-918-7162"
+          ],
+          "street": "23102 Southeast 448th Street"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMDMzMDAzOTU=",
+          "numericId": "103300395",
+          "name": "Jeremy Issacs",
+          "origin": "full-record",
+          "createdAt": "2025-03-17T17:41:58Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "taradog@peoplepc.com"
+          ],
+          "phones": [
+            "478-918-7162"
+          ],
+          "street": "41431 303rd Avenue Southeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2534106029",
+        "overlakeresidence@outlook.com",
+        "eiagia98039@hotmail.com",
+        "bellevueresidence@outlook.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMDczMDIwOTc=",
+          "numericId": "107302097",
+          "name": "Rosemarie Havranek",
+          "origin": "full-record",
+          "createdAt": "2025-05-05T15:45:53Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "overlakeresidence@outlook.com",
+            "eiagia98039@hotmail.com",
+            "Bellevueresidence@outlook.com"
+          ],
+          "phones": [
+            "253-410-6029"
+          ],
+          "street": "7939 Overlake Drive West"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMDgwNjE5NzU=",
+          "numericId": "108061975",
+          "name": "Rosemarie  Havranek",
+          "origin": "full-record",
+          "createdAt": "2025-05-13T21:35:40Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "eiagia98039@hotmail.com",
+            "overlakeresidence@outlook.com",
+            "bellevueresidence@outlook.com"
+          ],
+          "phones": [
+            "253-410-6029"
+          ],
+          "street": "719 96th Avenue Southeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "4252463808",
+        "gouripillai@hotmail.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTAyMDkwOTY=",
+          "numericId": "110209096",
+          "name": "Gouri Pillai",
+          "origin": "full-record",
+          "createdAt": "2025-06-09T16:55:46Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "gouripillai@hotmail.com"
+          ],
+          "phones": [
+            "425-246-3808"
+          ],
+          "street": "16659 Southeast 57th Place"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTAyMTMwNzU=",
+          "numericId": "110213075",
+          "name": "Gouri Pillai",
+          "origin": "full-record",
+          "createdAt": "2025-06-09T17:12:58Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "gouripillai@hotmail.com"
+          ],
+          "phones": [
+            "4252463808"
+          ],
+          "street": "16659 Southeast 57th Place"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "4255621200"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTAzNTk1NTM=",
+          "numericId": "110359553",
+          "name": "Condominium Management",
+          "origin": "full-record",
+          "createdAt": "2025-06-10T16:00:40Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "pdefrin@condohoa.net"
+          ],
+          "phones": [
+            "425) 562-1200"
+          ],
+          "street": "11130 Southeast 208th Street"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDUxODM2NDE=",
+          "numericId": "145183641",
+          "name": "Sinclair Woods HOA",
+          "origin": "full-record",
+          "createdAt": "2026-07-02T03:01:57Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "jkipper@condohoa.net"
+          ],
+          "phones": [
+            "(425) 562-1200"
+          ],
+          "street": "3728 224th Street Southeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "4257653858",
+        "peterwlewis@gmail.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTQ4NzcwNTg=",
+          "numericId": "114877058",
+          "name": "Peter  Lewis",
+          "origin": "full-record",
+          "createdAt": "2025-07-31T16:30:05Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "peterwlewis@gmail.com"
+          ],
+          "phones": [
+            "425-765-3858"
+          ],
+          "street": "14607 Southeast 173rd Street"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDUzNTE1NDE=",
+          "numericId": "145351541",
+          "name": "Peter Lewis-Miller",
+          "origin": "other",
+          "createdAt": "2026-07-04T21:51:28Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "peterwlewis@gmail.com"
+          ],
+          "phones": [
+            "425-765-3858"
+          ],
+          "street": ""
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2066698261"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTcyNDM0MjU=",
+          "numericId": "117243425",
+          "name": "Nick Eheng",
+          "origin": "full-record",
+          "createdAt": "2025-08-29T22:29:18Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "imnickeheng@yahoo.com"
+          ],
+          "phones": [
+            "206-669-8261"
+          ],
+          "street": "704 Kitsap Avenue Northeast"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYwNjIxNjc=",
+          "numericId": "146062167",
+          "name": "Jason Cheng",
+          "origin": "full-record",
+          "createdAt": "2026-07-13T04:06:38Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "nicholascheng@live.com"
+          ],
+          "phones": [
+            "2066698261"
+          ],
+          "street": "9908 Northeast 151st Street"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2532553559"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTc4MzUzNDM=",
+          "numericId": "117835343",
+          "name": "Patrick  Hyland",
+          "origin": "full-record",
+          "createdAt": "2025-09-08T02:58:23Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "2532553559"
+          ],
+          "street": "10707 100th Street Southwest"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDEwNjcyNDg=",
+          "numericId": "141067248",
+          "name": "Patrick Hyland",
+          "origin": "website-form",
+          "createdAt": "2026-05-25T02:46:52Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "hylandpa19@gmail.com"
+          ],
+          "phones": [
+            "2532553559"
+          ],
+          "street": ""
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2063539665",
+        "lupecook@comcast.net"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTkyOTAwODA=",
+          "numericId": "119290080",
+          "name": "Lupe Cook",
+          "origin": "full-record",
+          "createdAt": "2025-09-25T21:44:35Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "lupecook@comcast.net"
+          ],
+          "phones": [
+            "206-353-9665"
+          ],
+          "street": "5120 South 214th Way"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMzc0NzQyNTc=",
+          "numericId": "137474257",
+          "name": "Lupe Cook",
+          "origin": "full-record",
+          "createdAt": "2026-04-23T17:23:22Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "lupecook@comcast.net"
+          ],
+          "phones": [
+            "2063539665"
+          ],
+          "street": "5120 South 214th Way"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2532286145",
+        "jennamlarson1@gmail.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMjA1Mjc3OTE=",
+          "numericId": "120527791",
+          "name": "Jenna  Larson",
+          "origin": "full-record",
+          "createdAt": "2025-10-13T19:24:10Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "jennamlarson1@gmail.com"
+          ],
+          "phones": [
+            "253-228-6145"
+          ],
+          "street": "2802 162nd Avenue Court East"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ4Njg3Nzc=",
+          "numericId": "144868777",
+          "name": "Jenna Larson",
+          "origin": "full-record",
+          "createdAt": "2026-06-29T17:02:40Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "jennamlarson1@gmail.com"
+          ],
+          "phones": [
+            "(253) 228-6145",
+            "2065126916"
+          ],
+          "street": "2802 162nd Avenue Court East"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "3602590078"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMjI0NDY2MTM=",
+          "numericId": "122446613",
+          "name": "Laura Vaillancourt",
+          "origin": "full-record",
+          "createdAt": "2025-11-06T17:28:21Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "lauraolywa@gmail.com"
+          ],
+          "phones": [
+            "(360) 259-0078"
+          ],
+          "street": "3040 Kaiser Road NW"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI3Mjg5Mzg=",
+          "numericId": "142728938",
+          "name": "Laura Vailancourt",
+          "origin": "full-record",
+          "createdAt": "2026-06-07T17:46:52Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "laura@eldercarecounselor.com"
+          ],
+          "phones": [
+            "3602590078"
+          ],
+          "street": "3040 Kaiser Road Northwest"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2534480203",
+        "spalding.zach@gmail.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMjQ0OTM1NDE=",
+          "numericId": "124493541",
+          "name": "Zachary Spalding",
+          "origin": "full-record",
+          "createdAt": "2025-12-03T17:54:25Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "spalding.zach@gmail.com"
+          ],
+          "phones": [
+            "253-448-0203"
+          ],
+          "street": "5314 218th Avenue East"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMjQ0OTM1NzM=",
+          "numericId": "124493573",
+          "name": "Zachary Spalding",
+          "origin": "full-record",
+          "createdAt": "2025-12-03T17:54:55Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "spalding.zach@gmail.com"
+          ],
+          "phones": [
+            "253-448-0203"
+          ],
+          "street": "5314 218th Avenue East"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "8054002077"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMzkwMjIxNzY=",
+          "numericId": "139022176",
+          "name": "Alexander Reid",
+          "origin": "website-form",
+          "createdAt": "2026-05-06T14:59:45Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "alexander.reid@jmailservice.com"
+          ],
+          "phones": [
+            "8054002077"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM4ODUyNDg=",
+          "numericId": "143885248",
+          "name": "Christopher Hughes",
+          "origin": "website-form",
+          "createdAt": "2026-06-18T15:43:32Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "christopher.hughes@jmailservice.com"
+          ],
+          "phones": [
+            "8054002077"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU2NTYzMzM=",
+          "numericId": "145656333",
+          "name": "Patrick Donovan",
+          "origin": "website-form",
+          "createdAt": "2026-07-08T05:54:19Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "patrick.donovan@jmailservice.com"
+          ],
+          "phones": [
+            "8054002077"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDcyNjU4ODA=",
+          "numericId": "147265880",
+          "name": "Joseph Matthews",
+          "origin": "website-form",
+          "createdAt": "2026-07-25T10:24:37Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "joseph.matthews@jmailservice.com"
+          ],
+          "phones": [
+            "8054002077"
+          ],
+          "street": ""
+        }
+      ]
+    },
+    {
+      "keys": [
+        "4015784395"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMzkwODQxODc=",
+          "numericId": "139084187",
+          "name": "Corrente Celia",
+          "origin": "other",
+          "createdAt": "2026-05-06T19:14:40Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "401-578-4395"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMzkwODU2MDI=",
+          "numericId": "139085602",
+          "name": "Mike Doud",
+          "origin": "full-record",
+          "createdAt": "2026-05-06T19:21:34Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "mikedoud10@gmail.com"
+          ],
+          "phones": [
+            "401-578-4395",
+            "(206) 295-1604"
+          ],
+          "street": "163 McGraw Place"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2064651696"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMzkzNjcwNzI=",
+          "numericId": "139367072",
+          "name": "Duderija Elvisa",
+          "origin": "other",
+          "createdAt": "2026-05-08T19:11:59Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "206-465-1696"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMzkzNzEyMjc=",
+          "numericId": "139371227",
+          "name": "Elbisa Duderija",
+          "origin": "full-record",
+          "createdAt": "2026-05-08T19:21:03Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "elvisa_duderija@yahoo.com"
+          ],
+          "phones": [
+            "2064651696"
+          ],
+          "street": "513 Southwest 5th Place"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2067308672"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDAwMTk2NjE=",
+          "numericId": "140019661",
+          "name": "Summit Drywall",
+          "origin": "other",
+          "createdAt": "2026-05-14T17:38:55Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "206-730-8672"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDAwMjAzOTc=",
+          "numericId": "140020397",
+          "name": "Larry Kauzlarich",
+          "origin": "full-record",
+          "createdAt": "2026-05-14T17:46:30Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "lkauz1959@outlook.com"
+          ],
+          "phones": [
+            "2067308672"
+          ],
+          "street": "25324 136th Avenue Southeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2537363313"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA0MDIwODg=",
+          "numericId": "140402088",
+          "name": "Tangi Siaosi",
+          "origin": "other",
+          "createdAt": "2026-05-18T18:03:16Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "253-736-3313"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA0NDg1Mzk=",
+          "numericId": "140448539",
+          "name": "Sauce",
+          "origin": "full-record",
+          "createdAt": "2026-05-19T02:17:13Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "253‑736‑3313"
+          ],
+          "street": "10212 229th Avenue Court East"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "6504369820"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA0MDU1ODc=",
+          "numericId": "140405587",
+          "name": "Wireless Caller",
+          "origin": "callrail-stub",
+          "createdAt": "2026-05-18T18:33:02Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "650-436-9820"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA0MDYwNzM=",
+          "numericId": "140406073",
+          "name": "Louis Huang",
+          "origin": "full-record",
+          "createdAt": "2026-05-18T18:36:56Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "louis01924tw@gmail.com"
+          ],
+          "phones": [
+            "6504369820"
+          ],
+          "street": "7002 Northeast 134th Street"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2532185100"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA1MjA4Mjg=",
+          "numericId": "140520828",
+          "name": "Yzaguirre P.",
+          "origin": "other",
+          "createdAt": "2026-05-19T17:00:31Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "253-218-5100"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA1MjEzNzk=",
+          "numericId": "140521379",
+          "name": "Pam Yzaguirre",
+          "origin": "full-record",
+          "createdAt": "2026-05-19T17:04:50Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "pamyz30@gmail.com"
+          ],
+          "phones": [
+            "2532185100"
+          ],
+          "street": "34501 10th Avenue Southwest"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2064951809"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA5ODY5MjM=",
+          "numericId": "140986923",
+          "name": "Wireless Caller",
+          "origin": "callrail-stub",
+          "createdAt": "2026-05-22T22:07:34Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "206-495-1809"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA5ODcyNTE=",
+          "numericId": "140987251",
+          "name": "Theresa Feeley",
+          "origin": "full-record",
+          "createdAt": "2026-05-22T22:13:41Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "fatcoop@comcast.net"
+          ],
+          "phones": [
+            "2064951809"
+          ],
+          "street": "19001 4th Avenue Southwest"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "5033337275"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDExMzQ4OTA=",
+          "numericId": "141134890",
+          "name": "Deruiter Andrea",
+          "origin": "other",
+          "createdAt": "2026-05-25T18:10:11Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "503-333-7275"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE1MTM0Njk=",
+          "numericId": "141513469",
+          "name": "Mitchell Parrish",
+          "origin": "full-record",
+          "createdAt": "2026-05-28T03:10:13Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "mitchell.parrish@gmail.com"
+          ],
+          "phones": [
+            "5033337275"
+          ],
+          "street": "1614 21st Avenue East"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2532031659"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDEyMTMwNTE=",
+          "numericId": "141213051",
+          "name": "Tacoma Wa",
+          "origin": "callrail-stub",
+          "createdAt": "2026-05-26T15:46:50Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "253-203-1659"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDEyMTMwNzg=",
+          "numericId": "141213078",
+          "name": "Tacoma Wa",
+          "origin": "callrail-stub",
+          "createdAt": "2026-05-26T15:46:58Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "253-203-1659"
+          ],
+          "street": ""
+        }
+      ]
+    },
+    {
+      "keys": [
+        "4156062006"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDEyMjA2MzE=",
+          "numericId": "141220631",
+          "name": "Lan Kulapaditharom",
+          "origin": "other",
+          "createdAt": "2026-05-26T16:18:44Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "415-606-2006"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDEyMjI5NzQ=",
+          "numericId": "141222974",
+          "name": "Lan Kulapaditharom",
+          "origin": "full-record",
+          "createdAt": "2026-05-26T16:26:08Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "lanku79@gmail.com"
+          ],
+          "phones": [
+            "4156062006"
+          ],
+          "street": "219 South 183rd Street"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2069997266"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDEyNjg0MDQ=",
+          "numericId": "141268404",
+          "name": "Gurley Eric",
+          "origin": "other",
+          "createdAt": "2026-05-26T19:00:19Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "206-999-7266"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDEyNzA4NzQ=",
+          "numericId": "141270874",
+          "name": "Richard Driscoll",
+          "origin": "full-record",
+          "createdAt": "2026-05-26T19:07:17Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "driscoll5@comcast.net"
+          ],
+          "phones": [
+            "2069997266"
+          ],
+          "street": "2327 Northeast 127th Street"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2532032850"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE0MTczODY=",
+          "numericId": "141417386",
+          "name": "Tacoma Wa",
+          "origin": "callrail-stub",
+          "createdAt": "2026-05-27T16:10:34Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "253-203-2850"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE0MTc0NDM=",
+          "numericId": "141417443",
+          "name": "Tacoma Wa",
+          "origin": "callrail-stub",
+          "createdAt": "2026-05-27T16:10:41Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "253-203-2850"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE0MTc1MDU=",
+          "numericId": "141417505",
+          "name": "Tacoma Wa",
+          "origin": "callrail-stub",
+          "createdAt": "2026-05-27T16:10:48Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "253-203-2850"
+          ],
+          "street": ""
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2067930649"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE0ODYzNjk=",
+          "numericId": "141486369",
+          "name": "Burns Steven",
+          "origin": "other",
+          "createdAt": "2026-05-27T21:40:22Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "206-793-0649"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE0ODg1NTA=",
+          "numericId": "141488550",
+          "name": "Steve Burns",
+          "origin": "full-record",
+          "createdAt": "2026-05-27T21:52:04Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "steve@anthonys.com"
+          ],
+          "phones": [
+            "2067930649"
+          ],
+          "street": "7831 Northeast 10th Street"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2063832500"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE1MDE4NTg=",
+          "numericId": "141501858",
+          "name": "Nguyen Anne",
+          "origin": "other",
+          "createdAt": "2026-05-27T23:19:16Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "206-383-2500"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE1MDI1MTQ=",
+          "numericId": "141502514",
+          "name": "Anne Nguyen",
+          "origin": "full-record",
+          "createdAt": "2026-05-27T23:31:28Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "annen_8@yahoo.com"
+          ],
+          "phones": [
+            "2063832500"
+          ],
+          "street": "6601 109th Place Southeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2062000998"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE2MDUwNzU=",
+          "numericId": "141605075",
+          "name": "Steele Danielle",
+          "origin": "other",
+          "createdAt": "2026-05-28T15:48:13Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "206-200-0998"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDIwNjA2NjY=",
+          "numericId": "142060666",
+          "name": "Danielle Steele",
+          "origin": "full-record",
+          "createdAt": "2026-06-01T17:06:48Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "gardenguide4u@gmail.com"
+          ],
+          "phones": [
+            "(206) 200-0998",
+            "(206) 351-5101"
+          ],
+          "street": "14571 Southeast 51st Street"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2062272568"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE4MjM3NTg=",
+          "numericId": "141823758",
+          "name": "Mears John",
+          "origin": "other",
+          "createdAt": "2026-05-29T19:26:25Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "206-227-2568"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE4MjgzMDI=",
+          "numericId": "141828302",
+          "name": "John Mears",
+          "origin": "full-record",
+          "createdAt": "2026-05-29T19:43:11Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "etobicoke1@msn.com"
+          ],
+          "phones": [
+            "2062272568"
+          ],
+          "street": "28511 10th Avenue South"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "9497557782",
+        "jennobrien@dandyaisoftware.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDIwNDM4NTM=",
+          "numericId": "142043853",
+          "name": "Jennifer Obrien",
+          "origin": "website-form",
+          "createdAt": "2026-06-01T15:40:26Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "jennobrien@dandyaisoftware.com"
+          ],
+          "phones": [
+            "9497557782"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU1MzgwNDY=",
+          "numericId": "145538046",
+          "name": "Jennifer Obrien",
+          "origin": "website-form",
+          "createdAt": "2026-07-07T10:48:32Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "jennobrien@dandyaisoftware.com"
+          ],
+          "phones": [
+            "9497557782"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY5OTMxNjM=",
+          "numericId": "146993163",
+          "name": "Jennifer Obrien",
+          "origin": "website-form",
+          "createdAt": "2026-07-22T13:54:31Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "jennobrien@dandyaisoftware.com"
+          ],
+          "phones": [
+            "9497557782"
+          ],
+          "street": ""
+        }
+      ]
+    },
+    {
+      "keys": [
+        "4152725520"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDIxMjM3NzY=",
+          "numericId": "142123776",
+          "name": "Kinsella John",
+          "origin": "other",
+          "createdAt": "2026-06-01T22:16:49Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "415-272-5520"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDIxMjQ0MjY=",
+          "numericId": "142124426",
+          "name": "John Kinsella",
+          "origin": "full-record",
+          "createdAt": "2026-06-01T22:19:44Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "jlkinsel@gmail.com"
+          ],
+          "phones": [
+            "4152725520"
+          ],
+          "street": "6410 East Mercer Way"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2537400710"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDIyNDM5Njg=",
+          "numericId": "142243968",
+          "name": "Mortenson M.",
+          "origin": "other",
+          "createdAt": "2026-06-02T18:03:34Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "253-740-0710"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDIyNDQyMzQ=",
+          "numericId": "142244234",
+          "name": "Joann Mortenson",
+          "origin": "full-record",
+          "createdAt": "2026-06-02T18:05:55Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "mortyx3@comcast.net"
+          ],
+          "phones": [
+            "2537400710"
+          ],
+          "street": "29206 157th Avenue Southeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "3602920010"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI1MzY2MTM=",
+          "numericId": "142536613",
+          "name": "Buelow Matthew",
+          "origin": "other",
+          "createdAt": "2026-06-04T19:58:08Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "360-292-0010"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI1MzY3OTM=",
+          "numericId": "142536793",
+          "name": "Matt Buelow",
+          "origin": "website-form",
+          "createdAt": "2026-06-04T19:59:57Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "buelow.matt1@gmail.com"
+          ],
+          "phones": [
+            "3602920010"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI1MzgxNTA=",
+          "numericId": "142538150",
+          "name": "Matt Bulow",
+          "origin": "full-record",
+          "createdAt": "2026-06-04T20:12:21Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "bulow.matt1@gmail.com"
+          ],
+          "phones": [
+            "3602920010"
+          ],
+          "street": "8338 Willow Drive Northeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2535696003",
+        "rssplit@comcast.net"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI2MjczMTU=",
+          "numericId": "142627315",
+          "name": "LANCE L STEFFEY",
+          "origin": "other",
+          "createdAt": "2026-06-05T18:20:52Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "rssplit@comcast.net"
+          ],
+          "phones": [
+            "(253) 569-6003"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI4NzU5MTI=",
+          "numericId": "142875912",
+          "name": "Lance Steffey",
+          "origin": "full-record",
+          "createdAt": "2026-06-08T20:27:46Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "rssplit@comcast.net"
+          ],
+          "phones": [
+            "2535696003"
+          ],
+          "street": "35115 34th Avenue East"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2535303334"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM1NTU0NzE=",
+          "numericId": "143555471",
+          "name": "Rosedale N/A",
+          "origin": "other",
+          "createdAt": "2026-06-15T22:43:04Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "253-530-3334"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM2ODczNjQ=",
+          "numericId": "143687364",
+          "name": "Norpoint",
+          "origin": "full-record",
+          "createdAt": "2026-06-16T20:36:58Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "rosedale@norpoint.com"
+          ],
+          "phones": [
+            "2535303334"
+          ],
+          "street": "4203 Rosedale Street Northwest"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "6072791238"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM1NzU3ODQ=",
+          "numericId": "143575784",
+          "name": "Ciaramello F.",
+          "origin": "other",
+          "createdAt": "2026-06-16T01:12:40Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "607-279-1238"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM4MzE5NzM=",
+          "numericId": "143831973",
+          "name": "Frank Ciaramello",
+          "origin": "full-record",
+          "createdAt": "2026-06-17T23:57:27Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "mellowfrank@outlook.com"
+          ],
+          "phones": [
+            "6072791238"
+          ],
+          "street": "6245 121st Avenue Southeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2533440018"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM3MDQ5NDI=",
+          "numericId": "143704942",
+          "name": "Lambert Sharon",
+          "origin": "other",
+          "createdAt": "2026-06-16T23:01:03Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "253-344-0018"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM4NDU3MzU=",
+          "numericId": "143845735",
+          "name": "Madera West Condos",
+          "origin": "full-record",
+          "createdAt": "2026-06-18T05:05:54Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "alexd007@comcast.net"
+          ],
+          "phones": [
+            "2533440018"
+          ],
+          "street": "31500 33rd Place Southwest"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2532501242"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQzODkwODE=",
+          "numericId": "144389081",
+          "name": "Amanda Buckley",
+          "origin": "other",
+          "createdAt": "2026-06-23T19:43:48Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "253-250-1242"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQzOTAwNjg=",
+          "numericId": "144390068",
+          "name": "Chad Buckley",
+          "origin": "full-record",
+          "createdAt": "2026-06-23T19:48:19Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "chadm78@icloud.com"
+          ],
+          "phones": [
+            "2532501242"
+          ],
+          "street": "26516 173rd Street"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2532734674",
+        "mberitich@yahoo.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ1MzM0MDk=",
+          "numericId": "144533409",
+          "name": "Maria Beritich",
+          "origin": "website-form",
+          "createdAt": "2026-06-25T00:10:36Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "mberitich@yahoo.com"
+          ],
+          "phones": [
+            "2532734674"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ2MTc0Njc=",
+          "numericId": "144617467",
+          "name": "Maria —",
+          "origin": "website-form",
+          "createdAt": "2026-06-25T21:16:53Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "mberitich@yahoo.com"
+          ],
+          "phones": [
+            "2532734674"
+          ],
+          "street": ""
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2535485428"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ3NDE4ODM=",
+          "numericId": "144741883",
+          "name": "Teresa Brewer",
+          "origin": "other",
+          "createdAt": "2026-06-27T02:28:06Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "253-548-5428"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ5MTExOTc=",
+          "numericId": "144911197",
+          "name": "Larry Brewer",
+          "origin": "full-record",
+          "createdAt": "2026-06-29T22:07:06Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "larrybrewer2000@gmail.com"
+          ],
+          "phones": [
+            "2535485428"
+          ],
+          "street": "12626 194th Avenue Court East"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "4252474845",
+        "drkimiai88@gmail.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ4NDc3MTk=",
+          "numericId": "144847719",
+          "name": "nazanin kimiai",
+          "origin": "website-form",
+          "createdAt": "2026-06-29T15:52:36Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "drkimiai88@gmail.com"
+          ],
+          "phones": [
+            "4252474845"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ4NDgxOTY=",
+          "numericId": "144848196",
+          "name": "Nazanin Kimiai",
+          "origin": "website-form",
+          "createdAt": "2026-06-29T15:54:35Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "drkimiai88@gmail.com"
+          ],
+          "phones": [
+            "4252474845"
+          ],
+          "street": ""
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2405438699"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ4ODYxNzQ=",
+          "numericId": "144886174",
+          "name": "Wireless Caller",
+          "origin": "callrail-stub",
+          "createdAt": "2026-06-29T18:37:27Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "240-543-8699"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ4ODcxNzU=",
+          "numericId": "144887175",
+          "name": "Katie Marvin",
+          "origin": "full-record",
+          "createdAt": "2026-06-29T18:45:47Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "ka.garza98@gmail.com"
+          ],
+          "phones": [
+            "2405438699"
+          ],
+          "street": "5417 34th Avenue Southeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "3135758282",
+        "shinsanghoon@gmail.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDUwNzQ4OTU=",
+          "numericId": "145074895",
+          "name": "Sang Hoon Shin",
+          "origin": "website-form",
+          "createdAt": "2026-07-01T04:20:37Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "shinsanghoon@gmail.com"
+          ],
+          "phones": [
+            "3135758282"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDUxNDIyNjA=",
+          "numericId": "145142260",
+          "name": "Sanghoon Shin",
+          "origin": "full-record",
+          "createdAt": "2026-07-01T17:37:31Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "shinsanghoon@gmail.com"
+          ],
+          "phones": [
+            "3135758282"
+          ],
+          "street": "2125 Southwest 308th Court"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "9712706778",
+        "arash.mh01@gmail.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU0NDc5NDI=",
+          "numericId": "145447942",
+          "name": "Arash Mirhosseini",
+          "origin": "full-record",
+          "createdAt": "2026-07-06T16:17:06Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "arash.mh01@gmail.com"
+          ],
+          "phones": [
+            "971-270-6778"
+          ],
+          "street": "15313 227th Avenue Northeast"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU0NDgwNTM=",
+          "numericId": "145448053",
+          "name": "Arash Mirosseini",
+          "origin": "website-form",
+          "createdAt": "2026-07-06T16:17:50Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "arash.mh01@gmail.com"
+          ],
+          "phones": [
+            "9712706778"
+          ],
+          "street": ""
+        }
+      ]
+    },
+    {
+      "keys": [
+        "6175198405"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU2MDkxNzk=",
+          "numericId": "145609179",
+          "name": "Deborah Cheng",
+          "origin": "other",
+          "createdAt": "2026-07-07T19:55:08Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "617-519-8405"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU5NzIxNTk=",
+          "numericId": "145972159",
+          "name": "Deborah Berger",
+          "origin": "full-record",
+          "createdAt": "2026-07-10T21:24:37Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "djc27@yahoo.com"
+          ],
+          "phones": [
+            "6175198405"
+          ],
+          "street": "2809 226th Avenue Southeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2066784761"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU3NzAxNTI=",
+          "numericId": "145770152",
+          "name": "Bac Nguyen",
+          "origin": "other",
+          "createdAt": "2026-07-09T02:11:33Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "206-678-4761"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU4MjIzOTg=",
+          "numericId": "145822398",
+          "name": "Bac Walker",
+          "origin": "full-record",
+          "createdAt": "2026-07-09T17:33:39Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "walkersb.biz@gmail.com"
+          ],
+          "phones": [
+            "2064685783",
+            "(206) 678-4761"
+          ],
+          "street": "25626 Lake Fenwick Road"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "4252954903",
+        "devin.hill@pacscape.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU4MDUwOTI=",
+          "numericId": "145805092",
+          "name": "Devin Hill",
+          "origin": "other",
+          "createdAt": "2026-07-09T16:05:10Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "devin.hill@pacscape.com"
+          ],
+          "phones": [
+            "425-295-4903"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU5MjIyMjY=",
+          "numericId": "145922226",
+          "name": "Devin Hill",
+          "origin": "other",
+          "createdAt": "2026-07-10T14:46:40Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "devin.hill@pacscape.com"
+          ],
+          "phones": [
+            "425-295-4903"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY0NzE0MTA=",
+          "numericId": "146471410",
+          "name": "Devin Hill",
+          "origin": "other",
+          "createdAt": "2026-07-16T18:37:11Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "devin.hill@pacscape.com"
+          ],
+          "phones": [
+            "425-295-4903"
+          ],
+          "street": ""
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2532261308"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU4ODI1NTA=",
+          "numericId": "145882550",
+          "name": "Unavailable N/A",
+          "origin": "other",
+          "createdAt": "2026-07-09T23:17:05Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "253-226-1308"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU4ODMzMTI=",
+          "numericId": "145883312",
+          "name": "Jane Molenda",
+          "origin": "full-record",
+          "createdAt": "2026-07-09T23:20:40Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "jmolenda133@gmail.com"
+          ],
+          "phones": [
+            "2532261308"
+          ],
+          "street": "11907 241st Avenue Court East"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2532216945",
+        "tamiwooding@msn.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYwMDY1MjU=",
+          "numericId": "146006525",
+          "name": "Tami Wooding",
+          "origin": "website-form",
+          "createdAt": "2026-07-11T17:10:04Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "tamiwooding@msn.com"
+          ],
+          "phones": [
+            "2532216945"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY0OTU5ODM=",
+          "numericId": "146495983",
+          "name": "Tami Wooding",
+          "origin": "full-record",
+          "createdAt": "2026-07-16T21:25:13Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "tamiwooding@msn.com"
+          ],
+          "phones": [
+            "2532216945"
+          ],
+          "street": "2305 Sumner Tapps Highway East"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2063838709"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYwODg2OTk=",
+          "numericId": "146088699",
+          "name": "Wireless Caller",
+          "origin": "callrail-stub",
+          "createdAt": "2026-07-13T15:08:20Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "206-383-8709"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYxMzA5MDU=",
+          "numericId": "146130905",
+          "name": "Patrick Kennedy",
+          "origin": "full-record",
+          "createdAt": "2026-07-13T19:38:07Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "patrickrkennedy@comcast.net"
+          ],
+          "phones": [
+            "2063838709"
+          ],
+          "street": "8310 Southeast 59th Street"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2069629582"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYxMDU0MjU=",
+          "numericId": "146105425",
+          "name": "Brian Malgarini",
+          "origin": "other",
+          "createdAt": "2026-07-13T16:49:40Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "206-962-9582"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc1NjQ4MzE=",
+          "numericId": "147564831",
+          "name": "Mike Malgarini",
+          "origin": "full-record",
+          "createdAt": "2026-07-28T16:41:53Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "bmmalgarini@nregrp.com"
+          ],
+          "phones": [
+            "2069629582"
+          ],
+          "street": "25519 Southeast 392nd Street"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2062324563",
+        "socialwkr@comcast.net"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYyMDc3MTA=",
+          "numericId": "146207710",
+          "name": "Carin mack",
+          "origin": "other",
+          "createdAt": "2026-07-14T15:27:35Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "socialwkr@comcast.net"
+          ],
+          "phones": [
+            "206-232-4563"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYyMjM2NDA=",
+          "numericId": "146223640",
+          "name": "Carin Mack",
+          "origin": "full-record",
+          "createdAt": "2026-07-14T17:15:48Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "socialwkr@comcast.net"
+          ],
+          "phones": [
+            "2062324563"
+          ],
+          "street": "8421 Southeast 35th Street"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "5177451081"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYzMjQ0NTQ=",
+          "numericId": "146324454",
+          "name": "Ryan Linderman",
+          "origin": "other",
+          "createdAt": "2026-07-15T15:26:09Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "517-745-1081"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYzOTEzOTU=",
+          "numericId": "146391395",
+          "name": "Ryan Linderman",
+          "origin": "full-record",
+          "createdAt": "2026-07-15T21:47:27Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "linerman.ry@gmail.com"
+          ],
+          "phones": [
+            "5177451081"
+          ],
+          "street": "9525 Mercerwood Drive"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2143858913"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYzNjM5Njk=",
+          "numericId": "146363969",
+          "name": "Dey,Sanjay N/A",
+          "origin": "callrail-stub",
+          "createdAt": "2026-07-15T18:52:42Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "214-385-8913"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYzOTkzNjg=",
+          "numericId": "146399368",
+          "name": "Sanjay Dey",
+          "origin": "full-record",
+          "createdAt": "2026-07-15T23:17:09Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "sanjayissocial@gmail.com"
+          ],
+          "phones": [
+            "2143858913"
+          ],
+          "street": "24707 Southeast 45th Place"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2532796772"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYzNzcwNjc=",
+          "numericId": "146377067",
+          "name": "Politeo,Elizabe N/A",
+          "origin": "callrail-stub",
+          "createdAt": "2026-07-15T20:25:22Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "253-279-6772"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY0NzcwMTA=",
+          "numericId": "146477010",
+          "name": "Lisa Politeo",
+          "origin": "full-record",
+          "createdAt": "2026-07-16T19:04:29Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "lisapoliteo@gmail.com"
+          ],
+          "phones": [
+            "2532796772"
+          ],
+          "street": "3820 North Adams Street"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "6302517685"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY0MDA5NjY=",
+          "numericId": "146400966",
+          "name": "Kevin Elberts",
+          "origin": "other",
+          "createdAt": "2026-07-15T23:33:13Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "630-251-7685"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY0MDE1NTQ=",
+          "numericId": "146401554",
+          "name": "Jenna Elberts",
+          "origin": "full-record",
+          "createdAt": "2026-07-15T23:45:11Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "jenna.elberts@gmail.com"
+          ],
+          "phones": [
+            "6302517685"
+          ],
+          "street": "10224 39th Avenue Southwest"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "4255034440"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY0Nzg1Mjk=",
+          "numericId": "146478529",
+          "name": "Wireless Caller",
+          "origin": "callrail-stub",
+          "createdAt": "2026-07-16T19:19:00Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "425-503-4440"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY0ODA4Njg=",
+          "numericId": "146480868",
+          "name": "Carlie Stusser",
+          "origin": "full-record",
+          "createdAt": "2026-07-16T19:39:25Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "carlie.stusser@outlook.com"
+          ],
+          "phones": [
+            "4255034440"
+          ],
+          "street": "14032 205th Avenue Northeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "3602595158",
+        "robert0422@msn.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY0ODM3MjA=",
+          "numericId": "146483720",
+          "name": "Robert Jensen",
+          "origin": "website-form",
+          "createdAt": "2026-07-16T20:04:28Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "robert0422@msn.com"
+          ],
+          "phones": [
+            "3602595158"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDcwNDI5OTk=",
+          "numericId": "147042999",
+          "name": "Robert Jensen",
+          "origin": "website-form",
+          "createdAt": "2026-07-22T20:15:59Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "robert0422@msn.com"
+          ],
+          "phones": [
+            "+13602595158"
+          ],
+          "street": ""
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2063214155"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY1MDIyMjQ=",
+          "numericId": "146502224",
+          "name": "Joe Pruitt",
+          "origin": "other",
+          "createdAt": "2026-07-16T23:05:25Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "206-321-4155"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY1MDI4NDA=",
+          "numericId": "146502840",
+          "name": "Joe Pruitt",
+          "origin": "full-record",
+          "createdAt": "2026-07-16T23:18:07Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "joe@epruitt.com"
+          ],
+          "phones": [
+            "2063214155"
+          ],
+          "street": "224 9th Avenue"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "4252411018"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY1ODY5ODg=",
+          "numericId": "146586988",
+          "name": "Steve Murdock",
+          "origin": "website-form",
+          "createdAt": "2026-07-17T21:02:36Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "jsmuu1@msn.com"
+          ],
+          "phones": [
+            "4252411018"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY1OTgwMTA=",
+          "numericId": "146598010",
+          "name": "Steve Murdock",
+          "origin": "full-record",
+          "createdAt": "2026-07-17T22:33:54Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "jsmuu11@gmail.com"
+          ],
+          "phones": [
+            "4252411018"
+          ],
+          "street": "13755 220th Place Northeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2066053747",
+        "johnashepard@mac.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY2MTc2NDE=",
+          "numericId": "146617641",
+          "name": "John Shepard",
+          "origin": "website-form",
+          "createdAt": "2026-07-18T14:19:59Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "johnashepard@mac.com"
+          ],
+          "phones": [
+            "2066053747"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDczOTQ3NTQ=",
+          "numericId": "147394754",
+          "name": "John Shepard",
+          "origin": "full-record",
+          "createdAt": "2026-07-27T17:24:55Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "johnashepard@mac.com"
+          ],
+          "phones": [
+            "2066053747"
+          ],
+          "street": "2110 236th Avenue Northeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "6783587116",
+        "mark.fetters1034@gmail.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY2NTMzMDg=",
+          "numericId": "146653308",
+          "name": "Mark Fetters",
+          "origin": "full-record",
+          "createdAt": "2026-07-19T15:49:16Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "mark.fetters1034@gmail.com"
+          ],
+          "phones": [
+            "(678) 358-7116"
+          ],
+          "street": "10237 Sentinel Loop"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY2NTMzNTI=",
+          "numericId": "146653352",
+          "name": "Mark Fetters",
+          "origin": "website-form",
+          "createdAt": "2026-07-19T15:50:42Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "mark.fetters1034@gmail.com"
+          ],
+          "phones": [
+            "6783587116"
+          ],
+          "street": ""
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2029575613"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDcwOTg5NzQ=",
+          "numericId": "147098974",
+          "name": "Aviles,Sandra N/A",
+          "origin": "callrail-stub",
+          "createdAt": "2026-07-23T16:03:02Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "202-957-5613"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDcwOTkxMDY=",
+          "numericId": "147099106",
+          "name": "Sandra Aviles",
+          "origin": "other",
+          "createdAt": "2026-07-23T16:04:18Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "bmm0713@yahoo.com"
+          ],
+          "phones": [
+            "(202) 957-5613"
+          ],
+          "street": ""
+        }
+      ]
+    },
+    {
+      "keys": [
+        "3602138965",
+        "mikewink4@gmail.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDcxMzMyNDA=",
+          "numericId": "147133240",
+          "name": "Michael Winkler",
+          "origin": "full-record",
+          "createdAt": "2026-07-23T19:10:41Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "mikewink4@gmail.com"
+          ],
+          "phones": [
+            "(360) 213-8965"
+          ],
+          "street": "4406 31st Avenue West"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDcxMzM1MDc=",
+          "numericId": "147133507",
+          "name": "Mike Winkler",
+          "origin": "website-form",
+          "createdAt": "2026-07-23T19:13:30Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "mikewink4@gmail.com"
+          ],
+          "phones": [
+            "3602138965"
+          ],
+          "street": ""
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2063566916"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDcxNjQzNzU=",
+          "numericId": "147164375",
+          "name": "Will Reagan",
+          "origin": "other",
+          "createdAt": "2026-07-23T22:56:26Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "206-356-6916"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDcxNjUwMjI=",
+          "numericId": "147165022",
+          "name": "Will Reagan",
+          "origin": "full-record",
+          "createdAt": "2026-07-23T23:01:30Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "wreagan@gmail.com"
+          ],
+          "phones": [
+            "2063566916"
+          ],
+          "street": "4845 47th Avenue Southwest"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "3604340003",
+        "edman1972@comcast.net"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDcyMzk5NzM=",
+          "numericId": "147239973",
+          "name": "Ed Elway",
+          "origin": "website-form",
+          "createdAt": "2026-07-24T20:53:02Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "edman1972@comcast.net"
+          ],
+          "phones": [
+            "3604340003"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDczNzY0MTY=",
+          "numericId": "147376416",
+          "name": "Edward Thomas Elway",
+          "origin": "website-form",
+          "createdAt": "2026-07-27T15:44:16Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "Edman1972@comcast.net"
+          ],
+          "phones": [
+            "13604340003"
+          ],
+          "street": ""
+        }
+      ]
+    },
+    {
+      "keys": [
+        "4258029637"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDcyNDMwODA=",
+          "numericId": "147243080",
+          "name": "Bellevue Wa",
+          "origin": "callrail-stub",
+          "createdAt": "2026-07-24T21:39:24Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "425-802-9637"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDcyNDM5ODg=",
+          "numericId": "147243988",
+          "name": "Miwa Pugh",
+          "origin": "full-record",
+          "createdAt": "2026-07-24T21:47:43Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "miwam23@gmail.com"
+          ],
+          "phones": [
+            "4258029637"
+          ],
+          "street": "14408 267th Court Northeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2064197819"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDcyNDkwNTA=",
+          "numericId": "147249050",
+          "name": "Seattle Wa",
+          "origin": "callrail-stub",
+          "createdAt": "2026-07-24T22:58:25Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "206-419-7819"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDcyNDkyMDg=",
+          "numericId": "147249208",
+          "name": "Vicky Marxen",
+          "origin": "full-record",
+          "createdAt": "2026-07-24T23:02:20Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "dentmed@comcast.net"
+          ],
+          "phones": [
+            "2064197819",
+            "4255400788"
+          ],
+          "street": "3629 East Lake Sammamish Shore Lane Northeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "4259857273",
+        "doug@thecrowfamily.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDcyNzM3OTI=",
+          "numericId": "147273792",
+          "name": "Doug Crow",
+          "origin": "full-record",
+          "createdAt": "2026-07-25T15:09:59Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "doug@thecrowfamily.com"
+          ],
+          "phones": [
+            "4259857273"
+          ],
+          "street": "21805 Southeast 20th Street"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDczOTA4NzM=",
+          "numericId": "147390873",
+          "name": "Doug Crow",
+          "origin": "full-record",
+          "createdAt": "2026-07-27T17:03:41Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "doug@thecrowfamily.com"
+          ],
+          "phones": [
+            "4259857273"
+          ],
+          "street": "21805 Southeast 20th Street"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2532274467"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDcyNzcxNjU=",
+          "numericId": "147277165",
+          "name": "Wireless Caller",
+          "origin": "callrail-stub",
+          "createdAt": "2026-07-25T16:37:39Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "253-227-4467"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDczODE1NDY=",
+          "numericId": "147381546",
+          "name": "Troy Deimarly",
+          "origin": "full-record",
+          "createdAt": "2026-07-27T16:07:11Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "deimarleytroy@gmail.com"
+          ],
+          "phones": [
+            "2532274467"
+          ],
+          "street": "1717 Southwest 349th Place"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2067781665"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDczMTk3ODM=",
+          "numericId": "147319783",
+          "name": "T Hutchinson",
+          "origin": "other",
+          "createdAt": "2026-07-26T20:35:47Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "206-778-1665"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDczODMzMzk=",
+          "numericId": "147383339",
+          "name": "Tad Hutchison",
+          "origin": "full-record",
+          "createdAt": "2026-07-27T16:15:10Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "tadhutchco@gmail.com"
+          ],
+          "phones": [
+            "2067781665"
+          ],
+          "street": "8604 38th Avenue Northeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "4254666441"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc0MDI1MDc=",
+          "numericId": "147402507",
+          "name": "Terence Wirth",
+          "origin": "other",
+          "createdAt": "2026-07-27T18:21:45Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "425-466-6441"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc0MDQxMjY=",
+          "numericId": "147404126",
+          "name": "Terry Wirth",
+          "origin": "full-record",
+          "createdAt": "2026-07-27T18:34:52Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "terrywirth@hotmail.com"
+          ],
+          "phones": [
+            "4254666441"
+          ],
+          "street": "3109 109th Avenue Southeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "9258089896"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc1NzIzNTI=",
+          "numericId": "147572352",
+          "name": "Dombroski,Terry N/A",
+          "origin": "callrail-stub",
+          "createdAt": "2026-07-28T17:05:32Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "925-808-9896"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc1NzQ4Nzk=",
+          "numericId": "147574879",
+          "name": "Terry Dombroski",
+          "origin": "full-record",
+          "createdAt": "2026-07-28T17:17:25Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "terrydom@msn.com"
+          ],
+          "phones": [
+            "9258089896"
+          ],
+          "street": "1920 163rd Street East"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "4252008557"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc1ODEwMDg=",
+          "numericId": "147581008",
+          "name": "Wireless Caller",
+          "origin": "callrail-stub",
+          "createdAt": "2026-07-28T17:49:46Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "425-200-8557"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc1ODExNzQ=",
+          "numericId": "147581174",
+          "name": "John Bissell",
+          "origin": "full-record",
+          "createdAt": "2026-07-28T17:51:19Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "j.bissell@comcast.net"
+          ],
+          "phones": [
+            "4252008557"
+          ],
+          "street": "523 207th Avenue Northeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2536778577",
+        "cs099@att.net"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc1OTAxMTI=",
+          "numericId": "147590112",
+          "name": "Chris Sica",
+          "origin": "full-record",
+          "createdAt": "2026-07-28T18:27:04Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "cs099@att.net"
+          ],
+          "phones": [
+            "(253) 677-8577"
+          ],
+          "street": "14411 18th Avenue Court South"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc1OTQ0MTE=",
+          "numericId": "147594411",
+          "name": "Chris Sica",
+          "origin": "website-form",
+          "createdAt": "2026-07-28T18:35:57Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "cs099@att.net"
+          ],
+          "phones": [
+            "2536778577"
+          ],
+          "street": ""
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2066978310"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc2MTg5NTQ=",
+          "numericId": "147618954",
+          "name": "Huy Nguyen",
+          "origin": "other",
+          "createdAt": "2026-07-28T20:58:01Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "206-697-8310"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc2MTkzOTM=",
+          "numericId": "147619393",
+          "name": "Huy Nguyen",
+          "origin": "full-record",
+          "createdAt": "2026-07-28T21:02:56Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "pops5731@yahoo.com"
+          ],
+          "phones": [
+            "2066978310"
+          ],
+          "street": "18420 25th Avenue Northeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "2062578751"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc3NDYxMTk=",
+          "numericId": "147746119",
+          "name": "Seattle Wa",
+          "origin": "callrail-stub",
+          "createdAt": "2026-07-29T18:53:26Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "206-257-8751"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc3NTY0NTc=",
+          "numericId": "147756457",
+          "name": "Susan Eggleton",
+          "origin": "full-record",
+          "createdAt": "2026-07-29T19:24:19Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "susan_eggleton@hotmail.com"
+          ],
+          "phones": [
+            "2062578751"
+          ],
+          "street": "5441 40th Avenue West"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "4257731842"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc3ODgyMTU=",
+          "numericId": "147788215",
+          "name": "Chad Vetter",
+          "origin": "other",
+          "createdAt": "2026-07-29T23:33:39Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [],
+          "phones": [
+            "425-773-1842"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc3ODg5NDU=",
+          "numericId": "147788945",
+          "name": "Chad Vetter",
+          "origin": "full-record",
+          "createdAt": "2026-07-29T23:38:32Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "cwvetter@gmail.com"
+          ],
+          "phones": [
+            "4257731842"
+          ],
+          "street": "11446 71st Place South"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "r_lipson@hotmail.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC82NDEyNjQ1OA==",
+          "numericId": "64126458",
+          "name": "Ryan Lipson",
+          "origin": "full-record",
+          "createdAt": "2023-02-28T16:24:59Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "R_Lipson@hotmail.com",
+            "r_lipson@hotmail.com"
+          ],
+          "phones": [
+            "4252418064"
+          ],
+          "street": "3101 247th Avenue Southeast"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTQ2MTIxNzg=",
+          "numericId": "114612178",
+          "name": "Ryan Lipson",
+          "origin": "full-record",
+          "createdAt": "2025-07-28T21:38:24Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "r_lipson@hotmail.com"
+          ],
+          "phones": [
+            "206-818-7592"
+          ],
+          "street": "1601 East Lake Sammamish Place Southeast"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "lpcinvoices@cushwake.com"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMDg1MzAyODk=",
+          "numericId": "108530289",
+          "name": "Alex Austin",
+          "origin": "full-record",
+          "createdAt": "2025-05-20T16:29:46Z",
+          "isLead": false,
+          "isArchived": false,
+          "emails": [
+            "alex.auston@cushwake.com",
+            "lpcinvoices@cushwake.com"
+          ],
+          "phones": [
+            "425-503-6532"
+          ],
+          "street": "20015 34th Avenue East"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMzE0NjUzMjQ=",
+          "numericId": "131465324",
+          "name": "Jackline Nelson",
+          "origin": "full-record",
+          "createdAt": "2026-02-25T18:20:49Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "Lpcinvoices@cushwake.com",
+            "jackeline.nelson@cushwake.com"
+          ],
+          "phones": [
+            "206-8010-1806"
+          ],
+          "street": "3323 200 Street East"
+        }
+      ]
+    },
+    {
+      "keys": [
+        "roy@allthepower.co.uk"
+      ],
+      "members": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMjA5MDU2MzQ=",
+          "numericId": "120905634",
+          "name": "Roy Castleman",
+          "origin": "full-record",
+          "createdAt": "2025-10-17T15:11:41Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "roy@allthepower.co.uk"
+          ],
+          "phones": [
+            "07767648422"
+          ],
+          "street": "226 Greenkeepers Road"
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMzc1OTYzNjM=",
+          "numericId": "137596363",
+          "name": "Roy Castleman 6",
+          "origin": "other",
+          "createdAt": "2026-04-24T16:33:56Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "roy@allthepower.co.uk"
+          ],
+          "phones": [
+            "+447767648422"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMzc1OTcxNTM=",
+          "numericId": "137597153",
+          "name": "Roy Castleman 7",
+          "origin": "website-form",
+          "createdAt": "2026-04-24T16:41:53Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "roy@allthepower.co.uk"
+          ],
+          "phones": [
+            "+44776764842",
+            "7767648422"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMzc1OTgxNDQ=",
+          "numericId": "137598144",
+          "name": "Roy Castleman 8",
+          "origin": "other",
+          "createdAt": "2026-04-24T16:50:48Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "roy@allthepower.co.uk"
+          ],
+          "phones": [
+            "+447767648422"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMzg0MDM4NDU=",
+          "numericId": "138403845",
+          "name": "Roy 8",
+          "origin": "other",
+          "createdAt": "2026-05-01T09:31:23Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "roy@allthepower.co.uk"
+          ],
+          "phones": [
+            "+447767648422"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMzg3NDkyMjE=",
+          "numericId": "138749221",
+          "name": "Roy 9",
+          "origin": "other",
+          "createdAt": "2026-05-04T20:12:00Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "roy@allthepower.co.uk"
+          ],
+          "phones": [
+            "+447767648422"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMzkyNzU0MDc=",
+          "numericId": "139275407",
+          "name": "Roy10 —",
+          "origin": "other",
+          "createdAt": "2026-05-08T10:07:57Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "roy@allthepower.co.uk"
+          ],
+          "phones": [
+            "+447767648422"
+          ],
+          "street": ""
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDAxMTEyMTQ=",
+          "numericId": "140111214",
+          "name": "Roy Castleman",
+          "origin": "other",
+          "createdAt": "2026-05-15T14:14:45Z",
+          "isLead": true,
+          "isArchived": false,
+          "emails": [
+            "roy@allthepower.co.uk"
+          ],
+          "phones": [
+            "+447767648422"
+          ],
+          "street": ""
+        }
+      ]
+    }
+  ]
+}

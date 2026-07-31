@@ -1,0 +1,18 @@
+{
+  "name": "gm-visit-notes",
+  "private": true,
+  "type": "module",
+  "description": "Got Moles field app: technicians speak a visit note, it is formatted into the company shorthand and posted to the Jobber job note.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "node deploy.mjs deploy",
+    "tail": "node deploy.mjs tail --format pretty",
+    "secrets": "node push-secrets.mjs",
+    "eval": "node eval-formatter.mjs",
+    "sample": "node _sample-notes.mjs --days=10",
+    "analyze": "node _analyze-corpus.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4.114.0"
+  }
+}

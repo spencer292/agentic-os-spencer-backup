@@ -93,6 +93,32 @@ being dropped. Not yet built. A structured Job Form input was considered as an a
 to note parsing; parked pending (a) exception-rate evidence and (b) whether Jobber's API
 can read job form submissions at all.
 
+## Voice capture front-end (added 2026-07-28)
+
+The pipeline above assumes a note already exists. `voice-notes/` is the front of it: a phone
+web app where the technician **speaks** the visit and the shorthand is written for them.
+
+- Tech opens a link, picks a job from their own Jobber schedule for today, records, reviews
+  the generated shorthand with a per-field check, taps send. `jobCreateNote` posts it.
+- The formatter is gated on `parse-note.mjs` — the app imports the *same* parser this brief's
+  report and scheduling engines use, so a voice note cannot silently stop being readable by
+  them. Missing fields are surfaced to the tech in the yard, which is the direct fix for the
+  "misspelled/nonconforming notes fail silently" gap flagged by Spencer on 2026-07-10.
+- This also attacks the coverage numbers below: in a 10-day / 4,341-note corpus pulled on
+  2026-07-28, **misses parse on only 56% of typed notes and moles on 72%** — mostly because
+  the line is simply omitted. The app asks for it before the tech leaves.
+- Runs on Gemini (`gemini-3.6-flash`), not OpenAI — this install's `OPENAI_API_KEY` has no
+  quota. Hosted as a Cloudflare Worker, independent of the got-moles.com deploy Roy manages.
+- Evals: 18/18 text cases, 6/6 end-to-end audio cases. See `voice-notes/README.md`.
+
+Status (2026-07-28): **LIVE** at https://gm-visit-notes.route-ready.workers.dev
+- `jobCreateNote` proven against the live account: test note created on #8056 Madera West,
+  read back, then removed with `jobDeleteNote` (note the input arg is `noteId`, not `id`).
+- Confirmed `JobNote.createdBy` comes back as `Application` — API-written notes are NOT
+  attributed to the technician in Jobber's UI. Tech identity is captured in the Worker log.
+- Full speech path verified against the deployed Worker, not just locally.
+- Pilot: Spencer, starting with his own route. Codes issued for all 7 active field users.
+
 ## Deliverables
 
 - `parse-note.mjs` — pure parser: note string → structured record. ✅ built

@@ -1,0 +1,17 @@
+name = "gm-visit-notes"
+main = "src/worker.js"
+compatibility_date = "2026-07-01"
+workers_dev = true
+
+# Model choices are plain vars so they can be changed without a code edit.
+[vars]
+FORMAT_MODEL = "gemini-3.6-flash"
+TRANSCRIBE_MODEL = "gemini-3.6-flash"
+
+# Secrets are NOT stored here. Set them once with `npm run secrets`:
+#   JOBBER_CLIENT_ID
+#   JOBBER_CLIENT_SECRET
+#   JOBBER_REFRESH_TOKEN
+#   GEMINI_API_KEY
+#   SESSION_SECRET     (any long random string)
+#   TECH_CODES         (JSON: {"4417":{"name":"Cammeron Anderson","jobberUserId":"..."}})

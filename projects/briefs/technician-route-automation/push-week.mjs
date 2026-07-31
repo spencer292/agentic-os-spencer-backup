@@ -143,6 +143,14 @@ if (fromArg) {
   win.afterIso = `${addDaysPT(win.fromDate, -1)}T23:59:59-07:00`;
   console.log(`!! window start overridden to ${win.fromDate} (past its email freeze)`);
 }
+// --to=YYYY-MM-DD extends the window end. Needed to plan a FUTURE week: the week rule caps toDate at
+// this Sunday until Friday, so a Wednesday run cannot reach next week without it.
+const toArg = process.argv.find(a => a.startsWith('--to='));
+if (toArg) {
+  win.toDate = toArg.split('=')[1];
+  win.beforeIso = `${win.toDate}T23:59:59-07:00`;
+  console.log(`!! window end overridden to ${win.toDate}`);
+}
 console.log(`Window: ${win.fromDate} -> ${win.toDate} (${mode.toUpperCase()})`);
 
 // fetch visits (25/page cursor loop)
@@ -166,9 +174,16 @@ console.log(`Jobber visits in window: ${visits.length}`);
 // (the grid is advisory only). With --grid: each flexible order is pinned to its zip's
 // territory day, so far-south/far-north 2x-per-week holds by construction instead of by luck.
 // jobOverrides (job-level) beat the zip rule. Pinned/committed visits are NEVER moved.
-const useGrid = process.argv.includes('--grid');
+// --grid uses the standing territory-grid.json; --grid=<file> uses an alternate grid, so a proposed
+// re-split can be built and measured without touching the live one.
+const gridArg = process.argv.find(a => a.startsWith('--grid='));
+const useGrid = gridArg != null || process.argv.includes('--grid');
 let GRID = null;
-if (useGrid) GRID = JSON.parse(fs.readFileSync(path.join(__dirname, 'territory-grid.json'), 'utf8'));
+if (useGrid) {
+  const gf = gridArg ? gridArg.split('=')[1] : 'territory-grid.json';
+  GRID = JSON.parse(fs.readFileSync(path.resolve(__dirname, gf), 'utf8'));
+  console.log(`grid: ${gf}`);
+}
 const DAY_IDX = { mon: 0, tue: 1, wed: 2, thu: 3, fri: 4 };
 // Monday of the plan week = first weekday on/after win.fromDate
 function weekMonday(fromDate) {
