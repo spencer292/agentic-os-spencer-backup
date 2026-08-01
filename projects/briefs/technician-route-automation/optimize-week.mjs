@@ -240,8 +240,27 @@ if (mode === 'plan') {
     byNum[num] = v;
   }
 
-  // ride-alongs are crew who ride with a driver, never their own route
-  const RIDE_ALONG = /norton|franks/i;
+  // ride-alongs are crew who ride with a driver, never their own route.
+  // Alias Franks came off this list 2026-07-31 — he runs his own truck from the week of 08-03.
+  const RIDE_ALONG = /norton/i;
+  // serialAliases (grid) put a tech with no OptimoRoute driver record onto someone else's serial so
+  // the week can still be built. OptimoRoute then reports the BORROWED name on every one of that
+  // tech's stops — writing it straight back would assign the wrong person in Jobber. Reverse it here.
+  const gArg = process.argv.find(a => a.startsWith('--grid='));
+  const GRID = gArg ? JSON.parse(fs.readFileSync(path.resolve(__dirname, gArg.split('=')[1]), 'utf8')) : {};
+  const UNALIAS = {};
+  for (const [real, serial] of Object.entries(GRID.serialAliases || {})) {
+    // Borrowing a serial is only unambiguous while its owner is out of the field. If the grid has
+    // them working too, both techs' stops come back under one name and there is no way to tell
+    // them apart — refuse rather than write a guess to real customer visits.
+    if ((GRID.works || {})[serial]) {
+      console.error(`ABORT: grid aliases ${real} onto ${serial}'s serial, but ${serial} also works this grid — their stops are indistinguishable in OptimoRoute. Create a real driver record for ${real}.`);
+      process.exit(1);
+    }
+    UNALIAS[serial.trim().toLowerCase()] = real;
+    console.log(`serial alias in effect: OptimoRoute "${serial}" -> Jobber "${real}"`);
+  }
+  const unalias = (n) => UNALIAS[String(n || '').trim().toLowerCase()] || n;
   const writes = [], moves = [], committedMoves = [], orphans = [], techChanges = [];
   const matched = new Set();
   for (const s of stops) {
@@ -259,22 +278,23 @@ if (mode === 'plan') {
     const isSet = vis.job && vis.job.startAt ? toPT(vis.job.startAt).date === cur.date : false;
     const curTechs = ((vis.assignedUsers || {}).nodes || []);
     const curTech = curTechs[0] && curTechs[0].name && curTechs[0].name.full;
-    const newUserId = users[s.driver.trim().toLowerCase()] || null;
+    const driverName = unalias(s.driver);
+    const newUserId = users[driverName.trim().toLowerCase()] || null;
     const dayMove = planDate !== cur.date;
     const timeChange = dayMove || planTime !== cur.hm;
     // Compare against ALL assigned users, not just the first. A visit crewed as [Franks, Cory]
     // returns Franks at index 0, so a curTechs[0] test reports a tech change forever and the same
     // 55 writes replay on every run without ever converging (seen 2026-07-26).
-    const techChange = !curTechs.some(u => ((u.name && u.name.full) || '') === s.driver);
+    const techChange = !curTechs.some(u => ((u.name && u.name.full) || '') === driverName);
     if (dayMove) {
-      const rec = { job: jn, from: cur.date, to: planDate, driver: s.driver, isSet, committed };
+      const rec = { job: jn, from: cur.date, to: planDate, driver: driverName, isSet, committed };
       moves.push(rec);
       if (committed || isSet) committedMoves.push(rec);
     }
-    if (techChange) techChanges.push({ job: jn, from: curTech || '(none)', to: s.driver });
+    if (techChange) techChanges.push({ job: jn, from: curTech || '(none)', to: driverName });
     if (timeChange || techChange) writes.push({
       visitId: vis.id, job: jn, date: planDate, time: s.scheduledAtDt.slice(11, 19),
-      driver: s.driver, newUserId, curUserIds: curTechs.map(u => u.id),
+      driver: driverName, newUserId, curUserIds: curTechs.map(u => u.id),
       doSchedule: timeChange, doAssign: techChange && !!newUserId, dayMove, isSet,
       // Franks/Norton ride WITH a driver — they are not trucks. Keep them on the visit instead of
       // letting the driver assignment overwrite them (Spencer 2026-07-26).

@@ -48,6 +48,14 @@
    "decided": false,
    "note": "grid v4 four-way split (South King — Kent anchor)"
   },
+  "98003": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "",
+   "visitsNextWeek": 0,
+   "decided": false,
+   "note": "added 2026-07-31 for Tavis redistribution — Federal Way east — keeps Federal Way whole with 98023 (Luke/wed)"
+  },
   "98004": {
    "day": "wed",
    "tech": "Alias Franks",
@@ -71,6 +79,14 @@
    "visitsNextWeek": 10,
    "decided": false,
    "note": "grid v4 four-way split (north Eastside — Redmond anchor)"
+  },
+  "98007": {
+   "day": "wed",
+   "tech": "Alias Franks",
+   "cities": "",
+   "visitsNextWeek": 0,
+   "decided": false,
+   "note": "added 2026-07-31 for Tavis redistribution — Bellevue Crossroads — enclosed by 98004/98006/98008 (Alias/wed)"
   },
   "98008": {
    "day": "wed",
@@ -368,6 +384,14 @@
    "decided": false,
    "note": "grid v4 four-way split (north Eastside — Redmond anchor)"
   },
+  "98106": {
+   "day": "mon",
+   "tech": "Cammeron Anderson",
+   "cities": "",
+   "visitsNextWeek": 0,
+   "decided": false,
+   "note": "added 2026-07-31 for Tavis redistribution — Delridge/South Park — borders 98116/98136/98146 (Cammeron/mon)"
+  },
   "98108": {
    "day": "mon",
    "tech": "Cammeron Anderson",
@@ -375,6 +399,22 @@
    "visitsNextWeek": 2,
    "decided": false,
    "note": "grid v4 four-way split (South King — Kent anchor)"
+  },
+  "98109": {
+   "day": "mon",
+   "tech": "Alias Franks",
+   "cities": "",
+   "visitsNextWeek": 0,
+   "decided": false,
+   "note": "added 2026-07-31 for Tavis redistribution — South Lake Union/Queen Anne — with the north-central Seattle mon run"
+  },
+  "98112": {
+   "day": "mon",
+   "tech": "Alias Franks",
+   "cities": "",
+   "visitsNextWeek": 0,
+   "decided": false,
+   "note": "added 2026-07-31 for Tavis redistribution — Capitol Hill/Madison Park — with the north-central Seattle mon run (98105/98115/98199)"
   },
   "98115": {
    "day": "mon",
@@ -408,6 +448,14 @@
    "decided": false,
    "note": "grid v4 four-way split (north Eastside — Redmond anchor)"
   },
+  "98126": {
+   "day": "mon",
+   "tech": "Cammeron Anderson",
+   "cities": "",
+   "visitsNextWeek": 0,
+   "decided": false,
+   "note": "added 2026-07-31 for Tavis redistribution — West Seattle — borders 98116/98136 (Cammeron/mon)"
+  },
   "98133": {
    "day": "mon",
    "tech": "Alias Franks",
@@ -423,6 +471,14 @@
    "visitsNextWeek": 6,
    "decided": false,
    "note": "grid v4 four-way split (South King — Kent anchor)"
+  },
+  "98144": {
+   "day": "mon",
+   "tech": "Cammeron Anderson",
+   "cities": "",
+   "visitsNextWeek": 0,
+   "decided": false,
+   "note": "added 2026-07-31 for Tavis redistribution — Beacon Hill/Mount Baker — borders 98108 (Cammeron/mon)"
   },
   "98146": {
    "day": "mon",
@@ -479,6 +535,14 @@
    "visitsNextWeek": 5,
    "decided": false,
    "note": "grid v4 four-way split (South King — Kent anchor)"
+  },
+  "98188": {
+   "day": "tue",
+   "tech": "Cammeron Anderson",
+   "cities": "",
+   "visitsNextWeek": 0,
+   "decided": false,
+   "note": "added 2026-07-31 for Tavis redistribution — SeaTac — joins the south-airport tue run (98148/98166/98198)"
   },
   "98198": {
    "day": "tue",
@@ -1131,8 +1195,7 @@
    "note": "SET booked for Thursday; grid day (mon) is already past so it could not route. Cory works Bellevue and has room Thursday (Spencer 2026-07-27)."
   }
  },
- "serialAliases": {
-  "Alias Franks": "Spencer Hill"
- },
- "_aliasNote": "TEMPORARY: Elias has no OptimoRoute driver record (create_driver is not in the API — must be added in the OR web UI). His route is measured on Spencer's serial. DELETE serialAliases once the real driver exists."
+ "notWorking": [
+  "Spencer Hill"
+ ]
 }

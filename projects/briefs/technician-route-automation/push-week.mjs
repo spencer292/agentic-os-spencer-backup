@@ -189,8 +189,13 @@ const DAY_IDX = { mon: 0, tue: 1, wed: 2, thu: 3, fri: 4 };
 function weekMonday(fromDate) {
   const [y, m, d] = fromDate.split('-').map(Number);
   const wd = new Date(Date.UTC(y, m - 1, d)).getUTCDay(); // 0=Sun
-  const back = wd === 0 ? 6 : wd - 1;
-  return addDaysPT(fromDate, -back);
+  // A weekend fromDate belongs to the week AHEAD, not the one just gone. Rolling Sunday back six
+  // days put every grid day on the previous week, where it fell outside the window and was
+  // discarded — so `--grid` silently degraded to "float the whole week" on exactly the run that
+  // matters most: the Friday/weekend baseline. That is what left 08-03 unbuilt (found 2026-07-31).
+  if (wd === 0) return addDaysPT(fromDate, 1);
+  if (wd === 6) return addDaysPT(fromDate, 2);
+  return addDaysPT(fromDate, -(wd - 1));
 }
 const MONDAY = weekMonday(win.fromDate);
 // Returns {from, to, weekdays} or null to float.
