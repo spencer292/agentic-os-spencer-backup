@@ -6,8 +6,9 @@
 // Rules encoded (agreed 2026-07-10):
 // - Email freeze: date D locks 14:00 PT on D-1; today never writable.
 // - Week window: Mon-Thu -> this Sunday; Fri-Sun -> next Sunday.
-// - Pin rule: sets (visit date == job.startAt date) and committed visits (time set,
-//   window <= 6h) get allowedDates = own day; everything else floats across the window.
+// - Pin rule: SETs (visit date == job.startAt date) and jobs with more than one visit in the week
+//   get allowedDates = own day; everything else follows the grid. Visit start times and their
+//   windows are PLACEHOLDERS, not customer promises (Spencer 2026-08-01) — do not pin on them.
 // - Weekdays only (mon-fri). Durations: 10 min check / 20 min set. Priority C for sets.
 // - orderNo = <jobNumber>-<visitNumericId>, operation SYNC (idempotent, collision-proof).
 // - lockTechs=false: no assignedTo; optimizer assigns. locationName = "Name · #job".
@@ -223,6 +224,18 @@ const orders = [], skipped = [];
 const gridStats = { forced: 0, noZip: 0, frozen: 0, pinnedKept: 0, split: 0 };
 const byId = {};
 for (const v of visits) byId[v.id] = v;
+// A job with more than one visit in the window keeps its own days. Grid-forcing them all onto the
+// zip's single grid day stacks two visits to the same customer ten minutes apart — six jobs did
+// exactly that on 2026-08-01 (e.g. #7303 Bryce Murphy, Jobber 08-03 + 08-04, both forced to 08-04).
+// This is separate from true Jobber duplicates (two records, same job, SAME day), which are a data
+// problem — see find-dup-visits.mjs.
+const visitsPerJob = {};
+for (const v of Object.values(byId)) {
+  if (v.isComplete) continue;
+  const j = v.job && v.job.jobNumber;
+  if (j != null) visitsPerJob[String(j)] = (visitsPerJob[String(j)] || 0) + 1;
+}
+const multiVisitJobs = new Set(Object.keys(visitsPerJob).filter(j => visitsPerJob[j] > 1));
 for (const vis of Object.values(byId)) {
   if (vis.isComplete) continue;
   const jn = vis.job && vis.job.jobNumber;
@@ -241,7 +254,19 @@ for (const vis of Object.values(byId)) {
   if (vis.endAt) {
     windowHrs = (new Date(vis.endAt) - new Date(vis.startAt)) / 3600000;
   }
-  const pinned = isSet || (startHM !== '00:00' && windowHrs <= 6);
+  // An explicit jobOverride naming a day is a person deciding, and it outranks the automatic pin.
+  // Without this a committed visit can never be moved off its day by the grid — which is right by
+  // default (the window is a promise) but wrong when the office has deliberately re-dated the job.
+  // Anything moved this way needs the customer re-notified; push-week cannot do that.
+  const ovDay = useGrid && GRID.jobOverrides && GRID.jobOverrides[String(jn)]
+    && (GRID.jobOverrides[String(jn)].day || GRID.jobOverrides[String(jn)].days);
+  const multiVisit = multiVisitJobs.has(String(jn));
+  if (multiVisit) gridStats.multiVisitKept = (gridStats.multiVisitKept || 0) + 1;
+  // A start time with a short window is NOT a customer commitment — those times are PLACEHOLDERS
+  // (Spencer 2026-08-01). Treating them as promises pinned 28 visits off their grid day and made
+  // routine grid moves look like they would break an appointment. Only a real SET pins now: a visit
+  // whose date matches its job's start date, i.e. an appointment actually booked for that day.
+  const pinned = (isSet || multiVisit) && !ovDay;
   // grid day for this order (null = float the window)
   const zip = ((a.postalCode || '') + '').trim().slice(0, 5);
   let gridDate = null;
@@ -265,7 +290,11 @@ for (const vis of Object.values(byId)) {
       operation: 'SYNC',
       orderNo: jn + '-' + visitNum,
       type: 'T',
-      date: visitDate,
+      // Keep the scheduled date consistent with allowedDates for flexible orders. Cosmetic only —
+      // allowedDates already constrained them and the optimizer already moved them; measured
+      // 2026-08-01, this changed nothing about where stops landed. SETs and multi-visit jobs keep
+      // their own date.
+      date: (!pinned && gridDate) ? gridDate.from : visitDate,
       duration: isSet ? 20 : 10,
       // Uniform priority: OptimoRoute serves higher-priority orders earlier in the day,
       // which warps the route shape. Promises are made FROM the plan, never fed in as priority.

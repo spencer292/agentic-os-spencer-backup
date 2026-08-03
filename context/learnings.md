@@ -215,3 +215,36 @@
 - 2026-07-31: **Jobber has NO job-level assignment mutation** — `JobEditInput` carries no assignedUsers field; `visitEditAssignedUsers` (one visit at a time) is the only write path. So when a tech leaves the field, every pre-generated visit keeps pointing at them and the board shows coverage that does not exist: Tavis Alexander had 3,982 such visits running to Dec 2027, flat at ~230/month across 240 recurring jobs. An API sweep repairs existing visits but cannot stop new ones — the recurring job's tech is editable only in the Jobber UI. Build the weekly run to self-heal (`--fallback=grid`) rather than relying on a one-time sweep.
 - 2026-07-31: **Driver availability has to track the roster or the optimizer ignores the grid.** `set-driver-days.mjs` was hardcoded to the week of 07-27 with Spencer enabled Thu/Fri; OptimoRoute hands stops to any ENABLED driver regardless of balancing mode, so he kept collecting work (2/3/7/9/16 stops) months after being taken out of the field. Derive availability from the grid's `works` + `notWorking` per week. It also doubles as a driver-record existence check — `update_drivers_parameters` addresses drivers by serial, so a misspelled or missing driver fails loudly instead of routing nobody.
 - 2026-07-31: **push-week can create but never retire.** A cancelled or moved visit leaves its OptimoRoute order behind, consuming route capacity and drive time for a customer nobody is visiting. Added `prune-stale-orders.mjs` (own `<job>-<visit>` orderNo pattern only, foreign orders reported not touched, aborts if >50% of the window looks stale). Gotcha: `search_orders` nests the body under `data` — `o.orderNo` is undefined at the top level and silently classified all 434 orders as foreign on the first run.
+
+## technician-route-automation
+- 2026-08-01: **Never infer a business rule from the shape of the data.** A start time with a short
+  window looked like a committed appointment, so the pin rule treated it as one. They are
+  placeholders. That single wrong assumption pinned 28 visits off their grid day, produced two
+  scripts and a standing rule built on a false premise, and cost hours of rework. One question at the
+  start would have avoided all of it.
+- 2026-08-01: **Move zips, not judgement.** Hours were spent hand-picking territory boundaries from a
+  mental map, which is exactly how a tech ends up driving 30 minutes into another tech's cluster. The
+  coordinates were available the whole time. Insertion cost — (A->job + job->B) - (A->B) — is the
+  right metric and it is cheap to compute. Build the measurement, don't eyeball the map.
+- 2026-08-01: **A zip can straddle a boundary.** 98371 and 98372 each split Edgewood/Puyallup across
+  SR-167, so "move Edgewood" can never be a clean zip operation. Check city labels inside a zip before
+  treating it as one unit.
+- 2026-08-01: `optimize-week write --date=` only writes visits arriving INTO that day. With a plan
+  that moves visits between days, everything leaving stays put with its stale tech — 53 visits
+  stranded on 2026-08-03, 11 on Tavis, and 52 customers had to be emailed a new day. Guard added:
+  the write now refuses when the plan moves anything off the scoped date.
+- 2026-08-01: `balancing=ON_FORCE` lets OptimoRoute reassign stops between drivers AFTER the grid has
+  assigned them. Grid tech assignment was effectively advisory. Plan with `--balancing=OFF` when
+  territory ownership matters; ON_FORCE only when day-levelling needs forcing.
+- 2026-08-01: A job override pinned to a day silently outranks a later zip move, holding part of a
+  zip behind when the zip changes day. Flag overrides whose day disagrees with their zip's grid day.
+- 2026-08-01: Guards earn their keep. The duplicate-zip check caught a double assignment; the
+  survivor check and id-resolution guard caught two separate parser bugs in the delete tooling before
+  anything was deleted. Write the guard before the live run, not after.
+
+## General
+- 2026-08-01: When the user says a task "should be simple" and keeps correcting the same class of
+  error, stop solving the instance and build the measurement that implements their rule. Spencer's
+  rule — "overflow goes to the closest tech, only the closest jobs" — was computable from data
+  already in hand. Twenty round-trips of hand-moving zips preceded writing the twenty-line function
+  that did it properly.

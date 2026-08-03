@@ -58,7 +58,7 @@ const afterIso = `${from}T00:00:00-07:00`, beforeIso = `${to}T23:59:59-07:00`;
 const visits = [];
 let cursor = null;
 for (;;) {
-  const q = `query($after: String) { visits(first: 25, after: $after, filter: { startAt: { after: "${afterIso}", before: "${beforeIso}" } }) { nodes { id title startAt isComplete assignedUsers(first: 3) { nodes { id name { full } } } property { address { street city province postalCode } } job { jobNumber startAt } } pageInfo { hasNextPage endCursor } } }`;
+  const q = `query($after: String) { visits(first: 25, after: $after, filter: { startAt: { after: "${afterIso}", before: "${beforeIso}" } }) { nodes { id title startAt endAt isComplete assignedUsers(first: 3) { nodes { id name { full } } } property { address { street city province postalCode } } job { jobNumber startAt } } pageInfo { hasNextPage endCursor } } }`;
   const d = await jgql(q, { after: cursor });
   visits.push(...d.visits.nodes);
   if (!d.visits.pageInfo.hasNextPage) break;

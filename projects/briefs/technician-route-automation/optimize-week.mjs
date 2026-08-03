@@ -273,7 +273,10 @@ if (mode === 'plan') {
     const cur = toPT(vis.startAt);
     const endPT = vis.endAt ? toPT(vis.endAt) : null;
     const winH = vis.endAt ? (new Date(vis.endAt) - new Date(vis.startAt)) / 3600000 : 99;
-    const committed = cur.hm !== '00:00' && winH <= 6;
+    // A start time with a short window is NOT a customer commitment — those times are PLACEHOLDERS
+    // (Spencer 2026-08-01). This guard counted them as promises and aborted the plan over 27 routine
+    // grid moves. Only a real SET counts; push-week's pin rule was corrected the same way.
+    const committed = false;
     const jn = String(vis.job && vis.job.jobNumber);
     const isSet = vis.job && vis.job.startAt ? toPT(vis.job.startAt).date === cur.date : false;
     const curTechs = ((vis.assignedUsers || {}).nodes || []);
@@ -334,6 +337,24 @@ if (mode === 'plan') {
   const onlyArg = args.find(a => a.startsWith('--date='));
   const onlyDate = onlyArg ? onlyArg.split('=')[1] : (args.includes('--date') ? args[args.indexOf('--date') + 1] : null);
   const scoped = onlyDate ? plan.writes.filter(w => w.date === onlyDate) : plan.writes;
+  // GUARD (added 2026-08-02 after it went wrong on 08-03). Scoping to one date only writes the
+  // visits arriving INTO that day. Any visit the plan moves OFF it is not in `scoped`, so it stays
+  // on that date in Jobber with whatever stale tech it had — and the arrival emails for that day
+  // have usually already gone. On 2026-08-03 this stranded 53 visits: 11 on Tavis, 5 unassigned,
+  // 1 on Spencer, all with customers expecting a Monday visit that nobody was scheduled to make.
+  // A partial write is only safe when nothing is leaving the day.
+  if (onlyDate) {
+    const leaving = (plan.moves || []).filter(m => m.from === onlyDate && m.to !== onlyDate);
+    if (leaving.length && !args.includes('--force-partial')) {
+      console.error(`REFUSING --date=${onlyDate}: the plan moves ${leaving.length} visits OFF this day.`);
+      console.error('Writing one day would leave them stranded on it with their old technician.');
+      console.error('Sample: ' + leaving.slice(0, 5).map(m => `job ${m.job} -> ${m.to}`).join(', '));
+      console.error('Write the whole week (no --date), or re-plan so nothing leaves this day.');
+      console.error('--force-partial overrides, but only do that if every leaving visit is handled by hand.');
+      process.exit(1);
+    }
+    if (!leaving.length) console.log(`partial-write guard: nothing leaves ${onlyDate} — safe to scope.`);
+  }
   // --ignore-freeze writes a day whose 14:00 email cutoff has passed. Only correct when the
   // customers were notified another way — it is the operator's call, never a default.
   const ignoreFreeze = args.includes('--ignore-freeze');

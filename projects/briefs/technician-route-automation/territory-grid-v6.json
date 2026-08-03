@@ -1,0 +1,1319 @@
+{
+ "_comment": "GRID v6 (Spencer 2026-08-01, built on v5): (1) Alias Fri = south-of-520/north-of-I-90 band pulled off his Mon+Thu, plus Issaquah 98027 (#5415) and the Sammamish plateau 98074/98075 — Spencer explicitly chose to include Sammamish. (2) Alias old Fri I-90 corridor (North Bend/Fall City/Snoqualmie) -> Cory Fri. (3) Cory old Fri (Maple Valley + Kent/Covington) -> Cammeron Fri, plus jobOverride #6389 Graham. (4) The band emptied Alias Thu, so Cory Thu (46 stops / 11.8h, worst day on the board) splits: Bellevue-S 98006 + Mercer Island 98040 + Renton 98056 -> Alias Thu; Newcastle 98059 stays Cory. (5) Cammeron crammed 5 days -> 4 (Mon Auburn/Black Diamond/Ravensdale, Tue Enumclaw/Orting, Wed Buckley/Wilkeson, Thu Bonney Lake/Puyallup) freeing his Fri for the Cory belt. | TERRITORY GRID v5 (Spencer 2026-08-01) — four-way re-cut for the week of 08-03. Alias Franks = NORTH (Seattle north, Eastside, Snoqualmie Valley). Cory Ventura = everything Cammeron ran last week (South King: West Seattle/Burien/SeaTac -> Kent/Renton/Covington/Maple Valley/Newcastle). Cammeron Anderson + Luke LaVergne SPLIT the south route: Cammeron takes the east half (Auburn/Pacific, Enumclaw plateau, Buckley, Bonney Lake, Sumner/Orting/Edgewood), Luke the west half (I-5 Tacoma, Puyallup, Thurston, peninsula, Federal Way/Milton). Spencer Hill out of field (permanent, 2026-07-29). Tavis Alexander not working. Robert Norton rides along, never his own truck. jobOverrides deliberately EMPTY: every v4 override came from the 2026-07-26 day-review of a three-truck structure that no longer exists, and each one would now pull a stop across the new territory lines. SETs keep their day through push-week's pin rule, not through overrides.",
+ "generated": "2026-08-01",
+ "basedOn": "week-visits-0803-live2.json (live Jobber snapshot 2026-07-31)",
+ "works": {
+  "Alias Franks": [
+   "mon",
+   "tue",
+   "wed",
+   "thu",
+   "fri"
+  ],
+  "Cory Ventura": [
+   "mon",
+   "tue",
+   "wed",
+   "thu",
+   "fri"
+  ],
+  "Cammeron Anderson": [
+   "mon",
+   "tue",
+   "wed",
+   "thu",
+   "fri"
+  ],
+  "Luke LaVergne": [
+   "mon",
+   "tue",
+   "wed",
+   "thu",
+   "fri"
+  ]
+ },
+ "notWorking": [
+  "Spencer Hill",
+  "Tavis Alexander",
+  "Robert Norton"
+ ],
+ "zips": {
+  "98001": {
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "cities": "Auburn/auburn",
+   "visitsPerYear": 184,
+   "visitsNextWeek": 6,
+   "decided": true,
+   "note": "unassigned — Monday folded into Tuesday (Spencer 2026-08-01)"
+  },
+  "98002": {
+   "day": "mon",
+   "tech": "Cammeron Anderson",
+   "cities": "Auburn",
+   "visitsPerYear": 61,
+   "visitsNextWeek": 2,
+   "decided": true,
+   "note": "v6 4-day cram: Auburn anchor | prev: mon/Cammeron Anderson | South route (east half) — Auburn/Pacific"
+  },
+  "98003": {
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "cities": "Federal Way",
+   "visitsPerYear": 92,
+   "visitsNextWeek": 1,
+   "decided": true,
+   "note": "unassigned — Monday folded into Tuesday (Spencer 2026-08-01)"
+  },
+  "98004": {
+   "day": "fri",
+   "tech": "Alias Franks",
+   "cities": "Bellevue/Clyde Hill/Beaux Arts Village/Yarrow Point",
+   "visitsPerYear": 143,
+   "visitsNextWeek": 4,
+   "decided": true,
+   "note": "v6: south-of-520/north-of-I-90 band -> Alias Fri (was mon) | prev: mon/Alias Franks | North route — Bellevue/Kirkland/Redmond/Medina (standing Monday)"
+  },
+  "98005": {
+   "day": "fri",
+   "tech": "Alias Franks",
+   "cities": "Bellevue",
+   "visitsPerYear": 298,
+   "visitsNextWeek": 8,
+   "decided": true,
+   "note": "v6: south-of-520/north-of-I-90 band -> Alias Fri (was mon) | prev: mon/Alias Franks | North route — Bellevue/Kirkland/Redmond/Medina (standing Monday)"
+  },
+  "98006": {
+   "day": "thu",
+   "tech": "Alias Franks",
+   "cities": "Bellevue",
+   "visitsPerYear": 213,
+   "visitsNextWeek": 12,
+   "decided": true,
+   "note": "v6: Bellevue-S -> Alias Thu; refills the day the band emptied and cuts Cory Thu | prev: thu/Cory Ventura | Cammeron's last-week belt — Renton highlands/Newcastle"
+  },
+  "98007": {
+   "day": "mon",
+   "tech": "Alias Franks",
+   "cities": "Bellevue",
+   "visitsPerYear": 55,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "North route — Bellevue/Kirkland/Redmond/Medina (standing Monday)"
+  },
+  "98008": {
+   "day": "fri",
+   "tech": "Alias Franks",
+   "cities": "Bellevue",
+   "visitsPerYear": 73,
+   "visitsNextWeek": 4,
+   "decided": true,
+   "note": "v6: south-of-520/north-of-I-90 band -> Alias Fri (was thu) | prev: thu/Alias Franks | North route — Sammamish/Issaquah + Bellevue-S/Mercer Island (standing Thursday)"
+  },
+  "98010": {
+   "day": "mon",
+   "tech": "Cammeron Anderson",
+   "cities": "Black Diamond",
+   "visitsPerYear": 146,
+   "visitsNextWeek": 4,
+   "decided": true,
+   "note": "v6 4-day cram: Black Diamond onto the Auburn arc (was tue) | prev: tue/Cammeron Anderson | South route (east half) — Enumclaw plateau/Black Diamond/Ravensdale"
+  },
+  "98011": {
+   "day": "wed",
+   "tech": "Alias Franks",
+   "cities": "Bothell",
+   "visitsPerYear": 16,
+   "visitsNextWeek": 1,
+   "decided": true,
+   "note": "North route — Bothell/Kenmore/Woodinville/Duvall/Carnation/Snohomish (standing Wednesday)"
+  },
+  "98012": {
+   "day": "wed",
+   "tech": "Alias Franks",
+   "cities": "Bothell/Mill Creek",
+   "visitsPerYear": 25,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "North route — Bothell/Kenmore/Woodinville/Duvall/Carnation/Snohomish (standing Wednesday)"
+  },
+  "98014": {
+   "day": "wed",
+   "tech": "Alias Franks",
+   "cities": "Carnation",
+   "visitsPerYear": 160,
+   "visitsNextWeek": 3,
+   "decided": true,
+   "note": "North route — Bothell/Kenmore/Woodinville/Duvall/Carnation/Snohomish (standing Wednesday)"
+  },
+  "98019": {
+   "day": "wed",
+   "tech": "Alias Franks",
+   "cities": "Duvall",
+   "visitsPerYear": 98,
+   "visitsNextWeek": 4,
+   "decided": true,
+   "note": "North route — Bothell/Kenmore/Woodinville/Duvall/Carnation/Snohomish (standing Wednesday)"
+  },
+  "98021": {
+   "day": "wed",
+   "tech": "Alias Franks",
+   "cities": "Bothell",
+   "visitsPerYear": 30,
+   "visitsNextWeek": 1,
+   "decided": true,
+   "note": "North route — Bothell/Kenmore/Woodinville/Duvall/Carnation/Snohomish (standing Wednesday)"
+  },
+  "98022": {
+   "day": "tue",
+   "tech": "Cammeron Anderson",
+   "cities": "Enumclaw/enumclaw",
+   "visitsPerYear": 892,
+   "visitsNextWeek": 15,
+   "decided": true,
+   "note": "v6 4-day cram: Enumclaw anchor | prev: tue/Cammeron Anderson | South route (east half) — Enumclaw plateau/Black Diamond/Ravensdale"
+  },
+  "98023": {
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "cities": "Federal Way",
+   "visitsPerYear": 145,
+   "visitsNextWeek": 7,
+   "decided": true,
+   "note": "unassigned — Monday folded into Tuesday (Spencer 2026-08-01)"
+  },
+  "98024": {
+   "day": "fri",
+   "tech": "Cory Ventura",
+   "cities": "Fall City",
+   "visitsPerYear": 178,
+   "visitsNextWeek": 8,
+   "decided": true,
+   "note": "v6: I-90 corridor Alias->Cory Fri | prev: fri/Alias Franks | North route — I-90: Issaquah/Fall City/Snoqualmie/North Bend (standing Friday)"
+  },
+  "98027": {
+   "day": "fri",
+   "tech": "Alias Franks",
+   "cities": "Issaquah",
+   "visitsPerYear": 293,
+   "visitsNextWeek": 7,
+   "decided": true,
+   "note": "v6: Issaquah incl #5415 Rick Conces, held on Alias Fri | prev: fri/Alias Franks | North route — I-90: Issaquah/Fall City/Snoqualmie/North Bend (standing Friday)"
+  },
+  "98028": {
+   "day": "wed",
+   "tech": "Alias Franks",
+   "cities": "Kenmore",
+   "visitsNextWeek": 1,
+   "decided": true,
+   "note": "North route — Bothell/Kenmore/Woodinville/Duvall/Carnation/Snohomish (standing Wednesday)"
+  },
+  "98029": {
+   "day": "fri",
+   "tech": "Alias Franks",
+   "cities": "Issaquah",
+   "visitsPerYear": 98,
+   "visitsNextWeek": 5,
+   "decided": true,
+   "note": "v6: Issaquah -> Alias Fri (was thu) | prev: thu/Alias Franks | North route — Sammamish/Issaquah + Bellevue-S/Mercer Island (standing Thursday)"
+  },
+  "98030": {
+   "day": "wed",
+   "tech": "Cory Ventura",
+   "cities": "Kent",
+   "visitsPerYear": 73,
+   "visitsNextWeek": 4,
+   "decided": true,
+   "note": "Cammeron's last-week belt — Kent + Renton valley"
+  },
+  "98031": {
+   "day": "wed",
+   "tech": "Cory Ventura",
+   "cities": "Kent",
+   "visitsPerYear": 107,
+   "visitsNextWeek": 2,
+   "decided": true,
+   "note": "Cammeron's last-week belt — Kent + Renton valley"
+  },
+  "98032": {
+   "day": "wed",
+   "tech": "Cory Ventura",
+   "cities": "Kent",
+   "visitsPerYear": 90,
+   "visitsNextWeek": 6,
+   "decided": true,
+   "note": "Cammeron's last-week belt — Kent + Renton valley"
+  },
+  "98033": {
+   "day": "mon",
+   "tech": "Alias Franks",
+   "cities": "Kirkland",
+   "visitsPerYear": 79,
+   "visitsNextWeek": 2,
+   "decided": true,
+   "note": "North route — Bellevue/Kirkland/Redmond/Medina (standing Monday)"
+  },
+  "98034": {
+   "day": "mon",
+   "tech": "Alias Franks",
+   "cities": "Kirkland",
+   "visitsPerYear": 78,
+   "visitsNextWeek": 5,
+   "decided": true,
+   "note": "North route — Bellevue/Kirkland/Redmond/Medina (standing Monday)"
+  },
+  "98038": {
+   "day": "fri",
+   "tech": "Cammeron Anderson",
+   "cities": "Maple Valley/Maple valley",
+   "visitsPerYear": 580,
+   "visitsNextWeek": 19,
+   "decided": true,
+   "note": "v6: Cory Fri belt -> Cammeron (Spencer 2026-08-01) | prev: fri/Cory Ventura | Cammeron's last-week belt — Covington/Maple Valley"
+  },
+  "98039": {
+   "day": "mon",
+   "tech": "Alias Franks",
+   "cities": "Medina",
+   "visitsPerYear": 126,
+   "visitsNextWeek": 3,
+   "decided": true,
+   "note": "North route — Bellevue/Kirkland/Redmond/Medina (standing Monday)"
+  },
+  "98040": {
+   "day": "thu",
+   "tech": "Alias Franks",
+   "cities": "Mercer Island",
+   "visitsPerYear": 125,
+   "visitsNextWeek": 1,
+   "decided": true,
+   "note": "v6: Mercer Island -> Alias Thu | prev: thu/Cory Ventura | Cammeron's last-week belt — Renton highlands/Newcastle"
+  },
+  "98042": {
+   "day": "fri",
+   "tech": "Cammeron Anderson",
+   "cities": "Kent/Covington",
+   "visitsPerYear": 420,
+   "visitsNextWeek": 15,
+   "decided": true,
+   "note": "v6: Cory Fri belt -> Cammeron (Spencer 2026-08-01) | prev: fri/Cory Ventura | Cammeron's last-week belt — Covington/Maple Valley"
+  },
+  "98045": {
+   "day": "fri",
+   "tech": "Cory Ventura",
+   "cities": "North Bend/North bend/north bend",
+   "visitsPerYear": 375,
+   "visitsNextWeek": 9,
+   "decided": true,
+   "note": "v6: I-90 corridor Alias->Cory Fri | prev: fri/Alias Franks | North route — I-90: Issaquah/Fall City/Snoqualmie/North Bend (standing Friday)"
+  },
+  "98047": {
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "cities": "Pacific",
+   "visitsPerYear": 32,
+   "visitsNextWeek": 1,
+   "decided": true,
+   "note": "unassigned — Monday folded into Tuesday (Spencer 2026-08-01)"
+  },
+  "98051": {
+   "day": "mon",
+   "tech": "Cammeron Anderson",
+   "cities": "Ravensdale",
+   "visitsPerYear": 127,
+   "visitsNextWeek": 5,
+   "decided": true,
+   "note": "v6 4-day cram: Ravensdale onto the Auburn arc (was tue) | prev: tue/Cammeron Anderson | South route (east half) — Enumclaw plateau/Black Diamond/Ravensdale"
+  },
+  "98052": {
+   "day": "mon",
+   "tech": "Alias Franks",
+   "cities": "Redmond",
+   "visitsPerYear": 138,
+   "visitsNextWeek": 4,
+   "decided": true,
+   "note": "North route — Bellevue/Kirkland/Redmond/Medina (standing Monday)"
+  },
+  "98053": {
+   "day": "wed",
+   "tech": "Alias Franks",
+   "cities": "Redmond",
+   "visitsPerYear": 289,
+   "visitsNextWeek": 11,
+   "decided": true,
+   "note": "North route — Bothell/Kenmore/Woodinville/Duvall/Carnation/Snohomish (standing Wednesday)"
+  },
+  "98055": {
+   "day": "wed",
+   "tech": "Cory Ventura",
+   "cities": "Renton",
+   "visitsPerYear": 48,
+   "visitsNextWeek": 2,
+   "decided": true,
+   "note": "Cammeron's last-week belt — Kent + Renton valley"
+  },
+  "98056": {
+   "day": "thu",
+   "tech": "Alias Franks",
+   "cities": "Renton/Newcastle",
+   "visitsPerYear": 141,
+   "visitsNextWeek": 11,
+   "decided": true,
+   "note": "v6: Renton highlands -> Alias Thu | prev: thu/Cory Ventura | Cammeron's last-week belt — Renton highlands/Newcastle"
+  },
+  "98057": {
+   "day": "wed",
+   "tech": "Cory Ventura",
+   "cities": "Renton",
+   "visitsPerYear": 42,
+   "visitsNextWeek": 1,
+   "decided": true,
+   "note": "Cammeron's last-week belt — Kent + Renton valley"
+  },
+  "98058": {
+   "day": "wed",
+   "tech": "Cory Ventura",
+   "cities": "Renton",
+   "visitsPerYear": 323,
+   "visitsNextWeek": 8,
+   "decided": true,
+   "note": "Cammeron's last-week belt — Kent + Renton valley"
+  },
+  "98059": {
+   "day": "thu",
+   "tech": "Cory Ventura",
+   "cities": "Renton/Newcastle",
+   "visitsPerYear": 602,
+   "visitsNextWeek": 16,
+   "decided": true,
+   "note": "Cammeron's last-week belt — Renton highlands/Newcastle"
+  },
+  "98065": {
+   "day": "fri",
+   "tech": "Cory Ventura",
+   "cities": "Snoqualmie",
+   "visitsPerYear": 135,
+   "visitsNextWeek": 3,
+   "decided": true,
+   "note": "v6: I-90 corridor Alias->Cory Fri | prev: fri/Alias Franks | North route — I-90: Issaquah/Fall City/Snoqualmie/North Bend (standing Friday)"
+  },
+  "98072": {
+   "day": "wed",
+   "tech": "Alias Franks",
+   "cities": "Woodinville",
+   "visitsPerYear": 130,
+   "visitsNextWeek": 2,
+   "decided": true,
+   "note": "North route — Bothell/Kenmore/Woodinville/Duvall/Carnation/Snohomish (standing Wednesday)"
+  },
+  "98074": {
+   "day": "fri",
+   "tech": "Alias Franks",
+   "cities": "Sammamish",
+   "visitsPerYear": 244,
+   "visitsNextWeek": 10,
+   "decided": true,
+   "note": "v6: Sammamish plateau -> Alias Fri (Spencer included Sammamish in the band) | prev: thu/Alias Franks | North route — Sammamish/Issaquah + Bellevue-S/Mercer Island (standing Thursday)"
+  },
+  "98075": {
+   "day": "fri",
+   "tech": "Alias Franks",
+   "cities": "Sammamish/Issaquah",
+   "visitsPerYear": 350,
+   "visitsNextWeek": 8,
+   "decided": true,
+   "note": "v6: Sammamish plateau -> Alias Fri (Spencer included Sammamish in the band) | prev: thu/Alias Franks | North route — Sammamish/Issaquah + Bellevue-S/Mercer Island (standing Thursday)"
+  },
+  "98077": {
+   "day": "wed",
+   "tech": "Alias Franks",
+   "cities": "Woodinville",
+   "visitsPerYear": 141,
+   "visitsNextWeek": 9,
+   "decided": true,
+   "note": "North route — Bothell/Kenmore/Woodinville/Duvall/Carnation/Snohomish (standing Wednesday)"
+  },
+  "98092": {
+   "day": "mon",
+   "tech": "Cammeron Anderson",
+   "cities": "Auburn/Issaquah",
+   "visitsPerYear": 496,
+   "visitsNextWeek": 15,
+   "decided": true,
+   "note": "v6 4-day cram: Auburn anchor | prev: mon/Cammeron Anderson | South route (east half) — Auburn/Pacific"
+  },
+  "98102": {
+   "day": "tue",
+   "tech": "Alias Franks",
+   "cities": "Seattle",
+   "visitsPerYear": 10,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "North route — Seattle north of the Ship Canal + Shoreline (standing Tuesday)"
+  },
+  "98105": {
+   "day": "tue",
+   "tech": "Alias Franks",
+   "cities": "Seattle",
+   "visitsPerYear": 45,
+   "visitsNextWeek": 1,
+   "decided": true,
+   "note": "North route — Seattle north of the Ship Canal + Shoreline (standing Tuesday)"
+  },
+  "98106": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle",
+   "visitsPerYear": 62,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "Cammeron's last-week belt — West Seattle/Burien/Normandy Park/SeaTac/Tukwila (Mon+Tue combined)"
+  },
+  "98108": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle",
+   "visitsPerYear": 80,
+   "visitsNextWeek": 2,
+   "decided": true,
+   "note": "Cammeron's last-week belt — West Seattle/Burien/Normandy Park/SeaTac/Tukwila (Mon+Tue combined)"
+  },
+  "98109": {
+   "day": "tue",
+   "tech": "Alias Franks",
+   "cities": "Seattle",
+   "visitsPerYear": 18,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "North route — Seattle north of the Ship Canal + Shoreline (standing Tuesday)"
+  },
+  "98112": {
+   "day": "tue",
+   "tech": "Alias Franks",
+   "cities": "Seattle",
+   "visitsPerYear": 49,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "North route — Seattle north of the Ship Canal + Shoreline (standing Tuesday)"
+  },
+  "98115": {
+   "day": "tue",
+   "tech": "Alias Franks",
+   "cities": "Seattle",
+   "visitsPerYear": 41,
+   "visitsNextWeek": 2,
+   "decided": true,
+   "note": "North route — Seattle north of the Ship Canal + Shoreline (standing Tuesday)"
+  },
+  "98116": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle",
+   "visitsPerYear": 74,
+   "visitsNextWeek": 5,
+   "decided": true,
+   "note": "Cammeron's last-week belt — West Seattle/Burien/Normandy Park/SeaTac/Tukwila (Mon+Tue combined)"
+  },
+  "98117": {
+   "day": "tue",
+   "tech": "Alias Franks",
+   "cities": "Seattle",
+   "visitsPerYear": 45,
+   "visitsNextWeek": 5,
+   "decided": true,
+   "note": "North route — Seattle north of the Ship Canal + Shoreline (standing Tuesday)"
+  },
+  "98118": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle",
+   "visitsPerYear": 10,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "Cammeron's last-week belt — West Seattle/Burien/Normandy Park/SeaTac/Tukwila (Mon+Tue combined)"
+  },
+  "98119": {
+   "day": "tue",
+   "tech": "Alias Franks",
+   "cities": "Seattle",
+   "visitsPerYear": 4,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "North route — Seattle north of the Ship Canal + Shoreline (standing Tuesday)"
+  },
+  "98125": {
+   "day": "tue",
+   "tech": "Alias Franks",
+   "cities": "Seattle",
+   "visitsPerYear": 15,
+   "visitsNextWeek": 2,
+   "decided": true,
+   "note": "North route — Seattle north of the Ship Canal + Shoreline (standing Tuesday)"
+  },
+  "98126": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle",
+   "visitsPerYear": 36,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "Cammeron's last-week belt — West Seattle/Burien/Normandy Park/SeaTac/Tukwila (Mon+Tue combined)"
+  },
+  "98133": {
+   "day": "tue",
+   "tech": "Alias Franks",
+   "cities": "Seattle/Shoreline",
+   "visitsPerYear": 47,
+   "visitsNextWeek": 2,
+   "decided": true,
+   "note": "North route — Seattle north of the Ship Canal + Shoreline (standing Tuesday)"
+  },
+  "98136": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle",
+   "visitsPerYear": 86,
+   "visitsNextWeek": 6,
+   "decided": true,
+   "note": "Cammeron's last-week belt — West Seattle/Burien/Normandy Park/SeaTac/Tukwila (Mon+Tue combined)"
+  },
+  "98144": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle",
+   "visitsPerYear": 31,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "Cammeron's last-week belt — West Seattle/Burien/Normandy Park/SeaTac/Tukwila (Mon+Tue combined)"
+  },
+  "98146": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle/Burien",
+   "visitsPerYear": 147,
+   "visitsNextWeek": 11,
+   "decided": true,
+   "note": "Cammeron's last-week belt — West Seattle/Burien/Normandy Park/SeaTac/Tukwila (Mon+Tue combined)"
+  },
+  "98148": {
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "cities": "Burien",
+   "visitsPerYear": 48,
+   "visitsNextWeek": 1,
+   "decided": true,
+   "note": "unassigned — Monday folded into Tuesday (Spencer 2026-08-01)"
+  },
+  "98155": {
+   "day": "tue",
+   "tech": "Alias Franks",
+   "cities": "Shoreline/Lake Forest Park",
+   "visitsPerYear": 12,
+   "visitsNextWeek": 2,
+   "decided": true,
+   "note": "North route — Seattle north of the Ship Canal + Shoreline (standing Tuesday)"
+  },
+  "98166": {
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "cities": "Normandy Park/Burien",
+   "visitsPerYear": 186,
+   "visitsNextWeek": 12,
+   "decided": true,
+   "note": "unassigned — Monday folded into Tuesday (Spencer 2026-08-01)"
+  },
+  "98168": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "SeaTac/Tukwila/Seattle/Burien",
+   "visitsPerYear": 148,
+   "visitsNextWeek": 6,
+   "decided": true,
+   "note": "Cammeron's last-week belt — West Seattle/Burien/Normandy Park/SeaTac/Tukwila (Mon+Tue combined)"
+  },
+  "98177": {
+   "day": "tue",
+   "tech": "Alias Franks",
+   "cities": "Seattle/Shoreline",
+   "visitsPerYear": 70,
+   "visitsNextWeek": 5,
+   "decided": true,
+   "note": "North route — Seattle north of the Ship Canal + Shoreline (standing Tuesday)"
+  },
+  "98178": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "Seattle",
+   "visitsPerYear": 79,
+   "visitsNextWeek": 5,
+   "decided": true,
+   "note": "Cammeron's last-week belt — West Seattle/Burien/Normandy Park/SeaTac/Tukwila (Mon+Tue combined)"
+  },
+  "98188": {
+   "day": "tue",
+   "tech": "Cory Ventura",
+   "cities": "SeaTac/Tukwila",
+   "visitsPerYear": 40,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "Cammeron's last-week belt — West Seattle/Burien/Normandy Park/SeaTac/Tukwila (Mon+Tue combined)"
+  },
+  "98198": {
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "cities": "Normandy Park/SeaTac/Des Moines",
+   "visitsPerYear": 84,
+   "visitsNextWeek": 3,
+   "decided": true,
+   "note": "unassigned — Monday folded into Tuesday (Spencer 2026-08-01)"
+  },
+  "98199": {
+   "day": "tue",
+   "tech": "Alias Franks",
+   "cities": "Seattle",
+   "visitsPerYear": 45,
+   "visitsNextWeek": 2,
+   "decided": true,
+   "note": "North route — Seattle north of the Ship Canal + Shoreline (standing Tuesday)"
+  },
+  "98272": {
+   "day": "wed",
+   "tech": "Alias Franks",
+   "cities": "Monroe",
+   "visitsPerYear": 4,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "North route — Bothell/Kenmore/Woodinville/Duvall/Carnation/Snohomish (standing Wednesday)"
+  },
+  "98296": {
+   "day": "wed",
+   "tech": "Alias Franks",
+   "cities": "Snohomish",
+   "visitsPerYear": 22,
+   "visitsNextWeek": 2,
+   "decided": true,
+   "note": "North route — Bothell/Kenmore/Woodinville/Duvall/Carnation/Snohomish (standing Wednesday)"
+  },
+  "98310": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Bremerton",
+   "visitsPerYear": 9,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "South route (west half) — peninsula + University Place/Steilacoom/Lakewood"
+  },
+  "98312": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Bremerton",
+   "visitsPerYear": 6,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "South route (west half) — peninsula + University Place/Steilacoom/Lakewood"
+  },
+  "98321": {
+   "day": "wed",
+   "tech": "Cammeron Anderson",
+   "cities": "Buckley",
+   "visitsPerYear": 759,
+   "visitsNextWeek": 23,
+   "decided": true,
+   "note": "v6 4-day cram: Buckley anchor | prev: wed/Cammeron Anderson | South route (east half) — Buckley/South Prairie/Wilkeson"
+  },
+  "98327": {
+   "day": "mon",
+   "tech": "Luke LaVergne",
+   "cities": "DuPont",
+   "visitsPerYear": 12,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "South route (west half) — Thurston: Olympia/Tumwater"
+  },
+  "98328": {
+   "day": "fri",
+   "tech": "Luke LaVergne",
+   "cities": "Eatonville",
+   "visitsPerYear": 112,
+   "visitsNextWeek": 1,
+   "decided": true,
+   "note": "South route (west half) — Graham/Eatonville/Yelm/Roy/Lacey"
+  },
+  "98329": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Gig Harbor",
+   "visitsPerYear": 15,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "South route (west half) — peninsula + University Place/Steilacoom/Lakewood"
+  },
+  "98332": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Gig Harbor",
+   "visitsPerYear": 17,
+   "visitsNextWeek": 4,
+   "decided": true,
+   "note": "South route (west half) — peninsula + University Place/Steilacoom/Lakewood"
+  },
+  "98333": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Fox Island",
+   "visitsPerYear": 16,
+   "visitsNextWeek": 1,
+   "decided": true,
+   "note": "South route (west half) — peninsula + University Place/Steilacoom/Lakewood"
+  },
+  "98335": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Gig Harbor",
+   "visitsPerYear": 5,
+   "visitsNextWeek": 1,
+   "decided": true,
+   "note": "South route (west half) — peninsula + University Place/Steilacoom/Lakewood"
+  },
+  "98338": {
+   "day": "fri",
+   "tech": "Luke LaVergne",
+   "cities": "Graham/graham",
+   "visitsPerYear": 477,
+   "visitsNextWeek": 13,
+   "decided": true,
+   "note": "South route (west half) — Graham/Eatonville/Yelm/Roy/Lacey"
+  },
+  "98351": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Longbranch",
+   "visitsPerYear": 19,
+   "visitsNextWeek": 1,
+   "decided": true,
+   "note": "South route (west half) — peninsula + University Place/Steilacoom/Lakewood"
+  },
+  "98354": {
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "cities": "Milton",
+   "visitsPerYear": 25,
+   "visitsNextWeek": 1,
+   "decided": true,
+   "note": "unassigned — Monday folded into Tuesday (Spencer 2026-08-01)"
+  },
+  "98359": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Olalla",
+   "visitsPerYear": 22,
+   "visitsNextWeek": 1,
+   "decided": true,
+   "note": "South route (west half) — peninsula + University Place/Steilacoom/Lakewood"
+  },
+  "98360": {
+   "day": "tue",
+   "tech": "Cammeron Anderson",
+   "cities": "Orting/Pierce County",
+   "visitsPerYear": 254,
+   "visitsNextWeek": 6,
+   "decided": true,
+   "note": "v6 4-day cram: Orting onto the Enumclaw/410 corridor (was fri) | prev: fri/Cammeron Anderson | South route (east half) — Sumner/Orting/Edgewood"
+  },
+  "98363": {
+   "day": "tue",
+   "tech": "Luke LaVergne",
+   "cities": "Puyallup",
+   "visitsPerYear": 18,
+   "visitsNextWeek": 1,
+   "decided": true,
+   "note": "South route (west half) — I-5: Tacoma/Fife/Milton/Federal Way"
+  },
+  "98367": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Port Orchard",
+   "visitsPerYear": 5,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "South route (west half) — peninsula + University Place/Steilacoom/Lakewood"
+  },
+  "98371": {
+   "day": "tue",
+   "tech": "Luke LaVergne",
+   "cities": "Edgewood/Puyallup",
+   "visitsPerYear": 119,
+   "visitsNextWeek": 4,
+   "decided": true,
+   "note": "South route (west half) — I-5: Tacoma/Fife/Milton/Federal Way"
+  },
+  "98372": {
+   "day": "thu",
+   "tech": "Cammeron Anderson",
+   "cities": "Edgewood/Puyallup",
+   "visitsPerYear": 315,
+   "visitsNextWeek": 11,
+   "decided": true,
+   "note": "v6 4-day cram: Puyallup onto Bonney Lake (was fri) | prev: fri/Cammeron Anderson | South route (east half) — Sumner/Orting/Edgewood"
+  },
+  "98373": {
+   "day": "tue",
+   "tech": "Luke LaVergne",
+   "cities": "Puyallup/South Hill",
+   "visitsPerYear": 103,
+   "visitsNextWeek": 3,
+   "decided": true,
+   "note": "South route (west half) — I-5: Tacoma/Fife/Milton/Federal Way"
+  },
+  "98374": {
+   "day": "tue",
+   "tech": "Luke LaVergne",
+   "cities": "Puyallup/South Hill",
+   "visitsPerYear": 241,
+   "visitsNextWeek": 6,
+   "decided": true,
+   "note": "South route (west half) — I-5: Tacoma/Fife/Milton/Federal Way"
+  },
+  "98375": {
+   "day": "fri",
+   "tech": "Luke LaVergne",
+   "cities": "Puyallup",
+   "visitsPerYear": 111,
+   "visitsNextWeek": 2,
+   "decided": true,
+   "note": "South route (west half) — Graham/Eatonville/Yelm/Roy/Lacey"
+  },
+  "98385": {
+   "day": "wed",
+   "tech": "Cammeron Anderson",
+   "cities": "South Prairie",
+   "visitsPerYear": 22,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "v6 4-day cram: Wilkeson with Buckley | prev: wed/Cammeron Anderson | South route (east half) — Buckley/South Prairie/Wilkeson"
+  },
+  "98387": {
+   "day": "fri",
+   "tech": "Luke LaVergne",
+   "cities": "Spanaway",
+   "visitsPerYear": 102,
+   "visitsNextWeek": 4,
+   "decided": true,
+   "note": "South route (west half) — Graham/Eatonville/Yelm/Roy/Lacey"
+  },
+  "98388": {
+   "day": "mon",
+   "tech": "Luke LaVergne",
+   "cities": "Steilacoom",
+   "visitsPerYear": 48,
+   "visitsNextWeek": 2,
+   "decided": true,
+   "note": "South route (west half) — Thurston: Olympia/Tumwater"
+  },
+  "98390": {
+   "day": "thu",
+   "tech": "Cammeron Anderson",
+   "cities": "Sumner",
+   "visitsPerYear": 121,
+   "visitsNextWeek": 4,
+   "decided": true,
+   "note": "v6 4-day cram: Puyallup onto Bonney Lake (was fri) | prev: fri/Cammeron Anderson | South route (east half) — Sumner/Orting/Edgewood"
+  },
+  "98391": {
+   "day": "thu",
+   "tech": "Cammeron Anderson",
+   "cities": "Bonney Lake/Sumner/Pierce County/Lake Tapps/BonneyLake/Tehaleh/bonney/Bonney lake",
+   "visitsPerYear": 603,
+   "visitsNextWeek": 22,
+   "decided": true,
+   "note": "v6 4-day cram: Bonney Lake anchor | prev: thu/Cammeron Anderson | South route (east half) — Bonney Lake/Lake Tapps"
+  },
+  "98394": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Vaughn",
+   "visitsPerYear": 14,
+   "visitsNextWeek": 1,
+   "decided": true,
+   "note": "South route (west half) — peninsula + University Place/Steilacoom/Lakewood"
+  },
+  "98396": {
+   "day": "wed",
+   "tech": "Cammeron Anderson",
+   "cities": "Wilkeson",
+   "visitsPerYear": 20,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "v6 4-day cram: Wilkeson with Buckley | prev: wed/Cammeron Anderson | South route (east half) — Buckley/South Prairie/Wilkeson"
+  },
+  "98403": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma",
+   "visitsPerYear": 9,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "South route (west half) — peninsula + University Place/Steilacoom/Lakewood"
+  },
+  "98404": {
+   "day": "tue",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma",
+   "visitsPerYear": 13,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "South route (west half) — I-5: Tacoma/Fife/Milton/Federal Way"
+  },
+  "98405": {
+   "day": "tue",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma",
+   "visitsPerYear": 20,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "South route (west half) — I-5: Tacoma/Fife/Milton/Federal Way"
+  },
+  "98406": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma",
+   "visitsPerYear": 26,
+   "visitsNextWeek": 1,
+   "decided": true,
+   "note": "South route (west half) — peninsula + University Place/Steilacoom/Lakewood"
+  },
+  "98407": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma",
+   "visitsPerYear": 42,
+   "visitsNextWeek": 2,
+   "decided": true,
+   "note": "South route (west half) — peninsula + University Place/Steilacoom/Lakewood"
+  },
+  "98422": {
+   "day": "mon",
+   "tech": "Cory Ventura",
+   "cities": "Tacoma",
+   "visitsPerYear": 60,
+   "visitsNextWeek": 1,
+   "decided": true,
+   "note": "unassigned — Monday folded into Tuesday (Spencer 2026-08-01)"
+  },
+  "98424": {
+   "day": "tue",
+   "tech": "Luke LaVergne",
+   "cities": "Fife",
+   "visitsPerYear": 13,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "South route (west half) — I-5: Tacoma/Fife/Milton/Federal Way"
+  },
+  "98443": {
+   "day": "tue",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma",
+   "visitsPerYear": 48,
+   "visitsNextWeek": 2,
+   "decided": true,
+   "note": "South route (west half) — I-5: Tacoma/Fife/Milton/Federal Way"
+  },
+  "98445": {
+   "day": "tue",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma",
+   "visitsPerYear": 76,
+   "visitsNextWeek": 1,
+   "decided": true,
+   "note": "South route (west half) — I-5: Tacoma/Fife/Milton/Federal Way"
+  },
+  "98446": {
+   "day": "tue",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma",
+   "visitsPerYear": 42,
+   "visitsNextWeek": 2,
+   "decided": true,
+   "note": "South route (west half) — I-5: Tacoma/Fife/Milton/Federal Way"
+  },
+  "98465": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma",
+   "visitsPerYear": 30,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "South route (west half) — peninsula + University Place/Steilacoom/Lakewood"
+  },
+  "98466": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "Fircrest/University Place",
+   "visitsPerYear": 62,
+   "visitsNextWeek": 2,
+   "decided": true,
+   "note": "South route (west half) — peninsula + University Place/Steilacoom/Lakewood"
+  },
+  "98467": {
+   "day": "wed",
+   "tech": "Luke LaVergne",
+   "cities": "University Place/Tacoma",
+   "visitsPerYear": 28,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "South route (west half) — peninsula + University Place/Steilacoom/Lakewood"
+  },
+  "98498": {
+   "day": "mon",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma/Lakewood",
+   "visitsPerYear": 86,
+   "visitsNextWeek": 2,
+   "decided": true,
+   "note": "South route (west half) — Thurston: Olympia/Tumwater"
+  },
+  "98499": {
+   "day": "mon",
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma/Lakewood",
+   "visitsPerYear": 43,
+   "visitsNextWeek": 3,
+   "decided": true,
+   "note": "South route (west half) — Thurston: Olympia/Tumwater"
+  },
+  "98501": {
+   "day": "thu",
+   "tech": "Luke LaVergne",
+   "cities": "Olympia/Tumwater",
+   "visitsPerYear": 139,
+   "visitsNextWeek": 6,
+   "decided": true,
+   "note": "South route (west half) — Puyallup/South Hill/Spanaway"
+  },
+  "98502": {
+   "day": "mon",
+   "tech": "Luke LaVergne",
+   "cities": "Olympia",
+   "visitsPerYear": 105,
+   "visitsNextWeek": 6,
+   "decided": true,
+   "note": "South route (west half) — Thurston: Olympia/Tumwater"
+  },
+  "98503": {
+   "day": "thu",
+   "tech": "Luke LaVergne",
+   "cities": "Olympia/Lacey",
+   "visitsPerYear": 46,
+   "visitsNextWeek": 3,
+   "decided": true,
+   "note": "South route (west half) — Puyallup/South Hill/Spanaway"
+  },
+  "98506": {
+   "day": "mon",
+   "tech": "Luke LaVergne",
+   "cities": "Olympia",
+   "visitsPerYear": 63,
+   "visitsNextWeek": 4,
+   "decided": true,
+   "note": "South route (west half) — Thurston: Olympia/Tumwater"
+  },
+  "98512": {
+   "day": "thu",
+   "tech": "Luke LaVergne",
+   "cities": "Olympia/Tumwater",
+   "visitsPerYear": 107,
+   "visitsNextWeek": 4,
+   "decided": true,
+   "note": "South route (west half) — Puyallup/South Hill/Spanaway"
+  },
+  "98513": {
+   "day": "thu",
+   "tech": "Luke LaVergne",
+   "cities": "Olympia/Lacey",
+   "visitsPerYear": 184,
+   "visitsNextWeek": 6,
+   "decided": true,
+   "note": "South route (west half) — Puyallup/South Hill/Spanaway"
+  },
+  "98516": {
+   "day": "mon",
+   "tech": "Luke LaVergne",
+   "cities": "Olympia/Lacey",
+   "visitsPerYear": 94,
+   "visitsNextWeek": 4,
+   "decided": true,
+   "note": "South route (west half) — Thurston: Olympia/Tumwater"
+  },
+  "98580": {
+   "day": "fri",
+   "tech": "Luke LaVergne",
+   "cities": "Roy",
+   "visitsPerYear": 59,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "South route (west half) — Graham/Eatonville/Yelm/Roy/Lacey"
+  },
+  "98589": {
+   "day": "thu",
+   "tech": "Luke LaVergne",
+   "cities": "Tenino",
+   "visitsPerYear": 10,
+   "visitsNextWeek": 0,
+   "decided": true,
+   "note": "South route (west half) — Puyallup/South Hill/Spanaway"
+  },
+  "98597": {
+   "day": "fri",
+   "tech": "Luke LaVergne",
+   "cities": "Yelm",
+   "visitsPerYear": 111,
+   "visitsNextWeek": 2,
+   "decided": true,
+   "note": "South route (west half) — Graham/Eatonville/Yelm/Roy/Lacey"
+  }
+ },
+ "jobOverrides": {
+  "5369": {
+   "client": "Chris Doll",
+   "zip": "98372",
+   "city": "Edgewood",
+   "gridSays": "fri/Cammeron Anderson",
+   "tech": "Cory Ventura",
+   "day": "mon",
+   "decided": true,
+   "note": "Edgewood-addressed 98372 job -> Cory Monday (Spencer 2026-08-01)."
+  },
+  "5438": {
+   "client": "Jan Stanfield",
+   "zip": "98372",
+   "city": "Edgewood",
+   "gridSays": "fri/Cammeron Anderson",
+   "tech": "Cory Ventura",
+   "day": "mon",
+   "decided": true,
+   "note": "Edgewood-addressed 98372 job -> Cory Monday (Spencer 2026-08-01)."
+  },
+  "6389": {
+   "client": "Clint Bjornson",
+   "zip": "98338",
+   "city": "Graham",
+   "gridSays": "fri/Luke LaVergne",
+   "tech": "Cammeron Anderson",
+   "day": "fri",
+   "decided": true,
+   "note": "Spencer 2026-08-01: #6389 becomes a Cammeron job. Graham 98338 stays Luke/fri for every other job. Sits with the Maple Valley/Covington Friday belt Cammeron picks up in the v6 recut."
+  },
+  "7116": {
+   "client": "Sherry Lotze",
+   "zip": "98052",
+   "city": "Redmond",
+   "gridSays": "mon/Alias Franks",
+   "tech": "Alias Franks",
+   "day": "wed",
+   "decided": true,
+   "note": "Monday stop 16 of 37 — moved with the 98053 block (Spencer 2026-08-01)."
+  },
+  "7624": {
+   "client": "Greg Thoreson",
+   "zip": "98011",
+   "city": "Bothell",
+   "gridSays": "wed/Alias Franks",
+   "tech": "Alias Franks",
+   "day": "mon",
+   "decided": true,
+   "note": "Moved to Alias Monday (Spencer 2026-08-01). Was still assigned to Tavis Alexander."
+  },
+  "7774": {
+   "client": "Kyle Hardtke",
+   "zip": "98372",
+   "city": "Edgewood",
+   "gridSays": "fri/Cammeron Anderson",
+   "tech": "Cory Ventura",
+   "day": "mon",
+   "decided": true,
+   "note": "Edgewood-addressed 98372 job -> Cory Monday (Spencer 2026-08-01)."
+  },
+  "7951": {
+   "client": "Peter Kupu",
+   "zip": "98371",
+   "city": "Edgewood",
+   "gridSays": "tue/Luke LaVergne",
+   "tech": "Cory Ventura",
+   "day": "mon",
+   "decided": true,
+   "note": "The one Edgewood-addressed job in 98371 (Spencer 2026-08-01). The Puyallup-addressed jobs in the same zip are south of SR-167 and stay with Luke."
+  },
+  "8102": {
+   "client": "Heidi Wilson",
+   "zip": "98006",
+   "city": "Bellevue",
+   "gridSays": "thu/Cory Ventura",
+   "tech": "Cory Ventura",
+   "day": "thu",
+   "decided": true,
+   "wasCommitted": "2026-08-03 18:00-20:00 PT",
+   "note": "Alias Monday stop 1 -> Thursday (Spencer 2026-08-01). The override exists only to beat the committed-window pin; the tech follows the Thursday I-90 rule (98006 = Cory)."
+  },
+  "8134": {
+   "client": "Riena Terada (5th Visit)",
+   "zip": "98032",
+   "city": "Kent",
+   "gridSays": "wed/Cory Ventura",
+   "tech": "Cory Ventura",
+   "day": "mon",
+   "decided": true,
+   "note": "To Cory Monday (Spencer 2026-08-01). Was Cammeron Thursday."
+  },
+  "8139": {
+   "client": "David Jones",
+   "zip": "98028",
+   "city": "Kenmore",
+   "gridSays": "wed/Alias Franks",
+   "tech": "Alias Franks",
+   "day": "mon",
+   "decided": true,
+   "note": "Moved to Alias Monday (Spencer 2026-08-01). Was unrouted on Monday under Cory."
+  },
+  "8155": {
+   "client": "Bac Walker",
+   "zip": "98032",
+   "city": "Kent",
+   "gridSays": "wed/Cory Ventura",
+   "tech": "Cory Ventura",
+   "day": "mon",
+   "decided": true,
+   "note": "To Cory Monday (Spencer 2026-08-01). Duplicate second visit deleted — one visit only."
+  },
+  "8211": {
+   "client": "Vicki Yoshioka",
+   "zip": "98372",
+   "city": "Edgewood",
+   "gridSays": "fri/Cammeron Anderson",
+   "tech": "Cory Ventura",
+   "day": "mon",
+   "decided": true,
+   "note": "Edgewood-addressed 98372 job -> Cory Monday (Spencer 2026-08-01)."
+  },
+  "8218": {
+   "client": "Tim Wickland",
+   "zip": "98372",
+   "city": "Edgewood",
+   "gridSays": "fri/Cammeron Anderson",
+   "tech": "Cory Ventura",
+   "day": "mon",
+   "decided": true,
+   "note": "Edgewood-addressed 98372 job -> Cory Monday (Spencer 2026-08-01)."
+  },
+  "8255": {
+   "client": "Vishal Jain",
+   "zip": "98021",
+   "city": "Bothell",
+   "gridSays": "wed/Alias Franks",
+   "tech": "Alias Franks",
+   "day": "mon",
+   "decided": true,
+   "note": "Moved to Alias Monday (Spencer 2026-08-01). Was unrouted on Monday."
+  }
+ },
+ "_version": "v6 (2026-08-01)"
+}
