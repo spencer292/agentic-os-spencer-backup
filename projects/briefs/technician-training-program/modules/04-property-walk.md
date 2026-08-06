@@ -222,6 +222,67 @@ This is a real change from how the Field Guide reads today, and it is the standa
 
 ---
 
+## 8. What the walk produces — the activity call
+
+The walk gives you four things: committed trap locations, pre-dug holes, an exact equipment
+count, and **the activity call.** The first three affect your next twenty minutes. The fourth
+decides when this customer gets seen again, so get it right.
+
+### It is a yes/no question
+
+You will write a code in the note — `N/A`, `L/A`, `M/A`, `H/A` — but understand what actually
+drives the schedule: **activity or no activity.** On a Total Mole Control Program job, light,
+moderate, and heavy all produce the same answer — come back in about a week. Only `N/A` with
+nothing caught sends the customer to monthly.
+
+So the call you are making on the walk is binary. **Is there activity on this property right
+now, yes or no?**
+
+### Activity is YES if any one of these is true
+
+1. **Fresh sign.** Mounds that are loose and damp and match the color of the soil underneath.
+   Ridges with soft, springy turf. Anything that has happened since you were last here.
+2. **You caught a mole.** Any catch, any number.
+3. **You have a miss on a trap.** *(Repeat visits.)*
+
+### Old mounds are not activity
+
+A yard can be covered in mounds and still be `N/A`. Dried, crusted mounds with grass growing
+through them are where moles **were.** They are history, not activity. Do not let a lot of old
+sign talk you into a code the property hasn't earned — and do not let a tidy-looking lawn talk
+you out of one when there are two fresh mounds by the fence.
+
+### A miss counts, even with nothing else
+
+This is the one techs get wrong.
+
+**A miss on a trap is activity, on its own.** No new hills, no fresh ridges, nothing visible
+anywhere on the property — but a trap that got hit and didn't hold means a mole was in that
+run, working it, and got away. That mole is still there. That property is not quiet.
+
+**A miss triggers another visit.** Treat it exactly like fresh sign.
+
+If your entire read of a property is "nothing new, but I had a miss on the fence line," the
+answer is still activity, and that customer gets seen again on the short interval.
+
+### What that turns into
+
+| What you found | Activity call | Result (TMCP) |
+|---|---|---|
+| Fresh mounds or ridges | YES | ~7 days |
+| A catch — any number | YES | ~7 days (catch rule) |
+| A miss on a trap, nothing else | **YES** | ~7 days |
+| Only old, crusted, grown-through sign | `N/A` | Monthly |
+| Nothing at all | `N/A` | Monthly |
+
+Quick Fix is weekly regardless — it is a five-week weekly series by construction. If the series
+runs out and there is **still** activity, you flag it. You do not add a visit yourself; that is
+a sales call (extra visit, or move them to TMCP).
+
+Note conventions, where this gets written, and the rest of Jobber are Module 8.
+
+---
+
 ## Field checklist — The Walk
 
 - ☐ Door approach empty-handed (Module 3), then back to the truck for **probe rod + shovel**
@@ -240,6 +301,8 @@ This is a real change from how the Field Guide reads today, and it is the standa
 - ☐ Customer shown what I found before I left
 - ☐ Whole first visit inside 30 minutes
 - ☐ **Repeat visit:** full walk done, not just a trap check
+- ☐ **Activity call made — fresh sign, a catch, or a miss = activity. Old mounds don't count.**
+- ☐ **Any miss on a trap logged as activity, even if nothing else on the property changed**
 
 ---
 
@@ -255,16 +318,14 @@ Trainer: ____________________  Date: __________
 
 ## OPEN — still to pull from Spencer
 
-1. **Where does the activity code get decided, and on what basis?** *(blocking Module 8)*
-   The walk now produces committed trap locations, pre-dug holes, and an equipment count. It
-   does **not** yet produce the activity code — and that code is what decides whether the
-   customer is seen again in a week or a month. Nothing in the program says what makes a yard
-   `L/A` versus `M/A` versus `H/A` versus `N/A`. A new tech will invent his own threshold,
-   which is exactly how the four competing note conventions in the 2026-07-10 Jobber audit
-   happened.
-2. **The 1–5 acre pattern.** Confirmed "different animal," not yet defined. §6 currently sends
+1. **The 1–5 acre pattern.** Confirmed "different animal," not yet defined. §6 currently sends
    a tech over an acre out with a trainer as the interim rule.
-3. **Is clockwise on the inner loop the rule, or just how you do it?** Captured as stated
+2. **What physically counts as a miss?** §8 makes a miss activity, which is right — but a new
+   tech needs to recognize one. Sprung trap with no mole? Trap plugged or backfilled with soil?
+   Trap pushed out of position? Dirt shoved up into the set? List the tells.
+3. **Does a miss change what you do at that set**, beyond the activity call — reset in the same
+   spot, move it a few feet, change trap type? *(Overlaps Module 5.)*
+4. **Is clockwise on the inner loop the rule, or just how you do it?** Captured as stated
    2026-07-31, never confirmed. Minor.
 
 ---

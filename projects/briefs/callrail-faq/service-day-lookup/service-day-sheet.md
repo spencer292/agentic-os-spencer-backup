@@ -1,6 +1,6 @@
 # Got Moles — Service Day Sheet
 
-**Generated 2026-08-05 from `territory-grid-v5.json` (grid last changed 2026-08-03).**
+**Generated 2026-08-06 from `territory-grid-v5.json` (grid last changed 2026-08-03).**
 Route days change whenever the territory grid is re-cut. If this sheet is more than a week old, get a fresh one.
 
 ## How to use it

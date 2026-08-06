@@ -181,6 +181,36 @@ for (let d = addDays(FROM, -3); d <= addDays(TO, 3); d = addDays(d, 1)) {
 console.log(`OptimoRoute own stops seen (±3d): ${Object.keys(have).length}`);
 console.log(`OR drivers: ${Object.keys(serials).join(', ')}\n`);
 
+// PRE-FLIGHT: every tech Jobber names in this window must exist as an OptimoRoute driver. Without a
+// serial the order goes in unassigned, the optimizer hands it to whoever is nearest, and the day
+// fails verification AFTER a full re-plan — which is how 2026-08-06 went: Robert Norton had 132
+// Jobber visits and no driver record, so Monday was re-planned for nothing. Fail before any write.
+// Note `serials` is learned from get_routes, so a driver with no current stops is invisible here;
+// that is exactly the case this catches, and the fix is to create the driver in the OptimoRoute UI
+// (create_driver is not available on this API key).
+{
+  // Drivers confirmed to exist but with no stops this window would otherwise be flagged as missing.
+  try {
+    const T = JSON.parse(fs.readFileSync(path.join(__dirname, 'territories.json'), 'utf8'));
+    for (const name of T.optimoRouteDrivers?.confirmed || []) {
+      const k = name.trim().toLowerCase();
+      if (!serials[k]) serials[k] = name; // serials on this account are the full name
+    }
+  } catch { /* territories.json is optional for this script */ }
+  const needed = new Set(Object.values(want).map(w => w.tech).filter(Boolean));
+  const missing = [...needed].filter(t => !serials[t.trim().toLowerCase()]);
+  if (missing.length) {
+    console.error(`\n🛑 ABORT: ${missing.length} tech(s) named in Jobber have no OptimoRoute driver record:`);
+    for (const m of missing) {
+      const n = Object.values(want).filter(w => w.tech === m).length;
+      console.error(`     ${m}  (${n} visits in this window)`);
+    }
+    console.error('   Create them in the OptimoRoute UI — with their home as the start location, or the');
+    console.error('   commute cost of every route they run will be wrong. NO writes were made.');
+    process.exit(1);
+  }
+}
+
 // ---------- diff ----------
 const actions = [], noAddress = [], noTech = [], frozenSkip = [];
 for (const [orderNo, w] of Object.entries(want)) {

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Got Moles — Text Desk</title>
+<style>
+  :root {
+    --bg: #f6f7f8; --panel: #fff; --ink: #14181d; --muted: #6b7480;
+    --line: #e3e6ea; --accent: #1f6f43; --accent-soft: #e8f3ec;
+    --warn: #8a5a00; --warn-soft: #fdf3e0; --danger: #a12d2d; --danger-soft: #fbeaea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14171a; --panel: #1c2024; --ink: #e9edf1; --muted: #949ea9;
+      --line: #2c3238; --accent: #5fc98d; --accent-soft: #16301f;
+      --warn: #e0b062; --warn-soft: #302716; --danger: #f08b8b; --danger-soft: #331a1a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  header {
+    padding: 14px 20px; border-bottom: 1px solid var(--line); background: var(--panel);
+    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  }
+  header h1 { font-size: 16px; margin: 0; letter-spacing: -.01em; }
+  header .sub { color: var(--muted); font-size: 13px; }
+  main { max-width: 1100px; margin: 0 auto; padding: 20px; display: grid; gap: 20px;
+         grid-template-columns: minmax(0,1.35fr) minmax(0,1fr); align-items: start; }
+  @media (max-width: 860px) { main { grid-template-columns: 1fr; } }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px; }
+  .search { display: flex; gap: 8px; }
+  input[type=text] {
+    flex: 1; padding: 12px 14px; font-size: 16px; border-radius: 8px;
+    border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+  }
+  input[type=text]:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  button {
+    padding: 10px 14px; font-size: 14px; border-radius: 8px; cursor: pointer;
+    border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+  }
+  button:hover { border-color: var(--accent); }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+  @media (prefers-color-scheme: dark) { button.primary { color: #10231a; } }
+  .hint { color: var(--muted); font-size: 13px; margin-top: 10px; }
+  .owner { font-size: 30px; font-weight: 650; letter-spacing: -.02em; margin: 4px 0 2px; }
+  .owner.none { color: var(--muted); font-size: 22px; }
+  .chip {
+    display: inline-block; padding: 2px 9px; border-radius: 99px; font-size: 12px;
+    font-weight: 600; background: var(--accent-soft); color: var(--accent);
+  }
+  .chip.medium { background: var(--warn-soft); color: var(--warn); }
+  .chip.none { background: var(--danger-soft); color: var(--danger); }
+  dl { display: grid; grid-template-columns: 108px 1fr; gap: 7px 14px; margin: 16px 0 0; font-size: 14px; }
+  dt { color: var(--muted); }
+  dd { margin: 0; overflow-wrap: anywhere; }
+  a { color: var(--accent); }
+  .alert { margin-top: 14px; padding: 10px 12px; border-radius: 8px; font-size: 13.5px;
+           background: var(--warn-soft); color: var(--warn); }
+  .alert.danger { background: var(--danger-soft); color: var(--danger); }
+  .actions { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em;
+       color: var(--muted); margin: 0 0 12px; }
+  .q { border-top: 1px solid var(--line); padding: 11px 0; display: flex; gap: 10px; align-items: baseline; }
+  .q:first-of-type { border-top: 0; }
+  .q .who { font-weight: 600; }
+  .q .meta { color: var(--muted); font-size: 12.5px; }
+  .q .age { margin-left: auto; font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+  .q.stale .age { color: var(--danger); font-weight: 600; }
+  .q button { padding: 4px 9px; font-size: 12px; }
+  .empty { color: var(--muted); font-size: 13.5px; }
+  .spin { color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Got Moles — Text Desk</h1>
+  <span class="sub">Who owns this customer? Paste the number or name from the Jobber message center.</span>
+</header>
+
+<main>
+  <div>
+    <div class="card">
+      <div class="search">
+        <input id="q" type="text" autofocus autocomplete="off" spellcheck="false"
+               placeholder="(253) 988-7254  or  Dave Sinner">
+        <button class="primary" id="go">Look up</button>
+      </div>
+      <div class="hint">Enter to search · Ctrl+K to jump back here</div>
+    </div>
+    <div id="out" style="margin-top:20px"></div>
+  </div>
+
+  <div class="card">
+    <h2>Open queue <span id="qcount"></span></h2>
+    <div id="queue"><p class="empty">Nothing waiting. Add a lookup to track it until it's answered.</p></div>
+  </div>
+</main>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) =>
+  ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+
+let current = null;
+
+/* ---------- lookup ---------- */
+async function lookup() {
+  const q = $('#q').value.trim();
+  if (!q) return;
+  $('#out').innerHTML = '<div class="card spin">Checking Jobber…</div>';
+  try {
+    const res = await fetch('/api/lookup?q=' + encodeURIComponent(q));
+    const r = await res.json();
+    if (!res.ok) throw new Error(r.error || 'Lookup failed');
+    current = r;
+    render(r);
+  } catch (e) {
+    current = null;
+    $('#out').innerHTML = '<div class="card"><div class="alert danger">' + esc(e.message) + '</div></div>';
+  }
+}
+
+function render(r) {
+  if (r.match === 'none') {
+    $('#out').innerHTML = '<div class="card">'
+      + '<div class="owner none">No match</div>'
+      + '<div class="chip none">desk answers</div>'
+      + '<p class="hint">' + esc(r.reason) + '</p></div>';
+    return;
+  }
+
+  const o = r.owner;
+  const timing = o.inDays !== undefined
+    ? (o.inDays === 0 ? 'today' : 'in ' + o.inDays + ' day' + (o.inDays === 1 ? '' : 's'))
+    : (o.daysAgo !== undefined ? o.daysAgo + ' day' + (o.daysAgo === 1 ? '' : 's') + ' ago' : '');
+
+  let html = '<div class="card">';
+  html += o.tech
+    ? '<div class="owner">' + esc(o.tech) + '</div>'
+      + '<span class="chip ' + esc(o.confidence) + '">' + esc(o.confidence) + ' confidence</span> '
+      + '<span class="hint" style="display:inline">' + esc(o.basis) + '</span>'
+    : '<div class="owner none">No assigned tech</div><span class="chip none">desk answers</span> '
+      + '<span class="hint" style="display:inline">' + esc(o.basis) + '</span>';
+
+  html += '<dl>';
+  html += '<dt>Client</dt><dd>' + esc(r.client.name)
+        + (r.client.isLead ? ' <span class="chip medium">lead</span>' : '')
+        + (r.client.isArchived ? ' <span class="chip none">archived</span>' : '') + '</dd>';
+  if (r.client.phones.length) html += '<dt>Phone</dt><dd>' + esc(r.client.phones.join(', ')) + '</dd>';
+  if (o.jobNumber) html += '<dt>Job</dt><dd>#' + esc(o.jobNumber)
+        + (o.jobUrl ? ' — <a href="' + esc(o.jobUrl) + '" target="_blank" rel="noreferrer">open in Jobber</a>' : '')
+        + '</dd>';
+  if (o.product) html += '<dt>Program</dt><dd>' + esc(o.product) + '</dd>';
+  if (o.address) html += '<dt>Property</dt><dd>'
+        + esc([o.address.street, o.address.city, o.address.postalCode].filter(Boolean).join(', ')) + '</dd>';
+  if (timing) html += '<dt>' + (o.inDays !== undefined ? 'Next visit' : 'Last visit') + '</dt><dd>' + esc(timing) + '</dd>';
+  if (r.contact && (r.contact.phone || r.contact.email))
+    html += '<dt>Reach them</dt><dd>' + esc([r.contact.phone, r.contact.email].filter(Boolean).join(' · ')) + '</dd>';
+  html += '<dt>Client record</dt><dd><a href="' + esc(r.client.url) + '" target="_blank" rel="noreferrer">open in Jobber</a></dd>';
+  html += '</dl>';
+
+  if (o.tech && !(r.contact && (r.contact.phone || r.contact.email)))
+    html += '<div class="alert">No contact details on file for ' + esc(o.tech)
+          + ' — add them to <code>tech-contacts.json</code>.</div>';
+  if (r.others && r.others.length)
+    html += '<div class="alert">This number is shared with: ' + esc(r.others.join(', '))
+          + '. Confirm who is texting before replying.</div>';
+  if (r.client.smsBlocked)
+    html += '<div class="alert danger">Texting is disabled for this number in Jobber — reply by phone.</div>';
+
+  html += '<div class="actions">';
+  if (r.handoff) html += '<button id="copy">Copy handoff</button>';
+  html += '<button class="primary" id="track">Add to queue</button>';
+  html += '</div></div>';
+
+  $('#out').innerHTML = html;
+  if ($('#copy')) $('#copy').onclick = () => {
+    navigator.clipboard.writeText(r.handoff);
+    $('#copy').textContent = 'Copied';
+    setTimeout(() => { if ($('#copy')) $('#copy').textContent = 'Copy handoff'; }, 1400);
+  };
+  $('#track').onclick = () => { addToQueue(r); $('#q').select(); };
+}
+
+/* ---------- queue: nothing gets dropped ---------- */
+const KEY = 'gm-textdesk-queue';
+const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch { return []; } };
+const save = (q) => localStorage.setItem(KEY, JSON.stringify(q));
+
+function addToQueue(r) {
+  const q = load();
+  q.unshift({
+    id: Date.now(),
+    client: r.client.name,
+    tech: r.owner.tech || 'desk',
+    phone: r.client.phones[0] || r.query,
+    at: Date.now(),
+  });
+  save(q);
+  drawQueue();
+}
+
+function drawQueue() {
+  const q = load();
+  $('#qcount').textContent = q.length ? '(' + q.length + ')' : '';
+  if (!q.length) {
+    $('#queue').innerHTML = '<p class="empty">Nothing waiting. Add a lookup to track it until it\'s answered.</p>';
+    return;
+  }
+  $('#queue').innerHTML = q.map((it) => {
+    const mins = Math.floor((Date.now() - it.at) / 60000);
+    const age = mins < 1 ? 'just now' : mins < 60 ? mins + 'm' : Math.floor(mins / 60) + 'h ' + (mins % 60) + 'm';
+    // 30 minutes unanswered is the point where the desk should be chasing it.
+    const stale = mins >= 30 ? ' stale' : '';
+    return '<div class="q' + stale + '">'
+      + '<div><div class="who">' + esc(it.client) + '</div>'
+      + '<div class="meta">' + esc(it.tech) + ' · ' + esc(it.phone) + '</div></div>'
+      + '<span class="age">' + age + '</span>'
+      + '<button data-done="' + it.id + '">Done</button></div>';
+  }).join('');
+  $('#queue').querySelectorAll('[data-done]').forEach((b) => {
+    b.onclick = () => { save(load().filter((x) => String(x.id) !== b.dataset.done)); drawQueue(); };
+  });
+}
+
+/* ---------- wiring ---------- */
+$('#go').onclick = lookup;
+$('#q').addEventListener('keydown', (e) => { if (e.key === 'Enter') lookup(); });
+document.addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); $('#q').focus(); $('#q').select(); }
+});
+drawQueue();
+setInterval(drawQueue, 30000);
+</script>
+</body>
+</html>

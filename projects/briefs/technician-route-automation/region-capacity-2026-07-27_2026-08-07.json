@@ -1,0 +1,356 @@
+{
+  "ranAt": "2026-08-06T16:50:14.001Z",
+  "from": "2026-07-27",
+  "to": "2026-08-07",
+  "weeks": 2,
+  "dayHours": 8,
+  "rows": [
+    {
+      "name": "Plateau (Enumclaw/Buckley/Bonney Lake)",
+      "perWeek": 75.5,
+      "zips": 6,
+      "travelMin": 5.425757575757576,
+      "minPerStop": 15.756883403572145,
+      "hoursPerWeek": 19.827411616161616,
+      "daysNeeded": 2.478426452020202,
+      "days": {
+        "tue": 51,
+        "thu": 24,
+        "fri": 44,
+        "mon": 5,
+        "wed": 27
+      },
+      "techs": {
+        "Robert": 45,
+        "Luke": 8,
+        "Spencer": 1,
+        "Cory": 17,
+        "Cammeron": 80
+      },
+      "measured": true
+    },
+    {
+      "name": "Kirkland / Redmond / Woodinville",
+      "perWeek": 47.5,
+      "zips": 10,
+      "travelMin": 6.335555555555556,
+      "minPerStop": 17.072397660818712,
+      "hoursPerWeek": 13.515648148148149,
+      "daysNeeded": 1.6894560185185186,
+      "days": {
+        "mon": 36,
+        "wed": 50,
+        "thu": 6,
+        "fri": 3
+      },
+      "techs": {
+        "Cory": 26,
+        "Alias": 69
+      },
+      "measured": true
+    },
+    {
+      "name": "Thurston / Olympia",
+      "perWeek": 37.5,
+      "zips": 8,
+      "travelMin": 10.596296296296297,
+      "minPerStop": 20.996296296296297,
+      "hoursPerWeek": 13.122685185185185,
+      "daysNeeded": 1.6403356481481481,
+      "days": {
+        "mon": 26,
+        "wed": 3,
+        "thu": 44,
+        "fri": 2
+      },
+      "techs": {
+        "Robert": 7,
+        "Luke": 68
+      },
+      "measured": true
+    },
+    {
+      "name": "Kent / Covington / Maple Valley",
+      "perWeek": 46.5,
+      "zips": 5,
+      "travelMin": 5.764176245210728,
+      "minPerStop": 16.08675689037202,
+      "hoursPerWeek": 12.467236590038315,
+      "daysNeeded": 1.5584045737547894,
+      "days": {
+        "mon": 6,
+        "wed": 35,
+        "thu": 20,
+        "fri": 32
+      },
+      "techs": {
+        "Cammeron": 80,
+        "Spencer": 1,
+        "Cory": 12
+      },
+      "measured": true
+    },
+    {
+      "name": "Seattle",
+      "perWeek": 43,
+      "zips": 16,
+      "travelMin": 5.370682730923694,
+      "minPerStop": 16.649752498365554,
+      "hoursPerWeek": 11.932322623828647,
+      "daysNeeded": 1.4915403279785808,
+      "days": {
+        "tue": 85,
+        "thu": 1
+      },
+      "techs": {
+        "Alias": 40,
+        "Cammeron": 20,
+        "Cory": 25,
+        "Spencer": 1
+      },
+      "measured": true
+    },
+    {
+      "name": "Renton / Newcastle",
+      "perWeek": 39,
+      "zips": 5,
+      "travelMin": 4.70888888888889,
+      "minPerStop": 15.093504273504275,
+      "hoursPerWeek": 9.81077777777778,
+      "daysNeeded": 1.2263472222222225,
+      "days": {
+        "tue": 1,
+        "wed": 31,
+        "thu": 23,
+        "fri": 23
+      },
+      "techs": {
+        "Alias": 1,
+        "Cammeron": 17,
+        "Spencer": 13,
+        "Cory": 47
+      },
+      "measured": true
+    },
+    {
+      "name": "Sammamish / Issaquah",
+      "perWeek": 35.5,
+      "zips": 4,
+      "travelMin": 4.679601990049751,
+      "minPerStop": 16.088052694275103,
+      "hoursPerWeek": 9.518764510779436,
+      "daysNeeded": 1.1898455638474295,
+      "days": {
+        "wed": 4,
+        "thu": 60,
+        "fri": 7
+      },
+      "techs": {
+        "Cammeron": 4,
+        "Alias": 40,
+        "Cory": 27
+      },
+      "measured": true
+    },
+    {
+      "name": "Bellevue / Mercer",
+      "perWeek": 35,
+      "zips": 6,
+      "travelMin": 4.959343434343435,
+      "minPerStop": 15.959343434343435,
+      "hoursPerWeek": 9.309617003367004,
+      "daysNeeded": 1.1637021254208755,
+      "days": {
+        "mon": 18,
+        "thu": 51,
+        "wed": 1
+      },
+      "techs": {
+        "Cory": 39,
+        "Alias": 15,
+        "Spencer": 16
+      },
+      "measured": true
+    },
+    {
+      "name": "Graham / Orting",
+      "perWeek": 22.5,
+      "zips": 4,
+      "travelMin": 13.210852713178294,
+      "minPerStop": 23.433074935400516,
+      "hoursPerWeek": 8.787403100775192,
+      "daysNeeded": 1.098425387596899,
+      "days": {
+        "wed": 22,
+        "fri": 18,
+        "thu": 5
+      },
+      "techs": {
+        "Luke": 38,
+        "Cory": 1,
+        "Cammeron": 6
+      },
+      "measured": true
+    },
+    {
+      "name": "Snoqualmie Valley",
+      "perWeek": 28,
+      "zips": 4,
+      "travelMin": 7.166666666666667,
+      "minPerStop": 17.702380952380953,
+      "hoursPerWeek": 8.261111111111111,
+      "daysNeeded": 1.0326388888888889,
+      "days": {
+        "wed": 9,
+        "fri": 47
+      },
+      "techs": {
+        "Alias": 55,
+        "Cory": 1
+      },
+      "measured": true
+    },
+    {
+      "name": "Auburn / Federal Way",
+      "perWeek": 29,
+      "zips": 6,
+      "travelMin": 6.187962962962962,
+      "minPerStop": 16.53279054916986,
+      "hoursPerWeek": 7.9908487654321,
+      "daysNeeded": 0.9988560956790125,
+      "days": {
+        "mon": 42,
+        "tue": 9,
+        "wed": 1,
+        "thu": 3,
+        "fri": 3
+      },
+      "techs": {
+        "Cammeron": 32,
+        "Robert": 9,
+        "Luke": 3,
+        "Cory": 14
+      },
+      "measured": true
+    },
+    {
+      "name": "Puyallup / Edgewood",
+      "perWeek": 27.5,
+      "zips": 7,
+      "travelMin": 5.560256410256411,
+      "minPerStop": 15.742074592074593,
+      "hoursPerWeek": 7.215117521367521,
+      "daysNeeded": 0.9018896901709401,
+      "days": {
+        "mon": 20,
+        "wed": 4,
+        "fri": 13,
+        "tue": 18
+      },
+      "techs": {
+        "Cammeron": 13,
+        "Luke": 31,
+        "Cory": 11
+      },
+      "measured": true
+    },
+    {
+      "name": "Tacoma",
+      "perWeek": 22,
+      "zips": 10,
+      "travelMin": 6.694285714285714,
+      "minPerStop": 18.05792207792208,
+      "hoursPerWeek": 6.621238095238096,
+      "daysNeeded": 0.827654761904762,
+      "days": {
+        "mon": 23,
+        "fri": 4,
+        "tue": 7,
+        "wed": 10
+      },
+      "techs": {
+        "Robert": 10,
+        "Luke": 30,
+        "Cammeron": 3,
+        "Cory": 1
+      },
+      "measured": true
+    },
+    {
+      "name": "Peninsula / Gig Harbor",
+      "perWeek": 11,
+      "zips": 9,
+      "travelMin": 18.105555555555554,
+      "minPerStop": 28.560101010101008,
+      "hoursPerWeek": 5.236018518518518,
+      "daysNeeded": 0.6545023148148148,
+      "days": {
+        "wed": 22
+      },
+      "techs": {
+        "Robert": 9,
+        "Spencer": 2,
+        "Luke": 11
+      },
+      "measured": true
+    },
+    {
+      "name": "Burien / SeaTac / South King",
+      "perWeek": 20,
+      "zips": 6,
+      "travelMin": 4.445045045045045,
+      "minPerStop": 15.195045045045045,
+      "hoursPerWeek": 5.065015015015016,
+      "daysNeeded": 0.633126876876877,
+      "days": {
+        "mon": 21,
+        "tue": 19
+      },
+      "techs": {
+        "Cammeron": 17,
+        "Cory": 23
+      },
+      "measured": true
+    },
+    {
+      "name": "Lakewood / UP / Spanaway",
+      "perWeek": 9.5,
+      "zips": 4,
+      "travelMin": 13.408333333333333,
+      "minPerStop": 24.987280701754386,
+      "hoursPerWeek": 3.9563194444444445,
+      "daysNeeded": 0.49453993055555556,
+      "days": {
+        "mon": 5,
+        "wed": 7,
+        "fri": 5,
+        "tue": 2
+      },
+      "techs": {
+        "Robert": 1,
+        "Luke": 16,
+        "Spencer": 2
+      },
+      "measured": true
+    },
+    {
+      "name": "Shoreline / North",
+      "perWeek": 7.5,
+      "zips": 4,
+      "travelMin": 7.711538461538462,
+      "minPerStop": 20.378205128205128,
+      "hoursPerWeek": 2.547275641025641,
+      "daysNeeded": 0.3184094551282051,
+      "days": {
+        "tue": 13,
+        "wed": 1,
+        "mon": 1
+      },
+      "techs": {
+        "Alias": 12,
+        "Cory": 3
+      },
+      "measured": true
+    }
+  ]
+}

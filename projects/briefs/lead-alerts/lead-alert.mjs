@@ -42,6 +42,9 @@ const val = (f, d) => {
 const DRY_RUN = has('--dry-run');
 const PRIME = has('--prime');
 const TEST_EMAIL = has('--test-email');
+// Sends a REAL alert email built from the current window, but writes no state and marks
+// nothing seen. Verifies the full render → send path that --test-email skips.
+const PREVIEW_EMAIL = has('--preview-email');
 const NO_EMAIL = has('--no-email');
 const AS_JSON = has('--json');
 const WINDOW_HOURS = Number(val('--window-hours', '3'));
@@ -51,8 +54,11 @@ function loadEnv() {
   const env = {};
   if (!fs.existsSync(p)) return env;
   for (const line of fs.readFileSync(p, 'utf8').split(/\r?\n/)) {
-    const m = line.match(/^([A-Z0-9_]+)=(.*)$/);
-    if (m) env[m[1]] = m[2].trim();
+    // Tolerate leading whitespace and an `export ` prefix. The repo's other loaders
+    // anchor strictly on ^KEY=, which silently ignores an indented line — it looks
+    // present in the file but reads as MISSING, with no error anywhere.
+    const m = line.match(/^\s*(?:export\s+)?([A-Z0-9_]+)\s*=\s*(.*)$/);
+    if (m && !line.trim().startsWith('#')) env[m[1]] = m[2].trim();
   }
   return env;
 }
@@ -97,13 +103,15 @@ function readState() {
   }
 }
 function writeState(state) {
-  if (DRY_RUN) return;
+  if (DRY_RUN || PREVIEW_EMAIL) return;
   fs.writeFileSync(STATE_PATH, JSON.stringify(state, null, 2) + '\n');
 }
 
 // ---------------------------------------------------------------- jobber
 
-function jobberQuery(query) {
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+function jobberQueryOnce(query) {
   return new Promise((resolve, reject) => {
     execFile(
       process.execPath,
@@ -119,6 +127,25 @@ function jobberQuery(query) {
       }
     );
   });
+}
+
+// Jobber throttles on a leaky-bucket cost budget shared with every other job on this
+// machine (route automation, the notes engine, the nightly report). A poll landing on
+// top of one of those is normal and transient, so back off and retry rather than firing
+// a failure notification. The n8n version did the same (3 tries, 5s apart).
+async function jobberQuery(query, tries = 3) {
+  let lastErr;
+  for (let attempt = 1; attempt <= tries; attempt++) {
+    try {
+      return await jobberQueryOnce(query);
+    } catch (err) {
+      lastErr = err;
+      const transient = /THROTTLED|rate.?limit|ETIMEDOUT|ECONNRESET|502|503|504/i.test(err.message);
+      if (!transient || attempt === tries) throw err;
+      await sleep(attempt * 5000); // 5s, then 10s
+    }
+  }
+  throw lastErr;
 }
 
 async function fetchRecentClients(sinceIso, maxPages = 10) {
@@ -330,7 +357,7 @@ async function main() {
 
   // First real run: mark the current window as already-handled instead of firing a
   // burst of alerts for leads Spencer has already dealt with.
-  const priming = PRIME || (!state.primed && !DRY_RUN);
+  const priming = PRIME || (!state.primed && !DRY_RUN && !PREVIEW_EMAIL);
   if (priming) {
     state.primed = true;
     writeState(state);
@@ -358,7 +385,7 @@ async function main() {
 
   let emailed = false;
   let emailError = null;
-  if (!NO_EMAIL && !DRY_RUN && EMAIL_READY) {
+  if (!NO_EMAIL && (!DRY_RUN || PREVIEW_EMAIL) && EMAIL_READY) {
     try {
       await sendMail({ ...SMTP, subject, html, text });
       emailed = true;
@@ -372,7 +399,7 @@ async function main() {
   // cron notification + run log), but the failure is surfaced loudly so a broken
   // mailbox never turns into leads silently disappearing.
   writeState(state);
-  logRun({ at: new Date().toISOString(), count: leads.length, emailed, emailError, leads });
+  if (!PREVIEW_EMAIL) logRun({ at: new Date().toISOString(), count: leads.length, emailed, emailError, leads });
 
   if (AS_JSON) {
     console.log(JSON.stringify({ count: leads.length, emailed, emailError, leads }, null, 2));

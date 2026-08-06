@@ -26,9 +26,25 @@ owner, and a read state that clears for everyone the moment any one person opens
 
 1. **One number, company-wide.** Jobber issues a single dedicated texting number per account.
    Got Moles: **253-300-0889** (Jobber-issued, text-only). No per-tech, per-territory, or
-   per-crew numbers. Note this is NOT the brand number — 253-326-1740 is the main business line
-   and does not move. 253-300-0889 appears nowhere in the site, GBP, or client phonebook;
-   customers only have it because Jobber texted them from it.
+   per-crew numbers. It appears nowhere in the site, GBP, or client phonebook — customers only
+   have it because Jobber texted them from it.
+
+   **The number map (verified live 2026-08-06 — earlier notes had this wrong):**
+
+   | Number | What it actually is |
+   |---|---|
+   | 253-750-0211 | The main line. CallRail tracking numbers on GBP/site forward here |
+   | 253-326-1740 | **Spencer's personal cell** — currently sitting in Jobber's Company Settings as the company phone (`account.phone` = `2533261740`) |
+   | 253-300-0889 | Jobber's dedicated texting number (`account.dedicatedPhoneNumber`) |
+
+   Successive memory notes compressed "Spencer's cell, entered in company settings" into "Jobber
+   phone", then "company number", then "main business line". It is his cell. Flagged on
+   2026-07-22 and still unresolved.
+
+   **Consequence for this project:** Jobber's Company Settings phone is what the On My Way
+   **"Office number"** callback resolves to, and it is where calls to 253-300-0889 forward. So
+   both currently ring Spencer's personal cell — the same exposure that made putting tech numbers
+   in profile phone fields unacceptable. **Fix: set Company Settings phone to 253-750-0211.**
 2. **Conversations cannot be assigned to a person.** Jobber's only "reassign conversation"
    moves a thread to a *different client* sharing the same phone number. There is no
    assign-to-teammate.
@@ -37,19 +53,31 @@ owner, and a read state that clears for everyone the moment any one person opens
    driver of dropped texts.
 4. **Notification targeting is all-or-nothing.** You choose which team members are notified of
    *every* inbound text. You cannot notify only the tech who owns that customer.
-5. **No middle permission tier.** Admins see all inbound messages; non-admins with the texting
-   permission see only *outbound* messages on records they can already access. There is no
-   "this tech sees just their own customers" setting.
+5. **The texting permission has no scoping, and it drags financial access with it.** Verified at
+   source in Jobber's FAQ: *"Users who have the permission enabled for two-way text messaging
+   will be able to view **all** messages in the message center and send text messages to **all**
+   clients."* There is no "this tech sees only their own customers" setting — it is all or
+   nothing. Worse, enabling it **requires** these permissions at minimum: **Show pricing, View
+   requests, View quotes, View jobs, View invoices.** So giving a tech the ability to answer their
+   own customer's text also hands them company pricing and every invoice on the account.
 
-**Consequence of #5, measured on the live account:** of 11 active users, exactly **4 are account
-admins** — Spencer Hill (owner), Cory Ventura, Courtney, Kellen. Those four are the only people
-who see inbound customer texts at all. The field techs — Luke LaVergne, Cammeron Anderson,
-Alias Franks, Robert Norton, Muhammad Javed — see **nothing** inbound.
+   Also confirmed: the dedicated number **can never be changed** once selected, and every user
+   texts from it — *"whether you or your employees are texting from Jobber.com or using the Jobber
+   mobile app."* Per-user numbers do not exist in Jobber at any plan level.
 
-So the real shape of the problem is not "five techs in one inbox". It is: **four admins share one
-unowned inbox, and every customer text about a tech's job has to be manually relayed to that
-tech.** Making a tech an admin so they can see their own customer's texts would also expose full
-account financials. That is the wall.
+**Live account:** of 11 active users, **4 are account admins** — Spencer Hill (owner), Cory
+Ventura, Courtney, Kellen. Admins see everything by default.
+
+**Caveat — who else has texting access is unknown.** The two-way texting permission is set
+per-user in Manage Team and is **not exposed in the API** (`User` exposes `isAccountAdmin` and
+nothing about custom permissions). So the admin list is a floor, not the full picture. **Action:
+check Gear → Manage Team.** If any field tech already has the texting permission, they are
+currently seeing every customer conversation on the account *and*, per the prerequisite
+permissions, company pricing and all invoices.
+
+So the real shape of the problem is not "five techs in one inbox". It is: **one unowned inbox that
+you can only grant in full or not at all.** There is no configuration where a tech sees their own
+customers' texts and nothing else. That is the wall.
 
 ### Jobber's API cannot fix this — confirmed by introspection
 
@@ -86,9 +114,12 @@ normalizes phone formats (`+1 (425) 213-3344` matches a number stored as `425-21
 
 ## Ruled out (checked, don't revisit)
 
-- **Make techs Jobber admins.** Admin is the only tier that sees inbound texts. It also exposes
-  full account financials, and because read state is account-wide, adding 5 more viewers makes
-  the "someone else must have got it" failure worse, not better.
+- **Giving techs the Jobber texting permission.** Does not require admin, but grants access to
+  *all* messages and *all* clients with no scoping, and requires Show pricing / View quotes /
+  View invoices alongside it. Because read state is account-wide, adding 5 more viewers to an
+  unowned inbox makes the "someone else must have got it" failure worse, not better.
+- **Per-user numbers inside Jobber.** Do not exist. One dedicated number per account, unchangeable
+  once selected, used by every employee. Confirmed at source.
 - **CallRail.** Already paid for and it does texting, so it was checked properly. Same failure
   mode: every agent with Lead Center access sees every incoming text, with no per-conversation
   assignment. Does not solve routing.
@@ -154,7 +185,7 @@ routing; the shared inbox catches the rest and preserves history. This is what s
 **The one real cost:** 253-300-0889 cannot be ported out, so customers who text it after the
 switch get silence. Mitigation: keep Jobber's automated texting running through the transition so
 the old number stays live, and put the new number in every outbound message. Self-corrects in
-roughly six months. The brand number 253-326-1740 is unaffected.
+roughly six months. The main line 253-750-0211 is unaffected.
 
 ### Option 3 — Auto-router on top of Option 2 (where this gets dialled)
 
@@ -174,33 +205,66 @@ instead and is not blocked on n8n.
 
 ---
 
-## Recommendation
+## DECISION (2026-08-06, Spencer): Path A — own the desk
 
-1. **This week:** Option 1 cleanup (checklist below) as a bandaid.
-2. **Now:** trial Quo text-only against JustCall. One purchase covers Options 0 and 2 — the
-   decision is which vendor, not which architecture.
-3. **First configuration:** per-tech direct numbers (Option 0). It removes most of the routing
-   problem immediately and needs no engineering.
-4. **Then:** shared inbox for new/unknown inbound, with the router (Option 3) auto-assigning and
-   an SLA timer escalating anything unanswered.
+**Why Options 0 and 2 were rejected.** Per-tech numbers do not help, because *customers reply to
+whatever number texted them*, and Jobber sends every reminder, On My Way, quote and invoice from
+253-300-0889. Confirmed at source: *"In either case, these messages are not sent via your
+employee's phone number."* Per-tech numbers only capture conversations the tech initiates — a
+small slice. Inbound would keep landing in the shared Jobber inbox.
 
-Do not build the router before the platform is chosen — roughly a day of work, wasted if the inbox
-changes underneath it.
+The only way to move inbound is to stop Jobber being the sender — switch its automated
+notifications to email-only and rebuild reminders/On My Way on another platform driven by Jobber
+webhooks (`VISIT_CREATE`, `VISIT_UPDATE`, `ON_MY_WAY_TRACKING_LINK_REQUEST` all exist). That is a
+notification system to own and maintain, and it forfeits Jobber's client communication log. Not
+worth it before the cheap option has been tried.
+
+**Path A: stop trying to move the number; fix ownership instead.** Inbound stays on
+253-300-0889. One named person owns that inbox each day. When a text arrives, the desk tool
+resolves the number to the owning tech instantly. Most inbound (scheduling, "are you coming
+today", arrival questions) the desk answers directly; job-specific questions get the tech looped
+in. Cost: $0. Scales by adding desk hours rather than re-architecting.
+
+Revisit Path B only if, after a month of the desk running, volume genuinely justifies owning a
+notification system.
 
 ---
 
-## Deliverable built: `route-inbound-text.mjs`
+## Deliverables built
 
-Platform-agnostic routing brain. Takes a phone number, returns a routing decision. Whatever
-platform we land on calls it from its inbound-message webhook and performs the assign/notify in
-its own API.
+| File | What it is |
+|---|---|
+| `desk-server.mjs` + `desk-ui.html` | The text desk. Local web tool: paste a number or name, get the owning tech, job, program, property, and how to reach them. Includes an open queue so nothing sits unanswered. |
+| `lib-resolve.mjs` | Shared ownership-resolution logic used by both the desk and the CLI. |
+| `route-inbound-text.mjs` | CLI form of the same lookup, for terminal use and scripting. |
+| `tech-contacts.json` | Fallback tech contacts. Preferred source is a Jobber **team custom field** — see below. |
+| `README.md` | Operator guide for whoever runs the desk. |
 
-```
-node projects/briefs/jobber-text-routing/route-inbound-text.mjs "(253) 988-7254"
-node projects/briefs/jobber-text-routing/route-inbound-text.mjs 2539887254 --json
-```
+Run it: `node projects/briefs/jobber-text-routing/desk-server.mjs` → <http://localhost:8787>
 
-**Ownership rule, in priority order:**
+### Tech phone numbers: team custom field, never the profile phone field
+
+**Rejected — putting tech numbers in the Jobber user profile.** Spencer: doing this makes Jobber
+offer the tech's personal number as the On My Way callback, customers then contact that line
+directly, the office never sees the conversation, and it leaves with the tech. Loss of visibility
+is a worse failure than the routing problem being solved. The On My Way callback stays on the
+**Office number** deliberately.
+
+**Adopted — Jobber's documented workaround:** *"a team custom field can be set up as a way to
+record their number which will not add it as a callback option for on my way texts."* Create a
+Team custom field (Text) whose label contains phone/cell/mobile/contact; `lib-resolve.mjs` reads
+it via `User.customFields` and prefers it over the local file. Profile phone stays blank.
+
+Note: `customFieldConfigurations` is blocked for this app ("hidden due to permissions"), so the
+field must be created in the Jobber UI — but reading `User.customFields` works fine.
+
+### Ownership logic
+
+Deliberately platform-agnostic: it takes a phone number or client name and returns a routing
+decision. If conversational texting ever moves to a platform that emits an inbound-message
+webhook (Path B), this is the function that webhook calls — no rework.
+
+**Priority order:**
 
 1. Tech on the **next scheduled visit** — they are about to walk the property. Confidence: high.
 2. Tech on the **most recent completed visit**, within 120 days — the customer is replying about
@@ -219,14 +283,18 @@ leads and archived clients; numbers where Jobber has SMS disabled; Jobber's quer
 | 9548296640 | Jeff Nugent | Cory Ventura | next-scheduled-visit |
 | 4252133344 | Marianne Parasida | Cory Ventura | next-scheduled-visit |
 | 2537778989 | Jill Robinson | Luke LaVergne | next-scheduled-visit |
-| 4254422264 | Howard Goodman | Spencer Hill | next-scheduled-visit |
+| 4254422264 | Howard Goodman | Cory Ventura | next-scheduled-visit |
 | 2534058629 | Derek Smith | Cammeron Anderson | next-scheduled-visit |
 
-Unknown numbers correctly fall through to `office-sales-queue` (exit code 3).
+Name search ("Dave Sinner") and unknown numbers both behave correctly — unknown falls through to
+`desk answers` (exit code 3).
 
-Note on Howard Goodman: Cory completed the last visit but the *next* visit is assigned to Spencer,
-so the rule routes to Spencer. Correct per the rule, and a useful side effect — it surfaces that
-Spencer is carrying a field visit, which is against his peninsula-Tuesday-only role.
+**Bug found and fixed during testing.** The first version paged visit history and picked Howard
+Goodman's "next scheduled visit" as one assigned to Spencer — actually a phantom visit dated
+**2036**, an artifact of the known Tavis 3,982-visit scheduling defect. Any "first N visits"
+approach can silently latch onto those. The fix pins the query to a date window (150 days back,
+90 days forward) via `filter:{startAt:{after,before}}`, which both corrects the answer and cuts
+query cost enough to stop tripping Jobber's cost limiter.
 
 ---
 
@@ -234,25 +302,29 @@ Spencer is carrying a field visit, which is against his peninsula-Tuesday-only r
 
 Current active roster, from the live account:
 
-| User | Admin | Sees inbound texts today |
+Texting permission is not readable via the API — the Admin column is from the live account, the
+last column must be confirmed in Manage Team.
+
+| User | Admin | Sees inbound texts |
 |---|---|---|
 | Spencer Hill | owner | yes |
 | Cory Ventura | admin | yes |
 | Courtney | admin | yes |
 | Kellen | admin | yes |
-| Luke LaVergne | — | no |
-| Cammeron Anderson | — | no |
-| Alias Franks | — | no |
-| Robert Norton | — | no |
-| Muhammad Javed | — | no |
-| Tavis Alexander | — | no |
-| Roy Castleman | — | no |
+| Luke LaVergne | — | **check** |
+| Cammeron Anderson | — | **check** |
+| Alias Franks | — | **check** |
+| Robert Norton | — | **check** |
+| Muhammad Javed | — | **check** |
+| Tavis Alexander | — | **check** |
+| Roy Castleman | — | **check** |
 
 Steps:
 
-1. **Gear icon → Manage Team → [user] → custom permissions.** Confirm the two-way text message
-   permission is on only for the office/dispatch group. Remove it from field techs — it gives them
-   outbound-only visibility and adds confusion.
+1. **Gear icon → Manage Team → [user] → custom permissions.** Audit who currently has the two-way
+   text message permission — this is the unknown, and it cannot be checked via API. Remove it from
+   field techs: it does not give them their own customers, it gives them *every* conversation on
+   the account, plus the pricing and invoice access the permission requires.
 2. **Settings → Emails and Text Messages → notifications.** Narrow the notified list to the text
    desk group, not all admins.
 3. **Name the daily text desk** on the schedule — one person per day, by name. This is the only
