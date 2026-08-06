@@ -38,3 +38,31 @@
 - **Pattern across 5 calls: beats 1-4 are now automatic (3 calls running). Beat 5 is the unreliable one — present in #3, late+prompted in #4, absent in #5 — and it is the beat that sells the annual.**
 - Trajectory: 63 → 70 → 86 → 72 → 79 · Passed to date: 2/23 · Weakest area: beat 5 specifically
 - Next session: drill beat 5 alone until it's welded to the price transition.
+
+## 2026-08-06 — Muhammad — call #6
+- Call #6 (11:55, 6m18s, "Bob Hope", Olympia, under an acre, "on and off for a year"): **76/100.**
+- **THE INTERRUPTION KILLED BEAT 2.** He opened beat 2 — *"and the way that their tunnel system—"* — and the caller cut in with "I don't know if it's moles or voles." He handled the interruption well (asked what they actually see) but **never went back for the net**, and it never appeared again. Beats before price: 1, 3, 4, and half of 5. This is exactly the failure the `block` drill's interrupt rep exists to fix — that rep has not been run yet.
+- **BUT beat 5 did its job in a live objection for the first time.** Caller: *"if there's only one or two moles, won't the quick fix get rid of them?"* Mo: *"moles are territorial, as I mentioned. If we catch this one, the next one is going to move in... it's not a question of if they come back, it's when and how often."* Caller conceded: *"okay, I guess that makes sense."* He is now using beat 5 as a tool, not reciting it.
+- **Held the price under a direct discount request** — *"can you do something on that price for me?"* → no invented discount, pivoted to the three-calls-a-year ROI plus the proactive-perimeter explanation. Hard gate avoided unprompted. New.
+- Used the "a year" answer to recommend TMCP without being asked. Second time.
+- Capture: all five fields, one at a time, including "how did you find us?" (ChatGPT again — 5th this week). Third consecutive clean capture.
+- **Regressions:** residential/commercial not asked (he had it in #5). TMCP terms much thinner than call #3 — no unlimited visits, no billing date, no 12-month term. **No-catch guarantee absent entirely** — didn't even mention the $150 deposit. Now 1 for 6.
+- Caller said "moles or voles" twice and Mo never closed that loop — he concluded moles from "little mounds," which is right, but never explained the difference or that we don't do voles.
+- Still naming a day without checking — 6 for 6. Still no address read-back — 6 for 6.
+- Trajectory: 63 → 70 → 86 → 72 → 79 → 76 · Passed to date: 2/23 · Weakest area: recovering the block after an interruption
+- Next session: the `block` interrupt rep, repeatedly. Then the guarantee.
+
+## 2026-08-06 (cont.) — Muhammad — call #7
+- Call #7 (13:57, 8m55s, Spencer as "Bill Craig", Belltown city lot, under an acre, new problem, **artificial turf**): **75/100.** Block 5/5 — no ceiling.
+- **HE RECOVERED THE BLOCK AFTER BEING DERAILED** — the exact failure from call #6, fixed in one day. He was mid-beat-3 when Spencer dropped the curveball: *"I have artificial turf, I don't have real grass, we're not watering anything."* He absorbed it (*"they must have been there a while... they probably came from the neighbor"*), and then two turns later came back and delivered beat 1's 70% AND **beat 2, the net**, which he had abandoned the day before.
+- **Beat 5 welded to the price transition, exactly as drilled:** *"most people go with the total mole control program. Why? Because moles are territorial... when we catch this one, the next one moves into that empty territory... it's not a question of if they come back, it's when and how often."* First time he has used beat 5 as the REASON for the recommendation rather than as a fact. Also used **"$3 per day"** for the first time — Spencer's own line.
+- **Disposal held up under sustained pressure** (curveball #9 from the new pack, passed cold): *"what if I don't want dead moles in my trash?"* → double-bagged in a pest-control bag; *"my trash gets picked up every two weeks, that'll stink"* → *"it might, but on special request we can move them accordingly — usually we don't."* Policy exactly right, no defensiveness.
+- Explained the 450/150 split clearly when the caller got confused: flat rate, $150 deposit, $300 after the job.
+- **THE GUARANTEE WAS ASKED FOR OUTRIGHT AND MISSED.** Caller: *"is there any guarantee if you guys don't catch the mole — do I have to pay you?"* Mo answered about the $150 crediting toward the plan — a different question — and the caller got more confused, not less. **Seven calls, and this is the first time it was requested directly.** Still 1 for 7.
+- **CAPTURE COLLAPSED — he never asked for the street address at all.** Name, cell, email and "how did you find us?" but no address. Cannot send a quote or route a job without it. 15 → 8.
+- Caller pushed directly on timing (*"I want to be here, so I need to know when you're coming"*) and Mo deflected to the ETA text instead of checking. 7 for 7.
+- Minor: *"it's not a ripoff"* on the way out — plants the word in the customer's head. Say the flat-rate value without naming the objection.
+- Residential/commercial not asked — 2 calls running.
+- **Composition shift: education is now his strongest dimension (18/20) and capture is his weakest (8/15).** Six calls ago that was exactly reversed.
+- Trajectory: 63 → 70 → 86 → 72 → 79 → 76 → 75 · Passed to date: 2/23 · Weakest area: capture + the guarantee
+- Next session: capture and the guarantee only. The block is done — stop drilling it.
