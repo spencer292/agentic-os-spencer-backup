@@ -123,6 +123,38 @@ Friday zip, a truck leaves its territory to service one property.
 If the customer genuinely needs it sooner, that's fine — but check with Spencer before committing
 to an off-route setup, and don't promise the date on the call first.
 
+## What the nightly engine does — so you don't double-book
+
+Since 2026-08-05 an automated job runs at **6:15pm daily**. It reads the day's visit notes and
+**books the follow-up visits itself**, based on what the tech actually found:
+
+| What the tech found | What the engine books |
+|---|---|
+| Caught a mole — any product | Next visit ~1 week |
+| TMCP with any activity | Next visit ~1 week |
+| TMCP genuinely quiet (`N/A`, no catch, no miss) | Monthly |
+| Quick Fix, mid-series | Weekly — it's weekly by construction |
+| Quick Fix, 5 weeks done, still active | **A task, not a visit** — sales decision |
+
+**"Activity" is binary — there is no light-vs-heavy ladder.** It's activity if there's fresh
+sign, **or** a catch, **or** a miss. A trap that was hit but didn't hold means a mole was working
+that run and got away, so the property is not quiet. Going the other way: **old mounds are not
+activity** — dried, crusted, grass growing through means moles *were* there. A yard covered in old
+sign can still be a true `N/A`.
+
+**So the ongoing cadence is not your job. The initial build is.** You set up the job correctly and
+the engine keeps it correct from there.
+
+Two things follow from that:
+
+- **Don't hand-add follow-up visits** to a job that's already running. The engine will add one
+  too, and the customer gets two trucks or a duplicate that someone has to delete.
+- **The engine will not touch a SET.** It's specifically guarded against rescheduling setups —
+  which means a setup you place wrong stays wrong until a human fixes it. Get the SET right.
+
+It's also capped at 25 writes a day and aborts rather than exceed it, so if a big backlog builds
+up it stops instead of flooding the calendar. If you see it abort, tell Spencer.
+
 ---
 
 # Step 3 — Check the tech is real
@@ -268,3 +300,5 @@ resolve by ZIP, never by city name.***
 **Look up the ZIP → get day + tech · Quick Fix = weekly ×5 · TMCP = 5 weekly THEN monthly · SET is
 pinned, book it on the route day · Never assign Spencer, Tavis or Robert · Check the lookup the
 next morning**
+
+*You build the job. The 6:15pm engine keeps the cadence. Don't hand-add follow-ups.*
