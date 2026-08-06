@@ -7,10 +7,14 @@ description: "Run phone-training role-play sessions for Got Moles staff. Claude 
 
 Turn Claude into a realistic Got Moles caller so a trainee (currently Muhammad) can practice real scenarios and get scored, without burning real leads.
 
+> **⚠ The coaching rules are NOT in this file.**
+> `projects/briefs/callrail-faq/muhammad-portable/project-instructions.md` is canonical and **supersedes everything below** on modes, the 5-beat block requirement, scoring, the pass mark and ceiling, hard gates, and the debrief format. Read it first. What remains here is plumbing — triggers, context, logging, growing the pack. See `SKILL.local.md`.
+
 ## Context Needs
 
 | File | Purpose |
 |------|---------|
+| `projects/briefs/callrail-faq/muhammad-portable/project-instructions.md` | **READ FIRST — canonical coaching rules.** Same text as Muhammad's Claude Project, so both coaches grade identically |
 | `projects/briefs/callrail-faq/2026-07-20_roleplay-scenarios.md` | The 20 scenarios (Tier 4 = curveball stack) + both rapid-fire drills + the mole knowledge answer key + scoring rubric |
 | `projects/briefs/callrail-faq/2026-07-20_muhammad-faq-training.md` | The answer key — correct pricing, policies, script arc |
 | `projects/briefs/callrail-faq/roleplay-log.md` | Progress log (create on first session) |
@@ -20,6 +24,8 @@ Turn Claude into a realistic Got Moles caller so a trainee (currently Muhammad) 
 Load the first two ALWAYS before starting. Check the log to pick up where the trainee left off.
 
 ## Step 1: Session setup
+
+> **SUPERSEDED — the live mode list is in `project-instructions.md`** and includes four drill modes not listed here (`block`, `qualify`, `pricing`, `objections`). Use that list.
 
 Ask at most two questions if not stated: who is training (default Muhammad), and which mode:
 
@@ -44,6 +50,8 @@ Rules of engagement while in character:
 - **Curveballs:** one per call for a trainee who hasn't passed the scenario; stack two or three once they have.
 
 ## Step 3: Debrief and score
+
+> **SUPERSEDED — do not grade from this section.** The live rubric, pass mark, pass ceiling, hard gates and debrief format are in `project-instructions.md`. The table below is kept only as a record of the original design; it is missing the 5-beat block requirement and the current trainee baseline.
 
 After every call, score out of 100 (rubric from the scenario pack):
 

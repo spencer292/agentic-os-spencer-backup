@@ -1,0 +1,46 @@
+{
+ "ranAt": "2026-08-05T03:30:02.865Z",
+ "mode": "check",
+ "plannedDays": [
+  "2026-08-05",
+  "2026-08-06",
+  "2026-08-07",
+  "2026-08-10",
+  "2026-08-11",
+  "2026-08-12",
+  "2026-08-13",
+  "2026-08-14"
+ ],
+ "counts": {
+  "activeVisits": 727,
+  "scheduledStops": 729,
+  "missing": 0,
+  "dayDrift": 0,
+  "techDrift": 0,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 2
+ },
+ "missing": [],
+ "dayDrift": [],
+ "techDrift": [],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "6986-1845637645",
+   "date": "2026-08-11",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "15:13"
+  },
+  {
+   "orderNo": "8055-2229493540",
+   "date": "2026-08-11",
+   "driver": "Luke LaVergne",
+   "driverSerial": "Luke LaVergne",
+   "hm": "14:35"
+  }
+ ],
+ "fixes": []
+}

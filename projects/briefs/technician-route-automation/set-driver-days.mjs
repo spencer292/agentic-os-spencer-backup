@@ -25,18 +25,36 @@ const WEEK={mon:'2026-07-27',tue:'2026-07-28',wed:'2026-07-29',thu:'2026-07-30',
 // the field but stays enabled keeps collecting stops the grid never gave them.
 const gArg=process.argv.find(a=>a.startsWith('--grid='));
 const wArg=process.argv.find(a=>a.startsWith('--week='));
+// --dates=YYYY-MM-DD,... : set availability for EXACTLY these dates instead of a whole Mon-Fri week.
+// Needed by extend-horizon.mjs: this call unschedules the dates it touches, so when the planning
+// horizon ends mid-week, touching the other days of that week would blow away live routes.
+const dArg=process.argv.find(a=>a.startsWith('--dates='));
 const updates=[];
 if(gArg){
-  if(!wArg){console.log('--grid needs --week=<monday>');process.exit(1);}
+  if(!wArg&&!dArg){console.log('--grid needs --week=<monday> or --dates=<d1,d2,...>');process.exit(1);}
   const G=JSON.parse(fs.readFileSync(path.resolve(__dirname,gArg.split('=')[1]),'utf8'));
-  const mon=wArg.split('=')[1];
   const addD=(d,n)=>{const [y,m,dd]=d.split('-').map(Number);return new Date(Date.UTC(y,m-1,dd+n)).toISOString().slice(0,10);};
   const DAYS=['mon','tue','wed','thu','fri'];
-  const W={};DAYS.forEach((d,i)=>W[d]=addD(mon,i));
-  for(const [tech,days] of Object.entries(G.works||{}))
-    for(const d of DAYS) updates.push({driver:{serial:tech}, date:W[d], enabled:days.includes(d)});
-  for(const tech of G.notWorking||[])
-    for(const d of DAYS) updates.push({driver:{serial:tech}, date:W[d], enabled:false});
+  const DOW=['sun','mon','tue','wed','thu','fri','sat'];
+  // date -> weekday key. Either an explicit list, or the five weekdays from a Monday.
+  let W;
+  if(dArg){
+    W={};
+    for(const d of dArg.split('=')[1].split(',').map(s=>s.trim()).filter(Boolean)){
+      const k=DOW[new Date(d+'T12:00:00').getDay()];
+      if(!DAYS.includes(k)){console.log(`refusing weekend date ${d} (${k}) — Got Moles is Mon-Fri`);process.exit(1);}
+      W[d]=k;
+    }
+  }else{
+    const mon=wArg.split('=')[1];
+    W={};DAYS.forEach((d,i)=>W[addD(mon,i)]=d);
+  }
+  for(const [date,key] of Object.entries(W)){
+    for(const [tech,days] of Object.entries(G.works||{}))
+      updates.push({driver:{serial:tech}, date, enabled:days.includes(key)});
+    for(const tech of G.notWorking||[])
+      updates.push({driver:{serial:tech}, date, enabled:false});
+  }
 }else{
   // Spencer — Tuesday peninsula ONLY. This is the fix: without it the optimizer hands him stops
   // on every enabled day regardless of balancing mode (verified 2026-07-26: ON_FORCE gave him 124,

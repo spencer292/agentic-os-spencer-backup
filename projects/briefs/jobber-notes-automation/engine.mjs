@@ -20,7 +20,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import fs from 'node:fs';
 import { parseNote } from './parse-note.mjs';
-import { decideVisit } from './decide.mjs';
+import { decideVisit, productOf } from './decide.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ENV_PATH = path.resolve(__dirname, '../../../.env');
@@ -147,7 +147,12 @@ async function fetchJobs() {
   // Follow-up check = visits by DATE (anything after the noted day), NOT status UPCOMING:
   // a follow-up that's happening today or already completed isn't UPCOMING anymore and
   // would be falsely reported missing (the Mike Coile case, 2026-07-10).
-  const JOB_SEL = `id jobNumber jobType jobStatus jobberWebUri client { name }
+  // lineItems drives product classification (TMCP vs Quick Fix) — jobType cannot, because every
+  // Got Moles job is RECURRING, Quick Fix included (Spencer 2026-08-05).
+  // startAt = the job's own start date. A visit ON that date is the SET (the day the customer was
+  // promised), and the executor must never reschedule it.
+  const JOB_SEL = `id jobNumber jobType jobStatus jobberWebUri startAt client { name }
+    lineItems(first: 8) { nodes { name } }
     notes(last: 40) { nodes { __typename ... on JobNote { message createdAt } } }
     visits(first: 6, filter: { startAt: { after: "${before}" } }) { nodes { id startAt assignedUsers(first: 3) { nodes { id } } } }`;
   const ids = [...jobsById.keys()];
@@ -175,28 +180,40 @@ function planFor(job) {
     .map(v => ({ id: v.id, date: localDate(v.startAt), tech: (v.assignedUsers.nodes || []).map(u => u.id) }));
   const next = [...upcoming].sort((a, b) => a.date.localeCompare(b.date))[0] || null;
 
-  const d = decideVisit(completed, parsed.nextAction, upcoming);
+  const product = productOf((job.lineItems?.nodes || []).map(n => n.name));
+  const d = decideVisit(completed, parsed.nextAction, upcoming, { product, activity: parsed.activity, moles: parsed.moles });
   const detail = {
     PULL: `pull ${next ? next.date : ''} → ${d.target}`,
     ADD: `add new visit ${d.target} (next scheduled ${next ? next.date : 'none'} kept)`,
     LEAVE: d.reason || 'leave',
     ALREADY: `visit already near ${d.target}`,
-    TASK: 'Convert to annual — raise Task (not scheduling)',
+    TASK: d.reason || 'raise Task (not scheduling)',
   }[d.action] || d.action;
 
   return {
     jobNumber: job.jobNumber, jobId: job.id,
-    jobType: job.jobType, jobStatus: job.jobStatus, webUri: job.jobberWebUri,
+    jobType: job.jobType, product, jobStatus: job.jobStatus, webUri: job.jobberWebUri,
     client: job.client?.name || '(no client)',
     completed, nextAction: parsed.nextAction || '(none)',
     activity: parsed.activity, moles: parsed.moles,
     nextVisit: next ? next.date : null,
-    target: d.target || null, action: d.action, visitId: d.visitId, tech: d.tech, detail,
+    setDate: job.startAt ? localDate(job.startAt) : null,
+    target: d.target || null, action: d.action, visitId: d.visitId, tech: d.tech,
+    reason: d.reason || null, detail,
   };
 }
 
 // --- executors ---
+// GUARD: a SET is the day the customer was promised. Rescheduling one breaks an appointment nobody
+// agreed to move, so the executor refuses rather than trusting upstream logic to never ask.
+function setViolation(p) {
+  if (p.action !== 'PULL') return null;
+  if (p.setDate && p.nextVisit && p.setDate === p.nextVisit) return `visit ${p.nextVisit} is the SET for job ${p.jobNumber}`;
+  return null;
+}
 async function execPull(p) {
+  const bad = setViolation(p);
+  if (bad) throw new Error('REFUSED — ' + bad);
   const m = `mutation { visitEditSchedule(id: "${p.visitId}", input: {
     startAt: { date: "${p.target}", timezone: "${TZ}" }, endAt: { date: "${p.target}", timezone: "${TZ}" }
   }) { visit { startAt } userErrors { message } } }`;
@@ -223,6 +240,25 @@ if (JSON_OUT) { console.log(JSON.stringify({ date: TODAY, plans }, null, 2)); pr
 const tag = { PULL: '⏪ PULL ', ADD: '➕ ADD  ', LEAVE: '   leave', ALREADY: '✓ done  ', TASK: '📋 task ' };
 say(`\nGot Moles — visit-note automation ${EXECUTE ? '⚡ EXECUTE' : '🔍 DRY RUN'} — completed ${TODAY}`);
 say(`Day's visited jobs: ${jobs.length}; ${plans.length} have a note from ${TODAY}.\n`);
+
+// GUARD: a normal field day produces ~10 follow-ups. A number far above that means the parser, the
+// date window or the product classifier is wrong — not that the crew had a huge day. Abort BEFORE
+// any write rather than truncating, because a truncated run looks like a completed one.
+const MAX_WRITES = Number((process.argv.find(a => a.startsWith('--max-writes=')) || '--max-writes=25').split('=')[1]);
+const writePlans = plans.filter(p => p.action === 'PULL' || p.action === 'ADD');
+if (EXECUTE && writePlans.length > MAX_WRITES) {
+  say(`\n🛑 ABORT: ${writePlans.length} scheduling writes exceeds --max-writes ${MAX_WRITES}.`);
+  say('   That is not a normal day of follow-ups — check the note parser and the product classifier');
+  say('   before overriding. NO writes were made.');
+  process.exit(1);
+}
+// GUARD: refuse the whole run if anything would touch a SET, so it is investigated, not skipped.
+const setViolations = plans.map(setViolation).filter(Boolean);
+if (EXECUTE && setViolations.length) {
+  say(`\n🛑 ABORT: ${setViolations.length} action(s) would reschedule a SET — NO writes were made.`);
+  for (const v of setViolations) say('   ' + v);
+  process.exit(1);
+}
 for (const p of plans) {
   let status = tag[p.action] || p.action;
   if (EXECUTE && (p.action === 'PULL' || p.action === 'ADD')) {
@@ -230,7 +266,10 @@ for (const p of plans) {
     catch (e) { status = '❌ FAIL: ' + e.message.slice(0, 120); }
     await sleep(300);
   }
-  say(`${status} | ${String(p.jobNumber).padEnd(5)} ${p.client.slice(0, 22).padEnd(22)} | ${p.nextAction.padEnd(22)} | ${p.detail}`);
+  // Audit line: product + what was found + why, so one screen explains every write after the fact.
+  const why = p.reason ? ` | ${p.reason}` : '';
+  const found = `${p.product || '?'} ${p.activity || 'act?'}${Number(p.moles) > 0 ? ` caught ${p.moles}` : ''}`;
+  say(`${status} | ${String(p.jobNumber).padEnd(5)} ${p.client.slice(0, 22).padEnd(22)} | ${found.padEnd(24)} | ${p.detail}${why}`);
 }
 const c = a => plans.filter(p => p.action === a).length;
 say(`\nPULL ${c('PULL')}  ADD ${c('ADD')}  leave ${c('LEAVE')}  already ${c('ALREADY')}  task ${c('TASK')}`);

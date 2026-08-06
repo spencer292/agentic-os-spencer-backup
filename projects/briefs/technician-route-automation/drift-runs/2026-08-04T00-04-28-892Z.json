@@ -1,0 +1,596 @@
+{
+ "ranAt": "2026-08-04T00:00:59.444Z",
+ "mode": "fix",
+ "plannedDays": [
+  "2026-08-04",
+  "2026-08-05",
+  "2026-08-06",
+  "2026-08-07"
+ ],
+ "counts": {
+  "activeVisits": 437,
+  "scheduledStops": 434,
+  "missing": 3,
+  "dayDrift": 0,
+  "techDrift": 6,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 0
+ },
+ "missing": [
+  {
+   "orderNo": "8304-2276022990",
+   "job": "8304",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNzYwMjI5OTA=",
+   "date": "2026-08-04",
+   "hm": "09:45",
+   "tech": "Alias Franks",
+   "title": "Chris Poppy (set)",
+   "address": "1412 37th Avenue, Seattle, Washington 98122",
+   "isSet": true
+  },
+  {
+   "orderNo": "8303-2275997651",
+   "job": "8303",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNzU5OTc2NTE=",
+   "date": "2026-08-06",
+   "hm": "00:00",
+   "tech": "Cammeron Anderson",
+   "title": "Chad Erickson (SET)",
+   "address": "6751 Montevista Drive Southeast, Auburn, Washington 98092",
+   "isSet": true
+  },
+  {
+   "orderNo": "8267-2276006896",
+   "job": "8267",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNzYwMDY4OTY=",
+   "date": "2026-08-07",
+   "hm": "00:00",
+   "tech": "Spencer Hill",
+   "title": "Matt Kirk",
+   "address": "11511 Gravelly Lake Drive Southwest, Tacoma, Washington 98499",
+   "isSet": false
+  }
+ ],
+ "dayDrift": [],
+ "techDrift": [
+  {
+   "orderNo": "8053-2264749161",
+   "job": "8053",
+   "date": "2026-08-05",
+   "jobber": "Robert Norton",
+   "optimo": "Cammeron Anderson"
+  },
+  {
+   "orderNo": "4979-2272507156",
+   "job": "4979",
+   "date": "2026-08-05",
+   "jobber": "Robert Norton",
+   "optimo": "Cammeron Anderson"
+  },
+  {
+   "orderNo": "7969-2272609984",
+   "job": "7969",
+   "date": "2026-08-05",
+   "jobber": "Robert Norton",
+   "optimo": "Cammeron Anderson"
+  },
+  {
+   "orderNo": "8019-2263674311",
+   "job": "8019",
+   "date": "2026-08-05",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "7430-2264455751",
+   "job": "7430",
+   "date": "2026-08-05",
+   "jobber": "Robert Norton",
+   "optimo": "Cammeron Anderson"
+  },
+  {
+   "orderNo": "8160-2262729592",
+   "job": "8160",
+   "date": "2026-08-07",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  }
+ ],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [],
+ "fixes": [
+  {
+   "day": "2026-08-04",
+   "writable": false,
+   "created": [
+    "8304-2276022990"
+   ],
+   "replanned": false,
+   "writes": [],
+   "failures": [],
+   "aborted": null
+  },
+  {
+   "day": "2026-08-06",
+   "writable": true,
+   "created": [
+    "8303-2275997651"
+   ],
+   "replanned": true,
+   "writes": [
+    {
+     "orderNo": "8303-2275997651",
+     "from": "2026-08-06 00:00",
+     "to": "2026-08-06 07:46",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8180-2255777966",
+     "from": "2026-08-06 07:45",
+     "to": "2026-08-06 08:12",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8079-2264932314",
+     "from": "2026-08-06 07:59",
+     "to": "2026-08-06 08:26",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8231-2265621745",
+     "from": "2026-08-06 08:09",
+     "to": "2026-08-06 08:36",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "4994-1625952441",
+     "from": "2026-08-06 08:23",
+     "to": "2026-08-06 08:50",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7371-2264687878",
+     "from": "2026-08-06 08:40",
+     "to": "2026-08-06 09:07",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7739-2062914218",
+     "from": "2026-08-06 08:55",
+     "to": "2026-08-06 09:22",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7720-2055656873",
+     "from": "2026-08-06 09:08",
+     "to": "2026-08-06 09:35",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7754-2068037135",
+     "from": "2026-08-06 09:21",
+     "to": "2026-08-06 09:48",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7880-2152292327",
+     "from": "2026-08-06 09:34",
+     "to": "2026-08-06 10:01",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8230-2264943129",
+     "from": "2026-08-06 09:47",
+     "to": "2026-08-06 10:14",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8227-2263895128",
+     "from": "2026-08-06 10:03",
+     "to": "2026-08-06 10:30",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8084-2234979679",
+     "from": "2026-08-06 10:23",
+     "to": "2026-08-06 10:50",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7706-2050437696",
+     "from": "2026-08-06 10:37",
+     "to": "2026-08-06 11:04",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7664-2035604061",
+     "from": "2026-08-06 10:49",
+     "to": "2026-08-06 11:16",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8274-2271943437",
+     "from": "2026-08-06 11:03",
+     "to": "2026-08-06 11:30",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7793-2090028882",
+     "from": "2026-08-06 11:17",
+     "to": "2026-08-06 11:44",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7853-2134723234",
+     "from": "2026-08-06 11:39",
+     "to": "2026-08-06 12:06",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7496-2270430192",
+     "from": "2026-08-06 12:04",
+     "to": "2026-08-06 12:31",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "6241-1654760892",
+     "from": "2026-08-06 12:25",
+     "to": "2026-08-06 12:52",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7725-2261023708",
+     "from": "2026-08-06 12:48",
+     "to": "2026-08-06 13:15",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7670-2036882262",
+     "from": "2026-08-06 13:10",
+     "to": "2026-08-06 13:37",
+     "driver": "Cammeron Anderson"
+    }
+   ],
+   "failures": [],
+   "aborted": null
+  },
+  {
+   "day": "2026-08-07",
+   "writable": true,
+   "created": [
+    "8267-2276006896"
+   ],
+   "replanned": true,
+   "writes": [
+    {
+     "orderNo": "8267-2276006896",
+     "from": "2026-08-07 00:00",
+     "to": "2026-08-07 07:26",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "6737-2270055674",
+     "from": "2026-08-07 09:31",
+     "to": "2026-08-07 08:18",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7728-2059905691",
+     "from": "2026-08-07 10:12",
+     "to": "2026-08-07 08:59",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7805-2099670561",
+     "from": "2026-08-07 11:47",
+     "to": "2026-08-07 10:14",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8284-2273481831",
+     "from": "2026-08-07 11:03",
+     "to": "2026-08-07 10:59",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5121-1912463256",
+     "from": "2026-08-07 08:43",
+     "to": "2026-08-07 11:23",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8067-2232219536",
+     "from": "2026-08-07 12:30",
+     "to": "2026-08-07 11:43",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7795-2270254950",
+     "from": "2026-08-07 12:52",
+     "to": "2026-08-07 12:06",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7457-1939839676",
+     "from": "2026-08-07 14:12",
+     "to": "2026-08-07 12:31",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5413-1718745012",
+     "from": "2026-08-07 14:23",
+     "to": "2026-08-07 12:42",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5954-1912197344",
+     "from": "2026-08-07 14:36",
+     "to": "2026-08-07 12:54",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7747-2064947916",
+     "from": "2026-08-07 15:16",
+     "to": "2026-08-07 13:08",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "6389-1737865555",
+     "from": "2026-08-07 14:57",
+     "to": "2026-08-07 13:27",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5077-1691585427",
+     "from": "2026-08-07 13:56",
+     "to": "2026-08-07 13:54",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "6784-2260922515",
+     "from": "2026-08-07 13:37",
+     "to": "2026-08-07 14:13",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8208-2260889952",
+     "from": "2026-08-07 13:19",
+     "to": "2026-08-07 14:32",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7674-2269660372",
+     "from": "2026-08-07 08:16",
+     "to": "2026-08-07 14:56",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8222-2262416374",
+     "from": "2026-08-07 07:56",
+     "to": "2026-08-07 15:18",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8205-2260569398",
+     "from": "2026-08-07 07:41",
+     "to": "2026-08-07 15:33",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7740-2062933238",
+     "from": "2026-08-07 07:26",
+     "to": "2026-08-07 15:48",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5982-1911293148",
+     "from": "2026-08-07 15:44",
+     "to": "2026-08-07 06:56",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8259-2268948415",
+     "from": "2026-08-07 15:30",
+     "to": "2026-08-07 07:11",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7684-2106950429",
+     "from": "2026-08-07 14:52",
+     "to": "2026-08-07 07:27",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7685-2106942172",
+     "from": "2026-08-07 15:03",
+     "to": "2026-08-07 07:38",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7819-2106927231",
+     "from": "2026-08-07 15:13",
+     "to": "2026-08-07 07:48",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "6275-2269903988",
+     "from": "2026-08-07 10:00",
+     "to": "2026-08-07 08:06",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "5458-1770745577",
+     "from": "2026-08-07 10:13",
+     "to": "2026-08-07 08:19",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "4545-1912594494",
+     "from": "2026-08-07 10:25",
+     "to": "2026-08-07 08:31",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8125-2242850685",
+     "from": "2026-08-07 10:41",
+     "to": "2026-08-07 08:48",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8204-2259775836",
+     "from": "2026-08-07 11:02",
+     "to": "2026-08-07 09:08",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "6409-1655125375",
+     "from": "2026-08-07 11:21",
+     "to": "2026-08-07 09:27",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "5829-1912222261",
+     "from": "2026-08-07 11:39",
+     "to": "2026-08-07 09:46",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7896-2162893010",
+     "from": "2026-08-07 11:55",
+     "to": "2026-08-07 10:01",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "5152-2262264459",
+     "from": "2026-08-07 12:13",
+     "to": "2026-08-07 10:19",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7382-1921067290",
+     "from": "2026-08-07 12:28",
+     "to": "2026-08-07 10:34",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "6663-1789043684",
+     "from": "2026-08-07 12:48",
+     "to": "2026-08-07 10:54",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "6475-1686594164",
+     "from": "2026-08-07 13:08",
+     "to": "2026-08-07 11:14",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "5022-1692025193",
+     "from": "2026-08-07 13:22",
+     "to": "2026-08-07 11:28",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "5676-2273553512",
+     "from": "2026-08-07 13:38",
+     "to": "2026-08-07 11:44",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "6287-2263602265",
+     "from": "2026-08-07 14:00",
+     "to": "2026-08-07 12:07",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7767-2075253876",
+     "from": "2026-08-07 14:16",
+     "to": "2026-08-07 12:22",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7646-2269873042",
+     "from": "2026-08-07 14:33",
+     "to": "2026-08-07 12:39",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "4701-1912566744",
+     "from": "2026-08-07 09:44",
+     "to": "2026-08-07 12:56",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7626-2017357013",
+     "from": "2026-08-07 09:26",
+     "to": "2026-08-07 13:14",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "4515-2262894905",
+     "from": "2026-08-07 09:11",
+     "to": "2026-08-07 13:29",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8228-2264619967",
+     "from": "2026-08-07 08:57",
+     "to": "2026-08-07 13:43",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7697-2047351651",
+     "from": "2026-08-07 08:42",
+     "to": "2026-08-07 13:58",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8261-2269705731",
+     "from": "2026-08-07 08:28",
+     "to": "2026-08-07 14:13",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "5536-1735743524",
+     "from": "2026-08-07 08:11",
+     "to": "2026-08-07 14:33",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7084-1867408051",
+     "from": "2026-08-07 07:54",
+     "to": "2026-08-07 14:50",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "5602-1735742674",
+     "from": "2026-08-07 07:39",
+     "to": "2026-08-07 15:05",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "6628-1777785437",
+     "from": "2026-08-07 07:22",
+     "to": "2026-08-07 15:23",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8243-2267080957",
+     "from": "2026-08-07 07:10",
+     "to": "2026-08-07 15:35",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8291-2273507995",
+     "from": "2026-08-07 06:56",
+     "to": "2026-08-07 15:49",
+     "driver": "Cammeron Anderson"
+    }
+   ],
+   "failures": [],
+   "aborted": null
+  }
+ ]
+}

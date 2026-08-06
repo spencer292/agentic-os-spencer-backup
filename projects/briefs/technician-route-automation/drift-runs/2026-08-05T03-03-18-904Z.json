@@ -1,0 +1,69 @@
+{
+ "ranAt": "2026-08-05T03:03:18.903Z",
+ "mode": "check",
+ "plannedDays": [
+  "2026-08-05",
+  "2026-08-06",
+  "2026-08-07",
+  "2026-08-10",
+  "2026-08-11",
+  "2026-08-12",
+  "2026-08-13",
+  "2026-08-14"
+ ],
+ "counts": {
+  "activeVisits": 727,
+  "scheduledStops": 727,
+  "missing": 2,
+  "dayDrift": 0,
+  "techDrift": 0,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 2
+ },
+ "missing": [
+  {
+   "orderNo": "8108-2277659587",
+   "job": "8108",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNzc2NTk1ODc=",
+   "date": "2026-08-11",
+   "hm": "00:00",
+   "tech": "Alias Franks",
+   "title": "Mike Marinella",
+   "address": "745 North 195th Street, Shoreline, Washington 98133",
+   "isSet": false
+  },
+  {
+   "orderNo": "8036-2277713507",
+   "job": "8036",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNzc3MTM1MDc=",
+   "date": "2026-08-11",
+   "hm": "00:00",
+   "tech": "Alias Franks",
+   "title": "Garett Gowens",
+   "address": "19491 45th Avenue Northeast, Lake Forest Park, Washington 98155",
+   "isSet": false
+  }
+ ],
+ "dayDrift": [],
+ "techDrift": [],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "6986-1845637645",
+   "date": "2026-08-11",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "15:13"
+  },
+  {
+   "orderNo": "8055-2229493540",
+   "date": "2026-08-11",
+   "driver": "Luke LaVergne",
+   "driverSerial": "Luke LaVergne",
+   "hm": "14:35"
+  }
+ ],
+ "fixes": []
+}

@@ -197,6 +197,36 @@ Added 2026-07-27. These five stack two to four curveballs per call and are score
 
 ---
 
+## Tier 5 — The route (added 2026-08-03, with Jobber write access)
+
+Requires the service day lookup open. Companion doc: `2026-08-03_service-day-scripts.md`.
+
+### 21. "What day would you come out?"
+**Caller:** Denise, Puyallup. Ready to book, practical, schedule-driven.
+**Opens with:** *"Before I say yes — what day would you actually be out here? I work Tuesdays and Thursdays."*
+**Wants:** a specific day she can plan around.
+**Curveball:** she says "Puyallup" and nothing else. Puyallup spans six zips across three different route days — there is no correct answer without the zip. If he quotes a day anyway, tell him at debrief which zip she was in and whether he got lucky.
+**Pass:** asks for the zip (or the full address) *before* naming a day, uses the lookup, gives the route day for ongoing service, and separates it from the setup visit, which gets booked rather than guessed. Doesn't name the tech.
+**Common mistake:** answering "Puyallup? That's Tuesday" from memory. It's a coin flip, and a wrong day quoted at the sale becomes a complaint at the visit.
+
+### 22. "When are you next coming to me?"
+**Caller:** Ron, existing customer, Renton. Slightly impatient, not yet angry.
+**Opens with:** *"I just want to know when somebody's next scheduled to be here. Nobody's told me anything."*
+**Wants:** his actual next visit date.
+**Curveball:** if he's given the area route day instead of a real date, Ron replies *"Okay so someone's definitely here Wednesday?"* — locking in a promise the schedule never made.
+**Pass:** recognizes this is a Jobber question, not a sheet question. Opens the customer's job, reads the real next visit date, and gives the notification flow for the time (email day-before, text morning-of, text en-route). If nothing is scheduled, says so honestly and books it.
+**Common mistake:** reading the route day off the lookup. The sheet says what day we're in his *area*, not what day we're at *his house* — and this exact confusion is what generated two angry calls from one customer in a morning.
+
+### 23. "They're back, and I'm not waiting a month"
+**Caller:** Teresa, Olympia, on the monthly plan. Frustrated, not shouting.
+**Opens with:** *"There are three new mounds since your guy was here. When was he even here last?"*
+**Wants:** someone out fast.
+**Curveball:** *"Can you just move my next visit up to this week?"* — the wrong fix, and he now has the access to do it.
+**Pass:** checks the last visit in Jobber, and — critically — **adds** an interim visit on her zip's route day rather than dragging her recurring visit forward. Times it off what the tech found: anything caught → about a week; M/A → this week; L/A → next week or the one after; N/A → about two weeks. Explains it as "I'm getting you an extra visit," which is what it is.
+**Common mistake:** moving the scheduled visit. It feels responsive and it silently opens a seven-week gap on the other side — the exact failure that produced the cadence rule.
+
+---
+
 ## Mole knowledge answer key (Tier 4)
 
 General mole biology, and it lines up with how Spencer talks on calls. If a caller pushes past this level of detail, escalate rather than improvise — the phones are not the place to freestyle.

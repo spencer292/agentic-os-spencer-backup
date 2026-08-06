@@ -1,0 +1,581 @@
+{
+ "ranAt": "2026-08-05T18:01:52.729Z",
+ "mode": "fix",
+ "plannedDays": [
+  "2026-08-06",
+  "2026-08-07",
+  "2026-08-10",
+  "2026-08-11",
+  "2026-08-12",
+  "2026-08-13",
+  "2026-08-14"
+ ],
+ "counts": {
+  "activeVisits": 634,
+  "scheduledStops": 633,
+  "missing": 5,
+  "dayDrift": 0,
+  "techDrift": 0,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 4
+ },
+ "missing": [
+  {
+   "orderNo": "8321-2278514643",
+   "job": "8321",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNzg1MTQ2NDM=",
+   "date": "2026-08-06",
+   "hm": "00:00",
+   "tech": null,
+   "title": "Mike Huggins",
+   "address": "22016 Northeast 15th Street, Sammamish, Washington 98074",
+   "isSet": true
+  },
+  {
+   "orderNo": "7986-2278428828",
+   "job": "7986",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNzg0Mjg4Mjg=",
+   "date": "2026-08-12",
+   "hm": "00:00",
+   "tech": "Cory Ventura",
+   "title": "Tai Tran (problem job)",
+   "address": "2425 Northeast 16th Street, Renton, Washington 98056",
+   "isSet": false
+  },
+  {
+   "orderNo": "5667-2278431216",
+   "job": "5667",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNzg0MzEyMTY=",
+   "date": "2026-08-12",
+   "hm": "00:00",
+   "tech": "Cory Ventura",
+   "title": "Ron Short",
+   "address": "2116 Northeast 16th Street, Renton, Washington 98056",
+   "isSet": false
+  },
+  {
+   "orderNo": "5545-2278451206",
+   "job": "5545",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNzg0NTEyMDY=",
+   "date": "2026-08-12",
+   "hm": "00:00",
+   "tech": "Alias Franks",
+   "title": "Nichole Jacobson",
+   "address": "31015 Northeast 60th Street, Carnation, Washington 98014",
+   "isSet": false
+  },
+  {
+   "orderNo": "8320-2278466083",
+   "job": "8320",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNzg0NjYwODM=",
+   "date": "2026-08-12",
+   "hm": "00:00",
+   "tech": "Cory Ventura",
+   "title": "Jay Hickenbottom",
+   "address": "1111 North 41st Place, Renton, Washington 98056",
+   "isSet": false
+  }
+ ],
+ "dayDrift": [],
+ "techDrift": [],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "6986-1845637645",
+   "date": "2026-08-11",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "15:13"
+  },
+  {
+   "orderNo": "8055-2229493540",
+   "date": "2026-08-11",
+   "driver": "Luke LaVergne",
+   "driverSerial": "Luke LaVergne",
+   "hm": "14:35"
+  },
+  {
+   "orderNo": "7758-2068547007",
+   "date": "2026-08-12",
+   "driver": "Alias Franks",
+   "driverSerial": "Alias Franks",
+   "hm": "12:10"
+  },
+  {
+   "orderNo": "8069-2232220556",
+   "date": "2026-08-12",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "08:33"
+  }
+ ],
+ "fixes": [
+  {
+   "day": "2026-08-06",
+   "writable": true,
+   "created": [
+    "8321-2278514643"
+   ],
+   "replanned": true,
+   "writes": [
+    {
+     "orderNo": "8174-2254186644",
+     "from": "2026-08-06 08:40",
+     "to": "2026-08-06 07:40",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "7262-1901456051",
+     "from": "2026-08-06 08:55",
+     "to": "2026-08-06 07:55",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8195-2259510579",
+     "from": "2026-08-06 09:06",
+     "to": "2026-08-06 08:07",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8321-2278514643",
+     "from": "2026-08-06 00:00",
+     "to": "2026-08-06 08:19",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8249-2267634928",
+     "from": "2026-08-06 08:24",
+     "to": "2026-08-06 08:44",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8306-2277540059",
+     "from": "2026-08-06 07:43",
+     "to": "2026-08-06 09:03",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8188-2258956829",
+     "from": "2026-08-06 08:09",
+     "to": "2026-08-06 09:28",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "4614-1912586942",
+     "from": "2026-08-06 09:20",
+     "to": "2026-08-06 09:43",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8279-2273472482",
+     "from": "2026-08-06 09:35",
+     "to": "2026-08-06 09:58",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8234-2265628984",
+     "from": "2026-08-06 10:00",
+     "to": "2026-08-06 10:23",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8256-2268932054",
+     "from": "2026-08-06 10:15",
+     "to": "2026-08-06 10:38",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "6355-2273553452",
+     "from": "2026-08-06 10:31",
+     "to": "2026-08-06 10:54",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8119-2242636315",
+     "from": "2026-08-06 10:46",
+     "to": "2026-08-06 11:10",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8156-2248882055",
+     "from": "2026-08-06 10:59",
+     "to": "2026-08-06 11:22",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8263-2270434972",
+     "from": "2026-08-06 11:15",
+     "to": "2026-08-06 11:38",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8288-2273495395",
+     "from": "2026-08-06 11:30",
+     "to": "2026-08-06 11:54",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8182-2255778882",
+     "from": "2026-08-06 11:45",
+     "to": "2026-08-06 12:09",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "7882-2152688932",
+     "from": "2026-08-06 11:57",
+     "to": "2026-08-06 12:20",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "4905-1637600088",
+     "from": "2026-08-06 12:12",
+     "to": "2026-08-06 12:35",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8275-2272675476",
+     "from": "2026-08-06 12:26",
+     "to": "2026-08-06 12:49",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8213-2261157697",
+     "from": "2026-08-06 12:56",
+     "to": "2026-08-06 13:19",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8254-2268683209",
+     "from": "2026-08-06 13:14",
+     "to": "2026-08-06 13:38",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "5415-1699827858",
+     "from": "2026-08-06 13:30",
+     "to": "2026-08-06 13:53",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "7817-2106876950",
+     "from": "2026-08-06 13:45",
+     "to": "2026-08-06 14:08",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "6810-1815091721",
+     "from": "2026-08-06 13:58",
+     "to": "2026-08-06 14:22",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8265-2270506348",
+     "from": "2026-08-06 14:10",
+     "to": "2026-08-06 14:33",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "5382-1733118091",
+     "from": "2026-08-06 14:28",
+     "to": "2026-08-06 14:51",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8233-2265627930",
+     "from": "2026-08-06 14:43",
+     "to": "2026-08-06 15:07",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8154-2248818912",
+     "from": "2026-08-06 14:57",
+     "to": "2026-08-06 15:20",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "7116-2266584378",
+     "from": "2026-08-06 15:09",
+     "to": "2026-08-06 15:32",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8079-2264932314",
+     "from": "2026-08-06 08:36",
+     "to": "2026-08-06 08:26",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8231-2265621745",
+     "from": "2026-08-06 08:26",
+     "to": "2026-08-06 08:36",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8227-2263895128",
+     "from": "2026-08-06 10:52",
+     "to": "2026-08-06 10:41",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "5300-2276108275",
+     "from": "2026-08-06 10:40",
+     "to": "2026-08-06 10:54",
+     "driver": "Cammeron Anderson"
+    }
+   ],
+   "failures": [],
+   "aborted": null
+  },
+  {
+   "day": "2026-08-12",
+   "writable": true,
+   "created": [
+    "7986-2278428828",
+    "5667-2278431216",
+    "5545-2278451206",
+    "8320-2278466083"
+   ],
+   "replanned": true,
+   "writes": [
+    {
+     "orderNo": "5545-2278451206",
+     "from": "2026-08-12 00:00",
+     "to": "2026-08-12 08:41",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8286-2273493540",
+     "from": "2026-08-12 08:44",
+     "to": "2026-08-12 08:58",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "5007-2278407043",
+     "from": "2026-08-12 09:05",
+     "to": "2026-08-12 09:19",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "5150-2278338401",
+     "from": "2026-08-12 09:23",
+     "to": "2026-08-12 09:37",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8168-2253061764",
+     "from": "2026-08-12 09:43",
+     "to": "2026-08-12 09:57",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "7627-2017499286",
+     "from": "2026-08-12 09:56",
+     "to": "2026-08-12 10:10",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "6271-2278225390",
+     "from": "2026-08-12 10:12",
+     "to": "2026-08-12 10:26",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "6270-2278131283",
+     "from": "2026-08-12 10:35",
+     "to": "2026-08-12 10:49",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "7434-1932527470",
+     "from": "2026-08-12 10:52",
+     "to": "2026-08-12 11:06",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8246-2267626870",
+     "from": "2026-08-12 11:12",
+     "to": "2026-08-12 11:26",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8127-2243404660",
+     "from": "2026-08-12 11:25",
+     "to": "2026-08-12 11:39",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8194-2259507653",
+     "from": "2026-08-12 11:40",
+     "to": "2026-08-12 11:54",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "7986-2278428828",
+     "from": "2026-08-12 00:00",
+     "to": "2026-08-12 08:31",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "5667-2278431216",
+     "from": "2026-08-12 00:00",
+     "to": "2026-08-12 08:42",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8207-2260758923",
+     "from": "2026-08-12 08:44",
+     "to": "2026-08-12 09:08",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8320-2278466083",
+     "from": "2026-08-12 00:00",
+     "to": "2026-08-12 09:21",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8019-2220616481",
+     "from": "2026-08-12 08:57",
+     "to": "2026-08-12 09:31",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8146-2247871544",
+     "from": "2026-08-12 09:07",
+     "to": "2026-08-12 09:42",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "6352-1636520376",
+     "from": "2026-08-12 09:24",
+     "to": "2026-08-12 09:59",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "7915-2278357406",
+     "from": "2026-08-12 09:38",
+     "to": "2026-08-12 10:13",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8072-2232222184",
+     "from": "2026-08-12 09:55",
+     "to": "2026-08-12 10:29",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8072-2232222182",
+     "from": "2026-08-12 10:05",
+     "to": "2026-08-12 10:39",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8202-2259593624",
+     "from": "2026-08-12 10:20",
+     "to": "2026-08-12 10:54",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "5324-1808364940",
+     "from": "2026-08-12 10:33",
+     "to": "2026-08-12 11:08",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "7753-2067997301",
+     "from": "2026-08-12 10:46",
+     "to": "2026-08-12 11:21",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "7797-2090232032",
+     "from": "2026-08-12 11:02",
+     "to": "2026-08-12 11:37",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "4930-2278108541",
+     "from": "2026-08-12 11:14",
+     "to": "2026-08-12 11:49",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8103-2278166369",
+     "from": "2026-08-12 11:28",
+     "to": "2026-08-12 12:02",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "6440-1665890199",
+     "from": "2026-08-12 11:41",
+     "to": "2026-08-12 12:16",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "7736-2278217716",
+     "from": "2026-08-12 11:54",
+     "to": "2026-08-12 12:29",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8153-2248697643",
+     "from": "2026-08-12 12:08",
+     "to": "2026-08-12 12:43",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "7789-2261628786",
+     "from": "2026-08-12 12:24",
+     "to": "2026-08-12 12:58",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8094-2278274625",
+     "from": "2026-08-12 12:38",
+     "to": "2026-08-12 13:13",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "6382-2275316237",
+     "from": "2026-08-12 12:57",
+     "to": "2026-08-12 13:32",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "7548-2275317689",
+     "from": "2026-08-12 13:11",
+     "to": "2026-08-12 13:46",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8003-2217431118",
+     "from": "2026-08-12 13:24",
+     "to": "2026-08-12 13:59",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8100-2275246543",
+     "from": "2026-08-12 13:36",
+     "to": "2026-08-12 14:11",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8047-2275245406",
+     "from": "2026-08-12 13:48",
+     "to": "2026-08-12 14:23",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8172-2253064931",
+     "from": "2026-08-12 14:20",
+     "to": "2026-08-12 14:55",
+     "driver": "Cory Ventura"
+    }
+   ],
+   "failures": [],
+   "aborted": null
+  }
+ ]
+}

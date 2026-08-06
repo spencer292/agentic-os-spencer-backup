@@ -1,0 +1,353 @@
+{
+ "ranAt": "2026-08-05T21:01:49.289Z",
+ "mode": "fix",
+ "plannedDays": [
+  "2026-08-06",
+  "2026-08-07",
+  "2026-08-10",
+  "2026-08-11",
+  "2026-08-12",
+  "2026-08-13",
+  "2026-08-14"
+ ],
+ "counts": {
+  "activeVisits": 648,
+  "scheduledStops": 649,
+  "missing": 4,
+  "dayDrift": 1,
+  "techDrift": 1,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 5
+ },
+ "missing": [
+  {
+   "orderNo": "7869-2278835576",
+   "job": "7869",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNzg4MzU1NzY=",
+   "date": "2026-08-12",
+   "hm": "00:00",
+   "tech": "Alias Franks",
+   "title": "Shelley Ryan",
+   "address": "10611 Redmond Ridge Drive Northeast, Redmond, Washington 98053",
+   "isSet": false
+  },
+  {
+   "orderNo": "6329-2278862455",
+   "job": "6329",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNzg4NjI0NTU=",
+   "date": "2026-08-12",
+   "hm": "00:00",
+   "tech": "Alias Franks",
+   "title": "Akanksha Singh",
+   "address": "11030 220th Place Northeast, Redmond, Washington 98053",
+   "isSet": false
+  },
+  {
+   "orderNo": "5148-1702497403",
+   "job": "5148",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE3MDI0OTc0MDM=",
+   "date": "2026-08-12",
+   "hm": "07:00",
+   "tech": null,
+   "title": "Brant Bengston",
+   "address": "25017 112th Street East, Buckley, Washington 98321",
+   "isSet": false
+  },
+  {
+   "orderNo": "7430-1966487315",
+   "job": "7430",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE5NjY0ODczMTU=",
+   "date": "2026-08-12",
+   "hm": "07:00",
+   "tech": null,
+   "title": "Darren Bartels",
+   "address": "12126 243rd Avenue East, Buckley, Washington 98321",
+   "isSet": false
+  }
+ ],
+ "dayDrift": [
+  {
+   "orderNo": "5084-1668540635",
+   "job": "5084",
+   "jobber": "2026-08-12",
+   "optimo": "2026-08-13",
+   "driver": "Alias Franks"
+  }
+ ],
+ "techDrift": [
+  {
+   "orderNo": "5318-1720860049",
+   "job": "5318",
+   "date": "2026-08-12",
+   "jobber": "Tavis Alexander",
+   "optimo": "Alias Franks"
+  }
+ ],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "8264-2270440743",
+   "date": "2026-08-11",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "13:47"
+  },
+  {
+   "orderNo": "6986-1845637645",
+   "date": "2026-08-11",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "15:13"
+  },
+  {
+   "orderNo": "8055-2229493540",
+   "date": "2026-08-11",
+   "driver": "Luke LaVergne",
+   "driverSerial": "Luke LaVergne",
+   "hm": "14:35"
+  },
+  {
+   "orderNo": "7758-2068547007",
+   "date": "2026-08-12",
+   "driver": "Alias Franks",
+   "driverSerial": "Alias Franks",
+   "hm": "13:02"
+  },
+  {
+   "orderNo": "8069-2232220556",
+   "date": "2026-08-12",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "09:08"
+  }
+ ],
+ "fixes": [
+  {
+   "day": "2026-08-12",
+   "writable": true,
+   "created": [
+    "7869-2278835576",
+    "6329-2278862455",
+    "5148-1702497403",
+    "7430-1966487315"
+   ],
+   "replanned": true,
+   "writes": [
+    {
+     "orderNo": "7434-1932527470",
+     "from": "2026-08-12 11:44",
+     "to": "2026-08-12 07:54",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "6270-2278131283",
+     "from": "2026-08-12 11:27",
+     "to": "2026-08-12 08:12",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "6271-2278225390",
+     "from": "2026-08-12 11:04",
+     "to": "2026-08-12 08:35",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "7627-2017499286",
+     "from": "2026-08-12 10:47",
+     "to": "2026-08-12 08:51",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8168-2253061764",
+     "from": "2026-08-12 10:35",
+     "to": "2026-08-12 09:03",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "5150-2278338401",
+     "from": "2026-08-12 10:14",
+     "to": "2026-08-12 09:24",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "5007-2278407043",
+     "from": "2026-08-12 09:56",
+     "to": "2026-08-12 09:42",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "5545-2278451206",
+     "from": "2026-08-12 09:18",
+     "to": "2026-08-12 09:58",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8286-2273493540",
+     "from": "2026-08-12 09:36",
+     "to": "2026-08-12 10:16",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "6380-1647376699",
+     "from": "2026-08-12 08:56",
+     "to": "2026-08-12 10:41",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "7022-2278650860",
+     "from": "2026-08-12 08:33",
+     "to": "2026-08-12 11:05",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "7116-1876736129",
+     "from": "2026-08-12 07:54",
+     "to": "2026-08-12 11:22",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "5318-1720860049",
+     "from": "2026-08-12 08:12",
+     "to": "2026-08-12 11:40",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "6329-2278862455",
+     "from": "2026-08-12 00:00",
+     "to": "2026-08-12 11:59",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "7869-2278835576",
+     "from": "2026-08-12 00:00",
+     "to": "2026-08-12 12:12",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8194-2259507653",
+     "from": "2026-08-12 12:31",
+     "to": "2026-08-12 12:30",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8127-2243404660",
+     "from": "2026-08-12 12:17",
+     "to": "2026-08-12 12:45",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8246-2267626870",
+     "from": "2026-08-12 12:04",
+     "to": "2026-08-12 12:58",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8137-2246402528",
+     "from": "2026-08-12 07:19",
+     "to": "2026-08-12 06:38",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7673-2037613851",
+     "from": "2026-08-12 07:38",
+     "to": "2026-08-12 06:57",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7677-2038950838",
+     "from": "2026-08-12 08:00",
+     "to": "2026-08-12 07:18",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7570-2001256097",
+     "from": "2026-08-12 08:18",
+     "to": "2026-08-12 07:36",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "5023-1640871945",
+     "from": "2026-08-12 07:02",
+     "to": "2026-08-12 07:56",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "4676-1912569478",
+     "from": "2026-08-12 06:46",
+     "to": "2026-08-12 08:11",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8198-2259570216",
+     "from": "2026-08-12 06:34",
+     "to": "2026-08-12 08:23",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "5148-1702497403",
+     "from": "2026-08-12 07:00",
+     "to": "2026-08-12 08:38",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7430-1966487315",
+     "from": "2026-08-12 07:00",
+     "to": "2026-08-12 08:52",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7816-2106520668",
+     "from": "2026-08-12 08:39",
+     "to": "2026-08-12 09:04",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7017-1853949698",
+     "from": "2026-08-12 08:53",
+     "to": "2026-08-12 09:18",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "6985-1845630352",
+     "from": "2026-08-12 09:06",
+     "to": "2026-08-12 09:31",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "5147-1689550271",
+     "from": "2026-08-12 09:21",
+     "to": "2026-08-12 09:46",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "5915-1637603707",
+     "from": "2026-08-12 09:34",
+     "to": "2026-08-12 09:59",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7671-2037573340",
+     "from": "2026-08-12 09:45",
+     "to": "2026-08-12 10:10",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "4882-1608591787",
+     "from": "2026-08-12 09:59",
+     "to": "2026-08-12 10:24",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7306-2269977765",
+     "from": "2026-08-12 10:45",
+     "to": "2026-08-12 11:10",
+     "driver": "Cammeron Anderson"
+    }
+   ],
+   "failures": [],
+   "aborted": null
+  }
+ ]
+}

@@ -1,0 +1,97 @@
+{
+ "ranAt": "2026-08-06T00:09:34.392Z",
+ "mode": "check",
+ "plannedDays": [
+  "2026-08-06",
+  "2026-08-07",
+  "2026-08-10",
+  "2026-08-11",
+  "2026-08-12",
+  "2026-08-13",
+  "2026-08-14"
+ ],
+ "counts": {
+  "activeVisits": 677,
+  "scheduledStops": 680,
+  "missing": 2,
+  "dayDrift": 0,
+  "techDrift": 1,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 5
+ },
+ "missing": [
+  {
+   "orderNo": "7639-2279120696",
+   "job": "7639",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNzkxMjA2OTY=",
+   "date": "2026-08-12",
+   "hm": "00:00",
+   "tech": "Alias Franks",
+   "title": "Marla Poor",
+   "address": "24125 85th Avenue Southeast, Woodinville, Washington 98072",
+   "isSet": false
+  },
+  {
+   "orderNo": "8325-2279120552",
+   "job": "8325",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNzkxMjA1NTI=",
+   "date": "2026-08-13",
+   "hm": "00:00",
+   "tech": null,
+   "title": "Maryanne Zukowski",
+   "address": "18716 McGhee Drive East, Bonney Lake, Washington 98391",
+   "isSet": false
+  }
+ ],
+ "dayDrift": [],
+ "techDrift": [
+  {
+   "orderNo": "5318-1720860049",
+   "job": "5318",
+   "date": "2026-08-12",
+   "jobber": "Tavis Alexander",
+   "optimo": "Alias Franks"
+  }
+ ],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "8264-2270440743",
+   "date": "2026-08-11",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "13:47"
+  },
+  {
+   "orderNo": "6986-1845637645",
+   "date": "2026-08-11",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "15:13"
+  },
+  {
+   "orderNo": "8055-2229493540",
+   "date": "2026-08-11",
+   "driver": "Luke LaVergne",
+   "driverSerial": "Luke LaVergne",
+   "hm": "14:35"
+  },
+  {
+   "orderNo": "7758-2068547007",
+   "date": "2026-08-12",
+   "driver": "Alias Franks",
+   "driverSerial": "Alias Franks",
+   "hm": "07:02"
+  },
+  {
+   "orderNo": "8069-2232220556",
+   "date": "2026-08-12",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "10:40"
+  }
+ ],
+ "fixes": []
+}

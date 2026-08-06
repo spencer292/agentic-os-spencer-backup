@@ -1,0 +1,42 @@
+{
+ "ranAt": "2026-08-04T16:02:38.697Z",
+ "mode": "fix",
+ "plannedDays": [
+  "2026-08-05",
+  "2026-08-06",
+  "2026-08-07"
+ ],
+ "counts": {
+  "activeVisits": 324,
+  "scheduledStops": 324,
+  "missing": 0,
+  "dayDrift": 1,
+  "techDrift": 1,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 0
+ },
+ "missing": [],
+ "dayDrift": [
+  {
+   "orderNo": "5300-2276108275",
+   "job": "5300",
+   "jobber": "2026-08-06",
+   "optimo": "2026-08-07",
+   "driver": "Cory Ventura"
+  }
+ ],
+ "techDrift": [
+  {
+   "orderNo": "8267-2276006896",
+   "job": "8267",
+   "date": "2026-08-07",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  }
+ ],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [],
+ "fixes": []
+}

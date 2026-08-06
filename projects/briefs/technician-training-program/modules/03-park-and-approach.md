@@ -96,6 +96,14 @@ You are there to find out what is going on before you decide what to carry. Walk
 an armload of traps tells the customer you have already made up your mind about their
 property, and it means you carry the wrong gear half the time anyway.
 
+**Empty-handed applies to the door, not the whole visit.** There are three trips to the truck:
+
+1. **Nothing** — up to the door, confirm the number, knock, have the conversation.
+2. **Probe rod + shovel** — back to the truck, then walk the property and pre-dig your holes.
+3. **Traps + equipment** — back to the truck once you know what this property needs, set, leave.
+
+The walk itself is Module 4.
+
 ---
 
 ## 5. The approach — repeat visits

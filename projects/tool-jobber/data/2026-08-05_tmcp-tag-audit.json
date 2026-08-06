@@ -1,0 +1,181 @@
+{
+  "runDate": "2026-08-05",
+  "liveJobsScanned": 797,
+  "tmcJobs": {
+    "total": 659,
+    "recurring": 658,
+    "oneOff": 1,
+    "distinctClients": 640
+  },
+  "tags": {
+    "taggedActive": 631,
+    "taggedChurned": 20,
+    "tmcJobsMissingActiveTag": 11,
+    "clientsMissingActiveTag": 11,
+    "taggedActiveNoTmcJob": 2,
+    "tmcJobsTaggedChurned": 2
+  },
+  "mrrEquiv": 72639.69,
+  "missingTagDetail": [
+    {
+      "job": 8315,
+      "client": "Scott Vojik",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDgyNDU5NDU=",
+      "jobType": "RECURRING",
+      "status": "upcoming",
+      "startAt": "2026-08-07T07:00:00Z",
+      "endAt": "2036-08-07T06:59:59Z",
+      "total": 115,
+      "sched": "Monthly on the last day of the month",
+      "currentTags": [
+        "Schedule requested",
+        "Voice Assist - Call Answered",
+        "Voice Assist - Message Taken"
+      ]
+    },
+    {
+      "job": 8289,
+      "client": "Chad Vetter",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc3ODg5NDU=",
+      "jobType": "RECURRING",
+      "status": "upcoming",
+      "startAt": "2026-08-04T07:00:00Z",
+      "endAt": "2036-08-04T06:59:59Z",
+      "total": 100,
+      "sched": "When the job is marked closed",
+      "currentTags": [
+        "Schedule requested",
+        "Voice Assist - Call Answered",
+        "Voice Assist - Message Taken"
+      ]
+    },
+    {
+      "job": 8305,
+      "client": "Douglas  Kelly",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTcyNDMzMTA=",
+      "jobType": "RECURRING",
+      "status": "upcoming",
+      "startAt": "2026-08-04T07:00:00Z",
+      "endAt": "2036-08-04T06:59:59Z",
+      "total": 100,
+      "sched": "Monthly on the last day of the month",
+      "currentTags": []
+    },
+    {
+      "job": 8297,
+      "client": "Babu Uppala",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDgwMzk2NDg=",
+      "jobType": "RECURRING",
+      "status": "upcoming",
+      "startAt": "2026-08-03T07:00:00Z",
+      "endAt": "2027-06-03T06:59:59Z",
+      "total": 50,
+      "sched": "Monthly on the last day of the month",
+      "currentTags": []
+    },
+    {
+      "job": 8296,
+      "client": "Prasad Thiruveedu",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDgwNjg4MDE=",
+      "jobType": "RECURRING",
+      "status": "upcoming",
+      "startAt": "2026-08-03T07:00:00Z",
+      "endAt": "2036-08-03T06:59:59Z",
+      "total": 50,
+      "sched": "Monthly on the last day of the month",
+      "currentTags": []
+    },
+    {
+      "job": 8277,
+      "client": "Jon Gomes",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMjA1NTEwMjQ=",
+      "jobType": "RECURRING",
+      "status": "upcoming",
+      "startAt": "2026-07-31T07:00:00Z",
+      "endAt": "2036-07-31T06:59:59Z",
+      "total": 100,
+      "sched": "When the job is marked closed",
+      "currentTags": []
+    },
+    {
+      "job": 8265,
+      "client": "Jepson Fuller",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMjA0MTQ3ODI=",
+      "jobType": "RECURRING",
+      "status": "upcoming",
+      "startAt": "2026-07-30T07:00:00Z",
+      "endAt": "2036-07-30T06:59:59Z",
+      "total": 100,
+      "sched": "When the job is marked closed",
+      "currentTags": [
+        "Schedule requested"
+      ]
+    },
+    {
+      "job": 8219,
+      "client": "Trent Bryan",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC83MjU1Njk3Nw==",
+      "jobType": "RECURRING",
+      "status": "upcoming",
+      "startAt": "2026-07-30T07:00:00Z",
+      "endAt": "2026-11-01T06:59:59Z",
+      "total": 200,
+      "sched": "Monthly on the last day of the month",
+      "currentTags": []
+    },
+    {
+      "job": 8270,
+      "client": "Brian Meadows",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc4NDE1MzI=",
+      "jobType": "RECURRING",
+      "status": "today",
+      "startAt": "2026-07-30T07:00:00Z",
+      "endAt": "2036-07-30T06:59:59Z",
+      "total": 100,
+      "sched": "Monthly on the last day of the month",
+      "currentTags": [
+        "Schedule requested",
+        "Voice Assist - Call Answered",
+        "Voice Assist - Message Taken"
+      ]
+    },
+    {
+      "job": 8251,
+      "client": "Mike Malgarini",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc1NjQ4MzE=",
+      "jobType": "RECURRING",
+      "status": "upcoming",
+      "startAt": "2026-07-28T07:00:00Z",
+      "endAt": "2036-07-28T06:59:59Z",
+      "total": 100,
+      "sched": "Monthly on the last day of the month",
+      "currentTags": []
+    },
+    {
+      "job": 5639,
+      "client": "Larry Lemmon",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC84NjgxMzQwNw==",
+      "jobType": "RECURRING",
+      "status": "upcoming",
+      "startAt": "2024-07-30T07:00:00Z",
+      "endAt": "2034-07-30T06:59:59Z",
+      "total": 100,
+      "sched": "Monthly on the last day of the month",
+      "currentTags": [
+        "TMCP Churned"
+      ]
+    }
+  ],
+  "taggedNoJobDetail": [
+    {
+      "client": "Tyler Smythe",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC82MzI4MTQ3Mg==",
+      "archived": false
+    },
+    {
+      "client": "Barbee Mill HOA",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC82OTk1MDQyNQ==",
+      "archived": false
+    }
+  ]
+}

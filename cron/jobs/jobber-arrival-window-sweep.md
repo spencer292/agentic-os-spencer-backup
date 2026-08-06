@@ -1,11 +1,11 @@
 ---
 name: Jobber Arrival Window Sweep
-time: '06:10'
-days: mon
+time: '06:10,13:30'
+days: daily
 active: 'true'
 model: opus
 notify: on_error
-description: 'Weekly safety net: ensures every Jobber job with timed visits in the next 14 days has the standard 3-hour arrival window, so client texts show a window instead of an exact route-ETA time. Mutation (jobEdit arrivalWindow 180min) pre-approved by Spencer 2026-07-20.'
+description: 'Twice-daily safety net: ensures every Jobber job with timed visits in the next 14 days has the standard 3-hour arrival window, so client texts show a window instead of an exact route-ETA time. Mutation (jobEdit arrivalWindow 180min) pre-approved by Spencer 2026-07-20. Was weekly/Monday until 2026-08-04 — that left anything booked Tue-Sun with NO window until the following Monday, so jobs booked and serviced inside the same week went out with an exact time (14 of Spencer new 08-04 bookings did exactly that). The 13:30 run is deliberate: it lands just before the 14:00 PT D-1 arrival-window notification cutoff, so a job booked that morning still gets a window before the customer is told anything.'
 timeout: 15m
 retry: '1'
 ---

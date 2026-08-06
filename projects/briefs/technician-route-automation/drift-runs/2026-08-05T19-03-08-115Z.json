@@ -1,0 +1,226 @@
+{
+ "ranAt": "2026-08-05T19:01:48.197Z",
+ "mode": "fix",
+ "plannedDays": [
+  "2026-08-06",
+  "2026-08-07",
+  "2026-08-10",
+  "2026-08-11",
+  "2026-08-12",
+  "2026-08-13",
+  "2026-08-14"
+ ],
+ "counts": {
+  "activeVisits": 635,
+  "scheduledStops": 638,
+  "missing": 2,
+  "dayDrift": 0,
+  "techDrift": 0,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 5
+ },
+ "missing": [
+  {
+   "orderNo": "7022-2278650860",
+   "job": "7022",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNzg2NTA4NjA=",
+   "date": "2026-08-12",
+   "hm": "00:00",
+   "tech": "Alias Franks",
+   "title": "Seddik Belyamani - TMCP",
+   "address": "5605 228th Avenue Northeast, Redmond, Washington 98053",
+   "isSet": false
+  },
+  {
+   "orderNo": "5147-1689550271",
+   "job": "5147",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE2ODk1NTAyNzE=",
+   "date": "2026-08-12",
+   "hm": "07:00",
+   "tech": null,
+   "title": "Rita Gray",
+   "address": "22302 Sumner Buckley Highway, Buckley, Washington 98321",
+   "isSet": false
+  }
+ ],
+ "dayDrift": [],
+ "techDrift": [],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "8264-2270440743",
+   "date": "2026-08-11",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "13:47"
+  },
+  {
+   "orderNo": "6986-1845637645",
+   "date": "2026-08-11",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "15:13"
+  },
+  {
+   "orderNo": "8055-2229493540",
+   "date": "2026-08-11",
+   "driver": "Luke LaVergne",
+   "driverSerial": "Luke LaVergne",
+   "hm": "14:35"
+  },
+  {
+   "orderNo": "7758-2068547007",
+   "date": "2026-08-12",
+   "driver": "Alias Franks",
+   "driverSerial": "Alias Franks",
+   "hm": "12:24"
+  },
+  {
+   "orderNo": "8069-2232220556",
+   "date": "2026-08-12",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "08:57"
+  }
+ ],
+ "fixes": [
+  {
+   "day": "2026-08-12",
+   "writable": true,
+   "created": [
+    "7022-2278650860",
+    "5147-1689550271"
+   ],
+   "replanned": true,
+   "writes": [
+    {
+     "orderNo": "7022-2278650860",
+     "from": "2026-08-12 00:00",
+     "to": "2026-08-12 08:11",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "6380-1647376699",
+     "from": "2026-08-12 08:19",
+     "to": "2026-08-12 08:34",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "5545-2278451206",
+     "from": "2026-08-12 08:41",
+     "to": "2026-08-12 08:56",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8286-2273493540",
+     "from": "2026-08-12 08:58",
+     "to": "2026-08-12 09:14",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "5007-2278407043",
+     "from": "2026-08-12 09:19",
+     "to": "2026-08-12 09:34",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "5150-2278338401",
+     "from": "2026-08-12 09:37",
+     "to": "2026-08-12 09:52",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8168-2253061764",
+     "from": "2026-08-12 09:57",
+     "to": "2026-08-12 10:13",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "7627-2017499286",
+     "from": "2026-08-12 10:10",
+     "to": "2026-08-12 10:25",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "6271-2278225390",
+     "from": "2026-08-12 10:26",
+     "to": "2026-08-12 10:41",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "6270-2278131283",
+     "from": "2026-08-12 10:49",
+     "to": "2026-08-12 11:05",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "7434-1932527470",
+     "from": "2026-08-12 11:06",
+     "to": "2026-08-12 11:21",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8246-2267626870",
+     "from": "2026-08-12 11:26",
+     "to": "2026-08-12 11:41",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8127-2243404660",
+     "from": "2026-08-12 11:39",
+     "to": "2026-08-12 11:54",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8194-2259507653",
+     "from": "2026-08-12 11:54",
+     "to": "2026-08-12 12:09",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "5147-1689550271",
+     "from": "2026-08-12 07:00",
+     "to": "2026-08-12 08:55",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "5915-1637603707",
+     "from": "2026-08-12 08:55",
+     "to": "2026-08-12 09:08",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7671-2037573340",
+     "from": "2026-08-12 09:06",
+     "to": "2026-08-12 09:20",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "4882-1608591787",
+     "from": "2026-08-12 09:20",
+     "to": "2026-08-12 09:33",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "7306-2269977765",
+     "from": "2026-08-12 10:06",
+     "to": "2026-08-12 10:19",
+     "driver": "Cammeron Anderson"
+    },
+    {
+     "orderNo": "8207-2260758923",
+     "from": "2026-08-12 09:08",
+     "to": "2026-08-12 08:57",
+     "driver": "Cory Ventura"
+    }
+   ],
+   "failures": [
+    "write 8072-2232222182: Recurring visits for the same job may not occur at the same time",
+    "write 8072-2232222184: Recurring visits for the same job may not occur at the same time"
+   ],
+   "aborted": null
+  }
+ ]
+}

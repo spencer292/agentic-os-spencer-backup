@@ -86,3 +86,15 @@ __pycache__/
 # Per-user overrides — each machine owns its own; never shared via the repo
 CLAUDE.local.md
 **/SKILL.local.md
+
+# Address Day Lookup — regenerated artifacts, never commit.
+# The HTML is rebuilt every morning by cron/jobs/service-day-sheet-refresh.md and is ~880 KB;
+# committing it would add a new blob a day for a file that is worthless once stale. The cache is
+# a 2 MB raw dump of every customer address we have. Both are rebuilt by
+# projects/briefs/technician-route-automation/build-address-day-lookup.mjs, which IS tracked.
+projects/briefs/technician-route-automation/.address-lookup-cache.json
+projects/briefs/callrail-faq/service-day-lookup/address-day-lookup.html
+projects/briefs/callrail-faq/muhammad-portable/address-day-lookup.html
+
+# Hosted-page source for the address lookup (regenerated, same customer data as the standalone).
+projects/briefs/callrail-faq/service-day-lookup/address-day-lookup.artifact.html

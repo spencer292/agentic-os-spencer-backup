@@ -1,0 +1,387 @@
+{
+ "ranAt": "2026-08-05T02:52:13.590Z",
+ "mode": "check",
+ "plannedDays": [
+  "2026-08-05",
+  "2026-08-06",
+  "2026-08-07",
+  "2026-08-10",
+  "2026-08-11",
+  "2026-08-12",
+  "2026-08-13",
+  "2026-08-14"
+ ],
+ "counts": {
+  "activeVisits": 727,
+  "scheduledStops": 727,
+  "missing": 2,
+  "dayDrift": 22,
+  "techDrift": 11,
+  "timeDrift": 12,
+  "noTime": 0,
+  "orphans": 2
+ },
+ "missing": [
+  {
+   "orderNo": "8108-2277659587",
+   "job": "8108",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNzc2NTk1ODc=",
+   "date": "2026-08-11",
+   "hm": "00:00",
+   "tech": "Alias Franks",
+   "title": "Mike Marinella",
+   "address": "745 North 195th Street, Shoreline, Washington 98133",
+   "isSet": false
+  },
+  {
+   "orderNo": "8036-2277713507",
+   "job": "8036",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNzc3MTM1MDc=",
+   "date": "2026-08-11",
+   "hm": "00:00",
+   "tech": "Alias Franks",
+   "title": "Garett Gowens",
+   "address": "19491 45th Avenue Northeast, Lake Forest Park, Washington 98155",
+   "isSet": false
+  }
+ ],
+ "dayDrift": [
+  {
+   "orderNo": "5318-2266790687",
+   "job": "5318",
+   "jobber": "2026-08-05",
+   "optimo": "2026-08-06",
+   "driver": "Alias Franks"
+  },
+  {
+   "orderNo": "6602-1768237482",
+   "job": "6602",
+   "jobber": "2026-08-05",
+   "optimo": "2026-08-06",
+   "driver": "Alias Franks"
+  },
+  {
+   "orderNo": "5084-2266840715",
+   "job": "5084",
+   "jobber": "2026-08-05",
+   "optimo": "2026-08-06",
+   "driver": "Alias Franks"
+  },
+  {
+   "orderNo": "8074-2232629073",
+   "job": "8074",
+   "jobber": "2026-08-05",
+   "optimo": "2026-08-06",
+   "driver": "Alias Franks"
+  },
+  {
+   "orderNo": "7022-1854765757",
+   "job": "7022",
+   "jobber": "2026-08-05",
+   "optimo": "2026-08-06",
+   "driver": "Alias Franks"
+  },
+  {
+   "orderNo": "8171-2253064592",
+   "job": "8171",
+   "jobber": "2026-08-05",
+   "optimo": "2026-08-06",
+   "driver": "Cory Ventura"
+  },
+  {
+   "orderNo": "8267-2276006896",
+   "job": "8267",
+   "jobber": "2026-08-05",
+   "optimo": "2026-08-07",
+   "driver": "Luke LaVergne"
+  },
+  {
+   "orderNo": "7116-2266584378",
+   "job": "7116",
+   "jobber": "2026-08-06",
+   "optimo": "2026-08-05",
+   "driver": "Alias Franks"
+  },
+  {
+   "orderNo": "8189-2259023243",
+   "job": "8189",
+   "jobber": "2026-08-06",
+   "optimo": "2026-08-07",
+   "driver": "Cory Ventura"
+  },
+  {
+   "orderNo": "8254-2268683209",
+   "job": "8254",
+   "jobber": "2026-08-06",
+   "optimo": "2026-08-07",
+   "driver": "Alias Franks"
+  },
+  {
+   "orderNo": "5355-2267329551",
+   "job": "5355",
+   "jobber": "2026-08-06",
+   "optimo": "2026-08-07",
+   "driver": "Cory Ventura"
+  },
+  {
+   "orderNo": "5415-1699827858",
+   "job": "5415",
+   "jobber": "2026-08-06",
+   "optimo": "2026-08-07",
+   "driver": "Alias Franks"
+  },
+  {
+   "orderNo": "7834-2267311527",
+   "job": "7834",
+   "jobber": "2026-08-06",
+   "optimo": "2026-08-07",
+   "driver": "Cory Ventura"
+  },
+  {
+   "orderNo": "8149-2248528929",
+   "job": "8149",
+   "jobber": "2026-08-06",
+   "optimo": "2026-08-07",
+   "driver": "Cory Ventura"
+  },
+  {
+   "orderNo": "7404-2267296463",
+   "job": "7404",
+   "jobber": "2026-08-06",
+   "optimo": "2026-08-07",
+   "driver": "Cory Ventura"
+  },
+  {
+   "orderNo": "7285-2267304255",
+   "job": "7285",
+   "jobber": "2026-08-06",
+   "optimo": "2026-08-07",
+   "driver": "Cory Ventura"
+  },
+  {
+   "orderNo": "5300-2276108275",
+   "job": "5300",
+   "jobber": "2026-08-06",
+   "optimo": "2026-08-07",
+   "driver": "Cory Ventura"
+  },
+  {
+   "orderNo": "8317-2277582737",
+   "job": "8317",
+   "jobber": "2026-08-07",
+   "optimo": "2026-08-06",
+   "driver": "Cory Ventura"
+  },
+  {
+   "orderNo": "8314-2277574241",
+   "job": "8314",
+   "jobber": "2026-08-07",
+   "optimo": "2026-08-06",
+   "driver": "Cory Ventura"
+  },
+  {
+   "orderNo": "6809-2266703082",
+   "job": "6809",
+   "jobber": "2026-08-07",
+   "optimo": "2026-08-06",
+   "driver": "Alias Franks"
+  },
+  {
+   "orderNo": "5381-2266679760",
+   "job": "5381",
+   "jobber": "2026-08-07",
+   "optimo": "2026-08-06",
+   "driver": "Alias Franks"
+  },
+  {
+   "orderNo": "5489-2266667924",
+   "job": "5489",
+   "jobber": "2026-08-07",
+   "optimo": "2026-08-06",
+   "driver": "Alias Franks"
+  }
+ ],
+ "techDrift": [
+  {
+   "orderNo": "8265-2270506348",
+   "job": "8265",
+   "date": "2026-08-06",
+   "jobber": "Alias Franks",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "6810-1815091721",
+   "job": "6810",
+   "date": "2026-08-06",
+   "jobber": "Alias Franks",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "7546-1989134980",
+   "job": "7546",
+   "date": "2026-08-06",
+   "jobber": "Cory Ventura",
+   "optimo": "Alias Franks"
+  },
+  {
+   "orderNo": "8307-2277550490",
+   "job": "8307",
+   "date": "2026-08-06",
+   "jobber": "Cory Ventura",
+   "optimo": "Alias Franks"
+  },
+  {
+   "orderNo": "8311-2277566634",
+   "job": "8311",
+   "date": "2026-08-06",
+   "jobber": "Cory Ventura",
+   "optimo": "Alias Franks"
+  },
+  {
+   "orderNo": "5152-2262264459",
+   "job": "5152",
+   "date": "2026-08-07",
+   "jobber": "Cory Ventura",
+   "optimo": "Cammeron Anderson"
+  },
+  {
+   "orderNo": "7382-1921067290",
+   "job": "7382",
+   "date": "2026-08-07",
+   "jobber": "Cory Ventura",
+   "optimo": "Cammeron Anderson"
+  },
+  {
+   "orderNo": "6663-1789043684",
+   "job": "6663",
+   "date": "2026-08-07",
+   "jobber": "Cory Ventura",
+   "optimo": "Cammeron Anderson"
+  },
+  {
+   "orderNo": "6475-1686594164",
+   "job": "6475",
+   "date": "2026-08-07",
+   "jobber": "Cory Ventura",
+   "optimo": "Cammeron Anderson"
+  },
+  {
+   "orderNo": "5022-1692025193",
+   "job": "5022",
+   "date": "2026-08-07",
+   "jobber": "Cory Ventura",
+   "optimo": "Cammeron Anderson"
+  },
+  {
+   "orderNo": "5676-2273553512",
+   "job": "5676",
+   "date": "2026-08-07",
+   "jobber": "Cory Ventura",
+   "optimo": "Cammeron Anderson"
+  }
+ ],
+ "timeDrift": [
+  {
+   "orderNo": "6329-1622709175",
+   "job": "6329",
+   "date": "2026-08-05",
+   "jobber": "12:00",
+   "optimo": "11:23"
+  },
+  {
+   "orderNo": "7869-2149304481",
+   "job": "7869",
+   "date": "2026-08-05",
+   "jobber": "12:13",
+   "optimo": "11:35"
+  },
+  {
+   "orderNo": "8286-2273489699",
+   "job": "8286",
+   "date": "2026-08-05",
+   "jobber": "12:33",
+   "optimo": "11:56"
+  },
+  {
+   "orderNo": "5545-1770762323",
+   "job": "5545",
+   "date": "2026-08-05",
+   "jobber": "13:01",
+   "optimo": "12:24"
+  },
+  {
+   "orderNo": "5007-1650881875",
+   "job": "5007",
+   "date": "2026-08-05",
+   "jobber": "13:18",
+   "optimo": "12:41"
+  },
+  {
+   "orderNo": "6990-1846546650",
+   "job": "6990",
+   "date": "2026-08-05",
+   "jobber": "13:39",
+   "optimo": "13:02"
+  },
+  {
+   "orderNo": "5150-1797372338",
+   "job": "5150",
+   "date": "2026-08-05",
+   "jobber": "14:00",
+   "optimo": "13:23"
+  },
+  {
+   "orderNo": "5011-1643446775",
+   "job": "5011",
+   "date": "2026-08-05",
+   "jobber": "14:22",
+   "optimo": "13:45"
+  },
+  {
+   "orderNo": "6271-1608596350",
+   "job": "6271",
+   "date": "2026-08-05",
+   "jobber": "14:38",
+   "optimo": "14:00"
+  },
+  {
+   "orderNo": "8168-2253061763",
+   "job": "8168",
+   "date": "2026-08-05",
+   "jobber": "14:53",
+   "optimo": "14:16"
+  },
+  {
+   "orderNo": "6270-1608590289",
+   "job": "6270",
+   "date": "2026-08-05",
+   "jobber": "15:17",
+   "optimo": "14:40"
+  },
+  {
+   "orderNo": "7758-2267503410",
+   "job": "7758",
+   "date": "2026-08-05",
+   "jobber": "15:46",
+   "optimo": "15:09"
+  }
+ ],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "6986-1845637645",
+   "date": "2026-08-11",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "15:13"
+  },
+  {
+   "orderNo": "8055-2229493540",
+   "date": "2026-08-11",
+   "driver": "Luke LaVergne",
+   "driverSerial": "Luke LaVergne",
+   "hm": "14:35"
+  }
+ ],
+ "fixes": []
+}

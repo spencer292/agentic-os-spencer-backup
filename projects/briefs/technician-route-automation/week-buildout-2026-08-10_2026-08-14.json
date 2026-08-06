@@ -1,0 +1,356 @@
+{
+  "ranAt": "2026-08-05T04:17:37.791Z",
+  "baseline": [
+    "2026-08-03",
+    "2026-08-07"
+  ],
+  "target": [
+    "2026-08-10",
+    "2026-08-14"
+  ],
+  "perDay": {
+    "2026-08-03": 106,
+    "2026-08-04": 115,
+    "2026-08-05": 115,
+    "2026-08-06": 114,
+    "2026-08-07": 110,
+    "2026-08-10": 88,
+    "2026-08-11": 112,
+    "2026-08-12": 60,
+    "2026-08-13": 58,
+    "2026-08-14": 70,
+    "2026-08-17": 38,
+    "2026-08-18": 65,
+    "2026-08-19": 46,
+    "2026-08-20": 58,
+    "2026-08-21": 21,
+    "2026-08-24": 41,
+    "2026-08-25": 42,
+    "2026-08-26": 31,
+    "2026-08-27": 44,
+    "2026-08-28": 21,
+    "2026-08-31": 4,
+    "2026-09-01": 53,
+    "2026-09-02": 47,
+    "2026-09-03": 48,
+    "2026-09-04": 29,
+    "2026-09-07": 40,
+    "2026-09-08": 25,
+    "2026-09-09": 31,
+    "2026-09-10": 35,
+    "2026-09-11": 19,
+    "2026-09-14": 34,
+    "2026-09-15": 40,
+    "2026-09-16": 41,
+    "2026-09-17": 39,
+    "2026-09-18": 17,
+    "2026-09-21": 28,
+    "2026-09-22": 38,
+    "2026-09-23": 37,
+    "2026-09-24": 30
+  },
+  "thisWeek": 560,
+  "nextWeek": 388,
+  "coverage": {
+    "covered": 268,
+    "uncovered": 120,
+    "agree": 260,
+    "differ": 8,
+    "differPairs": {
+      "Alias -> Cory": 3,
+      "Luke -> Alias": 1,
+      "Cory -> Alias": 3,
+      "Cammeron -> Cory": 1
+    }
+  },
+  "gaps": [
+    {
+      "job": 8126,
+      "jobType": "RECURRING",
+      "client": "Timothy Walsh",
+      "city": "Olympia",
+      "zip": "98506",
+      "served": "2026-08-03",
+      "tech": "Luke LaVergne"
+    },
+    {
+      "job": 8295,
+      "jobType": "ONE_OFF",
+      "client": "Brightview Landscape",
+      "city": "Tukwila",
+      "zip": "98188",
+      "served": "2026-08-03",
+      "tech": "Cory Ventura"
+    },
+    {
+      "job": 8134,
+      "jobType": "RECURRING",
+      "client": "Riena Terada",
+      "city": "Kent",
+      "zip": "98032",
+      "served": "2026-08-03",
+      "tech": "Cory Ventura"
+    },
+    {
+      "job": 8110,
+      "jobType": "RECURRING",
+      "client": "Chris Roby",
+      "city": "Seattle",
+      "zip": "98177",
+      "served": "2026-08-04",
+      "tech": "Alias Franks"
+    },
+    {
+      "job": 8059,
+      "jobType": "RECURRING",
+      "client": "Jared Barrett",
+      "city": "Enumclaw",
+      "zip": "98022",
+      "served": "2026-08-04",
+      "tech": "Cammeron Anderson"
+    },
+    {
+      "job": 8131,
+      "jobType": "RECURRING",
+      "client": "Kalen Radford",
+      "city": "Buckley",
+      "zip": "98321",
+      "served": "2026-08-05",
+      "tech": "Cammeron Anderson"
+    },
+    {
+      "job": 8103,
+      "jobType": "RECURRING",
+      "client": "Cindy Joaquin",
+      "city": "Kent",
+      "zip": "98030",
+      "served": "2026-08-05",
+      "tech": "Cory Ventura"
+    },
+    {
+      "job": 8094,
+      "jobType": "RECURRING",
+      "client": "Kristin Cruse",
+      "city": "Kent",
+      "zip": "98032",
+      "served": "2026-08-05",
+      "tech": "Cory Ventura"
+    },
+    {
+      "job": 4979,
+      "jobType": "ONE_OFF",
+      "client": "Marcus Andy",
+      "city": "Buckley",
+      "zip": "98321",
+      "served": "2026-08-05",
+      "tech": "Cammeron Anderson"
+    },
+    {
+      "job": 8140,
+      "jobType": "RECURRING",
+      "client": "Hugh Downer",
+      "city": "Buckley",
+      "zip": "98321",
+      "served": "2026-08-05",
+      "tech": "Cammeron Anderson"
+    },
+    {
+      "job": 8135,
+      "jobType": "ONE_OFF",
+      "client": "Kyle  MacVicar",
+      "city": "Renton",
+      "zip": "98056",
+      "served": "2026-08-05",
+      "tech": "Cory Ventura"
+    },
+    {
+      "job": 7969,
+      "jobType": "RECURRING",
+      "client": "Kathy Hill",
+      "city": "Buckley",
+      "zip": "98321",
+      "served": "2026-08-05",
+      "tech": "Cammeron Anderson"
+    },
+    {
+      "job": 7986,
+      "jobType": "RECURRING",
+      "client": "Tai Tran",
+      "city": "Renton",
+      "zip": "98056",
+      "served": "2026-08-05",
+      "tech": "Cory Ventura"
+    },
+    {
+      "job": 5147,
+      "jobType": "RECURRING",
+      "client": "Rita Gray",
+      "city": "Buckley",
+      "zip": "98321",
+      "served": "2026-08-05",
+      "tech": "Cammeron Anderson"
+    },
+    {
+      "job": 8144,
+      "jobType": "RECURRING",
+      "client": "David Barney",
+      "city": "Buckley",
+      "zip": "98321",
+      "served": "2026-08-05",
+      "tech": "Cammeron Anderson"
+    },
+    {
+      "job": 7927,
+      "jobType": "RECURRING",
+      "client": "Sauce",
+      "city": "Buckley",
+      "zip": "98321",
+      "served": "2026-08-05",
+      "tech": "Cammeron Anderson"
+    },
+    {
+      "job": 8121,
+      "jobType": "RECURRING",
+      "client": "Paul Watson",
+      "city": "Buckley",
+      "zip": "98321",
+      "served": "2026-08-05",
+      "tech": "Cammeron Anderson"
+    },
+    {
+      "job": 7816,
+      "jobType": "RECURRING",
+      "client": "Derek Smith",
+      "city": "Buckley",
+      "zip": "98321",
+      "served": "2026-08-05",
+      "tech": "Cammeron Anderson"
+    },
+    {
+      "job": 8145,
+      "jobType": "RECURRING",
+      "client": "Jane Molenda",
+      "city": "Buckley",
+      "zip": "98321",
+      "served": "2026-08-05",
+      "tech": "Cammeron Anderson"
+    },
+    {
+      "job": 7908,
+      "jobType": "RECURRING",
+      "client": "Jill Robinson",
+      "city": "Longbranch",
+      "zip": "98351",
+      "served": "2026-08-05",
+      "tech": "Luke LaVergne"
+    },
+    {
+      "job": 8132,
+      "jobType": "RECURRING",
+      "client": "Arash Mirhosseini",
+      "city": "Woodinville",
+      "zip": "98077",
+      "served": "2026-08-05",
+      "tech": "Alias Franks"
+    },
+    {
+      "job": 6375,
+      "jobType": "RECURRING",
+      "client": "Mike Cushman",
+      "city": "Woodinville",
+      "zip": "98077",
+      "served": "2026-08-05",
+      "tech": "Alias Franks"
+    },
+    {
+      "job": 8109,
+      "jobType": "RECURRING",
+      "client": "Dave Gunovich",
+      "city": "Fircrest",
+      "zip": "98466",
+      "served": "2026-08-05",
+      "tech": "Luke LaVergne"
+    },
+    {
+      "job": 7540,
+      "jobType": "RECURRING",
+      "client": "Jennifer Flanegan",
+      "city": "Pierce County",
+      "zip": "98391",
+      "served": "2026-08-06",
+      "tech": "Cammeron Anderson"
+    },
+    {
+      "job": 8102,
+      "jobType": "RECURRING",
+      "client": "Heidi Wilson",
+      "city": "Bellevue",
+      "zip": "98006",
+      "served": "2026-08-06",
+      "tech": "Cory Ventura"
+    },
+    {
+      "job": 8079,
+      "jobType": "RECURRING",
+      "client": "Jenna Larson",
+      "city": "Lake Tapps",
+      "zip": "98391",
+      "served": "2026-08-06",
+      "tech": "Cammeron Anderson"
+    },
+    {
+      "job": 7720,
+      "jobType": "RECURRING",
+      "client": "John Keen",
+      "city": "Bonney Lake",
+      "zip": "98391",
+      "served": "2026-08-06",
+      "tech": "Cammeron Anderson"
+    },
+    {
+      "job": 5940,
+      "jobType": "RECURRING",
+      "client": "Don Severide",
+      "city": "Bellevue",
+      "zip": "98006",
+      "served": "2026-08-06",
+      "tech": "Cory Ventura"
+    },
+    {
+      "job": 8119,
+      "jobType": "RECURRING",
+      "client": "Tom Clary",
+      "city": "Sammamish",
+      "zip": "98075",
+      "served": "2026-08-06",
+      "tech": "Alias Franks"
+    },
+    {
+      "job": 7793,
+      "jobType": "RECURRING",
+      "client": "Tim Saiz",
+      "city": "Bonney Lake",
+      "zip": "98391",
+      "served": "2026-08-06",
+      "tech": "Cammeron Anderson"
+    },
+    {
+      "job": 7708,
+      "jobType": "RECURRING",
+      "client": "Vernie Dunham",
+      "city": "Spanaway",
+      "zip": "98387",
+      "served": "2026-08-07",
+      "tech": "Luke LaVergne"
+    },
+    {
+      "job": 8125,
+      "jobType": "RECURRING",
+      "client": "Carly Klee",
+      "city": "Maple Valley",
+      "zip": "98038",
+      "served": "2026-08-07",
+      "tech": "Cammeron Anderson"
+    }
+  ]
+}

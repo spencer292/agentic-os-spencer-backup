@@ -1,0 +1,173 @@
+{
+ "ranAt": "2026-08-04T20:01:06.388Z",
+ "mode": "fix",
+ "plannedDays": [
+  "2026-08-05",
+  "2026-08-06",
+  "2026-08-07"
+ ],
+ "counts": {
+  "activeVisits": 325,
+  "scheduledStops": 324,
+  "missing": 1,
+  "dayDrift": 1,
+  "techDrift": 0,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 0
+ },
+ "missing": [
+  {
+   "orderNo": "7708-2052638435",
+   "job": "7708",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIwNTI2Mzg0MzU=",
+   "date": "2026-08-07",
+   "hm": "07:00",
+   "tech": "Luke LaVergne",
+   "title": "Vernie Dunham",
+   "address": "26814 39th Ave E, Spanaway, Wa 98387",
+   "isSet": false
+  }
+ ],
+ "dayDrift": [
+  {
+   "orderNo": "5300-2276108275",
+   "job": "5300",
+   "jobber": "2026-08-06",
+   "optimo": "2026-08-07",
+   "driver": "Cory Ventura"
+  }
+ ],
+ "techDrift": [],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [],
+ "fixes": [
+  {
+   "day": "2026-08-07",
+   "writable": true,
+   "created": [
+    "7708-2052638435"
+   ],
+   "replanned": true,
+   "writes": [
+    {
+     "orderNo": "8284-2273481831",
+     "from": "2026-08-07 10:59",
+     "to": "2026-08-07 09:50",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7805-2099670561",
+     "from": "2026-08-07 10:14",
+     "to": "2026-08-07 10:34",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7795-2270254950",
+     "from": "2026-08-07 12:06",
+     "to": "2026-08-07 11:25",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8067-2232219536",
+     "from": "2026-08-07 11:43",
+     "to": "2026-08-07 11:47",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5121-1912463256",
+     "from": "2026-08-07 11:23",
+     "to": "2026-08-07 12:09",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7708-2052638435",
+     "from": "2026-08-07 07:00",
+     "to": "2026-08-07 12:32",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7674-2269660372",
+     "from": "2026-08-07 14:56",
+     "to": "2026-08-07 12:50",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8222-2262416374",
+     "from": "2026-08-07 15:18",
+     "to": "2026-08-07 13:12",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8205-2260569398",
+     "from": "2026-08-07 15:33",
+     "to": "2026-08-07 13:27",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7740-2062933238",
+     "from": "2026-08-07 15:48",
+     "to": "2026-08-07 13:42",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8208-2260889952",
+     "from": "2026-08-07 14:32",
+     "to": "2026-08-07 14:03",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "6784-2260922515",
+     "from": "2026-08-07 14:13",
+     "to": "2026-08-07 14:21",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5077-1691585427",
+     "from": "2026-08-07 13:54",
+     "to": "2026-08-07 14:40",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7457-1939839676",
+     "from": "2026-08-07 12:31",
+     "to": "2026-08-07 14:56",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5413-1718745012",
+     "from": "2026-08-07 12:42",
+     "to": "2026-08-07 15:07",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5954-1912197344",
+     "from": "2026-08-07 12:54",
+     "to": "2026-08-07 15:19",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "6389-1737865555",
+     "from": "2026-08-07 13:27",
+     "to": "2026-08-07 15:41",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7747-2064947916",
+     "from": "2026-08-07 13:08",
+     "to": "2026-08-07 16:00",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5300-2276108275",
+     "from": "2026-08-06 10:35",
+     "to": "2026-08-07 14:31",
+     "driver": "Cory Ventura"
+    }
+   ],
+   "failures": [],
+   "aborted": null
+  }
+ ]
+}

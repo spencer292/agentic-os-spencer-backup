@@ -41,7 +41,12 @@ const REPO = path.resolve(__dirname, '../../..');
 const ENV_PATH = path.join(REPO, '.env');
 const RUNS_DIR = path.join(__dirname, 'drift-runs');
 const TZ = 'America/Los_Angeles';
-const HORIZON_DAYS = 12; // scan tomorrow .. today+12 for planned days
+// PAIRED WITH extend-horizon.mjs DAYS — keep the two equal. extend-horizon plans routes out to its
+// DAYS; this scans out to HORIZON_DAYS for bookings missing from those routes. If this number is
+// SMALLER, every day between the two has routes that new bookings are never added to — they look
+// planned and silently go stale, which is worse than not planning them at all. Raised 12 -> 19 on
+// 2026-08-04 (Spencer) so the horizon always covers two full weeks beyond the current one.
+const HORIZON_DAYS = 19; // scan tomorrow .. today+19 for planned days
 const TIME_DRIFT_MIN = 20; // report threshold, minutes
 
 function loadEnv() {

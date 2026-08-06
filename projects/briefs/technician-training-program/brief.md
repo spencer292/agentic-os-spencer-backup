@@ -27,7 +27,7 @@ documentation — without supervision.
 |---|---|---|
 | Technician Field Guide v1.1 | `brand_context/technician-field-guide-FULL-VERBATIM.md` | Strong on biology (§1), thin on assessment (§2), decent on trapping (§3), principles-only on communication (§4). A reference manual, not a program. |
 | Phone/FAQ training pack | `projects/briefs/callrail-faq/` | The model to copy — built from 203 real calls, with role-play, scenarios, answer key, progress log. |
-| Activity-code follow-up rule | `CLAUDE.local.md`, 2026-07-26 | M/A → this week, L/A → 1–2 weeks, N/A → ~2 weeks. **Not in the field guide.** |
+| Activity-code follow-up rule | `CLAUDE.local.md`, 2026-08-05 | TMCP: any activity → weekly; `N/A` + no catch → monthly. Catch → weekly regardless of code (2026-08-01). Quick Fix → always weekly. Supersedes the 2026-07-26 graded ladder. **Not in the field guide.** |
 | Pricing policy | `CLAUDE.local.md`, 2026-07-20 | Residential ≤5 ac priced by phone; commercial and 5+ ac go to Cory in person. |
 
 ## Deliverables
@@ -38,6 +38,18 @@ documentation — without supervision.
 4. **Field checklists** — pocket/phone-sized: park & approach, the walk, the set, departure.
 5. **Competency sign-off sheet** — the gate a tech must pass to run a route alone.
 6. **Role-play drills** — customer-conversation and objection practice, phone-pack style.
+
+## Field Guide v2 — confirmed corrections
+
+Errata found while building the modules. Each one is a place the guide currently teaches
+something Spencer has since said is wrong. Fold into Deliverable 1.
+
+| # | Guide says | Correct standard | Confirmed |
+|---|---|---|---|
+| 1 | §2.1 "Knock on door" on every visit | Knock on the **first visit only**. Repeat visits go straight to the full property evaluation, no knock. | Spencer, 2026-08-05 |
+| 2 | §2.1 "No answer? ... Leave door hanger" | **We do not have door hangers.** No answer + service completed → **send a text**. Door hangers are an open ops item to actually order. | Spencer, 2026-08-05 |
+| 3 | §2.2 walkthrough is 7 loose bullets ("walk the perimeter", "walk interior systematically") | The walk is a **fixed two-loop pattern** with a defined read, gear sequence, and 30-minute visit budget. See Module 4. | Spencer, 2026-07-31 / 08-05 |
+| 4 | §3.7 / follow-up guidance predates the current cadence rule | TMCP: any activity → weekly, `N/A` + no catch → monthly. Catch → weekly regardless of code. Quick Fix → always weekly. | Spencer, 2026-08-05 |
 
 ## Module map
 
@@ -62,7 +74,9 @@ documentation — without supervision.
 - Every module ends in something observable — a checklist a trainer initials, not a lesson read.
 - Nothing in the program is invented. Every standard traces to Spencer's stated practice or
   an existing documented rule.
-- Follow-up cadence is taught by activity code (M/A, L/A, N/A), not by flat recurrence.
+- Follow-up cadence is taught by product + activity + catch (per the 2026-08-05 rule), not by
+  flat recurrence — and the module is re-checked against `CLAUDE.local.md` before every release,
+  since this rule has already changed three times.
 - Techs are taught to hand commercial and 5+ acre bids to Cory, never to quote them.
 
 ## Constraints
