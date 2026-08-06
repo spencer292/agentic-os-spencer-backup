@@ -11,7 +11,20 @@ created: 2026-08-04
 model (customer finds damage → calls → 5 weeks → traps pulled) with the proactive one
 (traps never leave the runs → ~9 of 10 moles caught before the customer knows).
 
-Source data pulled from Jobber 2026-08-04: 6,961 jobs, 3,848 quotes, 2,907 clients.
+Source data pulled from Jobber 2026-08-06: 6,968 jobs, 3,848 quotes, 2,907 clients.
+
+**Classification method:** product is read from each job's **line items**, per the 2026-08-05 rule
+— never from `jobType` or contract duration. Legacy names matter:
+
+| Line item | Product | Era |
+|---|---|---|
+| `Total Mole Control Program -- Year round protection`, `Total Mole Control Package` | TMCP | 2022– |
+| `Annual Mole Control Service (...)` | **TMCP (legacy, $85/mo, billed as 0-day one-offs)** | 2021–2025 |
+| `The Quick Fix — One-Month Mole Control Program` | Quick Fix | 2026– |
+| `1 Month of Mole Control Service (North/central/Valley/South)` | Quick Fix | 2020–2026 |
+| `Monthly Mole Service (...)` | Quick Fix (one-month, old pricing) | 2019–2021 |
+
+Job totals across the book: Quick Fix 4,609 · TMCP 1,478 · other/bid/comp 881.
 
 ---
 
@@ -19,21 +32,24 @@ Source data pulled from Jobber 2026-08-04: 6,961 jobs, 3,848 quotes, 2,907 clien
 
 | Segment | Clients |
 |---|---|
-| On an active program | 633 |
-| **Repeat Quick Fix (2+), never on program** | **913** |
-| Had a program, none active (churn/winback) | 40 |
-| Single job or none | 1,665 |
+| On an active program | 642 |
+| **Repeat Quick Fix (2+), never on program** | **700** |
+| Ex-program, none active (winback) | 84 |
+| Single job or none | 1,831 |
 
-**Historic spend of the 913 repeat customers: $792,932** — all of it reactive.
+### Target pool (last job within 24 months) — 357 customers
 
-### Target pool (last job within 24 months) — 437 customers
+| Tier | Definition | n |
+|---|---|---|
+| **T1 — LIVE** | Quick Fix running right now | 41 |
+| **T2 — HOT** | Last job ≤12 months | 157 |
+| **T3 — WARM** | Last job 12–24 months | 159 |
+| _Cold (>24mo)_ | _deprioritized_ | _343_ |
 
-| Tier | Definition | n | Never pitched | Avg jobs | Avg spent |
-|---|---|---|---|---|---|
-| **T1 — LIVE** | Quick Fix running right now | 55 | 43 | 4.1 | $1,259 |
-| **T2 — HOT** | Last job ≤12 months | 193 | 151 | 3.2 | $1,012 |
-| **T3 — WARM** | Last job 12–24 months | 189 | 169 | 3.1 | $937 |
-| _Cold (>24mo)_ | _deprioritized_ | _476_ | _437_ | _3.0_ | _$737_ |
+Of the 357: **300 have never been sent a program quote**, 113 have already spent $1,200+,
+and **14 have a program quote open right now**.
+
+Kathy Hill (Buckley) is excluded — family account, billed $0 by design.
 
 Full list with names, cities, spend, quote history and live-job end dates:
 `data/target-list.csv`
@@ -42,13 +58,13 @@ Full list with names, cities, spend, quote history and live-job end dates:
 
 ## The three facts the whole pitch rests on
 
-1. **Median gap between Quick Fix calls is 133 days.** The average repeat customer already
-   buys ~2.7 Quick Fixes a year. At $375–450 each that is **$1,000–1,200/year already being
-   spent reactively** — at or above the price of the program.
-2. **174 of the 913 have already spent $1,200 or more.** They have paid more avoiding the
-   program than the program costs.
-3. **167 have shrinking gaps** — the interval between calls is getting *shorter*, because
-   every completed job leaves a finished tunnel system and no traps in a yard full of worms.
+1. **They come back, and most come back within the year.** Median gap from the end of one
+   Quick Fix to the start of the next is **254 days**; **38% return inside 6 months and 74%
+   inside 12**. While active, the median repeat customer buys **2.06 Quick Fixes a year** —
+   at $375–450 each, roughly **$775–925/year already spent reactively**.
+2. **113 of the 357 targets have already spent $1,200 or more** — more than the program costs.
+3. **Every completed job leaves a finished tunnel system, the worms, and no traps.** That is
+   the mechanism behind the return rate, and it is the argument.
 
 ---
 
@@ -94,53 +110,56 @@ the program quote — and we withdrew it:
 > *"The quote is by no means a requirement and we just wanted you to know that it is an option.
 > We will continue billing you on an as needed basis."*
 
-**83 repeat customers have been sent a program quote and never converted.** The objection was
-often never handled — we offered an exit before they had to decide. Kill that language.
+**Program-value quotes across the book: 541 converted, 325 archived, 78 still awaiting a
+response.** The objection was often never handled — we offered an exit before they had to
+decide. Kill that language.
 Also retire Cory's Feb-13 template (*"our one-time customers keep calling us back… right?"*) —
 it tells the customer their choice was dumb and got no reply.
 
-**23 program quotes are open right now** on repeat customers (awaiting response / changes
-requested). Those are the cheapest wins in the book — see CSV.
+**14 program quotes are open right now** on target-pool customers (awaiting response /
+changes requested). Those are the cheapest wins in the book — see CSV.
 
 ---
 
 ## Plan
 
-**Phase 1 — this week (T1, 55 customers).**
+**Phase 1 — this week (T1, 41 customers).**
 Every live Quick Fix gets the "don't pull the traps" text before its final visit. Sequence the
-sends by `live_job_ends`. ~14 jobs end in the next 10 days.
+sends by `live_job_ends`. 15 end between Aug 11 and Aug 25.
 
-**Phase 2 — next 2 weeks (23 open quotes).**
+**Phase 2 — next 2 weeks (14 open quotes).**
 One follow-up each, no exit language, with their own spend total in it.
 
-**Phase 3 — weeks 3–6 (T2, 193 customers).**
+**Phase 3 — weeks 3–6 (T2, 157 customers).**
 Batch by how long since their last job. Lead with the reactive/proactive argument and their
 personal number.
 
 **Phase 4 — ongoing automation.**
 - Trigger a conversion text on every Quick Fix final visit, automatically.
 - Flag any client reaching their 2nd Quick Fix for a program pitch on the spot.
-- Monthly sweep of T3 as their gap approaches the 133-day median.
+- Monthly sweep of T3 as their gap approaches the 254-day median.
 
-**Phase 5 — winbacks (40 churned program customers).** Separate message; find out why they left.
+**Phase 5 — winbacks (84 ex-program customers).** Separate message; find out why they left.
+This group doubled once legacy `Annual Mole Control Service` jobs were classified correctly.
 
 ---
 
 ## Revenue model
 
-Target pool 437 customers, program value ~$1,100/yr average:
+Target pool 357 customers, program value ~$1,100/yr average:
 
 | Conversion | Customers | New recurring revenue |
 |---|---|---|
-| 15% | 65 | **$72,105/yr** |
-| 25% | 109 | **$120,175/yr** |
-| 35% | 152 | **$168,245/yr** |
+| 15% | 54 | **$58,905/yr** |
+| 25% | 89 | **$98,175/yr** |
+| 35% | 125 | **$137,445/yr** |
 
-Excludes the 476 cold customers and the 1,665 single-job clients.
+Excludes the 343 cold customers, the 1,831 single-job clients, and the 84 winbacks.
 
 ---
 
 ## Data hygiene flagged
 
-9 "live" Quick Fix jobs have end dates already in the past (earliest 2026-06-17, Jill Robinson)
-but are still marked `upcoming` — they were never closed and invoiced. Worth a separate sweep.
+6 live Quick Fix jobs have end dates already in the past (earliest 2026-06-17, Jill Robinson)
+but are still marked `upcoming` — never closed and invoiced. Worth a separate sweep.
+Kathy Hill's $0 job is **not** one of these — family account, $0 is correct.
