@@ -24,6 +24,7 @@
 ## Individual Skills
 
 ### meta-wrap-up
+- 2026-08-05: **Concurrent sessions in one working tree steal each other work via git add -A.** This session created 4 files; they were committed by a DIFFERENT session running at the same time, under an unrelated message (8202ff2 Routing: Jobber becomes source of truth). Nothing lost, but attribution is wrong and a wrap-up that assumes its own files are uncommitted will find a clean git status and mis-report. At wrap-up: check git log -- <your paths> before concluding nothing was produced, and stage explicitly (git add <paths>) rather than -A.
 - 2026-07-26: Four concurrent sessions on the machine — another session had already created `context/memory/2026-07-26.md` with its own `## Session 1` and a header telling later sessions to number after the highest existing block. Write failed with "file has not been read yet", which is the useful signal: on a multi-session day, always Read today's memory file before writing a block, and append rather than create. Its cross-session notes also surfaced a fact that contradicted something I'd told Spencer (cron runtime stopped) — reading other sessions' blocks at wrap-up is worth it, but verify their claims live before repeating them.
 - 2026-07-20: No feedback — routine advisory session (audiobook path for *The Route*; research + recommendation only, no deliverables).
 - 2026-07-21: No feedback — quick ops session (DMARC duplicate-record fix, verified live; no repo deliverables).
