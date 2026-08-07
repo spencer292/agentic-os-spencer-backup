@@ -292,9 +292,15 @@ Two things that follow from that:
 1. **Block 2 is now the load-bearing line, not Block 4.** The activity code went from decorative
    to controlling. An `NA` typed on a property that caught a mole no longer gets quietly rescued
    by a hand-typed `Add visit` — teach the code hard.
-2. **The engine does not yet honor misses.** `parse-note.mjs` parses them (`misses`, `missKind`),
-   but `decide.mjs` computes `active = caught || ACTIVE_CODES.has(activity)` and never reads the
-   miss count. A TMCP note reading `Missed 3` + `NA` therefore resolves to **monthly** — the
-   opposite of Spencer's 2026-08-06 rule, and it now books that way automatically. **Open defect,
-   route lane.** Until it is fixed, the tech coding `LA` after a miss (§3) is the only thing
-   keeping those customers on a weekly cadence.
+2. **The engine now honors misses** (fixed 2026-08-06). `decide.mjs` computes
+   `active = caught || missed || ACTIVE_CODES.has(activity)`, so a TMCP note reading `Missed 3` +
+   `NA` schedules weekly instead of dropping to monthly. The miss count deliberately **overrides
+   the activity code** rather than trusting it, because the code is exactly what techs get wrong —
+   they read "activity" as mounds. Measured over the 5 weeks to 2026-08-06, that corrects **44
+   TMCP visits** (Luke 31, Cammeron 6, Robert 3, Alias 2, Spencer 1, Cory 1).
+
+   **This does not repair the past.** The engine only reads notes dated the day it runs, so those
+   44 stay as they were booked. Fixing them needs a separate backfill.
+
+Neither of those replaces the training. The engine can only act on what the note says — if a tech
+doesn't write `Missed 2`, nothing downstream knows a mole got away.

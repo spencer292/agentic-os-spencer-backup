@@ -181,7 +181,7 @@ function planFor(job) {
   const next = [...upcoming].sort((a, b) => a.date.localeCompare(b.date))[0] || null;
 
   const product = productOf((job.lineItems?.nodes || []).map(n => n.name));
-  const d = decideVisit(completed, parsed.nextAction, upcoming, { product, activity: parsed.activity, moles: parsed.moles });
+  const d = decideVisit(completed, parsed.nextAction, upcoming, { product, activity: parsed.activity, moles: parsed.moles, misses: parsed.misses });
   const detail = {
     PULL: `pull ${next ? next.date : ''} → ${d.target}`,
     ADD: `add new visit ${d.target} (next scheduled ${next ? next.date : 'none'} kept)`,
@@ -195,7 +195,7 @@ function planFor(job) {
     jobType: job.jobType, product, jobStatus: job.jobStatus, webUri: job.jobberWebUri,
     client: job.client?.name || '(no client)',
     completed, nextAction: parsed.nextAction || '(none)',
-    activity: parsed.activity, moles: parsed.moles,
+    activity: parsed.activity, moles: parsed.moles, misses: parsed.misses,
     nextVisit: next ? next.date : null,
     setDate: job.startAt ? localDate(job.startAt) : null,
     target: d.target || null, action: d.action, visitId: d.visitId, tech: d.tech,

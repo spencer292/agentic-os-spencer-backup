@@ -36,8 +36,8 @@ const ACTIVE_CODES = new Set(['Low', 'Moderate', 'High']);
  *   Quick Fix : ALWAYS weekly, every visit of the 5-week series, activity or not.
  *               Series exhausted while activity continues -> TASK (add a visit, or sell TMCP /
  *               another month). That is a sales call, never an automatic add.
- *   TMCP      : a catch, or ANY activity (L/A, M/A, H/A) -> weekly. The level does not matter.
- *               N/A with no catch -> monthly, i.e. the standing recurring series stands.
+ *   TMCP      : a catch, a MISS, or ANY activity (L/A, M/A, H/A) -> weekly. The level does not
+ *               matter. N/A with no catch and no misses -> monthly, i.e. the recurring series stands.
  *   Other     : (barter, bid, unknown product) -> legacy behaviour, interval from Next Action.
  *
  * Interim visits are always ADDED, never pulled from the recurring series (Spencer 2026-07-26):
@@ -47,16 +47,23 @@ const ACTIVE_CODES = new Set(['Low', 'Moderate', 'High']);
  * @param completed  YYYY-MM-DD of the just-completed visit
  * @param nextAction parsed next-action string ("Add visit", "2 weeks", "Monthly", ...)
  * @param upcoming   array of upcoming visits: [{ id?, date: 'YYYY-MM-DD', tech?: string[] }]
- * @param ctx        { product, activity, moles } — product from productOf(), activity/moles parsed
+ * @param ctx        { product, activity, moles, misses } — product from productOf(), the rest parsed
  * @returns { action, target?, visitId?, tech?, reason? }
  *          action ∈ PULL | ADD | LEAVE | ALREADY | TASK
  */
 export function decideVisit(completed, nextAction, upcoming = [], ctx = {}) {
   if (nextAction === 'Convert to annual') return { action: 'TASK', reason: 'plan change, not scheduling' };
 
-  const { product = 'OTHER', activity = null, moles = null } = ctx;
+  const { product = 'OTHER', activity = null, moles = null, misses = null } = ctx;
   const caught = Number(moles) > 0;
-  const active = caught || ACTIVE_CODES.has(activity);
+  const missed = Number(misses) > 0;
+  // A MISS IS ACTIVITY (Spencer 2026-08-06). A trap that was hit and did not hold means a mole was
+  // working that run and got away, so the property is not quiet — on its own, with no fresh mounds
+  // and nothing caught. It does NOT depend on the activity code, because the code is exactly what
+  // the techs get wrong here: they read "activity" as mounds only, so `Missed 3` + `N/A` is a
+  // common and WRONG combination in the live notes (26 such notes in the 5 weeks to 2026-08-06,
+  // 6 of them sent to monthly). Deriving it from the miss count corrects the miscoded note.
+  const active = caught || missed || ACTIVE_CODES.has(activity);
 
   const up = [...upcoming].sort((a, b) => a.date.localeCompare(b.date));
   const next = up[0] || null;
@@ -78,10 +85,12 @@ export function decideVisit(completed, nextAction, upcoming = [], ctx = {}) {
     // No activity code AND no mole count parsed means the note did not parse, which is NOT the same
     // as a quiet property. Treating it as N/A would silently drop an active customer to monthly, so
     // say so instead — the nightly summary flags these for a human to read.
-    if (activity == null && moles == null) return { action: 'LEAVE', reason: 'note did not parse an activity code — cadence undecidable, review the note' };
-    if (!active) return { action: 'LEAVE', reason: 'TMCP, no activity and no catch — monthly cadence stands' };
+    if (activity == null && moles == null && misses == null) return { action: 'LEAVE', reason: 'note did not parse an activity code — cadence undecidable, review the note' };
+    if (!active) return { action: 'LEAVE', reason: 'TMCP, no activity, no catch and no misses — monthly cadence stands' };
     interval = 7;
-    why = caught ? `TMCP — caught ${moles}, weekly` : `TMCP — ${activity} activity, weekly`;
+    why = caught ? `TMCP — caught ${moles}, weekly`
+      : missed ? `TMCP — ${misses} miss${misses > 1 ? 'es' : ''} (activity regardless of the "${activity ?? 'no'}" code), weekly`
+      : `TMCP — ${activity} activity, weekly`;
   } else {
     interval = followUpDays(nextAction);
     if (interval == null) return { action: 'LEAVE', reason: 'no follow-up interval' };
