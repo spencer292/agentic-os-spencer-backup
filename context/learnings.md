@@ -288,6 +288,34 @@
   symmetric ±3-day check treated a visit scheduled EARLIER than target as unhandled and stacked a
   second one on top — three visits in a week for #5300, none billed. Sooner is fine; only a longer
   gap needs filling.
+- 2026-08-06: **OptimoRoute balances between DRIVERS, never across DAYS.** Given a week-wide
+  `allowedDates` it packs the work into as few days as it can, because dropping a day saves a whole
+  home->territory trip — 487 visits collapsed into four 10.5 h days with an empty Friday. It is
+  optimising correctly for something nobody asked for. Nothing in the API says "we work five days":
+  `allowedDates` is a from/to RANGE so "Mon and Fri only" is inexpressible, and the daily work-time
+  cap is web-UI only on this account (`workTimeFrom/To` need `externalId`, blank for every driver).
+  The fix is to CHOOSE the day yourself from the region rhythm and pin each order to it, leaving the
+  optimizer to sequence within the day — the one part it cannot get wrong.
+- 2026-08-06: **Driver availability is per DATE, not standing** (`update_drivers_parameters`
+  `{driver:{serial}, date, enabled}`). A day nobody is enabled for silently vanishes from planning
+  rather than erroring. Enabling it also unschedules existing routes, so always re-plan straight
+  after. Same shape as a missing driver record: configuration absent, not wrong, and silent.
+- 2026-08-06: **Check the roster exists in BOTH systems before designing around it.** A whole
+  territory was built for Robert Norton, 132 visits assigned, and the sync then failed verification
+  because he had no OptimoRoute driver record — `ERR_DRV_NOT_EXISTS`. His absence was visible in
+  every sync output all day ("OR drivers: alias, cammeron, cory, luke"). `get_drivers` is not
+  available on this key and `get_routes` only shows drivers who already have stops, so a driver with
+  no work is invisible; probe by assigning one order and reading the response.
+- 2026-08-06: A hand-maintained "confirmed drivers" list went stale within minutes of Spencer adding
+  a driver and wrongly blocked the run. Config lists describing external state need a live probe
+  behind them, or they become the thing that lies.
+- 2026-08-06: **A region rhythm can stack a tech's day.** Luke's rhythm put Tacoma, Lakewood and
+  Burien all on Tuesday — 59 visits. Treat the rhythm as a PREFERENCE with spillover to the tech's
+  emptiest day once a rhythm day hits its share, or honouring the pattern produces a 12-hour day.
+- 2026-08-06: **Balanced visit counts are not balanced days.** After levelling to 22-28 visits/day,
+  Luke still ran 10.9-12.7 h against Cory's 6.6-9.1 — he owns the four most expensive regions by
+  drive time (peninsula 18 min/stop, Graham 13, Lakewood 13, Thurston 11). Balance on MINUTES, not
+  stops, or the tech with the rural territory absorbs the difference silently.
 - 2026-08-05: Commute is invisible in route totals and worth auditing separately. 22% of all weekly
   miles were the drive to the first job (Cory 36%, 161 mi/wk). Route-level distance hides it because
   each route still looks internally tidy — the waste is in which cluster the driver was given, not

@@ -6,7 +6,7 @@
 - Cash-flow: ~$69.7K MRR/625mem. Open: signup fix tag+monthly+RECUR.
 - NS1 $5-10M: $857K T12 +37%; close 69%, gap=quote-ISSUE rate. NOW: LSA(gated)+pricing A-F(~$72K/yr). TMCP conv: 357 targets+CSV.
 - NS2 $100K: kits LIVE Gumroad, $0 rev. Ads+GSC OAuth expired 4wk — budget-guard may not fire.
-- Phone/TEXT: Quo LIVE 253-683-7555; no inbound DTMF → fallback = Quo no-answer FORWARDS to VA-only CR#. Prod cutover pending (8/6 log). CR→Jobber sync failing (bad email). Jobber=closed box for texts (no inbound webhook/per-conv assign); customers reply to SENDER. Path A text desk: briefs/jobber-text-routing. Open: post-call SMS, DMARC, Muhammad not in text path.
+- Phone/TEXT: Quo LIVE 253-683-7555; no inbound DTMF; Quo no-answer FORWARDS to VA-only CR# **253-461-0822**. CUTOVER = 1 field: prod Dial dest 0211→7555, keep timeout 20. CR→Jobber sync failing (bad email). Jobber=closed box for texts (no webhook/assign); cust reply to SENDER. Path A: briefs/jobber-text-routing. Open: post-call SMS, DMARC, Muhammad not in texts.
 - n8n: Jobber cred dead 7/24; new app rejected. Lead Alert blocked on LEAD_ALERT_SMTP_* pw.
 - Jobber dupes: 97grp/114 extra, 82% CallRail double-writes. GBP 270rev/4.96 ("219+" stale).
 

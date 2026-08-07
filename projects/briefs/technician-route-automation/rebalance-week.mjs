@@ -121,6 +121,63 @@ function addrOf(a) {
 
 const days = [];
 for (let d = FROM; d <= TO; d = addDays(d, 1)) days.push(d);
+
+// Constrain each visit to its REGION'S rhythm days, not the whole week.
+// Letting the day float freely across Mon-Fri looks right but is not: OptimoRoute balances between
+// DRIVERS, never across DAYS, so it packs the week into as few days as possible — four days of
+// 10.5 h with an empty Friday on 2026-08-06 — because dropping a day saves a whole home->territory
+// trip. Nothing in the API tells it "we work five days" (the daily work-time cap is web-UI only on
+// this account). The region rhythm does: every tech's regions together span all five days, so
+// pinning each visit to its region's days produces a five-day week by construction.
+const RHYTHM = {};
+try {
+  const T = JSON.parse(fs.readFileSync(path.join(__dirname, 'territories.json'), 'utf8'));
+  for (const [name, r] of Object.entries(T.regions)) {
+    const wd = (r.rhythm || '').toLowerCase().match(/mon|tue|wed|thu|fri/g) || [];
+    for (const z of r.zips) RHYTHM[z] = wd;
+  }
+} catch { /* no territory file -> fall back to the full window */ }
+function allowedFor(zip) {
+  const wd = RHYTHM[zip];
+  if (!wd || !wd.length) return null;
+  const dates = days.filter(d => wd.includes(dowOf(d)));
+  return dates.length ? dates : null;
+}
+// allowedDates is a from/to RANGE, so "Mon and Fri only" cannot be expressed — a mon..fri range is
+// just the whole week again. So the DAY is chosen here, greedily onto the least-loaded rhythm day
+// for that tech, and each order is then pinned to it. OptimoRoute is left to do the thing it is
+// genuinely good at and cannot get wrong: sequencing within a day.
+function chooseDays(want) {
+  const load = {};                       // tech -> date -> minutes
+  const pick = {};                       // orderNo -> date
+  const entries = Object.entries(want).filter(([, w]) => !w.isSet && w.address);
+  // Heaviest regions first so the constrained ones settle before the flexible ones fill the gaps.
+  entries.sort((a, b) => (allowedFor(zipOf(a[1]))?.length || 9) - (allowedFor(zipOf(b[1]))?.length || 9));
+  // Per-tech target for one day. The rhythm is a PREFERENCE, not a hard rule: Luke's rhythm put
+  // Tacoma, Lakewood and Burien all on Tuesday, which stacked 59 visits on one day. When every
+  // rhythm day for a region is already at target, the visit spills to that tech's emptiest day —
+  // the alternative is honouring the rhythm and sending someone out for a twelve-hour Tuesday.
+  const perTech = {};
+  for (const [, w] of entries) { const t = w.tech || 'UNASSIGNED'; perTech[t] = (perTech[t] || 0) + 1; }
+  const target = {};
+  for (const t of Object.keys(perTech)) target[t] = perTech[t] / days.length;
+
+  for (const [orderNo, w] of entries) {
+    const t = w.tech || 'UNASSIGNED';
+    const cands = allowedFor(zipOf(w)) || days;
+    load[t] = load[t] || {};
+    const lowestOf = list => list.reduce((b, d) => ((load[t][d] || 0) < (load[t][b] || 0) ? d : b), list[0]);
+    let best = lowestOf(cands);
+    if ((load[t][best] || 0) >= target[t]) {
+      const spill = lowestOf(days);
+      if ((load[t][spill] || 0) < (load[t][best] || 0)) best = spill;
+    }
+    load[t][best] = (load[t][best] || 0) + 1;
+    pick[orderNo] = best;
+  }
+  return pick;
+}
+const zipOf = w => ((w.visit.property?.address?.postalCode || '') + '').trim().slice(0, 5);
 console.log(`REBALANCE WEEK (${mode.toUpperCase()})  ${FROM} .. ${TO}   balancing=${BALANCING}  day ceiling ${MAX_DAY_HOURS}h`);
 console.log(`now ${ptNow()} PT   — tech LOCKED from Jobber, day FREE within the window\n`);
 
@@ -203,6 +260,8 @@ function printShape(title, s) {
   }
 }
 printShape('CURRENT day shape (visits):', shape({}));
+const chosen = chooseDays(want);
+printShape('PLANNED day shape (visits):', shape(chosen));
 
 const setCount = Object.values(want).filter(w => w.isSet).length;
 console.log(`\nSETs pinned to their promised day: ${setCount}`);
@@ -229,9 +288,10 @@ console.log(`\n=== APPLYING ===\nWriting ${Object.keys(want).length} orders (tec
 let fails = 0;
 for (const [orderNo, w] of Object.entries(want)) {
   if (!w.address) { console.log(`  skip ${orderNo}: no address`); continue; }
-  const allowed = w.isSet ? { from: w.date, to: w.date } : { from: FROM, to: TO };
+  const day = w.isSet ? w.date : (chosen[orderNo] || w.date);
+  const allowed = { from: day, to: day };
   const order = {
-    operation: 'SYNC', orderNo, type: 'T', date: w.isSet ? w.date : FROM,
+    operation: 'SYNC', orderNo, type: 'T', date: day,
     duration: w.isSet ? 20 : 10, priority: 'M',
     location: { address: w.address, locationName: ((w.title || '') + ' · #' + w.job).slice(0, 60), acceptPartialMatch: true, acceptMultipleResults: true },
     allowedDates: allowed,
@@ -248,7 +308,7 @@ console.log('  all orders accepted');
 
 // ---------- 2. plan the whole week at once ----------
 console.log(`\nPlanning ${FROM}..${TO} (balancing=${BALANCING}, clustering ON)…`);
-const sp = await orCall('start_planning', { dateRange: { from: FROM, to: TO }, balancing: BALANCING, balanceBy: 'WT', clustering: true, startWith: 'EMPTY', lockType: 'NONE' });
+const sp = await orCall('start_planning', { dateRange: { from: FROM, to: TO }, balancing: 'OFF', clustering: true, startWith: 'CURRENT', lockType: 'NONE' });
 if (!sp.success) { console.error('🛑 ABORT: start_planning failed: ' + JSON.stringify(sp).slice(0, 200)); process.exit(1); }
 let done = false;
 for (let i = 0; i < 90; i++) {
