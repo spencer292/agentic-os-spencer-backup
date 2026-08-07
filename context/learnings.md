@@ -289,6 +289,12 @@
   symmetric ±3-day check treated a visit scheduled EARLIER than target as unhandled and stacked a
   second one on top — three visits in a week for #5300, none billed. Sooner is fine; only a longer
   gap needs filling.
+- 2026-08-06: **A territory change is not live until the ASSIGNMENT pass re-runs.** territories.json
+  is only a map; Jobber holds the actual tech on each visit, and the planner reads Jobber. Moving
+  Burien/SeaTac to Cory in the file and then re-planning left the block on Luke on the map, because
+  his name was still on those visits. Order is always: edit territories.json -> assign-by-territory
+  -> rebalance/plan. Skipping the middle step produces a plan that looks wrong for reasons that are
+  not in the plan.
 - 2026-08-06: **OptimoRoute balances between DRIVERS, never across DAYS.** Given a week-wide
   `allowedDates` it packs the work into as few days as it can, because dropping a day saves a whole
   home->territory trip — 487 visits collapsed into four 10.5 h days with an empty Friday. It is

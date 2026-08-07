@@ -33,13 +33,18 @@ const TZ = 'America/Los_Angeles';
 const DOW = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
 const mode = process.argv[2];
-if (!['dry', 'live'].includes(mode)) { console.log('Usage: rebalance-week.mjs dry|live --from=YYYY-MM-DD --to=YYYY-MM-DD [--max-day-hours=9]'); process.exit(1); }
+if (!['dry', 'plan', 'writeback', 'live'].includes(mode)) { console.log('Usage: rebalance-week.mjs dry|plan|writeback|live --from=YYYY-MM-DD --to=YYYY-MM-DD [--max-day-hours=9]'); process.exit(1); }
 const flag = (n, d) => { const a = process.argv.find(x => x.startsWith(`--${n}=`)); return a ? a.split('=')[1] : d; };
 const FROM = flag('from'), TO = flag('to');
 const MAX_DAY_HOURS = Number(flag('max-day-hours', 9));
 const BALANCING = flag('balancing', 'ON');
 const SHOW = Number(flag('show', 0));
 if (!FROM || !TO) { console.error('--from and --to are required'); process.exit(1); }
+// plan = push to OptimoRoute and STOP so the map can be eyeballed. writeback = take what is in
+// OptimoRoute now and write it to Jobber. live = both. Spencer 2026-08-06: "I have to be able to
+// see it on the map, so if I can see it in Optimo before it goes to Jobber, that is best case."
+const DO_PLAN = mode === 'plan' || mode === 'live';
+const DO_WRITE = mode === 'writeback' || mode === 'live';
 
 function loadEnv() {
   const env = {};
@@ -162,19 +167,21 @@ function chooseDays(want) {
   const target = {};
   for (const t of Object.keys(perTech)) target[t] = perTech[t] / days.length;
 
+  const overflow = [];
   for (const [orderNo, w] of entries) {
     const t = w.tech || 'UNASSIGNED';
-    const cands = allowedFor(zipOf(w)) || days;
+    const cands = allowedFor(zipOf(w));
     load[t] = load[t] || {};
-    const lowestOf = list => list.reduce((b, d) => ((load[t][d] || 0) < (load[t][b] || 0) ? d : b), list[0]);
-    let best = lowestOf(cands);
-    if ((load[t][best] || 0) >= target[t]) {
-      const spill = lowestOf(days);
-      if ((load[t][spill] || 0) < (load[t][best] || 0)) best = spill;
-    }
+    if (!cands) { overflow.push({ orderNo, why: 'zip has no region rhythm' }); continue; }
+    // A visit NEVER leaves its region's days. Spilling overflow onto a tech's emptiest day is what
+    // put single Burien and Seattle stops on Luke's Graham and Olympia runs on 2026-08-06 and made
+    // a 474-mile Friday. If a region's days are full that means the REGION needs another day — it is
+    // never licence to move the stop somewhere unrelated.
+    const best = cands.reduce((b, d) => ((load[t][d] || 0) < (load[t][b] || 0) ? d : b), cands[0]);
     load[t][best] = (load[t][best] || 0) + 1;
     pick[orderNo] = best;
   }
+  if (overflow.length) console.log();
   return pick;
 }
 const zipOf = w => ((w.visit.property?.address?.postalCode || '') + '').trim().slice(0, 5);
@@ -284,6 +291,7 @@ if (mode === 'dry') {
 }
 
 // ---------- 1. push orders: tech locked, day free ----------
+if (DO_PLAN) {
 console.log(`\n=== APPLYING ===\nWriting ${Object.keys(want).length} orders (tech locked, day free)…`);
 let fails = 0;
 for (const [orderNo, w] of Object.entries(want)) {
@@ -319,6 +327,7 @@ for (let i = 0; i < 90; i++) {
   if (/^E/i.test(s)) { console.error('🛑 ABORT: planning error ' + JSON.stringify(st).slice(0, 200)); process.exit(1); }
 }
 if (!done) { console.error('🛑 ABORT: planning timeout'); process.exit(1); }
+} else { console.log('\n(writeback mode — using the plan already in OptimoRoute)'); }
 
 // ---------- 3. verify ----------
 const now = {};
@@ -339,6 +348,28 @@ if (wrongTech.length || movedSets.length) {
   process.exit(1);
 }
 if (unscheduled.length) console.log(`\n  NOTE: ${unscheduled.length} did not fit and are unscheduled: ${unscheduled.slice(0, 15).join(', ')}`);
+
+// GUARD: every stop on a day must belong to a region whose rhythm includes that weekday. This is
+// the check that would have stopped 2026-08-06 reaching the board — a Gig Harbor + Seattle Friday,
+// and single Burien stops stranded on a Graham run. A day that mixes regions it should not is a bug,
+// not a route.
+{
+  const bad = [];
+  for (const [o, n] of Object.entries(now)) {
+    const w = want[o];
+    if (!w || w.isSet) continue;
+    const zip = zipOf(w);
+    const wd = RHYTHM[zip];
+    if (!wd || !wd.length) continue;
+    if (!wd.includes(dowOf(n.date))) bad.push(`#${w.job} ${w.city || zip} on ${dowOf(n.date)} — region runs ${wd.join('/')}`);
+  }
+  if (bad.length) {
+    console.error(`\n🛑 ABORT: ${bad.length} stop(s) landed on a day their region does not run — NO Jobber writes.`);
+    for (const b of bad.slice(0, 20)) console.error('     ' + b);
+    process.exit(1);
+  }
+  console.log('  region/day check: every stop is on one of its own region days');
+}
 
 const after = {};
 for (const [o, n] of Object.entries(now)) if (want[o]) after[o] = n.date;
@@ -362,6 +393,31 @@ for (const t of Object.keys(hours).sort()) {
   console.log('  ' + t.padEnd(20) + cells);
 }
 if (over) console.log(`  ${over} tech-day(s) over the ${MAX_DAY_HOURS}h ceiling`);
+
+console.log('\n  what each day actually contains:');
+for (const d of days) {
+  const perTech = {};
+  for (const [o, n] of Object.entries(now)) {
+    if (n.date !== d || !want[o]) continue;
+    const t = n.driver || '?';
+    const c = want[o].city || '?';
+    perTech[t] = perTech[t] || {};
+    perTech[t][c] = (perTech[t][c] || 0) + 1;
+  }
+  console.log('   ' + dowOf(d) + ' ' + d);
+  for (const t of Object.keys(perTech).sort()) {
+    const cities = Object.entries(perTech[t]).sort((a, b) => b[1] - a[1]).map(([c, n2]) => c + '(' + n2 + ')').join(' ');
+    console.log('      ' + t.split(' ')[0].padEnd(9) + cities);
+  }
+}
+
+if (!DO_WRITE) {
+  console.log(`\n=== PLANNED IN OPTIMOROUTE — NOTHING WRITTEN TO JOBBER ===`);
+  console.log('Open OptimoRoute and check the map. If it looks right:');
+  console.log(`   node projects/briefs/technician-route-automation/rebalance-week.mjs writeback --from=${FROM} --to=${TO}`);
+  fs.writeFileSync(reportPath, JSON.stringify({ ranAt: new Date().toISOString(), mode, from: FROM, to: TO, unscheduled, hours }, null, 2));
+  process.exit(0);
+}
 
 // ---------- 4. write back ----------
 console.log('\nWriting new day + time to Jobber…');

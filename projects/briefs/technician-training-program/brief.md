@@ -58,12 +58,12 @@ something Spencer has since said is wrong. Fold into Deliverable 1.
 | 0 | Who we are, the promise, how you're judged | none |
 | 1 | How to work — the day, the route, the pace | none |
 | 2 | How to dress & present | one line (§4.1) |
-| 3 | How to park & approach | six words (§2.1) |
-| 4 | How to walk a property | 7 bullets (§2.2–2.6) |
+| 3 | How to park & approach | **draft** — complete bar war stories |
+| 4 | How to walk a property | **draft** — trainable ≤1 acre; 1–5 acre pattern outstanding |
 | 5 | Trapping to standard | §3 — deepen |
 | 6 | How to talk to people | §4.1–4.5 — principles only |
 | 7 | How to sell — TMCP, Quick Fix, objections, handoffs | one paragraph (§4.7) |
-| 8 | Jobber — notes, activity codes, quotes, follow-ups, photos | 5 bullets (§2.7) |
+| 8 | Jobber — notes, activity codes, quotes, follow-ups, photos | **draft** — note standard complete, reverse-engineered from 486 of Cory's live notes |
 | 9 | Safety, truck, inventory | none |
 | 10 | Certification — solo sign-off | none |
 

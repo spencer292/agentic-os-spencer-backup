@@ -1,121 +1,384 @@
 {
-  "version": "2026-08-06",
+  "version": "2026-08-06b",
   "_comment": "TERRITORY MAP v7 — replaces the zip->day->tech grid (territory-grid v1..v6). A region is a named area a tech OWNS; the tech is a property of the region, not of a zip's day. Built 2026-08-06 from measured volume (region-capacity.mjs, 2026-07-27..08-07: 537 visits/wk, 155.2 h) and measured commute (tech-home-infer.mjs: the drive to stop #1 is 22% of all weekly miles). Assignment minimises that commute subject to balanced hours, with one Spencer override: Cory does NOT take the Plateau even though he lives 6 mi from it, because he is remediating Cammeron's work — and keeping Robert on the Plateau/Auburn belt puts the new tech nearest to both Cory and Spencer for support. That override costs ~69 mi/wk against the pure-mileage cut and is worth revisiting once Robert is established.",
   "_supersedes": "territory-grid-v5.json (day-pinning by zip). push-week --grid should no longer pin days from that file.",
-
   "optimoRouteDrivers": {
     "_comment": "Driver records CONFIRMED to exist in OptimoRoute. Serials on this account are the full name. get_drivers returns AUTH_KEY_UNKNOWN and get_routes only reveals drivers that already have stops, so a driver with no routes is otherwise invisible — this list is what stops the sync pre-flight false-flagging them. THIS LIST IS HAND-MAINTAINED AND CAN GO STALE: it wrongly reported Robert Norton missing on 2026-08-06 minutes after Spencer created him. If the pre-flight flags someone you believe exists, probe live before believing the list (assign one order to that serial and read the response — ERR_DRV_NOT_EXISTS is definitive). create_driver is not available on this API key, so new drivers are added in the OptimoRoute UI.",
-    "confirmed": ["Alias Franks", "Cammeron Anderson", "Cory Ventura", "Luke LaVergne", "Tavis Alexander", "Spencer Hill", "Robert Norton"],
+    "confirmed": [
+      "Alias Franks",
+      "Cammeron Anderson",
+      "Cory Ventura",
+      "Luke LaVergne",
+      "Tavis Alexander",
+      "Spencer Hill",
+      "Robert Norton"
+    ],
     "missing": []
   },
-
   "roster": {
-    "Robert Norton": { "home": "Maple Valley 98038", "status": "field", "startsInField": "2026-08-10", "note": "Returning. Existing ACTIVATED Jobber user. 24 of his historical customers fall inside his new territory (Enumclaw 11, Black Diamond 5, Ravensdale 3, Buckley 3, Bonney Lake 1, Auburn 1) — continuity is preserved, not broken, by giving him this belt." },
-    "Tavis Alexander": { "home": "unknown", "status": "field", "startsInField": "2026-08-17", "note": "Returning 2026-08-17 into the arc Cory holds until then. His 1,032 existing forward assignments are from the OLD territories and are being re-sorted by region — he inherits whatever lands in his arc, not what he was previously assigned." },
-    "Luke LaVergne": { "home": "Puyallup 98373", "status": "field" },
-    "Alias Franks": { "home": "Snohomish 98296", "status": "field" },
-    "Cory Ventura": { "home": "Buckley 98321", "status": "field-until-2026-08-16", "note": "Steps out of the field when Tavis returns. Holds the Kent/Renton/Sammamish/Snoqualmie arc until 2026-08-16." },
-    "Cammeron Anderson": { "status": "left-2026-08-07", "note": "318 forward visits to re-sort. Deactivate the Jobber user so nothing new lands on him." },
-    "Spencer Hill": { "status": "out-of-field-2026-07-29", "note": "208 forward visits still assigned. Keeps jobOverride #8056 Madera West Condos only." }
+    "Robert Norton": {
+      "home": "Maple Valley 98038",
+      "status": "field",
+      "startsInField": "2026-08-10",
+      "note": "Returning. Existing ACTIVATED Jobber user. 24 of his historical customers fall inside his new territory (Enumclaw 11, Black Diamond 5, Ravensdale 3, Buckley 3, Bonney Lake 1, Auburn 1) — continuity is preserved, not broken, by giving him this belt."
+    },
+    "Tavis Alexander": {
+      "home": "unknown",
+      "status": "field",
+      "startsInField": "2026-08-17",
+      "note": "Returning 2026-08-17 into the arc Cory holds until then. His 1,032 existing forward assignments are from the OLD territories and are being re-sorted by region — he inherits whatever lands in his arc, not what he was previously assigned."
+    },
+    "Luke LaVergne": {
+      "home": "Puyallup 98373",
+      "status": "field"
+    },
+    "Alias Franks": {
+      "home": "Snohomish 98296",
+      "status": "field"
+    },
+    "Cory Ventura": {
+      "home": "Buckley 98321",
+      "status": "field-until-2026-08-16",
+      "note": "Steps out of the field when Tavis returns. Holds the Kent/Renton/Sammamish/Snoqualmie arc until 2026-08-16."
+    },
+    "Cammeron Anderson": {
+      "status": "left-2026-08-07",
+      "note": "318 forward visits to re-sort. Deactivate the Jobber user so nothing new lands on him."
+    },
+    "Spencer Hill": {
+      "status": "out-of-field-2026-07-29",
+      "note": "208 forward visits still assigned. Keeps jobOverride #8056 Madera West Condos only."
+    }
   },
-
   "handovers": [
     {
       "effective": "2026-08-17",
       "from": "Cory Ventura",
       "to": "Tavis Alexander",
-      "regions": ["Kent / Covington / Maple Valley", "Renton / Newcastle", "Sammamish / Issaquah", "Snoqualmie Valley"],
+      "regions": [
+        "Kent / Covington / Maple Valley",
+        "Renton / Newcastle",
+        "Sammamish / Issaquah",
+        "Snoqualmie Valley"
+      ],
       "note": "Territory does not move — only the name on it. Visits on or after this date go to Tavis; before it, Cory."
     }
   ],
-
   "regions": {
     "Plateau (Enumclaw/Buckley/Bonney Lake)": {
-      "owner": "Robert Norton", "zips": ["98022", "98321", "98391", "98390", "98010", "98051"],
-      "visitsPerWeek": 76, "hoursPerWeek": 19.8, "driveMinPerStop": 5, "daysPerWeek": 3,
-      "rhythm": "mon + wed + fri", "note": "Largest region on the board. Three separate runs, spread across the week."
+      "owner": "Robert Norton",
+      "zips": [
+        "98022",
+        "98321",
+        "98391",
+        "98390",
+        "98010",
+        "98051"
+      ],
+      "visitsPerWeek": 76,
+      "hoursPerWeek": 19.8,
+      "driveMinPerStop": 5,
+      "daysPerWeek": 3,
+      "rhythm": "mon + wed + fri",
+      "note": "Largest region on the board. Three separate runs, spread across the week."
     },
     "Auburn / Federal Way": {
-      "owner": "Robert Norton", "zips": ["98001", "98002", "98003", "98023", "98092", "98047"],
-      "visitsPerWeek": 29, "hoursPerWeek": 8.0, "driveMinPerStop": 6, "daysPerWeek": 1, "rhythm": "tue"
+      "owner": "Robert Norton",
+      "zips": [
+        "98001",
+        "98002",
+        "98003",
+        "98023",
+        "98092",
+        "98047"
+      ],
+      "visitsPerWeek": 29,
+      "hoursPerWeek": 8,
+      "driveMinPerStop": 6,
+      "daysPerWeek": 1,
+      "rhythm": "tue"
     },
     "Puyallup / Edgewood": {
-      "owner": "Robert Norton", "zips": ["98371", "98372", "98373", "98374", "98375", "98354"],
-      "visitsPerWeek": 28, "hoursPerWeek": 7.2, "driveMinPerStop": 6, "daysPerWeek": 1, "rhythm": "thu",
+      "owner": "Robert Norton",
+      "zips": [
+        "98371",
+        "98372",
+        "98373",
+        "98374",
+        "98375",
+        "98354"
+      ],
+      "visitsPerWeek": 28,
+      "hoursPerWeek": 7.2,
+      "driveMinPerStop": 6,
+      "daysPerWeek": 1,
+      "rhythm": "thu",
       "note": "98371/98372 straddle SR-167 (Edgewood/Puyallup split) — never treat either as a clean city boundary."
     },
     "Burien / SeaTac / South King": {
-      "owner": "Luke LaVergne", "zips": ["98146", "98148", "98158", "98166", "98168", "98178", "98188", "98198"],
-      "visitsPerWeek": 20, "hoursPerWeek": 5.1, "driveMinPerStop": 4, "daysPerWeek": 1, "rhythm": "tue (chains up I-5 from Tacoma)",
-      "note": "Moved off Robert 2026-08-06 (Spencer). Geographically near-neutral — 20 mi from Luke vs 15 from Robert — but it takes Robert's first week from 8.1 h/day to 6.8 and cuts the team spread from 12.4 h to 9.3. Revisit once Robert is established: at full volume this makes Luke the heaviest at 42.8 h and Robert the lightest at 35.0."
+      "owner": "Cory Ventura",
+      "zips": [
+        "98146",
+        "98148",
+        "98158",
+        "98166",
+        "98168",
+        "98178",
+        "98188",
+        "98198"
+      ],
+      "visitsPerWeek": 20,
+      "hoursPerWeek": 5.1,
+      "driveMinPerStop": 4,
+      "daysPerWeek": 1,
+      "rhythm": "tue (with Renton, same 405/518 corridor)",
+      "note": "Moved Robert->Luke->Cory. Luke was wrong: 20 mi from his home but his other work is Olympia and Gig Harbor, so it fragmented his week. Cory already works Renton and was in Seattle/Des Moines on Tuesdays.",
+      "ownerFrom20260817": "Tavis Alexander"
     },
-
     "Kent / Covington / Maple Valley": {
-      "owner": "Cory Ventura", "ownerFrom20260817": "Tavis Alexander",
-      "zips": ["98030", "98031", "98032", "98042", "98038"],
-      "visitsPerWeek": 47, "hoursPerWeek": 12.5, "driveMinPerStop": 6, "daysPerWeek": 2, "rhythm": "mon + fri"
+      "owner": "Cory Ventura",
+      "ownerFrom20260817": "Tavis Alexander",
+      "zips": [
+        "98030",
+        "98031",
+        "98032",
+        "98042",
+        "98038"
+      ],
+      "visitsPerWeek": 47,
+      "hoursPerWeek": 12.5,
+      "driveMinPerStop": 6,
+      "daysPerWeek": 2,
+      "rhythm": "mon + fri"
     },
     "Renton / Newcastle": {
-      "owner": "Cory Ventura", "ownerFrom20260817": "Tavis Alexander",
-      "zips": ["98055", "98056", "98057", "98058", "98059"],
-      "visitsPerWeek": 39, "hoursPerWeek": 9.8, "driveMinPerStop": 5, "daysPerWeek": 2, "rhythm": "tue + fri"
+      "owner": "Cory Ventura",
+      "ownerFrom20260817": "Tavis Alexander",
+      "zips": [
+        "98055",
+        "98056",
+        "98057",
+        "98058",
+        "98059"
+      ],
+      "visitsPerWeek": 39,
+      "hoursPerWeek": 9.8,
+      "driveMinPerStop": 5,
+      "daysPerWeek": 2,
+      "rhythm": "tue + fri"
     },
     "Sammamish / Issaquah": {
-      "owner": "Cory Ventura", "ownerFrom20260817": "Tavis Alexander",
-      "zips": ["98027", "98029", "98074", "98075"],
-      "visitsPerWeek": 36, "hoursPerWeek": 9.5, "driveMinPerStop": 5, "daysPerWeek": 2, "rhythm": "wed + fri"
+      "owner": "Cory Ventura",
+      "ownerFrom20260817": "Tavis Alexander",
+      "zips": [
+        "98027",
+        "98029",
+        "98074",
+        "98075"
+      ],
+      "visitsPerWeek": 36,
+      "hoursPerWeek": 9.5,
+      "driveMinPerStop": 5,
+      "daysPerWeek": 2,
+      "rhythm": "wed + thu (I-90 corridor, shares Thursday with Snoqualmie)"
     },
     "Snoqualmie Valley": {
-      "owner": "Cory Ventura", "ownerFrom20260817": "Tavis Alexander",
-      "zips": ["98014", "98024", "98045", "98065"],
-      "visitsPerWeek": 28, "hoursPerWeek": 8.3, "driveMinPerStop": 7, "daysPerWeek": 1, "rhythm": "thu"
+      "owner": "Cory Ventura",
+      "ownerFrom20260817": "Tavis Alexander",
+      "zips": [
+        "98014",
+        "98024",
+        "98045",
+        "98065"
+      ],
+      "visitsPerWeek": 28,
+      "hoursPerWeek": 8.3,
+      "driveMinPerStop": 7,
+      "daysPerWeek": 1,
+      "rhythm": "thu"
     },
-
     "Thurston / Olympia": {
-      "owner": "Luke LaVergne", "zips": ["98501", "98502", "98503", "98506", "98512", "98513", "98516", "98597"],
-      "visitsPerWeek": 38, "hoursPerWeek": 13.1, "driveMinPerStop": 11, "daysPerWeek": 2, "rhythm": "mon + thu",
+      "owner": "Luke LaVergne",
+      "zips": [
+        "98501",
+        "98502",
+        "98503",
+        "98506",
+        "98512",
+        "98513",
+        "98516",
+        "98597"
+      ],
+      "visitsPerWeek": 38,
+      "hoursPerWeek": 13.1,
+      "driveMinPerStop": 11,
+      "daysPerWeek": 2,
+      "rhythm": "mon + thu",
       "note": "Most expensive drive on the board after the peninsula. Nobody but Luke is within 40 mi."
     },
     "Graham / Orting": {
-      "owner": "Luke LaVergne", "zips": ["98338", "98360", "98580", "98328"],
-      "visitsPerWeek": 23, "hoursPerWeek": 8.8, "driveMinPerStop": 13, "daysPerWeek": 2, "rhythm": "wed + fri"
+      "owner": "Luke LaVergne",
+      "zips": [
+        "98338",
+        "98360",
+        "98580",
+        "98328"
+      ],
+      "visitsPerWeek": 23,
+      "hoursPerWeek": 8.8,
+      "driveMinPerStop": 13,
+      "daysPerWeek": 2,
+      "rhythm": "fri (with Tacoma, same Pierce belt)"
     },
     "Tacoma": {
-      "owner": "Luke LaVergne", "zips": ["98402", "98403", "98404", "98405", "98406", "98407", "98408", "98409", "98422", "98443", "98445", "98446", "98465", "98466"],
-      "visitsPerWeek": 22, "hoursPerWeek": 6.6, "driveMinPerStop": 7, "daysPerWeek": 1, "rhythm": "tue"
+      "owner": "Luke LaVergne",
+      "zips": [
+        "98402",
+        "98403",
+        "98404",
+        "98405",
+        "98406",
+        "98407",
+        "98408",
+        "98409",
+        "98422",
+        "98443",
+        "98445",
+        "98446",
+        "98465",
+        "98466"
+      ],
+      "visitsPerWeek": 22,
+      "hoursPerWeek": 6.6,
+      "driveMinPerStop": 7,
+      "daysPerWeek": 1,
+      "rhythm": "tue + wed + fri",
+      "note": "Wednesday is the peninsula run — west Tacoma is straight across the Narrows from Gig Harbor, so Tacoma work absorbs onto that day (Spencer 2026-08-06). Real volume is roughly double the 2-week sample, which is why it needs three days."
     },
     "Peninsula / Gig Harbor": {
-      "owner": "Luke LaVergne", "zips": ["98329", "98332", "98333", "98335", "98349", "98351", "98359", "98366", "98367", "98310", "98312"],
-      "visitsPerWeek": 11, "hoursPerWeek": 5.2, "driveMinPerStop": 18, "daysPerWeek": 1, "rhythm": "fri (with Graham)",
+      "owner": "Luke LaVergne",
+      "zips": [
+        "98329",
+        "98332",
+        "98333",
+        "98335",
+        "98349",
+        "98351",
+        "98359",
+        "98366",
+        "98367",
+        "98310",
+        "98312"
+      ],
+      "visitsPerWeek": 11,
+      "hoursPerWeek": 5.2,
+      "driveMinPerStop": 18,
+      "daysPerWeek": 1,
+      "rhythm": "wed (ALONE apart from Tacoma spill; Spencer 2026-08-06)",
       "note": "18 min between stops — the most expensive region per visit on the board. 11 visits cost more than Burien's 20."
     },
     "Lakewood / UP / Spanaway": {
-      "owner": "Luke LaVergne", "zips": ["98327", "98387", "98388", "98498", "98499"],
-      "visitsPerWeek": 10, "hoursPerWeek": 4.0, "driveMinPerStop": 13, "daysPerWeek": 1, "rhythm": "tue (with Tacoma)"
+      "owner": "Luke LaVergne",
+      "zips": [
+        "98327",
+        "98387",
+        "98388",
+        "98498",
+        "98499"
+      ],
+      "visitsPerWeek": 10,
+      "hoursPerWeek": 4,
+      "driveMinPerStop": 13,
+      "daysPerWeek": 1,
+      "rhythm": "mon (on the I-5 run down to Thurston)"
     },
-
     "Kirkland / Redmond / Woodinville": {
-      "owner": "Alias Franks", "zips": ["98033", "98034", "98052", "98053", "98072", "98077", "98011", "98019", "98021", "98296"],
-      "visitsPerWeek": 48, "hoursPerWeek": 13.5, "driveMinPerStop": 6, "daysPerWeek": 2, "rhythm": "mon + thu"
+      "owner": "Alias Franks",
+      "zips": [
+        "98033",
+        "98034",
+        "98052",
+        "98053",
+        "98072",
+        "98077",
+        "98011",
+        "98019",
+        "98021",
+        "98296"
+      ],
+      "visitsPerWeek": 48,
+      "hoursPerWeek": 13.5,
+      "driveMinPerStop": 6,
+      "daysPerWeek": 2,
+      "rhythm": "mon + thu"
     },
     "Seattle": {
-      "owner": "Alias Franks", "zips": ["98103", "98105", "98106", "98107", "98108", "98112", "98115", "98116", "98117", "98118", "98122", "98125", "98126", "98133", "98136", "98144", "98177", "98199"],
-      "visitsPerWeek": 43, "hoursPerWeek": 11.9, "driveMinPerStop": 5, "daysPerWeek": 2, "rhythm": "tue + fri"
+      "owner": "Alias Franks",
+      "zips": [
+        "98103",
+        "98105",
+        "98106",
+        "98107",
+        "98108",
+        "98112",
+        "98115",
+        "98116",
+        "98117",
+        "98118",
+        "98122",
+        "98125",
+        "98126",
+        "98133",
+        "98136",
+        "98144",
+        "98177",
+        "98199"
+      ],
+      "visitsPerWeek": 43,
+      "hoursPerWeek": 11.9,
+      "driveMinPerStop": 5,
+      "daysPerWeek": 2,
+      "rhythm": "tue + fri"
     },
     "Bellevue / Mercer": {
-      "owner": "Alias Franks", "zips": ["98004", "98005", "98006", "98007", "98008", "98039", "98040"],
-      "visitsPerWeek": 35, "hoursPerWeek": 9.3, "driveMinPerStop": 5, "daysPerWeek": 2, "rhythm": "wed + fri"
+      "owner": "Alias Franks",
+      "zips": [
+        "98004",
+        "98005",
+        "98006",
+        "98007",
+        "98008",
+        "98039",
+        "98040"
+      ],
+      "visitsPerWeek": 35,
+      "hoursPerWeek": 9.3,
+      "driveMinPerStop": 5,
+      "daysPerWeek": 2,
+      "rhythm": "wed + fri"
     },
     "Shoreline / North": {
-      "owner": "Alias Franks", "zips": ["98155", "98028", "98020", "98026"],
-      "visitsPerWeek": 8, "hoursPerWeek": 2.5, "driveMinPerStop": 8, "daysPerWeek": 1, "rhythm": "tue (with Seattle)"
+      "owner": "Alias Franks",
+      "zips": [
+        "98155",
+        "98028",
+        "98020",
+        "98026"
+      ],
+      "visitsPerWeek": 8,
+      "hoursPerWeek": 2.5,
+      "driveMinPerStop": 8,
+      "daysPerWeek": 1,
+      "rhythm": "tue (with Seattle)"
     }
   },
-
   "jobOverrides": {
-    "8056": { "client": "Madera West Condos", "tech": "Spencer Hill", "note": "Spencer keeps this account personally — an exception to his out-of-field status (2026-07-26)." }
+    "8056": {
+      "client": "Madera West Condos",
+      "tech": "Spencer Hill",
+      "note": "Spencer keeps this account personally — an exception to his out-of-field status (2026-07-26)."
+    }
   },
-
   "capacity": {
     "measuredWeek": "2026-07-27..2026-08-07",
     "visitsPerWeek": 537,

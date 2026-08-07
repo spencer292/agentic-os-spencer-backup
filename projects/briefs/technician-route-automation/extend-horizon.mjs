@@ -121,11 +121,13 @@ if (fs.existsSync(planPath)) {
     if (args.includes('--discard-plan')) {
       console.log(`\n!! discarding the held plan for ${w.fromDate}..${w.toDate} (${held.counts?.writes ?? '?'} writes) — --discard-plan given`);
     } else {
-      console.error(`\nABORT: optimize-plan.json holds an un-written plan for ${w.fromDate}..${w.toDate}` +
+      console.error(`\nABORT: optimize-plan.json holds a plan for ${w.fromDate}..${w.toDate}` +
         ` (${held.counts?.writes ?? '?'} Jobber writes, ${held.counts?.techChanges ?? '?'} tech changes, generated ${held.generatedAt || 'unknown'}).`);
-      console.error('Planning a new window would overwrite it and those writes would be lost.');
-      console.error('Either finish it:   node optimize-week.mjs write');
-      console.error('or throw it away:   re-run this with --discard-plan');
+      console.error('Planning a new window would overwrite it. If it was never written, those writes are lost.');
+      console.error('If it still needs applying:  node optimize-week.mjs write');
+      console.error('If it was already applied:   archive it, then re-run —');
+      console.error(`    mv optimize-plan.json optimize-plan.${w.fromDate}_${w.toDate}.done.json`);
+      console.error('Only as a last resort:        re-run this with --discard-plan');
       process.exit(1);
     }
   }
@@ -169,5 +171,20 @@ for (const [script, argv] of steps) {
   }
 }
 
-console.log(`\nHorizon extended: ${from} .. ${to} planned. route-drift-check (HORIZON_DAYS=12) now`);
-console.log('covers these days, so new bookings land on them automatically within 2 hours.');
+/**
+ * Archive the plan we just applied. The guard above keys on the window in optimize-plan.json, so a
+ * spent plan left on disk makes every future run abort — the job would stop dead each morning
+ * having already done its work. Only archive when the chain actually ran the write; with
+ * --no-write the plan is genuinely still pending and must stay put.
+ */
+if (!noWrite && fs.existsSync(planPath)) {
+  const done = path.join(__dirname, `optimize-plan.${from}_${to}.done.json`);
+  fs.renameSync(planPath, done);
+  console.log(`\nApplied plan archived -> ${path.basename(done)}`);
+} else if (noWrite) {
+  console.log('\nNOTE: --no-write, so optimize-plan.json is still PENDING. Run');
+  console.log('`node optimize-week.mjs write` to apply it — until then the next horizon run aborts.');
+}
+
+console.log(`\nHorizon extended: ${from} .. ${to} planned. route-drift-check (HORIZON_DAYS=${19}) now`);
+console.log('covers these days, so new bookings land on them automatically within the hour.');
