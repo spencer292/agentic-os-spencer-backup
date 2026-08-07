@@ -281,16 +281,20 @@ Trainer: ____________________  Date: __________
 
 ## Engine note — read before changing this module
 
-The scheduling engine (`projects/briefs/jobber-notes-automation/decide.mjs`) reads **only the
-free-text next-action line.** It parses `activity` and `moles` and then never uses them.
+**As of 2026-08-06 the engine derives cadence itself.** `decide.mjs` was rewritten earlier the
+same day: it now computes the interval from **product + catch + activity code** rather than
+trusting the typed next-action line, and the nightly cron runs `--execute`. So a note with a
+correct activity code now schedules correctly even if the tech forgets Block 4 — which retires
+most of the 22 activity-with-no-follow-up cases found in the note audit.
 
-That means everything in this module is delivered through Block 4 and nothing else. A perfect
-`Missed 3` + `LA` note with no `Add visit` line produces **no scheduling action at all** — the
-engine logs `LEAVE` and moves on. That is exactly how the 22 activity-with-no-follow-up cases
-happened.
+Two things that follow from that:
 
-**Recommended fix (route lane, not training):** have the engine *derive* the interval from
-product + catch + miss + activity code, and treat the next-action line as a tech override rather
-than the sole input. The rules are fully deterministic now, and the note already carries every
-input they need — the only reason the schedule depends on one hand-typed line is that nothing
-reads the rest.
+1. **Block 2 is now the load-bearing line, not Block 4.** The activity code went from decorative
+   to controlling. An `NA` typed on a property that caught a mole no longer gets quietly rescued
+   by a hand-typed `Add visit` — teach the code hard.
+2. **The engine does not yet honor misses.** `parse-note.mjs` parses them (`misses`, `missKind`),
+   but `decide.mjs` computes `active = caught || ACTIVE_CODES.has(activity)` and never reads the
+   miss count. A TMCP note reading `Missed 3` + `NA` therefore resolves to **monthly** — the
+   opposite of Spencer's 2026-08-06 rule, and it now books that way automatically. **Open defect,
+   route lane.** Until it is fixed, the tech coding `LA` after a miss (§3) is the only thing
+   keeping those customers on a weekly cadence.
