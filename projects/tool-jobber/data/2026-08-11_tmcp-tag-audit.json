@@ -1,0 +1,648 @@
+{
+  "runDate": "2026-08-11",
+  "liveJobsScanned": 812,
+  "tmcJobs": {
+    "total": 674,
+    "recurring": 673,
+    "oneOff": 1,
+    "distinctClients": 653,
+    "clientsWithMultipleJobs": 11,
+    "extraJobsFromMultiClients": 21
+  },
+  "tags": {
+    "taggedActive": 653,
+    "taggedChurned": 18,
+    "tmcJobsMissingActiveTag": 3,
+    "clientsMissingActiveTag": 3,
+    "taggedActiveNoTmcJob": 3,
+    "tmcJobsTaggedChurned": 0
+  },
+  "mrrEquiv": 74162.19,
+  "missingTagDetail": [
+    {
+      "job": 8332,
+      "client": "Nancy Collinsworth",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC83MTE5MjMzNA==",
+      "jobType": "RECURRING",
+      "status": "upcoming",
+      "startAt": "2026-08-13T07:00:00Z",
+      "endAt": "2036-08-06T06:59:59Z",
+      "total": 90,
+      "sched": "Monthly on the last day of the month",
+      "currentTags": []
+    },
+    {
+      "job": 8340,
+      "client": "Ken Lohse",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDg4MDQzNTg=",
+      "jobType": "RECURRING",
+      "status": "upcoming",
+      "startAt": "2026-08-11T07:00:00Z",
+      "endAt": "2036-08-11T06:59:59Z",
+      "total": 100,
+      "sched": "Monthly on the last day of the month",
+      "currentTags": [
+        "Schedule requested"
+      ]
+    },
+    {
+      "job": 8219,
+      "client": "Trent Bryan",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC83MjU1Njk3Nw==",
+      "jobType": "RECURRING",
+      "status": "upcoming",
+      "startAt": "2026-07-30T07:00:00Z",
+      "endAt": "2026-11-01T06:59:59Z",
+      "total": 200,
+      "sched": "Monthly on the last day of the month",
+      "currentTags": []
+    }
+  ],
+  "taggedNoJobDetail": [
+    {
+      "client": "Tyler Smythe",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC82MzI4MTQ3Mg==",
+      "archived": false
+    },
+    {
+      "client": "Barbee Mill HOA",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC82OTk1MDQyNQ==",
+      "archived": false
+    },
+    {
+      "client": "Larena Walshe",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC83ODQ1ODY2Mw==",
+      "archived": false
+    }
+  ],
+  "multiJobDetail": [
+    {
+      "client": "Prologis - Sumner Landing",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC80OTc0MDk3OQ==",
+      "jobCount": 10,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "jobs": [
+        {
+          "job": 7614,
+          "title": "SUMNER 24",
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2026-01-21T08:00:00Z",
+          "endAt": "2036-01-21T07:59:59Z",
+          "total": 125,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 125,
+          "lineItems": [
+            "Total Mole Control Package"
+          ]
+        },
+        {
+          "job": 7611,
+          "title": "SUMNER 1-4-6 & 8",
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2026-01-21T08:00:00Z",
+          "endAt": "2036-01-21T07:59:59Z",
+          "total": 375,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 375,
+          "lineItems": [
+            "Total Mole Control Package"
+          ]
+        },
+        {
+          "job": 7848,
+          "title": "Sumner 5&7",
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2026-04-17T07:00:00Z",
+          "endAt": "2036-04-17T06:59:59Z",
+          "total": 125,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 125,
+          "lineItems": [
+            "Total Mole Control Program -- Year round protection"
+          ]
+        },
+        {
+          "job": 7616,
+          "title": "SUMNER 27 (DUKE)",
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2026-01-21T08:00:00Z",
+          "endAt": "2036-01-21T07:59:59Z",
+          "total": 200,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 200,
+          "lineItems": [
+            "Total Mole Control Package"
+          ]
+        },
+        {
+          "job": 7615,
+          "title": "SUMNER 22 & 23",
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2026-01-21T08:00:00Z",
+          "endAt": "2036-01-21T07:59:59Z",
+          "total": 125,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 125,
+          "lineItems": [
+            "Total Mole Control Package"
+          ]
+        },
+        {
+          "job": 7613,
+          "title": "SUMNER 13",
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2026-01-21T08:00:00Z",
+          "endAt": "2036-01-21T07:59:59Z",
+          "total": 125,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 125,
+          "lineItems": [
+            "Total Mole Control Package"
+          ]
+        },
+        {
+          "job": 7612,
+          "title": "SUMNER LANDING",
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2026-01-21T08:00:00Z",
+          "endAt": "2036-01-21T07:59:59Z",
+          "total": 200,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 200,
+          "lineItems": [
+            "Total Mole Control Package"
+          ]
+        },
+        {
+          "job": 7610,
+          "title": "SUMNER 3-7-9 & 10",
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2026-01-21T08:00:00Z",
+          "endAt": "2036-01-21T07:59:59Z",
+          "total": 375,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 375,
+          "lineItems": [
+            "Total Mole Control Package"
+          ]
+        },
+        {
+          "job": 7617,
+          "title": "RIVER FRONT INDUSTRIAL PARK",
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2026-01-20T08:00:00Z",
+          "endAt": "2036-01-20T07:59:59Z",
+          "total": 225,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 225,
+          "lineItems": [
+            "Total Mole Control Package"
+          ]
+        },
+        {
+          "job": 4335,
+          "title": "WHITE RIVER",
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2023-08-08T07:00:00Z",
+          "endAt": "2033-08-08T06:59:59Z",
+          "total": 309.75,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 309.75,
+          "lineItems": [
+            "Total Mole Control Program -- Year round protection"
+          ]
+        }
+      ]
+    },
+    {
+      "client": "Cruz Rodriguez",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC84MzgyOTc2OA==",
+      "jobCount": 3,
+      "tags": [
+        "Commercial Client",
+        "TMCP - Active"
+      ],
+      "jobs": [
+        {
+          "job": 7789,
+          "title": null,
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2026-03-18T07:00:00Z",
+          "endAt": "2036-03-18T06:59:59Z",
+          "total": 1800,
+          "sched": "Yearly",
+          "monthly": 150,
+          "lineItems": [
+            "Total Mole Control Program -- Year round protection"
+          ]
+        },
+        {
+          "job": 6325,
+          "title": "Monte Villa Farms - Annual Service ",
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2025-01-27T08:00:00Z",
+          "endAt": "2027-01-27T07:59:59Z",
+          "total": 849,
+          "sched": "Every 90 days",
+          "monthly": 283,
+          "lineItems": [
+            "Total Mole Control Program -- Year round protection"
+          ]
+        },
+        {
+          "job": 6323,
+          "title": "Monte Villa Quadrant - Annual service",
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2025-01-27T08:00:00Z",
+          "endAt": "2027-01-27T07:59:59Z",
+          "total": 849,
+          "sched": "Every 90 days",
+          "monthly": 283,
+          "lineItems": [
+            "Total Mole Control Program -- Year round protection"
+          ]
+        }
+      ]
+    },
+    {
+      "client": "HyperGreen Landscaping",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC83ODU5MjcyMA==",
+      "jobCount": 3,
+      "tags": [
+        "Commercial Property",
+        "LARGE PROPERTY",
+        "TMCP - Active"
+      ],
+      "jobs": [
+        {
+          "job": 7548,
+          "title": null,
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2025-12-26T08:00:00Z",
+          "endAt": "2035-12-26T07:59:59Z",
+          "total": 85,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 85,
+          "lineItems": [
+            "Total Mole Control Package"
+          ]
+        },
+        {
+          "job": 4926,
+          "title": null,
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2024-02-07T08:00:00Z",
+          "endAt": "2034-02-07T07:59:59Z",
+          "total": 275,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 275,
+          "lineItems": [
+            "Total Mole Control Program -- Year round protection"
+          ]
+        },
+        {
+          "job": 7462,
+          "title": null,
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2025-11-13T08:00:00Z",
+          "endAt": "2035-11-13T07:59:59Z",
+          "total": 85,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 85,
+          "lineItems": [
+            "Total Mole Control Package"
+          ]
+        }
+      ]
+    },
+    {
+      "client": "Clark Potter",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC80MjQ3OTYwOA==",
+      "jobCount": 2,
+      "tags": [
+        "Autopay",
+        "TMCP - Active"
+      ],
+      "jobs": [
+        {
+          "job": 5536,
+          "title": null,
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2024-07-16T07:00:00Z",
+          "endAt": "2034-07-16T06:59:59Z",
+          "total": 85,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 85,
+          "lineItems": [
+            "Total Mole Control Program -- Year round protection"
+          ]
+        },
+        {
+          "job": 5676,
+          "title": null,
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2024-08-01T07:00:00Z",
+          "endAt": "2034-08-01T06:59:59Z",
+          "total": 85,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 85,
+          "lineItems": [
+            "Total Mole Control Program -- Year round protection"
+          ]
+        }
+      ]
+    },
+    {
+      "client": "Clint Bjornson",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC81NTYwMDUwNA==",
+      "jobCount": 2,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "jobs": [
+        {
+          "job": 7371,
+          "title": null,
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2025-10-16T07:00:00Z",
+          "endAt": "2035-10-16T06:59:59Z",
+          "total": 100,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 100,
+          "lineItems": [
+            "Total Mole Control Package"
+          ]
+        },
+        {
+          "job": 6389,
+          "title": null,
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2025-03-04T08:00:00Z",
+          "endAt": "2035-03-04T07:59:59Z",
+          "total": 125,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 125,
+          "lineItems": [
+            "Total Mole Control Program -- Year round protection"
+          ]
+        }
+      ]
+    },
+    {
+      "client": "Ganesh   Thirumalai",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC80NzYzMzExMA==",
+      "jobCount": 2,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "jobs": [
+        {
+          "job": 5087,
+          "title": null,
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2024-03-29T07:00:00Z",
+          "endAt": "2034-03-29T06:59:59Z",
+          "total": 85,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 85,
+          "lineItems": [
+            "Total Mole Control Program -- Year round protection"
+          ]
+        },
+        {
+          "job": 7834,
+          "title": null,
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2026-04-06T07:00:00Z",
+          "endAt": "2036-04-06T06:59:59Z",
+          "total": 85,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 85,
+          "lineItems": [
+            "Total Mole Control Program -- Year round protection",
+            "Repeat Customer Discount"
+          ]
+        }
+      ]
+    },
+    {
+      "client": "Kelly Kunz",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC82NzE0ODc5Ng==",
+      "jobCount": 2,
+      "tags": [
+        "Autopay",
+        "LARGE PROPERTY",
+        "TMCP - Active"
+      ],
+      "jobs": [
+        {
+          "job": 4515,
+          "title": null,
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2023-09-08T07:00:00Z",
+          "endAt": "2033-09-08T06:59:59Z",
+          "total": 85,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 85,
+          "lineItems": [
+            "Total Mole Control Program -- Year round protection"
+          ]
+        },
+        {
+          "job": 7961,
+          "title": null,
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2026-06-04T07:00:00Z",
+          "endAt": "2036-06-04T06:59:59Z",
+          "total": 75,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 75,
+          "lineItems": [
+            "Total Mole Control Program -- Year round protection"
+          ]
+        }
+      ]
+    },
+    {
+      "client": "Ross Luo",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYyNTk1OTY=",
+      "jobCount": 2,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "jobs": [
+        {
+          "job": 8350,
+          "title": null,
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2026-08-14T07:00:00Z",
+          "endAt": "2036-08-14T06:59:59Z",
+          "total": 60,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 60,
+          "lineItems": [
+            "Total Mole Control Program -- Year round protection",
+            "Neighboring Property Discount"
+          ]
+        },
+        {
+          "job": 8170,
+          "title": null,
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2026-07-15T07:00:00Z",
+          "endAt": "2036-07-15T06:59:59Z",
+          "total": 90,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 90,
+          "lineItems": [
+            "Total Mole Control Program -- Year round protection",
+            "Senior Discount"
+          ]
+        }
+      ]
+    },
+    {
+      "client": "SLPPLLC",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC84NTc5MTg3OQ==",
+      "jobCount": 2,
+      "tags": [
+        "LARGE PROPERTY",
+        "TMCP - Active"
+      ],
+      "jobs": [
+        {
+          "job": 5511,
+          "title": null,
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2024-07-12T07:00:00Z",
+          "endAt": "2034-07-12T06:59:59Z",
+          "total": 115,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 115,
+          "lineItems": [
+            "Total Mole Control Program -- Year round protection"
+          ]
+        },
+        {
+          "job": 6653,
+          "title": null,
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2025-06-12T07:00:00Z",
+          "endAt": "2035-06-12T06:59:59Z",
+          "total": 115,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 115,
+          "lineItems": [
+            "Total Mole Control Package"
+          ]
+        }
+      ]
+    },
+    {
+      "client": "Tanya O'Bannon",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC85Mzg0NDM0OQ==",
+      "jobCount": 2,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "jobs": [
+        {
+          "job": 8351,
+          "title": "Lakemont Community Association - 1 year Total mole control program",
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2026-08-13T07:00:00Z",
+          "endAt": "2027-08-13T06:59:59Z",
+          "total": 185,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 185,
+          "lineItems": [
+            "Total Mole Control Package"
+          ]
+        },
+        {
+          "job": 6416,
+          "title": "Annual Mole Control Contract",
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2025-04-09T07:00:00Z",
+          "endAt": "2035-04-09T06:59:59Z",
+          "total": 125,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 125,
+          "lineItems": [
+            "Total Mole Control Program -- Year round protection"
+          ]
+        }
+      ]
+    },
+    {
+      "client": "Tom Schlimme",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMDY3MjQ0NTc=",
+      "jobCount": 2,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "jobs": [
+        {
+          "job": 6890,
+          "title": null,
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2025-08-06T07:00:00Z",
+          "endAt": "2035-08-06T06:59:59Z",
+          "total": 85,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 85,
+          "lineItems": [
+            "Total Mole Control Package"
+          ]
+        },
+        {
+          "job": 6720,
+          "title": null,
+          "jobType": "RECURRING",
+          "status": "upcoming",
+          "startAt": "2025-06-26T07:00:00Z",
+          "endAt": "2035-06-26T06:59:59Z",
+          "total": 85,
+          "sched": "Monthly on the last day of the month",
+          "monthly": 85,
+          "lineItems": [
+            "Total Mole Control Package"
+          ]
+        }
+      ]
+    }
+  ]
+}

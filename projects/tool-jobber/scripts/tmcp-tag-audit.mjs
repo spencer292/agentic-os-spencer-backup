@@ -103,6 +103,15 @@ const monthly = (j) => {
 
 const missingTag = tmc.filter((j) => !labels(j).includes('TMCP - Active'));
 const tmcClientIds = new Set(tmc.map((j) => j.client.id));
+
+// Clients carrying more than one live TMCP job. Tags live on the CLIENT, so a 2-job client
+// shows up once in any tag count — the true job total is tmc.length, not the tagged-client count.
+const byClient = new Map();
+for (const j of tmc) {
+  if (!byClient.has(j.client.id)) byClient.set(j.client.id, []);
+  byClient.get(j.client.id).push(j);
+}
+const multiJob = [...byClient.entries()].filter(([, js]) => js.length > 1);
 const taggedNoJob = [...tagActive.values()].filter((c) => !tmcClientIds.has(c.id));
 const churnedButLive = tmc.filter((j) => labels(j).includes('TMCP Churned'));
 
@@ -114,6 +123,8 @@ const report = {
     recurring: tmc.filter((j) => j.jobType === 'RECURRING').length,
     oneOff: tmc.filter((j) => j.jobType !== 'RECURRING').length,
     distinctClients: tmcClientIds.size,
+    clientsWithMultipleJobs: multiJob.length,
+    extraJobsFromMultiClients: tmc.length - tmcClientIds.size,
   },
   tags: {
     taggedActive: tagActive.size,
@@ -131,9 +142,26 @@ const report = {
     currentTags: labels(j),
   })).sort((a, b) => String(b.startAt).localeCompare(String(a.startAt))),
   taggedNoJobDetail: taggedNoJob.map((c) => ({ client: c.name, clientId: c.id, archived: c.isArchived })),
+  multiJobDetail: multiJob.map(([clientId, js]) => ({
+    client: js[0].client.name, clientId, jobCount: js.length,
+    tags: labels(js[0]),
+    jobs: js.map((j) => ({
+      job: j.jobNumber, title: j.title, jobType: j.jobType, status: j.jobStatus,
+      startAt: j.startAt, endAt: j.endAt, total: j.total,
+      sched: j.invoiceSchedule?.scheduleSummary || j.invoiceSchedule?.billingFrequency,
+      monthly: +monthly(j).toFixed(2),
+      lineItems: (j.lineItems?.nodes || []).map((n) => n.name),
+    })),
+  })).sort((a, b) => b.jobCount - a.jobCount || a.client.localeCompare(b.client)),
 };
 
 const out = path.join(dataDir, `${RUN}_tmcp-tag-audit.json`);
 fs.writeFileSync(out, JSON.stringify(report, null, 2));
-console.log('\n' + JSON.stringify({ ...report, missingTagDetail: undefined, taggedNoJobDetail: undefined }, null, 2));
+console.log('\n' + JSON.stringify({ ...report, missingTagDetail: undefined, taggedNoJobDetail: undefined, multiJobDetail: undefined }, null, 2));
+if (multiJob.length) {
+  console.log(`\nClients with >1 live TMCP job (${multiJob.length}, carrying ${tmc.length - tmcClientIds.size} extra jobs):`);
+  for (const m of report.multiJobDetail) {
+    console.log(`  ${m.client} — ${m.jobCount} jobs: ${m.jobs.map((j) => `#${j.job} (${j.status}, $${j.total})`).join(', ')}`);
+  }
+}
 console.log(`\nfull report -> ${out}`);

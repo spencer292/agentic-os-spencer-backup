@@ -259,7 +259,26 @@ const monthlyOf = (j) => {
   return prices.length ? Math.max(...prices) : 0;
 };
 const cancelStatuses = new Set(['archived']);
-const tmcActiveOn = (dstr) => tmcRecurring.filter((j) => ptDate(j.startAt) <= dstr && ptDate(j.endAt) >= dstr && !(cancelStatuses.has(j.jobStatus) && ptDate(j.endAt) < today));
+// Archived TMCP jobs used to ride the scorecard forever. The old guard only dropped an archived
+// job once its endAt had passed — but TMCP jobs are written with a 10-YEAR end date (earliest
+// endAt among the 26 affected jobs: 2030-07-02), so the condition never became true and every
+// archived job kept counting. Measured 2026-08-11: 26 phantom jobs and $2,507.49/mo of phantom
+// MRR in every week pushed since at least 2026-07-20.
+//
+// Jobber's Job type carries NO archivedAt (only updatedAt, which moves on any edit), so there is
+// no way to know which week a given job was archived in — history cannot be restated correctly,
+// only wholesale. Rather than silently rewrite weeks already published to the board by an
+// unknowable amount, the correction applies from ARCHIVED_FIX_FROM forward only; earlier weeks
+// keep the legacy behaviour so re-pushes stay identical to what is already on the scorecard.
+// Expect a ONE-TIME step down of ~26 jobs / ~$2.5k MRR at the cutoff week — a note is pushed onto
+// that week so the step is explained on the board rather than read as a churn event.
+const ARCHIVED_FIX_FROM = cfg.archivedJobFixFrom || '2026-08-10';
+const tmcActiveOn = (dstr, weekStart) => tmcRecurring.filter((j) => {
+  if (ptDate(j.startAt) > dstr || ptDate(j.endAt) < dstr) return false;
+  if (!cancelStatuses.has(j.jobStatus)) return true;
+  // corrected from the cutoff forward; legacy endAt-gated test (effectively always true) before it
+  return weekStart >= ARCHIVED_FIX_FROM ? false : ptDate(j.endAt) >= today;
+});
 
 // ---------- compute ----------
 const rows = {};
@@ -281,10 +300,10 @@ for (const w of weeks) {
     quick_fix_created: jobsCreated.filter((j) => hasLine(j, QF_RE) && inWeek(j.createdAt, w)).length,
     qf_job_closed: jobsCompleted.filter((j) => hasLine(j, QF_RE) && j.completedAt && inWeek(j.completedAt, w)).length,
     total_jobs_created: jobsCreated.filter((j) => inWeek(j.createdAt, w)).length,
-    tmcp_active: tmcActiveOn(wEnd).length,
+    tmcp_active: tmcActiveOn(wEnd, w).length,
     tmcp_net_new: tmcRecurring.filter((j) => inWeek(j.startAt, w)).length - tmcRecurring.filter((j) => inWeek(j.endAt, w)).length,
     tmcp_cancellations: tmcRecurring.filter((j) => inWeek(j.endAt, w)).length,
-    tmcp_mrr: Math.round(tmcActiveOn(wEnd).reduce((s, j) => s + monthlyOf(j), 0)),
+    tmcp_mrr: Math.round(tmcActiveOn(wEnd, w).reduce((s, j) => s + monthlyOf(j), 0)),
   };
 }
 // past-due is point-in-time -> current week only
@@ -351,12 +370,33 @@ if (!DRY) {
   const activeKpi = cfg.metrics.tmcp_active;
   if (activeKpi?.enabled && activeKpi.kpiId && rows[noteWeek]) {
     const gap = rows[noteWeek].tmcp_active - tagNow.activeTagged;
+    const fixed = noteWeek >= ARCHIVED_FIX_FROM;
+    const why = fixed
+      ? 'jobs are per-property and clients are per-account, so a client running several properties counts once in the tag and once per job'
+      : 'jobs are per-property, clients are per-account, and a job keeps a future end date after a silent cancellation';
     try {
       await nApi('POST', `/scorecard/kpis/${activeKpi.kpiId}/notes`, {
-        note: `${rows[noteWeek].tmcp_active} from Jobber recurring jobs vs ${tagNow.activeTagged} clients tagged "TMCP - Active" as of ${today} (gap ${gap >= 0 ? '+' : ''}${gap}; jobs are per-property, clients are per-account, and a job keeps a future end date after a silent cancellation). ${tagNow.churned} tagged "TMCP Churned". (auto)`,
+        note: `${rows[noteWeek].tmcp_active} from Jobber recurring jobs vs ${tagNow.activeTagged} clients tagged "TMCP - Active" as of ${today} (gap ${gap >= 0 ? '+' : ''}${gap}; ${why}). ${tagNow.churned} tagged "TMCP Churned". (auto)`,
         periodStartDate: noteWeek,
       });
     } catch (e) { failed.push(`tmcp_active note@${noteWeek}: ${e.message}`); }
+
+    // One-time explanation of the level shift, pushed onto the first corrected week only, so the
+    // step reads as a methodology fix on the board instead of a mass cancellation.
+    if (noteWeek >= ARCHIVED_FIX_FROM && addDays(noteWeek, -7) < ARCHIVED_FIX_FROM) {
+      const legacyCount = tmcRecurring.filter((j) => ptDate(j.startAt) <= addDays(noteWeek, 6)
+        && ptDate(j.endAt) >= addDays(noteWeek, 6) && ptDate(j.endAt) >= today).length;
+      const step = legacyCount - rows[noteWeek].tmcp_active;
+      for (const [key, kpi] of [['tmcp_active', activeKpi], ['tmcp_mrr', cfg.metrics.tmcp_mrr]]) {
+        if (!kpi?.enabled || !kpi.kpiId) continue;
+        try {
+          await nApi('POST', `/scorecard/kpis/${kpi.kpiId}/notes`, {
+            note: `Methodology fix from this week, not churn: archived TMCP jobs were being counted as active. The old test only dropped an archived job once its end date had passed, and TMCP jobs carry a 10-year end date, so ${step} archived jobs had been counted every week. Weeks before ${ARCHIVED_FIX_FROM} are left as originally published — Jobber records no archive date, so history can't be restated accurately. Expect a one-time step down of ${step} jobs here. (auto)`,
+            periodStartDate: noteWeek,
+          });
+        } catch (e) { failed.push(`${key} step note@${noteWeek}: ${e.message}`); }
+      }
+    }
   }
 
   // Record this week's tag snapshot only after a successful run, so a failed run can't

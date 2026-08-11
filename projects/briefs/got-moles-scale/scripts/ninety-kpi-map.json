@@ -1,6 +1,8 @@
 {
   "weekStartDay": 1,
   "timezone": "America/Los_Angeles",
+  "archivedJobFixFrom": "2026-08-10",
+  "_archivedJobFixNote": "First week that excludes ARCHIVED TMCP jobs from tmcp_active and tmcp_mrr. Before this date archived jobs were counted as active (the exclusion was gated on endAt being in the past, and TMCP jobs carry a 10-year end date, so it never fired) — 26 phantom jobs and $2,507.49/mo. Jobber's Job type has no archivedAt, so which week each job was archived in is unknowable and history cannot be restated; weeks before the cutoff are deliberately left as published. Set to the first week NOT yet pushed as of the fix (2026-08-11), so no board value changes retroactively. Expect a one-time step down of ~26 jobs at this week, annotated on the KPI.",
   "_dataFloorNote": "dataFloor = first week a metric has real data. Weeks before it are skipped, not pushed as 0, so the board shows a blank instead of a false flat line. Quick Fix line items first appear in Jobber 2026-01-20; CallRail's first call is 2026-04-30.",
   "metrics": {
     "phone_calls": {
