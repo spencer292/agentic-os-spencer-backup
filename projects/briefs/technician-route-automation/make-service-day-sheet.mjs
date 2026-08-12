@@ -30,7 +30,32 @@ const args = Object.fromEntries(
   })
 );
 
+/**
+ * --overlay-week=<monday> : bake a ONE-WEEK exception layer on top of the grid.
+ *
+ * The grid is the standing territory: which zip runs which day in a normal week. Some weeks are not
+ * normal. Week of 2026-08-10, with Cammeron out and Robert covering his territory, 55 of 110
+ * serviced zips were routed on a different day than the grid says — while the current week matched
+ * the grid on all but a handful of single-stop spills. Rewriting the grid from a week like that
+ * would corrupt the standing definition push-week relies on; ignoring it would have the office
+ * quoting a day no truck runs. So we read the real routes for that week and show BOTH: the normal
+ * day, and the exception for that week only.
+ */
 const gridFile = String(args.grid || 'territory-grid-v5.json');
+/**
+ * `--overlay-week=next` resolves to the coming Monday, so the nightly job can pass a fixed flag and
+ * the overlay follows the calendar on its own. A hardcoded date would silently stop applying the
+ * moment the week rolled over — and an overlay that quietly vanishes is worse than none, because
+ * the office would go back to quoting the standing day with no signal anything changed.
+ */
+let overlayWeek = args['overlay-week'] ? String(args['overlay-week']) : null;
+if (overlayWeek === 'next' || overlayWeek === 'auto') {
+  const t = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
+  t.setHours(0, 0, 0, 0);
+  const ahead = (8 - t.getDay()) % 7 || 7;          // strictly the NEXT Monday, never today
+  t.setDate(t.getDate() + ahead);
+  overlayWeek = `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, '0')}-${String(t.getDate()).padStart(2, '0')}`;
+}
 const gridPath = path.isAbsolute(gridFile) ? gridFile : path.join(HERE, gridFile);
 const outDir = path.resolve(String(args.out || path.join(ROOT, 'projects/briefs/callrail-faq/service-day-lookup')));
 
@@ -99,6 +124,77 @@ const cities = [...cityIndex.values()].map(({ label, zips }) => {
 
 const ambiguousCount = cities.filter(c => c.ambiguous).length;
 
+/**
+ * Zips where we hold active clients but the grid assigns no day.
+ *
+ * Why this exists: on 2026-08-11 the lookup told a caller we do not service 98444 Parkland. We do —
+ * three active clients — the zip had simply never been added to the grid. The page only knows the
+ * grid, so a missing zip and an out-of-area zip were indistinguishable and both got a flat "not in
+ * our route grid". That is the worst possible answer: it turns a real customer away.
+ *
+ * Zip codes only, taken from the address-lookup cache. No names, no addresses — the file stays
+ * small and carries no personal data. If the cache is absent the list is simply empty and the page
+ * behaves as before.
+ */
+let servedNoDay = [];
+const cachePath = path.join(HERE, '.address-lookup-cache.json');
+if (fs.existsSync(cachePath)) {
+  try {
+    const cache = JSON.parse(fs.readFileSync(cachePath, 'utf8'));
+    const live = new Set();
+    for (const p of cache.properties || []) {
+      if (p.client?.isArchived) continue;
+      const z = String(p.address?.postalCode || '').trim().slice(0, 5);
+      if (/^9[89]\d{3}$/.test(z) && !grid.zips?.[z]) live.add(z);   // WA only; out-of-state is noise
+    }
+    servedNoDay = [...live].sort();
+    if (servedNoDay.length) console.log(`Served, no day: ${servedNoDay.length} zips hold active clients but have no grid entry — ${servedNoDay.join(', ')}`);
+  } catch { /* unreadable cache — fall back to an empty list */ }
+}
+
+// ---------------------------------------------------------------- one-week overlay
+
+/** zip -> {day, stops, total} for the overlay week, only where it disagrees with the grid. */
+let overlay = null;
+if (overlayWeek) {
+  const env = {};
+  for (const l of fs.readFileSync(path.join(ROOT, '.env'), 'utf8').split(/\r?\n/)) {
+    const m = l.match(/^([A-Z0-9_]+)=(.*)$/); if (m) env[m[1]] = m[2].trim();
+  }
+  const K = env.OPTIMOROUTE_API_KEY;
+  if (!K) { console.error('--overlay-week needs OPTIMOROUTE_API_KEY'); process.exit(1); }
+  const addD = (d, n) => { const [y, m, dd] = d.split('-').map(Number); const x = new Date(y, m - 1, dd + n); return `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, '0')}-${String(x.getDate()).padStart(2, '0')}`; };
+  // zip = LAST 5-digit group; the first one is the house number.
+  const zipOf = a => { const m = String(a).match(/(\d{5})(?!.*\d{5})/); return m ? m[1] : ''; };
+  const dates = [0, 1, 2, 3, 4].map(i => addD(overlayWeek, i));
+  const counts = new Map();
+  for (const d of dates) {
+    const r = await fetch(`https://api.optimoroute.com/v1/get_routes?key=${K}&date=${d}`);
+    const j = await r.json().catch(() => ({}));
+    if (j?.success === false) { console.error(`overlay get_routes ${d} failed`); process.exit(1); }
+    const key = DAY_ORDER[new Date(d + 'T12:00:00').getDay() - 1];
+    for (const rt of j.routes || []) for (const s of rt.stops || []) {
+      const z = zipOf(s.address); if (!z || !key) continue;
+      if (!counts.has(z)) counts.set(z, {});
+      const m = counts.get(z); m[key] = (m[key] || 0) + 1;
+    }
+    await new Promise(x => setTimeout(x, 250));
+  }
+  const zips = {};
+  let planned = 0;
+  for (const [z, c] of counts) {
+    planned++;
+    const total = Object.values(c).reduce((a, b) => a + b, 0);
+    const [day, stops] = Object.entries(c).sort((a, b) => b[1] - a[1])[0];
+    const rec = records.find(r => r.zip === z);
+    // Only an exception if the grid claims a different day. A zip with no grid entry is a coverage
+    // gap, not a week exception — the "not in our route grid" card already handles that.
+    if (rec && !rec.days.includes(day)) zips[z] = { day, stops, total };
+  }
+  overlay = { monday: overlayWeek, friday: dates[4], zips, servicedZips: planned };
+  console.log(`Overlay:     week of ${overlayWeek} — ${Object.keys(zips).length} of ${planned} serviced zips differ from the grid`);
+}
+
 const payload = {
   grid: path.basename(gridPath),
   gridModified: localDay(gridStat.mtime),
@@ -106,14 +202,13 @@ const payload = {
   records,
   cities,
   dayLong: DAY_LONG,
+  overlay,
+  servedNoDay,
 };
 
 // ---------------------------------------------------------------- HTML
 
-const html = `<!doctype html>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Got Moles — Service Day Lookup</title>
+const CORE = `<title>Got Moles — What Day Are We In Their Area?</title>
 <style>
   :root { --bg:#fff; --fg:#14181d; --mut:#6b7280; --line:#e5e7eb; --accent:#166534; --warn:#b45309; --warnbg:#fffbeb; --card:#f9fafb; }
   @media (prefers-color-scheme: dark) {
@@ -138,21 +233,27 @@ const html = `<!doctype html>
   ul.zips { list-style:none; padding:0; margin:10px 0 0 }
   ul.zips li { padding:7px 0; border-top:1px solid var(--line); display:flex; gap:10px; align-items:baseline; font-size:14px }
   ul.zips li b { min-width:52px; font-variant-numeric:tabular-nums }
+  .ex { margin-top:10px; padding:9px 11px; border-radius:8px; background:var(--warnbg);
+        border:1px solid var(--warn); font-size:14px; line-height:1.45 }
+  .card.hasex { border-left:4px solid var(--warn) }
   .hint { color:var(--mut); font-size:13px; margin-top:14px }
   footer { margin-top:26px; padding-top:12px; border-top:1px solid var(--line); color:var(--mut); font-size:12px }
   kbd { background:var(--card); border:1px solid var(--line); border-radius:4px; padding:1px 5px; font-size:12px }
 </style>
 
-<h1>Service Day Lookup</h1>
-<div class="sub">Type the customer's <b>zip code</b>. City names alone are not reliable — ${ambiguousCount} of ${cities.length} cities span more than one route day.</div>
+<h1>What day are we in their area?</h1>
+<div class="sub">Paste the customer's <b>address</b>, or type just the zip or the city.
+You'll get the day of the week we run that area.</div>
 
-<input id="q" placeholder="98374" autocomplete="off" autofocus inputmode="numeric">
+<input id="q" placeholder="1234 Main St, Bonney Lake, WA 98391" autocomplete="off" autofocus>
 <div id="out"></div>
-<div class="hint">Tip: you can also type a city to see which zips it covers — then ask the caller which one they're in.</div>
+<div class="hint">The zip is what decides the day. If you only have a city, this will tell you whether
+that city is safe to answer or whether you need to ask for the zip — ${ambiguousCount} of ${cities.length}
+cities we serve are split across more than one route day.</div>
 
 <footer>
-  Generated ${payload.generated} from <b>${payload.grid}</b> (grid last changed ${payload.gridModified}).<br>
-  Route days change when the territory grid is re-cut. If this file is more than a week old, ask Spencer for a fresh one.
+  Route days from <b>${payload.grid}</b>, last changed ${payload.gridModified}. Sheet generated ${payload.generated}.<br>
+  This only changes when the territory is re-cut — not daily. Ask Spencer for a fresh copy after a re-cut.
 </footer>
 
 <script>
@@ -175,14 +276,40 @@ function daysPhrase(days) {
   return long.length === 1 ? long[0] + 's' : long.map(s => s + 's').join(' and ');
 }
 
+/** Human date for an overlay week, e.g. "Aug 10-14". */
+function weekLabel(o) {
+  const a = pd(o.monday), b = pd(o.friday);
+  const mo = a.toLocaleDateString(undefined, { month:'short' });
+  const mo2 = b.toLocaleDateString(undefined, { month:'short' });
+  return mo === mo2 ? \`\${mo} \${a.getDate()}-\${b.getDate()}\` : \`\${mo} \${a.getDate()} - \${mo2} \${b.getDate()}\`;
+}
+function pd(s) { const [y,m,d] = s.split('-').map(Number); return new Date(y, m-1, d); }
+
 function renderZip(r) {
-  const dates = r.days.flatMap(d => nextDates(d, 2))
-    .sort((a,b) => a - b).slice(0, 3).map(fmt).join(' &middot; ');
-  return \`<div class="card">
+  const ex = DATA.overlay && DATA.overlay.zips[r.zip];
+  const wkStart = DATA.overlay ? pd(DATA.overlay.monday) : null;
+  const wkEnd = DATA.overlay ? pd(DATA.overlay.friday) : null;
+  const inWeek = d => wkStart && d >= wkStart && d <= wkEnd;
+
+  // Dates for the standing pattern. When an exception week applies, drop any date inside it —
+  // showing "Tue Aug 11" beside "that week we run Thursday" is a contradiction on the same card.
+  const dates = r.days.flatMap(d => nextDates(d, 3))
+    .sort((a,b) => a - b).filter(d => !(ex && inWeek(d))).slice(0, 3).map(fmt).join(' &middot; ');
+
+  let exBlock = '';
+  if (ex) {
+    // The concrete date of the exception day in that week, so nobody has to work it out.
+    const idx = { mon:0, tue:1, wed:2, thu:3, fri:4 }[ex.day];
+    const exDate = new Date(wkStart); exDate.setDate(wkStart.getDate() + idx);
+    exBlock = \`<div class="ex"><b>Week of \${weekLabel(DATA.overlay)}: \${DATA.dayLong[ex.day]} (\${fmt(exDate)})</b><br>
+      That week only — the routes were re-cut. Normally \${daysPhrase(r.days)}.</div>\`;
+  }
+  return \`<div class="card\${ex ? ' hasex' : ''}">
     <div class="day">\${daysPhrase(r.days)}</div>
     <div class="where">\${r.zip} — \${r.cities.join(', ')}</div>
-    <div class="dates">Next route dates: <b>\${dates}</b></div>
-    <div class="meta">Internal only — tech on this run: \${r.techFirst || 'unassigned'}. Never promise a technician by name.</div>
+    \${exBlock}
+    <div class="dates">\${ex ? 'Other weeks' : 'Next route dates'}: <b>\${dates}</b></div>
+    <div class="meta">Say the day, not a date or a technician — which tech runs a zip changes week to week.</div>
   </div>\`;
 }
 
@@ -205,39 +332,86 @@ function renderCity(c) {
   </div>\`;
 }
 
+/**
+ * The zip decides the day, so pull one out of whatever was typed before anything else. Someone
+ * reading an address off a call types the whole line — "1234 Main St, Bonney Lake, WA 98391" —
+ * and the zip is the last 5-digit group, not the first (that's the house number).
+ */
 function search(raw) {
-  const q = raw.trim().toLowerCase();
   const out = document.getElementById('out');
-  if (!q) { out.innerHTML = ''; return; }
+  const s = raw.trim();
+  if (!s) { out.innerHTML = ''; return; }
 
-  if (/^\\d+$/.test(q)) {
-    if (q.length < 3) { out.innerHTML = ''; return; }   // still typing — don't flash "no match"
-    const exact = DATA.records.find(r => r.zip === q);
+  const zipInText = (s.match(/(\\d{5})(?!.*\\d{5})/) || [])[1];
+  if (zipInText) {
+    const exact = DATA.records.find(r => r.zip === zipInText);
     if (exact) { out.innerHTML = renderZip(exact); return; }
-    const partial = DATA.records.filter(r => r.zip.startsWith(q));
-    if (q.length >= 5) {
+    // We already have customers here — never tell the caller we don't serve them.
+    if (DATA.servedNoDay.includes(zipInText)) {
       out.innerHTML = \`<div class="card warn">
-        <div class="day">Not in our route grid</div>
-        <div class="where">\${q} isn't on any current route.</div>
-        <div class="meta">Take the full address and phone, tell them you'll confirm coverage and call back today. Do not say yes or no. Flag it to Spencer.</div>
+        <div class="day">We have customers here</div>
+        <div class="where">\${zipInText} — but no route day is assigned to it yet.</div>
+        <div class="meta"><b>Do not tell them we don't cover it.</b> Say: "We do work in your area —
+        let me confirm the day and call you right back today." Take the address and phone, then send
+        the zip to Spencer so it gets a day.</div>
       </div>\`;
       return;
     }
-    out.innerHTML = partial.slice(0, 12).map(renderZip).join('');
+    out.innerHTML = \`<div class="card warn">
+      <div class="day">Not in our route grid</div>
+      <div class="where">\${zipInText} isn't on any current route.</div>
+      <div class="meta">Take the full address and phone, tell them you'll confirm coverage and call back today. Do not say yes or no. Flag it to Spencer.</div>
+    </div>\`;
     return;
   }
 
-  const hits = DATA.cities.filter(c => c.label.toLowerCase().includes(q));
+  // Partial zip — still typing. Show the candidates rather than flashing "no match".
+  if (/^\\d+$/.test(s)) {
+    if (s.length < 3) { out.innerHTML = ''; return; }
+    const partial = DATA.records.filter(r => r.zip.startsWith(s));
+    out.innerHTML = partial.length
+      ? partial.slice(0, 12).map(renderZip).join('')
+      : \`<div class="card warn"><div class="day">Keep typing</div>
+          <div class="where">No zip starts with \${s}. Ours all begin 98 or 99.</div></div>\`;
+    return;
+  }
+
+  // No zip anywhere — fall back to city. Match any word in what was typed, so a pasted
+  // address without a zip ("1234 Main St, Bonney Lake, WA") still finds the city.
+  const q = s.toLowerCase();
+  const matched = DATA.cities.filter(c => {
+    const label = c.label.toLowerCase();
+    return q.includes(label) || label.startsWith(q);
+  });
+  // The grid carries several spellings of the same place ("Bonney Lake/BonneyLake/bonney"), which
+  // would otherwise show as two or three identical cards. Same zips = same place; keep the
+  // best-spelled label.
+  const bySig = new Map();
+  for (const c of matched) {
+    const sig = c.zips.join(',');
+    const prev = bySig.get(sig);
+    if (!prev || c.label.length > prev.label.length) bySig.set(sig, c);
+  }
+  const hits = [...bySig.values()];
   out.innerHTML = hits.length
     ? hits.slice(0, 6).map(renderCity).join('')
     : \`<div class="card warn"><div class="day">No match</div>
-        <div class="where">Nothing matching "\${raw}". Try the zip code.</div></div>\`;
+        <div class="where">Nothing matching "\${raw}".</div>
+        <div class="meta">Ask the caller for their zip code — that's what decides the day.</div></div>\`;
 }
 
 const box = document.getElementById('q');
 box.addEventListener('input', e => search(e.target.value));
 </script>
 `;
+
+// Standalone gets its own doctype/meta; the hosted copy omits them because the host supplies the
+// document skeleton. Same body either way, so the two can never show different route days.
+const html = `<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+${CORE}`;
+const artifactHtml = CORE;
 
 // ---------------------------------------------------------------- Markdown (printable)
 
@@ -294,8 +468,13 @@ mdLines.push('');
 fs.mkdirSync(outDir, { recursive: true });
 const htmlOut = path.join(outDir, 'service-day-lookup.html');
 const mdOut = path.join(outDir, 'service-day-sheet.md');
+const artifactOut = path.join(outDir, 'service-day-lookup.artifact.html');
 fs.writeFileSync(htmlOut, html);
 fs.writeFileSync(mdOut, mdLines.join('\n'));
+fs.writeFileSync(artifactOut, artifactHtml);
+// The portable bundle is what actually reaches whoever is on the phone — keep it in step.
+const portable = path.join(ROOT, 'projects/briefs/callrail-faq/muhammad-portable');
+if (fs.existsSync(portable)) fs.writeFileSync(path.join(portable, 'service-day-lookup.html'), html);
 
 /**
  * Day-change tracking. A re-cut can silently invalidate what the office told customers

@@ -37,8 +37,41 @@ if (!FROM || !TO) { console.error('--from and --to are required'); process.exit(
 const T = JSON.parse(fs.readFileSync(path.join(__dirname, 'territories.json'), 'utf8'));
 
 // zip -> region, and the handover-aware owner lookup
+// A zip normally maps to exactly one region. The exception is a geoSplit: two regions share a zip
+// and are told apart by the stop's coordinates, because Spencer's boundaries are highways and
+// highways cut through zips. 98004 is the live case — Clyde Hill and Yarrow Point sit NORTH of
+// NE 8th (Alias, T1) while downtown Bellevue sits SOUTH (Cory, T2) — so here the split decides the
+// OWNER, not just the day. Resolved per address from geo-side-cache.json, with the zip's
+// fallbackSide when an address has never been geocoded (reported, never silent).
 const ZIP_REGION = {};
-for (const [name, r] of Object.entries(T.regions)) for (const z of r.zips) ZIP_REGION[z] = name;
+const ZIP_REGIONS = {};
+const GEO_LINES = T.geoSplitLines || {};
+const geoFallback = [], geoResolved = [];
+let geoCache = { entries: {} };
+try { geoCache = (await import('./geo-side.mjs')).loadCache(); } catch {}
+for (const [name, r] of Object.entries(T.regions)) for (const z of r.zips) {
+  (ZIP_REGIONS[z] = ZIP_REGIONS[z] || []).push(name);
+  if (!ZIP_REGION[z]) ZIP_REGION[z] = name;
+}
+async function regionFor(zip, street, job) {
+  const regs = ZIP_REGIONS[zip];
+  if (!regs || !regs.length) return null;
+  if (regs.length === 1) return regs[0];
+  const split = regs.filter(n => {
+    const gs = T.regions[n]?.geoSplit;
+    return gs && (!gs.appliesToZips || gs.appliesToZips.includes(zip));
+  });
+  if (split.length < 2) return regs[0];
+  const lineName = T.regions[split[0]].geoSplit.line;
+  const line = GEO_LINES[lineName];
+  if (!line) return split[0];
+  const { sideOf } = await import('./geo-side.mjs');
+  const { side, source } = sideOf(lineName, line, street, zip, geoCache);
+  const picked = split.find(n => T.regions[n].geoSplit.side === side) || split[0];
+  if (source === 'fallback') geoFallback.push(`#${job} ${street} ${zip} -> ${side} (fallback)`);
+  else geoResolved.push(`#${job} ${zip} -> ${side}`);
+  return picked;
+}
 function ownerFor(regionName, visitDate) {
   const r = T.regions[regionName];
   if (!r) return null;
@@ -105,7 +138,7 @@ const Q = `query($a:String,$after:ISO8601DateTime,$before:ISO8601DateTime){
     nodes{ id startAt isComplete
       client{ name }
       job{ jobNumber }
-      property{ address{ city postalCode } }
+      property{ address{ street city postalCode } }
       assignedUsers(first:4){ nodes{ id name{ full } } } }
     pageInfo{ hasNextPage endCursor } } }`;
 let cur = null; const visits = [];
@@ -135,7 +168,7 @@ for (const v of open) {
   if (ONLY && now !== ONLY) continue;
 
   const ov = T.jobOverrides?.[jn];
-  const region = ZIP_REGION[zip] || null;
+  const region = await regionFor(zip, v.property?.address?.street || '', v.job?.jobNumber) || null;
   const target = ov ? ov.tech : (region ? ownerFor(region, date) : null);
   if (!target) { const k = `${zip} ${v.property?.address?.city || ''}`; noRegion[k] = (noRegion[k] || 0) + 1; continue; }
   const u = users[target.trim().toLowerCase()];
@@ -173,6 +206,13 @@ console.log('\n  RESULTING LOAD (visits in window, before -> after):');
 for (const k of [...new Set([...Object.keys(before), ...Object.keys(after)])].sort()) {
   console.log(`    ${k.padEnd(20)} ${String(before[k] || 0).padStart(5)} -> ${String(after[k] || 0).padStart(5)}`);
 }
+if (geoResolved.length || geoFallback.length) {
+  console.log(`
+  geoSplit: ${geoResolved.length} address(es) resolved from coordinates, ${geoFallback.length} fell back to the zip default`);
+  for (const f of geoFallback.slice(0, 15)) console.log('     ' + f);
+  if (geoFallback.length) console.log('     ^ these have never been geocoded — run geo-cache-build.mjs --write after they are planned once');
+}
+
 if (Object.keys(noRegion).length) {
   console.log('\n  !! zip not in any territory (left alone — extend territories.json):');
   for (const [k, n] of Object.entries(noRegion).sort((a, b) => b[1] - a[1]).slice(0, 20)) console.log(`    ${String(n).padStart(5)}  ${k}`);

@@ -64,14 +64,36 @@ function loadEnv() {
 }
 const env = loadEnv();
 
+// Extra recipients (the office, a new hire) live in recipients.json, not .env. Email
+// addresses are not secrets, and adding someone should be a normal reviewable edit
+// rather than a change to the credentials file. The env value stays the base list so
+// a broken or missing recipients.json can never cut Spencer out of his own alerts.
+function loadExtraRecipients() {
+  const p = path.join(HERE, 'recipients.json');
+  try {
+    if (!fs.existsSync(p)) return [];
+    const extra = JSON.parse(fs.readFileSync(p, 'utf8')).extra;
+    return Array.isArray(extra) ? extra.filter((e) => typeof e === 'string' && e.includes('@')) : [];
+  } catch (err) {
+    console.log(`!! recipients.json unreadable (${err.message}) — sending to LEAD_ALERT_TO only.`);
+    return [];
+  }
+}
+
+const BASE_TO = env.LEAD_ALERT_TO || env.LEAD_ALERT_SMTP_USER || '';
+const ALL_TO = [...new Set(
+  [...BASE_TO.split(','), ...loadExtraRecipients()].map((s) => s.trim().toLowerCase()).filter(Boolean),
+)];
+
 const SMTP = {
   host: env.LEAD_ALERT_SMTP_HOST || 'smtp.gmail.com',
   port: env.LEAD_ALERT_SMTP_PORT || 465,
   user: env.LEAD_ALERT_SMTP_USER || '',
   pass: env.LEAD_ALERT_SMTP_PASS || '',
-  to: env.LEAD_ALERT_TO || env.LEAD_ALERT_SMTP_USER || '',
+  to: ALL_TO,
 };
-const EMAIL_READY = Boolean(SMTP.user && SMTP.pass && SMTP.to);
+// SMTP.to is an array — an empty one is still truthy, so check length, not the value.
+const EMAIL_READY = Boolean(SMTP.user && SMTP.pass && SMTP.to.length);
 
 // ---------------------------------------------------------------- tuning
 
@@ -82,6 +104,26 @@ const SEEN_ID_CAP = 400;
 
 const JUNK_NAME = /^(wireless caller|unknown|unknown caller|no caller id|restricted|anonymous)$/i;
 const CITY_ONLY = /^[a-z .'-]+\s+wa$/i;
+
+// Jobber's leadSource values, prettified for the email. Anything not listed (referral
+// partners like "Barbee Mill", "Rambo") passes through as-is — a partner name is already
+// the most useful thing the alert can say.
+const SOURCE_LABELS = {
+  'website-client': 'Website form',
+  'website': 'Website form',
+  'callrail': 'Phone — CallRail',
+  'google': 'Google',
+  'thumbtack': 'Thumbtack',
+};
+
+// The overnight hole: the cron runs 07:00-19:00 PT, so the last poll of the day covers
+// 16:00-19:00 and the first of the next covers 04:00-07:00. With a fixed 3h look-back,
+// anything created between 19:00 and 04:00 fell in NO window and was lost permanently —
+// not delayed, never seen. Confirmed 2026-08-11 against Gmail: Leslie Postovoit (8:17pm,
+// website), Prasad R N (8:37pm) and Carol Weber (8:30pm) were never alerted despite
+// passing every filter. So the window now stretches back to the last successful run.
+const MAX_CATCHUP_MS = 36 * 60 * 60 * 1000; // after a long outage, don't blast a backlog
+const CATCHUP_OVERLAP_MS = 10 * 60 * 1000;  // re-scan a little either side; dedupe absorbs it
 
 // Overseas SEO/marketing spam hits the website form regularly (the 2026-07-28 sweep
 // caught one in 21). Flag, never drop — a heuristic must not eat a real customer.
@@ -165,6 +207,7 @@ async function fetchRecentClients(sinceIso, maxPages = 10) {
       lastName
       createdAt
       isLead
+      leadSource
       emails { address }
       phones { number }
       billingAddress { street city postalCode }
@@ -220,7 +263,15 @@ function pickLeads(nodes, state, now) {
 
     // Has a real address and is not flagged as a lead => office data entry on an
     // existing customer, not someone sitting waiting for a callback.
-    if (!c.isLead && street) { seenIds.add(c.id); skipped.existingCustomer++; continue; }
+    //
+    // ...UNLESS Jobber attributed the record to a lead source. 2026-08-11: this rule alone
+    // ate five real leads in seven days (Jay Hickenbottom/Barbee Mill, Mo Brown, Dick Keiser,
+    // Maryanne Zukowski and Michael Adamov, all leadSource=Google). They arrived with an
+    // address and without isLead set, so they looked exactly like data entry. `leadSource`
+    // is Jobber's own answer to "where did this come from" — trust it over the shape of the
+    // record. On a client created minutes ago, a populated leadSource means inbound, period.
+    const leadSource = (c.leadSource || '').trim();
+    if (!c.isLead && street && !leadSource) { seenIds.add(c.id); skipped.existingCustomer++; continue; }
     if (!email && !phone) { seenIds.add(c.id); skipped.noContact++; continue; }
 
     const junk = JUNK_NAME.test(name) || CITY_ONLY.test(name) || /,.*\bN\/A\b/i.test(name);
@@ -240,8 +291,13 @@ function pickLeads(nodes, state, now) {
 
     seenIds.add(c.id);
 
+    // Jobber's own attribution beats guessing at it. The old heuristic ("has an email and
+    // no address, so probably the website") was wrong often enough that Spencer could not
+    // tell a website lead from a phone lead in the alert — which was the whole point of it.
+    // Fall back to the heuristic only when Jobber has no attribution at all.
     let source;
-    if (email && !street && !junk) source = 'Website form (likely)';
+    if (leadSource) source = SOURCE_LABELS[leadSource.toLowerCase()] || leadSource;
+    else if (email && !street && !junk) source = 'Website form (likely)';
     else if (junk) source = 'Phone lead — caller ID only';
     else source = 'New lead';
 
@@ -344,13 +400,27 @@ async function main() {
       subject: 'Got Moles lead alert — test',
       html: '<p>Lead alert email is wired up correctly. Real alerts will look like this.</p>',
     });
-    console.log(`Test email sent to ${SMTP.to}.`);
+    console.log(`Test email sent to ${SMTP.to.join(', ')}.`);
     return;
   }
 
   const now = Date.now();
-  const sinceIso = new Date(now - WINDOW_MS).toISOString().replace(/\.\d{3}Z$/, 'Z');
   const state = readState();
+
+  // Reach back to whichever is EARLIER: the normal window, or the last successful run.
+  // That closes the overnight hole without touching the cron hours — the 07:00 poll now
+  // reaches back to the previous evening's final run instead of stopping at 04:00.
+  // An explicit --window-hours backfill still wins, and a long outage is capped so the
+  // first run back does not blast a week of history.
+  const lastRunMs = state.lastRun ? new Date(state.lastRun).getTime() : NaN;
+  const windowStart = now - WINDOW_MS;
+  const catchupStart = Number.isFinite(lastRunMs) ? lastRunMs - CATCHUP_OVERLAP_MS : windowStart;
+  const sinceMs = Math.min(windowStart, Math.max(catchupStart, now - MAX_CATCHUP_MS));
+  const sinceIso = new Date(sinceMs).toISOString().replace(/\.\d{3}Z$/, 'Z');
+  const catchupHours = Math.round(((now - sinceMs) / 36e5) * 10) / 10;
+  if (sinceMs < windowStart) {
+    console.log(`Catch-up: last run was ${new Date(lastRunMs).toISOString()} — scanning back ${catchupHours}h, not ${WINDOW_HOURS}h.`);
+  }
 
   const nodes = await fetchRecentClients(sinceIso);
   const { leads, skipped } = pickLeads(nodes, state, now);
@@ -375,6 +445,9 @@ async function main() {
       console.log(JSON.stringify({ count: 0, skipped }));
     } else {
       console.log(`No new leads in the last ${WINDOW_HOURS}h. (scanned ${nodes.length} recent client records; held ${skipped.heldStub} caller-ID stub(s))`);
+      // Recipients are worth echoing on a quiet run: it is the only cheap way to
+      // confirm who alerts reach without actually mailing a lead to everyone.
+      if (DRY_RUN) console.log(`Alerts would go to: ${EMAIL_READY ? SMTP.to.join(', ') : 'nobody — email not configured'}`);
     }
     return;
   }
@@ -409,10 +482,10 @@ async function main() {
   console.log(`${leads.length} NEW LEAD${leads.length === 1 ? '' : 'S'}\n`);
   console.log(text);
   console.log('');
-  if (emailed) console.log(`Emailed to ${SMTP.to}.`);
+  if (emailed) console.log(`Emailed to ${SMTP.to.join(', ')}.`);
   else if (emailError) console.log(`!! EMAIL FAILED: ${emailError}\n!! The leads above were NOT emailed — follow up from this output.`);
   else if (!EMAIL_READY) console.log('!! EMAIL NOT CONFIGURED — leads reported here only. Set LEAD_ALERT_SMTP_* in .env.');
-  else if (DRY_RUN || NO_EMAIL) console.log('(email suppressed by flag)');
+  else if (DRY_RUN || NO_EMAIL) console.log(`(email suppressed by flag — would have gone to ${SMTP.to.join(', ')})`);
 }
 
 main().catch((err) => {

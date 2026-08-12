@@ -37,7 +37,16 @@ const flag = (n, d) => { const a = process.argv.find(x => x.startsWith(`--${n}=`
 const FROM = flag('from'), TO = flag('to');
 const OVERRIDE_FREEZE = process.argv.includes('--override-freeze');
 const NO_REPLAN = new Set((flag('no-replan', '') || '').split(',').filter(Boolean));
+// Jobs handled OFF-ROUTE by a person who is not an OptimoRoute driver. Spencer 2026-08-09 keeps
+// #7949 Emerald Ridge personally; his driver record has no working day, so the stop can never be
+// scheduled and its day aborts with zero writes — taking 109 other Friday stops down with it.
+// Excluded jobs are left ALONE in Jobber (date, tech and time untouched) and simply not pushed.
+const SKIP_JOBS = new Set((flag('skip-jobs', '') || '').split(',').map(x=>x.trim()).filter(Boolean));
 const SHOW = Number(flag('show', 40));
+// --plan-only: create/update orders and re-plan in OptimoRoute, then STOP. No Jobber writes at all.
+// For a frozen day whose customers already have arrival windows: lets the real time impact be
+// measured before deciding whether to disturb them. Spencer 2026-08-10.
+const PLAN_ONLY = process.argv.includes('--plan-only');
 if (!FROM || !TO) { console.error('--from and --to are required'); process.exit(1); }
 
 function loadEnv() {
@@ -149,11 +158,13 @@ for (;;) {
   await sleep(250);
 }
 const want = {}; // orderNo -> desired state from Jobber
+const skippedOffRoute = [];
 for (const v of raw) {
   if (v.isComplete) continue;
   const jDate = toPT(v.startAt).slice(0, 10);
   if (jDate < FROM || jDate > TO) continue;
   const jn = String(v.job?.jobNumber || '');
+  if (SKIP_JOBS.has(jn)) { skippedOffRoute.push(jn + ' ' + jDate + ' ' + (v.client?.name || '')); continue; }
   want[jn + '-' + visitNumOf(v)] = {
     visit: v, job: jn, date: jDate,
     tech: v.assignedUsers?.nodes?.[0]?.name?.full || null,
@@ -163,6 +174,8 @@ for (const v of raw) {
     isSet: v.job?.startAt ? toPT(v.job.startAt).slice(0, 10) === jDate : false,
   };
 }
+if (skippedOffRoute.length) console.log(`
+  OFF-ROUTE, left untouched in Jobber (${skippedOffRoute.length}): ${skippedOffRoute.join('; ')}`);
 console.log(`Jobber active visits in window: ${Object.keys(want).length}`);
 
 // ---------- read OptimoRoute ----------
@@ -358,6 +371,7 @@ for (const day of replanDays) {
     if (!w || !ns.scheduledAtDt) continue;
     const cur2 = toPT(w.visit.startAt);
     if (cur2.slice(0, 10) === day && cur2.slice(11, 16) === ns.hm) continue;
+    if (PLAN_ONLY) { ok++; continue; }   // measured, not written
     const planTime = ns.scheduledAtDt.slice(11, 19);
     const endPT = new Date(new Date(`${day}T${planTime}-07:00`).getTime() + 3 * 3600000).toLocaleString('sv-SE', { timeZone: TZ });
     const r = await jgql(`mutation { visitEditSchedule(id: "${w.visit.id}", input: { startAt: { date: "${day}", time: "${planTime}", timezone: "${TZ}" }, endAt: { date: "${endPT.slice(0, 10)}", time: "${endPT.slice(11, 19)}", timezone: "${TZ}" } }) { userErrors { message } } }`, {});

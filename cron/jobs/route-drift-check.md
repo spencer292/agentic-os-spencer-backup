@@ -2,10 +2,10 @@
 name: Route Drift Check (Jobber vs OptimoRoute)
 time: '09:00,10:00,11:00,12:00,13:00,14:00,15:00,16:00,17:00'
 days: daily
-active: 'true'
+active: 'false'
 model: opus
 notify: on_finish
-description: 'Hourly 9am-5pm PT: diff the Jobber board against the OptimoRoute plan for all planned future days. New bookings missing from OR are auto-fixed (order created locked to day+tech, that day re-planned with everyone else locked, times written back to Jobber). Day/tech/time drift on existing orders is report-only. Spencer authorized auto-fix 2026-07-13; cadence raised from every-2h to hourly 2026-08-04 so a booking waits ~30 min on average instead of ~60.'
+description: 'DISABLED 2026-08-09 BY SPENCER — re-enable by setting active back to true. It re-plans any day containing a booking it does not recognise and rewrites times in Jobber, which overwrote Spencer manual route edits while he worked (2026-08-09 10:05 run: 48 dayDrifts, 2 days re-planned). Keep it OFF during any hand-built week. Hourly 9am-5pm PT: diff the Jobber board against the OptimoRoute plan for all planned future days. New bookings missing from OR are auto-fixed (order created locked to day+tech, that day re-planned with everyone else locked, times written back to Jobber). Day/tech/time drift on existing orders is report-only. Spencer authorized auto-fix 2026-07-13; cadence raised from every-2h to hourly 2026-08-04 so a booking waits ~30 min on average instead of ~60.'
 timeout: 20m
 retry: '1'
 ---

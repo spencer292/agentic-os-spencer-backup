@@ -77,6 +77,19 @@ broken mailbox degrades the alert; it never silently swallows a lead.
   field-ops floor (which exists to protect irreversible writes) does not apply. At 49 runs
   a day, Opus would cost roughly $12–98/day versus about $0.50–2.50 on haiku.
 - **Coverage:** 07:00–19:00 only. A lead arriving at 21:00 alerts at 07:00 next morning.
+  **This was false until 2026-08-11 and it cost real leads.** The poll used a fixed 3h look-back, so the
+  19:00 run covered 16:00–19:00 and the 07:00 run covered 04:00–07:00 — nothing ever looked at
+  19:00–04:00. Leads created in that nine-hour gap were not delayed, they were never seen. Confirmed
+  against Gmail: Leslie Postovoit (Aug 6, 8:17pm, website form), Prasad R N (Aug 7, 8:37pm) and Carol
+  Weber (Aug 8, 8:30pm) each passed every filter and no alert was ever sent. `state.lastRun` was written
+  on every run and never read. The window now reaches back to the last successful run (capped at 36h),
+  which makes the sentence above true. **A documented behaviour is not a tested behaviour.**
+- **Attribution:** the picker now reads Jobber's `leadSource` (`Website-Client`, `CallRail`, `Google`,
+  `Thumbtack`, referral partner names) instead of guessing "Website form (likely)" from
+  `email && !street`. That guess is why website leads were indistinguishable in the alert. `leadSource`
+  also overrides the `!isLead && street` skip: that rule alone ate five leads in seven days
+  (Hickenbottom, Brown, Keiser, Zukowski, Adamov) because they arrived with an address and no
+  `isLead` flag, which is indistinguishable from office data entry by shape alone.
 - **Website form → Jobber is still not deployed.** The site-side fix (`createJobberRequest`
   sending invalid `description`/`source` fields to `requestCreate`) is committed locally but
   needs the Requests read/write scope on the Jobber app plus a deploy by Roy. Until then,

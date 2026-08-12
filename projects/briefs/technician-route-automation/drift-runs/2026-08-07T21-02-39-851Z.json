@@ -1,0 +1,290 @@
+{
+ "ranAt": "2026-08-07T21:01:03.020Z",
+ "mode": "fix",
+ "plannedDays": [
+  "2026-08-10",
+  "2026-08-11",
+  "2026-08-12",
+  "2026-08-13",
+  "2026-08-14"
+ ],
+ "counts": {
+  "activeVisits": 552,
+  "scheduledStops": 549,
+  "missing": 6,
+  "dayDrift": 4,
+  "techDrift": 18,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 3
+ },
+ "missing": [
+  {
+   "orderNo": "8224-2281716866",
+   "job": "8224",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyODE3MTY4NjY=",
+   "date": "2026-08-14",
+   "hm": "00:00",
+   "tech": "Alias Franks",
+   "title": "Kelsey Peck",
+   "address": "45720 Southeast 139th Place, North Bend, Washington 98045",
+   "isSet": false
+  },
+  {
+   "orderNo": "7672-2281729216",
+   "job": "7672",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyODE3MjkyMTY=",
+   "date": "2026-08-14",
+   "hm": "00:00",
+   "tech": "Cory Ventura",
+   "title": "Sean Finlayson",
+   "address": "5609 Southeast 2nd Court, Renton, Washington 98059",
+   "isSet": false
+  },
+  {
+   "orderNo": "4929-2281740738",
+   "job": "4929",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyODE3NDA3Mzg=",
+   "date": "2026-08-14",
+   "hm": "00:00",
+   "tech": "Cory Ventura",
+   "title": "Susanna Suiter",
+   "address": "17002 Southeast 128th Street, Renton, Washington 98059",
+   "isSet": false
+  },
+  {
+   "orderNo": "7646-2025070090",
+   "job": "7646",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIwMjUwNzAwOTA=",
+   "date": "2026-08-14",
+   "hm": "07:00",
+   "tech": "Tavis Alexander",
+   "title": "Matt Wood",
+   "address": "21701 210th Ave SE, Maple Valley, Washington 98038",
+   "isSet": false
+  },
+  {
+   "orderNo": "7767-2075253886",
+   "job": "7767",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIwNzUyNTM4ODY=",
+   "date": "2026-08-14",
+   "hm": "07:00",
+   "tech": "Tavis Alexander",
+   "title": "Jamie Randall",
+   "address": "20507 244th Avenue Southeast, Maple Valley, Washington 98038",
+   "isSet": false
+  },
+  {
+   "orderNo": "6287-2119598722",
+   "job": "6287",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIxMTk1OTg3MjI=",
+   "date": "2026-08-14",
+   "hm": "07:00",
+   "tech": "Tavis Alexander",
+   "title": "Charles Hahn - ANNUAL CUSTOMER",
+   "address": "25503 SE 192nd Street, Maple Valley, Washington 98038",
+   "isSet": false
+  }
+ ],
+ "dayDrift": [
+  {
+   "orderNo": "8261-2269705739",
+   "job": "8261",
+   "jobber": "2026-08-14",
+   "optimo": "2026-08-12",
+   "driver": "Cory Ventura"
+  },
+  {
+   "orderNo": "6275-1608836565",
+   "job": "6275",
+   "jobber": "2026-08-14",
+   "optimo": "2026-08-12",
+   "driver": "Cory Ventura"
+  },
+  {
+   "orderNo": "7988-2213483267",
+   "job": "7988",
+   "jobber": "2026-08-14",
+   "optimo": "2026-08-13",
+   "driver": "Cory Ventura"
+  },
+  {
+   "orderNo": "5726-1813470619",
+   "job": "5726",
+   "jobber": "2026-08-14",
+   "optimo": "2026-08-13",
+   "driver": "Cory Ventura"
+  }
+ ],
+ "techDrift": [
+  {
+   "orderNo": "7917-2176623407",
+   "job": "7917",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "4930-2278108541",
+   "job": "4930",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "7797-2090232032",
+   "job": "7797",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8103-2278166369",
+   "job": "8103",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8153-2248697643",
+   "job": "8153",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "7789-2261628786",
+   "job": "7789",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8155-2248823450",
+   "job": "8155",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8316-2277580038",
+   "job": "8316",
+   "date": "2026-08-12",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8243-2267080960",
+   "job": "8243",
+   "date": "2026-08-12",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "7708-2281623443",
+   "job": "7708",
+   "date": "2026-08-14",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "5121-2281609994",
+   "job": "5121",
+   "date": "2026-08-14",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "4701-1912566746",
+   "job": "4701",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Robert Norton"
+  },
+  {
+   "orderNo": "6396-1650177103",
+   "job": "6396",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "7896-2162893020",
+   "job": "7896",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "5829-1912222269",
+   "job": "5829",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "6409-1655125376",
+   "job": "6409",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "4545-1912594495",
+   "job": "4545",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "5458-1770745578",
+   "job": "5458",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Cory Ventura"
+  }
+ ],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "5676-2262278695",
+   "date": "2026-08-12",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "09:59"
+  },
+  {
+   "orderNo": "7306-2269977765",
+   "date": "2026-08-12",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "11:43"
+  },
+  {
+   "orderNo": "8056-2275615159",
+   "date": "2026-08-14",
+   "driver": "Luke LaVergne",
+   "driverSerial": "Luke LaVergne",
+   "hm": "13:50"
+  }
+ ],
+ "fixes": [
+  {
+   "day": "2026-08-14",
+   "writable": true,
+   "created": [
+    "8224-2281716866",
+    "7672-2281729216",
+    "4929-2281740738",
+    "7646-2025070090",
+    "7767-2075253886",
+    "6287-2119598722"
+   ],
+   "replanned": true,
+   "writes": [],
+   "failures": [],
+   "aborted": "VERIFY FAILED: 1 existing stops vanished, 0 changed tech — NO Jobber writes"
+  }
+ ]
+}

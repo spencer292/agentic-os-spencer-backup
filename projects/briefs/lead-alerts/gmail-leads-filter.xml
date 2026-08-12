@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns='http://www.w3.org/2005/Atom' xmlns:apps='http://schemas.google.com/apps/2006'>
+  <title>Mail Filters</title>
+  <!--
+    Got Moles — route every inbound lead into the "Leads" label.
+
+    Three sources, matched deliberately rather than by a broad sender rule:
+      1. spencer@got-moles.com / "New lead:"  — the lead-alert cron. This is the
+         unified feed: it covers BOTH website-form and phone leads, because it
+         polls Jobber, which both channels land in.
+      2. no-reply@callrail.com / "TXT ..."    — inbound customer text messages.
+      3. do-not-reply@pro.thumbtack.com       — matched on the six real lead
+         subjects only. A bare from: rule would drag in Thumbtack's marketing
+         ("Your weekly recommendations are in", "Learn how Top Pros...").
+
+    Labels only — it deliberately does NOT skip the inbox, so leads stay visible
+    where Spencer already works them. Re-importable: Settings -> Filters ->
+    Import filters.
+  -->
+  <entry>
+    <category term='filter'></category>
+    <title>Mail Filter</title>
+    <content></content>
+    <apps:property name='hasTheWord' value='(from:spencer@got-moles.com subject:"New lead:") OR (from:no-reply@callrail.com subject:TXT) OR (from:do-not-reply@pro.thumbtack.com subject:("New direct lead" OR "You have a message from" OR "first pick" OR "first pro to reply" OR "is waiting" OR "Get back to"))'/>
+    <apps:property name='label' value='Leads'/>
+    <apps:property name='sizeOperator' value='s_sl'/>
+    <apps:property name='sizeUnit' value='s_smb'/>
+  </entry>
+</feed>

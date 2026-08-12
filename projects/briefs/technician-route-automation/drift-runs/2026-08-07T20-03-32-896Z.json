@@ -1,0 +1,609 @@
+{
+ "ranAt": "2026-08-07T20:01:03.727Z",
+ "mode": "fix",
+ "plannedDays": [
+  "2026-08-10",
+  "2026-08-11",
+  "2026-08-12",
+  "2026-08-13",
+  "2026-08-14"
+ ],
+ "counts": {
+  "activeVisits": 546,
+  "scheduledStops": 541,
+  "missing": 8,
+  "dayDrift": 4,
+  "techDrift": 12,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 3
+ },
+ "missing": [
+  {
+   "orderNo": "5121-2281609994",
+   "job": "5121",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyODE2MDk5OTQ=",
+   "date": "2026-08-14",
+   "hm": "00:00",
+   "tech": "Spencer Hill",
+   "title": "Bonnee Terrio",
+   "address": "31707 33rd Avenue East, Graham, Washington 98338",
+   "isSet": false
+  },
+  {
+   "orderNo": "4504-2281613282",
+   "job": "4504",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyODE2MTMyODI=",
+   "date": "2026-08-14",
+   "hm": "00:00",
+   "tech": "Alias Franks",
+   "title": "Evan Epstein",
+   "address": "12803 452nd Avenue Southeast, North Bend, Washington 98045",
+   "isSet": false
+  },
+  {
+   "orderNo": "7708-2281623443",
+   "job": "7708",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyODE2MjM0NDM=",
+   "date": "2026-08-14",
+   "hm": "00:00",
+   "tech": "Spencer Hill",
+   "title": "Vernie Dunham",
+   "address": "26814 39th Ave E, Spanaway, Wa 98387",
+   "isSet": false
+  },
+  {
+   "orderNo": "7531-2281645721",
+   "job": "7531",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyODE2NDU3MjE=",
+   "date": "2026-08-14",
+   "hm": "00:00",
+   "tech": "Cory Ventura",
+   "title": "Rishab Narula",
+   "address": "15617 South East 83 Court, Newcastle, Washington 98059",
+   "isSet": false
+  },
+  {
+   "orderNo": "6396-1650177103",
+   "job": "6396",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE2NTAxNzcxMDM=",
+   "date": "2026-08-14",
+   "hm": "07:00",
+   "tech": "Tavis Alexander",
+   "title": "Deborah Canon",
+   "address": "14306 Southeast 87th Place, Newcastle, Washington 98059",
+   "isSet": false
+  },
+  {
+   "orderNo": "6409-1655125376",
+   "job": "6409",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE2NTUxMjUzNzY=",
+   "date": "2026-08-14",
+   "hm": "07:00",
+   "tech": "Tavis Alexander",
+   "title": "Kevin Hoffman",
+   "address": "28605 Southeast 216th Lane, Maple Valley, Washington 98038",
+   "isSet": false
+  },
+  {
+   "orderNo": "5829-1912222269",
+   "job": "5829",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE5MTIyMjIyNjk=",
+   "date": "2026-08-14",
+   "hm": "07:00",
+   "tech": "Tavis Alexander",
+   "title": "Tom Hornberg",
+   "address": "28611 SE 204th St, Maple Valley, Wa 98038",
+   "isSet": false
+  },
+  {
+   "orderNo": "7896-2162893020",
+   "job": "7896",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIxNjI4OTMwMjA=",
+   "date": "2026-08-14",
+   "hm": "07:00",
+   "tech": "Tavis Alexander",
+   "title": "Collin Sidebotham - Job for Collin Sidebotham",
+   "address": "26635 Southeast 196th Street, Maple Valley, Washington 98038",
+   "isSet": false
+  }
+ ],
+ "dayDrift": [
+  {
+   "orderNo": "8261-2269705739",
+   "job": "8261",
+   "jobber": "2026-08-14",
+   "optimo": "2026-08-12",
+   "driver": "Cory Ventura"
+  },
+  {
+   "orderNo": "6275-1608836565",
+   "job": "6275",
+   "jobber": "2026-08-14",
+   "optimo": "2026-08-12",
+   "driver": "Cory Ventura"
+  },
+  {
+   "orderNo": "7988-2213483267",
+   "job": "7988",
+   "jobber": "2026-08-14",
+   "optimo": "2026-08-13",
+   "driver": "Cory Ventura"
+  },
+  {
+   "orderNo": "5726-1813470619",
+   "job": "5726",
+   "jobber": "2026-08-14",
+   "optimo": "2026-08-13",
+   "driver": "Cory Ventura"
+  }
+ ],
+ "techDrift": [
+  {
+   "orderNo": "7917-2176623407",
+   "job": "7917",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "4930-2278108541",
+   "job": "4930",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "7797-2090232032",
+   "job": "7797",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8103-2278166369",
+   "job": "8103",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8153-2248697643",
+   "job": "8153",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "7789-2261628786",
+   "job": "7789",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8155-2248823450",
+   "job": "8155",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8316-2277580038",
+   "job": "8316",
+   "date": "2026-08-12",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8243-2267080960",
+   "job": "8243",
+   "date": "2026-08-12",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "4701-1912566746",
+   "job": "4701",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Robert Norton"
+  },
+  {
+   "orderNo": "4545-1912594495",
+   "job": "4545",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "5458-1770745578",
+   "job": "5458",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Cory Ventura"
+  }
+ ],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "5676-2262278695",
+   "date": "2026-08-12",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "09:59"
+  },
+  {
+   "orderNo": "7306-2269977765",
+   "date": "2026-08-12",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "11:43"
+  },
+  {
+   "orderNo": "8056-2275615159",
+   "date": "2026-08-14",
+   "driver": "Luke LaVergne",
+   "driverSerial": "Luke LaVergne",
+   "hm": "12:30"
+  }
+ ],
+ "fixes": [
+  {
+   "day": "2026-08-14",
+   "writable": true,
+   "created": [
+    "5121-2281609994",
+    "4504-2281613282",
+    "7708-2281623443",
+    "7531-2281645721",
+    "6396-1650177103",
+    "6409-1655125376",
+    "5829-1912222269",
+    "7896-2162893020"
+   ],
+   "replanned": true,
+   "writes": [
+    {
+     "orderNo": "5300-1780058498",
+     "from": "2026-08-14 15:10",
+     "to": "2026-08-14 14:56",
+     "driver": "Robert Norton"
+    },
+    {
+     "orderNo": "8227-2263895130",
+     "from": "2026-08-14 14:57",
+     "to": "2026-08-14 15:08",
+     "driver": "Robert Norton"
+    },
+    {
+     "orderNo": "4754-2281540153",
+     "from": "2026-08-14 14:57",
+     "to": "2026-08-14 14:46",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "4504-2281613282",
+     "from": "2026-08-14 00:00",
+     "to": "2026-08-14 14:59",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "7295-2281491003",
+     "from": "2026-08-14 14:44",
+     "to": "2026-08-14 15:10",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8213-2261158724",
+     "from": "2026-08-14 15:33",
+     "to": "2026-08-14 15:44",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8275-2272675524",
+     "from": "2026-08-14 15:52",
+     "to": "2026-08-14 16:04",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "4905-2280571681",
+     "from": "2026-08-14 16:06",
+     "to": "2026-08-14 16:18",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8156-2248882185",
+     "from": "2026-08-14 16:23",
+     "to": "2026-08-14 16:34",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "7011-1852006762",
+     "from": "2026-08-14 16:37",
+     "to": "2026-08-14 16:48",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "6355-1637516857",
+     "from": "2026-08-14 16:49",
+     "to": "2026-08-14 17:00",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "7817-2280683868",
+     "from": "2026-08-14 17:06",
+     "to": "2026-08-14 17:17",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8265-2270510265",
+     "from": "2026-08-14 17:19",
+     "to": "2026-08-14 17:30",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "6450-1669602280",
+     "from": "2026-08-14 17:33",
+     "to": "2026-08-14 17:44",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8233-2265628374",
+     "from": "2026-08-14 17:49",
+     "to": "2026-08-14 18:00",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "6396-1650177103",
+     "from": "2026-08-14 07:00",
+     "to": "2026-08-14 13:09",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "7531-2281645721",
+     "from": "2026-08-14 00:00",
+     "to": "2026-08-14 13:27",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8219-2281391810",
+     "from": "2026-08-14 13:25",
+     "to": "2026-08-14 13:48",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "5371-2281366096",
+     "from": "2026-08-14 13:11",
+     "to": "2026-08-14 14:02",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8214-2261163105",
+     "from": "2026-08-14 13:41",
+     "to": "2026-08-14 14:20",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "4842-1986405962",
+     "from": "2026-08-14 13:57",
+     "to": "2026-08-14 14:36",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "6663-2281308977",
+     "from": "2026-08-14 14:17",
+     "to": "2026-08-14 14:57",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "7382-2281258655",
+     "from": "2026-08-14 14:35",
+     "to": "2026-08-14 15:14",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "6475-2281178765",
+     "from": "2026-08-14 14:48",
+     "to": "2026-08-14 15:28",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "5152-2281206806",
+     "from": "2026-08-14 15:00",
+     "to": "2026-08-14 15:40",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "7896-2162893020",
+     "from": "2026-08-14 07:00",
+     "to": "2026-08-14 15:57",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "5829-1912222269",
+     "from": "2026-08-14 07:00",
+     "to": "2026-08-14 16:11",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "6409-1655125376",
+     "from": "2026-08-14 07:00",
+     "to": "2026-08-14 16:28",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "4545-1912594495",
+     "from": "2026-08-14 15:17",
+     "to": "2026-08-14 16:45",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "5458-1770745578",
+     "from": "2026-08-14 15:29",
+     "to": "2026-08-14 16:57",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "7708-2281623443",
+     "from": "2026-08-14 00:00",
+     "to": "2026-08-14 08:10",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5121-2281609994",
+     "from": "2026-08-14 00:00",
+     "to": "2026-08-14 08:33",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8090-2276742370",
+     "from": "2026-08-14 07:55",
+     "to": "2026-08-14 09:15",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8322-2279059924",
+     "from": "2026-08-14 08:16",
+     "to": "2026-08-14 09:36",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8300-2275366626",
+     "from": "2026-08-14 08:36",
+     "to": "2026-08-14 09:56",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8109-2279017094",
+     "from": "2026-08-14 08:49",
+     "to": "2026-08-14 10:09",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "5696-1794017229",
+     "from": "2026-08-14 09:05",
+     "to": "2026-08-14 10:25",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7528-1972224878",
+     "from": "2026-08-14 09:24",
+     "to": "2026-08-14 10:43",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8196-2259513493",
+     "from": "2026-08-14 09:44",
+     "to": "2026-08-14 11:03",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7497-2279176459",
+     "from": "2026-08-14 09:56",
+     "to": "2026-08-14 11:15",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8277-2278221657",
+     "from": "2026-08-14 10:08",
+     "to": "2026-08-14 11:27",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8237-2265639127",
+     "from": "2026-08-14 10:22",
+     "to": "2026-08-14 11:42",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8308-2277557900",
+     "from": "2026-08-14 10:33",
+     "to": "2026-08-14 11:52",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8197-2259567337",
+     "from": "2026-08-14 10:48",
+     "to": "2026-08-14 12:08",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7675-2038425283",
+     "from": "2026-08-14 11:03",
+     "to": "2026-08-14 12:23",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8319-2278404697",
+     "from": "2026-08-14 11:16",
+     "to": "2026-08-14 12:36",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "6649-1783833892",
+     "from": "2026-08-14 11:44",
+     "to": "2026-08-14 13:03",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7247-2275470443",
+     "from": "2026-08-14 11:57",
+     "to": "2026-08-14 13:16",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7872-2275468919",
+     "from": "2026-08-14 12:13",
+     "to": "2026-08-14 13:33",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8093-2275612297",
+     "from": "2026-08-14 12:46",
+     "to": "2026-08-14 14:06",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "6627-1777760846",
+     "from": "2026-08-14 13:02",
+     "to": "2026-08-14 14:22",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8242-2266814800",
+     "from": "2026-08-14 13:18",
+     "to": "2026-08-14 14:37",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8159-2275399353",
+     "from": "2026-08-14 13:29",
+     "to": "2026-08-14 14:49",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "8177-2254852125",
+     "from": "2026-08-14 13:44",
+     "to": "2026-08-14 15:04",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7476-1950305903",
+     "from": "2026-08-14 14:01",
+     "to": "2026-08-14 15:21",
+     "driver": "Luke LaVergne"
+    },
+    {
+     "orderNo": "7629-2275314478",
+     "from": "2026-08-14 14:18",
+     "to": "2026-08-14 15:37",
+     "driver": "Luke LaVergne"
+    }
+   ],
+   "failures": [],
+   "aborted": null
+  }
+ ]
+}

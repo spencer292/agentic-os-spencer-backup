@@ -49,9 +49,28 @@ Run both from the repo root, in this order.
    If publishing is refused for permissions, say so — the local files are still correct, but the
    hosted page is then a day stale and whoever uses the link needs telling.
 
-2. `node projects/briefs/technician-route-automation/make-service-day-sheet.mjs --grid=territory-grid-v5.json`
+2. `node projects/briefs/technician-route-automation/make-service-day-sheet.mjs --grid=territory-grid-v5.json --overlay-week=next`
 
-   The zip-only sheet and its printable markdown. Grid-only, no API calls, instant.
+   **`--overlay-week=next` is not optional.** It resolves to the coming Monday and reads that week's
+   real OptimoRoute routes, so the page can flag zips running on a different day than the standing
+   grid. On 2026-08-07, 55 of 110 serviced zips differed for the week of 08-10 (Cammeron out, Robert
+   covering) while the current week matched the grid — drop the flag and the office silently goes
+   back to quoting the standing day for all 55.
+
+   The day lookup and its printable markdown. Grid-only, no API calls, instant. Also writes
+   `service-day-lookup.artifact.html` and refreshes the copy in `muhammad-portable/`.
+
+2b. Republish the day lookup so the office's link matches the grid:
+
+   Call the Artifact tool with
+   `file_path` = `projects/briefs/callrail-faq/service-day-lookup/service-day-lookup.artifact.html`
+   and `url` = `https://claude.ai/code/artifact/591eb026-6906-4549-a326-f5d08fbcddf1`,
+   `favicon` 📍, title unchanged. **The `url` is mandatory** — without it each run mints a new link
+   and the office keeps opening a page that never changes again.
+
+   **This is the page whoever answers the phone actually uses.** It answers "what day are you in my
+   area?" from the territory grid alone, so it only changes when the grid is re-cut — but when the
+   grid IS re-cut, a stale copy tells customers a day no truck runs. Step 3 reports exactly that.
 
 3. Summarize, in this order. Lead with whatever needs a human today.
 

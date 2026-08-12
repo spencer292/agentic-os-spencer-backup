@@ -1,0 +1,195 @@
+<title>Got Moles — What Day Are We In Their Area?</title>
+<style>
+  :root { --bg:#fff; --fg:#14181d; --mut:#6b7280; --line:#e5e7eb; --accent:#166534; --warn:#b45309; --warnbg:#fffbeb; --card:#f9fafb; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#0f1115; --fg:#e8eaed; --mut:#9aa3af; --line:#262b33; --accent:#4ade80; --warn:#fbbf24; --warnbg:#2a2010; --card:#161a20; }
+  }
+  * { box-sizing:border-box }
+  body { margin:0; padding:20px; max-width:720px; margin-inline:auto; background:var(--bg); color:var(--fg);
+         font:16px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; }
+  h1 { font-size:18px; margin:0 0 2px }
+  .sub { color:var(--mut); font-size:13px; margin-bottom:14px }
+  #q { width:100%; padding:14px 16px; font-size:22px; border:2px solid var(--line); border-radius:10px;
+       background:var(--card); color:var(--fg); }
+  #q:focus { outline:none; border-color:var(--accent) }
+  .card { border:1px solid var(--line); border-radius:10px; padding:16px; margin-top:12px; background:var(--card) }
+  .day { font-size:30px; font-weight:700; color:var(--accent); line-height:1.15 }
+  .where { font-size:15px; margin-top:2px }
+  .dates { margin-top:10px; font-size:14px }
+  .dates b { font-weight:600 }
+  .meta { margin-top:10px; padding-top:10px; border-top:1px solid var(--line); font-size:13px; color:var(--mut) }
+  .warn { background:var(--warnbg); border-color:var(--warn) }
+  .warn .day { color:var(--warn); font-size:20px }
+  ul.zips { list-style:none; padding:0; margin:10px 0 0 }
+  ul.zips li { padding:7px 0; border-top:1px solid var(--line); display:flex; gap:10px; align-items:baseline; font-size:14px }
+  ul.zips li b { min-width:52px; font-variant-numeric:tabular-nums }
+  .ex { margin-top:10px; padding:9px 11px; border-radius:8px; background:var(--warnbg);
+        border:1px solid var(--warn); font-size:14px; line-height:1.45 }
+  .card.hasex { border-left:4px solid var(--warn) }
+  .hint { color:var(--mut); font-size:13px; margin-top:14px }
+  footer { margin-top:26px; padding-top:12px; border-top:1px solid var(--line); color:var(--mut); font-size:12px }
+  kbd { background:var(--card); border:1px solid var(--line); border-radius:4px; padding:1px 5px; font-size:12px }
+</style>
+
+<h1>What day are we in their area?</h1>
+<div class="sub">Paste the customer's <b>address</b>, or type just the zip or the city.
+You'll get the day of the week we run that area.</div>
+
+<input id="q" placeholder="1234 Main St, Bonney Lake, WA 98391" autocomplete="off" autofocus>
+<div id="out"></div>
+<div class="hint">The zip is what decides the day. If you only have a city, this will tell you whether
+that city is safe to answer or whether you need to ask for the zip — 16 of 79
+cities we serve are split across more than one route day.</div>
+
+<footer>
+  Route days from <b>territory-grid-v5.json</b>, last changed 2026-08-11. Sheet generated 2026-08-11.<br>
+  This only changes when the territory is re-cut — not daily. Ask Spencer for a fresh copy after a re-cut.
+</footer>
+
+<script>
+const DATA = {"grid":"territory-grid-v5.json","gridModified":"2026-08-11","generated":"2026-08-11","records":[{"zip":"98001","days":["mon","wed"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Auburn"],"visitsPerYear":184},{"zip":"98002","days":["mon"],"tech":"Cammeron Anderson","techFirst":"Cammeron","cities":["Auburn"],"visitsPerYear":61},{"zip":"98003","days":["mon"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Federal Way"],"visitsPerYear":92},{"zip":"98004","days":["mon"],"tech":"Alias Franks","techFirst":"Alias","cities":["Bellevue","Clyde Hill","Beaux Arts Village","Yarrow Point"],"visitsPerYear":143},{"zip":"98005","days":["fri"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Bellevue"],"visitsPerYear":298},{"zip":"98006","days":["thu"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Bellevue"],"visitsPerYear":213},{"zip":"98007","days":["mon"],"tech":"Alias Franks","techFirst":"Alias","cities":["Bellevue"],"visitsPerYear":55},{"zip":"98008","days":["thu"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Bellevue"],"visitsPerYear":76},{"zip":"98010","days":["tue"],"tech":"Cammeron Anderson","techFirst":"Cammeron","cities":["Black Diamond"],"visitsPerYear":146},{"zip":"98011","days":["wed"],"tech":"Alias Franks","techFirst":"Alias","cities":["Bothell"],"visitsPerYear":16},{"zip":"98012","days":["wed"],"tech":"Alias Franks","techFirst":"Alias","cities":["Bothell","Mill Creek"],"visitsPerYear":25},{"zip":"98014","days":["wed"],"tech":"Alias Franks","techFirst":"Alias","cities":["Carnation"],"visitsPerYear":160},{"zip":"98019","days":["wed"],"tech":"Alias Franks","techFirst":"Alias","cities":["Duvall"],"visitsPerYear":98},{"zip":"98021","days":["wed"],"tech":"Alias Franks","techFirst":"Alias","cities":["Bothell"],"visitsPerYear":30},{"zip":"98022","days":["tue"],"tech":"Cammeron Anderson","techFirst":"Cammeron","cities":["Enumclaw"],"visitsPerYear":892},{"zip":"98023","days":["mon"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Federal Way"],"visitsPerYear":145},{"zip":"98024","days":["fri"],"tech":"Alias Franks","techFirst":"Alias","cities":["Fall City"],"visitsPerYear":178},{"zip":"98027","days":["fri"],"tech":"Alias Franks","techFirst":"Alias","cities":["Issaquah"],"visitsPerYear":293},{"zip":"98028","days":["wed"],"tech":"Alias Franks","techFirst":"Alias","cities":["Kenmore"],"visitsPerYear":0},{"zip":"98029","days":["thu","fri"],"tech":"Alias Franks","techFirst":"Alias","cities":["Issaquah"],"visitsPerYear":98},{"zip":"98030","days":["wed"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Kent"],"visitsPerYear":73},{"zip":"98031","days":["wed"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Kent"],"visitsPerYear":107},{"zip":"98032","days":["wed"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Kent"],"visitsPerYear":90},{"zip":"98033","days":["mon"],"tech":"Alias Franks","techFirst":"Alias","cities":["Kirkland"],"visitsPerYear":79},{"zip":"98034","days":["mon"],"tech":"Alias Franks","techFirst":"Alias","cities":["Kirkland"],"visitsPerYear":78},{"zip":"98038","days":["fri"],"tech":"Cammeron Anderson","techFirst":"Cammeron","cities":["Maple Valley"],"visitsPerYear":580},{"zip":"98039","days":["mon"],"tech":"Alias Franks","techFirst":"Alias","cities":["Medina"],"visitsPerYear":126},{"zip":"98040","days":["thu"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Mercer Island"],"visitsPerYear":125},{"zip":"98042","days":["mon","fri"],"tech":"Cammeron Anderson","techFirst":"Cammeron","cities":["Kent","Covington"],"visitsPerYear":420},{"zip":"98045","days":["fri"],"tech":"Alias Franks","techFirst":"Alias","cities":["North Bend"],"visitsPerYear":375},{"zip":"98047","days":["mon"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Pacific"],"visitsPerYear":32},{"zip":"98051","days":["tue"],"tech":"Cammeron Anderson","techFirst":"Cammeron","cities":["Ravensdale"],"visitsPerYear":127},{"zip":"98052","days":["mon","thu"],"tech":"Alias Franks","techFirst":"Alias","cities":["Redmond"],"visitsPerYear":138},{"zip":"98053","days":["thu"],"tech":"Alias Franks","techFirst":"Alias","cities":["Redmond"],"visitsPerYear":289},{"zip":"98055","days":["wed"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Renton"],"visitsPerYear":48},{"zip":"98056","days":["wed"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Renton","Newcastle"],"visitsPerYear":141},{"zip":"98057","days":["wed"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Renton"],"visitsPerYear":42},{"zip":"98058","days":["wed"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Renton"],"visitsPerYear":323},{"zip":"98059","days":["fri"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Renton","Newcastle"],"visitsPerYear":602},{"zip":"98065","days":["fri"],"tech":"Alias Franks","techFirst":"Alias","cities":["Snoqualmie"],"visitsPerYear":135},{"zip":"98072","days":["wed"],"tech":"Alias Franks","techFirst":"Alias","cities":["Woodinville"],"visitsPerYear":130},{"zip":"98074","days":["thu"],"tech":"Alias Franks","techFirst":"Alias","cities":["Sammamish"],"visitsPerYear":244},{"zip":"98075","days":["thu","fri"],"tech":"Alias Franks","techFirst":"Alias","cities":["Sammamish","Issaquah"],"visitsPerYear":350},{"zip":"98077","days":["wed"],"tech":"Alias Franks","techFirst":"Alias","cities":["Woodinville"],"visitsPerYear":141},{"zip":"98092","days":["mon"],"tech":"Cammeron Anderson","techFirst":"Cammeron","cities":["Auburn","Issaquah"],"visitsPerYear":496},{"zip":"98102","days":["tue"],"tech":"Alias Franks","techFirst":"Alias","cities":["Seattle"],"visitsPerYear":10},{"zip":"98105","days":["tue"],"tech":"Alias Franks","techFirst":"Alias","cities":["Seattle"],"visitsPerYear":45},{"zip":"98106","days":["tue"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Seattle"],"visitsPerYear":62},{"zip":"98108","days":["tue"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Seattle"],"visitsPerYear":80},{"zip":"98109","days":["tue"],"tech":"Alias Franks","techFirst":"Alias","cities":["Seattle"],"visitsPerYear":18},{"zip":"98112","days":["tue"],"tech":"Alias Franks","techFirst":"Alias","cities":["Seattle"],"visitsPerYear":49},{"zip":"98115","days":["tue"],"tech":"Alias Franks","techFirst":"Alias","cities":["Seattle"],"visitsPerYear":41},{"zip":"98116","days":["tue"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Seattle"],"visitsPerYear":74},{"zip":"98117","days":["tue"],"tech":"Alias Franks","techFirst":"Alias","cities":["Seattle"],"visitsPerYear":45},{"zip":"98118","days":["tue"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Seattle"],"visitsPerYear":10},{"zip":"98119","days":["tue"],"tech":"Alias Franks","techFirst":"Alias","cities":["Seattle"],"visitsPerYear":4},{"zip":"98125","days":["tue"],"tech":"Alias Franks","techFirst":"Alias","cities":["Seattle"],"visitsPerYear":15},{"zip":"98126","days":["tue"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Seattle"],"visitsPerYear":36},{"zip":"98133","days":["tue"],"tech":"Alias Franks","techFirst":"Alias","cities":["Seattle","Shoreline"],"visitsPerYear":47},{"zip":"98136","days":["tue"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Seattle"],"visitsPerYear":86},{"zip":"98144","days":["tue"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Seattle"],"visitsPerYear":31},{"zip":"98146","days":["tue"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Seattle","Burien"],"visitsPerYear":147},{"zip":"98148","days":["mon"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Burien"],"visitsPerYear":48},{"zip":"98155","days":["tue"],"tech":"Alias Franks","techFirst":"Alias","cities":["Shoreline","Lake Forest Park"],"visitsPerYear":12},{"zip":"98166","days":["mon"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Normandy Park","Burien"],"visitsPerYear":186},{"zip":"98168","days":["tue"],"tech":"Cory Ventura","techFirst":"Cory","cities":["SeaTac","Tukwila","Seattle","Burien"],"visitsPerYear":148},{"zip":"98177","days":["tue"],"tech":"Alias Franks","techFirst":"Alias","cities":["Seattle","Shoreline"],"visitsPerYear":70},{"zip":"98178","days":["tue"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Seattle"],"visitsPerYear":79},{"zip":"98188","days":["tue"],"tech":"Cory Ventura","techFirst":"Cory","cities":["SeaTac","Tukwila"],"visitsPerYear":40},{"zip":"98198","days":["mon"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Normandy Park","SeaTac","Des Moines"],"visitsPerYear":84},{"zip":"98199","days":["tue"],"tech":"Alias Franks","techFirst":"Alias","cities":["Seattle"],"visitsPerYear":45},{"zip":"98272","days":["wed"],"tech":"Alias Franks","techFirst":"Alias","cities":["Monroe"],"visitsPerYear":4},{"zip":"98296","days":["wed"],"tech":"Alias Franks","techFirst":"Alias","cities":["Snohomish"],"visitsPerYear":22},{"zip":"98310","days":["wed"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Bremerton"],"visitsPerYear":9},{"zip":"98312","days":["wed"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Bremerton"],"visitsPerYear":6},{"zip":"98321","days":["wed"],"tech":"Cammeron Anderson","techFirst":"Cammeron","cities":["Buckley"],"visitsPerYear":759},{"zip":"98327","days":["mon"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["DuPont"],"visitsPerYear":12},{"zip":"98328","days":["fri"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Eatonville"],"visitsPerYear":112},{"zip":"98329","days":["wed"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Gig Harbor"],"visitsPerYear":15},{"zip":"98332","days":["wed"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Gig Harbor"],"visitsPerYear":17},{"zip":"98333","days":["wed"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Fox Island"],"visitsPerYear":16},{"zip":"98335","days":["wed"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Gig Harbor"],"visitsPerYear":5},{"zip":"98338","days":["fri"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Graham"],"visitsPerYear":477},{"zip":"98351","days":["wed"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Longbranch"],"visitsPerYear":19},{"zip":"98354","days":["mon"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Milton"],"visitsPerYear":25},{"zip":"98359","days":["wed"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Olalla"],"visitsPerYear":22},{"zip":"98360","days":["thu"],"tech":"Cammeron Anderson","techFirst":"Cammeron","cities":["Orting","Pierce County"],"visitsPerYear":254},{"zip":"98363","days":["tue"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Puyallup"],"visitsPerYear":18},{"zip":"98367","days":["wed"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Port Orchard"],"visitsPerYear":5},{"zip":"98371","days":["tue"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Edgewood","Puyallup"],"visitsPerYear":119},{"zip":"98372","days":["mon"],"tech":"Cammeron Anderson","techFirst":"Cammeron","cities":["Edgewood","Puyallup"],"visitsPerYear":315},{"zip":"98373","days":["tue"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Puyallup","South Hill"],"visitsPerYear":103},{"zip":"98374","days":["tue"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Puyallup","South Hill"],"visitsPerYear":241},{"zip":"98375","days":["tue","fri"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Puyallup"],"visitsPerYear":111},{"zip":"98385","days":["wed"],"tech":"Cammeron Anderson","techFirst":"Cammeron","cities":["South Prairie"],"visitsPerYear":22},{"zip":"98387","days":["tue","fri"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Spanaway"],"visitsPerYear":102},{"zip":"98388","days":["mon"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Steilacoom"],"visitsPerYear":48},{"zip":"98390","days":["mon"],"tech":"Cammeron Anderson","techFirst":"Cammeron","cities":["Sumner"],"visitsPerYear":121},{"zip":"98391","days":["thu"],"tech":"Cammeron Anderson","techFirst":"Cammeron","cities":["Bonney Lake","Sumner","Pierce County","Lake Tapps","BonneyLake","Tehaleh","bonney"],"visitsPerYear":603},{"zip":"98394","days":["wed"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Vaughn"],"visitsPerYear":14},{"zip":"98396","days":["wed"],"tech":"Cammeron Anderson","techFirst":"Cammeron","cities":["Wilkeson"],"visitsPerYear":20},{"zip":"98403","days":["wed"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Tacoma"],"visitsPerYear":9},{"zip":"98404","days":["tue"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Tacoma"],"visitsPerYear":13},{"zip":"98405","days":["tue"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Tacoma"],"visitsPerYear":20},{"zip":"98406","days":["wed"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Tacoma"],"visitsPerYear":26},{"zip":"98407","days":["wed"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Tacoma"],"visitsPerYear":42},{"zip":"98422","days":["mon"],"tech":"Cory Ventura","techFirst":"Cory","cities":["Tacoma"],"visitsPerYear":60},{"zip":"98424","days":["tue"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Fife"],"visitsPerYear":13},{"zip":"98443","days":["tue"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Tacoma"],"visitsPerYear":48},{"zip":"98444","days":["tue"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Tacoma","Parkland"],"visitsPerYear":0},{"zip":"98445","days":["tue"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Tacoma"],"visitsPerYear":76},{"zip":"98446","days":["tue"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Tacoma"],"visitsPerYear":42},{"zip":"98465","days":["wed"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Tacoma"],"visitsPerYear":30},{"zip":"98466","days":["wed"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Fircrest","University Place"],"visitsPerYear":62},{"zip":"98467","days":["wed"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["University Place","Tacoma"],"visitsPerYear":28},{"zip":"98498","days":["mon"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Tacoma","Lakewood"],"visitsPerYear":86},{"zip":"98499","days":["mon"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Tacoma","Lakewood"],"visitsPerYear":43},{"zip":"98501","days":["thu"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Olympia","Tumwater"],"visitsPerYear":139},{"zip":"98502","days":["mon"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Olympia"],"visitsPerYear":105},{"zip":"98503","days":["thu"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Olympia","Lacey"],"visitsPerYear":46},{"zip":"98506","days":["mon"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Olympia"],"visitsPerYear":63},{"zip":"98512","days":["thu"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Olympia","Tumwater"],"visitsPerYear":107},{"zip":"98513","days":["thu"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Olympia","Lacey"],"visitsPerYear":184},{"zip":"98516","days":["mon"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Olympia","Lacey"],"visitsPerYear":94},{"zip":"98580","days":["fri"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Roy"],"visitsPerYear":59},{"zip":"98589","days":["thu"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Tenino"],"visitsPerYear":10},{"zip":"98597","days":["fri"],"tech":"Luke LaVergne","techFirst":"Luke","cities":["Yelm"],"visitsPerYear":111}],"cities":[{"label":"Auburn","zips":["98001","98002","98092"],"ambiguous":true,"days":[],"techFirst":"varies by zip"},{"label":"Beaux Arts Village","zips":["98004"],"ambiguous":false,"days":["mon"],"techFirst":"Alias"},{"label":"Bellevue","zips":["98004","98005","98006","98007","98008"],"ambiguous":true,"days":[],"techFirst":"varies by zip"},{"label":"Black Diamond","zips":["98010"],"ambiguous":false,"days":["tue"],"techFirst":"Cammeron"},{"label":"bonney","zips":["98391"],"ambiguous":false,"days":["thu"],"techFirst":"Cammeron"},{"label":"Bonney Lake","zips":["98391"],"ambiguous":false,"days":["thu"],"techFirst":"Cammeron"},{"label":"BonneyLake","zips":["98391"],"ambiguous":false,"days":["thu"],"techFirst":"Cammeron"},{"label":"Bothell","zips":["98011","98012","98021"],"ambiguous":false,"days":["wed"],"techFirst":"Alias"},{"label":"Bremerton","zips":["98310","98312"],"ambiguous":false,"days":["wed"],"techFirst":"Luke"},{"label":"Buckley","zips":["98321"],"ambiguous":false,"days":["wed"],"techFirst":"Cammeron"},{"label":"Burien","zips":["98146","98148","98166","98168"],"ambiguous":true,"days":[],"techFirst":"Cory"},{"label":"Carnation","zips":["98014"],"ambiguous":false,"days":["wed"],"techFirst":"Alias"},{"label":"Clyde Hill","zips":["98004"],"ambiguous":false,"days":["mon"],"techFirst":"Alias"},{"label":"Covington","zips":["98042"],"ambiguous":false,"days":["mon","fri"],"techFirst":"Cammeron"},{"label":"Des Moines","zips":["98198"],"ambiguous":false,"days":["mon"],"techFirst":"Cory"},{"label":"DuPont","zips":["98327"],"ambiguous":false,"days":["mon"],"techFirst":"Luke"},{"label":"Duvall","zips":["98019"],"ambiguous":false,"days":["wed"],"techFirst":"Alias"},{"label":"Eatonville","zips":["98328"],"ambiguous":false,"days":["fri"],"techFirst":"Luke"},{"label":"Edgewood","zips":["98371","98372"],"ambiguous":true,"days":[],"techFirst":"varies by zip"},{"label":"Enumclaw","zips":["98022"],"ambiguous":false,"days":["tue"],"techFirst":"Cammeron"},{"label":"Fall City","zips":["98024"],"ambiguous":false,"days":["fri"],"techFirst":"Alias"},{"label":"Federal Way","zips":["98003","98023"],"ambiguous":false,"days":["mon"],"techFirst":"Cory"},{"label":"Fife","zips":["98424"],"ambiguous":false,"days":["tue"],"techFirst":"Luke"},{"label":"Fircrest","zips":["98466"],"ambiguous":false,"days":["wed"],"techFirst":"Luke"},{"label":"Fox Island","zips":["98333"],"ambiguous":false,"days":["wed"],"techFirst":"Luke"},{"label":"Gig Harbor","zips":["98329","98332","98335"],"ambiguous":false,"days":["wed"],"techFirst":"Luke"},{"label":"Graham","zips":["98338"],"ambiguous":false,"days":["fri"],"techFirst":"Luke"},{"label":"Issaquah","zips":["98027","98029","98075","98092"],"ambiguous":true,"days":[],"techFirst":"varies by zip"},{"label":"Kenmore","zips":["98028"],"ambiguous":false,"days":["wed"],"techFirst":"Alias"},{"label":"Kent","zips":["98030","98031","98032","98042"],"ambiguous":true,"days":[],"techFirst":"varies by zip"},{"label":"Kirkland","zips":["98033","98034"],"ambiguous":false,"days":["mon"],"techFirst":"Alias"},{"label":"Lacey","zips":["98503","98513","98516"],"ambiguous":true,"days":[],"techFirst":"Luke"},{"label":"Lake Forest Park","zips":["98155"],"ambiguous":false,"days":["tue"],"techFirst":"Alias"},{"label":"Lake Tapps","zips":["98391"],"ambiguous":false,"days":["thu"],"techFirst":"Cammeron"},{"label":"Lakewood","zips":["98498","98499"],"ambiguous":false,"days":["mon"],"techFirst":"Luke"},{"label":"Longbranch","zips":["98351"],"ambiguous":false,"days":["wed"],"techFirst":"Luke"},{"label":"Maple Valley","zips":["98038"],"ambiguous":false,"days":["fri"],"techFirst":"Cammeron"},{"label":"Medina","zips":["98039"],"ambiguous":false,"days":["mon"],"techFirst":"Alias"},{"label":"Mercer Island","zips":["98040"],"ambiguous":false,"days":["thu"],"techFirst":"Cory"},{"label":"Mill Creek","zips":["98012"],"ambiguous":false,"days":["wed"],"techFirst":"Alias"},{"label":"Milton","zips":["98354"],"ambiguous":false,"days":["mon"],"techFirst":"Cory"},{"label":"Monroe","zips":["98272"],"ambiguous":false,"days":["wed"],"techFirst":"Alias"},{"label":"Newcastle","zips":["98056","98059"],"ambiguous":true,"days":[],"techFirst":"Cory"},{"label":"Normandy Park","zips":["98166","98198"],"ambiguous":false,"days":["mon"],"techFirst":"Cory"},{"label":"North Bend","zips":["98045"],"ambiguous":false,"days":["fri"],"techFirst":"Alias"},{"label":"Olalla","zips":["98359"],"ambiguous":false,"days":["wed"],"techFirst":"Luke"},{"label":"Olympia","zips":["98501","98502","98503","98506","98512","98513","98516"],"ambiguous":true,"days":[],"techFirst":"Luke"},{"label":"Orting","zips":["98360"],"ambiguous":false,"days":["thu"],"techFirst":"Cammeron"},{"label":"Pacific","zips":["98047"],"ambiguous":false,"days":["mon"],"techFirst":"Cory"},{"label":"Parkland","zips":["98444"],"ambiguous":false,"days":["tue"],"techFirst":"Luke"},{"label":"Pierce County","zips":["98360","98391"],"ambiguous":false,"days":["thu"],"techFirst":"Cammeron"},{"label":"Port Orchard","zips":["98367"],"ambiguous":false,"days":["wed"],"techFirst":"Luke"},{"label":"Puyallup","zips":["98363","98371","98372","98373","98374","98375"],"ambiguous":true,"days":[],"techFirst":"varies by zip"},{"label":"Ravensdale","zips":["98051"],"ambiguous":false,"days":["tue"],"techFirst":"Cammeron"},{"label":"Redmond","zips":["98052","98053"],"ambiguous":true,"days":[],"techFirst":"Alias"},{"label":"Renton","zips":["98055","98056","98057","98058","98059"],"ambiguous":true,"days":[],"techFirst":"Cory"},{"label":"Roy","zips":["98580"],"ambiguous":false,"days":["fri"],"techFirst":"Luke"},{"label":"Sammamish","zips":["98074","98075"],"ambiguous":true,"days":[],"techFirst":"Alias"},{"label":"SeaTac","zips":["98168","98188","98198"],"ambiguous":true,"days":[],"techFirst":"Cory"},{"label":"Seattle","zips":["98102","98105","98106","98108","98109","98112","98115","98116","98117","98118","98119","98125","98126","98133","98136","98144","98146","98168","98177","98178","98199"],"ambiguous":false,"days":["tue"],"techFirst":"varies by zip"},{"label":"Shoreline","zips":["98133","98155","98177"],"ambiguous":false,"days":["tue"],"techFirst":"Alias"},{"label":"Snohomish","zips":["98296"],"ambiguous":false,"days":["wed"],"techFirst":"Alias"},{"label":"Snoqualmie","zips":["98065"],"ambiguous":false,"days":["fri"],"techFirst":"Alias"},{"label":"South Hill","zips":["98373","98374"],"ambiguous":false,"days":["tue"],"techFirst":"Luke"},{"label":"South Prairie","zips":["98385"],"ambiguous":false,"days":["wed"],"techFirst":"Cammeron"},{"label":"Spanaway","zips":["98387"],"ambiguous":false,"days":["tue","fri"],"techFirst":"Luke"},{"label":"Steilacoom","zips":["98388"],"ambiguous":false,"days":["mon"],"techFirst":"Luke"},{"label":"Sumner","zips":["98390","98391"],"ambiguous":true,"days":[],"techFirst":"Cammeron"},{"label":"Tacoma","zips":["98403","98404","98405","98406","98407","98422","98443","98444","98445","98446","98465","98467","98498","98499"],"ambiguous":true,"days":[],"techFirst":"varies by zip"},{"label":"Tehaleh","zips":["98391"],"ambiguous":false,"days":["thu"],"techFirst":"Cammeron"},{"label":"Tenino","zips":["98589"],"ambiguous":false,"days":["thu"],"techFirst":"Luke"},{"label":"Tukwila","zips":["98168","98188"],"ambiguous":false,"days":["tue"],"techFirst":"Cory"},{"label":"Tumwater","zips":["98501","98512"],"ambiguous":false,"days":["thu"],"techFirst":"Luke"},{"label":"University Place","zips":["98466","98467"],"ambiguous":false,"days":["wed"],"techFirst":"Luke"},{"label":"Vaughn","zips":["98394"],"ambiguous":false,"days":["wed"],"techFirst":"Luke"},{"label":"Wilkeson","zips":["98396"],"ambiguous":false,"days":["wed"],"techFirst":"Cammeron"},{"label":"Woodinville","zips":["98072","98077"],"ambiguous":false,"days":["wed"],"techFirst":"Alias"},{"label":"Yarrow Point","zips":["98004"],"ambiguous":false,"days":["mon"],"techFirst":"Alias"},{"label":"Yelm","zips":["98597"],"ambiguous":false,"days":["fri"],"techFirst":"Luke"}],"dayLong":{"mon":"Monday","tue":"Tuesday","wed":"Wednesday","thu":"Thursday","fri":"Friday"},"overlay":{"monday":"2026-08-17","friday":"2026-08-21","zips":{},"servicedZips":0},"servedNoDay":["98020","98036","98087","98103","98107","98122","98208","98258","98292","98323","98370","98408","98584","98596"]};
+const DAY_IDX = { mon:1, tue:2, wed:3, thu:4, fri:5 };
+
+function nextDates(dayKey, n = 3) {
+  const out = [], today = new Date(); today.setHours(0,0,0,0);
+  const target = DAY_IDX[dayKey];
+  for (let i = 1; out.length < n; i++) {
+    const d = new Date(today); d.setDate(today.getDate() + i);
+    if (d.getDay() === target) out.push(d);
+  }
+  return out;
+}
+const fmt = d => d.toLocaleDateString(undefined, { weekday:'short', month:'short', day:'numeric' });
+
+function daysPhrase(days) {
+  const long = days.map(d => DATA.dayLong[d]);
+  return long.length === 1 ? long[0] + 's' : long.map(s => s + 's').join(' and ');
+}
+
+/** Human date for an overlay week, e.g. "Aug 10-14". */
+function weekLabel(o) {
+  const a = pd(o.monday), b = pd(o.friday);
+  const mo = a.toLocaleDateString(undefined, { month:'short' });
+  const mo2 = b.toLocaleDateString(undefined, { month:'short' });
+  return mo === mo2 ? `${mo} ${a.getDate()}-${b.getDate()}` : `${mo} ${a.getDate()} - ${mo2} ${b.getDate()}`;
+}
+function pd(s) { const [y,m,d] = s.split('-').map(Number); return new Date(y, m-1, d); }
+
+function renderZip(r) {
+  const ex = DATA.overlay && DATA.overlay.zips[r.zip];
+  const wkStart = DATA.overlay ? pd(DATA.overlay.monday) : null;
+  const wkEnd = DATA.overlay ? pd(DATA.overlay.friday) : null;
+  const inWeek = d => wkStart && d >= wkStart && d <= wkEnd;
+
+  // Dates for the standing pattern. When an exception week applies, drop any date inside it —
+  // showing "Tue Aug 11" beside "that week we run Thursday" is a contradiction on the same card.
+  const dates = r.days.flatMap(d => nextDates(d, 3))
+    .sort((a,b) => a - b).filter(d => !(ex && inWeek(d))).slice(0, 3).map(fmt).join(' &middot; ');
+
+  let exBlock = '';
+  if (ex) {
+    // The concrete date of the exception day in that week, so nobody has to work it out.
+    const idx = { mon:0, tue:1, wed:2, thu:3, fri:4 }[ex.day];
+    const exDate = new Date(wkStart); exDate.setDate(wkStart.getDate() + idx);
+    exBlock = `<div class="ex"><b>Week of ${weekLabel(DATA.overlay)}: ${DATA.dayLong[ex.day]} (${fmt(exDate)})</b><br>
+      That week only — the routes were re-cut. Normally ${daysPhrase(r.days)}.</div>`;
+  }
+  return `<div class="card${ex ? ' hasex' : ''}">
+    <div class="day">${daysPhrase(r.days)}</div>
+    <div class="where">${r.zip} — ${r.cities.join(', ')}</div>
+    ${exBlock}
+    <div class="dates">${ex ? 'Other weeks' : 'Next route dates'}: <b>${dates}</b></div>
+    <div class="meta">Say the day, not a date or a technician — which tech runs a zip changes week to week.</div>
+  </div>`;
+}
+
+function renderCity(c) {
+  if (!c.ambiguous) {
+    const r = DATA.records.find(x => x.zip === c.zips[0]);
+    const detail = c.zips.length > 1
+      ? 'all ' + c.zips.length + ' zips are on the same day'
+      : c.zips[0];
+    return renderZip({ ...r, zip: c.label, cities: [detail], techFirst: c.techFirst });
+  }
+  const rows = c.zips.map(z => DATA.records.find(x => x.zip === z))
+    .sort((a,b) => a.zip.localeCompare(b.zip))
+    .map(r => `<li><b>${r.zip}</b> <span>${daysPhrase(r.days)}</span></li>`).join('');
+  return `<div class="card warn">
+    <div class="day">Ask for the zip code</div>
+    <div class="where">${c.label} covers ${c.zips.length} zips on different route days.</div>
+    <ul class="zips">${rows}</ul>
+    <div class="meta">Say: "Let me grab your zip so I give you the right day."</div>
+  </div>`;
+}
+
+/**
+ * The zip decides the day, so pull one out of whatever was typed before anything else. Someone
+ * reading an address off a call types the whole line — "1234 Main St, Bonney Lake, WA 98391" —
+ * and the zip is the last 5-digit group, not the first (that's the house number).
+ */
+function search(raw) {
+  const out = document.getElementById('out');
+  const s = raw.trim();
+  if (!s) { out.innerHTML = ''; return; }
+
+  const zipInText = (s.match(/(\d{5})(?!.*\d{5})/) || [])[1];
+  if (zipInText) {
+    const exact = DATA.records.find(r => r.zip === zipInText);
+    if (exact) { out.innerHTML = renderZip(exact); return; }
+    // We already have customers here — never tell the caller we don't serve them.
+    if (DATA.servedNoDay.includes(zipInText)) {
+      out.innerHTML = `<div class="card warn">
+        <div class="day">We have customers here</div>
+        <div class="where">${zipInText} — but no route day is assigned to it yet.</div>
+        <div class="meta"><b>Do not tell them we don't cover it.</b> Say: "We do work in your area —
+        let me confirm the day and call you right back today." Take the address and phone, then send
+        the zip to Spencer so it gets a day.</div>
+      </div>`;
+      return;
+    }
+    out.innerHTML = `<div class="card warn">
+      <div class="day">Not in our route grid</div>
+      <div class="where">${zipInText} isn't on any current route.</div>
+      <div class="meta">Take the full address and phone, tell them you'll confirm coverage and call back today. Do not say yes or no. Flag it to Spencer.</div>
+    </div>`;
+    return;
+  }
+
+  // Partial zip — still typing. Show the candidates rather than flashing "no match".
+  if (/^\d+$/.test(s)) {
+    if (s.length < 3) { out.innerHTML = ''; return; }
+    const partial = DATA.records.filter(r => r.zip.startsWith(s));
+    out.innerHTML = partial.length
+      ? partial.slice(0, 12).map(renderZip).join('')
+      : `<div class="card warn"><div class="day">Keep typing</div>
+          <div class="where">No zip starts with ${s}. Ours all begin 98 or 99.</div></div>`;
+    return;
+  }
+
+  // No zip anywhere — fall back to city. Match any word in what was typed, so a pasted
+  // address without a zip ("1234 Main St, Bonney Lake, WA") still finds the city.
+  const q = s.toLowerCase();
+  const matched = DATA.cities.filter(c => {
+    const label = c.label.toLowerCase();
+    return q.includes(label) || label.startsWith(q);
+  });
+  // The grid carries several spellings of the same place ("Bonney Lake/BonneyLake/bonney"), which
+  // would otherwise show as two or three identical cards. Same zips = same place; keep the
+  // best-spelled label.
+  const bySig = new Map();
+  for (const c of matched) {
+    const sig = c.zips.join(',');
+    const prev = bySig.get(sig);
+    if (!prev || c.label.length > prev.label.length) bySig.set(sig, c);
+  }
+  const hits = [...bySig.values()];
+  out.innerHTML = hits.length
+    ? hits.slice(0, 6).map(renderCity).join('')
+    : `<div class="card warn"><div class="day">No match</div>
+        <div class="where">Nothing matching "${raw}".</div>
+        <div class="meta">Ask the caller for their zip code — that's what decides the day.</div></div>`;
+}
+
+const box = document.getElementById('q');
+box.addEventListener('input', e => search(e.target.value));
+</script>

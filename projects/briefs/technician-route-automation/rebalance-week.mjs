@@ -134,16 +134,65 @@ for (let d = FROM; d <= TO; d = addDays(d, 1)) days.push(d);
 // trip. Nothing in the API tells it "we work five days" (the daily work-time cap is web-UI only on
 // this account). The region rhythm does: every tech's regions together span all five days, so
 // pinning each visit to its region's days produces a five-day week by construction.
-const RHYTHM = {};
+// Two regions may SHARE a zip list and be told apart by the stop's coordinates — that is a
+// geoSplit, and it exists because Spencer's boundaries are highways, which cut through zips.
+// Olympia is the live case: 98501/98502/98503/98513 all straddle the I-5 / US-101 line, so a
+// zip->days map alone would put a third of the Olympia work on the wrong day. Both sides of a
+// geoSplit always have the SAME owner, so this only ever decides the DAY, never the technician.
+const RHYTHM = {};                 // zip -> days (single-region zips; kept for the guard below)
+const RHYTHM_BY_REGION = {};       // region name -> days
+const ZIP_REGIONS = {};            // zip -> [region names]
+let REGION_DEF = {}, GEO_LINES = {};
+const geoFallback = [], geoUnknown = [], dayOverrideHits = [];
+let DAY_OVERRIDES = {};
+let geoCache = { entries: {} };
 try {
   const T = JSON.parse(fs.readFileSync(path.join(__dirname, 'territories.json'), 'utf8'));
+  REGION_DEF = T.regions; GEO_LINES = T.geoSplitLines || {};
+  DAY_OVERRIDES = Object.fromEntries(Object.entries(T.dayOverrides || {}).filter(([k]) => !k.startsWith('_')));
   for (const [name, r] of Object.entries(T.regions)) {
     const wd = (r.rhythm || '').toLowerCase().match(/mon|tue|wed|thu|fri/g) || [];
-    for (const z of r.zips) RHYTHM[z] = wd;
+    RHYTHM_BY_REGION[name] = wd;
+    for (const z of r.zips) {
+      (ZIP_REGIONS[z] = ZIP_REGIONS[z] || []).push(name);
+      RHYTHM[z] = RHYTHM[z] ? [...new Set([...RHYTHM[z], ...wd])] : wd;
+    }
   }
+  if (Object.keys(GEO_LINES).length) ({ loadCache: geoCache } = {}, geoCache = (await import('./geo-side.mjs')).loadCache());
 } catch { /* no territory file -> fall back to the full window */ }
-function allowedFor(zip) {
-  const wd = RHYTHM[zip];
+const streetOf = w => w.visit?.property?.address?.street || '';
+
+// Which region does this visit belong to? Only interesting when a zip is shared by a geoSplit pair.
+async function regionForVisit(w, zip) {
+  const regs = ZIP_REGIONS[zip];
+  if (!regs || !regs.length) return null;
+  if (regs.length === 1) return regs[0];
+  const split = regs.filter(n => {
+    const gs = REGION_DEF[n]?.geoSplit;
+    return gs && (!gs.appliesToZips || gs.appliesToZips.includes(zip));
+  });
+  if (split.length < 2) return regs[0];
+  const lineName = REGION_DEF[split[0]].geoSplit.line;
+  const line = GEO_LINES[lineName];
+  if (!line) return split[0];
+  const { sideOf } = await import('./geo-side.mjs');
+  const { side, source } = sideOf(lineName, line, streetOf(w), zip, geoCache);
+  if (source === 'none') { geoUnknown.push(`#${w.job} ${streetOf(w)} ${zip}`); return split[0]; }
+  if (source === 'fallback') geoFallback.push(`#${w.job} ${streetOf(w)} ${zip} -> ${side}`);
+  return split.find(n => REGION_DEF[n].geoSplit.side === side) || split[0];
+}
+async function allowedForVisit(w) {
+  const zip = zipOf(w);
+  // A dayOverride pins ONE job to a weekday, beating its region's rhythm. For a property that sits
+  // inside one region's zip but belongs on another region's run — Argus Ranch is in Auburn 98092
+  // (Robert's Monday) but out at Lake Holm on the Enumclaw side, so it rides Tuesday.
+  const ov = DAY_OVERRIDES[String(w.job)];
+  if (ov?.day) {
+    const dates = days.filter(d => dowOf(d) === ov.day.toLowerCase());
+    if (dates.length) { dayOverrideHits.push(`#${w.job} -> ${ov.day}`); return dates; }
+  }
+  const region = await regionForVisit(w, zip);
+  const wd = region ? RHYTHM_BY_REGION[region] : RHYTHM[zip];
   if (!wd || !wd.length) return null;
   const dates = days.filter(d => wd.includes(dowOf(d)));
   return dates.length ? dates : null;
@@ -152,12 +201,15 @@ function allowedFor(zip) {
 // just the whole week again. So the DAY is chosen here, greedily onto the least-loaded rhythm day
 // for that tech, and each order is then pinned to it. OptimoRoute is left to do the thing it is
 // genuinely good at and cannot get wrong: sequencing within a day.
-function chooseDays(want) {
+async function chooseDays(want) {
   const load = {};                       // tech -> date -> minutes
   const pick = {};                       // orderNo -> date
   const entries = Object.entries(want).filter(([, w]) => !w.isSet && w.address);
   // Heaviest regions first so the constrained ones settle before the flexible ones fill the gaps.
-  entries.sort((a, b) => (allowedFor(zipOf(a[1]))?.length || 9) - (allowedFor(zipOf(b[1]))?.length || 9));
+  // Resolve each visit's allowed days up front — geoSplit regions need an async address lookup.
+  const allowedBy = new Map();
+  for (const [orderNo, w] of entries) allowedBy.set(orderNo, await allowedForVisit(w));
+  entries.sort((a, b) => (allowedBy.get(a[0])?.length || 9) - (allowedBy.get(b[0])?.length || 9));
   // Per-tech target for one day. The rhythm is a PREFERENCE, not a hard rule: Luke's rhythm put
   // Tacoma, Lakewood and Burien all on Tuesday, which stacked 59 visits on one day. When every
   // rhythm day for a region is already at target, the visit spills to that tech's emptiest day —
@@ -170,7 +222,7 @@ function chooseDays(want) {
   const overflow = [];
   for (const [orderNo, w] of entries) {
     const t = w.tech || 'UNASSIGNED';
-    const cands = allowedFor(zipOf(w));
+    const cands = allowedBy.get(orderNo);
     load[t] = load[t] || {};
     if (!cands) { overflow.push({ orderNo, why: 'zip has no region rhythm' }); continue; }
     // A visit NEVER leaves its region's days. Spilling overflow onto a tech's emptiest day is what
@@ -267,7 +319,7 @@ function printShape(title, s) {
   }
 }
 printShape('CURRENT day shape (visits):', shape({}));
-const chosen = chooseDays(want);
+const chosen = await chooseDays(want);
 printShape('PLANNED day shape (visits):', shape(chosen));
 
 const setCount = Object.values(want).filter(w => w.isSet).length;
@@ -358,6 +410,7 @@ if (unscheduled.length) console.log(`\n  NOTE: ${unscheduled.length} did not fit
   for (const [o, n] of Object.entries(now)) {
     const w = want[o];
     if (!w || w.isSet) continue;
+    if (DAY_OVERRIDES[String(w.job)]?.day) continue;   // pinned on purpose
     const zip = zipOf(w);
     const wd = RHYTHM[zip];
     if (!wd || !wd.length) continue;

@@ -1,0 +1,341 @@
+{
+ "ranAt": "2026-08-09T16:03:26.830Z",
+ "mode": "fix",
+ "plannedDays": [
+  "2026-08-10",
+  "2026-08-11",
+  "2026-08-12",
+  "2026-08-13",
+  "2026-08-14"
+ ],
+ "counts": {
+  "activeVisits": 572,
+  "scheduledStops": 570,
+  "missing": 5,
+  "dayDrift": 2,
+  "techDrift": 29,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 3
+ },
+ "missing": [
+  {
+   "orderNo": "5201-2281755782",
+   "job": "5201",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyODE3NTU3ODI=",
+   "date": "2026-08-14",
+   "hm": "00:00",
+   "tech": "Alias Franks",
+   "title": "Michelle Mueller - Job for Michelle Mueller",
+   "address": "45609 Southeast Edgewick Road, North Bend, Washington 98045",
+   "isSet": false
+  },
+  {
+   "orderNo": "7472-2281873423",
+   "job": "7472",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyODE4NzM0MjM=",
+   "date": "2026-08-14",
+   "hm": "00:00",
+   "tech": "Alias Franks",
+   "title": "Tino Perrina - 10707 and 10603 Upper Preston Road",
+   "address": "10603 Upper Preston Road Southeast, Issaquah, Washington 98027",
+   "isSet": false
+  },
+  {
+   "orderNo": "5004-2281301961",
+   "job": "5004",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyODEzMDE5NjE=",
+   "date": "2026-08-14",
+   "hm": "13:26",
+   "tech": "Alias Franks",
+   "title": "Wanda Neste",
+   "address": "7421 442nd Place Southeast, Snoqualmie, Washington 98065",
+   "isSet": false
+  },
+  {
+   "orderNo": "8224-2281716866",
+   "job": "8224",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyODE3MTY4NjY=",
+   "date": "2026-08-14",
+   "hm": "15:07",
+   "tech": "Alias Franks",
+   "title": "Kelsey Peck",
+   "address": "45720 Southeast 139th Place, North Bend, Washington 98045",
+   "isSet": false
+  },
+  {
+   "orderNo": "8213-2261158724",
+   "job": "8213",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNjExNTg3MjQ=",
+   "date": "2026-08-14",
+   "hm": "15:41",
+   "tech": "Alias Franks",
+   "title": "Cindy Kamrin",
+   "address": "3415 Northeast Madison Way, Issaquah, Washington 98029",
+   "isSet": false
+  }
+ ],
+ "dayDrift": [
+  {
+   "orderNo": "8261-2269705739",
+   "job": "8261",
+   "jobber": "2026-08-14",
+   "optimo": "2026-08-12",
+   "driver": "Cory Ventura"
+  },
+  {
+   "orderNo": "6275-1608836565",
+   "job": "6275",
+   "jobber": "2026-08-14",
+   "optimo": "2026-08-12",
+   "driver": "Cory Ventura"
+  }
+ ],
+ "techDrift": [
+  {
+   "orderNo": "7917-2176623407",
+   "job": "7917",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "4930-2278108541",
+   "job": "4930",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "7797-2090232032",
+   "job": "7797",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8103-2278166369",
+   "job": "8103",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8153-2248697643",
+   "job": "8153",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "7789-2261628786",
+   "job": "7789",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8155-2248823450",
+   "job": "8155",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8316-2277580038",
+   "job": "8316",
+   "date": "2026-08-12",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8243-2267080960",
+   "job": "8243",
+   "date": "2026-08-12",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "4701-1912566746",
+   "job": "4701",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Robert Norton"
+  },
+  {
+   "orderNo": "5676-2281906369",
+   "job": "5676",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Robert Norton"
+  },
+  {
+   "orderNo": "5022-2281906370",
+   "job": "5022",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Robert Norton"
+  },
+  {
+   "orderNo": "6396-1650177103",
+   "job": "6396",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8160-2250473081",
+   "job": "8160",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "7708-2281623443",
+   "job": "7708",
+   "date": "2026-08-14",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "5121-2281609994",
+   "job": "5121",
+   "date": "2026-08-14",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "8170-2253063671",
+   "job": "8170",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "5639-2281817044",
+   "job": "5639",
+   "date": "2026-08-14",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "7805-2281875717",
+   "job": "7805",
+   "date": "2026-08-14",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "7896-2162893020",
+   "job": "7896",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "5829-1912222269",
+   "job": "5829",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "6409-1655125376",
+   "job": "6409",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8067-2281875267",
+   "job": "8067",
+   "date": "2026-08-14",
+   "jobber": "Spencer Hill",
+   "optimo": "Luke LaVergne"
+  },
+  {
+   "orderNo": "4545-1912594495",
+   "job": "4545",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "5458-1770745578",
+   "job": "5458",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "6287-2119598722",
+   "job": "6287",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "7767-2075253886",
+   "job": "7767",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "7646-2025070090",
+   "job": "7646",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "5982-1911293150",
+   "job": "5982",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Cory Ventura"
+  }
+ ],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "5676-2262278695",
+   "date": "2026-08-12",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "09:59"
+  },
+  {
+   "orderNo": "7306-2269977765",
+   "date": "2026-08-12",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "11:43"
+  },
+  {
+   "orderNo": "8056-2275615159",
+   "date": "2026-08-14",
+   "driver": "Luke LaVergne",
+   "driverSerial": "Luke LaVergne",
+   "hm": "09:01"
+  }
+ ],
+ "fixes": [
+  {
+   "day": "2026-08-14",
+   "writable": true,
+   "created": [
+    "5201-2281755782",
+    "7472-2281873423",
+    "5004-2281301961",
+    "8224-2281716866",
+    "8213-2261158724"
+   ],
+   "replanned": true,
+   "writes": [],
+   "failures": [],
+   "aborted": null
+  }
+ ]
+}

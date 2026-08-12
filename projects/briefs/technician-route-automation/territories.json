@@ -1,7 +1,61 @@
 {
-  "version": "2026-08-06b",
-  "_comment": "TERRITORY MAP v7 — replaces the zip->day->tech grid (territory-grid v1..v6). A region is a named area a tech OWNS; the tech is a property of the region, not of a zip's day. Built 2026-08-06 from measured volume (region-capacity.mjs, 2026-07-27..08-07: 537 visits/wk, 155.2 h) and measured commute (tech-home-infer.mjs: the drive to stop #1 is 22% of all weekly miles). Assignment minimises that commute subject to balanced hours, with one Spencer override: Cory does NOT take the Plateau even though he lives 6 mi from it, because he is remediating Cammeron's work — and keeping Robert on the Plateau/Auburn belt puts the new tech nearest to both Cory and Spencer for support. That override costs ~69 mi/wk against the pure-mileage cut and is worth revisiting once Robert is established.",
-  "_supersedes": "territory-grid-v5.json (day-pinning by zip). push-week --grid should no longer pin days from that file.",
+  "version": "2026-08-07-v8-highway",
+  "_comment": "TERRITORY MAP v8 — REBUILT ON SPENCER'S HIGHWAY BOUNDARIES. v7 grouped zips into regions by pattern-matching CITY NAMES, which is why three techs were working Seattle on the same Tuesday and neighbouring houses were owned by different people. Spencer's actual rule (CLAUDE.local.md 2026-08-06, authoritative) is FOUR territories bounded by highways, one owner each, no shared ground: (1) north of I-90, (2) I-90 south to SR-18, (3) SR-18 to SR-410 running west along SR-167 to Tacoma/I-705, (4) from I-705 west and south. Highways cut THROUGH cities — Seattle is two territories, Bellevue is two, Issaquah is two — so the unit here is the ZIP, placed by which side of the line it sits on, never by its city label. Volume is measured, not assumed: zip-census.mjs over the live Jobber board 2026-07-27..08-07, 1,074 visits = 537/wk across 110 zips.",
+  "_supersedes": "territories.json v7 (2026-08-06b, city-name regions) and territory-grid v1..v6 (zip->day pinning). push-week --grid should not pin days from any grid file.",
+  "_boundaryRules": {
+    "T1_T2_line": "I-90, EXCEPT through Bellevue where it runs north to NE 8th St (Spencer 2026-08-06). CORRECTED 2026-08-07: the first reading of this put Medina 98039 and all of 98004 in T2, but Medina, Clyde Hill and Yarrow Point all sit NORTH of NE 8th and therefore belong to T1/Alias. T2 keeps Mercer Island 98040 (south of I-90), south Bellevue 98006, and the part of 98004 south of NE 8th (downtown/west Bellevue). 98004 straddles the line, so it is resolved per address by the `bellevue-ne8th` geoSplit — and because that split changes the OWNER, not just the day, assign-by-territory resolves it too.",
+    "seattle_split": "I-90. North (98103/98105/98107/98112/98115/98117/98122/98125/98133/98177/98199) = T1. South (98106/98108/98116/98118/98126/98136/98144/98146/98178) = T2. 98122 straddles; its mass is north.",
+    "issaquah_split": "I-90. 98029 Issaquah Highlands = T1. 98027 Issaquah proper/south = T2.",
+    "snoqualmie_valley": "T1 in full — North Bend 98045, Fall City 98024, Carnation 98014, Snoqualmie 98065. Confirmed by Spencer 2026-08-07. The valley sits on I-90 east of the SR-18 junction so the line does not resolve it; keeping it as one unit connects it to the Woodinville/Redmond ground.",
+    "kent": "T3 — 98030, 98031, 98032. Confirmed by Spencer 2026-08-07, following the 'west along SR-167' wording, even though Kent sits north of SR-18.",
+    "98042": "T2 — confirmed by Spencer 2026-08-07. Jobber labels it Kent on 22 of 34 visits but the ground is the Lake Meridian/Covington block, continuous with Maple Valley 98038.",
+    "graham_orting": "T4 — 98338, 98360, 98328, 98580. Confirmed by Spencer 2026-08-07, per his original territory list, though they sit adjacent to T3's Bonney Lake and Sumner.",
+    "federal_way": "T3 BY THE RULE, but TEMPORARILY LENT TO LUKE (T4). Spencer 2026-08-07: Robert landed at 154 visits in his first week back against Luke's 103, so 98003/98023 (~7.5/wk) run off Luke's Friday until Robert's load settles. THIS IS AN OVERRIDE, NOT THE BOUNDARY — Federal Way belongs to T3 and goes back to Robert when the load evens out. Des Moines 98198 stays T2.",
+    "_reviewFederalWay": "CONFIRMED KEPT ON LUKE by Spencer 2026-08-07, after being shown that the premise was partly wrong: the loan was proposed off VISIT COUNTS (Robert 154 vs Luke 103), but on the planned week Luke is the heaviest tech in HOURS (45.2 vs Robert 42.1) because peninsula and Thurston stops cost 11-18 min each to reach. Spencer chose to keep the loan anyway to protect Robert's first week back. Revisit after Robert has a settled week. Restoring it = move 98003/98023 back into 'Puyallup / Edgewood / Milton' and delete the 'Federal Way (on loan to T4)' region.",
+    "_lesson": "Never compare tech load by visit count on this board. Drive-min/stop ranges from 4.5 (Burien) to 18 (peninsula), so 111 visits can outweigh 146. Compare hoursPerWeek."
+  },
+  "_knownCosts": {
+    "techsOutsideOwnTerritory": "Robert Norton's home (Maple Valley 98038) falls in T2 and Luke LaVergne's (Puyallup 98373) falls in T3. Both are 12-15 min from their own ground, but drive-to-first-job is a measured 22% of all weekly miles, so this is the exact cost the territory design targets. Revisit if either commute shows up in week-miles.",
+    "coryCommute": "Cory lives in Buckley 98321 (T3) and owns T2 (Renton/Bellevue/Burien) until 2026-08-16 — a 45-60 min commute that the highway map makes worse, not better, since he also picks up Mercer Island and Medina. Self-resolving on 08-17 when Tavis takes T2. CAPTURE TAVIS'S HOME ADDRESS BEFORE THEN.",
+    "capacity": "All four territories run at or over 40 h/wk once the measured ~9 h/wk of drive-to-first-job is added. That is a capacity fact, not a boundary fact — it does not move any line.",
+    "dataDefect": "Zip 98363 (2 visits) is a Port Angeles zip sitting on a Puyallup address — job #7723 Chad Peterson. Unroutable until the zip is corrected in Jobber."
+  },
+  "geoSplitLines": {
+    "_comment": "A geoSplit lets two regions SHARE a zip list and be told apart by the stop's actual coordinates. Needed because highway boundaries cut through zips — 98501, 98502, 98503 and 98513 each straddle the I-5/US-101 line, so a zip rule would misplace about a third of the Olympia work. Membership is resolved per address by geo-side.mjs; the answer is cached in geo-side-cache.json, refreshed with `node thurston-split.mjs --write-cache`. An address with no cached side falls back to `fallbackSide` for its zip and is logged, so a brand-new customer never blocks a plan.",
+    "thurston-i5-101": {
+      "description": "Spencer 2026-08-07: Olympia day one = north of I-5 and north of US-101; day two = south of both. East of the Tumwater junction the boundary is the I-5 corridor running WSW->ENE to Nisqually; west of it, the US-101 corridor running SE->NW toward Shelton.",
+      "segments": [
+        { "corridor": "I-5", "appliesWhenLonAtLeast": -122.905, "from": { "lat": 46.9950, "lon": -122.9050 }, "to": { "lat": 47.0550, "lon": -122.7000 } },
+        { "corridor": "US-101", "appliesWhenLonBelow": -122.905, "from": { "lat": 47.0200, "lon": -122.9050 }, "to": { "lat": 47.0700, "lon": -123.0100 } }
+      ],
+      "fallbackSide": {
+        "98506": "NORTH", "98516": "NORTH", "98502": "NORTH",
+        "98512": "SOUTH", "98513": "SOUTH", "98501": "SOUTH", "98503": "SOUTH"
+      },
+      "measured": "2026-08-10..14 plan: 14 stops north, 22 south (20 south once Yelm moved to the Eatonville day)."
+    },
+    "sr-516": {
+      "description": "Spencer 2026-08-07: 'the Cory versus Robert dividing line on Monday should be 516. Cory gets everything north of 516, all the way from I-5 to Landsburg southeast, and Robert takes everything south of that.' SR-516 runs Des Moines (I-5) -> Kent (Willis St / Kent-Kangley) -> Covington -> Maple Valley (SR-169) -> Landsburg. It cuts through Kent 98030/98031/98032, Covington 98042 and Maple Valley 98038, so those five zips are resolved per address. REFINES the 2026-08-07 'Kent -> Robert' call: Kent is no longer wholly Robert's, it splits at 516.",
+      "crossesOwners": true,
+      "segments": [
+        { "corridor": "SR-516 Des Moines-Kent", "appliesWhenLonAtLeast": -122.2960, "appliesWhenLonBelow": -122.2320, "from": { "lat": 47.3820, "lon": -122.2960 }, "to": { "lat": 47.3790, "lon": -122.2320 } },
+        { "corridor": "SR-516 Kent-Kangley", "appliesWhenLonAtLeast": -122.2320, "appliesWhenLonBelow": -122.1560, "from": { "lat": 47.3790, "lon": -122.2320 }, "to": { "lat": 47.3830, "lon": -122.1560 } },
+        { "corridor": "SR-516 Covington", "appliesWhenLonAtLeast": -122.1560, "appliesWhenLonBelow": -122.1000, "from": { "lat": 47.3830, "lon": -122.1560 }, "to": { "lat": 47.3660, "lon": -122.1000 } },
+        { "corridor": "SR-516 Maple Valley", "appliesWhenLonAtLeast": -122.1000, "appliesWhenLonBelow": -122.0400, "from": { "lat": 47.3660, "lon": -122.1000 }, "to": { "lat": 47.3680, "lon": -122.0400 } },
+        { "corridor": "SR-516 Landsburg", "appliesWhenLonAtLeast": -122.0400, "from": { "lat": 47.3680, "lon": -122.0400 }, "to": { "lat": 47.3810, "lon": -121.9700 } }
+      ],
+      "fallbackSide": { "98038": "NORTH", "98031": "NORTH", "98032": "NORTH", "98030": "SOUTH", "98042": "SOUTH" }
+    },
+    "bellevue-ne8th": {
+      "description": "Spencer 2026-08-06 amendment, corrected 2026-08-07: the T1/T2 line runs north to NE 8th St in Bellevue. Zip 98004 straddles it — Clyde Hill and Yarrow Point sit NORTH (Alias, T1), downtown/west Bellevue sits SOUTH (Cory, T2). NOTE this split crosses TECHNICIANS, not just days, so assign-by-territory resolves it too. NE 8th St runs east-west at latitude ~47.6178.",
+      "crossesOwners": true,
+      "segments": [
+        { "corridor": "NE 8th St", "from": { "lat": 47.6178, "lon": -122.2400 }, "to": { "lat": 47.6178, "lon": -122.1700 } }
+      ],
+      "fallbackSide": { "98004": "SOUTH" },
+      "note": "Fallback is SOUTH because downtown Bellevue is the bulk of 98004; an unknown new address defaults to Cory and is logged."
+    }
+  },
   "optimoRouteDrivers": {
     "_comment": "Driver records CONFIRMED to exist in OptimoRoute. Serials on this account are the full name. get_drivers returns AUTH_KEY_UNKNOWN and get_routes only reveals drivers that already have stops, so a driver with no routes is otherwise invisible — this list is what stops the sync pre-flight false-flagging them. THIS LIST IS HAND-MAINTAINED AND CAN GO STALE: it wrongly reported Robert Norton missing on 2026-08-06 minutes after Spencer created him. If the pre-flight flags someone you believe exists, probe live before believing the list (assign one order to that serial and read the response — ERR_DRV_NOT_EXISTS is definitive). create_driver is not available on this API key, so new drivers are added in the OptimoRoute UI.",
     "confirmed": [
@@ -16,30 +70,37 @@
     "missing": []
   },
   "roster": {
-    "Robert Norton": {
-      "home": "Maple Valley 98038",
+    "Alias Franks": {
+      "home": "Snohomish 98296",
       "status": "field",
-      "startsInField": "2026-08-10",
-      "note": "Returning. Existing ACTIVATED Jobber user. 24 of his historical customers fall inside his new territory (Enumclaw 11, Black Diamond 5, Ravensdale 3, Buckley 3, Bonney Lake 1, Auburn 1) — continuity is preserved, not broken, by giving him this belt."
+      "territory": "T1 — north of I-90",
+      "note": "Home zip 98296 is inside his own territory."
+    },
+    "Cory Ventura": {
+      "home": "Buckley 98321",
+      "status": "field-until-2026-08-16",
+      "territory": "T2 — I-90 south to SR-18",
+      "note": "Steps out of the field when Tavis returns. Home is in T3, not his own territory — see _knownCosts.coryCommute."
     },
     "Tavis Alexander": {
       "home": "unknown",
       "status": "field",
       "startsInField": "2026-08-17",
-      "note": "Returning 2026-08-17 into the arc Cory holds until then. His 1,032 existing forward assignments are from the OLD territories and are being re-sorted by region — he inherits whatever lands in his arc, not what he was previously assigned."
+      "territory": "T2 — I-90 south to SR-18 (from Cory)",
+      "note": "Returning 2026-08-17. His 1,032 existing forward assignments are from the OLD territories and are re-sorted by region — he inherits T2, not what he was previously assigned. Home address still unknown; capture it before 08-17 so the commute can be measured."
+    },
+    "Robert Norton": {
+      "home": "Maple Valley 98038",
+      "status": "field",
+      "startsInField": "2026-08-10",
+      "territory": "T3 — SR-18 to SR-410, west along SR-167 to I-705",
+      "note": "Returning. Existing ACTIVATED Jobber user. 24 of his historical customers fall inside this territory (Enumclaw 11, Black Diamond 5, Ravensdale 3, Buckley 3, Bonney Lake 1, Auburn 1) — continuity is preserved. Home zip is in T2, ~15 min from his own ground."
     },
     "Luke LaVergne": {
       "home": "Puyallup 98373",
-      "status": "field"
-    },
-    "Alias Franks": {
-      "home": "Snohomish 98296",
-      "status": "field"
-    },
-    "Cory Ventura": {
-      "home": "Buckley 98321",
-      "status": "field-until-2026-08-16",
-      "note": "Steps out of the field when Tavis returns. Holds the Kent/Renton/Sammamish/Snoqualmie arc until 2026-08-16."
+      "status": "field",
+      "territory": "T4 — from I-705 west and south",
+      "note": "Home zip is in T3, ~12 min from Tacoma."
     },
     "Cammeron Anderson": {
       "status": "left-2026-08-07",
@@ -47,7 +108,7 @@
     },
     "Spencer Hill": {
       "status": "out-of-field-2026-07-29",
-      "note": "208 forward visits still assigned. Keeps jobOverride #8056 Madera West Condos only."
+      "note": "Out of the field. NOTHING is pinned to him as of 2026-08-07 (Spencer: 'nothing should be pinned to me') — the #8056 Madera West Condos override was removed. His forward visits were re-sorted to territory owners on 2026-08-07; assign-by-territory took him from 93 forward visits to 2."
     }
   },
   "handovers": [
@@ -56,335 +117,297 @@
       "from": "Cory Ventura",
       "to": "Tavis Alexander",
       "regions": [
-        "Kent / Covington / Maple Valley",
+        "North of SR-516 (Des Moines / Kent North / Maple Valley)",
         "Renton / Newcastle",
-        "Sammamish / Issaquah",
-        "Snoqualmie Valley"
+        "Bellevue South / Mercer Island",
+        "Issaquah South",
+        "West Seattle / White Center / Burien / Normandy Park",
+        "Tukwila / Skyway / Rainier Valley"
       ],
-      "note": "Territory does not move — only the name on it. Visits on or after this date go to Tavis; before it, Cory."
+      "note": "Territory 2 does not move — only the name on it. Visits on or after this date go to Tavis; before it, Cory."
     }
   ],
   "regions": {
-    "Plateau (Enumclaw/Buckley/Bonney Lake)": {
-      "owner": "Robert Norton",
-      "zips": [
-        "98022",
-        "98321",
-        "98391",
-        "98390",
-        "98010",
-        "98051"
-      ],
-      "visitsPerWeek": 76,
-      "hoursPerWeek": 19.8,
-      "driveMinPerStop": 5,
-      "daysPerWeek": 3,
-      "rhythm": "mon + wed + fri",
-      "note": "Largest region on the board. Three separate runs, spread across the week."
-    },
-    "Auburn / Federal Way": {
-      "owner": "Robert Norton",
-      "zips": [
-        "98001",
-        "98002",
-        "98003",
-        "98023",
-        "98092",
-        "98047"
-      ],
-      "visitsPerWeek": 29,
-      "hoursPerWeek": 8,
+    "Points / NE 8th / Kirkland": {
+      "territory": "T1 — north of I-90",
+      "owner": "Alias Franks",
+      "zips": ["98039", "98004", "98005", "98007", "98008", "98033", "98034", "98011", "98021", "98296"],
+      "geoSplit": { "line": "bellevue-ne8th", "side": "NORTH", "appliesToZips": ["98004"] },
+      "visitsPerWeek": 30,
+      "hoursPerWeek": 8.4,
       "driveMinPerStop": 6,
       "daysPerWeek": 1,
-      "rhythm": "tue"
+      "rhythm": "mon",
+      "note": "Spencer 2026-08-07: 'Alias on Mondays going down into Yarrow Point, Clyde Hill, Medina, Bellevue, all the way to NE 8th, then along NE 8th over to Rose Hill and West Lake Sammamish Parkway.' Runs as a north-to-south arc that starts at Alias's own door — Snohomish/Bothell, then Kirkland/Rose Hill, then Bellevue north of NE 8th, then the Points. MEDINA 98039 AND THE NORTH HALF OF 98004 (Clyde Hill, Yarrow Point) MOVED HERE FROM CORY on 2026-08-07: both sit north of NE 8th, so the 8/6 amendment had them on the wrong side. Woodinville and Cottage Lake moved OFF this day to Wednesday."
     },
-    "Puyallup / Edgewood": {
+    "North Seattle / Shoreline": {
+      "territory": "T1 — north of I-90",
+      "owner": "Alias Franks",
+      "zips": ["98103", "98105", "98107", "98109", "98112", "98115", "98117", "98122", "98125", "98133", "98155", "98177", "98199", "98028", "98020", "98026"],
+      "visitsPerWeek": 24,
+      "hoursPerWeek": 6.6,
+      "driveMinPerStop": 6,
+      "daysPerWeek": 1,
+      "rhythm": "tue",
+      "note": "Everything north of I-90 inside the city, plus Lake Forest Park, Kenmore and the Edmonds tail. 98122 straddles I-90; its mass is north."
+    },
+    "Redmond / Woodinville / Cottage Lake": {
+      "territory": "T1 — north of I-90",
+      "owner": "Alias Franks",
+      "zips": ["98052", "98053", "98072", "98077"],
+      "visitsPerWeek": 32.5,
+      "hoursPerWeek": 9.1,
+      "driveMinPerStop": 6,
+      "daysPerWeek": 1,
+      "rhythm": "wed",
+      "note": "Spencer 2026-08-07: 'Woodinville and Cottage Lake should get moved over to Wednesday', and Redmond stays on Wednesday. One block up SR-202 from Redmond to Woodinville and Cottage Lake. Overflow falls to Thursday's Snoqualmie route, which is the adjacent ground up SR-203."
+    },
+    "Snoqualmie Valley / Duvall": {
+      "territory": "T1 — north of I-90",
+      "owner": "Alias Franks",
+      "zips": ["98014", "98024", "98045", "98065", "98019"],
+      "visitsPerWeek": 31.5,
+      "hoursPerWeek": 9.2,
+      "driveMinPerStop": 7,
+      "daysPerWeek": 1,
+      "rhythm": "thu",
+      "note": "Moved from Cory to Alias 2026-08-07 (Spencer). Kept as one unit rather than split at I-90 — two drives up SR-202 costs more than the boundary is worth. DUVALL 98019 added 2026-08-07: Spencer designated this day as the overflow catcher for Wednesday ('if there's overflow on Alias's Wednesday route, like Carnation and Duvall, those jobs can fall onto his Snoqualmie route the next day'), and Duvall sits on SR-203 directly between Woodinville and Carnation."
+    },
+    "Sammamish / Issaquah Highlands": {
+      "territory": "T1 — north of I-90",
+      "owner": "Alias Franks",
+      "zips": ["98074", "98075", "98029"],
+      "visitsPerWeek": 28.5,
+      "hoursPerWeek": 7.4,
+      "driveMinPerStop": 5,
+      "daysPerWeek": 1,
+      "rhythm": "fri",
+      "note": "Moved from Cory to Alias — north of I-90. 98027 (Issaquah proper/south) stays T2."
+    },
+
+    "North of SR-516 (Des Moines / Kent North / Maple Valley)": {
+      "territory": "T2 — I-90 south to SR-18",
+      "owner": "Cory Ventura",
+      "ownerFrom20260817": "Tavis Alexander",
+      "zips": ["98038", "98042", "98030", "98031", "98032", "98198"],
+      "geoSplit": { "line": "sr-516", "side": "NORTH", "appliesToZips": ["98038", "98042", "98030", "98031", "98032"] },
+      "visitsPerWeek": 33,
+      "hoursPerWeek": 8.9,
+      "driveMinPerStop": 6,
+      "daysPerWeek": 1,
+      "rhythm": "mon",
+      "note": "Heaviest single day on the board, but the tightest ground (6 min/stop) so the day is cheap per stop. 98042 confirmed T2 by Spencer 2026-08-07 despite its Kent label."
+    },
+    "Renton / Newcastle": {
+      "territory": "T2 — I-90 south to SR-18",
+      "owner": "Cory Ventura",
+      "ownerFrom20260817": "Tavis Alexander",
+      "zips": ["98055", "98056", "98057", "98058", "98059"],
+      "visitsPerWeek": 39,
+      "hoursPerWeek": 9.9,
+      "driveMinPerStop": 5,
+      "daysPerWeek": 2,
+      "rhythm": "thu + fri",
+      "note": "Two days at opposite ends of the week so a new caller is never far from the next run."
+    },
+    "Bellevue South / Mercer Island": {
+      "territory": "T2 — I-90 south to SR-18",
+      "owner": "Cory Ventura",
+      "ownerFrom20260817": "Tavis Alexander",
+      "zips": ["98004", "98006", "98040"],
+      "geoSplit": { "line": "bellevue-ne8th", "side": "SOUTH", "appliesToZips": ["98004"] },
+      "visitsPerWeek": 17,
+      "hoursPerWeek": 4.4,
+      "driveMinPerStop": 5,
+      "daysPerWeek": 1,
+      "rhythm": "wed",
+      "note": "The Bellevue amendment (Spencer 2026-08-06), corrected 2026-08-07: the T1/T2 line runs north to NE 8th St, so T2 keeps Mercer Island, south Bellevue 98006 and the part of 98004 SOUTH of NE 8th (downtown/west Bellevue). MEDINA 98039 AND THE NORTH HALF OF 98004 (Clyde Hill, Yarrow Point) WENT TO ALIAS — they sit north of NE 8th and were on the wrong side of the line."
+    },
+    "Issaquah South": {
+      "territory": "T2 — I-90 south to SR-18",
+      "owner": "Cory Ventura",
+      "ownerFrom20260817": "Tavis Alexander",
+      "zips": ["98027"],
+      "visitsPerWeek": 7.5,
+      "hoursPerWeek": 1.9,
+      "driveMinPerStop": 5,
+      "daysPerWeek": 1,
+      "rhythm": "wed",
+      "note": "Rides the Bellevue South day — same I-90 corridor, 10 min apart."
+    },
+    "West Seattle / White Center / Burien / Normandy Park": {
+      "territory": "T2 — I-90 south to SR-18",
+      "owner": "Cory Ventura",
+      "ownerFrom20260817": "Tavis Alexander",
+      "zips": ["98136", "98116", "98126", "98106", "98108", "98144", "98146", "98166", "98148", "98158"],
+      "visitsPerWeek": 31.5,
+      "hoursPerWeek": 7.9,
+      "driveMinPerStop": 4.5,
+      "daysPerWeek": 1,
+      "rhythm": "tue",
+      "note": "Spencer 2026-08-07: 'If he's going to be doing that West Seattle, White Center, Burien corridor, this Normandy Park stuff and the Burien stuff should all be on that day.' One continuous coastal strip from Fauntleroy down to Des Moines — Fauntleroy runs straight into White Center and Burien. Replaces the old 'Burien / White Center / West Seattle' region, which left Des Moines and SeaTac on a different day and produced the White-Center-to-Des-Moines drive."
+    },
+    "Tukwila / Skyway / Rainier Valley": {
+      "territory": "T2 — I-90 south to SR-18",
+      "owner": "Cory Ventura",
+      "ownerFrom20260817": "Tavis Alexander",
+      "zips": ["98188", "98168", "98178", "98118"],
+      "visitsPerWeek": 12,
+      "hoursPerWeek": 3.0,
+      "driveMinPerStop": 4.5,
+      "daysPerWeek": 1,
+      "rhythm": "fri",
+      "note": "Spencer 2026-08-07: 'Tukwila, Skyway, Rainier Valley and Beacon Hill should all be one day instead of two.' The inner-south corridor east of I-5, distinct from the coastal strip. Shares Friday with the second Renton run — Skyway sits directly between Renton and Beacon Hill, so that pairing is contiguous, not a cross-town drive."
+    },
+
+    "South of SR-516 (Auburn / Kent South / Pacific)": {
+      "territory": "T3 — SR-18 to SR-410, west along SR-167",
       "owner": "Robert Norton",
-      "zips": [
-        "98371",
-        "98372",
-        "98373",
-        "98374",
-        "98375",
-        "98354"
-      ],
-      "visitsPerWeek": 28,
-      "hoursPerWeek": 7.2,
+      "zips": ["98092", "98001", "98002", "98047", "98030", "98031", "98032", "98038", "98042"],
+      "geoSplit": { "line": "sr-516", "side": "SOUTH", "appliesToZips": ["98038", "98042", "98030", "98031", "98032"] },
+      "visitsPerWeek": 38,
+      "hoursPerWeek": 10.5,
+      "driveMinPerStop": 6,
+      "daysPerWeek": 1,
+      "rhythm": "mon",
+      "note": "Everything SOUTH of SR-516 between I-5 and Landsburg (Spencer 2026-08-07). Auburn alone is 21 stops, which made this a 10.1h Monday, so it runs TWO days — Monday and Wednesday. REVERTED to Monday-only 2026-08-07: spilling Auburn onto Wednesday collided with the Buckley/Bonney Lake block, which already runs wed+fri — Wednesday hit 10.3h and Monday fell to 6.2h. Robert has FOUR regions needing SIX region-days across five days, so two regions must share a day; the arithmetic is 140.5 visits / 5 = 28.1 per day, and Auburn/Kent-South alone is 38. A 9.8h Monday is the cost of keeping every other day a single tight area. Wednesday already carries Bonney Lake and Sumner, which sit next door on SR-167, so the pairing is contiguous. Kent is no longer wholly Robert's: the 516 line splits it, north to Cory."
+    },
+    "Enumclaw / Black Diamond / Ravensdale": {
+      "territory": "T3 — SR-18 to SR-410, west along SR-167",
+      "owner": "Robert Norton",
+      "zips": ["98022", "98010", "98051"],
+      "visitsPerWeek": 26,
+      "hoursPerWeek": 6.9,
+      "driveMinPerStop": 5.4,
+      "daysPerWeek": 1,
+      "rhythm": "tue",
+      "note": "Spencer 2026-08-07: 'Enumclaw to Black Diamond and Ravensdale should all be one day on its own, separate from Buckley, Bonney Lake and Lake Tapps.' The SR-169 / SR-410 east arc. Buckley moved OUT to the Bonney Lake day."
+    },
+    "Buckley / Bonney Lake / Lake Tapps / Sumner": {
+      "territory": "T3 — SR-18 to SR-410, west along SR-167",
+      "owner": "Robert Norton",
+      "zips": ["98391", "98390", "98321"],
+      "visitsPerWeek": 50,
+      "hoursPerWeek": 13.3,
+      "driveMinPerStop": 5.4,
+      "daysPerWeek": 2,
+      "rhythm": "wed + fri",
+      "note": "Spencer 2026-08-07: Buckley belongs with Bonney Lake and Lake Tapps, not with Enumclaw. 50 visits/wk, so it runs two days at opposite ends of the week."
+    },
+    "Puyallup / Edgewood / Milton": {
+      "territory": "T3 — SR-18 to SR-410, west along SR-167",
+      "owner": "Robert Norton",
+      "zips": ["98371", "98372", "98373", "98374", "98375", "98354"],
+      "visitsPerWeek": 26.5,
+      "hoursPerWeek": 7.3,
       "driveMinPerStop": 6,
       "daysPerWeek": 1,
       "rhythm": "thu",
       "note": "98371/98372 straddle SR-167 (Edgewood/Puyallup split) — never treat either as a clean city boundary."
     },
-    "Burien / SeaTac / South King": {
-      "owner": "Cory Ventura",
-      "zips": [
-        "98146",
-        "98148",
-        "98158",
-        "98166",
-        "98168",
-        "98178",
-        "98188",
-        "98198"
-      ],
+
+    "Thurston North (I-5 / US-101)": {
+      "territory": "T4 — from I-705 west and south",
+      "owner": "Luke LaVergne",
+      "zips": ["98501", "98502", "98503", "98506", "98513", "98516"],
+      "geoSplit": { "line": "thurston-i5-101", "side": "NORTH" },
+      "visitsPerWeek": 14,
+      "hoursPerWeek": 5.0,
+      "driveMinPerStop": 10.6,
+      "daysPerWeek": 1,
+      "rhythm": "mon",
+      "note": "Spencer 2026-08-07: 'day one covers everything north of I-5 and north of Highway 101, day two covers south of I-5 and south of 101.' NOT A ZIP RULE — 98501, 98502, 98503 and 98513 all straddle the line, so membership is decided per ADDRESS by geoSplit against the real coordinates. The zip list here is only the candidate pool shared with Thurston South."
+    },
+    "Thurston South (I-5 / US-101)": {
+      "territory": "T4 — from I-705 west and south",
+      "owner": "Luke LaVergne",
+      "zips": ["98501", "98502", "98503", "98512", "98513"],
+      "geoSplit": { "line": "thurston-i5-101", "side": "SOUTH" },
       "visitsPerWeek": 20,
-      "hoursPerWeek": 5.1,
-      "driveMinPerStop": 4,
+      "hoursPerWeek": 7.0,
+      "driveMinPerStop": 10.6,
       "daysPerWeek": 1,
-      "rhythm": "tue (with Renton, same 405/518 corridor)",
-      "note": "Moved Robert->Luke->Cory. Luke was wrong: 20 mi from his home but his other work is Olympia and Gig Harbor, so it fragmented his week. Cory already works Renton and was in Seattle/Des Moines on Tuesdays.",
-      "ownerFrom20260817": "Tavis Alexander"
+      "rhythm": "thu",
+      "note": "The southern half of the same pool — Tumwater, south Olympia, SE Lacey. Two Olympia days at opposite ends of the week. Yelm 98597 was removed from Thurston entirely on 2026-08-07 and now runs with Eatonville and Roy."
     },
-    "Kent / Covington / Maple Valley": {
-      "owner": "Cory Ventura",
-      "ownerFrom20260817": "Tavis Alexander",
-      "zips": [
-        "98030",
-        "98031",
-        "98032",
-        "98042",
-        "98038"
-      ],
-      "visitsPerWeek": 47,
-      "hoursPerWeek": 12.5,
-      "driveMinPerStop": 6,
-      "daysPerWeek": 2,
-      "rhythm": "mon + fri"
-    },
-    "Renton / Newcastle": {
-      "owner": "Cory Ventura",
-      "ownerFrom20260817": "Tavis Alexander",
-      "zips": [
-        "98055",
-        "98056",
-        "98057",
-        "98058",
-        "98059"
-      ],
-      "visitsPerWeek": 39,
-      "hoursPerWeek": 9.8,
-      "driveMinPerStop": 5,
-      "daysPerWeek": 2,
-      "rhythm": "tue + fri"
-    },
-    "Sammamish / Issaquah": {
-      "owner": "Cory Ventura",
-      "ownerFrom20260817": "Tavis Alexander",
-      "zips": [
-        "98027",
-        "98029",
-        "98074",
-        "98075"
-      ],
-      "visitsPerWeek": 36,
-      "hoursPerWeek": 9.5,
-      "driveMinPerStop": 5,
-      "daysPerWeek": 2,
-      "rhythm": "wed + thu (I-90 corridor, shares Thursday with Snoqualmie)"
-    },
-    "Snoqualmie Valley": {
-      "owner": "Cory Ventura",
-      "ownerFrom20260817": "Tavis Alexander",
-      "zips": [
-        "98014",
-        "98024",
-        "98045",
-        "98065"
-      ],
-      "visitsPerWeek": 28,
-      "hoursPerWeek": 8.3,
-      "driveMinPerStop": 7,
-      "daysPerWeek": 1,
-      "rhythm": "thu"
-    },
-    "Thurston / Olympia": {
+    "Lakewood / UP / Spanaway / Steilacoom": {
+      "territory": "T4 — from I-705 west and south",
       "owner": "Luke LaVergne",
-      "zips": [
-        "98501",
-        "98502",
-        "98503",
-        "98506",
-        "98512",
-        "98513",
-        "98516",
-        "98597"
-      ],
-      "visitsPerWeek": 38,
-      "hoursPerWeek": 13.1,
-      "driveMinPerStop": 11,
-      "daysPerWeek": 2,
-      "rhythm": "mon + thu",
-      "note": "Most expensive drive on the board after the peninsula. Nobody but Luke is within 40 mi."
-    },
-    "Graham / Orting": {
-      "owner": "Luke LaVergne",
-      "zips": [
-        "98338",
-        "98360",
-        "98580",
-        "98328"
-      ],
-      "visitsPerWeek": 23,
-      "hoursPerWeek": 8.8,
+      "zips": ["98387", "98388", "98498", "98499", "98327"],
+      "visitsPerWeek": 9.5,
+      "hoursPerWeek": 3.7,
       "driveMinPerStop": 13,
-      "daysPerWeek": 2,
-      "rhythm": "fri (with Tacoma, same Pierce belt)"
+      "daysPerWeek": 1,
+      "rhythm": "mon",
+      "note": "Rides the I-5 run down to Thurston."
+    },
+    "Graham / Orting / Eatonville / Roy": {
+      "territory": "T4 — from I-705 west and south",
+      "owner": "Luke LaVergne",
+      "zips": ["98338", "98360", "98328", "98580", "98597"],
+      "visitsPerWeek": 24.5,
+      "hoursPerWeek": 9.6,
+      "driveMinPerStop": 13,
+      "daysPerWeek": 1,
+      "rhythm": "tue",
+      "note": "Confirmed T4 by Spencer 2026-08-07 despite sitting next to T3's Bonney Lake and Sumner. Graham is Luke's single biggest zip and is 15 min from his Puyallup home. YELM 98597 MOVED HERE from Thurston on 2026-08-07 (Spencer: 'those jobs out in Yelm don't belong on the same day as the Olympia jobs — they should be lumped in on the day where we are servicing Eatonville and Roy')."
+    },
+    "Federal Way (on loan to T4)": {
+      "territory": "T4 — from I-705 west and south",
+      "_belongsTo": "T3 — SR-18 to SR-410, west along SR-167",
+      "owner": "Luke LaVergne",
+      "zips": ["98003", "98023"],
+      "visitsPerWeek": 7.5,
+      "hoursPerWeek": 2.1,
+      "driveMinPerStop": 6,
+      "daysPerWeek": 1,
+      "rhythm": "fri",
+      "temporary": true,
+      "note": "TEMPORARY LOAD OVERRIDE, not a boundary (Spencer 2026-08-07). Federal Way is T3/Robert by the highway rule; it is lent to Luke because Robert opened his first week back at 154 visits against Luke's 103. Rides Luke's Friday Tacoma run, 15 min up I-5. RETURN TO ROBERT once his load settles — see _boundaryRules._reviewFederalWay. Job override #8056 (Madera West Condos, 98023) still pins to Spencer and is unaffected."
     },
     "Tacoma": {
+      "territory": "T4 — from I-705 west and south",
       "owner": "Luke LaVergne",
-      "zips": [
-        "98402",
-        "98403",
-        "98404",
-        "98405",
-        "98406",
-        "98407",
-        "98408",
-        "98409",
-        "98422",
-        "98443",
-        "98445",
-        "98446",
-        "98465",
-        "98466"
-      ],
+      "zips": ["98402", "98403", "98404", "98405", "98406", "98407", "98408", "98409", "98422", "98443", "98445", "98446", "98465", "98466", "98467"],
       "visitsPerWeek": 22,
-      "hoursPerWeek": 6.6,
+      "hoursPerWeek": 6.4,
       "driveMinPerStop": 7,
       "daysPerWeek": 1,
-      "rhythm": "tue + wed + fri",
-      "note": "Wednesday is the peninsula run — west Tacoma is straight across the Narrows from Gig Harbor, so Tacoma work absorbs onto that day (Spencer 2026-08-06). Real volume is roughly double the 2-week sample, which is why it needs three days."
+      "rhythm": "fri",
+      "note": "ALL of Tacoma moved to Friday on 2026-08-07. Spencer: 'Luke's Friday has 6h44 and his Wednesday has 10h55 — University Place, Fircrest, West End, Ruston, North End Tacoma and Midland can get shifted onto Friday to keep Luke's hours down.' SUPERSEDES the 2026-08-06 note that put west Tacoma on the Wednesday peninsula run across the Narrows; Wednesday is now the peninsula alone."
     },
-    "Peninsula / Gig Harbor": {
+    "Peninsula / Gig Harbor / Kitsap": {
+      "territory": "T4 — from I-705 west and south",
       "owner": "Luke LaVergne",
-      "zips": [
-        "98329",
-        "98332",
-        "98333",
-        "98335",
-        "98349",
-        "98351",
-        "98359",
-        "98366",
-        "98367",
-        "98310",
-        "98312"
-      ],
+      "zips": ["98329", "98332", "98333", "98335", "98349", "98351", "98359", "98366", "98367", "98394", "98310", "98312"],
       "visitsPerWeek": 11,
       "hoursPerWeek": 5.2,
       "driveMinPerStop": 18,
       "daysPerWeek": 1,
-      "rhythm": "wed (ALONE apart from Tacoma spill; Spencer 2026-08-06)",
-      "note": "18 min between stops — the most expensive region per visit on the board. 11 visits cost more than Burien's 20."
-    },
-    "Lakewood / UP / Spanaway": {
-      "owner": "Luke LaVergne",
-      "zips": [
-        "98327",
-        "98387",
-        "98388",
-        "98498",
-        "98499"
-      ],
-      "visitsPerWeek": 10,
-      "hoursPerWeek": 4,
-      "driveMinPerStop": 13,
-      "daysPerWeek": 1,
-      "rhythm": "mon (on the I-5 run down to Thurston)"
-    },
-    "Kirkland / Redmond / Woodinville": {
-      "owner": "Alias Franks",
-      "zips": [
-        "98033",
-        "98034",
-        "98052",
-        "98053",
-        "98072",
-        "98077",
-        "98011",
-        "98019",
-        "98021",
-        "98296"
-      ],
-      "visitsPerWeek": 48,
-      "hoursPerWeek": 13.5,
-      "driveMinPerStop": 6,
-      "daysPerWeek": 2,
-      "rhythm": "mon + thu"
-    },
-    "Seattle": {
-      "owner": "Alias Franks",
-      "zips": [
-        "98103",
-        "98105",
-        "98106",
-        "98107",
-        "98108",
-        "98112",
-        "98115",
-        "98116",
-        "98117",
-        "98118",
-        "98122",
-        "98125",
-        "98126",
-        "98133",
-        "98136",
-        "98144",
-        "98177",
-        "98199"
-      ],
-      "visitsPerWeek": 43,
-      "hoursPerWeek": 11.9,
-      "driveMinPerStop": 5,
-      "daysPerWeek": 2,
-      "rhythm": "tue + fri"
-    },
-    "Bellevue / Mercer": {
-      "owner": "Alias Franks",
-      "zips": [
-        "98004",
-        "98005",
-        "98006",
-        "98007",
-        "98008",
-        "98039",
-        "98040"
-      ],
-      "visitsPerWeek": 35,
-      "hoursPerWeek": 9.3,
-      "driveMinPerStop": 5,
-      "daysPerWeek": 2,
-      "rhythm": "wed + fri"
-    },
-    "Shoreline / North": {
-      "owner": "Alias Franks",
-      "zips": [
-        "98155",
-        "98028",
-        "98020",
-        "98026"
-      ],
-      "visitsPerWeek": 8,
-      "hoursPerWeek": 2.5,
-      "driveMinPerStop": 8,
-      "daysPerWeek": 1,
-      "rhythm": "tue (with Seattle)"
+      "rhythm": "wed",
+      "note": "18 min between stops — the most expensive region per visit on the board. 11 visits cost more than Burien's 20. Wednesday is now the peninsula ALONE — Tacoma moved off it to Friday on 2026-08-07 because the combined day was running 10h55."
     }
   },
+  "dayOverrides": {
+    "_comment": "Pin one job to a specific weekday, overriding its region rhythm. For properties that sit inside one region's zip but belong on another region's run. Beats the rhythm; does NOT change the technician (use jobOverrides for that).",
+    "5016": { "day": "tue", "client": "Run Wild Dog Sports (Argus Ranch)", "note": "Spencer 2026-08-07: the Argus Ranch job needs to get lumped into that Enumclaw day.' 35612 212th Way SE is in Auburn 98092 (Robert's Monday zip) but sits out at Lake Holm on the Enumclaw side, so it runs with Enumclaw/Black Diamond/Ravensdale on Tuesday." }
+  },
   "jobOverrides": {
-    "8056": {
-      "client": "Madera West Condos",
-      "tech": "Spencer Hill",
-      "note": "Spencer keeps this account personally — an exception to his out-of-field status (2026-07-26)."
-    }
+    "_comment": "EMPTY BY DESIGN as of 2026-08-07. Spencer: 'nothing should be pinned to me.' The former #8056 Madera West Condos -> Spencer Hill pin is removed — it was the last thing keeping him in the field, and it was also the one stop OptimoRoute could never schedule, because his driver record has no working days. Job-level TECH pins go here; job-level DAY pins go in dayOverrides."
   },
   "capacity": {
     "measuredWeek": "2026-07-27..2026-08-07",
+    "source": "zip-census-2026-07-27_2026-08-07.json (1,074 visits / 2 weeks)",
     "visitsPerWeek": 537,
     "hoursPerWeek": 155.2,
     "techDaysNeeded": 19.4,
     "techDaysAvailable": 20,
-    "note": "97% utilised BEFORE commute. Adding the measured ~9 h/wk of drive-to-first-job puts the team over 20 tech-days, which is why everyone is in overtime. Volume grew 507 -> 566 week over week in the sample; at that rate capacity runs out mid-month."
+    "byTerritory": {
+      "T1 Alias Franks": { "visitsPerWeek": 140.5, "hoursPerWeek": 39.0 },
+      "T2 Cory Ventura -> Tavis Alexander": { "visitsPerWeek": 152.5, "hoursPerWeek": 39.3 },
+      "T3 Robert Norton": { "visitsPerWeek": 134.0, "hoursPerWeek": 36.2, "note": "141.5/38.3h by the boundary rule; Federal Way (7.5/wk) temporarily lent to T4." },
+      "T4 Luke LaVergne": { "visitsPerWeek": 109.0, "hoursPerWeek": 39.0, "note": "101.5/36.9h by the boundary rule; includes Federal Way on loan from T3." }
+    },
+    "note": "The 51 h vs 31 h imbalance flagged on 2026-08-06 was an artefact of the v7 city-name regions and does NOT survive the zip-level numbers — the four territories land within ~3 hours of each other. 97% utilised BEFORE commute; adding the measured ~9 h/wk of drive-to-first-job puts the team over 20 tech-days, which is why everyone is in overtime. Volume grew 507 -> 566 week over week in the sample; at that rate capacity runs out mid-month."
   }
 }

@@ -1,0 +1,229 @@
+{
+  "version": "2026-08-09-v1",
+  "_comment": "Single source of truth for every scheduling decision. The engine is dumb; the rules live here. Changing a rule is an edit to this file, never a rebuild. Audited by Spencer 2026-08-09.",
+  "_status": "DRAFT - awaiting Spencer sign-off. Gaps listed under openQuestions.",
+
+  "product": {
+    "_comment": "Product comes from the job's LINE ITEM, never jobType. All jobs are 'Recurring' in Jobber, so jobType tells you nothing. Match case-insensitively; scan ALL line items (Repeat Customer Discount appears as a second item). Mixed dashes are present in real data.",
+    "matchers": [
+      { "contains": "total mole control", "product": "TMCP" },
+      { "contains": "quick fix", "product": "QUICK_FIX" },
+      { "contains": "barter", "product": "TMCP", "_note": "treat as TMCP unless told otherwise" },
+      { "contains": "friends and family", "product": "TMCP", "_note": "treat as TMCP unless told otherwise" }
+    ],
+    "emptyLineItems": "BID",
+    "unmatched": "TMCP",
+    "_measured": "2026-08-04: 109 notes -> TMCP 76, Quick Fix 30, other 3"
+  },
+
+  "activity": {
+    "_comment": "Activity is BINARY. The level (L/A, M/A, H/A) is irrelevant - only activity vs none. Supersedes the 2026-07-26 graded ladder entirely.",
+    "countsAsActivity": [
+      "fresh sign (new hills, fresh ridges)",
+      "a catch (>=1 mole)",
+      "a miss on a trap (hit but did not hold - a mole was working and got away)"
+    ],
+    "doesNotCountAsActivity": [
+      "old mounds - dried, crusted, grass growing through. A yard covered in old sign can still be a true N/A."
+    ],
+    "sourceFields": {
+      "_comment": "report-sync.mjs writes these Jobber job custom fields. The old engine parsed them and then ignored them, reading only free-text Next Action - which is why a miss only shortened the interval when a tech happened to type it there.",
+      "primary": ["Latest Activity", "Moles Caught", "Misses"],
+      "fallback": "Next Action free text",
+      "fallbackPolicy": "If structured fields are empty, fall back to free text AND report the gap per tech. Never silent."
+    }
+  },
+
+  "cadence": {
+    "_comment": "Intervals are expressed in WEEKS, never days, so a customer never walks off their weekday. Monthly is the Nth weekday of the month (12 visits/year, weekday held), NOT 28 or 30 days.",
+    "TMCP": {
+      "onCatch": { "weeks": 1, "_note": "A catch overrides the activity code. Caught >=1 mole means the property is not quiet, even if the note reads L/A or N/A." },
+      "onAnyActivity": { "weeks": 1 },
+      "quiet": { "rule": "NTH_WEEKDAY_OF_MONTH", "_note": "e.g. always the 2nd Tuesday. Weekday holds, 12 visits/year, interval flexes 28-35 days." }
+    },
+    "QUICK_FIX": {
+      "always": { "weeks": 1 },
+      "_comment": "A 5-week weekly series. Every visit is ~7 days apart regardless of activity code or catch - weekly by construction.",
+      "seriesExhaustedWithActivity": {
+        "action": "FLAG_SALES_TASK",
+        "neverAutoAdd": true,
+        "_note": "When the 5 weeks are used up and activity remains, it is a HUMAN sales decision: add one more visit, or sell a TMCP or another month. The engine flags, never books."
+      }
+    },
+    "application": {
+      "_comment": "How an interim visit gets added.",
+      "method": "ADD_INTERIM_VISIT",
+      "neverMoveRecurring": true,
+      "_whyNot": "Moving the recurring visit forward just relocates the gap downstream - Avila 7/30 would have left 7/30->9/17 = 49 days.",
+      "addOnlyWhen": "The job's first open future visit is LATER than (lastVisit + requiredInterval). If an existing visit already falls inside the interval, do nothing.",
+      "targetDate": "The territory grid day inside the required week."
+    }
+  },
+
+  "dayOfWeek": {
+    "_comment": "Consistency is an EMERGENT property of the territory grid, never a per-job pin. The grid assigns a weekday to geography; a job inherits its day from where the property is. Pinning individual jobs is what fought Spencer in iterations 1 and 2.",
+    "preference": "Jobs should repeat on the same weekday wherever possible.",
+    "yieldsTo": "ROUTE_TIGHTNESS",
+    "_spencer": "If it means the routes are no longer tight and a visit must get shifted to a new day, that is OK.",
+    "recovery": "A displaced visit settles back onto the grid day next cycle, because the geography has not moved.",
+    "noWeekends": {
+      "_comment": "Got Moles is Mon-Fri. Any Saturday or Sunday visit is a defect to fix, never to route.",
+      "allowedDays": ["mon", "tue", "wed", "thu", "fri"]
+    }
+  },
+
+  "territory": {
+    "_comment": "Ownership is DERIVED on every run from address + date. Never stored, never carried forward - that is what stranded 11 visits on Tavis across the 08-17 handover.",
+    "source": "territories.json (v8-highway)",
+    "resolutionOrder": ["jobOverrides", "geoSplitLines", "zip", "fallbackSide"],
+    "oneTechOneTerritory": true,
+    "geoSplitLines": {
+      "_comment": "Three boundaries cut THROUGH zip codes and cannot be expressed as a zip list. Resolved per ADDRESS from real coordinates. Coordinates come from OptimoRoute - Jobber returns no lat/lng.",
+      "thurston-i5-101": { "changes": "DAY", "_note": "Olympia north of I-5/US-101 day one, south day two. 98501/98502/98503/98513 all straddle it." },
+      "bellevue-ne8th": { "changes": "OWNER", "_note": "T1/T2 line runs north to NE 8th St. 98004 straddles it." },
+      "sr-516": { "changes": "OWNER", "_note": "Cory/Robert line from I-5 to Landsburg. Splits 98030/98031/98032/98042/98038." }
+    },
+    "ungeocodedAddress": {
+      "action": "USE_ZIP_FALLBACK_SIDE",
+      "mustLog": true,
+      "_note": "Never silent."
+    },
+    "handovers": "Applied by date automatically. A visit pulled forward across a handover line re-derives its owner rather than keeping the old assignee."
+  },
+
+  "assignment": {
+    "_comment": "Two layers, only one of them drawn. Territory (highway-bounded) answers WHICH TECH and changes only when hiring. Route-day answers WHICH WEEKDAY and is never drawn - it emerges from sticky per-job assignment. Spencer 2026-08-11: hand-drawn sections have to be constantly refined as density changes, which is the six territory re-cuts.",
+    "atom": "ROUTE_DAY",
+    "_atomDef": "One tech, one weekday, ~8 hours. A tech is five route-days.",
+    "firstVisit": {
+      "owner": "HUMAN",
+      "_comment": "OUT OF SCOPE. The quote must be approved before the job exists, so the office books visit 1 by hand at intake. Spencer 2026-08-11: 'I'm manually adding a day when these people are reaching out.' This works and is not being automated.",
+      "inScope": "Every visit AFTER the first. 'The reschedule of the second, third, fourth, fifth, whatever visits is what needs to be addressed.'"
+    },
+    "placement": {
+      "_comment": "Spencer 2026-08-11: 'They should fall into their exact category. If they need to get pushed out a week to fall on the right day, then that is fine.' No cleverness about squeezing a customer onto a wrong day.",
+      "rule": "SECTION_DAY_THEN_FIRST_QUALIFYING_DATE",
+      "steps": [
+        "Resolve the property's section from geography (territory + geoSplitLines).",
+        "Take that section's weekday.",
+        "Book the first occurrence of that weekday that satisfies the cadence interval.",
+        "If that pushes the visit out by up to a week, that is acceptable."
+      ],
+      "_why": "Predictable, explainable to a customer, and verifiable by eye - which matters because Cory takes this over."
+    },
+    "stickiness": {
+      "default": "PERMANENT",
+      "mayPropose": "Small nudges (~10 jobs) for Spencer to approve when they meaningfully tighten a route.",
+      "neverMassRecut": true
+    },
+    "sectionsAreAView": "Territory sections are what you see when the board is coloured by assignment. The map is an OUTPUT, never an input."
+  },
+
+  "duration": {
+    "_comment": "Every capacity number depends on this and nothing currently models it. OptimoRoute plans with ONE uniform service duration for every stop and every tech. Spencer 2026-08-11: bigger properties DO take meaningfully longer - scale by acreage, matching the pricing tiers.",
+    "scaleBy": "ACREAGE",
+    "tiers": [
+      { "acres": "<=1", "minutes": null },
+      { "acres": "1-3", "minutes": null },
+      { "acres": "3-5", "minutes": null },
+      { "acres": ">5", "minutes": null }
+    ],
+    "_tiersUnset": "Values to be derived in Phase 0 from completion timestamps joined to property acreage. Do not guess them.",
+    "setVsCheck": "First visit (set) is longer than a routine check. Old brief used 10 min check / 20 min set - unvalidated.",
+    "perTechRates": {
+      "use": false,
+      "_comment": "Spencer 2026-08-10: 'not yet, we don't have enough data on the new guys.' Measured medians min/stop: Cory 17.3, Robert 17.7, Luke 19.1, Alias 21.3, all-tech 17.8 - a 23% spread. But Robert had only 89 stops and Tavis none, so pinning a rate that thin bakes a learning curve into every future route. Metric also blends drive with on-site time, so spread ground is penalised.",
+      "revisitWhen": "Robert and Tavis each have ~15 field days / 300+ stops. Re-run tech-pace.mjs. Apply only beyond any week whose customers already hold arrival windows."
+    }
+  },
+
+  "capacity": {
+    "targetDayHours": 8,
+    "_targetNote": "Revised down from 9h normal / 10h ceiling on 2026-08-11. Spencer: 'if that means that I have to hire more people, then I have to hire more people.'",
+    "overflow": {
+      "policy": "ALLOW",
+      "_comment": "A customer is never turned away, never made to wait, and never moved across a territory line to protect the 8h target. The day runs long instead.",
+      "mustMeter": true,
+      "_whyMeter": "Overflow is silent. Every individual decision is right and the day drifts to 9.4h with nobody deciding it - which is how T1 reached 40.7h. Record every event: date, tech, route-day, minutes over, causing customer.",
+      "meterIsTheHiringSignal": "e.g. 'T1 Tuesday has exceeded 8h for six straight weeks, averaging 9.4h, absorbing 23 new customers since June.'"
+    },
+    "staffing": {
+      "target": "NEAR_PEAK",
+      "_comment": "Staff so busy season still fits inside 8h days, carrying slack in quiet months. Requires the seasonal swing, which is unmeasured - Phase 0.",
+      "_seasonality": "A quiet TMCP customer is monthly; one catch later the same customer is weekly. That is 4x the route capacity with no new sale and no change in geography. A route-day that fits in October can be 2-3x over in spring."
+    },
+    "hiringCreatesRouteDays": "Hiring does not re-cut territories. It creates five new route-days seeded from the outer edges of the fullest existing ones, so only marginal customers move.",
+    "compareLoadBy": "hoursPerWeek",
+    "neverCompareBy": "visitCount",
+    "_why": "Drive-min per stop ranges 4.5 (Burien) to 18 (peninsula), so 111 visits can outweigh 146. Comparing visit counts led to a proposal to move Federal Way off Robert when Luke was actually the heavier tech.",
+    "spencerFieldWork": {
+      "_comment": "Spencer does minimal field work - peninsula Tuesday only. Never assign him route stops to absorb overflow.",
+      "absorbOverflow": false
+    }
+  },
+
+  "priority": {
+    "_comment": "What wins when these conflict. Ordered, highest first.",
+    "order": [
+      { "rank": 1, "rule": "EMAIL_FREEZE", "hard": true, "_note": "Never move a visit the customer has already been told about." },
+      { "rank": 2, "rule": "TERRITORY_OWNERSHIP", "hard": true, "_note": "One tech owns one ground." },
+      { "rank": 3, "rule": "ROUTE_TIGHTNESS_AND_HOURS", "_note": "Spencer's call 2026-08-09: tight routes and sane hours win over both cadence timing and weekday consistency." },
+      { "rank": 4, "rule": "CADENCE_INTERVAL" },
+      { "rank": 5, "rule": "DAY_OF_WEEK_CONSISTENCY" }
+    ]
+  },
+
+  "writeRules": {
+    "emailFreeze": {
+      "_comment": "Jobber emails arrival windows at ~14:00 PT the day before. A date locks at 14:00 on D-1. Today is never writable.",
+      "cutoffLocalTime": "14:00",
+      "timezone": "America/Los_Angeles",
+      "todayNeverWritable": true
+    },
+    "approvalSignal": {
+      "type": "EXPLICIT_GO",
+      "_comment": "Spencer (later Cory) reviews in the OptimoRoute map UI and says go. Never a timer - silence is not consent. No API signal exists for 'approved' in OptimoRoute."
+    },
+    "writeBackIsAnEvent": true,
+    "_never": "Never a continuous sync. Continuous bidirectional reconciliation outside the gate is what scrambled the board on 2026-07-06.",
+    "lateBookingsDuringReview": "NOT written. The plan writes exactly what was approved. New bookings go to the mid-week add queue.",
+    "writeCeilingPerRun": 25,
+    "onCeilingExceeded": "ABORT_WITH_ZERO_WRITES",
+    "singleWriterModule": true
+  },
+
+  "optimoRoute": {
+    "_comment": "Known landmines. These matter more now that OR is the human review surface - a ghost stop means someone approves a route containing a customer nobody is visiting.",
+    "balancing": "OFF",
+    "_balancingWhy": "ON_FORCE reassigns stops across drivers, which violates territory ownership during review.",
+    "priority": "M",
+    "_priorityWhy": "OR serves higher-priority orders earlier in the day, which warped routes ~20% (the Kenmore zigzag). Never encode promises as priority.",
+    "techLockedAsHardConstraint": true,
+    "pruneGhostsBeforeReview": true,
+    "_ghostWhy": "Push/sync can CREATE and UPDATE but cannot RETIRE an order. A cancelled, completed or moved visit leaves its stop behind. 8 ghosts in the week of 08-10 carried 189 min of drive time that was not real.",
+    "syncUnschedules": true,
+    "updateIsSafe": true,
+    "updateDriverParametersUnschedulesRoutes": true
+  },
+
+  "operationalGuards": {
+    "neverPipeLiveWrites": "Never pipe a live write script through head or a line-capped sed - closing the pipe SIGPIPEs node mid-write. Redirect to a file and grep the file.",
+    "visitEditAssignedUsersReplaces": "The mutation REPLACES the assignee list, it does not append.",
+    "recurringAssignRetryable": "visitEditAssignedUsers can fail transiently on recurring visits with 'required to handle future items'. There is no scope argument to supply - it is Jobber-side flakiness. Retry the pass rather than hand-editing.",
+    "cronsOffDuringManualEditing": "Any cron that writes to the board must be stopped before a manual editing session, or it treats human moves as drift."
+  },
+
+  "outOfScope": [
+    "Same-day disruption - sick techs, blown days, weather. Spencer handles these.",
+    "Recurring visit generation - stays Jobber's. The engine places visits and adds interim ones.",
+    "How techs write notes - separate training track.",
+    "OptimoRoute configuration beyond driver work windows."
+  ],
+
+  "openQuestions": [
+    "A brand new customer's first visit can land on any day. Should it settle onto the grid day from visit 2, or hold whatever day it was sold on?",
+    "How far ahead does the OR review window run? Bookings exist to 12/31; far-future visits carry a derived owner and grid day but no sequencing until their week comes up.",
+    "Is the Federal Way 98003/98023 loan to Luke still active, and what is its end date?",
+    "Cadence field fill rate is unmeasured - Phase 0 determines whether cadence can be driven from structured fields at all."
+  ]
+}

@@ -1,0 +1,390 @@
+{
+ "ranAt": "2026-08-07T19:02:04.584Z",
+ "mode": "fix",
+ "plannedDays": [
+  "2026-08-10",
+  "2026-08-11",
+  "2026-08-12",
+  "2026-08-13",
+  "2026-08-14"
+ ],
+ "counts": {
+  "activeVisits": 538,
+  "scheduledStops": 535,
+  "missing": 6,
+  "dayDrift": 2,
+  "techDrift": 11,
+  "timeDrift": 0,
+  "noTime": 0,
+  "orphans": 3
+ },
+ "missing": [
+  {
+   "orderNo": "6739-2281465434",
+   "job": "6739",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyODE0NjU0MzQ=",
+   "date": "2026-08-14",
+   "hm": "00:00",
+   "tech": "Alias Franks",
+   "title": "Matt Wurdeman - TMCP",
+   "address": "43923 Southeast 127th Place, North Bend, Washington 98045",
+   "isSet": false
+  },
+  {
+   "orderNo": "7594-2281471067",
+   "job": "7594",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyODE0NzEwNjc=",
+   "date": "2026-08-14",
+   "hm": "00:00",
+   "tech": "Cory Ventura",
+   "title": "Dalveer Josan",
+   "address": "10416 148th Avenue Southeast, Renton, Washington 98059",
+   "isSet": false
+  },
+  {
+   "orderNo": "7593-2281473211",
+   "job": "7593",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyODE0NzMyMTE=",
+   "date": "2026-08-14",
+   "hm": "00:00",
+   "tech": "Cory Ventura",
+   "title": "Thanh Tran",
+   "address": "10412 148th Avenue Southeast, Renton, Washington 98059",
+   "isSet": false
+  },
+  {
+   "orderNo": "7295-2281491003",
+   "job": "7295",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyODE0OTEwMDM=",
+   "date": "2026-08-14",
+   "hm": "00:00",
+   "tech": "Alias Franks",
+   "title": "Jeff Taylor",
+   "address": "12825 452nd Avenue Southeast, North Bend, Washington 98045",
+   "isSet": false
+  },
+  {
+   "orderNo": "4754-2281540153",
+   "job": "4754",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyODE1NDAxNTM=",
+   "date": "2026-08-14",
+   "hm": "00:00",
+   "tech": "Alias Franks",
+   "title": "Barry Heimbigner",
+   "address": "12570 465th Avenue Southeast, North Bend, Washington 98045",
+   "isSet": false
+  },
+  {
+   "orderNo": "4545-1912594495",
+   "job": "4545",
+   "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE5MTI1OTQ0OTU=",
+   "date": "2026-08-14",
+   "hm": "07:00",
+   "tech": "Tavis Alexander",
+   "title": "Randy Stegmeier",
+   "address": "23828 Southeast 216th Street, Maple Valley, Washington 98038",
+   "isSet": false
+  }
+ ],
+ "dayDrift": [
+  {
+   "orderNo": "8261-2269705739",
+   "job": "8261",
+   "jobber": "2026-08-14",
+   "optimo": "2026-08-12",
+   "driver": "Cory Ventura"
+  },
+  {
+   "orderNo": "6275-1608836565",
+   "job": "6275",
+   "jobber": "2026-08-14",
+   "optimo": "2026-08-12",
+   "driver": "Cory Ventura"
+  }
+ ],
+ "techDrift": [
+  {
+   "orderNo": "7917-2176623407",
+   "job": "7917",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "4930-2278108541",
+   "job": "4930",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "7797-2090232032",
+   "job": "7797",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8103-2278166369",
+   "job": "8103",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8153-2248697643",
+   "job": "8153",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "7789-2261628786",
+   "job": "7789",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8155-2248823450",
+   "job": "8155",
+   "date": "2026-08-10",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8316-2277580038",
+   "job": "8316",
+   "date": "2026-08-12",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "8243-2267080960",
+   "job": "8243",
+   "date": "2026-08-12",
+   "jobber": "Robert Norton",
+   "optimo": "Cory Ventura"
+  },
+  {
+   "orderNo": "4701-1912566746",
+   "job": "4701",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Robert Norton"
+  },
+  {
+   "orderNo": "5458-1770745578",
+   "job": "5458",
+   "date": "2026-08-14",
+   "jobber": "Tavis Alexander",
+   "optimo": "Cory Ventura"
+  }
+ ],
+ "timeDrift": [],
+ "noTime": [],
+ "orphans": [
+  {
+   "orderNo": "5676-2262278695",
+   "date": "2026-08-12",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "09:59"
+  },
+  {
+   "orderNo": "7306-2269977765",
+   "date": "2026-08-12",
+   "driver": "Cory Ventura",
+   "driverSerial": "Cory Ventura",
+   "hm": "11:43"
+  },
+  {
+   "orderNo": "8056-2275615159",
+   "date": "2026-08-14",
+   "driver": "Luke LaVergne",
+   "driverSerial": "Luke LaVergne",
+   "hm": "12:30"
+  }
+ ],
+ "fixes": [
+  {
+   "day": "2026-08-14",
+   "writable": true,
+   "created": [
+    "6739-2281465434",
+    "7594-2281471067",
+    "7593-2281473211",
+    "7295-2281491003",
+    "4754-2281540153",
+    "4545-1912594495"
+   ],
+   "replanned": true,
+   "writes": [
+    {
+     "orderNo": "8227-2263895130",
+     "from": "2026-08-14 15:08",
+     "to": "2026-08-14 14:57",
+     "driver": "Robert Norton"
+    },
+    {
+     "orderNo": "5300-1780058498",
+     "from": "2026-08-14 14:56",
+     "to": "2026-08-14 15:10",
+     "driver": "Robert Norton"
+    },
+    {
+     "orderNo": "6739-2281465434",
+     "from": "2026-08-14 00:00",
+     "to": "2026-08-14 14:31",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "7295-2281491003",
+     "from": "2026-08-14 00:00",
+     "to": "2026-08-14 14:44",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "4754-2281540153",
+     "from": "2026-08-14 00:00",
+     "to": "2026-08-14 14:57",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8213-2261158724",
+     "from": "2026-08-14 14:50",
+     "to": "2026-08-14 15:33",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8275-2272675524",
+     "from": "2026-08-14 15:09",
+     "to": "2026-08-14 15:52",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "4905-2280571681",
+     "from": "2026-08-14 15:23",
+     "to": "2026-08-14 16:06",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8156-2248882185",
+     "from": "2026-08-14 15:39",
+     "to": "2026-08-14 16:23",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "7011-1852006762",
+     "from": "2026-08-14 15:54",
+     "to": "2026-08-14 16:37",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "6355-1637516857",
+     "from": "2026-08-14 16:05",
+     "to": "2026-08-14 16:49",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "7817-2280683868",
+     "from": "2026-08-14 16:22",
+     "to": "2026-08-14 17:06",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8265-2270510265",
+     "from": "2026-08-14 16:35",
+     "to": "2026-08-14 17:19",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "6450-1669602280",
+     "from": "2026-08-14 16:49",
+     "to": "2026-08-14 17:33",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "8233-2265628374",
+     "from": "2026-08-14 17:05",
+     "to": "2026-08-14 17:49",
+     "driver": "Alias Franks"
+    },
+    {
+     "orderNo": "7594-2281471067",
+     "from": "2026-08-14 00:00",
+     "to": "2026-08-14 12:44",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "7593-2281473211",
+     "from": "2026-08-14 00:00",
+     "to": "2026-08-14 12:54",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "5371-2281366096",
+     "from": "2026-08-14 13:33",
+     "to": "2026-08-14 13:11",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8219-2281391810",
+     "from": "2026-08-14 13:19",
+     "to": "2026-08-14 13:25",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "8214-2261163105",
+     "from": "2026-08-14 12:48",
+     "to": "2026-08-14 13:41",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "4842-1986405962",
+     "from": "2026-08-14 13:04",
+     "to": "2026-08-14 13:57",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "6663-2281308977",
+     "from": "2026-08-14 13:55",
+     "to": "2026-08-14 14:17",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "7382-2281258655",
+     "from": "2026-08-14 14:13",
+     "to": "2026-08-14 14:35",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "6475-2281178765",
+     "from": "2026-08-14 14:39",
+     "to": "2026-08-14 14:48",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "5152-2281206806",
+     "from": "2026-08-14 14:26",
+     "to": "2026-08-14 15:00",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "4545-1912594495",
+     "from": "2026-08-14 07:00",
+     "to": "2026-08-14 15:17",
+     "driver": "Cory Ventura"
+    },
+    {
+     "orderNo": "5458-1770745578",
+     "from": "2026-08-14 14:56",
+     "to": "2026-08-14 15:29",
+     "driver": "Cory Ventura"
+    }
+   ],
+   "failures": [],
+   "aborted": null
+  }
+ ]
+}

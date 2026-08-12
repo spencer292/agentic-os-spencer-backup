@@ -1,11 +1,11 @@
 # Got Moles — Service Day Sheet
 
-**Generated 2026-08-06 from `territory-grid-v5.json` (grid last changed 2026-08-03).**
+**Generated 2026-08-11 from `territory-grid-v5.json` (grid last changed 2026-08-11).**
 Route days change whenever the territory grid is re-cut. If this sheet is more than a week old, get a fresh one.
 
 ## How to use it
 
-1. **Get the zip code.** City names are not enough — 16 of 78 cities in the grid span more than one route day (Seattle covers 21 zips, Tacoma 13, Puyallup 6).
+1. **Get the zip code.** City names are not enough — 16 of 79 cities in the grid span more than one route day (Seattle covers 21 zips, Tacoma 13, Puyallup 6).
 2. Find the zip below. That is the day the truck is in their area for **ongoing service visits**.
 3. Zip not listed? Take the address, say you'll confirm coverage and call back today. Never say yes or no on the spot.
 4. Never promise a technician by name — assignments move.
@@ -42,7 +42,7 @@ Route days change whenever the territory grid is re-cut. If this sheet is more t
 | 98506 | Olympia | — | Luke |
 | 98516 | Olympia, Lacey | — | Luke |
 
-## Tuesday — 38 zips
+## Tuesday — 39 zips
 
 | Zip | Cities | Also on | Tech (internal) |
 |---|---|---|---|
@@ -82,6 +82,7 @@ Route days change whenever the territory grid is re-cut. If this sheet is more t
 | 98405 | Tacoma | — | Luke |
 | 98424 | Fife | — | Luke |
 | 98443 | Tacoma | — | Luke |
+| 98444 | Tacoma, Parkland | — | Luke |
 | 98445 | Tacoma | — | Luke |
 | 98446 | Tacoma | — | Luke |
 
@@ -189,4 +190,4 @@ If the caller names one of these, ask for the zip before quoting a day.
 | Sammamish | 98074, 98075 | Thursday, Friday |
 | SeaTac | 98168, 98188, 98198 | Monday, Tuesday |
 | Sumner | 98390, 98391 | Monday, Thursday |
-| Tacoma | 98403, 98404, 98405, 98406, 98407, 98422, 98443, 98445, 98446, 98465, 98467, 98498, 98499 | Monday, Tuesday, Wednesday |
+| Tacoma | 98403, 98404, 98405, 98406, 98407, 98422, 98443, 98444, 98445, 98446, 98465, 98467, 98498, 98499 | Monday, Tuesday, Wednesday |
