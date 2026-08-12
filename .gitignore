@@ -98,3 +98,13 @@ projects/briefs/callrail-faq/muhammad-portable/address-day-lookup.html
 
 # Hosted-page source for the address lookup (regenerated, same customer data as the standalone).
 projects/briefs/callrail-faq/service-day-lookup/address-day-lookup.artifact.html
+
+# Credential scratch files. Never commit — this repo pushes to a private GitHub backup,
+# and anything here leaves the machine. Keep real secrets in a password manager or .env.
+Voip Passwords.txt
+*Passwords*.txt
+*passwords*.txt
+
+# Root-level scratch probes (.tmp_*). Project containment rule: the OS root is not a
+# workspace. These are one-off API probes that should never be tracked.
+.tmp_*
