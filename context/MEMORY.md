@@ -10,7 +10,7 @@
 - TMCP-conversion: reactive pitch, not cheaper-QF; 357 targets, Phase1 texts next.
 - Lead alerts FIXED 8/11 (9h overnight hole dropped 5 leads; now chains from lastRun). Gmail draft triage BLOCKED on GMAIL_* creds.
 - Training: Muhammad live + daily call-grading cron. Field M3/M4/M8 draft only.
-- NS1 $857K T12 +37%, gap=quote-issue. NS2 kits LIVE $0 rev; Ads+GSC OAuth expired.
+- NS1 $857K T12 +37%, gap=quote-issue. NS2 kits LIVE, 0 sales @8/12; Ads+GSC OAuth dead 2wk.
 
 ## Environment Notes
 - Cron: AGENTIC_OS_CLAUDE_BIN (setx); no auto-start on reboot; scripts/start-crons.ps1.

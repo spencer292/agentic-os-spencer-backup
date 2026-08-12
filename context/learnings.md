@@ -38,6 +38,7 @@
 ### tool-pdf-generator
 - 2026-07-22: Contract-style render (Mole Busters referral agreement): Letter page size + justified serif + bordered h2 sections reads as a proper legal doc; `page-break-after: avoid` on h2 keeps section titles with their body. Spencer accepted first render with no changes. Verify structurally (h2 count, zero leaked `**`, grep key names) when pdftoppm is absent.
 - 2026-07-20: Chrome-headless fallback re-verified (md2html.mjs pattern in scratchpad: tables, nested bold-in-cells, blockquotes all clean). Gotcha: a PDF open in a Windows viewer file-locks its Downloads copy (`cp: Device or resource busy`) — copy the regenerated file under a new name instead of failing the refresh.
+- 2026-08-12: **Two bugs in the scratchpad `md2html.mjs` — fix them in any copy before reusing.** (1) It ran `inline()` per source line and only then joined, so any `**bold**` or `*italic*` span wrapping across a hard line break emitted literal `**` mid-paragraph (caught by the leaked-`**` structural check on the story-bank render). Fix: collect RAW lines, `join(' ')`, then `inline()` once — same for blockquotes (`join('\n')` → inline → `replace(/\n/g,'<br>')`). (2) No `<hr>` rule, so every `---` section divider rendered as a literal `<p>---</p>`. Both patched in this session's scratchpad copy; the older copies still carry the bugs.
 
 ### viz-image-gen
 - 2026-07-04: For YouTube banners (and anything needing true 16:9), use the **Gemini** backend, not GPT. GPT/gpt-image maxes out at 3:2 (1536×1024) and cannot output 16:9. Gemini at `--resolution 2K --aspect-ratio 16:9` produced a clean 2752×1536 banner first try, above YouTube's 2560×1440 recommendation.
@@ -214,6 +215,7 @@
 - 2026-07-26: **Four concurrent sessions, and `context/memory/2026-07-26.md` did not exist at wrap-up** — three in-flight sessions had written nothing, so the daily log had to be created from scratch rather than finalised. Wrote a header naming each concurrent session ID and instructing later sessions to number after the highest existing block instead of renumbering, plus a "Cross-session notes" section so the stopped cron runtime and the other sessions' pending decisions are not lost when they close without wrapping. On a multi-session day, check `{date}.aos.md` for other session IDs before assuming the tree is yours — the working tree was 90% other sessions' work, so the commit had to be bundled and labelled, matching the existing convention in this repo's history.
 - 2026-08-11: **A session lost to a machine shutdown is fully recoverable from `{date}.aos.md` — reconstruct it, don't ask the user what they did.** The PC died mid-session; the daily log held only Session 1 (wrapped that morning), while the Stop-hook capture held every turn of seven concurrent streams through to 18:40 PT. What worked: build a compact timeline first (`awk` the `### Session` headers plus the first bullet of each block) to identify the distinct session IDs, then extract only the interactive ones — on this install the vast majority of blocks are cron runners and drown out the real work. The briefs written during the session were the other half of the recovery: on a well-run day the deliverables document themselves, and wrap-up is mostly assembling what already exists. **Label a reconstructed block as reconstructed and name its source**, so a later reader knows it was assembled after the fact rather than written live.
 - 2026-08-11: On a day this size, stage the commit **selectively** — root-level `.tmp_*` probe scripts and cron-proposed drafts (`context/MEMORY_draft.md`) are not session deliverables and should not be swept in by `git add -A`.
+- 2026-08-12: The selective-staging rule earned its keep: the working tree held an untracked root-level `Voip Passwords.txt`. `git add -A` would have pushed credentials to the backup repo. **Read the untracked list before staging, every time** — not just for tidiness, but because a stray secrets file at root is exactly the thing a blanket add captures silently.
 
 ## ops-phone-roleplay
 
@@ -371,3 +373,27 @@
   identified it as an inbound-media problem, and a cellular-vs-wifi test proved it was the agent's
   home router. JustCall uses the same UDP media path and would have failed identically. When a
   symptom is "outbound works, inbound doesn't," suspect the network before the product.
+- 2026-08-12: **Confirm what an API field actually means before reporting it as a defect.** Read
+  Gumroad's `file_info: {}` on the lawn and pressure-washing kits as "no files attached" and was
+  one step from telling Spencer two live $49 products deliver nothing to buyers. `file_info` is
+  single-file metadata (size/pages), not a file list — a multi-file product returns `{}` by design.
+  The memory log from 2026-07-26 said both kits shipped with 14 files each; that contradiction is
+  what forced the second check. Rule: when a live reading contradicts a written record, verify the
+  reading against an independent source before believing either — here, fetching the public product
+  page and counting `.docx`/`.xlsx` hits settled it in one call.
+
+## zero-touch-business (Route Ready)
+
+- 2026-08-12: **Gumroad API gotchas for status checks.** `file_info` is single-file metadata, not a
+  file count (see General entry above) — to verify a multi-file product is actually deliverable,
+  fetch the public `/l/{slug}` page and count `.docx`/`.xlsx` occurrences. Expect the cleaning kit
+  to show ZERO file extensions and still be fine: it delivers one start-here PDF holding Google Doc
+  copy-links, while lawn/PW ship files direct (the 2026-07-26 decision to drop copy-link delivery
+  applied only to kits 2 and 3, so the three kits have genuinely different delivery shapes). The
+  `/v2/products` `published` flag and `/v2/sales` are the reliable purchasability + revenue checks.
+- 2026-08-12: Status verified live — all 4 products published, **0 sales lifetime** at day ~24 of
+  the brief's 45-day first-organic-dollar gate (deadline ~2026-09-02). Both the Ads and GSC OAuth
+  tokens have been dead 14 days, so "0 sales" cannot be split into no-traffic vs no-conversion —
+  the diagnosis is blocked on two interactive re-mints only Spencer can run. Second gap worth
+  naming: all 21 published articles are cleaning topics, so the lawn and pressure-washing kits have
+  no organic funnel and depend entirely on ads that have been unmonitored for the same 14 days.
