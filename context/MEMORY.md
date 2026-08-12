@@ -4,7 +4,7 @@
 - AUTOPAY = biggest open $: TMCP 31% on (212/809); 277 hand-billed clients ALREADY hold a card ≈ $32k/mo. Manual toggle only. Keep T2 (237) off past-due nudges.
 - TEXT robot LIVE (jobber-text-automation): browser-only. 8/11 = 40 texts/$5,914/0 fail. Open: 28 rolled ($2,475), 8 commercial ($3,580).
 - QUO TERMINATED 8/11. Appeal + consent PDFs BUILT, NOT SENT (quo-account-appeal). Cause: lead-alerts had Mo calling 75 Jobber leads vs 4 real missed calls.
-- Routes: v8-highway live, 08-12..14 verified. BLOCKED: stale optimize-plan.json → horizon frozen 08-14, wk 08-17 ZERO routes on Tavis's 1st day. Run assign-by-territory first.
+- Routes: v8 live. 08-13 SYNCED (+2 SET, 26 re-timed); Froatz 16:45 tail OPEN. BLOCKED: stale optimize-plan.json → horizon frozen 08-14, wk 08-17 ZERO on Tavis's day 1; run assign-by-territory.
 - CRONS OFF (never re-enable in reconciliation): route-drift-check, jobber-visit-followups (cadence; ~4-5 slips/day), route-horizon-extend. Nothing auto-writes the schedule. Still on: callrail-sync, arrival-sweep.
 - Mo 38% vs Spencer 73% = artifact (5-day vs 10-wk quotes); age-matched 47/50. Real gap: Spencer BOOKS on the call (64% vs 17%) + 3.3 vs 1.7 touches. Mo closes 82% of OPENED quotes ≈ Spencer's 81%.
 - quote-chase cron LIVE 09:00 wkdys → emails Spencer+Mo quotes 24h+ unopened/un-followed.
