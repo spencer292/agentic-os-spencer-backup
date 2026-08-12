@@ -188,6 +188,8 @@
 - 2026-08-04 (CallRail nav map): numbers + routing = `/settings/a/{acct}/routing/calls-and-texts/numbers/active`; number edit = `.../numbers/{id}/edit`; flow builder = `/cfb/a/{acct}/call-flow/{uuid}/edit`; Voice Assist config = `/settings/a/{acct}/workflow/voice-assist` (Business profile / Conversation settings / Lead intake questions at `.../voice-assist/caller-intake`). Whisper is per-NUMBER (Call options card), not per-flow, and supports `[source]` / `[tag]` tokens — one string works across all numbers. Section pencils are `button.btn.btn-icon` in DOM order matching the card order. Guessing URLs 404s; enumerate `a[href]` from the home page instead.
 - 2026-08-11 (Jobber message center — the send path): the message center is a **right-side drawer, not a routed page** (`/messages`, `/message_center`, `/communications`, `/conversations` all 404) — open it with `button[data-testid="open-message-center"]`. Rows are `[data-testid="conversations-list-item"]`, 20 per page, and each row already carries client name, phone, **full message body** and timestamp, so classification never needs a thread opened — which means account-wide unread state is never touched. Sharp edges: the panel's search box is `input[type=text]` **inside the drawer** (`input[type=search]` is Jobber's global nav search and silently filters nothing); typing must go through CDP `Input.insertText` because setting `.value` does not trigger the filter; the compose `textarea` accepts programmatic input but `button[aria-label="Send"]` only enables after React re-renders, so **wait ~400 ms before reading `disabled`**. Message cap 670 chars. Target on two factors — search by phone digits (Jobber normalizes all formats), require exactly one row, then confirm the opened thread's heading matches the expected name.
 - 2026-08-11 (panel degradation — this one produces false horror stories): the message-center list stops returning rows after **~14 consecutive searches**. Treat a zero-row result as suspect: navigate to `/home`, reopen the panel, retry once before believing "no conversation" — without the retry a degraded panel read as 26 missing customers. Worse, a degraded panel matches a *neighbouring* row, which is how a run reported two threads as belonging to the wrong people and looked like near-miss wrong-number sends. Both were artifacts; neither was real. Same rule as the ghost-stops lesson: **confirm a scary reading against a fresh, known-good page state before acting on it.**
+- 2026-08-12 (Quo / OpenPhone nav map): the app is **`my.quo.com`** — `app.quo.com` and `app.openphone.com` are NXDOMAIN, and `openphone.com` 301s to `quo.com` (rebranded Sept 2025). Session persists in the agentic profile. Inbox = `/inbox/{PN-id}`; number settings = `/settings/phone-numbers/{PN-id}?tab=general|users|business-hours|call-flow|automations`. The call-flow builder opens from an "Edit call flow" button and stages edits behind **"Publish changes"** — a saved-looking canvas is NOT live, always confirm the unpublished-changes banner is gone. **The call list defaults to conversation state "Open" and hides missed/rejected calls; switch the state chip to "Any" or you will conclude calls never arrived.** Rejected calls read "You rejected the call" with the rejecting user's avatar, which names the culprit directly. Inbox "Voicemail" filter + state "Any" is the honest way to prove a mailbox has never been used.
+- 2026-08-12 (CallRail users + write blocks): user list is at **`/settings/a/{acct}/account/users`** (`/a/{acct}/users` redirects there); rows are JS-rendered with **no hrefs and no user IDs in the DOM**, so a per-user record cannot be opened read-only — ask for a screenshot instead of guessing at permissions. User types: `Reporting` = view-only, no dialer; `Manager` = calling, but scoped per company; `Administrator` = global. Support-site articles 403 to WebFetch but read fine through the browser. **Both `cdp.mjs click` and click-via-`eval` are blocked by the auto-mode classifier on live phone-system settings** — reads and screenshots work, all mutations go to the human with a numbered click list.
 
 ## tool-jobber
 - 2026-07-21 (bulk pulls): 24-mo invoice pull (8.7K rows w/ lineItems first:15) hits the query-cost throttle hard — expect "Throttled" every ~10-15 pages; 60s backoff + cursor-state resume (pull-diagnostic.mjs pattern) grinds through in ~45 min. clients/quotes/visits at first:75 without nesting barely throttle. Filters verified: invoices=issuedDate range, quotes=createdAt, visits=startAt (all Iso8601DateTimeRangeInput). Client has leadSource/sourceAttribution/utmMedium/tags/balance — attribution + AR live on the Client object. Quote statuses: draft/awaiting_response/archived/approved/converted (close rate = (approved+converted)/non-draft).
@@ -212,6 +214,7 @@
 ## meta-wrap-up
 
 - 2026-07-23: Routine wrap, no user feedback (credit-limit day — kept wrap minimal per Spencer's 'take it easy'). Kit 2/3 build parked mid-flight with file-level resume state in the daily log; that pattern (state block in memory before stopping) made the pause cheap.
+- 2026-08-12: **The missing-daily-log failure recurred — treat it as the norm on a busy day, not an anomaly.** `context/memory/2026-08-12.md` again did not exist at wrap-up despite four session IDs in `2026-08-12.aos.md` and a dozen deliverables already on disk from earlier sessions. The startup step that creates the `## Session N` block is clearly not firing reliably, so wrap-up should always check for the file's existence FIRST and be ready to create it, rather than expecting to finalise a block. Also reconfirmed: on a multi-session day the working tree is mostly other sessions' work — scope the commit deliberately and ask, never `git add -A` (this repo root holds an untracked, unignored `Voip Passwords.txt`, so a blanket add writes credentials into backup history permanently).
 - 2026-07-26: **Four concurrent sessions, and `context/memory/2026-07-26.md` did not exist at wrap-up** — three in-flight sessions had written nothing, so the daily log had to be created from scratch rather than finalised. Wrote a header naming each concurrent session ID and instructing later sessions to number after the highest existing block instead of renumbering, plus a "Cross-session notes" section so the stopped cron runtime and the other sessions' pending decisions are not lost when they close without wrapping. On a multi-session day, check `{date}.aos.md` for other session IDs before assuming the tree is yours — the working tree was 90% other sessions' work, so the commit had to be bundled and labelled, matching the existing convention in this repo's history.
 - 2026-08-11: **A session lost to a machine shutdown is fully recoverable from `{date}.aos.md` — reconstruct it, don't ask the user what they did.** The PC died mid-session; the daily log held only Session 1 (wrapped that morning), while the Stop-hook capture held every turn of seven concurrent streams through to 18:40 PT. What worked: build a compact timeline first (`awk` the `### Session` headers plus the first bullet of each block) to identify the distinct session IDs, then extract only the interactive ones — on this install the vast majority of blocks are cron runners and drown out the real work. The briefs written during the session were the other half of the recovery: on a well-run day the deliverables document themselves, and wrap-up is mostly assembling what already exists. **Label a reconstructed block as reconstructed and name its source**, so a later reader knows it was assembled after the fact rather than written live.
 - 2026-08-11: On a day this size, stage the commit **selectively** — root-level `.tmp_*` probe scripts and cron-proposed drafts (`context/MEMORY_draft.md`) are not session deliverables and should not be swept in by `git add -A`.
@@ -348,6 +351,25 @@
   miles were the drive to the first job (Cory 36%, 161 mi/wk). Route-level distance hides it because
   each route still looks internally tidy — the waste is in which cluster the driver was given, not
   in the sequence.
+- 2026-08-12: **"Placed successfully" is not the same as "placed sensibly" — always read the assigned
+  TIME, not just the success flag.** Inserting 2 late-booked SET visits into Wed 08-13, the optimizer
+  put Mercer Island at stop 15 / 10:34 (good) but hung Issaquah off the very END as stop 39 at
+  **16:45**, stretching Cory from 15:56 to 16:45. The run reported success and the verify step passed
+  — nothing is wrong by the script's own checks, because its guards test for lost/tech-moved/unplaced
+  stops, not for an absurd arrival time. A stop the optimizer cannot fit is appended rather than
+  refused, so a tail stop at 16:45 is the signal that the day had no room for it. Check the last
+  stop's clock time after every insert-and-replan.
+- 2026-08-12: **`push-new-visits-replan` genuinely does confine churn to the affected tech.** Measured
+  on 08-13: lock-all-132 + `balancing:'OFF'` + `startWith:'CURRENT'` moved 26 stops, every one of them
+  Cory's (24 shifted ~+30 min behind the two insertions, 1 moved -14 min); Alias, Robert and Luke came
+  back byte-identical in stop count and start/end times. So the blast radius of a late add is
+  predictable enough to quote to the user BEFORE overriding the email freeze — size it by which
+  tech owns the new visits, not by the whole day's 134 visits.
+- 2026-08-12: **The arrival-window email freeze is a clock rule, not a check of what was actually
+  sent** (`emailCutoffOk`): tomorrow becomes FROZEN at **14:00 PT today**, and today/past are never
+  writable even with `--override-freeze`. It does not query Jobber to see whether notifications
+  really went out. Worth stating plainly when asking for the override — on 08-12 the freeze had been
+  in effect for 14 minutes, which materially changed how much the shifted windows mattered.
 
 ## General
 - 2026-08-01: When the user says a task "should be simple" and keeps correcting the same class of
@@ -373,6 +395,49 @@
   identified it as an inbound-media problem, and a cellular-vs-wifi test proved it was the agent's
   home router. JustCall uses the same UDP media path and would have failed identically. When a
   symptom is "outbound works, inbound doesn't," suspect the network before the product.
+- 2026-08-12: **CORRECTS the 2026-08-04 entry above — Quo's broken inbound DTMF is the PRODUCT,
+  not the network.** Keypresses were tested by Muhammad (Pakistan) and Spencer (US), on separate
+  networks and separate devices, and the call drops for both. The router diagnosis was wrong and
+  it cost weeks: it talked the 08-04 session out of a correct conclusion ("Quo is the wrong tool")
+  and the same bind resurfaced today. Two users on different continents failing identically is a
+  platform verdict — one user's network is an anecdote, two is a spec.
+- 2026-08-12: **A softphone that runs its own ring logic ANSWERS THE CALL SESSION BEFORE A HUMAN
+  PICKS UP, and upstream call tracking reads that as "call answered."** CallRail then exits its
+  flow, so its Dial timeout never fires and Voice Assist never runs — the caller just hears the
+  softphone's ringback until it gives up, then silence. This extends the 08-04 rule ("whichever
+  endpoint answers first wins") down to the SIGNALLING layer: the destination does not have to
+  play audio to steal the call, it only has to accept the session. **Test for it:** let a tracker
+  ring out with screening OFF — ~30s of ringback then silence means premature answer. **Confirm
+  it:** turn ON "Prevent voicemails and automated systems from answering a call"; if the AI
+  fallback suddenly works, the destination was false-answering. **Structural fix:** a plain SIP
+  softphone (Zoiper/Bria on a bare SIP line) does not answer until a human taps answer, and
+  passes RFC 2833 DTMF — CallRail's Dial step takes a SIP address natively (`user@sip.provider`).
+- 2026-08-12: **Call-tracking recordings only capture the ANSWERED leg — never infer "nothing
+  answered" from one.** Hours went into transcribing recordings that showed 36s of ringing and
+  silence, concluding Voice Assist was dead, when the recording simply ended before the answered
+  portion. **The tell is a recording shorter than the call duration** (46s call / 40s recording).
+  Treat that gap as "there is audio you cannot see", not as evidence of silence.
+- 2026-08-12: **ASK THE USER WHAT THEY HEARD BEFORE INFERRING FROM TELEMETRY.** This session
+  produced four wrong diagnoses in a row — busy-line collapse, matched timers, flow corruption,
+  an account-level CallRail bug — each built by reasoning over API fields and audio while Spencer
+  had the answer in his ear the whole time. Every correction came from him, not from the data.
+  On a live system a human is on, one question ("what did you hear?") outranks an hour of
+  forensics, and the forensics should be used to CONFIRM what they report, not to replace it.
+- 2026-08-12: **A vendor UI can hide the calls you are looking for behind a default filter.**
+  Quo's call list defaults to conversation state "Open"; the missed and rejected calls that
+  explained everything only appeared after switching it to "Any". A vendor log showing "no record
+  of that call" is not proof the call never arrived — clear every filter first. The rejected
+  entries also read "You rejected the call", which named the culprit outright.
+- 2026-08-12: **In a ring-all group, one busy device kills the call for everyone unless the
+  platform is told to skip busy users.** Quo's "Only ring users that are not on a call" was OFF,
+  so a busy handset was rung, rejected, and the rejection short-circuited the entire ring group
+  straight to voicemail in ~2 seconds. Anyone extra sitting on a shared number — an owner who
+  never actually answers — is a live failure mode, not a harmless extra.
+- 2026-08-12: **CallRail user type `Reporting` is view-only and has no outbound dialer** — the
+  agent sees no number to select. `Manager` grants calling but is scoped PER COMPANY, unlike
+  `Administrator`, so upgrading the role without also granting company access still leaves an
+  empty dialer. First-time dialer users must also save their own callback number under
+  "Manage numbers"; the dialer rings that number first and requires pressing 1 to connect.
 - 2026-08-12: **Confirm what an API field actually means before reporting it as a defect.** Read
   Gumroad's `file_info: {}` on the lawn and pressure-washing kits as "no files attached" and was
   one step from telling Spencer two live $49 products deliver nothing to buyers. `file_info` is

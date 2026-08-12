@@ -5,12 +5,12 @@
 - TEXT robot LIVE (jobber-text-automation): browser-only. 8/11 = 40 texts/$5,914/0 fail. Open: 28 rolled ($2,475), 8 commercial ($3,580).
 - QUO TERMINATED 8/11. Appeal + consent PDFs BUILT, NOT SENT (quo-account-appeal). Cause: lead-alerts had Mo calling 75 Jobber leads vs 4 real missed calls.
 - Routes: v8-highway live, 08-12..14 verified. BLOCKED: stale optimize-plan.json → horizon frozen 08-14, wk 08-17 ZERO routes on Tavis's 1st day. Run assign-by-territory first.
-- CRONS OFF (never re-enable in reconciliation): route-drift-check, jobber-visit-followups (cadence; ~4-5 slips/day), route-horizon-extend. Nothing auto-writes the schedule. Still writing: callrail-sync, arrival-sweep.
+- CRONS OFF (never re-enable in reconciliation): route-drift-check, jobber-visit-followups (cadence; ~4-5 slips/day), route-horizon-extend. Nothing auto-writes the schedule. Still on: callrail-sync, arrival-sweep.
 - Mo 38% vs Spencer 73% = artifact (5-day vs 10-wk quotes); age-matched 47/50. Real gap: Spencer BOOKS on the call (64% vs 17%) + 3.3 vs 1.7 touches. Mo closes 82% of OPENED quotes ≈ Spencer's 81%.
 - quote-chase cron LIVE 09:00 wkdys → emails Spencer+Mo quotes 24h+ unopened/un-followed.
 - Phone training: close-verbatim + story bank built from Spencer's own 47 calls (callrail-faq). Neither is in muhammad-portable yet.
 - QuickFix overrun: 1 of 117 stops at 5 visits; 60 past wk5, no Jobber gate.
-- TMCP 8/11: 674 JOBS vs 653 clients, MRR $74.2K; 6 tag mismatches, 4 dup suspects. Conversion: reactive pitch, 357 targets, Phase1 texts next. Gmail triage BLOCKED on GMAIL_* creds.
+- TMCP 8/11: 674 JOBS vs 653 clients, MRR $74.2K; 6 tag mismatches, 4 dup suspects. Conversion: reactive pitch, 357 targets, Phase1 texts next.
 - NS1 $857K T12 +37%, gap=quote-issue. NS2 kits LIVE, 0 sales @8/12; Ads+GSC OAuth dead 2wk.
 
 ## Environment Notes
