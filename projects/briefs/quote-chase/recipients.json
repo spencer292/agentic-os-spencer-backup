@@ -1,0 +1,7 @@
+{
+  "_comment": "Who gets the daily quote-chase report. Email addresses are not secrets, so they live here where adding or removing someone is a normal reviewable edit instead of a change to the credentials file. spencer@got-moles.com is appended in code regardless, so a bad edit here can never cut the owner out of his own report. SMTP credentials come from LEAD_ALERT_SMTP_USER / LEAD_ALERT_SMTP_PASS in .env.",
+  "to": [
+    "spencer@got-moles.com",
+    "muhammad.j1461@gmail.com"
+  ]
+}

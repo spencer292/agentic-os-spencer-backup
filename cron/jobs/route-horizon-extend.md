@@ -2,10 +2,10 @@
 name: Route Horizon Extend (19 days)
 time: '06:15'
 days: mon,tue,wed,thu,fri
-active: 'true'
+active: 'false'
 model: opus
 notify: on_finish
-description: 'Every weekday before the office opens: make sure OptimoRoute has routes planned 19 days out — two full weeks beyond the current one, so a new booking always has a day to land on. Without it, route-drift-check silently ignores every new client booked past the last planned day — which is most of them.'
+description: 'DISABLED 2026-08-12 BY SPENCER — do not re-enable during routine reconciliation; only Spencer flips it back. It existed mainly to feed route-drift-check, which is retired. NOTE it is NOT read-only: step 4 chains push-week + optimize-week plan + optimize-week write, and that last one writes times back to Jobber (only on days with no routes yet — it aborts if an already-planned day falls in the window). It had in any case been ABORTING every morning since ~2026-08-07 on a stale optimize-plan.json, so the horizon stopped advancing at 2026-08-14 while it was still nominally active. Original: Every weekday before the office opens: make sure OptimoRoute has routes planned 19 days out — two full weeks beyond the current one, so a new booking always has a day to land on. Without it, route-drift-check silently ignores every new client booked past the last planned day — which is most of them.'
 timeout: 30m
 retry: '0'
 ---

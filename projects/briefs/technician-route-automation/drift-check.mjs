@@ -35,6 +35,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { serviceDuration, serviceTimeSummary } from './service-time.mjs';
+console.log(serviceTimeSummary());
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(__dirname, '../../..');
@@ -341,7 +343,7 @@ for (const day of Object.keys(byDay).sort()) {
       orderNo: m.orderNo,
       type: 'T',
       date: m.date,
-      duration: m.isSet ? 20 : 10,
+      duration: serviceDuration(m.tech, m.isSet, m.job),
       priority: 'M',
       location: {
         address: m.address,

@@ -21,6 +21,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { serviceDuration, serviceTimeSummary } from './service-time.mjs';
+console.log(serviceTimeSummary());
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(__dirname, '../../..');
@@ -213,7 +215,7 @@ for (const v of visits) {
     zip: (a.postalCode || '').slice(0, 5),
     order: {
       operation: 'SYNC', orderNo, type: 'T', date: day,
-      duration: isSet ? 20 : 10, priority: 'M',
+      duration: serviceDuration(tech, isSet, v.job.jobNumber), priority: 'M',
       location: {
         address: `${a.street}, ${a.city}, ${a.province || 'WA'} ${a.postalCode || ''}`,
         locationName: ((v.title || 'Unknown').trim().replace(/\s+/g, ' ') + ' · #' + v.job.jobNumber).slice(0, 60),

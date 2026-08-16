@@ -19,6 +19,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { serviceDuration, serviceTimeSummary } from './service-time.mjs';
+console.log(serviceTimeSummary());
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(__dirname, '../../..');
@@ -295,7 +297,8 @@ for (const vis of Object.values(byId)) {
       // 2026-08-01, this changed nothing about where stops landed. SETs and multi-visit jobs keep
       // their own date.
       date: (!pinned && gridDate) ? gridDate.from : visitDate,
-      duration: isSet ? 20 : 10,
+      // Per-tech on-site time (tech-service-times.json) — a flat 10/20 planned everyone at one pace.
+      duration: serviceDuration(tech, isSet, jn),
       // Uniform priority: OptimoRoute serves higher-priority orders earlier in the day,
       // which warps the route shape. Promises are made FROM the plan, never fed in as priority.
       priority: 'M',

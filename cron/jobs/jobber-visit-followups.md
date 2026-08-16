@@ -2,10 +2,10 @@
 name: Jobber Visit Notes Automation (daily)
 time: '18:15'
 days: daily
-active: 'true'
+active: 'false'
 model: opus
 notify: on_finish
-description: 'Daily Got Moles visit-note job: writes the Job Custom Field report from the day''s visit notes, then BOOKS the follow-up visits the cadence rules call for (live since 2026-08-05; dry-run before that, which is why ~4-5 customers a day were slipping). Cadence comes from what the tech found — Quick Fix always weekly, TMCP weekly on any activity or catch, monthly when quiet. Guarded: aborts before any write if a day exceeds --max-writes 25 or if an action would reschedule a SET. The REPORT half moved BACK here from n8n on 2026-08-04 — n8n workflow 2dxtg73X1JUvLUTr is DEACTIVATED because its Jobber OAuth credential is dead and cannot be revived without risking this machine''s token.'
+description: 'DISABLED 2026-08-12 BY SPENCER — he wanted the automated visit booking off his board; re-enable only when he says so, never as part of routine reconciliation. NOTE this switches off BOTH halves: the Job Custom Field report-sync (step 1) as well as the follow-up booking (step 2). If the report is wanted back without the booking, set active true and drop --execute from the step 2 command — n8n workflow 2dxtg73X1JUvLUTr cannot cover the report, its Jobber credential is dead. Original: Daily Got Moles visit-note job: writes the Job Custom Field report from the day''s visit notes, then BOOKS the follow-up visits the cadence rules call for (live since 2026-08-05; dry-run before that, which is why ~4-5 customers a day were slipping). Cadence comes from what the tech found — Quick Fix always weekly, TMCP weekly on any activity or catch, monthly when quiet. Guarded: aborts before any write if a day exceeds --max-writes 25 or if an action would reschedule a SET. The REPORT half moved BACK here from n8n on 2026-08-04 — n8n workflow 2dxtg73X1JUvLUTr is DEACTIVATED because its Jobber OAuth credential is dead and cannot be revived without risking this machine''s token.'
 timeout: 25m
 retry: '1'
 ---

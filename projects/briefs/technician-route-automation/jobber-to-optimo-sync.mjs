@@ -23,6 +23,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { serviceDuration, serviceTimeSummary } from './service-time.mjs';
+console.log(serviceTimeSummary());
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(__dirname, '../../..');
@@ -297,7 +299,7 @@ let fails = 0;
 for (const a of actions) {
   const order = {
     operation: 'SYNC', orderNo: a.orderNo, type: 'T', date: a.toDay,
-    duration: a.isSet ? 20 : 10, priority: 'M',
+    duration: serviceDuration(a.toTech, a.isSet, a.job), priority: 'M',
     location: { address: a.address, locationName: ((a.title || '') + ' · #' + a.job).slice(0, 60), acceptPartialMatch: true, acceptMultipleResults: true },
     allowedDates: { from: a.toDay, to: a.toDay },
     notes: 'Jobber job ' + a.job + (a.isSet ? ' (SET)' : '') + ' [jobber-truth-sync]',

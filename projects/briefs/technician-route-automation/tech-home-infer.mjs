@@ -7,6 +7,15 @@
 //
 // READ-ONLY.
 //
+// !! THE CORE ASSUMPTION IS UNSAFE — Spencer 2026-08-15. This infers "home" from where each route
+// STARTS, which is only home if OptimoRoute's driver record says so. It put Robert Norton in
+// Buckley on the strength of 1.7-mile first legs; he lives in MAPLE VALLEY. So a route's start
+// location is a configured field that can be stale, defaulted, or simply somebody else's depot —
+// not evidence of where anyone lives. Treat the output as "distance from the configured start
+// location", never as a home address, and never build a territory or commute argument on it
+// without asking the person. Cory Ventura's inferred Buckley home rests on the same method and is
+// equally unverified.
+//
 // Usage: node tech-home-infer.mjs --from=2026-07-20 --to=2026-08-07
 
 import fs from 'node:fs';

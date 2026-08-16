@@ -1,0 +1,45 @@
+{
+  "_why": "Spencer 2026-08-15: 'I need to increase the amount of time for OptimoRoute for all of my technicians except for Cory. I want the estimated time on site 15 minutes, and Cory stays at 10.' This is a DIRECTED number, not a measurement — it supersedes the 2026-08-11 calibrated values below. The measured basis lines are kept as history so the next calibration knows what changed and why.",
+  "_howDerived": "Spencer's call, 2026-08-15. Prior values came from service-time-calibrate.mjs: cycle time between consecutive Jobber completedAt stamps MINUS the tech's own OptimoRoute travelTime for that day = implied ON-SITE minutes. Drive comes from each tech's own routes, so Luke's peninsula miles and Cory's West Seattle blocks are priced with their own drive and what is left is genuinely the person. Morning commute (home -> stop 1) excluded on both sides.",
+  "_setRule": "`set` is the first visit of a job (traps going in) and stays at 2x the check — Spencer confirmed 2026-08-15 to keep the doubling rather than flatten every stop to one number.",
+  "_fallback": "A tech not listed here gets `default`, and the writer LOGS the fallback — never silently. Add a tech here once service-time-calibrate.mjs has ~15 field days on them.",
+  "_clusterRule": "A `cluster` is a set of separate Jobber jobs at ONE physical place — an HOA, a condo development, a business park — where the tech parks once and walks. Per-job service time massively over-books these: OptimoRoute already prices the drive between doors at ~1 min, so the whole inflation is on-site time multiplied by the door count. A cluster instead declares what the WHOLE place takes and each member job gets totalMinutes / (number of jobs), so adding or dropping a unit re-prices the rest automatically. Cluster time BEATS the tech's own number — the place takes what it takes regardless of who is standing in it. Caveat: if only some of a cluster's jobs are on the board that day, each still gets the full share, so the day is under-booked; check the count before trusting a partial cluster.",
+
+  "updated": "2026-08-15",
+  "default": { "check": 15, "set": 30 },
+
+  "techs": {
+    "Alias Franks": {
+      "check": 15, "set": 30,
+      "basis": "Spencer 2026-08-15: 15 min. Unchanged — already at 15. Measured 15.0 min on-site (5 routed days, 08-03..08-07); 12.7 on 08-10."
+    },
+    "Robert Norton": {
+      "check": 15, "set": 30,
+      "basis": "Spencer 2026-08-15: 15 min. Unchanged. Measured 15.1 min on 08-10, his first day on the OptimoRoute map — one day only; re-measure once he has ~15 field days."
+    },
+    "Cory Ventura": {
+      "check": 12, "set": 24,
+      "basis": "Spencer 2026-08-15, second call: moved 10 -> 12 after seeing that 10 planned him ~2.7 min/stop tighter than he has ever actually worked (measured 12.7 min on-site over 19 days, 07-13..08-09; 13.4 on 08-10), which would have slid his arrival times later through a 31-32 stop day. 12 sits just under measured and still keeps him the fastest tech on the board."
+    },
+    "Luke LaVergne": {
+      "check": 15, "set": 30,
+      "basis": "Spencer 2026-08-15: 15 min. Raised from 13 (measured 12.7 min on-site, 19 days 07-13..08-09)."
+    },
+    "Spencer Hill": {
+      "check": 15, "set": 30,
+      "basis": "Spencer 2026-08-15: 15 min. Raised from 13 (measured 13.2 min, 7 days). Tuesday peninsula only."
+    },
+    "Tavis Alexander": {
+      "check": 15, "set": 30,
+      "basis": "Spencer 2026-08-15: 15 min. Raised from 13 (the old default). Still NO measured data — returned to Territory 2 on 2026-08-17; re-measure once service-time-calibrate.mjs has ~15 field days on him."
+    }
+  },
+
+  "clusters": {
+    "Barbee Mill (Renton 98056)": {
+      "totalMinutes": 120,
+      "basis": "Spencer 2026-08-15: 'it's between 90 minutes and 2 hours' for the whole development. Planned at the TOP of his range — planning short is what makes a tech run late against emailed arrival windows. 11 jobs share it, so 11 min each. Measured 2026-08-15: all 11 sit inside a 0.18-mile radius (48-240 m door to door) and OptimoRoute prices only 7 min of driving across the entire block, so per-job service time was the whole of the over-booking — 11 x 15 = 2h45m against a real 1h30m-2h.",
+      "jobs": [7964, 7967, 7979, 7980, 7981, 8016, 8019, 8146, 8147, 8176, 8320]
+    }
+  }
+}

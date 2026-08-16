@@ -24,6 +24,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { serviceDuration, serviceTimeSummary } from './service-time.mjs';
+console.log(serviceTimeSummary());
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(__dirname, '../../..');
@@ -143,6 +145,9 @@ const RHYTHM = {};                 // zip -> days (single-region zips; kept for 
 const RHYTHM_BY_REGION = {};       // region name -> days
 const ZIP_REGIONS = {};            // zip -> [region names]
 let REGION_DEF = {}, GEO_LINES = {};
+const NEW_RHYTHM = {};             // region name -> post-cut days, when the window is on/after the cut
+const WEEK_OVERRIDE = {};          // region name -> days, this week only (--rhythm-override)
+let RHYTHM_SOURCE = 'regions[].rhythm', RHYTHM_OVERRIDE_NOTE = null;
 const geoFallback = [], geoUnknown = [], dayOverrideHits = [];
 let DAY_OVERRIDES = {};
 let geoCache = { entries: {} };
@@ -150,8 +155,40 @@ try {
   const T = JSON.parse(fs.readFileSync(path.join(__dirname, 'territories.json'), 'utf8'));
   REGION_DEF = T.regions; GEO_LINES = T.geoSplitLines || {};
   DAY_OVERRIDES = Object.fromEntries(Object.entries(T.dayOverrides || {}).filter(([k]) => !k.startsWith('_')));
+  // v9 (five-way cut) re-deals the 22 region blocks, which breaks v8's one-block-per-weekday tiling,
+  // so blocks change DAY as well as owner from 2026-08-17. The new days live in `rhythmChanges`, not
+  // in regions[].rhythm — deliberately, because rhythm has no date mechanism and make-service-day-sheet
+  // / build-address-day-lookup read it for TODAY. So: use newRhythm only when the window being planned
+  // starts on or after the effective date, and say so out loud. A window that straddles the date is
+  // refused rather than planned half on each map.
+  // --rhythm-override=<file> layers a WEEK-LEVEL day map on top, for the case the standing map
+  // cannot cover: the standing rhythm is tuned on a census of typical volume, and a real week is
+  // lumpy — one block booked at half its usual volume empties a route-day while another overflows.
+  // A visit still never leaves its region's days (chooseDays), so widening the block's days here is
+  // the only lever. Scoped by `effective`/`expires` so it cannot silently outlive its week.
+  const roArg = process.argv.find(a => a.startsWith('--rhythm-override='));
+  if (roArg) {
+    const ro = JSON.parse(fs.readFileSync(path.resolve(__dirname, roArg.split('=')[1]), 'utf8'));
+    if (FROM < ro.effective || (ro.expires && TO >= ro.expires)) {
+      console.error(`ABORT: override covers ${ro.effective}..${ro.expires || 'open'}, window is ${FROM}..${TO}.`);
+      process.exit(1);
+    }
+    for (const [name, c] of Object.entries(ro.byRegion || {})) if (c.days) WEEK_OVERRIDE[name] = c.days;
+    RHYTHM_OVERRIDE_NOTE = `${path.basename(roArg.split('=')[1])} (${Object.keys(WEEK_OVERRIDE).length} region(s))`;
+  }
+  const RC = T.rhythmChanges;
+  if (RC?.effective && RC.byRegion) {
+    if (FROM >= RC.effective) {
+      RHYTHM_SOURCE = `rhythmChanges (effective ${RC.effective})`;
+      for (const [name, c] of Object.entries(RC.byRegion)) if (c.newRhythm) NEW_RHYTHM[name] = c.newRhythm;
+    } else if (TO >= RC.effective) {
+      console.error(`ABORT: window ${FROM}..${TO} straddles the rhythm change effective ${RC.effective}.`);
+      console.error('Plan the two sides separately — one run cannot hold both day maps.');
+      process.exit(1);
+    }
+  }
   for (const [name, r] of Object.entries(T.regions)) {
-    const wd = (r.rhythm || '').toLowerCase().match(/mon|tue|wed|thu|fri/g) || [];
+    const wd = ((WEEK_OVERRIDE[name] ?? NEW_RHYTHM[name] ?? r.rhythm) || '').toLowerCase().match(/mon|tue|wed|thu|fri/g) || [];
     RHYTHM_BY_REGION[name] = wd;
     for (const z of r.zips) {
       (ZIP_REGIONS[z] = ZIP_REGIONS[z] || []).push(name);
@@ -207,8 +244,17 @@ async function chooseDays(want) {
   const entries = Object.entries(want).filter(([, w]) => !w.isSet && w.address);
   // Heaviest regions first so the constrained ones settle before the flexible ones fill the gaps.
   // Resolve each visit's allowed days up front — geoSplit regions need an async address lookup.
-  const allowedBy = new Map();
-  for (const [orderNo, w] of entries) allowedBy.set(orderNo, await allowedForVisit(w));
+  const allowedBy = new Map(), weightBy = new Map();
+  for (const [orderNo, w] of entries) {
+    allowedBy.set(orderNo, await allowedForVisit(w));
+    // Balance the day by MINUTES, not by stop count. Counting stops assumes every stop costs the
+    // same, and on this board it does not: driveMinPerStop runs 4.5 in Burien to 18 on the
+    // peninsula, so an even split of visits can still hand someone a 10.9h day next to an 8.2h one
+    // (measured 2026-08-13, first pass of the five-way cut). Service time is per-tech measured,
+    // drive is the region's measured average — the same inputs the census and the cut review use.
+    const region = await regionForVisit(w, zipOf(w));
+    weightBy.set(orderNo, serviceDuration(w.tech, w.isSet, w.job) + (REGION_DEF[region]?.driveMinPerStop ?? 12));
+  }
   entries.sort((a, b) => (allowedBy.get(a[0])?.length || 9) - (allowedBy.get(b[0])?.length || 9));
   // Per-tech target for one day. The rhythm is a PREFERENCE, not a hard rule: Luke's rhythm put
   // Tacoma, Lakewood and Burien all on Tuesday, which stacked 59 visits on one day. When every
@@ -230,15 +276,42 @@ async function chooseDays(want) {
     // a 474-mile Friday. If a region's days are full that means the REGION needs another day — it is
     // never licence to move the stop somewhere unrelated.
     const best = cands.reduce((b, d) => ((load[t][d] || 0) < (load[t][b] || 0) ? d : b), cands[0]);
-    load[t][best] = (load[t][best] || 0) + 1;
+    load[t][best] = (load[t][best] || 0) + (weightBy.get(orderNo) ?? 13);
     pick[orderNo] = best;
   }
+  // One greedy pass seats each visit on the lightest day it is allowed, but it cannot revisit a
+  // decision: whichever block settles first owns the light day, and a block that only runs two days
+  // can end up carrying a 10.9h Thursday next to a 7.8h Tuesday. So sweep afterwards — repeatedly
+  // take the tech's heaviest day and move the single visit that most reduces that day, but only
+  // onto a day the visit's own region already runs. The rule that a visit never leaves its region's
+  // days is untouched; this only chooses better among the days it was always allowed.
+  const byTech = {};
+  for (const [orderNo, w] of entries) if (pick[orderNo]) (byTech[w.tech || 'UNASSIGNED'] ||= []).push(orderNo);
+  let movedInSweep = 0;
+  for (const [t, orders] of Object.entries(byTech)) {
+    for (let iter = 0; iter < 400; iter++) {
+      const ds = days.filter(d => load[t][d] != null);
+      if (ds.length < 2) break;
+      const heavy = ds.reduce((a, b) => (load[t][a] > load[t][b] ? a : b));
+      const light = ds.reduce((a, b) => (load[t][a] < load[t][b] ? a : b));
+      const gap = load[t][heavy] - load[t][light];
+      if (gap <= 0) break;
+      // Move only if it strictly narrows the gap — never overshoot into making the light day heavy.
+      const cand = orders.find(o => pick[o] === heavy && (allowedBy.get(o) || []).includes(light)
+        && (weightBy.get(o) ?? 13) * 2 <= gap);
+      if (!cand) break;
+      const wgt = weightBy.get(cand) ?? 13;
+      load[t][heavy] -= wgt; load[t][light] += wgt; pick[cand] = light; movedInSweep++;
+    }
+  }
+  if (movedInSweep) console.log(`  day balance sweep: ${movedInSweep} visit(s) moved to a lighter day within their own region days`);
   if (overflow.length) console.log();
   return pick;
 }
 const zipOf = w => ((w.visit.property?.address?.postalCode || '') + '').trim().slice(0, 5);
 console.log(`REBALANCE WEEK (${mode.toUpperCase()})  ${FROM} .. ${TO}   balancing=${BALANCING}  day ceiling ${MAX_DAY_HOURS}h`);
-console.log(`now ${ptNow()} PT   — tech LOCKED from Jobber, day FREE within the window\n`);
+console.log(`now ${ptNow()} PT   — tech LOCKED from Jobber, day FREE within the window`);
+console.log(`day map: ${RHYTHM_SOURCE}${RHYTHM_OVERRIDE_NOTE ? `  + week override ${RHYTHM_OVERRIDE_NOTE}` : ''}\n`);
 
 // ---------- Jobber ----------
 const Q = `query($a:String,$after:ISO8601DateTime,$before:ISO8601DateTime){
@@ -352,7 +425,7 @@ for (const [orderNo, w] of Object.entries(want)) {
   const allowed = { from: day, to: day };
   const order = {
     operation: 'SYNC', orderNo, type: 'T', date: day,
-    duration: w.isSet ? 20 : 10, priority: 'M',
+    duration: serviceDuration(w.tech, w.isSet, w.job), priority: 'M',
     location: { address: w.address, locationName: ((w.title || '') + ' · #' + w.job).slice(0, 60), acceptPartialMatch: true, acceptMultipleResults: true },
     allowedDates: allowed,
     notes: 'Jobber job ' + w.job + (w.isSet ? ' (SET)' : '') + ' [rebalance]',
