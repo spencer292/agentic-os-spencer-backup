@@ -1,2 +1,7 @@
 {{ 'overflow-list.css' | asset_url | preload_tag: as: 'style' }}
 {{ 'base.css' | asset_url | stylesheet_tag: preload: true }}
+{% comment %}
+  SYPerformance design tokens. Must load after base.css so it can layer on the
+  variables Horizon generates from theme settings.
+{% endcomment %}
+{{ 'syp-tokens.css' | asset_url | stylesheet_tag: preload: true }}

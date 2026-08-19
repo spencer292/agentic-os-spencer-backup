@@ -1,0 +1,208 @@
+/* ==========================================================================
+   SYPerformance — design tokens
+   --------------------------------------------------------------------------
+   Loaded AFTER base.css so it can layer on Horizon's own variables (which are
+   generated from theme settings in snippets/theme-styles-variables.liquid).
+
+   Rule for everything downstream: reference a token, never a literal. If a
+   value is needed that isn't here, add it here first.
+
+   Horizon's own tokens are left intact so the theme editor keeps working for
+   the store owner. Where we deliberately override one, it is marked OVERRIDE
+   and the reason is stated.
+   ========================================================================== */
+
+:root {
+  /* ------------------------------------------------------------------
+     1. COLOR — primitives
+     Graphite base, never pure black. Pure #000 kills the sense of a
+     machined surface and makes photography look cut out.
+     ------------------------------------------------------------------ */
+
+  /* Graphite — page and surface ramp, darkest to lightest */
+  --syp-graphite-900: #0e1013; /* deepest wells, overlay scrims */
+  --syp-graphite-800: #14161a; /* page background */
+  --syp-graphite-700: #1b1e23; /* raised surface: cards, table rows */
+  --syp-graphite-600: #23272e; /* hover surface, input fill */
+  --syp-graphite-500: #2e333b; /* borders on dark, dividers */
+
+  /* Steel — aluminium/steel greys, the secondary palette */
+  --syp-steel-400: #4a515b; /* hairlines, disabled edges */
+  --syp-steel-300: #6b727d; /* muted text, axis labels */
+  --syp-steel-200: #8a9099; /* secondary text */
+  --syp-steel-100: #b8bec7; /* body text on dark */
+  --syp-steel-050: #d7dbe0; /* high-emphasis text */
+  --syp-white: #f2f4f6; /* headings; not #fff, avoids glare on graphite */
+
+  /* Accent — ONE colour, actions only. Machine-warning amber: industrial
+     rather than neon, and warm against a cold graphite field. Never use it
+     for decoration, only for something the user can act on. */
+  --syp-accent: #f5a524;
+  --syp-accent-hover: #ffb845;
+  --syp-accent-press: #d88c15;
+  --syp-accent-ink: #14161a; /* text ON accent — dark, passes AA */
+
+  /* Semantic — status only, never decorative */
+  --syp-ok: #3fa06a;
+  --syp-warn: #d9822b;
+  --syp-error: #d64545;
+
+  /* ------------------------------------------------------------------
+     2. COLOR — semantic roles
+     Components reference these, not the primitives above. Retheming means
+     changing this block only.
+     ------------------------------------------------------------------ */
+  --syp-bg: var(--syp-graphite-800);
+  --syp-bg-raised: var(--syp-graphite-700);
+  --syp-bg-hover: var(--syp-graphite-600);
+
+  --syp-text: var(--syp-steel-100);
+  --syp-text-strong: var(--syp-white);
+  --syp-text-muted: var(--syp-steel-200);
+  --syp-text-faint: var(--syp-steel-300);
+
+  --syp-rule: var(--syp-graphite-500); /* standard divider */
+  --syp-rule-strong: var(--syp-steel-400); /* emphasis divider */
+  --syp-rule-faint: #1e2228; /* grid lines, barely there */
+
+  /* ------------------------------------------------------------------
+     3. TYPE
+     Three roles: display (headings), body (prose), spec (numbers, part
+     numbers, tolerances). Spec is monospace with tabular figures so digits
+     align in a column — the single most important typographic decision on a
+     parts site.
+
+     System mono is used deliberately: it is genuinely technical, renders
+     instantly, and costs zero bytes. Swap for a webfont only if the brand
+     needs it, and preload it if so.
+     ------------------------------------------------------------------ */
+  --syp-font-display: var(--font-heading--family, 'Inter', system-ui, sans-serif);
+  --syp-font-body: var(--font-body--family, 'Inter', system-ui, sans-serif);
+  --syp-font-spec: ui-monospace, 'SF Mono', SFMono-Regular, 'Cascadia Mono', 'Roboto Mono',
+    Menlo, Consolas, monospace;
+
+  /* Fluid type scale. Ratio ~1.25 at small sizes, opening up at display sizes.
+     clamp() keeps it responsive without breakpoint steps. */
+  --syp-text-2xs: 0.6875rem; /* 11px — badges, table micro-labels */
+  --syp-text-xs: 0.75rem; /* 12px — captions, spec labels */
+  --syp-text-sm: 0.8125rem; /* 13px — dense table values */
+  --syp-text-base: 0.9375rem; /* 15px — body */
+  --syp-text-md: 1.0625rem; /* 17px — lead paragraphs */
+  --syp-text-lg: clamp(1.25rem, 0.9rem + 0.9vw, 1.5rem);
+  --syp-text-xl: clamp(1.5rem, 1rem + 1.6vw, 2rem);
+  --syp-text-2xl: clamp(1.875rem, 1.1rem + 2.6vw, 2.75rem);
+  --syp-text-3xl: clamp(2.25rem, 1.1rem + 4.2vw, 4rem);
+
+  --syp-leading-tight: 1.08; /* display headings */
+  --syp-leading-snug: 1.25; /* subheads */
+  --syp-leading-normal: 1.55; /* body prose */
+  --syp-leading-spec: 1.4; /* spec table rows */
+
+  --syp-tracking-tight: -0.02em; /* large display type */
+  --syp-tracking-normal: 0;
+  --syp-tracking-wide: 0.04em; /* small caps, labels */
+  --syp-tracking-caps: 0.09em; /* ALL-CAPS micro labels, badges */
+
+  --syp-weight-regular: 400;
+  --syp-weight-medium: 500;
+  --syp-weight-semibold: 600;
+  --syp-weight-bold: 700;
+
+  /* ------------------------------------------------------------------
+     4. SPACE — 4px base. Named by size, not by use, so the same step can
+     serve padding, gap and margin without inventing aliases.
+     ------------------------------------------------------------------ */
+  --syp-space-3xs: 0.125rem; /* 2 */
+  --syp-space-2xs: 0.25rem; /* 4 */
+  --syp-space-xs: 0.5rem; /* 8 */
+  --syp-space-sm: 0.75rem; /* 12 */
+  --syp-space-md: 1rem; /* 16 */
+  --syp-space-lg: 1.5rem; /* 24 */
+  --syp-space-xl: 2rem; /* 32 */
+  --syp-space-2xl: 3rem; /* 48 */
+  --syp-space-3xl: 4.5rem; /* 72 */
+  --syp-space-4xl: 7rem; /* 112 — section separation, the "let it breathe" step */
+
+  /* ------------------------------------------------------------------
+     5. BORDER & RADIUS
+     Radii are near-zero on purpose. Rounded corners read consumer-friendly;
+     machined parts and drawings have square corners. 2px is the maximum
+     anywhere, and only on interactive surfaces.
+     ------------------------------------------------------------------ */
+  --syp-radius-none: 0;
+  --syp-radius-sm: 1px;
+  --syp-radius-md: 2px;
+
+  --syp-hairline: 1px; /* the default rule weight — thin and everywhere */
+  --syp-border-md: 2px; /* emphasis: active states, focus */
+
+  /* ------------------------------------------------------------------
+     6. LAYOUT
+     ------------------------------------------------------------------ */
+  --syp-measure: 68ch; /* max line length for prose */
+  --syp-grid-gap: var(--syp-space-lg);
+
+  /* ------------------------------------------------------------------
+     7. MOTION — restrained. Industrial UI should feel mechanical, not bouncy.
+     ------------------------------------------------------------------ */
+  --syp-ease: cubic-bezier(0.2, 0, 0.1, 1);
+  --syp-duration-fast: 120ms;
+  --syp-duration: 180ms;
+
+  /* ------------------------------------------------------------------
+     8. FOCUS — accessibility is not optional. A visible, high-contrast focus
+     ring on every interactive element, on every background.
+     ------------------------------------------------------------------ */
+  --syp-focus-ring: 2px solid var(--syp-accent);
+  --syp-focus-offset: 2px;
+}
+
+/* ==========================================================================
+   Utility primitives
+   Small, composable, and used by the component snippets. Kept minimal on
+   purpose — this is not a utility framework.
+   ========================================================================== */
+
+/* Numbers that must align in a column: prices, HP ratings, tolerances,
+   part numbers. Tabular figures are the whole point. */
+.syp-spec {
+  font-family: var(--syp-font-spec);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1, 'zero' 1; /* slashed zero — reads as engineering */
+  letter-spacing: var(--syp-tracking-normal);
+}
+
+/* Body copy also gets tabular figures so inline prices don't jitter. */
+.syp-tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Small ALL-CAPS label: section eyebrows, spec-table column heads. */
+.syp-label {
+  font-family: var(--syp-font-spec);
+  font-size: var(--syp-text-2xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  color: var(--syp-text-faint);
+}
+
+/* The hairline rule that carries most of the visual structure. */
+.syp-rule {
+  border: 0;
+  border-top: var(--syp-hairline) solid var(--syp-rule);
+  margin: 0;
+}
+
+/* Focus treatment applied globally rather than per component, so nothing can
+   ship without it. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: var(--syp-focus-ring);
+  outline-offset: var(--syp-focus-offset);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --syp-duration-fast: 0ms;
+    --syp-duration: 0ms;
+  }
+}
