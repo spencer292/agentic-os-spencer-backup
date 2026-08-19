@@ -1,0 +1,79 @@
+{%- comment -%}
+  SYPerformance component gallery.
+
+  A review scaffold, not a customer-facing page. It renders every base
+  component against real store data so components can be checked in one place
+  as they are built. Delete before handover, or leave it on an unlisted page as
+  living documentation.
+{%- endcomment -%}
+
+{{ 'syp-components.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign sample_products = collections.all.products | slice: 0, 8
+-%}
+
+<div class="syp-gallery">
+  <section class="syp-gallery__section">
+    <h2 class="syp-gallery__title">Buttons</h2>
+    <div class="syp-gallery__row">
+      {% render 'syp-button', label: 'Add to cart', variant: 'primary' %}
+      {% render 'syp-button', label: 'Download spec sheet', variant: 'secondary' %}
+      {% render 'syp-button', label: 'Compare fitment', variant: 'ghost' %}
+      {% render 'syp-button', label: 'Out of stock', variant: 'primary', disabled: true %}
+    </div>
+  </section>
+
+  <section class="syp-gallery__section">
+    <h2 class="syp-gallery__title">Badges</h2>
+    <div class="syp-gallery__row">
+      {% render 'syp-badge', label: 'Made in-house', variant: 'in-house' %}
+      {% render 'syp-badge', label: 'Built to order', variant: 'built-to-order' %}
+      {% render 'syp-badge', label: 'In stock', variant: 'in-stock' %}
+      {% render 'syp-badge', label: 'Sold out', variant: 'sold-out' %}
+      {% render 'syp-badge', label: 'Sale', variant: 'sale' %}
+    </div>
+  </section>
+
+  <section class="syp-gallery__section">
+    <h2 class="syp-gallery__title">Spec table &amp; callouts</h2>
+    <div class="syp-gallery__split">
+      <div>
+        {% capture demo_specs %}Material: 6061-T6 billet aluminium
+Bore: 34.90 mm
+Tolerance: ±0.02 mm
+Rated power: 1000 hp
+Hardware: ARP 12-point, M10x1.25
+Torque: 45 lb-ft
+Lead time: 6-8 weeks{% endcapture %}
+        {% render 'syp-spec-table', rows: demo_specs, caption: 'Specification' %}
+      </div>
+      <div>
+        {% capture why_content %}<p>Factory halfshafts twist and shear at the inner joint once you pass roughly 500&nbsp;wheel&nbsp;hp on slicks. The failure is almost always the shaft itself, not the joint.</p><p>These are turned from 300M steel, heat treated, and stress relieved. The shaft diameter is increased at the spline transition where the stock part necks down.</p>{% endcapture %}
+        {% render 'syp-callout', label: 'Why this part exists', content: why_content, variant: 'required' %}
+
+        {% capture caveat_content %}<p>Requires the matching billet carrier. Stock carriers will not accept this shaft diameter.</p><p>Not compatible with factory intermediate bearings.</p>{% endcapture %}
+        {% render 'syp-callout', label: 'Before you buy', content: caveat_content, variant: 'warning' %}
+
+        {% render 'syp-callout', label: 'Why this part exists', content: '', variant: 'required' %}
+      </div>
+    </div>
+  </section>
+
+  <section class="syp-gallery__section">
+    <h2 class="syp-gallery__title">Product cards — live store data</h2>
+    <div class="syp-gallery__grid">
+      {%- for product in sample_products -%}
+        {% render 'syp-product-card', product: product %}
+      {%- endfor -%}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "SYP component gallery",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

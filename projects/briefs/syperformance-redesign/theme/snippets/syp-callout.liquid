@@ -1,0 +1,28 @@
+{%- doc -%}
+  SYPerformance callout — the technical-honesty blocks.
+
+  Used for "Why this part exists", "Before you buy", and fitment warnings.
+  Variant `required` marks a block that must not be empty on an in-house
+  product; an empty one renders a visible MISSING notice by design.
+
+  @param {string} label - Small uppercase label above the body
+  @param {string} content - Body HTML
+  @param {string} [variant] - warning | required
+
+  @example
+  {% render 'syp-callout', label: 'Before you buy', content: block.settings.caveats, variant: 'warning' %}
+{%- enddoc -%}
+
+{%- liquid
+  assign callout_classes = 'syp-callout'
+  if variant != blank
+    assign callout_classes = callout_classes | append: ' syp-callout--' | append: variant
+  endif
+-%}
+
+<div class="{{ callout_classes }}">
+  {%- if label != blank -%}
+    <span class="syp-callout__label">{{ label }}</span>
+  {%- endif -%}
+  <div class="syp-callout__body">{{ content }}</div>
+</div>

@@ -1,0 +1,39 @@
+{%- doc -%}
+  SYPerformance button.
+
+  @param {string} label - Button text
+  @param {string} [href] - If present renders an <a>, otherwise a <button>
+  @param {string} [variant] - primary | secondary | ghost. Default: primary
+  @param {string} [type] - button type attribute when not a link. Default: button
+  @param {boolean} [block] - Full width
+  @param {boolean} [disabled] - Disabled state
+  @param {string} [attributes] - Extra HTML attributes
+
+  @example
+  {% render 'syp-button', label: 'Add to cart', variant: 'primary' %}
+  {% render 'syp-button', label: 'Spec sheet', href: '/pages/specs', variant: 'secondary' %}
+{%- enddoc -%}
+
+{%- liquid
+  assign btn_variant = variant | default: 'primary'
+  assign btn_classes = 'syp-btn syp-btn--' | append: btn_variant
+  if block
+    assign btn_classes = btn_classes | append: ' syp-btn--block'
+  endif
+-%}
+
+{%- if href != blank -%}
+  <a
+    class="{{ btn_classes }}"
+    href="{{ href }}"
+    {% if disabled %}role="link" aria-disabled="true"{% endif %}
+    {{ attributes }}
+  >{{ label }}</a>
+{%- else -%}
+  <button
+    class="{{ btn_classes }}"
+    type="{{ type | default: 'button' }}"
+    {% if disabled %}disabled{% endif %}
+    {{ attributes }}
+  >{{ label }}</button>
+{%- endif -%}

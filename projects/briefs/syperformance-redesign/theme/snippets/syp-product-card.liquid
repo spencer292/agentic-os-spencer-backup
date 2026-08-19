@@ -1,0 +1,79 @@
+{%- doc -%}
+  SYPerformance product card.
+
+  Badges are derived from product data rather than hand-set, so a part cannot
+  silently lose its MADE IN-HOUSE flag. In-house detection reads the
+  `custom.made_in_house` metafield when present, and falls back to vendor
+  while that metafield is still being populated (see Phase 3).
+
+  @param {object} product - Shopify product
+  @param {string} [platform] - Override the small platform label above the title
+
+  @example
+  {% render 'syp-product-card', product: product %}
+{%- enddoc -%}
+
+{%- liquid
+  assign made_in_house = product.metafields.custom.made_in_house.value
+  if made_in_house == blank
+    assign vendor_lower = product.vendor | downcase
+    if vendor_lower contains 'syperformance' or vendor_lower contains 'syp' or vendor_lower contains 'synchro solution'
+      assign made_in_house = true
+    endif
+  endif
+
+  assign build_time = product.metafields.custom.build_time.value
+  assign platform_label = platform | default: product.metafields.custom.platform.value
+  assign on_sale = false
+  if product.compare_at_price > product.price
+    assign on_sale = true
+  endif
+-%}
+
+<article class="syp-card">
+  <a class="syp-card__media" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
+    {%- if product.featured_media -%}
+      {{
+        product.featured_media
+        | image_url: width: 800
+        | image_tag:
+          class: 'syp-card__image',
+          loading: 'lazy',
+          widths: '200,300,400,600,800',
+          sizes: '(min-width: 990px) 300px, (min-width: 750px) 40vw, 90vw',
+          alt: product.featured_media.alt | default: product.title
+      }}
+    {%- endif -%}
+
+    <div class="syp-card__badges">
+      {%- if made_in_house -%}
+        {% render 'syp-badge', label: 'Made in-house', variant: 'in-house' %}
+      {%- endif -%}
+      {%- if product.available == false -%}
+        {% render 'syp-badge', label: 'Sold out', variant: 'sold-out' %}
+      {%- elsif build_time != blank -%}
+        {% render 'syp-badge', label: 'Built to order', variant: 'built-to-order' %}
+      {%- endif -%}
+      {%- if on_sale -%}
+        {% render 'syp-badge', label: 'Sale', variant: 'sale' %}
+      {%- endif -%}
+    </div>
+  </a>
+
+  <div class="syp-card__body">
+    {%- if platform_label != blank -%}
+      <span class="syp-card__platform">{{ platform_label }}</span>
+    {%- endif -%}
+
+    <h3 class="syp-card__title">
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h3>
+
+    <p class="syp-card__price">
+      <span>{{ product.price | money }}</span>
+      {%- if on_sale -%}
+        <span class="syp-card__price-compare">{{ product.compare_at_price | money }}</span>
+      {%- endif -%}
+    </p>
+  </div>
+</article>

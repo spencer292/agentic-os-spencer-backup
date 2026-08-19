@@ -1,0 +1,391 @@
+/* ==========================================================================
+   SYPerformance — base component library
+   --------------------------------------------------------------------------
+   Every value here references a token from syp-tokens.css. No literals.
+   Components are rendered by the matching snippets/syp-*.liquid files.
+   ========================================================================== */
+
+/* ==========================================================================
+   BUTTON — primary / secondary / ghost
+   Square-cornered, uppercase, monospace label. Reads as a machine control
+   rather than a consumer CTA.
+   ========================================================================== */
+
+.syp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--syp-space-xs);
+  padding: var(--syp-space-sm) var(--syp-space-lg);
+  border: var(--syp-hairline) solid transparent;
+  border-radius: var(--syp-radius-md);
+  font-family: var(--syp-font-spec);
+  font-size: var(--syp-text-xs);
+  font-weight: var(--syp-weight-medium);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color var(--syp-duration) var(--syp-ease),
+    border-color var(--syp-duration) var(--syp-ease),
+    color var(--syp-duration) var(--syp-ease);
+}
+
+.syp-btn--primary {
+  background-color: var(--syp-accent);
+  border-color: var(--syp-accent);
+  color: var(--syp-accent-ink);
+}
+
+.syp-btn--primary:hover {
+  background-color: var(--syp-accent-hover);
+  border-color: var(--syp-accent-hover);
+}
+
+.syp-btn--primary:active {
+  background-color: var(--syp-accent-press);
+  border-color: var(--syp-accent-press);
+}
+
+.syp-btn--secondary {
+  background-color: transparent;
+  border-color: var(--syp-rule-strong);
+  color: var(--syp-text-strong);
+}
+
+.syp-btn--secondary:hover {
+  border-color: var(--syp-accent);
+  color: var(--syp-accent);
+}
+
+.syp-btn--ghost {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--syp-text-muted);
+  padding-inline: var(--syp-space-xs);
+}
+
+.syp-btn--ghost:hover {
+  color: var(--syp-accent);
+}
+
+.syp-btn[aria-disabled='true'],
+.syp-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.syp-btn--block {
+  width: 100%;
+}
+
+/* ==========================================================================
+   BADGE — MADE IN-HOUSE / BUILT TO ORDER / IN STOCK
+   The in-house badge is the most important single element on the site: it is
+   what separates a manufactured part from a resold one at a glance.
+   ========================================================================== */
+
+.syp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--syp-space-2xs);
+  padding: var(--syp-space-3xs) var(--syp-space-xs);
+  border: var(--syp-hairline) solid var(--syp-rule-strong);
+  border-radius: var(--syp-radius-none);
+  font-family: var(--syp-font-spec);
+  font-size: var(--syp-text-2xs);
+  font-weight: var(--syp-weight-medium);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  line-height: 1.3;
+  white-space: nowrap;
+  color: var(--syp-text-muted);
+}
+
+/* In-house is the only badge that earns the accent. */
+.syp-badge--in-house {
+  border-color: var(--syp-accent);
+  color: var(--syp-accent);
+}
+
+.syp-badge--built-to-order {
+  border-color: var(--syp-steel-400);
+  color: var(--syp-steel-100);
+}
+
+.syp-badge--in-stock {
+  border-color: var(--syp-ok);
+  color: var(--syp-ok);
+}
+
+.syp-badge--sold-out {
+  border-color: var(--syp-steel-400);
+  color: var(--syp-text-faint);
+}
+
+/* Deliberately understated. A discount is information, not an alarm — no
+   red, no shouting. See the discount decision in docs/audit.md. */
+.syp-badge--sale {
+  border-color: var(--syp-steel-400);
+  color: var(--syp-text-muted);
+}
+
+/* ==========================================================================
+   SPEC TABLE — label / value rows, monospace values
+   The workhorse of the product page. Hairline rules, tabular figures, values
+   right-aligned so digits form a column.
+   ========================================================================== */
+
+.syp-spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--syp-text-sm);
+  line-height: var(--syp-leading-spec);
+}
+
+.syp-spec-table caption {
+  text-align: left;
+  padding-bottom: var(--syp-space-sm);
+  font-family: var(--syp-font-spec);
+  font-size: var(--syp-text-2xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  color: var(--syp-text-faint);
+}
+
+.syp-spec-table th,
+.syp-spec-table td {
+  padding: var(--syp-space-sm) 0;
+  border-bottom: var(--syp-hairline) solid var(--syp-rule-faint);
+  vertical-align: baseline;
+}
+
+.syp-spec-table tr:last-child th,
+.syp-spec-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.syp-spec-table th {
+  text-align: left;
+  font-weight: var(--syp-weight-regular);
+  color: var(--syp-text-muted);
+  padding-right: var(--syp-space-lg);
+  width: 42%;
+}
+
+.syp-spec-table td {
+  text-align: right;
+  font-family: var(--syp-font-spec);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1, 'zero' 1;
+  color: var(--syp-text-strong);
+}
+
+/* ==========================================================================
+   CALLOUT — the technical-honesty blocks
+   "Before you buy", "Why this part exists", fitment warnings. Marked by a
+   heavy left rule rather than a filled panel: it reads as an annotation on a
+   drawing, not a marketing box.
+   ========================================================================== */
+
+.syp-callout {
+  padding: var(--syp-space-md) 0 var(--syp-space-md) var(--syp-space-md);
+  border-left: var(--syp-border-md) solid var(--syp-rule-strong);
+  background-color: transparent;
+}
+
+.syp-callout__label {
+  display: block;
+  margin-bottom: var(--syp-space-xs);
+  font-family: var(--syp-font-spec);
+  font-size: var(--syp-text-2xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  color: var(--syp-text-faint);
+}
+
+.syp-callout__body {
+  font-size: var(--syp-text-base);
+  line-height: var(--syp-leading-normal);
+  color: var(--syp-text);
+  max-width: var(--syp-measure);
+}
+
+.syp-callout__body > * + * {
+  margin-top: var(--syp-space-sm);
+}
+
+.syp-callout--warning {
+  border-left-color: var(--syp-warn);
+}
+
+.syp-callout--warning .syp-callout__label {
+  color: var(--syp-warn);
+}
+
+/* Reserved for the required "why this part exists" block. An empty one must
+   look obviously broken, per the plan. */
+.syp-callout--required {
+  border-left-color: var(--syp-accent);
+}
+
+.syp-callout--required .syp-callout__label {
+  color: var(--syp-accent);
+}
+
+.syp-callout--required:empty::after,
+.syp-callout__body:empty::after {
+  content: 'MISSING — this block is required on in-house products';
+  font-family: var(--syp-font-spec);
+  font-size: var(--syp-text-xs);
+  color: var(--syp-error);
+}
+
+/* ==========================================================================
+   PRODUCT CARD
+   Image, badges, title, price. Deliberately sparse: the part is the hero.
+   ========================================================================== */
+
+.syp-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--syp-space-sm);
+  background-color: transparent;
+}
+
+.syp-card__media {
+  position: relative;
+  display: block;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background-color: var(--syp-bg-raised);
+  border: var(--syp-hairline) solid var(--syp-rule-faint);
+}
+
+.syp-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--syp-duration) var(--syp-ease);
+}
+
+.syp-card:hover .syp-card__image {
+  transform: scale(1.03);
+}
+
+.syp-card__badges {
+  position: absolute;
+  inset-block-start: var(--syp-space-xs);
+  inset-inline-start: var(--syp-space-xs);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--syp-space-2xs);
+  z-index: 1;
+}
+
+/* Badges sit on photography, so they need their own ground to stay legible. */
+.syp-card__badges .syp-badge {
+  background-color: rgb(14 16 19 / 0.82);
+  backdrop-filter: blur(2px);
+}
+
+.syp-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--syp-space-2xs);
+}
+
+.syp-card__platform {
+  font-family: var(--syp-font-spec);
+  font-size: var(--syp-text-2xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  color: var(--syp-text-faint);
+}
+
+.syp-card__title {
+  margin: 0;
+  font-family: var(--syp-font-body);
+  font-size: var(--syp-text-base);
+  font-weight: var(--syp-weight-medium);
+  line-height: var(--syp-leading-snug);
+  color: var(--syp-text-strong);
+}
+
+.syp-card__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.syp-card__title a:hover {
+  color: var(--syp-accent);
+}
+
+.syp-card__price {
+  display: flex;
+  align-items: baseline;
+  gap: var(--syp-space-xs);
+  font-family: var(--syp-font-spec);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1, 'zero' 1;
+  font-size: var(--syp-text-sm);
+  color: var(--syp-text-strong);
+}
+
+.syp-card__price-compare {
+  font-size: var(--syp-text-xs);
+  color: var(--syp-text-faint);
+  text-decoration: line-through;
+}
+
+/* ==========================================================================
+   Component gallery — review scaffold only. Not shipped to the live theme.
+   ========================================================================== */
+
+.syp-gallery {
+  padding: var(--syp-space-3xl) var(--syp-space-xl);
+  background-color: var(--syp-bg);
+  color: var(--syp-text);
+  font-family: var(--syp-font-body);
+}
+
+.syp-gallery__section {
+  padding-block: var(--syp-space-2xl);
+  border-top: var(--syp-hairline) solid var(--syp-rule);
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+.syp-gallery__section:first-of-type {
+  border-top: 0;
+}
+
+.syp-gallery__title {
+  margin: 0 0 var(--syp-space-lg);
+  font-family: var(--syp-font-spec);
+  font-size: var(--syp-text-2xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  color: var(--syp-text-faint);
+}
+
+.syp-gallery__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--syp-space-md);
+  align-items: center;
+}
+
+.syp-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--syp-grid-gap);
+}
+
+.syp-gallery__split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--syp-space-2xl);
+}
