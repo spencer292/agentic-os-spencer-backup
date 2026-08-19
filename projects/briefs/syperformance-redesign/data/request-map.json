@@ -1,0 +1,159 @@
+{
+  "url": "https://syperformance.net/products/k-series-single-lobe-billet-rockers",
+  "total": 310,
+  "byHost": {
+    "syperformance.net": {
+      "n": 232,
+      "types": {
+        "Document": 3,
+        "Other": 108,
+        "Stylesheet": 24,
+        "Script": 73,
+        "Font": 1,
+        "Image": 8,
+        "Ping": 13,
+        "Fetch": 2
+      },
+      "samples": [
+        "https://syperformance.net/products/k-series-single-lobe-billet-rockers",
+        "https://syperformance.net/cdn/shopifycloud/storefront/assets/storefront/storefronts.moderate.specrules-eb468f32.json",
+        "https://syperformance.net/cdn/shop/t/1/assets/base.css?v=22615539281115885671705691441",
+        "https://syperformance.net/cdn/shop/t/1/assets/component-localization-form.css?v=143319823105703127341705691450"
+      ]
+    },
+    "shop.app": {
+      "n": 3,
+      "types": {
+        "Script": 1,
+        "Document": 2
+      },
+      "samples": [
+        "https://shop.app/checkouts/internal/preloads.js?locale=en-US&shop_id=58061357125",
+        "https://shop.app/pay/hop?analytics_trace_id=b494d5fb-45c7-47dd-af7c-cec5ac9f0fff&target_origin=https%3A%2F%2Fsyperformance.net&client_handle",
+        "https://shop.app/pay/sdk-authorize?target_origin=https%3A%2F%2Fsyperformance.net&flow=shop_pay_button&require_verification=false&client_id=d"
+      ]
+    },
+    "cdn.shopify.com": {
+      "n": 32,
+      "types": {
+        "Script": 30,
+        "Font": 2
+      },
+      "samples": [
+        "https://cdn.shopify.com/shopifycloud/storefront/assets/storefront/origin_trials-5059b83f.js",
+        "https://cdn.shopify.com/storefront/web-components/agent.js",
+        "https://cdn.shopify.com/storefront/standard-actions.js",
+        "https://cdn.shopify.com/shop-assets/static_uploads/shoplift/GTStandard-MSemibold.woff2"
+      ]
+    },
+    "error-analytics-sessions-production.shopifysvc.com": {
+      "n": 2,
+      "types": {
+        "Other": 1,
+        "Fetch": 1
+      },
+      "samples": [
+        "https://error-analytics-sessions-production.shopifysvc.com/observeonly",
+        "https://error-analytics-sessions-production.shopifysvc.com/observeonly"
+      ]
+    },
+    "otlp-http-production.shopifysvc.com": {
+      "n": 18,
+      "types": {
+        "Other": 9,
+        "Fetch": 6,
+        "Ping": 3
+      },
+      "samples": [
+        "https://otlp-http-production.shopifysvc.com/v1/metrics",
+        "https://otlp-http-production.shopifysvc.com/v1/metrics",
+        "https://otlp-http-production.shopifysvc.com/v1/metrics",
+        "https://otlp-http-production.shopifysvc.com/v1/metrics"
+      ]
+    },
+    "monorail-edge.shopifysvc.com": {
+      "n": 8,
+      "types": {
+        "Other": 4,
+        "Fetch": 4
+      },
+      "samples": [
+        "https://monorail-edge.shopifysvc.com/v1/produce",
+        "https://monorail-edge.shopifysvc.com/v1/produce",
+        "https://monorail-edge.shopifysvc.com/v1/produce",
+        "https://monorail-edge.shopifysvc.com/v1/produce"
+      ]
+    },
+    "www.googletagmanager.com": {
+      "n": 3,
+      "types": {
+        "Script": 3
+      },
+      "samples": [
+        "https://www.googletagmanager.com/gtag/js?id=AW-16490778819",
+        "https://www.googletagmanager.com/gtag/js?id=GT-K557F822",
+        "https://www.googletagmanager.com/gtag/js?id=AW-16490778819&cx=c&gtm=4e68h1"
+      ]
+    },
+    "connect.facebook.net": {
+      "n": 2,
+      "types": {
+        "Script": 2
+      },
+      "samples": [
+        "https://connect.facebook.net/en_US/fbevents.js",
+        "https://connect.facebook.net/signals/config/193245143402954?v=2.9.380&r=stable&domain=syperformance.net&hme=c50c23a73e1ec4606e74678f41b5d8ea"
+      ]
+    },
+    "www.merchant-center-analytics.goog": {
+      "n": 2,
+      "types": {
+        "Fetch": 2
+      },
+      "samples": [
+        "https://www.merchant-center-analytics.goog/mc/collect?v=2&tid=MC-ZJQ1BTX8B0&gtm=45Pe68h1v9179880690za200zd9179880690&_p=1787100146324&gcs=G1",
+        "https://www.merchant-center-analytics.goog/mc/collect?v=2&tid=MC-ZJQ1BTX8B0&gtm=45Pe68h1v9179880690za200zd9179880690&_p=1787100146324&gcs=G1"
+      ]
+    },
+    "www.googleadservices.com": {
+      "n": 2,
+      "types": {
+        "Fetch": 2
+      },
+      "samples": [
+        "https://www.googleadservices.com/pagead/conversion/16490778819/?random=1787100147420&cv=11&fst=1787100147420&fmt=7&bg=ffffff&guid=ON&async=1",
+        "https://www.googleadservices.com/pagead/conversion/16490778819/?random=1787100147423&cv=11&fst=1787100147423&fmt=7&bg=ffffff&guid=ON&async=1"
+      ]
+    },
+    "www.google.com": {
+      "n": 3,
+      "types": {
+        "Fetch": 3
+      },
+      "samples": [
+        "https://www.google.com/ccm/collect?rcb=12&frm=0&apvc=1&auid=884361585.1787100147&dt=K%20Series%20Single%20Lobe%20Billet%20Rockers%20%E2%80%9",
+        "https://www.google.com/pagead/1p-conversion/16490778819/?random=2146708693&cv=11&fst=1787100147423&fmt=8&bg=ffffff&guid=ON&async=1&en=view_i",
+        "https://www.google.com/pagead/1p-conversion/16490778819/?random=979502214&cv=11&fst=1787100147420&fmt=8&bg=ffffff&guid=ON&async=1&en=page_vi"
+      ]
+    },
+    "ad.doubleclick.net": {
+      "n": 1,
+      "types": {
+        "Fetch": 1
+      },
+      "samples": [
+        "https://ad.doubleclick.net/ccm/s/collect?auid=884361585.1787100147&gtm=45be68h1za200zb9179880690zd9179880690xec&fmt=8"
+      ]
+    },
+    "googleads.g.doubleclick.net": {
+      "n": 2,
+      "types": {
+        "Fetch": 2
+      },
+      "samples": [
+        "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/16490778819/?random=979502214&cv=11&fst=1787100147420&fmt=8&bg=ffffff&guid=",
+        "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/16490778819/?random=2146708693&cv=11&fst=1787100147423&fmt=8&bg=ffffff&guid"
+      ]
+    }
+  }
+}
