@@ -62,7 +62,7 @@ const CALLS = {
   '92-00-honda-civic-2dr-quick-release-hood-hinges': ['RESOLD', 'high', 'Common resold item'],
 
   'syp-2021-toyota-supra-a90-a91-3-0-6-port-turbo-kit': ['IN-HOUSE', 'high', 'Title carries SYP; B58 6-port kit'],
-  'evo-7-8-9-forward-facing-turbo-kit-1': ['IN-HOUSE', 'high', 'Handle ends -1: likely a DUPLICATE of the other forward-facing kit - check before migrating'],
+  'evo-7-8-9-forward-facing-turbo-kit-1': ['IN-HOUSE', 'high', 'SY-fabricated 304 manifold kit; bundles a bought-in Pulsar or PTE turbo. Handle suffix -1 is a stale-handle artifact, not a duplicate product'],
   'electronic-boost-controller': ['RESOLD', 'high', 'Bought-in boost controller'],
 
   // --- GENUINELY AMBIGUOUS - owner must decide ---
