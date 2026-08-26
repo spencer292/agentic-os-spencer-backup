@@ -17,6 +17,27 @@ Everything deferred, blocked, or left for a decision, in one place. Kept current
 
 ---
 
+## 1b. CORRECTION — manufacturing claims (2026-08-26)
+
+**Spencer: "most of these products are made by subcontractors and on the website it says made in house."**
+
+He is right, and the claim was wrong. The plan's premise — *"SY is a billet parts manufacturer currently hiding inside a generic reseller storefront"* — was inherited by the Phase 0 audit and by everything I built on top of it. Neither of us checked it with him. I flagged warranty terms and lead times as claims I would not invent, then wrote manufacturing claims without applying the same test.
+
+**The truth (Spencer, 2026-08-26):** SY **designs** the parts and owns the drawings. **Outside shops machine them to those drawings.** SY inspects and stands behind them.
+
+**Corrected everywhere, verified by scanning the rendered pages:** badge label on 110 products ("Made in-house" → "SYP design"), the hero claim ("We machine…" → "We design…"), the homepage design-story section (heading, body, all three steps), header spec line and mega-panel note, footer line, the About page, `syp-billet`'s title and intro, and every collection description that claimed manufacturing. A standing note is now at the top of `docs/ia.md` §4 so it cannot be reintroduced.
+
+**Wording rule going forward:** *designed, specified, our drawings, our spec, inspected*. Never *machined here*, *cut here*, *our own shop*, *we machine*.
+
+| # | Item | Owner | Note |
+|---|---|---|---|
+| 1b.1 | **Confirm the new wording** | Spencer | "SYP design" on the badge, "We design the drivetrain parts that break first" as the hero. Both accurate; both his call. |
+| 1b.2 | **Metafield still named `custom.made_in_house`** | to do | The key is misleading now. Renaming it means a data migration; the admin display name and description should change first. |
+| 1b.3 | **Nav label "SYP BILLET"** | Spencer | Still accurate — they are billet parts and they are SY's. Flagged only because it sat inside the same claim. |
+| 1b.4 | **Anything I wrote about the moat** | — | The positioning survives: owning the design and the drawings is a real moat, and plenty of respected brands in this space are fabless. Only the manufacturing verb was false. |
+
+---
+
 ## 2. Content Spencer has to supply — I will not invent these
 
 | # | Item | Where it lands | Why I won't guess |

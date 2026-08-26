@@ -1,8 +1,14 @@
 {%- comment -%}
-  SYPerformance — made in-house.
+  SYPerformance — the design story.
 
-  The manufacturing story. Phase 0 found this "100% absent from the site", and
-  it is the section that turns a reseller storefront into a manufacturer's.
+  Phase 0 found this "100% absent from the site". It is what separates SY's own
+  product line from the resold catalogue.
+
+  IMPORTANT (2026-08-26): this section originally claimed the parts were
+  machined in SY's own shop. That is not true and was removed. SY designs the
+  parts and owns the drawings; outside shops cut them to those drawings. Say
+  designed, specified, inspected — never machined here, cut here, or our own
+  shop.
 
   Structure is deliberately factual: a short statement, then process steps, then
   optional shop photography. Each step is a block so the story can be told in
@@ -12,7 +18,7 @@
   text step, which is honest, rather than as a broken image well. When real shop
   photos exist they drop in and the layout absorbs them.
 
-  Write the copy as what happens to the metal. Not "quality craftsmanship".
+  Write the copy as what SY actually decides and controls. Not "quality craftsmanship".
 {%- endcomment -%}
 
 {{ 'syp-components.css' | asset_url | stylesheet_tag }}
@@ -76,28 +82,28 @@
 
 {% schema %}
 {
-  "name": "SYP made in-house",
+  "name": "SYP design story",
   "tag": "section",
   "class": "syp-mih-section",
   "settings": [
     {
       "type": "paragraph",
-      "content": "The manufacturing story. Write what happens to the metal, not adjectives. Steps work with or without photography."
+      "content": "SY designs these parts and owns the drawings; outside shops machine them. Say designed, specified, inspected - never machined here or our own shop."
     },
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Made in-house" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our design" },
     {
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "We are a machine shop that sells parts, not a shop that buys them"
+      "default": "Our own designs, not someone else's catalogue"
     },
     {
       "type": "richtext",
       "id": "body",
       "label": "Body",
-      "info": "Two or three sentences. What is made here, on what, to what standard."
+      "info": "Two or three sentences. What SY designs, and what that control gets the customer."
     },
-    { "type": "text", "id": "cta_label", "label": "CTA", "default": "See the shop" },
+    { "type": "text", "id": "cta_label", "label": "CTA", "default": "About SYPerformance" },
     { "type": "url", "id": "cta_url", "label": "CTA link" }
   ],
   "blocks": [
@@ -108,17 +114,17 @@
       "settings": [
         { "type": "text", "id": "title", "label": "Title" },
         { "type": "textarea", "id": "text", "label": "Text" },
-        { "type": "image_picker", "id": "image", "label": "Image", "info": "Real shop photography only." }
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Real photography only - parts, drawings, inspection." }
       ]
     }
   ],
   "presets": [
     {
-      "name": "SYP made in-house",
+      "name": "SYP design story",
       "blocks": [
-        { "type": "step", "settings": { "title": "Designed here" } },
-        { "type": "step", "settings": { "title": "Machined here" } },
-        { "type": "step", "settings": { "title": "Checked here" } }
+        { "type": "step", "settings": { "title": "Designed against the failure" } },
+        { "type": "step", "settings": { "title": "Cut to our drawings" } },
+        { "type": "step", "settings": { "title": "Checked before it ships" } }
       ]
     }
   ]

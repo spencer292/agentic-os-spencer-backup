@@ -104,7 +104,7 @@ TECH                                              (Phase 6 — no collections)
 
 | # | Handle | Title | Products | Handle status |
 |---|---|---|---|---|
-| 1 | `syp-billet` | SYP Billet — Made In-House | 110 | new |
+| 1 | `syp-billet` | SYP Billet — Our Own Designs | 110 | new |
 | 2 | `syp-drivetrain` | SYP Drivetrain | 42 | new |
 | 3 | `syp-single-lobe-rockers` | Single Lobe Rockers | 3 | new |
 | 4 | `syp-turbo-manifolds` | SYP Turbo Manifolds | 31 | new |
@@ -145,14 +145,17 @@ Products appear in more than one collection by design: a K-series billet halfsha
 
 ## 4. Intro copy
 
+> **Manufacturing claims (2026-08-26, Spencer).** SY **designs** these parts and owns the drawings; **outside shops machine them**. Earlier drafts of this copy said "made in-house" and "machined in-house" — that was wrong and is corrected below. Write *designed, specified, our drawings, inspected*. Never *machined here*, *cut here*, *our own shop*, or *we machine*.
+
+
 Every paragraph below goes in the collection's description field. They are written to be read by a person deciding whether they are in the right place, and they are the only thing standing between a bare product grid and a page Google can rank.
 
 **Nothing here states a horsepower figure, a tolerance, a material spec, a lead time, or a warranty term.** Those are yours to give me and they go in during Phase 4 and Phase 6. What is written is what the part does and what a buyer needs to know before choosing one.
 
-### In-house
+### Our own designs
 
-**`syp-billet` — SYP Billet — Made In-House**
-> Every part on this page is designed and machined in-house — not sourced, not rebadged. Billet drivetrain, single lobe rockers, turbo manifolds, cooling and charge piping, clamps and hardware, across Honda B, D, H and K series, Mitsubishi Evo, and BMW/Toyota B58. If you want to know what SYPerformance actually makes rather than what it stocks, this is the list.
+**`syp-billet` — SYP Billet — Our Own Designs**
+> Every part on this page is our own design, cut to our drawings — not picked from someone else’s catalog and rebadged. Billet drivetrain, single lobe rockers, turbo manifolds, cooling and charge piping, clamps and hardware, across Honda B, D, H and K series, Mitsubishi Evo, and BMW/Toyota B58. If you want to know what SYPerformance actually makes rather than what it stocks, this is the list.
 
 **`syp-drivetrain` — SYP Drivetrain**
 > Drivetrain is where power stops being a dyno number and starts being a reliability problem. Halfshafts, halfshaft carriers, billet bellhousings, transfer case block-offs and shift selectors, alongside the Synchro Solutionz transmission internals that go inside the box. These are the parts that fail first on a built car and the parts most worth doing once.
@@ -161,10 +164,10 @@ Every paragraph below goes in the collection's description field. They are writt
 > A single lobe rocker conversion removes the VTEC changeover from the valvetrain and runs one lobe profile throughout, which takes a set of moving parts out of a system that spends its life at high rpm. Available for both B series and K series. If you are already running aggressive cams and high spring pressures, this is the conversion worth understanding before your next head build.
 
 **`syp-turbo-manifolds` — SYP Turbo Manifolds**
-> In-house turbo manifolds for Honda K, Honda B/D/H, Evo 7/8/9, Evo X and B58 — top mount, bottom mount, forward facing, sidewinder and stock placement. Manifold choice sets turbo position, and turbo position sets what else has to move: hood clearance, downpipe routing, wastegate placement, charge piping. Read the fitment notes on the product page before you commit to a layout.
+> SYPerformance turbo manifolds for Honda K, Honda B/D/H, Evo 7/8/9, Evo X and B58 — top mount, bottom mount, forward facing, sidewinder and stock placement. Manifold choice sets turbo position, and turbo position sets what else has to move: hood clearance, downpipe routing, wastegate placement, charge piping. Read the fitment notes on the product page before you commit to a layout.
 
 **`syp-cooling` — SYP Cooling**
-> Intercoolers, charge piping, coolant necks, fill pots and overflow tanks, fabricated in-house from 6061. Charge air cooling and coolant routing are the two things that decide whether a build makes its power on the third pull as well as the first. Sizes and end-tank configurations vary by application — check the fitment notes for what clears your chassis.
+> Intercoolers, charge piping, coolant necks, fill pots and overflow tanks, fabricated to our drawings from 6061. Charge air cooling and coolant routing are the two things that decide whether a build makes its power on the third pull as well as the first. Sizes and end-tank configurations vary by application — check the fitment notes for what clears your chassis.
 
 **`syp-fabrication-hardware` — SYP Clamps, Hardware & Fabrication**
 > HD Vanjen clamps, stainless V-band assemblies, flex bellows, titanium studs and the weld-on fittings that go with them. Clamps and studs are the parts nobody plans for and everybody replaces — a V-band that relaxes under heat cycling or a stud that stretches will cost you a session regardless of what the rest of the car is worth.
@@ -195,7 +198,7 @@ Every paragraph below goes in the collection's description field. They are writt
 ### Drivetrain systems
 
 **`transmission-internals` — Transmission Internals**
-> Synchros, hubs, sliders, collars, springs and complete rebuild kits — the Synchro Solutionz line, made in-house. Synchro wear is the failure most owners misread as "the box needs rebuilding": the grind into second or third under load is usually a cone and a slider, not a gearset. Kits are available per-gear and as full 1-4 and 1-6 refreshes, with and without bearings and seals.
+> Synchros, hubs, sliders, collars, springs and complete rebuild kits — the Synchro Solutionz line, our own design. Synchro wear is the failure most owners misread as "the box needs rebuilding": the grind into second or third under load is usually a cone and a slider, not a gearset. Kits are available per-gear and as full 1-4 and 1-6 refreshes, with and without bearings and seals.
 
 **`billet-drivetrain` — Billet Halfshafts, Carriers & Selectors**
 > Billet halfshafts and halfshaft carriers, AWD bellhousings, transfer case block-offs, billet cases, and HD shift selectors. The carrier is the part most people find out about the hard way — a stock intermediate shaft support flexes under load, and once it does, the inner joint angle changes every time you launch. Available for B series and K series.
@@ -215,7 +218,7 @@ Every paragraph below goes in the collection's description field. They are writt
 > Turbochargers, turbo kits, wastegates, blow-off valves, boost controllers and turbo accessories. Start with the manifold, because turbo position decides what fits; the turbo, gate and piping follow from it. Use the fitment selector to narrow this list to your platform.
 
 **`turbo-manifolds` — Turbo Manifolds**
-> Every turbo manifold in the catalog, in-house and resold, across Honda K, Honda B/D/H, Evo 7/8/9, Evo X and B58 — top mount, bottom mount, forward facing, sidewinder, mini ram, ram horn and stock placement. Manifold design is a trade between spool, packaging and how the runners survive heat cycling. The product pages say which trade each one makes.
+> Every turbo manifold in the catalog, ours and resold, across Honda K, Honda B/D/H, Evo 7/8/9, Evo X and B58 — top mount, bottom mount, forward facing, sidewinder, mini ram, ram horn and stock placement. Manifold design is a trade between spool, packaging and how the runners survive heat cycling. The product pages say which trade each one makes.
 
 **`exhaust-hot-parts` — Exhaust & Hot Parts**
 > Downpipes, up pipes, headers, hot parts kits and resonators. Hot parts are where manifold choice becomes real — a forward facing manifold and a stock placement manifold need different downpipes, and the wastegate routing is part of that decision, not an afterthought.
@@ -257,10 +260,10 @@ Every paragraph below goes in the collection's description field. They are writt
 ### Brands
 
 **`synchro-solutionz` — Synchro Solutionz**
-> Synchro Solutionz is the in-house transmission internals line — synchros, hubs, sliders, collars, springs and complete rebuild kits for Honda B, H and K series, 5-speed and 6-speed, FWD and AWD. The full range is also reachable through SYP Billet → Drivetrain → Transmission Internals.
+> Synchro Solutionz is our own transmission internals line — synchros, hubs, sliders, collars, springs and complete rebuild kits for Honda B, H and K series, 5-speed and 6-speed, FWD and AWD. The full range is also reachable through SYP Billet → Drivetrain → Transmission Internals.
 
 **`comp-1-clutch` — Comp 1 Clutch**
-> Comp 1 Clutch is the in-house clutch line: twin and triple disc assemblies. Disc count and material are chosen against torque and how the car is used, so read the application notes before ordering.
+> Comp 1 Clutch is our own clutch line: twin and triple disc assemblies. Disc count and material are chosen against torque and how the car is used, so read the application notes before ordering.
 
 **`clearance` — Clearance**
 > Genuine clearance: discontinued parts, superseded revisions and one-off overstock. When it is gone it is gone, and nothing on this page is here permanently.
