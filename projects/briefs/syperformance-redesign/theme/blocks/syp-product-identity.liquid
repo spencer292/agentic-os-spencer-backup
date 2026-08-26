@@ -1,0 +1,85 @@
+{%- doc -%}
+  SYPerformance product identity strip.
+
+  Goes at the top of the buy column, above the title: MADE IN-HOUSE badge, the
+  manufacturing brand, the part number, and — when they exist — the rating and
+  lead time.
+
+  Why it is a block and not part of sections/syp-product-detail.liquid: that
+  section renders below Horizon's gallery, and on a product with six images the
+  gallery is taller than the viewport. The single most important signal on this
+  site is whether SY made the part, and it cannot be a scroll away.
+
+  Reads `closest.product` so it works wherever it is placed.
+{%- enddoc -%}
+
+{{ 'syp-components.css' | asset_url | stylesheet_tag }}
+{{ 'syp-product.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign p = closest.product
+  assign mf = p.metafields.custom
+
+  capture syp_flags
+    render 'syp-product-flags', product: p
+  endcapture
+  assign syp_flags = syp_flags | strip | split: '|'
+
+  assign in_house = false
+  if syp_flags[0] == '1'
+    assign in_house = true
+  endif
+  assign brand = syp_flags[1]
+
+  assign part_number = p.selected_or_first_available_variant.sku
+  assign build_time = mf.build_time
+  assign hp_rating = mf.hp_rating
+-%}
+
+<div class="syp-identity" {{ block.shopify_attributes }}>
+  <div class="syp-identity__row">
+    {%- if in_house -%}
+      {% render 'syp-badge', label: block.settings.in_house_label, variant: 'in-house' %}
+    {%- endif -%}
+
+    {%- if brand != blank -%}
+      <span class="syp-identity__brand syp-spec">{{ brand }}</span>
+    {%- endif -%}
+
+    {%- if part_number != blank -%}
+      <span class="syp-identity__part syp-spec">{{ part_number }}</span>
+    {%- endif -%}
+  </div>
+
+  {%- if hp_rating != blank or build_time != blank -%}
+    <div class="syp-identity__row syp-identity__row--facts">
+      {%- if hp_rating != blank -%}
+        <span class="syp-identity__fact syp-spec">Rated to {{ hp_rating }}</span>
+      {%- endif -%}
+      {%- if build_time != blank -%}
+        {%- comment -%}
+          Lead time is stated, never hidden. DOC Race and Dc5creations publish
+          six-to-eight week build times and it does not hurt them — it reads as
+          real manufacturing rather than as a warehouse.
+        {%- endcomment -%}
+        <span class="syp-identity__fact syp-spec">{{ build_time }}</span>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "SYP identity",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "in_house_label",
+      "label": "In-house badge label",
+      "default": "Made in-house"
+    }
+  ],
+  "presets": [{ "name": "SYP identity" }]
+}
+{% endschema %}

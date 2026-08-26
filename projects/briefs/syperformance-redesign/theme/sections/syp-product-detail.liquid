@@ -1,0 +1,374 @@
+{%- comment -%}
+  SYPerformance product detail — everything below Horizon's gallery/buy column.
+
+  The plan calls for two product templates: 4A for in-house parts and 4B for
+  resold. This is one section that branches, not two templates, and that is
+  deliberate: per-product template assignment needs an Admin API write to set
+  `templateSuffix` on 198 products, and a branch inside one template needs
+  nothing, degrades gracefully, and cannot leave a product on the wrong shell.
+
+  4A — in-house, the hero shell:
+    fitment · rating and build time · why this part exists · specs ·
+    before you buy · warranty · install notes · complete the build
+
+  4B — resold, the simplified shell:
+    fitment · specs · complete the build
+
+  "Why this part exists" is the block the whole redesign turns on — what fails
+  on the stock or cheap part, what we changed, what that means for you. It is
+  required on in-house products, and when it is missing this section says so
+  loudly *in the theme editor* and stays silent on the storefront. A customer
+  should never see scaffolding; the person building the page should never be
+  able to miss it.
+
+  Content comes from `custom.*` metafields, which Phase 3 defines. Until then
+  every block is empty and the page renders as gallery + buy column + fitment,
+  which is roughly what the live site does today — so this is never worse than
+  the status quo, only unfinished.
+{%- endcomment -%}
+
+{{ 'syp-components.css' | asset_url | stylesheet_tag }}
+{{ 'syp-product.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign mf = product.metafields.custom
+
+  capture syp_flags
+    render 'syp-product-flags', product: product
+  endcapture
+  assign syp_flags = syp_flags | strip | split: '|'
+
+  assign in_house = false
+  if syp_flags[0] == '1'
+    assign in_house = true
+  endif
+  assign hp_rating = mf.hp_rating
+  assign build_time = mf.build_time
+  assign platform = mf.platform
+  assign chassis = mf.chassis
+  assign why = mf.why_this_part
+  assign before_you_buy = mf.before_you_buy
+  assign before_you_buy_html = mf.before_you_buy.value | default: mf.before_you_buy
+  assign install_notes = mf.install_notes
+  assign turbo_compat = mf.turbo_compat
+  assign wastegate_compat = mf.wastegate_compat
+
+  # Scaffolding warnings are for whoever is building the page, never for a
+  # customer. request.design_mode is true only inside the theme editor.
+  assign has_ratings = false
+  if hp_rating != blank or build_time != blank
+    assign has_ratings = true
+  endif
+
+  # Liquid has no operator precedence and evaluates right to left, so a mixed
+  # `a and b or c` is a trap. Every compound condition here is precomputed.
+  assign show_ratings = false
+  if in_house and has_ratings
+    assign show_ratings = true
+  endif
+
+  # Scaffolding warnings are for whoever is building the page, never for a
+  # customer. request.design_mode is true only inside the theme editor.
+  assign show_gaps = false
+  if request.design_mode and in_house
+    assign show_gaps = true
+  endif
+
+  assign cross_sell = mf.complete_the_build.value
+
+  assign has_fitment = false
+  if platform != blank or chassis != blank
+    assign has_fitment = true
+  endif
+
+  assign has_specs = false
+  if mf.specs != blank or turbo_compat != blank or wastegate_compat != blank
+    assign has_specs = true
+  endif
+
+  assign has_install = false
+  if install_notes != blank or mf.install_pdf != blank
+    assign has_install = true
+  endif
+
+  assign has_warranty = false
+  if in_house and section.settings.warranty_body != blank
+    assign has_warranty = true
+  endif
+
+  # In-house-only prose. `why` and `before_you_buy` are written for
+  # manufactured parts and never render on a resold one.
+  assign has_in_house_prose = false
+  if in_house
+    if why != blank or before_you_buy != blank
+      assign has_in_house_prose = true
+    endif
+  endif
+
+  # Until Phase 3 writes the metafields, most products have nothing to put in
+  # this section. Rendering the wrapper anyway leaves an empty dark band with a
+  # rule across it between the buy column and the footer, which reads as a
+  # broken page rather than an unfinished one. So: render nothing.
+  assign has_content = false
+  if has_fitment or show_ratings or has_in_house_prose
+    assign has_content = true
+  endif
+  if has_specs or has_warranty or has_install
+    assign has_content = true
+  endif
+  if cross_sell.size > 0 or show_gaps
+    assign has_content = true
+  endif
+-%}
+
+{%- if has_content -%}
+<div class="syp-pdp">
+  <div class="syp-pdp__inner">
+    {%- comment -%}
+      The identity strip (badge, brand, part number) is NOT here. It lives in
+      blocks/syp-product-identity.liquid, at the top of the buy column, because
+      on a product with six images this section starts below the fold and
+      "did SY make this part" cannot be a scroll away.
+    {%- endcomment -%}
+
+    {%- comment -%} ---- Fitment ---- {%- endcomment -%}
+    {%- if platform != blank or chassis != blank -%}
+      <section class="syp-pdp__block syp-pdp__fitment" aria-labelledby="syp-fitment-heading">
+        <h2 class="syp-label" id="syp-fitment-heading">Fitment</h2>
+        <div class="syp-pdp__fitment-body">
+          {%- if platform != blank -%}
+            <p class="syp-pdp__fitment-line syp-spec">{{ platform }}</p>
+          {%- endif -%}
+          {%- if chassis != blank -%}
+            <p class="syp-pdp__fitment-line syp-spec">{{ chassis }}</p>
+          {%- endif -%}
+          <p class="syp-pdp__fitment-note" data-syp-fitment-verdict>
+            Check this against your build before ordering.
+          </p>
+        </div>
+      </section>
+    {%- elsif show_gaps -%}
+      <p class="syp-pdp__gap">No fitment data — Phase 3 metafields</p>
+    {%- endif -%}
+
+    {%- comment -%} ---- Rating and lead time. Stated plainly, never hidden. ---- {%- endcomment -%}
+    {%- if show_ratings -%}
+      <section class="syp-pdp__block syp-pdp__ratings">
+        {%- if hp_rating != blank -%}
+          <div class="syp-pdp__rating">
+            <span class="syp-label">Rated to</span>
+            <span class="syp-pdp__rating-value syp-spec">{{ hp_rating }}</span>
+          </div>
+        {%- endif -%}
+        {%- if build_time != blank -%}
+          <div class="syp-pdp__rating">
+            <span class="syp-label">Lead time</span>
+            <span class="syp-pdp__rating-value syp-spec">{{ build_time }}</span>
+          </div>
+        {%- endif -%}
+      </section>
+    {%- elsif show_gaps -%}
+      <p class="syp-pdp__gap">No HP rating or lead time — Phase 3 metafields. Lead times are not hidden on this site.</p>
+    {%- endif -%}
+
+    {%- comment -%}
+      ---- Why this part exists ----
+      The single most important block on the site. Required on in-house parts.
+    {%- endcomment -%}
+    {%- if in_house -%}
+      {%- if why != blank -%}
+        <section class="syp-pdp__block syp-pdp__why" aria-labelledby="syp-why-heading">
+          <h2 class="syp-pdp__heading" id="syp-why-heading">
+            {{ section.settings.why_heading | default: 'Why this part exists' }}
+          </h2>
+          <div class="syp-pdp__prose rte">{{ why | metafield_tag }}</div>
+        </section>
+      {%- elsif show_gaps -%}
+        <section class="syp-pdp__block">
+          {% render 'syp-callout',
+            label: 'Required block missing',
+            variant: 'required',
+            content: 'This in-house product has no "why this part exists" content. Structure it as: what fails on the stock or cheap part, what we changed, what that means for you. Metafield: custom.why_this_part.'
+          %}
+        </section>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- comment -%} ---- Spec table ---- {%- endcomment -%}
+    {%- if has_specs -%}
+      <section class="syp-pdp__block" aria-labelledby="syp-specs-heading">
+        <h2 class="syp-pdp__heading" id="syp-specs-heading">Specifications</h2>
+        {%- if mf.specs != blank -%}
+          {% render 'syp-spec-table', rows: mf.specs.value %}
+        {%- endif -%}
+        {%- if turbo_compat != blank or wastegate_compat != blank -%}
+          <table class="syp-spec-table">
+            <caption class="visually-hidden">Compatibility</caption>
+            <tbody>
+              {%- if turbo_compat != blank -%}
+                <tr><th scope="row">Turbo</th><td>{{ turbo_compat }}</td></tr>
+              {%- endif -%}
+              {%- if wastegate_compat != blank -%}
+                <tr><th scope="row">Wastegate</th><td>{{ wastegate_compat }}</td></tr>
+              {%- endif -%}
+            </tbody>
+          </table>
+        {%- endif -%}
+      </section>
+    {%- elsif show_gaps -%}
+      <p class="syp-pdp__gap">No spec table — Phase 3 metafields (custom.specs)</p>
+    {%- endif -%}
+
+    {%- comment -%}
+      ---- Before you buy ----
+      The honest caveats. Kills returns and pre-qualifies buyers. In-house only:
+      a resold silicone coupler does not need an objection-handling block.
+    {%- endcomment -%}
+    {%- if in_house -%}
+      {%- if before_you_buy != blank -%}
+        <section class="syp-pdp__block">
+          {% render 'syp-callout',
+            label: section.settings.caveat_label,
+            variant: 'warning',
+            content: before_you_buy_html
+          %}
+        </section>
+      {%- elsif show_gaps -%}
+        <section class="syp-pdp__block">
+          {% render 'syp-callout',
+            label: 'Required block missing',
+            variant: 'required',
+            content: 'No "before you buy" content. What else does this need, what might need modification, what will it not work with? Metafield: custom.before_you_buy.'
+          %}
+        </section>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- comment -%}
+      ---- Warranty ----
+      Store-wide, so it is a section setting rather than a metafield: it should
+      read identically on every in-house product and be editable in one place.
+    {%- endcomment -%}
+    {%- if has_warranty -%}
+      <section class="syp-pdp__block syp-pdp__warranty">
+        <h2 class="syp-label">{{ section.settings.warranty_label }}</h2>
+        <div class="syp-pdp__prose rte">{{ section.settings.warranty_body }}</div>
+        {%- if section.settings.warranty_url != blank -%}
+          {% render 'syp-button',
+            label: 'Warranty terms',
+            href: section.settings.warranty_url,
+            variant: 'ghost'
+          %}
+        {%- endif -%}
+      </section>
+    {%- elsif show_gaps and section.settings.warranty_body == blank -%}
+      <p class="syp-pdp__gap">
+        No warranty text set on this section. Spencer has to supply the terms — do not invent them.
+      </p>
+    {%- endif -%}
+
+    {%- comment -%}
+      ---- Complete the build ----
+      Curated, never algorithmic. The plan is explicit: cross-sell by what is
+      genuinely required, so a halfshaft carrier surfaces the matching
+      halfshafts. That is a judgement no recommendation engine can make, which
+      is why this reads a product-list metafield and shows nothing when it is
+      empty rather than falling back to "customers also bought".
+    {%- endcomment -%}
+    {%- if cross_sell.size > 0 -%}
+      <section class="syp-pdp__block syp-pdp__cross-sell" aria-labelledby="syp-cross-heading">
+        <h2 class="syp-pdp__heading" id="syp-cross-heading">
+          {{ section.settings.cross_sell_heading | default: 'Complete the build' }}
+        </h2>
+        {%- if section.settings.cross_sell_note != blank -%}
+          <p class="syp-pdp__cross-note">{{ section.settings.cross_sell_note }}</p>
+        {%- endif -%}
+        <div class="syp-pdp__cross-grid">
+          {%- for item in cross_sell -%}
+            {% render 'syp-product-card', product: item %}
+          {%- endfor -%}
+        </div>
+      </section>
+    {%- elsif show_gaps -%}
+      <p class="syp-pdp__gap">
+        No "complete the build" products — Phase 3 metafield custom.complete_the_build. Pick these by
+        hand: what does this part actually require?
+      </p>
+    {%- endif -%}
+
+    {%- comment -%} ---- Install notes and documentation ---- {%- endcomment -%}
+    {%- if has_install -%}
+      <section class="syp-pdp__block" aria-labelledby="syp-install-heading">
+        <h2 class="syp-pdp__heading" id="syp-install-heading">Installation</h2>
+        {%- if install_notes != blank -%}
+          <div class="syp-pdp__prose rte">{{ install_notes | metafield_tag }}</div>
+        {%- endif -%}
+        {%- if mf.install_pdf != blank -%}
+          {% render 'syp-button',
+            label: 'Download install guide',
+            href: mf.install_pdf,
+            variant: 'secondary'
+          %}
+        {%- endif -%}
+      </section>
+    {%- endif -%}
+  </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "SYP product detail",
+  "tag": "section",
+  "class": "syp-pdp-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Blocks fill from product metafields. In-house products show the full shell; resold products show fitment, specs and cross-sell only. Missing required content is flagged here in the editor and stays invisible on the storefront."
+    },
+    { "type": "header", "content": "Why this part exists" },
+    {
+      "type": "text",
+      "id": "why_heading",
+      "label": "Heading",
+      "default": "Why this part exists"
+    },
+    { "type": "header", "content": "Before you buy" },
+    {
+      "type": "text",
+      "id": "caveat_label",
+      "label": "Callout label",
+      "default": "Before you buy"
+    },
+    { "type": "header", "content": "Complete the build" },
+    {
+      "type": "text",
+      "id": "cross_sell_heading",
+      "label": "Heading",
+      "default": "Complete the build"
+    },
+    {
+      "type": "text",
+      "id": "cross_sell_note",
+      "label": "Note",
+      "info": "One line on why these are here. Keep it about what the part requires, not about upsell.",
+      "default": "What this part needs to go in."
+    },
+    { "type": "header", "content": "Warranty" },
+    {
+      "type": "text",
+      "id": "warranty_label",
+      "label": "Label",
+      "default": "Warranty"
+    },
+    {
+      "type": "richtext",
+      "id": "warranty_body",
+      "label": "Warranty text",
+      "info": "Shown on every in-house product. Leave blank until the real terms exist - do not write a placeholder."
+    },
+    { "type": "url", "id": "warranty_url", "label": "Warranty page" }
+  ],
+  "presets": [{ "name": "SYP product detail" }]
+}
+{% endschema %}

@@ -1,0 +1,33 @@
+{%- doc -%}
+  GENERATED FILE — do not edit by hand.
+  Source: scripts/gen-product-flags.mjs, from data/product-audit.json (Phase 0).
+
+  Outputs the manufacturing brand for an in-house part, or nothing at all.
+  Liquid `render` is scope-isolated, so this returns a value to be captured
+  rather than assigning variables the caller can read.
+
+  Fallback only. snippets/syp-product-flags.liquid reads the
+  `custom.made_in_house` metafield first and consults this when it is absent.
+
+  In-house: 110   Resold: 36   Unclassified: 52
+
+  The unclassified products are deliberately absent, so they resolve as resold
+  until Spencer marks them in data/unknowns-review.csv. Claiming manufacture on
+  a part nobody has confirmed is the mistake this file exists to prevent.
+
+  @param {object} product - The product to test
+{%- enddoc -%}
+
+{%- liquid
+  assign syp_h_syperformance = 'aluminum-6061-weld-on-cap-2,b-d-h-series-intake-manifold-titanuim-studs,b-d-h-series-titanium-exhaust-studs,b-series-coolant-flanges,b-series-honda-billet-water-necks,b-series-hydro-500hp-billet-halfshaft,b-series-single-lobe-billet-rockers,b58-2-bolt-throttle-body-flange,b58-6-port-cnc-turbo-flanges,b58-6-port-top-mount-turbo-manifold,b58-downpipe-bmw-supra,b58-stock-frame-turbo-charge-pipe-flange,b58-supra-bmw-charge-pipe-kit,b58-turbo-coolant-feed-fitting,billet-throttle-body-v2-honda-b-d-f-h-series-70mm-72mm-74mm-76mm,compact-intercooler,coolant-fill-weld-on-fittings,coolant-overflow-tank,copy-of-evo-7-8-9-down-pipe-stock-frame-stock-location,copy-of-evo-8-9-intercooler-kit-stock-frame-turbo,dual-backdoor-intercooler,evo-7-8-9-lower-intercooler-pipe-stock-frame-location,evo-7-8-9-upper-intercooler-pipe-kit,evo-7-8-9-vband-top-mount-turbo-kit,evo-7-8-9-vband-top-mount-up-pipe-turbo-kit,evo-8-9-bottom-mount-turbo-manifold,evo-8-9-forward-facing-turbo-manifold,evo-8-9-titanium-exhaust-studs,evo-8-9-top-mount-turbo-manifold,evo-x-stock-placement-turbo-manifold,evo-x-titanium-exhaust-manifold-studs,honda-b-series-sfwd-intercooler,honda-forward-facing-turbo-manifold-sfwd-b-d-h,honda-k-series-billet-lower-timing-chain-guide,honda-k-series-coolant-fill-necks,honda-k-series-coolant-fill-pot,honda-k-series-custom-turbo-manifold,honda-k-series-rwd-forward-facing-manifold,honda-k-series-sidewinder-turbo-manifold,honda-k-series-titanium-exhaust-manifold-studs,honda-mini-ram-turbo-manifold-b-d-series,honda-ram-horn-turbo-manifold-b-d-series-ac,honda-top-mount-turbo-manifold-b-d-h-series,intake-air-temp-weld-in-bung-k-series,k-series-awd-billet-bellhousing,k-series-billet-halfshaft,k-series-bottom-mount-ram-horn-turbo-manifold,k-series-hd-shift-selector-hammer,k-series-lean-mount-turbo-manifold,k-series-single-lobe-billet-rockers,k-series-titanium-intake-studs,k-series-top-mount-mini-ram-rwd-turbo-manifold,k-series-top-mount-turbo-manifold,k-series-transfer-case-billet-block-off,lancer-evo-7-8-9-turbo-flange-factory-turbo,lancer-evolution-7-8-9-intercooler,mandrel-bends-stainless-aluminum,mitsubishi-evo-8-9-turbo-manifold-factory-placement,mitsubishi-evo-x-top-mount-turbo-manifold-v-band,pie-cuts-6pc,s2000-turbo-manifold-k-f,stainless-flex-bellows,stainless-vband-assembly,syp-billet-hd-vanjen-clamps,syp-bseries-billet-halfshaft-carrier-assembly,syperformance-honda-k-series-billet-halfshaft-carrier,titanium-studs-single,turbo-discharge-vband-flanges-3-5-8,turbo-flanges-t3-t4-vband,turbo-head-flanges,turbo-manifold-shorty-studs-m10x1-5,turbo-vband-inlet-flanges,universal-intercooler-800-1000hp,vertical-flow-intercooler,vertical-flow-intercooler-universal' | split: ','
+  assign syp_h_synchro_solutionz = 'b-awd-h22-5th-gear-synchro-50mm,b-d-series-1-2-single-cone-synchro,b-h-series-single-cone-3-4-synchros-60mm,b-h-series-single-cone-synchro-1-2,b-series-awd-h22-synchros-kit,b-series-brass-synchro-kit-1-4,b-series-brass-synchro-kit-b16-gsr-itr,b-series-dust-boot,b-series-fwd-reverse-synchro-54mm,b-series-single-cone-synchro-54mm,b18a-b18b-integra-ls-synchro-kit,h-series-brass-synchro-kit-1-5,honda-b-h-series-1-2-synchro-dual-cone-synchro,honda-b-k-differential-bearing-kit,honda-k-series-k20a2-rsx-type-s-2nd-gear,honda-k-series-vss-speedo-ring,honda-lsd-b16-fwd-k-awd-fwd-b-awd,k-series-5spd-synchro-solutions-kit,k-series-collars,k-series-synchro-solutions-1-2-kit,k-series-synchro-solutions-1-6-full-refresh-kit,k-series-synchro-solutions-1-6-rebuild-kit,k-series-synchro-solutions-1-6-rebuild-kit-no-bearings-seals,k-series-synchro-solutions-3-4-kit,k-series-synchro-solutions-5-6-kit,k-series-synchro-solutions-6spd-1-4-kits,k-series-synchro-solutions-6spd-1-4-kits-1,k-series-synchro-solutions-carbon-synchro,k-series-synchro-solutions-carbon-synchro-kit,k-series-synchro-solutions-oem-spec-hubs,k-series-synchro-solutions-oem-spec-sliders,k-series-synchro-solutions-synchro-springs-set,synchro-solutionz-k-series-reverse-gear' | split: ','
+  assign syp_h_comp_1_clutch = 'triple-disc-comp-clutch,twin-disk-clutch-comp-clutch' | split: ','
+
+  if syp_h_syperformance contains product.handle
+    echo 'SYPerformance'
+  elsif syp_h_synchro_solutionz contains product.handle
+    echo 'Synchro Solutionz'
+  elsif syp_h_comp_1_clutch contains product.handle
+    echo 'Comp 1 Clutch'
+  endif
+-%}

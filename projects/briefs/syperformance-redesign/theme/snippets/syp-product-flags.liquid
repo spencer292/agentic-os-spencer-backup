@@ -1,0 +1,84 @@
+{%- doc -%}
+  Resolves whether a part is made in-house, and by which brand. One definition,
+  used everywhere — product page, product card, collection header.
+
+  Liquid's `render` is scope-isolated, so this cannot assign variables the caller
+  can read. It returns a pipe-delimited string for the caller to capture and
+  split:
+
+      in_house | brand | source
+      1|SYPerformance|metafield
+      0|AEM|fallback
+
+  Usage:
+
+      {% raw %}{%- capture syp_flags -%}{% render 'syp-product-flags', product: product %}{%- endcapture -%}
+      {%- assign syp_flags = syp_flags | strip | split: '|' -%}
+      {%- assign syp_in_house = false -%}
+      {%- if syp_flags[0] == '1' %}{% assign syp_in_house = true %}{% endif -%}
+      {%- assign syp_brand = syp_flags[1] -%}{% endraw %}
+
+  Resolution order, and it matters:
+
+  1. `custom.made_in_house` metafield. Phase 3 writes it; it always wins.
+  2. The generated handle list from the Phase 0 audit, as a stopgap.
+
+  There is no third guess. We do NOT infer in-house from `vendor`: Phase 0 found
+  that field set to "Syperformance" on Walbro pumps, Mickey Thompson tires, AEM
+  sensors and Hondata ECUs, so inferring from it would badge resold goods as
+  manufactured. The 51 products the audit could not call resolve as resold on
+  purpose — an unearned "MADE IN-HOUSE" is worse than no badge at all.
+
+  `source` is returned so scripts/audit-product-content.mjs can report how many
+  products are still riding the fallback rather than the metafield.
+
+  @param {object} product - The product to resolve
+{%- enddoc -%}
+
+{%- liquid
+  assign made_in_house = product.metafields.custom.made_in_house
+
+  # The vendor field is known-bad on resold parts: Phase 0 found it set to
+  # "Syperformance" (in four spellings) on Walbro pumps, Mickey Thompson tires,
+  # AEM sensors and Hondata ECUs. Showing it on a resold product page would
+  # print a brand we know is wrong, so a resold part whose vendor is one of the
+  # house spellings returns no brand at all until Phase 7 corrects the data.
+  assign vendor_key = product.vendor | downcase | strip | replace: ' ', ''
+  assign house_spellings = 'syperformance,syp,synchrosolutionz,synchrosolutions,comp1clutch' | split: ','
+  assign vendor_is_house = false
+  if house_spellings contains vendor_key
+    assign vendor_is_house = true
+  endif
+
+  assign resold_brand = product.vendor
+  if vendor_is_house
+    assign resold_brand = ''
+  endif
+
+  if made_in_house != blank
+    if made_in_house.value
+      echo '1|'
+      echo product.vendor
+      echo '|metafield'
+    else
+      echo '0|'
+      echo resold_brand
+      echo '|metafield'
+    endif
+  else
+    capture fallback_brand
+      render 'syp-in-house-handles', product: product
+    endcapture
+    assign fallback_brand = fallback_brand | strip
+
+    if fallback_brand != blank
+      echo '1|'
+      echo fallback_brand
+      echo '|fallback'
+    else
+      echo '0|'
+      echo resold_brand
+      echo '|fallback'
+    endif
+  endif
+-%}

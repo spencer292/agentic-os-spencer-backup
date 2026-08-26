@@ -1,0 +1,201 @@
+/* ==========================================================================
+   SYPerformance — product detail
+   --------------------------------------------------------------------------
+   Rendered by sections/syp-product-detail.liquid. Tokens only, no literals.
+
+   Layout intent: a single measured column, not a two-column marketing page.
+   Everything below the buy box is reading — failure modes, specs, caveats —
+   and reading wants one column at a controlled measure with hairlines doing
+   the separating.
+   ========================================================================== */
+
+.syp-pdp {
+  background-color: var(--syp-bg);
+  color: var(--syp-text);
+  border-top: var(--syp-hairline) solid var(--syp-rule);
+}
+
+.syp-pdp__inner {
+  max-width: var(--page-width, 1400px);
+  margin-inline: auto;
+  padding: var(--syp-space-2xl) var(--syp-space-lg) var(--syp-space-3xl);
+}
+
+@media screen and (min-width: 750px) {
+  .syp-pdp__inner {
+    padding-inline: var(--syp-space-xl);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Blocks
+   -------------------------------------------------------------------------- */
+
+.syp-pdp__block {
+  padding-block: var(--syp-space-xl);
+  border-bottom: var(--syp-hairline) solid var(--syp-rule-faint);
+}
+
+.syp-pdp__block:last-child {
+  border-bottom: 0;
+}
+
+.syp-pdp__heading {
+  margin: 0 0 var(--syp-space-md);
+  font-family: var(--syp-font-display);
+  font-size: var(--syp-text-lg);
+  font-weight: var(--syp-weight-semibold);
+  line-height: var(--syp-leading-snug);
+  letter-spacing: var(--syp-tracking-tight);
+  color: var(--syp-text-strong);
+}
+
+.syp-pdp__prose {
+  max-width: var(--syp-measure);
+  font-size: var(--syp-text-md);
+  line-height: var(--syp-leading-normal);
+}
+
+.syp-pdp__prose > * {
+  margin: 0;
+}
+
+.syp-pdp__prose > * + * {
+  margin-top: var(--syp-space-md);
+}
+
+/* "Why this part exists" carries the argument, so it gets the emphasis: a
+   heavier rule on the leading edge and slightly larger prose. */
+.syp-pdp__why {
+  padding-left: var(--syp-space-lg);
+  border-left: var(--syp-border-md) solid var(--syp-accent);
+}
+
+/* --------------------------------------------------------------------------
+   Fitment
+   -------------------------------------------------------------------------- */
+
+.syp-pdp__fitment-body {
+  display: grid;
+  gap: var(--syp-space-2xs);
+}
+
+.syp-pdp__fitment-line {
+  margin: 0;
+  font-size: var(--syp-text-sm);
+  color: var(--syp-text-strong);
+}
+
+.syp-pdp__fitment-note {
+  margin: var(--syp-space-xs) 0 0;
+  font-size: var(--syp-text-sm);
+  color: var(--syp-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Rating and lead time
+   Two facts, stated as instrument readings rather than as marketing.
+   -------------------------------------------------------------------------- */
+
+.syp-pdp__ratings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--syp-space-xl);
+}
+
+.syp-pdp__rating {
+  display: grid;
+  gap: var(--syp-space-2xs);
+}
+
+.syp-pdp__rating-value {
+  font-size: var(--syp-text-lg);
+  font-weight: var(--syp-weight-medium);
+  color: var(--syp-text-strong);
+}
+
+/* --------------------------------------------------------------------------
+   Warranty
+   -------------------------------------------------------------------------- */
+
+.syp-pdp__warranty .syp-pdp__prose {
+  margin-top: var(--syp-space-sm);
+}
+
+.syp-pdp__warranty .syp-btn {
+  margin-top: var(--syp-space-md);
+}
+
+/* --------------------------------------------------------------------------
+   Complete the build
+   -------------------------------------------------------------------------- */
+
+.syp-pdp__cross-note {
+  margin: 0 0 var(--syp-space-lg);
+  max-width: var(--syp-measure);
+  color: var(--syp-text-muted);
+  font-size: var(--syp-text-sm);
+}
+
+.syp-pdp__cross-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: var(--syp-grid-gap);
+}
+
+/* --------------------------------------------------------------------------
+   Editor-only gap notices
+   These never reach a customer — the section only emits them when
+   request.design_mode is true. Styled to be impossible to miss, because the
+   whole point is that an unfinished in-house page looks obviously unfinished.
+   -------------------------------------------------------------------------- */
+
+.syp-pdp__gap {
+  margin: var(--syp-space-md) 0 0;
+  padding: var(--syp-space-sm) var(--syp-space-md);
+  border: var(--syp-hairline) dashed var(--syp-warn);
+  border-radius: var(--syp-radius-md);
+  font-family: var(--syp-font-spec);
+  font-size: var(--syp-text-xs);
+  color: var(--syp-warn);
+}
+
+/* ==========================================================================
+   Identity strip (blocks/syp-product-identity.liquid)
+   Sits at the top of the buy column, above the title.
+   ========================================================================== */
+
+.syp-identity {
+  display: grid;
+  gap: var(--syp-space-xs);
+  margin-bottom: var(--syp-space-sm);
+}
+
+.syp-identity__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--syp-space-xs) var(--syp-space-md);
+}
+
+.syp-identity__brand,
+.syp-identity__part,
+.syp-identity__fact {
+  font-size: var(--syp-text-2xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  color: var(--syp-text-muted);
+}
+
+.syp-identity__part {
+  color: var(--syp-text-faint);
+}
+
+.syp-identity__row--facts {
+  padding-top: var(--syp-space-xs);
+  border-top: var(--syp-hairline) solid var(--syp-rule-faint);
+}
+
+.syp-identity__fact {
+  color: var(--syp-text);
+}
