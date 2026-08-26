@@ -481,3 +481,47 @@
   the diagnosis is blocked on two interactive re-mints only Spencer can run. Second gap worth
   naming: all 21 published articles are cleaning topics, so the lawn and pressure-washing kits have
   no organic funnel and depend entirely on ads that have been unmonitored for the same 14 days.
+
+## mkt-linkedin-nurture
+
+*No runs yet — skill built 2026-08-21. First session will populate this.*
+
+Carried in from the 2026-07-06 research session that preceded the skill:
+
+- 2026-07-06: LinkedIn people-search extraction that works is anchor-map collection
+  (`a[href*="/in/"]` → `{href: innerText}`), not `<li>` scraping, which returns empty. Each
+  anchor's text carries name, degree, headline, location and the mutual-connection line.
+- 2026-07-06: "X is a mutual connection" on a 2nd-degree result means X is one of Spencer's own
+  1st-degree connections. Recurring mutuals across searches are network hubs. For WA
+  property-management and green industry the hubs are Patrick LaCroix, Nick Granberg,
+  Brandon Sechrist and Mark Pyrah — Patrick alone links to ~8 of the HOA managers found.
+- 2026-07-06: The highest-leverage play surfaced by the first pull was not cold outreach at all —
+  it was asking the four hubs for introductions. Raise this with Spencer whenever a session
+  surfaces a cluster of prospects sitting behind one hub.
+
+## ops-hr
+
+- 2026-08-26: Built to replace the Cascade HR retainer. Cascade HR (Puyallup) is an HR CONSULTING
+  firm, not a PEO — verified from cascade-hr.com. That distinction decides the whole exit: no
+  co-employment, no L and I re-registration, no benefits or payroll migration. Cancelling is a
+  notice letter plus a document handover.
+- 2026-08-26: WA compliance numbers reindex every January. `references/wa-compliance.md` carries a
+  source and a verify-by date on every number for that reason. Never answer WA employment law from
+  memory — if the verify-by date has passed, look it up live and update the file first.
+- 2026-08-26: Design rule that matters most — the repo is pushed to a private GitHub backup, so
+  personnel data with SSNs, DOBs, I-9s, medical info or bank details goes to `hr-private/`
+  (gitignored) and NEVER into tracked files. Tracked HR files hold the decision; the private folder
+  holds the evidence.
+- 2026-08-26: Biggest live finding on build day was F1 — WA's 2026 exempt salary threshold is
+  $80,168.40 and applies at every employer size, which puts the salaried Operator seat at risk of
+  misclassification. This is exactly the kind of thing an HR retainer exists to catch, so whether it
+  was flagged is the honest test of the retainer's value.
+
+## syperformance-redesign
+
+- 2026-08-26: **An inherited claim is still a shipped claim.** The build plan asserted SY was a billet manufacturer machining in-house. The Phase 0 audit inherited it, and I wrote it into a badge on 110 products, the hero, a whole homepage section, the header, the footer and a dozen collection descriptions. Spencer caught it: production is subcontracted. I had explicitly refused to invent warranty terms and lead times, then failed to apply the same test to a claim that arrived in a document rather than from me. **Test every factual claim about the client's business, regardless of which file it came from.**
+- 2026-08-26: **Distinguish the defensible claim from the false one before softening anything.** First fix overcorrected to cautious "design" language, which cost real brand authority. Spencer pushed back and was right. SYPerformance IS the manufacturer — owns designs, drawings, specs, contracts production, inspects, warranties; that is the standard industry meaning and most respected brands in the space are identical. Only "machined in our own shop" was false. The rule that survived: claim manufacturer freely, never name a physical shop floor.
+- 2026-08-26: **Verify copy by scanning RENDERED pages, not by grepping source.** Grep reported the site clean while three places still showed "Made in-house" — a render call I had missed, and two SAVED TEMPLATE SETTINGS in `templates/*.json` that schema defaults do not override. Same trap applies to any Shopify theme setting.
+- 2026-08-26: **Dry runs earn their keep on the output, not the exit code.** `apply-ia.mjs --dry` printed a nav tree that exposed "Engine" and its child both pointing at `/collections/engine` — the exact duplicate-link defect the audit criticised in the old nav, reproduced by me. Print what a script WILL do in a shape a human can read, not just a count.
+- 2026-08-26: Shopify specifics worth keeping — ticking a `write_` scope auto-ticks its `read_` pair, so ticking both silently toggles the pair back OFF (14 boxes ticked, 0 saved). Admin is Polaris web components: real checkbox inputs ignore synthetic clicks, `label[for]` works, and several buttons share `variant=primary` including a hidden **Install**. Never use first-match selectors there.
+- 2026-08-26: **Never send a user to Notepad for a dotfile.** It opens a blank untitled document and the save goes nowhere with no error. Cost Spencer a Shopify Admin token, which is shown exactly once. Write a script that reads the clipboard instead (`scripts/save-token.mjs`).
