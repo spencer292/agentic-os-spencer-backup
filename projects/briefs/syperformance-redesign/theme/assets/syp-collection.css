@@ -1,0 +1,73 @@
+/* ==========================================================================
+   SYPerformance — collection header
+   --------------------------------------------------------------------------
+   Rendered by sections/syp-collection-header.liquid. Tokens only, no literals.
+   ========================================================================== */
+
+.syp-collection-header {
+  background-color: var(--syp-bg);
+  border-bottom: var(--syp-hairline) solid var(--syp-rule);
+}
+
+.syp-collection-header__inner {
+  max-width: var(--page-width, 1400px);
+  margin-inline: auto;
+  padding: var(--syp-space-2xl) var(--syp-space-lg) var(--syp-space-xl);
+}
+
+@media screen and (min-width: 750px) {
+  .syp-collection-header__inner {
+    padding-inline: var(--syp-space-xl);
+  }
+}
+
+.syp-collection-header__title {
+  margin: var(--syp-space-sm) 0 0;
+  font-family: var(--syp-font-display);
+  font-size: var(--syp-text-2xl);
+  font-weight: var(--syp-weight-bold);
+  line-height: var(--syp-leading-tight);
+  letter-spacing: var(--syp-tracking-tight);
+  color: var(--syp-text-strong);
+  text-wrap: balance;
+}
+
+/* The measure is the whole point of this block. Horizon's RTE block runs the
+   intro to the full page width, which on a desktop is ~160 characters a line. */
+.syp-collection-header__intro {
+  max-width: var(--syp-measure);
+  margin-top: var(--syp-space-md);
+  color: var(--syp-text);
+  font-size: var(--syp-text-md);
+  line-height: var(--syp-leading-normal);
+}
+
+.syp-collection-header__intro > * {
+  margin: 0;
+}
+
+.syp-collection-header__intro > * + * {
+  margin-top: var(--syp-space-sm);
+}
+
+.syp-collection-header__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--syp-space-sm) var(--syp-space-md);
+  margin-top: var(--syp-space-lg);
+  padding-top: var(--syp-space-sm);
+  border-top: var(--syp-hairline) solid var(--syp-rule-faint);
+}
+
+.syp-collection-header__meta:empty {
+  display: none;
+}
+
+.syp-collection-header__count,
+.syp-collection-header__note {
+  font-size: var(--syp-text-2xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  color: var(--syp-text-faint);
+}

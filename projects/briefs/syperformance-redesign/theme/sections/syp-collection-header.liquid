@@ -1,0 +1,101 @@
+{%- comment -%}
+  SYPerformance collection header.
+
+  Replaces Horizon's stock title + description text blocks on the collection
+  template. Phase 0 found all 57 collections with an empty description, an
+  auto-generated h1 reading "Collection: Syperformance", and a 13-character
+  page title. Phase 2 writes the copy; this is what displays it.
+
+  Three jobs the stock blocks do not do:
+
+  1. Give the intro copy a readable measure. Dropped into a full-width RTE
+     block, a three-sentence paragraph runs 160 characters to the line on a
+     desktop and nobody reads it.
+  2. State the count. On a parts site "12 parts" is information, not chrome —
+     it tells someone whether this is a category worth browsing or a stub.
+  3. Mark in-house collections. The whole redesign turns on separating what SY
+     machines from what SY resells, and the collection page is the first place
+     a visitor can be told which one they are looking at.
+
+  A collection with no description still renders correctly — it just loses the
+  intro row. That matters because it is how this looks on /collections/all.
+{%- endcomment -%}
+
+{{ 'syp-components.css' | asset_url | stylesheet_tag }}
+{{ 'syp-collection.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign coll = collection
+  assign count = coll.all_products_count
+
+  assign eyebrow = section.settings.eyebrow
+  if eyebrow == blank
+    assign eyebrow = 'Catalog'
+  endif
+
+  # In-house is driven by handle prefix rather than a metafield: Phase 3 owns
+  # metafields, and every in-house collection handle already starts with syp-.
+  assign in_house = false
+  if coll.handle contains 'syp-' or coll.handle == 'synchro-solutionz' or coll.handle == 'comp-1-clutch'
+    assign in_house = true
+  endif
+-%}
+
+<div class="syp-collection-header">
+  <div class="syp-collection-header__inner">
+    <p class="syp-label">{{ eyebrow }}</p>
+
+    <h1 class="syp-collection-header__title">{{ coll.title | default: section.settings.fallback_title }}</h1>
+
+    {%- if coll.description != blank -%}
+      <div class="syp-collection-header__intro rte">{{ coll.description }}</div>
+    {%- endif -%}
+
+    <div class="syp-collection-header__meta">
+      {%- if in_house -%}
+        {% render 'syp-badge', label: 'Made in-house', variant: 'in-house' %}
+      {%- endif -%}
+
+      {%- if count > 0 -%}
+        <span class="syp-collection-header__count syp-spec">
+          {{ count }} {% if count == 1 %}part{% else %}parts{% endif %}
+        </span>
+      {%- endif -%}
+
+      {%- if section.settings.note != blank -%}
+        <span class="syp-collection-header__note syp-spec">{{ section.settings.note }}</span>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "SYP collection header",
+  "tag": "section",
+  "class": "syp-collection-header-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "info": "Small label above the title. Defaults to Catalog.",
+      "default": "Catalog"
+    },
+    {
+      "type": "text",
+      "id": "fallback_title",
+      "label": "Fallback title",
+      "info": "Used only where there is no collection - the all-products listing, for example.",
+      "default": "All parts"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Note",
+      "info": "Optional line beside the count. Keep it factual."
+    }
+  ],
+  "presets": [{ "name": "SYP collection header" }]
+}
+{% endschema %}
