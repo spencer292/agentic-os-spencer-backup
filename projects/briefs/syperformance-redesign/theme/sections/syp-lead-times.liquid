@@ -1,0 +1,95 @@
+{%- comment -%}
+  SYPerformance lead times.
+
+  The plan asks for honest per-category build times, on their own page and
+  repeated on product pages. DOC Race and Dc5creations publish six-to-eight week
+  build times and it does not hurt them — a published lead time reads as real
+  manufacturing, and a lead time discovered after checkout reads as a problem.
+
+  Every row is a block so categories can be added without a rebuild.
+
+  IMPORTANT: this section ships with NO rows. The times are Spencer's to give
+  and inventing them would put a promise on the site that the shop has to keep.
+  With no rows it renders the note and nothing else — and says so in the editor.
+{%- endcomment -%}
+
+{{ 'syp-components.css' | asset_url | stylesheet_tag }}
+{{ 'syp-pages.css' | asset_url | stylesheet_tag }}
+
+{%- assign rows = section.blocks | where: 'type', 'row' -%}
+
+<div class="syp-lead">
+  <div class="syp-lead__inner">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="syp-section-title">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    {%- if rows.size > 0 -%}
+      <table class="syp-spec-table syp-lead__table">
+        <thead>
+          <tr>
+            <th scope="col">{{ section.settings.col_category }}</th>
+            <th scope="col">{{ section.settings.col_time }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for block in rows -%}
+            <tr {{ block.shopify_attributes }}>
+              <th scope="row">{{ block.settings.category }}</th>
+              <td>
+                {{ block.settings.time }}
+                {%- if block.settings.note != blank -%}
+                  <span class="syp-lead__note">{{ block.settings.note }}</span>
+                {%- endif -%}
+              </td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+    {%- elsif request.design_mode -%}
+      <p class="syp-lead__pending syp-spec">
+        No lead times set. These are Spencer's numbers to give — do not invent them. Add one row per
+        category; a category with no honest number is better left off the table than guessed at.
+      </p>
+    {%- endif -%}
+
+    {%- if section.settings.footnote != blank -%}
+      <div class="syp-lead__footnote rte">{{ section.settings.footnote }}</div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "SYP lead times",
+  "tag": "section",
+  "class": "syp-lead-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Ships empty on purpose. Add a row per category only when the number is real - a published lead time is a promise the shop has to keep."
+    },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Build times by category" },
+    { "type": "text", "id": "col_category", "label": "Column 1", "default": "Category" },
+    { "type": "text", "id": "col_time", "label": "Column 2", "default": "Ships in" },
+    {
+      "type": "richtext",
+      "id": "footnote",
+      "label": "Footnote",
+      "info": "What changes a lead time - a custom spec, a run that is already committed, a public holiday."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Category",
+      "settings": [
+        { "type": "text", "id": "category", "label": "Category", "info": "For example Billet halfshafts" },
+        { "type": "text", "id": "time", "label": "Time", "info": "For example 5-7 business days, or Built to order, 6-8 weeks" },
+        { "type": "text", "id": "note", "label": "Note" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "SYP lead times" }]
+}
+{% endschema %}

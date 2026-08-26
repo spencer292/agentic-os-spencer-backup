@@ -1,0 +1,164 @@
+{%- comment -%}
+  SYPerformance build gallery.
+
+  The plan calls for a Shopify metaobject so customer cars can be managed as
+  content and linked back to the products used. Metaobject definitions need an
+  Admin API token this machine does not have yet, so this section reads a
+  `build` metaobject when one exists and falls back to section blocks when it
+  does not.
+
+  That ordering is the point: Spencer can put the first three cars up today
+  using blocks, and the moment Phase 6's metaobject definition lands the same
+  page starts reading it instead — no template change, no re-entry.
+
+  Renders nothing when there are no entries either way. A build gallery with no
+  builds is worse than no build gallery.
+
+  Expected metaobject fields (created with the definition):
+    title, platform, power, result, parts (product list), image
+{%- endcomment -%}
+
+{{ 'syp-components.css' | asset_url | stylesheet_tag }}
+{{ 'syp-pages.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign entries = shop.metaobjects[section.settings.metaobject].values
+  assign source = 'metaobject'
+
+  if entries.size == 0
+    assign entries = section.blocks | where: 'type', 'build'
+    assign source = 'blocks'
+  endif
+-%}
+
+{%- if entries.size > 0 -%}
+  <div class="syp-gallery">
+    <div class="syp-gallery__inner">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="syp-section-title">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      <ul class="syp-gallery__list">
+        {%- for entry in entries -%}
+          {%- liquid
+            if source == 'metaobject'
+              assign e_title = entry.title
+              assign e_platform = entry.platform
+              assign e_power = entry.power
+              assign e_result = entry.result
+              assign e_image = entry.image.value
+              assign e_products = entry.parts.value
+            else
+              assign e_title = entry.settings.title
+              assign e_platform = entry.settings.platform
+              assign e_power = entry.settings.power
+              assign e_result = entry.settings.result
+              assign e_image = entry.settings.image
+              assign e_products = null
+            endif
+          -%}
+
+          <li class="syp-gallery__card">
+            {%- if e_image != blank -%}
+              <div class="syp-gallery__media">
+                {{
+                  e_image
+                  | image_url: width: 1200
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '400, 700, 1000, 1200',
+                    sizes: '(min-width: 990px) 45vw, 90vw',
+                    alt: e_title
+                }}
+              </div>
+            {%- endif -%}
+
+            <h3 class="syp-gallery__title">{{ e_title }}</h3>
+
+            <dl class="syp-gallery__stats">
+              {%- if e_platform != blank -%}
+                <div><dt class="syp-label">Platform</dt><dd class="syp-spec">{{ e_platform }}</dd></div>
+              {%- endif -%}
+              {%- if e_power != blank -%}
+                <div><dt class="syp-label">Power</dt><dd class="syp-spec">{{ e_power }}</dd></div>
+              {%- endif -%}
+              {%- if e_result != blank -%}
+                <div><dt class="syp-label">Result</dt><dd class="syp-spec">{{ e_result }}</dd></div>
+              {%- endif -%}
+            </dl>
+
+            {%- comment -%}
+              Linking each build back to the products on it is the whole reason
+              this is a metaobject rather than a photo album — it turns proof
+              into a route to a product page.
+            {%- endcomment -%}
+            {%- if e_products.count > 0 -%}
+              <div class="syp-gallery__parts">
+                <span class="syp-label">Parts on this car</span>
+                <ul>
+                  {%- for item in e_products -%}
+                    <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- elsif source == 'blocks' and entry.settings.parts != blank -%}
+              <p class="syp-gallery__parts-text">
+                <span class="syp-label">Parts on this car</span>
+                {{ entry.settings.parts }}
+              </p>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      {%- if request.design_mode and source == 'blocks' -%}
+        <p class="syp-gallery__pending syp-spec">
+          Showing block entries. Once the "{{ section.settings.metaobject }}" metaobject exists, this
+          section reads that instead and each build can link to the products on the car.
+        </p>
+      {%- endif -%}
+    </div>
+  </div>
+{%- elsif request.design_mode -%}
+  <p class="syp-gallery__pending syp-spec">
+    No builds yet, so this section is hidden on the storefront. Add entries as blocks now, or create
+    the "{{ section.settings.metaobject }}" metaobject once the Admin API token exists.
+  </p>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "SYP build gallery",
+  "tag": "section",
+  "class": "syp-gallery-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Reads the build metaobject when it exists and falls back to blocks until then. Hidden entirely when there are no entries."
+    },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    {
+      "type": "text",
+      "id": "metaobject",
+      "label": "Metaobject type",
+      "default": "build",
+      "info": "The metaobject definition handle. Phase 6 creates it."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "build",
+      "name": "Build",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Car" },
+        { "type": "text", "id": "platform", "label": "Platform" },
+        { "type": "text", "id": "power", "label": "Power", "info": "As measured. Say where." },
+        { "type": "text", "id": "result", "label": "Result", "info": "ET and trap, or a lap time." },
+        { "type": "textarea", "id": "parts", "label": "SYP parts on the car" },
+        { "type": "image_picker", "id": "image", "label": "Photo" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "SYP build gallery" }]
+}
+{% endschema %}

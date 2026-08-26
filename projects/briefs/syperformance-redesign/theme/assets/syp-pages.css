@@ -1,0 +1,337 @@
+/* ==========================================================================
+   SYPerformance — Phase 6 trust pages
+   --------------------------------------------------------------------------
+   Shared by syp-page-header, syp-lead-times, syp-dealer-form, syp-gallery.
+   Tokens only, no literals.
+   ========================================================================== */
+
+.syp-page-header__inner,
+.syp-lead__inner,
+.syp-dform__inner,
+.syp-gallery__inner {
+  max-width: var(--page-width, 1400px);
+  margin-inline: auto;
+  padding-inline: var(--syp-space-lg);
+}
+
+@media screen and (min-width: 750px) {
+  .syp-page-header__inner,
+  .syp-lead__inner,
+  .syp-dform__inner,
+  .syp-gallery__inner {
+    padding-inline: var(--syp-space-xl);
+  }
+}
+
+.syp-lead,
+.syp-dform,
+.syp-gallery {
+  background-color: var(--syp-bg);
+  color: var(--syp-text);
+  padding-block: var(--syp-space-3xl);
+  border-top: var(--syp-hairline) solid var(--syp-rule-faint);
+}
+
+/* ==========================================================================
+   PAGE HEADER
+   ========================================================================== */
+
+.syp-page-header {
+  background-color: var(--syp-bg);
+  color: var(--syp-text);
+  border-bottom: var(--syp-hairline) solid var(--syp-rule);
+}
+
+.syp-page-header__inner {
+  padding-block: var(--syp-space-2xl) var(--syp-space-xl);
+}
+
+.syp-page-header__title {
+  margin: var(--syp-space-sm) 0 0;
+  max-width: 22ch;
+  font-family: var(--syp-font-display);
+  font-size: var(--syp-text-2xl);
+  font-weight: var(--syp-weight-bold);
+  line-height: var(--syp-leading-tight);
+  letter-spacing: var(--syp-tracking-tight);
+  color: var(--syp-text-strong);
+  text-wrap: balance;
+}
+
+.syp-page-header__intro {
+  max-width: var(--syp-measure);
+  margin-top: var(--syp-space-md);
+  font-size: var(--syp-text-md);
+  line-height: var(--syp-leading-normal);
+}
+
+.syp-page-header__intro > * {
+  margin: 0;
+}
+
+.syp-page-header__intro > * + * {
+  margin-top: var(--syp-space-sm);
+}
+
+.syp-page-header__facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: var(--syp-space-lg);
+  margin: var(--syp-space-xl) 0 0;
+  padding-top: var(--syp-space-md);
+  border-top: var(--syp-hairline) solid var(--syp-rule-faint);
+}
+
+.syp-page-header__fact dd {
+  margin: var(--syp-space-2xs) 0 0;
+  font-size: var(--syp-text-sm);
+  color: var(--syp-text-strong);
+}
+
+/* ==========================================================================
+   LEAD TIMES
+   ========================================================================== */
+
+.syp-lead__table {
+  margin-top: var(--syp-space-xl);
+  max-width: 44rem;
+}
+
+.syp-lead__table thead th {
+  font-family: var(--syp-font-spec);
+  font-size: var(--syp-text-2xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  color: var(--syp-text-faint);
+  text-align: left;
+}
+
+.syp-lead__table thead th:last-child {
+  text-align: right;
+}
+
+.syp-lead__note {
+  display: block;
+  font-size: var(--syp-text-2xs);
+  color: var(--syp-text-faint);
+}
+
+.syp-lead__footnote {
+  max-width: var(--syp-measure);
+  margin-top: var(--syp-space-lg);
+  font-size: var(--syp-text-sm);
+  line-height: var(--syp-leading-normal);
+  color: var(--syp-text-muted);
+}
+
+.syp-lead__footnote > * {
+  margin: 0;
+}
+
+.syp-lead__pending,
+.syp-gallery__pending {
+  margin: var(--syp-space-md) 0 0;
+  padding: var(--syp-space-sm) var(--syp-space-md);
+  border: var(--syp-hairline) dashed var(--syp-warn);
+  border-radius: var(--syp-radius-md);
+  font-size: var(--syp-text-xs);
+  color: var(--syp-warn);
+  max-width: var(--syp-measure);
+}
+
+/* ==========================================================================
+   DEALER FORM
+   ========================================================================== */
+
+.syp-dform__inner {
+  display: grid;
+  gap: var(--syp-space-2xl);
+}
+
+@media screen and (min-width: 900px) {
+  .syp-dform__inner {
+    grid-template-columns: minmax(16rem, 22rem) minmax(0, 1fr);
+    gap: var(--syp-space-4xl);
+  }
+}
+
+.syp-dform__body {
+  max-width: var(--syp-measure);
+  margin-top: var(--syp-space-md);
+  font-size: var(--syp-text-md);
+  line-height: var(--syp-leading-normal);
+}
+
+.syp-dform__body > * {
+  margin: 0;
+}
+
+.syp-dform__points {
+  display: grid;
+  gap: var(--syp-space-sm);
+  list-style: none;
+  margin: var(--syp-space-lg) 0 0;
+  padding: 0;
+  font-size: var(--syp-text-sm);
+  color: var(--syp-text-muted);
+}
+
+.syp-dform__points li {
+  padding-top: var(--syp-space-sm);
+  border-top: var(--syp-hairline) solid var(--syp-rule-faint);
+}
+
+/* Capped: on a wide monitor auto-fit put all six short fields on one row, each
+   too narrow to read its own label. A form is not a layout that should use all
+   available width. */
+.syp-dform__form-wrap {
+  max-width: 46rem;
+}
+
+.syp-dform__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--syp-space-md);
+}
+
+.syp-dform__field {
+  display: grid;
+  gap: var(--syp-space-2xs);
+  margin: 0;
+}
+
+.syp-dform__field--wide {
+  grid-column: 1 / -1;
+}
+
+.syp-dform__field input,
+.syp-dform__field textarea {
+  width: 100%;
+  padding: var(--syp-space-sm) var(--syp-space-md);
+  background-color: var(--syp-graphite-600);
+  border: var(--syp-hairline) solid var(--syp-rule-strong);
+  border-radius: var(--syp-radius-md);
+  color: var(--syp-text-strong);
+  font-family: var(--syp-font-body);
+  font-size: var(--syp-text-sm);
+  line-height: var(--syp-leading-normal);
+}
+
+.syp-dform__field input:hover,
+.syp-dform__field textarea:hover {
+  border-color: var(--syp-steel-300);
+}
+
+.syp-dform__field textarea {
+  resize: vertical;
+}
+
+.syp-dform__hint {
+  font-size: var(--syp-text-2xs);
+  color: var(--syp-text-faint);
+}
+
+.syp-dform__form .syp-btn {
+  margin-top: var(--syp-space-lg);
+}
+
+.syp-dform__message {
+  margin: 0 0 var(--syp-space-lg);
+  padding: var(--syp-space-sm) var(--syp-space-md);
+  border: var(--syp-hairline) solid var(--syp-ok);
+  border-radius: var(--syp-radius-md);
+  font-family: var(--syp-font-spec);
+  font-size: var(--syp-text-xs);
+  color: var(--syp-ok);
+}
+
+.syp-dform__message--error {
+  border-color: var(--syp-error);
+  color: var(--syp-error);
+}
+
+/* ==========================================================================
+   BUILD GALLERY
+   ========================================================================== */
+
+.syp-gallery__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: var(--syp-grid-gap);
+  list-style: none;
+  margin: var(--syp-space-xl) 0 0;
+  padding: 0;
+}
+
+.syp-gallery__card {
+  padding: var(--syp-space-md);
+  background-color: var(--syp-bg-raised);
+  border: var(--syp-hairline) solid var(--syp-rule);
+  border-radius: var(--syp-radius-md);
+}
+
+.syp-gallery__media {
+  margin: calc(var(--syp-space-md) * -1) calc(var(--syp-space-md) * -1) var(--syp-space-md);
+}
+
+.syp-gallery__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.syp-gallery__title {
+  margin: 0;
+  font-family: var(--syp-font-display);
+  font-size: var(--syp-text-md);
+  font-weight: var(--syp-weight-semibold);
+  color: var(--syp-text-strong);
+}
+
+.syp-gallery__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+  gap: var(--syp-space-sm);
+  margin: var(--syp-space-md) 0 0;
+  padding-top: var(--syp-space-sm);
+  border-top: var(--syp-hairline) solid var(--syp-rule-faint);
+}
+
+.syp-gallery__stats dd {
+  margin: var(--syp-space-3xs) 0 0;
+  font-size: var(--syp-text-sm);
+  color: var(--syp-text-strong);
+}
+
+.syp-gallery__parts,
+.syp-gallery__parts-text {
+  margin: var(--syp-space-md) 0 0;
+  font-size: var(--syp-text-sm);
+  line-height: var(--syp-leading-normal);
+  color: var(--syp-text-muted);
+}
+
+.syp-gallery__parts ul {
+  display: grid;
+  gap: var(--syp-space-2xs);
+  list-style: none;
+  margin: var(--syp-space-2xs) 0 0;
+  padding: 0;
+}
+
+.syp-gallery__parts a {
+  color: var(--syp-text);
+  text-decoration: none;
+}
+
+.syp-gallery__parts a:hover {
+  color: var(--syp-accent);
+}
+
+.syp-gallery__parts .syp-label,
+.syp-gallery__parts-text .syp-label {
+  display: block;
+  margin-bottom: var(--syp-space-2xs);
+}

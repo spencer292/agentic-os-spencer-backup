@@ -1,0 +1,36 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "header": {
+      "type": "syp-page-header",
+      "settings": {
+        "eyebrow": "Lead times",
+        "heading": "How long things actually take",
+        "intro": "<p>Some parts ship from the shelf. Some are cut to order. We publish both rather than let you find out after checkout.</p>"
+      }
+    },
+    "table": {
+      "type": "syp-lead-times",
+      "settings": {
+        "heading": "Build times by category"
+      }
+    },
+    "body": {
+      "type": "main-page",
+      "settings": {}
+    }
+  },
+  "order": [
+    "header",
+    "table",
+    "body"
+  ]
+}

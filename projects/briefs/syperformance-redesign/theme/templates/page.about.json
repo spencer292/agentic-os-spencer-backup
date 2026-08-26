@@ -1,0 +1,103 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "header": {
+      "type": "syp-page-header",
+      "blocks": {
+        "f1": {
+          "type": "fact",
+          "settings": {
+            "label": "In-house SKUs",
+            "value": "110+"
+          }
+        },
+        "f2": {
+          "type": "fact",
+          "settings": {
+            "label": "House brands",
+            "value": "SYPerformance \u00b7 Synchro Solutionz \u00b7 Comp 1 Clutch"
+          }
+        },
+        "f3": {
+          "type": "fact",
+          "settings": {
+            "label": "Platforms",
+            "value": "Honda B/D/H \u00b7 K \u00b7 Evo 7/8/9 \u00b7 Evo X \u00b7 B58"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "settings": {
+        "eyebrow": "About",
+        "heading": "The shop behind the parts",
+        "intro": "<p>SYPerformance is a machine shop that sells parts, not a storefront that buys them. This page is who runs it, what it runs on, and how a part gets from a broken one on a bench to a box on your doorstep.</p>"
+      }
+    },
+    "story": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "process": {
+      "type": "syp-made-in-house",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Designed against the failure"
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Cut here, not sourced"
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Checked before it ships"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "eyebrow": "How parts get made",
+        "heading": "From a broken part to a boxed one",
+        "cta_label": "",
+        "cta_url": ""
+      }
+    },
+    "cta": {
+      "type": "syp-cta",
+      "settings": {
+        "eyebrow": "Dealer & pro program",
+        "heading": "Sell SYP parts in your shop",
+        "cta_label": "Apply",
+        "cta_url": "",
+        "accent": true
+      }
+    }
+  },
+  "order": [
+    "header",
+    "story",
+    "process",
+    "cta"
+  ]
+}

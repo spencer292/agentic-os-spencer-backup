@@ -1,0 +1,58 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "header": {
+      "type": "syp-page-header",
+      "settings": {
+        "eyebrow": "Dealer & pro program",
+        "heading": "Stock SYP parts",
+        "intro": "<p>For shops and builders already working on Honda B and K series, Mitsubishi Evo and B58 cars. Tell us what you build and we will come back with terms.</p>"
+      }
+    },
+    "form": {
+      "type": "syp-dealer-form",
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "Direct line to the shop that machines the parts, not a distributor."
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "Lead times quoted up front, per category."
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "text": "Technical support from whoever cut the part."
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "settings": {
+        "eyebrow": "Apply",
+        "heading": "Tell us about your shop",
+        "body": "<p>We read every one of these. The more specific you are about what you build, the faster this moves.</p>"
+      }
+    }
+  },
+  "order": [
+    "header",
+    "form"
+  ]
+}
