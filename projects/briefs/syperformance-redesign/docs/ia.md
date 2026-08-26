@@ -76,14 +76,13 @@ FABRICATION                                       → universal-fabrication (56)
   Clamps, V-Band & Flanges                        → clamps-v-band-flanges (7)
   Pie Cuts, Mandrel Bends & Tube                  → pie-cuts-mandrel-bends (4)
 
-ENGINE
-  Engine Internals & Service Parts                → engine (17)
+ENGINE                                            → engine (17)
   Valvetrain                                      → valvetrain (6)
   Intake & Throttle Bodies                        → intake (4)
   Chassis & Suspension                            → suspension (7)
   Exterior                                        → exterior (5)
 
-BRANDS
+BRANDS                                            → /collections
   Synchro Solutionz                               → synchro-solutionz (33)
   Comp 1 Clutch                                   → comp-1-clutch (2)
 
@@ -92,6 +91,8 @@ TECH                                              (Phase 6 — no collections)
 ```
 
 **Not in the nav, but live:** `clearance`, and the five per-platform manifold views described in §4.
+
+**No URL appears twice in this tree.** ENGINE is the `engine` collection itself rather than a heading with an "Engine Internals" child pointing at the same place — that duplicate is exactly what Phase 0 criticised in the old nav, where `SHOP BY BRAND` and `SHOP BY PRODUCT` both pointed at `/collections`. BRANDS has no collection of its own, so it points at `/collections` rather than borrowing `syp-billet` and telling a visitor that "Brands" means the in-house billet range.
 
 **Two honest notes on this tree.** `MITSUBISHI EVO → Evo X` holds three products, and `SYP BILLET → Single Lobe Rockers` holds three. Both stay because they are real search terms and, in the rockers' case, a flagship product family — but they will look thin next to a 66-product K-Series menu, and no amount of design hides that. The fix is more product, not more nav.
 

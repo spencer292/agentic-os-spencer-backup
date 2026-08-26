@@ -181,7 +181,11 @@
   top: 100%;
   left: 50%;
   translate: -50% 0;
+  /* max-content alone collapsed the grid to a single column, because the
+     columns size to content and the panel then sizes to the columns. A
+     min-width gives auto-fit room to actually form tracks. */
   width: max-content;
+  min-width: min(42rem, calc(100vw - var(--syp-space-xl)));
   max-width: min(60rem, calc(100vw - var(--syp-space-xl)));
   margin-top: var(--syp-space-sm);
   background-color: var(--syp-bg-raised);

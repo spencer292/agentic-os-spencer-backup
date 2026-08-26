@@ -337,10 +337,13 @@ const MENU = [
     ],
   },
   {
+    // The parent IS the engine-internals collection. Repeating it as a child
+    // would put the same URL in the menu twice - which is precisely what Phase 0
+    // criticised in the old nav, where SHOP BY BRAND and SHOP BY PRODUCT both
+    // pointed at /collections.
     title: 'Engine',
     collection: 'engine',
     items: [
-      { title: 'Engine Internals & Service Parts', collection: 'engine' },
       { title: 'Valvetrain', collection: 'valvetrain' },
       { title: 'Intake & Throttle Bodies', collection: 'intake' },
       { title: 'Chassis & Suspension', collection: 'suspension' },
@@ -348,8 +351,11 @@ const MENU = [
     ],
   },
   {
+    // No brands index page exists, and pointing this at syp-billet would tell a
+    // visitor that "Brands" means the in-house billet collection. /collections
+    // is the honest target until Phase 6 builds a real one.
     title: 'Brands',
-    collection: 'syp-billet',
+    url: '/collections',
     items: [
       { title: 'Synchro Solutionz', collection: 'synchro-solutionz' },
       { title: 'Comp 1 Clutch', collection: 'comp-1-clutch' },
@@ -359,24 +365,45 @@ const MENU = [
 
 function toMenuItems(nodes, collectionIds) {
   return nodes.map((n) => {
+    const children = n.items ? { items: toMenuItems(n.items, collectionIds) } : {};
+
+    // A plain URL item, for targets that are not a collection.
+    if (n.url) return { title: n.title, type: 'HTTP', url: n.url, ...children };
+
     const id = collectionIds.get(n.collection);
     if (!id) throw new Error(`Menu points at a collection that does not exist: ${n.collection}`);
-    return {
-      title: n.title,
-      type: 'COLLECTION',
-      resourceId: id,
-      ...(n.items ? { items: toMenuItems(n.items, collectionIds) } : {}),
-    };
+    return { title: n.title, type: 'COLLECTION', resourceId: id, ...children };
   });
+}
+
+/** Print the tree without resolving gids, so a dry run can show the shape. */
+function printMenu(nodes, collectionIds, depth = 0) {
+  for (const n of nodes) {
+    const target = n.url ? n.url : n.collection;
+    const pending = !n.url && !collectionIds.has(n.collection);
+    plan(
+      `${'  '.repeat(depth)}${n.title.padEnd(38 - depth * 2)} -> ${target}` +
+        (pending ? '  (created earlier in this run)' : '')
+    );
+    if (n.items) printMenu(n.items, collectionIds, depth + 1);
+  }
 }
 
 async function applyMenu(collectionIds) {
   log('\n== MENU ==');
-  const items = toMenuItems(MENU, collectionIds);
   const count = (nodes) => nodes.reduce((n, i) => n + 1 + (i.items ? count(i.items) : 0), 0);
-  plan(`main-menu: ${MENU.length} top-level, ${count(items)} items total`);
 
-  if (!APPLY) return;
+  // On a dry run the collections have not been created, so their gids do not
+  // exist and toMenuItems would throw on the first one. Print the tree instead:
+  // the point of a dry run is to show the shape, not to prove the ids resolve.
+  if (!APPLY) {
+    plan(`main-menu: ${MENU.length} top-level, ${count(MENU)} items total`);
+    printMenu(MENU, collectionIds);
+    return;
+  }
+
+  const items = toMenuItems(MENU, collectionIds);
+  plan(`main-menu: ${MENU.length} top-level, ${count(items)} items total`);
 
   const existing = await gql(`{ menus(first: 20) { nodes { id handle } } }`);
   const menu = existing.menus.nodes.find((m) => m.handle === 'main-menu');
