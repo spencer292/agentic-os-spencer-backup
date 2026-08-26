@@ -60,7 +60,30 @@ for (let i = 0; i < 40; i++) {
 }
 await sleep(2500);
 
-const { data } = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: FULL });
+// --full: resize the viewport to the real content height and capture normally.
+// captureBeyondViewport looks like the obvious tool and is a trap here — this
+// theme's <body> reports scrollHeight 1000 while the product grid alone is 2,685
+// tall, so the extra canvas comes back as empty background and the page looks
+// broken. Measure what actually scrolls, then make the window that tall.
+if (FULL) {
+  const h = await send('Runtime.evaluate', {
+    returnByValue: true,
+    expression: `Math.max(
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight,
+      document.body ? document.body.scrollHeight : 0,
+      ...[].slice.call(document.querySelectorAll('.page-wrapper, main, .product-grid'))
+        .map(function(el){ var r = el.getBoundingClientRect(); return Math.ceil(r.bottom + window.scrollY); })
+    )`
+  });
+  const contentHeight = Math.min(Math.ceil(h.result?.result?.value || P.height), 20000);
+  await send('Emulation.setDeviceMetricsOverride', { ...P, height: contentHeight });
+  // Give lazy images below the old fold a chance to load at the new size.
+  await send('Runtime.evaluate', { expression: 'window.scrollTo(0, 0)' });
+  await sleep(3000);
+}
+
+const { data } = await send('Page.captureScreenshot', { format: 'png' });
 fs.writeFileSync(OUT, Buffer.from(data, 'base64'));
 console.log(`wrote ${OUT}  (${PROFILE}, ${TARGET})`);
 chrome.kill();
