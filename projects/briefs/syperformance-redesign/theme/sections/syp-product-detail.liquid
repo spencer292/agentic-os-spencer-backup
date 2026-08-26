@@ -44,8 +44,11 @@
   endif
   assign hp_rating = mf.hp_rating
   assign build_time = mf.build_time
-  assign platform = mf.platform
-  assign chassis = mf.chassis
+  # platform and chassis are list.single_line_text_field. Rendering the
+  # metafield object prints the raw JSON array; .value gives the array and join
+  # makes it readable.
+  assign platform = mf.platform.value | join: ' · '
+  assign chassis = mf.chassis.value | join: ' · '
   assign why = mf.why_this_part
   assign before_you_buy = mf.before_you_buy
   assign before_you_buy_html = mf.before_you_buy.value | default: mf.before_you_buy
@@ -142,7 +145,19 @@
           {%- if chassis != blank -%}
             <p class="syp-pdp__fitment-line syp-spec">{{ chassis }}</p>
           {%- endif -%}
-          <p class="syp-pdp__fitment-note" data-syp-fitment-verdict>
+          {%- comment -%}
+            The verdict element carries the product's own fitment data so the
+            script can judge it without another request. Rendered as JSON
+            because platform and chassis are lists.
+          {%- endcomment -%}
+          {%- capture fit_json -%}
+            {"platform": {{ mf.platform.value | json }}, "chassis": {{ mf.chassis.value | json }}, "drivetrain": {{ mf.drivetrain.value | json }}}
+          {%- endcapture -%}
+          <p
+            class="syp-pdp__fitment-note"
+            data-syp-fitment-verdict
+            data-syp-fit="{{ fit_json | strip_newlines | strip | escape }}"
+          >
             Check this against your build before ordering.
           </p>
         </div>

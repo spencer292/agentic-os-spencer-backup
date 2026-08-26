@@ -2,9 +2,9 @@
 
 Everything deferred, blocked, or left for a decision, in one place. Kept current as phases land.
 
-**Last updated:** 2026-08-26, end of Phase 6
-**Phases complete:** 0 (audit) · 1 (foundation) · 2 (IA — designed, not executed) · 4 (product page) · 5 (homepage) · 6 (trust pages)
-**Not started:** 3 (fitment selector) · 7 (SEO) · 8 (performance) · 9 (pre-launch)
+**Last updated:** 2026-08-26, end of Phase 3
+**Phases complete:** 0 (audit) · 1 (foundation) · 2 (IA — **executed**) · 3 (fitment) · 4 (product page) · 5 (homepage) · 6 (trust pages)
+**Not started:** 7 (SEO) · 8 (performance) · 9 (pre-launch)
 
 ---
 
@@ -12,7 +12,7 @@ Everything deferred, blocked, or left for a decision, in one place. Kept current
 
 | # | Item | Who | Blocks | Notes |
 |---|---|---|---|---|
-| 1.1 | **Shopify Admin API token** — app staged, two clicks left | Spencer | Phase 2 execution, Phase 3, Phase 6 pages, Phase 7 | App `SYP Build Automation` created 2026-08-26 on the build store, custom app development enabled, all 14 scopes saved and verified after reload. Remaining: Install app, reveal the token once, paste it in. Left to Spencer so the credential never passes through the agent. Full detail in `docs/token-status.md`. |
+| 1.1 | ~~Shopify Admin API token~~ | — | — | **DONE 2026-08-26.** Verified live: connected to "SYPerformance Build", 198 products. Phase 2 executed, metafield definitions created, values written. |
 | 1.2 | **The 51 unclassified products** — in-house or resold? | Spencer | Phase 4 correctness | `data/unknowns-review.csv`, `ownerDecision` column. All 51 currently render as **resold** so nothing gets an unearned MADE IN-HOUSE badge. |
 
 ---
@@ -23,10 +23,11 @@ Everything deferred, blocked, or left for a decision, in one place. Kept current
 |---|---|---|---|
 | 2.1 | **Warranty terms** | `page.warranty`, plus every in-house product page | It's a promise the business has to honor. Section ships blank and warns in the theme editor. |
 | 2.2 | **Lead times per category** | `page.lead-times`, plus product pages | Same. `syp-lead-times` ships with zero rows on purpose. |
-| 2.3 | **"Why this part exists"** × 110 in-house products | `custom.why_this_part` | Needs the failure mode, what changed, what it means. This is the single most important block on the site. |
+| 2.3 | **"Why this part exists"** × 110 in-house products | `custom.why_this_part` | Needs the failure mode, what changed, what it means. This is the single most important block on the site. **Metafield now exists and is empty on all 110.** |
 | 2.4 | **"Before you buy"** × 110 in-house products | `custom.before_you_buy` | The honest caveats — what else you need, what needs modification. |
 | 2.5 | **Spec tables** | `custom.specs` | Material, dimensions, tolerances, hardware, torque specs. |
 | 2.6 | **HP ratings** | `custom.hp_rating` | Only where a real number exists. |
+| 2.10 | **Chassis codes** | `custom.chassis` | Phase 3 wrote platform for 149 products and drivetrain for 14, both derived from the audit. **Chassis is empty on all 198** — it cannot be derived from a title, and it is what makes the fitment selector precise rather than broad. |
 | 2.7 | **About / shop tour story** | `page.about` body | Who runs it, what machines, how long. Phase 0 called this the highest-ROI page on the site. |
 | 2.8 | **Dealer program terms** | `page.dealer` | Do not state discount levels that aren't agreed. Form works without them. |
 | 2.9 | **Collection intro copy — review** | 33 collections | I wrote all 33 (`docs/ia.md` §4). They state no HP figures, tolerances, materials, lead times or warranty terms. Needs your technical read before it goes live. |
@@ -54,6 +55,7 @@ Everything deferred, blocked, or left for a decision, in one place. Kept current
 | 4.3 | **Heading typeface** | Currently Horizon's Inter. Brief suggests a condensed technical sans. Specs already use system mono with tabular figures and a slashed zero. |
 | 4.4 | **Algorithmic cross-sell** | I removed Horizon's product-recommendations because the plan says cross-sell by what the part requires. Consequence: no cross-sell until `custom.complete_the_build` is populated. Reversible if you'd rather keep it meanwhile. |
 | 4.5 | **`SYPerformance` vs `SYP`** | One word, `SYPerformance`, everywhere. Phase 7. |
+| 4.9 | **Collection filtering — Search & Discovery** | Shopify's free first-party app is what turns the Phase 3 metafields into real storefront filters (`filter.p.m.custom.platform`). Without it, filtering a collection to what fits can only happen client-side, on the products already on the page — it would not change counts or pagination, which reads as broken. I have NOT installed it: it is an app, and the plan says ask first. Recommend installing it. |
 | 4.6 | **Reviews platform** | Not yet evaluated — Phase 6 item still open. Shopify's own reviews app was retired; the realistic comparison is Judge.me free tier vs nothing. Needs a cost and page-speed report before anything is installed. |
 | 4.7 | **The Superformance name collision** | Business decision, not a code fix. Phase 7 mitigates with consistent one-word usage and `sameAs` schema. |
 | 4.8 | **Eight in-house compare-at prices** | Remove them. Ten-minute job, lands in Phase 7. |
@@ -72,6 +74,7 @@ Everything deferred, blocked, or left for a decision, in one place. Kept current
 | 5.6 | **Canonical tags** | Products now sit in up to five collections. Horizon canonicalizes to `/products/`; verify rather than assume. Phase 7. |
 | 5.7 | **Real device testing** | iOS and Android, not devtools. Phase 9. |
 | 5.8 | **Purchase test** | Cannot be done on a development store — no real payment methods. Has to happen on SY's store against the draft theme before he publishes. |
+| 5.9 | **Fitment selector on a real device** | Verified in-browser: verdict correct on both a matching and a non-matching product, bar renders under the header, header control shows the saved vehicle. Not yet tested on touch. |
 
 ---
 

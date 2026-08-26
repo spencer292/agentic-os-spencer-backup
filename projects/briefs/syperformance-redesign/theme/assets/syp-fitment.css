@@ -1,0 +1,269 @@
+/* ==========================================================================
+   SYPerformance — fitment selector
+   --------------------------------------------------------------------------
+   Rendered by snippets/syp-fitment-ui.liquid. Tokens only, no literals.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Sitewide bar
+   Reads as an instrument readout, not a promo strip: hairline, monospace,
+   accent only on the value itself.
+   -------------------------------------------------------------------------- */
+
+.syp-fitbar {
+  background-color: var(--syp-bg-raised);
+  border-bottom: var(--syp-hairline) solid var(--syp-rule);
+}
+
+.syp-fitbar[hidden] {
+  display: none;
+}
+
+.syp-fitbar__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--syp-space-xs) var(--syp-space-md);
+  max-width: var(--page-width, 1400px);
+  margin-inline: auto;
+  padding: var(--syp-space-xs) var(--syp-space-lg);
+}
+
+@media screen and (min-width: 750px) {
+  .syp-fitbar__inner {
+    padding-inline: var(--syp-space-xl);
+  }
+}
+
+.syp-fitbar__value {
+  font-size: var(--syp-text-xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  color: var(--syp-accent);
+}
+
+.syp-fitbar__action {
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--syp-text-muted);
+  font-family: var(--syp-font-spec);
+  font-size: var(--syp-text-2xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.syp-fitbar__action:hover {
+  color: var(--syp-text-strong);
+}
+
+.syp-fitbar__action--quiet {
+  color: var(--syp-text-faint);
+}
+
+/* --------------------------------------------------------------------------
+   Picker dialog
+   -------------------------------------------------------------------------- */
+
+.syp-fitdialog {
+  width: min(34rem, calc(100vw - var(--syp-space-lg)));
+  max-width: none;
+  padding: 0;
+  background-color: var(--syp-bg-raised);
+  border: var(--syp-hairline) solid var(--syp-rule-strong);
+  border-radius: var(--syp-radius-md);
+  color: var(--syp-text);
+}
+
+.syp-fitdialog::backdrop {
+  background-color: rgb(14 16 19 / 72%);
+}
+
+.syp-fitdialog__form {
+  padding: var(--syp-space-lg);
+}
+
+.syp-fitdialog__head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--syp-space-md);
+  padding-bottom: var(--syp-space-md);
+  border-bottom: var(--syp-hairline) solid var(--syp-rule);
+}
+
+.syp-fitdialog__title {
+  margin: var(--syp-space-2xs) 0 0;
+  font-family: var(--syp-font-display);
+  font-size: var(--syp-text-lg);
+  font-weight: var(--syp-weight-bold);
+  line-height: var(--syp-leading-snug);
+  color: var(--syp-text-strong);
+}
+
+.syp-fitdialog__close {
+  position: relative;
+  flex: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--syp-text-muted);
+}
+
+.syp-fitdialog__close::before,
+.syp-fitdialog__close::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  width: 50%;
+  height: var(--syp-hairline);
+  background-color: currentcolor;
+}
+
+.syp-fitdialog__close::before {
+  transform: rotate(45deg);
+}
+
+.syp-fitdialog__close::after {
+  transform: rotate(-45deg);
+}
+
+.syp-fitdialog__intro,
+.syp-fitdialog__note {
+  margin: var(--syp-space-md) 0 0;
+  font-size: var(--syp-text-sm);
+  line-height: var(--syp-leading-normal);
+  color: var(--syp-text-muted);
+}
+
+.syp-fitdialog__note {
+  padding-top: var(--syp-space-md);
+  border-top: var(--syp-hairline) solid var(--syp-rule-faint);
+  font-size: var(--syp-text-xs);
+  color: var(--syp-text-faint);
+}
+
+.syp-fitdialog__fields {
+  display: grid;
+  gap: var(--syp-space-md);
+  margin-top: var(--syp-space-lg);
+}
+
+.syp-fitdialog__field {
+  display: grid;
+  gap: var(--syp-space-2xs);
+  margin: 0;
+}
+
+.syp-fitdialog__field label span {
+  color: var(--syp-text-faint);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.syp-fitdialog__field select {
+  width: 100%;
+  padding: var(--syp-space-sm) var(--syp-space-md);
+  background-color: var(--syp-graphite-600);
+  border: var(--syp-hairline) solid var(--syp-rule-strong);
+  border-radius: var(--syp-radius-md);
+  color: var(--syp-text-strong);
+  font-family: var(--syp-font-body);
+  font-size: var(--syp-text-sm);
+}
+
+.syp-fitdialog__field select:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.syp-fitdialog__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--syp-space-md);
+  margin-top: var(--syp-space-lg);
+}
+
+.syp-fitdialog__clear {
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--syp-text-faint);
+  font-family: var(--syp-font-spec);
+  font-size: var(--syp-text-2xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.syp-fitdialog__clear:hover {
+  color: var(--syp-text);
+}
+
+/* --------------------------------------------------------------------------
+   Product page verdict
+   Three states, and the third is the important one: "unconfirmed" must not
+   look like a rejection, because most of the catalogue is untagged and a
+   customer sent away from a part they need is the worst outcome here.
+   -------------------------------------------------------------------------- */
+
+[data-syp-fitment-verdict][data-verdict='fits'] {
+  color: var(--syp-ok);
+}
+
+[data-syp-fitment-verdict][data-verdict='no'] {
+  color: var(--syp-warn);
+}
+
+[data-syp-fitment-verdict][data-verdict='unknown'] {
+  color: var(--syp-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Collection refine toggle
+   -------------------------------------------------------------------------- */
+
+.syp-fitrefine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--syp-space-xs) var(--syp-space-md);
+  margin-bottom: var(--syp-space-lg);
+  padding: var(--syp-space-sm) var(--syp-space-md);
+  background-color: var(--syp-bg-raised);
+  border: var(--syp-hairline) solid var(--syp-rule);
+  border-radius: var(--syp-radius-md);
+}
+
+.syp-fitrefine[hidden] {
+  display: none;
+}
+
+.syp-fitrefine label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--syp-space-xs);
+  cursor: pointer;
+  font-family: var(--syp-font-spec);
+  font-size: var(--syp-text-2xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  color: var(--syp-text);
+}
+
+.syp-fitrefine__count {
+  font-family: var(--syp-font-spec);
+  font-size: var(--syp-text-2xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  color: var(--syp-text-faint);
+}

@@ -29,7 +29,10 @@
   endif
 
   assign build_time = product.metafields.custom.build_time.value
-  assign platform_label = platform | default: product.metafields.custom.platform.value
+  # A list metafield rendered directly concatenates its entries with no
+  # separator; join it, and only fall back to it when no override was passed.
+  assign platform_meta = product.metafields.custom.platform.value | join: ' · '
+  assign platform_label = platform | default: platform_meta
   assign on_sale = false
   if product.compare_at_price > product.price
     assign on_sale = true

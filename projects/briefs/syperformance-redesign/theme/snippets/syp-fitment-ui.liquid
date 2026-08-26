@@ -1,0 +1,99 @@
+{%- doc -%}
+  The fitment selector's shared markup: the picker dialog and the sitewide
+  "shopping for" bar.
+
+  Rendered once from layout/theme.liquid rather than per section, for the same
+  reason Horizon renders its cart drawer and search modal globally — the header
+  entry point, the collection refine toggle and the product page verdict all
+  talk to one instance.
+
+  Options are declared here rather than fetched, because the platform list is a
+  fixed set of engine families, not data. Chassis options carry the platform
+  they belong to so the second select narrows to the first.
+{%- enddoc -%}
+
+{{ 'syp-fitment.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'syp-fitment.js' | asset_url }}" type="module" fetchpriority="low"></script>
+
+{%- liquid
+  assign platforms = 'Honda K-Series,Honda B-Series,Honda D-Series,Honda H/F-Series,Evo 7/8/9,Evo X,BMW / Toyota B58' | split: ','
+
+  # "Chassis|Platform" pairs. Kept flat so adding one is a single edit.
+  assign chassis_pairs = 'EG|Honda B-Series,EK|Honda B-Series,DC2|Honda B-Series,DC5|Honda K-Series,EP3|Honda K-Series,FG/FA|Honda K-Series,FK8|Honda K-Series,CL9/TSX|Honda K-Series,RSX|Honda K-Series,CG/CD Accord|Honda H/F-Series,S2000|Honda H/F-Series,EG/EK D-Series|Honda D-Series,CT9A|Evo 7/8/9,CZ4A|Evo X,A90/A91|BMW / Toyota B58,F-Chassis|BMW / Toyota B58,G-Chassis|BMW / Toyota B58' | split: ','
+-%}
+
+{%- comment -%} Sitewide bar. Hidden until a vehicle is chosen. {%- endcomment -%}
+<div class="syp-fitbar" data-syp-fitment-bar hidden>
+  <div class="syp-fitbar__inner">
+    <span class="syp-label">Shopping for</span>
+    <span class="syp-fitbar__value syp-spec" data-fit-bar-label></span>
+    <button class="syp-fitbar__action" type="button" data-fit-bar-change>Change</button>
+    <button class="syp-fitbar__action syp-fitbar__action--quiet" type="button" data-fit-bar-clear>
+      Clear
+    </button>
+  </div>
+</div>
+
+<dialog class="syp-fitdialog" id="syp-fitment-dialog" aria-labelledby="syp-fitment-heading">
+  <form method="dialog" class="syp-fitdialog__form">
+    <div class="syp-fitdialog__head">
+      <div>
+        <p class="syp-label">Fitment</p>
+        <h2 class="syp-fitdialog__title" id="syp-fitment-heading">What are you building?</h2>
+      </div>
+      <button class="syp-fitdialog__close" type="button" data-fit-close aria-label="Close"></button>
+    </div>
+
+    <p class="syp-fitdialog__intro">
+      Pick your engine family. Chassis and drivetrain are optional — they narrow things further, but
+      the platform on its own is enough to be useful.
+    </p>
+
+    <div class="syp-fitdialog__fields">
+      <p class="syp-fitdialog__field">
+        <label class="syp-label" for="syp-fit-platform">Engine family</label>
+        <select id="syp-fit-platform" data-fit-platform required>
+          <option value="">Select…</option>
+          {%- for p in platforms -%}
+            <option value="{{ p }}">{{ p }}</option>
+          {%- endfor -%}
+        </select>
+      </p>
+
+      <p class="syp-fitdialog__field">
+        <label class="syp-label" for="syp-fit-chassis">Chassis <span>optional</span></label>
+        <select id="syp-fit-chassis" data-fit-chassis disabled>
+          <option value="">Any</option>
+          {%- for pair in chassis_pairs -%}
+            {%- assign bits = pair | split: '|' -%}
+            <option value="{{ bits[0] }}" data-platform="{{ bits[1] }}">{{ bits[0] }}</option>
+          {%- endfor -%}
+        </select>
+      </p>
+
+      <p class="syp-fitdialog__field">
+        <label class="syp-label" for="syp-fit-drivetrain">Drivetrain <span>optional</span></label>
+        <select id="syp-fit-drivetrain" data-fit-drivetrain>
+          <option value="">Any</option>
+          <option value="FWD">FWD</option>
+          <option value="AWD">AWD</option>
+          <option value="RWD">RWD</option>
+        </select>
+      </p>
+    </div>
+
+    {%- comment -%}
+      Said plainly, because it is true and hiding it would make the feature feel
+      broken the first time someone hits an untagged part.
+    {%- endcomment -%}
+    <p class="syp-fitdialog__note">
+      We will never hide a part just because we have not confirmed it against your car — anything
+      unconfirmed still shows, marked as unconfirmed.
+    </p>
+
+    <div class="syp-fitdialog__actions">
+      {% render 'syp-button', label: 'Save vehicle', variant: 'primary', type: 'submit' %}
+      <button class="syp-fitdialog__clear" type="button" data-fit-clear>Clear selection</button>
+    </div>
+  </form>
+</dialog>

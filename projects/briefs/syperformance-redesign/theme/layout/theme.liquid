@@ -60,6 +60,15 @@
         {% sections 'header-group' %}
       </div>
 
+      {%- comment -%}
+        Fitment selector: one instance sitewide, so the header entry point, the
+        collection refine toggle and the product verdict all read one state.
+        Rendered here rather than at the end of the body because the "shopping
+        for" bar is page furniture and belongs under the header — the dialog
+        inside it is an overlay and does not care.
+      {%- endcomment -%}
+      {% render 'syp-fitment-ui' %}
+
       <script>
         /**
          * Sets `--header-height` and `--header-group-height` to measured values before first paint.

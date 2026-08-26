@@ -19,8 +19,6 @@
 
 import { getScrollEventTarget, getScrollTop, scrollContainerMediaQuery } from '@theme/scroll-container';
 
-const FITMENT_KEY = 'syp:fitment';
-
 /** @param {HTMLElement} header */
 function setupPanels(header) {
   /** @type {HTMLButtonElement[]} */
@@ -154,9 +152,9 @@ function setupCondense(header) {
 /**
  * Fitment entry point.
  *
- * Phase 1 ships the control, not the selector. If a Phase 3 component is
- * listening it calls preventDefault() on syp:fitment:open and takes over;
- * otherwise the control falls back to its href, or does nothing at all rather
+ * The header owns the control; syp-fitment.js owns the state, the label and the
+ * dialog. This only dispatches the request — if nothing is listening, the
+ * control falls back to its href, and if that is blank it does nothing rather
  * than opening something half-built.
  *
  * @param {HTMLElement} header
@@ -164,23 +162,6 @@ function setupCondense(header) {
 function setupFitment(header) {
   const control = /** @type {HTMLElement | null} */ (header.querySelector('[data-syp-fitment]'));
   if (!control) return;
-
-  const label = control.querySelector('[data-syp-fitment-label]');
-
-  try {
-    const saved = window.localStorage.getItem(FITMENT_KEY);
-    if (saved && label) {
-      const parsed = JSON.parse(saved);
-      const parts = [parsed.platform, parsed.chassis, parsed.drivetrain].filter(Boolean);
-      if (parts.length) {
-        label.textContent = parts.join(' / ');
-        control.dataset.sypFitmentSet = 'true';
-      }
-    }
-  } catch {
-    // Private mode, blocked storage, or a stale value shape. The default
-    // label is correct in every one of those cases.
-  }
 
   control.addEventListener('click', (event) => {
     const request = new CustomEvent('syp:fitment:open', { bubbles: true, cancelable: true });
