@@ -12,7 +12,7 @@ Everything deferred, blocked, or left for a decision, in one place. Kept current
 
 | # | Item | Who | Blocks | Notes |
 |---|---|---|---|---|
-| 1.1 | **Shopify Admin API token** for the build store | Spencer | Phase 2 execution, Phase 3, Phase 6 pages, Phase 7 | Two minutes. Steps in `docs/ia.md` §7. This is *your* dev store under your own Partner org — not SY's. Once it's in `.env`, three scripts run and a lot unblocks at once. |
+| 1.1 | **Shopify Admin API token** — app staged, two clicks left | Spencer | Phase 2 execution, Phase 3, Phase 6 pages, Phase 7 | App `SYP Build Automation` created 2026-08-26 on the build store, custom app development enabled, all 14 scopes saved and verified after reload. Remaining: Install app, reveal the token once, paste it in. Left to Spencer so the credential never passes through the agent. Full detail in `docs/token-status.md`. |
 | 1.2 | **The 51 unclassified products** — in-house or resold? | Spencer | Phase 4 correctness | `data/unknowns-review.csv`, `ownerDecision` column. All 51 currently render as **resold** so nothing gets an unearned MADE IN-HOUSE badge. |
 
 ---
