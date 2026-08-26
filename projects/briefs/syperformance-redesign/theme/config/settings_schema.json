@@ -2116,5 +2116,54 @@
         "default": "equal-width-buttons"
       }
     ]
+  },
+  {
+    "name": "SYPerformance SEO",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Organization structured data. alternateName and the social links are the mitigation for the Superformance name collision - they give Google an entity to attach the brand to."
+      },
+      {
+        "type": "text",
+        "id": "syp_org_name",
+        "label": "Organization name",
+        "default": "SYPerformance",
+        "info": "One word, always. Never SYP or SY Performance."
+      },
+      {
+        "type": "text",
+        "id": "syp_org_alt_name",
+        "label": "Also known as",
+        "default": "SY Performance",
+        "info": "The spelling people actually type."
+      },
+      {
+        "type": "textarea",
+        "id": "syp_org_description",
+        "label": "Organization description",
+        "default": "Billet drivetrain, turbo manifolds and cooling for Honda B/D/H and K series, Mitsubishi Evo and BMW/Toyota B58 - designed and machined in-house."
+      },
+      {
+        "type": "url",
+        "id": "syp_social_instagram",
+        "label": "Instagram"
+      },
+      {
+        "type": "url",
+        "id": "syp_social_youtube",
+        "label": "YouTube"
+      },
+      {
+        "type": "url",
+        "id": "syp_social_facebook",
+        "label": "Facebook"
+      },
+      {
+        "type": "url",
+        "id": "syp_social_other",
+        "label": "Other profile"
+      }
+    ]
   }
 ]

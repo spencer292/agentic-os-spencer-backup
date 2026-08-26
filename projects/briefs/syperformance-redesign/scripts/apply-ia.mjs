@@ -231,13 +231,26 @@ async function applyCollections(productIds, collectionIds, publicationId) {
 
     if (!APPLY) continue;
 
+    // Meta title and description. Phase 0 found all 57 collections with no meta
+    // description at all and a 13-character page title reading just
+    // "Syperformance". The intro copy is already written, so the first sentence
+    // of it is a better description than anything generated — and it is the same
+    // words a human reviewed in docs/ia.md.
+    const seo = {
+      // No brand suffix: Shopify appends the shop name to the page title itself,
+      // so adding one here produced "Transmission Internals | SYPerformance –
+      // SYPerformance Build".
+      title: title.slice(0, 70),
+      description: body.length > 155 ? `${body.slice(0, 152).replace(/[\s,.;:—-]+$/, '')}…` : body,
+    };
+
     let id = existing;
     if (id) {
       const data = await gql(
         `mutation($input: CollectionInput!) {
           collectionUpdate(input: $input) { collection { id } userErrors { field message } }
         }`,
-        { input: { id, title, descriptionHtml: `<p>${body}</p>` } }
+        { input: { id, title, descriptionHtml: `<p>${body}</p>`, seo } }
       );
       assertNoUserErrors(`collectionUpdate ${handle}`, data.collectionUpdate);
     } else {
@@ -245,7 +258,7 @@ async function applyCollections(productIds, collectionIds, publicationId) {
         `mutation($input: CollectionInput!) {
           collectionCreate(input: $input) { collection { id } userErrors { field message } }
         }`,
-        { input: { handle, title, descriptionHtml: `<p>${body}</p>` } }
+        { input: { handle, title, descriptionHtml: `<p>${body}</p>`, seo } }
       );
       assertNoUserErrors(`collectionCreate ${handle}`, data.collectionCreate);
       id = data.collectionCreate.collection.id;

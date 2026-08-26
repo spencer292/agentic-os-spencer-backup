@@ -1,0 +1,113 @@
+{%- doc -%}
+  SYPerformance structured data — Organization and BreadcrumbList.
+
+  Product schema is NOT here. Horizon already emits it in
+  sections/product-information.liquid via Shopify's `structured_data` filter,
+  which reads `brand` from `product.vendor` — so the Phase 7 vendor fix corrected
+  every product's schema without a template change. Emitting a second Product
+  block here would compete with it.
+
+  ORGANIZATION exists mainly to fight the name collision. Phase 0 flagged that
+  "SY Performance" collides with Superformance (Shelby Cobra replicas) and with
+  an unrelated Burbank personal training studio, and that syperformance.com is a
+  documented typo of superformance.com. Schema cannot solve that — it is a
+  business problem — but `alternateName` plus `sameAs` pointing at the real
+  social profiles gives Google an entity to attach the brand to, which is the
+  part code can help with.
+
+  BREADCRUMBLIST is emitted on collection and product pages. Products sit in up
+  to five collections each after Phase 2, so a trail is worth stating explicitly
+  rather than leaving Google to infer one.
+{%- enddoc -%}
+
+{%- liquid
+  assign org_name = settings.syp_org_name | default: shop.name
+  assign alt_name = settings.syp_org_alt_name
+
+  assign social_settings = settings.syp_social_instagram | append: ',' | append: settings.syp_social_youtube | append: ',' | append: settings.syp_social_facebook | append: ',' | append: settings.syp_social_other
+  assign social_list = social_settings | split: ','
+-%}
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": {{ org_name | json }},
+    {%- if alt_name != blank %}
+      "alternateName": {{ alt_name | json }},
+    {%- endif %}
+    "url": {{ shop.url | json }},
+    {%- if settings.logo %}
+      "logo": {{ settings.logo | image_url: width: 600 | prepend: 'https:' | json }},
+    {%- endif %}
+    {%- if settings.syp_org_description != blank %}
+      "description": {{ settings.syp_org_description | json }},
+    {%- endif %}
+    "sameAs": [
+      {%- assign printed = 0 -%}
+      {%- for url in social_list -%}
+        {%- assign clean = url | strip -%}
+        {%- if clean != blank -%}
+          {%- if printed > 0 %},{% endif %}
+          {{ clean | json }}
+          {%- assign printed = printed | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+    ]
+  }
+</script>
+
+{%- comment -%} Breadcrumbs. Collection pages first, then product pages. {%- endcomment -%}
+{%- if template.name == 'collection' and collection.handle != blank -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ shop.url | json }} },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ collection.title | json }},
+          "item": {{ shop.url | append: collection.url | json }}
+        }
+      ]
+    }
+  </script>
+{%- elsif template.name == 'product' and product.handle != blank -%}
+  {%- liquid
+    # collection is set when the customer arrived through one, which makes the
+    # trail match the path they actually took rather than an invented one.
+    assign crumb = collection
+  -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ shop.url | json }} },
+        {%- if crumb.handle != blank %}
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": {{ crumb.title | json }},
+            "item": {{ shop.url | append: crumb.url | json }}
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": {{ product.title | json }},
+            "item": {{ shop.url | append: product.url | json }}
+          }
+        {%- else %}
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": {{ product.title | json }},
+            "item": {{ shop.url | append: product.url | json }}
+          }
+        {%- endif %}
+      ]
+    }
+  </script>
+{%- endif -%}

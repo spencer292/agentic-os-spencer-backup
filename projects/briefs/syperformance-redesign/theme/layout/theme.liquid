@@ -47,6 +47,12 @@
       {%- render 'theme-editor' -%}
     {% endif %}
 
+    {%- comment -%}
+      Organization + BreadcrumbList. Product schema stays with Horizon's own
+      `structured_data` filter - see snippets/syp-schema.liquid for why.
+    {%- endcomment -%}
+    {% render 'syp-schema' %}
+
     {{ content_for_header }}
   </head>
 
