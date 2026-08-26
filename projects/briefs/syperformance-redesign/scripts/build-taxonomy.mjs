@@ -39,7 +39,10 @@ const RULES = [
   // --- Drivetrain -----------------------------------------------------------
   ['drivetrain', 'halfshaft-carriers', /halfshaft carrier|axle carrier|intermediate shaft/i],
   ['drivetrain', 'halfshafts',         /halfshaft|half shaft|swap axle|insane shaft|\baxles?\b/i],
-  ['drivetrain', 'bellhousings',       /bellhousing|bell housing|awd billet cuff|billet cuff/i],
+  // A scatter shield bolts to the bellhousing and contains a clutch failure. It is
+  // transmission hardware, not a clutch part — Spencer flagged it reading wrong
+  // sitting under Clutch & Flywheel. Note the catalogue spells it "Sheild".
+  ['drivetrain', 'bellhousings',       /bellhousing|bell housing|awd billet cuff|billet cuff|scatter ?sh(ie|ei)ld/i],
   ['drivetrain', 'transfer-case',      /transfer case|vss block off|block off plate/i],
   ['drivetrain', 'shift-selectors',    /shift selector|shifter cable|\bshifter\b|selector fork/i],
   ['drivetrain', 'synchros',           /synchro|slider|\bhubs\b/i],
@@ -47,7 +50,7 @@ const RULES = [
   ['drivetrain', 'lsd-diff',           /\blsd\b|differential|diff bearing/i],
   // "Scatter Sheild" is spelled that way in the catalogue — match both spellings
   // rather than silently dropping the product out of every collection.
-  ['drivetrain', 'clutch-flywheel',    /clutch|flywheel|scatter ?sh(ie|ei)ld/i],
+  ['drivetrain', 'clutch-flywheel',    /clutch|flywheel/i],
   ['drivetrain', 'bearings-seals',     /bearing|seals? kit|\bcollars?\b|thrust tool|\bshim\b|dust boot/i],
 
   // --- Forced induction -----------------------------------------------------
