@@ -67,7 +67,6 @@ const RULES = {
   'honda-k-series-engine': p => p.platformKey === 'honda-k-series' && p.system === 'engine',
   'honda-k-series-electronics': p => p.platformKey === 'honda-k-series' && p.system === 'electronics',
   'honda-k-series-cooling': p => p.platformKey === 'honda-k-series' && p.system === 'cooling',
-  'honda-b-d-h-forced-induction': p => p.platformKey === 'honda-b-d-h-series' && p.system === 'forced-induction',
   'b-d-h-driveline-hardware': p => p.platformKey === 'honda-b-d-h-series' && p.system === 'drivetrain' && p.partType !== 'synchros'
 };
 

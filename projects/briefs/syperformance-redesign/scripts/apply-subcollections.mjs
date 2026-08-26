@@ -1,4 +1,4 @@
-// Creates the twelve level-3 collections from docs/catalogue-restructure.md §2.
+// Creates the level-3 collections from docs/catalogue-restructure.md §2.
 //
 //   node scripts/apply-subcollections.mjs           # dry run — shows what it would do
 //   node scripts/apply-subcollections.mjs --apply   # create them
@@ -110,12 +110,6 @@ const COLLECTIONS = [
     title: 'Honda K-Series Cooling',
     match: p => p.platformKey === 'honda-k-series' && p.system === 'cooling',
     body: `Billet water necks, coolant fill necks and pots, RBC/RBB water plates and bypasses, and thermostat housings for the K-series, manufactured by SYPerformance. Coolant routing on a swapped K is rarely the routing Honda designed, and the factory plastic parts are the ones that fail first once the engine is working harder than it was meant to. These are the parts that decide whether a build makes its power on the third pull as well as the first.`
-  },
-  {
-    handle: 'honda-b-d-h-forced-induction',
-    title: 'Honda B/D/H Forced Induction',
-    match: p => p.platformKey === 'honda-b-d-h-series' && p.system === 'forced-induction',
-    body: `Turbo manifolds, hot parts and forced induction hardware for the Honda B, D and H series. Start with the manifold, because turbo position decides what else fits; the turbo, wastegate and charge piping all follow from it. Covers B16, B18, GSR, ITR, D series and H22 applications in both stock-frame and SFWD layouts.`
   },
   {
     handle: 'b-d-h-driveline-hardware',

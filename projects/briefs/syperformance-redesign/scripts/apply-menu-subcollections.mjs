@@ -60,7 +60,6 @@ const ADDITIONS = {
     ['Synchros & Rebuild Kits', 'b-h-series-synchros'],
     ['Driveline & Transmission Hardware', 'b-d-h-driveline-hardware'],
     ['Turbo Manifolds', 'honda-b-d-h-turbo-manifolds'],
-    ['Forced Induction', 'honda-b-d-h-forced-induction']
   ],
   'Evo 7/8/9': [
     ['Turbo Manifolds', 'evo-turbo-manifolds']

@@ -53,7 +53,7 @@ const TARGETS = [
   'k-series-synchros', 'b-h-series-synchros', 'k-series-transmission-hardware',
   'k-series-awd-driveline', 'honda-k-turbo-manifolds', 'evo-turbo-manifolds',
   'honda-b-d-h-turbo-manifolds', 'honda-k-series-engine', 'honda-k-series-electronics',
-  'honda-k-series-cooling', 'honda-b-d-h-forced-induction', 'b-d-h-driveline-hardware'
+  'honda-k-series-cooling', 'b-d-h-driveline-hardware'
 ];
 
 // --- find the Online Store publication --------------------------------------
