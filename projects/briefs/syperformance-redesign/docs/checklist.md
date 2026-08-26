@@ -17,24 +17,26 @@ Everything deferred, blocked, or left for a decision, in one place. Kept current
 
 ---
 
-## 1b. CORRECTION — manufacturing claims (2026-08-26)
+## 1b. THE MANUFACTURING CLAIM — settled 2026-08-26
 
-**Spencer: "most of these products are made by subcontractors and on the website it says made in house."**
+Spencer flagged that most parts are made by subcontractors while the site said "made in house". Two claims had been collapsed into one, and only one of them was false.
 
-He is right, and the claim was wrong. The plan's premise — *"SY is a billet parts manufacturer currently hiding inside a generic reseller storefront"* — was inherited by the Phase 0 audit and by everything I built on top of it. Neither of us checked it with him. I flagged warranty terms and lead times as claims I would not invent, then wrote manufacturing claims without applying the same test.
+**SYPerformance IS the manufacturer — use it.** It owns the designs, the drawings and the specs, contracts production to them, inspects and warranties. That is the standard industry meaning of the word; most respected brands in this space are structured the same way. It is also the authoritative claim and the one that cannot be disproved.
 
-**The truth (Spencer, 2026-08-26):** SY **designs** the parts and owns the drawings. **Outside shops machine them to those drawings.** SY inspects and stands behind them.
+**What must never appear:** anything naming a physical shop floor — *machined in our own shop*, *cut here*, *on our machines*, *our facility*. Specific, checkable, and not ours to claim. In this scene people work out who cuts what, and a brand caught claiming a floor it does not have loses more authority than one that never claimed it.
 
-**Corrected everywhere, verified by scanning the rendered pages:** badge label on 110 products ("Made in-house" → "SYP design"), the hero claim ("We machine…" → "We design…"), the homepage design-story section (heading, body, all three steps), header spec line and mega-panel note, footer line, the About page, `syp-billet`'s title and intro, and every collection description that claimed manufacturing. A standing note is now at the top of `docs/ia.md` §4 so it cannot be reintroduced.
+**Nothing on the site mentions subcontracting.** It was never necessary to; only the false half needed removing.
 
-**Wording rule going forward:** *designed, specified, our drawings, our spec, inspected*. Never *machined here*, *cut here*, *our own shop*, *we machine*.
+**Final wording, live and verified:** badge = `SYPerformance` (the brand itself — strongest signal, nothing to defend) · hero = *"We make the drivetrain parts that break first"* · eyebrow = *"Billet manufacturing · Western Washington"* · story heading = *"We manufacture our own parts. We don't rebadge someone else's."* · step 2 = *"Built to our spec"* · footer = *"Designed and manufactured to our spec"*.
+
+Verified by scanning rendered pages — homepage, product, `syp-billet`, About — for both the forbidden phrases (none) and the authority words (all present). The rule is restated at the top of `docs/ia.md` §4 and in `snippets/syp-badge.liquid`.
 
 | # | Item | Owner | Note |
 |---|---|---|---|
-| 1b.1 | **Confirm the new wording** | Spencer | "SYP design" on the badge, "We design the drivetrain parts that break first" as the hero. Both accurate; both his call. |
-| 1b.2 | **Metafield still named `custom.made_in_house`** | to do | The key is misleading now. Renaming it means a data migration; the admin display name and description should change first. |
-| 1b.3 | **Nav label "SYP BILLET"** | Spencer | Still accurate — they are billet parts and they are SY's. Flagged only because it sat inside the same claim. |
-| 1b.4 | **Anything I wrote about the moat** | — | The positioning survives: owning the design and the drawings is a real moat, and plenty of respected brands in this space are fabless. Only the manufacturing verb was false. |
+| 1b.1 | **Metafield still named `custom.made_in_house`** | to do | Nothing customer-facing, but misleading in the admin. Renaming the key is a data migration; change the display name first. |
+| 1b.2 | **Audit the other inherited claims** | Spencer | The plan and Phase 0 also assert "110 in-house SKUs", "over a hundred of its own SKUs" and the 5-week Quick Fix structure. Worth testing now rather than at launch. |
+
+**The process lesson, kept deliberately:** I refused to invent warranty terms and lead times, then wrote manufacturing claims without applying the same test — because they came from the plan rather than from me. An inherited claim is still a shipped claim.
 
 ---
 

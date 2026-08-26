@@ -1,19 +1,20 @@
 {%- doc -%}
   SYPerformance badge.
 
-  Only SY's own designs get the accent colour. That distinction is the point of
-  the badge system, so do not reuse `in-house` for anything else.
+  Only SYPerformance's own parts get the accent colour. That distinction is the
+  point of the badge system, so do not reuse `in-house` for anything else.
 
-  NOTE ON THE VARIANT NAME: the CSS class stays `in-house` for continuity, but
-  the LABEL must not claim manufacturing. SY designs these parts and owns the
-  drawings; outside shops cut them. "Made in-house" was wrong and was removed
-  2026-08-26.
+  THE ONE COPY RULE (2026-08-26): SYPerformance IS the manufacturer — it owns the
+  designs, drawings and specs, contracts production to them, inspects and
+  warranties. Say manufacturer, we make, we build, our parts. Never name a shop
+  floor: no "machined in our own shop", "cut here", "on our machines". The first
+  is true and unshakeable; the second is checkable and not ours to claim.
 
   @param {string} label - Badge text. Rendered uppercase by CSS.
   @param {string} [variant] - in-house | built-to-order | in-stock | sold-out | sale
 
   @example
-  {% render 'syp-badge', label: 'SYP design', variant: 'in-house' %}
+  {% render 'syp-badge', label: 'SYPerformance', variant: 'in-house' %}
 {%- enddoc -%}
 
 {%- liquid
