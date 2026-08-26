@@ -2,9 +2,13 @@
   SYPerformance product card.
 
   Badges are derived from product data rather than hand-set, so a part cannot
-  silently lose its MADE IN-HOUSE flag. In-house detection reads the
-  `custom.made_in_house` metafield when present, and falls back to vendor
-  while that metafield is still being populated (see Phase 3).
+  silently lose its MADE IN-HOUSE flag - or gain one it has not earned.
+
+  In-house detection is delegated to `syp-product-flags` so the card, the
+  product page and the collection header all answer the question the same way.
+  It previously inferred from `vendor`, which was wrong: Phase 0 found that
+  field set to "Syperformance" on Walbro pumps, AEM sensors and Hondata ECUs,
+  so a substring test on it badged resold goods as manufactured.
 
   @param {object} product - Shopify product
   @param {string} [platform] - Override the small platform label above the title
@@ -14,12 +18,14 @@
 {%- enddoc -%}
 
 {%- liquid
-  assign made_in_house = product.metafields.custom.made_in_house.value
-  if made_in_house == blank
-    assign vendor_lower = product.vendor | downcase
-    if vendor_lower contains 'syperformance' or vendor_lower contains 'syp' or vendor_lower contains 'synchro solution'
-      assign made_in_house = true
-    endif
+  capture card_flags
+    render 'syp-product-flags', product: product
+  endcapture
+  assign card_flags = card_flags | strip | split: '|'
+
+  assign made_in_house = false
+  if card_flags[0] == '1'
+    assign made_in_house = true
   endif
 
   assign build_time = product.metafields.custom.build_time.value

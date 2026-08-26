@@ -1,0 +1,122 @@
+{%- comment -%}
+  SYPerformance — proof.
+
+  Customer builds with real numbers: platform, power, ET or lap time, and which
+  SYP parts are on the car. This is what competitors win on and what SY has
+  none of on the site today.
+
+  Phase 6 turns this into a Shopify metaobject so entries can be managed as
+  content and linked back to the products used. This section is the blocks
+  version — it works now, reads the same, and gives Spencer somewhere to put
+  the first few builds without waiting on the Admin API.
+
+  Renders NOTHING when there are no blocks. An empty proof section is worse
+  than no proof section: it advertises that nobody has posted results.
+{%- endcomment -%}
+
+{{ 'syp-components.css' | asset_url | stylesheet_tag }}
+{{ 'syp-home.css' | asset_url | stylesheet_tag }}
+
+{%- assign builds = section.blocks | where: 'type', 'build' -%}
+
+{%- if builds.size > 0 -%}
+  <div class="syp-proof">
+    <div class="syp-proof__inner">
+      <header class="syp-proof__head">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="syp-label">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        <h2 class="syp-section-title">{{ section.settings.heading }}</h2>
+      </header>
+
+      <ul class="syp-proof__list">
+        {%- for block in builds -%}
+          <li class="syp-proof__card" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              <div class="syp-proof__media">
+                {{
+                  block.settings.image
+                  | image_url: width: 900
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '300, 500, 700, 900',
+                    sizes: '(min-width: 990px) 30vw, 90vw',
+                    alt: block.settings.title
+                }}
+              </div>
+            {%- endif -%}
+
+            <h3 class="syp-proof__title">{{ block.settings.title }}</h3>
+
+            {%- comment -%}
+              The numbers are the point. A build card with no figures is a photo,
+              and a photo proves nothing.
+            {%- endcomment -%}
+            <dl class="syp-proof__stats">
+              {%- if block.settings.platform != blank -%}
+                <div><dt class="syp-label">Platform</dt><dd class="syp-spec">{{ block.settings.platform }}</dd></div>
+              {%- endif -%}
+              {%- if block.settings.power != blank -%}
+                <div><dt class="syp-label">Power</dt><dd class="syp-spec">{{ block.settings.power }}</dd></div>
+              {%- endif -%}
+              {%- if block.settings.result != blank -%}
+                <div><dt class="syp-label">Result</dt><dd class="syp-spec">{{ block.settings.result }}</dd></div>
+              {%- endif -%}
+            </dl>
+
+            {%- if block.settings.parts != blank -%}
+              <p class="syp-proof__parts">
+                <span class="syp-label">SYP parts</span>
+                {{ block.settings.parts }}
+              </p>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      {%- if section.settings.cta_label != blank -%}
+        <div class="syp-proof__cta">
+          {% render 'syp-button',
+            label: section.settings.cta_label,
+            href: section.settings.cta_url,
+            variant: 'secondary'
+          %}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "SYP proof",
+  "tag": "section",
+  "class": "syp-proof-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Real customer builds with real numbers. This section renders nothing until at least one build is added - an empty proof section advertises that nobody has posted results."
+    },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Proof" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Cars running our parts" },
+    { "type": "text", "id": "cta_label", "label": "CTA", "default": "Build gallery" },
+    { "type": "url", "id": "cta_url", "label": "CTA link" }
+  ],
+  "blocks": [
+    {
+      "type": "build",
+      "name": "Build",
+      "limit": 9,
+      "settings": [
+        { "type": "text", "id": "title", "label": "Car" },
+        { "type": "text", "id": "platform", "label": "Platform", "info": "For example K24 AWD, DC5" },
+        { "type": "text", "id": "power", "label": "Power", "info": "As measured. Say where it was measured." },
+        { "type": "text", "id": "result", "label": "Result", "info": "ET and trap, or a lap time." },
+        { "type": "textarea", "id": "parts", "label": "SYP parts on the car" },
+        { "type": "image_picker", "id": "image", "label": "Photo" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "SYP proof" }]
+}
+{% endschema %}

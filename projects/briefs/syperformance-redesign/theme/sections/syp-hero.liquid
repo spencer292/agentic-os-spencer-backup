@@ -1,0 +1,176 @@
+{%- comment -%}
+  SYPerformance hero.
+
+  One claim, one CTA. Not a carousel — the plan is explicit, and a carousel on a
+  parts site is a way of avoiding the decision about what the business is.
+
+  Built to work with no photography. SY has no shop footage and no hero-grade
+  part photography today, and a stock racing image would break the one rule the
+  brief sets hardest. So the default is type-led: the claim carries the page,
+  set against a hairline grid that reads as drawing paper rather than as a
+  poster. Add a real image or video later and the same section carries it —
+  the type simply moves over it.
+
+  The spec strip underneath is where the manufacturing facts go. Keep them
+  literal: platforms, processes, what is made here. Not adjectives.
+{%- endcomment -%}
+
+{{ 'syp-components.css' | asset_url | stylesheet_tag }}
+{{ 'syp-home.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign media = section.settings.image
+  assign has_media = false
+  if media != blank or section.settings.video != blank
+    assign has_media = true
+  endif
+-%}
+
+<div
+  class="syp-hero{% if has_media %} syp-hero--media{% endif %}"
+  style="--syp-hero-min: {{ section.settings.height }}vh;"
+>
+  {%- if has_media -%}
+    <div class="syp-hero__media" aria-hidden="true">
+      {%- if section.settings.video != blank -%}
+        {{
+          section.settings.video
+          | video_tag: image_size: '1600x', autoplay: true, loop: true, muted: true, controls: false
+        }}
+      {%- else -%}
+        {{
+          media
+          | image_url: width: 2400
+          | image_tag:
+            widths: '600, 900, 1200, 1800, 2400',
+            sizes: '100vw',
+            fetchpriority: 'high',
+            alt: media.alt | default: ''
+        }}
+      {%- endif -%}
+    </div>
+    <div class="syp-hero__scrim" aria-hidden="true"></div>
+  {%- else -%}
+    {%- comment -%}
+      No photography: a machined grid stands in. Pure CSS, so it costs nothing
+      and never becomes a stock image nobody wanted.
+    {%- endcomment -%}
+    <div class="syp-hero__grid" aria-hidden="true"></div>
+  {%- endif -%}
+
+  <div class="syp-hero__inner">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="syp-label syp-hero__eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+
+    <h1 class="syp-hero__claim">{{ section.settings.claim }}</h1>
+
+    {%- if section.settings.support != blank -%}
+      <p class="syp-hero__support">{{ section.settings.support }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.cta_label != blank -%}
+      <div class="syp-hero__actions">
+        {% render 'syp-button',
+          label: section.settings.cta_label,
+          href: section.settings.cta_url,
+          variant: 'primary'
+        %}
+        {%- if section.settings.cta2_label != blank -%}
+          {%- comment -%}
+            Bordered, not ghost. A borderless button beside a solid amber one
+            reads as a caption rather than as something you can press.
+          {%- endcomment -%}
+          {% render 'syp-button',
+            label: section.settings.cta2_label,
+            href: section.settings.cta2_url,
+            variant: 'secondary'
+          %}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- assign spec_blocks = section.blocks | where: 'type', 'spec' -%}
+  {%- if spec_blocks.size > 0 -%}
+    <dl class="syp-hero__specs">
+      {%- for block in spec_blocks -%}
+        <div class="syp-hero__spec" {{ block.shopify_attributes }}>
+          <dt class="syp-label">{{ block.settings.label }}</dt>
+          <dd class="syp-hero__spec-value syp-spec">{{ block.settings.value }}</dd>
+        </div>
+      {%- endfor -%}
+    </dl>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "SYP hero",
+  "tag": "section",
+  "class": "syp-hero-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "One claim, one CTA. Works with no image - the type carries it. Do not add a stock racing photo."
+    },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Billet manufacturing" },
+    {
+      "type": "textarea",
+      "id": "claim",
+      "label": "The claim",
+      "info": "One sentence about what SY makes. Not a slogan.",
+      "default": "We machine the drivetrain parts that break first."
+    },
+    {
+      "type": "textarea",
+      "id": "support",
+      "label": "Supporting line",
+      "info": "One sentence. What, for whom, made where."
+    },
+    { "type": "text", "id": "cta_label", "label": "Primary CTA", "default": "Shop SYP billet" },
+    { "type": "url", "id": "cta_url", "label": "Primary CTA link" },
+    {
+      "type": "text",
+      "id": "cta2_label",
+      "label": "Secondary CTA",
+      "info": "Leave blank. The plan asks for one claim and one CTA - this exists for pages that genuinely need a second."
+    },
+    { "type": "url", "id": "cta2_url", "label": "Secondary CTA link" },
+    { "type": "header", "content": "Media" },
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Real parts or real shop only." },
+    { "type": "video", "id": "video", "label": "Video", "info": "Plays muted and looped. Takes priority over the image." },
+    {
+      "type": "range",
+      "id": "height",
+      "label": "Height",
+      "min": 40,
+      "max": 90,
+      "step": 5,
+      "unit": "vh",
+      "default": 65
+    }
+  ],
+  "blocks": [
+    {
+      "type": "spec",
+      "name": "Spec",
+      "limit": 4,
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Platforms" },
+        { "type": "text", "id": "value", "label": "Value", "default": "Honda B/D/H · K · Evo · B58" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SYP hero",
+      "blocks": [
+        { "type": "spec", "settings": { "label": "Platforms", "value": "Honda B/D/H · K · Evo · B58" } },
+        { "type": "spec", "settings": { "label": "Made here", "value": "Billet drivetrain · Manifolds · Cooling" } },
+        { "type": "spec", "settings": { "label": "House brands", "value": "Synchro Solutionz · Comp 1 Clutch" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

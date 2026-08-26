@@ -1,0 +1,103 @@
+{%- comment -%}
+  SYPerformance — featured products from a collection.
+
+  Used on the homepage for "featured drivetrain": the plan says lead with the
+  moat, and drivetrain is where SY has defensible product rather than a knife
+  fight with Full-Race and ETS over manifolds.
+
+  Resolves the collection by handle for the same reason as syp-collection-grid:
+  Phase 2's collections do not exist yet and a picker cannot pick them. Falls
+  back to a handful of products so the section is never an empty band, and says
+  so in the theme editor.
+{%- endcomment -%}
+
+{{ 'syp-components.css' | asset_url | stylesheet_tag }}
+{{ 'syp-home.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign coll = collections[section.settings.handle]
+  assign resolved = false
+  if coll != empty and coll.handle != blank
+    assign resolved = true
+  endif
+
+  assign limit = section.settings.count
+  if resolved
+    assign items = coll.products
+  else
+    assign items = collections.all.products
+  endif
+-%}
+
+<div class="syp-fp">
+  <div class="syp-fp__inner">
+    <header class="syp-fp__head">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="syp-label">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        <h2 class="syp-section-title">{{ section.settings.heading }}</h2>
+        {%- if section.settings.body != blank -%}
+          <p class="syp-fp__body">{{ section.settings.body }}</p>
+        {%- endif -%}
+      </div>
+
+      {%- if resolved -%}
+        <a class="syp-fp__all syp-spec" href="{{ coll.url }}">
+          All {{ coll.all_products_count }} &rarr;
+        </a>
+      {%- endif -%}
+    </header>
+
+    {%- if request.design_mode and resolved == false -%}
+      <p class="syp-fp__pending syp-spec">
+        Collection "{{ section.settings.handle }}" does not exist yet — Phase 2 creates it. Showing the
+        newest products meanwhile.
+      </p>
+    {%- endif -%}
+
+    <div class="syp-fp__grid">
+      {%- for product in items limit: limit -%}
+        {% render 'syp-product-card', product: product %}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "SYP featured products",
+  "tag": "section",
+  "class": "syp-fp-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Reference the collection by handle (see docs/ia.md). Falls back to the newest products until that collection exists."
+    },
+    {
+      "type": "text",
+      "id": "handle",
+      "label": "Collection handle",
+      "default": "syp-drivetrain"
+    },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The moat" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Drivetrain" },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "info": "One or two sentences on why this category leads."
+    },
+    {
+      "type": "range",
+      "id": "count",
+      "label": "Products",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4
+    }
+  ],
+  "presets": [{ "name": "SYP featured products" }]
+}
+{% endschema %}

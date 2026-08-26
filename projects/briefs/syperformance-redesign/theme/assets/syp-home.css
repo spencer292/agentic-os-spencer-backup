@@ -1,0 +1,533 @@
+/* ==========================================================================
+   SYPerformance — homepage sections
+   --------------------------------------------------------------------------
+   Tokens only, no literals. Shared by syp-hero, syp-made-in-house,
+   syp-collection-grid, syp-featured-products, syp-proof, syp-cta, syp-articles.
+   ========================================================================== */
+
+/* Shared shell so every band on the page lines up on the same measure and
+   breathes the same amount. The plan asks for generous whitespace; this is
+   where that promise is actually kept. */
+.syp-hero__inner,
+.syp-mih__inner,
+.syp-cgrid__inner,
+.syp-fp__inner,
+.syp-proof__inner,
+.syp-cta__inner,
+.syp-articles__inner {
+  max-width: var(--page-width, 1400px);
+  margin-inline: auto;
+  padding-inline: var(--syp-space-lg);
+}
+
+@media screen and (min-width: 750px) {
+  .syp-hero__inner,
+  .syp-mih__inner,
+  .syp-cgrid__inner,
+  .syp-fp__inner,
+  .syp-proof__inner,
+  .syp-cta__inner,
+  .syp-articles__inner {
+    padding-inline: var(--syp-space-xl);
+  }
+}
+
+.syp-mih,
+.syp-cgrid,
+.syp-fp,
+.syp-proof,
+.syp-articles {
+  background-color: var(--syp-bg);
+  color: var(--syp-text);
+  padding-block: var(--syp-space-3xl);
+  border-top: var(--syp-hairline) solid var(--syp-rule-faint);
+}
+
+.syp-section-title {
+  margin: var(--syp-space-sm) 0 0;
+  font-family: var(--syp-font-display);
+  font-size: var(--syp-text-xl);
+  font-weight: var(--syp-weight-bold);
+  line-height: var(--syp-leading-snug);
+  letter-spacing: var(--syp-tracking-tight);
+  color: var(--syp-text-strong);
+  text-wrap: balance;
+  max-width: 28ch;
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+.syp-hero {
+  position: relative;
+  display: grid;
+  align-content: center;
+  min-height: var(--syp-hero-min, 65vh);
+  padding-block: var(--syp-space-3xl);
+  background-color: var(--syp-bg);
+  color: var(--syp-text);
+  overflow: hidden;
+}
+
+.syp-hero__media,
+.syp-hero__scrim,
+.syp-hero__grid {
+  position: absolute;
+  inset: 0;
+}
+
+.syp-hero__media img,
+.syp-hero__media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Enough scrim to hold AA contrast on type over an unknown photograph, without
+   flattening the image into a grey rectangle. */
+.syp-hero__scrim {
+  background: linear-gradient(
+    to right,
+    rgb(14 16 19 / 92%) 0%,
+    rgb(14 16 19 / 72%) 45%,
+    rgb(14 16 19 / 35%) 100%
+  );
+}
+
+/* The no-photography case: a machined grid rather than a stock image. Fades out
+   so the type never fights it. */
+.syp-hero__grid {
+  background-image: linear-gradient(var(--syp-rule-faint) var(--syp-hairline), transparent var(--syp-hairline)),
+    linear-gradient(90deg, var(--syp-rule-faint) var(--syp-hairline), transparent var(--syp-hairline));
+  background-size: 4rem 4rem;
+  mask-image: radial-gradient(120% 90% at 15% 50%, #000 0%, transparent 72%);
+}
+
+.syp-hero__inner {
+  position: relative;
+  width: 100%;
+}
+
+.syp-hero__claim {
+  margin: var(--syp-space-md) 0 0;
+  max-width: 20ch;
+  font-family: var(--syp-font-display);
+  font-size: var(--syp-text-3xl);
+  font-weight: var(--syp-weight-bold);
+  line-height: var(--syp-leading-tight);
+  letter-spacing: var(--syp-tracking-tight);
+  color: var(--syp-text-strong);
+  text-wrap: balance;
+}
+
+.syp-hero__support {
+  margin: var(--syp-space-lg) 0 0;
+  max-width: 48ch;
+  font-size: var(--syp-text-md);
+  line-height: var(--syp-leading-normal);
+  color: var(--syp-text);
+}
+
+.syp-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--syp-space-sm);
+  margin-top: var(--syp-space-xl);
+}
+
+.syp-hero__specs {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: var(--syp-space-lg);
+  max-width: var(--page-width, 1400px);
+  width: 100%;
+  margin: var(--syp-space-3xl) auto 0;
+  padding: var(--syp-space-md) var(--syp-space-lg) 0;
+  border-top: var(--syp-hairline) solid var(--syp-rule);
+}
+
+@media screen and (min-width: 750px) {
+  .syp-hero__specs {
+    padding-inline: var(--syp-space-xl);
+  }
+}
+
+.syp-hero__spec dt {
+  margin-bottom: var(--syp-space-2xs);
+}
+
+.syp-hero__spec-value {
+  margin: 0;
+  font-size: var(--syp-text-sm);
+  color: var(--syp-text-strong);
+}
+
+/* ==========================================================================
+   MADE IN-HOUSE
+   ========================================================================== */
+
+.syp-mih__body {
+  max-width: var(--syp-measure);
+  margin-top: var(--syp-space-md);
+  font-size: var(--syp-text-md);
+  line-height: var(--syp-leading-normal);
+}
+
+.syp-mih__body > * {
+  margin: 0;
+}
+
+.syp-mih__body > * + * {
+  margin-top: var(--syp-space-sm);
+}
+
+.syp-mih__steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--syp-space-xl);
+  list-style: none;
+  margin: var(--syp-space-2xl) 0 0;
+  padding: 0;
+  counter-reset: none;
+}
+
+.syp-mih__step {
+  padding-top: var(--syp-space-md);
+  border-top: var(--syp-hairline) solid var(--syp-rule);
+}
+
+.syp-mih__step-index {
+  display: block;
+  font-size: var(--syp-text-2xs);
+  letter-spacing: var(--syp-tracking-caps);
+  color: var(--syp-accent);
+}
+
+.syp-mih__step-media {
+  margin: var(--syp-space-md) 0;
+  border: var(--syp-hairline) solid var(--syp-rule);
+}
+
+.syp-mih__step-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.syp-mih__step-title {
+  margin: var(--syp-space-sm) 0 0;
+  font-family: var(--syp-font-display);
+  font-size: var(--syp-text-md);
+  font-weight: var(--syp-weight-semibold);
+  color: var(--syp-text-strong);
+}
+
+.syp-mih__step-text {
+  margin: var(--syp-space-xs) 0 0;
+  font-size: var(--syp-text-sm);
+  line-height: var(--syp-leading-normal);
+  color: var(--syp-text-muted);
+}
+
+.syp-mih__cta {
+  margin-top: var(--syp-space-2xl);
+}
+
+/* ==========================================================================
+   COLLECTION GRID
+   ========================================================================== */
+
+.syp-cgrid__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: var(--syp-grid-gap);
+  list-style: none;
+  margin: var(--syp-space-2xl) 0 0;
+  padding: 0;
+}
+
+.syp-cgrid__card {
+  display: grid;
+  gap: var(--syp-space-2xs);
+  height: 100%;
+  padding: var(--syp-space-md);
+  background-color: var(--syp-bg-raised);
+  border: var(--syp-hairline) solid var(--syp-rule);
+  border-radius: var(--syp-radius-md);
+  text-decoration: none;
+  transition: border-color var(--syp-duration) var(--syp-ease),
+    background-color var(--syp-duration) var(--syp-ease);
+}
+
+a.syp-cgrid__card:hover {
+  background-color: var(--syp-bg-hover);
+  border-color: var(--syp-accent);
+}
+
+.syp-cgrid__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  margin-bottom: var(--syp-space-sm);
+}
+
+.syp-cgrid__title {
+  font-family: var(--syp-font-display);
+  font-size: var(--syp-text-md);
+  font-weight: var(--syp-weight-semibold);
+  color: var(--syp-text-strong);
+}
+
+.syp-cgrid__count {
+  font-size: var(--syp-text-2xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  color: var(--syp-text-faint);
+}
+
+.syp-cgrid__card--pending {
+  opacity: 0.55;
+}
+
+.syp-cgrid__pending-note {
+  font-size: var(--syp-text-2xs);
+  color: var(--syp-warn);
+}
+
+/* ==========================================================================
+   FEATURED PRODUCTS
+   ========================================================================== */
+
+/* Only the sections that carry a right-hand link split into two columns.
+   Applying this to syp-cgrid and syp-proof pushed their headings to the right
+   edge, because their eyebrow and heading are siblings with nothing between
+   them to justify against. */
+.syp-fp__head,
+.syp-articles__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--syp-space-md);
+}
+
+.syp-fp__body {
+  max-width: var(--syp-measure);
+  margin: var(--syp-space-md) 0 0;
+  font-size: var(--syp-text-md);
+  line-height: var(--syp-leading-normal);
+  color: var(--syp-text-muted);
+}
+
+.syp-fp__all,
+.syp-articles__all {
+  flex: none;
+  font-size: var(--syp-text-2xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--syp-accent);
+}
+
+.syp-fp__all:hover,
+.syp-articles__all:hover {
+  color: var(--syp-accent-hover);
+}
+
+.syp-fp__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: var(--syp-grid-gap);
+  margin-top: var(--syp-space-2xl);
+}
+
+.syp-fp__pending,
+.syp-articles__pending {
+  margin: var(--syp-space-md) 0 0;
+  padding: var(--syp-space-sm) var(--syp-space-md);
+  border: var(--syp-hairline) dashed var(--syp-warn);
+  border-radius: var(--syp-radius-md);
+  font-size: var(--syp-text-xs);
+  color: var(--syp-warn);
+}
+
+/* ==========================================================================
+   PROOF
+   ========================================================================== */
+
+.syp-proof__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--syp-grid-gap);
+  list-style: none;
+  margin: var(--syp-space-2xl) 0 0;
+  padding: 0;
+}
+
+.syp-proof__card {
+  padding: var(--syp-space-md);
+  background-color: var(--syp-bg-raised);
+  border: var(--syp-hairline) solid var(--syp-rule);
+  border-radius: var(--syp-radius-md);
+}
+
+.syp-proof__media {
+  margin: calc(var(--syp-space-md) * -1) calc(var(--syp-space-md) * -1) var(--syp-space-md);
+}
+
+.syp-proof__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.syp-proof__title {
+  margin: 0;
+  font-family: var(--syp-font-display);
+  font-size: var(--syp-text-md);
+  font-weight: var(--syp-weight-semibold);
+  color: var(--syp-text-strong);
+}
+
+.syp-proof__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+  gap: var(--syp-space-sm);
+  margin: var(--syp-space-md) 0 0;
+  padding-top: var(--syp-space-sm);
+  border-top: var(--syp-hairline) solid var(--syp-rule-faint);
+}
+
+.syp-proof__stats dd {
+  margin: var(--syp-space-3xs) 0 0;
+  font-size: var(--syp-text-sm);
+  color: var(--syp-text-strong);
+}
+
+.syp-proof__parts {
+  margin: var(--syp-space-md) 0 0;
+  font-size: var(--syp-text-sm);
+  line-height: var(--syp-leading-normal);
+  color: var(--syp-text-muted);
+}
+
+.syp-proof__parts .syp-label {
+  display: block;
+  margin-bottom: var(--syp-space-2xs);
+}
+
+.syp-proof__cta {
+  margin-top: var(--syp-space-2xl);
+}
+
+/* ==========================================================================
+   CTA BAND
+   ========================================================================== */
+
+.syp-cta {
+  background-color: var(--syp-bg-raised);
+  color: var(--syp-text);
+  padding-block: var(--syp-space-2xl);
+  border-block: var(--syp-hairline) solid var(--syp-rule);
+}
+
+.syp-cta--accent {
+  border-left: var(--syp-border-md) solid var(--syp-accent);
+}
+
+.syp-cta__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--syp-space-lg);
+}
+
+.syp-cta__heading {
+  margin: var(--syp-space-sm) 0 0;
+  max-width: 24ch;
+  font-family: var(--syp-font-display);
+  font-size: var(--syp-text-lg);
+  font-weight: var(--syp-weight-bold);
+  line-height: var(--syp-leading-snug);
+  color: var(--syp-text-strong);
+}
+
+.syp-cta__body {
+  max-width: var(--syp-measure);
+  margin-top: var(--syp-space-sm);
+  font-size: var(--syp-text-sm);
+  line-height: var(--syp-leading-normal);
+  color: var(--syp-text-muted);
+}
+
+.syp-cta__body > * {
+  margin: 0;
+}
+
+.syp-cta__actions {
+  flex: none;
+}
+
+/* ==========================================================================
+   ARTICLES
+   ========================================================================== */
+
+.syp-articles__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--syp-grid-gap);
+  list-style: none;
+  margin: var(--syp-space-2xl) 0 0;
+  padding: 0;
+}
+
+.syp-articles__card {
+  display: grid;
+  gap: var(--syp-space-2xs);
+  height: 100%;
+  text-decoration: none;
+}
+
+.syp-articles__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  margin-bottom: var(--syp-space-sm);
+  border: var(--syp-hairline) solid var(--syp-rule);
+}
+
+.syp-articles__date {
+  font-size: var(--syp-text-2xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  color: var(--syp-text-faint);
+}
+
+.syp-articles__title {
+  font-family: var(--syp-font-display);
+  font-size: var(--syp-text-md);
+  font-weight: var(--syp-weight-semibold);
+  line-height: var(--syp-leading-snug);
+  color: var(--syp-text-strong);
+}
+
+.syp-articles__card:hover .syp-articles__title {
+  color: var(--syp-accent);
+}
+
+.syp-articles__excerpt {
+  font-size: var(--syp-text-sm);
+  line-height: var(--syp-leading-normal);
+  color: var(--syp-text-muted);
+}

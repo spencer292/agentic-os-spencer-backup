@@ -1,0 +1,71 @@
+{%- comment -%}
+  SYPerformance — CTA band.
+
+  Generic on purpose: the homepage uses it for the dealer/pro program, and the
+  same section serves the shop tour, the warranty page and anywhere else a
+  single call needs its own band.
+
+  The dealer program is the one that matters commercially. DOC Race is resold by
+  R44, 5150 AutoSport, Speed Logic and Patterson — every one of those is shelf
+  space and a backlink SY does not have. This band is how that starts.
+{%- endcomment -%}
+
+{{ 'syp-components.css' | asset_url | stylesheet_tag }}
+{{ 'syp-home.css' | asset_url | stylesheet_tag }}
+
+<div class="syp-cta{% if section.settings.accent %} syp-cta--accent{% endif %}">
+  <div class="syp-cta__inner">
+    <div class="syp-cta__text">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="syp-label">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 class="syp-cta__heading">{{ section.settings.heading }}</h2>
+      {%- if section.settings.body != blank -%}
+        <div class="syp-cta__body rte">{{ section.settings.body }}</div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.cta_label != blank -%}
+      <div class="syp-cta__actions">
+        {% render 'syp-button',
+          label: section.settings.cta_label,
+          href: section.settings.cta_url,
+          variant: 'primary'
+        %}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "SYP CTA band",
+  "tag": "section",
+  "class": "syp-cta-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Dealer & pro program" },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Sell SYP parts in your shop"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body",
+      "info": "Who it is for and what they get. Do not state terms that are not agreed."
+    },
+    { "type": "text", "id": "cta_label", "label": "CTA", "default": "Apply" },
+    { "type": "url", "id": "cta_url", "label": "CTA link" },
+    {
+      "type": "checkbox",
+      "id": "accent",
+      "label": "Accent edge",
+      "info": "Adds the accent rule. Use on one band per page at most.",
+      "default": true
+    }
+  ],
+  "presets": [{ "name": "SYP CTA band" }]
+}
+{% endschema %}

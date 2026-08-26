@@ -1,0 +1,120 @@
+{%- comment -%}
+  SYPerformance — shop by platform.
+
+  Collections are referenced by HANDLE, not by Shopify's collection picker, and
+  that is deliberate. Phase 2 designed 33 collections but cannot create them
+  until the Admin API token exists, and a picker can only pick something that
+  already exists. Handles let this section be configured now against
+  docs/ia.md and light up by itself the moment Phase 2 runs.
+
+  A handle that does not resolve renders as a plain card with the fallback
+  title and no link, rather than as a dead link to a 404. In the theme editor
+  it also says which handle is missing.
+{%- endcomment -%}
+
+{{ 'syp-components.css' | asset_url | stylesheet_tag }}
+{{ 'syp-home.css' | asset_url | stylesheet_tag }}
+
+<div class="syp-cgrid">
+  <div class="syp-cgrid__inner">
+    <header class="syp-cgrid__head">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="syp-label">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 class="syp-section-title">{{ section.settings.heading }}</h2>
+    </header>
+
+    <ul class="syp-cgrid__list">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign coll = collections[block.settings.handle]
+          assign resolved = false
+          if coll != empty and coll.handle != blank
+            assign resolved = true
+          endif
+          assign card_title = block.settings.title | default: coll.title
+        -%}
+
+        <li class="syp-cgrid__item" {{ block.shopify_attributes }}>
+          {%- if resolved -%}
+            <a class="syp-cgrid__card" href="{{ coll.url }}">
+              {%- if block.settings.image != blank or coll.featured_image != blank -%}
+                <span class="syp-cgrid__media">
+                  {%- assign img = block.settings.image | default: coll.featured_image -%}
+                  {{
+                    img
+                    | image_url: width: 800
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '300, 500, 800',
+                      sizes: '(min-width: 990px) 25vw, 45vw',
+                      alt: ''
+                  }}
+                </span>
+              {%- endif -%}
+
+              <span class="syp-cgrid__title">{{ card_title }}</span>
+              <span class="syp-cgrid__count syp-spec">
+                {{- coll.all_products_count }} {% if coll.all_products_count == 1 %}part{% else %}parts{% endif -%}
+              </span>
+            </a>
+          {%- else -%}
+            <span class="syp-cgrid__card syp-cgrid__card--pending">
+              <span class="syp-cgrid__title">{{ card_title }}</span>
+              {%- if request.design_mode -%}
+                <span class="syp-cgrid__pending-note syp-spec">
+                  Handle "{{ block.settings.handle }}" does not exist yet — Phase 2 creates it
+                </span>
+              {%- endif -%}
+            </span>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "SYP collection grid",
+  "tag": "section",
+  "class": "syp-cgrid-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Reference collections by handle (see docs/ia.md). Handles that do not exist yet render as unlinked cards rather than dead links."
+    },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Shop by platform" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Find your engine" }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "limit": 12,
+      "settings": [
+        {
+          "type": "text",
+          "id": "handle",
+          "label": "Collection handle",
+          "info": "For example honda-k-series. Not the title."
+        },
+        { "type": "text", "id": "title", "label": "Card title", "info": "Overrides the collection title." },
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SYP collection grid",
+      "blocks": [
+        { "type": "collection", "settings": { "handle": "honda-k-series", "title": "Honda K-Series" } },
+        { "type": "collection", "settings": { "handle": "honda-b-d-h-series", "title": "Honda B/D/H-Series" } },
+        { "type": "collection", "settings": { "handle": "mitsubishi-evo-parts", "title": "Mitsubishi Evo" } },
+        { "type": "collection", "settings": { "handle": "bmw-toyota-b58", "title": "BMW / Toyota B58" } },
+        { "type": "collection", "settings": { "handle": "universal-fabrication", "title": "Fabrication" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
