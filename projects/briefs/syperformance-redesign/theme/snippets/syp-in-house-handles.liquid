@@ -9,7 +9,14 @@
   Fallback only. snippets/syp-product-flags.liquid reads the
   `custom.made_in_house` metafield first and consults this when it is absent.
 
-  In-house: 110   Resold: 36   Unclassified: 52
+  In-house: 75   Resold: 36   Unclassified: 52   Third-party brands: 35
+
+  CORRECTION 2026-08-26 (Spencer): Synchro Solutionz and Comp 1 Clutch are
+  INDEPENDENT brands, not SYPerformance's. Phase 0 read them as in-house because
+  the vendor field said so, which put 35 third-party products behind a
+  manufactured-by-us claim and made the "over a hundred of its own parts" figure
+  on the homepage wrong — the real number is 75. Both lists are kept below so the
+  brand still shows on the product page, but they no longer resolve as in-house.
 
   The unclassified products are deliberately absent, so they resolve as resold
   until Spencer marks them in data/unknowns-review.csv. Claiming manufacture on
@@ -23,11 +30,13 @@
   assign syp_h_synchro_solutionz = 'b-awd-h22-5th-gear-synchro-50mm,b-d-series-1-2-single-cone-synchro,b-h-series-single-cone-3-4-synchros-60mm,b-h-series-single-cone-synchro-1-2,b-series-awd-h22-synchros-kit,b-series-brass-synchro-kit-1-4,b-series-brass-synchro-kit-b16-gsr-itr,b-series-dust-boot,b-series-fwd-reverse-synchro-54mm,b-series-single-cone-synchro-54mm,b18a-b18b-integra-ls-synchro-kit,h-series-brass-synchro-kit-1-5,honda-b-h-series-1-2-synchro-dual-cone-synchro,honda-b-k-differential-bearing-kit,honda-k-series-k20a2-rsx-type-s-2nd-gear,honda-k-series-vss-speedo-ring,honda-lsd-b16-fwd-k-awd-fwd-b-awd,k-series-5spd-synchro-solutions-kit,k-series-collars,k-series-synchro-solutions-1-2-kit,k-series-synchro-solutions-1-6-full-refresh-kit,k-series-synchro-solutions-1-6-rebuild-kit,k-series-synchro-solutions-1-6-rebuild-kit-no-bearings-seals,k-series-synchro-solutions-3-4-kit,k-series-synchro-solutions-5-6-kit,k-series-synchro-solutions-6spd-1-4-kits,k-series-synchro-solutions-6spd-1-4-kits-1,k-series-synchro-solutions-carbon-synchro,k-series-synchro-solutions-carbon-synchro-kit,k-series-synchro-solutions-oem-spec-hubs,k-series-synchro-solutions-oem-spec-sliders,k-series-synchro-solutions-synchro-springs-set,synchro-solutionz-k-series-reverse-gear' | split: ','
   assign syp_h_comp_1_clutch = 'triple-disc-comp-clutch,twin-disk-clutch-comp-clutch' | split: ','
 
+  comment
+    Only SYPerformance resolves here. Synchro Solutionz and Comp 1 Clutch are
+    independent brands: naming them as the manufacturer is true, but this snippet
+    feeds the MADE IN-HOUSE flag, and answering it at all marks the product as
+    ours. They are stocked brands and belong in the brand collections instead.
+  endcomment
   if syp_h_syperformance contains product.handle
     echo 'SYPerformance'
-  elsif syp_h_synchro_solutionz contains product.handle
-    echo 'Synchro Solutionz'
-  elsif syp_h_comp_1_clutch contains product.handle
-    echo 'Comp 1 Clutch'
   endif
 -%}
