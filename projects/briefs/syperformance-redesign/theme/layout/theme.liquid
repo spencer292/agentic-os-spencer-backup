@@ -6,11 +6,38 @@
   lang="{{ request.locale.iso_code }}"
 >
   <head>
+    {%- comment -%}
+      Favicon. Horizon emits nothing when `settings.favicon` is unset, which left
+      every page falling back to /favicon.ico — a path that does not exist, so the
+      site 404'd on it once per page and showed a blank tab icon.
+
+      `settings.favicon` stays the override, so SY can replace this from the theme
+      editor without touching code. Until he does, the theme ships its own mark at
+      `assets/syp-favicon.png` (built by scripts/make-favicon.mjs) and uses that.
+
+      The bundled file is one 512 px PNG rather than a set of sizes: theme assets
+      cannot be resized by the CDN the way uploaded images can, and at 12 KB it is
+      cheaper to let the browser downscale than to ship four files.
+    {%- endcomment -%}
     {%- if settings.favicon != blank -%}
       <link
         rel="icon"
         type="image/png"
         href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
+      >
+      <link
+        rel="apple-touch-icon"
+        href="{{ settings.favicon | image_url: width: 180, height: 180 }}"
+      >
+    {%- else -%}
+      <link
+        rel="icon"
+        type="image/png"
+        href="{{ 'syp-favicon.png' | asset_url }}"
+      >
+      <link
+        rel="apple-touch-icon"
+        href="{{ 'syp-favicon.png' | asset_url }}"
       >
     {%- endif -%}
 

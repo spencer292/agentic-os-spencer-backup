@@ -124,11 +124,22 @@
   href="{{ 'events.js' | asset_url }}"
   fetchpriority="low"
 >
-<script
-  src="{{ 'popover-polyfill.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
+{%- comment -%}
+  Phase 8. popover-polyfill.js is 25 KB and its own last line is
+  `if (!isSupported()) apply();` — every browser with native popover support
+  (Chrome 114+, Safari 17+, Firefox 125+) downloaded it on the critical path in
+  order to do nothing. No other module imports it, so gating the fetch on the same
+  feature check it performs internally is behaviour-preserving.
+{%- endcomment -%}
+<script>
+  if (!Object.prototype.hasOwnProperty.call(HTMLElement.prototype, 'popover')) {
+    var popoverPolyfill = document.createElement('script');
+    popoverPolyfill.type = 'module';
+    popoverPolyfill.fetchPriority = 'low';
+    popoverPolyfill.src = "{{ 'popover-polyfill.js' | asset_url }}";
+    document.head.appendChild(popoverPolyfill);
+  }
+</script>
 <script
   src="{{ 'overflow-list.js' | asset_url }}"
   type="module"
@@ -147,6 +158,47 @@
   ></script>
 {% endif %}
 
+{%- comment -%}
+  Phase 8. Horizon loads roughly thirty module scripts on every template. Each one
+  registers custom elements; scripts/audit-scripts.mjs fetches every template from
+  the build store and reports which of those elements actually appear. These five
+  matched nothing anywhere, are imported by no other module, and have no dynamic
+  path in, so they were removed:
+
+    - layered-slideshow.js — sections/layered-slideshow.liquid — not used by any template
+    - video-background.js — Horizon media sections — syp-hero uses video_tag, not video-background-component
+    - volume-pricing.js — quantity-break block — absent from templates/product.json
+    - price-per-item.js — quantity-break block — absent from templates/product.json
+    - volume-pricing-info.js — quantity-break block — absent from templates/product.json.
+      Note this one still arrives sitewide via snippets/cart-products.liquid, which loads
+      it for the cart drawer; removing it here only stopped the duplicate.
+
+  Everything reachable through the quick-add dialog was deliberately kept. quick-add.js
+  fetches the product page's HTML and injects it, and module scripts inside injected
+  markup do not execute — so variant-picker, product-form, product-price,
+  quantity-selector and media-gallery must stay loaded sitewide even though the
+  audit shows their elements only on /products. Gating those to the product
+  template would break add-to-cart from a collection page.
+
+  An unregistered custom element fails silently rather than throwing, so re-add the
+  matching script here if a template ever starts rendering one of these blocks, and
+  re-run `node scripts/audit-scripts.mjs` after any template change.
+{%- endcomment -%}
+{%- comment -%}
+  Phase 8, found by scripts/check-templates.mjs. sections/syp-header.liquid renders
+  a <header-actions> element with the `ref="liveRegion"` and the
+  aria-controls="cart-drawer" trigger that Horizon's HeaderActions component
+  requires — but header-actions.js only ever loaded from snippets/header-actions.liquid,
+  which belongs to Horizon's own header and this theme does not render. So the element
+  sat in the DOM unupgraded on every page since Phase 1: the cart count was never
+  announced to screen readers and the cart button's aria-expanded never changed.
+  An undefined custom element fails silently, which is why nothing surfaced it.
+{%- endcomment -%}
+<script
+  src="{{ 'header-actions.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
 <script
   src="{{ 'dialog.js' | asset_url }}"
   type="module"
@@ -208,22 +260,12 @@
   fetchpriority="low"
 ></script>
 <script
-  src="{{ 'layered-slideshow.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
   src="{{ 'anchored-popover.js' | asset_url }}"
   type="module"
   fetchpriority="low"
 ></script>
 <script
   src="{{ 'floating-panel.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'video-background.js' | asset_url }}"
   type="module"
   fetchpriority="low"
 ></script>
@@ -239,21 +281,6 @@
 ></script>
 <script
   src="{{ 'rte-formatter.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'volume-pricing.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'price-per-item.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'volume-pricing-info.js' | asset_url }}"
   type="module"
   fetchpriority="low"
 ></script>

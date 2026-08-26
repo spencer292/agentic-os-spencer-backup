@@ -94,10 +94,27 @@
 
         assign featured_media_loading = 'lazy'
         assign featured_media_sizes = 'auto, ' | append: image_sizes
-        if section.index == null or section.index < 5
-          assign featured_media_loading = 'eager'
-          assign featured_media_sizes = image_sizes
+
+        # Phase 8. Horizon marks every card in the first five sections eager, which
+        # is right for a featured row of four and wrong for a paginated grid: on
+        # /collections/syp-billet it fired 24 full-size image requests before first
+        # paint, 22 of them below the fold, for 1,153 KB on a mobile connection.
+        #
+        # Paginated grids get lazy loading and sizes="auto", which also lets the
+        # browser ask the CDN for the width the card actually renders at instead of
+        # the 100vw the static `sizes` string claims. The LCP element on these
+        # templates is text, so nothing above the fold is deferred by this.
+        assign is_paginated_grid = false
+        if template.name == 'collection' or template.name == 'search'
+          assign is_paginated_grid = true
         endif
+
+        unless is_paginated_grid
+          if section.index == null or section.index < 5
+            assign featured_media_loading = 'eager'
+            assign featured_media_sizes = image_sizes
+          endif
+        endunless
 
         # The class differs per media only by media_type; the base template and the
         # constrain-height suffix are the same for every slide, so build them once.

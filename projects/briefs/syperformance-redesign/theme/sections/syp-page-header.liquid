@@ -10,8 +10,6 @@
   blank, so a page created from a runbook is never headless.
 {%- endcomment -%}
 
-{{ 'syp-components.css' | asset_url | stylesheet_tag }}
-{{ 'syp-pages.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
   assign heading = section.settings.heading | default: page.title

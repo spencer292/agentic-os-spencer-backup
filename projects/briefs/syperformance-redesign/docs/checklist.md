@@ -2,9 +2,11 @@
 
 Everything deferred, blocked, or left for a decision, in one place. Kept current as phases land.
 
-**Last updated:** 2026-08-26, end of Phase 3
-**Phases complete:** 0 (audit) · 1 (foundation) · 2 (IA — **executed**) · 3 (fitment) · 4 (product page) · 5 (homepage) · 6 (trust pages)
-**Not started:** 7 (SEO) · 8 (performance) · 9 (pre-launch)
+**Last updated:** 2026-08-26, end of Phase 8
+**Phases complete:** 0 (audit) · 1 (foundation) · 2 (IA — **executed**) · 3 (fitment) · 4 (product page) · 5 (homepage) · 6 (trust pages) · 7 (SEO) · 8 (performance)
+**Not started:** 9 (pre-launch)
+
+**Phase 8 landed:** mobile Lighthouse 96–98 against a Phase 0 baseline of 59 / 77 / 65, all Core Web Vitals green. Full report and method in `docs/performance.md`.
 
 ---
 
@@ -116,7 +118,23 @@ Verified by scanning rendered pages — homepage, product, `syp-billet`, About �
 
 ## 7. Phases not yet started
 
-- **Phase 3 — fitment selector.** Metafield definitions, the platform → chassis → system selector, collection filtering, and the fits/doesn't-fit state on product pages. The header already carries the entry point. Data half blocked on 1.1.
-- **Phase 7 — SEO.** Title standardization, JSON-LD, the `brand` fix, unique meta titles and descriptions, canonicals, the article templates, internal linking, the redirect map execution.
-- **Phase 8 — performance.** Lazy-loading audit, `srcset` sizing, deferred JS, app script audit, Lighthouse mobile 85+ against the Phase 0 baseline.
 - **Phase 9 — pre-launch.** `docs/launch-checklist.md`, purchase test, real device testing, redirect verification, alt text, form delivery, analytics, rollback plan.
+
+Phases 3, 7 and 8 are done. Phase 7's open items are in `docs/seo.md` §6; Phase 8's are in §8 below.
+
+---
+
+## 8. Phase 8 — what it left open
+
+Everything in this section is either a decision for Spencer or a verification that can only happen on a published theme. Nothing here blocks Phase 9.
+
+| # | Item | Owner | Note |
+|---|---|---|---|
+| 8.1 | ~~Favicon is missing~~ | — | **DONE.** The theme now ships its own mark at `theme/assets/syp-favicon.png` and `layout/theme.liquid` emits `rel="icon"` and `rel="apple-touch-icon"`, falling back to it whenever `settings.favicon` is unset. The `/favicon.ico` 404 is gone from every template. `settings.favicon` still wins if SY uploads one, so this is an override, not a lock-in. |
+| 8.2 | **Official Lighthouse run** | to do, Phase 9 | The 96–98 figures are computed from measured metrics using Lighthouse's own curves, not produced by running it. Lighthouse needs a local install (6.3) and the PageSpeed API can't reach a password-protected store. Confirm once the theme is published on SY's store. |
+| 8.3 | **INP is not measured** | to do, Phase 9 | TBT is a load-time proxy for it, not a substitute. INP needs real interaction on a real device — folds into 5.7. |
+| 8.4 | **How much of Horizon to keep** | Spencer | `compiled_assets/styles.css` is 49 KB of render-blocking CSS on every page and it sets FCP. Blocking it outright takes mobile FCP from ~1,900 ms to ~1,200 ms — but only 19–23% of it is unreachable (`node scripts/audit-css-bundle.mjs`). Getting the rest means deleting Horizon sections and blocks, which costs theme-editor options and makes future Horizon updates messier, for maybe 80–100 ms. My recommendation: don't. We're at 96–98 and the trade is bad. |
+| 8.5 | **Re-run the audits after any template change** | to do, ongoing | `audit-scripts.mjs` decides which module scripts are safe to omit by looking at what each template actually renders. Add a Horizon block to a template and the answer changes — an unregistered custom element fails silently rather than throwing. `check-templates.mjs` catches it. |
+| 8.6 | **The logo — still open, and bigger than the favicon** | Spencer / SY | I built a favicon mark (chamfered amber tile, "SY" in Inter 800, `--syp-accent` on `--syp-accent-ink`) because the tab icon needed *something*. **It is a competent placeholder, not a brand identity** — I designed it, not a designer, and SYPerformance has never had a logo: the live site's header is text too. The header still renders a text wordmark, because a 512 px tab icon is not a header logo. If SY wants a real mark, `brand/favicon-512.png` is the thing to hand a designer as a starting point or to throw away. Rebuild any variant with `node scripts/make-favicon.mjs` (`--compare` shows the chamfer options that were weighed). |
+
+**Fixed in passing, worth knowing about:** `<header-actions>` in the SYP header had been sitting in the DOM unupgraded since Phase 1 — the cart count was never announced to screen readers and the cart button's `aria-expanded` never changed, because `header-actions.js` was only ever loaded by Horizon's own header snippet, which this theme doesn't render. `docs/performance.md` §2.7.

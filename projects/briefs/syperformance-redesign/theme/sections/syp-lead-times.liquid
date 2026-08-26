@@ -13,8 +13,6 @@
   With no rows it renders the note and nothing else — and says so in the editor.
 {%- endcomment -%}
 
-{{ 'syp-components.css' | asset_url | stylesheet_tag }}
-{{ 'syp-pages.css' | asset_url | stylesheet_tag }}
 
 {%- assign rows = section.blocks | where: 'type', 'row' -%}
 

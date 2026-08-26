@@ -19,8 +19,6 @@
   script in layout/theme.liquid looks that id up to set --header-height.
 {%- endcomment -%}
 
-{{ 'syp-components.css' | asset_url | stylesheet_tag }}
-{{ 'syp-header.css' | asset_url | stylesheet_tag }}
 
 <script src="{{ 'cart-icon.js' | asset_url }}" type="module" fetchpriority="low"></script>
 <script src="{{ 'syp-header.js' | asset_url }}" type="module" fetchpriority="low"></script>

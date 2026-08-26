@@ -368,14 +368,25 @@
               else
                 assign media_sizes = sizes
               endif
+
+              # Phase 8. `product-media` passes `loading` straight through to
+              # image_tag, and this gallery never set it - so every media on the
+              # page loaded eagerly, and because the slideshow and the grid list
+              # both render the full set, each image was fetched twice before
+              # first paint. Only the first image can be the LCP element; the
+              # rest are below the fold or behind a slide.
+              assign media_loading = 'lazy'
+              if forloop.first
+                assign media_loading = 'eager'
+              endif
           -%}
           {% if block_settings.aspect_ratio != 'adapt' and block_settings.constrain_to_viewport %}
             <div
               class="product-media-constraint-wrapper">
-              {%- render 'product-media', media: media, sizes: media_sizes, is_main_product_media: forloop.first -%}
+              {%- render 'product-media', media: media, sizes: media_sizes, loading: media_loading, is_main_product_media: forloop.first -%}
             </div>
           {% else %}
-            {%- render 'product-media', media: media, sizes: media_sizes, is_main_product_media: forloop.first -%}
+            {%- render 'product-media', media: media, sizes: media_sizes, loading: media_loading, is_main_product_media: forloop.first -%}
           {% endif %}
         {% endcapture %}
         {% capture class %}
@@ -483,13 +494,24 @@
               else
                 assign media_sizes = sizes
               endif
+
+              # Phase 8. `product-media` passes `loading` straight through to
+              # image_tag, and this gallery never set it - so every media on the
+              # page loaded eagerly, and because the slideshow and the grid list
+              # both render the full set, each image was fetched twice before
+              # first paint. Only the first image can be the LCP element; the
+              # rest are below the fold or behind a slide.
+              assign media_loading = 'lazy'
+              if forloop.first
+                assign media_loading = 'eager'
+              endif
             -%}
             {% if block_settings.aspect_ratio != 'adapt' and block_settings.constrain_to_viewport %}
               <div class="product-media-constraint-wrapper">
-                {%- render 'product-media', media: media, sizes: media_sizes, is_main_product_media: forloop.first -%}
+                {%- render 'product-media', media: media, sizes: media_sizes, loading: media_loading, is_main_product_media: forloop.first -%}
               </div>
             {% else %}
-              {%- render 'product-media', media: media, sizes: media_sizes, is_main_product_media: forloop.first -%}
+              {%- render 'product-media', media: media, sizes: media_sizes, loading: media_loading, is_main_product_media: forloop.first -%}
             {% endif %}
           </li>
         {% endfor %}

@@ -11,8 +11,6 @@
   so in the theme editor.
 {%- endcomment -%}
 
-{{ 'syp-components.css' | asset_url | stylesheet_tag }}
-{{ 'syp-home.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
   assign coll = collections[section.settings.handle]

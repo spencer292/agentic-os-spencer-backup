@@ -14,8 +14,6 @@
   than no proof section: it advertises that nobody has posted results.
 {%- endcomment -%}
 
-{{ 'syp-components.css' | asset_url | stylesheet_tag }}
-{{ 'syp-home.css' | asset_url | stylesheet_tag }}
 
 {%- assign builds = section.blocks | where: 'type', 'build' -%}
 

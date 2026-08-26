@@ -1,12 +1,43 @@
-{%- unless settings.type_body_font.system? -%}
-  {{ settings.type_body_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
-{%- endunless -%}
-{%- unless settings.type_subheading_font.system? -%}
-  {{ settings.type_subheading_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
-{%- endunless -%}
-{%- unless settings.type_heading_font.system? -%}
-  {{ settings.type_heading_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
-{%- endunless -%}
-{%- unless settings.type_accent_font.system? -%}
-  {{ settings.type_accent_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
-{%- endunless -%}
+{%- comment -%}
+  Phase 8. Horizon preloads body, subheading, heading and accent unconditionally.
+  SYPerformance's four roles resolve to three Inter faces — heading and accent are
+  both Inter 700 — so the stock snippet emitted the same woff2 twice. A duplicate
+  preload is not deduplicated by the preload scanner: Chrome warns about it and the
+  second hint competes for bandwidth on the critical path.
+
+  Resolving the four URLs first and preloading the distinct ones stays correct
+  whatever the settings resolve to, including if SY later picks a real condensed
+  heading face (checklist 4.3).
+
+  Note for anyone extending this: `capture` inside a `{% liquid %}` tag returns
+  empty here, which silently collapses the dedupe to a single preload. Use `assign`
+  with the `font_url` filter, as below.
+{%- endcomment -%}
+{%- liquid
+  assign body_url = ''
+  assign subheading_url = ''
+  assign heading_url = ''
+  assign accent_url = ''
+
+  unless settings.type_body_font.system?
+    assign body_url = settings.type_body_font | font_url
+  endunless
+  unless settings.type_subheading_font.system?
+    assign subheading_url = settings.type_subheading_font | font_url
+  endunless
+  unless settings.type_heading_font.system?
+    assign heading_url = settings.type_heading_font | font_url
+  endunless
+  unless settings.type_accent_font.system?
+    assign accent_url = settings.type_accent_font | font_url
+  endunless
+
+  assign font_urls = body_url | append: ',' | append: subheading_url | append: ',' | append: heading_url | append: ',' | append: accent_url | split: ','
+  assign preloaded = ''
+-%}
+{%- for font_url in font_urls -%}
+  {%- unless font_url == blank or preloaded contains font_url -%}
+    {{ font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
+    {%- assign preloaded = preloaded | append: font_url | append: ' ' -%}
+  {%- endunless -%}
+{%- endfor -%}

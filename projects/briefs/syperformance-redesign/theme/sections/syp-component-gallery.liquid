@@ -7,7 +7,6 @@
   living documentation.
 {%- endcomment -%}
 
-{{ 'syp-components.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
   assign sample_products = collections.all.products | slice: 0, 8

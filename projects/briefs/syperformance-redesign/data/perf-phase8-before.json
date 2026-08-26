@@ -1,0 +1,1628 @@
+{
+  "home/mobile": {
+    "url": "https://syperformance-build.myshopify.com/",
+    "profile": "mobile",
+    "wallClockMs": 8138,
+    "ttfbMs": 329,
+    "fcpMs": 1912,
+    "lcpMs": 2144,
+    "lcpElement": "P.syp-hero__support",
+    "cls": 0.011,
+    "domContentLoadedMs": 3438,
+    "loadMs": 4652,
+    "longTasks": 2,
+    "blockingTimeMs": 120,
+    "requests": 137,
+    "transferKB": 828,
+    "byType": {
+      "Document": {
+        "n": 4,
+        "kb": 36
+      },
+      "Other": {
+        "n": 15,
+        "kb": 244
+      },
+      "Stylesheet": {
+        "n": 9,
+        "kb": 70
+      },
+      "Script": {
+        "n": 85,
+        "kb": 335
+      },
+      "Ping": {
+        "n": 11,
+        "kb": 9
+      },
+      "Image": {
+        "n": 1,
+        "kb": 15
+      },
+      "Font": {
+        "n": 3,
+        "kb": 118
+      },
+      "Fetch": {
+        "n": 4,
+        "kb": 0
+      },
+      "Preflight": {
+        "n": 5,
+        "kb": 0
+      }
+    },
+    "top20Assets": [
+      {
+        "type": "Other",
+        "kb": 91,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/grouping.IR-YuihZ.js"
+      },
+      {
+        "type": "Script",
+        "kb": 71,
+        "url": "https://syperformance-build.myshopify.com/cdn/wpm/ba6b9c454w7b023680pb7fefabem62184d01m.js"
+      },
+      {
+        "type": "Other",
+        "kb": 67,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/context-browser.DAmUTeVP.js"
+      },
+      {
+        "type": "Stylesheet",
+        "kb": 50,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/t/2/compiled_assets/styles.css?v=79699986147102839601787767826"
+      },
+      {
+        "type": "Other",
+        "kb": 42,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/esnext-vendor.B0X4Oxko.js"
+      },
+      {
+        "type": "Font",
+        "kb": 40,
+        "url": "https://syperformance-build.myshopify.com/cdn/fonts/inter/inter_n5.d7101d5e168594dd06f56f290dd759fba5431d97.woff2"
+      },
+      {
+        "type": "Font",
+        "kb": 39,
+        "url": "https://syperformance-build.myshopify.com/cdn/fonts/inter/inter_n4.b2a3f24c19b4de56e8871f609e73ca7f6d2e2bb9.woff2"
+      },
+      {
+        "type": "Font",
+        "kb": 39,
+        "url": "https://syperformance-build.myshopify.com/cdn/fonts/inter/inter_n7.02711e6b374660cfc7915d1afc1c204e633421e4.woff2"
+      },
+      {
+        "type": "Document",
+        "kb": 36,
+        "url": "https://syperformance-build.myshopify.com/"
+      },
+      {
+        "type": "Script",
+        "kb": 30,
+        "url": "https://syperformance-build.myshopify.com/cdn/s/trekkie.storefront.c3de4351cec0b617fdf79b803eb104cc6c0d8097.min.js"
+      },
+      {
+        "type": "Script",
+        "kb": 23,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/perf-kit/shopify-perf-kit-3.8.4.min.js"
+      },
+      {
+        "type": "Script",
+        "kb": 21,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/shop-js/modules/v2/chunk.index_BqoYK0tS.esm.js"
+      },
+      {
+        "type": "Script",
+        "kb": 19,
+        "url": "https://cdn.shopify.com/storefront/webmcp/webmcp-0.1.1.js"
+      },
+      {
+        "type": "Other",
+        "kb": 18,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/polyfills.Db3KX98s.js"
+      },
+      {
+        "type": "Image",
+        "kb": 15,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/20231205_135327.jpg?v=1787110789&width=500"
+      },
+      {
+        "type": "Stylesheet",
+        "kb": 7,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/t/2/assets/base.css?v=132492467252896707531787715642"
+      },
+      {
+        "type": "Script",
+        "kb": 6,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/t/2/assets/product-form.js?v=156247955454460663281787715642"
+      },
+      {
+        "type": "Other",
+        "kb": 6,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/app.BULzK8HX.js"
+      },
+      {
+        "type": "Script",
+        "kb": 5,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/t/2/assets/utilities.js?v=46961525399390006791787715642"
+      },
+      {
+        "type": "Script",
+        "kb": 5,
+        "url": "https://cdn.shopify.com/storefront/standard-actions.js"
+      }
+    ],
+    "domNodes": 808,
+    "images": 15,
+    "imagesMissingAlt": 5,
+    "lazyImages": 15,
+    "eagerImages": [],
+    "imagesWithoutSrcset": 0,
+    "oversizedImages": [],
+    "scripts": 86,
+    "blockingScripts": [],
+    "moduleScripts": 46,
+    "stylesheets": 22,
+    "stylesheetHrefs": [
+      "base.css",
+      "syp-tokens.css",
+      "styles.css",
+      "syp-components.css",
+      "syp-header.css",
+      "syp-fitment.css",
+      "syp-components.css",
+      "syp-home.css",
+      "syp-components.css",
+      "syp-home.css",
+      "syp-components.css",
+      "syp-home.css",
+      "syp-components.css",
+      "syp-home.css",
+      "syp-components.css",
+      "syp-home.css",
+      "syp-components.css",
+      "syp-home.css",
+      "syp-components.css",
+      "syp-home.css",
+      "syp-components.css",
+      "syp-footer.css"
+    ],
+    "preloads": [
+      "style:overflow-list.css",
+      "font:inter_n4.b2a3f24c19b4de56e8871f609e73ca7f6d2e2bb9.woff2",
+      "font:inter_n5.d7101d5e168594dd06f56f290dd759fba5431d97.woff2",
+      "font:inter_n7.02711e6b374660cfc7915d1afc1c204e633421e4.woff2",
+      "font:inter_n7.02711e6b374660cfc7915d1afc1c204e633421e4.woff2"
+    ],
+    "title": "SYPerformance Build",
+    "h1": [
+      "We make the drivetrain parts that break first."
+    ]
+  },
+  "home/desktop": {
+    "url": "https://syperformance-build.myshopify.com/",
+    "profile": "desktop",
+    "wallClockMs": 4180,
+    "ttfbMs": 45,
+    "fcpMs": 520,
+    "lcpMs": 520,
+    "lcpElement": "H1.syp-hero__claim",
+    "cls": 0.009,
+    "domContentLoadedMs": 714,
+    "loadMs": 982,
+    "longTasks": 0,
+    "blockingTimeMs": 0,
+    "requests": 171,
+    "transferKB": 1312,
+    "byType": {
+      "Document": {
+        "n": 3,
+        "kb": 36
+      },
+      "Stylesheet": {
+        "n": 9,
+        "kb": 70
+      },
+      "Script": {
+        "n": 84,
+        "kb": 335
+      },
+      "Other": {
+        "n": 41,
+        "kb": 609
+      },
+      "Ping": {
+        "n": 11,
+        "kb": 9
+      },
+      "Image": {
+        "n": 9,
+        "kb": 130
+      },
+      "Font": {
+        "n": 3,
+        "kb": 118
+      },
+      "Preflight": {
+        "n": 6,
+        "kb": 0
+      },
+      "Fetch": {
+        "n": 5,
+        "kb": 0
+      }
+    },
+    "top20Assets": [
+      {
+        "type": "Other",
+        "kb": 200,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/hydrate.CkVeF22y.js"
+      },
+      {
+        "type": "Other",
+        "kb": 91,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/grouping.IR-YuihZ.js"
+      },
+      {
+        "type": "Script",
+        "kb": 71,
+        "url": "https://syperformance-build.myshopify.com/cdn/wpm/ba6b9c454w7b023680pb7fefabem62184d01m.js"
+      },
+      {
+        "type": "Other",
+        "kb": 67,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/context-browser.DAmUTeVP.js"
+      },
+      {
+        "type": "Stylesheet",
+        "kb": 50,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/t/2/compiled_assets/styles.css?v=79699986147102839601787767826"
+      },
+      {
+        "type": "Image",
+        "kb": 46,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/7.jpg?v=1787110785&width=500"
+      },
+      {
+        "type": "Other",
+        "kb": 44,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/OnePage.IFQm9SZO.js"
+      },
+      {
+        "type": "Other",
+        "kb": 42,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/esnext-vendor.B0X4Oxko.js"
+      },
+      {
+        "type": "Font",
+        "kb": 40,
+        "url": "https://syperformance-build.myshopify.com/cdn/fonts/inter/inter_n5.d7101d5e168594dd06f56f290dd759fba5431d97.woff2"
+      },
+      {
+        "type": "Font",
+        "kb": 39,
+        "url": "https://syperformance-build.myshopify.com/cdn/fonts/inter/inter_n4.b2a3f24c19b4de56e8871f609e73ca7f6d2e2bb9.woff2"
+      },
+      {
+        "type": "Font",
+        "kb": 39,
+        "url": "https://syperformance-build.myshopify.com/cdn/fonts/inter/inter_n7.02711e6b374660cfc7915d1afc1c204e633421e4.woff2"
+      },
+      {
+        "type": "Document",
+        "kb": 36,
+        "url": "https://syperformance-build.myshopify.com/"
+      },
+      {
+        "type": "Other",
+        "kb": 31,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/components-DeliveryTransition.6iwV3dKa.js"
+      },
+      {
+        "type": "Script",
+        "kb": 30,
+        "url": "https://syperformance-build.myshopify.com/cdn/s/trekkie.storefront.c3de4351cec0b617fdf79b803eb104cc6c0d8097.min.js"
+      },
+      {
+        "type": "Other",
+        "kb": 27,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/locale-en.D0uB4FCC.js"
+      },
+      {
+        "type": "Image",
+        "kb": 24,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/1000014380.png?v=1787110758&width=500"
+      },
+      {
+        "type": "Script",
+        "kb": 23,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/perf-kit/shopify-perf-kit-3.8.4.min.js"
+      },
+      {
+        "type": "Script",
+        "kb": 21,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/shop-js/modules/v2/chunk.index_BqoYK0tS.esm.js"
+      },
+      {
+        "type": "Script",
+        "kb": 19,
+        "url": "https://cdn.shopify.com/storefront/webmcp/webmcp-0.1.1.js"
+      },
+      {
+        "type": "Other",
+        "kb": 19,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/BillingAddressForm.JKP9y2rY.js"
+      }
+    ],
+    "domNodes": 835,
+    "images": 15,
+    "imagesMissingAlt": 5,
+    "lazyImages": 15,
+    "eagerImages": [],
+    "imagesWithoutSrcset": 0,
+    "oversizedImages": [
+      {
+        "src": "yperformance-build.myshopify.com/cdn/shop/files/20231205_135327.jpg?v=1787110789&width=500",
+        "css": 204,
+        "natural": 337
+      },
+      {
+        "src": "s://syperformance-build.myshopify.com/cdn/shop/files/1000014377.png?v=1787110790&width=500",
+        "css": 204,
+        "natural": 337
+      },
+      {
+        "src": "s://syperformance-build.myshopify.com/cdn/shop/files/1000014380.png?v=1787110758&width=500",
+        "css": 204,
+        "natural": 337
+      },
+      {
+        "src": "hop/files/rs_w_1200_h_1200_8310e97a-c627-4056-9e87-941f9e326391.jpg?v=1787110741&width=500",
+        "css": 204,
+        "natural": 337
+      },
+      {
+        "src": "https://syperformance-build.myshopify.com/cdn/shop/files/7.jpg?v=1787110785&width=500",
+        "css": 204,
+        "natural": 337
+      }
+    ],
+    "scripts": 86,
+    "blockingScripts": [],
+    "moduleScripts": 46,
+    "stylesheets": 22,
+    "stylesheetHrefs": [
+      "base.css",
+      "syp-tokens.css",
+      "styles.css",
+      "syp-components.css",
+      "syp-header.css",
+      "syp-fitment.css",
+      "syp-components.css",
+      "syp-home.css",
+      "syp-components.css",
+      "syp-home.css",
+      "syp-components.css",
+      "syp-home.css",
+      "syp-components.css",
+      "syp-home.css",
+      "syp-components.css",
+      "syp-home.css",
+      "syp-components.css",
+      "syp-home.css",
+      "syp-components.css",
+      "syp-home.css",
+      "syp-components.css",
+      "syp-footer.css"
+    ],
+    "preloads": [
+      "style:overflow-list.css",
+      "font:inter_n4.b2a3f24c19b4de56e8871f609e73ca7f6d2e2bb9.woff2",
+      "font:inter_n5.d7101d5e168594dd06f56f290dd759fba5431d97.woff2",
+      "font:inter_n7.02711e6b374660cfc7915d1afc1c204e633421e4.woff2",
+      "font:inter_n7.02711e6b374660cfc7915d1afc1c204e633421e4.woff2"
+    ],
+    "title": "SYPerformance Build",
+    "h1": [
+      "We make the drivetrain parts that break first."
+    ]
+  },
+  "collection/mobile": {
+    "url": "https://syperformance-build.myshopify.com/collections/syp-billet",
+    "profile": "mobile",
+    "wallClockMs": 13022,
+    "ttfbMs": 408,
+    "fcpMs": 1944,
+    "lcpMs": 1944,
+    "lcpElement": "P",
+    "cls": 0,
+    "domContentLoadedMs": 6317,
+    "loadMs": 9852,
+    "longTasks": 2,
+    "blockingTimeMs": 138,
+    "requests": 174,
+    "transferKB": 2020,
+    "byType": {
+      "Document": {
+        "n": 3,
+        "kb": 58
+      },
+      "Stylesheet": {
+        "n": 9,
+        "kb": 69
+      },
+      "Other": {
+        "n": 12,
+        "kb": 238
+      },
+      "Script": {
+        "n": 90,
+        "kb": 348
+      },
+      "Image": {
+        "n": 32,
+        "kb": 1153
+      },
+      "Ping": {
+        "n": 12,
+        "kb": 9
+      },
+      "Preflight": {
+        "n": 7,
+        "kb": 0
+      },
+      "Fetch": {
+        "n": 6,
+        "kb": 24
+      },
+      "Font": {
+        "n": 3,
+        "kb": 118
+      }
+    },
+    "top20Assets": [
+      {
+        "type": "Image",
+        "kb": 152,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/rs_w_1200_h_1200_31.jpg?v=1787110790&width=832"
+      },
+      {
+        "type": "Image",
+        "kb": 107,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/rs_w_1200_h_1200_30.jpg?v=1787110790&width=832"
+      },
+      {
+        "type": "Other",
+        "kb": 91,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/grouping.IR-YuihZ.js"
+      },
+      {
+        "type": "Script",
+        "kb": 71,
+        "url": "https://syperformance-build.myshopify.com/cdn/wpm/ba6b9c454w7b023680pb7fefabem62184d01m.js"
+      },
+      {
+        "type": "Image",
+        "kb": 67,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/rs_w_1200_h_1200_10.jpg?v=1787110760&width=1200"
+      },
+      {
+        "type": "Other",
+        "kb": 67,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/context-browser.DAmUTeVP.js"
+      },
+      {
+        "type": "Document",
+        "kb": 58,
+        "url": "https://syperformance-build.myshopify.com/collections/syp-billet"
+      },
+      {
+        "type": "Image",
+        "kb": 54,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/rs_w_1200_h_1200_27.jpg?v=1787110753&width=1200"
+      },
+      {
+        "type": "Image",
+        "kb": 53,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/rs_w_1200_h_1200_28_f8ef0d85-82a6-4dc1-bf58-c24531184246.jpg?v=1787110752&width=1200"
+      },
+      {
+        "type": "Stylesheet",
+        "kb": 50,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/t/2/compiled_assets/styles.css?v=79699986147102839601787767826"
+      },
+      {
+        "type": "Image",
+        "kb": 49,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/1000014404.png?v=1787110755&width=1200"
+      },
+      {
+        "type": "Image",
+        "kb": 43,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/1000014385.png?v=1787110766&width=1200"
+      },
+      {
+        "type": "Other",
+        "kb": 42,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/esnext-vendor.B0X4Oxko.js"
+      },
+      {
+        "type": "Font",
+        "kb": 40,
+        "url": "https://syperformance-build.myshopify.com/cdn/fonts/inter/inter_n5.d7101d5e168594dd06f56f290dd759fba5431d97.woff2"
+      },
+      {
+        "type": "Image",
+        "kb": 39,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/rs_w_1200_h_1200_16.jpg?v=1787110757&width=1200"
+      },
+      {
+        "type": "Image",
+        "kb": 39,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/1000014378.png?v=1787110772&width=1200"
+      },
+      {
+        "type": "Font",
+        "kb": 39,
+        "url": "https://syperformance-build.myshopify.com/cdn/fonts/inter/inter_n4.b2a3f24c19b4de56e8871f609e73ca7f6d2e2bb9.woff2"
+      },
+      {
+        "type": "Font",
+        "kb": 39,
+        "url": "https://syperformance-build.myshopify.com/cdn/fonts/inter/inter_n7.02711e6b374660cfc7915d1afc1c204e633421e4.woff2"
+      },
+      {
+        "type": "Image",
+        "kb": 38,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/1000050525.png?v=1787110763&width=1200"
+      },
+      {
+        "type": "Image",
+        "kb": 37,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/1000014381.png?v=1787110760&width=1200"
+      }
+    ],
+    "domNodes": 2179,
+    "images": 66,
+    "imagesMissingAlt": 0,
+    "lazyImages": 42,
+    "eagerImages": [
+      {
+        "src": "://syperformance-build.myshopify.com/cdn/shop/files/1000014377.png?v=1787110790&width=1200",
+        "css": 200,
+        "natural": 282,
+        "fetchpriority": "auto",
+        "inView": true
+      },
+      {
+        "src": "://syperformance-build.myshopify.com/cdn/shop/files/1000014400.png?v=1787110787&width=1200",
+        "css": 200,
+        "natural": 282,
+        "fetchpriority": "auto",
+        "inView": true
+      },
+      {
+        "src": "://syperformance-build.myshopify.com/cdn/shop/files/1000014357.png?v=1787110778&width=1200",
+        "css": 200,
+        "natural": 182,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "://syperformance-build.myshopify.com/cdn/shop/files/1000014109.png?v=1787110779&width=1200",
+        "css": 200,
+        "natural": 412,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "ormance-build.myshopify.com/cdn/shop/files/rs_w_1200_h_1200_13.jpg?v=1787110777&width=1200",
+        "css": 200,
+        "natural": 231,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "://syperformance-build.myshopify.com/cdn/shop/files/1000014378.png?v=1787110772&width=1200",
+        "css": 200,
+        "natural": 239,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "://syperformance-build.myshopify.com/cdn/shop/files/1000014402.png?v=1787110771&width=1200",
+        "css": 200,
+        "natural": 237,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "://syperformance-build.myshopify.com/cdn/shop/files/1000014382.png?v=1787110770&width=1200",
+        "css": 200,
+        "natural": 231,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "://syperformance-build.myshopify.com/cdn/shop/files/1000014366.png?v=1787110768&width=1200",
+        "css": 200,
+        "natural": 182,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "://syperformance-build.myshopify.com/cdn/shop/files/1000014385.png?v=1787110766&width=1200",
+        "css": 200,
+        "natural": 239,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "formance-build.myshopify.com/cdn/shop/files/rs_w_1200_h_1200_5.jpg?v=1787110765&width=1200",
+        "css": 200,
+        "natural": 231,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "://syperformance-build.myshopify.com/cdn/shop/files/1000014364.png?v=1787110764&width=1200",
+        "css": 200,
+        "natural": 182,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "://syperformance-build.myshopify.com/cdn/shop/files/1000050525.png?v=1787110763&width=1200",
+        "css": 200,
+        "natural": 339,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "://syperformance-build.myshopify.com/cdn/shop/files/1000014384.png?v=1787110762&width=1200",
+        "css": 200,
+        "natural": 244,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "ormance-build.myshopify.com/cdn/shop/files/rs_w_1200_h_1200_10.jpg?v=1787110760&width=1200",
+        "css": 200,
+        "natural": 412,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "://syperformance-build.myshopify.com/cdn/shop/files/1000014381.png?v=1787110760&width=1200",
+        "css": 200,
+        "natural": 282,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "files/rs_w_1200_h_1200_13_f624e031-8508-4a21-80de-210610289b02.jpg?v=1787110759&width=1200",
+        "css": 200,
+        "natural": 239,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "://syperformance-build.myshopify.com/cdn/shop/files/1000014380.png?v=1787110758&width=1200",
+        "css": 200,
+        "natural": 247,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "ormance-build.myshopify.com/cdn/shop/files/rs_w_1200_h_1200_16.jpg?v=1787110757&width=1200",
+        "css": 200,
+        "natural": 239,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "://syperformance-build.myshopify.com/cdn/shop/files/1000014387.png?v=1787110756&width=1200",
+        "css": 200,
+        "natural": 250,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "://syperformance-build.myshopify.com/cdn/shop/files/1000014404.png?v=1787110755&width=1200",
+        "css": 200,
+        "natural": 256,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "cdn/shop/files/1000014388_a5633b88-96af-4644-8749-fadf16a76c42.png?v=1787110754&width=1200",
+        "css": 200,
+        "natural": 253,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "ormance-build.myshopify.com/cdn/shop/files/rs_w_1200_h_1200_27.jpg?v=1787110753&width=1200",
+        "css": 200,
+        "natural": 412,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "files/rs_w_1200_h_1200_28_f8ef0d85-82a6-4dc1-bf58-c24531184246.jpg?v=1787110752&width=1200",
+        "css": 200,
+        "natural": 300,
+        "fetchpriority": "auto",
+        "inView": false
+      }
+    ],
+    "imagesWithoutSrcset": 0,
+    "oversizedImages": [],
+    "scripts": 92,
+    "blockingScripts": [],
+    "moduleScripts": 49,
+    "stylesheets": 10,
+    "stylesheetHrefs": [
+      "base.css",
+      "syp-tokens.css",
+      "styles.css",
+      "syp-components.css",
+      "syp-header.css",
+      "syp-fitment.css",
+      "syp-components.css",
+      "syp-collection.css",
+      "syp-components.css",
+      "syp-footer.css"
+    ],
+    "preloads": [
+      "style:overflow-list.css",
+      "font:inter_n4.b2a3f24c19b4de56e8871f609e73ca7f6d2e2bb9.woff2",
+      "font:inter_n5.d7101d5e168594dd06f56f290dd759fba5431d97.woff2",
+      "font:inter_n7.02711e6b374660cfc7915d1afc1c204e633421e4.woff2",
+      "font:inter_n7.02711e6b374660cfc7915d1afc1c204e633421e4.woff2"
+    ],
+    "title": "SYP Billet — Our Own Parts – SYPerformance Build",
+    "h1": [
+      "SYP Billet — Our Own Parts"
+    ]
+  },
+  "collection/desktop": {
+    "url": "https://syperformance-build.myshopify.com/collections/syp-billet",
+    "profile": "desktop",
+    "wallClockMs": 4688,
+    "ttfbMs": 34,
+    "fcpMs": 572,
+    "lcpMs": 1172,
+    "lcpElement": "IMG.product-media__image <- https://syperformance-build.myshopify.com/cdn/shop/files/1000014109.png?v=1787110779&width=352",
+    "cls": 0.012,
+    "domContentLoadedMs": 1026,
+    "loadMs": 1374,
+    "longTasks": 0,
+    "blockingTimeMs": 0,
+    "requests": 205,
+    "transferKB": 1665,
+    "byType": {
+      "Document": {
+        "n": 3,
+        "kb": 59
+      },
+      "Stylesheet": {
+        "n": 9,
+        "kb": 69
+      },
+      "Script": {
+        "n": 90,
+        "kb": 348
+      },
+      "Other": {
+        "n": 45,
+        "kb": 621
+      },
+      "Image": {
+        "n": 31,
+        "kb": 411
+      },
+      "Ping": {
+        "n": 12,
+        "kb": 10
+      },
+      "Preflight": {
+        "n": 6,
+        "kb": 0
+      },
+      "Font": {
+        "n": 3,
+        "kb": 118
+      },
+      "Fetch": {
+        "n": 6,
+        "kb": 24
+      }
+    },
+    "top20Assets": [
+      {
+        "type": "Other",
+        "kb": 200,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/hydrate.CkVeF22y.js"
+      },
+      {
+        "type": "Other",
+        "kb": 91,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/grouping.IR-YuihZ.js"
+      },
+      {
+        "type": "Script",
+        "kb": 71,
+        "url": "https://syperformance-build.myshopify.com/cdn/wpm/ba6b9c454w7b023680pb7fefabem62184d01m.js"
+      },
+      {
+        "type": "Other",
+        "kb": 67,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/context-browser.DAmUTeVP.js"
+      },
+      {
+        "type": "Document",
+        "kb": 59,
+        "url": "https://syperformance-build.myshopify.com/collections/syp-billet"
+      },
+      {
+        "type": "Stylesheet",
+        "kb": 50,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/t/2/compiled_assets/styles.css?v=79699986147102839601787767826"
+      },
+      {
+        "type": "Other",
+        "kb": 44,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/OnePage.IFQm9SZO.js"
+      },
+      {
+        "type": "Other",
+        "kb": 42,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/esnext-vendor.B0X4Oxko.js"
+      },
+      {
+        "type": "Image",
+        "kb": 41,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/rs_w_1200_h_1200_30.jpg?v=1787110790&width=352"
+      },
+      {
+        "type": "Font",
+        "kb": 40,
+        "url": "https://syperformance-build.myshopify.com/cdn/fonts/inter/inter_n5.d7101d5e168594dd06f56f290dd759fba5431d97.woff2"
+      },
+      {
+        "type": "Font",
+        "kb": 39,
+        "url": "https://syperformance-build.myshopify.com/cdn/fonts/inter/inter_n4.b2a3f24c19b4de56e8871f609e73ca7f6d2e2bb9.woff2"
+      },
+      {
+        "type": "Font",
+        "kb": 39,
+        "url": "https://syperformance-build.myshopify.com/cdn/fonts/inter/inter_n7.02711e6b374660cfc7915d1afc1c204e633421e4.woff2"
+      },
+      {
+        "type": "Other",
+        "kb": 31,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/components-DeliveryTransition.6iwV3dKa.js"
+      },
+      {
+        "type": "Script",
+        "kb": 30,
+        "url": "https://syperformance-build.myshopify.com/cdn/s/trekkie.storefront.c3de4351cec0b617fdf79b803eb104cc6c0d8097.min.js"
+      },
+      {
+        "type": "Other",
+        "kb": 27,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/locale-en.D0uB4FCC.js"
+      },
+      {
+        "type": "Fetch",
+        "kb": 24,
+        "url": "https://syperformance-build.myshopify.com/collections/syp-billet?page=2&section_id=template--21563387445405__main"
+      },
+      {
+        "type": "Script",
+        "kb": 23,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/perf-kit/shopify-perf-kit-3.8.4.min.js"
+      },
+      {
+        "type": "Image",
+        "kb": 22,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/1000014385.png?v=1787110766&width=352"
+      },
+      {
+        "type": "Script",
+        "kb": 21,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/shop-js/modules/v2/chunk.index_BqoYK0tS.esm.js"
+      },
+      {
+        "type": "Image",
+        "kb": 21,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/1000014404.png?v=1787110755&width=352"
+      }
+    ],
+    "domNodes": 2212,
+    "images": 66,
+    "imagesMissingAlt": 0,
+    "lazyImages": 42,
+    "eagerImages": [
+      {
+        "src": "s://syperformance-build.myshopify.com/cdn/shop/files/1000014377.png?v=1787110790&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": true
+      },
+      {
+        "src": "s://syperformance-build.myshopify.com/cdn/shop/files/1000014400.png?v=1787110787&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": true
+      },
+      {
+        "src": "s://syperformance-build.myshopify.com/cdn/shop/files/1000014357.png?v=1787110778&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": true
+      },
+      {
+        "src": "s://syperformance-build.myshopify.com/cdn/shop/files/1000014109.png?v=1787110779&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": true
+      },
+      {
+        "src": "formance-build.myshopify.com/cdn/shop/files/rs_w_1200_h_1200_13.jpg?v=1787110777&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "s://syperformance-build.myshopify.com/cdn/shop/files/1000014378.png?v=1787110772&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "s://syperformance-build.myshopify.com/cdn/shop/files/1000014402.png?v=1787110771&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "s://syperformance-build.myshopify.com/cdn/shop/files/1000014382.png?v=1787110770&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "s://syperformance-build.myshopify.com/cdn/shop/files/1000014366.png?v=1787110768&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "s://syperformance-build.myshopify.com/cdn/shop/files/1000014385.png?v=1787110766&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "rformance-build.myshopify.com/cdn/shop/files/rs_w_1200_h_1200_5.jpg?v=1787110765&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "s://syperformance-build.myshopify.com/cdn/shop/files/1000014364.png?v=1787110764&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "s://syperformance-build.myshopify.com/cdn/shop/files/1000050525.png?v=1787110763&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "s://syperformance-build.myshopify.com/cdn/shop/files/1000014384.png?v=1787110762&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "formance-build.myshopify.com/cdn/shop/files/rs_w_1200_h_1200_10.jpg?v=1787110760&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "s://syperformance-build.myshopify.com/cdn/shop/files/1000014381.png?v=1787110760&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "/files/rs_w_1200_h_1200_13_f624e031-8508-4a21-80de-210610289b02.jpg?v=1787110759&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "s://syperformance-build.myshopify.com/cdn/shop/files/1000014380.png?v=1787110758&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "formance-build.myshopify.com/cdn/shop/files/rs_w_1200_h_1200_16.jpg?v=1787110757&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "s://syperformance-build.myshopify.com/cdn/shop/files/1000014387.png?v=1787110756&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "s://syperformance-build.myshopify.com/cdn/shop/files/1000014404.png?v=1787110755&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "/cdn/shop/files/1000014388_a5633b88-96af-4644-8749-fadf16a76c42.png?v=1787110754&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "formance-build.myshopify.com/cdn/shop/files/rs_w_1200_h_1200_27.jpg?v=1787110753&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": false
+      },
+      {
+        "src": "/files/rs_w_1200_h_1200_28_f8ef0d85-82a6-4dc1-bf58-c24531184246.jpg?v=1787110752&width=352",
+        "css": 306,
+        "natural": 270,
+        "fetchpriority": "auto",
+        "inView": false
+      }
+    ],
+    "imagesWithoutSrcset": 0,
+    "oversizedImages": [],
+    "scripts": 92,
+    "blockingScripts": [],
+    "moduleScripts": 49,
+    "stylesheets": 10,
+    "stylesheetHrefs": [
+      "base.css",
+      "syp-tokens.css",
+      "styles.css",
+      "syp-components.css",
+      "syp-header.css",
+      "syp-fitment.css",
+      "syp-components.css",
+      "syp-collection.css",
+      "syp-components.css",
+      "syp-footer.css"
+    ],
+    "preloads": [
+      "style:overflow-list.css",
+      "font:inter_n4.b2a3f24c19b4de56e8871f609e73ca7f6d2e2bb9.woff2",
+      "font:inter_n5.d7101d5e168594dd06f56f290dd759fba5431d97.woff2",
+      "font:inter_n7.02711e6b374660cfc7915d1afc1c204e633421e4.woff2",
+      "font:inter_n7.02711e6b374660cfc7915d1afc1c204e633421e4.woff2"
+    ],
+    "title": "SYP Billet — Our Own Parts – SYPerformance Build",
+    "h1": [
+      "SYP Billet — Our Own Parts"
+    ]
+  },
+  "product/mobile": {
+    "url": "https://syperformance-build.myshopify.com/products/k-series-single-lobe-billet-rockers",
+    "profile": "mobile",
+    "wallClockMs": 9843,
+    "ttfbMs": 238,
+    "fcpMs": 2292,
+    "lcpMs": 2308,
+    "lcpElement": "IMG.product-media__image <- https://syperformance-build.myshopify.com/cdn/shop/files/1000010112.png?v=1787110687&width=1200",
+    "cls": 0,
+    "domContentLoadedMs": 4241,
+    "loadMs": 6534,
+    "longTasks": 1,
+    "blockingTimeMs": 102,
+    "requests": 156,
+    "transferKB": 1424,
+    "byType": {
+      "Document": {
+        "n": 3,
+        "kb": 41
+      },
+      "Other": {
+        "n": 13,
+        "kb": 241
+      },
+      "Stylesheet": {
+        "n": 10,
+        "kb": 72
+      },
+      "Script": {
+        "n": 88,
+        "kb": 418
+      },
+      "Image": {
+        "n": 4,
+        "kb": 511
+      },
+      "Ping": {
+        "n": 13,
+        "kb": 10
+      },
+      "Preflight": {
+        "n": 11,
+        "kb": 0
+      },
+      "Fetch": {
+        "n": 11,
+        "kb": 8
+      },
+      "Font": {
+        "n": 3,
+        "kb": 118
+      }
+    },
+    "top20Assets": [
+      {
+        "type": "Image",
+        "kb": 246,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/received_901645658078273_00a47d3b-c63a-45f9-acb3-d409914032d0.jpg?v=1787110688&width=1200"
+      },
+      {
+        "type": "Image",
+        "kb": 213,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/received_893448725787719_f73da57f-5036-4bbd-8dc5-182db3ce7272.jpg?v=1787110687&width=1200"
+      },
+      {
+        "type": "Other",
+        "kb": 91,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/grouping.IR-YuihZ.js"
+      },
+      {
+        "type": "Script",
+        "kb": 75,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/portable-wallets/latest/portable-wallets.en.js"
+      },
+      {
+        "type": "Script",
+        "kb": 71,
+        "url": "https://syperformance-build.myshopify.com/cdn/wpm/ba6b9c454w7b023680pb7fefabem62184d01m.js"
+      },
+      {
+        "type": "Other",
+        "kb": 67,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/context-browser.DAmUTeVP.js"
+      },
+      {
+        "type": "Stylesheet",
+        "kb": 50,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/t/2/compiled_assets/styles.css?v=79699986147102839601787767826"
+      },
+      {
+        "type": "Image",
+        "kb": 48,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/1000010112.png?v=1787110687&width=1200"
+      },
+      {
+        "type": "Other",
+        "kb": 42,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/esnext-vendor.B0X4Oxko.js"
+      },
+      {
+        "type": "Document",
+        "kb": 41,
+        "url": "https://syperformance-build.myshopify.com/products/k-series-single-lobe-billet-rockers"
+      },
+      {
+        "type": "Font",
+        "kb": 40,
+        "url": "https://syperformance-build.myshopify.com/cdn/fonts/inter/inter_n5.d7101d5e168594dd06f56f290dd759fba5431d97.woff2"
+      },
+      {
+        "type": "Font",
+        "kb": 39,
+        "url": "https://syperformance-build.myshopify.com/cdn/fonts/inter/inter_n4.b2a3f24c19b4de56e8871f609e73ca7f6d2e2bb9.woff2"
+      },
+      {
+        "type": "Font",
+        "kb": 39,
+        "url": "https://syperformance-build.myshopify.com/cdn/fonts/inter/inter_n7.02711e6b374660cfc7915d1afc1c204e633421e4.woff2"
+      },
+      {
+        "type": "Script",
+        "kb": 30,
+        "url": "https://syperformance-build.myshopify.com/cdn/s/trekkie.storefront.c3de4351cec0b617fdf79b803eb104cc6c0d8097.min.js"
+      },
+      {
+        "type": "Script",
+        "kb": 23,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/perf-kit/shopify-perf-kit-3.8.4.min.js"
+      },
+      {
+        "type": "Script",
+        "kb": 21,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/shop-js/modules/v2/chunk.index_BqoYK0tS.esm.js"
+      },
+      {
+        "type": "Script",
+        "kb": 19,
+        "url": "https://cdn.shopify.com/storefront/webmcp/webmcp-0.1.1.js"
+      },
+      {
+        "type": "Other",
+        "kb": 18,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/polyfills.Db3KX98s.js"
+      },
+      {
+        "type": "Stylesheet",
+        "kb": 7,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/t/2/assets/base.css?v=132492467252896707531787715642"
+      },
+      {
+        "type": "Script",
+        "kb": 6,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/t/2/assets/product-form.js?v=156247955454460663281787715642"
+      }
+    ],
+    "domNodes": 908,
+    "images": 21,
+    "imagesMissingAlt": 0,
+    "lazyImages": 15,
+    "eagerImages": [
+      {
+        "src": "://syperformance-build.myshopify.com/cdn/shop/files/1000010112.png?v=1787110687&width=1200",
+        "css": 412,
+        "natural": 282,
+        "fetchpriority": "high",
+        "inView": true
+      },
+      {
+        "src": "/received_901645658078273_00a47d3b-c63a-45f9-acb3-d409914032d0.jpg?v=1787110688&width=1200",
+        "css": 412,
+        "natural": 412,
+        "fetchpriority": "auto",
+        "inView": true
+      },
+      {
+        "src": "/received_893448725787719_f73da57f-5036-4bbd-8dc5-182db3ce7272.jpg?v=1787110687&width=1200",
+        "css": 412,
+        "natural": 412,
+        "fetchpriority": "auto",
+        "inView": true
+      },
+      {
+        "src": "://syperformance-build.myshopify.com/cdn/shop/files/1000010112.png?v=1787110687&width=1200",
+        "css": 3840,
+        "natural": 282,
+        "fetchpriority": "high",
+        "inView": true
+      },
+      {
+        "src": "/received_901645658078273_00a47d3b-c63a-45f9-acb3-d409914032d0.jpg?v=1787110688&width=1200",
+        "css": 3840,
+        "natural": 412,
+        "fetchpriority": "auto",
+        "inView": true
+      },
+      {
+        "src": "/received_893448725787719_f73da57f-5036-4bbd-8dc5-182db3ce7272.jpg?v=1787110687&width=1200",
+        "css": 3840,
+        "natural": 412,
+        "fetchpriority": "auto",
+        "inView": true
+      }
+    ],
+    "imagesWithoutSrcset": 1,
+    "oversizedImages": [],
+    "scripts": 95,
+    "blockingScripts": [],
+    "moduleScripts": 51,
+    "stylesheets": 13,
+    "stylesheetHrefs": [
+      "base.css",
+      "syp-tokens.css",
+      "accelerated-checkout.css",
+      "styles.css",
+      "syp-components.css",
+      "syp-header.css",
+      "syp-fitment.css",
+      "syp-components.css",
+      "syp-product.css",
+      "syp-components.css",
+      "syp-product.css",
+      "syp-components.css",
+      "syp-footer.css"
+    ],
+    "preloads": [
+      "style:overflow-list.css",
+      "font:inter_n4.b2a3f24c19b4de56e8871f609e73ca7f6d2e2bb9.woff2",
+      "font:inter_n5.d7101d5e168594dd06f56f290dd759fba5431d97.woff2",
+      "font:inter_n7.02711e6b374660cfc7915d1afc1c204e633421e4.woff2",
+      "font:inter_n7.02711e6b374660cfc7915d1afc1c204e633421e4.woff2"
+    ],
+    "title": "K Series Single Lobe Billet Rockers – SYPerformance Build",
+    "h1": [
+      "K Series Single Lobe Billet Rockers"
+    ]
+  },
+  "product/desktop": {
+    "url": "https://syperformance-build.myshopify.com/products/k-series-single-lobe-billet-rockers",
+    "profile": "desktop",
+    "wallClockMs": 4683,
+    "ttfbMs": 48,
+    "fcpMs": 636,
+    "lcpMs": 636,
+    "lcpElement": "IMG.product-media__image <- https://syperformance-build.myshopify.com/cdn/shop/files/1000010112.png?v=1787110687&width=832",
+    "cls": 0,
+    "domContentLoadedMs": 865,
+    "loadMs": 1200,
+    "longTasks": 0,
+    "blockingTimeMs": 0,
+    "requests": 184,
+    "transferKB": 1622,
+    "byType": {
+      "Document": {
+        "n": 3,
+        "kb": 42
+      },
+      "Script": {
+        "n": 88,
+        "kb": 418
+      },
+      "Stylesheet": {
+        "n": 10,
+        "kb": 72
+      },
+      "Image": {
+        "n": 4,
+        "kb": 328
+      },
+      "Other": {
+        "n": 44,
+        "kb": 619
+      },
+      "Ping": {
+        "n": 13,
+        "kb": 11
+      },
+      "Preflight": {
+        "n": 9,
+        "kb": 0
+      },
+      "Font": {
+        "n": 3,
+        "kb": 118
+      },
+      "Fetch": {
+        "n": 10,
+        "kb": 8
+      }
+    },
+    "top20Assets": [
+      {
+        "type": "Other",
+        "kb": 200,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/hydrate.CkVeF22y.js"
+      },
+      {
+        "type": "Image",
+        "kb": 151,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/received_901645658078273_00a47d3b-c63a-45f9-acb3-d409914032d0.jpg?v=1787110688&width=832"
+      },
+      {
+        "type": "Image",
+        "kb": 125,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/received_893448725787719_f73da57f-5036-4bbd-8dc5-182db3ce7272.jpg?v=1787110687&width=832"
+      },
+      {
+        "type": "Other",
+        "kb": 91,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/grouping.IR-YuihZ.js"
+      },
+      {
+        "type": "Script",
+        "kb": 75,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/portable-wallets/latest/portable-wallets.en.js"
+      },
+      {
+        "type": "Script",
+        "kb": 71,
+        "url": "https://syperformance-build.myshopify.com/cdn/wpm/ba6b9c454w7b023680pb7fefabem62184d01m.js"
+      },
+      {
+        "type": "Other",
+        "kb": 67,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/context-browser.DAmUTeVP.js"
+      },
+      {
+        "type": "Stylesheet",
+        "kb": 50,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/t/2/compiled_assets/styles.css?v=79699986147102839601787767826"
+      },
+      {
+        "type": "Image",
+        "kb": 48,
+        "url": "https://syperformance-build.myshopify.com/cdn/shop/files/1000010112.png?v=1787110687&width=832"
+      },
+      {
+        "type": "Other",
+        "kb": 44,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/OnePage.IFQm9SZO.js"
+      },
+      {
+        "type": "Document",
+        "kb": 42,
+        "url": "https://syperformance-build.myshopify.com/products/k-series-single-lobe-billet-rockers"
+      },
+      {
+        "type": "Other",
+        "kb": 42,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/esnext-vendor.B0X4Oxko.js"
+      },
+      {
+        "type": "Font",
+        "kb": 40,
+        "url": "https://syperformance-build.myshopify.com/cdn/fonts/inter/inter_n5.d7101d5e168594dd06f56f290dd759fba5431d97.woff2"
+      },
+      {
+        "type": "Font",
+        "kb": 39,
+        "url": "https://syperformance-build.myshopify.com/cdn/fonts/inter/inter_n4.b2a3f24c19b4de56e8871f609e73ca7f6d2e2bb9.woff2"
+      },
+      {
+        "type": "Font",
+        "kb": 39,
+        "url": "https://syperformance-build.myshopify.com/cdn/fonts/inter/inter_n7.02711e6b374660cfc7915d1afc1c204e633421e4.woff2"
+      },
+      {
+        "type": "Other",
+        "kb": 31,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/components-DeliveryTransition.6iwV3dKa.js"
+      },
+      {
+        "type": "Script",
+        "kb": 30,
+        "url": "https://syperformance-build.myshopify.com/cdn/s/trekkie.storefront.c3de4351cec0b617fdf79b803eb104cc6c0d8097.min.js"
+      },
+      {
+        "type": "Other",
+        "kb": 27,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/checkout-web/assets/c1/locale-en.D0uB4FCC.js"
+      },
+      {
+        "type": "Script",
+        "kb": 23,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/perf-kit/shopify-perf-kit-3.8.4.min.js"
+      },
+      {
+        "type": "Script",
+        "kb": 21,
+        "url": "https://syperformance-build.myshopify.com/cdn/shopifycloud/shop-js/modules/v2/chunk.index_BqoYK0tS.esm.js"
+      }
+    ],
+    "domNodes": 939,
+    "images": 21,
+    "imagesMissingAlt": 0,
+    "lazyImages": 15,
+    "eagerImages": [
+      {
+        "src": "s://syperformance-build.myshopify.com/cdn/shop/files/1000010112.png?v=1787110687&width=832",
+        "css": 3840,
+        "natural": 416,
+        "fetchpriority": "high",
+        "inView": true
+      },
+      {
+        "src": "s/received_901645658078273_00a47d3b-c63a-45f9-acb3-d409914032d0.jpg?v=1787110688&width=832",
+        "css": 3840,
+        "natural": 420,
+        "fetchpriority": "auto",
+        "inView": true
+      },
+      {
+        "src": "s/received_893448725787719_f73da57f-5036-4bbd-8dc5-182db3ce7272.jpg?v=1787110687&width=832",
+        "css": 3840,
+        "natural": 420,
+        "fetchpriority": "auto",
+        "inView": true
+      },
+      {
+        "src": "s://syperformance-build.myshopify.com/cdn/shop/files/1000010112.png?v=1787110687&width=832",
+        "css": 410,
+        "natural": 416,
+        "fetchpriority": "high",
+        "inView": true
+      },
+      {
+        "src": "s/received_901645658078273_00a47d3b-c63a-45f9-acb3-d409914032d0.jpg?v=1787110688&width=832",
+        "css": 410,
+        "natural": 420,
+        "fetchpriority": "auto",
+        "inView": true
+      },
+      {
+        "src": "s/received_893448725787719_f73da57f-5036-4bbd-8dc5-182db3ce7272.jpg?v=1787110687&width=832",
+        "css": 410,
+        "natural": 420,
+        "fetchpriority": "auto",
+        "inView": true
+      }
+    ],
+    "imagesWithoutSrcset": 1,
+    "oversizedImages": [
+      {
+        "src": "s://syperformance-build.myshopify.com/cdn/shop/files/1000010112.png?v=1787110687&width=120",
+        "css": 52,
+        "natural": 120
+      }
+    ],
+    "scripts": 95,
+    "blockingScripts": [],
+    "moduleScripts": 51,
+    "stylesheets": 13,
+    "stylesheetHrefs": [
+      "base.css",
+      "syp-tokens.css",
+      "accelerated-checkout.css",
+      "styles.css",
+      "syp-components.css",
+      "syp-header.css",
+      "syp-fitment.css",
+      "syp-components.css",
+      "syp-product.css",
+      "syp-components.css",
+      "syp-product.css",
+      "syp-components.css",
+      "syp-footer.css"
+    ],
+    "preloads": [
+      "style:overflow-list.css",
+      "font:inter_n4.b2a3f24c19b4de56e8871f609e73ca7f6d2e2bb9.woff2",
+      "font:inter_n5.d7101d5e168594dd06f56f290dd759fba5431d97.woff2",
+      "font:inter_n7.02711e6b374660cfc7915d1afc1c204e633421e4.woff2",
+      "font:inter_n7.02711e6b374660cfc7915d1afc1c204e633421e4.woff2"
+    ],
+    "title": "K Series Single Lobe Billet Rockers – SYPerformance Build",
+    "h1": [
+      "K Series Single Lobe Billet Rockers"
+    ]
+  }
+}

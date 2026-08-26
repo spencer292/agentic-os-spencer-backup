@@ -5,3 +5,44 @@
   variables Horizon generates from theme settings.
 {% endcomment %}
 {{ 'syp-tokens.css' | asset_url | stylesheet_tag: preload: true }}
+
+{% comment %}
+  Phase 8 — every SYPerformance stylesheet is declared here, in <head>.
+
+  Horizon's convention is a `stylesheet_tag` inside each section, which puts the
+  <link> partway down <body>. The browser only discovers it when the parser reaches
+  that section, and a stylesheet blocks rendering of everything after it — so a page
+  with a header, seven sections and a footer paid a serial round trip per discovery.
+  Measured on the homepage before this change: 22 <link> elements starting at line
+  1,497 of the document, and a 1.6 s gap between a 329 ms TTFB and first paint.
+  Declared here they are all discovered by the preload scanner in the first kilobyte
+  and download in parallel with base.css.
+
+  Adding a new SYP section? Add its stylesheet to the right branch below and do NOT
+  put a `stylesheet_tag` in the section itself — that reintroduces the mid-body link.
+{% endcomment %}
+{% liquid
+  # Header, footer and the fitment UI render on every template.
+  assign syp_css = 'syp-components.css,syp-header.css,syp-footer.css,syp-fitment.css'
+
+  case template.name
+    when 'index'
+      assign syp_css = syp_css | append: ',syp-home.css'
+    when 'collection'
+      assign syp_css = syp_css | append: ',syp-collection.css'
+    when 'product'
+      assign syp_css = syp_css | append: ',syp-product.css'
+    when 'page'
+      assign syp_css = syp_css | append: ',syp-pages.css'
+      # page.about reuses the homepage made-in-house and CTA sections, which are
+      # styled in syp-home.css. No other page template needs it.
+      if template.suffix == 'about'
+        assign syp_css = syp_css | append: ',syp-home.css'
+      endif
+  endcase
+
+  assign syp_css_files = syp_css | split: ','
+%}
+{%- for syp_css_file in syp_css_files -%}
+  {{ syp_css_file | asset_url | stylesheet_tag }}
+{%- endfor -%}
