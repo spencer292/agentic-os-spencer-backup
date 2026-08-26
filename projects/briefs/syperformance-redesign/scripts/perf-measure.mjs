@@ -18,7 +18,7 @@ import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { BASE, STORE, THEME_ID, authenticate } from './_build-store.mjs';
+import { BASE, STORE, THEME_ID, authenticate, authenticateNoPreview } from './_build-store.mjs';
 
 const LABEL = process.argv[2] || 'before';
 const RUNS = Number(process.argv[3]) > 0 ? Number(process.argv[3]) : 1;
@@ -51,7 +51,12 @@ const PROFILES = {
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-const { cdpCookies: cookies } = await authenticate();
+// --published measures what a visitor actually gets: the live theme, with no
+// preview cookie and none of the preview-only scripts. Now that the rebuild is
+// the published theme this is a measurement, not an estimate.
+const { cdpCookies: cookies } = PUBLISHED
+  ? await authenticateNoPreview()
+  : await authenticate();
 console.log(`Storefront unlocked, previewing theme ${THEME_ID}.\n`);
 
 const userDataDir = path.join(os.tmpdir(), 'syp-perf8-profile');

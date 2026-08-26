@@ -71,7 +71,7 @@ const SETS = [
   ['Phase 0 baseline — live syperformance.net (Dawn)', load('perf-baseline.json')],
   ['Phase 8 before — rebuilt theme, pre-optimisation', load('perf-phase8-before.json')],
   ['Phase 8 after — rebuilt theme, optimised', load('perf-phase8-after.json')],
-  ['Phase 8 after, published-theme estimate', load('perf-phase8-after-published.json')]
+  ['Phase 8 after, measured on the live published theme', load('perf-phase8-after-published.json')]
 ];
 
 for (const [name, data] of SETS) {

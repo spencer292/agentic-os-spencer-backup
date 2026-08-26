@@ -57,6 +57,29 @@ conditions. Data corrections are a deliberate Phase 7 step delivered as a CSV fo
 Not replicated (yet): collections, navigation, pages, blog. Those are Phase 2 and Phase 6
 work built fresh rather than copied.
 
+## Where the build lives
+
+| | |
+|---|---|
+| **Store** | `syperformance-build.myshopify.com`, storefront password in `SHOPIFY_BUILD_STORE_PASSWORD` |
+| **Theme** | `157153820829` — "SYPerformance Rebuild", **published** on the build store |
+| **Review link** | `https://syperformance-build.myshopify.com/` — nothing else needed |
+| **Rollback** | stock `Horizon` (`156984213661`) sits unpublished on the store, one click away |
+
+Published on 2026-08-26, replacing development theme `157001318557`. Two reasons, both
+learned the hard way:
+
+- **Development themes are temporary.** Shopify deletes them after roughly a week of
+  inactivity, and the entire Phases 1-8 build was sitting on one.
+- **An unpublished theme needs a `?preview_theme_id=` link and a cookie to match**, and the
+  Shopify preview bar puts an "Exit preview" button next to it. One click sends the reviewer
+  to whatever theme is published — which was stock Horizon, so the site appeared to revert to
+  an untouched Shopify demo. It cost a round trip to diagnose. Publishing on the build store
+  removes the failure mode entirely; SY's real store is untouched either way.
+
+Point any script at a different theme with `SYP_THEME_ID=<id>`, which is how a candidate
+theme gets verified before it replaces the published one.
+
 ## Handover model
 
 1. Build here on the dev store.

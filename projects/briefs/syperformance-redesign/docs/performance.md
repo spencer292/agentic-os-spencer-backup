@@ -16,7 +16,7 @@ Mobile, Lighthouse throttling (4× CPU, 1.6 Mbps, 150 ms RTT):
 | Collection | **77** | **96** |
 | Product | **65** | **97** |
 
-Published-theme estimate (the preview-only scripts blocked — see §4): **98 / 98 / 97**.
+**Measured on the live theme: 98 / 98 / 96.** The rebuild was published on the build store on 2026-08-26 (theme `157153820829`), so this is no longer an estimate with the preview-only scripts subtracted — it is what a visitor gets: no preview cookie, no preview bar, no hot-reload client.
 
 These scores move by a point or two between runs — the mobile profile is 1.6 Mbps against a real network, so a single slow request shifts FCP by 100 ms. Across every batch measured, the three pages sat in a **96–98** band and never dropped below 96. The target was 85.
 
@@ -123,7 +123,7 @@ The other large number on the page is Shopify's own platform JavaScript — 335�
 - `scripts/perf-measure.mjs` drives installed Chrome over CDP under **the same throttling as the Phase 0 baseline** — 4× CPU, 1.6 Mbps / 150 ms RTT, cache disabled — so the two are directly comparable. Three runs per page; **medians**, not means, because one stalled request skews a mean badly on a real network.
 - `scripts/perf-score.mjs` applies **Lighthouse's own log-normal curves and weights** to those metrics. It does not run Lighthouse. Lighthouse itself needs a local install (checklist 6.3, still awaiting approval) and the PageSpeed API cannot reach a password-protected development store.
 - **Speed Index is not measured**, so the scores are over the other 90% of the weighting, renormalised. **INP is not measured either** — TBT is a load-time proxy for it, not a substitute.
-- Theme 157001318557 is a **development** theme, so Shopify serves it a hot-reload client, a preview bar and a perf kit that a published theme never gets. `--published` blocks all three; the difference is small (~30 KB, 4–5 requests) and the estimate is in `data/perf-phase8-after-published.json`.
+- The headline table was measured on development theme `157001318557`, which Shopify serves a hot-reload client, a preview bar and a perf kit that a published theme never gets. `--published` now authenticates *without* pinning a preview theme, so it measures the live published theme directly — `data/perf-phase8-after-published.json` is a measurement, not a subtraction. The two agree to within a point, which is the useful result: the preview overhead was never material (~30 KB, 4–5 requests).
 
 **These are close estimates, not an official audit.** Confirm with a real Lighthouse run once the theme is published on SY's store — that belongs in Phase 9.
 

@@ -32,9 +32,13 @@ function env() {
 }
 
 export const STORE = 'syperformance-build.myshopify.com';
-// The build theme. Overridable with SYP_THEME_ID so a candidate theme can be
-// verified before it is published, without editing this file.
-export const THEME_ID = process.env.SYP_THEME_ID || '157001318557';
+// The build theme — 157153820829 "SYPerformance Rebuild", published on the build
+// store 2026-08-26. It replaced development theme 157001318557, which was
+// temporary: Shopify deletes development themes after about a week of inactivity,
+// and being unpublished it also meant every reviewer had to opt in with a
+// ?preview_theme_id link that a single "Exit preview" click threw away.
+// Overridable with SYP_THEME_ID so a candidate can be verified before publishing.
+export const THEME_ID = process.env.SYP_THEME_ID || '157153820829';
 export const BASE = `https://${STORE}`;
 
 export function storefrontPassword() {
