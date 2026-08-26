@@ -1,0 +1,292 @@
+{%- comment -%}
+  SYPerformance header.
+
+  Replaces Horizon's stock header. Four things the stock one cannot do:
+
+  1. Platform-first nav with mega panels — the audit found SHOP BY BRAND and
+     SHOP BY PRODUCT both pointing at /collections, and single products sitting
+     at the same level as whole categories.
+  2. A slot for the fitment selector entry point (Phase 3). Every competitor
+     beating SY has a year/make/model filter; this is where it lives.
+  3. Slim and sticky. Horizon's header is generous with vertical space; on a
+     parts site the catalogue is the point, so the chrome gets out of the way.
+  4. The in-house manufacturing line, stated in the header rather than buried.
+
+  Cart drawer and search modal are Horizon's own, rendered globally from
+  layout/theme.liquid. We only trigger them, so that machinery keeps working.
+
+  The id="header-component" below is deliberate: the pre-paint measurement
+  script in layout/theme.liquid looks that id up to set --header-height.
+{%- endcomment -%}
+
+{{ 'syp-components.css' | asset_url | stylesheet_tag }}
+{{ 'syp-header.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'cart-icon.js' | asset_url }}" type="module" fetchpriority="low"></script>
+<script src="{{ 'syp-header.js' | asset_url }}" type="module" fetchpriority="low"></script>
+
+{%- liquid
+  assign nav = linklists[section.settings.menu]
+  assign logo = section.settings.logo
+-%}
+
+<div
+  id="header-component"
+  class="syp-header"
+  data-condense="{{ section.settings.condense_on_scroll }}"
+  style="--syp-logo-height: {{ section.settings.logo_height }}px;"
+>
+  <div class="syp-header__bar">
+    <button
+      class="syp-header__icon-btn syp-header__burger"
+      type="button"
+      data-syp-drawer-open
+      aria-haspopup="dialog"
+      aria-controls="syp-nav-drawer"
+      aria-label="{{ 'accessibility.menu' | t | default: 'Menu' }}"
+    >
+      <span class="syp-header__burger-lines" aria-hidden="true"></span>
+    </button>
+
+    <a class="syp-header__logo" href="{{ routes.root_url }}">
+      {%- if logo != blank -%}
+        {{
+          logo
+          | image_url: width: 480
+          | image_tag:
+            widths: '120, 240, 360, 480',
+            sizes: '(max-width: 749px) 130px, 190px',
+            alt: shop.name,
+            class: 'syp-header__logo-img'
+        }}
+      {%- else -%}
+        <span class="syp-header__wordmark">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    <nav class="syp-header__nav" aria-label="Primary">
+      <ul class="syp-header__nav-list">
+        {%- for link in nav.links -%}
+          {%- liquid
+            assign is_featured = false
+            if section.settings.feature_first_item and forloop.first
+              assign is_featured = true
+            endif
+          -%}
+          {%- if link.links.size > 0 -%}
+            <li class="syp-header__nav-item syp-header__nav-item--has-panel">
+              <button
+                class="syp-header__nav-link{% if is_featured %} syp-header__nav-link--featured{% endif %}"
+                type="button"
+                aria-expanded="false"
+                aria-controls="syp-panel-{{ forloop.index }}"
+                data-syp-panel-trigger
+              >
+                {{ link.title }}
+                <span class="syp-header__caret" aria-hidden="true"></span>
+              </button>
+
+              <div class="syp-header__panel" id="syp-panel-{{ forloop.index }}" hidden>
+                <div class="syp-header__panel-inner">
+                  {%- for child in link.links -%}
+                    <div class="syp-header__panel-col">
+                      {%- if child.links.size > 0 -%}
+                        <a class="syp-label syp-header__panel-heading" href="{{ child.url }}">{{ child.title }}</a>
+                        <ul class="syp-header__panel-list">
+                          {%- for grandchild in child.links -%}
+                            <li><a href="{{ grandchild.url }}">{{ grandchild.title }}</a></li>
+                          {%- endfor -%}
+                        </ul>
+                      {%- else -%}
+                        <ul class="syp-header__panel-list syp-header__panel-list--flat">
+                          <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                        </ul>
+                      {%- endif -%}
+                    </div>
+                  {%- endfor -%}
+
+                  {%- if section.settings.panel_note != blank -%}
+                    <p class="syp-header__panel-note syp-spec">{{ section.settings.panel_note }}</p>
+                  {%- endif -%}
+                </div>
+              </div>
+            </li>
+          {%- else -%}
+            <li class="syp-header__nav-item">
+              <a
+                class="syp-header__nav-link{% if is_featured %} syp-header__nav-link--featured{% endif %}"
+                href="{{ link.url }}"
+                {% if link.current %}
+                  aria-current="page"
+                {% endif %}
+              >{{ link.title }}</a>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <header-actions class="syp-header__actions">
+      {%- if section.settings.show_fitment -%}
+        {%- comment -%}
+          Entry point only. The selector itself is Phase 3; it listens for
+          syp:fitment:open. Until then this is wired but has nothing to open,
+          so it sits behind a setting that can be switched off.
+        {%- endcomment -%}
+        {%- if section.settings.fitment_url != blank -%}
+          <a class="syp-header__fitment" href="{{ section.settings.fitment_url }}" data-syp-fitment>
+            <span class="syp-header__fitment-icon" aria-hidden="true"></span>
+            <span class="syp-header__fitment-label" data-syp-fitment-label>
+              {{- section.settings.fitment_label -}}
+            </span>
+          </a>
+        {%- else -%}
+          <button class="syp-header__fitment" type="button" data-syp-fitment>
+            <span class="syp-header__fitment-icon" aria-hidden="true"></span>
+            <span class="syp-header__fitment-label" data-syp-fitment-label>
+              {{- section.settings.fitment_label -}}
+            </span>
+          </button>
+        {%- endif -%}
+      {%- endif -%}
+
+      <button
+        class="syp-header__icon-btn"
+        type="button"
+        on:click="#search-modal/showDialog"
+        aria-haspopup="dialog"
+        aria-label="{{ 'content.search_input_label' | t }}"
+      >
+        <span class="svg-wrapper" aria-hidden="true">{{ 'icon-search.svg' | inline_asset_content }}</span>
+      </button>
+
+      {%- if settings.cart_type == 'drawer' and template.name != 'cart' -%}
+        <button
+          class="syp-header__icon-btn syp-header__cart"
+          type="button"
+          on:click="#cart-drawer/toggle"
+          aria-haspopup="dialog"
+          aria-expanded="false"
+          aria-controls="cart-drawer"
+          aria-label="{{ 'accessibility.cart' | t }}"
+        >
+          <cart-icon class="syp-header__cart-icon">
+            <span class="svg-wrapper" aria-hidden="true">{{ 'icon-cart.svg' | inline_asset_content }}</span>
+            {% render 'cart-bubble', limit: 100 %}
+          </cart-icon>
+        </button>
+      {%- else -%}
+        <a
+          class="syp-header__icon-btn syp-header__cart"
+          href="{{ routes.cart_url }}"
+          aria-label="{{ 'accessibility.cart' | t }}"
+        >
+          <cart-icon class="syp-header__cart-icon">
+            <span class="svg-wrapper" aria-hidden="true">{{ 'icon-cart.svg' | inline_asset_content }}</span>
+            {% render 'cart-bubble', limit: 100 %}
+          </cart-icon>
+        </a>
+      {%- endif -%}
+
+      <span ref="liveRegion" class="visually-hidden" role="status"></span>
+    </header-actions>
+  </div>
+
+  {%- if section.settings.spec_line != blank -%}
+    <p class="syp-header__spec-line syp-spec">{{ section.settings.spec_line }}</p>
+  {%- endif -%}
+</div>
+
+<dialog class="syp-drawer" id="syp-nav-drawer" aria-label="Menu">
+  <div class="syp-drawer__head">
+    <span class="syp-label">Menu</span>
+    <button class="syp-header__icon-btn" type="button" data-syp-drawer-close aria-label="Close">
+      <span class="syp-drawer__close" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <nav class="syp-drawer__nav" aria-label="Primary mobile">
+    <ul class="syp-drawer__list">
+      {%- for link in nav.links -%}
+        <li>
+          {%- if link.links.size > 0 -%}
+            <details class="syp-drawer__group">
+              <summary>{{ link.title }}</summary>
+              <ul class="syp-drawer__sublist">
+                {%- for child in link.links -%}
+                  <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                  {%- for grandchild in child.links -%}
+                    <li class="syp-drawer__deep"><a href="{{ grandchild.url }}">{{ grandchild.title }}</a></li>
+                  {%- endfor -%}
+                {%- endfor -%}
+              </ul>
+            </details>
+          {%- else -%}
+            <a class="syp-drawer__link" href="{{ link.url }}">{{ link.title }}</a>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </nav>
+</dialog>
+
+{% schema %}
+{
+  "name": "SYP header",
+  "tag": "header",
+  "class": "syp-header-section",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "label": "Logo height",
+      "min": 16,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+    {
+      "type": "checkbox",
+      "id": "feature_first_item",
+      "label": "Accent the first menu item",
+      "info": "Puts the accent colour on the in-house billet menu so manufactured parts read first.",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "panel_note",
+      "label": "Mega panel note",
+      "default": "Machined in-house - built to order"
+    },
+    { "type": "header", "content": "Header line" },
+    {
+      "type": "text",
+      "id": "spec_line",
+      "label": "Spec line",
+      "info": "Sits under the bar. Keep it factual - this is where the manufacturing claim goes.",
+      "default": "In-house billet drivetrain - Honda B/K - Evo 8/9/X - B58"
+    },
+    { "type": "header", "content": "Fitment" },
+    {
+      "type": "checkbox",
+      "id": "show_fitment",
+      "label": "Show fitment entry point",
+      "info": "The selector itself is built in Phase 3. Leave on to reserve the slot.",
+      "default": true
+    },
+    { "type": "text", "id": "fitment_label", "label": "Fitment label", "default": "Select vehicle" },
+    {
+      "type": "url",
+      "id": "fitment_url",
+      "label": "Fitment page URL",
+      "info": "Leave blank once the Phase 3 selector is live - it opens in place instead."
+    },
+    { "type": "header", "content": "Behaviour" },
+    { "type": "checkbox", "id": "condense_on_scroll", "label": "Condense on scroll", "default": true }
+  ],
+  "presets": [{ "name": "SYP header" }]
+}
+{% endschema %}

@@ -1,0 +1,204 @@
+/* ==========================================================================
+   SYPerformance — footer
+   --------------------------------------------------------------------------
+   Rendered by sections/syp-footer.liquid. Tokens only, no literals.
+
+   Layout intent: the signup owns the left third because it is the only
+   conversion down here; the link groups sit in a hairline-ruled grid to the
+   right so the trust pages (warranty, lead times, dealer, shop tour) read as
+   a directory rather than as legal small print.
+   ========================================================================== */
+
+.syp-footer {
+  background-color: var(--syp-bg);
+  color: var(--syp-text);
+  border-top: var(--syp-hairline) solid var(--syp-rule);
+  font-family: var(--syp-font-body);
+  font-size: var(--syp-text-base);
+  line-height: var(--syp-leading-normal);
+}
+
+.syp-footer__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--syp-space-2xl);
+  max-width: var(--page-width, 1400px);
+  margin-inline: auto;
+  padding: var(--syp-space-3xl) var(--syp-space-lg) var(--syp-space-2xl);
+}
+
+@media screen and (min-width: 900px) {
+  .syp-footer__inner {
+    grid-template-columns: minmax(18rem, 24rem) minmax(0, 1fr);
+    gap: var(--syp-space-4xl);
+    padding-inline: var(--syp-space-xl);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Signup
+   -------------------------------------------------------------------------- */
+
+.syp-footer__signup-title {
+  margin: var(--syp-space-sm) 0 0;
+  font-family: var(--syp-font-display);
+  font-size: var(--syp-text-xl);
+  font-weight: var(--syp-weight-semibold);
+  line-height: var(--syp-leading-snug);
+  letter-spacing: var(--syp-tracking-tight);
+  color: var(--syp-text-strong);
+  text-wrap: balance;
+}
+
+.syp-footer__signup-reason {
+  margin: var(--syp-space-sm) 0 0;
+  max-width: 40ch;
+  color: var(--syp-text-muted);
+  font-size: var(--syp-text-sm);
+}
+
+.syp-footer__form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--syp-space-xs);
+  margin-top: var(--syp-space-lg);
+}
+
+.syp-footer__input {
+  flex: 1 1 12rem;
+  min-width: 0;
+  padding: var(--syp-space-sm) var(--syp-space-md);
+  background-color: var(--syp-graphite-600);
+  border: var(--syp-hairline) solid var(--syp-rule-strong);
+  border-radius: var(--syp-radius-md);
+  color: var(--syp-text-strong);
+  font-family: var(--syp-font-spec);
+  font-size: var(--syp-text-sm);
+  line-height: 1;
+  /* Match the button's box so the pair sits on one baseline. */
+  min-height: 2.75rem;
+}
+
+.syp-footer__input::placeholder {
+  color: var(--syp-text-faint);
+}
+
+.syp-footer__input:hover {
+  border-color: var(--syp-steel-300);
+}
+
+.syp-footer__form .syp-btn {
+  min-height: 2.75rem;
+}
+
+.syp-footer__form-message {
+  flex: 1 0 100%;
+  margin: 0;
+  font-family: var(--syp-font-spec);
+  font-size: var(--syp-text-xs);
+  color: var(--syp-ok);
+}
+
+.syp-footer__form-message--error {
+  color: var(--syp-error);
+}
+
+/* --------------------------------------------------------------------------
+   Link groups
+   -------------------------------------------------------------------------- */
+
+.syp-footer__nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: var(--syp-space-xl) var(--syp-space-lg);
+}
+
+.syp-footer__group > .syp-label {
+  margin: 0 0 var(--syp-space-sm);
+  padding-bottom: var(--syp-space-xs);
+  border-bottom: var(--syp-hairline) solid var(--syp-rule);
+  color: var(--syp-text-strong);
+}
+
+.syp-footer__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--syp-space-xs);
+  font-size: var(--syp-text-sm);
+}
+
+.syp-footer__list a {
+  color: var(--syp-text);
+  text-decoration: none;
+  transition: color var(--syp-duration) var(--syp-ease);
+}
+
+.syp-footer__list a:hover {
+  color: var(--syp-accent);
+}
+
+/* A page Phase 6 has not built yet. Shown so the directory is complete, but
+   never as a link that goes nowhere. */
+.syp-footer__pending {
+  color: var(--syp-text-faint);
+  cursor: default;
+}
+
+/* --------------------------------------------------------------------------
+   Base line
+   -------------------------------------------------------------------------- */
+
+.syp-footer__base {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--syp-space-sm) var(--syp-space-lg);
+  max-width: var(--page-width, 1400px);
+  margin-inline: auto;
+  padding: var(--syp-space-md) var(--syp-space-lg) var(--syp-space-2xl);
+  border-top: var(--syp-hairline) solid var(--syp-rule-faint);
+}
+
+@media screen and (min-width: 900px) {
+  .syp-footer__base {
+    padding-inline: var(--syp-space-xl);
+  }
+}
+
+.syp-footer__legal,
+.syp-footer__built {
+  margin: 0;
+  font-size: var(--syp-text-xs);
+  color: var(--syp-text-faint);
+}
+
+.syp-footer__built {
+  letter-spacing: var(--syp-tracking-wide);
+  text-transform: uppercase;
+}
+
+.syp-footer__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--syp-space-md);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.syp-footer__social a {
+  font-family: var(--syp-font-spec);
+  font-size: var(--syp-text-xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--syp-text-muted);
+  transition: color var(--syp-duration) var(--syp-ease);
+}
+
+.syp-footer__social a:hover {
+  color: var(--syp-accent);
+}

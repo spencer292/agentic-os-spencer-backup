@@ -1,0 +1,208 @@
+{%- comment -%}
+  SYPerformance footer.
+
+  Replaces Horizon's stock footer. Two jobs the old syperformance.net footer did
+  not do: give a real reason to subscribe (the live site has a bare "Subscribe to
+  our emails" box), and expose the trust pages — warranty, lead times, dealer
+  program, shop tour — that the audit found do not exist yet.
+
+  Link targets are schema settings so they can be repointed as Phase 6 creates
+  the pages. Any link left blank renders as plain text rather than a dead link.
+{%- endcomment -%}
+
+{{ 'syp-components.css' | asset_url | stylesheet_tag }}
+{{ 'syp-footer.css' | asset_url | stylesheet_tag }}
+
+<div class="syp-footer">
+  <div class="syp-footer__inner">
+    {%- comment -%} Signup gets top billing: it is the only conversion in the footer. {%- endcomment -%}
+    <div class="syp-footer__signup">
+      <p class="syp-label">{{ section.settings.signup_eyebrow }}</p>
+      <h2 class="syp-footer__signup-title">{{ section.settings.signup_title }}</h2>
+      <p class="syp-footer__signup-reason">{{ section.settings.signup_reason }}</p>
+
+      {%- form 'customer', class: 'syp-footer__form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <label class="visually-hidden" for="syp-footer-email">{{ 'blocks.email_signup.label' | t }}</label>
+        <input
+          id="syp-footer-email"
+          class="syp-footer__input"
+          type="email"
+          name="contact[email]"
+          placeholder="{{ section.settings.signup_placeholder }}"
+          autocomplete="email"
+          required
+        >
+        {% render 'syp-button', label: section.settings.signup_button, variant: 'primary', type: 'submit' %}
+
+        {%- if form.errors -%}
+          <p class="syp-footer__form-message syp-footer__form-message--error">
+            {{ form.errors.messages['email'] }}
+          </p>
+        {%- elsif form.posted_successfully? -%}
+          <p class="syp-footer__form-message">{{ section.settings.signup_success }}</p>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+
+    <nav class="syp-footer__nav" aria-label="Footer">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'link_group' -%}
+          <div class="syp-footer__group" {{ block.shopify_attributes }}>
+            <h3 class="syp-label">{{ block.settings.heading }}</h3>
+            <ul class="syp-footer__list">
+              {%- for i in (1..6) -%}
+                {%- liquid
+                  assign label_key = 'label_' | append: i
+                  assign url_key = 'url_' | append: i
+                  assign label = block.settings[label_key]
+                  assign url = block.settings[url_key]
+                -%}
+                {%- if label != blank -%}
+                  <li>
+                    {%- if url != blank -%}
+                      <a href="{{ url }}">{{ label }}</a>
+                    {%- else -%}
+                      {%- comment -%} Page not built yet: show it, but never as a dead link. {%- endcomment -%}
+                      <span class="syp-footer__pending">{{ label }}</span>
+                    {%- endif -%}
+                  </li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+      <div class="syp-footer__group">
+        <h3 class="syp-label">Policies</h3>
+        <ul class="syp-footer__list">
+          {%- for policy in shop.policies -%}
+            {%- if policy != blank -%}
+              <li><a href="{{ policy.url }}">{{ policy.title }}</a></li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="syp-footer__base">
+    <p class="syp-footer__legal">
+      &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ section.settings.legal_note }}
+    </p>
+
+    {%- assign has_social = false -%}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'social_link' and block.settings.url != blank -%}
+        {%- assign has_social = true -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if has_social -%}
+      <ul class="syp-footer__social" aria-label="Social">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'social_link' and block.settings.url != blank -%}
+            <li {{ block.shopify_attributes }}>
+              <a href="{{ block.settings.url }}" rel="me noopener">{{ block.settings.label }}</a>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+    {%- if section.settings.built_line != blank -%}
+      <p class="syp-footer__built syp-spec">{{ section.settings.built_line }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "SYP footer",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Email signup" },
+    { "type": "text", "id": "signup_eyebrow", "label": "Eyebrow", "default": "Mailing list" },
+    { "type": "text", "id": "signup_title", "label": "Title", "default": "Know first when parts land" },
+    {
+      "type": "textarea",
+      "id": "signup_reason",
+      "label": "Reason to subscribe",
+      "info": "Give a concrete reason. Batches are small and restocks sell out - say so.",
+      "default": "New billet releases and restock alerts. Production runs are small and drivetrain parts go quickly - subscribers hear before anyone else."
+    },
+    { "type": "text", "id": "signup_placeholder", "label": "Input placeholder", "default": "you@example.com" },
+    { "type": "text", "id": "signup_button", "label": "Button label", "default": "Notify me" },
+    { "type": "text", "id": "signup_success", "label": "Success message", "default": "You're on the list." },
+    { "type": "header", "content": "Base" },
+    { "type": "text", "id": "legal_note", "label": "Legal note", "default": "All rights reserved." },
+    { "type": "text", "id": "built_line", "label": "Built line", "default": "Designed and machined in-house" }
+  ],
+  "blocks": [
+    {
+      "type": "link_group",
+      "name": "Link group",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Company" },
+        { "type": "text", "id": "label_1", "label": "Link 1 label" },
+        { "type": "url", "id": "url_1", "label": "Link 1 URL" },
+        { "type": "text", "id": "label_2", "label": "Link 2 label" },
+        { "type": "url", "id": "url_2", "label": "Link 2 URL" },
+        { "type": "text", "id": "label_3", "label": "Link 3 label" },
+        { "type": "url", "id": "url_3", "label": "Link 3 URL" },
+        { "type": "text", "id": "label_4", "label": "Link 4 label" },
+        { "type": "url", "id": "url_4", "label": "Link 4 URL" },
+        { "type": "text", "id": "label_5", "label": "Link 5 label" },
+        { "type": "url", "id": "url_5", "label": "Link 5 URL" },
+        { "type": "text", "id": "label_6", "label": "Link 6 label" },
+        { "type": "url", "id": "url_6", "label": "Link 6 URL" }
+      ]
+    },
+    {
+      "type": "social_link",
+      "name": "Social link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Instagram" },
+        { "type": "url", "id": "url", "label": "URL" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SYP footer",
+      "blocks": [
+        {
+          "type": "link_group",
+          "settings": {
+            "heading": "Company",
+            "label_1": "About / Shop tour",
+            "label_2": "Dealer program",
+            "label_3": "Contact"
+          }
+        },
+        {
+          "type": "link_group",
+          "settings": {
+            "heading": "Buying",
+            "label_1": "Warranty",
+            "label_2": "Lead times",
+            "label_3": "Shipping",
+            "label_4": "Returns"
+          }
+        },
+        {
+          "type": "link_group",
+          "settings": {
+            "heading": "Technical",
+            "label_1": "Tech articles",
+            "label_2": "Install guides",
+            "label_3": "Build gallery"
+          }
+        },
+        { "type": "social_link", "settings": { "label": "Instagram" } },
+        { "type": "social_link", "settings": { "label": "YouTube" } },
+        { "type": "social_link", "settings": { "label": "Facebook" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

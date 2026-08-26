@@ -1,0 +1,508 @@
+/* ==========================================================================
+   SYPerformance — header
+   --------------------------------------------------------------------------
+   Rendered by sections/syp-header.liquid. Tokens only, no literals.
+
+   Layout intent: one slim bar, then a hairline, then a spec line. The bar is
+   a three-column grid (logo / nav / actions) so the logo never shifts as the
+   nav grows — part sites add platforms constantly and the header must not
+   re-centre every time one lands.
+   ========================================================================== */
+
+:root {
+  /* Fallback for Horizon's own consumers before the measure script runs. */
+  --syp-header-height: 3.5rem;
+  --syp-header-height-condensed: 3rem;
+}
+
+/* Horizon does not scroll the document on desktop: at 990px and up html/body
+   are locked to 100dvh and .page-wrapper becomes the scroll container. Sticky
+   resolves against that container, but the section sits one level down inside
+   #header-group — a box only as tall as the header itself, so sticky would
+   have nothing to travel over. `display: contents` lifts the section to be a
+   direct child of the scroller. Horizon's own header does exactly this; see
+   the `#header-group:has(#header-component[sticky])` rule in header.liquid. */
+#header-group:has(> .syp-header-section) {
+  display: contents;
+}
+
+.syp-header-section {
+  position: sticky;
+  top: 0;
+  z-index: var(--layer-menu-drawer, 50);
+  display: block;
+}
+
+.syp-header {
+  background-color: var(--syp-bg);
+  border-bottom: var(--syp-hairline) solid var(--syp-rule);
+  color: var(--syp-text);
+  font-family: var(--syp-font-body);
+}
+
+.syp-header__bar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--syp-space-lg);
+  max-width: var(--page-width, 1400px);
+  margin-inline: auto;
+  padding: var(--syp-space-sm) var(--syp-space-lg);
+  min-height: var(--syp-header-height);
+  transition: min-height var(--syp-duration) var(--syp-ease),
+    padding var(--syp-duration) var(--syp-ease);
+}
+
+/* Condensed state: the bar gives back ~8px of viewport once you start
+   reading. Deliberately small — a header that visibly collapses is a
+   distraction on a catalogue page. */
+.syp-header[data-condense='true'][data-scrolled='true'] .syp-header__bar {
+  min-height: var(--syp-header-height-condensed);
+  padding-block: var(--syp-space-xs);
+}
+
+.syp-header[data-condense='true'][data-scrolled='true'] .syp-header__spec-line {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Logo
+   -------------------------------------------------------------------------- */
+
+.syp-header__logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--syp-text-strong);
+}
+
+.syp-header__logo-img {
+  display: block;
+  height: var(--syp-logo-height, 1.75rem);
+  width: auto;
+}
+
+.syp-header__wordmark {
+  font-family: var(--syp-font-display);
+  font-size: var(--syp-text-md);
+  font-weight: var(--syp-weight-bold);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   Nav
+   -------------------------------------------------------------------------- */
+
+.syp-header__nav {
+  display: none;
+  min-width: 0;
+}
+
+@media screen and (min-width: 990px) {
+  .syp-header__nav {
+    display: block;
+  }
+}
+
+.syp-header__nav-list {
+  display: flex;
+  align-items: center;
+  gap: var(--syp-space-lg);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.syp-header__nav-item {
+  position: relative;
+}
+
+.syp-header__nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--syp-space-2xs);
+  padding: var(--syp-space-xs) 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--syp-text);
+  font-family: var(--syp-font-spec);
+  font-size: var(--syp-text-xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--syp-duration) var(--syp-ease);
+}
+
+.syp-header__nav-link:hover,
+.syp-header__nav-item--has-panel [aria-expanded='true'] {
+  color: var(--syp-text-strong);
+}
+
+/* The in-house billet menu. The one place the accent appears in the nav —
+   manufactured parts are the point of the site. */
+.syp-header__nav-link--featured {
+  color: var(--syp-accent);
+}
+
+.syp-header__nav-link--featured:hover {
+  color: var(--syp-accent-hover);
+}
+
+.syp-header__nav-link[aria-current='page'] {
+  color: var(--syp-text-strong);
+  box-shadow: inset 0 -2px 0 0 var(--syp-accent);
+}
+
+.syp-header__caret {
+  width: 0.375rem;
+  height: 0.375rem;
+  border-right: var(--syp-hairline) solid currentcolor;
+  border-bottom: var(--syp-hairline) solid currentcolor;
+  transform: translateY(-1px) rotate(45deg);
+  transition: transform var(--syp-duration) var(--syp-ease);
+}
+
+[aria-expanded='true'] > .syp-header__caret {
+  transform: translateY(1px) rotate(-135deg);
+}
+
+/* --------------------------------------------------------------------------
+   Mega panel
+   Full-bleed so the columns line up with the page grid rather than with the
+   trigger. Reads as a drawer of the header, not a floating card.
+   -------------------------------------------------------------------------- */
+
+.syp-header__panel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  translate: -50% 0;
+  width: max-content;
+  max-width: min(60rem, calc(100vw - var(--syp-space-xl)));
+  margin-top: var(--syp-space-sm);
+  background-color: var(--syp-bg-raised);
+  border: var(--syp-hairline) solid var(--syp-rule);
+  border-radius: var(--syp-radius-md);
+}
+
+.syp-header__panel[hidden] {
+  display: none;
+}
+
+.syp-header__panel-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: var(--syp-space-lg) var(--syp-space-xl);
+  padding: var(--syp-space-lg);
+}
+
+.syp-header__panel-heading {
+  display: block;
+  margin-bottom: var(--syp-space-sm);
+  padding-bottom: var(--syp-space-2xs);
+  border-bottom: var(--syp-hairline) solid var(--syp-rule);
+  color: var(--syp-text-strong);
+  text-decoration: none;
+}
+
+.syp-header__panel-heading:hover {
+  color: var(--syp-accent);
+}
+
+.syp-header__panel-list {
+  display: grid;
+  gap: var(--syp-space-xs);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--syp-text-sm);
+}
+
+.syp-header__panel-list a {
+  color: var(--syp-text);
+  text-decoration: none;
+  transition: color var(--syp-duration) var(--syp-ease);
+}
+
+.syp-header__panel-list a:hover {
+  color: var(--syp-accent);
+}
+
+.syp-header__panel-note {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-top: var(--syp-space-sm);
+  border-top: var(--syp-hairline) solid var(--syp-rule-faint);
+  font-size: var(--syp-text-2xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  color: var(--syp-text-faint);
+}
+
+/* --------------------------------------------------------------------------
+   Actions
+   -------------------------------------------------------------------------- */
+
+.syp-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--syp-space-xs);
+  justify-self: end;
+}
+
+.syp-header__icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: var(--syp-radius-md);
+  cursor: pointer;
+  color: var(--syp-text);
+  text-decoration: none;
+  transition: color var(--syp-duration) var(--syp-ease),
+    background-color var(--syp-duration) var(--syp-ease);
+}
+
+.syp-header__icon-btn:hover {
+  background-color: var(--syp-bg-hover);
+  color: var(--syp-text-strong);
+}
+
+.syp-header__icon-btn svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.syp-header__cart-icon {
+  position: relative;
+  display: inline-flex;
+}
+
+/* Fitment entry point. Square, monospace, bordered — it should read as an
+   instrument, because it is the one control that changes what the whole
+   catalogue shows. */
+.syp-header__fitment {
+  display: none;
+  align-items: center;
+  gap: var(--syp-space-xs);
+  max-width: 16rem;
+  padding: var(--syp-space-xs) var(--syp-space-sm);
+  background: none;
+  border: var(--syp-hairline) solid var(--syp-rule-strong);
+  border-radius: var(--syp-radius-md);
+  cursor: pointer;
+  color: var(--syp-text-muted);
+  font-family: var(--syp-font-spec);
+  font-size: var(--syp-text-2xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: border-color var(--syp-duration) var(--syp-ease),
+    color var(--syp-duration) var(--syp-ease);
+}
+
+@media screen and (min-width: 750px) {
+  .syp-header__fitment {
+    display: inline-flex;
+  }
+}
+
+.syp-header__fitment:hover {
+  border-color: var(--syp-accent);
+  color: var(--syp-text-strong);
+}
+
+/* Once a vehicle is saved the control earns the accent — it is now filtering
+   what you see, and that must be visible at a glance. */
+.syp-header__fitment[data-syp-fitment-set='true'] {
+  border-color: var(--syp-accent);
+  color: var(--syp-accent);
+}
+
+.syp-header__fitment-icon {
+  flex: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  border: var(--syp-hairline) solid currentcolor;
+  border-radius: 50%;
+}
+
+.syp-header__fitment-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   Spec line
+   -------------------------------------------------------------------------- */
+
+.syp-header__spec-line {
+  max-width: var(--page-width, 1400px);
+  margin: 0 auto;
+  padding: var(--syp-space-2xs) var(--syp-space-lg) var(--syp-space-xs);
+  border-top: var(--syp-hairline) solid var(--syp-rule-faint);
+  font-size: var(--syp-text-2xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  color: var(--syp-text-faint);
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   Burger
+   -------------------------------------------------------------------------- */
+
+.syp-header__burger {
+  display: inline-flex;
+}
+
+@media screen and (min-width: 990px) {
+  .syp-header__burger {
+    display: none;
+  }
+}
+
+.syp-header__burger-lines,
+.syp-header__burger-lines::before,
+.syp-header__burger-lines::after {
+  display: block;
+  width: 1.125rem;
+  height: var(--syp-hairline);
+  background-color: currentcolor;
+}
+
+.syp-header__burger-lines::before,
+.syp-header__burger-lines::after {
+  content: '';
+  position: relative;
+}
+
+.syp-header__burger-lines::before {
+  top: -0.3125rem;
+}
+
+.syp-header__burger-lines::after {
+  top: 0.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   Mobile drawer
+   Native <dialog> so focus trapping, Escape and inert background come from
+   the platform rather than from theme JS.
+   -------------------------------------------------------------------------- */
+
+.syp-drawer {
+  width: min(22rem, 88vw);
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0 auto 0 0;
+  padding: 0;
+  background-color: var(--syp-bg);
+  border: 0;
+  border-right: var(--syp-hairline) solid var(--syp-rule);
+  color: var(--syp-text);
+}
+
+.syp-drawer[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.syp-drawer::backdrop {
+  background-color: rgb(14 16 19 / 70%);
+}
+
+.syp-drawer__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--syp-space-sm) var(--syp-space-md);
+  border-bottom: var(--syp-hairline) solid var(--syp-rule);
+}
+
+.syp-drawer__close {
+  position: relative;
+  display: block;
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.syp-drawer__close::before,
+.syp-drawer__close::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: var(--syp-hairline);
+  background-color: currentcolor;
+}
+
+.syp-drawer__close::before {
+  transform: rotate(45deg);
+}
+
+.syp-drawer__close::after {
+  transform: rotate(-45deg);
+}
+
+/* min-height:0 lets the nav shrink inside the flex column so a short menu
+   does not force a scrollbar; overflow only engages once it actually
+   overflows. */
+.syp-drawer__nav {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--syp-space-md);
+}
+
+.syp-drawer__list,
+.syp-drawer__sublist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.syp-drawer__list > li {
+  border-bottom: var(--syp-hairline) solid var(--syp-rule-faint);
+}
+
+.syp-drawer__group > summary,
+.syp-drawer__link {
+  display: block;
+  padding: var(--syp-space-sm) 0;
+  cursor: pointer;
+  color: var(--syp-text-strong);
+  font-family: var(--syp-font-spec);
+  font-size: var(--syp-text-xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.syp-drawer__sublist {
+  padding-bottom: var(--syp-space-sm);
+  display: grid;
+  gap: var(--syp-space-xs);
+  font-size: var(--syp-text-sm);
+}
+
+.syp-drawer__sublist a {
+  color: var(--syp-text);
+  text-decoration: none;
+}
+
+.syp-drawer__deep a {
+  padding-left: var(--syp-space-md);
+  color: var(--syp-text-muted);
+}
