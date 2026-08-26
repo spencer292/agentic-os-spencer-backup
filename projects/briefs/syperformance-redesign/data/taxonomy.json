@@ -130,8 +130,8 @@
       "title": "B Series Coolant Flanges",
       "platform": "Honda B",
       "platformKey": "honda-b-d-h-series",
-      "system": "forced-induction",
-      "partType": "turbo-flanges",
+      "system": "cooling",
+      "partType": "coolant-necks",
       "inHouse": true,
       "brand": "SYPerformance"
     },
@@ -142,7 +142,7 @@
       "platform": "Universal / fab",
       "platformKey": "universal",
       "system": "forced-induction",
-      "partType": "downpipes",
+      "partType": "turbo-flanges",
       "inHouse": true,
       "brand": "SYPerformance"
     },
@@ -164,7 +164,7 @@
       "platform": "Evo 8/9",
       "platformKey": "mitsubishi-evo-7-8-9",
       "system": "forced-induction",
-      "partType": "downpipes",
+      "partType": "turbo-flanges",
       "inHouse": true,
       "brand": "SYPerformance"
     },
@@ -197,7 +197,7 @@
       "platform": "Honda B",
       "platformKey": "honda-b-d-h-series",
       "system": "cooling",
-      "partType": "coolant-necks",
+      "partType": "fill-pots-tanks",
       "inHouse": false,
       "brand": "SYPerformance"
     },
@@ -208,7 +208,7 @@
       "platform": "Honda B",
       "platformKey": "honda-b-d-h-series",
       "system": "cooling",
-      "partType": "coolant-necks",
+      "partType": "fill-pots-tanks",
       "inHouse": false,
       "brand": "SYPerformance"
     },
@@ -230,7 +230,7 @@
       "platform": "Unclassified",
       "platformKey": "unassigned",
       "system": "forced-induction",
-      "partType": "turbos",
+      "partType": "wastegates-bov",
       "inHouse": false,
       "brand": "Pulsar"
     },
@@ -240,8 +240,8 @@
       "title": "Honda Sfwd Intercooler B/D/H Series",
       "platform": "Honda B + Honda H/F",
       "platformKey": "honda-b-d-h-series",
-      "system": "forced-induction",
-      "partType": "turbo-kits",
+      "system": "cooling",
+      "partType": "intercoolers",
       "inHouse": true,
       "brand": "SYPerformance"
     },
@@ -549,7 +549,7 @@
       "platform": "B58/BMW-Toyota",
       "platformKey": "bmw-toyota-b58",
       "system": "forced-induction",
-      "partType": "turbo-manifolds",
+      "partType": "turbo-flanges",
       "inHouse": true,
       "brand": "SYPerformance"
     },
@@ -1154,7 +1154,7 @@
       "platform": "Unclassified",
       "platformKey": "unassigned",
       "system": "fabrication",
-      "partType": "hardware-studs",
+      "partType": "shop-hardware",
       "inHouse": false,
       "brand": "SYPerformance"
     },
@@ -1484,7 +1484,7 @@
       "platform": "Honda K",
       "platformKey": "honda-k-series",
       "system": "cooling",
-      "partType": "coolant-necks",
+      "partType": "fill-pots-tanks",
       "inHouse": true,
       "brand": "SYPerformance"
     },
@@ -1649,7 +1649,7 @@
       "platform": "B58/BMW-Toyota",
       "platformKey": "bmw-toyota-b58",
       "system": "forced-induction",
-      "partType": "turbo-kits",
+      "partType": "boost-control",
       "inHouse": false,
       "brand": "SYPerformance"
     },
@@ -1780,8 +1780,8 @@
       "title": "Evo X Titanium Exhaust Manifold Studs",
       "platform": "Evo X",
       "platformKey": "mitsubishi-evo-x",
-      "system": "forced-induction",
-      "partType": "turbo-manifolds",
+      "system": "engine",
+      "partType": "engine-hardware",
       "inHouse": true,
       "brand": "SYPerformance"
     },
@@ -1868,8 +1868,8 @@
       "title": "Honda K Series Titanium Exhaust Manifold Studs",
       "platform": "Honda K",
       "platformKey": "honda-k-series",
-      "system": "forced-induction",
-      "partType": "turbo-manifolds",
+      "system": "engine",
+      "partType": "engine-hardware",
       "inHouse": true,
       "brand": "SYPerformance"
     },
@@ -1879,8 +1879,8 @@
       "title": "Titanium Turbo Manifold Shorty Studs M10x1.5",
       "platform": "Universal / fab",
       "platformKey": "universal",
-      "system": "forced-induction",
-      "partType": "turbo-manifolds",
+      "system": "engine",
+      "partType": "engine-hardware",
       "inHouse": true,
       "brand": "SYPerformance"
     },
@@ -1957,7 +1957,7 @@
       "platform": "Honda K",
       "platformKey": "honda-k-series",
       "system": "engine",
-      "partType": "timing",
+      "partType": "accessory-drive",
       "inHouse": false,
       "brand": "SYPerformance"
     },

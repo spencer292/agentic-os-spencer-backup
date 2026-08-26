@@ -193,6 +193,23 @@
   border-radius: var(--syp-radius-md);
 }
 
+/* The panel sits `margin-top` below the trigger, which looks right and made the
+   menu unusable: that gap is outside the nav item's box, so moving the pointer
+   down from "Honda" toward the panel crossed 12px of nothing, fired pointerleave
+   on the item, and closed the panel before it could be reached.
+
+   This bridges the gap with a transparent block above the panel so the pointer
+   path is continuous. It is inset to the panel's own width on purpose — extending
+   it sideways would swallow hovers over the neighbouring nav items. */
+.syp-header__panel::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  height: var(--syp-space-sm);
+}
+
 .syp-header__panel[hidden] {
   display: none;
 }

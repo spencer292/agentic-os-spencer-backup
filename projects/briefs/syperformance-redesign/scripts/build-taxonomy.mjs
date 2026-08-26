@@ -20,65 +20,79 @@ const products = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'product-aud
 
 // [system, partType, /pattern/] — first match wins.
 const RULES = [
-  // --- Drivetrain ---------------------------------------------------------
-  ['drivetrain', 'halfshaft-carriers',   /halfshaft carrier|axle carrier|intermediate shaft/i],
-  ['drivetrain', 'halfshafts',           /halfshaft|half shaft|swap axle|insane shaft|\baxles?\b/i],
-  ['drivetrain', 'bellhousings',         /bellhousing|bell housing|awd billet cuff|billet cuff/i],
-  ['drivetrain', 'transfer-case',        /transfer case|vss block off|block off plate/i],
-  ['drivetrain', 'shift-selectors',      /shift selector|shifter cable|\bshifter\b|selector fork/i],
-  ['drivetrain', 'synchros',             /synchro|slider|\bhubs\b|synchro springs/i],
-  ['drivetrain', 'gears',                /gear set|gear sets|\bgear\b|dog 5th|reverse gear|countershaft/i],
-  ['drivetrain', 'lsd-diff',             /\blsd\b|differential|diff bearing/i],
-  ['drivetrain', 'clutch-flywheel',      /clutch|flywheel|scatter ?sheild|scatter shield/i],
-  ['drivetrain', 'bearings-seals',       /bearing|seal kit|seals kit|\bcollars?\b|thrust tool|\bshim\b|dust boot/i],
+  // ORDER MATTERS — first match wins, so the specific rule goes above the general
+  // one. Two classes of rule have to come first:
+  //
+  //   1. Parts named after a system they are not part of. "Exhaust Manifold Studs"
+  //      is a stud pack, not a manifold; it looked absurd sitting in the K-Series
+  //      Turbo Manifolds collection. "B Series Coolant Flanges" is cooling, not a
+  //      turbo flange.
+  //   2. Narrow terms inside broad ones — "halfshaft carrier" above "halfshaft",
+  //      "fill pot" above "coolant fill", "turbo manifold" above "flanges".
 
-  // --- Forced induction ---------------------------------------------------
-  ['forced-induction', 'turbo-manifolds', /turbo manifold|manifold.*(top mount|bottom mount|forward facing|sidewinder|ram ?horn|mini ram|stock placement|factory placement)|exhaust manifold/i],
-  ['forced-induction', 'turbo-kits',      /turbo kit/i],
-  ['forced-induction', 'downpipes',       /down ?pipe|up ?pipe|hot parts/i],
-  ['forced-induction', 'turbos',          /\bturbos\b|pte turbo|pulsar turbo/i],
-  ['forced-induction', 'wastegates-bov',  /wastegate|blow off|\bbov\b|raceport|hypergate/i],
-  ['forced-induction', 'boost-control',   /boost control|boost solenoid/i],
-  ['forced-induction', 'turbo-flanges',   /turbo flange|vband flange|head flange|inlet flange|discharge vband|turbo charge pipe flange|throttle body flange|\bflanges?\b/i],
-  ['forced-induction', 'oil-coolant-lines', /oil feed|oil drain|coolant feed|ccv|crank case vent/i],
-  ['forced-induction', 'turbo-accessories', /turbo blanket|heat shield/i],
-
-  // --- Cooling and charge air ---------------------------------------------
-  ['cooling', 'intercoolers',      /intercooler/i],
-  ['cooling', 'charge-piping',     /charge pipe|intercooler pipe|pipe kit/i],
-  ['cooling', 'coolant-necks',     /water neck|coolant neck|coolant flange|water plate|water bypass|water housing|thermostat|coolant fill|fill neck/i],
+  // --- Named-after-another-system, tested first ----------------------------
+  ['engine',  'engine-hardware',   /\bstuds?\b/i],
   ['cooling', 'fill-pots-tanks',   /fill pot|overflow|catch can|expansion tank/i],
-  ['cooling', 'radiators',         /radiator/i],
+  ['cooling', 'coolant-necks',     /coolant flange|water neck|coolant neck|water plate|water bypass|water housing|thermostat|coolant fill|fill neck/i],
+  ['cooling', 'intercoolers',      /intercooler/i],
 
-  // --- Engine and valvetrain ----------------------------------------------
-  ['engine', 'rockers',            /rocker/i],
-  ['engine', 'timing',             /timing chain|idler pulley|chain guide/i],
-  ['engine', 'oil-system',         /oil pan|oil pump/i],
-  ['engine', 'throttle-bodies',    /throttle body|throttle cable|adapter plate|cold air intake|intake system/i],
-  ['engine', 'engine-hardware',    /intake stud|exhaust stud|manifold stud|titanium stud|head stud|shorty stud/i],
-  ['engine', 'accessory-drive',   /alternator|idler|tensioner|pulley kit/i],
+  // --- Drivetrain -----------------------------------------------------------
+  ['drivetrain', 'halfshaft-carriers', /halfshaft carrier|axle carrier|intermediate shaft/i],
+  ['drivetrain', 'halfshafts',         /halfshaft|half shaft|swap axle|insane shaft|\baxles?\b/i],
+  ['drivetrain', 'bellhousings',       /bellhousing|bell housing|awd billet cuff|billet cuff/i],
+  ['drivetrain', 'transfer-case',      /transfer case|vss block off|block off plate/i],
+  ['drivetrain', 'shift-selectors',    /shift selector|shifter cable|\bshifter\b|selector fork/i],
+  ['drivetrain', 'synchros',           /synchro|slider|\bhubs\b/i],
+  ['drivetrain', 'gears',              /gear ?sets?|\bgear\b|dog 5th|reverse gear|countershaft/i],
+  ['drivetrain', 'lsd-diff',           /\blsd\b|differential|diff bearing/i],
+  // "Scatter Sheild" is spelled that way in the catalogue — match both spellings
+  // rather than silently dropping the product out of every collection.
+  ['drivetrain', 'clutch-flywheel',    /clutch|flywheel|scatter ?sh(ie|ei)ld/i],
+  ['drivetrain', 'bearings-seals',     /bearing|seals? kit|\bcollars?\b|thrust tool|\bshim\b|dust boot/i],
 
-  // --- Fuel and electronics -----------------------------------------------
-  ['fuel', 'fuel-delivery',        /fuel rail|fuel pump|injector|fuel pressure|port injection|regulator/i],
+  // --- Forced induction -----------------------------------------------------
+  ['forced-induction', 'turbo-manifolds',   /turbo manifold|manifold.*(top mount|bottom mount|forward facing|sidewinder|ram ?horn|mini ram|stock placement|factory placement)|exhaust manifold/i],
+  ['forced-induction', 'boost-control',     /boost control|boost solenoid/i],
+  ['forced-induction', 'wastegates-bov',    /wastegate|blow off|\bbov\b|raceport|hypergate/i],
+  ['forced-induction', 'turbo-kits',        /turbo kit/i],
+  ['forced-induction', 'downpipes',         /down ?pipe|up ?pipe|hot parts/i],
+  ['forced-induction', 'turbo-flanges',     /turbo flange|v-?band flange|head flange|inlet flange|discharge vband|charge pipe flange|\bflanges?\b/i],
+  ['forced-induction', 'oil-coolant-lines', /oil feed|oil drain|coolant feed|\bccv\b|crank case vent/i],
+  ['forced-induction', 'turbo-accessories', /turbo blanket|heat shield/i],
+  ['forced-induction', 'turbos',            /\bturbos\b|pte turbo|pulsar turbo/i],
+
+  // --- Cooling, remainder ---------------------------------------------------
+  ['cooling', 'charge-piping', /charge pipe|intercooler pipe|pipe kit/i],
+  ['cooling', 'radiators',     /radiator/i],
+
+  // --- Engine and valvetrain ------------------------------------------------
+  ['engine', 'rockers',         /rocker/i],
+  ['engine', 'timing',          /timing chain|chain guide/i],
+  ['engine', 'accessory-drive', /alternator|idler|tensioner|pulley kit/i],
+  ['engine', 'oil-system',      /oil pan|oil pump/i],
+  ['engine', 'throttle-bodies', /throttle body|throttle cable|adapter plate|cold air intake|intake system/i],
+
+  // --- Fuel and electronics -------------------------------------------------
+  ['fuel',        'fuel-delivery',     /fuel rail|fuel pump|injector|fuel pressure|port injection|regulator/i],
   ['electronics', 'engine-management', /kpro|hondata|wideband|smart coil|\bsensors?\b|\becu\b/i],
-  ['electronics', 'harnesses',     /harness|jumper|speedo ring|vss/i],
-  ['electronics', 'gauges-sensors', /gauge|air temp|weld in bung|\bbung\b/i],
+  ['electronics', 'harnesses',         /harness|jumper|speedo ring|\bvss\b/i],
+  ['electronics', 'gauges-sensors',    /gauge|air temp|weld ?in bung|\bbung\b/i],
 
-  // --- Fabrication and hardware -------------------------------------------
-  ['fabrication', 'clamps-vband',  /vband assembly|v-?band assembly|vanjen|clamp/i],
-  ['fabrication', 'bends-pie-cuts', /mandrel bend|pie cut|uj bend|weld on cap|\bbends?\b/i],
-  ['fabrication', 'flex-bellows',  /flex bellow|bellows/i],
-  ['fabrication', 'weld-on-fittings', /weld on|weld-on|weld in|fitting/i],
-  ['fabrication', 'hardware-studs', /titanium stud|stud single|\bstuds?\b|vacuum block/i],
+  // --- Fabrication and hardware ---------------------------------------------
+  ['fabrication', 'clamps-vband',     /v-?band assembly|vanjen|clamp/i],
+  ['fabrication', 'bends-pie-cuts',   /mandrel bend|pie cut|uj bend|weld on cap|\bbends?\b/i],
+  ['fabrication', 'flex-bellows',     /flex bellow|bellows/i],
+  ['fabrication', 'weld-on-fittings', /weld ?on|weld-on|fitting/i],
+  ['fabrication', 'shop-hardware',    /vacuum block/i],
 
-  // --- Exhaust -------------------------------------------------------------
+  // --- Exhaust ---------------------------------------------------------------
   ['exhaust', 'mufflers-resonators', /muffler|resonator/i],
 
-  // --- Suspension and chassis ---------------------------------------------
-  ['suspension', 'coilovers',      /coilover/i],
+  // --- Suspension and chassis -----------------------------------------------
+  ['suspension', 'coilovers',        /coilover/i],
   ['suspension', 'suspension-parts', /camber kit|traction bar|sway bar|control arm/i],
-  ['suspension', 'tires',          /radial|\btires?\b/i],
-  ['chassis', 'body-trim',         /carbon|fender|spoiler|door guard|hood pin|hood hinge/i]
+  ['suspension', 'tires',            /radial|\btires?\b/i],
+  ['chassis',    'body-trim',        /carbon|fender|spoiler|door guard|hood pin|hood hinge/i]
 ];
 
 const SYSTEM_LABEL = {
@@ -107,12 +121,24 @@ function platformKey(p) {
   return 'unassigned';
 }
 
+/*
+ * Title first, tags only as a fallback.
+ *
+ * Matching title and tags together let a tag outvote the product's own name, which
+ * is how "Honda Sfwd Intercooler" ended up in turbo kits (tagged `turbo kit`) and
+ * "Pulsar Wastegates" ended up in turbos. The title is what the product IS; the
+ * tags are what it RELATES TO. Only fall through to tags when the title says
+ * nothing a rule recognises.
+ */
 function classify(p) {
-  const hay = `${p.title} ${p.tags || ''}`;
   for (const [system, partType, re] of RULES) {
-    if (re.test(hay)) return { system, partType };
+    if (re.test(p.title)) return { system, partType, via: 'title' };
   }
-  return { system: 'unclassified', partType: 'unclassified' };
+  const tags = p.tags || '';
+  for (const [system, partType, re] of RULES) {
+    if (re.test(tags)) return { system, partType, via: 'tags' };
+  }
+  return { system: 'unclassified', partType: 'unclassified', via: 'none' };
 }
 
 const rows = products.map(p => {

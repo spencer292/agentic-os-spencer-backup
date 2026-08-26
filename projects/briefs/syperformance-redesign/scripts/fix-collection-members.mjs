@@ -1,4 +1,8 @@
-// Populate the twelve new collections.
+// Reconcile the twelve new collections against data/taxonomy.json.
+//
+// A true sync, not an append: when a classification rule is corrected, products
+// have to LEAVE the collection they were wrongly put in as well as join the right
+// one. An add-only script leaves the mistake sitting on the storefront.
 //
 //   node scripts/fix-collection-members.mjs --debug   # one call, raw response
 //   node scripts/fix-collection-members.mjs --apply
@@ -107,6 +111,24 @@ const ADD_V2 = `mutation($id: ID!, $productIds: [ID!]!) {
     userErrors { field message code }
   }
 }`;
+const REMOVE = `mutation($id: ID!, $productIds: [ID!]!) {
+  collectionRemoveProducts(id: $id, productIds: $productIds) {
+    job { id done }
+    userErrors { field message }
+  }
+}`;
+
+/** Products currently in a collection, as gids. */
+async function currentMembers(collectionId) {
+  const out = [];
+  let cursor = null;
+  do {
+    const d = await gql(`query($id: ID!, $c: String){ collection(id:$id){ products(first:250, after:$c){ pageInfo{hasNextPage endCursor} nodes{ id } } } }`, { id: collectionId, c: cursor });
+    for (const n of d.collection.products.nodes) out.push(n.id);
+    cursor = d.collection.products.pageInfo.hasNextPage ? d.collection.products.pageInfo.endCursor : null;
+  } while (cursor);
+  return out;
+}
 
 if (DEBUG) {
   const h = 'k-series-synchros';
@@ -132,13 +154,31 @@ const jobs = [];
 for (const h of handles) {
   const entry = idByHandle[h];
   if (!entry) { console.error(`  missing collection: ${h}`); continue; }
-  const ids = gidsFor(RULES[h]);
-  if (!ids.length) { console.error(`  ${h}: no resolvable products, skipping`); continue; }
-  const res = await gql(ADD_V2, { id: entry.id, productIds: ids });
-  const errs = res.collectionAddProductsV2.userErrors;
-  if (errs.length) { console.error(`  ${h}: ${JSON.stringify(errs)}`); continue; }
-  jobs.push({ handle: h, jobId: res.collectionAddProductsV2.job?.id, expected: ids.length });
-  console.log(`  queued ${h.padEnd(34)} ${ids.length} products`);
+  const want = gidsFor(RULES[h]);
+  if (!want.length) { console.error(`  ${h}: no resolvable products, skipping`); continue; }
+
+  const have = await currentMembers(entry.id);
+  const wantSet = new Set(want);
+  const haveSet = new Set(have);
+  const toAdd = want.filter(id => !haveSet.has(id));
+  const toRemove = have.filter(id => !wantSet.has(id));
+
+  if (toAdd.length) {
+    const res = await gql(ADD_V2, { id: entry.id, productIds: toAdd });
+    const errs = res.collectionAddProductsV2.userErrors;
+    if (errs.length) console.error(`  ${h}: add failed ${JSON.stringify(errs)}`);
+    else jobs.push({ handle: h, jobId: res.collectionAddProductsV2.job?.id, expected: want.length });
+  }
+  if (toRemove.length) {
+    const res = await gql(REMOVE, { id: entry.id, productIds: toRemove });
+    const errs = res.collectionRemoveProducts.userErrors;
+    if (errs.length) console.error(`  ${h}: remove failed ${JSON.stringify(errs)}`);
+    else jobs.push({ handle: h, jobId: res.collectionRemoveProducts.job?.id, expected: want.length });
+  }
+  if (!jobs.some(j => j.handle === h)) jobs.push({ handle: h, jobId: null, done: true, expected: want.length });
+
+  const change = [toAdd.length ? `+${toAdd.length}` : '', toRemove.length ? `-${toRemove.length}` : ''].filter(Boolean).join(' ') || 'no change';
+  console.log(`  ${h.padEnd(34)} ${String(want.length).padStart(3)} target   ${change}`);
 }
 
 // Wait for the async jobs to finish before reporting anything.

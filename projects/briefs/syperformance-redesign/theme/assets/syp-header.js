@@ -23,6 +23,9 @@ import { getScrollEventTarget, getScrollTop, scrollContainerMediaQuery } from '@
 function setupPanels(header) {
   /** @type {HTMLButtonElement[]} */
   const triggers = Array.from(header.querySelectorAll('[data-syp-panel-trigger]'));
+
+  /** Pending panel close, so a pointer that briefly leaves the item does not shut it. */
+  let closeTimer = 0;
   if (!triggers.length) return;
 
   /** @param {HTMLElement | null} except */
@@ -52,6 +55,7 @@ function setupPanels(header) {
     if (!item) continue;
 
     trigger.addEventListener('click', () => {
+      clearTimeout(closeTimer);
       setOpen(trigger, trigger.getAttribute('aria-expanded') !== 'true');
     });
 
@@ -59,12 +63,22 @@ function setupPanels(header) {
     // hover-open panel on touch swallows the first tap.
     item.addEventListener('pointerenter', (event) => {
       if (/** @type {PointerEvent} */ (event).pointerType !== 'mouse') return;
+      // Cancels a close scheduled by leaving this item a moment ago, otherwise the
+      // pending timer fires after the pointer is already back inside the panel.
+      clearTimeout(closeTimer);
       setOpen(trigger, true);
     });
 
+    /*
+     * Closing is deferred. A mega panel is wider than its trigger, so the natural
+     * path to a column on the far side of it leaves the nav item's box for a moment
+     * — the classic diagonal problem. Closing instantly leaves those columns
+     * unreachable even with the CSS gap bridged. Re-entering cancels the close.
+     */
     item.addEventListener('pointerleave', (event) => {
       if (/** @type {PointerEvent} */ (event).pointerType !== 'mouse') return;
-      setOpen(trigger, false);
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(() => setOpen(trigger, false), 180);
     });
 
     // Tabbing out of the panel closes it, so keyboard order stays linear.
