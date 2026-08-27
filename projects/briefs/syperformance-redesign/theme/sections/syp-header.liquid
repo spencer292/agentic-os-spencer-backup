@@ -103,7 +103,15 @@
                     </div>
                   {%- endfor -%}
 
-                  {%- if section.settings.panel_note != blank -%}
+                  {%- comment -%}
+                    The note reads "Our own parts - built to order", and it used to print
+                    in EVERY mega panel - including Brands, where it sat under Synchro
+                    Solutionz, Comp 1 Clutch, AEM, Turbosmart and Competition Clutch and
+                    claimed twelve other companies' products as ours. It also said "built
+                    to order" about resold stock. Scoped to the SYP-owned menus, which are
+                    the only ones where both halves of it are true.
+                  {%- endcomment -%}
+                  {%- if section.settings.panel_note != blank and link.url contains '/collections/syp-' -%}
                     <p class="syp-header__panel-note syp-spec">{{ section.settings.panel_note }}</p>
                   {%- endif -%}
                 </div>

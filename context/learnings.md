@@ -525,3 +525,53 @@ Carried in from the 2026-07-06 research session that preceded the skill:
 - 2026-08-26: **Dry runs earn their keep on the output, not the exit code.** `apply-ia.mjs --dry` printed a nav tree that exposed "Engine" and its child both pointing at `/collections/engine` — the exact duplicate-link defect the audit criticised in the old nav, reproduced by me. Print what a script WILL do in a shape a human can read, not just a count.
 - 2026-08-26: Shopify specifics worth keeping — ticking a `write_` scope auto-ticks its `read_` pair, so ticking both silently toggles the pair back OFF (14 boxes ticked, 0 saved). Admin is Polaris web components: real checkbox inputs ignore synthetic clicks, `label[for]` works, and several buttons share `variant=primary` including a hidden **Install**. Never use first-match selectors there.
 - 2026-08-26: **Never send a user to Notepad for a dotfile.** It opens a blank untitled document and the save goes nowhere with no error. Cost Spencer a Shopify Admin token, which is shown exactly once. Write a script that reads the clipboard instead (`scripts/save-token.mjs`).
+
+## mkt-cmo
+
+- 2026-08-26: Built to fill the vacant Marketing seat on the Ninety chart and to bring marketing
+  in-house from DigiHammer (monthly newsletter in HighLevel + Meta ads Spencer rates as poor and
+  visibly AI-generated). Third seat after `acc-cfo` and `ops-hr`, same day, same shape: the agent
+  drafts, Spencer decides.
+- 2026-08-26: Scope decision that shaped the whole skill — **everything except the website**.
+  Site code, page SEO, schema, blog and every deploy stay with Roy at All The Power. The design
+  problem that created was dependency without ownership: the seat needs landing pages, tracking
+  tags and CAPI it cannot ship itself. Resolved by making an unshipped tracking gap a **marketing
+  finding** with a date on it, not a shrug — F-06 and F-07 in `open-findings.md`.
+- 2026-08-26: The house metric is **CPBJ (cost per booked job), not CPL**. The previous agency's
+  workbook reports a $10.02 CPL against a $40–120 industry band, which reads as a triumph and is
+  almost certainly a loose lead definition. A number that good against benchmark is a measurement
+  question, not a result.
+- 2026-08-26: **Order of operations in a vendor exit is ownership first, audit second, cancellation
+  last.** The Meta pixel's custom audiences, the contact list's unsubscribe record and the sending
+  domain's DNS reputation are the three assets that do not survive a bad exit. Everything else is
+  recoverable. Written into `references/vendor-transition.md` as a fixed sequence so a future
+  session cannot start at the audit.
+- 2026-08-26: The claims gate exists because `brand_context/positioning.md` is a **shipped file
+  that cannot be edited on this install** and still carries the retired "219+ five-star reviews"
+  (superseded 2026-08-21 by 283 five-star / 289 total), an unclarified "refined over 15 years",
+  and "nearly 5,000 clients" against a Jobber count of 2,907 records. Rule: when a brand_context
+  file and `references/claims-gate.md` disagree, the gate wins and the conflict gets logged.
+- 2026-08-26: Best finding of the build — **the cheapest channel is the book.** 700 customers have
+  bought a one-month Quick Fix twice or more and have never been offered the program (357 with a
+  job inside 24 months). They have already proved by their own behavior that the problem recurs,
+  which is the entire TMCP argument. Reaching them costs an email, and it converts transaction
+  revenue into recurring revenue — the mix effect at its strongest.
+
+## mkt-syp-trust-copy
+
+- 2026-08-26: Set by Spencer after reading the first SYP draft. The diagnosis is the useful part:
+  the copy **argued instead of proving**. Six rules — positive frame, proof over adjectives, the
+  builder visible rather than SYP, headlines that parse on one fast read, athletic sentences,
+  never overclaim — plus per-page proof minimums and a ship checklist. Sits above every other
+  copy skill for SYPerformance.
+- 2026-08-26: **Rule 2 and the manufacturing-claim rule collide, and the collision is permanent.**
+  Rule 2 lists "a photo of the mill" and "hours of machine time" as proof assets. Both assert a
+  physical shop floor, which is exactly the claim this brand may never make (it owns the designs
+  and contracts production). So two of the four proof types are unavailable here and the other
+  two — material spec / tolerance / inspection step, and a named car with a power figure — carry
+  the whole load. Every trust section on this site therefore depends on SY supplying numbers or
+  naming a customer car. There is no writing around it.
+- 2026-08-26: The skill's own example of a dead headline, *"We make the drivetrain parts that
+  break first"*, was **live on the homepage** when the rule arrived. Worth remembering that a
+  headline can survive several review passes while reading backwards to a first-time visitor —
+  nobody reading it in context ever hits the misparse.
