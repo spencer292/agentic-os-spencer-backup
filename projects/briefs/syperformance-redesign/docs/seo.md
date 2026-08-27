@@ -102,4 +102,67 @@ Three rounds of casing bugs were caught by reading the output rather than trusti
 | 7.7 | **Article templates + the 8 content targets** | to do | Blog has zero articles. `syp-articles` renders nothing until one exists. |
 | 7.8 | **Internal linking** | to do | Every article links to relevant products, every product to relevant articles. Needs articles first. |
 | 7.9 | **The Superformance collision** | Spencer | Business decision. Schema mitigates; it does not solve. |
-| 7.10 | **Eight in-house compare-at prices** | Spencer | Ten-minute job, still outstanding from Phase 0 §5. |
+| 7.10 | ~~Eight in-house compare-at prices~~ | — | **DONE 2026-08-26.** `scripts/clear-compare-at.mjs`, 15 variants. |
+| 7.11 | **SEO title tag is unset on all 198 products** | to do | Measured 2026-08-26: `seo.title` and `seo.description` are empty on **every** product, so Shopify falls back to the product title. Effective title-tag length is a median of **34 characters** against a ~60-character budget — roughly 26 characters of the highest-leverage field on the page, unused, 198 times. The platform qualifier that buyers actually search (`B16`, `GSR`, `K20`, `Evo 8/9`) is what belongs in the gap. Do this with 7.2, not after it. |
+| 7.12 | **`data/title-review.csv` carries stale ownership** | Spencer | 35 rows still read `origin=IN-HOUSE` for Synchro Solutionz and Comp 1 Clutch. The **proposed titles are safe** — none stamps SYPerformance onto a third-party brand, because the prefix is drawn from the `brand` column, which is right. Only the `origin` label is wrong. Worth knowing before approving 198 rows. |
+| 7.13 | **Product copy length is not the SEO lever; thin pages are** | — | Measured: median **20 words**, 112 of 198 under 25, 23 with no copy at all. Only 7 products share an identical description, so internal duplication is not the problem — thinness is. See §7. |
+
+
+---
+
+## 7. Description length and SEO — answered 2026-08-26
+
+Spencer asked what the optimal product description length is for SEO. The short version:
+**there is no optimal length, and word count is not a ranking factor.** Google has said so
+consistently for years. The studies showing long content ranks better are confounded — longer
+pages tend to cover more query variations and attract more links, and those are the causes.
+
+Length is a **proxy** for three things that do matter, and each has its own answer:
+
+**1. Query coverage.** A page ranks when it answers what was searched. On a part like the
+B-series rockers the real queries are `b series single lobe rockers`, `vtec killer rockers`,
+`B16 rockers`, `GSR rockers` — one page, several phrasings, plus the question behind them
+("why remove VTEC"). Covering that honestly lands around 350–450 words. Not because 400 is a
+magic number, but because that is what the answer costs.
+
+**2. Thinness, which is a site-level signal and not only a page-level one.** 198 pages at a
+median of 20 words is the actual SEO problem on this catalog. Below roughly 50 words a product
+page carries no ranking signal beyond its title. **That 50 is a working heuristic, not a
+published Google threshold** — treat it as the floor below which a page is definitely thin,
+not as a line above which it is definitely fine.
+
+**3. Passage retrieval, which is where the real upside is.** AI answer engines and Google's own
+passage ranking retrieve a **chunk**, not a page. The unit that gets quoted is a self-contained
+120–200 word block that answers one question without needing the rest of the page. That is
+exactly what `custom.why_this_part` is. **This is why the block structure beats one long blob at
+the same word count** — five retrievable answers instead of one long document, each targeting a
+different phrasing.
+
+### So the tiering in `competitors.md` §3b stands
+
+Nothing about SEO argues for changing it. 600–900 on ~12 hero parts, 350–450 on the rest of the
+in-house 75, 120–180 on the 123 resold. The resold tier clears the thin floor comfortably
+without padding a page about a part SYPerformance did not design — and padding actively hurts,
+because it dilutes the primary phrase.
+
+### The lengths that DO have hard optimal numbers are all unset
+
+These matter more than body length and are cheaper to fix.
+
+| Field | Optimal | Current |
+|---|---|---|
+| **Title tag** | 50–60 characters (~575px before truncation) | **unset on all 198**; falls back to the product title, median **34 chars** |
+| **Meta description** | 150–160 characters | **unset on all 198**. Does not rank; it sets click-through from the result |
+| **H1** | the product title | 21 titles are ALL-CAPS (7.2) |
+
+**The title tag is the highest-leverage SEO field on a product page and 26 characters of it are
+empty, 198 times over.** That gap is where the platform qualifier goes — the thing buyers
+actually type.
+
+### Honest limitation
+
+There is no Search Console or Ahrefs access on this project (checklist 6.1), so none of the
+above is validated against what actually ranks for these terms today. It is established
+practice plus what is measurable on the catalog, not a measurement of SYPerformance's own
+search performance. Getting GSC connected before launch would change that, and it is worth
+doing in Phase 9.
