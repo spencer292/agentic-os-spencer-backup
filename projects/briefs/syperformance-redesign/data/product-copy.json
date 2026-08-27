@@ -217,6 +217,257 @@
         "DC"
       ],
       "hpRating": 500
+    },
+    "k-series-lean-mount-turbo-manifold": {
+      "tier": "inhouse",
+      "lead": "A lean top mount for the K-series, built around a T4 twin scroll turbine. Dual 44/45mm wastegates or a single 60mm, on a flange that takes anything from 44 to 46mm.\n\nThe lean layout tips the turbo over rather than standing it upright, which buys hood clearance a conventional top mount does not have.",
+      "whyThisPart": "Twin scroll is the reason to choose this manifold and it is worth understanding before you commit to it.\n\nA twin scroll turbine keeps two pairs of cylinders separate all the way to the wheel, so the exhaust pulse from one is not arriving while another cylinder still has its valve open. On a four-cylinder that interference is real, and removing it shows up as spool rather than as peak power. It is one of the few things on a turbo car that makes it faster and easier to drive at the same time.\n\nWhat stops most people is the belief that it locks in the turbo. It does not. **An open scroll turbo will run on this manifold.** The divider simply stops being used. So the twin scroll layout is not a decision that has to be made at the same time as the turbo decision — it can be made first, and the turbo can change later without the manifold changing with it.\n\nThe lean orientation is the other half. A K-series top mount puts the turbo above the head, and how far above decides whether the hood shuts. Leaning it moves the turbine centre sideways instead of upward, which is what makes a large frame fit under a stock hood on a chassis where an upright manifold would not.",
+      "beforeYouBuy": "- **Wastegate configuration is chosen at order:** T4 twin scroll with dual 44/45mm, or a single 60mm.\n- **44 to 46mm all fit the same flange**, so gate size is not part of the decision.\n- **An open scroll turbo is fine on this manifold.** You are not committing to twin scroll hardware forever.\n- **Check hood clearance for your chassis** before the charge piping is cut.\n- Manifold only — turbo, gate, downpipe and piping are separate.",
+      "specs": "Runners: 1.5\" Schedule 40 stainless\nFlanges: 1018, 1/2\", CNC cut\nWelding: TIG welded, back-purged\nWarranty: 1 year to the original buyer\nPorted: yes\nConfiguration: lean top mount, T4 twin scroll\nWastegate: dual 44/45mm or single 60mm; 44-46mm all fit\nOpen scroll turbo: compatible",
+      "wastegateCompat": "44-46mm on one flange. Dual 44/45 or single 60.",
+      "chassis": [
+        "K20",
+        "K24"
+      ],
+      "installNotes": "Mock the turbo and gate up on the car before any downpipe is cut. A downpipe made to a drawing instead of to the actual car is the expensive part of a bad fit.\n\nNew gaskets, new studs. A stud that has already seen a few hundred heat cycles is next winter's boost leak.\n\nTorque from the center outward in stages, and re-torque after the first heat cycle.\n\nTorque figures: *(SY to supply)*"
+    },
+    "honda-k-series-rwd-forward-facing-manifold": {
+      "tier": "inhouse",
+      "lead": "A forward facing K-series manifold for rear-drive swaps — Miata, BMW, 240SX, trucks, anything where the engine went in the long way round.\n\nSchedule 40 304 runners, ported, on a flange that takes 44 to 46mm gates. Turbine options from T3 through PTE V-band.",
+      "whyThisPart": "A K-series in a rear-drive car has a packaging problem the front-drive world does not: the exhaust has to get out the front of a bay that was designed around a completely different engine, and there is usually a steering shaft, a subframe rail or a radiator in the way of the obvious route.\n\nForward facing solves it by putting the turbo where the swap has already made room — ahead of the engine rather than above or behind it. The runners come off the head and turn forward, so the turbine ends up in the space between the engine and the radiator support instead of fighting the firewall.\n\nThe practical consequence is turbo freedom. This manifold has been run with a Borg Warner S366 and a G40-1150, which are not small, and the reason both fit is that a forward facing layout is not constrained by hood height the way a top mount is. **It will take essentially any frame size you want to put on it.**\n\nThat matters more on a swap than on a factory-turbo car. A swapped chassis is usually a one-off, the power target moves during the build, and a manifold that limits turbo choice is a part you buy twice.",
+      "beforeYouBuy": "- **This is the RWD manifold.** The front-drive K-series manifolds are separate parts.\n- **Turbine flange is chosen at order** — T3, T4, twin scroll dual 45s, or PTE V-band, with 45 or 60mm gate provision.\n- **Turbo size is barely a constraint here**, but the space in your chassis is. Mock the turbo up before the downpipe is fabricated.\n- **Every swap bay is different.** Ask if your chassis is unusual.\n- Manifold only.",
+      "specs": "Runners: 1.5\" Schedule 40 304 stainless\nFlanges: 1018, 1/2\", CNC cut\nWelding: TIG welded, back-purged\nWarranty: 1 year to the original buyer\nPorted: yes\nConfiguration: forward facing, RWD\nTurbine options: T3, T4, twin scroll dual 45, PTE V-band\nWastegate: 44-46mm\nProven with: Borg Warner S366, G40-1150",
+      "wastegateCompat": "44-46mm",
+      "chassis": [
+        "K20",
+        "K24",
+        "Miata",
+        "BMW",
+        "240SX"
+      ],
+      "installNotes": "Mock the turbo and gate up on the car before any downpipe is cut. A downpipe made to a drawing instead of to the actual car is the expensive part of a bad fit.\n\nNew gaskets, new studs. A stud that has already seen a few hundred heat cycles is next winter's boost leak.\n\nTorque from the center outward in stages, and re-torque after the first heat cycle.\n\nTorque figures: *(SY to supply)*"
+    },
+    "evo-8-9-bottom-mount-turbo-manifold": {
+      "tier": "inhouse",
+      "lead": "A bottom mount manifold for the 4G63 in Evo 8 and 9, for builds that keep the hood line and the radiator where they are.\n\nSchedule 40 stainless runners, 1/2\" CNC steel flanges, TIG welded and back-purged. A 45mm wastegate flange is the best fit; 44 also works.",
+      "whyThisPart": "Bottom mount is the layout you choose when the rest of the car has to stay as it is.\n\nA top mount buys runner length and pulse separation, and it charges for them in radiator, hood clearance and air conditioning. On a car that is driven on the road, or one that has to pass a look, that bill is sometimes not worth paying. Bottom mount keeps the turbo low and the engine bay recognizable.\n\nWhat it costs you is clearance, and on this platform the clearance is genuinely tight. That is not a flaw in the manifold — it is what happens when a large modern turbine is asked to live in the space Mitsubishi left for a small one. The notes below are not fine print. They are the actual fitting conditions, and every one of them has been found the hard way by somebody.\n\nThe most important is the wastegate. **A compact Tial or the Turbosmart is required** — the shortest gate you can get. A standard-height gate does not fit, and discovering that with the manifold on the car is a wasted afternoon and a restocking fee.",
+      "beforeYouBuy": "- **You must use a compact Tial or the Turbosmart wastegate.** The shortest possible gate. This is not optional.\n- **The power steering pump shield may need to come off** for clearance.\n- **The A/C line needs a slight bend** away from the wastegate.\n- **Depending on turbo size you may need a slim fan** if you are keeping a full-size radiator.\n- **45mm is the best fit**; 44 also works.\n- Manifold only.",
+      "specs": "Runners: 1.5\" Schedule 40 stainless\nFlanges: 1018, 1/2\", CNC cut\nWelding: TIG welded, back-purged\nWarranty: 1 year to the original buyer\nConfiguration: bottom mount\nTurbine options: T3, T4, Tial V-band, Garrett V-band, PTE V-band\nWastegate: 45mm best, 44 also fits. Compact Tial or Turbosmart required\nClearance notes: PS pump shield may need removal; A/C line needs bending; slim fan may be required",
+      "wastegateCompat": "45mm best, 44 fits. Compact Tial or Turbosmart only.",
+      "chassis": [
+        "CT9A",
+        "Evo 8",
+        "Evo 9"
+      ],
+      "installNotes": "Mock the turbo and gate up on the car before any downpipe is cut. A downpipe made to a drawing instead of to the actual car is the expensive part of a bad fit.\n\nNew gaskets, new studs. A stud that has already seen a few hundred heat cycles is next winter's boost leak.\n\nTorque from the center outward in stages, and re-torque after the first heat cycle.\n\nTorque figures: *(SY to supply)*"
+    },
+    "evo-8-9-forward-facing-turbo-manifold": {
+      "tier": "inhouse",
+      "lead": "A forward facing manifold for the Evo 8 and 9. Schedule 40 stainless, 1/2\" CNC flanges, TIG welded and back-purged, on a 44 to 46mm wastegate flange.\n\nIt keeps power steering. It does not keep air conditioning.",
+      "whyThisPart": "Every turbo layout on this platform is a negotiation with the same small space, and each one settles it differently. This manifold's answer is: keep the steering, lose the air conditioning, and accept a half-size radiator.\n\nForward facing puts the turbine ahead of the engine rather than above it, which shortens the path to the intercooler and moves the heat away from the intake side. On a 4G63 running real boost that second effect is worth more than it sounds — the intake manifold and the charge pipe spend their lives next to a glowing turbine on a stock-placement setup, and moving it is the only real fix.\n\nWhat you give up is the A/C. Not because the manifold is careless with space, but because the compressor and the turbine want the same volume, and only one of them can have it. **That has to be a decision made before the build, not discovered during it.**\n\nPower steering survives, which on a street-driven Evo matters more than most people expect until the first time they park one without it.",
+      "beforeYouBuy": "- **Air conditioning must be relocated or deleted.** There is no version of this layout that keeps it.\n- **Power steering works.**\n- **A half-size radiator is required.**\n- **Turbine flange is chosen at order** — T3, T4, Garrett/Tial/PTE V-band, including big frame T4 PTE.\n- **44 to 46mm gates all fit.**\n- Manifold only.",
+      "specs": "Runners: 1.5\" Schedule 40 stainless\nFlanges: 1018, 1/2\", CNC cut\nWelding: TIG welded, back-purged\nWarranty: 1 year to the original buyer\nConfiguration: forward facing\nTurbine options: T3, T4, Garrett V-band, Tial V-band, PTE V-band, big frame T4 PTE V-band\nWastegate: 44-46mm\nPower steering: retained\nAir conditioning: must be relocated or deleted\nRadiator: half-size required",
+      "wastegateCompat": "44-46mm",
+      "chassis": [
+        "CT9A",
+        "Evo 8",
+        "Evo 9"
+      ],
+      "installNotes": "Settle the air conditioning before anything comes off the car. Relocating the compressor is a job with its own parts list, and doing it after the charge piping is built means building the piping twice.\n\nMock the turbo and gate up on the car before any downpipe is cut. A downpipe made to a drawing instead of to the actual car is the expensive part of a bad fit.\n\nNew gaskets, new studs. A stud that has already seen a few hundred heat cycles is next winter's boost leak.\n\nTorque from the center outward in stages, and re-torque after the first heat cycle.\n\nTorque figures: *(SY to supply)*"
+    },
+    "mitsubishi-evo-x-top-mount-turbo-manifold-v-band": {
+      "tier": "inhouse",
+      "lead": "A V-band top mount manifold for the Evo X. Schedule 40 stainless runners, 1/2\" CNC flanges, TIG welded and back-purged, for 44 to 46mm wastegates.\n\nTial, PTE or Garrett turbine flange, chosen at order.",
+      "whyThisPart": "The 4B11 is not a 4G63 and almost nothing crosses between them. That single fact is why the Evo X aftermarket is thinner than the Evo 8/9 one twenty years later, and it is why a part like this exists at all rather than being adapted from the older platform.\n\nA top mount on the X does what it does anywhere: it gives the runners length, keeps the exhaust pulses separate until the turbine, and moves the turbo into air. On a factory-turbo car the gain is not subtle, because the part being replaced is a compact casting whose whole design brief was to fit rather than to flow.\n\nWhat makes this worth saying plainly is the size of the catalog behind it. There is not much for this platform, and the parts that exist are often adapted from something else. **This one is drawn for the 4B11.** If there is an Evo X part you need that is not on the site, ask — a lot of what SYPerformance makes started as a customer asking.",
+      "beforeYouBuy": "- **Evo X only.** The 4B11 shares nothing with the 4G63 here.\n- **Turbine flange at order:** Tial, PTE or Garrett.\n- **44 to 46mm wastegates.**\n- **Plan the radiator and hood clearance** — a top mount occupies the space above the head on any platform.\n- Manifold only.",
+      "specs": "Runners: 1.5\" Schedule 40 stainless\nFlanges: 1018, 1/2\", CNC cut\nWelding: TIG welded, back-purged\nWarranty: 1 year to the original buyer\nConfiguration: top mount, V-band\nTurbine options: Tial, PTE, Garrett\nWastegate: 44-46mm\nEngine: 4B11",
+      "wastegateCompat": "44-46mm",
+      "chassis": [
+        "CZ4A",
+        "Evo X"
+      ],
+      "installNotes": "Plan the radiator and the hood line first. A top mount uses the space above the head on any platform, and on the X that space is not generous.\n\nMock the turbo and gate up on the car before any downpipe is cut. A downpipe made to a drawing instead of to the actual car is the expensive part of a bad fit.\n\nNew gaskets, new studs. A stud that has already seen a few hundred heat cycles is next winter's boost leak.\n\nTorque from the center outward in stages, and re-torque after the first heat cycle.\n\nTorque figures: *(SY to supply)*"
+    },
+    "evo-x-stock-placement-turbo-manifold": {
+      "tier": "inhouse",
+      "lead": "A stock placement manifold for the Evo X, in Schedule 40 stainless with 1/2\" CNC steel flanges, TIG welded and back-purged.\n\nThe turbo stays where the factory put it. Everything downstream stays where it is too.",
+      "whyThisPart": "Stock placement is the layout with the smallest blast radius, and on a car that is still driven that is the whole point.\n\nThe factory 4B11 exhaust manifold is a casting. It was designed to be cheap, compact and durable at stock output, and it does all three well. What it does not do is flow, and it does not survive the thermal cycling of a built engine indefinitely — a cast manifold that cracks does so at the point where the runners meet, which is the least accessible part of it.\n\nReplacing it with a tubular stainless manifold in the same position changes the gas path without changing anything else on the car. The downpipe still fits. The heat shielding still fits. The intercooler piping still fits. Nothing about the engine bay has to be re-planned.\n\nThat is a real category of build and it does not get written about much, because it is less exciting than a top mount. It is also the right answer for a large number of cars.",
+      "beforeYouBuy": "- **Stock placement means stock downpipe geometry.** If you are already running an aftermarket downpipe, confirm it suits a stock-location turbo.\n- **Evo X, 4B11 only.**\n- **This is a flow and durability upgrade, not a layout change.** If the goal is a large frame turbo, look at the top mount instead.\n- Manifold only.",
+      "specs": "Runners: 1.5\" Schedule 40 stainless\nFlanges: 1018, 1/2\", CNC cut\nWelding: TIG welded, back-purged\nWarranty: 1 year to the original buyer\nConfiguration: stock placement\nEngine: 4B11",
+      "chassis": [
+        "CZ4A",
+        "Evo X"
+      ],
+      "installNotes": "Because the turbo position is unchanged, the existing downpipe, heat shielding and charge piping should all go back on. Check the downpipe flange against the new manifold's turbine outlet before assuming it will.\n\nMock the turbo and gate up on the car before any downpipe is cut. A downpipe made to a drawing instead of to the actual car is the expensive part of a bad fit.\n\nNew gaskets, new studs. A stud that has already seen a few hundred heat cycles is next winter's boost leak.\n\nTorque from the center outward in stages, and re-torque after the first heat cycle.\n\nTorque figures: *(SY to supply)*"
+    },
+    "mitsubishi-evo-8-9-turbo-manifold-factory-placement": {
+      "tier": "inhouse",
+      "lead": "A factory placement manifold for the Evo 8 and 9. Schedule 40 stainless runners, 1/2\" CNC steel flanges, TIG welded and back-purged.\n\nTubular construction in the position the casting occupied.",
+      "whyThisPart": "The 4G63's factory exhaust manifold is a cast iron part with a hard life. It sits against the firewall, it heat-cycles every drive, and on a car making meaningfully more than stock it eventually cracks. When it does, it does so where the runners converge — the part of it nobody can see and nobody can weld in place.\n\nA tubular stainless replacement in the same position fixes the failure and improves the gas path, without asking anything of the rest of the car. The turbo stays where it was. The downpipe, the heat shielding and the charge piping stay where they were. On a car with a stock-frame turbo that is running well, this is the change that makes it last.\n\nSchedule 40 wall thickness is the reason to expect it to. Thin-wall tube flows the same and cracks sooner, and on a manifold the crack is the failure that matters — not the flow figure.",
+      "beforeYouBuy": "- **Factory placement.** Turbo position, downpipe and piping are unchanged.\n- **Evo 7, 8 and 9, 4G63.**\n- **This is a durability and flow change, not a layout change.** For a large frame turbo, look at the top mount or forward facing manifolds.\n- Manifold only.",
+      "specs": "Runners: 1.5\" Schedule 40 stainless\nFlanges: 1018, 1/2\", CNC cut\nWelding: TIG welded, back-purged\nWarranty: 1 year to the original buyer\nConfiguration: factory placement\nEngine: 4G63",
+      "chassis": [
+        "CT9A",
+        "Evo 7",
+        "Evo 8",
+        "Evo 9"
+      ],
+      "installNotes": "The turbo, downpipe and heat shielding return to their original positions. Inspect the old cast manifold as it comes off: a crack at the runner junction confirms why it was replaced, and tells you to check the head's sealing face while it is accessible.\n\nMock the turbo and gate up on the car before any downpipe is cut. A downpipe made to a drawing instead of to the actual car is the expensive part of a bad fit.\n\nNew gaskets, new studs. A stud that has already seen a few hundred heat cycles is next winter's boost leak.\n\nTorque from the center outward in stages, and re-torque after the first heat cycle.\n\nTorque figures: *(SY to supply)*"
+    },
+    "k-series-bottom-mount-ram-horn-turbo-manifold": {
+      "tier": "inhouse",
+      "lead": "A bottom mount ram horn manifold cut for the 06-10 Civic Si FA5 and FG2, and adaptable to other custom setups.\n\n1.5\" Schedule 40 304 stainless, 1/2\" mild steel CNC flanges chosen to resist warping, TIG welded and back-purged.",
+      "whyThisPart": "The FA5 and FG2 are the K-series chassis nobody planned an aftermarket around. They arrived after the EP3 and DC5 had the attention, they are physically bigger, and the bay is packaged differently enough that a manifold drawn for an RSX does not simply bolt in.\n\nSo this one is cut for them specifically, and a bottom mount is the layout that suits the car. The turbo sits low, the hood line is untouched, and the charge piping has a natural route forward without crossing over the head.\n\nA ram horn collector is the reason it is compact. Rather than running each runner out to a common plane and turning, the runners curl into the collector from both sides, which shortens the whole assembly. On a bay this tight that is the difference between a manifold that fits and one that is theoretically correct.\n\nThe flanges are **mild steel rather than stainless, and that is deliberate**: 1018 moves less under repeated heat cycling, so the sealing face stays flat. A warped flange is a leak you chase for months and never find with a smoke test.",
+      "beforeYouBuy": "- **Drawn for the 06-10 Civic Si FA5/FG2.** It has been used on other custom setups, but that is a fabrication job rather than a bolt-on.\n- **Turbine flange at order:** T3 45mm, T4 45mm, PTE V-band 45mm or Garrett V-band 45mm.\n- **Check hood and crossmember clearance** for your turbo before the downpipe is made.\n- Manifold only.",
+      "specs": "Runners: 1.5\" Schedule 40 304 stainless\nFlanges: 1/2\" mild steel, CNC cut, chosen to resist warping\nWelding: TIG welded, back-purged\nConfiguration: bottom mount, ram horn\nTurbine options: T3 45mm, T4 45mm, PTE V-band 45mm, Garrett V-band 45mm\nChassis: 06-10 Civic Si FA5/FG2\nWarranty: 1 year to the original buyer",
+      "chassis": [
+        "FA5",
+        "FG2",
+        "K20",
+        "K24"
+      ],
+      "installNotes": "On the FA5 and FG2 the crossmember is the clearance to check first, before the hood. Get the turbo and gate positioned and confirm the downpipe has a route past it.\n\nMock the turbo and gate up on the car before any downpipe is cut. A downpipe made to a drawing instead of to the actual car is the expensive part of a bad fit.\n\nNew gaskets, new studs. A stud that has already seen a few hundred heat cycles is next winter's boost leak.\n\nTorque from the center outward in stages, and re-torque after the first heat cycle.\n\nTorque figures: *(SY to supply)*"
+    },
+    "honda-forward-facing-turbo-manifold-sfwd-b-d-h": {
+      "tier": "inhouse",
+      "lead": "A forward facing manifold for Honda B, D and H2B, built for front-drive drag cars. Schedule 40 stainless runners, 1018 CNC flanges at half an inch, TIG welded, back-purged and ported.\n\nEvery gate from 44 to 46mm lands on the same flange.",
+      "whyThisPart": "Forward facing exists because a drag car does not care what the engine bay looks like and does care enormously about where the heat goes.\n\nTurning the runners forward puts the turbine in front of the engine, in clean air, with the shortest possible path to an intercooler mounted in the same place. It moves the hottest object in the car away from the intake manifold, the charge pipe and the fuel rail — all of which spend their time absorbing radiant heat on a stock-placement setup and giving it back to the intake charge.\n\nOn a car making a single pass at a time that is close to free power. Charge temperature at the end of the run is what decides the number, and the layout that keeps the hot side away from the cold side wins before the intercooler is even sized.\n\nThe ported transition is what separates this from a manifold with the same tube spec. A flange is a plate with a hole in it; a tube welded behind it leaves a step wherever the two do not match exactly, and that step is in the gas path on every exhaust event. Opening it is bench time that buys flow you never have to maintain.",
+      "beforeYouBuy": "- **Engine family is chosen at order:** B, D or H2B.\n- **44 to 46mm gates all fit the same flange.**\n- **This is a drag-oriented layout.** It puts the turbine in front of the engine, which has consequences for a street car's cooling package.\n- **Turbine flange at order:** T3 or T4, 45 or 60mm gate provision, Tial or Turbosmart.\n- Manifold only.",
+      "specs": "Runners: 1.5\" Schedule 40 stainless\nFlanges: 1018, 1/2\", CNC cut\nWelding: TIG welded, back-purged\nWarranty: 1 year to the original buyer\nPorted: yes\nConfiguration: forward facing, SFWD\nEngine families: B, D, H2B\nTurbine options: T3, T4, with 45 or 60mm gate provision\nWastegate: 44-46mm, one flange",
+      "wastegateCompat": "44-46mm, all on the same flange",
+      "chassis": [
+        "B16",
+        "B18",
+        "D-series",
+        "H2B",
+        "EG",
+        "EK",
+        "DC"
+      ],
+      "installNotes": "Mock the turbo and gate up on the car before any downpipe is cut. A downpipe made to a drawing instead of to the actual car is the expensive part of a bad fit.\n\nNew gaskets, new studs. A stud that has already seen a few hundred heat cycles is next winter's boost leak.\n\nTorque from the center outward in stages, and re-torque after the first heat cycle.\n\nTorque figures: *(SY to supply)*"
+    },
+    "s2000-turbo-manifold-k-f": {
+      "tier": "inhouse",
+      "lead": "A turbo manifold for the S2000, in both F-series and K-swap versions. Schedule 40 stainless, 1018 half-inch CNC flanges, ported, TIG welded and back-purged.\n\nIt also suits other rear-drive swaps — BMW, 240SX, pickups, RX-7 — where a K or an F has gone in.",
+      "whyThisPart": "The S2000 is a rear-drive Honda with a transverse-engine parts catalog behind it, which means most of what fits it was drawn for something else.\n\nThis manifold is made in two versions because the two engines that end up in these cars need different geometry. The F-series is what the car came with. The K-swap is what a large number of them are running now, and a K in an S2000 chassis puts the exhaust ports in a different place relative to the firewall than the F did.\n\nWhat both versions share is the reason a rear-drive layout is easier to turbocharge than a front-drive one: there is length available. The exhaust does not have to turn immediately to clear a driveshaft or a subframe, so the runners can be drawn for pulse separation rather than for packaging. That is the one structural advantage RWD has here, and it is worth using.\n\nThe same part suits other swaps for the same reason — a 240SX, a BMW, a pickup, an RX-7 with a K in it are all solving the same geometry problem the S2000 is.",
+      "beforeYouBuy": "- **Choose K or F at order.** They are different manifolds, not different fitting kits.\n- **44 to 46mm gates all fit the same flange.**\n- **Turbine flange at order:** T3 45, T4 45 or V-band 45.\n- **Other RWD swaps are supported but not guaranteed.** Ask if your chassis is not an S2000.\n- Manifold only.",
+      "specs": "Runners: 1.5\" Schedule 40 stainless\nFlanges: 1018, 1/2\", CNC cut\nWelding: TIG welded, back-purged\nWarranty: 1 year to the original buyer\nPorted: yes\nConfiguration: RWD\nEngine options: K-series or F-series, selected at order\nTurbine options: T3 45, T4 45, V-band 45\nWastegate: 44-46mm, one flange\nOther chassis: BMW, 240SX, pickups, RX-7 K swaps",
+      "wastegateCompat": "44-46mm, all on the same flange",
+      "chassis": [
+        "AP1",
+        "AP2",
+        "S2000",
+        "K20",
+        "K24",
+        "F20",
+        "F22"
+      ],
+      "installNotes": "Mock the turbo and gate up on the car before any downpipe is cut. A downpipe made to a drawing instead of to the actual car is the expensive part of a bad fit.\n\nNew gaskets, new studs. A stud that has already seen a few hundred heat cycles is next winter's boost leak.\n\nTorque from the center outward in stages, and re-torque after the first heat cycle.\n\nTorque figures: *(SY to supply)*"
+    },
+    "honda-k-series-sidewinder-turbo-manifold": {
+      "tier": "inhouse",
+      "lead": "A sidewinder K-series manifold — the turbo turned out to the side of the head rather than sitting above it or hanging below it.\n\nSchedule 40 stainless runners, 1018 half-inch CNC flanges, ported, TIG welded and back-purged. 44 to 46mm gates on one flange.",
+      "whyThisPart": "Three K-series layouts exist because engine bays do not agree with each other.\n\nA top mount needs height. A bottom mount needs depth and a route past the subframe. A sidewinder needs width — it takes the runners out sideways and puts the turbine beside the head, in the space between the engine and the inner wing.\n\nThat is the right answer in a specific set of cars: ones with a low hood line where a top mount will not shut, and a crowded lower bay where a bottom mount fouls the crossmember. It is a packaging solution before it is a performance one, and it should be chosen that way — by measuring the car, not by reading about spool.\n\nWhat it does not compromise is the runner work. The tubes are the same Schedule 40 stainless as every other manifold here, the flanges are the same 1018 at half an inch, and the transitions are ported the same way. A layout chosen for clearance does not have to be a layout that gives something up.\n\nEvery gate from 44 to 46mm lands on the same flange, so the wastegate is not part of the decision.",
+      "beforeYouBuy": "- **Measure the side clearance in your bay** before ordering. This layout trades height for width.\n- **Turbine flange at order:** T3, T4, twin scroll dual 45, or Garrett/Tial/PTE V-band, with 45 or 60mm gate provision.\n- **44 to 46mm gates all fit.**\n- **Charge piping routes differently** from a top or bottom mount. Plan it before cutting.\n- Manifold only.",
+      "specs": "Runners: 1.5\" Schedule 40 stainless\nFlanges: 1018, 1/2\", CNC cut\nWelding: TIG welded, back-purged\nWarranty: 1 year to the original buyer\nPorted: yes\nConfiguration: sidewinder\nTurbine options: T3, T4, twin scroll dual 45, Garrett/Tial/PTE V-band\nWastegate: 44-46mm, one flange",
+      "wastegateCompat": "44-46mm, all on the same flange",
+      "chassis": [
+        "K20",
+        "K24"
+      ],
+      "installNotes": "Measure the gap between the head and the inner wing with the engine at rest and again with it loaded on the mounts. A sidewinder puts the turbine in the plane the engine rocks through, and static clearance is not the clearance that matters.\n\nMock the turbo and gate up on the car before any downpipe is cut. A downpipe made to a drawing instead of to the actual car is the expensive part of a bad fit.\n\nNew gaskets, new studs. A stud that has already seen a few hundred heat cycles is next winter's boost leak.\n\nTorque from the center outward in stages, and re-torque after the first heat cycle.\n\nTorque figures: *(SY to supply)*"
+    },
+    "honda-top-mount-turbo-manifold-b-d-h-series": {
+      "tier": "inhouse",
+      "lead": "A top mount manifold for Honda B, D and H series. Schedule 40 stainless, 1018 half-inch CNC flanges, ported, TIG welded and back-purged.\n\n44 to 46mm gates all fit the same flange. **This layout is not air conditioning compatible.**",
+      "whyThisPart": "Top mount is the layout that gives the most and asks the most.\n\nRunning the runners up and over puts real length between the port and the turbine, and it keeps the pulses separate for the whole of it. On a B or D series — engines that are small and rev hard — that length is what makes a large turbo behave, because there is enough exhaust energy arriving in usable pulses rather than as a smeared mass of gas.\n\nThe price is the space above the head, and on these chassis that space belongs to the air conditioning. There is no version of this manifold that keeps it. **If the car has A/C and is keeping it, the ram horn manifold is the part to look at instead** — it is built for exactly that case.\n\nThat is a decision to make before ordering rather than after. A/C is one of those things a car can lose during a build and never get back, because by the time anyone misses it the piping has been made around the space.",
+      "beforeYouBuy": "- **Not air conditioning compatible.** If you are keeping A/C, look at the B/D ram horn manifold.\n- **Engine family at order:** B, D or H.\n- **Turbine flange at order:** T3 or T4, 45 or 60mm gate provision, Tial or Turbosmart.\n- **44 to 46mm gates all fit the same flange.**\n- **Check hood clearance** for your turbo.\n- Manifold only.",
+      "specs": "Runners: 1.5\" Schedule 40 stainless\nFlanges: 1018, 1/2\", CNC cut\nWelding: TIG welded, back-purged\nWarranty: 1 year to the original buyer\nPorted: yes\nConfiguration: top mount\nEngine families: B, D, H\nTurbine options: T3, T4, with 45 or 60mm gate provision\nWastegate: 44-46mm, one flange\nAir conditioning: not compatible",
+      "wastegateCompat": "44-46mm, all on the same flange",
+      "chassis": [
+        "B16",
+        "B18",
+        "GSR",
+        "ITR",
+        "D-series",
+        "H22",
+        "EG",
+        "EK",
+        "DC"
+      ],
+      "installNotes": "The air conditioning comes out as part of this job rather than after it. Cap or remove the lines before the manifold goes on — working around them once the turbo is in place is considerably harder.\n\nMock the turbo and gate up on the car before any downpipe is cut. A downpipe made to a drawing instead of to the actual car is the expensive part of a bad fit.\n\nNew gaskets, new studs. A stud that has already seen a few hundred heat cycles is next winter's boost leak.\n\nTorque from the center outward in stages, and re-torque after the first heat cycle.\n\nTorque figures: *(SY to supply)*"
+    },
+    "honda-ram-horn-turbo-manifold-b-d-series-ac": {
+      "tier": "inhouse",
+      "lead": "A ram horn manifold for Honda B and D series that **keeps the air conditioning**. Schedule 40 stainless runners, 1018 half-inch CNC flanges, ported, TIG welded and back-purged.\n\n44 to 46mm gates all fit one flange.",
+      "whyThisPart": "Most turbo manifolds for these engines make you choose between boost and air conditioning, and the choice is usually made by whichever part got ordered first.\n\nA ram horn collector is what makes both possible. Instead of running the runners out to a common plane and turning them into the turbine, they curl in from either side and meet in a much shorter assembly. The whole manifold occupies less of the bay, and the volume that gets handed back is the volume the A/C compressor and its lines need.\n\nThat is the entire argument for this part, and it is a practical one rather than a performance one. A shorter collector is a small compromise on pulse separation against a top mount. Keeping air conditioning in a car that gets driven in summer is not a small thing at all, and it is close to impossible to add back later once the charge piping has been built through the space.\n\nThe construction is unchanged from every other manifold here — same tube, same flange material and thickness, same ported transitions. Choosing the layout that fits your car does not mean choosing a lesser part.",
+      "beforeYouBuy": "- **This is the A/C-compatible layout.** If you are deleting A/C anyway, the top mount gives more runner length.\n- **Engine family at order:** B or D.\n- **Turbine flange at order:** T3 45 or T4 45.\n- **44 to 46mm gates all fit.**\n- Manifold only.",
+      "specs": "Runners: 1.5\" Schedule 40 stainless\nFlanges: 1018, 1/2\", CNC cut\nWelding: TIG welded, back-purged\nWarranty: 1 year to the original buyer\nPorted: yes\nConfiguration: ram horn\nEngine families: B, D\nTurbine options: T3 45, T4 45\nWastegate: 44-46mm, one flange\nAir conditioning: compatible",
+      "wastegateCompat": "44-46mm, all on the same flange",
+      "chassis": [
+        "B16",
+        "B18",
+        "GSR",
+        "D-series",
+        "EG",
+        "EK",
+        "DC"
+      ],
+      "installNotes": "Fit the manifold with the A/C lines in place rather than removing them for access. The whole point of this layout is that they coexist, and confirming that on the car is worth the extra few minutes at mock-up.\n\nMock the turbo and gate up on the car before any downpipe is cut. A downpipe made to a drawing instead of to the actual car is the expensive part of a bad fit.\n\nNew gaskets, new studs. A stud that has already seen a few hundred heat cycles is next winter's boost leak.\n\nTorque from the center outward in stages, and re-torque after the first heat cycle.\n\nTorque figures: *(SY to supply)*"
+    },
+    "k-series-top-mount-mini-ram-rwd-turbo-manifold": {
+      "tier": "inhouse",
+      "lead": "A compact top mount for K-series swaps into rear-drive cars — 240SX, BMW, Miata, FR-S and BRZ, Supra, Toyota pickups, MR2s.\n\nMini ram collector, Schedule 40 stainless runners, 1018 half-inch CNC flanges, ported, TIG welded and back-purged.",
+      "whyThisPart": "A K-series that has been put into a rear-drive chassis is nearly always in a bay that was drawn for a longitudinal engine, which means the space above the head is short, oddly shaped, and different in every car.\n\nA mini ram collector is the answer to that. It brings the runners together over a much shorter distance than a conventional top mount, so the turbine sits closer to the head and the whole assembly occupies a smaller box. On a swap that is often the difference between a manifold that clears the strut tower and one that does not.\n\nWhat you trade is a little runner length, and on a swap that trade is usually correct — a manifold that fits imperfectly gets modified, and a modified manifold is worth less than a shorter one that fits.\n\nThe list of chassis this suits is long because they share the problem rather than the dimensions. If yours is not on the list, the geometry is likely still close. Ask before ordering rather than after.",
+      "beforeYouBuy": "- **Mock up the turbo before the downpipe is fabricated.** Every swap bay is different and this manifold is chosen for tight ones.\n- **Turbine flange at order:** T3 or T4 with 45 or 60mm gate provision, or Garrett/Tial V-band.\n- **44 to 46mm gates all fit the same flange.**\n- **Not on the chassis list?** Ask. The geometry is often close.\n- Manifold only.",
+      "specs": "Runners: 1.5\" Schedule 40 stainless\nFlanges: 1018, 1/2\", CNC cut\nWelding: TIG welded, back-purged\nWarranty: 1 year to the original buyer\nPorted: yes\nConfiguration: top mount, mini ram, RWD\nTurbine options: T3, T4, Garrett V-band, Tial V-band, with 45 or 60mm gate provision\nWastegate: 44-46mm, one flange",
+      "wastegateCompat": "44-46mm, all on the same flange",
+      "chassis": [
+        "240SX",
+        "BMW",
+        "Miata",
+        "FR-S",
+        "BRZ",
+        "Supra",
+        "MR2",
+        "K20",
+        "K24"
+      ],
+      "installNotes": "Check strut tower and firewall clearance with the engine on its mounts. Swap bays vary more than factory ones, and this manifold is chosen by people whose bays are tight.\n\nMock the turbo and gate up on the car before any downpipe is cut. A downpipe made to a drawing instead of to the actual car is the expensive part of a bad fit.\n\nNew gaskets, new studs. A stud that has already seen a few hundred heat cycles is next winter's boost leak.\n\nTorque from the center outward in stages, and re-torque after the first heat cycle.\n\nTorque figures: *(SY to supply)*"
+    },
+    "honda-mini-ram-turbo-manifold-b-d-series": {
+      "tier": "inhouse",
+      "lead": "A mini ram top mount for Honda B, D and H series. Schedule 40 stainless runners, 1018 half-inch CNC flanges, ported, TIG welded and back-purged.\n\n44 to 46mm gates all fit one flange. **Not air conditioning compatible.**",
+      "whyThisPart": "This is the compact top mount, and it exists for bays that will not take the full-size one.\n\nA mini ram collector brings the four runners together over a shorter distance, which pulls the turbine in toward the head and shrinks the assembly. In an EG or EK with a low hood, or a car with a strut tower brace that is staying, that reduction is what decides whether the layout is possible at all.\n\nAgainst a full top mount you give up some runner length, and with it a little of the pulse separation that makes a big turbo civil. Against a bottom mount you keep the heat above the head and out of the charge piping. Where it sits between those two is the reason to choose it: it is the top mount for cars that cannot have a top mount.\n\nAir conditioning does not survive this layout, the same as any manifold that uses the space above the head. If the car is keeping A/C, the ram horn manifold is the one built for that.",
+      "beforeYouBuy": "- **Not air conditioning compatible.** The B/D ram horn manifold is the A/C layout.\n- **Engine family at order:** B, D or H.\n- **Turbine flange at order:** T3 45 or T4 45.\n- **44 to 46mm gates all fit.**\n- **Check hood clearance** with your turbo before the piping is made.\n- Manifold only.",
+      "specs": "Runners: 1.5\" Schedule 40 stainless\nFlanges: 1018, 1/2\", CNC cut\nWelding: TIG welded, back-purged\nWarranty: 1 year to the original buyer\nPorted: yes\nConfiguration: mini ram top mount\nEngine families: B, D, H\nTurbine options: T3 45, T4 45\nWastegate: 44-46mm, one flange\nAir conditioning: not compatible",
+      "wastegateCompat": "44-46mm, all on the same flange",
+      "chassis": [
+        "B16",
+        "B18",
+        "GSR",
+        "D-series",
+        "H22",
+        "EG",
+        "EK",
+        "DC"
+      ],
+      "installNotes": "Check hood clearance with the turbo mocked up, not with a tape measure to the flange. The compressor housing is usually the highest point, not the turbine.\n\nMock the turbo and gate up on the car before any downpipe is cut. A downpipe made to a drawing instead of to the actual car is the expensive part of a bad fit.\n\nNew gaskets, new studs. A stud that has already seen a few hundred heat cycles is next winter's boost leak.\n\nTorque from the center outward in stages, and re-torque after the first heat cycle.\n\nTorque figures: *(SY to supply)*"
+    },
+    "honda-k-series-custom-turbo-manifold": {
+      "tier": "inhouse",
+      "lead": "A custom-geometry K-series manifold drawn for mid-engine bays — the Lotus Elise and K-swapped NSX, where the trunk wall pockets dictate where the turbo can physically go.\n\nSchedule 40 stainless 1.5\" tubes, 1018 half-inch flanges, ported. 44 to 46mm gates, Tial, Turbosmart or PTE.",
+      "whyThisPart": "A K-series behind the driver is a different problem from a K-series in front of one.\n\nIn a mid-engine car the engine bay is not a bay so much as a compartment, bounded by a bulkhead on one side and bodywork on the others, with no bonnet space above the head and no subframe route below it. The turbo has to live in whatever pocket the chassis happens to leave, and on the Elise and the NSX those pockets are in the trunk wall.\n\nSo this manifold is drawn to reach them, rather than drawn as a layout and then checked for fit. That is why it is listed as custom: the geometry follows the chassis, and the chassis is unusual.\n\nIt will suit other platforms with the same constraint, and that is worth exploring — but it is a conversation rather than an add-to-cart. A mid-engine swap has enough one-off fabrication in it already, and the manifold is the wrong place to find another surprise.",
+      "beforeYouBuy": "- **Drawn for the Lotus Elise and K-swapped NSX.** Other mid-engine platforms may suit it — ask first.\n- **Turbine flange at order:** T3, T4, or V-band in PTE, Garrett or Tial.\n- **44 to 46mm gates only**, Tial, Turbosmart or PTE.\n- **This is a fitment conversation, not a catalog purchase.** Send us your chassis and layout before ordering.\n- Manifold only.",
+      "specs": "Runners: 1.5\" Schedule 40 stainless\nFlanges: 1018, 1/2\"\nPorted: yes\nConfiguration: custom, mid-engine\nDrawn for: Lotus Elise, K-swap NSX trunk wall pockets\nTurbine options: T3, T4, PTE/Garrett/Tial V-band\nWastegate: 44-46mm; Tial, Turbosmart or PTE\nWarranty: 1 year",
+      "wastegateCompat": "44-46mm. Tial, Turbosmart or PTE.",
+      "chassis": [
+        "Lotus Elise",
+        "NSX",
+        "K20",
+        "K24"
+      ],
+      "installNotes": "Send us photographs of the bay and the pocket you intend to use before ordering. On a mid-engine swap the manifold is drawn to the chassis, and the chassis is the part we cannot see from here.\n\nMock the turbo and gate up on the car before any downpipe is cut. A downpipe made to a drawing instead of to the actual car is the expensive part of a bad fit.\n\nNew gaskets, new studs. A stud that has already seen a few hundred heat cycles is next winter's boost leak.\n\nTorque from the center outward in stages, and re-torque after the first heat cycle.\n\nTorque figures: *(SY to supply)*"
     }
   }
 }

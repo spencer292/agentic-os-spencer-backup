@@ -131,7 +131,11 @@ const idByHandle = {};
 const missing = entries.filter(([h]) => !idByHandle[h]).map(([h]) => h);
 if (missing.length) { console.error(`Handles not on the store:\n  ${missing.join('\n  ')}`); process.exit(1); }
 
-const TARGETS = { hero: [600, 900], inhouse: [350, 450], resold: [120, 180] };
+// inhouse ceiling raised 450 -> 480 on 2026-08-26. The 350-450 band in
+// docs/competitors.md 3b was set before install notes were part of the structure;
+// on a manifold that block is worth 60-80 words of real fitting information and
+// cutting it to hold a number would be trimming content to fit a target.
+const TARGETS = { hero: [600, 900], inhouse: [350, 480], resold: [120, 180] };
 
 console.log(`${entries.length} product(s)   ${APPLY ? 'APPLY' : 'DRY RUN'}\n`);
 let outOfBand = 0;

@@ -198,10 +198,14 @@ and it is what a manufacturer with a catalog actually does.
 | Tier | Products | Target | Why |
 |---|---:|---|---|
 | **Hero** — flagship in-house drivetrain and manifold SKUs | ~12–15 | **600–900**, the full ETS treatment | These pages carry the brand and the price. ETS runs 11 pages past 500 words and its best is 1,135. Matching that on a dozen parts is achievable. Matching it on 198 is not. |
-| **In-house, rest** | ~60 | **350–450**, full block structure | Clears SpeedFactory's best original page (318) on every one, and sits above the p90 of a 5,000-product catalog. |
+| **In-house, rest** | ~60 | **350–480**, full block structure | Clears SpeedFactory's best original page (318) on every one, and sits above the p90 of a 5,000-product catalog. |
 | **Resold** | 123 | **120–180**, lead + fitment + one honest caveat | Clears SpeedFactory's 114 median and Ichiban's 12 without pretending to deep knowledge of somebody else's part. Rule 2 proof cannot be met on a resold part anyway — there is no tolerance of ours to quote. |
 
-Roughly 10,500 + 24,000 + 18,500 = **~53,000 words**, against ~79,000 for a flat 400. More
+The in-house ceiling was 450 when this was written and is now **480**: install notes were not
+part of the block structure at the time, and on a manifold that block carries 60–80 words of
+real fitting information. Cutting it to hold a number would be trimming content to fit a target.
+
+Roughly 10,500 + 25,000 + 18,500 = **~54,000 words**, against ~79,000 for a flat 400. More
 importantly the review burden concentrates: SY reads a dozen pages properly instead of skimming
 198.
 
