@@ -113,45 +113,103 @@ Rerun with `node scripts/measure-competitor-copy.mjs --json`.
 | SpeedFactory — own brand | 26 | **121** | 237 | **318** |
 | JackSpania — whole catalogue | 1,505 | **96** | 224 | 1,099 |
 | Ichiban — sampled | 14 | **12** | — | 207 |
+| **Extreme Turbo Systems** | 362 | **100** | 315 | **1,135** |
 | **SYPerformance today** | 198 | **20** | 82 | 264 |
 | SYPerformance — the 75 in-house | 75 | **23** | — | 133 |
 
 ### Four things the numbers changed
 
-**1. SpeedFactory is far bigger than the earlier read suggested — 5,000 products, not a
-boutique.** Only 26 carry their own name. They are a reseller with a house line, and the house
-line is 0.5% of the catalogue.
+**1. Three of the four are resellers.** SpeedFactory is 5,000 products with its own name on 26
+— a house line that is 0.5% of the catalog. ETS is the exception and the real comparison; see
+below.
 
-**2. The long tail is supplier boilerplate, not writing.** Every page over 500 words is
-somebody else's marketing copy pasted in — the top five on SpeedFactory are Mishimoto lug nuts
-and wheel spacers at 1,068–1,082 words. Counting those as "competitor copy" would set a target
-against Mishimoto's copywriter, not SpeedFactory's.
+**2. On the resellers, the long tail is supplier boilerplate rather than writing.** The top
+five pages on SpeedFactory are Mishimoto lug nuts and wheel spacers at 1,068–1,082 words —
+Mishimoto's copywriter, not SpeedFactory's. **This does not hold for ETS**, whose long pages are
+its own.
 
-**3. The real editorial bar is 318 words.** That is SpeedFactory's longest original page
-(SFWD/AWD Billet Air-to-Air Intercooler). Their own-brand median is 121. Nobody in this set
-writes a genuinely long original product page.
+**3. Among the resellers the editorial bar is 318 words** — SpeedFactory's longest original
+page (SFWD/AWD Billet Air-to-Air Intercooler), against an own-brand median of 121. **ETS clears
+that by 3.5x on its hero pages.**
 
 **4. SYPerformance's median is 20 words, and 112 of 198 products (57%) have under 25.** 23
 have no description at all. The gap is not marginal — it is an order of magnitude, and it is
 the cheapest advantage on the table because no competitor is defending it.
 
+### ETS changes the answer — added 2026-08-26 on Spencer's prompt
+
+**Extreme Turbo Systems** (extremeturbosystems.com, **Ridgefield, WA 98642**) was missing from
+the original three, and it is the only real peer in the set. The other three are resellers by
+weight: SpeedFactory carries 5,000 products and puts its own name on 26. **ETS carries 362 and
+its own name is on 347 — 96%.** It is a manufacturer with a catalog, which is what SYPerformance
+is. It is also in the same state.
+
+| | ETS |
+|---|---|
+| Products | 362 |
+| Own brand | 347 (96%) |
+| Median words | 100 |
+| p90 | 315 |
+| Max | **1,135** |
+| Pages over 500 words | 11 (3%) |
+| Pages over 300 words | 45 (12%) |
+
+**It breaks the finding above.** On SpeedFactory and JackSpania every page past 500 words is
+supplier boilerplate pasted in. On ETS the long pages are **theirs**, written about their own
+parts. So the ceiling for a manufacturer in this market is not 318 words. It is about 1,100.
+
+### What the 1,135-word page actually does
+
+`ETS 15-21 Subaru WRX Front Mount Intercooler`, in order:
+
+1. **Opens on the reader's failure.** *"Fed up with the persistent issue of heat soak?"* The
+   part is not named until the fifth paragraph.
+2. **Explains the mechanism properly** — offset and staggered internal/external fin packs, the
+   external pack dense for heat transfer, the internal pack less dense for flow, and the balance
+   between the two as the actual engineering problem.
+3. **Names the competing failure mode as a spec, not a jab.** *"Most of them employ a
+   straight-through internal fin pack, resembling a tunnel rather than a splitter,"* which
+   yields higher intake air temps and then *"timing reduction, knock, misfires, and even
+   detonation."* This is precisely the comparison Rule 1 permits.
+4. **A process step.** *"Each inlet and outlet undergoes meticulous hand porting to reduce
+   turbulence."*
+5. **Proof, of exactly the type this site does not have.** *"Kozmic Motorsports is the first
+   company in the world to run a 9 second 1/4 mile in a 2015+ WRX,"* running an ETS turbo kit,
+   intercooler and titanium piping, built and tuned by Kozmic. Plus an STI at *"8.05 @ 184"* on
+   an off-the-shelf core. **A named shop, a named car, a number, and which ETS parts were on it.**
+6. **Hard dimensions** — 26" wide, 11.37" tall, four thickness options.
+
+Their prose is more inflated than SYP's should be — *meticulous, unrivaled, ingenious, absolute
+best-performing*. Those adjectives are free and the ruleset is right about them. **The reason
+the page works anyway is that every adjective is anchored to a number or a named car.** That is
+Rule 2 demonstrated by a competitor, in the same state, to the same buyers.
+
+**Blocker B in `copy-audit.md` is not theoretical.** ETS's single strongest asset is one
+customer's drag car, and it does more work than the other 1,100 words on the page.
+
 ### Revised target: tier it
 
-The flat 300–500 stands for the parts that carry the positioning, and comes down for the rest.
-198 × 400 words is ~79,000 words all needing SY's technical read, and most of that spend would
-land on parts SYPerformance did not design.
+**Copy the shape of the ETS catalog, not its average.** ETS does not write 400 words on
+everything. Its median is 100 and only 12% of its pages clear 300 words. What it does is write a
+**small number of very long hero pages** and keep the rest tight. That is a better model than a
+flat target: it puts the words where the buying decision is hardest and the margin is biggest,
+and it is what a manufacturer with a catalog actually does.
 
 | Tier | Products | Target | Why |
 |---|---:|---|---|
-| **In-house** | 75 | **350–450**, full block structure | Beats SpeedFactory's best original page on every one, not just on average. These are the pages where the failure-mode explanation is genuinely ours to write and where the GEO lever sits. |
+| **Hero** — flagship in-house drivetrain and manifold SKUs | ~12–15 | **600–900**, the full ETS treatment | These pages carry the brand and the price. ETS runs 11 pages past 500 words and its best is 1,135. Matching that on a dozen parts is achievable. Matching it on 198 is not. |
+| **In-house, rest** | ~60 | **350–450**, full block structure | Clears SpeedFactory's best original page (318) on every one, and sits above the p90 of a 5,000-product catalog. |
 | **Resold** | 123 | **120–180**, lead + fitment + one honest caveat | Clears SpeedFactory's 114 median and Ichiban's 12 without pretending to deep knowledge of somebody else's part. Rule 2 proof cannot be met on a resold part anyway — there is no tolerance of ours to quote. |
 
-Total drops from ~79,000 words to ~48,000, and the review burden concentrates on the 75 pages
-where SY's technical read actually adds something.
+Roughly 10,500 + 24,000 + 18,500 = **~53,000 words**, against ~79,000 for a flat 400. More
+importantly the review burden concentrates: SY reads a dozen pages properly instead of skimming
+198.
 
-**The 300-word floor on in-house is the number that matters.** At 300 every in-house page beats
-the single best original page any of these three competitors has published. At 400 they sit
-above the p90 of a 5,000-product catalogue.
+**Which parts are heroes is a decision, not a calculation.** The obvious candidates are the two
+billet halfshaft carriers, the two single lobe rocker sets, the K-series billet halfshaft, the
+B-series hydro halfshaft, the AWD bellhousing, the transfer case block-off, the HD shift
+selector, the B58 six-port top mount manifold and the K-series top mount. Spencer and SY pick
+the final list.
 
 ---
 

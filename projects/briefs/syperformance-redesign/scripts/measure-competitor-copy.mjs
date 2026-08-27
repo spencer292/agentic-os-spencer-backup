@@ -82,9 +82,15 @@ report('SpeedFactory Racing', sf, r => /speedfactory/i.test(r.vendor || ''));
 const js = await shopifyCatalogue('https://jackspaniaracing.shop', 'JackSpania');
 report('JackSpania Racing', js, r => /jack ?spania/i.test(r.vendor || ''));
 
+// Added 2026-08-26 on Spencer's prompt. ETS is the closest analogue in the set:
+// a genuine manufacturer with its own brand, in Vancouver WA, selling into the
+// same Evo and B58/Supra buyers. The other three are resellers by weight.
+const ets = await shopifyCatalogue('https://www.extremeturbosystems.com', 'ETS');
+report('Extreme Turbo Systems', ets, r => /^ets|extreme turbo/i.test(`${r.vendor || ''} ${r.title}`));
+
 if (process.argv.includes('--json')) {
   fs.mkdirSync(path.join(ROOT, 'data'), { recursive: true });
   fs.writeFileSync(path.join(ROOT, 'data', 'competitor-copy.json'),
-    JSON.stringify({ measuredAt: new Date().toISOString(), speedfactory: sf, jackspania: js }, null, 1));
+    JSON.stringify({ measuredAt: new Date().toISOString(), speedfactory: sf, jackspania: js, ets }, null, 1));
   console.log('\nwrote data/competitor-copy.json');
 }
