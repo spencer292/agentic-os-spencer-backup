@@ -207,6 +207,32 @@ first apply run reported its word counts and then died on it — the counts prin
 did not happen, and `tail` hid the stack trace. Verified against the rendered page afterward,
 which is the only reason it was caught.
 
+### 9.1c The logo — supplied, and what it actually is
+
+`Syperformance - Logo.pdf`, 1224 x 516 pt from Adobe Photoshop. **No vector art and no
+fonts** — the entire logo is one 5100 x 2150 JPEG on a white background, with drop shadows
+and a brushed-metal gradient baked into the pixels. `scripts/prepare-logo.mjs` extracts it,
+knocks the white out to transparency, trims, and writes the web sizes.
+
+**The accent now matches the mark rather than approximating it.** The artwork carries two
+teals: `#90e8d8` across the top of the SYP block and **`#30d0b8`** through the lower band.
+The accent is the saturated one, **sampled off the file**, not eyeballed. It replaces the
+`#1ec8a5` chosen earlier the same day — close, but slightly green of the mark, which would
+have read as a near-miss sitting next to it. Contrast on graphite goes 8.50 → **9.35**, so
+this is an improvement on both counts. Buttons and the favicon were rebuilt to match.
+
+**The header gets the SYP block alone, not the supplied lockup.** The artwork is three tiers
+— SYP, then SYPERFORMANCE, then *Performance and Fabrication* — and below roughly 60 px tall
+the lower two are unreadable. At the theme's 28 px header height the full lockup is mush. The
+mark ships as `theme/assets/syp-logo-mark.png` (316 x 80, 26 KB) with `settings.logo` still
+winning if SY uploads one: an override, not a lock-in, same as the favicon.
+
+| # | Item | Owner | Note |
+|---|---|---|---|
+| 8.6a | **Ask SY for vector art** | Spencer | A raster logo cannot be scaled for print, cut for vinyl, or rendered crisply at every size, and the knockout left 4.5% of pixels in a soft band where the drop shadow met white. If whoever drew this still has the layered file or an AI/EPS, that one file solves all of it permanently. The current assets are good enough to ship and they are not the right long-term source. |
+| 8.6b | **Where the full lockup goes** | to do | It deserves a place it can be large — the footer, the About page, or the dealer PDF. It is currently used nowhere. |
+| 8.6c | **The Superformance collision is now visual** | Spencer | The wordmark tier reads *SYPERFORMANCE* in a heavy italic where the S and the Y run together. At a glance, and at small sizes, it is legible as *SUPERFORMANCE* — which is the exact name collision item 4.7 exists for. Schema and consistent one-word usage mitigate the text; they do nothing about the artwork. Worth knowing before it goes on a banner. |
+
 ### 9.2 Collection hub
 
 Built and live. Full write-up in `docs/catalogue-restructure.md` §3. Eleven collections get hub behaviour, not two, because the hierarchy is read from the navigation menu rather than assigned per template.
@@ -262,6 +288,6 @@ Everything in this section is either a decision for Spencer or a verification th
 | 8.3 | **INP is not measured** | to do, Phase 9 | TBT is a load-time proxy for it, not a substitute. INP needs real interaction on a real device — folds into 5.7. |
 | 8.4 | **How much of Horizon to keep** | Spencer | `compiled_assets/styles.css` is 49 KB of render-blocking CSS on every page and it sets FCP. Blocking it outright takes mobile FCP from ~1,900 ms to ~1,200 ms — but only 19–23% of it is unreachable (`node scripts/audit-css-bundle.mjs`). Getting the rest means deleting Horizon sections and blocks, which costs theme-editor options and makes future Horizon updates messier, for maybe 80–100 ms. My recommendation: don't. We're at 96–98 and the trade is bad. |
 | 8.5 | **Re-run the audits after any template change** | to do, ongoing | `audit-scripts.mjs` decides which module scripts are safe to omit by looking at what each template actually renders. Add a Horizon block to a template and the answer changes — an unregistered custom element fails silently rather than throwing. `check-templates.mjs` catches it. |
-| 8.6 | **The logo — still open, and bigger than the favicon** | Spencer / SY | I built a favicon mark (chamfered amber tile, "SY" in Inter 800, `--syp-accent` on `--syp-accent-ink`) because the tab icon needed *something*. **It is a competent placeholder, not a brand identity** — I designed it, not a designer, and SYPerformance has never had a logo: the live site's header is text too. The header still renders a text wordmark, because a 512 px tab icon is not a header logo. If SY wants a real mark, `brand/favicon-512.png` is the thing to hand a designer as a starting point or to throw away. Rebuild any variant with `node scripts/make-favicon.mjs` (`--compare` shows the chamfer options that were weighed). |
+| 8.6 | ~~The logo~~ | — | **SUPPLIED 2026-08-26.** SY sent `Syperformance - Logo.pdf`. Processed with `scripts/prepare-logo.mjs`; details below. The placeholder tile I designed is gone from the header and survives only as the favicon shape. |
 
 **Fixed in passing, worth knowing about:** `<header-actions>` in the SYP header had been sitting in the DOM unupgraded since Phase 1 — the cart count was never announced to screen readers and the cart button's `aria-expanded` never changed, because `header-actions.js` was only ever loaded by Horizon's own header snippet, which this theme doesn't render. `docs/performance.md` §2.7.

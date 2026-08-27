@@ -58,7 +58,23 @@
             class: 'syp-header__logo-img'
         }}
       {%- else -%}
-        <span class="syp-header__wordmark">{{ shop.name }}</span>
+        {%- comment -%}
+          SY supplied the logo on 2026-08-26. It ships as a theme asset so the header
+          is not a text wordmark out of the box, and `settings.logo` still wins if SY
+          uploads it to Files — an override, not a lock-in, same as the favicon.
+
+          This is the SYP block ALONE, not the supplied lockup. The artwork is three
+          tiers — SYP, then SYPERFORMANCE, then "Performance and Fabrication" — and
+          below about 60px tall the lower two are unreadable. The full lockup belongs
+          somewhere it can be big. Rebuild either with scripts/prepare-logo.mjs.
+        {%- endcomment -%}
+        <img
+          class="syp-header__logo-img"
+          src="{{ 'syp-logo-mark.png' | asset_url }}"
+          alt="{{ shop.name }}"
+          width="316"
+          height="80"
+        >
       {%- endif -%}
     </a>
 

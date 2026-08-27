@@ -39,16 +39,21 @@
      for decoration, only for something the user can act on.
 
      Changed from machine-warning amber (#f5a524) on 2026-08-26 at Spencer's
-     direction. The ramp was picked to hold the amber's contrast rather than
+     direction, then matched to the logo the same day. SY's artwork carries two
+     teals — #90e8d8 across the top of the SYP block and #30d0b8 through the
+     lower band — and the accent is the saturated one, sampled off the file by
+     scripts/prepare-logo.mjs rather than eyeballed. The first pass was #1ec8a5,
+     which was close but slightly green of the mark and would have read as a
+     near-miss beside it. The ramp was picked to hold the amber's contrast rather than
      just its hue, because the accent is used both as a solid button fill with
      dark ink on it AND as link text on graphite, and those pull in opposite
      directions. Measured against --syp-graphite-800 / --syp-accent-ink:
-     base 8.50:1 (amber was 8.88), hover 10.47 (10.52), press 6.03 (6.63).
+     base 9.35:1 (amber was 8.88), hover 11.04 (10.52), press 6.90 (6.63).
      All well past AA at any size, and past AAA for body text at base and
      hover. Re-measure with the same method before changing any of the three. */
-  --syp-accent: #1ec8a5;
-  --syp-accent-hover: #3ddcb9;
-  --syp-accent-press: #16a888;
+  --syp-accent: #30d0b8;
+  --syp-accent-hover: #4ce0c8;
+  --syp-accent-press: #22b39c;
   --syp-accent-ink: #14161a; /* text ON accent — dark, passes AA */
 
   /* Semantic — status only, never decorative */
