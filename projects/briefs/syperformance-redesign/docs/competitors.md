@@ -98,6 +98,63 @@ Practical effect: a 400-word page where the reasoning is real and the numbers ar
 
 ---
 
+## 3b. Product copy length — MEASURED, 2026-08-26
+
+§1 and §3 above were written from three hand-read pages. Spencer asked for the real numbers
+before the 198 get written. SpeedFactory and JackSpania are both Shopify, so `/products.json`
+returns every product's description and the **whole catalogue** could be counted rather than
+sampled. Ichiban is WooCommerce and was sampled evenly across its product sitemap.
+
+Rerun with `node scripts/measure-competitor-copy.mjs --json`.
+
+| | Products counted | Median | p90 | Max |
+|---|---:|---:|---:|---:|
+| SpeedFactory — whole catalogue | 5,000 | **114** | 254 | 1,082 |
+| SpeedFactory — own brand | 26 | **121** | 237 | **318** |
+| JackSpania — whole catalogue | 1,505 | **96** | 224 | 1,099 |
+| Ichiban — sampled | 14 | **12** | — | 207 |
+| **SYPerformance today** | 198 | **20** | 82 | 264 |
+| SYPerformance — the 75 in-house | 75 | **23** | — | 133 |
+
+### Four things the numbers changed
+
+**1. SpeedFactory is far bigger than the earlier read suggested — 5,000 products, not a
+boutique.** Only 26 carry their own name. They are a reseller with a house line, and the house
+line is 0.5% of the catalogue.
+
+**2. The long tail is supplier boilerplate, not writing.** Every page over 500 words is
+somebody else's marketing copy pasted in — the top five on SpeedFactory are Mishimoto lug nuts
+and wheel spacers at 1,068–1,082 words. Counting those as "competitor copy" would set a target
+against Mishimoto's copywriter, not SpeedFactory's.
+
+**3. The real editorial bar is 318 words.** That is SpeedFactory's longest original page
+(SFWD/AWD Billet Air-to-Air Intercooler). Their own-brand median is 121. Nobody in this set
+writes a genuinely long original product page.
+
+**4. SYPerformance's median is 20 words, and 112 of 198 products (57%) have under 25.** 23
+have no description at all. The gap is not marginal — it is an order of magnitude, and it is
+the cheapest advantage on the table because no competitor is defending it.
+
+### Revised target: tier it
+
+The flat 300–500 stands for the parts that carry the positioning, and comes down for the rest.
+198 × 400 words is ~79,000 words all needing SY's technical read, and most of that spend would
+land on parts SYPerformance did not design.
+
+| Tier | Products | Target | Why |
+|---|---:|---|---|
+| **In-house** | 75 | **350–450**, full block structure | Beats SpeedFactory's best original page on every one, not just on average. These are the pages where the failure-mode explanation is genuinely ours to write and where the GEO lever sits. |
+| **Resold** | 123 | **120–180**, lead + fitment + one honest caveat | Clears SpeedFactory's 114 median and Ichiban's 12 without pretending to deep knowledge of somebody else's part. Rule 2 proof cannot be met on a resold part anyway — there is no tolerance of ours to quote. |
+
+Total drops from ~79,000 words to ~48,000, and the review burden concentrates on the 75 pages
+where SY's technical read actually adds something.
+
+**The 300-word floor on in-house is the number that matters.** At 300 every in-house page beats
+the single best original page any of these three competitors has published. At 400 they sit
+above the p90 of a 5,000-product catalogue.
+
+---
+
 ## 4. Sequencing
 
 1. **Pilot** — three products written in full, one from each of drivetrain / valvetrain / forced induction. Spencer and SY sign off on depth, voice and the claims line. *(Draft below.)*

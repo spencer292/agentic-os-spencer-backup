@@ -83,7 +83,7 @@ Verified by scanning rendered pages — homepage, product, `syp-billet`, About �
 | 4.9 | **Collection filtering — Search & Discovery** | Shopify's free first-party app is what turns the Phase 3 metafields into real storefront filters (`filter.p.m.custom.platform`). Without it, filtering a collection to what fits can only happen client-side, on the products already on the page — it would not change counts or pagination, which reads as broken. I have NOT installed it: it is an app, and the plan says ask first. Recommend installing it. |
 | 4.6 | **Reviews platform** | Not yet evaluated — Phase 6 item still open. Shopify's own reviews app was retired; the realistic comparison is Judge.me free tier vs nothing. Needs a cost and page-speed report before anything is installed. |
 | 4.7 | **The Superformance name collision** | Business decision, not a code fix. Phase 7 mitigates with consistent one-word usage and `sameAs` schema. |
-| 4.8 | **Eight in-house compare-at prices** | Remove them. Ten-minute job, lands in Phase 7. |
+| 4.8 | ~~Eight in-house compare-at prices~~ | **DONE 2026-08-26.** Cleared on all 8 via `scripts/clear-compare-at.mjs`; 15 variants in total, because `b58-6-port-cnc-turbo-flanges` and `b58-downpipe-bmw-supra` carried them per variant. The downpipe's compare-at was *below* its price on all four variants, so it had been rendering a SALE badge on a price increase. One resold product was cleared with them — `honda-lsd-b16-fwd-k-awd-fwd-b-awd` had compare-at **equal** to price on all three variants, a SALE badge advertising no discount. That is a data defect, not a pricing decision. Genuine resold discounts (Supra carbon, Translab block-offs) are untouched. |
 
 ---
 
