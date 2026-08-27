@@ -140,6 +140,44 @@ Also fixed: `syp-product-flags.liquid` was suppressing both vendors as known-bad
 
 **Open, and it needs SY:** on the old live site all three clutch products carried the vendor `Competition Clutch`. Phase 7's `apply-brands.mjs` rewrote two of them to `Comp 1 Clutch` from the audit's *derived* brand field, splitting one vendor into two brand pages — `comp-1-clutch` (2 products) and `brand-competition-clutch` (1), the two thinnest pages on the site. The tags on those products carry **both** names. Question for SY: **is "Comp 1" a Competition Clutch product line or a separate brand?** Same brand • merge into one page of 3. Separate • keep both. Either way it is a one-line fix, and it should be settled before the product copy is written. (Competition Clutch itself is definitely stocked: 16 priced variants, $160–$895, K/B/D-series and Evo 8, present on the old live site under the same handle. Its zero inventory means nothing — **none** of the 198 products track inventory.)
 
+### 9.1b Product copy — pipeline built, hero tier written
+
+Source of truth is `data/product-copy.json`, applied with `scripts/apply-product-copy.mjs`.
+Copy lives in git so it is reviewable and diffable; the store is downstream. A re-run is
+idempotent, and editing a description in the Shopify admin will be overwritten by the next run.
+
+**Written and live: 7 of the hero tier**, 604–899 words each (whole-page count, including the
+spec table, so it compares like-for-like with the ETS figures in `competitors.md` §3b):
+`evo-7-8-9-vband-top-mount-turbo-kit`, `k-series-awd-billet-bellhousing`,
+`b58-6-port-top-mount-turbo-manifold`, `k-series-top-mount-turbo-manifold`,
+`evo-8-9-top-mount-turbo-manifold`, `honda-b-series-sfwd-intercooler`,
+`k-series-hd-shift-selector-hammer`.
+
+**The finding that changed the job: the specs already existed.** `copy-audit.md` §7 blocker A
+said no hard spec number was available anywhere. That was wrong. The old descriptions are
+unformatted fragment lists, and buried in them are 304 stainless, 1.5" Schedule 40 runners,
+1/2" 1018 CNC flanges, TIG welded and **back-purged**, 7075 billet, 70A urethane, 27 splines,
+6061 1/8" plate end tanks, 18 x 12 x 4.5 and 18 x 12 x 6 cores, M8x1.25 bungs, Honda part
+24411-PPP-010. Every spec table written so far is extracted, not invented. **Blocker A is
+substantially closed for the in-house parts; blockers B (a named build) and C (a real photo)
+are not.**
+
+**Warranty terms are in there too** — *"1 year warranty to the original purchaser with
+receipt"* appears on several products. That is item 2.1, sitting in product copy the whole
+time. It still needs Spencer to confirm it as the site-wide policy before `page.warranty` uses
+it, but it is no longer a blank sheet.
+
+**Remaining:** ~6 more hero candidates (both single lobe rocker sets, both billet halfshafts,
+both halfshaft carriers — three of which already have drafts in `copy-pilot.md`), ~62 in-house
+at 350–450, and 123 resold at 120–180. The pipeline makes each of those an entry in one JSON
+file rather than a fresh piece of engineering.
+
+**API note worth keeping:** on 2025-07 `productUpdate` takes `ProductUpdateInput`, not
+`ProductInput`. The mismatch throws a `variableMismatch` and fails the whole mutation. The
+first apply run reported its word counts and then died on it — the counts printed, the writes
+did not happen, and `tail` hid the stack trace. Verified against the rendered page afterward,
+which is the only reason it was caught.
+
 ### 9.2 Collection hub
 
 Built and live. Full write-up in `docs/catalogue-restructure.md` §3. Eleven collections get hub behaviour, not two, because the hierarchy is read from the navigation menu rather than assigned per template.
