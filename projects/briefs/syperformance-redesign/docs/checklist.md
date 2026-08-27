@@ -161,6 +161,25 @@ Changed with it: `config/settings_data.json` primary-button background and borde
 
 - **Phase 9 — pre-launch.** `docs/launch-checklist.md`, purchase test, real device testing, redirect verification, alt text, form delivery, analytics, rollback plan.
 
+### 7a. Google Search Console — added to Phase 9, 2026-08-26 (Spencer)
+
+Every SEO judgement on this project so far is established practice plus what is measurable on
+the catalog. **None of it is validated against what actually ranks**, because there has been no
+Search Console or Ahrefs access from Phase 0 onward (limitation 6.1). GSC closes that, and it is
+free.
+
+| # | Step | Owner | Note |
+|---|---|---|---|
+| 9a.1 | **Verify `got-moles.com`… no — `syperformance.net`** in Search Console | SY | Domain property via DNS TXT is best: it covers www/non-www and http/https in one. SY owns the domain, so this is his to do, and it is the only step nobody else can do for him. |
+| 9a.2 | **Pull 16 months of query data before launch** | to do | This is the reason to do it *now* rather than after. GSC only retains 16 months, and the redirect map (limitation 6.1) currently redirects all 45 changed URLs blind, because there is no data on which old URLs carry traffic or links. One export turns that guess into a fact — and tells us which of the 45 actually matter. |
+| 9a.3 | **Record the pre-launch baseline** | to do | Impressions, clicks, average position by page and by query, exported and committed. Without a baseline, nothing after launch can be attributed — a rebuild that changes 45 URLs, adds 12 collections and rewrites 198 descriptions is exactly the change you want a before-picture of. |
+| 9a.4 | **Check which queries the 198 products already rank for** | to do | Feeds the copy directly. §7 of `seo.md` reasons about the target phrases from product tags; GSC would replace that inference with measurement, and it may well disagree. |
+| 9a.5 | **Submit the new sitemap and watch coverage** | to do | Pairs with 7.6. After launch, watch for the 34 new collections indexing and for any spike in 404s that the redirect map missed. |
+| 9a.6 | **Connect it to the live store, not the build store** | to do | The build store is password-protected and `noindex`. GSC cannot see it and never will, so this lands on SY's real store at handover, in the runbook. |
+
+**Do 9a.1 and 9a.2 before launch, not after.** Everything else can follow. The query export is
+the piece with an expiry date on it.
+
 Phases 3, 7 and 8 are done. Phase 7's open items are in `docs/seo.md` §6; Phase 8's are in §8 below.
 
 ---
