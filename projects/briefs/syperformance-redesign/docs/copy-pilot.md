@@ -141,9 +141,100 @@ Nobody plans for clamps. Everybody replaces them.
 
 ---
 
+## Pilot 1 v2 — rewritten to the trust ruleset
+
+`mkt-syp-trust-copy` landed after these three were drafted. Pilot 1 is rewritten below to
+show what changes. The **structure survives** — lead, why this part exists, before you buy,
+specs, fitment. What changes is where each block starts.
+
+**The one substantive change: open on the reader's situation, not on what the part is.**
+v1 opened *"A single lobe rocker conversion for the Honda B-series, manufactured by
+SYPerformance."* That is a catalog sentence. Rule 3 wants the builder in the first line, and
+on this part the builder is in a specific, recognizable position — head apart, cams chosen,
+one decision left.
+
+Word counts land in the same band: lead 78, why 197, before you buy 76. Total 351.
+
+### LEAD — `body_html` (78 words)
+
+Your B-series head is apart. The cams are in, the springs are in, and the VTEC assembly is
+the last thing in the valvetrain still doing the job Honda designed it to do on a stock
+engine.
+
+Single lobe rockers replace it. One-piece billet, one cam lobe profile through the whole rev
+range, no changeover, no locking pin, no lost motion.
+
+Fits B16, B18, GSR and Type R heads. Sold as a set of 8. Known in the B-series world as a
+VTEC killer conversion.
+
+### WHY THIS PART EXISTS — `custom.why_this_part` (197 words)
+
+VTEC is a mechanical changeover. At the switch point, oil pressure drives a pin through three
+rockers to lock them together so they follow the high-lift lobe as one. It is an elegant
+system, and it works for the engine Honda designed it for — a road car that spends most of
+its life below the crossover.
+
+Your car does not live there. Once the cams are aggressive and the springs are heavy enough
+to control them, the valvetrain spends its time above the crossover, where the locking pin,
+the lost-motion springs and the three-piece rocker assembly are all carrying load. Every one
+of those is a moving part in the highest-stress area of the engine. Every one is a part that
+can let go.
+
+A single lobe conversion takes the changeover out. One profile, one rocker, no pin, no lost
+motion. You give up low-lift manners below the crossover. On a street car that is a real
+trade. On a car built to be driven hard it is no trade at all.
+
+Make this decision with the head already apart. It is a different job once it is back
+together.
+
+### BEFORE YOU BUY — `custom.before_you_buy` (76 words)
+
+- **Your cam choice drives this.** One profile runs the whole range, so the cam has to match
+  how the car is actually used. On a mild street cam you give up VTEC's low-lift manners and
+  gain little.
+- **Idle and low-rpm behavior change.** On a street-driven car, that is the trade you are
+  making.
+- **Set of 8, B-series heads only.** The K-series conversion is a separate part.
+- **Springs and retainers are separate.**
+
+### SPECS — `custom.specs`
+
+Unchanged, and now a **ship blocker rather than a cosmetic gap.** Rule 2 says no trust
+section ships with zero proof assets, and on a product page the spec table is the proof. This
+page is written and stageable; it is not *done* until at least one real number lands in it.
+
+| | |
+|---|---|
+| Material | *(SY to supply)* |
+| Finish | Anodized — *(color/spec to confirm)* |
+| Set quantity | 8 |
+| Bearings | Stainless *(spec to confirm)* |
+| Adjustment screws | Forged and treated *(spec to confirm)* |
+| Weight vs. stock assembly | *(SY to supply — this is the number buyers want)* |
+
+### What the ruleset changed, in one line each
+
+| Rule | v1 | v2 |
+|---|---|---|
+| 3 — builder first | opened on the part and the manufacturer | opens on the head being apart |
+| 3 — ratio | 4 builder words | 14 builder words, same length |
+| 5 — athletic | "which takes a set of moving parts out of a system that is already the highest-stress area" | "Every one of those is a moving part in the highest-stress area of the engine." |
+| 2 — proof | spec gaps read as tidy-up | spec gaps are what stops the page shipping |
+| 1 — tripwires | — | the negations left in are all about the reader's car, which §5 of `copy-audit.md` clears |
+
+Pilots 2 and 3 take the same treatment on approval. The carrier opens on the third set of
+axles rather than on the bracket; the Vanjen clamps open on the boost leak rather than on the
+clamp.
+
+---
+
 ## What I need signed off
 
-1. **Depth.** These run 380–430 words across the blocks. Right, too much, or not enough?
+**Answered since this was written** — 2 (voice), 3 (the claims line) and 5 (order of work) are
+settled by `mkt-syp-trust-copy` and by the catalogue restructure landing first. Still open: **1**
+and **4**.
+
+1. **Depth.** These run 350–430 words across the blocks. Right, too much, or not enough?
 2. **Voice.** Plain, technical, no hype, willing to name the trade-off and say when a part is not for you. Pilot 1 explicitly talks a street-car buyer *out* of the part. Is that the right posture?
 3. **The claims line.** Every number is a `(SY to supply)` gap rather than a guess. That means spec tables ship visibly incomplete until SY fills them. Confirm that is preferred over inventing plausible figures.
 4. **The compare-at prices** (pilot 2) — remove before the copy ships?
