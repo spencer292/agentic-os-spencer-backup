@@ -146,12 +146,28 @@ Source of truth is `data/product-copy.json`, applied with `scripts/apply-product
 Copy lives in git so it is reviewable and diffable; the store is downstream. A re-run is
 idempotent, and editing a description in the Shopify admin will be overwritten by the next run.
 
-**Written and live: 7 of the hero tier**, 604–899 words each (whole-page count, including the
+**Written and live: all 13 of the hero tier**, 604–899 words each (whole-page count, including the
 spec table, so it compares like-for-like with the ETS figures in `competitors.md` §3b):
 `evo-7-8-9-vband-top-mount-turbo-kit`, `k-series-awd-billet-bellhousing`,
 `b58-6-port-top-mount-turbo-manifold`, `k-series-top-mount-turbo-manifold`,
 `evo-8-9-top-mount-turbo-manifold`, `honda-b-series-sfwd-intercooler`,
-`k-series-hd-shift-selector-hammer`.
+`k-series-hd-shift-selector-hammer`, `b-series-single-lobe-billet-rockers`,
+`k-series-single-lobe-billet-rockers`, `syperformance-honda-k-series-billet-halfshaft-carrier`,
+`syp-bseries-billet-halfshaft-carrier-assembly`, `k-series-billet-halfshaft`,
+`b-series-hydro-500hp-billet-halfshaft`.
+
+**Item 2.10 is part-done as a side effect.** `custom.chassis` was empty on all 198; it is now
+populated on the 13, because a chassis list is part of writing the fitment properly rather than
+a separate data task. `custom.hp_rating` is set where a real figure exists and only there — 500
+on the B-series hydro halfshaft (it is in the product title), 1200 on the Race K-series
+manifold, 1400 on the SFWD intercooler. The K-series billet halfshaft carries tags referencing
+500, 700 and 1000 hp and has **no** rating written, because tags are search terms, not tested
+numbers.
+
+**Correction made to my own pilot.** `copy-pilot.md` Pilot 1 stated the B-series rockers are
+"sold as a set of 8". That was my invention, not SY's — the existing description says no such
+thing, and only the K-series product states a set of 8. It now reads *(SY to confirm)* on the
+B-series. Exactly the failure Rule 6 exists to catch, made by the person writing the rule down.
 
 **The finding that changed the job: the specs already existed.** `copy-audit.md` §7 blocker A
 said no hard spec number was available anywhere. That was wrong. The old descriptions are
@@ -167,10 +183,14 @@ receipt"* appears on several products. That is item 2.1, sitting in product copy
 time. It still needs Spencer to confirm it as the site-wide policy before `page.warranty` uses
 it, but it is no longer a blank sheet.
 
-**Remaining:** ~6 more hero candidates (both single lobe rocker sets, both billet halfshafts,
-both halfshaft carriers — three of which already have drafts in `copy-pilot.md`), ~62 in-house
-at 350–450, and 123 resold at 120–180. The pipeline makes each of those an entry in one JSON
+**Remaining:** ~62 in-house at 350–450, and 123 resold at 120–180. The pipeline makes each of those an entry in one JSON
 file rather than a fresh piece of engineering.
+
+**Second verification trap, and it costs a false negative:** the storefront serves a stale
+page on the first request after a write, even with a unique cache-busting query string. Five of
+the thirteen pages read as unchanged immediately after applying and were live on the very next
+fetch a moment later. **Check twice before concluding a write failed** — the first seven looked
+fine only because they had been written once already.
 
 **API note worth keeping:** on 2025-07 `productUpdate` takes `ProductUpdateInput`, not
 `ProductInput`. The mismatch throws a `variableMismatch` and fails the whole mutation. The
