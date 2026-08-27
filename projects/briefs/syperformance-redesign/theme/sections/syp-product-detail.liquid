@@ -168,9 +168,16 @@
     {%- if show_ratings -%}
       <section class="syp-pdp__block syp-pdp__ratings">
         {%- if hp_rating != blank -%}
+          {%- comment -%}
+            "Built for", not "Rated to" (Spencer, 2026-08-26): a power figure on this
+            site is a design claim, not a guarantee and not a warranty term. The
+            distinction is stated on the page as well as implied by the label, because
+            a number beside a part reads as a promise unless something says otherwise.
+          {%- endcomment -%}
           <div class="syp-pdp__rating">
-            <span class="syp-label">Rated to</span>
-            <span class="syp-pdp__rating-value syp-spec">{{ hp_rating }}</span>
+            <span class="syp-label">Built for</span>
+            <span class="syp-pdp__rating-value syp-spec">{{ hp_rating }} hp</span>
+            <span class="syp-pdp__rating-note">What the part is designed for, not a guarantee.</span>
           </div>
         {%- endif -%}
         {%- if build_time != blank -%}

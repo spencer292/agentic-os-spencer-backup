@@ -114,6 +114,15 @@
   color: var(--syp-text-strong);
 }
 
+/* A power figure beside a part reads as a promise unless something says
+   otherwise. Small, muted, and always present rather than a footnote. */
+.syp-pdp__rating-note {
+  max-width: 26ch;
+  font-size: var(--syp-text-2xs);
+  line-height: var(--syp-leading-normal);
+  color: var(--syp-text-faint);
+}
+
 /* --------------------------------------------------------------------------
    Warranty
    -------------------------------------------------------------------------- */

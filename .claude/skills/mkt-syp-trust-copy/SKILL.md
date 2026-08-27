@@ -120,10 +120,20 @@ precision claim.
 The fastest way to destroy trust with this audience is one specification that turns out to
 be false. **This crowd measures things.**
 
-- No power figure without a dyno sheet or a named car behind it.
+- **Power figures are claims, not guarantees** (Spencer, 2026-08-26 — this amends the
+  original rule, which read "no power figure without a dyno sheet or a named car behind it").
+  A power number may appear in a description as what the part is **designed for**. It may never
+  be presented as a rating the part is warranted to meet. Say *built for*, never *rated to*, and
+  say on the page that it is a design figure rather than a guarantee. A dyno sheet or a named
+  car is still what turns a claim into proof — it is now what makes the number *strong*, not
+  what makes it *permitted*.
 - No tolerance number that engineering hasn't confirmed.
 - No "in stock" language on built-to-order parts.
 - No lead time that isn't currently being met.
+- **Warranty terms stay per-product** (Spencer, 2026-08-26). Several products state "1 year to
+  the original purchaser with receipt" in their own copy. That is those products' term. Do
+  **not** promote it to a site-wide policy, do not put it on `page.warranty` as a blanket
+  statement, and do not add it to a product that does not already carry it.
 
 If a claim is unverified, write the smaller true version and move on.
 

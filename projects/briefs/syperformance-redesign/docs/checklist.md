@@ -46,7 +46,7 @@ Verified by scanning rendered pages — homepage, product, `syp-billet`, About �
 
 | # | Item | Where it lands | Why I won't guess |
 |---|---|---|---|
-| 2.1 | **Warranty terms** | `page.warranty`, plus every in-house product page | It's a promise the business has to honor. Section ships blank and warns in the theme editor. |
+| 2.1 | **Warranty terms — DECIDED 2026-08-26: not site-wide** | per product only | Spencer: *"dont make that warranty site wide."* Several products already state **"1 year warranty to the original purchaser with receipt"** in their own copy, and that is those products' term — it stays there. `page.warranty` does **not** get a blanket policy, nothing is added to a product that does not already carry it, and the page still needs Spencer to decide what, if anything, it says. The four hero pages that state a term state it because their own existing description did. |
 | 2.2 | **Lead times per category** | `page.lead-times`, plus product pages | Same. `syp-lead-times` ships with zero rows on purpose. |
 | 2.3 | **"Why this part exists"** × 110 in-house products | `custom.why_this_part` | Needs the failure mode, what changed, what it means. This is the single most important block on the site. **Metafield now exists and is empty on all 110.** |
 | 2.4 | **"Before you buy"** × 110 in-house products | `custom.before_you_buy` | The honest caveats — what else you need, what needs modification. |
@@ -179,9 +179,18 @@ substantially closed for the in-house parts; blockers B (a named build) and C (a
 are not.**
 
 **Warranty terms are in there too** — *"1 year warranty to the original purchaser with
-receipt"* appears on several products. That is item 2.1, sitting in product copy the whole
-time. It still needs Spencer to confirm it as the site-wide policy before `page.warranty` uses
-it, but it is no longer a blank sheet.
+receipt"* appears on several products. **Spencer's call, same day: it does not become site-wide.**
+It is a per-product term on the products that already state it, `page.warranty` gets no blanket
+policy, and nothing is added to a product that did not already carry it.
+
+**Power figures are claims, not guarantees** (Spencer, same day). The product badge now reads
+**"Built for 1200 hp"** rather than *"Rated to 1200"*, and the product page carries the
+distinction in words underneath: *"What the part is designed for, not a guarantee."* Every
+figure in the copy was reworded to match — *built for*, never *rated to*. This amends Rule 6 of
+`mkt-syp-trust-copy`, which had barred a power figure entirely without a dyno sheet or a named
+car; a dyno sheet is now what makes the number **strong**, not what makes it **permitted**. The
+K-series billet halfshaft still carries no figure, because its tags claim 500, 700 and 1000 hp
+and those cannot all be right — a claim still has to be one number.
 
 **Remaining:** ~62 in-house at 350–450, and 123 resold at 120–180. The pipeline makes each of those an entry in one JSON
 file rather than a fresh piece of engineering.
