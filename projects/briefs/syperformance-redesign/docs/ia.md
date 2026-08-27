@@ -145,6 +145,8 @@ Products appear in more than one collection by design: a K-series billet halfsha
 
 ## 4. Intro copy
 
+> **Brands (2026-08-26, Spencer): "Synchro Solutionz is its own brand, Comp 1 Clutch is its own brand. SYP is just a distributor."** They are stocked lines, not house lines. Never write *our own*, *our line*, *manufactured by us* or *we build* about either, and never fold synchros or clutches into a list of what SYPerformance makes. The confirmed in-house count is **75**, not 110.
+>
 > **Manufacturing claims (2026-08-26, Spencer).** SYPerformance **is the manufacturer** — it owns the designs, drawings and specs, contracts production to them, inspects and warranties. That is the standard meaning of the word and it is the authoritative claim, so use it: *we manufacture, we make, we build, our parts, our spec*. What this copy must never do is name a shop floor — no *machined in our own shop*, *cut here*, or *on our machines*. The first claim is unshakeable; the second is checkable and not ours to make.
 
 
@@ -158,7 +160,7 @@ Every paragraph below goes in the collection's description field. They are writt
 > Every part on this page is manufactured by SYPerformance — our design, our drawings, our spec. Not picked from someone else’s catalog and rebadged. Billet drivetrain, single lobe rockers, turbo manifolds, cooling and charge piping, clamps and hardware, across Honda B, D, H and K series, Mitsubishi Evo, and BMW/Toyota B58. If you want to know what SYPerformance actually makes rather than what it stocks, this is the list.
 
 **`syp-drivetrain` — SYP Drivetrain**
-> Drivetrain is where power stops being a dyno number and starts being a reliability problem. Halfshafts, halfshaft carriers, billet bellhousings, transfer case block-offs and shift selectors, alongside the Synchro Solutionz transmission internals that go inside the box. These are the parts that fail first on a built car and the parts most worth doing once.
+> Drivetrain is where power stops being a dyno number and starts being a reliability problem. Halfshafts, halfshaft carriers, billet bellhousings, transfer case block-offs and shift selectors, all manufactured by SYPerformance. These are the parts that fail first on a built car and the parts most worth doing once. The Synchro Solutionz internals that go inside the box are stocked separately, under Transmission Internals.
 
 **`syp-single-lobe-rockers` — Single Lobe Rockers**
 > A single lobe rocker conversion removes the VTEC changeover from the valvetrain and runs one lobe profile throughout, which takes a set of moving parts out of a system that spends its life at high rpm. Available for both B series and K series. If you are already running aggressive cams and high spring pressures, this is the conversion worth understanding before your next head build.
@@ -198,7 +200,7 @@ Every paragraph below goes in the collection's description field. They are writt
 ### Drivetrain systems
 
 **`transmission-internals` — Transmission Internals**
-> Synchros, hubs, sliders, collars, springs and complete rebuild kits — the Synchro Solutionz line, manufactured by us. Synchro wear is the failure most owners misread as "the box needs rebuilding": the grind into second or third under load is usually a cone and a slider, not a gearset. Kits are available per-gear and as full 1-4 and 1-6 refreshes, with and without bearings and seals.
+> Synchros, hubs, sliders, collars, springs and complete rebuild kits, from Synchro Solutionz. Synchro wear is the failure most owners misread as "the box needs rebuilding": the grind into second or third under load is usually a cone and a slider, not a gearset. Kits are available per-gear and as full 1-4 and 1-6 refreshes, with and without bearings and seals.
 
 **`billet-drivetrain` — Billet Halfshafts, Carriers & Selectors**
 > Billet halfshafts and halfshaft carriers, AWD bellhousings, transfer case block-offs, billet cases, and HD shift selectors. The carrier is the part most people find out about the hard way — a stock intermediate shaft support flexes under load, and once it does, the inner joint angle changes every time you launch. Available for B series and K series.
@@ -260,10 +262,10 @@ Every paragraph below goes in the collection's description field. They are writt
 ### Brands
 
 **`synchro-solutionz` — Synchro Solutionz**
-> Synchro Solutionz is our own transmission internals line — synchros, hubs, sliders, collars, springs and complete rebuild kits for Honda B, H and K series, 5-speed and 6-speed, FWD and AWD. The full range is also reachable through SYP Billet → Drivetrain → Transmission Internals.
+> Synchro Solutionz synchros, hubs, sliders, collars, springs and complete rebuild kits for Honda B, H and K series, 5-speed and 6-speed, FWD and AWD. Synchro wear is the failure most owners misread as "the box needs rebuilding" — the grind into second or third under load is usually a cone and a slider, not a gearset. The full range is also reachable through Honda → K-Series → Synchros & Rebuild Kits.
 
 **`comp-1-clutch` — Comp 1 Clutch**
-> Comp 1 Clutch is our own clutch line: twin and triple disc assemblies. Disc count and material are chosen against torque and how the car is used, so read the application notes before ordering.
+> Comp 1 Clutch twin and triple disc clutch assemblies, for cars that have outgrown a single disc. Disc count and material are chosen against torque and how the car is used, so read the application notes before ordering.
 
 **`clearance` — Clearance**
 > Genuine clearance: discontinued parts, superseded revisions and one-off overstock. When it is gone it is gone, and nothing on this page is here permanently.

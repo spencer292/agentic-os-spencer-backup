@@ -71,3 +71,110 @@
   text-transform: uppercase;
   color: var(--syp-text-faint);
 }
+
+/* ==========================================================================
+   Collection hub — child collections as cards
+   --------------------------------------------------------------------------
+   Rendered by sections/syp-collection-children.liquid on any collection that
+   has children in the navigation menu. Text-only by design: no collection has
+   an image yet (checklist 3.5), and a card grid with empty image wells reads
+   worse than one that never promised a picture.
+   ========================================================================== */
+
+.syp-hub {
+  background-color: var(--syp-bg);
+  border-bottom: var(--syp-hairline) solid var(--syp-rule);
+}
+
+.syp-hub__inner {
+  max-width: var(--page-width, 1400px);
+  margin-inline: auto;
+  padding: var(--syp-space-xl) var(--syp-space-lg);
+}
+
+@media screen and (min-width: 750px) {
+  .syp-hub__inner {
+    padding: var(--syp-space-2xl) var(--syp-space-xl);
+  }
+}
+
+.syp-hub__heading {
+  margin: 0 0 var(--syp-space-lg);
+  font-family: var(--syp-font-display);
+  font-size: var(--syp-text-xs);
+  font-weight: var(--syp-weight-semibold);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  color: var(--syp-text-faint);
+}
+
+/* auto-fit rather than fixed columns: the hubs range from 2 children
+   (mitsubishi-evo-parts) to 7 (honda-k-series) and a fixed 3-up leaves a
+   two-card row looking broken. */
+.syp-hub__grid {
+  display: grid;
+  gap: var(--syp-hairline);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+  background-color: var(--syp-rule);
+  border: var(--syp-hairline) solid var(--syp-rule);
+}
+
+/* The hairline gap plus a filled parent draws the grid lines, so the cards
+   read as one machined panel rather than as floating tiles. */
+.syp-hub-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--syp-space-xs);
+  padding: var(--syp-space-lg);
+  background-color: var(--syp-bg-raised);
+  text-decoration: none;
+  transition: background-color var(--syp-duration) var(--syp-ease),
+    box-shadow var(--syp-duration) var(--syp-ease);
+}
+
+.syp-hub-card:hover,
+.syp-hub-card:focus-visible {
+  background-color: var(--syp-bg-hover);
+  box-shadow: inset var(--syp-border-md) 0 0 0 var(--syp-accent);
+}
+
+.syp-hub-card:focus-visible {
+  outline: var(--syp-focus-ring);
+  outline-offset: -2px;
+}
+
+.syp-hub-card__title {
+  font-family: var(--syp-font-display);
+  font-size: var(--syp-text-base);
+  font-weight: var(--syp-weight-semibold);
+  line-height: var(--syp-leading-snug);
+  color: var(--syp-text-strong);
+  text-wrap: balance;
+}
+
+.syp-hub-card:hover .syp-hub-card__title {
+  color: var(--syp-accent);
+}
+
+.syp-hub-card__blurb {
+  font-size: var(--syp-text-sm);
+  line-height: var(--syp-leading-normal);
+  color: var(--syp-text-muted);
+}
+
+.syp-hub-card__meta {
+  margin-top: auto;
+  padding-top: var(--syp-space-xs);
+  font-size: var(--syp-text-2xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  color: var(--syp-text-faint);
+}
+
+.syp-hub__all {
+  margin: var(--syp-space-lg) 0 0;
+  font-size: var(--syp-text-2xs);
+  letter-spacing: var(--syp-tracking-caps);
+  text-transform: uppercase;
+  color: var(--syp-text-faint);
+}

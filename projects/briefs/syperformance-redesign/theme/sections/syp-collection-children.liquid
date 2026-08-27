@@ -1,0 +1,120 @@
+{%- comment -%}
+  SYPerformance collection hub — child collections as cards.
+
+  The other half of the Phase 8b catalogue restructure. Twelve sub-collections
+  were created and wired into the nav, but the parents kept rendering every
+  product in one grid: `syp-billet` was 110 products on one page and `honda`
+  104, which is the thing that reads as a dump rather than a catalogue.
+
+  Two design decisions worth stating, because both were the alternative:
+
+  1. This is a RULE, not a template assignment. It lives in the default
+     collection template and renders NOTHING when a collection has no children,
+     so every collection gets hub behaviour the moment it earns it. Assigning a
+     `collection.hub` template to two handles would have fixed two pages and
+     needed a data change every time a sub-collection is added — and there are
+     eleven parents in the menu today, not two: syp-billet, syp-drivetrain,
+     honda, honda-k-series, honda-b-d-h-series, mitsubishi-evo-parts,
+     mitsubishi-evo-7-8-9, forced-induction, universal-fabrication, engine and
+     suspension.
+
+  2. The hierarchy is READ FROM THE NAVIGATION MENU rather than from a
+     metafield or a handle convention. The menu is where the parent/child
+     relationship is already maintained by hand, it is what the hover menu
+     renders, and it is what the store owner edits in the admin. A second copy
+     of the same tree is a second thing to keep in sync, and it would drift.
+
+  The product grid still renders below. It is what filtering, sorting and
+  pagination act on, and a hub is also a legitimate "show me everything" page —
+  the fix is that the cards come first, so the first screen is six routes rather
+  than a hundred thumbnails.
+
+  Self-reference is skipped: the nav has "Chassis & Suspension" pointing at
+  /collections/suspension with a child that is also /collections/suspension, and
+  a card linking to the page you are on is noise.
+{%- endcomment -%}
+
+{%- liquid
+  assign nav = linklists[section.settings.menu]
+  assign here = collection.url
+-%}
+
+{%- capture child_cards -%}
+  {%- for l1 in nav.links -%}
+    {%- if l1.url == here -%}
+      {%- for child in l1.links -%}
+        {% render 'syp-collection-card', link: child, here: here %}
+      {%- endfor -%}
+    {%- endif -%}
+    {%- for l2 in l1.links -%}
+      {%- if l2.url == here -%}
+        {%- for child in l2.links -%}
+          {% render 'syp-collection-card', link: child, here: here %}
+        {%- endfor -%}
+      {%- endif -%}
+      {%- for l3 in l2.links -%}
+        {%- if l3.url == here -%}
+          {%- for child in l3.links -%}
+            {% render 'syp-collection-card', link: child, here: here %}
+          {%- endfor -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endfor -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- if child_cards != blank -%}
+  <div class="syp-hub">
+    <div class="syp-hub__inner">
+      <h2 class="syp-hub__heading">{{ section.settings.heading | default: 'Browse by category' }}</h2>
+
+      <div class="syp-hub__grid">
+        {{ child_cards }}
+      </div>
+
+      {%- if section.settings.show_all_line and collection.all_products_count > 0 -%}
+        <p class="syp-hub__all syp-spec">
+          {{ section.settings.all_label | default: 'Or scroll on for all' }}
+          {{ collection.all_products_count }}
+          {% if collection.all_products_count == 1 %}part{% else %}parts{% endif %}
+        </p>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "SYP collection hub",
+  "tag": "section",
+  "class": "syp-hub-section",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu",
+      "info": "The hierarchy is read from this menu. A collection that appears in it with children below renders those children as cards; every other collection renders nothing here."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Browse by category"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_all_line",
+      "label": "Show the line pointing at the full grid",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "all_label",
+      "label": "Full-grid line",
+      "default": "Or scroll on for all"
+    }
+  ],
+  "presets": [{ "name": "SYP collection hub" }]
+}
+{% endschema %}

@@ -23,7 +23,7 @@ const PORT = 9341;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 // Tokens from theme/assets/syp-tokens.css — referenced, not re-invented.
-const ACCENT = '#f5a524';       // --syp-accent
+const ACCENT = '#1ec8a5';       // --syp-accent (teal green, 2026-08-26)
 const INK = '#14161a';          // --syp-accent-ink
 const GRAPHITE = '#14161a';     // --syp-graphite-800
 

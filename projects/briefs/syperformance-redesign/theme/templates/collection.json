@@ -15,6 +15,15 @@
         "fallback_title": "All parts"
       }
     },
+    "syp_collection_children": {
+      "type": "syp-collection-children",
+      "settings": {
+        "menu": "main-menu",
+        "heading": "Browse by category",
+        "show_all_line": true,
+        "all_label": "Or scroll on for all"
+      }
+    },
     "main": {
       "type": "main-collection",
       "blocks": {
@@ -140,6 +149,7 @@
   },
   "order": [
     "syp_collection_header",
+    "syp_collection_children",
     "main"
   ]
 }

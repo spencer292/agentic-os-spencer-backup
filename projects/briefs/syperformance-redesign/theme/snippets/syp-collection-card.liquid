@@ -1,0 +1,43 @@
+{%- doc -%}
+  One child-collection card for the collection hub.
+
+  Renders nothing at all for a link that is not a collection, or that points at
+  the page being viewed. Both cases exist in the live menu: "Brands" points at
+  /collections (the collection list, not a collection) and "Chassis &
+  Suspension" carries itself as its own first child.
+
+  The count is information on a parts site, not chrome — it is the difference
+  between a category worth opening and a stub, and it is the single most useful
+  thing a card can carry while every collection is still text-only (no
+  collection images exist yet; checklist 3.5).
+
+  @param {object} link - A linklist link, expected to be a collection_link
+  @param {string} here - collection.url of the page being rendered
+{%- enddoc -%}
+
+{%- liquid
+  assign child = link.object
+  assign is_collection = false
+  if link.type == 'collection_link' and child != blank
+    assign is_collection = true
+  endif
+  if link.url == here
+    assign is_collection = false
+  endif
+-%}
+
+{%- if is_collection -%}
+  <a class="syp-hub-card" href="{{ link.url }}">
+    <span class="syp-hub-card__title">{{ link.title }}</span>
+
+    {%- assign blurb = child.description | strip_html | strip -%}
+    {%- if blurb != blank -%}
+      <span class="syp-hub-card__blurb">{{ blurb | truncatewords: 20 }}</span>
+    {%- endif -%}
+
+    <span class="syp-hub-card__meta syp-spec">
+      {{ child.all_products_count }}
+      {% if child.all_products_count == 1 %}part{% else %}parts{% endif %}
+    </span>
+  </a>
+{%- endif -%}

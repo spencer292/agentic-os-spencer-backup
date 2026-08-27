@@ -34,12 +34,21 @@
   --syp-steel-050: #d7dbe0; /* high-emphasis text */
   --syp-white: #f2f4f6; /* headings; not #fff, avoids glare on graphite */
 
-  /* Accent — ONE colour, actions only. Machine-warning amber: industrial
-     rather than neon, and warm against a cold graphite field. Never use it
-     for decoration, only for something the user can act on. */
-  --syp-accent: #f5a524;
-  --syp-accent-hover: #ffb845;
-  --syp-accent-press: #d88c15;
+  /* Accent — ONE colour, actions only. Teal green: anodised-hardware green
+     against a cold graphite field, industrial rather than neon. Never use it
+     for decoration, only for something the user can act on.
+
+     Changed from machine-warning amber (#f5a524) on 2026-08-26 at Spencer's
+     direction. The ramp was picked to hold the amber's contrast rather than
+     just its hue, because the accent is used both as a solid button fill with
+     dark ink on it AND as link text on graphite, and those pull in opposite
+     directions. Measured against --syp-graphite-800 / --syp-accent-ink:
+     base 8.50:1 (amber was 8.88), hover 10.47 (10.52), press 6.03 (6.63).
+     All well past AA at any size, and past AAA for body text at base and
+     hover. Re-measure with the same method before changing any of the three. */
+  --syp-accent: #1ec8a5;
+  --syp-accent-hover: #3ddcb9;
+  --syp-accent-press: #16a888;
   --syp-accent-ink: #14161a; /* text ON accent — dark, passes AA */
 
   /* Semantic — status only, never decorative */

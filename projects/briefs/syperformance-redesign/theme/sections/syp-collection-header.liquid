@@ -33,8 +33,15 @@
 
   # In-house is driven by handle prefix rather than a metafield: Phase 3 owns
   # metafields, and every in-house collection handle already starts with syp-.
+  #
+  # synchro-solutionz and comp-1-clutch used to resolve here too. They are
+  # INDEPENDENT brands SYPerformance distributes (Spencer, 2026-08-26), so
+  # badging their collection pages "SYPerformance" claimed someone else's
+  # product as ours. Brand collections get no badge; the products carry their
+  # own vendor. scripts/fix-house-collections.mjs enforces the same rule on
+  # membership, so the badge and the contents can no longer disagree.
   assign in_house = false
-  if coll.handle contains 'syp-' or coll.handle == 'synchro-solutionz' or coll.handle == 'comp-1-clutch'
+  if coll.handle contains 'syp-'
     assign in_house = true
   endif
 -%}

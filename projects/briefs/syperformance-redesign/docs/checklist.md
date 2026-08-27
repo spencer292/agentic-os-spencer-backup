@@ -2,7 +2,7 @@
 
 Everything deferred, blocked, or left for a decision, in one place. Kept current as phases land.
 
-**Last updated:** 2026-08-26, end of Phase 8
+**Last updated:** 2026-08-26, after the collection hub + brand-ownership correction
 **Phases complete:** 0 (audit) · 1 (foundation) · 2 (IA — **executed**) · 3 (fitment) · 4 (product page) · 5 (homepage) · 6 (trust pages) · 7 (SEO) · 8 (performance)
 **Not started:** 9 (pre-launch)
 
@@ -113,6 +113,47 @@ Verified by scanning rendered pages — homepage, product, `syp-billet`, About �
 | 6.4 | **Vendor field is actively wrong** | It says "Syperformance" on Walbro pumps, AEM sensors and Hondata ECUs. Guarded in the theme — resold parts with a house vendor show no brand rather than a wrong one — but the data fix is Phase 7. |
 | 6.5 | **Evo X has 3 products, rockers have 3** | Both stay in the nav because they're real search terms and a flagship family. They will look thin next to a 66-product K-Series menu. The fix is more product, not more nav. |
 | 6.6 | **Deployment** | SY uploads the theme zip himself; it lands in Draft. His live theme stays published throughout, so rollback is one click. |
+
+---
+
+## 9. The brand-ownership correction, the collection hub, and the accent recolour (2026-08-26)
+
+### 9.1 Synchro Solutionz and Comp 1 Clutch — the correction that had only half landed
+
+Spencer: **"Synchro Solutionz is its own brand, Comp 1 Clutch is its own brand. SYP is just a distributor."**
+
+An earlier pass had already corrected the *fallback* list in `snippets/syp-in-house-handles.liquid` and the homepage spec label. Three places still claimed both brands as ours, and all three were live:
+
+| Where | What it said | Now |
+|---|---|---|
+| `syp-billet` membership | 110 products — 75 SYPerformance, 33 Synchro Solutionz, 2 Comp 1 Clutch — under a description reading *"Every part on this page is manufactured by SYPerformance… not picked from someone else's catalog and rebadged"* | **75**, all confirmed in-house |
+| `syp-drivetrain` membership | 42 products, of which **33 were Synchro Solutionz** — the SYP Drivetrain page was three-quarters someone else's brand | **7** |
+| `custom.made_in_house` metafield | `true` on all 35 third-party products, so every one rendered a **"SYP design"** badge beside its own brand name | `false` |
+| `syp-collection-header.liquid` | badged the `synchro-solutionz` and `comp-1-clutch` collection pages **SYPerformance** | no badge |
+| Homepage hero | *"Halfshafts, carriers, bellhousings, **synchros** and single lobe rockers — our parts, our drawings, our name on them"* | synchros removed |
+| Homepage drivetrain section | *"…and the **Synchro Solutionz internals** that go inside the box are the parts **we can build** better than anyone"* | rewritten; they are stocked alongside |
+| `docs/ia.md` §4 | *"Synchro Solutionz is **our own** transmission internals line"*, *"Comp 1 Clutch is **our own** clutch line"*, *"the Synchro Solutionz line, **manufactured by us**"* | rewritten, with the rule restated at the top of §4 |
+
+Also fixed: `syp-product-flags.liquid` was suppressing both vendors as known-bad house spellings, so a Synchro Solutionz part showed **no brand at all**. Their vendor is now the correct brand to print.
+
+**The lesson, and it is the same shape as the manufacturing-claim one.** The metafield is read *first* and the handle list only as a fallback, so correcting the list fixed a code path that never ran. Nothing caught it because the correction was verified against the source, not against a rendered product page. Enforcement now lives in one script — `scripts/fix-house-collections.mjs` — which checks **both** halves against the same 75-handle list and is safe to re-run.
+
+**Open, and it needs SY:** on the old live site all three clutch products carried the vendor `Competition Clutch`. Phase 7's `apply-brands.mjs` rewrote two of them to `Comp 1 Clutch` from the audit's *derived* brand field, splitting one vendor into two brand pages — `comp-1-clutch` (2 products) and `brand-competition-clutch` (1), the two thinnest pages on the site. The tags on those products carry **both** names. Question for SY: **is "Comp 1" a Competition Clutch product line or a separate brand?** Same brand • merge into one page of 3. Separate • keep both. Either way it is a one-line fix, and it should be settled before the product copy is written. (Competition Clutch itself is definitely stocked: 16 priced variants, $160–$895, K/B/D-series and Evo 8, present on the old live site under the same handle. Its zero inventory means nothing — **none** of the 198 products track inventory.)
+
+### 9.2 Collection hub
+
+Built and live. Full write-up in `docs/catalogue-restructure.md` §3. Eleven collections get hub behaviour, not two, because the hierarchy is read from the navigation menu rather than assigned per template.
+
+### 9.3 Accent recoloured amber → teal green
+
+Spencer's call. `--syp-accent` `#f5a524` → **`#1ec8a5`**, hover `#3ddcb9`, press `#16a888`; `--syp-accent-ink` unchanged. The ramp was chosen to hold amber's *contrast*, not just swap its hue — the accent is used both as a solid button fill with dark ink on it and as link text on graphite, and those pull in opposite directions. Measured against `--syp-graphite-800`: base **8.50:1** (amber 8.88), hover 10.47 (10.52), press 6.03 (6.63).
+
+Changed with it: `config/settings_data.json` primary-button background and border (Horizon's own buttons sit alongside ours), and the favicon — rebuilt teal via `node scripts/make-favicon.mjs` and copied to `theme/assets/syp-favicon.png`.
+
+| # | Item | Owner | Note |
+|---|---|---|---|
+| 9.4 | **`--syp-ok` is now close to the accent** | to watch | The semantic "fits your vehicle" green is `#3fa06a` (hue 147) against an accent at hue 168. Distinguishable, but the fitment verdict is the one place a status green must not read as a button. Judge it on a real device in Phase 9 rather than pre-emptively moving it. |
+| 9.5 | **Desktop header nav overflows into the search and cart** | to do | Visible at 1440px on every page: "Chassis & Suspension" renders *under* the search field and "Brands" collides with the cart icon. Nine top-level items is one or two too many since Brands was added, and it was never seen because that session verified against HTML. Not caused by this work, but it is the first thing a reviewer will notice. |
 
 ---
 

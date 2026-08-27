@@ -57,13 +57,19 @@ Every one is a real search term and a real buying decision, not a filing conveni
 
 ---
 
-## 3. The hub template — the other half
+## 3. The hub template — BUILT 2026-08-26
 
-`syp-billet` and `honda` should render **their children as cards**, not 110 products in a grid. `syp-billet` in particular is the single most important page for the manufacturer positioning, and right now it reads as a dump.
+`sections/syp-collection-children.liquid` + `snippets/syp-collection-card.liquid`, wired into `templates/collection.json` between the header and the grid.
 
-Proposed: when a collection has child collections, show them as cards above the grid, and show the grid only for products not already in a child. `syp-collection-header.liquid` already renders the intro copy; the cards go beneath it.
+**It is a rule, not a template assignment.** The section reads the parent/child hierarchy out of the **navigation menu** and renders nothing at all when a collection has no children — so every collection gets hub behaviour the moment it earns it, and a new sub-collection needs no data change. That matters more than it first looked: the menu has **eleven** parents, not the two named above — `syp-billet`, `syp-drivetrain`, `honda`, `honda-k-series`, `honda-b-d-h-series`, `mitsubishi-evo-parts`, `mitsubishi-evo-7-8-9`, `forced-induction`, `universal-fabrication`, `engine`, `suspension`.
 
-That is a theme change rather than a data change, so it is listed here but tracked separately.
+**Why the menu and not a metafield or a handle convention:** the menu is where the hierarchy is already maintained by hand, it is what the hover menu renders, and it is what the store owner edits in the admin. A second copy of the same tree is a second thing to keep in sync, and it would drift.
+
+**The grid still renders below the cards.** Showing only products *not* in a child was the original proposal; it was dropped because filtering, sorting and pagination all act on the grid, and a hub is also a legitimate "show me everything" page. The cards come first, so the first screen is a handful of routes rather than a hundred thumbnails, and a line under them points at the full grid.
+
+Verified on rendered pages: `syp-billet` 5 cards / 75 parts, `honda-k-series` 7 cards / 66 parts, `syp-cooling` (a leaf) renders no hub. Self-referencing links are skipped — the nav carries "Chassis & Suspension" pointing at `/collections/suspension` with itself as its own first child.
+
+**Small gap left open:** 5 of `syp-billet`'s 75 products sit in none of its five children — `turbo-head-flanges`, `turbo-flanges-t3-t4-vband`, `turbo-vband-inlet-flanges`, `evo-7-8-9-vband-top-mount-turbo-kit` and the V2 billet throttle body. They are reachable through the grid and through `clamps-v-band-flanges`, so nothing is lost; three of them arguably belong in `syp-fabrication-hardware`. Taxonomy call, not a bug.
 
 ---
 
