@@ -49,8 +49,20 @@
   assign chassis = mf.chassis.value | join: ' · '
   assign why = mf.why_this_part
   assign before_you_buy = mf.before_you_buy
-  assign before_you_buy_html = mf.before_you_buy.value | default: mf.before_you_buy
+  # `before_you_buy` is a rich_text_field and it is passed to syp-callout, which takes
+  # a STRING for its body - unlike `why` and `install_notes`, which are output inline
+  # and can use `metafield_tag` at the point of use.
+  #
+  # The old line here was `mf.before_you_buy.value | default: mf.before_you_buy`. On a
+  # rich text metafield `.value` returns the parsed DOCUMENT, not HTML, so the callout
+  # stringified it and the page printed the raw node tree - `{"type"=>"list-item",
+  # "children"=>[...]}` - to the customer. It never showed while the field was empty on
+  # every product, and it appeared the moment real copy was written into it. Capture the
+  # rendered tag instead.
   assign install_notes = mf.install_notes
+  capture before_you_buy_html
+    echo mf.before_you_buy | metafield_tag
+  endcapture
   assign turbo_compat = mf.turbo_compat
   assign wastegate_compat = mf.wastegate_compat
 
