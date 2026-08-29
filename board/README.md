@@ -4,13 +4,16 @@ Your Agentic OS now has a standing board of executives: nine seats (an independe
 Finance, Operations, Marketing, Sales, People, Technology, and an outside NED) that argue every
 big decision from nine different angles before you commit. The board argues. You decide.
 
-## Get it (one command)
+## Get it
 
-Open a terminal in your Agentic OS folder and pull the update:
+Easiest way: open Claude in your Agentic OS folder and say "Fetch and merge the latest OS
+update from origin." Or in a terminal:
 
-    git pull origin main
+    git fetch origin
+    git merge --no-edit origin/main
 
 That brings in `board/` (the seats, the board's memory) and the `str-board-sitting` skill.
+The update only adds new files; your own work is untouched.
 
 ## Run your first sitting (two minutes to start)
 
