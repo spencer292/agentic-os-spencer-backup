@@ -49,7 +49,7 @@ Plus **(B)** a structured `brand-book.pdf` brand bible at the same location, pro
 - `logos/`, `fonts/`, `headshots/` (any new asset added)
 - `visual_refs/` (when a new reference is added that's reflected in the bible)
 
-After EVERY phase that mutates any of these (Phase 2/3 token consolidation, Phase 4.7 brand-book v1, Phase 6 regen, asset uploads), the orchestrator MUST call `scripts/generate_brand_bible_pdf.py` as the final step. If the script fails (font missing, etc.) the orchestrator surfaces the error but keeps the artifacts — the PDF is the DERIVED view; sources of truth stay machine-readable. Also re-runnable on demand ("regenerate the brand bible PDF").
+After EVERY phase that mutates any of these (Phase 2/3 token consolidation, Phase 4.7 brand-book v1, Phase 6 regen, asset uploads), the orchestrator MUST call `scripts/generate_brand_bible_pdf.py` as the final step, so the shareable view never drifts from the machine-readable sources. If the script fails (font missing, etc.) the orchestrator surfaces the error but keeps the artifacts — the PDF is the DERIVED view; sources of truth stay machine-readable. Also re-runnable on demand ("regenerate the brand bible PDF").
 
 
 ### Scope and constraints (v1)
@@ -140,7 +140,7 @@ After the brand name + masthead + pagination are stored, continue to asset class
 
 ### Step 0.4 — Per-file asset classification (BLOCKING when files are provided)
 
-When the user provides files (drag-drop, path list, folder), the orchestrator MUST classify each file before routing. Two categories with very different downstream paths:
+When the user provides files (drag-drop, path list, folder), the orchestrator MUST classify each file before routing, because a logo treated as a template ref (and vice-versa) is a silent failure mode. Two categories with very different downstream paths:
 
 - **Brand asset** — owned by the user's brand. Logo, headshot, existing posts they made. Goes to `brand_context/visual-identity/{logos|headshots|posts-archive}/`. NOT a composition reference; the renderer treats these as content to be EMBEDDED.
 - **Template reference** — inspiration the user wants to copy. Other brands, magazine spreads, screenshots from accounts they admire. Goes to `brand_context/visual_refs/`. The composition is EXTRACTED via Phase 4.5 (vision pass).
@@ -210,7 +210,7 @@ Before proceeding to mode selection, scan the user's provided material (folder c
 - Different `brand:` declarations across multiple uploaded tokens.json files
 - The user explicitly says "here are refs from X and from Y"
 
-**If 2+ distinct sets detected → open `AskUserQuestion` popup (NEVER text fallback):**
+**If 2+ distinct sets detected → open `AskUserQuestion` popup, never a text "type 1/2/3" fallback, because it gives the user real options to click:**
 
 ```
 AskUserQuestion({
@@ -324,7 +324,7 @@ See `references/intake-procedures.md` "Path A" for the full decision tree.
 
 ### Mode N — Neutral (explicit "nothing to upload" path)
 
-Triggered when the user, after the guided intake walks them through every reference category, has uploaded NOTHING (no logo, no style refs, no headshot, no URL). The skill MUST announce this path before taking it — never silent.
+Triggered when the user, after the guided intake walks them through every reference category, has uploaded NOTHING (no logo, no style refs, no headshot, no URL). The skill MUST announce this path before taking it, never silent, because silent defaults produced posts signed with a placeholder brand name nobody chose.
 
 1. **Announce explicitly:**
 

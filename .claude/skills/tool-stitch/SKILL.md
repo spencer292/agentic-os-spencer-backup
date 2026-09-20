@@ -24,7 +24,7 @@ Utility skill for pulling designs out of Google Stitch. Bridges your Stitch proj
 
 ## Outcome
 
-Screen HTML/CSS, screenshots, or full generated site projects saved to `projects/tool-stitch/{YYYY-MM-DD}_{project-name}/`. Always save output to disk.
+Screen HTML/CSS, screenshots, or full generated site projects saved to `projects/tool-stitch/{YYYY-MM-DD}_{project-name}/`. Save output to disk, because the file is the deliverable.
 
 ## Context Needs
 

@@ -124,7 +124,7 @@ One file per day: `context/memory/{YYYY-MM-DD}.md`. The session block is created
 ```
 
 **Rules:**
-- **Never append a new session block** — wrap-up completes the block that was started, it doesn't create a new one
+- **Never append a new session block**, because a second block for the same session splits the day's record and breaks the one-file-per-day contract; wrap-up completes the block that was started
 - **Never leave placeholder text** like `[Waiting for user goal]`. Replace placeholders with actual content from the session
 - Omit sections that don't apply (e.g., no Decisions section if none were made)
 - If no session block exists yet (e.g., heartbeat was skipped), create one — but this is the fallback, not the norm

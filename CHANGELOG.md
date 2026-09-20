@@ -2,7 +2,29 @@
 
 All notable changes to Agentic OS will be documented in this file. Written for humans, not machines.
 
-## Unreleased
+## v1.1.4 - 2026-09-15
+
+### Added
+
+- **"Answer vs Action" default** — Claude now reports its assessment and stops when you are asking a question, describing a problem, or thinking out loud, instead of jumping straight to editing files or drafting things you did not ask for. Explicit tasks and scheduled jobs are unaffected. Based on Anthropic's current prompting guidance for the latest Claude models.
+- **One place for writing style** — a single concision-and-voice instruction in `AGENTS.md` keeps chat replies focused and free of mannered prose, scoped so it never shortens the documents a skill is actually asked to produce.
+- **Scheduled jobs run autonomously** — cron jobs now state up front that they operate without you watching, so they proceed on reversible work instead of stalling to ask for input no one is there to give.
+
+### Changed
+
+- **Instruction files follow the latest prompting guidance** — hard rules and CAPS across `CLAUDE.md`, `AGENTS.md`, `start-here` and several skills now carry the reason behind each rule instead of relying on emphasis; reason-free shouting was removed (the constraints themselves stay), and three cross-file contradictions (GitHub-backup cadence, the post-deliverable question, and local-override loading) were reconciled to a single source of truth.
+- **Area-specific guidance moved to reference docs** — client-scoping and skill-authoring guidance now lives in `docs/multi-client-guide.md` and `docs/building-skills.md` (referenced from `AGENTS.md`) instead of path-scoped `.claude/rules/` files. Same on-demand loading and token savings, but it works on any CLI version and for AGENTS.md-based tools (e.g. Codex), not only recent Claude Code.
+
+## v1.1.3 - 2026-08-31
+
+### Improved
+
+- **Leaner instruction files** — `CLAUDE.md` and `AGENTS.md`, the files Claude loads every session, are about 58% smaller (from ~22.9k to ~9.6k characters). Area-specific guidance now lives in path-scoped rules (`.claude/rules/`) and reference docs that load only when they're relevant, so sessions start with less overhead and Claude follows the rules that matter more reliably.
+
+### Fixed
+
+- **Correct skill category** — the finance skills (invoice reconciliation, month-end reporting) are now listed under the `fin` category they actually use, instead of the stale `acc`.
+- **Correct GSD command references** — the docs now use the `/gsd:` command form the current GSD install provides, replacing the old `/gsd-` form that no longer resolves.
 
 ## v1.1.2 - 2026-08-04
 

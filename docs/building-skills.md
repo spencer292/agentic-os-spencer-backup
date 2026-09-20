@@ -1,6 +1,6 @@
 # Building New Skills
 
-Always ask for reference skills first. Never guess at methodology.
+Ask for reference skills before writing one, and never guess at methodology, so the new skill matches an established pattern instead of an invented one.
 
 ---
 
@@ -61,6 +61,20 @@ Declare dependencies in a `## Dependencies` section in `SKILL.md`.
 
 - Format: `{category}-{skill-name}` in kebab-case
 - Cannot contain "claude" or "anthropic"
+
+Category prefixes: `mkt` (marketing) · `str` (strategy) · `ops` (operations) ·
+`viz` (visual) · `fin` (finance) · `meta` (system) · `tool` (utility). The YAML
+`name` field matches the folder name exactly, and output folders reuse the same
+prefix (`projects/{category}-{output-type}/`). Add a new category only when the
+first skill in a new domain is built.
+
+## Three-layer architecture
+
+| Layer | Files | Purpose |
+|-------|-------|---------|
+| Agent Identity | `AGENTS.md`, `CLAUDE.md`, `context/SOUL.md`, `context/USER.md` | Operating rules + Claude runtime |
+| Skills Pack | `.claude/skills/{category}-{skill-name}/` | Capabilities that grow over time |
+| Brand Context | `brand_context/` | Client brand data |
 
 ## Skill & MCP Reconciliation
 

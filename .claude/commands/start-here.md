@@ -23,7 +23,7 @@ Create today's memory file per CLAUDE.md's **Daily Memory** section:
 
 ### Step 0: GitHub Backup Check
 
-**Run this every session (first-run AND returning), before anything else.**
+**Run this per the CLAUDE.md cadence: once per day, on the day's first session only, before anything else.**
 
 Check whether the user's data is backed up to their own GitHub repo:
 1. First, check `.env` for `IS_TEMPLATE_MAINTAINER=true`. If set, **skip this entire step** — the user owns the template repo and `origin` is already correct.
@@ -192,11 +192,11 @@ Here's what I built:
 Everything's saved in brand_context/. I'll use this in every skill going forward.
 ```
 
-**IMPORTANT: After showing results, you MUST proceed to Step 9 (Skill Selection) in the SAME response. Do NOT wait for user input between Step 8 and Step 9. Show the results, then immediately present the skill selection checklist below.**
+Run Step 9 in the same turn as Step 8, without pausing for input, because the skill checklist only makes sense once brand context is on screen. Show the results, then present the skill selection checklist below.
 
-### Step 9: Skill Selection (MANDATORY — do NOT skip)
+### Step 9: Skill Selection (mandatory)
 
-**This step is required during first-run mode.** Always run it after showing brand context results, even if skills are already installed. The user needs to choose which optional skills to keep for their business.
+Step 9 is mandatory on every first-run, even when skills are already installed, because the user still needs to choose what stays active for their business.
 
 Now that brand context is built, briefly explain what each category does for THIS business, then present the checklist. Keep the intro to 3-4 lines max:
 
@@ -255,11 +255,11 @@ The script handles dependency resolution, folder removal, `installed.json` updat
 
 **After the script completes**, read `.claude/skills/_catalog/selection-result.json` and acknowledge briefly: "All set — [N] skills ready to go."
 
-**Do NOT proceed to Step 10 until the user has made their skill selection and the script has run.**
+Wait for the selection and the script result before Step 10, so the primer reflects the skills they actually kept.
 
-### Step 10: How It Works Primer (MANDATORY — do NOT skip)
+### Step 10: How It Works Primer (mandatory)
 
-**This step is required.** After showing skills, ALWAYS give the user a quick orientation before recommending a task. This is their only onboarding — they won't read docs unless you tell them what exists.
+Step 10 is mandatory on every first-run, because it is the user's only orientation to how the system works. Give the quick orientation after showing skills, before recommending a task.
 
 Present this as a natural continuation, not a separate section. Three things to cover:
 
@@ -302,7 +302,7 @@ Do NOT present a menu and ask them to pick. Recommend.
 1. Never ask more than 4 questions before doing work
 2. Never present all questions at once — ask one, wait, then ask the next
 3. Never present a skill menu — recommend, don't ask
-4. Never rebuild brand_context/ without explicitly asking first
+4. Never rebuild brand_context/ without explicitly asking first, because it can overwrite work the user already tuned
 5. Never give generic recommendations — tie them to the specific business
 6. Never silently produce generic output when context is missing — note the gap
 7. Never use a hardcoded skill list — always scan `.claude/skills/` dynamically

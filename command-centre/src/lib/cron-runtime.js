@@ -1841,6 +1841,9 @@ const UNATTENDED_EXECUTION_RULES = [
   "- Long work is expected to take long. A job that should take an hour and 'finishes' in seconds has been cut short — treat that as a failure, not a success.",
   "- Before reporting success, verify the WORK LANDED: read the state file, output file, or record the job produces and confirm it actually advanced. Never infer success from the fact that a command was launched.",
   "- Never end on a question or an offer. State the position and stop.",
+  // Ported from upstream v1.1.4 (cron-runtime autonomy assertion): the autonomous
+  // counterpart to the interactive answer-vs-action boundary in AGENTS.md.
+  "- You are operating autonomously as a scheduled job. The user is not watching in real time and cannot answer questions mid-task, so asking 'Want me to...?' or 'Shall I...?' will block the work. For reversible actions that follow from this job's task, proceed without asking. Stop only for destructive actions or genuine scope changes the user must decide.",
 ].join("\n");
 
 function buildCronExecutionPrompt(job, workspace) {

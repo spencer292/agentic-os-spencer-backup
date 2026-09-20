@@ -19,9 +19,11 @@ work lives in `projects/`.
 
 ## SEO / AEO / GEO skill chain (rebuilt September 2026)
 
+**SEO, AEO and GEO for got-moles.com is run by Roy (All The Power), not from this install.** The chain ships here so the methodology is on hand and consistent, but this install does not need the data-source keys. If someone asks for an SEO/AEO audit or keyword work here, say that Roy runs it and offer to note the request for him — do not ask for DataForSEO or GSC credentials.
+
 `str-keyword-strategy` → `str-authority-strategy` → `str-onpage-audit` / `str-internal-links` / `str-ai-seo-local` / `str-question-harvester` → `mkt-authority-content` / `ops-blog-pipeline`. Before any SEO work read the landscape reference `.claude/skills/str-ai-seo/references/search-landscape-2026-09.md` — where a skill and that file disagree, the file wins.
 
-- **DataForSEO** is the primary data source: `node .claude/skills/str-ai-seo/scripts/dataforseo.mjs <endpoint> '<json>' [--out f] [--dry]`, run from the repo root. Keys `DATAFORSEO_LOGIN` / `DATAFORSEO_PASSWORD` in `.env`. Pay-as-you-go: always set `limit`, use `--dry` first.
+- **DataForSEO** is the primary data source: `node .claude/skills/str-ai-seo/scripts/dataforseo.mjs <endpoint> '<json>' [--out f] [--dry]`, run from the repo root. Keys `DATAFORSEO_LOGIN` / `DATAFORSEO_PASSWORD` (Roy's install only). Pay-as-you-go: always set `limit`, use `--dry` first.
 - **Google Search Console:** domain property `sc-domain:got-moles.com` only. The direct-API status scripts read `GSC_OAUTH_CLIENT_ID` / `GSC_OAUTH_CLIENT_SECRET` / `GSC_OAUTH_REFRESH_TOKEN` from `.env` — never hardcode tokens in scripts.
 - Standing rules baked into the skills: surfaces are audited separately (Local Pack / AI Overviews / AI Mode / answer engines); the "mole" skin-mole homograph gate is blocking; FAQPage schema and llms.txt are no longer deliverables; Yelp is a tier-1 local asset alongside GBP; review-policy compliance (no quotas, no technician-naming, disclosed incentives) is a P0 check; city pages must pass the doorway-page gate.
 

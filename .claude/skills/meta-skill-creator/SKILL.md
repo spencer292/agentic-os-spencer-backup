@@ -52,7 +52,7 @@ Start by understanding the user's intent. The current conversation might already
 1. What should this skill enable Claude to do?
 2. When should this skill trigger? (what user phrases/contexts)
 3. What's the expected output format?
-4. **Does this skill produce output files?** If yes — and most skills do — the output folder must be `projects/{skill-folder-name}/` (e.g., `projects/mkt-content-repurposing/`, `projects/str-trending-research/`, `projects/tool-youtube/`). Filenames must include dates: `{YYYY-MM-DD}_{descriptive-name}.md`. This applies to every skill that creates files, including utility skills that extract content (transcripts, scraped data). The save step in the SKILL.md must explicitly state: "Always save output to disk. This is not optional. After saving, show the user the full absolute file path so they can click it directly." Only foundation skills that exclusively write to `brand_context/` are exempt.
+4. **Does this skill produce output files?** If yes — and most skills do — the output folder must be `projects/{skill-folder-name}/` (e.g., `projects/mkt-content-repurposing/`, `projects/str-trending-research/`, `projects/tool-youtube/`). Filenames must include dates: `{YYYY-MM-DD}_{descriptive-name}.md`. This applies to every skill that creates files, including utility skills that extract content (transcripts, scraped data). The save step in the SKILL.md must save output to disk and show the user the full absolute file path, because the file is the deliverable. Only foundation skills that exclusively write to `brand_context/` are exempt.
 5. Should we set up test cases to verify the skill works? Skills with objectively verifiable outputs (file transforms, data extraction, code generation, fixed workflow steps) benefit from test cases. Skills with subjective outputs (writing style, art) often don't need them. Suggest the appropriate default based on the skill type, but let the user decide.
 
 ### Skill Ecosystem Awareness
@@ -92,11 +92,11 @@ Based on the user interview, fill in these components:
 - **name**: Skill identifier — must be `{category}-{skill-name}` in kebab-case. Read the **Skill Categories** table in AGENTS.md for valid category prefixes (`mkt`, `str`, `ops`, `viz`, `acc`, `meta`). The folder name must match the `name` field exactly.
 - **description**: When to trigger, what it does. This is the primary triggering mechanism - include both what the skill does AND specific contexts for when to use it. All "when to use" info goes here, not in the body. Note: currently Claude has a tendency to "undertrigger" skills -- to not use them when they'd be useful. To combat this, please make the skill descriptions a little bit "pushy". So for instance, instead of "How to build a simple fast dashboard to display internal Anthropic data.", you might write "How to build a simple fast dashboard to display internal Anthropic data. Make sure to use this skill whenever the user mentions dashboards, data visualization, internal metrics, or wants to display any kind of company data, even if they don't explicitly ask for a 'dashboard.'"
 - **compatibility**: Required tools, dependencies (optional, rarely needed)
-- **output path (mandatory for all output-producing skills)**: Every skill that produces files — content, transcripts, research briefs, images, diagrams, anything — must save output to `projects/{skill-folder-name}/` with date-stamped filenames: `{YYYY-MM-DD}_{descriptive-name}.md`. The SKILL.md must include an explicit "Save Output" step that: (1) creates the folder if it doesn't exist, (2) uses the exact path format `projects/{skill-folder-name}/{YYYY-MM-DD}_{batch-or-name}/`, (3) states "Always save output to disk. This is not optional." Utility skills (`tool-*`) that extract content (e.g., transcripts, scraped data) also save to `projects/{tool-name}/`. Only foundation skills that exclusively write to `brand_context/` are exempt. If a skill is missing this step, add it before considering the skill complete.
+- **output path (mandatory for all output-producing skills)**: Every skill that produces files — content, transcripts, research briefs, images, diagrams, anything — must save output to `projects/{skill-folder-name}/` with date-stamped filenames: `{YYYY-MM-DD}_{descriptive-name}.md`. The SKILL.md must include an explicit "Save Output" step that: (1) creates the folder if it doesn't exist, (2) uses the exact path format `projects/{skill-folder-name}/{YYYY-MM-DD}_{batch-or-name}/`, (3) saves output to disk, because the file is the deliverable. Utility skills (`tool-*`) that extract content (e.g., transcripts, scraped data) also save to `projects/{tool-name}/`. Only foundation skills that exclusively write to `brand_context/` are exempt. If a skill is missing this step, add it before considering the skill complete.
 
 ### Canonical SKILL.md Section Order (mandatory)
 
-**Every** SKILL.md must follow this exact top-level `##` section order. This is non-negotiable — consistency across all skills means anyone reading them knows exactly where to find what.
+**Every** SKILL.md must follow this exact top-level `##` section order, because consistency across all skills lets a reader find Rules, Outcome and Steps in the same place in any skill.
 
 ```
 ---
@@ -158,7 +158,7 @@ When writing or editing a skill, ensure the SKILL.md includes:
 
 **Section naming rule:** Each skill's section in `learnings.md` must match the skill's folder name exactly (e.g., skill at `.claude/skills/mkt-brand-voice/` logs to the `## mkt-brand-voice` section). Skills read only their own section before running — cross-skill insights go under `# General` (`## What works well` / `## What doesn't work well`).
 
-**Final step when creating or editing any skill:** Open `context/learnings.md` and check whether a `## {skill-folder-name}` section exists. If it doesn't, add one under `# Individual Skills` (which always stays after `# General`). This is not optional — every skill must have its own section in the learnings file before the skill is considered complete.
+**Final step when creating or editing any skill:** Open `context/learnings.md` and check whether a `## {skill-folder-name}` section exists. If it doesn't, add one under `# Individual Skills` (which always stays after `# General`). Every skill must have its own section in the learnings file before the skill is considered complete, so feedback has a place to land.
 
 This creates a feedback loop: every skill run benefits from all previous runs, and every piece of feedback makes the next run better.
 
@@ -249,7 +249,7 @@ Prefer using the imperative form in instructions.
 **Defining output formats** - You can do it like this:
 ```markdown
 ## Report structure
-ALWAYS use this exact template:
+Use this template for the report structure:
 # [Title]
 ## Executive summary
 ## Key findings
@@ -583,7 +583,7 @@ If you're in Cowork, the main things to know are:
 
 - You have subagents, so the main workflow (spawn test cases in parallel, run baselines, grade, etc.) all works. (However, if you run into severe problems with timeouts, it's OK to run the test prompts in series rather than parallel.)
 - You don't have a browser or display, so when generating the eval viewer, use `--static <output_path>` to write a standalone HTML file instead of starting a server. Then proffer a link that the user can click to open the HTML in their browser.
-- For whatever reason, the Cowork setup seems to disincline Claude from generating the eval viewer after running the tests, so just to reiterate: whether you're in Cowork or in Claude Code, after running tests, you should always generate the eval viewer for the human to look at examples before revising the skill yourself and trying to make corrections, using `generate_review.py` (not writing your own boutique html code). Sorry in advance but I'm gonna go all caps here: GENERATE THE EVAL VIEWER *BEFORE* evaluating inputs yourself. You want to get them in front of the human ASAP!
+- For whatever reason, the Cowork setup seems to disincline Claude from generating the eval viewer after running the tests, so just to reiterate: whether you're in Cowork or in Claude Code, after running tests, you should always generate the eval viewer for the human to look at examples before revising the skill yourself and trying to make corrections, using `generate_review.py` (not writing your own boutique html code). Generate the eval viewer before you evaluate anything yourself, because the whole point is to get outputs in front of the human as early as possible.
 - Feedback works differently: since there's no running server, the viewer's "Submit All Reviews" button will download `feedback.json` as a file. You can then read it from there (you may have to request access first).
 - Packaging works — `package_skill.py` just needs Python and a filesystem.
 - Description optimization (`run_loop.py` / `run_eval.py`) should work in Cowork just fine since it uses `claude -p` via subprocess, not a browser, but please save it until you've fully finished making the skill and the user agrees it's in good shape.

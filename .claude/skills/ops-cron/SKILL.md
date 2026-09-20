@@ -101,7 +101,7 @@ Give the user the right runtime model:
 
 Scheduled jobs run with `--dangerously-skip-permissions` so they can execute unattended without approval prompts. This is intentional — cron jobs must complete autonomously.
 
-Never suggest Task Scheduler, launchd, or crontab.
+Never suggest Task Scheduler, launchd, or crontab, because jobs assume the workspace leader-lock and status files only this runtime provides.
 
 ---
 

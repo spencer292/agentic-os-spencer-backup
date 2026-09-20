@@ -157,3 +157,31 @@ No component may infer Team OS ownership from the current selector, email addres
 The application must prevent one sequential Command Centre user from reading or controlling another user's profile through UI, local APIs, caches, files served by the app, or live processes. UI filtering alone is never sufficient.
 
 This contract does not protect local files from malware, an administrator, or another process running as the same operating-system user. Encryption at rest can be added by a separate project without changing the identity and scope model.
+
+---
+
+## Context Import & Sync
+
+<!-- Migrated from AGENTS.md when the always-on context was slimmed. -->
+
+To migrate existing local context into Team OS after signing in, run `npm run context:import` from `command-centre/`. This imports approved private files (`context/USER.md`, `context/MEMORY.md`, `context/learnings.md`, prompt tags, and local overrides), root `team_context/*` and `brand_context/*` as team context, and approved client context as client context. `.mcp.json` is not imported as context; it uses encrypted backup sync.
+
+To refresh a connected workspace, run `npm run context:sync` from `command-centre/`. This pulls server-owned base files, syncs private user files, pulls team context, and restores `.mcp.json` from encrypted backup when available.
+
+## Snapshot Resolution & Chat-UI Skill Scoping
+
+Snapshot resolution: the injected session-scoped runtime snapshot is the only runtime authority for team, client and private-user context (see `AGENTS.md` → Team OS Context Snapshot for the safety invariants that stay always-on).
+
+### Skill origins in Chat UI
+
+- `.claude/skills/` in the installation is the permanent local source and does
+  not require Team OS `skill.*` permissions.
+- Client skill folders are scoped to their client and override the root version
+  when that client is active.
+- Team skill copies live under the current local profile in a Team-ID-hashed
+  cache. `skill.use/read/edit/admin` applies only to these Team copies.
+- On a name collision, `/skill-name` uses Team by default, `/team:skill-name`
+  forces Team, and `/local:skill-name` forces the local/client version.
+- A connected response refreshes authorized Team copies. Conversation-only
+  continuation may use the last authorized Team copy, while local and client
+  skills remain available. Revocation is applied on the first response after
