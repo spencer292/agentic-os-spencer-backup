@@ -74,6 +74,16 @@ Don't just swap words — restructure the sentence. AI patterns are rarely just 
 | Always-three lists | Make it 2, 4, or 5. Or just prose. |
 | Announcement of emphasis ("Importantly,") | Cut the word. If the point is important, it shows. |
 | Mirror paragraphs | Restructure: some paragraphs short (1-2 sentences), some longer. Lead differently. |
+| Binary contrasts ("It's not X, it's Y") | State Y directly. Drop the setup. |
+| Faux-insight setups ("Here's what nobody tells you") | Cut the setup, keep the claim, let it stand on its own. |
+| Colon reveals (noun phrase — colon — lowercase reveal) | Rewrite as one plain sentence. Reserve colons for lists, labels, and quotes. |
+| Fake-profound kickers (mic-drop metaphor ending) | Delete it. Don't rewrite into a better metaphor — end on the clearest concrete sentence already in the draft. |
+| Synonym cycling (rotating terms for style) | Repeat the clear word instead of rotating synonyms across sentences. |
+| Negative listing ("Not a X. Not a Y. A Z.") | Just say Z. |
+| Dramatic fragmentation ("X. And Y. And Z.") | Combine into complete sentences. |
+| Weak verb phrases ("has the ability to", "made a decision") | Use the direct verb: "can", "decided". |
+| Formatting slop (emoji headings, mid-sentence bold, bullets over prose) | Strip decoration. Use bullets only when the content is genuinely a list; otherwise write prose. |
+| Summary-recap endings ("In conclusion," "Overall,") | Cut. End on the last concrete point, takeaway, or next action instead. |
 
 ---
 

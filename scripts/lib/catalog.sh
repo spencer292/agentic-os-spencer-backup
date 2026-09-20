@@ -356,6 +356,67 @@ else
 fi
 
 # =========================================================
+# Command Centre dependency sync
+# =========================================================
+COMMAND_CENTRE_DEPS_STATUS="not-run"
+
+sync_command_centre_dependencies() {
+    local helper="${REPO_ROOT}/command-centre/scripts/ensure-dependencies.cjs"
+    local exit_code=0
+
+    if [[ "${AGENTIC_OS_TEST_SKIP_COMMAND_CENTRE_DEPS:-0}" == "1" ]]; then
+        COMMAND_CENTRE_DEPS_STATUS="skipped"
+        return 0
+    fi
+
+    echo ""
+    info "Checking Command Centre dependencies..."
+
+    # Older update.sh versions can pull this catalog before they know about the
+    # early process preflight. Load and run it here as a first-upgrade safety net.
+    if ! declare -F prepare_update_processes >/dev/null 2>&1; then
+        local process_helper="${REPO_ROOT}/scripts/lib/update-processes.sh"
+        if [[ -f "$process_helper" ]]; then
+            source "$process_helper"
+        fi
+    fi
+    if declare -F prepare_update_processes >/dev/null 2>&1 &&
+       ! prepare_update_processes; then
+        COMMAND_CENTRE_DEPS_STATUS="failed"
+        warn "Command Centre dependency synchronization was skipped because it could not be stopped safely."
+        return 0
+    fi
+
+    if [[ ! -f "$helper" ]]; then
+        COMMAND_CENTRE_DEPS_STATUS="failed"
+        warn "Command Centre dependency helper was not found."
+        return 0
+    fi
+    if ! command -v node >/dev/null 2>&1 || ! command -v npm >/dev/null 2>&1; then
+        COMMAND_CENTRE_DEPS_STATUS="unavailable"
+        warn "Node.js and npm are required to synchronize Command Centre dependencies."
+        return 0
+    fi
+
+    set +e
+    node "$helper"
+    exit_code=$?
+    set -e
+
+    if [[ $exit_code -eq 0 ]]; then
+        COMMAND_CENTRE_DEPS_STATUS="ready"
+        ok "Command Centre dependencies: ready"
+    else
+        COMMAND_CENTRE_DEPS_STATUS="failed"
+        warn "Command Centre dependencies could not be synchronized."
+    fi
+
+    return 0
+}
+
+sync_command_centre_dependencies
+
+# =========================================================
 # GSD migration status
 # =========================================================
 GSD_STATUS="${AGENTIC_OS_GSD_UPDATE_STATUS:-}"
@@ -698,9 +759,18 @@ if [[ -d "$LEGACY_CENTRE_DIR" ]]; then
     info "The old folder is no longer used and can be deleted manually when you're ready."
 fi
 
-if [[ "$MEMORY_SETUP_STATUS" == "failed" || "$CLIENT_SYNC_STATUS" == "failed" ]]; then
+if [[ "$COMMAND_CENTRE_DEPS_STATUS" == "failed" ||
+      "$COMMAND_CENTRE_DEPS_STATUS" == "unavailable" ||
+      "$MEMORY_SETUP_STATUS" == "failed" ||
+      "$CLIENT_SYNC_STATUS" == "failed" ]]; then
     echo ""
     printf "${YELLOW}${BOLD}Update completed with attention needed${NC}\n"
+    if [[ "$COMMAND_CENTRE_DEPS_STATUS" == "failed" ]]; then
+        warn "Command Centre dependency repair failed. Run ${BOLD}cd command-centre && npm ci${NC}, then start it again."
+    elif [[ "$COMMAND_CENTRE_DEPS_STATUS" == "unavailable" ]]; then
+        warn "Command Centre dependencies were not checked because Node.js or npm is unavailable."
+        warn "After installing them, run ${BOLD}cd command-centre && npm ci${NC}."
+    fi
     if [[ "$MEMORY_SETUP_STATUS" == "failed" ]]; then
         if [[ "$MEMORY_SETUP_MODE" == "legacy" ]]; then
             warn "Memory migration/setup failed. Searchable memory may not work until you rerun ${BOLD}bash scripts/setup-memory.sh${NC}."
@@ -713,6 +783,10 @@ if [[ "$MEMORY_SETUP_STATUS" == "failed" || "$CLIENT_SYNC_STATUS" == "failed" ]]
         warn "Client sync failed. The root update succeeded, but some client folders may not have the latest shared files."
         warn "After fixing the issue, rerun ${BOLD}bash scripts/update-clients.sh${NC}."
     fi
+fi
+
+if declare -F restore_update_background_services >/dev/null 2>&1; then
+    restore_update_background_services 0 || true
 fi
 
 echo ""

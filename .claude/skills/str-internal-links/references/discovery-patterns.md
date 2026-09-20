@@ -1,6 +1,92 @@
-# Discovery Patterns by Framework
+# Discovery Patterns
 
-How to find every internal link in a codebase, organized by framework. Start with the framework that matches the project, then check cross-framework patterns at the bottom.
+How to build the link graph. **The live crawl is the primary source; the codebase is the cross-check.** Start with section 0, then use the framework patterns to attach a file path to every edge the crawl found.
+
+---
+
+## 0. Live crawl — DataForSEO On-Page (primary source)
+
+Run every command from the client folder (`clients/got-moles/`) so `.env` and `.dataforseo-usage.log` resolve. Credential values are never printed by the shared client and must never be echoed.
+
+### Spend guard — read before the first live call
+
+The account is pay-as-you-go on a small balance and On-Page bills per page crawled.
+
+```bash
+# balance check, before anything else
+node ../../.claude/skills/str-ai-seo/scripts/dataforseo.mjs appendix/user_data
+
+# inspect the exact request without spending anything
+node ../../.claude/skills/str-ai-seo/scripts/dataforseo.mjs on_page/task_post '{...}' --dry
+```
+
+- `max_crawl_pages` is mandatory on every crawl. Never omit it.
+- `load_resources: false` and `enable_javascript: false` for a link-graph crawl. Both multiply cost and neither is needed for the anchor graph.
+- `store_raw_html`, `check_spell` and `calculate_keyword_density` off — other skills own those.
+- Reconcile the run against `.dataforseo-usage.log` afterwards and put the spend in the audit frontmatter.
+- Prices are in `.claude/skills/str-ai-seo/references/search-landscape-2026-09.md` §10. Do not quote a price from memory.
+
+### The crawl flow
+
+```bash
+# 1. post the task
+node ../../.claude/skills/str-ai-seo/scripts/dataforseo.mjs on_page/task_post \
+  '{"target":"got-moles.com","max_crawl_pages":180,"load_resources":false,"enable_javascript":false,"store_raw_html":false,"check_spell":false,"calculate_keyword_density":false}' \
+  --out projects/str-internal-links/data/onpage-task.json
+
+# 2. poll until crawl_progress is "finished" — a partial crawl invents orphans
+node ../../.claude/skills/str-ai-seo/scripts/dataforseo.mjs on_page/summary/<TASK_ID>
+
+# 3. pull results (each is a POST carrying the task id)
+node ../../.claude/skills/str-ai-seo/scripts/dataforseo.mjs on_page/pages \
+  '{"id":"<TASK_ID>","limit":1000}' --out projects/str-internal-links/data/pages.json
+
+node ../../.claude/skills/str-ai-seo/scripts/dataforseo.mjs on_page/links \
+  '{"id":"<TASK_ID>","limit":1000,"filters":[["link_from","like","%got-moles.com%"]]}' \
+  --out projects/str-internal-links/data/links.json
+
+node ../../.claude/skills/str-ai-seo/scripts/dataforseo.mjs on_page/redirect_chains \
+  '{"id":"<TASK_ID>","limit":1000}' --out projects/str-internal-links/data/redirects.json
+
+node ../../.claude/skills/str-ai-seo/scripts/dataforseo.mjs on_page/non_indexable \
+  '{"id":"<TASK_ID>","limit":1000}' --out projects/str-internal-links/data/non-indexable.json
+
+# duplicate_content is per-URL — it needs a "url" field as well as the task id
+node ../../.claude/skills/str-ai-seo/scripts/dataforseo.mjs on_page/duplicate_content \
+  '{"id":"<TASK_ID>","url":"https://got-moles.com/mole-control-tacoma/","limit":100}'
+```
+
+Page the edge list with `limit` and `offset` until it is exhausted. Save every response under `projects/str-internal-links/data/` so a re-score does not re-spend.
+
+### Field mapping — crawl result to audit pillar
+
+| Endpoint | Field | Feeds |
+|---|---|---|
+| `on_page/pages` | `url`, `status_code`, `click_depth` | Link Depth (use directly, do not re-derive a BFS) |
+| `on_page/pages` | `internal_links_count`, `external_links_count` | Orphan Pages (zero inbound), Link Equity Flow (dilution) |
+| `on_page/pages` | `canonical`, `meta` | Step 6.5 cannibalisation, canonical-vs-link-graph disagreement |
+| `on_page/links` | `link_from`, `link_to` | The edge list. Every pillar |
+| `on_page/links` | `text` | Anchor Text — diversity, brand presence, disambiguation guard |
+| `on_page/links` | `type` | Contextual vs template classification |
+| `on_page/links` | `dofollow` | Nofollow internal links (should be zero outside login/cart) |
+| `on_page/links` | `is_broken` | Broken internal links — report the measured count |
+| `on_page/redirect_chains` | full record | Internal links resolving through a hop |
+| `on_page/non_indexable` | `url`, `reason` | Inbound links pointing at pages that cannot be cited |
+| `on_page/duplicate_content` | similarity records | Step 6.5 detection, and the doorway signal on city pages |
+
+### Provenance reconciliation
+
+Label every edge before scoring:
+
+| Provenance | Meaning | Action |
+|---|---|---|
+| Both | In the crawl and in the source | Normal. Fixable, file path known |
+| Crawl only | Renders live, no source edge found | Usually CMS-seeded Lexical richtext. Find the real source of truth before proposing an edit, or the next reseed wipes the fix |
+| Source only | In the code, absent from the live HTML | A defect. Behind JS, inside a lazy block, in dead code, or on a page the crawl could not reach. The site is not shipping a link it thinks it ships |
+
+Report the divergence count in the audit. A high crawl-only count means the codebase is not the source of truth for links, and every apply-fix must route through the seed script rather than the data file.
+
+**Degraded mode.** If the crawl cannot run, the codebase patterns below still produce a graph — but the report opens with a banner naming the degradation and the score is labelled provisional. Never present a code-only score as measured.
 
 ---
 

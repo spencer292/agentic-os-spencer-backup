@@ -22,7 +22,47 @@ import base64
 import os
 import sys
 from datetime import datetime, timezone
+from io import BytesIO
 from pathlib import Path
+
+# Map the requested output format to the Pillow encoder name. The OpenAI API
+# may return bytes encoded differently than requested (e.g. JPEG bytes for a
+# PNG request), which would otherwise land on disk as a JPEG named `.png`
+# (wrong mime for strict consumers). Re-encoding through Pillow guarantees the
+# on-disk bytes match the file extension.
+_PIL_FORMATS = {"png": "PNG", "jpeg": "JPEG", "webp": "WEBP"}
+
+
+def _save_image_bytes(image_bytes: bytes, output_path: Path, output_format: str) -> None:
+    """Write image bytes to disk, re-encoding so the file's bytes honestly
+    match the requested format. Falls back to raw bytes only if Pillow or the
+    decode fails (so a save still happens), but the normal path always
+    produces a true PNG/JPEG/WEBP matching the extension."""
+    pil_format = _PIL_FORMATS.get(output_format)
+    try:
+        from PIL import Image
+
+        with Image.open(BytesIO(image_bytes)) as img:
+            img.load()
+            save_img = img
+            # JPEG cannot hold alpha; flatten onto white if present.
+            if pil_format == "JPEG" and save_img.mode in ("RGBA", "LA", "P"):
+                rgba = save_img.convert("RGBA")
+                flattened = Image.new("RGB", rgba.size, (255, 255, 255))
+                flattened.paste(rgba, mask=rgba.split()[3])
+                save_img = flattened
+            save_img.save(str(output_path), format=pil_format or img.format)
+        return
+    except Exception as e:
+        # Last resort: keep the raw bytes so we don't lose the generation,
+        # but warn loudly because the on-disk format may not match the name.
+        print(
+            f"Warning: could not re-encode image to {output_format} "
+            f"({e}); writing raw API bytes.",
+            file=sys.stderr,
+        )
+        with open(str(output_path), "wb") as f:
+            f.write(image_bytes)
 
 SUPPORTED_SIZES = ["1024x1024", "1536x1024", "1024x1536", "auto"]
 SUPPORTED_QUALITIES = ["low", "medium", "high", "auto"]
@@ -159,8 +199,7 @@ def main():
             image_base64 = result.data[0].b64_json
             image_bytes = base64.b64decode(image_base64)
 
-            with open(str(output_path), "wb") as f:
-                f.write(image_bytes)
+            _save_image_bytes(image_bytes, output_path, args.output_format)
 
         finally:
             for f in image_files:
@@ -197,8 +236,7 @@ def main():
 
         image_bytes = base64.b64decode(image_base64)
 
-        with open(str(output_path), "wb") as f:
-            f.write(image_bytes)
+        _save_image_bytes(image_bytes, output_path, args.output_format)
 
     full_path = output_path.resolve()
     print(f"\nImage saved: {full_path}")

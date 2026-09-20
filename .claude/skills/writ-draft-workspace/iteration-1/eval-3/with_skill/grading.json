@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "Applies the review's top fixes: costly admission (or [[NEEDS:]] for it), de-staccato the back third, end on the reader's mirror not 'Sorry Chadette'",
+      "passed": true,
+      "evidence": "Planted costly admission as a [[NEEDS:]] (not fabricated); de-staccato'd back third keeping 3 peaks clipped; reader-mirror close, Chadette demoted to a button"
+    },
+    {
+      "text": "Preserves what the review marked working: the 'I divorced my AI' opener and the emotional sequencing",
+      "passed": true,
+      "evidence": "Left 'I divorced my AI' opener + emotional sequencing untouched"
+    },
+    {
+      "text": "Surgical, not wholesale; no invented specifics (placeholders where the author's real cost is needed)",
+      "passed": true,
+      "evidence": "1 [[NEEDS:]]; surgical (only flagged spots); no lived specifics invented"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  }
+}

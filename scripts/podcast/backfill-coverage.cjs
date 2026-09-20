@@ -40,7 +40,7 @@ async function zoom() {
   for (let i = 0; i < 17; i++) {
     const from = new Date(to.getTime() - 29 * 86400000); let pt = '';
     do {
-      const r = await fetch(`https://api.zoom.us/v2/users/roy@prosyn.net/recordings?from=${day(from)}&to=${day(to)}&page_size=300${pt ? `&next_page_token=${pt}` : ''}`, { headers: { Authorization: `Bearer ${t}` } });
+      const r = await fetch(`https://api.zoom.us/v2/users/roy@allthepower.co.uk/recordings?from=${day(from)}&to=${day(to)}&page_size=300${pt ? `&next_page_token=${pt}` : ''}`, { headers: { Authorization: `Bearer ${t}` } });
       const j = await r.json(); if (j.code) break;
       for (const m of j.meetings || []) {
         if (!/power mo/i.test(m.topic || '')) continue;

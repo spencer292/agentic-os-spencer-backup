@@ -1,0 +1,12 @@
+{
+  "name": "tool-web-qa-scripts",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Local dependency island for the tool-web-qa skill. Never install these at the repo root.",
+  "dependencies": {
+    "pixelmatch": "^6.0.0",
+    "playwright": "^1.48.0",
+    "pngjs": "^7.0.0"
+  }
+}

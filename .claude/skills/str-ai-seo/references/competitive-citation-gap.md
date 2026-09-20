@@ -19,7 +19,7 @@ Where competitors get cited and you don't. Most audits stop at "competitor outra
 
 Before treating any candidate as a competitive citation gap, sanity-check three axes:
 
-1. **Same field/category?** A book about embodied cognition is not a competitor to a book about AI tooling for service businesses, even if both share a phrase. A SaaS company called "Delta" is not in the same field as an airline.
+1. **Same field/category?** A book about embodied cognition is not a competitor to a book about workplace productivity, even if both share a phrase. A software company called "Delta" is not in the same field as an airline.
 2. **Same ICP / audience intent?** Would the same person, in the same moment, plausibly be deciding between both? If not, the citation surface is not shared.
 3. **Same query intent?** Run the query through ChatGPT and Perplexity. If neither surfaces both candidates together, no resolution conflict exists today — and listing them as competitors creates fictional gaps that drain audit recommendations.
 
@@ -31,17 +31,27 @@ False-positive competitors dilute every recommendation downstream. Each entry on
 
 ## Why citation gap ≠ SERP rank gap
 
-Traditional SEO auditing treats "who ranks higher" as the question. AI SEO asks a different question: "who gets cited as the authoritative source?"
+Traditional SEO auditing treats "who ranks higher" as the question. AI SEO asks a different one: "who gets cited as the authoritative source?"
 
-These diverge. A page on position 5 can be cited by ChatGPT while the position 1 page gets ignored — because position 5 has:
-- Clearer direct-answer structure
-- Named expert attribution
-- Sourced statistics
-- Better schema coverage
-- Fresher update date
-- Stronger entity graph
+These diverge, but **how much they diverge depends on the surface**, and this is the distinction that most gap analyses miss:
 
-**Your job in this analysis:** identify *which* signal explains each gap, not just *that* a gap exists.
+- **AI Overviews stay tightly coupled to organic rank.** `[S]` seoClarity, 432,000 keywords: 97% of AI Overviews cite at least one source from the organic top 20. If you are nowhere near the top 20, the citation gap on this surface is mostly a ranking gap.
+- **AI Mode is loosely coupled**, running query fan-out across sub-queries. Coverage of the sub-question set predicts citation here, not head-term rank. **This is where a page can be cited from well outside the top positions.**
+
+`[S]` Whitespark: a top-10 organic ranking gives only about a 25% chance of AI Overview appearance. Rank is necessary-ish and nowhere near sufficient.
+
+**Do not cite the circulating "top-10-to-AI-citation overlap fell from 76% to 38%" figure.** It is single-source and conflicts with the larger-sample finding above for AI Overviews specifically.
+
+When a page outside the top positions does get cited, the usual reasons are:
+- Clearer answer-first structure — a passage that survives being lifted out
+- Coverage of a fan-out sub-question the higher-ranking page skips
+- A specific, attributable, quotable claim where the competitor has adjectives
+- Genuinely fresher content, not a timestamp bump
+- Cleaner entity resolution
+
+**Not on that list: schema.** `[S]` Adding schema to already-visible pages produced −4.6% / +2.4% / +2.2% across AI Overviews, AI Mode and ChatGPT. Check it for correctness and entity binding; do not offer it as an explanation for a citation gap.
+
+**Your job in this analysis:** identify *which* signal explains each gap, on *which* surface, not just *that* a gap exists.
 
 ---
 
@@ -56,39 +66,46 @@ By intent bucket:
 - **Branded:** "{your brand}", "{competitor brand}"
 - **Local** (if applicable): "X near me", "X in {city}"
 
-### Step 2: Run each query through 3+ platforms
+**Tag every query with the surface it competes on before running it.** `[S]` Transactional local fires the Local Pack around 93% of the time; informational and hybrid fire AI Overviews at 92–97%. A transactional query returning no AI Overview is expected behavior, not a gap.
 
-Minimum: Google AIO, ChatGPT, Perplexity. Add Claude, Copilot, Gemini based on audience priority.
+### Step 2: Run each query, programmatically where possible
+
+**Primary source: DataForSEO.** `ai_optimization/llm_mentions` returns mentions with sentiment across ChatGPT, Google AI Overviews, Gemini, Claude and Perplexity in one call. `serp/google/organic/live/advanced` returns the `ai_overview` element with its cited sources. This is repeatable and comparable over time in a way manual testing is not.
+
+**Manual runs are a spot-check on top.** Results are personalized and multi-turn, so a single manual observation is an anecdote. Where you do run manually, cover AI Overviews, AI Mode, ChatGPT and Perplexity as a minimum, adding Gemini and Copilot by audience priority — and remember Gemini's off-site sources differ sharply from the others'.
 
 ### Step 3: Record citation state per query
 
 ```markdown
-| Query | AIO | ChatGPT | Perplexity | Claude | Who cited | Why |
-|-------|:--:|:--:|:--:|:--:|---|---|
-| "X vs Y" | Yes | Yes | Yes | No | Competitor A | comparison table + schema |
-| "best X for Y" | Yes | No | No | No | Competitor B | listicle format + citations |
+| Query | Surface | AIO | AI Mode | ChatGPT | Perplexity | Who cited | Why |
+|---|---|:--:|:--:|:--:|:--:|---|---|
+| "X vs Y" | informational | Yes | Yes | Yes | No | Competitor A | comparison table, answer-first |
+| "best X for Y" | informational | Yes | No | No | No | Third-party listicle | not a competitor page at all |
 ```
 
-The "Why" column is where the real work happens.
+**The "Who cited" column matters as much as the gap.** When the cited source is a third-party listicle or directory rather than a competitor's own site, the gap-closing move is inclusion in that source, not a better page of your own.
 
 ### Step 4: Analyze the "why" systematically
 
-For each competitor citation, open their page and score:
+**Fetch and inspect each cited competitor page before concluding anything.** Do not infer from the SERP. On a real audit, the assumption that the client was behind on a given signal turned out to be wrong: most of the named competitors had not done the work either, which made "open ground, and the window is closing" both more accurate and a stronger argument than "you are behind."
 
 | Signal | Present? |
-|--------|:--:|
-| Direct answer lead matching query | |
-| Definitive structured format for this query type | |
-| Sourced statistics | |
-| Named expert attribution | |
-| Comparison table / listicle / steps depending on query | |
-| Schema type matching query intent | |
-| Visible freshness (recent update date) | |
-| Third-party citation inbound (Wikipedia, Reddit, industry pub) | |
-| Strong entity graph | |
-| Domain authority advantage | |
+|---|:--:|
+| Crawlers can actually reach the page | |
+| Answer-first block under each heading, self-contained | |
+| One fact per sentence in the answer blocks | |
+| Fan-out sub-questions covered | |
+| Specific, attributable, checkable claims | |
+| Format matches the query type — table, ranked list, steps | |
+| Named author with real credentials | |
+| Visible freshness reflecting real content change | |
+| Off-site presence: directories, listicles, unstructured citations | |
+| Clean entity resolution for the brand | |
+| Organic rank position — relevant for AI Overviews specifically | |
 
-This tells you WHICH signal drives the citation for each specific query. Pattern-recognize across queries → which signals matter most for your audience's query mix.
+**Schema is checked for correctness, not scored as a citation driver.**
+
+This tells you which signal drives citation for each query. Pattern-recognize across the set to find what matters most for this query mix.
 
 ---
 
@@ -97,14 +114,19 @@ This tells you WHICH signal drives the citation for each specific query. Pattern
 Not all citations are equal. Track the quality too:
 
 | Level | Description | Example |
-|-------|-------------|---------|
-| **Authoritative** | AI cites you as the source for a claim | "According to All The Power, {stat/claim}" |
-| **Listed** | AI includes you in a list of sources without explicit authority framing | "Sources include ..." |
-| **Mentioned** | AI mentions your brand in passing | "Companies like ..." |
-| **Dismissive** | AI cites you with hedging or negative framing | "Some sources claim..." |
-| **Not cited** | You're absent | — |
+|---|---|---|
+| **Authoritative** | Cited as the source for a claim, and named | "According to {Brand}, {claim}" |
+| **Listed** | Included among sources with no authority framing | "Sources include ..." |
+| **Mentioned** | Named in passing | "Companies like ..." |
+| **Ghost** | The page is in the sources but the brand is never named in the answer | A link with no attribution in the text |
+| **Dismissive** | Cited with hedging or negative framing | "Some sources claim ..." |
+| **Not cited** | Absent | — |
 
-A small number of authoritative citations beats many listed-or-mentioned ones. If you're consistently "mentioned" but rarely "authoritative," your authority signals are thin.
+A small number of authoritative citations beats many listed or mentioned ones. Consistently "mentioned" but rarely "authoritative" means the authority signals are thin.
+
+**Ghost citations are the largest category and the easiest to miss.** `[S]` 62% of AI citations are ghost citations where the brand goes unnamed (Semrush, 126M US prompts). A mention tracker and a citation tracker measure different things, and a report using one to answer the other will be wrong by a wide margin. Say which one you measured.
+
+**Track sentiment as its own dimension.** `[S]` Framing flips roughly 6.7x more often than mention presence does. A brand can be resolved correctly, cited consistently, and framed badly — and a presence-only tracker will show that as a win. DataForSEO `llm_mentions` returns sentiment; use it.
 
 ---
 
@@ -124,69 +146,77 @@ After analyzing 20 queries, common patterns emerge:
 **Pattern 4: Informational queries cite Wikipedia / Reddit, not competitors**
 → Opportunity: create the definitive resource that AI prefers to Wikipedia for this niche. Needs original data, structured format, cited statistics.
 
-**Pattern 5: Commercial queries cite review sites (G2, Capterra)**
-→ Get listed on those review sites with complete profiles + aggregated reviews.
+**Pattern 5: Commercial queries cite review platforms**
+→ Complete, accurate profiles on the platforms the engines actually read for this category.
 
-**Pattern 6: Local queries cite Google Business Profiles + Yelp**
-→ Local SEO track (see `references/local-seo.md`).
+**Pattern 6: Local queries cite business profiles and directories**
+→ Local track (see `local-seo.md`), and note the directory priority is engine-specific rather than universal.
+
+**Pattern 7: Nothing you write ranks, but the engine cites third-party listicles**
+→ The gap is not a content gap. Get included in the listicles. `[S]` Ranked best-of listicles are the single most-cited format at ~21% of all citations, and inclusion outranks most link building.
+
+**Pattern 8: The engine returns the wrong entity entirely**
+→ Not a citation gap. A disambiguation problem. See `brand-disambiguation.md`, and check whether the brand or service term is a common-noun homograph.
 
 ---
 
 ## Gap-closing tactics by root cause
 
-### Root cause: missing schema for query intent
+### Root cause: the crawler cannot reach the page
 
-| Query intent | Schema to add |
-|-------------|---------------|
-| "What is X" | Article + DefinedTerm |
-| "How to X" | HowTo |
-| "X vs Y" | Article + ItemList (or ComparisonChart-style) |
-| "Best X" | ItemList |
-| "X FAQ" | FAQPage |
-| "X reviews" | Review + AggregateRating |
-| "{Book title}" | Book + Person (author) |
-| "{Podcast name}" | PodcastSeries + PodcastEpisode |
-| "{Course name}" | Course |
-| "X near me" | LocalBusiness + aggregateRating |
+Check first, always. `[S]` 73% of sites have a crawlability issue preventing AI access. Robots.txt, CDN and WAF rules, JavaScript-render dependence. Free to fix, and nothing else works until it is.
 
-### Root cause: missing content format
+### Root cause: missing content shape
 
-- Add comparison tables on alternatives pages
-- Add definition blocks on "what is" pages
-- Add step-by-step numbered lists on "how to" pages
-- Add FAQ blocks on topic hubs
+- Answer-first block of roughly 40–80 words under every heading, self-contained
+- One fact per sentence in those blocks
+- Comparison tables instead of prose on comparison pages
+- Numbered steps on process pages
+- Question-format H2s in the body rather than a footer FAQ block
 
-### Root cause: missing authority signals
+### Root cause: missing fan-out coverage
 
-- Source every stat with outbound link to primary source
-- Add named expert quotes with credentials
-- Add author bio with credentials (byline block pattern)
-- Add visible publication + updated dates
+The page ranks for the head term and skips the sub-questions. Enumerate the fan-out set — harvest it from People Also Ask, Bing grounding queries and AI keyword data rather than inventing it — and cover every sub-question in the cluster, each reachable in one hop.
+
+**Not a word-count problem.** `[S]` Correlation between word count and AI Overview citation is 0.04.
+
+### Root cause: nothing quotable on the page
+
+Every substantial page carries at least one specific, attributable, checkable claim. Generic advice is not citable at any length. First-hand operational detail is the version competitors cannot copy.
 
 ### Root cause: missing third-party presence
 
-- Pitch Wikipedia editors on notable entity (requires ≥2 independent secondary sources)
-- Seed authentic Reddit discussions in relevant subs
-- Secure 3-5 guest posts on industry publications
-- Get on category roundups ("10 best X for Y")
-- Participate in Quora answers (long-form, cited)
-- YouTube presence (Google AIO favors YouTube heavily)
+- **Get into the ranked listicles that already appear in your queries' answers.** Highest-leverage item here
+- Earn genuine editorial mentions in publications the engines already cite
+- Complete and correct every profile that already exists; inconsistency is how an engine fails to resolve the business at all
+- **Build YouTube presence.** `[S]` YouTube mentions are the strongest measured correlate across ChatGPT, AI Mode and AI Overviews, and YouTube is the leading non-corporate citation source
+- Where a Wikipedia entry is genuinely achievable on notability grounds it is the strongest anchor; for most brands it is not, and chasing it displaces achievable work
+- **Never manufacture mentions.** `[P]` Google names inauthentic mention-seeking as unnecessary and states its spam systems already filter what AI features depend on
 
 ### Root cause: weak entity graph
 
-- See `references/entity-knowledge-graph.md` — full methodology
+See `entity-knowledge-graph.md`. The `sameAs` spine plus `knowsAbout` is the core of it.
 
 ### Root cause: freshness decay
 
-- Update cornerstone content every 90 days minimum
-- Add visible "Last updated" dates
-- Update `<lastmod>` in sitemap
-- Ping IndexNow on every substantive update
+- **A substantive update, not a timestamp bump.** At least one new fact, source or example per major section
+- `dateModified` reflecting the real change, accurate `Last-Modified` header, sitemap `lastmod`
+- Flag anything untouched for twelve months
+- IndexNow on update — **for Bing only; Google does not participate**
 
-### Root cause: domain authority gap
+`[S]` AI-cited content is 25.7% fresher on average, and 65% of AI bot hits target past-year content.
 
-- Slow play. Build authority through consistent publishing + earned backlinks. No shortcut.
-- Shorter-term lever: get on high-authority third parties (Wikipedia, Forbes, Guardian, HBR) so you get cited *through* them until your direct authority grows.
+### Root cause: rank gap on AI Overviews specifically
+
+AI Overviews stay rank-coupled, so on that surface this is a classic ranking problem and should be treated as one. It does not transfer to AI Mode, where coverage matters more than position.
+
+### Root cause: authority gap
+
+`[S]` Off-site brand signals beat backlinks by two to three times as correlates — branded web mentions 0.664 against backlinks around 0.218–0.27. **Lead with mentions, treat links as a byproduct.** Domain Rating sits below branded anchors on every surface, so a program whose main lever is Domain Rating is optimizing the weakest available signal.
+
+### Not a root cause: missing schema
+
+`[S]` The measured effect on already-visible pages is approximately zero. Audit schema for correctness, visible-content match and entity binding. **Never offer it as the explanation for a citation gap**, and never present it as a citation lever in client-facing output.
 
 ---
 
@@ -202,31 +232,43 @@ Citation gaps change as AI systems update their indices and as your content matu
 | "{brand}" | 3/5 | 4/5 | 5/5 | +2 |
 ```
 
-Re-run the gap analysis every 4-6 weeks during active optimization, quarterly during maintenance.
+Re-run monthly during active optimization, quarterly during maintenance. **Re-baseline after any named Google core or spam update** before drawing conclusions from a movement — 2026 ran two core and three spam updates, and volatility outside named updates is now the majority of movement.
+
+**Run it programmatically so the comparison is real.** A month-over-month delta built from two sets of manual observations is comparing two anecdotes. `ai_optimization/llm_mentions` on a fixed prompt set gives a comparable series.
 
 ---
 
 ## Gap analysis report format
 
-Include this in the audit:
-
 ```markdown
 ### Competitive Citation Gap
 
-**Queries analyzed:** {N}
-**Citation rate (user):** {%} (across all platforms × queries)
-**Citation rate (top competitor):** {%}
-**Delta:** {%}
+**Queries analyzed:** {N}, tagged by surface
+**Data source:** {DataForSEO llm_mentions / SERP ai_overview / manual spot-check}
+**Date range:** {} — results are personalized and point-in-time
 
-**Citation quality breakdown (user):**
-| Authoritative | Listed | Mentioned | Dismissive | Not cited |
+**Presence by surface**
+| Surface | Queries | Present | Top competitor present | Delta |
+|---|--:|--:|--:|--:|
+| AI Overviews | | | | |
+| AI Mode | | | | |
+| ChatGPT | | | | |
+| Perplexity | | | | |
+| Gemini | | | | |
 
-**Dominant gap pattern:**
-{1-sentence root-cause statement}
+**Citation quality:** authoritative / listed / mentioned / ghost / dismissive / not cited
+**Sentiment:** {positive / neutral / negative, per engine}
 
-**Top 5 gap closures ranked by impact-per-effort:**
-1. {tactic} — {expected lift} — {effort category}
-2. ...
+**Most-cited third-party sources across the query set:** {this is the mention target list}
 
-**Re-audit target date:** {date for next run}
+**Dominant gap pattern:** {one-sentence root-cause statement, naming the surface}
+
+**Competitors tested directly:** {list — never assert a gap against an untested competitor}
+
+**Gap closures, ranked by impact, risk and dependency order**
+1. {tactic} — {surface} — {evidence tier} — {reversible / structural / blocked by X}
+
+**Baseline note:** {honest expectation for a brand of this stature — niche brands appear in ~11% of relevant AI answers}
 ```
+
+**Report rules:** no time or effort estimates — rank by impact, risk, dependency order and reversibility. Label every statistic `[P]`, `[S]` or `[U]`. Never state an "expected lift" percentage for a tactic; no study supports per-tactic lift figures for AI citation, and the ones that circulated did not survive checking.

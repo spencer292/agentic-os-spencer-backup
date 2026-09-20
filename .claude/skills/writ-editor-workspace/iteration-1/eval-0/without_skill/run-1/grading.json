@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Flags the cash-figure continuity contradiction (\u00a375 in Ch1 vs \u00a3750 in Ch3) and cites BOTH chapter locations",
+      "passed": true,
+      "evidence": "Caught the \u00a375 vs \u00a3750 10x discrepancy across Ch1/Ch3."
+    },
+    {
+      "text": "Flags the full Excel/\u00a375 story as an unwitting repeat across Ch1 and Ch3 (told twice as a first-telling), not a callback",
+      "passed": true,
+      "evidence": "Caught Chapters 1 and 3 narrate the identical story; Ch3 adds nothing."
+    },
+    {
+      "text": "Correctly identifies 'You have to believe' (Ch1 and Ch2) as a deliberate callback to keep, distinct from the repeat",
+      "passed": false,
+      "evidence": "Did NOT treat 'You have to believe' as a deliberate callback to keep \u2014 said the refrain should 'settle on back yourself' and flagged the Ch2 callback as quoting a line never planted; mistook the intentional callback for a flaw."
+    },
+    {
+      "text": "Prescribes a located structural move (e.g. reconcile the figure; reduce Ch3's retelling to a one-line callback) rather than a vague 'tighten it up'",
+      "passed": true,
+      "evidence": "Located moves: keep Ch1, cut/merge Ch3, harvest closing line."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 1,
+    "total": 4,
+    "pass_rate": 0.75
+  },
+  "timing": {
+    "total_tokens": 55592,
+    "duration_ms": 101654,
+    "total_duration_seconds": 101.7
+  }
+}

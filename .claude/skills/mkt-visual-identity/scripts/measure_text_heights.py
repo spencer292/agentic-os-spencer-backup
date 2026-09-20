@@ -117,11 +117,48 @@ def report_single(img_path: Path, canvas_w: int) -> list[dict]:
     return out
 
 
+def display_row(rows: list[dict]) -> dict | None:
+    """The display headline row = the tallest detected row (largest cqw). None if no rows."""
+    return max(rows, key=lambda r: r["cqw"]) if rows else None
+
+
+def enforce_verdict(rows_preview: list[dict], rows_ref: list[dict] | None,
+                    display_floor: float, max_shrink: float) -> tuple[bool, list[str]]:
+    """Gate hook B (SPEC-B): the display row must be >= display_floor cqw AND, when a ref is
+    given, within -max_shrink% of the ref's display height (the preview must not be more than
+    max_shrink% SMALLER than the ref). Returns (ok, failures)."""
+    failures: list[str] = []
+    dp = display_row(rows_preview)
+    if dp is None:
+        return False, ["no text rows detected in the preview — cannot verify the display height"]
+    if dp["cqw"] < display_floor:
+        failures.append(
+            f"display row is {dp['cqw']:.1f}cqw < floor {display_floor:.1f}cqw — the headline "
+            f"reads as body, not display. Grow it (and tighten line-height/tracking, never weight).")
+    if rows_ref:
+        dr = display_row(rows_ref)
+        if dr and dr["cqw"] > 0:
+            delta = (dp["cqw"] - dr["cqw"]) / dr["cqw"] * 100
+            if delta < -max_shrink:
+                failures.append(
+                    f"display row is {dp['cqw']:.1f}cqw vs ref {dr['cqw']:.1f}cqw ({delta:+.1f}%) — "
+                    f"more than {max_shrink:.0f}% smaller than the ref. Scale the headline up to "
+                    f"within -{max_shrink:.0f}% of the ref.")
+    return (not failures), failures
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--image", type=Path, required=True)
     ap.add_argument("--compare-to", type=Path, help="If given, run delta mode against this REF image.")
     ap.add_argument("--canvas-width", type=int, default=1080)
+    ap.add_argument("--enforce", action="store_true",
+                    help="Gate hook B: BLOCK (exit 2) when the display row is below the floor "
+                         "or (with --compare-to) more than --max-shrink%% smaller than the ref.")
+    ap.add_argument("--display-floor", type=float, default=8.0,
+                    help="Minimum display-row height in cqw (default 8.0).")
+    ap.add_argument("--max-shrink", type=float, default=15.0,
+                    help="Max %% the preview display may be SMALLER than the ref (default 15).")
     args = ap.parse_args()
 
     if not args.image.exists():
@@ -129,6 +166,7 @@ def main() -> int:
         return 1
 
     rows_a = report_single(args.image, args.canvas_width)
+    rows_b = None
 
     if args.compare_to:
         if not args.compare_to.exists():
@@ -151,13 +189,25 @@ def main() -> int:
                 print(f"  {i+1:>3}  {ref['cqw']:>8.2f}  {'(missing)':>11}        -    preview missing this row")
             elif pre:
                 print(f"  {i+1:>3}  {'(missing)':>8}  {pre['cqw']:>11.2f}        -    ref missing this row (extra in preview)")
-        return 0
+    else:
+        # Single-image mode
+        print(f"\n  Image: {args.image.name}  (canvas {args.canvas_width}px)")
+        print(f"  Detected {len(rows_a)} text row(s):\n")
+        for r in rows_a:
+            print(f"    Row {r['row']:>2}: y={r['top_px']}-{r['bot_px']} ({r['height_px']}px tall) ~ {r['cqw']:.2f}cqw - guess: {r['guess_role']}")
 
-    # Single-image mode
-    print(f"\n  Image: {args.image.name}  (canvas {args.canvas_width}px)")
-    print(f"  Detected {len(rows_a)} text row(s):\n")
-    for r in rows_a:
-        print(f"    Row {r['row']:>2}: y={r['top_px']}-{r['bot_px']} ({r['height_px']}px tall) ~ {r['cqw']:.2f}cqw - guess: {r['guess_role']}")
+    if args.enforce:
+        ok, failures = enforce_verdict(rows_a, rows_b, args.display_floor, args.max_shrink)
+        print()
+        if ok:
+            dp = display_row(rows_a)
+            print(f"[ok] display row {dp['cqw']:.1f}cqw meets floor {args.display_floor:.1f}cqw"
+                  + (" and is within tolerance of the ref" if rows_b else ""))
+            return 0
+        for f in failures:
+            print(f"[fail] {f}", file=sys.stderr)
+        return 2
+
     return 0
 
 

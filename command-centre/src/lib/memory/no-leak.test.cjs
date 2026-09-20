@@ -291,6 +291,54 @@ test("no-leak (search): a search that omits the team id returns nothing, never e
   });
 });
 
+test("no-leak (keyword): client A keyword search never returns client B's exact-token memory", async () => {
+  await withStore(async (s) => {
+    for (const clientId of ["acme", "globex"]) {
+      // Distinct, non-overlapping embeddings so only the FTS keyword leg can
+      // surface these rows — isolates keywordSearch from vector-leg fusion.
+      await seedChunk(s, {
+        sc: mkScope("client", { clientId }),
+        sourcePath: `clients/${clientId}/context/memory/notes.md`,
+        content: `release marker ALPHA-NEEDLE-7781 for ${clientId}`,
+        embedding: clientId === "acme" ? [1, 0, 0, 0] : [0, 1, 0, 0],
+      });
+    }
+
+    const hits = await s.keywordSearch(
+      { teamId: null, clientId: "acme", include: ["client"] },
+      "ALPHA-NEEDLE-7781",
+      10,
+    );
+
+    assert.ok(hits.length >= 1, "client A must see its own exact-token memory");
+    assert.ok(hits.every((r) => r.sourcePath.includes("acme")));
+    assert.ok(
+      !hits.some((r) => r.sourcePath.includes("globex")),
+      "client B memory leaked into client A's keyword search",
+    );
+  });
+});
+
+test("no-leak (hybrid): a hybrid search that omits the team id returns nothing, never everything", async () => {
+  await withStore(async (s) => {
+    await seedChunk(s, {
+      sc: mkScope("team", { teamId: "team-1" }),
+      sourcePath: "context/memory/team-1.md",
+      content: "exact token RELEASE-CODE-4242 for team-1",
+    });
+
+    // buildScopeWhere always emits the team predicate, so a caller that forgot
+    // its team id matches no team rows on the keyword leg either.
+    const hits = await s.keywordSearch(
+      { teamId: null, include: ["team"] },
+      "RELEASE-CODE-4242",
+      10,
+    );
+
+    assert.equal(hits.length, 0, "team memory leaked to a team-less keyword search");
+  });
+});
+
 // ---------------------------------------------------------------------------
 // Indexing behaviour — drive the real indexer, then verify the written scope
 // columns AND that search respects them. Two tenants share ONE store.

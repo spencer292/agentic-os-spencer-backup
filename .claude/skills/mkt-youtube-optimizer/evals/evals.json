@@ -1,0 +1,23 @@
+{
+  "skill_name": "mkt-youtube-optimizer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We're about to publish a new video on the All The Power channel: 10-min lesson 'Stop Being the Bottleneck', target search 'how to stop being the bottleneck in my business', title draft 'How to Stop Being the Bottleneck in Your Business (Decision Audit)', description drafted, thumbnail not made yet, CTA to allthepower.co.uk. Score it before we ship and tell me what to fix.",
+      "expected_output": "Scorecard /100 with per-dimension evidence citing real channel baseline (API) and live competition for the query; missing-thumbnail dimension scored accordingly; top-3 fixes; falsifiable 28-day prediction appended to the ledger; PASS/FIX-FIRST verdict.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Make me thumbnails for the bottleneck video - the hook is 'every decision in your business waits for you, you're not the engine, you're the queue'. Use my photos.",
+      "expected_output": "3-5 variants (1280x720) built with thumb_lib patterns using logo-free cut-outs, each pattern-compliant (big face, boxed-phrase quote or <=3 words, one cue, chip), contact sheet with 168px strip, all visually verified before presenting, copied to Downloads, with a recommendation.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "It's been a month since the core values video went out (KS2yc2di9PA). How did it actually do against what we predicted?",
+      "expected_output": "28-day review: live stats pulled, compared verbatim against the ledger prediction, verdict hit/over/under with a one-line why, ledger updated with actuals, calibration rule added to SKILL.md Rules if the miss is structural.",
+      "files": []
+    }
+  ]
+}

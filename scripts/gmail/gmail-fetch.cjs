@@ -13,14 +13,14 @@
 // Already-triaged messages (carrying any Triage/* label) are skipped so re-runs are safe.
 const fs = require("fs");
 const path = require("path");
-const { getAccessToken, gapi, getLabelMap, TRIAGE_LABELS } = require("./_lib.cjs");
+const { getAccessToken, gapi, getLabelMap, TRIAGE_LABELS, accountFileSuffix } = require("./_lib.cjs");
 
 const args = process.argv.slice(2);
 const opt = (name, def) => {
   const i = args.indexOf("--" + name);
   return i >= 0 ? (args[i + 1] && !args[i + 1].startsWith("--") ? args[i + 1] : true) : def;
 };
-const STATE_PATH = path.join(__dirname, ".last-run.json");
+const STATE_PATH = path.join(__dirname, `.last-run${accountFileSuffix()}.json`);
 const noState = !!opt("no-state", false);
 const outFile = opt("out", null);
 const maxMsgs = parseInt(opt("max", "200"), 10);

@@ -29,13 +29,41 @@ sys.path.insert(0, str(SCRIPT_DIR))
 
 from lib import (
     dates, dedupe, env, http, models, normalize,
-    openai_reddit, reddit_enrich, render, schema, score, ui, websearch, xai_x,
+    hackernews, openai_reddit, reddit_enrich, reddit_keyless, render, schema,
+    score, ui, websearch, xai_x, youtube,
 )
+
+# Windows consoles default to cp1252 and blow up on the report's box-drawing and
+# emoji characters. Force UTF-8 on our own streams before anything prints.
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):
+        pass
 
 
 def _search_reddit(topic, config, selected_models, from_date, to_date, depth):
+    """Search Reddit, keyless first.
+
+    The keyless tiers talk to Reddit directly (RSS discovery, arctic-shift for
+    vote counts, shreddit for comments) and return real ranking with no API key
+    and no per-run cost. The OpenAI path is kept only as a supplement when a key
+    happens to be configured and the keyless tiers came back thin.
+    """
     raw_openai = None
     reddit_error = None
+    reddit_items = []
+
+    try:
+        reddit_items = reddit_keyless.search_and_enrich(
+            topic, from_date, to_date, depth=depth,
+        )
+    except Exception as e:
+        reddit_error = f"keyless: {type(e).__name__}: {e}"
+
+    if reddit_items or not config.get("OPENAI_API_KEY"):
+        return reddit_items, raw_openai, reddit_error
+
     try:
         raw_openai = openai_reddit.search_reddit(
             config["OPENAI_API_KEY"], selected_models["openai"],
@@ -69,6 +97,25 @@ def _search_reddit(topic, config, selected_models, from_date, to_date, depth):
     return reddit_items, raw_openai, reddit_error
 
 
+def _search_hn(topic, from_date, to_date, depth):
+    """Hacker News via the Algolia API. Free, no key, no quota."""
+    try:
+        raw = hackernews.search_hackernews(topic, from_date, to_date, depth=depth)
+        items = hackernews.parse_hackernews_response(raw, topic)
+        items = hackernews.enrich_top_stories(items, depth)
+        return items, None
+    except Exception as e:
+        return [], f"{type(e).__name__}: {e}"
+
+
+def _search_youtube(topic, depth):
+    """YouTube via the local yt-dlp binary. Free, no key."""
+    try:
+        return youtube.search_and_enrich(topic, depth), None
+    except Exception as e:
+        return [], f"{type(e).__name__}: {e}"
+
+
 def _search_x(topic, config, selected_models, from_date, to_date, depth):
     raw_xai = None
     x_error = None
@@ -94,6 +141,10 @@ def run_research(
 ):
     reddit_items = []
     x_items = []
+    hn_items = []
+    youtube_items = []
+    hn_error = None
+    youtube_error = None
     raw_openai = None
     raw_xai = None
     raw_reddit_enriched = []
@@ -106,7 +157,8 @@ def run_research(
         if progress:
             progress.start_web_only()
             progress.end_web_only()
-        return reddit_items, x_items, True, raw_openai, raw_xai, raw_reddit_enriched, reddit_error, x_error
+        return (reddit_items, x_items, hn_items, youtube_items, True, raw_openai,
+                raw_xai, raw_reddit_enriched, reddit_error, x_error, hn_error, youtube_error)
 
     run_reddit = sources in ("both", "reddit", "all", "reddit-web")
     run_x = sources in ("both", "x", "all", "x-web")
@@ -114,7 +166,15 @@ def run_research(
     reddit_future = None
     x_future = None
 
-    with ThreadPoolExecutor(max_workers=2) as executor:
+    hn_future = None
+    youtube_future = None
+
+    with ThreadPoolExecutor(max_workers=4) as executor:
+        # Hacker News and YouTube need no key, so they always run: they are
+        # the coverage that survives a Reddit rate limit.
+        hn_future = executor.submit(_search_hn, topic, from_date, to_date, depth)
+        youtube_future = executor.submit(_search_youtube, topic, depth)
+
         if run_reddit:
             if progress:
                 progress.start_reddit()
@@ -152,12 +212,29 @@ def run_research(
             if progress:
                 progress.end_x(len(x_items))
 
+        if hn_future:
+            try:
+                hn_items, hn_error = hn_future.result()
+            except Exception as e:
+                hn_error = f"{type(e).__name__}: {e}"
+        if youtube_future:
+            try:
+                youtube_items, youtube_error = youtube_future.result()
+            except Exception as e:
+                youtube_error = f"{type(e).__name__}: {e}"
+
     if reddit_items:
         if progress:
             progress.start_reddit_enrich(1, len(reddit_items))
         for i, item in enumerate(reddit_items):
             if progress and i > 0:
                 progress.update_reddit_enrich(i + 1, len(reddit_items))
+            # Keyless items arrive already enriched (votes + top comments). The
+            # legacy .json enrichment answers 403 now, so re-running it would
+            # only cost time and risk overwriting good data with nothing.
+            if item.get("top_comments") or item.get("engagement"):
+                raw_reddit_enriched.append(item)
+                continue
             try:
                 reddit_items[i] = reddit_enrich.enrich_reddit_item(item)
             except Exception as e:
@@ -167,7 +244,8 @@ def run_research(
         if progress:
             progress.end_reddit_enrich()
 
-    return reddit_items, x_items, web_needed, raw_openai, raw_xai, raw_reddit_enriched, reddit_error, x_error
+    return (reddit_items, x_items, hn_items, youtube_items, web_needed, raw_openai,
+            raw_xai, raw_reddit_enriched, reddit_error, x_error, hn_error, youtube_error)
 
 
 def main():
@@ -223,7 +301,8 @@ def main():
     }
     mode = mode_map.get(sources, sources)
 
-    reddit_items, x_items, web_needed, raw_openai, raw_xai, raw_reddit_enriched, reddit_error, x_error = run_research(
+    (reddit_items, x_items, hn_items, youtube_items, web_needed, raw_openai,
+     raw_xai, raw_reddit_enriched, reddit_error, x_error, hn_error, youtube_error) = run_research(
         args.topic, sources, config, selected_models, from_date, to_date, depth, progress,
     )
 
@@ -249,8 +328,12 @@ def main():
     report = schema.create_report(args.topic, from_date, to_date, mode, selected_models.get("openai"), selected_models.get("xai"))
     report.reddit = deduped_reddit
     report.x = deduped_x
+    report.hn = normalize.normalize_feed_items(hn_items, 'hackernews')
+    report.youtube = normalize.normalize_feed_items(youtube_items, 'youtube')
     report.reddit_error = reddit_error
     report.x_error = x_error
+    report.hn_error = hn_error
+    report.youtube_error = youtube_error
     report.context_snippet_md = render.render_context_snippet(report)
 
     render.write_outputs(report, raw_openai, raw_xai, raw_reddit_enriched)

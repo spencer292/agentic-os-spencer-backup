@@ -96,3 +96,43 @@ def normalize_x_items(
 def items_to_dicts(items: List) -> List[Dict[str, Any]]:
     """Convert schema items to dicts for JSON serialization."""
     return [item.to_dict() for item in items]
+
+
+def normalize_feed_items(
+    items: List[Dict[str, Any]], source: str,
+) -> List[schema.FeedItem]:
+    """Normalize Hacker News / YouTube dicts into the shared FeedItem shape.
+
+    These sources arrive already ranked and date-scoped by their own adapters
+    (HN filters by Algolia date range, YouTube by the this-month search
+    filter), so there is no second date pass here.
+    """
+    normalized = []
+    for item in items:
+        top_comments = []
+        for c in item.get("top_comments", []) or []:
+            # HN comments carry `text` and often no score (Algolia does not
+            # expose per-comment points); Reddit-shaped ones carry `excerpt`.
+            body = c.get("excerpt") or c.get("text") or ""
+            top_comments.append(schema.Comment(
+                score=c.get("score") or c.get("points") or 0,
+                date=c.get("date"),
+                author=c.get("author", ""), excerpt=body[:300],
+                url=c.get("url", ""),
+            ))
+        normalized.append(schema.FeedItem(
+            id=item.get("id", ""),
+            source=source,
+            title=item.get("title", ""),
+            url=item.get("url", ""),
+            author=item.get("author", "") or "",
+            date=item.get("date"),
+            excerpt=(item.get("excerpt") or "")[:400],
+            transcript=item.get("transcript", "") or "",
+            engagement=item.get("engagement") or {},
+            top_comments=top_comments,
+            comment_insights=item.get("comment_insights", []) or [],
+            relevance=item.get("relevance", 0.5),
+            why_relevant=item.get("why_relevant", "") or source,
+        ))
+    return normalized

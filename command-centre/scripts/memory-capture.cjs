@@ -28,6 +28,7 @@
  *   --transcript <path>      transcript JSONL to capture from (required with --session)
  *   --visibility <system|team|client|private>   default system
  *   --team <id> / --client <slug> / --user <id> scope ids (per visibility)
+ *   --workspace <dir>        workspace to capture/index (default: store root)
  *   --reason <session_capture|refresh|...>       index_jobs tag (default by mode)
  *   --debounce <seconds>     skip indexing if it ran within N seconds (default 30)
  *   --embedder <bge-m3|hash>  default: bge-m3 (or $MEMORY_EMBEDDER); hash is explicit offline mode
@@ -60,10 +61,17 @@ function parseArgs(argv) {
       case "--team": flags.team = next(); break;
       case "--client": flags.client = next(); break;
       case "--user": flags.user = next(); break;
+      case "--workspace": flags.workspace = next(); break;
       case "--reason": flags.reason = next(); break;
       case "--debounce": flags.debounce = Number(next()); break;
       case "--embedder": flags.embedder = next(); break;
       case "--force": flags.force = true; break;
+      // Accepted for compatibility with the v1.1.2+ Stop hook (memory-capture.js), which passes
+      // the session cwd and asks for Team OS auto-scoping. This frozen build scopes via
+      // --workspace/--visibility/--client already, so both are no-ops here. Without these cases
+      // the hook's spawn died on "Unknown flag" and no .aos capture was written (2026-08-23 → 09-20).
+      case "--cwd": flags.cwd = next(); break;
+      case "--team-context-auto": flags.teamContextAuto = true; break;
       case "--help": case "-h": flags.help = true; break;
       default:
         throw new Error(`Unknown flag: ${arg}`);
@@ -83,6 +91,7 @@ Options:
   --transcript <path>      transcript JSONL (required with --session)
   --visibility <system|team|client|private>   default system
   --team <id> / --client <slug> / --user <id>  scope ids (per visibility)
+  --workspace <dir>        workspace to capture/index (default: store root)
   --reason <...>           index_jobs tag (default by mode)
   --debounce <seconds>     skip indexing if it ran within N seconds (default 30)
   --embedder <bge-m3|hash>  default: bge-m3 (or $MEMORY_EMBEDDER); hash is explicit offline mode
@@ -105,6 +114,14 @@ function buildScope(flags) {
   return s;
 }
 
+function assertWorkspaceWithinRoot(storeRoot, workspaceDir) {
+  const rel = path.relative(storeRoot, workspaceDir);
+  if (rel === "" || (!rel.startsWith("..") && !path.isAbsolute(rel))) {
+    return;
+  }
+  throw new Error(`--workspace must be inside the Agentic OS root (${storeRoot})`);
+}
+
 async function main() {
   const flags = parseArgs(process.argv.slice(2));
   if (flags.help) {
@@ -112,11 +129,14 @@ async function main() {
     return 0;
   }
 
-  const rootDir = process.env.AGENTIC_OS_DIR
+  const storeRoot = process.env.AGENTIC_OS_DIR
     ? path.resolve(process.env.AGENTIC_OS_DIR)
     : findWorkspaceRoot(__dirname);
+  const workspaceDir = flags.workspace ? path.resolve(storeRoot, flags.workspace) : storeRoot;
+  assertWorkspaceWithinRoot(storeRoot, workspaceDir);
+
   process.env.MEMORY_MODEL_CACHE_DIR =
-    process.env.MEMORY_MODEL_CACHE_DIR || path.join(rootDir, ".command-centre", "models");
+    process.env.MEMORY_MODEL_CACHE_DIR || path.join(storeRoot, ".command-centre", "models");
   const baseScope = buildScope(flags);
   const now = new Date();
   const debounceMs = Number.isFinite(flags.debounce) ? Math.max(0, flags.debounce) * 1000 : undefined;
@@ -127,7 +147,7 @@ async function main() {
     const turn = flags.transcript ? capture.extractLastTurn(flags.transcript) : null;
     if (turn) {
       const res = await capture.captureSessionTurn({
-        rootDir,
+        rootDir: workspaceDir,
         sessionId: flags.sessionId ?? "session",
         turn,
         transcriptPath: flags.transcript,
@@ -147,7 +167,7 @@ async function main() {
 
   // 2. Debounced incremental index of the memory sources.
   const emb = await embedder.createEmbedder({ kind: flags.embedder });
-  const dataDir = path.join(rootDir, ".command-centre", "memory");
+  const dataDir = path.join(storeRoot, ".command-centre", "memory");
   fs.mkdirSync(dataDir, { recursive: true }); // PGLite's own mkdir is not recursive
   const memStore = await store.openMemoryStore({ dataDir, embedDim: emb.dim });
 
@@ -156,7 +176,8 @@ async function main() {
       store: memStore,
       embedder: emb,
       scope: baseScope,
-      rootDir,
+      rootDir: workspaceDir,
+      stateDir: dataDir,
       reason,
       force: flags.force === true,
       debounceMs,

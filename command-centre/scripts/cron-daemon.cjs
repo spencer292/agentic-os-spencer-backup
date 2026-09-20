@@ -144,7 +144,7 @@ async function runServe() {
     }
 
     for (const job of activeJobs) {
-      if (!cronRuntime.matchesTime(now, job.time)) {
+      if (!cronRuntime.shouldDispatchNow(now, job)) {
         continue;
       }
 

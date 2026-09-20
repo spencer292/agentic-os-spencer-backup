@@ -57,6 +57,9 @@ function rmDir(dir) {
 function sysScope(overrides = {}) {
   return { teamId: null, clientId: null, userId: null, visibility: "system", ...overrides };
 }
+function clientScope(clientId, overrides = {}) {
+  return { teamId: null, clientId, userId: null, visibility: "client", ...overrides };
+}
 function newEmbedder() {
   return new embedder.HashEmbedder({ dim: EMBED_DIM });
 }
@@ -329,6 +332,46 @@ test("refreshIndex debounces, and --force bypasses it", async () => {
   }
 });
 
+test("refreshIndex debounces independently per scope", async () => {
+  const root = tempDir();
+  const stateDir = tempDir();
+  const s = await store.openMemoryStore({ embedDim: EMBED_DIM }); // ephemeral
+  try {
+    const base = NOW.getTime();
+    const common = { store: s, embedder: newEmbedder(), rootDir: root, stateDir, debounceMs: 30_000 };
+
+    const systemRun = await capture.refreshIndex({
+      ...common,
+      scope: sysScope(),
+      reason: "session_capture",
+      now: new Date(base),
+    });
+    assert.equal(systemRun.skipped, null);
+    assert.ok(fs.existsSync(path.join(stateDir, "capture-state.json")));
+
+    const clientRun = await capture.refreshIndex({
+      ...common,
+      scope: clientScope("acme"),
+      reason: "session_capture",
+      now: new Date(base + 5_000),
+    });
+    assert.equal(clientRun.skipped, null);
+    assert.ok(fs.existsSync(path.join(stateDir, "capture-state.client-acme.json")));
+
+    const clientReplay = await capture.refreshIndex({
+      ...common,
+      scope: clientScope("acme"),
+      reason: "session_capture",
+      now: new Date(base + 10_000),
+    });
+    assert.equal(clientReplay.skipped, "debounced");
+  } finally {
+    await s.close();
+    rmDir(root);
+    rmDir(stateDir);
+  }
+});
+
 // ---------------------------------------------------------------------------
 // End-to-end: a captured turn becomes searchable, and status reflects it
 // ---------------------------------------------------------------------------
@@ -374,5 +417,122 @@ test("a captured session is indexed and searchable, and status reflects it", asy
     await s.close();
     rmDir(root);
     rmDir(stateDir);
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Capture-block parsing (chunker.ts) — transcript-rung provenance stamped onto
+// chunks. Tested here because this file already loads the real chunker. Mirrors
+// the .aos.md layout where the `turn:` marker sits above the `### Session`
+// heading, so a body chunk straddles into the next block's marker but must
+// still be attributed to its own block.
+// ---------------------------------------------------------------------------
+
+const U1 = "11111111-1111-4111-8111-111111111111";
+const U2 = "22222222-2222-4222-8222-222222222222";
+const TWO_BLOCKS = [
+  "# 2026-06-27 - session auto-capture", // 1
+  "", // 2
+  `<!-- aos-capture session:s source:h1 turn:${U1} -->`, // 3 (block 1 marker)
+  "### Session s - 2026-06-27T22:13:56.000Z", // 4
+  "", // 5
+  "- summary one", // 6
+  "", // 7
+  "Raw transcript: `context/transcripts/2026-06-27/s-h1.jsonl`", // 8
+  "", // 9
+  "<!-- /aos-capture -->", // 10
+  "", // 11
+  `<!-- aos-capture session:s source:h2 turn:${U2} -->`, // 12 (block 2 marker)
+  "### Session s - 2026-06-27T22:20:00.000Z", // 13
+  "", // 14
+  "- summary two", // 15
+  "", // 16
+  "Raw transcript: `context/transcripts/2026-06-27/s-h2.jsonl`", // 17
+  "", // 18
+  "<!-- /aos-capture -->", // 19
+].join("\n");
+
+test("parseCaptureBlocks extracts hyphenated UUID turn ids, paths, and 1-based ranges", () => {
+  const blocks = chunker.parseCaptureBlocks(TWO_BLOCKS);
+  assert.equal(blocks.length, 2);
+  assert.deepEqual(blocks[0], {
+    startLine: 3,
+    endLine: 10,
+    turnId: U1,
+    transcriptPath: "context/transcripts/2026-06-27/s-h1.jsonl",
+  });
+  assert.deepEqual(blocks[1], {
+    startLine: 12,
+    endLine: 19,
+    turnId: U2,
+    transcriptPath: "context/transcripts/2026-06-27/s-h2.jsonl",
+  });
+});
+
+test("parseCaptureBlocks returns [] for a source with no capture markers", () => {
+  assert.deepEqual(chunker.parseCaptureBlocks("# notes\n\njust prose, no markers\n"), []);
+});
+
+test("captureMetadataForChunk maps a straddling body chunk to its OWN block, not the next", () => {
+  const blocks = chunker.parseCaptureBlocks(TWO_BLOCKS);
+  // Body chunk for block 1: after its heading (line 4) to block 2's orphaned
+  // marker (line 12) — the chunker's real output shape.
+  const block1Body = chunker.captureMetadataForChunk({ startLine: 4, endLine: 12 }, blocks);
+  assert.equal(block1Body.turnId, U1, "must be block 1's turn id despite holding block 2's marker line");
+  assert.equal(block1Body.transcriptPath, "context/transcripts/2026-06-27/s-h1.jsonl");
+
+  const block2Body = chunker.captureMetadataForChunk({ startLine: 13, endLine: 19 }, blocks);
+  assert.equal(block2Body.turnId, U2);
+
+  // A chunk overlapping no block (pure preamble) gets nothing.
+  assert.equal(chunker.captureMetadataForChunk({ startLine: 1, endLine: 2 }, blocks), null);
+});
+
+test("client workspace capture indexes context memory under client scope", async () => {
+  const storeRoot = tempDir();
+  const clientRoot = path.join(storeRoot, "clients", "acme");
+  const stateDir = path.join(storeRoot, ".command-centre", "memory");
+  const s = await store.openMemoryStore({ embedDim: EMBED_DIM }); // ephemeral
+  try {
+    const written = capture.upsertSessionCapture({
+      rootDir: clientRoot, sessionId: "client-session", now: NOW,
+      turn: {
+        userPrompt: "remember the acme onboarding plan",
+        assistantMessage: "Acme onboarding needs contract review before kickoff.",
+        turnId: "client-turn",
+      },
+    });
+    assert.equal(written.written, true);
+
+    const refresh = await capture.refreshIndex({
+      store: s,
+      embedder: newEmbedder(),
+      scope: clientScope("acme"),
+      rootDir: clientRoot,
+      stateDir,
+      reason: "session_capture",
+      force: true,
+      now: NOW,
+    });
+    assert.equal(refresh.summary.errors.length, 0);
+    assert.ok(refresh.summary.sourcesIndexed >= 1);
+
+    const rows = await s.client.query(
+      "SELECT source_path, visibility, client_id FROM memory_sources WHERE source_path = $1",
+      [`context/memory/${TODAY}.aos.md`],
+    );
+    assert.equal(rows.rows.length, 1);
+    assert.equal(rows.rows[0].source_path, `context/memory/${TODAY}.aos.md`);
+    assert.equal(rows.rows[0].visibility, "client");
+    assert.equal(rows.rows[0].client_id, "acme");
+
+    const [q] = await newEmbedder().embed(["acme onboarding contract review"]);
+    const clientHits = await s.vectorSearch({ teamId: null, clientId: "acme", include: ["client"] }, q, 5);
+    assert.ok(clientHits.some((h) => h.content.includes("contract review")));
+    const systemHits = await s.vectorSearch({ teamId: null, include: ["system"] }, q, 5);
+    assert.ok(!systemHits.some((h) => h.content.includes("contract review")));
+  } finally {
+    await s.close();
+    rmDir(storeRoot);
   }
 });

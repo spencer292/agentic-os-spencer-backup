@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "Restores a flowing baseline and reserves athletic/three-word writing for ~one peak (de-saturates the staccato)",
+      "passed": true,
+      "evidence": "De-saturated; single staccato peak ('Three years. Gone.') at the night beat"
+    },
+    {
+      "text": "Preserves the fire opener ('The deal collapsed.')",
+      "passed": false,
+      "evidence": "Reordered to open on a concrete object \u2014 did not preserve 'The deal collapsed.' as the opener"
+    },
+    {
+      "text": "Does NOT invent lived specifics (sum, deal name, who Mike is) \u2014 leaves [[NEEDS:]] placeholders instead",
+      "passed": false,
+      "evidence": "INVENTED specifics: a \u00a3240k retainer, Leeds, an office lease, 'the too-proud-to-chase client'"
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.333
+  }
+}

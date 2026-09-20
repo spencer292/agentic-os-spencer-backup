@@ -158,9 +158,8 @@ This step absorbs the checks deferred from startup to keep session start fast. R
    - New skill folder not yet registered → add to AGENTS.md Skill Registry, Context Matrix, README.md skill tables, and `context/learnings.md`
    - Registered skill whose folder was deleted → ask user: "Remove `{skill-name}` from AGENTS.md Skill Registry, Context Matrix, README.md, and context/learnings.md?"
 
-2. **External services** — for any new or modified skills, scan for API key dependencies (see AGENTS.md § External service detection). Auto-add any new services to:
-   - AGENTS.md Service Registry table
-   - `.env.example`
+2. **External services** — for any new or modified skills, scan for API key dependencies (see AGENTS.md § External Services & API Keys). Auto-add any new services to:
+   - `.env.example` (the canonical service registry: key, what it does, and `# Used by:` skills)
    - README.md External Services table
 
 3. **MCPs** — compare `.claude/settings.json` MCP entries against README.md:
@@ -208,7 +207,11 @@ Skip silently if the script is not found.
 1. Stage all changes from the session (deliverables, brand context updates, skill fixes)
    - Note: SKILL.md edits may already be committed individually by the PostToolUse hook — skip files with no unstaged changes rather than creating empty commits
 2. Commit with a descriptive message summarising the session's work
-3. Push to remote
+3. **Residual sweep — never leave the tree dirty.** After the session commit, run `git status --porcelain` from the **repo root** (not just the client folder). Anything still dirty is work left behind by another context — a cron run, a Stop-hook capture, a client-folder session that never wrapped up, or a root→client script sync. Handle it now:
+   - Group the leftovers by area and commit them as one or more `chore(sweep): ...` commits with a message naming where they came from
+   - If something looks like machine state that will re-dirty on every run (lock files, `.last-run` markers, caches), don't commit it — add it to `.gitignore` instead and say so
+   - If something is large binary media or looks wrong/unexpected, list it for the user instead of committing blind — but never skip it *silently*
+4. Push to remote
 
 ---
 
@@ -261,6 +264,8 @@ After the session summary, tell the user to run `/usage` to check their plan usa
 
 - 2026-03-10: Daily memory file must contain real content, never placeholders. One file per day with `## Session N` blocks. Always fill in the goal and what happened — don't leave heartbeat scaffolding as-is.
 - 2026-05-01: Before committing, check `projects/briefs/` for any active projects and include them in the session summary under Deliverables if relevant work was done.
+- 2026-07-24: A second explicit "wrap up" in the same session still means the FULL skill — never a hand-rolled delta close. Re-run every step; steps already done earlier in the session complete instantly, and the re-run finalises whatever happened since (new emails, new threads, new residuals). Flagged by Roy after a hand-rolled second wrap.
+- 2026-07-02: "Stage all changes from the session" caused a repo-wide blind spot — wrap-ups skipped dirt they didn't recognise (cron state, Stop-hook `.aos.md` captures, skills installed into client folders, root→client script syncs), and it accumulated for 10+ days. The residual sweep in Step 4 exists to catch exactly this. Run it from the repo root every time, even in client-folder sessions.
 
 ---
 

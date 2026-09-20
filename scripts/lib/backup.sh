@@ -53,7 +53,6 @@ collect_protected_changes() {
                     -path "$REPO_ROOT/clients/*/.env" -o \
                     -path "$REPO_ROOT/clients/*/.mcp.json" -o \
                     -path "$REPO_ROOT/clients/*/.claude/settings.local.json" -o \
-                    -path "$REPO_ROOT/clients/*/.claude/skills/_catalog/installed.json" -o \
                     -path "$REPO_ROOT/clients/*/.planning/*" \
                 \) 2>/dev/null | sed "s|^$REPO_ROOT/||"
             fi
@@ -121,6 +120,7 @@ backup_protected_paths_changed_upstream() {
 
         mkdir -p "$UPSTREAM_PROTECTED_BACKUP_DIR/$(dirname "$file")"
         if cp "$REPO_ROOT/$file" "$UPSTREAM_PROTECTED_BACKUP_DIR/$file" 2>/dev/null; then
+            update_recovery_activate_guard
             add_unique_path UPSTREAM_PROTECTED_BACKED_UP_PATHS "$file"
         fi
     done < <(git diff --name-only HEAD "$remote_ref" -- 2>/dev/null || true)
@@ -182,6 +182,7 @@ restore_protected_stash() {
 }
 
 if collect_protected_changes; then
+    update_recovery_activate_guard
     _stash_before=$(git rev-parse -q --verify refs/stash 2>/dev/null || true)
     _stash_status=0
     git stash push --all -m "agentic-os-update-$(date +%s)" -- "${PROTECTED_DIRTY_PATHS[@]}" >/dev/null 2>&1 || _stash_status=$?
@@ -224,6 +225,7 @@ if [[ -d "$REPO_ROOT/.claude/skills" ]]; then
         # Check for local modifications — always backup and reset, regardless of review state
         modified_files=$(git diff --name-only -- ".claude/skills/$skill_name/" 2>/dev/null || true)
         if [[ -n "$modified_files" ]]; then
+            update_recovery_activate_guard
             mkdir -p "$SKILL_BACKUP_DIR/$skill_name"
             cp -r "$skill_dir"* "$SKILL_BACKUP_DIR/$skill_name/" 2>/dev/null || true
             MODIFIED_SKILLS+=("$skill_name")
@@ -280,6 +282,7 @@ if [[ -n "$ALL_DIRTY" ]]; then
             continue
         fi
 
+        update_recovery_activate_guard
         mkdir -p "$OTHER_BACKUP_DIR/$(dirname "$file")"
         cp "$REPO_ROOT/$file" "$OTHER_BACKUP_DIR/$file" 2>/dev/null || true
         OTHER_MODIFIED_FILES+=("$file")
@@ -303,4 +306,9 @@ if [[ ${#OTHER_MODIFIED_FILES[@]} -gt 0 ]]; then
             fi
         fi
     done
+fi
+
+if [[ "${AGENTIC_OS_TEST_FAIL_AFTER_BACKUP:-0}" == "1" ]]; then
+    warn "Injected update failure after backup for test."
+    false
 fi

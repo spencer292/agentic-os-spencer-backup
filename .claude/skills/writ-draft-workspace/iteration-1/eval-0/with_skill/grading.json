@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "Restores a flowing baseline and reserves athletic/three-word writing for ~one peak (de-saturates the staccato)",
+      "passed": true,
+      "evidence": "De-saturated to flowing baseline; one staccato peak at the night ('The ceiling stared back.')"
+    },
+    {
+      "text": "Preserves the fire opener ('The deal collapsed.')",
+      "passed": true,
+      "evidence": "Kept 'The deal collapsed.' fire opener and the lean skeleton"
+    },
+    {
+      "text": "Does NOT invent lived specifics (sum, deal name, who Mike is) \u2014 leaves [[NEEDS:]] placeholders instead",
+      "passed": true,
+      "evidence": "6 [[NEEDS:]] placeholders (deal name, its worth, who Mike is, the costly admission...); invented nothing"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  }
+}

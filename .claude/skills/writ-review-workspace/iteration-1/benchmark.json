@@ -1,0 +1,410 @@
+{
+  "metadata": {
+    "skill_name": "writ-review",
+    "timestamp": "iteration-1",
+    "evals_run": [
+      "over-athletic-overdose",
+      "journalism-opener",
+      "working-piece-restraint",
+      "flat-corporate-underdose",
+      "real-toyb-chapter-1"
+    ],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "eval_name": "over-athletic-overdose",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 147.5,
+        "tokens": 72501,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Flags athletic / three-word writing as overused or an overdose, not a strength",
+          "passed": true,
+          "evidence": "Scored athletic device 2/10 on overdose; flagged 100% saturation + contrast-law failure"
+        },
+        {
+          "text": "Prescribes restoring flowing sentences and reserving short lines for 1-2 emotional peaks",
+          "passed": true,
+          "evidence": "Top fix: de-saturate, reserve the staccato for one peak"
+        },
+        {
+          "text": "Does NOT recommend adding more short / punchy / athletic sentences",
+          "passed": true,
+          "evidence": "No recommendation to add punch \u2014 the opposite"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "eval_name": "over-athletic-overdose",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 53.7,
+        "tokens": 49092,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Flags athletic / three-word writing as overused or an overdose, not a strength",
+          "passed": true,
+          "evidence": "Identified 'one staccato gear, so the impact flattens'"
+        },
+        {
+          "text": "Prescribes restoring flowing sentences and reserving short lines for 1-2 emotional peaks",
+          "passed": true,
+          "evidence": "Prescribed 'vary sentence length'"
+        },
+        {
+          "text": "Does NOT recommend adding more short / punchy / athletic sentences",
+          "passed": true,
+          "evidence": "Recommended restraint, not more staccato"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "journalism-opener",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 202.7,
+        "tokens": 76639,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Identifies the opening as journalism (who/what/where/when) failing the story-not-journalism posture",
+          "passed": true,
+          "evidence": "Called it 'pure journalism (born-1972 chronology)'; postures 2/2/2/3"
+        },
+        {
+          "text": "Prescribes leading with the consequence and/or emotional (non-chronological) sequencing",
+          "passed": true,
+          "evidence": "Prescribed re-sequence to open at the burnout (emotional sequencing)"
+        },
+        {
+          "text": "Treats the flat chronology as the core problem rather than merely praising its clarity",
+          "passed": true,
+          "evidence": "Framed craft-not-material; flat chronology = the core failure"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "journalism-opener",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 57.1,
+        "tokens": 49349,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Identifies the opening as journalism (who/what/where/when) failing the story-not-journalism posture",
+          "passed": true,
+          "evidence": "'A CV in prose, summarising a life from 30,000 feet'"
+        },
+        {
+          "text": "Prescribes leading with the consequence and/or emotional (non-chronological) sequencing",
+          "passed": true,
+          "evidence": "'Open in the scene of the collapse rather than born in 1972'"
+        },
+        {
+          "text": "Treats the flat chronology as the core problem rather than merely praising its clarity",
+          "passed": true,
+          "evidence": "Treated buried hinge / chronology as the central problem"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "working-piece-restraint",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 180.4,
+        "tokens": 75451,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Recognises the piece is largely working (high score, pass or near-pass)",
+          "passed": true,
+          "evidence": "~8.5 REVISE-narrow; 'a genuinely working book opening'"
+        },
+        {
+          "text": "Names specific working elements (focus story / diamond, consequence-led, call-to-mirror, flowing voice)",
+          "passed": true,
+          "evidence": "Named consequence-led, call-to-mirror close, athletic correctly rationed, diamond focus story"
+        },
+        {
+          "text": "Does NOT manufacture faults or recommend cramming in more devices",
+          "passed": true,
+          "evidence": "Single lever (swap one borrowed image); did not pile on devices"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "working-piece-restraint",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 54.0,
+        "tokens": 49562,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Recognises the piece is largely working (high score, pass or near-pass)",
+          "passed": true,
+          "evidence": "7.5/10, 'works and is publishable'"
+        },
+        {
+          "text": "Names specific working elements (focus story / diamond, consequence-led, call-to-mirror, flowing voice)",
+          "passed": true,
+          "evidence": "Named diamond hook, the 'invoice/could not climb his stairs' anecdote, the mirror turn"
+        },
+        {
+          "text": "Does NOT manufacture faults or recommend cramming in more devices",
+          "passed": true,
+          "evidence": "Flagged only real issues (over-explains, competing image); no device-stacking"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "flat-corporate-underdose",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 154.9,
+        "tokens": 73536,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Flags it as describe/persuade marketing-speak failing the postures (no story, no understanding/mirror)",
+          "passed": true,
+          "evidence": "Postures dead (P1-P4 = 2/2/1/1), spirit test failed outright"
+        },
+        {
+          "text": "Prescribes ADDING the right devices (fire, statement question, consequence lead) and a call-to-mirror instead of the generic CTA",
+          "passed": true,
+          "evidence": "Prescribed open on reader consequence, 'we'->'you', convert bare CTA to an earned call-to-mirror"
+        },
+        {
+          "text": "Correctly treats under-use as the defect here (recommends adding), not over-use",
+          "passed": true,
+          "evidence": "Framed as absence/under-use needing a Thinking-first rebuild, not a device bolt-on"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "flat-corporate-underdose",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.667,
+        "passed": 2,
+        "failed": 1,
+        "total": 3,
+        "time_seconds": 53.1,
+        "tokens": 49392,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Flags it as describe/persuade marketing-speak failing the postures (no story, no understanding/mirror)",
+          "passed": true,
+          "evidence": "'Generic, seller-centric (we believe... opener), built on category cliches'"
+        },
+        {
+          "text": "Prescribes ADDING the right devices (fire, statement question, consequence lead) and a call-to-mirror instead of the generic CTA",
+          "passed": false,
+          "evidence": "Prescribed pain-led open + stronger CTA + a concrete result, but not the fire/statement-question/call-to-mirror framework"
+        },
+        {
+          "text": "Correctly treats under-use as the defect here (recommends adding), not over-use",
+          "passed": true,
+          "evidence": "Recommended adding pain/proof \u2014 correctly treats under-use as the defect"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "eval_name": "real-toyb-chapter-1",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 191.0,
+        "tokens": 78472,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Produces a complete Map plus posture and device scores against Dennis Ross with line/section evidence",
+          "passed": true,
+          "evidence": "Full Map + postures P1-P4 + device scores (D7 athletic 5) with line evidence"
+        },
+        {
+          "text": "Gives a coherent verdict against the 9/10 book gate with the top 1-3 highest-leverage fixes",
+          "passed": true,
+          "evidence": "Verdict REVISE ~7/10 vs the 9/10 book gate; 3 top fixes named"
+        },
+        {
+          "text": "Prescriptions are located and specific (named sections/lines), not generic advice",
+          "passed": true,
+          "evidence": "Located fixes: de-staccato the back third; named opener and close"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "eval_name": "real-toyb-chapter-1",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.667,
+        "passed": 2,
+        "failed": 1,
+        "total": 3,
+        "time_seconds": 112.3,
+        "tokens": 56843,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Produces a complete Map plus posture and device scores against Dennis Ross with line/section evidence",
+          "passed": false,
+          "evidence": "General 7/10 review; no structured posture/device scoring against Dennis Ross"
+        },
+        {
+          "text": "Gives a coherent verdict against the 9/10 book gate with the top 1-3 highest-leverage fixes",
+          "passed": true,
+          "evidence": "7/10 with an explicit 'path to a 9' and concrete fixes"
+        },
+        {
+          "text": "Prescriptions are located and specific (named sections/lines), not generic advice",
+          "passed": true,
+          "evidence": "Specific moves: cut the restatements, seed EVOLVE with one line, subordinate one big idea"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 175.3,
+        "stddev": 21.035,
+        "min": 147.5,
+        "max": 202.7
+      },
+      "tokens": {
+        "mean": 75319.8,
+        "stddev": 2136.42,
+        "min": 72501,
+        "max": 78472
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.867,
+        "stddev": 0.163,
+        "min": 0.667,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 66.04,
+        "stddev": 23.171,
+        "min": 53.1,
+        "max": 112.3
+      },
+      "tokens": {
+        "mean": 50847.6,
+        "stddev": 3001.476,
+        "min": 49092,
+        "max": 56843
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.133",
+      "time_seconds": "+109.3",
+      "tokens": "+24472"
+    }
+  },
+  "notes": [
+    "Evals 0,1,2 (overdose, journalism, working-recognition) pass in BOTH configs - non-discriminating; the base model is already a strong line editor for these catches.",
+    "The skill's discriminating value shows on evals 3 & 4: structured posture/device scoring against the methodology, the 9/10 gate, and the call-to-mirror framing, which the no-skill baseline does not produce.",
+    "With-skill costs ~2.7x time and ~1.5x tokens vs baseline (full methodology load + structured scoring).",
+    "Iteration-2 idea: make evals probe methodology-specific behaviour the baseline can't replicate (explicit scorecard, gate verdict, dosage-table reasoning) to sharpen the signal.",
+    "eval-2 with-skill noticed the test input reuses the methodology's own canonical examples (diamond/mirror) - a test-input artifact; use an original 'working' sample next iteration."
+  ]
+}

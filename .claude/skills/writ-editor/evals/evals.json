@@ -1,0 +1,58 @@
+{
+  "skill_name": "writ-editor",
+  "evals": [
+    {
+      "id": 0,
+      "name": "continuity-and-repetition",
+      "prompt": "Here are the first three chapters of my book. Can you give it an editor's pass across the whole thing — does it hang together, am I repeating myself, anything inconsistent? The file is C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-editor/evals/inputs/00_continuity-repetition.md",
+      "files": ["C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-editor/evals/inputs/00_continuity-repetition.md"],
+      "expected_output": "Catches the continuity contradiction (the cash figure is £75 in Ch1 and £750 in Ch3) with BOTH locations; flags that the full Excel/£75 story is told as a first-telling twice (Ch1 and Ch3) as an unwitting REPEAT and prescribes folding Ch3's into a callback; correctly identifies 'You have to believe' (Ch1 + Ch2) as a deliberate callback to KEEP, not a defect. Does not merely praise.",
+      "assertions": [
+        {"text": "Flags the cash-figure continuity contradiction (£75 in Ch1 vs £750 in Ch3) and cites BOTH chapter locations"},
+        {"text": "Flags the full Excel/£75 story as an unwitting repeat across Ch1 and Ch3 (told twice as a first-telling), not a callback"},
+        {"text": "Correctly identifies 'You have to believe' (Ch1 and Ch2) as a deliberate callback to keep, distinct from the repeat"},
+        {"text": "Prescribes a located structural move (e.g. reconcile the figure; reduce Ch3's retelling to a one-line callback) rather than a vague 'tighten it up'"}
+      ]
+    },
+    {
+      "id": 1,
+      "name": "broken-arc-no-throughline",
+      "prompt": "I've got a draft of my book but it feels like it goes round the houses and never quite adds up. Can you read the whole thing and tell me if the structure works? File: C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-editor/evals/inputs/01_broken-arc.md",
+      "files": ["C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-editor/evals/inputs/01_broken-arc.md"],
+      "expected_output": "Identifies that there is no nameable through-line / spine — the chapters (morning routine, skydiving anecdote, spreadsheet how-to, burnout) are interchangeable and don't build toward a transformation. Flags the flat/non-building arc, treats missing through-line as a blocking defect, and prescribes naming a spine and reordering/cutting/bridging. Does NOT just review each chapter's standalone craft.",
+      "assertions": [
+        {"text": "Identifies that there is no clear through-line / single spine running across the chapters"},
+        {"text": "Flags the macro arc as flat or non-building (chapters interchangeable in order; no transformation)"},
+        {"text": "Prescribes structural moves at the manuscript level (name a spine, reorder, cut, or add a bridge) rather than per-chapter line edits"},
+        {"text": "Stays above the chapter — does not reduce the review to scoring each chapter's internal craft in isolation"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "well-structured-restraint",
+      "prompt": "Three chapters of my book here — I think the structure is roughly right but I want a managing-editor read to be sure. Does the book hold together? C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-editor/evals/inputs/02_well-structured.md",
+      "files": ["C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-editor/evals/inputs/02_well-structured.md"],
+      "expected_output": "Recognises the manuscript largely holds together: a clear spine (walk toward what you avoid), a building arc with escalating stakes (£75 -> burnout -> under the ice), and the repeated 'the door tends to open' line correctly read as a DELIBERATE callback, not repetition. Names what's working and does NOT manufacture reorders or flag the escalating structure as redundant.",
+      "assertions": [
+        {"text": "Recognises the manuscript largely holds together (high dimension scores / holds-together or near-pass verdict)"},
+        {"text": "Names the clear spine and the building/escalating arc (£75 -> burnout -> under the ice) as working"},
+        {"text": "Correctly reads the repeated 'the door tends to open' / 'walk toward the thing' as a deliberate callback to keep, NOT an unwitting repeat"},
+        {"text": "Does NOT manufacture structural faults — no gratuitous reorder and no repetition flag on the intentional motif or the escalating chapters"}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "real-toyb-full-manuscript",
+      "prompt": "Give my whole book a managing-editor pass against the Dennis Ross methodology — does it hang together across chapters, is the arc working, am I repeating myself, and is anything inconsistent? The manuscript is at C:/Claude/agent-os-v3/agentic-os/brand_context/book-thinking-outside-your-brain.md",
+      "files": ["C:/Claude/agent-os-v3/agentic-os/brand_context/book-thinking-outside-your-brain.md"],
+      "expected_output": "A full editorial pass: a Manuscript Map (spine, reader, intended transformation, per-chapter jobs), a Chapter Inventory, the seven dimensions (M1-M7) scored with chapter-located evidence, a continuity register and a repetition register, a peak map, a prioritised structural prescription, and a verdict against the gate. Stays at manuscript level throughout.",
+      "assertions": [
+        {"text": "Produces a Manuscript Map naming the book's single spine/through-line, the reader, and the intended transformation"},
+        {"text": "Builds a Chapter Inventory across the manuscript and scores the seven dimensions (M1-M7) with chapter-located evidence"},
+        {"text": "Produces a continuity register and a repetition register (callback vs repeat) drawn from across chapters"},
+        {"text": "Gives a verdict against the manuscript gate with the top 1-3 highest-leverage structural moves"},
+        {"text": "Stays above the chapter — findings are about relationships between chapters / the whole book, not a per-chapter craft re-score"}
+      ]
+    }
+  ]
+}

@@ -89,6 +89,10 @@ process.stdin.on('end', () => {
     }
 
     const metrics = JSON.parse(fs.readFileSync(metricsPath, 'utf8'));
+    const profileKey = process.env.AGENTIC_OS_PROFILE_KEY || "solo";
+    if (metrics.profileKey && metrics.profileKey !== profileKey) {
+      process.exit(0);
+    }
     const now = Math.floor(Date.now() / 1000);
 
     // Ignore stale metrics
@@ -106,7 +110,7 @@ process.stdin.on('end', () => {
 
     // Debounce: check if we warned recently
     const warnPath = path.join(tmpDir, `claude-ctx-${sessionId}-warned.json`);
-    let warnData = { callsSinceWarn: 0, lastLevel: null };
+    let warnData = { callsSinceWarn: 0, lastLevel: null, profileKey };
     let firstWarn = true;
 
     if (fs.existsSync(warnPath)) {
@@ -119,6 +123,7 @@ process.stdin.on('end', () => {
     }
 
     warnData.callsSinceWarn = (warnData.callsSinceWarn || 0) + 1;
+    warnData.profileKey = profileKey;
 
     const isCritical = remaining <= CRITICAL_THRESHOLD;
     const currentLevel = isCritical ? 'critical' : 'warning';

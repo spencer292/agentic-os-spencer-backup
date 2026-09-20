@@ -143,7 +143,7 @@ At runtime the renderer:
 
 1. **The ref's hex never gets hardcoded into the HTML/prompt.** It goes into the `palette` field as an observation only. The output uses `var(--brand-*)` or `{{BRAND_*}}`.
 2. **If the ref's `palette` has a strong color that isn't in the user's brand**, Claude asks: *"Does this color come in as Accent N in your palette, or do we ignore it?"*. If it comes in, update `brand_context/assets.md`.
-3. **Constraints are critical in AI prompts.** Always include defaults: `no readable text` (text goes in the overlay), `no logos` (the logo is separate), `no faces if topic isn't about people`.
+3. **Constraints are critical in AI prompts.** For `HYBRID_AI` / `HYBRID_REAL` / `HYBRID_FROM_REAL`, always include the defaults: `no readable text` (text goes in the overlay), `no logos` (the logo is separate), `no faces if topic isn't about people`. **Exception — FULL_AI text-baking archetypes (`dense-infographic` / cover-framework-diagram):** do NOT include the `no readable text` constraint. Instead the prompt lists every text string explicitly and verbatim (text-capable models bake the labels into the image, and a verification gate checks them). The `no logos` / `no faces` defaults still apply unless the archetype intentionally injects a logo tile or a real headshot.
 4. **Schema A type sizes are RELATIVE** (% of the canvas). The renderer converts them to px using `tokens.md → type_scale`. This guarantees the brand dominates.
 
 ---

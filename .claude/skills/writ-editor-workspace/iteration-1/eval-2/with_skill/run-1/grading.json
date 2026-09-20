@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Recognises the manuscript largely holds together (high dimension scores / holds-together or near-pass verdict)",
+      "passed": true,
+      "evidence": "Verdict 'Holds together'; gate passes (no dimension <8: M1 9,M2 8,M3 10,M4 9,M5 8,M6 8,M7 8)."
+    },
+    {
+      "text": "Names the clear spine and the building/escalating arc (\u00a375 -> burnout -> under the ice) as working",
+      "passed": true,
+      "evidence": "Map names the spine (walk toward what you avoid) and the escalating arc \u00a375->burnout->under-ice as working."
+    },
+    {
+      "text": "Correctly reads the repeated 'the door tends to open' / 'walk toward the thing' as a deliberate callback to keep, NOT an unwitting repeat",
+      "passed": true,
+      "evidence": "Repetition Register row 1: 'the door tends to open' verdicted 'Callback \u2014 keep, the spine made structural'."
+    },
+    {
+      "text": "Does NOT manufacture structural faults \u2014 no gratuitous reorder and no repetition flag on the intentional motif or the escalating chapters",
+      "passed": true,
+      "evidence": "Did NOT manufacture faults: 'No reorder is recommended'; moves are forward-looking (mirror to reader, valleys, vary restatement)."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "timing": {
+    "total_tokens": 96429,
+    "duration_ms": 239048,
+    "total_duration_seconds": 239.0
+  }
+}

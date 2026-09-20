@@ -77,6 +77,38 @@ switch (cmd) {
   }
   case 'activate': out(await api('POST', `/workflows/${a}/activate`)); break;
   case 'deactivate': out(await api('POST', `/workflows/${a}/deactivate`)); break;
+  case 'archive': out(await api('POST', `/workflows/${a}/archive`)); break;
+  case 'delete': {
+    // n8n will NOT delete a live workflow — a bare DELETE returns
+    //   409 "Cannot delete a published workflow. Unpublish it before deleting."
+    // and unpublishing is ASYNC, so an immediate retry can return
+    //   409 "Workflow is still being unpublished."
+    // Hence deactivate -> archive -> delete with a short retry. This mirrors
+    // destroyTempWorkflow() in the root scripts/lib/n8n-temp-workflow.cjs, which is
+    // the canonical implementation — keep the two in step.
+    const raw = async (method, p) => {
+      const res = await fetch(`${BASE}/api/v1${p}`, { method, headers: { 'X-N8N-API-KEY': KEY, 'Content-Type': 'application/json' } });
+      return { ok: res.ok, status: res.status, text: await res.text() };
+    };
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+    const steps = [];
+    for (const [label, p] of [['deactivate', `/workflows/${a}/deactivate`], ['archive', `/workflows/${a}/archive`]]) {
+      steps.push(`${label}:${(await raw('POST', p)).status}`);
+    }
+    let d = await raw('DELETE', `/workflows/${a}`);
+    for (let i = 0; i < 4 && !d.ok && d.status === 409; i++) {
+      await sleep(750 * (i + 1));
+      d = await raw('DELETE', `/workflows/${a}`);
+      steps.push(`delete-retry${i + 1}:${d.status}`);
+    }
+    steps.push(`delete:${d.status}`);
+    if (!d.ok && d.status !== 404) {
+      console.error(`Failed to delete ${a} — steps [${steps.join(' ')}] — ${d.text.slice(0, 200)}`);
+      process.exit(1);
+    }
+    console.log(`Deleted ${a}  [${steps.join(' ')}]`);
+    break;
+  }
   case 'executions': {
     const d = await api('GET', `/executions?limit=20${a ? `&workflowId=${a}` : ''}`);
     for (const e of d.data) console.log(`${e.id}  ${e.status ?? (e.finished ? 'success' : 'error')}  wf=${e.workflowId}  ${e.startedAt}`);
@@ -84,5 +116,5 @@ switch (cmd) {
     break;
   }
   default:
-    console.log('Usage: n8n-api.mjs test|list|get <id>|create <file.json>|update <id> <file.json>|activate <id>|deactivate <id>|executions [workflowId]');
+    console.log('Usage: n8n-api.mjs test|list|get <id>|create <file.json>|update <id> <file.json>|activate <id>|deactivate <id>|archive <id>|delete <id>|executions [workflowId]');
 }

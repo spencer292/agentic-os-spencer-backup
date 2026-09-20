@@ -2,6 +2,10 @@
 
 Multi-language and multi-country sites have citation mechanics traditional SEO handles clumsily and AI systems handle even more clumsily. This file runs when the site serves more than one language or country.
 
+**Confidence warning for this whole file.** The landscape research behind this skill covered the US market and, secondarily, English-language search. **It did not verify per-country AI platform availability, per-market AI query behavior, or the engines used outside that scope.** Treat everything here about specific non-US markets as `[U]` — directionally useful, not evidenced — and verify against the market before putting any of it in a client deliverable. The structural material (domain patterns, hreflang mechanics, localization versus translation) is stable and does not carry that caveat.
+
+A single-market site does not need this file at all. Do not run it out of completeness.
+
 ---
 
 ## Contents
@@ -82,7 +86,9 @@ Example: `yourbrand.com/uk/`, `yourbrand.com/de/`.
 
 **Use when:** international is emerging priority, you want to consolidate authority, or you have one strong primary market + smaller secondary markets.
 
-**2026 consensus recommendation:** subfolders for most, ccTLDs for large enterprises with dedicated country teams. Subdomains rarely optimal.
+**Working recommendation `[U]`:** subfolders for most, ccTLDs where each country is a genuine business priority with resources behind it, subdomains rarely. This reflects long-standing practitioner consensus rather than a Google position or a study — Google has not published a preference, and the previous "2026 consensus" framing overstated its standing. Treat it as a default to depart from with reason, not a rule.
+
+`[P]` Google expanded its site-move guidance for domain variants in June 2026. Read it before any structural migration; a domain-structure change is the least reversible item in this file.
 
 ---
 
@@ -112,7 +118,7 @@ Example: `yourbrand.com/uk/`, `yourbrand.com/de/`.
 - Pointing to different URLs than canonicals
 - Mixing hreflang + canonical in ways that cancel out
 
-**Validation:** use the hreflang Tags Testing Tool (Merkle), Screaming Frog hreflang report, or Google Search Console's International Targeting report.
+**Validation:** a full-site crawl reporting hreflang per URL. DataForSEO `on_page/task_post` followed by `on_page/pages` gives return-reference coverage across every variant. Search Console's international reporting is the first-party cross-check.
 
 ---
 
@@ -149,12 +155,12 @@ Three distinct optimization problems:
 
 ## Per-country platform preferences
 
-Major AI systems available by country (2026):
+**`[U]` on this entire table.** It is a working orientation, not verified 2026 data. Per-country AI platform availability and share were not confirmed by the research behind this skill, and availability changes on announcement rather than on a schedule. **Verify before using any row with a client**, and never present a market's AI landscape as fact on the strength of this table.
 
 | Country | Dominant search | AI search also used | Notes |
 |---------|----------------|---------------------|-------|
-| US | Google | ChatGPT, Perplexity, Copilot, Claude | All AI platforms relevant |
-| UK | Google | ChatGPT, Perplexity, Copilot | ClaudeBot via Brave |
+| US | Google | ChatGPT, Perplexity, Copilot, Gemini, Claude | The market with actual measured citation data |
+| UK | Google | ChatGPT, Perplexity, Copilot, Gemini | |
 | Germany | Google | ChatGPT, Perplexity | Strict GDPR context |
 | France | Google | ChatGPT, Perplexity, Mistral | Mistral / Le Chat emerging |
 | Italy | Google | ChatGPT, Perplexity | |
@@ -234,14 +240,17 @@ Schema should reflect target market:
 
 ## International AI query patterns
 
-AI query behavior varies by market:
+**`[U]` on every characterization below.** No study behind this skill measured per-market AI query behavior. These are working hypotheses to test, not findings to report.
 
-- **US:** high "vs" comparison queries, long-tail informational, AI-heavy for commercial intent
-- **UK:** similar to US but more "guide" and "how to" phrasing
-- **Germany:** high information-seeking depth; AI cites highly structured, authoritative sources over thin content
-- **France:** higher preference for French-language sources even when English equivalents are better
-- **China (Baidu context):** very different — AI heavily favors Baidu-domain content (Baike, Zhidao, Baijiahao)
-- **Multilingual markets (India, Switzerland):** code-switching queries common; optimize both languages per region
+- **US:** the only market with measured AI citation data in this skill's research
+- **France:** a stated preference for French-language sources is plausible and untested
+- **Germany:** a preference for structured, authoritative sources is plausible and untested
+- **China:** a genuinely different stack, where local-domain content dominates
+- **Multilingual markets:** code-switching in queries is common enough to plan for
+
+**The reliable method, in any market, is the same one used everywhere else in this skill:** run the market's real queries through the engines that market actually uses, record which sources get cited, and treat the recurring ones as targets. That produces evidence in a week where a table like this produces assumptions. DataForSEO SERP and AI Optimization endpoints accept a location code, so this is measurable per market rather than guessed.
+
+**Query fan-out applies here too, and it interacts badly with thin translation.** A translated page that covers the source market's sub-questions will miss the target market's, because the questions people ask differ with regulation, pricing, climate, and convention. Build the fan-out set per market rather than translating one.
 
 ---
 
@@ -270,7 +279,10 @@ AI query behavior varies by market:
 
 **Currency / region in schema:** {correct per variant / drift flagged}
 
+**Fan-out coverage per market:** {built per market / translated from source — flag the latter}
+
 **Score:** {0-100}
-**Launch-critical international fixes:** {list}
-**Post-launch:** {list}
+**Fixes, ranked by impact, risk and dependency order:** {list — domain-structure changes are the least reversible, do them last or not at all}
 ```
+
+**Report rules:** no time or effort estimates. Label every statistic `[P]`, `[S]` or `[U]` — **and in this file, most of it is `[U]`.** Say so plainly rather than presenting untested market characterizations as findings.

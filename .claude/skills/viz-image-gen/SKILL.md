@@ -1,6 +1,6 @@
 ---
 name: viz-image-gen
-version: 2.0.0
+version: 2.1.6
 description: >
   Interactive visual direction and image generation via GPT Image or Gemini.
   Uses the 6-Element Framework (Subject, Framing, Lighting, Mood, Medium, Style)
@@ -24,6 +24,8 @@ Generate images using GPT Image 2 or Gemini 3 Pro Image. The skill's value is in
 ## Paths
 
 Read `skill-pack/config/sys-config.md` → `## Paths` section before any path-dependent step. It resolves `{decoupled_base}`, `{env_file}`, `{brand_context}`, and `{projects_base}` to absolute paths set by the installer. Substitute these placeholders wherever they appear below.
+
+If `skill-pack/config/sys-config.md` does not exist (e.g. when this skill runs inside a host that doesn't use the skill-systems installer), resolve the placeholders relative to the project root instead: `{env_file}` → `.env`, `{brand_context}` → `brand_context/`, `{projects_base}` → `projects/`, and `{decoupled_base}` → the project root itself.
 
 ## Context Needs
 

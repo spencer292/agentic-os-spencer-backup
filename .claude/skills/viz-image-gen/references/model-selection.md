@@ -8,7 +8,7 @@ Choose the right backend based on the task. If both API keys are available, auto
 
 | Task Type | Best Backend | Confidence | Reasoning |
 |-----------|-------------|------------|-----------|
-| **Text-heavy designs** (posters, signage, infographics with labels) | GPT | High | 95%+ text accuracy vs ~60-70% on Gemini |
+| **Text-heavy designs** (posters, signage, infographics with labels) | GPT | High | GPT ~95%+ text accuracy on dense labels; Gemini 3 Pro Image improved to ~70-85% in 2026. GPT still preferred for 20+ label dense infographics. |
 | **UI mockups & wireframes** | GPT | High | Understands UI vocabulary, coherent layouts, readable labels |
 | **Brand-consistent batch assets** | GPT | High | Higher multi-run consistency |
 | **Transparent backgrounds** | GPT | High | Native transparency support (Gemini doesn't support it) |
@@ -51,7 +51,7 @@ Ask these questions in order:
 | **Output formats** | png, jpeg, webp | png |
 | **Multi-image input** | Up to 16 (editing) | Up to 14 |
 | **Batch generation** | n=1-10 per request | 1 per request |
-| **Text accuracy** | 95%+ | ~60-70% (longer text) |
+| **Text accuracy** | 95%+ | ~70-85% on Gemini 3 Pro Image (2026, improved); GPT preferred for dense text (20+ labels) |
 | **Generation speed** | 8-15s | 5-10s |
 
 ---

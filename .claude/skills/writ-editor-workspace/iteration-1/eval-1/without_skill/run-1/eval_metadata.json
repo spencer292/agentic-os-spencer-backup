@@ -1,0 +1,19 @@
+{
+  "eval_id": 1,
+  "eval_name": "broken-arc-no-throughline",
+  "prompt": "I've got a draft of my book but it feels like it goes round the houses and never quite adds up. Can you read the whole thing and tell me if the structure works? File: C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-editor/evals/inputs/01_broken-arc.md",
+  "assertions": [
+    {
+      "text": "Identifies that there is no clear through-line / single spine running across the chapters"
+    },
+    {
+      "text": "Flags the macro arc as flat or non-building (chapters interchangeable in order; no transformation)"
+    },
+    {
+      "text": "Prescribes structural moves at the manuscript level (name a spine, reorder, cut, or add a bridge) rather than per-chapter line edits"
+    },
+    {
+      "text": "Stays above the chapter \u2014 does not reduce the review to scoring each chapter's internal craft in isolation"
+    }
+  ]
+}

@@ -1,91 +1,161 @@
 # Co-Citation and Brand Mentions
 
-Two of the highest-leverage authority signals in 2026, both underused by most strategies. Treat as primary, not afterthought.
+> **CLIENT CONTEXT:** this is a Got Moles client skill. Every example below is Got Moles — a mole-control service business in Western Washington with three Google Business Profiles (Seattle, Tacoma, Enumclaw), 219+ five-star Google reviews, nearly 5,000 properties served, founded 2017 by Spencer Hill (US Army veteran, 15+ years personal mole-control experience — distinct from the company's 2017 founding). Never write "WA's #1" (unsubstantiated) and never claim I-713 compliance. US English throughout.
 
-## The 3x finding
+Steps 5 and 8 of `str-authority-strategy`. Off-site brand signals are the primary AI-visibility lever, and links are a byproduct.
 
-2026 research: brand mentions correlate **3x stronger with AI search visibility than backlinks** — 0.664 vs 0.218. This is a step-change from the pre-AI-search era when backlinks were the dominant signal.
+## What the evidence actually says
 
-What it means in practice:
-- A brand mentioned (with or without a link) on 30 authoritative sites is worth more for AI citation than 30 backlinks from low-authority sites
-- AI systems use NLP and entity analysis to score mentions independent of link presence
-- Unlinked mentions count as "implied links" — Google evaluates them as discrete ranking signals
-- The strategic implication: **stop chasing links, start engineering mentions**
+**[S] Ahrefs, 75,000 brands, published 2025-12-12.** Spearman correlations against AI brand visibility:
 
-Source: SearchAtlas 2026 off-page SEO evolution research, Search Engine Land 2026 unlinked mentions guide.
+| Signal | ChatGPT | AI Mode | AI Overviews |
+|---|---|---|---|
+| YouTube mentions | 0.737 | 0.712 | 0.740 |
+| Branded web mentions | 0.664 | 0.709 | 0.656 |
+| Branded anchors | 0.511 | 0.628 | 0.527 |
+| Branded search volume | 0.352 | 0.466 | 0.392 |
+| Domain Rating | 0.266 | 0.285 | 0.326 |
+| Backlinks / URL Rating | ~0.2-0.3 | ~0.2-0.3 | ~0.2-0.3 |
+
+Ahrefs' own caveat, quoted: "correlation isn't causation. We've spotted patterns between search metrics and AI mentions, but that doesn't mean improving these metrics will automatically boost your AI visibility." Carry that caveat into any client-facing use of these numbers.
+
+**What it means in practice.**
+- The gap between mentions and backlinks is 2-3x depending on which signal you compare, not a flat "3x". The earlier version of this file asserted "3x, 0.664 vs 0.218" sourced to trade content — corrected 2026-09-02 against the primary.
+- **YouTube is the strongest single correlate**, ahead of web mentions. For Got Moles that means mole damage, trapping process and before/after footage are authority work, not marketing leftovers.
+- A brand named on 30 authoritative regional sites is worth more for AI citation than 30 links from thin directories.
+- Unlinked mentions carry signal. Do not chase every link.
+- **[S] Ranked third-party listicles are ~21% of all AI citations** (arXiv 2606.20065) — the single most-cited format. A "best mole removal in Everett" roundup that names Got Moles beats most link building.
+- **[S] Niche brands appear in 11% of relevant answers.** That is the honest baseline for a local service business, and the number to benchmark against instead of an invented target.
+
+Full landscape context: root `.claude/skills/str-ai-seo/references/search-landscape-2026-09.md` §5.
+
+## The hard prohibition
+
+**[P] Google's generative-AI optimization guide names inauthentic mention-building as unnecessary, and states its spam systems already filter what AI features depend on.** So:
+
+- No paid placement presented as editorial
+- No mention swaps or reciprocal-mention schemes
+- No seeded forum, Reddit or Nextdoor posts written as if from a customer
+- No AI-generated mention farms or syndicated press-release blasts
+- No review incentives without clear and prominent disclosure, and no review quotas on staff (see the review-policy rules in `SKILL.md` Step 10)
+
+If a tactic only works because a reader would not know who paid for it, it is out. This is a gate on every recommendation this file produces, not a style preference.
 
 ## Co-citation defined
 
-Co-citation = two entities being mentioned together by a third-party source, regardless of whether either is hyperlinked. When third parties group two entities thematically often enough, search engines (and AI systems) start treating them as related — authority transfers along the association.
+Co-citation = two entities mentioned together by a third-party source, whether or not either is hyperlinked. When third parties group two entities thematically often enough, search and AI systems start treating them as related, and authority transfers along the association.
 
-**Example:** Roy Castleman + Scott Abbott + BOS-UP. Every podcast episode of Power Movers, every joint LinkedIn post, every press release about the book's foreword, every byline that mentions both names is a co-citation event. Cumulatively, AI systems learn "if user asks about BOS-UP UK or Roy Castleman, Scott Abbott is the related authority — and vice versa."
+**Worked example — Got Moles + WSU Extension.** WSU Extension publishes the Pacific Northwest's authoritative mole and vertebrate-pest guidance. Every Got Moles post that cites and links WSU Extension, every WSU Master Gardener session where Spencer speaks, every regional article that quotes both, and every `knowsAbout` field binding Got Moles to the same subject matter is a co-citation event. Cumulatively engines learn: if the query is about lawn moles in Western Washington, WSU Extension is the institutional source and Got Moles is the operator — related, not interchangeable.
 
-## How to engineer co-citation deliberately
+The same pattern runs with WDFW on the legal and chemical-free angle, the county Chambers on the local-business angle, and PNW landscaping channels on the practitioner angle.
+
+## How to engineer co-citation honestly
 
 ### Find real connection points
-Co-citation only works on connections that already exist or can be plausibly built. Aspirational ("we should be co-cited with Oprah") doesn't count. Look for:
-- Existing professional relationships (Roy + Scott via BOS-UP certification, Roy + Wim Hof via instructor program)
-- Shared platforms (joint podcast appearances, conference speakers)
-- Methodology adoption (Roy uses BOS-UP framework → Scott's authority transfers)
-- Endorsement (Scott's foreword → public association)
+
+Co-citation only works on connections that exist or can genuinely be built. Aspiration does not count and fabrication is prohibited. Look for:
+
+- **Existing institutional relationships** — Chamber membership, trade-association membership, Master Gardener program contact
+- **Shared platforms** — a landscaping podcast both Spencer and a regional expert appear on, a county fair or home show, a trade event
+- **Source adoption** — Got Moles citing WSU Extension and WDFW guidance in content, consistently and accurately, is itself a slow co-citation build
+- **Real endorsement** — a landscaper who subcontracts mole work naming Got Moles
 
 ### Surfaces where co-citation accumulates
+
 | Surface | How co-citation appears |
 |---|---|
-| Podcasts | Both names in show notes, transcripts, episode descriptions |
-| Press / earned media | Both quoted in same article, joint announcements |
-| LinkedIn / social | Tagging, joint posts, mutual amplification |
-| Schema (`colleague`, `editor`, `affiliation`, `worksFor`, `founder`, `knowsAbout`) | Direct on-site machine-readable association |
-| Wikidata properties | `P-property` linking entities (e.g., wrote-foreword-for, certified-by, member-of) |
-| Joint linkable assets | Shared bylines, co-authored research, joint frameworks |
-| Conference / event listings | Both names on same speaker roster |
+| Regional press | Both named in the same article; a quoted expert alongside an institutional source |
+| Third-party roundups | "Best mole removal in {city}" listing Got Moles beside the named alternatives |
+| Extension and association publications | Guest article or contributed field observation |
+| YouTube | Guest appearance on a PNW lawn-care channel; both channels named in description and transcript |
+| Podcasts | Both names in show notes, transcript and episode description |
+| Chamber and community newsletters | Member spotlight beside other local businesses |
+| Schema (`knowsAbout`, `sameAs`, `worksFor`, `areaServed`) | Machine-readable association on the site itself |
+| Wikidata properties | Entity-to-entity links, once entities exist |
 
 ### Action template per co-citation target
-For each named co-citation target in `authority-strategy.md`:
-- **Entity:** name + Wikidata Q-id if it exists
-- **Relationship:** the real connection point (one sentence)
-- **Surface plan:** specific surfaces where co-citation will be seeded
-- **First action:** the next concrete step (joint podcast booking, schema field add, press placement angle)
-- **Cadence:** how often this association needs new co-citation events to stay live (typically quarterly)
 
-## Brand mention strategy
+For each named target in `authority-strategy.md` Section 5:
+- **Entity** — name, URL, and Wikidata Q-id if one exists
+- **Cluster** — which of the seven `target-keywords.md` clusters it serves
+- **Relationship** — the real connection point, in one sentence
+- **Surface plan** — the specific surfaces where the association gets seeded
+- **First action** — the next concrete step
+- **Cadence** — how often the association needs a fresh event to stay live
 
-Three components. All three should appear in `authority-strategy.md` per cluster.
+## Brand-mention strategy
 
-### 1. Proactive mention earning
-Don't just hope to be mentioned — be reachable when journalists need an expert.
+Four components. All four appear in `authority-strategy.md` Section 8.
 
-- **Featured / Qwoted / HARO-equivalent platforms** — sign up as expert source for cluster topics. Respond fast, give quotable answers, link to credentials.
-- **Journalist relationships** — direct outreach with valuable angles, not pitch-and-pray. Industry-specific. Build over time.
-- **Speaker / panel circuit** — speaking surfaces generate mentions in event coverage, attendee posts, and follow-up press.
+### 8.1 Proactive mention earning
 
-### 2. Reactive mention monitoring
-- **Weekly scan** for unlinked brand mentions across web (Google search of brand name with date filter, Reddit search, social monitoring tools)
-- **Convert to linked when reasonable** — polite outreach to ask for a hyperlink, but DON'T chase every one. Unlinked still counts.
-- **Log mentions** to track velocity + sentiment + authority over time
+- **Expert-source platforms** — Featured, Qwoted and equivalents, with Spencer's profile complete for "mole control expert", "PNW pest", "lawn damage", "veteran-owned business". Respond fast, answer quotably, link credentials.
+- **Journalist outreach** — a specific angle per outlet, not pitch-and-pray. Regional desks (Seattle Times, Tacoma News Tribune, The Olympian, Enumclaw Courier-Herald) plus the trade press (Pest Control Technology, Pest Management Professional, Lawn & Landscape).
+- **Roundup inclusion** — the highest-value class. Identify who publishes "best mole removal in {city}" for the priority cities, learn whether inclusion is editorial or submission-based, and pursue the honest path.
+- **Speaking and community presence** — Master Gardener sessions, home and garden shows, Chamber events, veteran-business networks.
+- **Referral exchange** — landscapers, lawn-care firms and pest companies that don't handle moles.
 
-### 3. Mention-quality scoring
-Not all mentions are equal. Score per the citation-quality scale used in `str-ai-seo`:
-- **Authoritative cite** — "according to X..." / quoted as expert
-- **Listed cite** — included in a "best of" / round-up / tool list
-- **Mentioned** — neutral name reference
-- **Dismissive cite** — "some sources claim..." / qualified mention
-- **Negative mention** — counterproductive, may need response
+### 8.2 Reactive mention monitoring
 
-Track distribution: a brand with 10 authoritative cites + 5 listed cites is in better shape than one with 100 neutral mentions.
+Scheduled and logged, not remembered. Run from `clients/got-moles/`:
+
+```bash
+node ../../.claude/skills/str-ai-seo/scripts/dataforseo.mjs content_analysis/search/live \
+  '{"keyword":"Got Moles","search_mode":"as_is","limit":50,"page_type":["news","blogs","message-boards","organization"]}' \
+  --out projects/str-authority-strategy/data/mentions-{YYYY-MM-DD}.json
+```
+
+Repeat for "Spencer Hill mole" and "got-moles.com". Always set `limit`. Every call logs cost to `.dataforseo-usage.log`; reconcile after each run.
+
+Backstops: Google Alerts (free), and a community watch on r/Seattle, r/Tacoma, r/lawncare, r/PNWGardening and Nextdoor. Convert unlinked mentions to linked where the ask is easy and welcome — but the unlinked mention already counts.
+
+### 8.3 Mention-quality and sentiment scoring
+
+**[S] Sentiment flips roughly 6.7x more often than mention presence.** A brand can hold its mention count while the framing turns against it, so counting mentions alone misses the failure mode. Score every run on both axes.
+
+Context classes:
+- **Authoritative cite** — "according to Got Moles" / quoted as the expert
+- **Listed cite** — included in a roundup or best-of list
+- **Neutral mention** — name reference, no framing
+- **Dismissive cite** — hedged or qualified
+- **Negative mention** — needs a response, not a link
+
+Then the AI layer, across ChatGPT, Google AI Overviews, Gemini, Claude and Perplexity:
+
+```bash
+node ../../.claude/skills/str-ai-seo/scripts/dataforseo.mjs ai_optimization/llm_mentions/live \
+  '{"keyword":"Got Moles","limit":50}' --dry
+```
+
+Confirm the sub-path against `https://docs.dataforseo.com/v3/ai_optimization/overview/` before the first paid call — the AI Optimization paths move between vendor releases. Priced at $0.10 per request plus $0.001 per row, so cap the prompt set per run.
+
+Track as a trend: total mentions, the context-class distribution, the sentiment split, and the per-engine mention rate. Ten authoritative cites and five roundup inclusions beat a hundred neutral mentions.
+
+### 8.4 Hallucination correction
+
+Covered in `SKILL.md` Step 8.4. The surface order is GBP, then Yelp/BBB/Angi, then own-site answer blocks, schema, press corroboration, and Wikipedia-adjacent entity sources — then a re-test through `ai_optimization/llm_responses/live` on the same prompt set. **llms.txt is not a correction surface**: no engine documents consuming it and Google states it neither harms nor helps. Leave any existing file in place and keep it accurate.
 
 ## What NOT to do
 
-- **Pure link-chasing.** The link-volume era is past. Quality + mentions beat link count.
-- **Generic outreach lists.** "Top 100 publications in [niche]" without an angle = ignored. Tailor.
-- **Forced co-citation.** If the connection isn't real, AI systems won't accept it. Build real relationships, then surface them.
-- **Ignoring unlinked mentions.** Per the 3x correlation, they may matter MORE than links for AI visibility.
+- **Pure link-chasing.** Link volume is the weakest signal in the table.
+- **Generic outreach lists.** An outlet with no per-outlet angle is an unused row.
+- **Forced or fabricated co-citation.** If the connection isn't real, no engine accepts it and Google's guidance names the attempt.
+- **Ignoring unlinked mentions.** They carry the correlating signal.
+- **Counting mentions without sentiment.** The framing moves ~6.7x more than the count.
+- **Presenting schema as a citation lever.** [S] Ahrefs' difference-in-differences test found no citation uplift for already-visible pages. Schema earns its keep for entity binding and correctness.
 
 ## Interaction with target-keywords clusters
 
-Co-citation and brand-mention work both happen **per cluster**. Different clusters have different authority anchors and different mention surfaces:
-- AI-thinking cluster → mentions on AI publications, business AI podcasts, Mollick-adjacent surfaces
-- Wellness cluster → mentions on wellness/coaching publications, Wim Hof + breathwork surfaces, founder-burnout research outlets
-- BOS UP cluster → mentions on EOS/Scaling Up adjacent content, business operating system writers, Scott's audience
+Mention work runs **per cluster**, against the seven ids in `brand_context/target-keywords.md`:
 
-Don't run a generic mention strategy. Run a cluster-specific one.
+| Cluster | Where mentions come from |
+|---|---|
+| `mole-control` | Regional press, "best mole removal in {city}" roundups, landscaper referral network |
+| `biology` | WSU Extension, Master Gardener publications, iNaturalist, science and nature desks |
+| `safety` | AVMA and ASPCA adjacent coverage, pet-owner and family publications, chemical-free angle |
+| `cost-value` | Cost-guide publishers, Angi and HomeAdvisor editorial, consumer-finance desks |
+| `seasonal` | Old Farmer's Almanac, garden columns, spring and fall regional pest stories |
+| `diy-vs-pro` | Consumer Reports, This Old House, PNW lawn-care YouTube channels, myth-bust coverage |
+| `location-services` | County Chambers, city papers, neighborhood associations, Nextdoor, local roundups |
+
+Run a cluster-specific strategy, never a generic one.

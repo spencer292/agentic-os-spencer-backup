@@ -1,133 +1,160 @@
-# Entity-Graph Strategy + Local-Authority Subset
+# Entity-Graph Strategy + Multi-Location Local Authority
 
-> **CLIENT CONTEXT (added 2026-07-02):** written in the ATP era — the YAML template and worked examples use ATP entities (Roy Castleman, All The Power, BOS-UP, Bedford). For Got Moles substitute: org = Got Moles LLC (founded 2017, WA); founder = Spencer Hill (US Army veteran, 15+ years personal mole-control experience); locations = 3 GBPs (Seattle, Tacoma, Enumclaw); proof = 219+ five-star Google reviews, 5,000 clients; domain = got-moles.com. And CRITICALLY: Got Moles is a multi-location LOCAL service brand — local authority is PRIMARY here, not a subset; read the "local subset" sections below through that inversion.
+> **CLIENT CONTEXT:** this is a Got Moles client skill and every example below is Got Moles. Organization = Got Moles (founded 2017, Washington State). Founder = Spencer Hill, US Army veteran, 15+ years of personal mole-control experience — kept distinct from the 2017 company founding date. Locations = three Google Business Profiles (Seattle, Tacoma, Enumclaw) covering 6 counties and 92+ communities. Proof = 219+ five-star Google reviews, nearly 5,000 properties served. Domain = got-moles.com. **Got Moles is a multi-location LOCAL service brand: local authority is PRIMARY, never a subset or appendix.** Never write "WA's #1" and never claim I-713 compliance. US English throughout.
 
-Steps 9 and 10 of `str-authority-strategy`. Entity-graph = building Wikidata + Wikipedia + sameAs + Knowledge Panel presence; local subset = Bedford-style regional authority that supports but doesn't replace global ICP.
+Steps 9 and 10 of `str-authority-strategy`.
 
-## Entity-graph: why it's the slowest-moving but highest-leverage authority signal
+## Why the entity graph matters here
 
-Entity-graph platforms (Wikidata, Wikipedia, Knowledge Graph) are how AI systems decide an entity exists, what it's about, and what other entities relate to it. A brand without entity-graph presence is invisible to AI's "who is this" resolution layer. A brand with entity-graph presence enters the citation candidate pool by default.
+Entity resolution is how an engine decides what "Got Moles" refers to, what it does, and where. For this brand that question is unusually hostile, because **"mole" resolves to a skin lesion, a burrowing mammal, a spy, a chemistry unit and a Mexican sauce — and the skin-mole sense dominates the training distribution.** That is popularity bias, not simple ambiguity. The paid side already handles it with roughly 120 medical-cluster negatives; the organic and AI side needs the structural equivalent.
 
-For non-regional brands, entity-graph work is global by default (for Got Moles the graph anchors to WA locality). Wikidata is multilingual and platform-neutral; Wikipedia presence in any language adds notability evidence; Knowledge Panel triggering happens per market.
+The entity graph is that equivalent. Get it right and the brand enters the candidate pool for lawn-mole queries by default. Get it wrong and the strongest content in the cluster gets resolved against dermatology.
+
+**[U] on every specific disambiguation tactic** — no controlled study exists. The mechanism underneath (candidate generation, then context-weighted entity linking with popularity bias) is standard NLP and is safe to build on.
+
+## 9a. The `sameAs` spine — build this first
+
+This is the highest-return, lowest-risk entity work available, and **the one place structured data still earns its keep**. [S] Ahrefs' difference-in-differences test found no citation uplift from schema for already-visible pages (−4.6% AI Overviews, +2.4% AI Mode, +2.2% ChatGPT), and [P] Google states structured data is not required for generative AI search. The surviving justification is entity binding, correctness and rich results — which is exactly what the spine does.
+
+**Organization schema carries identical `sameAs` URLs to:**
+
+| Profile | Why it is on the spine |
+|---|---|
+| GBP × 3 (Seattle, Tacoma, Enumclaw) map URLs | The primary local entity records |
+| Yelp | [S] Highest-cited directory overall; the dominant local source for Google AI Mode and Perplexity, and for ChatGPT since the [P] 2026-07-23 OpenAI licensing deal |
+| Better Business Bureau | [S] Disproportionately weighted by ChatGPT |
+| Angi | [S] The Gemini lever — Angi led Gemini citations while Yelp barely registered there |
+| Facebook | Long-standing entity corroboration |
+| LinkedIn — company page and Spencer's personal profile | Organization and Person binding |
+| YouTube channel | [S] The strongest single AI-visibility correlate (0.737); also an entity record |
+
+**Plus `knowsAbout`**, binding the brand to the pest-control sense: mole control, Talpidae, Townsend's mole, Pacific mole, shrew mole, chemical-free trapping, lawn and turf damage, molehills, burrow and tunnel systems.
+
+**Three rules on the spine:**
+1. **Identical everywhere.** The same URL set on the site, and consistent NAP across every listed profile. A mismatch is a second candidate entity.
+2. **Reciprocal.** Each profile links back to got-moles.com. A `sameAs` pointing at a profile that never points back is a half-signal.
+3. **Complete before clever.** Finish the spine before proposing anything more exotic. It carries most of the available disambiguation benefit.
+
+**Supporting move:** every page that uses the word "mole" links to one canonical disambiguation page — what a lawn mole is, why it is not a skin mole, what a molehill looks like. That page is the on-site entity anchor.
 
 ## Per-entity strategy template
 
-For every named entity in the brand (Person, Organization, Book, Product/Service, Methodology), capture:
+For every named entity, capture:
 
 | Field | What goes here |
 |---|---|
-| **Entity name** | Roy Castleman / All The Power Ltd / "Thinking Outside Your Brain with AI" / Power Movers / BOS UP UK / T.H.R.I.V.E. method |
-| **Entity type** | Person / Organization / Book / PodcastSeries / DefinedTerm / etc |
-| **Current state** | Wikidata Q-id (or "absent"), Wikipedia (lang), Knowledge Panel triggering (Y/N + which market), sameAs URLs in on-site schema |
-| **Target state** | Q-id submitted, schema-linked, Knowledge Panel triggering for branded query, full sameAs cross-platform |
-| **Notability evidence stack** | The independent secondary sources that qualify this entity for Wikidata |
-| **Schema linkage on-site** | The schema field/relationship this entity is connected via (`author`, `editor`, `colleague`, `affiliation`, `worksFor`, `knowsAbout`, `inDefinedTermSet`) |
-| **Action sequence** | Steps to move from current to target |
+| **Entity name** | Got Moles / Spencer Hill / Total Mole Control Program / Townsend's mole |
+| **Entity type** | Organization (LocalBusiness subtype) / Person / Service / referenced species entity |
+| **Current state** | Wikidata Q-id or "absent", Knowledge Panel triggering (yes/no, which market), `sameAs` URLs live in on-site schema, profile claim status |
+| **Target state** | Full `sameAs` spine, `knowsAbout` populated, per-location LocalBusiness with `parentOrganization`, Person bound by `worksFor` |
+| **Notability evidence stack** | The independent secondary sources that would qualify the entity for Wikidata |
+| **Schema linkage on-site** | The fields carrying the relationship: `sameAs`, `worksFor`, `knowsAbout`, `areaServed`, `parentOrganization`, `provider`, `author` |
+| **Action sequence** | Ordered by dependency, never by calendar |
 
 ## Notability evidence per entity type
 
-Wikidata accepts entries when notability is supportable by ≥2 independent secondary sources. Different entity types qualify differently:
+Wikidata accepts entries when notability is supportable by independent secondary sources. Different entity types qualify differently:
 
-| Entity type | Strong notability evidence |
+| Entity type | Realistic notability evidence for this client |
 |---|---|
-| **Person (thought leader/coach)** | Recognized programme/certification, registered company, published author, podcast host with platform-confirmed footprint, press mentions in independent outlets, board/EIR position at recognized institution |
-| **Organization** | Companies House / equivalent registry, founding date with documentation, employees ≥ threshold, industry awards, press mentions |
-| **Book** | ISBN, publisher catalog entry, Amazon listing live, Goodreads entry, ≥2 independent reviews/mentions |
-| **PodcastSeries** | Spotify + Apple Podcasts entity pages, episode count, regular host(s), independent reviews/listings |
-| **DefinedTerm (named methodology)** | Founder/originator citation, third-party use of the term, structured definition published, used in book/published material |
-| **Product/Service** | Customer case studies (verifiable), independent reviews, integration/partner listings |
+| **Organization** | Washington state business registration, founding documentation, sustained independent press coverage, industry association membership, verifiable scale |
+| **Person (founder)** | Named coverage in independent regional press, verifiable military service record, quoted-expert placements in trade publications, an authored byline footprint |
+| **Service / named program** | Third-party description of the program by name, verifiable customer base, trademark filing if pursued |
+| **Species reference** | Already has entries — Got Moles links to them, it does not create them |
 
-For each entity in `authority-strategy.md`, list the specific evidence available (or what's still needed). Don't propose Wikidata submission until the evidence stack qualifies.
+Record what is available now and what is still needed. Do not propose submission before the evidence stack qualifies.
 
-## Schema linkage as entity-graph cement
+## 9d. Honest framing on Wikidata and Wikipedia
 
-On-site schema with `sameAs` URLs and entity relationship fields (`colleague`, `author`, `editor`, `affiliation`, `worksFor`, `knowsAbout`, `founder`, `inDefinedTermSet`, `publisher`) is what tells AI systems *how* the named entities relate. Even without Wikidata entries, rich on-site schema starts building the entity graph.
+**Wikipedia is the strongest `sameAs` anchor** because it feeds the Knowledge Graph and multiple training pipelines. It is **not realistically achievable for a regional service business** and should never be presented to the client as a near-term deliverable.
 
-Sequence:
-1. **On-site schema first** — populate every entity field structurally (not just description strings). Even if no Wikidata Q-id exists yet, the relationships render machine-readable.
-2. **Cross-platform sameAs** — every place an entity has a profile (LinkedIn, Goodreads, Amazon Author Central, YouTube channel, Spotify, Wim Hof Method instructor profile, Crunchbase, Companies House) goes in the entity's `sameAs` array.
-3. **Wikidata submission** when notability evidence stack supports it. Don't submit too early; rejected entries hurt future attempts.
-4. **Wikipedia** is a higher bar than Wikidata. Punt unless ≥6 months of earned media + book sales + reviews + multi-source coverage exists.
+**Wikidata** is a lower bar but still gated: it needs independent secondary sources, and a rejected entry creates friction for future attempts. Treat it as a long-dependency item unblocked by Tier 1 and Tier 2 press placements landing, not as parallel work. If a separate Wikidata brief exists in `projects/briefs/`, point to it from Section 9 and let the brief own the submission, the property population and the evidence assembly — do not duplicate it here.
 
-## What execution work to log per entity
+The achievable stack in 9a delivers most of the disambiguation benefit without either.
 
-For each entity in `authority-strategy.md`, log the action sequence:
+## What to log per entity
 
 ```yaml
-entity: Roy Castleman
-type: Person
+entity: Got Moles
+type: Organization (LocalBusiness subtype)
 current_state:
   wikidata: absent
-  wikipedia: absent
-  knowledge_panel: not triggering
-  sameAs_populated: [LinkedIn, X/Twitter, Wim Hof Method instructor profile]
-  sameAs_missing: [YouTube channel, Power Movers Spotify, Skool, LinkedIn newsletter]
+  knowledge_panel: verify per market
+  sameAs_populated: [GBP Seattle, GBP Tacoma, GBP Enumclaw]      # verify against live schema
+  sameAs_missing: [Yelp, BBB, Angi, Facebook, LinkedIn company, YouTube]
+  knowsAbout: present — verify it names the pest-control sense explicitly
 target_state:
-  wikidata: Q-id assigned, all P-properties populated
-  wikipedia: not in scope until Q3 2026
-  knowledge_panel: triggering for branded query
-  sameAs_populated: complete cross-platform
+  sameAs: complete spine, identical sitewide, every profile linking back
+  knowsAbout: mole control, Talpidae, Townsend's mole, chemical-free trapping, lawn damage
+  local_business: one LocalBusiness node per GBP, each with parentOrganization -> Got Moles @id
+  wikidata: gated on independent press placements
 notability_evidence:
   available_now:
-    - Wim Hof Method instructor (recognised programme)
-    - Companies House 12884810
-    - Book ISBN 978-1-0676727-0-6
-    - Power Movers podcast (Spotify + Amazon UK)
-    - "UK's first certified BOS-UP coach" (verifiable via Scott Abbott)
+    - Washington business registration, founded 2017
+    - 219+ five-star Google reviews across three profiles
+    - nearly 5,000 properties served across 6 counties, 92+ communities
   needed:
-    - 2+ independent press placements (gated on launch + earned-media work)
+    - independent regional press placements (gated on Section 6 earned-media work)
 schema_linkage_target:
-  affiliation: BOS-UP, Wim Hof Method
-  award: ["UK's first certified BOS-UP coach", "Wim Hof Method Level 2 Instructor"]
-  colleague: { entity: Scott Abbott, sameAs: scottabbottabc.com }
-  worksFor: All The Power Ltd
-  knowsAbout: [...]
+  areaServed: [King, Pierce, Snohomish, Thurston, Kitsap, Lewis]
+  founder: { entity: Spencer Hill, via: Person @id }
+  hasOfferCatalog: services with explicit pricing, matching the site's visible pricing
 action_sequence:
-  - 1: Populate Person sameAs missing URLs
-  - 2: Add structured affiliation/award/colleague/worksFor fields sitewide
-  - 3: Capture launch-week press placements as Wikidata source candidates
-  - 4: Submit Wikidata entry once 2+ press placements landed
-  - 5: Wait for Q-id, then add to all on-site schema as @id reference
+  - 1: Audit live sameAs population in the site's schema module
+  - 2: Claim every missing profile, then add it to sameAs and link it back
+  - 3: Verify knowsAbout names the pest-control sense, not just the brand
+  - 4: Verify per-location LocalBusiness nodes carry parentOrganization
+  - 5: Hold Wikidata until independent press placements exist
 ```
-
-## Local-authority subset (Step 10)
-
-Only run if the brand has a deliberate regional component. Don't auto-create local sections for global brands.
-
-### When local subset applies
-- Brand has a registered office in a specific city/region (Roy's Bedford UK)
-- Brand offers any face-to-face component (workshops, retreats, in-person coaching)
-- ICP includes regional/near-me intent for any service
-- Knowledge Panel benefits from a local-business signal
-
-### When local subset is wrong
-- Brand is purely digital with no regional component
-- ICP is global with no near-me intent
-- Adding local schema dilutes the global Person/Org entity (rare but happens with founder + multinational org)
-
-### What goes in the local subset
-
-For non-regional brands, mark explicitly as **subset, not primary** (Got Moles inverts this — local is primary).
 
 ```yaml
-local_authority_subset:
-  region: Bedford UK
-  rationale: "Roy's Companies House registration + primary office. Supports near-me intent and UK regional Knowledge Panel queries. Subset of global ICP strategy."
-  components:
-    - LocalBusiness schema on Org (currently generic Organization)
-    - Google Business Profile claim/populate
-    - NAP consistency: Apple Maps, Bing Places, Yelp, Trustpilot
-    - Regional press: Bedford-area business journals, Bedfordshire Chamber, FSB Bedfordshire
-    - Wim Hof + breathwork local directories (if Roy runs in-person workshops)
-  do_NOT_apply:
-    - Don't constrain global keyword strategy
-    - Don't filter authority-anchor mapping to UK only
-    - Don't framing competitive analysis as UK-only
+entity: Spencer Hill
+type: Person
+current_state:
+  person_schema: live on /about/ and /author/spencer/ — verify completeness
+  sameAs_populated: []                                            # verify
+  sameAs_missing: [LinkedIn personal]
+target_state:
+  worksFor: Got Moles @id
+  knowsAbout: [mole control, Talpidae, chemical-free trapping, Western Washington turf]
+  sameAs: LinkedIn personal, plus any public professional profile
+  byline: Person schema on every post he authors
+notability_evidence:
+  available_now:
+    - founder of a multi-location regional service business
+    - US Army veteran (service verifiable)
+  needed:
+    - independent press placements naming him
+action_sequence:
+  - 1: Complete Person schema on /about/ and /author/spencer/
+  - 2: Bind worksFor to the Organization @id
+  - 3: Add the byline to every post he authors
+  - 4: Capture press placements as future notability evidence
 ```
+
+## Multi-location local authority (Step 10)
+
+**For Got Moles this is the primary work.** The "is local a subset?" question does not arise: three GBPs, six counties, 92+ communities, and an ICP with near-me intent on almost every transactional query.
+
+For a brand where local genuinely is a subset — purely digital, no near-me intent — mark it as a subset and keep it short. That case does not apply here.
+
+### What goes in the multi-location section
+
+- **Per-location authority audit** — profile state, citation-surface gaps, named neighborhoods, and per-location authority anchors (city paper, county Chamber, neighborhood association, county Master Gardener program). Named entities, never categories.
+- **Directory-by-engine claim order** — the matrix in `SKILL.md` Step 10. Yelp, BBB and Angi are P0 across all three locations because each one feeds a different engine. Thumbtack, HomeAdvisor and Nextdoor follow. Bing Places and Apple Business Connect stay on the list as free listings, with their weight in AI local answers labeled `[U]` because it is unmeasured.
+- **Cross-location entity linkage** — Organization `sameAs` carrying all three GBP map URLs; each city page emitting LocalBusiness schema with `parentOrganization` pointing at the Organization `@id`.
+- **Review acquisition, policy-compliant only** — the blocking rules are in `SKILL.md` Step 10. In short: [P] 2026-04-17 bans staff quotas and asking a customer to name a technician; [P] 2026-07-24 bans fake or undisclosed incentivized reviews in content and in Review or AggregateRating markup, at manual-action risk. Track velocity as an outcome, never as a staff quota.
+- **[P] Service-area business rule** — none of the three profiles may display a street address publicly. Service areas only. A visible address on a service-area profile risks suspension, and suspensions on that basis are hard to reverse.
+
+### Verify live state before diagnosing
+
+Several GBP bugs were logged through 2026 — reviews disappearing after reinstatement, review replies not displaying, "no reviews yet" display errors. Check the live profile before attributing a review or ranking change to an algorithm.
 
 ## Anti-patterns
 
-- **Submitting Wikidata too early.** A rejected Wikidata entry creates friction for future submissions. Wait until notability evidence stack is solid.
-- **sameAs without entity reciprocity.** Listing a YouTube channel in `sameAs` without that YouTube channel's About section linking back to the brand is incomplete entity-graph signal. Update both directions.
-- **Local subset that becomes the lead.** Brands sometimes drift into "we're the Bedford expert" framing because local SEO wins arrive faster than global authority wins. For non-regional brands, local stays a subset — but verify against the client ICP first; for a local service brand the "drift" is actually the strategy.
-- **Treating the entity graph as a one-time build.** It's compounding. Every new press placement, podcast guest spot, byline expands the graph. Re-audit quarterly.
+- **Submitting Wikidata too early.** A rejected entry creates friction for later attempts. Wait for the evidence stack.
+- **`sameAs` without reciprocity.** A profile that does not link back to got-moles.com is a half-signal.
+- **An inconsistent spine.** Different NAP or a different URL set between the site and a profile creates a second candidate entity — the opposite of the intended effect.
+- **Presenting schema as a citation lever.** It is entity binding and correctness. Cite the Ahrefs difference-in-differences result when the change is questioned.
+- **Treating "mole" as a solved problem.** The homograph is permanent. Every new page, profile and mention either reinforces the pest-control sense or dilutes it. Measure it with `ai_optimization/llm_responses/live` rather than assuming.
+- **Treating the entity graph as a one-time build.** Every new placement, profile and video expands it. Re-audit quarterly.

@@ -16,15 +16,21 @@ function readEnv() {
 
 (async () => {
   const e = readEnv();
-  for (const k of ["GMAIL_CLIENT_ID", "GMAIL_CLIENT_SECRET", "GMAIL_REFRESH_TOKEN"]) {
+  // GMAIL_ACCOUNT=<name> selects GMAIL_REFRESH_TOKEN_<NAME>; unset = legacy default.
+  const account = (process.env.GMAIL_ACCOUNT || "").trim();
+  const suffix = account ? "_" + account.toUpperCase().replace(/-/g, "_") : "";
+  const key = "GMAIL_REFRESH_TOKEN" + suffix;
+  const idKey = e["GMAIL_CLIENT_ID" + suffix] ? "GMAIL_CLIENT_ID" + suffix : "GMAIL_CLIENT_ID";
+  const secretKey = e["GMAIL_CLIENT_SECRET" + suffix] ? "GMAIL_CLIENT_SECRET" + suffix : "GMAIL_CLIENT_SECRET";
+  for (const k of [idKey, secretKey, key]) {
     if (!e[k]) { console.error(`✗ Missing ${k} in .env`); process.exit(1); }
   }
   const tr = await fetch("https://oauth2.googleapis.com/token", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({
-      client_id: e.GMAIL_CLIENT_ID, client_secret: e.GMAIL_CLIENT_SECRET,
-      refresh_token: e.GMAIL_REFRESH_TOKEN, grant_type: "refresh_token",
+      client_id: e[idKey], client_secret: e[secretKey],
+      refresh_token: e[key], grant_type: "refresh_token",
     }),
   });
   const t = await tr.json();

@@ -1,0 +1,58 @@
+{
+  "$doc": "Structured thumbnail spec — the single source every renderer (nano-banana, gpt-image, PIL) consumes. One spec = one variant. For A/B tests, clone the spec and change EXACTLY ONE field (test.variable names it). Engine prompts are built deterministically from this spec via assets/ai-thumb-prompt.md; PIL renders it via thumb_lib atp_* helpers.",
+  "example": {
+    "specId": "core-values-h1-nb",
+    "videoSlug": "core-values",
+    "videoId": "KS2yc2di9PA",
+    "title": "How to Find Your Company's Core Values (20-Minute Exercise)",
+    "hook": {
+      "text": "find your real values in 20 minutes",
+      "type": "outcome-promise",
+      "emphasis": "real values",
+      "icpPain": "values are poster words nobody follows",
+      "promiseLocation": "answered from 2:36 (exercise) — within first third: YES"
+    },
+    "layout": "quote-left-subject-right",
+    "subject": {
+      "cutout": "projects/briefs/core-values-cluster/thumbnails/cutouts-nologo/05092023_ATP_010.png",
+      "expression": "calm-direct",
+      "position": "right",
+      "faceMinFrac": 0.35
+    },
+    "artifact": null,
+    "brand": {
+      "canvas": "#26272A",
+      "glow": "musk-green radial",
+      "boxFill": "#B9B47B",
+      "boxText": "#333538",
+      "bodyText": "#FFFFFF",
+      "mark": { "position": "tl", "tint": "#B9B47B", "widthFrac": 0.08 },
+      "forbidden": ["red", "non-brand colours", "extra logos", "mirrored subject"]
+    },
+    "text": {
+      "lines": [
+        { "t": "find your", "boxed": false },
+        { "t": "real values", "boxed": true },
+        { "t": "in 20 minutes", "boxed": false }
+      ],
+      "maxWords": 6,
+      "case": "sentence"
+    },
+    "engines": ["nano-banana", "gpt-image", "pil"],
+    "test": {
+      "experimentId": "core-values-exp1",
+      "variable": "hook.text",
+      "controlSpecId": "core-values-h2-nb",
+      "platform": "youtube-test-and-compare"
+    },
+    "qa": {
+      "faceIntegrity": null,
+      "spelling": null,
+      "legible168": null,
+      "brandCompliance": null,
+      "engineCraftScore": null
+    }
+  },
+  "hookTypes": ["curiosity-gap", "threat", "outcome-promise", "contrarian", "specific-number", "identity-callout"],
+  "layouts": ["quote-left-subject-right", "paper-whiteboard", "artifact-reaction", "comparison-cards"]
+}

@@ -1,0 +1,65 @@
+{
+  "skill_name": "writ-review",
+  "evals": [
+    {
+      "id": 0,
+      "name": "over-athletic-overdose",
+      "prompt": "Have a look at this passage from my book and tell me what's working and what's not — does it actually land? The file is C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review/evals/inputs/00_over-athletic.md",
+      "files": ["C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review/evals/inputs/00_over-athletic.md"],
+      "expected_output": "Flags athletic / three-word writing as OVERUSED (an overdose) and a voice-conflict; prescribes restoring flow and reserving short sentences for 1-2 peaks. Must NOT praise the staccato or recommend adding more short punchy lines.",
+      "assertions": [
+        {"text": "Flags athletic / three-word writing as overused or an overdose, not a strength"},
+        {"text": "Prescribes restoring flowing sentences and reserving short lines for 1-2 emotional peaks"},
+        {"text": "Does NOT recommend adding more short / punchy / athletic sentences"}
+      ]
+    },
+    {
+      "id": 1,
+      "name": "journalism-opener",
+      "prompt": "Review the opening of my book. Is this a strong opening, and how would you sharpen it? The file is C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review/evals/inputs/01_journalism-opener.md",
+      "files": ["C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review/evals/inputs/01_journalism-opener.md"],
+      "expected_output": "Identifies the opening as journalism (who/what/where/when), failing the story-not-journalism posture; prescribes leading with the consequence and emotional (non-chronological) sequencing.",
+      "assertions": [
+        {"text": "Identifies the opening as journalism (who/what/where/when) failing the story-not-journalism posture"},
+        {"text": "Prescribes leading with the consequence and/or emotional (non-chronological) sequencing"},
+        {"text": "Treats the flat chronology as the core problem rather than merely praising its clarity"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "working-piece-restraint",
+      "prompt": "Score this book opening for me — is it working, and what would you change? The file is C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review/evals/inputs/02_working-piece.md",
+      "files": ["C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review/evals/inputs/02_working-piece.md"],
+      "expected_output": "Recognises the piece is largely working (high score / pass or near-pass); names specific strengths; does NOT manufacture faults or tell the writer to add more devices.",
+      "assertions": [
+        {"text": "Recognises the piece is largely working (high score, pass or near-pass)"},
+        {"text": "Names specific working elements (focus story / diamond, consequence-led, call-to-mirror, flowing voice)"},
+        {"text": "Does NOT manufacture faults or recommend cramming in more devices"}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "flat-corporate-underdose",
+      "prompt": "Can you review this bit of website copy and help me make it really work? The file is C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review/evals/inputs/03_flat-corporate.md",
+      "files": ["C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review/evals/inputs/03_flat-corporate.md"],
+      "expected_output": "Flags it as describe/persuade marketing-speak failing the postures; prescribes ADDING fire / a statement question / a consequence-led lead and replacing the generic CTA with a call-to-mirror. Correctly treats under-use as the defect.",
+      "assertions": [
+        {"text": "Flags it as describe/persuade marketing-speak failing the postures (no story, no understanding/mirror)"},
+        {"text": "Prescribes ADDING the right devices (fire, statement question, consequence lead) and a call-to-mirror instead of the generic CTA"},
+        {"text": "Correctly treats under-use as the defect here (recommends adding), not over-use"}
+      ]
+    },
+    {
+      "id": 4,
+      "name": "real-toyb-chapter-1",
+      "prompt": "Review chapter 1 of my book 'Thinking Outside Your Brain' against the Dennis Ross 'Lead With Words' methodology — what's working, what's not, and what gets it to a 9? The file is C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review/evals/inputs/04_toyb-ch01.md",
+      "files": ["C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review/evals/inputs/04_toyb-ch01.md"],
+      "expected_output": "A complete Map + posture + device scores against Dennis Ross with line/section evidence; a coherent verdict against the 9/10 book gate with the top 1-3 highest-leverage fixes; located, specific prescriptions.",
+      "assertions": [
+        {"text": "Produces a complete Map plus posture and device scores against Dennis Ross with line/section evidence"},
+        {"text": "Gives a coherent verdict against the 9/10 book gate with the top 1-3 highest-leverage fixes"},
+        {"text": "Prescriptions are located and specific (named sections/lines), not generic advice"}
+      ]
+    }
+  ]
+}

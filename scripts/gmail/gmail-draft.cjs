@@ -10,9 +10,11 @@
 //   "id": "<sourceMsgId>", "threadId": "<threadId>", "to": "name@x.com",
 //   "subject": "Re: ...", "messageIdHeader": "<...@mail.gmail.com>",
 //   "body": "plain text reply"           // inline body, OR
-//   "bodyFile": "path/to/body.txt"       // body from a file
+//   "bodyFile": "path/to/body.txt",      // body from a file
+//   "attachments": [{ "path": "file.pdf", "filename": "Nice Name.pdf" }]  // optional
 // }]
 const fs = require("fs");
+const path = require("path");
 const { getAccessToken, gapi, b64url, getLabelMap, ensureLabel } = require("./_lib.cjs");
 
 const args = process.argv.slice(2);
@@ -26,23 +28,62 @@ async function myEmail(token) {
   return p.emailAddress;
 }
 
-function buildMime({ from, to, subject, messageIdHeader, body }) {
-  const subj = /^re:/i.test(subject || "") ? subject : "Re: " + (subject || "");
+// RFC 2047: non-ASCII header values must be encoded-word wrapped, or clients
+// render mojibake (em-dashes arrive as "â€“" etc.). ASCII passes through.
+function encodeHeader(value) {
+  return /^[\x20-\x7e]*$/.test(value)
+    ? value
+    : `=?UTF-8?B?${Buffer.from(value, "utf8").toString("base64")}?=`;
+}
+
+const MIME_TYPES = { pdf: "application/pdf", epub: "application/epub+zip", png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg", docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document", txt: "text/plain" };
+
+function buildMime({ from, to, cc, subject, messageIdHeader, body, attachments }) {
+  // "Re:" only when this is a threaded reply; a fresh draft (no messageIdHeader) keeps its subject as given.
+  const subj = messageIdHeader && !/^re:/i.test(subject || "") ? "Re: " + (subject || "") : (subject || "");
   const lines = [
     `From: ${from}`,
     `To: ${to}`,
-    `Subject: ${subj}`,
   ];
+  if (cc) lines.push(`Cc: ${cc}`);
+  lines.push(`Subject: ${encodeHeader(subj)}`);
   // Threading headers — make the draft attach as a reply, not a new conversation.
   if (messageIdHeader) {
     lines.push(`In-Reply-To: ${messageIdHeader}`);
     lines.push(`References: ${messageIdHeader}`);
   }
   lines.push("MIME-Version: 1.0");
+
+  if (!attachments || !attachments.length) {
+    lines.push('Content-Type: text/plain; charset="UTF-8"');
+    lines.push("Content-Transfer-Encoding: 8bit");
+    lines.push("");
+    lines.push(body || "");
+    return lines.join("\r\n");
+  }
+
+  const boundary = "----=_aos_" + Math.random().toString(36).slice(2);
+  lines.push(`Content-Type: multipart/mixed; boundary="${boundary}"`);
+  lines.push("");
+  lines.push(`--${boundary}`);
   lines.push('Content-Type: text/plain; charset="UTF-8"');
   lines.push("Content-Transfer-Encoding: 8bit");
   lines.push("");
   lines.push(body || "");
+  for (const att of attachments) {
+    const data = fs.readFileSync(att.path);
+    const name = att.filename || path.basename(att.path);
+    const ext = (name.split(".").pop() || "").toLowerCase();
+    const mime = MIME_TYPES[ext] || "application/octet-stream";
+    const b64 = data.toString("base64").replace(/(.{76})/g, "$1\r\n");
+    lines.push(`--${boundary}`);
+    lines.push(`Content-Type: ${mime}; name="${encodeHeader(name)}"`);
+    lines.push(`Content-Disposition: attachment; filename="${encodeHeader(name)}"`);
+    lines.push("Content-Transfer-Encoding: base64");
+    lines.push("");
+    lines.push(b64);
+  }
+  lines.push(`--${boundary}--`);
   return lines.join("\r\n");
 }
 
@@ -61,11 +102,11 @@ function buildMime({ from, to, subject, messageIdHeader, body }) {
   for (const it of items) {
     const body = it.body != null ? it.body : (it.bodyFile ? fs.readFileSync(it.bodyFile, "utf8") : "");
     if (!it.to || !body.trim()) { errors++; console.error(`  ✗ ${it.id || "?"}: missing 'to' or body`); continue; }
-    const mime = buildMime({ from, to: it.to, subject: it.subject, messageIdHeader: it.messageIdHeader, body });
+    const mime = buildMime({ from, to: it.to, cc: it.cc, subject: it.subject, messageIdHeader: it.messageIdHeader, body, attachments: it.attachments });
 
     if (dryRun) {
-      console.log(`\n----- [dry] draft to ${it.to} (thread ${it.threadId || "new"}) -----`);
-      console.log(mime);
+      console.log(`\n----- [dry] draft to ${it.to} (thread ${it.threadId || "new"}, ${mime.length} bytes) -----`);
+      console.log(mime.length > 4000 ? mime.slice(0, 4000) + "\n…[attachment base64 truncated]" : mime);
       summary.push(`${it.to} (dry)`);
       continue;
     }

@@ -3,17 +3,17 @@
 # requires-python = ">=3.10"
 # dependencies = ["pillow>=10.0.0", "numpy>=1.26.0", "pyyaml>=6.0"]
 # ///
-"""Post-render pixel comparison: ref vs preview, per text-element line count.
+"""Post-render pixel comparison: ref vs preview — line count AND scale/overflow/clip.
 
 The math validator in validate_measurements.py only checks internal consistency
 of declared numbers. If the agent reads the ref wrong and declares
 observed_line_count=4 when the ref shows 5, the formula still balances
 (font, bbox, lh all derived from the same wrong N) and the validator passes.
 
-This script catches that class of error by actually LOOKING at the pixels.
-For every text element with observed_line_count declared in _measurements.yaml,
-it:
+This script catches that class of error by actually LOOKING at the pixels. It runs
+TWO independent per-element reads on the RENDERED preview:
 
+A) LINE-COUNT (needs a ref + observed_line_count):
   1. Crops the bbox region from both ref.png and preview.png
   2. Auto-detects bg polarity (light bg + dark text, or vice versa)
   3. Otsu-thresholds to a text mask
@@ -21,14 +21,30 @@ it:
   5. Clusters contiguous rows above a relative threshold into lines
   6. Compares cluster count to declared observed_line_count
 
-Verdict emitted per element:
+B) SCALE / OVERFLOW / CLIP (r6g — independent of the ref, runs on the PREVIEW alone):
+  the rendered text of a FIXED-dimension box may not (a) clip — overflow its OWN
+  declared bbox, nor (b) bleed — cross the canvas safe margin. We crop an EXPANDED
+  window (bbox + a margin ring) from the preview, threshold to a text mask, and
+  measure how far the text ink reaches past the declared bbox edges and past the
+  canvas edge. This is the r6h leg-3 generalization: it is NOT line-count
+  (a single line that overflows its box reproves), and it runs for ANY text-bearing
+  block — `display` INCLUDED (the old gate skipped `type:display` outright, so a
+  headline overflowing a `.highlight-outlined` box sailed through). The display-height
+  gate (measure_text_heights) checks the headline is big ENOUGH vs the ref; this checks
+  it is not TOO big for its own box — the opposite failure the run-07 highlight-headline
+  "Workflow" overflow exposed.
 
-  OK                  ref_lines == preview_lines == declared_lines
+Verdict emitted per element (the worse of the two reads wins):
+
+  OK                  no line-count mismatch and no overflow/clip
   LINE_COUNT_MISMATCH ref_lines != preview_lines, or either != declared
+  OVERFLOW            preview text ink crosses its own bbox edge (clip) or the canvas
+                      safe margin (bleed) by more than the tolerance
   EMPTY_REGION        no text pixels detected in the bbox (skipped)
 
-Elements with type != "text", or without observed_line_count, or with type
-image-zone / icon / pill / bg-watermark are skipped.
+Elements with a NON-text type (icon / image-zone / pill / bg-watermark) are skipped
+for both reads. A text-bearing block with no observed_line_count still gets the
+overflow read (the line-count read needs the count; the overflow read does not).
 
 Usage:
 
@@ -38,8 +54,10 @@ Usage:
         --measurements brand_context/templates/linkedin-carousel/cover-dark-byline-pill/_measurements.yaml \\
         --output _qa-renders/cover-dark-byline-pill-linecheck.json
 
-If --output is omitted, JSON is printed to stdout. Exit code is non-zero if
-any element verdicts LINE_COUNT_MISMATCH (so CI can gate on it).
+--ref is OPTIONAL: with no ref, the line-count read is skipped and only the
+overflow/clip read runs (it needs only the preview). If --output is omitted, JSON
+is printed to stdout. Exit code is non-zero if any element verdicts
+LINE_COUNT_MISMATCH or OVERFLOW (so CI can gate on it).
 """
 from __future__ import annotations
 
@@ -53,14 +71,49 @@ import yaml
 from PIL import Image
 
 
-# Element types we look at. Text only. Skip icons, pills, image-zones,
-# bg-watermarks, decorative chrome — those don't have a line count.
-TEXT_TYPES = {"text"}
+# Text-bearing element types we scan. The LINE-COUNT read keys on these; the
+# OVERFLOW read scans the same set. `text` is the base; `display` and its weight/
+# size variants are headline zones the OLD gate skipped outright (the run-07
+# highlight-headline "Workflow"-overflows-the-box miss) — r6g generalizes the gate
+# to ALL of them. Non-text types (icon / image-zone / pill / bg-watermark / chrome)
+# are still skipped — they carry no line count and overflow is not meaningful for them.
+TEXT_TYPES = {
+    "text",
+    "display", "display-bold", "display-italic", "display-large", "display-massive",
+    "headline", "kicker", "subtitle", "body", "body-lead", "caption",
+}
+
+# A canonical-prefix check so an unforeseen `display-*` / `headline-*` variant still
+# counts as text-bearing (forward-compatible with new role names in the measurements).
+TEXT_TYPE_PREFIXES = ("display", "headline", "body", "kicker", "caption", "subtitle", "title")
 
 # Minimum bbox area (in canvas %) below which we won't even try — too small
 # to get a reliable projection signal. Kickers and tiny captions are still
 # scanned; this guards against degenerate measurements.
 MIN_BBOX_AREA_PCT = 0.5  # half a square percent of canvas
+
+# --- Overflow / clip tolerances (r6g, item 1a) -------------------------------------------
+# The text ink may reach this far PAST its declared bbox edge before it counts as a CLIP,
+# as a fraction of the bbox's own dimension on that axis. A small slack absorbs antialiasing,
+# the renderer's sub-pixel rounding, and legitimate descender/diacritic bleed; anything
+# beyond it is the box failing to hold the text (the fixed-box-overflow failure).
+OVERFLOW_BBOX_TOL_FRAC = 0.06
+# Absolute floor (canvas %) on the bbox-overflow slack so a TINY bbox isn't tripped by a
+# couple of antialiased pixels (6% of a 3%-tall kicker is sub-pixel — give it a real floor).
+OVERFLOW_BBOX_TOL_MIN_PCT = 0.8
+# The text ink may not come within this safe margin of the CANVAS edge (canvas %). Text that
+# bleeds past it is at risk of being cropped by the feed's safe-area — the off-canvas bleed.
+CANVAS_SAFE_MARGIN_PCT = 1.5
+# The expanded crop window (the "margin ring") around the bbox we sample to SEE the overflow,
+# as a fraction of the bbox dimension. Must be wide enough to capture text that spilled out.
+OVERFLOW_PROBE_RING_FRAC = 0.6
+# A column/row needs at least this fraction of the bbox's peak ink to count as "text reaches
+# here" — rejects stray antialias specks in the margin ring from registering as overflow.
+OVERFLOW_INK_REL_THRESH = 0.12
+# Minimum luminance distance from the window's background tone for a pixel to count as ink in
+# the overflow read. Robust to a clean two-tone synthetic AND a real antialiased render: it
+# keys on contrast-from-bg, not an Otsu split (which collapses on a perfectly bimodal image).
+OVERFLOW_INK_LUMA_DELTA = 40
 
 
 def load_image_normalized(path: Path, target_w: int, target_h: int) -> np.ndarray:
@@ -210,12 +263,155 @@ def count_lines(mask: np.ndarray, min_line_height_px: int = 4,
     return len(filtered), filtered
 
 
-def is_skippable(element: dict) -> tuple[bool, str]:
-    """Decide whether to skip this element. Returns (skip, reason)."""
+def is_text_type(etype: str | None) -> bool:
+    """True when an element type is text-bearing (gets the overflow + line-count reads).
+
+    Matches the explicit TEXT_TYPES set OR any canonical text prefix (display-*, headline-*,
+    body-*, …) so a new role variant in the measurements still counts as text — `display`
+    is INCLUDED (the old `etype not in {"text"}` skip is exactly the r6h leg-3 bug)."""
+    if etype is None:
+        return False
+    e = str(etype).strip().lower()
+    if e in TEXT_TYPES:
+        return True
+    return any(e == p or e.startswith(p + "-") for p in TEXT_TYPE_PREFIXES)
+
+
+def overflow_ink_mask(region: np.ndarray) -> np.ndarray:
+    """Boolean ink mask for the overflow read: pixels whose luminance differs from the window's
+    BACKGROUND tone by more than OVERFLOW_INK_LUMA_DELTA.
+
+    The background tone is the region's MODAL value (most-common grayscale level — the field the
+    text sits on). Keying on contrast-from-bg (not Otsu) is robust to a perfectly bimodal
+    synthetic image (where Otsu's threshold lands exactly on a mode and a strict `<` mask comes
+    back empty) AND to a real antialiased render (ink + halo both clear the delta). Works for
+    light-bg/dark-text and dark-bg/light-text alike — it is the absolute distance that counts."""
+    if region.size == 0:
+        return np.zeros_like(region, dtype=bool)
+    vals, counts = np.unique(region, return_counts=True)
+    bg = int(vals[int(np.argmax(counts))])
+    return np.abs(region.astype(np.int16) - bg) > OVERFLOW_INK_LUMA_DELTA
+
+
+def measure_overflow(preview_gray: np.ndarray, bbox_pct: list,
+                     canvas_w: int, canvas_h: int) -> dict:
+    """Measure how far the rendered text ink in a box reaches past (a) its OWN declared bbox
+    and (b) the canvas safe margin. Runs on the PREVIEW alone — no ref needed.
+
+    Strategy: crop an EXPANDED window (bbox + a margin ring) so ink that spilled OUT of the
+    box is visible, threshold it to a text mask (reusing the same polarity+Otsu primitive as
+    the line-count read), then find the ink's extent on each axis. The overflow on an edge is
+    how far the ink extent crosses the declared bbox edge, expressed in canvas %.
+
+    Returns a dict with per-edge overflow (canvas %), the bbox-tolerance applied, a
+    canvas-bleed flag, and a verdict reason (empty string when within tolerance)."""
+    left_pct, top_pct, w_pct, h_pct = (float(v) for v in bbox_pct)
+    # The margin ring (in canvas %) around the bbox we sample on each side.
+    ring_x = max(1.0, OVERFLOW_PROBE_RING_FRAC * w_pct)
+    ring_y = max(1.0, OVERFLOW_PROBE_RING_FRAC * h_pct)
+    win_left = max(0.0, left_pct - ring_x)
+    win_top = max(0.0, top_pct - ring_y)
+    win_right = min(100.0, left_pct + w_pct + ring_x)
+    win_bottom = min(100.0, top_pct + h_pct + ring_y)
+
+    # Pixel coords of the expanded window.
+    px0 = int(round(win_left / 100.0 * canvas_w))
+    py0 = int(round(win_top / 100.0 * canvas_h))
+    px1 = int(round(win_right / 100.0 * canvas_w))
+    py1 = int(round(win_bottom / 100.0 * canvas_h))
+    region = preview_gray[py0:py1, px0:px1]
+    base = {
+        "left_overflow_pct": 0.0, "right_overflow_pct": 0.0,
+        "top_overflow_pct": 0.0, "bottom_overflow_pct": 0.0,
+        "max_overflow_pct": 0.0, "bbox_tol_pct": 0.0,
+        "canvas_bleed": False, "reason": "",
+    }
+    if region.size == 0:
+        return base
+
+    mask = overflow_ink_mask(region)
+    if not mask.any():
+        return base
+
+    # Ink extent (in window-local pixel coords), thresholding each row/col against the peak so
+    # stray antialias specks in the ring don't count as the text reaching that far.
+    col_sums = mask.sum(axis=0).astype(np.float64)
+    row_sums = mask.sum(axis=1).astype(np.float64)
+    col_thr = col_sums.max() * OVERFLOW_INK_REL_THRESH
+    row_thr = row_sums.max() * OVERFLOW_INK_REL_THRESH
+    cols = np.where(col_sums > col_thr)[0]
+    rows = np.where(row_sums > row_thr)[0]
+    if cols.size == 0 or rows.size == 0:
+        return base
+
+    # Convert the ink extent back to canvas % (window origin + local offset).
+    ink_left = win_left + (cols[0] / max(1, region.shape[1])) * (win_right - win_left)
+    ink_right = win_left + ((cols[-1] + 1) / max(1, region.shape[1])) * (win_right - win_left)
+    ink_top = win_top + (rows[0] / max(1, region.shape[0])) * (win_bottom - win_top)
+    ink_bottom = win_top + ((rows[-1] + 1) / max(1, region.shape[0])) * (win_bottom - win_top)
+
+    # The declared bbox edges (canvas %).
+    box_left, box_top = left_pct, top_pct
+    box_right, box_bottom = left_pct + w_pct, top_pct + h_pct
+
+    # Per-edge overflow past the OWN bbox (positive = ink crossed the edge outward).
+    left_of = max(0.0, box_left - ink_left)
+    right_of = max(0.0, ink_right - box_right)
+    top_of = max(0.0, box_top - ink_top)
+    bottom_of = max(0.0, ink_bottom - box_bottom)
+
+    # Tolerance: a slack proportional to the bbox dimension, never below an absolute floor.
+    tol_x = max(OVERFLOW_BBOX_TOL_MIN_PCT, OVERFLOW_BBOX_TOL_FRAC * w_pct)
+    tol_y = max(OVERFLOW_BBOX_TOL_MIN_PCT, OVERFLOW_BBOX_TOL_FRAC * h_pct)
+
+    # A clip is an overflow past the bbox beyond tolerance on the matching axis.
+    clip_edges = []
+    if left_of > tol_x:
+        clip_edges.append(("left", left_of))
+    if right_of > tol_x:
+        clip_edges.append(("right", right_of))
+    if top_of > tol_y:
+        clip_edges.append(("top", top_of))
+    if bottom_of > tol_y:
+        clip_edges.append(("bottom", bottom_of))
+
+    # A canvas bleed is ink within the safe margin of any canvas edge.
+    canvas_bleed = (ink_left < CANVAS_SAFE_MARGIN_PCT
+                    or ink_right > 100.0 - CANVAS_SAFE_MARGIN_PCT
+                    or ink_top < CANVAS_SAFE_MARGIN_PCT
+                    or ink_bottom > 100.0 - CANVAS_SAFE_MARGIN_PCT)
+
+    max_of = max(left_of, right_of, top_of, bottom_of)
+    reasons = []
+    if clip_edges:
+        worst = max(clip_edges, key=lambda e: e[1])
+        reasons.append(
+            f"text clips its own bbox on the {worst[0]} edge by {worst[1]:.1f}% of canvas "
+            f"(tol {(tol_x if worst[0] in ('left', 'right') else tol_y):.1f}%) — the box does "
+            f"not hold the rendered text")
+    if canvas_bleed:
+        reasons.append(
+            f"text bleeds within the {CANVAS_SAFE_MARGIN_PCT:.1f}% canvas safe margin — at risk "
+            f"of being cropped by the feed safe-area")
+
+    return {
+        "left_overflow_pct": round(left_of, 3), "right_overflow_pct": round(right_of, 3),
+        "top_overflow_pct": round(top_of, 3), "bottom_overflow_pct": round(bottom_of, 3),
+        "max_overflow_pct": round(max_of, 3), "bbox_tol_pct": round(max(tol_x, tol_y), 3),
+        "canvas_bleed": canvas_bleed, "reason": "; ".join(reasons),
+    }
+
+
+def is_skippable(element: dict, *, require_line_count: bool = True) -> tuple[bool, str]:
+    """Decide whether to skip this element. Returns (skip, reason).
+
+    require_line_count gates the LINE-COUNT read (which needs observed_line_count). The
+    OVERFLOW read calls this with require_line_count=False — a text block with no declared
+    line count is still scanned for overflow."""
     etype = element.get("type")
-    if etype not in TEXT_TYPES:
+    if not is_text_type(etype):
         return True, f"type={etype} not a text element"
-    if element.get("observed_line_count") is None:
+    if require_line_count and element.get("observed_line_count") is None:
         return True, "no observed_line_count declared"
     bbox = element.get("bbox_pct")
     if not isinstance(bbox, list) or len(bbox) != 4:
@@ -225,37 +421,51 @@ def is_skippable(element: dict) -> tuple[bool, str]:
     return False, ""
 
 
-def analyze_element(element: dict, ref_gray: np.ndarray, preview_gray: np.ndarray,
+def analyze_element(element: dict, ref_gray: np.ndarray | None, preview_gray: np.ndarray,
                     canvas_w: int, canvas_h: int) -> dict:
-    """Run the line-count comparison for one element. Returns a result dict."""
+    """Run BOTH reads for one element: line-count (when a ref + observed_line_count exist) and
+    the ref-independent overflow/clip read (always, on the preview). The result's verdict is
+    the worse of the two. Returns a result dict."""
     eid = element.get("id", "<unnamed>")
     bbox = element["bbox_pct"]
-    declared = int(element["observed_line_count"])
 
-    ref_region = crop_bbox(ref_gray, bbox, canvas_w, canvas_h)
+    # --- read B: overflow/clip (preview alone, no ref, no line count needed) ---
+    overflow = measure_overflow(preview_gray, bbox, canvas_w, canvas_h)
+    overflowed = bool(overflow["reason"])
+
+    # --- read A: line-count (only when a ref AND a declared line count are available) ---
+    declared = element.get("observed_line_count")
+    line_verdict = None
+    ref_lines = prev_lines = None
+    ref_runs = prev_runs = []
+    ref_total = prev_total = None
+    ref_bg_light = prev_bg_light = None
     prev_region = crop_bbox(preview_gray, bbox, canvas_w, canvas_h)
-
-    ref_mask, ref_bg_light = text_mask(ref_region)
     prev_mask, prev_bg_light = text_mask(prev_region)
-
-    ref_lines, ref_runs = count_lines(ref_mask)
     prev_lines, prev_runs = count_lines(prev_mask)
-
-    # Empty-region guard: if both regions have zero active pixels above
-    # threshold, the bbox might be wrong or the element is invisible — emit
-    # a soft verdict rather than asserting mismatch.
-    ref_total = int(ref_mask.sum())
     prev_total = int(prev_mask.sum())
-    if ref_total == 0 and prev_total == 0:
+    if ref_gray is not None and declared is not None:
+        declared = int(declared)
+        ref_region = crop_bbox(ref_gray, bbox, canvas_w, canvas_h)
+        ref_mask, ref_bg_light = text_mask(ref_region)
+        ref_lines, ref_runs = count_lines(ref_mask)
+        ref_total = int(ref_mask.sum())
+        if ref_total == 0 and prev_total == 0:
+            line_verdict = "EMPTY_REGION"
+        elif ref_lines == declared and prev_lines == declared:
+            line_verdict = "OK"
+        else:
+            line_verdict = "LINE_COUNT_MISMATCH"
+
+    # Verdict precedence: a hard mismatch on either read wins; else OK / EMPTY_REGION.
+    if line_verdict == "LINE_COUNT_MISMATCH":
+        verdict = "LINE_COUNT_MISMATCH"
+    elif overflowed:
+        verdict = "OVERFLOW"
+    elif line_verdict == "EMPTY_REGION":
         verdict = "EMPTY_REGION"
-    elif ref_lines == declared and prev_lines == declared:
-        verdict = "OK"
-    elif ref_lines == prev_lines and ref_lines != declared:
-        # Both renders agree but contradict the declared count — likely
-        # the agent misread the ref. Still a mismatch.
-        verdict = "LINE_COUNT_MISMATCH"
     else:
-        verdict = "LINE_COUNT_MISMATCH"
+        verdict = "OK"
 
     return {
         "id": eid,
@@ -271,48 +481,60 @@ def analyze_element(element: dict, ref_gray: np.ndarray, preview_gray: np.ndarra
         "preview_bg_is_light": prev_bg_light,
         "ref_line_bands_rows": ref_runs,
         "preview_line_bands_rows": prev_runs,
+        "overflow": overflow,
         "verdict": verdict,
     }
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="Pixel-diff line-count check between ref and preview.")
-    ap.add_argument("--ref", required=True, type=Path, help="Reference image path")
+    ap = argparse.ArgumentParser(
+        description="Post-render check: line-count (vs ref) AND scale/overflow/clip (preview).")
+    ap.add_argument("--ref", type=Path, default=None,
+                    help="Reference image path. OPTIONAL — omit to run the overflow/clip read "
+                         "alone (the line-count read needs a ref).")
     ap.add_argument("--preview", required=True, type=Path, help="Rendered preview image path")
     ap.add_argument("--measurements", required=True, type=Path, help="Path to _measurements.yaml")
     ap.add_argument("--output", type=Path, default=None,
                     help="Output JSON path. If omitted, prints to stdout.")
     ap.add_argument("--strict-exit", action="store_true",
-                    help="Exit 1 if any element has LINE_COUNT_MISMATCH (default behavior).")
+                    help="Exit 1 if any element MISMATCHES or OVERFLOWS (default behavior).")
     ap.add_argument("--no-strict-exit", dest="strict_exit", action="store_false",
                     help="Always exit 0 even on mismatch (for inspection runs).")
     ap.set_defaults(strict_exit=True)
     args = ap.parse_args()
 
-    for p in (args.ref, args.preview, args.measurements):
+    for p in (args.preview, args.measurements):
         if not p.exists():
             print(f"Error: input not found: {p}", file=sys.stderr)
             return 2
+    if args.ref is not None and not args.ref.exists():
+        print(f"Error: --ref given but not found: {args.ref}", file=sys.stderr)
+        return 2
 
     with args.measurements.open("r", encoding="utf-8") as f:
         meas = yaml.safe_load(f)
 
     canvas_w, canvas_h = parse_canvas(meas)
-    ref_gray = load_image_normalized(args.ref, canvas_w, canvas_h)
+    ref_gray = load_image_normalized(args.ref, canvas_w, canvas_h) if args.ref else None
     preview_gray = load_image_normalized(args.preview, canvas_w, canvas_h)
 
     results: list[dict] = []
     skipped: list[dict] = []
     for element in meas.get("elements", []):
-        skip, reason = is_skippable(element)
+        # Scan every TEXT-bearing block (require_line_count=False): the overflow read runs even
+        # with no line count; the line-count read inside analyze_element no-ops when its inputs
+        # (ref + observed_line_count) are absent.
+        skip, reason = is_skippable(element, require_line_count=False)
         if skip:
             skipped.append({"id": element.get("id"), "type": element.get("type"), "reason": reason})
             continue
         results.append(analyze_element(element, ref_gray, preview_gray, canvas_w, canvas_h))
 
     mismatches = [r for r in results if r["verdict"] == "LINE_COUNT_MISMATCH"]
+    overflows = [r for r in results if r["verdict"] == "OVERFLOW"]
+    failures = mismatches + overflows
     payload = {
-        "ref": str(args.ref),
+        "ref": str(args.ref) if args.ref else None,
         "preview": str(args.preview),
         "measurements": str(args.measurements),
         "canvas": {"width": canvas_w, "height": canvas_h},
@@ -323,6 +545,8 @@ def main() -> int:
             "elements_skipped": len(skipped),
             "mismatches": len(mismatches),
             "mismatch_ids": [m["id"] for m in mismatches],
+            "overflows": len(overflows),
+            "overflow_ids": [o["id"] for o in overflows],
         },
     }
 
@@ -334,11 +558,15 @@ def main() -> int:
         args.output.write_text(text, encoding="utf-8")
         print(f"Wrote: {args.output}", file=sys.stderr)
         # Also print a short summary to stdout for human eyeballs
-        print(f"scanned={len(results)} skipped={len(skipped)} mismatches={len(mismatches)}")
+        print(f"scanned={len(results)} skipped={len(skipped)} "
+              f"mismatches={len(mismatches)} overflows={len(overflows)}")
         for m in mismatches:
-            print(f"  LINE_COUNT_MISMATCH [{m['id']}] declared={m['declared_lines']} ref={m['ref_lines']} preview={m['preview_lines']}")
+            print(f"  LINE_COUNT_MISMATCH [{m['id']}] declared={m['declared_lines']} "
+                  f"ref={m['ref_lines']} preview={m['preview_lines']}")
+        for o in overflows:
+            print(f"  OVERFLOW [{o['id']}] {o['overflow']['reason']}")
 
-    if mismatches and args.strict_exit:
+    if failures and args.strict_exit:
         return 1
     return 0
 

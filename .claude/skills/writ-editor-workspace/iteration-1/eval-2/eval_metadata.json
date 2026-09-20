@@ -1,0 +1,19 @@
+{
+  "eval_id": 2,
+  "eval_name": "well-structured-restraint",
+  "prompt": "Three chapters of my book here \u2014 I think the structure is roughly right but I want a managing-editor read to be sure. Does the book hold together? C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-editor/evals/inputs/02_well-structured.md",
+  "assertions": [
+    {
+      "text": "Recognises the manuscript largely holds together (high dimension scores / holds-together or near-pass verdict)"
+    },
+    {
+      "text": "Names the clear spine and the building/escalating arc (\u00a375 -> burnout -> under the ice) as working"
+    },
+    {
+      "text": "Correctly reads the repeated 'the door tends to open' / 'walk toward the thing' as a deliberate callback to keep, NOT an unwitting repeat"
+    },
+    {
+      "text": "Does NOT manufacture structural faults \u2014 no gratuitous reorder and no repetition flag on the intentional motif or the escalating chapters"
+    }
+  ]
+}

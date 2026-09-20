@@ -43,3 +43,9 @@ adapts to whether narration is present ("build for either").
 - Keep the reel tight — default `assembly` target is the highlight target (30s). A racing day of 10
   clips becomes a 30s sizzle, not a 3-minute edit.
 - If total selected content is shorter than the target, use everything; don't pad.
+
+## Hard-won additions (2026-08-23, Jen-50th run)
+- **Landscape stills:** never cover-crop a landscape photo into 9:16 — pre-render a blur-fill Ken-Burns clip (full photo at width, gblur'd cover behind) and feed it to the plan as a video item. Cover-crop butchered a rainbow + group selfies and the user flagged it.
+- **Audio joins:** assemble_reel.py concatenation produces HARD audio cuts between segments. After assembly, rebuild the audio track: per-part afade in (~0.35s) / out (~0.5s) at exact timeline offsets via adelay+amix (video stream untouched → sync preserved), with the music bed sidechain-ducked underneath so it swells into every join. See `projects/00-video-studio/runs/2026-08-21_jenn-50th/work/smooth_audio.py` for the working script.
+- **Personal/family jobs:** skip the ATP brand overlay + Night Sky end card entirely — neutral typography cards (Montserrat via ass fontsdir) instead. Brand overlay is for personal-brand/business content only.
+- **Before locking a cut:** frame-strip the UNUSED portions of long clips — the best moment of the Jen-50th job was in an unused clip tail.

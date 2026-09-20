@@ -11,8 +11,8 @@ $CronUiPath = Join-Path $PSScriptRoot "lib\cron-ui.ps1"
 
 Write-AgenticOsCronBanner `
     -Heading "Showing cron daemon logs" `
-    -Subheading "Press Ctrl+C to stop following the live stream."
-Write-AgenticOsCronInfo "Streaming the daemon output..."
+    -Subheading "Prints the most recent log lines (no live follow)."
+Write-AgenticOsCronInfo "Reading the daemon log..."
 
 node $ScriptPath logs @Arguments
 $ExitCode = $LASTEXITCODE

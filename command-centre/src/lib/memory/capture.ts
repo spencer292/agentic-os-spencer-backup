@@ -48,7 +48,7 @@ export interface LastTurn {
 }
 
 /** Concatenate the text blocks of a transcript message `content` (string or blocks). */
-function extractText(content: unknown): string {
+export function extractText(content: unknown): string {
   if (typeof content === "string") return content.trim();
   if (!Array.isArray(content)) return "";
   const parts: string[] = [];
@@ -62,14 +62,34 @@ function extractText(content: unknown): string {
 }
 
 /** The role of a transcript entry, tolerating both `{role}` and `{type}` shapes. */
-function roleOf(entry: Record<string, unknown>): string | null {
+export function roleOf(entry: Record<string, unknown>): string | null {
   const msg = (entry.message ?? entry) as Record<string, unknown>;
   const role = msg.role ?? entry.type;
   return typeof role === "string" ? role : null;
 }
 
-function messageOf(entry: Record<string, unknown>): Record<string, unknown> {
+export function messageOf(entry: Record<string, unknown>): Record<string, unknown> {
   return (entry.message ?? entry) as Record<string, unknown>;
+}
+
+/**
+ * Tolerantly parse a JSONL transcript blob into entries, skipping any line that
+ * isn't valid JSON (e.g. a partial write mid-append). Never throws. Shared by
+ * {@link extractLastTurn} and the transcript-window module.
+ */
+export function parseTranscriptEntries(raw: string): Record<string, unknown>[] {
+  const entries: Record<string, unknown>[] = [];
+  for (const line of raw.split("\n")) {
+    const trimmed = line.trim();
+    if (!trimmed) continue;
+    try {
+      const parsed = JSON.parse(trimmed);
+      if (parsed && typeof parsed === "object") entries.push(parsed as Record<string, unknown>);
+    } catch {
+      /* ignore non-JSON lines (e.g. partial writes) */
+    }
+  }
+  return entries;
 }
 
 function bound(text: string): string {
@@ -99,17 +119,7 @@ export function extractLastTurn(transcriptPath: string): LastTurn | null {
     return null;
   }
 
-  const entries: Record<string, unknown>[] = [];
-  for (const line of raw.split("\n")) {
-    const trimmed = line.trim();
-    if (!trimmed) continue;
-    try {
-      const parsed = JSON.parse(trimmed);
-      if (parsed && typeof parsed === "object") entries.push(parsed as Record<string, unknown>);
-    } catch {
-      /* ignore non-JSON lines (e.g. partial writes) */
-    }
-  }
+  const entries = parseTranscriptEntries(raw);
 
   let assistantIdx = -1;
   let assistantMessage = "";
@@ -664,6 +674,12 @@ function readState(stateFile: string): CaptureState | null {
   return null;
 }
 
+function scopeStateSuffix(scope: Scope): string {
+  if (scope.visibility === "system") return "";
+  const id = scope.clientId ?? scope.teamId ?? scope.userId ?? "scope";
+  return `.${`${scope.visibility}-${id}`.replace(/[^A-Za-z0-9._-]/g, "_")}`;
+}
+
 /**
  * Run the incremental indexer, debounced and serialized.
  *
@@ -681,7 +697,7 @@ export async function refreshIndex(opts: RefreshIndexOptions): Promise<RefreshIn
   const staleLockMs = opts.staleLockMs ?? 120_000;
   const reason: IndexJobReason = opts.reason ?? "refresh";
   const stateDir = opts.stateDir ?? path.join(opts.rootDir, ".command-centre", "memory");
-  const stateFile = path.join(stateDir, "capture-state.json");
+  const stateFile = path.join(stateDir, `capture-state${scopeStateSuffix(opts.scope)}.json`);
   const lockDir = path.join(stateDir, ".capture.lock");
 
   fs.mkdirSync(stateDir, { recursive: true });

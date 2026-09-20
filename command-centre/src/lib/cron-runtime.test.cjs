@@ -807,3 +807,100 @@ test("executeCronTask finalizes missing cron definitions through the shared fail
     cleanupTempWorkspace(workspaceDir);
   }
 });
+
+// --- AIOS-314: day-of-week filter coverage for the live-tick dispatch gate ---
+// Dates use the LOCAL constructor new Date(year, monthIndex, day, h, m) on
+// purpose — a UTC `Z` ISO string can shift the weekday and flake the assertions.
+// 2026-06-29 is a Monday (local); 2026-06-30 is a Tuesday; 2026-07-01 Wednesday;
+// 2026-07-04 Saturday; 2026-07-05 Sunday.
+const MON_0745 = new Date(2026, 5, 29, 7, 45);
+const MON_0746 = new Date(2026, 5, 29, 7, 46);
+const TUE_0745 = new Date(2026, 5, 30, 7, 45);
+const WED_0745 = new Date(2026, 6, 1, 7, 45);
+const SAT_0745 = new Date(2026, 6, 4, 7, 45);
+const SUN_0745 = new Date(2026, 6, 5, 7, 45);
+
+test("matchesDays: single weekday token matches only that day", () => {
+  assert.equal(cronRuntime.matchesDays(MON_0745, "mon"), true);
+  assert.equal(cronRuntime.matchesDays(TUE_0745, "mon"), false);
+  assert.equal(cronRuntime.matchesDays(WED_0745, "mon"), false);
+  assert.equal(cronRuntime.matchesDays(SAT_0745, "mon"), false);
+  assert.equal(cronRuntime.matchesDays(SUN_0745, "mon"), false);
+});
+
+test("matchesDays: daily is always true", () => {
+  assert.equal(cronRuntime.matchesDays(MON_0745, "daily"), true);
+  assert.equal(cronRuntime.matchesDays(SAT_0745, "daily"), true);
+  assert.equal(cronRuntime.matchesDays(SUN_0745, "daily"), true);
+});
+
+test("matchesDays: weekdays true Mon-Fri, false on weekend", () => {
+  assert.equal(cronRuntime.matchesDays(MON_0745, "weekdays"), true);
+  assert.equal(cronRuntime.matchesDays(WED_0745, "weekdays"), true);
+  assert.equal(cronRuntime.matchesDays(SAT_0745, "weekdays"), false);
+  assert.equal(cronRuntime.matchesDays(SUN_0745, "weekdays"), false);
+});
+
+test("matchesDays: weekends is the inverse of weekdays", () => {
+  assert.equal(cronRuntime.matchesDays(SAT_0745, "weekends"), true);
+  assert.equal(cronRuntime.matchesDays(SUN_0745, "weekends"), true);
+  assert.equal(cronRuntime.matchesDays(MON_0745, "weekends"), false);
+  assert.equal(cronRuntime.matchesDays(WED_0745, "weekends"), false);
+});
+
+test("matchesDays: comma list matches any listed token", () => {
+  assert.equal(cronRuntime.matchesDays(MON_0745, "mon,wed"), true);
+  assert.equal(cronRuntime.matchesDays(WED_0745, "mon,wed"), true);
+  assert.equal(cronRuntime.matchesDays(TUE_0745, "mon,wed"), false);
+});
+
+test("shouldDispatchNow: requires BOTH time and day to match", () => {
+  const weeklyJob = { time: "07:45", days: "mon" };
+  // Reporter's scenario: weekly job must NOT fire on a non-matching day.
+  assert.equal(cronRuntime.shouldDispatchNow(TUE_0745, weeklyJob), false);
+  // Right day + right time → fire.
+  assert.equal(cronRuntime.shouldDispatchNow(MON_0745, weeklyJob), true);
+  // Right day, wrong minute → time still gates.
+  assert.equal(cronRuntime.shouldDispatchNow(MON_0746, weeklyJob), false);
+  // daily job is unaffected — still fires on any day at the matching time.
+  const dailyJob = { time: "07:45", days: "daily" };
+  assert.equal(cronRuntime.shouldDispatchNow(MON_0745, dailyJob), true);
+  assert.equal(cronRuntime.shouldDispatchNow(SAT_0745, dailyJob), true);
+});
+
+// Regression: on 2026-08-23 buildCronExecutionPrompt returned the bare job prompt
+// whenever workspace.clientId was absent, so ROOT-workspace jobs received no
+// standing instructions at all. backup-coverage therefore had nothing telling it
+// to keep a long sync in the foreground; it backgrounded rclone, ended its turn,
+// killed the transfer at 21%, and logged SUCCESS while the Drive backup sat dead
+// for four days. A missing preamble throws no error and changes no visible output,
+// so only an explicit assertion keeps it from regressing.
+test("buildCronExecutionPrompt includes unattended rules for ROOT workspaces", () => {
+  const prompt = cronRuntime.buildCronExecutionPrompt(
+    { prompt: "Run the weekly coverage check." },
+    { label: "Agentic OS", workspaceDir: "/repo", clientId: null }
+  );
+
+  assert.ok(
+    prompt.includes(cronRuntime.UNATTENDED_EXECUTION_RULES),
+    "root-workspace jobs must inherit the unattended execution rules"
+  );
+  assert.ok(prompt.includes("Run the weekly coverage check."), "base prompt must survive");
+  assert.ok(/FOREGROUND/.test(prompt), "must forbid backgrounding long work");
+  assert.ok(/verify the WORK LANDED/i.test(prompt), "must require verifying success");
+});
+
+test("buildCronExecutionPrompt includes unattended rules for CLIENT workspaces", () => {
+  const prompt = cronRuntime.buildCronExecutionPrompt(
+    { prompt: "Audit the lane." },
+    { label: "BOS-UP", workspaceDir: "/repo/clients/bos-up", clientId: "bos-up" }
+  );
+
+  assert.ok(
+    prompt.includes(cronRuntime.UNATTENDED_EXECUTION_RULES),
+    "client-workspace jobs must inherit the unattended execution rules"
+  );
+  // The pre-existing workspace-isolation guidance must not be displaced by the new rules.
+  assert.ok(prompt.includes("Stay inside this workspace for all reads and writes."));
+  assert.ok(prompt.includes("Audit the lane."), "base prompt must survive");
+});

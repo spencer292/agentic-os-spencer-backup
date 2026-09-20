@@ -22,7 +22,7 @@ Typographic posters, brand assets with text, motivational quotes, social media g
 **Evidence from shootout:**
 - GPT rendered text with 95%+ accuracy even for multi-word headlines and body copy
 - GPT understood typographic hierarchy — naturally sizes, weights, and spaces text elements correctly
-- Gemini: 60-70% text accuracy on longer strings, often misspells words or merges characters, poor hierarchy decisions
+- Gemini 3 Pro Image (2026): ~70-85% accuracy on shorter strings — improved from the earlier ~60-70%; GPT still leads on hierarchy and dense (20+ label) compositions
 - For ANY image where text legibility is critical: GPT is the only viable choice
 
 ## Example Breakdown
@@ -46,7 +46,7 @@ Key Details: "BUILD THINGS THAT MATTER" must be rendered EXACTLY with no misspel
 
 ## Known Pitfalls
 
-- NEVER use Gemini for text-primary images — accuracy is unacceptable for anything requiring legibility
+- For dense infographics with 20+ labels, GPT Image remains the preferred choice. The absolute "NEVER use Gemini" no longer applies to Gemini 3 Pro Image (~70-85% on shorter strings, 2026), but GPT is still recommended for text-critical dense compositions
 - For GPT: spell out difficult words letter-by-letter in the prompt for unusual/brand names
 - Always use "Include ONLY this text (verbatim): 'X'" format to prevent GPT from adding extra text
 - Specify "all caps" or "lowercase" explicitly — models will make random capitalization choices

@@ -28,10 +28,12 @@ first-class column on every memory row, with tests that prove no cross-tenant le
 
 - The local **PGLite + pgvector** store runs this DDL and persists it on disk.
 - The **indexer** normalizes files → chunks → embeddings → scoped rows.
-- **Search** runs hybrid retrieval: BGE-M3 vector search plus scoped keyword search, filtered by team / client / visibility / user.
+- **Search** runs hybrid retrieval: BGE-M3 vector search plus scoped keyword search via Postgres full-text search (a generated `tsvector` column + GIN index, ranked with `ts_rank_cd`, `'simple'` config to stay multilingual-safe), fused with RRF and filtered by team / client / visibility / user.
 - **No-leak tests** prove one client never sees another's memory, one team never another's, and so on.
 - **Recall** uses this store only. Legacy `MEMORY_BACKEND=memsearch` now exits with migration guidance instead of running an unscoped backend.
-- Session-capture and refresh hooks keep the index current as files change.
+- Local session-capture and refresh hooks keep the index current as files change.
+  TeamOS session capture first writes staging rows and only enters recall after
+  consolidation.
 
 ---
 
@@ -60,14 +62,16 @@ team⇒`team_id`. `system` is the shipped/baseline layer.
   it. Making it nullable turns `team ⇒ team_id IS NOT NULL` into a *real* enforced rule
   rather than a trivially-true one, and keeps the CHECK faithful to the acceptance
   criteria.
-- **`user_id` is a new concept.** Agentic OS is single-user locally today (`USER.md` is
-  profile metadata, not an identity). `user_id` is forward-looking for hosted multi-user;
-  local installs leave it `NULL` and use `client`/`system` visibility.
+- **`user_id` is access scope, not authorship.** Private memory requires
+  `user_id`; shared team/client memories normally leave it `NULL`. Authorship for
+  final sources is stored separately in `memory_sources.created_by_user_id`.
 
 ### Local mapping (consequence of the decisions above)
 
-- Root workspace general memory → `visibility = 'system'`, all scope columns `NULL`
-  (a per-tenant baseline visible to every local search).
+- Root Stop-hook capture in local AgenticOS → `visibility = 'private'` with a
+  stable local user id stored in `.command-centre/local-memory-user.json`.
+- Root baseline/admin imports can still use `visibility = 'system'`, all scope
+  columns `NULL`, but this is no longer the default Stop-hook capture path.
 - Client memory (`clients/{slug}/`) → `visibility = 'client'`, `client_id = {slug}`,
   `team_id = NULL`.
 
@@ -94,6 +98,10 @@ One row per normalized source document (a file, a captured session). Carries the
 scope columns plus the provenance metadata the reranker needs (`source_path`,
 `source_type`, `content_date`, `authority_weight`) and `content_sha256` for change
 detection on re-index.
+
+`created_by_user_id` records the user who caused a final source to be created
+when that is known. Do not use `user_id` as author: `user_id` is still the
+private-read scope and is intentionally `NULL` for shared team/client memory.
 
 ### `memory_chunks`
 
@@ -122,10 +130,47 @@ Telemetry/audit for every scoped search, and the artifact the no-leak tests
 can assert against. `query_text` and `query_embedding` are nullable for
 privacy (see Open risks).
 
+### `memory_capture_events`
+
+Raw TeamOS capture staging. These rows store summarized session blocks with
+`team_id`, optional `client_id`, `actor_user_id`, `session_id`, `source_hash`,
+`status`, `sync_status`, and metadata. They are not joined into search and must
+not be returned by recall. Active members can create team staging rows; client
+staging still requires write access. Offline client queues use
+`sync_status = 'local_pending'` until the server accepts them.
+
+Each new capture defers pending captures from the same session so the batch is
+eligible only after a quiet period, unless the volume threshold is reached.
+Processed/review/failed raw content is redacted after 30 days. Minimal metadata
+remains for audit and deduplication.
+
+### `memory_consolidation_batches`
+
+A claim ledger for consolidation. The server groups eligible pending captures
+into a batch and issues a claim token. In v1, an online client performs the
+LLM-based consolidation; a server worker can claim the same table later without
+schema changes. Expired claims are released before the next claim so captures do
+not stay stuck in `claimed`.
+
+### `memory_source_provenance`
+
+Links final `memory_sources` rows to the capture events that produced them.
+This lets the UI/audit layer explain that a durable team memory came from one
+or more users/sessions while normal recall only sees the final curated source.
+
 ### `schema_migrations`
 
 The migration ledger (created by `migrate.ts`), recording `version`, `name`,
 `applied_at`, and the `embed_dim` the DB was built with.
+
+> **Future migration/reset contract (0024 and later):** `memory-reset` is
+> deliberately fail-closed. Its canonical repair migration must always be the
+> final migration. After adding any migration, add a new final and idempotent
+> repair migration after it, include the complete definition of every
+> rebuildable memory index table, update `MEMORY_REPAIR_VERSION` and
+> `MEMORY_REPAIR_NAME`, and update the catalog snapshots, schema validation, and
+> reset tests. Do not only bump the constant. The reset will not automatically
+> replay migrations that come after its canonical repair migration.
 
 ---
 
@@ -323,15 +368,16 @@ stores, two conventions, each idiomatic to its engine — intentional.
 
 - **The store** imports `applyMigrations` to bootstrap, supplies the PGLite `SqlClient`,
   and implements insert/search against the live schema.
-- **The indexer** inserts into `memory_sources`/`memory_chunks` with explicit scope and
-  enqueues `index_jobs`; populates `authority_weight`/`content_date` from
-  `memory-config.json` and the filename.
+- **The indexer** inserts final/curated content into `memory_sources`/`memory_chunks`
+  with explicit scope and enqueues `index_jobs`; populates
+  `authority_weight`/`content_date` from `memory-config.json` and the filename.
 - **The search** uses `buildScopeWhere` + the canonical query + the reranker, and writes
-  `search_events`.
+  `search_events`. It never reads `memory_capture_events`.
 - **The no-leak tests** import `scope.ts` and assert the invariants and the leak boundary
   against seeded data.
-- **Session capture** writes sources and enqueues `index_jobs` with
-  `reason = 'session_capture'`.
+- **Session capture** writes local private sources in solo AgenticOS. In TeamOS it
+  writes `memory_capture_events`; consolidation later publishes selected durable
+  memories as `memory_sources`.
 
 ---
 
@@ -354,10 +400,17 @@ Capture now mirrors the useful part of Memsearch's behavior:
   If summarization fails or times out, capture writes a bounded fallback summary instead
   of dropping the turn.
 
-`context/memory/*.aos.md` is indexed like other memory files, but is machine-owned and
-not loaded directly into SessionStart context. It is tracked for private GitHub backups
-because it is the durable source used to rebuild chunks and embeddings after a model or
-pipeline change.
+In local AgenticOS, `context/memory/*.aos.md` is indexed like other memory files,
+using the stable local private user id. In TeamOS, the `.aos.md` block is sent to
+`memory_capture_events` first and does not enter recall until consolidation
+publishes a final team/client source. The `.aos.md` file remains tracked for
+private backup/replay.
+
+The local file watcher and prior-session importer use that same private identity
+when no scope flags are supplied. Hosted Postgres never guesses an ingest scope:
+both commands require explicit `--visibility`, and shared session imports retain
+the additional `--allow-shared` confirmation. Existing `system` rows are left
+unchanged; these defaults affect only new ingestion.
 
 ---
 
@@ -409,17 +462,19 @@ download during setup. `HashEmbedder` remains available only as an explicit offl
 mode. There is no automatic fallback from BGE-M3 to hash, because mixed vectors make
 semantic recall unreliable.
 
-**Scope (explicit at index time).** The CLI refuses to run without `--visibility`. Root
-sources default to `system` (no synthetic ids; always returned by local search). Any
-source under `clients/{slug}/` is re-scoped to that client (`visibility = 'client'`,
-`client_id = slug`) regardless of the base scope, so a run never leaks a client's memory
-into the system scope.
+**Scope at index time.** The low-level `memory:index` command requires
+`--visibility`. The rebuild command is backend-aware: local PGLite defaults to
+the stable private user, while hosted Postgres requires an explicit visibility.
+Any source under `clients/{slug}/` is re-scoped to that client
+(`visibility = 'client'`, `client_id = slug`) regardless of the base scope, so a
+run never leaks a client's memory into the system scope.
 
 ```bash
-npm run memory:index -- --visibility system          # index the local workspace
+npm run memory:reindex -- --allow-local               # normal local private rebuild
+npm run memory:index -- --visibility system           # explicit admin baseline
 npm run memory:index -- --visibility system --dry-run # discovery + chunk counts only
 npm run memory:index -- --visibility client --client acme
-MEMORY_EMBEDDER=bge-m3 npm run memory:index -- --visibility system # explicit default
+MEMORY_EMBEDDER=bge-m3 npm run memory:reindex -- --allow-local
 ```
 
 Tests: `command-centre/src/lib/memory/indexer.test.cjs` (offline; injects `HashEmbedder`),

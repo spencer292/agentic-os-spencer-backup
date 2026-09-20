@@ -7,7 +7,7 @@ description: >
   the user mentions metrics displays, data tables, control panels, monitoring UIs, or analytics views — even if
   they don't say "dashboard" explicitly. This is for functional product interfaces, NOT marketing pages, landing
   pages, or static content sites. NOT for diagrams (use viz-excalidraw-diagram), NOT for static mockups in Stitch
-  (use viz-stitch-design), NOT for image generation (use viz-nano-banana).
+  (use viz-stitch-design), NOT for image generation (use viz-image-gen).
 ---
 
 # Interface Design

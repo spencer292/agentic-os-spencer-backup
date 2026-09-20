@@ -8,8 +8,8 @@ Skill selector with two modes:
    → Checkbox UI: arrow keys to navigate, Space to toggle, Enter to confirm
 
 2. CLI mode (for Claude Code or scripts — non-interactive):
-   python3 scripts/select-skills.py --remove "viz-nano-banana,viz-ugc-heygen,ops-cron"   # macOS/Linux
-   py -3 scripts/select-skills.py --remove "viz-nano-banana,viz-ugc-heygen,ops-cron"     # Windows
+   python3 scripts/select-skills.py --remove "viz-image-gen,viz-ugc-heygen,ops-cron"   # macOS/Linux
+   py -3 scripts/select-skills.py --remove "viz-image-gen,viz-ugc-heygen,ops-cron"     # Windows
    python3 scripts/select-skills.py --keep "mkt-copywriting,tool-humanizer,str-trending-research"
    py -3 scripts/select-skills.py --keep "mkt-copywriting,tool-humanizer,str-trending-research"
    python3 scripts/select-skills.py --keep all

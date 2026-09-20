@@ -8,8 +8,9 @@
  *
  * Returns the loaded modules. Pass { withSearch: true } to also load the
  * reranker + search modules (memory-search), { withCapture: false } to skip
- * capture.ts when a caller does not need it, and { withApi: true } to load the
- * hosted API handlers + server (memory-api; implies withSearch).
+ * capture.ts when a caller does not need it, { withApi: true } to load the
+ * hosted API handlers + server (memory-api; implies withSearch), and
+ * { withWatcher: true } to load watcher.ts (memory-watch; implies withCapture).
  */
 
 const path = require("node:path");
@@ -20,7 +21,7 @@ const MEM_DIR = path.resolve(__dirname, "../src/lib/memory");
 const resolve = (file) => path.join(MEM_DIR, file);
 
 function loadMemoryModules(opts = {}) {
-  const { withSearch = false, withCapture = true, withApi = false } = opts;
+  const { withSearch = false, withCapture = true, withApi = false, withImport = false, withWatcher = false } = opts;
 
   // Leaf-first: a module is loaded before anything that stubs it.
   const types = { ALL_VISIBILITIES: ["private", "client", "team", "system"] };
@@ -61,9 +62,23 @@ function loadMemoryModules(opts = {}) {
 
   const modules = { types, embedding, scope, migrate, adapter, postgresAdapter, backend, rowMappers, store, embedder, chunker, discovery, ingest, indexer };
 
-  if (withCapture) {
+  if (withCapture || withImport || withWatcher) {
     // capture.ts value-imports only ./indexer; the rest are type-only (erased).
     modules.capture = loadTsModule(resolve("capture.ts"), { stubs: { "./indexer": indexer } });
+  }
+
+  if (withImport) {
+    // session-import.ts value-imports ./capture (the rest is type-only).
+    modules.sessionImport = loadTsModule(resolve("session-import.ts"), {
+      stubs: { "./capture": modules.capture },
+    });
+  }
+
+  if (withWatcher) {
+    // watcher.ts value-imports ./store, ./capture, ./ingest, ./discovery (+ chokidar).
+    modules.watcher = loadTsModule(resolve("watcher.ts"), {
+      stubs: { "./store": store, "./capture": modules.capture, "./ingest": ingest, "./discovery": discovery },
+    });
   }
 
   if (withSearch || withApi) {

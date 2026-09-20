@@ -13,21 +13,21 @@ Why AI systems cite one brand over another for the same query often comes down t
 - Author / Person entity consistency
 - Book / Product entity consistency
 - Organization entity consistency
-- Brave Search verification for Claude
 - Entity audit scorecard
+
+**What schema does and does not do here.** `[S]` Adding schema to already-visible pages produced roughly no citation change (Ahrefs difference-in-differences, −4.6% / +2.4% / +2.2%), and `[P]` Google states structured data is not required for generative AI search. **Entity binding is the one place schema still genuinely earns its keep** — not because it lifts citations, but because it is how a system confirms which thing you are. Frame it that way in client work.
 
 ---
 
 ## What an entity graph is
 
-AI systems maintain implicit or explicit knowledge graphs: nodes (entities) and edges (relationships). Google's Knowledge Graph is the most visible example; ChatGPT, Perplexity, and Claude all maintain similar internal structures during response synthesis.
+AI systems maintain implicit or explicit knowledge graphs: nodes for entities, edges for relationships. Google's Knowledge Graph is the visible example; the answer engines maintain similar structures during response synthesis.
 
-When an AI system answers a query like "who wrote Thinking Outside Your Brain with AI?" it:
-1. Resolves the book title → book entity
-2. Traces to author entity
-3. Cites sources associated with that author entity
+When a system answers a query naming an entity, it resolves the name to a candidate entity, traces the relationships around it, and draws on sources associated with that entity. **Candidate generation is followed by context-weighted linking with a popularity prior** — where one candidate dominates the training distribution, an ambiguous mention resolves to it by default.
 
-If your author entity is weak (inconsistent sameAs, no Wikidata, no Google Knowledge Panel), the AI picks whichever entity has the stronger graph — often a different author with the same name or a similar title.
+If your entity is weakly signposted — inconsistent `sameAs`, no Wikidata entry, no Knowledge Panel — the system resolves to whichever candidate has the stronger graph. That may be a different organization with a similar name, a different person sharing yours, or **not an organization at all**: for a brand whose service term is an everyday word, the competing candidate is the common meaning of that word. See `brand-disambiguation.md` collision type 6, which is the hardest version of this problem.
+
+**The failure is silent.** Nothing reports "the entity did not resolve." It looks like an absence of traffic.
 
 ---
 
@@ -57,35 +57,36 @@ If your author entity is weak (inconsistent sameAs, no Wikidata, no Google Knowl
 }
 ```
 
-**Minimum sameAs set for an Organization:**
+**Minimum sameAs set for an Organization.** The right list is the set of profiles that actually exist and that engines actually read for the category — for a local service business that is the business profiles and directories, not the software-industry set.
 
 ```json
 {
   "@type": "Organization",
-  "@id": "https://yourdomain.com/#org",
-  "name": "Your Brand",
-  "url": "https://yourdomain.com",
+  "@id": "https://example.com/#org",
+  "name": "Brand Name",
+  "url": "https://example.com",
+  "knowsAbout": ["{core service}", "{core service}", "{disambiguating topic}"],
   "sameAs": [
-    "https://en.wikipedia.org/wiki/Your_Brand",
-    "https://www.wikidata.org/wiki/Q{id}",
-    "https://www.linkedin.com/company/your-brand",
-    "https://twitter.com/your-brand",
-    "https://www.facebook.com/your-brand",
-    "https://www.instagram.com/your-brand",
-    "https://www.youtube.com/@your-brand",
-    "https://www.crunchbase.com/organization/your-brand"
+    "https://www.google.com/maps/place/?q=place_id:{placeid}",
+    "https://www.yelp.com/biz/{slug}",
+    "https://www.facebook.com/{slug}",
+    "https://www.linkedin.com/company/{slug}",
+    "https://www.youtube.com/@{handle}",
+    "https://www.wikidata.org/wiki/Q{id}"
   ]
 }
 ```
 
-**Consistency rules:**
-- Same `name` across every profile (exact match — "Roy Castleman" not "Roy N Castleman" on one and "Roy Castleman" on another)
-- Same logo / profile image across platforms
-- Same description text (one canonical 2-sentence description)
-- All profiles link back to your site
-- Your site's schema links to all profiles
+**`knowsAbout` is the underrated field.** It binds the organization to a set of topics rather than to a string, which is exactly what a name-based resolution cannot do on its own. For any brand with an ambiguous name or service term, this is the single most useful line of schema on the site.
 
-Any drift = entity dilution. AI systems quietly deprioritize fuzzy entities.
+**Consistency rules:**
+- The same `name` on every profile, character for character. One profile carrying a middle initial or a legal suffix the others omit is drift
+- The same logo and profile image everywhere
+- One canonical description, used verbatim
+- Every profile links back to the site; the site's schema links to every profile
+- **The `sameAs` values are identical everywhere they appear**, not merely equivalent
+
+Drift dilutes the entity. `[S]` Business-profile accuracy measured 68% on ChatGPT and Perplexity, so this is a common and consequential failure rather than a theoretical one.
 
 ---
 
@@ -172,16 +173,9 @@ For book launches, the Book entity is cited for "where to buy {book title}" and 
   "offers": [
     {
       "@type": "Offer",
-      "url": "https://www.amazon.co.uk/dp/{asin}",
-      "price": "12.99",
-      "priceCurrency": "GBP",
-      "availability": "https://schema.org/InStock"
-    },
-    {
-      "@type": "Offer",
-      "url": "https://www.amazon.com/dp/{asin}",
-      "price": "15.99",
-      "priceCurrency": "USD",
+      "url": "{retailer URL for the primary market}",
+      "price": "{price}",
+      "priceCurrency": "{ISO currency code for that market}",
       "availability": "https://schema.org/InStock"
     }
   ],
@@ -208,21 +202,26 @@ For book launches, the Book entity is cited for "where to buy {book title}" and 
 
 ---
 
-## Brave Search verification for Claude
+## Measuring entity resolution
 
-Claude's web search backend is Brave. If your site isn't visible on Brave Search, Claude cannot cite you — regardless of how well you optimize elsewhere.
+**This is the section that replaces guesswork, and it is the most important one in the file.** Everything above is signal-building. This is how you find out whether it worked.
 
-**Verification steps:**
-1. Visit `https://search.brave.com`
-2. Search for your brand, your top cluster keywords, and your target queries
-3. Record whether you appear in top 10 for each
-4. If not: likely Brave's crawler (`Bravebot`) hasn't indexed you, OR robots.txt is blocking, OR canonicals are confused
+A previous version of this file instructed a Brave Search check as the way to verify Claude visibility, on the stated basis that "Claude's web search backend is Brave." **That was inference presented as fact.** `[U]` Anthropic has never published what Claude uses for grounding, the circulating overlap figures have no reachable methodology, and building a Brave-specific strategy on them is not defensible. Removed.
 
-**If Brave shows nothing:**
-- Submit your sitemap to Brave via Webmaster support (no public dashboard as of 2026)
-- Verify `Bravebot` is not blocked in robots.txt
-- Check content isn't blocked by JavaScript rendering requirements
-- Request index refresh after fixes
+**Ask the engines directly instead.** DataForSEO `ai_optimization/llm_responses` runs a fixed prompt set across ChatGPT, Gemini and Claude at a low per-prompt cost, which makes a monthly entity check cheap.
+
+**The prompt set:**
+- "What is {brand}?" — does the right entity come back at all
+- "Who is {person}?" — for a personal-brand entity
+- "{Brand} reviews" — does it resolve to the right organization
+- "Who does {service} in {location}?" — does the brand appear, and as what
+- Two or three category questions the audience would actually ask
+
+**What to record per engine per prompt:** which entity came back, whether any detail is wrong, and whether it hedged or returned nothing. Log it over time. **A single run is an anecdote** — answers are personalized and multi-turn.
+
+Pair it with `ai_optimization/llm_mentions` for sentiment, since an entity can resolve correctly and be framed badly, and `[S]` framing flips far more often than presence does.
+
+**Wrong facts are the actionable output.** An engine confidently stating something incorrect about the business is a correction target. The correction surfaces that work are the ones engines actually read — the site itself, the business profiles, and third-party sources carrying accurate information. **An llms.txt is not a correction surface**; no engine documents reading one, which makes it the worst available place to put a correction.
 
 ---
 
@@ -242,12 +241,16 @@ Include this in the audit report:
 | Person schema sameAs completeness | {/10} | {missing platforms} |
 | Cross-platform name consistency | {pass/fail} | {variants if any} |
 | Cross-platform bio consistency | {pass/fail} | |
-| Brave Search visibility | {pass/fail} | {tested queries} |
-| Amazon Author Central (if author) | {yes/no} | |
-| Goodreads author page (if author) | {yes/no} | |
-| Book schema (if book) | {yes/no} | {missing fields if yes} |
+| `knowsAbout` binds the brand to its actual topics | {pass/fail} | |
+| `sameAs` values identical everywhere they appear | {pass/fail} | {drift found} |
+| **Entity resolution measured across engines** | {pass/fail} | {which entity came back, per engine, per prompt} |
+| Factual errors returned by any engine | {none / list} | {correction targets} |
+| Author Person schema (if applicable) | {yes/no} | |
+| Book or Product schema (if applicable) | {yes/no} | {missing fields} |
 
-### Entity graph score: {0-10 based on checklist}
+### Entity graph score: {0-N based on checklist}
 ```
 
-Feed this score into the Authority pillar (weight 30% of Authority).
+**Measurement outranks the checklist.** A complete `sameAs` graph that still resolves to the wrong entity is a failed graph, and a thin graph that resolves correctly on every engine is not an urgent problem. Score the signals, but lead the finding with what the engines actually returned.
+
+Feed this into the Authority pillar. **Report dates and per-engine results, never a projected timeframe for improvement** — no study supports one for entity work.

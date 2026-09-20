@@ -145,7 +145,8 @@ const project_id = b.project_id;
 const ep = q.ep; const guest = q.guest;
 const cb = '${nextCb}?stage=${nextStage}&ep=' + encodeURIComponent(ep) + '&guest=' + encodeURIComponent(guest);
 ${stage === 'import'
-  ? "const nextBody = { project_id, prompt: " + JSON.stringify(FILLER_PROMPT) + ", callback_url: cb };"
+  ? "const labelLine = guest ? 'First, apply speaker labels: the host is \"Roy Castleman\" and the guest is \"' + guest + '\" — identify which detected speaker is which (the host opens the show and asks the questions) and rename the speaker labels; do not cut or edit any content while labelling. Then: ' : '';\n" +
+    "const nextBody = { project_id, prompt: labelLine + " + JSON.stringify(FILLER_PROMPT) + ", callback_url: cb };"
   : "const nextBody = { project_id, media_type: 'Audio', access_level: 'private', callback_url: cb };"}
 return [{ json: { nextBody, ep, guest, project_id } }];
 `.trim();

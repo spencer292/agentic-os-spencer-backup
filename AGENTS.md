@@ -1,18 +1,57 @@
 # AGENTS.md
 
-Shared project instructions for Agentic OS.
-
-`AGENTS.md` is the canonical instruction file for this repository. Codex reads it directly. Claude Code reads it through `CLAUDE.md` via `@AGENTS.md`.
+Shared project instructions for Agentic OS. `AGENTS.md` is the canonical instruction file for this repository — Codex reads it directly, and Claude Code reads it through `CLAUDE.md` via `@AGENTS.md`.
 
 ---
 
 ## What This Project Is
 
-Agentic OS is a Claude Code project template that turns Claude into an intelligent business assistant. It is **agent-first**: personality lives in `context/SOUL.md`, user preferences in `context/USER.md`, session continuity in `context/memory/`, accumulated learnings in `context/learnings.md`, brand memory in `brand_context/`, and functionality in `.claude/skills/`.
+Agentic OS is an agent-first Claude Code template that turns Claude into a business assistant. Canonical operating rules, registries, and conventions live here — this file is the specification — so Codex and other AGENTS-aware tools work cleanly too.
 
-Claude remains the primary runtime interface. `AGENTS.md` exists so the shared operating rules, registries, and project conventions also work cleanly in Codex and other tools that support the standard file.
+---
 
-The full specification lives in `PRD.md`. Read it when building any new component.
+## Team OS Context Snapshot
+
+When Team OS is connected, the server is the source of truth for team, client, and private user context. The local machine receives only a filtered snapshot for the authenticated team member.
+
+At session start, Team OS injects a server-resolved snapshot from the immutable
+runtime overlay owned by the current profile and task/session. Treat that
+injected snapshot as the resolved context for the fixed team, user, and client.
+
+Rules:
+- Do not manually inspect other users' private files or another team's files.
+- While Team OS mode is active, the injected session-scoped runtime snapshot is
+  the only runtime authority for team, client, and private-user context. Do not
+  read workspace-materialized `AGENTS.local.md`, `CLAUDE.local.md`,
+  `context/USER.md`, `context/MEMORY.md`, `context/learnings.md`,
+  `team_context/`, or `brand_context/`; those paths may belong to another local
+  session and remain available only for explicit import/sync administration.
+- Do not infer `teamId`, `userId`, or client access from local paths. The Team OS server resolves those from the authenticated session.
+- Later context layers may add preferences, but they cannot reduce safety, bypass permissions, or cross tenant boundaries.
+- Root `.claude/skills/` remains available in every Chat UI session, including
+  Team OS sessions and conversation-only continuation. Client skills are
+  available only in that client's chats. Granted Team skills are loaded from a
+  separate profile-and-Team cache and never replace the root skill pack.
+- `team_context/AGENTS.md` is the team-level instruction layer. It extends the root `AGENTS.md` for shared team behavior, but it is not a separate Agentic OS workspace.
+- If the Team OS server is unavailable, do not reuse stale Team OS context or
+  local private files. Existing chats may continue only in explicit
+  conversation-only mode from their saved conversation.
+- If no Team OS login is active, use the current Solo Agentic OS flow unchanged.
+
+Solo users do not need to configure anything. `context/USER.md`, `brand_context/`, `clients/`, `AGENTS.local.md`, `CLAUDE.local.md`, and `SKILL.local.md` keep their existing behavior.
+
+To migrate existing local context into Team OS after signing in, run `npm run context:import` from `command-centre/`. This imports approved private files (`context/USER.md`, `context/MEMORY.md`, `context/learnings.md`, prompt tags, and local overrides), root `team_context/*` and `brand_context/*` as team context, and approved client context as client context. `.mcp.json` is not imported as context; it uses encrypted backup sync.
+
+To refresh a connected workspace, run `npm run context:sync` from `command-centre/`. This pulls server-owned base files, syncs private user files, pulls team context, and restores `.mcp.json` from encrypted backup when available.
+
+---
+
+## Local Agent Overrides
+
+In Solo mode, if `AGENTS.local.md` exists in this directory, read it after
+`AGENTS.md`. In Team OS mode, use only the private-user rules included in the
+injected runtime snapshot and do not read the workspace copy. The file remains
+user-owned, synced as private Team OS context, and never overwritten by updates.
 
 ---
 
@@ -20,28 +59,42 @@ The full specification lives in `PRD.md`. Read it when building any new componen
 
 ### Skill & MCP Reconciliation
 
-Compare what is on disk against what is registered. Fix additions silently. Confirm removals with the user. Full registration steps in `docs/building-skills.md`.
-
-- **New skill on disk, not registered?** Read its frontmatter + `SKILL.md`, add to Skill Registry and Context Matrix in `AGENTS.md` (and their mirrors in `docs/`), add section to `context/learnings.md`, scan for external service dependencies, update README. Tell the user what was registered.
-- **Skill registered but folder missing?** Ask before removing from `AGENTS.md`, README, and `context/learnings.md`.
-- **New MCP in `settings.json`, not in README?** Add it under a Connected Tools section and tell the user.
-- **Documented MCP removed from `settings.json`?** Ask before removing from README.
-- **New external service detected?** Add to Service Registry, `.env.example`, and README. Tell the user the fallback.
+Compare what is on disk against what is registered: fix additions silently, confirm removals with the user. **Before acting, read `docs/building-skills.md`** for the exact per-case steps (skill added, skill folder missing, MCP added or removed, new external service).
 
 ### Skill Local Overrides
 
-Every skill can have a `SKILL.local.md` alongside its `SKILL.md`:
+Any skill may ship a `SKILL.local.md` (user-owned, never overwritten by updates) that extends or overrides its `SKILL.md` — when invoking a skill, check for it and read it alongside `SKILL.md`; local rules take precedence, but never over chat scope, permissions, or safety. Mechanics: read `docs/building-skills.md`.
 
-- `SKILL.md` — base definition, shipped by upstream, never modified by the user
-- `SKILL.local.md` — user-owned additions: extra `## Rules` entries, section overrides, context notes
+### Client Skill Visibility
 
-**When invoking any skill:** check if `.claude/skills/{skill-name}/SKILL.local.md` exists. If it does, read it alongside `SKILL.md`. Local rules take precedence over the base. This file is never overwritten by updates.
+Shared skills live only at the Agentic OS root and are never copied into `clients/`. A session started in a client folder inherits them through Claude Code's parent-directory discovery. A client's `.claude/skills/` holds only client-owned material: client-only skills and `SKILL.local.md` overrides.
 
-**Format:** same structure as `SKILL.md`. At minimum, a `## Rules` section with dated entries:
+When the user is working inside a client and asks to remove, hide, or stop using a skill there, treat it as **client-scoped visibility**, not uninstallation. Add the skill to `skillOverrides` in that client's `.claude/settings.local.json`:
+
+```json
+{ "skillOverrides": { "skill-name": "off" } }
 ```
-## Rules
-- 2026-05-03: always do X when Y
-```
+
+That file is user-owned and no script ever overwrites it, so the setting survives every update. Merge into the existing JSON, never replace the file.
+
+Only run `remove-skill.sh` from the root, and only when the user wants the skill gone for themselves and for every client. If the request is ambiguous, ask which one they mean before acting.
+
+Creating a full `SKILL.md` inside a client with the same name as a root skill also shadows it locally, but that copy stops receiving root updates. Prefer `SKILL.local.md` to extend a root skill, and `skillOverrides` to hide one.
+
+### Skill origins in Chat UI
+
+- `.claude/skills/` in the installation is the permanent local source and does
+  not require Team OS `skill.*` permissions.
+- Client skill folders are scoped to their client and override the root version
+  when that client is active.
+- Team skill copies live under the current local profile in a Team-ID-hashed
+  cache. `skill.use/read/edit/admin` applies only to these Team copies.
+- On a name collision, `/skill-name` uses Team by default, `/team:skill-name`
+  forces Team, and `/local:skill-name` forces the local/client version.
+- A connected response refreshes authorized Team copies. Conversation-only
+  continuation may use the last authorized Team copy, while local and client
+  skills remain available. Revocation is applied on the first response after
+  reconnection.
 
 ---
 
@@ -64,7 +117,7 @@ These are core system functions handled by scripts. Check them before searching 
 | User says | Action |
 |-----------|--------|
 | "add a client", "new client", "set up a client" | See **Add Client Flow** below |
-| "remove a skill", "uninstall {skill}" | Run `bash scripts/remove-skill.sh {skill-name}` |
+| "remove a skill", "uninstall {skill}" | At the root: run `bash scripts/remove-skill.sh {skill-name}`. Inside a client: see **Client Skill Visibility** below — never remove from the root to satisfy a client-scoped request |
 | "add a skill", "install {skill}" | Run `bash scripts/add-skill.sh {skill-name}` |
 | "synthesize skills", "sync local overrides", "clean up local files" | Run `meta-synthesize-locals` skill |
 | "list skills", "what skills are installed" | Run `bash scripts/list-skills.sh` |
@@ -76,11 +129,7 @@ These are core system functions handled by scripts. Check them before searching 
 
 ### Add Client Flow
 
-When the user asks to add a client:
-1. Ask for the client name if not provided.
-2. Run `bash scripts/add-client.sh "{name}"`.
-3. Tell them how to switch: `cd {absolute path}/clients/{slug} && claude`
-4. Link to `docs/multi-client-guide.md` for the full structure.
+Add a client → run `bash scripts/add-client.sh "{name}"` (ask for the name if not given), then tell them to switch with `cd {absolute path}/clients/{slug} && claude`. Full structure: read `docs/multi-client-guide.md`.
 
 ### Branching Policy — CONSUMER INSTALL (Claude: read carefully)
 
@@ -118,6 +167,8 @@ Rules:
 - Log feedback to `context/learnings.md` under the skill's section
 - If gaps were spotted, mention once with opportunity framing
 
+---
+
 ### Autonomous Goals — Pre-Goal Readiness Check
 
 When a goal is set that will run **unattended** — the user steps away, says "run until done," sets a `/goal` with autonomous intent, or otherwise expects completion without supervision — produce a **Pre-Goal Readiness Check and get sign-off BEFORE starting the run.** Never begin an unattended run without it. The point is that the user learns *up front* exactly what will need them, so nothing blocks silently while they are away.
@@ -134,27 +185,19 @@ When the run ends or pauses, report back **against the same three buckets** so t
 
 ---
 
+---
+
 ## Memory System
 
 Layered memory architecture. Different files serve different roles, with explicit caps on the ones loaded at session start to keep the prefix cache stable.
 
 ### File Roles
 
-| File | Purpose | Cap | Loaded when |
-|------|---------|-----|-------------|
-| `context/SOUL.md` | Agent identity | ~3 KB | Session start (silent) |
-| `context/USER.md` | User profile and preferences | ~1.5 KB | Session start (silent) |
-| `context/MEMORY.md` | Curated working scratchpad — durable facts, active threads, environment notes, pending decisions | **2,500 chars** | Session start (silent) |
-| `context/memory/{YYYY-MM-DD}.md` | Daily session log (chronological, per-session blocks) | unbounded | Session start (today's only) |
-| `context/memory/{YYYY-MM-DD}.aos.md` | Machine-owned Stop-hook capture: one summarized block per turn; tracked for private GitHub backup and reindexing | unbounded | Indexed only; not loaded at session start |
-| `context/transcripts/{YYYY-MM-DD}/*.jsonl` | Raw transcript archives for captured turns | unbounded | Local audit/deep-search source; not committed |
-| `context/learnings.md` | Skill-specific learnings | unbounded | Per-skill (lazy) |
+Loaded at session start: `context/SOUL.md`, `context/USER.md`, `context/MEMORY.md` (**2,500-char cap**), and today's daily log `context/memory/{YYYY-MM-DD}.md`. Lazy / per-skill: `context/learnings.md`. Not loaded at start: `context/memory/{YYYY-MM-DD}.aos.md` (machine-owned Stop-hook capture, indexed only) and `context/transcripts/` (raw archives, gitignored).
 
 ### Automatic Capture
 
-On each Stop hook, Agentic OS archives the raw transcript locally, summarizes the last turn into 2-10 third-person bullets, appends that block to `context/memory/{YYYY-MM-DD}.aos.md`, and refreshes the memory index in the background. Re-running the same turn is safe: the capture is keyed by a SHA-256 hash of the source turn, so it does not create duplicate blocks. The `.aos.md` summaries are tracked so private GitHub backups can rebuild memory with a new chunking or embedding pipeline later; raw transcripts remain local and gitignored.
-
-Capture summary settings live in `context/memory-config.json` under `capture.summarize`. Defaults: `provider=claude`, `model=haiku`, `timeout_ms=120000`. If summarization fails, capture falls back to a bounded raw-turn summary so the Stop hook still preserves the turn.
+<!-- Automatic capture runs via the Stop hook (memory-capture.js): it summarizes each turn into context/memory/{date}.aos.md, keyed by a SHA-256 hash so re-runs don't duplicate. Config: context/memory-config.json. Full mechanics: docs/memory/session-capture.md. The agent does not run this; the hook does. -->
 
 ### Memory Budget
 
@@ -171,77 +214,19 @@ Capture summary settings live in `context/memory-config.json` under `capture.sum
 
 ### Memory Write
 
-Triggered by phrases like "remember this", "remember that", "note that", "save this to memory", "update memory", "log this", "forget about", "remove from memory". Routes to the `meta-memory-write` skill.
-
-Three actions:
-
-- **add** — append under the appropriate section (after a substring dedup check)
-- **replace** — find substring + swap
-- **remove** — show the line to the user and confirm before deleting
-
-Sections in `context/MEMORY.md`:
-
-- `## Active Threads` — current work, open questions
-- `## Environment Notes` — URLs, configs, tool versions, project structure quirks
-- `## Pending Decisions` — decisions waiting on input
-
-Do not create new sections. If a fact doesn't fit, ask the user where it belongs.
-
-After a write, confirm with: `Saved — will be active from next session.`
-
-Never store secret values in `context/MEMORY.md` — reference env var names only (e.g., `FIRECRAWL_API_KEY in .env`).
+Triggers ("remember this", "note that", "save this to memory", "log this", "forget about") route to the `meta-memory-write` skill. Actions: **add** (append under the right section after a dedup check), **replace** (find substring + swap), **remove** (show the line and confirm before deleting). Sections in `context/MEMORY.md`: `## Active Threads`, `## Environment Notes`, `## Pending Decisions` — do not create new ones; if a fact doesn't fit, ask where it belongs. After a write, confirm `Saved — will be active from next session.` Never store secret values — reference env var names only (e.g., `FIRECRAWL_API_KEY in .env`).
 
 ### Memory Retrieval
 
 **Ground-truth rule — memory is a hint, live state is the truth.** Memory files (`MEMORY.md`, daily logs, recall results) are point-in-time snapshots that can go stale silently. Before acting on any memory claim about *current* state — a folder is empty, a step is undone, a tool is broken, a file is missing — verify against live state first (`ls` the folder, run a memory recall, read the file). Never trigger a redundant or destructive action (re-run `/start-here`, re-index, reset) on the strength of a remembered claim alone. If live state contradicts memory, trust live state and fix the note.
 
-When the user asks about past context, decisions, or facts:
-
-1. **Tier 0** — Check `context/MEMORY.md` and today's daily log. Already in context, zero cost. Covers most durable-fact lookups.
-2. **Tier 1** — If Tier 0 has nothing, run semantic search over the PGLite/pgvector store (the default backend). From `command-centre/`:
-   - Run `npm run memory:recall -- "query" --system` (or `--team <id>` / `--client <slug>` / `--user <id>` to search as that tenant — each also includes the `system` baseline). Results come back scope-filtered and re-ranked by source authority and recency. Summarise the top 5. Add `--json` for machine-readable output.
-   - The search is scope-isolated by construction (one tenant never sees another's memory) and writes a max-privacy `search_events` audit row (no query text or embedding stored by default).
-   - _Backend:_ all memory commands run against **local PGLite** by default, or **hosted Postgres** when `MEMORY_DATABASE_URL` (or `DATABASE_URL`) is set — same schema either way. Pin it with `MEMORY_STORE_BACKEND=pglite|postgres`; `postgres` refuses to fall back to the local store if no URL is set.
-   - Legacy `MEMORY_BACKEND=memsearch` is no longer supported. If old `.memsearch` folders exist, run `bash scripts/setup-memory.sh` to index them into PGLite/Postgres and archive them.
-   Indexed sources: `context/memory/` and `context/learnings.md`. Old `.memsearch/memory/` folders are import-only and are passed explicitly during `scripts/setup-memory.*` migration.
-3. **Cite sources** — structure every recall response based on what was found:
-
-   **Found:** answer + cite source inline ("Based on the session log from 2026-05-11 and a decision in MEMORY.md...") + temporal context ("This was last discussed 3 days ago"). If the source is >14 days old: "Note: this information is from [date] — it may be outdated."
-
-   **Partial:** state what you know + what you don't + where you looked + temporal gap ("Last mention of [topic] was [date]. No records since then.") + what might fill the gap.
-
-   **Absent:** "I checked MEMORY.md, daily logs back to [earliest date], and ran semantic search across all indexed sources. No mentions of [topic]. If discussed, it may predate capture or occurred in a session that wasn't logged."
-
-   For partial or absent responses: run `bash scripts/lib/memory-meta.sh "[topic]"` to get exact coverage before responding.
-
-Tiers 2-3 (expanded chunks, raw transcript deep-search) are deferred. Do not fabricate sources.
+When the user asks about past context, decisions, or facts: **Tier 0** — use the resolved context already loaded for the session. **Tier 1** — run `npm run memory:recall -- "query"` from `command-centre/`; when Team OS is signed in, the hosted Memory API resolves the permitted team, user, and client scope. When signed out, provide an explicit local scope such as `--system` or `--client <slug>` (this install's frozen command-centre build has no `--local` flag — the scope flag alone selects local search). If connected Team OS is unavailable, fail clearly instead of using stale local data. Always cite the source and temporal context; if nothing is found, say so rather than inventing an answer. Full ladder (search / expand / transcript), citation patterns, backfill (`memory:import-sessions`), eval (`memory:eval`) and the scope/no-leak model: read `docs/memory-retrieval.md`.
 
 ---
 
 ## Multi-Client Architecture
 
-Agentic OS supports multiple clients from a single install. The root folder holds shared methodology, shared skills, and shared scripts. Each client gets a subfolder under `clients/` with its own brand context, memory, projects, and learnings.
-
-```text
-agentic-os/
-├── AGENTS.md                     <- canonical shared instructions
-├── CLAUDE.md                     <- Claude wrapper that imports AGENTS.md
-├── clients/
-│   ├── abc-client/
-│   │   ├── AGENTS.md             <- client-specific instructions
-│   │   ├── CLAUDE.md             <- Claude wrapper importing local AGENTS.md
-│   │   ├── brand_context/
-│   │   ├── context/
-│   │   ├── projects/
-│   │   └── .claude/skills/
-│   └── xyz-agency/
-│       └── ...
-├── brand_context/
-├── context/
-└── .claude/skills/
-```
-
-Full guide: [docs/multi-client-guide.md](docs/multi-client-guide.md)
+Agentic OS supports multiple clients from a single install: a shared root (methodology, skills, scripts) plus one folder per client under `clients/{slug}/` with its own `brand_context/`, `context/`, `projects/` and `.claude/skills/`. Full structure and the directory tree: read `docs/multi-client-guide.md`.
 
 ---
 
@@ -253,25 +238,13 @@ Full guide: [docs/multi-client-guide.md](docs/multi-client-guide.md)
 | **Skills Pack** | `.claude/skills/{category}-{skill-name}/` | Capabilities that grow over time |
 | **Brand Context** | `brand_context/` | Client brand data |
 
-Secrets and machine-generated stores are gitignored: `.env`, `.mcp.json`, `installed.json`, the runtime memory stores (`**/.command-centre/`, `.memsearch/`), raw transcripts (`context/transcripts/`), and database backups (`backups/`). The **source content** — `context/memory/*.md` daily logs, `context/memory/*.aos.md` summarized captures, `context/learnings.md`, `context/MEMORY.md`, `brand_context/`, and `projects/` — is **tracked** for private GitHub backups, so keep personal or client data out of public commits. See `.gitignore` for the full list.
+Which paths are tracked vs gitignored (secrets and machine stores are ignored; memory source content, `brand_context/` and `projects/` are tracked for private backups): see `.gitignore`.
 
 ---
 
 ## Skill Categories
 
-Every skill and its output folder uses a category prefix.
-
-| Prefix | Domain | Examples |
-|--------|--------|----------|
-| `mkt` | Marketing | `mkt-brand-voice`, `mkt-positioning`, `mkt-icp`, `mkt-email-sequence` |
-| `str` | Strategy | `str-keyword-plan`, `str-competitor-analysis` |
-| `ops` | Operations / File Mgmt | `ops-client-onboarding`, `ops-gdrive-sync` |
-| `viz` | Visual / Video | `viz-thumbnail-creator`, `viz-ugc-generator` |
-| `acc` | Accounting | `acc-invoice-generator`, `acc-expense-tracker` |
-| `meta` | System / Meta | `meta-skill-creator`, `meta-wrap-up` |
-| `tool` | Utility / Integration | `tool-firecrawl-scraper` |
-| `vid` | Video Processing | `vid-clip-extractor`, `vid-clip-selection`, `vid-ffmpeg-edit` |
-| `00` | Pipelines / Orchestrators | `00-longform-to-shortform`, `00-social-content`, `00-slides` |
+Every skill and its output folder uses a category prefix: `mkt` (marketing) · `str` (strategy) · `ops` (operations / file mgmt) · `viz` (visual / video) · `acc` (accounting) · `fin` (finance) · `meta` (system / meta) · `tool` (utility / integration).
 
 **Rules:**
 - Skill folder name = `{category}-{skill-name}` in kebab-case
@@ -280,221 +253,32 @@ Every skill and its output folder uses a category prefix.
 - Learnings sections in `context/learnings.md` use `## {folder-name}`
 - Add new categories only when the first skill in a new domain is built
 
+Examples per prefix and the full skill list: `docs/skill-registry.md`.
+
 ---
 
 ## Skill Registry
 
-*Auto-populated as skills are installed. Each entry includes its name and trigger conditions.*
-
-### Pipeline Skills (00-*)
-
-End-to-end orchestrators that chain multiple skills.
-
-| Skill | Triggers on |
-|-------|-------------|
-| `00-longform-to-shortform` | "full pipeline", "process video", "long to short", "YouTube to shorts", "create short-form content from" |
-| `00-slides` | "create a presentation", "create slides", "make a deck", "slide deck", "presentation about" |
-| `00-social-content` | "run social content", "generate post", "create post", "post linkedin", "from my sources", "just the images" |
-| `00-video-studio` | "process studio inbox", "studio video", "make a clip from", "turn this footage into a reel", "video studio", "process my drops" |
-| `00-youtube-to-ebook` | "turn this video into an ebook", "youtube to article", "video to PDF", "youtube to ebook" |
-
-### Meta Skills
-
-| Skill | Triggers on |
-|-------|-------------|
-| `meta-skill-creator` | "create a skill", "build a skill", "new skill", "make a skill", "optimize skill description" |
-| `meta-skill-system-creator` | "create a system", "package these skills", "build a skill system", "system from skills" |
-| `meta-synthesize-locals` | "synthesize skills", "sync local overrides", "clean up local files" |
-| `meta-wrap-up` | "wrap up", "close session", "end session", "we're done", "session done" |
-| `meta-memory-write` | "remember this", "remember that", "note that", "save this to memory", "update memory", "log this", "forget about", "remove from memory" |
-
-### Foundation Skills
-
-| Skill | Triggers on | Writes to |
-|-------|-------------|-----------|
-| `mkt-brand-voice` | "tone", "writing style", "brand voice", "how we sound" | `voice-profile.md`, `samples.md` |
-| `mkt-positioning` | "differentiation", "angle", "hooks", "USP" | `positioning.md` |
-| `mkt-icp` | "target audience", "buyer persona", "ideal customer" | `icp.md` |
-| `mkt-visual-identity` | "visual identity", "brand identity", "design tokens", "brand bible", "replicate this style" | `visual-identity/` (tokens, identity, moves, fonts, logos) |
-
-### Marketing Skills
-
-| Skill | Triggers on |
-|-------|-------------|
-| `mkt-authority-content` | "authority content", "SEO blog post", "GEO article", "write a blog article from the knowledge base" |
-| `mkt-content-analytics` | "check analytics", "how did my post do", "post performance", "compare my posts" |
-| `mkt-content-repurposing` | "repurpose this", "turn this into social posts", "atomize this", "LinkedIn post from this", "thread from this" |
-| `mkt-copywriting` | "write copy for", "landing page copy", "sales page", "make this convert", "ad copy", "score this copy" |
-| `mkt-longform-article` | "write an article from this transcript", "turn this video into a long-form piece", "magazine-style article" |
-| `mkt-short-form-posting` | "post short", "post reel", "upload short", "post to youtube instagram tiktok" |
-| `mkt-ugc-scripts` | "write a script", "UGC script", "TikTok script", "Reels script", "batch scripts" |
-| `mkt-social-showing` | "social showing", "make this post viral", "optimize this post", "write the hook for", "package this for social", "make this travel" |
-| `mkt-youtube-content-package` | "publish a video", "create YouTube content", "video SEO" |
-
-### Strategy Skills
-
-| Skill | Triggers on |
-|-------|-------------|
-| `str-ai-seo-local` | "local SEO audit", "GBP", "city pages audit", "local AI visibility", "review signals" |
-| `str-authority-strategy` | "authority strategy", "backlink strategy", "brand mentions", "entity graph" |
-| `str-cro-audit` | "CRO audit", "conversion audit", "LIFT model", "why isn't this page converting" |
-| `str-internal-links` | "internal links", "internal linking audit", "link sweep", "orphan pages" |
-| `str-keyword-strategy` | "keyword strategy", "keyword plan", "page map", "GSC keywords", "target keywords" |
-| `str-onpage-audit` | "on-page audit", "page SEO audit", "audit this page", "SEO/GEO/AEO audit" |
-| `str-question-harvester` | "question harvesting", "People Also Ask", "PAA questions", "FAQ gaps" |
-| `str-security-audit` | "website security audit", "security audit the site", "probe the site", "security scan" |
-| `str-ai-seo` | "AI SEO", "AEO", "GEO", "LLMO", "answer engine optimization", "AI citations", "AI visibility", "optimize for ChatGPT/Perplexity/Claude", "show up in AI answers" |
-| `str-trending-research` | "research", "what's trending", "what are people saying about", "last 30 days", "community sentiment on" |
-
-### Visual Skills
-
-| Skill | Triggers on |
-|-------|-------------|
-| `viz-component-library` | "component library", "build the components", "UI component specs" |
-| `viz-design-system` | "design system", "design tokens for the site", "site design foundation" |
-| `viz-page-architect` | "page structure", "page blueprint", "section order", "what sections does this page need" |
-| `viz-excalidraw-diagram` | "excalidraw diagram", "draw a diagram", "architecture diagram", "visualize this workflow" |
-| `viz-frontend-slides` | "build slides", "render presentation", "HTML deck", "slide design" |
-| `viz-hyperframes` | "make a motion graphics video", "product video", "launch teaser", "animated explainer" |
-| `viz-image-gen` | "generate an image", "create an infographic", "make an image of", "sketchnote" |
-| `viz-nano-banana` | "nano banana", "notebook sketch", "comic strip", "hand-drawn diagram", "illustrated diagram" |
-| `viz-stitch-design` | "design a UI", "create a screen", "stitch design", "UI mockup", "app design", "landing page design", "mobile screen", "web layout", "wireframe to UI", "design this page" |
-| `viz-interface-design` | "dashboard", "admin panel", "SaaS UI", "data interface", "metrics display", "control panel", "monitoring UI", "analytics view", "settings page", "interactive tool interface" |
-| `viz-remotion-video` | "remotion video", "explainer video", "course video", "animated explainer", "build a lesson video", "two-host explainer", "notebooklm-style video", "turn this transcript into a video", "motion graphics from script", "make a course video" |
-
-### Video Skills
-
-| Skill | Triggers on |
-|-------|-------------|
-| `vid-clip-extractor` | "extract clips", "reframe video", "portrait crop", "face tracking", "16:9 to 9:16" |
-| `vid-clip-selection` | "select clips", "find best clips", "extract shorts from transcript" |
-| `vid-condensed-edit` | "condensed edit", "best bits edit", "highlight episode", "condensed YouTube version", "cut this episode down for YouTube" |
-| `vid-ffmpeg-edit` | "edit clip", "add subtitles", "burn captions", "edit short-form" |
-
-### Operations Skills
-
-| Skill | Triggers on |
-|-------|-------------|
-| `ops-blog-pipeline` | "blog pipeline", "publish a blog post", "topic to post", "new blog article end to end" |
-| `ops-cms-content` | "CMS content", "Payload", "city pages", "seed the CMS", "testimonials", "add to the blog" |
-| `ops-new-feature` | "new feature", "start feature", "add feature", "begin work on", "start working on", "finish feature", "done with feature", "merge feature", "feature done", "merge this" |
-| `ops-release` | "release", "cut a release", "bump version", "ship it", "new version", "tag a release" |
-| `ops-cron` | "schedule a job", "cron job", "run this every morning", "automate daily", "recurring task", "scheduled job", "check scheduled jobs", "list jobs", "run job manually", "start crons", "stop crons", "cron status", "cron logs" |
-| `ops-google-ads` | "google ads", "ads audit", "ads review", "campaign status", "keyword research for ads", "build a campaign", "negative keywords", "RSA", "PPC audit", "ad spend", "conversion tracking check", "quality score" |
-
-### Utility Skills
-
-| Skill | Triggers on |
-|-------|-------------|
-| `tool-fact-checker` | "fact check", "verify this", "is this true", "check these claims" |
-| `tool-firecrawl-scraper` | "scrape website", "crawl site", "monitor content changes", "extract brand/design systems" |
-| `tool-humanizer` | "humanize this", "de-AI this", "make this sound human", "remove AI patterns" |
-| `tool-image-search` | "find images of", "search images", "stock photo of" |
-| `tool-jobber` | "jobber", "check my jobs", "today's visits", "create a quote in jobber", "jobber clients", "jobber report" |
-| `tool-linkedin-scraper` | "scrape linkedin", "linkedin posts", "fetch linkedin profile" |
-| `tool-n8n` | "n8n", "build a workflow", "automation workflow", "make a workflow that", "connect to n8n", "check my workflows" |
-| `tool-optimoroute` | "optimoroute", "optima route", "plan routes", "today's routes", "driver routes", "route optimization" |
-| `tool-pdf-generator` | "generate PDF", "convert to PDF", "markdown to PDF" |
-| `tool-platform-security` | "security audit", "scan for secrets", "secret scan", "any leaked keys", "audit dependencies", "is this repo safe to push", "security check before commit", "check git history for secrets" |
-| `tool-publisher` | "post this", "publish this", "post now" |
-| `tool-screenshot-annotator` | "annotate this screenshot", "add numbered circles", "mark up this image" |
-| `tool-stitch` | "fetch stitch design", "get stitch screens", "stitch project", "pull from stitch", "stitch code", "export stitch" |
-| `tool-transcription` | "transcribe this file", "local video", "from this recording" |
-| `tool-video-screenshots` | "screenshot from video", "extract frames", "capture slides from video" |
-| `tool-video-upload` | "upload video", "compress video for YouTube" |
-| `tool-web-screenshot` | "screenshot this website", "capture this page", "screenshot URL" |
-| `tool-website-security` | "website security audit", "audit this site", "is this website secure", "check security headers", "scan this URL for security", "TLS/SSL check", "check SPF/DMARC" |
-| `tool-youtube` | "latest youtube video", "youtube transcript", "channel updates" |
-| `tool-zernio-social` | "post to", "schedule post", "cross-post", "publish to twitter/instagram/linkedin" |
-
-*Optional skills are auto-registered by reconciliation when their folders appear on disk. Install optional skills with `bash scripts/add-skill.sh <name>`. See `.claude/skills/_catalog/catalog.json` for the full list.*
+Full registry in `docs/skill-registry.md`. Auto-populated by reconciliation — add entries there when registering new skills.
 
 ---
 
+---
+
+## System Registry
+
+Packaged skill systems live in `.claude/skills/_systems/{name}/` — self-contained, distributable bundles (PACKAGE.yaml + install.sh + skills + agents). Install into this project with `bash scripts/add-system.sh {name}`; remove with `bash scripts/remove-system.sh {name}`. To share one, zip the system folder — the recipient runs `bash install.sh --target /their/project`.
+
+| System | Version | Entry skill | Contents |
+|--------|---------|-------------|----------|
+| `00-brand-build` | 1.0.0 | `00-brand-build` | Full brand-from-scratch pipeline: 9 skills (icp, strategy, positioning, voice, visual identity + image-gen/humanizer/pdf utilities) + `ssc-template-builder` agent. Installer renders per-install paths and merges `.env.example` keys. |
+
+---
+
+
 ## Context Matrix
 
-Load only the `brand_context/` files listed for each skill.
-
-| Skill | voice-profile | positioning | icp | samples | assets | learnings |
-|-------|:---:|:---:|:---:|:---:|:---:|:---:|
-| `mkt-brand-voice` | **writes** | summary | — | **writes** | **writes** (via firecrawl branding) | `## mkt-brand-voice` |
-| `mkt-positioning` | — | **writes** | full | — | — | `## mkt-positioning` |
-| `mkt-icp` | — | summary | **writes** | — | — | `## mkt-icp` |
-| `meta-wrap-up` | — | — | — | — | — | `## meta-wrap-up` |
-| `meta-memory-write` | — | — | — | — | — | `## meta-memory-write` |
-| `str-ai-seo` | tone only | summary | full | — | — | `## str-ai-seo` |
-| `tool-stitch` | — | — | — | — | — | `## tool-stitch` |
-| `viz-stitch-design` | tone only | summary | language section | — | — | `## viz-stitch-design` |
-| `viz-interface-design` | tone only | summary | language section | — | — | `## viz-interface-design` |
-| `viz-remotion-video` | tone only | — | language section | — | tokens (design-system) | `## viz-remotion-video` |
-| `ops-cron` | — | — | — | — | — | `## ops-cron` |
-| `ops-google-ads` | — | — | — | — | — | `## ops-google-ads` |
-| `ops-new-feature` | — | — | — | — | — | `## ops-new-feature` |
-| `ops-release` | — | — | — | — | — | `## ops-release` |
-| `00-longform-to-shortform` | — | — | — | — | — | `## 00-longform-to-shortform` |
-| `00-slides` | tone only | — | — | — | — | `## 00-slides` |
-| `00-social-content` | full | summary | summary | full | — | `## 00-social-content` |
-| `00-video-studio` | tone only | — | — | — | tokens + music | `## 00-video-studio` |
-| `00-youtube-to-ebook` | tone only | — | — | — | logo + links | `## 00-youtube-to-ebook` |
-| `meta-skill-creator` | — | — | — | — | — | `## meta-skill-creator` |
-| `meta-skill-system-creator` | — | — | — | — | — | `## meta-skill-system-creator` |
-| `meta-synthesize-locals` | — | — | — | — | — | `## meta-synthesize-locals` |
-| `mkt-content-analytics` | — | — | — | — | — | `## mkt-content-analytics` |
-| `mkt-content-repurposing` | full | summary | summary | full | — | `## mkt-content-repurposing` |
-| `mkt-copywriting` | full | summary | full | full | — | `## mkt-copywriting` |
-| `mkt-longform-article` | tone only | — | — | — | — | `## mkt-longform-article` |
-| `mkt-short-form-posting` | — | — | — | — | — | `## mkt-short-form-posting` |
-| `mkt-ugc-scripts` | full | summary | language section | full | — | `## mkt-ugc-scripts` |
-| `mkt-visual-identity` | — | — | — | — | **writes** (visual-identity/) | `## mkt-visual-identity` |
-| `mkt-social-showing` | full | summary | full | — | — | `## mkt-social-showing` |
-| `mkt-youtube-content-package` | — | — | — | — | — | `## mkt-youtube-content-package` |
-| `str-trending-research` | — | — | language section | — | — | `## str-trending-research` |
-| `tool-fact-checker` | — | — | — | — | — | `## tool-fact-checker` |
-| `tool-firecrawl-scraper` | — | — | — | — | — | `## tool-firecrawl-scraper` |
-| `tool-humanizer` | full | — | — | full | — | `## tool-humanizer` |
-| `tool-image-search` | — | — | — | — | — | `## tool-image-search` |
-| `tool-linkedin-scraper` | — | — | — | — | — | `## tool-linkedin-scraper` |
-| `tool-pdf-generator` | — | — | — | — | — | `## tool-pdf-generator` |
-| `tool-platform-security` | — | — | — | — | — | `## tool-platform-security` |
-| `tool-publisher` | — | — | — | — | — | `## tool-publisher` |
-| `tool-screenshot-annotator` | — | — | — | — | accent color | `## tool-screenshot-annotator` |
-| `tool-transcription` | — | — | — | — | — | `## tool-transcription` |
-| `tool-video-screenshots` | — | — | — | — | — | `## tool-video-screenshots` |
-| `tool-video-upload` | — | — | — | — | — | `## tool-video-upload` |
-| `tool-web-screenshot` | — | — | — | — | — | `## tool-web-screenshot` |
-| `tool-website-security` | — | — | — | — | — | `## tool-website-security` |
-| `tool-youtube` | — | — | — | — | — | `## tool-youtube` |
-| `tool-zernio-social` | — | — | — | — | — | `## tool-zernio-social` |
-| `vid-clip-extractor` | — | — | — | — | — | `## vid-clip-extractor` |
-| `vid-clip-selection` | — | — | — | — | — | `## vid-clip-selection` |
-| `vid-condensed-edit` | — | — | language section | — | — | `## vid-condensed-edit` |
-| `vid-ffmpeg-edit` | — | — | — | — | highlight color | `## vid-ffmpeg-edit` |
-| `viz-excalidraw-diagram` | — | — | — | — | — | `## viz-excalidraw-diagram` |
-| `viz-frontend-slides` | tone only | — | — | — | tokens (full) | `## viz-frontend-slides` |
-| `viz-hyperframes` | tone only | — | — | — | tokens (full) | `## viz-hyperframes` |
-| `viz-image-gen` | — | — | — | — | — | `## viz-image-gen` |
-| `viz-nano-banana` | — | — | — | — | — | `## viz-nano-banana` |
-| `mkt-authority-content` | tone only | summary | summary | — | — | `## mkt-authority-content` |
-| `ops-blog-pipeline` | tone only | — | summary | — | — | `## ops-blog-pipeline` |
-| `ops-cms-content` | — | — | — | — | — | `## ops-cms-content` |
-| `str-ai-seo-local` | — | summary | summary | — | — | `## str-ai-seo-local` |
-| `str-authority-strategy` | — | summary | summary | — | — | `## str-authority-strategy` |
-| `str-cro-audit` | — | summary | full | — | — | `## str-cro-audit` |
-| `str-internal-links` | — | — | — | — | — | `## str-internal-links` |
-| `str-keyword-strategy` | — | summary | summary | — | — | `## str-keyword-strategy` |
-| `str-onpage-audit` | — | summary | summary | — | — | `## str-onpage-audit` |
-| `str-question-harvester` | — | — | language section | — | — | `## str-question-harvester` |
-| `str-security-audit` | — | — | — | — | — | `## str-security-audit` |
-| `viz-component-library` | — | — | — | — | tokens (full) | `## viz-component-library` |
-| `viz-design-system` | tone only | summary | summary | — | **writes** | `## viz-design-system` |
-| `viz-page-architect` | — | summary | full | — | — | `## viz-page-architect` |
-| `tool-n8n` | — | — | — | — | — | `## tool-n8n` |
-| `tool-jobber` | — | — | — | — | — | `## tool-jobber` |
-| `tool-optimoroute` | — | — | — | — | — | `## tool-optimoroute` |
-
-**Matrix key:** `writes` = creates file | `full` = entire file | `summary` = 1-2 sentences | `tone only` = tone + vocabulary | `language section` = words-they-use section | `## skill-name` = read only that section from `context/learnings.md`
-
-**Learnings rule:** Every skill reads and writes to its own section in `context/learnings.md`. Cross-skill insights go under `# General`. Skill-specific entries go under `# Individual Skills` → `## {folder-name}`.
+Full matrix in `docs/context-matrix.md`. Load only the `brand_context/` files listed for each skill. Every skill also reads its own section from `context/learnings.md`.
 
 ---
 
@@ -511,36 +295,11 @@ Load only the `brand_context/` files listed for each skill.
 
 ### Projects
 
-| Level | Name | When | Where |
-|-------|------|------|-------|
-| **1** | Single task | One or a few small deliverables | `projects/{category}-{type}/` |
-| **2** | Planned project | Multi-deliverable work that benefits from a brief | `projects/briefs/{project-name}/` |
-| **3** | GSD project | Complex multi-phase work with dependencies | `projects/briefs/{project-name}/` + `.planning/` |
-
-**Level 2 brief requirements:** goal, deliverables, acceptance criteria, constraints, and dependencies. Keep it to one page.
-
-**Level 3 rule:** GSD's `.planning/` folder lives at the root of each client workspace — `clients/{name}/.planning/`. Each client runs its own independent GSD project; multiple clients can be active in parallel. The root `agentic-os/` folder must never have `.planning/` — keeping it clean is what allows per-client isolation. To start a GSD project for a client, select that client in the command-centre and run `/gsd-new-project`. Archive finished GSD work with `/archive-gsd` (flips the brief's status to complete and keeps `.planning/` in place).
-
-**Project containment rule:** The Agentic OS root is the operating system, not a place for project outputs. All project source code, configs, manifests, build artifacts, and data files must live inside the project folder.
-
-**Brief frontmatter:**
-
-```yaml
----
-project: q2-product-launch
-status: active
-level: 2
-created: 2026-03-24
----
-```
+Three levels: **L1** single task → `projects/{category}-{type}/`; **L2** planned project (benefits from a brief) and **L3** GSD project (multi-phase, dependencies) → `projects/briefs/{project-name}/`, with L3 adding a `.planning/` folder under `clients/{name}/.planning/`. The Agentic OS root must never hold `.planning/`, and all project files stay inside the project folder. Level 2 brief requirements, the brief frontmatter schema, and the full GSD rules: read `docs/projects-guide.md`.
 
 ### Humanizer Gate
 
-Every skill that produces publishable text must run its output through `tool-humanizer` before saving.
-
-- Use `deep` mode when `brand_context/voice-profile.md` exists, otherwise `standard`
-- Only show the score summary if the delta is significant
-- Research briefs, ICP profiles, and positioning docs can skip this step
+Every skill that produces publishable text must run its output through `tool-humanizer` before saving — `deep` mode when `brand_context/voice-profile.md` exists, otherwise `standard`. Research briefs, ICP profiles and positioning docs can skip this step.
 
 ---
 
@@ -552,56 +311,12 @@ Full guide in `docs/building-skills.md`. Always ask for reference skills first. 
 
 ## Graceful Degradation
 
-Skills work at all context levels:
-- **No `brand_context/`:** ask what is needed and produce solid generic output
-- **Partial context:** use what exists and default the rest
-- **Full context:** personalise fully
-
-Brand context enhances output. It never gates functionality.
+Skills work at all context levels: no `brand_context/` → ask what's needed and produce solid generic output; partial context → use what exists and default the rest; full context → personalise fully. Brand context enhances output, it never gates functionality.
 
 ---
 
 ## External Services & API Keys
 
-Some skills use external services for enhanced functionality. API keys are stored in `.env` (gitignored). `.env.example` documents all available keys.
+Some skills use external services for enhanced functionality; keys live in `.env` (gitignored) and are documented in `.env.example`. For any skill that uses one: check the key exists first, tell the user what it does / what they lose without it / where to sign up, and always define a fallback — never block work when the fallback produces usable output. The full registry of services, keys and who uses them is `.env.example`; each skill documents its own fallback. Update `.env.example` when adding a new service.
 
-### Service Registry
-
-| Service | API Key | Used by | What it enables | Without it |
-|---------|---------|---------|-----------------|------------|
-| Firecrawl | `FIRECRAWL_API_KEY` | `tool-firecrawl-scraper`, `mkt-brand-voice` (Auto-Scrape) | JS-heavy site scraping, anti-bot bypass, brand asset extraction | Falls back to WebFetch and then manual paste |
-| SerpAPI | `SERPAPI_API_KEY` | `str-question-harvester` | Google "People Also Ask" question harvesting | Falls back to manual/WebSearch PAA gathering |
-| OpenAI | `OPENAI_API_KEY` | `str-trending-research`, `viz-remotion-video` (image fallback) | Reddit search via Responses API with `web_search`; `gpt-image-1` illustration fallback | Falls back to WebSearch / Gemini images |
-| xAI | `XAI_API_KEY` | `str-trending-research` | X/Twitter search via xAI API with `x_search` | Falls back to WebSearch without engagement metrics |
-| YouTube Data API v3 | `YOUTUBE_API_KEY` | `tool-youtube` | Channel video listing, handle resolution, search | Direct URL transcript mode still works |
-| Google Gemini | `GEMINI_API_KEY` | `viz-nano-banana`, `viz-remotion-video` (illustrations + Veo) | Image generation (Nano Banana / Gemini 3 Pro Image) and Veo 3.1 image-to-video hero clips | OpenAI `gpt-image-1` fallback for images; no Veo fallback |
-| Google Stitch | gcloud auth | `tool-stitch`, `viz-stitch-design` | UI design generation and export | No fallback |
-| Zernio | `ZERNIO_API_KEY` | `tool-zernio-social`, `tool-publisher`, `tool-video-upload`, `mkt-short-form-posting`, `mkt-content-analytics`, `mkt-youtube-content-package`, `00-longform-to-shortform` | Social media posting, scheduling, video upload, and analytics across YouTube/Instagram/TikTok/LinkedIn | Content packages are generated but not published — manual posting |
-| Groq | `GROQ_API_KEY` | `00-longform-to-shortform`, `tool-transcription` | Fast Whisper transcription | Falls back to local WhisperX (slower) |
-| AssemblyAI | `ASSEMBLYAI_API_KEY` | `00-video-studio` (talking-head captions + smart cut), podcast video render | Cloud transcription with word-level timestamps | Falls back to Groq, then local WhisperX |
-| ElevenLabs | `ELEVENLABS_API_KEY` | `00-video-studio` (music beds), `viz-remotion-video` (voiceover + music) | AI music generation (Eleven Music), cloned/host voiceover with word-level timestamps | No music bed / no narration — use a library track or skip |
-| Apify | `APIFY_API_KEY` | `tool-linkedin-scraper` | LinkedIn profile/post scraping | No fallback — ask user to paste content |
-| ScreenshotOne | `SCREENSHOTONE_API_KEY` | `tool-web-screenshot` | Rendered webpage screenshots | Falls back to local Playwright capture |
-| Unsplash / Pexels | `UNSPLASH_ACCESS_KEY`, `PEXELS_API_KEY` | `tool-image-search` | Stock photo search | Falls back to Openverse (no key needed) |
-| Descript | `DESCRIPT_API_TOKEN` | podcast ingest daemon, `vid-condensed-edit` flow | Auto-import recordings, programmatic filler-word removal, composition export | Manual import/edit/export in Descript app |
-| Zoom | `ZOOM_ACCOUNT_ID`, `ZOOM_CLIENT_ID`, `ZOOM_CLIENT_SECRET` | podcast ingest daemon | Cloud-recording listing/download + backfill (S2S OAuth) | Webhook download token only (24h window) |
-| Google Ads | `GOOGLE_ADS_DEVELOPER_TOKEN`, `GOOGLE_ADS_CLIENT_ID`, `GOOGLE_ADS_CLIENT_SECRET`, `GOOGLE_ADS_REFRESH_TOKEN`, `GOOGLE_ADS_LOGIN_CUSTOMER_ID`, `GOOGLE_ADS_CUSTOMER_ID` | `ops-google-ads` | Programmatic Google Ads management — audit, keyword research, campaign build/restructure, negative-list management, RSA review, conversion checks, reporting (Google Ads API, no SDK) | No fallback — manual management in the Google Ads UI |
-| Local PGLite + pgvector | _(none — keyless, default)_ | `npm run memory:recall` / `memory:index` (command-centre) | Default semantic memory store. Local, scope-isolated, BGE-M3 embeddings. Set up/reindex with `scripts/setup-memory.sh`. | n/a — this is the default |
-| Hosted Postgres + pgvector | `MEMORY_DATABASE_URL` (or `DATABASE_URL`); optional `MEMORY_STORE_BACKEND` | `npm run memory:migrate` / `memory:index` / `memory:search` / `memory:recall` / `memory:backup` / `memory:restore` (command-centre) | Optional hosted team memory: same schema + pgvector as local PGLite, as a central source of truth on Railway/VPS. When the URL is set, every memory command routes to hosted Postgres. | Local PGLite memory still works fully; no shared/team memory |
-| Hosted Memory API | `MEMORY_API_TOKEN` (+ optional `MEMORY_API_PORT`) | `npm run memory:api` (command-centre) | Optional HTTP boundary over the hosted memory store (`POST /v1/memory/search` + `/v1/memory/ingest`) with server-side scope validation, embedding, and audit. | Direct DB access via `MEMORY_DATABASE_URL`, or local PGLite via the CLI |
-
-### Rules for Skills Using External Services
-
-1. Check for the required key before using any external API
-2. Tell the user clearly what the service does, what they lose without it, where to sign up, and where to put the key
-3. Always define a fallback whenever possible
-4. Do not block work when the fallback produces usable output
-5. Update `.env.example` when adding a new external service
-
----
-
-## Permissions
-
-`.claude/settings.json` allows: `cat`, `ls`, `npm run *`, basic git commands, and edits to `/src/**`
-
-Denied: package installs, `rm`/`curl`/`wget`/`ssh`, reading `.env`/`.env.local` or credential files. `.env.example` is readable and editable.
+<!-- Permissions are defined and enforced in .claude/settings.json (permissions.allow / permissions.deny) — see that file. This section is informational only and was removed to keep always-on context small. -->

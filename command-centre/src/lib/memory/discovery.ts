@@ -182,7 +182,8 @@ function collectFiles(absRoot: string, out: string[]): void {
   }
 }
 
-function isIndexable(absPath: string): boolean {
+/** Whether a file's extension + non-zero size qualify it as a memory source. */
+export function isIndexable(absPath: string): boolean {
   if (!TEXT_EXTENSIONS.has(path.extname(absPath).toLowerCase())) return false;
   try {
     return fs.statSync(absPath).size > 0; // skip zero-byte files (e.g. .gitkeep)

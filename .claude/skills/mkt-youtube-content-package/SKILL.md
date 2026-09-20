@@ -83,7 +83,16 @@ From SRT file, consolidate into 10-15 meaningful sections:
 
 ---
 
-## Thumbnail Text-to-Image Template
+## Thumbnail & Pre-Post Gate (use mkt-youtube-optimizer)
+
+**Since 2026-07-04:** thumbnails and the pre-post quality check are owned by the
+`mkt-youtube-optimizer` skill. At Step 6 (thumbnail), invoke it in thumbs mode — it builds
+evidence-based variants from the maintained pattern library with the logo-free cut-outs.
+Before Step 7 (approval), invoke it in score mode — present the scorecard (/100 + fixes +
+28-day prediction) alongside the package. Below 70/100, recommend fixing before posting.
+The template below is the legacy fallback only (its brand config is not ATP's).
+
+## Thumbnail Text-to-Image Template (legacy fallback)
 
 ```
 Clean minimalist YouTube thumbnail, [BACKGROUND_COLOR] background, bold [TEXT_COLOR] sans-serif text on the left side reading "[LINE_1]" with the word "[HIGHLIGHT_WORD]" in [ACCENT_COLOR] with subtle underline, modern tech aesthetic, professional typography, high contrast, clean layout with empty space on right side for logo placement, 1280x720 aspect ratio, no gradients, flat design, editorial style

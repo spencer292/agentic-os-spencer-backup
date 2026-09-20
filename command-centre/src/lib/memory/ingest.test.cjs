@@ -278,3 +278,107 @@ test("ingestContent with trackJobs=false writes no index_jobs rows", async () =>
     rmDir(dataDir);
   }
 });
+
+// ---------------------------------------------------------------------------
+// deleteSource — the missing half of live sync: a file that's gone from disk.
+// ---------------------------------------------------------------------------
+
+test("deleteSource removes the source row and cascades its chunks", async () => {
+  const dataDir = tempDir();
+  const s = await store.openMemoryStore({ dataDir, embedDim: EMBED_DIM });
+  try {
+    const ingested = await ingest.ingestContent(baseOpts(s));
+    assert.equal(ingested.chunksInserted, 3);
+
+    const result = await ingest.deleteSource(s, sysScope(), baseOpts(s).sourcePath);
+    assert.equal(result.deleted, true);
+    assert.equal(result.sourceId, ingested.sourceId);
+
+    const src = await s.client.query("SELECT count(*)::int AS n FROM memory_sources WHERE id = $1", [
+      ingested.sourceId,
+    ]);
+    assert.equal(Number(src.rows[0].n), 0);
+
+    const chunks = await s.client.query(
+      "SELECT count(*)::int AS n FROM memory_chunks WHERE source_id = $1",
+      [ingested.sourceId],
+    );
+    assert.equal(Number(chunks.rows[0].n), 0, "chunks must cascade-delete with the source");
+
+    const jobs = await s.client.query(
+      "SELECT count(*)::int AS n FROM index_jobs WHERE reason = 'file_change' AND status = 'succeeded'",
+    );
+    assert.equal(Number(jobs.rows[0].n), 1);
+  } finally {
+    await s.close();
+    rmDir(dataDir);
+  }
+});
+
+test("deleteSource is a no-op when nothing matches scope + sourcePath", async () => {
+  const dataDir = tempDir();
+  const s = await store.openMemoryStore({ dataDir, embedDim: EMBED_DIM });
+  try {
+    const result = await ingest.deleteSource(s, sysScope(), "context/memory/never-indexed.md");
+    assert.equal(result.deleted, false);
+    assert.equal(result.sourceId, null);
+  } finally {
+    await s.close();
+    rmDir(dataDir);
+  }
+});
+
+test("deleteSource only deletes the matching scope, not a same-path source in another scope", async () => {
+  const dataDir = tempDir();
+  const s = await store.openMemoryStore({ dataDir, embedDim: EMBED_DIM });
+  try {
+    const sharedPath = "clients/acme/context/memory/2026-06-10.md";
+    const systemIngest = await ingest.ingestContent(
+      baseOpts(s, { sourcePath: sharedPath, scope: sysScope() }),
+    );
+    const clientIngest = await ingest.ingestContent(
+      baseOpts(s, { sourcePath: sharedPath, scope: sysScope({ visibility: "client", clientId: "acme" }) }),
+    );
+
+    const result = await ingest.deleteSource(s, sysScope(), sharedPath);
+    assert.equal(result.deleted, true);
+    assert.equal(result.sourceId, systemIngest.sourceId);
+
+    const remaining = await s.client.query("SELECT id FROM memory_sources WHERE id = $1", [
+      clientIngest.sourceId,
+    ]);
+    assert.equal(remaining.rows.length, 1, "the client-scoped source must be untouched");
+  } finally {
+    await s.close();
+    rmDir(dataDir);
+  }
+});
+
+test("deleteSource with trackJobs=false writes no index_jobs row", async () => {
+  const dataDir = tempDir();
+  const s = await store.openMemoryStore({ dataDir, embedDim: EMBED_DIM });
+  try {
+    await ingest.ingestContent(baseOpts(s, { trackJobs: false }));
+    await ingest.deleteSource(s, sysScope(), baseOpts(s).sourcePath, { trackJobs: false });
+
+    const jobs = await s.client.query("SELECT count(*)::int AS n FROM index_jobs");
+    assert.equal(Number(jobs.rows[0].n), 0);
+  } finally {
+    await s.close();
+    rmDir(dataDir);
+  }
+});
+
+test("deleteSource rejects an invalid scope", async () => {
+  const dataDir = tempDir();
+  const s = await store.openMemoryStore({ dataDir, embedDim: EMBED_DIM });
+  try {
+    await assert.rejects(
+      () => ingest.deleteSource(s, sysScope({ visibility: "private" }), "context/memory/x.md"),
+      /Invalid memory scope/,
+    );
+  } finally {
+    await s.close();
+    rmDir(dataDir);
+  }
+});

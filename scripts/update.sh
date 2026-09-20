@@ -33,14 +33,9 @@ if [[ -z "${__AGENTIC_OS_UPDATE_BOOTSTRAPPED:-}" ]]; then
 
     bootstrap_read_env_value() {
         local key="$1"
-        local value="${!key:-}"
 
-        value="$(bootstrap_trim_value "$value")"
-        if [[ -n "$value" ]]; then
-            printf '%s\n' "$value"
-            return 0
-        fi
-
+        # Update source settings intentionally come only from the root .env.
+        # Long-lived shells and the Command Centre may inherit stale values.
         if [[ -f "$BOOTSTRAP_REPO_ROOT/.env" ]]; then
             awk -v key="$key" '
                 /^[[:space:]]*#/ { next }
@@ -189,14 +184,19 @@ if [[ -z "${__AGENTIC_OS_UPDATE_BOOTSTRAPPED:-}" ]]; then
         "scripts/lib/pull.sh"
         "scripts/lib/merge.sh"
         "scripts/lib/catalog.sh"
+        "scripts/lib/update-processes.sh"
+        "scripts/lib/update-processes.ps1"
         "scripts/lib/gsd-migration.sh"
         "scripts/lib/synthesize.py"
+        "scripts/update-recovery.sh"
         "scripts/rollback.sh"
         "scripts/session-end.sh"
     )
 
     BOOTSTRAP_REQUIRED_SIGNATURES=(
         "scripts/lib/common.sh:ensure_update_remote_access()"
+        "scripts/lib/common.sh:update_recovery_on_exit()"
+        "scripts/lib/update-processes.sh:prepare_update_processes()"
         "scripts/lib/common.sh:clients/*/.claude/settings.local.json"
         "scripts/lib/backup.sh:restore_protected_stash_backup()"
         "scripts/lib/backup.sh:warn_stale_update_stashes()"
@@ -277,6 +277,7 @@ if ! resolve_python_cmd; then
     printf "  ${RED}Python 3 is required for update.sh.${NC}\n"
     exit 1
 fi
+source "$UPDATE_LIB_DIR/update-processes.sh"
 
 # =========================================================
 # Step 1: Verify we're in a git repo
@@ -331,6 +332,9 @@ OLD_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
 OLD_HEAD=$(git rev-parse HEAD)
 LAST_UPDATED=$(git log -1 --format="%cd" --date=format:"%d %b %Y at %H:%M" 2>/dev/null || echo "unknown")
 
+# Stop only processes owned by this installation, and never while tasks are active.
+prepare_update_processes || exit 1
+
 # Steps 4–5c: back up modified files + prevent merge conflicts
 source "$UPDATE_LIB_DIR/backup.sh"
 
@@ -346,3 +350,5 @@ agentic_os_gsd_run_update_migration "$REPO_ROOT" || true
 
 # Steps 3–4: gate new skills, catalog, GSD, summary, What's New
 source "$UPDATE_LIB_DIR/catalog.sh"
+restore_update_background_services 0 || true
+update_recovery_deactivate_guard

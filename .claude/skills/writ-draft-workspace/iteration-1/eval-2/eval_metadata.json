@@ -1,0 +1,16 @@
+{
+  "eval_id": 2,
+  "eval_name": "draft-from-notes",
+  "prompt": "Turn these notes into the opening of a chapter.",
+  "assertions": [
+    {
+      "text": "Applies the methodology with dosage discipline (consequence-led open, one focus device, peaks not pervasive) \u2014 not device-soup"
+    },
+    {
+      "text": "Uses the supplied specific (\u00a31.2M) and leaves [[NEEDS:]] placeholders for the missing ones (staff count, daughter's event, duration)"
+    },
+    {
+      "text": "Does NOT invent the missing specifics"
+    }
+  ]
+}

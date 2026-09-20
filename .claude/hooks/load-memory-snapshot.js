@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 // SessionStart hook — loads the curated memory snapshot per AIOS-75 (Phase 1).
-// Reads context/SOUL.md, context/USER.md, context/MEMORY.md, and today's
-// daily log (or yesterday's as fallback). Injects them as additionalContext
-// so Claude has them available at session start without needing the user
-// to prompt "what did you read?". This is the runtime implementation of
-// the "Returning Mode" silent startup steps documented in CLAUDE.md.
+// Reads the solo memory snapshot, or only solo-safe identity context when
+// Team OS is connected. Team/private/client context comes from the server
+// snapshot injected by team-context-snapshot.js.
 //
 // Fire-and-forget — never blocks session start. Silent on missing files.
 
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
 
 let input = '';
@@ -23,6 +22,7 @@ process.stdin.on('end', () => {
   }
 
   const cwd = data.cwd || process.env.CLAUDE_PROJECT_DIR || process.cwd();
+  const root = findRoot(cwd);
 
   // Walk up to find an agentic-os root (AGENTS.md + .claude/ present)
   // so the hook works from client subfolders or projects/briefs/ subfolders.
@@ -40,15 +40,33 @@ process.stdin.on('end', () => {
     return null;
   }
 
+  function teamConfigPath() {
+    const dir = process.env.AGENTIC_OS_TEAM_CONFIG_DIR
+      ? path.resolve(process.env.AGENTIC_OS_TEAM_CONFIG_DIR)
+      : path.join(os.homedir(), '.agentic-os');
+    return path.join(dir, 'team-context.json');
+  }
+
+  function hasSavedTeamContext() {
+    try {
+      const parsed = JSON.parse(fs.readFileSync(teamConfigPath(), 'utf8'));
+      if (!parsed || typeof parsed !== 'object') return false;
+      const apiUrl = typeof parsed.apiUrl === 'string' ? parsed.apiUrl.trim() : '';
+      const token = typeof parsed.token === 'string' ? parsed.token.trim() : '';
+      return /^https?:\/\//i.test(apiUrl) && token !== '';
+    } catch {
+      return false;
+    }
+  }
+
   // Prefer the local context (e.g., a client subfolder) over the root,
   // matching the fallback chain documented in CLAUDE.md.
   function resolveContext(relFile) {
     const local = path.join(cwd, relFile);
     if (fs.existsSync(local)) return { abs: local, source: 'local' };
-    const root = findRoot(cwd);
-    if (root && root !== cwd) {
-      const rooted = path.join(root, relFile);
-      if (fs.existsSync(rooted)) return { abs: rooted, source: 'root' };
+      if (root && root !== cwd) {
+        const rooted = path.join(root, relFile);
+        if (fs.existsSync(rooted)) return { abs: rooted, source: 'root' };
     }
     return null;
   }
@@ -64,26 +82,37 @@ process.stdin.on('end', () => {
   const today = dateStr(now);
   const yesterday = dateStr(new Date(now.getTime() - 86400000));
 
+  const conversationOnly = process.env.AGENTIC_OS_TEAM_ENRICHMENT === 'conversation_only';
+  const teamMode =
+    conversationOnly ||
+    process.env.AGENTIC_OS_WORK_MODE === 'team' ||
+    Boolean(process.env.AGENTIC_OS_CONTEXT_OVERLAY_DIR) ||
+    hasSavedTeamContext();
   const targets = [
-    { rel: 'context/SOUL.md', label: 'SOUL — agent identity' },
-    { rel: 'context/USER.md', label: 'USER — profile and preferences' },
-    {
-      rel: 'context/MEMORY.md',
-      label: 'MEMORY — curated working scratchpad (frozen snapshot; mid-session writes only take effect next session)',
-    },
+    { rel: 'context/SOUL.md', label: 'SOUL - agent identity' },
   ];
 
-  // Daily log: today first, yesterday as fallback if today has no session yet
-  const todayLog = resolveContext(`context/memory/${today}.md`);
-  if (todayLog) {
-    targets.push({ rel: `context/memory/${today}.md`, label: `Today's daily log (${today})` });
-  } else {
-    const yLog = resolveContext(`context/memory/${yesterday}.md`);
-    if (yLog) {
-      targets.push({
-        rel: `context/memory/${yesterday}.md`,
-        label: `Yesterday's daily log (${yesterday}) — today has no session yet`,
-      });
+  if (!teamMode) {
+    targets.push(
+      { rel: 'context/USER.md', label: 'USER - profile and preferences' },
+      {
+        rel: 'context/MEMORY.md',
+        label: 'MEMORY - curated working scratchpad (frozen snapshot; mid-session writes only take effect next session)',
+      },
+    );
+
+    // Daily log: today first, yesterday as fallback if today has no session yet
+    const todayLog = resolveContext(`context/memory/${today}.md`);
+    if (todayLog) {
+      targets.push({ rel: `context/memory/${today}.md`, label: `Today's daily log (${today})` });
+    } else {
+      const yLog = resolveContext(`context/memory/${yesterday}.md`);
+      if (yLog) {
+        targets.push({
+          rel: `context/memory/${yesterday}.md`,
+          label: `Yesterday's daily log (${yesterday}) - today has no session yet`,
+        });
+      }
     }
   }
 
@@ -105,11 +134,12 @@ process.stdin.on('end', () => {
   }
 
   const message =
-    `# Silent startup — memory snapshot loaded (per CLAUDE.md Returning Mode)\n\n` +
-    `These files have been auto-loaded so the silent startup is genuinely silent — ` +
-    `you already have the frozen snapshot for this session. Do not greet, do not ` +
-    `recap, do not list capabilities. Mid-session writes to \`context/MEMORY.md\` ` +
-    `persist to disk but only take effect on the next session.\n\n` +
+    `# Silent startup - memory snapshot loaded (per CLAUDE.md Returning Mode)\n\n` +
+    (conversationOnly
+      ? `This existing Team chat is continuing in conversation-only mode. Use only context already present in the saved conversation. Do not load Team context, memory, skills, secrets, or shared files, and do not capture or consolidate Team memory.\n\n`
+      : teamMode
+      ? `Team OS mode is active, so local USER.md, MEMORY.md, and daily logs were not loaded here. Use only the Team OS server-resolved snapshot for team, client, and private user context.\n\n`
+      : `These files have been auto-loaded so the silent startup is genuinely silent - you already have the frozen snapshot for this session. Do not greet, do not recap, do not list capabilities. Mid-session writes to \`context/MEMORY.md\` persist to disk but only take effect on the next session.\n\n`) +
     `---\n\n` +
     sections.join('\n\n---\n\n');
 
@@ -124,4 +154,4 @@ process.stdin.on('end', () => {
 });
 
 // Safety net — if stdin never delivers, exit silently after a few seconds
-setTimeout(() => process.exit(0), 4000);
+setTimeout(() => process.exit(0), 4000).unref();

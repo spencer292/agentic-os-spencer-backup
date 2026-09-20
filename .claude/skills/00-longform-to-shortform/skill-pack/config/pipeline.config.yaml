@@ -98,6 +98,21 @@ publishing:
         tiktok: ""
       lead_magnet_url: ""           # Optional link added to video descriptions (e.g. newsletter signup)
 
+    breathwork:
+      # youtube_account_id captured programmatically (plan 01-05 Task 3) from:
+      #   node .claude/skills/00-video-studio/scripts/zernio_accounts.cjs --json
+      # matched on platform=youtube, username="breathewithroycastleman" (Roy's Task 2 report).
+      youtube_account_id: "6a9911c477555aae01cbda80"
+      instagram_account_id: ""
+      tiktok_account_id: ""
+      linkedin_account_id: ""
+      social_links:
+        youtube: ""
+        linkedin: ""
+        instagram: ""
+        tiktok: ""
+      lead_magnet_url: "https://allthepower.co.uk/quiz"
+
 # --- PERFORMANCE -------------------------------------------------------------
 performance:
   parallel_edits: 3                 # How many clips to edit simultaneously

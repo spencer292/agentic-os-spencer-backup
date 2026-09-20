@@ -15,9 +15,14 @@ set -euo pipefail
 #   bash scripts/test-update.sh catalog-missing-folder
 #   bash scripts/test-update.sh catalog-memory-prompt
 #   bash scripts/test-update.sh developer-update-source
+#   bash scripts/test-update.sh command-centre-dependencies
+#   bash scripts/test-update.sh update-processes
+#   bash scripts/test-update.sh update-process-preflight
 #   bash scripts/test-update.sh client-sync-contract
 #   bash scripts/test-update.sh failed-stash-backup
 #   bash scripts/test-update.sh stale-update-stashes
+#   bash scripts/test-update.sh unexpected-backup-failure
+#   bash scripts/test-update.sh recovery-helper-no-report
 #   bash scripts/test-update.sh backup-fork-remote
 #   bash scripts/test-update.sh old-0-2-update
 # ==========================================================
@@ -37,6 +42,7 @@ TEST_ROOT="${AGENTIC_OS_TEST_ROOT:-/tmp/agentic-os-test}"
 MAIN_REPO="$TEST_ROOT/main-repo"          # bare upstream repo
 DEMO_REPO="$TEST_ROOT/demo-repo"          # user's clone
 MAIN_WORK="$TEST_ROOT/main-worktree"      # working copy for pushing changes
+export AGENTIC_OS_TEST_SKIP_COMMAND_CENTRE_DEPS=1
 source "$REAL_REPO/scripts/lib/python.sh"
 
 if ! resolve_python_cmd; then
@@ -87,6 +93,37 @@ assert_file_contains() {
         [[ -f "$file" ]] && sed -n '1,80p' "$file"
         return 1
     fi
+}
+
+assert_path_absent() {
+    local path="$1"
+    local reason="$2"
+    if [[ -e "$path" ]]; then
+        err "Expected path to be absent ($reason): $path"
+        return 1
+    else
+        ok "Path absent as expected: $path"
+    fi
+}
+
+write_test_update_source_env() {
+    local repo_root="$1"
+    local slug="$2"
+    local branch="${3:-main}"
+    local env_file="$repo_root/.env"
+    local temp_file="$repo_root/.env.update-source.tmp"
+
+    if [[ -f "$env_file" ]]; then
+        awk '
+            !/^[[:space:]]*(export[[:space:]]+)?AGENTIC_OS_UPSTREAM_(SLUG|BRANCH)[[:space:]]*=/
+        ' "$env_file" > "$temp_file"
+    else
+        : > "$temp_file"
+    fi
+
+    printf 'AGENTIC_OS_UPSTREAM_SLUG=%s\n' "$slug" >> "$temp_file"
+    printf 'AGENTIC_OS_UPSTREAM_BRANCH=%s\n' "$branch" >> "$temp_file"
+    mv "$temp_file" "$env_file"
 }
 
 # ---------- Environment Setup ----------
@@ -140,7 +177,7 @@ create_test_env() {
     "mkt-icp",
     "mkt-positioning",
     "tool-humanizer",
-    "viz-nano-banana"
+    "viz-image-gen"
   ],
   "removed_skills": [
     "mkt-ugc-scripts",
@@ -199,7 +236,7 @@ reset_demo() {
     "mkt-icp",
     "mkt-positioning",
     "tool-humanizer",
-    "viz-nano-banana"
+    "viz-image-gen"
   ],
   "removed_skills": [
     "mkt-ugc-scripts",
@@ -236,8 +273,8 @@ run_update() {
     cd "$DEMO_REPO"
     local test_upstream_slug
     test_upstream_slug="$(basename "$TEST_ROOT")/main-repo"
+    write_test_update_source_env "$DEMO_REPO" "$test_upstream_slug" main
     local update_env=(
-        "AGENTIC_OS_UPSTREAM_SLUG=$test_upstream_slug"
         "AGENTIC_OS_SKIP_MEMORY_PROMPT=1"
     )
     if [[ -n "${1:-}" ]]; then
@@ -250,9 +287,11 @@ run_update() {
 install_current_update_scripts() {
     cd "$MAIN_WORK"
     cp "$REAL_REPO/scripts/update.sh" scripts/update.sh
+    cp "$REAL_REPO/scripts/update-recovery.sh" scripts/update-recovery.sh
     cp "$REAL_REPO/scripts/lib/"*.sh scripts/lib/
+    cp "$REAL_REPO/scripts/lib/"*.ps1 scripts/lib/
     cp "$REAL_REPO/scripts/lib/synthesize.py" scripts/lib/synthesize.py
-    git add scripts/update.sh scripts/lib
+    git add scripts/update.sh scripts/update-recovery.sh scripts/lib
     git commit -m "Use current update scripts" --allow-empty --quiet
     git push origin main --quiet
 
@@ -386,7 +425,10 @@ run_protected_paths_test() {
     assert_file_contains "$DEMO_REPO/clients/acme/.mcp.json" "client mcp local note"
     assert_file_contains "$DEMO_REPO/clients/acme/.claude/settings.local.json" "client settings local note"
     assert_file_contains "$DEMO_REPO/clients/acme/AGENTS.md" "client AGENTS local note"
-    assert_file_contains "$DEMO_REPO/clients/acme/.claude/skills/_catalog/installed.json" "client installed local note"
+    # Deliberate exception among protected client paths: skills are inherited
+    # from the root now, so the client _catalog copy is pruned as dead weight.
+    # The root catalog is the only catalog.
+    assert_path_absent "$DEMO_REPO/clients/acme/.claude/skills/_catalog" "client skill catalog is pruned; the root catalog is the only one"
     assert_file_contains "$DEMO_REPO/clients/acme/context/local-note.md" "client context local note"
     assert_file_contains "$DEMO_REPO/clients/acme/brand_context/local-brand.md" "client brand local note"
     assert_file_contains "$DEMO_REPO/clients/acme/projects/protected-output/local-output.md" "client project local note"
@@ -442,10 +484,15 @@ JSON
 
     run_update > "$output_file" 2>&1
 
-    assert_file_contains "$DEMO_REPO/clients/acme/.claude/skills/${skill_name}/SKILL.md" "root skill sync marker"
+    # Shared skills are inherited from the root now. The stale client copy of a
+    # root skill is pruned (its content matches a root version), the root copy
+    # carries the upstream marker for every client to read, and the client
+    # _catalog goes away with it: the root catalog is the only catalog.
+    assert_path_absent "$DEMO_REPO/clients/acme/.claude/skills/${skill_name}/SKILL.md" "stale client copy of a root skill is pruned instead of synced"
+    assert_file_contains "$DEMO_REPO/.claude/skills/${skill_name}/SKILL.md" "root skill sync marker"
     assert_file_contains "$DEMO_REPO/clients/acme/.claude/skills/${skill_name}/SKILL.local.md" "client local skill override must survive"
     assert_file_contains "$DEMO_REPO/clients/acme/.claude/skills/client-only-local/SKILL.md" "client-only skill must survive"
-    assert_file_contains "$DEMO_REPO/clients/acme/.claude/skills/_catalog/installed.json" "installed state must survive"
+    assert_path_absent "$DEMO_REPO/clients/acme/.claude/skills/_catalog" "client skill catalog is pruned; the root catalog is the only one"
     assert_file_contains "$DEMO_REPO/clients/acme/.claude/settings.local.json" "client local settings must survive"
     assert_file_contains "$DEMO_REPO/clients/acme/.claude/settings.json" "root shared settings marker"
     assert_file_contains "$DEMO_REPO/clients/acme/scripts/check-updates.sh" "root script sync marker"
@@ -453,7 +500,7 @@ JSON
     assert_file_contains "$DEMO_REPO/clients/acme/.claude/hooks_info/client-sync-contract.md" "root hook info marker"
     assert_file_contains "$DEMO_REPO/clients/acme/cron/jobs/local-job.md" "client cron job must survive"
     assert_file_contains "$DEMO_REPO/clients/acme/cron/templates/example.md" "root cron template marker"
-    assert_output_contains "$output_file" "Skills synced"
+    assert_output_contains "$output_file" "Skills inherited from root"
     assert_output_contains "$output_file" "Cron templates synced"
 
     ok "Client sync contract test passed"
@@ -528,6 +575,74 @@ run_stale_update_stashes_test() {
     ok "Stale update stash warning test passed"
 }
 
+run_unexpected_backup_failure_test() {
+    local output_file="$TEST_ROOT/unexpected-backup-failure.out"
+    local helper_output="$TEST_ROOT/unexpected-backup-helper.out"
+    local report_path
+    local status
+
+    header "Unexpected backup failure recovery UX test"
+    create_test_env
+    install_current_update_scripts
+    install_all_skills_in_demo
+
+    cd "$DEMO_REPO"
+    mkdir -p brand_context
+    echo "local brand file must survive unexpected update failure" > brand_context/voice-profile.md
+
+    set +e
+    export AGENTIC_OS_TEST_FAIL_AFTER_BACKUP=1
+    run_update > "$output_file" 2>&1
+    status=$?
+    unset AGENTIC_OS_TEST_FAIL_AFTER_BACKUP
+    set -e
+
+    if [[ $status -eq 0 ]]; then
+        err "update.sh should fail when the test backup failure is injected."
+        sed -n '1,220p' "$output_file"
+        return 1
+    fi
+
+    assert_file_contains "$DEMO_REPO/brand_context/voice-profile.md" "local brand file must survive unexpected update failure"
+    assert_output_contains "$output_file" "Your files are safe in:"
+    assert_output_contains "$output_file" "Recovery report:"
+    assert_output_contains "$output_file" "bash scripts/update-recovery.sh --latest"
+
+    report_path=$(find "$DEMO_REPO/.backup" -maxdepth 1 -type f -name 'update-recovery-*.txt' -print 2>/dev/null | sort | tail -n 1)
+    if [[ -z "$report_path" ]]; then
+        err "Expected an update recovery report in .backup."
+        find "$DEMO_REPO/.backup" -maxdepth 2 -type f -print 2>/dev/null || true
+        return 1
+    fi
+    assert_file_contains "$report_path" "Your files are safe in:"
+    assert_file_contains "$report_path" "Protected file stash backup:"
+
+    cd "$DEMO_REPO"
+    bash scripts/update-recovery.sh --latest > "$helper_output" 2>&1
+    assert_output_contains "$helper_output" "Latest recovery report:"
+    assert_output_contains "$helper_output" "Your files are safe in:"
+    assert_output_contains "$helper_output" "Protected file stash backup:"
+
+    ok "Unexpected backup failure recovery UX test passed"
+}
+
+run_recovery_helper_no_report_test() {
+    local output_file="$TEST_ROOT/recovery-helper-no-report.out"
+
+    header "Update recovery helper no-report test"
+    create_test_env
+    install_current_update_scripts
+
+    cd "$DEMO_REPO"
+    rm -rf .backup
+    bash scripts/update-recovery.sh --latest > "$output_file" 2>&1
+
+    assert_output_contains "$output_file" "No Agentic OS update recovery report found"
+    assert_output_contains "$output_file" "No Agentic OS update stashes found."
+
+    ok "Update recovery helper no-report test passed"
+}
+
 run_backup_fork_remote_test() {
     local output_file="$TEST_ROOT/backup-fork-remote.out"
     local backup_repo="$TEST_ROOT/backup-fork.git"
@@ -578,6 +693,8 @@ run_old_0_2_update_test() {
         scripts/lib/pull.sh
         scripts/lib/python.sh
         scripts/lib/synthesize.py
+        scripts/lib/update-processes.sh
+        scripts/lib/update-processes.ps1
     )
 
     header "Old 0.2.x install update smoke test"
@@ -606,8 +723,8 @@ run_old_0_2_update_test() {
     git commit -m "Publish current update bundle" --quiet
 
     cd "$demo"
-    env AGENTIC_OS_UPSTREAM_SLUG=agentic-os-old-0-2-update-test/upstream \
-        AGENTIC_OS_SKIP_MEMORY_PROMPT=1 \
+    write_test_update_source_env "$demo" agentic-os-old-0-2-update-test/upstream main
+    env AGENTIC_OS_SKIP_MEMORY_PROMPT=1 \
         bash scripts/update.sh > "$output_file" 2>&1
 
     assert_output_contains "$output_file" "You are now on Agentic OS"
@@ -725,6 +842,7 @@ run_version_output_test() {
     git clone "$upstream" "$demo" --quiet
     cd "$demo"
     git checkout main --quiet 2>/dev/null || true
+    write_test_update_source_env "$demo" agentic-os-version-output-test/upstream main
 
     cd "$upstream"
     printf "9.9.9\n" > VERSION
@@ -732,16 +850,14 @@ run_version_output_test() {
     git commit -m "Bump version for update output test" --quiet
 
     cd "$demo"
-    env AGENTIC_OS_UPSTREAM_SLUG=agentic-os-version-output-test/upstream \
-        AGENTIC_OS_SKIP_MEMORY_PROMPT=1 \
+    env AGENTIC_OS_SKIP_MEMORY_PROMPT=1 \
         bash scripts/update.sh > "$first_output" 2>&1
 
     assert_output_contains "$first_output" "Current version: v$(cat "$REAL_REPO/VERSION")"
     assert_output_contains "$first_output" "Version: v$(cat "$REAL_REPO/VERSION") -> v9.9.9"
     assert_output_contains "$first_output" "You are now on Agentic OS v9.9.9."
 
-    env AGENTIC_OS_UPSTREAM_SLUG=agentic-os-version-output-test/upstream \
-        AGENTIC_OS_SKIP_MEMORY_PROMPT=1 \
+    env AGENTIC_OS_SKIP_MEMORY_PROMPT=1 \
         bash scripts/update.sh > "$second_output" 2>&1
 
     assert_output_contains "$second_output" "Current version: v9.9.9"
@@ -854,8 +970,8 @@ PY
     git commit -m "Add valid skill and broken catalog entry" --quiet
 
     cd "$demo"
-    env AGENTIC_OS_UPSTREAM_SLUG=agentic-os-catalog-missing-folder-test/upstream \
-        AGENTIC_OS_SKIP_MEMORY_PROMPT=1 \
+    write_test_update_source_env "$demo" agentic-os-catalog-missing-folder-test/upstream main
+    env AGENTIC_OS_SKIP_MEMORY_PROMPT=1 \
         bash scripts/update.sh > "$output_file" 2>&1
 
     assert_output_contains "$output_file" "Skipped catalog skill(s) with missing tracked folder: $invalid_skill"
@@ -1008,8 +1124,8 @@ EOF
     git commit -m "Trigger client sync failure" --quiet
 
     cd "$demo"
-    env AGENTIC_OS_UPSTREAM_SLUG=agentic-os-client-sync-failure-test/upstream \
-        AGENTIC_OS_SKIP_MEMORY_PROMPT=1 \
+    write_test_update_source_env "$demo" agentic-os-client-sync-failure-test/upstream main
+    env AGENTIC_OS_SKIP_MEMORY_PROMPT=1 \
         bash scripts/update.sh > "$output_file" 2>&1
 
     assert_output_contains "$output_file" "Client folder sync did not finish"
@@ -1032,6 +1148,8 @@ run_bootstrap_stale_common_test() {
         scripts/lib/pull.sh
         scripts/lib/merge.sh
         scripts/lib/catalog.sh
+        scripts/lib/update-processes.sh
+        scripts/lib/update-processes.ps1
         scripts/lib/gsd-migration.sh
         scripts/lib/synthesize.py
         scripts/rollback.sh
@@ -1067,8 +1185,8 @@ run_bootstrap_stale_common_test() {
     git commit -m "Publish fixed update helper bundle" --quiet
 
     cd "$demo"
-    env AGENTIC_OS_UPSTREAM_SLUG=agentic-os-bootstrap-stale-common-test/upstream \
-        AGENTIC_OS_SKIP_MEMORY_PROMPT=1 \
+    write_test_update_source_env "$demo" agentic-os-bootstrap-stale-common-test/upstream main
+    env AGENTIC_OS_SKIP_MEMORY_PROMPT=1 \
         bash scripts/update.sh > "$output_file" 2>&1
 
     assert_output_contains "$output_file" "Fetching update dependencies from"
@@ -1087,16 +1205,18 @@ run_bootstrap_stale_common_test() {
 
 run_developer_update_source_test() {
     local test_root="${TMPDIR:-/tmp}/agentic-os-dev-branch-override-test"
-    local upstream="$test_root/upstream"
+    local upstream="$test_root/simonc602/agentic-os"
     local demo="$test_root/demo"
+    local default_demo="$test_root/default-demo"
     local check_output="$test_root/check-updates-dev.out"
     local update_output="$test_root/update-dev.out"
-    local main_check_output="$test_root/check-updates-main-override.out"
-    local main_update_output="$test_root/update-main-override.out"
+    local default_check_output="$test_root/check-updates-main-default.out"
+    local default_update_output="$test_root/update-main-default.out"
     local invalid_check_output="$test_root/check-updates-invalid.out"
     local invalid_update_output="$test_root/update-invalid.out"
-    local slug="agentic-os-dev-branch-override-test/upstream"
-    local marker="dev branch update marker"
+    local slug="simonc602/agentic-os"
+    local dev_marker="dev branch update marker"
+    local main_marker="main branch update marker"
     local required_files=(
         scripts/update.sh
         scripts/check-updates.sh
@@ -1112,11 +1232,13 @@ run_developer_update_source_test() {
         scripts/lib/pull.sh
         scripts/lib/python.sh
         scripts/lib/synthesize.py
+        scripts/lib/update-processes.sh
+        scripts/lib/update-processes.ps1
     )
 
     header "Developer update source override test"
     rm -rf "$test_root"
-    mkdir -p "$test_root"
+    mkdir -p "$(dirname "$upstream")"
 
     git clone "$REAL_REPO" "$upstream" --quiet
     cd "$upstream"
@@ -1137,41 +1259,60 @@ AGENTIC_OS_UPSTREAM_SLUG=$slug
 AGENTIC_OS_UPSTREAM_BRANCH=dev
 EOF
 
+    git clone "$upstream" "$default_demo" --quiet
+    cd "$default_demo"
+    git checkout main --quiet 2>/dev/null || true
+
     cd "$upstream"
     git checkout -B dev main --quiet
-    printf "\n<!-- %s -->\n" "$marker" >> README.md
+    printf "\n<!-- %s -->\n" "$dev_marker" >> README.md
     git add README.md
     git commit -m "Add dev-only update marker" --quiet
     git checkout main --quiet
 
+    printf '%s\n' "$main_marker" > main-update-marker.txt
+    git add main-update-marker.txt
+    git commit -m "Add main-only update marker" --quiet
+
     cd "$demo"
-    env AGENTIC_OS_UPSTREAM_BRANCH=main \
+    env AGENTIC_OS_UPSTREAM_SLUG=legacy/team-os-v1 \
+        AGENTIC_OS_UPSTREAM_BRANCH=main \
         AGENTIC_OS_SKIP_MEMORY_PROMPT=1 \
-        bash scripts/check-updates.sh > "$main_check_output" 2>&1
-    assert_output_contains "$main_check_output" "You're up to date"
-    assert_output_not_contains "$main_check_output" "origin/dev"
-
-    env AGENTIC_OS_UPSTREAM_BRANCH=main \
-        AGENTIC_OS_SKIP_MEMORY_PROMPT=1 \
-        bash scripts/update.sh > "$main_update_output" 2>&1
-    assert_output_contains "$main_update_output" "Step 1: Updates from origin/main"
-    if grep -Fq "$marker" README.md; then
-        err "Shell AGENTIC_OS_UPSTREAM_BRANCH=main should not pull the dev marker"
-        sed -n '1,220p' "$main_update_output"
-        return 1
-    fi
-    ok "Shell env overrides .env branch"
-
-    env AGENTIC_OS_SKIP_MEMORY_PROMPT=1 \
         bash scripts/check-updates.sh > "$check_output" 2>&1
     assert_output_contains "$check_output" "behind origin/dev"
 
-    env AGENTIC_OS_SKIP_MEMORY_PROMPT=1 \
+    env AGENTIC_OS_UPSTREAM_SLUG=legacy/team-os-v1 \
+        AGENTIC_OS_UPSTREAM_BRANCH=main \
+        AGENTIC_OS_SKIP_MEMORY_PROMPT=1 \
         bash scripts/update.sh > "$update_output" 2>&1
     assert_output_contains "$update_output" "Step 1: Updates from origin/dev"
     assert_output_contains "$update_output" "Pulled 1 new commit(s) from origin/dev."
-    assert_file_contains README.md "$marker"
+    assert_file_contains README.md "$dev_marker"
+    ok ".env update source ignores conflicting shell values"
 
+    cd "$default_demo"
+    env AGENTIC_OS_UPSTREAM_SLUG=legacy/team-os-v1 \
+        AGENTIC_OS_UPSTREAM_BRANCH=dev \
+        AGENTIC_OS_SKIP_MEMORY_PROMPT=1 \
+        bash scripts/check-updates.sh > "$default_check_output" 2>&1
+    assert_output_contains "$default_check_output" "behind origin/main"
+
+    cat > .env <<EOF
+AGENTIC_OS_UPSTREAM_SLUG=
+AGENTIC_OS_UPSTREAM_BRANCH=
+EOF
+
+    env AGENTIC_OS_UPSTREAM_SLUG=legacy/team-os-v1 \
+        AGENTIC_OS_UPSTREAM_BRANCH=dev \
+        AGENTIC_OS_SKIP_MEMORY_PROMPT=1 \
+        bash scripts/update.sh > "$default_update_output" 2>&1
+    assert_output_contains "$default_update_output" "Step 1: Updates from origin/main"
+    assert_output_contains "$default_update_output" "Pulled 1 new commit(s) from origin/main."
+    assert_file_contains main-update-marker.txt "$main_marker"
+    assert_output_not_contains "$default_update_output" "origin/dev"
+    ok "Missing and empty .env settings use the official main defaults"
+
+    cd "$demo"
     cat > .env <<EOF
 AGENTIC_OS_UPSTREAM_SLUG=$slug
 AGENTIC_OS_UPSTREAM_BRANCH=bad branch
@@ -1192,6 +1333,140 @@ EOF
     assert_output_contains "$invalid_update_output" "Invalid AGENTIC_OS_UPSTREAM_BRANCH: bad branch"
 
     ok "Developer update source override test passed"
+}
+
+run_command_centre_dependencies_test() {
+    local success_output="$TEST_ROOT/command-centre-dependencies-success.out"
+    local failure_output="$TEST_ROOT/command-centre-dependencies-failure.out"
+    local helper_log="$TEST_ROOT/command-centre-dependencies.log"
+    local update_exit=0
+
+    header "Command Centre dependency synchronization"
+    create_test_env
+    install_current_update_scripts
+
+    cd "$MAIN_WORK"
+    cat > command-centre/scripts/ensure-dependencies.cjs <<'EOF'
+const fs = require("node:fs");
+fs.appendFileSync(process.env.AGENTIC_OS_DEPENDENCY_TEST_LOG, "success\n");
+process.exit(0);
+EOF
+    push_from_main "Trigger dependency synchronization without a lockfile change"
+
+    export AGENTIC_OS_TEST_SKIP_COMMAND_CENTRE_DEPS=0
+    export AGENTIC_OS_DEPENDENCY_TEST_LOG="$helper_log"
+    run_update > "$success_output" 2>&1
+    export AGENTIC_OS_TEST_SKIP_COMMAND_CENTRE_DEPS=1
+
+    assert_file_contains "$helper_log" "success"
+    assert_output_contains "$success_output" "Command Centre dependencies: ready"
+
+    cd "$MAIN_WORK"
+    cat > command-centre/scripts/ensure-dependencies.cjs <<'EOF'
+const fs = require("node:fs");
+fs.appendFileSync(process.env.AGENTIC_OS_DEPENDENCY_TEST_LOG, "failure\n");
+process.exit(9);
+EOF
+    push_from_main "Simulate Command Centre dependency synchronization failure"
+
+    export AGENTIC_OS_TEST_SKIP_COMMAND_CENTRE_DEPS=0
+    set +e
+    run_update > "$failure_output" 2>&1
+    update_exit=$?
+    set -e
+    export AGENTIC_OS_TEST_SKIP_COMMAND_CENTRE_DEPS=1
+    unset AGENTIC_OS_DEPENDENCY_TEST_LOG
+
+    if [[ $update_exit -ne 0 ]]; then
+        err "update.sh should finish successfully when Command Centre dependency repair fails"
+        sed -n '1,220p' "$failure_output"
+        return 1
+    fi
+    assert_file_contains "$helper_log" "failure"
+    assert_output_contains "$failure_output" "Command Centre dependencies could not be synchronized"
+    assert_output_contains "$failure_output" "Update completed with attention needed"
+    assert_output_contains "$failure_output" "cd command-centre && npm ci"
+
+    ok "Command Centre dependency synchronization test passed"
+}
+
+run_update_process_preflight_integration_test() {
+    local blocked_output="$TEST_ROOT/update-process-preflight-blocked.out"
+    local success_output="$TEST_ROOT/update-process-preflight-success.out"
+    local marker="update process preflight marker"
+    local before_head after_head
+
+    header "Update process preflight integration"
+    create_test_env
+    install_current_update_scripts
+
+    cd "$DEMO_REPO"
+    "${PYTHON_CMD[@]}" - "$DEMO_REPO" <<'PYEOF'
+import sqlite3
+import sys
+from pathlib import Path
+
+root = Path(sys.argv[1])
+for relative, status in (
+    (Path(".command-centre/data.db"), "running"),
+    (Path(".command-centre/profiles/abcdef/data.db"), "queued"),
+):
+    database = root / relative
+    database.parent.mkdir(parents=True, exist_ok=True)
+    connection = sqlite3.connect(database)
+    connection.execute(
+        "CREATE TABLE tasks (id TEXT PRIMARY KEY, title TEXT, status TEXT, updatedAt TEXT)"
+    )
+    connection.execute(
+        "INSERT INTO tasks VALUES (?, ?, ?, ?)",
+        (str(relative), "Blocking update task", status, "2026-07-24T12:00:00Z"),
+    )
+    connection.commit()
+    connection.close()
+PYEOF
+
+    cd "$MAIN_WORK"
+    printf '\n<!-- %s -->\n' "$marker" >> README.md
+    push_from_main "Trigger process preflight update"
+
+    cd "$DEMO_REPO"
+    before_head="$(git rev-parse HEAD)"
+    if run_update > "$blocked_output" 2>&1; then
+        err "Update should stop while Command Centre has active work"
+        sed -n '1,220p' "$blocked_output"
+        return 1
+    fi
+    after_head="$(git rev-parse HEAD)"
+
+    [[ "$before_head" == "$after_head" ]] || {
+        err "Blocked update changed the repository HEAD"
+        return 1
+    }
+    assert_output_contains "$blocked_output" "Command Centre has active work"
+    assert_output_contains "$blocked_output" "Nothing was changed and no processes were stopped"
+    if grep -Fq "$marker" "$DEMO_REPO/README.md"; then
+        err "Blocked update pulled the upstream marker"
+        return 1
+    fi
+    ok "Blocked update did not pull upstream changes"
+
+    "${PYTHON_CMD[@]}" - "$DEMO_REPO" <<'PYEOF'
+import sqlite3
+import sys
+from pathlib import Path
+
+root = Path(sys.argv[1])
+for database in [root / ".command-centre/data.db", *sorted((root / ".command-centre/profiles").glob("*/data.db"))]:
+    connection = sqlite3.connect(database)
+    connection.execute("UPDATE tasks SET status = 'review'")
+    connection.commit()
+    connection.close()
+PYEOF
+
+    run_update > "$success_output" 2>&1
+    assert_output_contains "$success_output" "Command Centre processes: already stopped"
+    assert_file_contains "$DEMO_REPO/README.md" "$marker"
+    ok "Active tasks block before pull; idle updates continue"
 }
 
 # ---------- Scenario Descriptions ----------
@@ -1636,7 +1911,7 @@ setup_scenario_25() {
     "tool-firecrawl-scraper",
     "tool-youtube",
     "viz-excalidraw-diagram",
-    "viz-nano-banana",
+    "viz-image-gen",
     "viz-ugc-heygen"
   ]
 }
@@ -1645,7 +1920,7 @@ IJSON
     # Remove skills the user "didn't select"
     for skill in mkt-content-repurposing mkt-copywriting mkt-ugc-scripts ops-cron \
                  str-trending-research tool-firecrawl-scraper tool-youtube \
-                 viz-excalidraw-diagram viz-nano-banana viz-ugc-heygen; do
+                 viz-excalidraw-diagram viz-image-gen viz-ugc-heygen; do
         rm -rf ".claude/skills/$skill" 2>/dev/null || true
     done
 
@@ -1845,6 +2120,12 @@ case "${1:-}" in
     stale-update-stashes)
         run_stale_update_stashes_test
         ;;
+    unexpected-backup-failure)
+        run_unexpected_backup_failure_test
+        ;;
+    recovery-helper-no-report)
+        run_recovery_helper_no_report_test
+        ;;
     backup-fork-remote)
         run_backup_fork_remote_test
         ;;
@@ -1862,6 +2143,15 @@ case "${1:-}" in
         ;;
     developer-update-source)
         run_developer_update_source_test
+        ;;
+    command-centre-dependencies)
+        run_command_centre_dependencies_test
+        ;;
+    update-processes)
+        bash "$REAL_REPO/scripts/test-update-processes.sh"
+        ;;
+    update-process-preflight)
+        run_update_process_preflight_integration_test
         ;;
     branch-preserve-fallback)
         run_branch_preserve_fallback_test

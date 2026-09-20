@@ -1,7 +1,9 @@
 /**
- * Arm the P08 guest media-pack email by ticking `Media Pack: Ready to Send`.
- * Safe to run before launch: P08 still won't send until `Full Episode YouTube`
- * is present (written by the writeback when the video goes live). Skips audio-only
+ * Arm the P08 guest media-pack sequence by ticking `Media Pack: Ready to Send`.
+ * Two-email tree (2026-07-05): buildup email goes ~a week before Release Date
+ * (assets + launch date + channel link); the live-link email fires automatically once
+ * the writeback fills `Full Episode YouTube` on launch day (`Live Email Sent` gates it).
+ * Arming far ahead is safe — the gate holds until the send window. Skips audio-only
  * eps and ones already notified. Usage: node scripts/podcast/arm-emails.cjs <ep> [ep ...]
  */
 const fs = require('fs');

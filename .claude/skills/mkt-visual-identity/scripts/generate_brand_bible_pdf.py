@@ -53,6 +53,7 @@ CLI:
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import sys
@@ -990,6 +991,54 @@ class Builder:
 
 # ─── Main ────────────────────────────────────────────────────────────────
 
+# ─── Idempotency: input dirty-check ───────────────────────────────────────
+
+HASH_SIDECAR = ".brand-book.hash"
+
+
+def _hash_file(h: "hashlib._Hash", path: Path) -> None:
+    """Fold a file's relative tag + bytes into the digest, if it exists."""
+    if path.is_file():
+        h.update(b"\x01")
+        h.update(path.read_bytes())
+    else:
+        h.update(b"\x00")
+
+
+def _hash_dir_listing(h: "hashlib._Hash", dir_path: Path) -> None:
+    """Fold a directory's asset listing (names + bytes) into the digest.
+
+    Used for logos/ and (if present) fonts/ — the binary inputs the PDF embeds.
+    Sorted for determinism; folds each file's name, size and bytes.
+    """
+    if not dir_path.is_dir():
+        h.update(b"\x00")
+        return
+    h.update(b"\x01")
+    for f in sorted(dir_path.glob("*.*")):
+        if f.is_file():
+            h.update(f.name.encode("utf-8"))
+            h.update(f.read_bytes())
+
+
+def compute_inputs_hash(brand_ctx: Path) -> str:
+    """Hash the INPUTS the brand book derives from — NOT the rendered PDF.
+
+    Same set Builder.__init__ reads: tokens.json, identity.md, moves.md,
+    voice-profile.md, plus the logos/ (and fonts/, if any) asset dirs. The
+    Chromium PDF output is non-deterministic (embedded timestamps / font-subset
+    ordering), so the dirty-check MUST key on inputs.
+    """
+    vi = brand_ctx / "visual-identity"
+    h = hashlib.sha256()
+    for rel in ("tokens.json", "identity.md", "moves.md"):
+        _hash_file(h, vi / rel)
+    _hash_file(h, brand_ctx / "voice-profile.md")  # sibling of visual-identity/
+    _hash_dir_listing(h, vi / "logos")
+    _hash_dir_listing(h, vi / "fonts")
+    return h.hexdigest()
+
+
 def _next_backup_path(existing: Path) -> Path:
     """Return the next available versioned backup name for an existing PDF.
 
@@ -1011,10 +1060,16 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--output", help="PDF output path. Defaults to brand_context/visual-identity/brand-book.pdf.")
     ap.add_argument("--keep-html", action="store_true", help="Keep the intermediate HTML next to the PDF.")
     ap.add_argument(
-        "--no-backup",
+        "--backup",
         dest="backup",
-        action="store_false",
-        help="Overwrite any existing PDF without creating a versioned backup. Default: backup first.",
+        action="store_true",
+        help="Archive any pre-existing PDF to brand-book.v{N}.pdf before overwriting. "
+             "Opt-in: by default the regen overwrites brand-book.pdf in place (no .vN pile-up).",
+    )
+    ap.add_argument(
+        "--force",
+        action="store_true",
+        help="Re-render even if the inputs are unchanged (bypass the skip-if-unchanged dirty-check).",
     )
     ap.add_argument(
         "--no-mockups",
@@ -1022,7 +1077,7 @@ def main(argv: list[str]) -> int:
         action="store_false",
         help="Skip the 'Brand in use' mockup page (Issue 10). Default: include.",
     )
-    ap.set_defaults(backup=True, include_mockups=True)
+    ap.set_defaults(backup=False, include_mockups=True)
     args = ap.parse_args(argv)
 
     if args.brand_context:
@@ -1033,22 +1088,36 @@ def main(argv: list[str]) -> int:
     if not (brand_ctx / "visual-identity" / "tokens.json").is_file():
         sys.exit(f"tokens.json missing at {brand_ctx}/visual-identity/. Run mkt-visual-identity first.")
 
-    builder = Builder(brand_ctx)
-    html = builder.build(include_mockups=args.include_mockups)
-
     output = Path(args.output) if args.output else (brand_ctx / "visual-identity" / "brand-book.pdf")
     output.parent.mkdir(parents=True, exist_ok=True)
 
-    # Versioned backup of any pre-existing PDF (either the new brand-book.pdf or the
-    # legacy visual-identity.pdf). Both are renamed forward to brand-book.v{N}.pdf so
-    # the user never silently loses their previous bible.
-    if args.backup:
-        legacy = output.parent / "visual-identity.pdf"
-        for prior in (output, legacy):
-            if prior.exists():
-                backup_path = _next_backup_path(prior)
-                prior.rename(backup_path)
-                print(f"[backup] previous PDF preserved at {backup_path}")
+    # One-time legacy migration: visual-identity.pdf -> brand-book.pdf. This is a
+    # rename of the canonical artifact, separate from the per-run .vN backup. Only
+    # migrate if the canonical name doesn't already exist (don't clobber a current PDF).
+    legacy = output.parent / "visual-identity.pdf"
+    if legacy.exists() and not output.exists():
+        legacy.rename(output)
+        print(f"[migrate] {legacy.name} -> {output.name}")
+
+    # Skip-if-unchanged: hash the INPUTS (not the non-deterministic rendered PDF).
+    # If they match the sidecar and a brand-book.pdf already exists, the regen is a
+    # no-op — this is what makes every "regenerate" trigger idempotent.
+    sidecar = output.parent / HASH_SIDECAR
+    inputs_hash = compute_inputs_hash(brand_ctx)
+    if not args.force and output.exists() and sidecar.is_file():
+        if sidecar.read_text(encoding="utf-8").strip() == inputs_hash:
+            print("[skip] brand book unchanged")
+            return 0
+
+    builder = Builder(brand_ctx)
+    html = builder.build(include_mockups=args.include_mockups)
+
+    # Versioned backup of any pre-existing PDF — OPT-IN (--backup). By default the
+    # regen overwrites brand-book.pdf in place, so routine re-runs don't pile up .vN.
+    if args.backup and output.exists():
+        backup_path = _next_backup_path(output)
+        output.rename(backup_path)
+        print(f"[backup] previous PDF preserved at {backup_path}")
 
     tmp_html = output.with_suffix(".html")
     tmp_html.write_text(html, encoding="utf-8")
@@ -1070,6 +1139,9 @@ def main(argv: list[str]) -> int:
 
     if not args.keep_html:
         tmp_html.unlink(missing_ok=True)
+
+    # Persist the inputs hash so the next routine re-run can skip if nothing changed.
+    sidecar.write_text(inputs_hash, encoding="utf-8")
 
     print(f"[ok] {output}")
     return 0

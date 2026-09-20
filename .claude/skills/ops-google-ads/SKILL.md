@@ -21,8 +21,8 @@ so it ships with a real campaign architecture and a policy-compliance framework,
 
 ## When to use
 
-- Audit / review a live account (campaigns, ad groups, RSAs, keywords, negatives, spend, conversions)
-- Research keywords (seed → geo-modified → symptom → competitor → cluster → funnel tiers)
+- Audit / review a live account (campaigns, ad groups, RSAs, keywords, negatives, spend, conversions). **First check in any CPL question: the bidding target vs the CPL goal** — `campaign.maximize_conversions.target_cpa_micros` / `campaign.target_cpa.target_cpa_micros`. A campaign landing near its tCPA is doing what it was told; step the target down in increments on volume-starved accounts, never straight to goal.
+- Research keywords (seed → geo-modified → symptom → competitor → cluster → funnel tiers). For exact search volumes on a precise list, run `scripts/keyword-metrics.mjs <geoConstant> [keywordsFile]` (read-only; `GenerateKeywordHistoricalMetrics`; e.g. `2840`=US, `2826`=UK)
 - Build or restructure campaigns (tiered buyer-intent + branded architecture)
 - Manage negative keyword lists (especially for ambiguous terms — see policy reference)
 - Check conversion + call-tracking plumbing and quality-score diagnostics

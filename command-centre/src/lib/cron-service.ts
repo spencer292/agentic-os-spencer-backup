@@ -141,6 +141,10 @@ export function matchesCronTime(now: Date, schedule: string): boolean {
   return getCronRuntime().matchesTime(now, schedule);
 }
 
+export function shouldDispatchNow(now: Date, job: CronJob): boolean {
+  return getCronRuntime().shouldDispatchNow(now, job);
+}
+
 export function toCronMinuteIso(date: Date): string {
   return getCronRuntime().toMinuteIso(date);
 }

@@ -62,14 +62,9 @@ trim_update_value() {
 
 read_update_env_value() {
     local key="$1"
-    local value="${!key:-}"
 
-    value="$(trim_update_value "$value")"
-    if [[ -n "$value" ]]; then
-        printf '%s\n' "$value"
-        return 0
-    fi
-
+    # Update source settings intentionally come only from the root .env.
+    # Long-lived shells and the Command Centre may inherit stale values.
     if [[ -f "$REPO_ROOT/.env" ]]; then
         awk -v key="$key" '
             /^[[:space:]]*#/ { next }
@@ -320,6 +315,197 @@ CATALOG="$REPO_ROOT/.claude/skills/_catalog/catalog.json"
 INSTALLED="$REPO_ROOT/.claude/skills/_catalog/installed.json"
 REVIEWED_STATE="$BACKUP_DIR/.update-reviewed"
 UPDATE_TIMESTAMP=$(date +%Y-%m-%d_%H%M%S)
+UPDATE_RECOVERY_REPORT="$BACKUP_DIR/update-recovery-${UPDATE_TIMESTAMP}.txt"
+UPDATE_RECOVERY_GUARD_ACTIVE=false
+UPDATE_RECOVERY_RESTORE_ATTEMPTED=false
+
+update_recovery_activate_guard() {
+    UPDATE_RECOVERY_GUARD_ACTIVE=true
+    mkdir -p "$BACKUP_DIR" 2>/dev/null || true
+}
+
+update_recovery_deactivate_guard() {
+    UPDATE_RECOVERY_GUARD_ACTIVE=false
+}
+
+update_recovery_has_files() {
+    local path="$1"
+    [[ -d "$path" ]] || return 1
+    find "$path" -mindepth 1 -print -quit 2>/dev/null | grep -q .
+}
+
+update_recovery_list_array() {
+    local list_name="$1"
+    local prefix="$2"
+    local count
+    local -a values=()
+    local value
+
+    declare -p "$list_name" >/dev/null 2>&1 || return 0
+    eval 'count=${#'"$list_name"'[@]}'
+    [[ "$count" -gt 0 ]] || return 0
+    eval 'values=("${'"$list_name"'[@]}")'
+
+    for value in "${values[@]}"; do
+        [[ -n "$value" ]] && printf "%s%s\n" "$prefix" "$value"
+    done
+}
+
+restore_update_backups() {
+    UPDATE_RECOVERY_RESTORE_ATTEMPTED=true
+
+    git merge --abort >/dev/null 2>&1 || true
+
+    if declare -F restore_upstream_protected_backups >/dev/null 2>&1; then
+        restore_upstream_protected_backups || true
+    fi
+
+    if [[ "${STASHED:-false}" == true ]] &&
+        declare -F restore_protected_stash >/dev/null 2>&1; then
+        restore_protected_stash || true
+    fi
+
+    local count skill_name file
+    local -a skills=()
+    local -a files=()
+
+    if declare -p MODIFIED_SKILLS >/dev/null 2>&1; then
+        eval 'count=${#MODIFIED_SKILLS[@]}'
+        if [[ "$count" -gt 0 ]]; then
+            eval 'skills=("${MODIFIED_SKILLS[@]}")'
+            for skill_name in "${skills[@]}"; do
+                [[ -n "$skill_name" ]] || continue
+                [[ -n "${SKILL_BACKUP_DIR:-}" ]] || continue
+                mkdir -p "$REPO_ROOT/.claude/skills/$skill_name" 2>/dev/null || true
+                cp -r "$SKILL_BACKUP_DIR/$skill_name"/* "$REPO_ROOT/.claude/skills/$skill_name/" 2>/dev/null || true
+            done
+        fi
+    fi
+
+    if declare -p OTHER_MODIFIED_FILES >/dev/null 2>&1; then
+        eval 'count=${#OTHER_MODIFIED_FILES[@]}'
+        if [[ "$count" -gt 0 ]]; then
+            eval 'files=("${OTHER_MODIFIED_FILES[@]}")'
+            for file in "${files[@]}"; do
+                [[ -n "$file" ]] || continue
+                [[ -n "${OTHER_BACKUP_DIR:-}" ]] || continue
+                mkdir -p "$(dirname "$REPO_ROOT/$file")" 2>/dev/null || true
+                cp "$OTHER_BACKUP_DIR/$file" "$REPO_ROOT/$file" 2>/dev/null || true
+            done
+        fi
+    fi
+}
+
+update_recovery_emit_report_body() {
+    local exit_status="${1:-unknown}"
+    local stashes
+
+    echo "Agentic OS update recovery report"
+    echo "Generated: $(date)"
+    echo "Repository: $REPO_ROOT"
+    echo "Exit status: $exit_status"
+    echo "Pre-update commit: ${OLD_HEAD:-unknown}"
+    echo "Update source: ${UPDATE_REMOTE:-unknown}/${UPSTREAM_BRANCH:-unknown}"
+    echo ""
+    echo "Your files are safe in:"
+
+    if update_recovery_has_files "${PROTECTED_STASH_BACKUP_DIR:-}"; then
+        echo "- Protected file stash backup: $PROTECTED_STASH_BACKUP_DIR"
+    fi
+    if update_recovery_has_files "${UPSTREAM_PROTECTED_BACKUP_DIR:-}"; then
+        echo "- Protected upstream backup: $UPSTREAM_PROTECTED_BACKUP_DIR"
+    fi
+    if update_recovery_has_files "${SKILL_BACKUP_DIR:-}"; then
+        echo "- Skill backup: $SKILL_BACKUP_DIR"
+    fi
+    if update_recovery_has_files "${OTHER_BACKUP_DIR:-}"; then
+        echo "- Other changed-file backup: $OTHER_BACKUP_DIR"
+    fi
+
+    stashes=$(git stash list --format='%gd %gs' 2>/dev/null | grep 'agentic-os-update-' || true)
+    if [[ -n "$stashes" ]]; then
+        echo "- Agentic OS update stashes:"
+        printf "%s\n" "$stashes" | sed 's/^/  - /'
+    fi
+
+    echo "- Pre-update commit: ${OLD_HEAD:-unknown}"
+    echo "- This report: $UPDATE_RECOVERY_REPORT"
+    echo ""
+    echo "Backed up protected files:"
+    update_recovery_list_array PROTECTED_STASH_BACKED_UP_PATHS "- "
+    update_recovery_list_array UPSTREAM_PROTECTED_BACKED_UP_PATHS "- "
+    echo ""
+    echo "Backed up skills:"
+    update_recovery_list_array MODIFIED_SKILLS "- "
+    echo ""
+    echo "Backed up changed files:"
+    update_recovery_list_array OTHER_MODIFIED_FILES "- "
+    echo ""
+    echo "Recovery helper:"
+    echo "bash scripts/update-recovery.sh --latest"
+}
+
+update_recovery_write_report() {
+    local exit_status="${1:-unknown}"
+
+    mkdir -p "$BACKUP_DIR" 2>/dev/null || true
+    update_recovery_emit_report_body "$exit_status" > "$UPDATE_RECOVERY_REPORT" 2>/dev/null || true
+}
+
+update_recovery_print_failure_message() {
+    local exit_status="${1:-unknown}"
+
+    echo ""
+    printf "${YELLOW}${BOLD}═══════════════════════════════════════════════${NC}\n"
+    printf "${YELLOW}${BOLD}  Update stopped before finishing${NC}\n"
+    printf "${YELLOW}${BOLD}═══════════════════════════════════════════════${NC}\n"
+    echo ""
+    warn "Your files are safe in:"
+
+    if update_recovery_has_files "${PROTECTED_STASH_BACKUP_DIR:-}"; then
+        bullet "Protected file stash backup: ${BOLD}${PROTECTED_STASH_BACKUP_DIR}${NC}"
+    fi
+    if update_recovery_has_files "${UPSTREAM_PROTECTED_BACKUP_DIR:-}"; then
+        bullet "Protected upstream backup: ${BOLD}${UPSTREAM_PROTECTED_BACKUP_DIR}${NC}"
+    fi
+    if update_recovery_has_files "${SKILL_BACKUP_DIR:-}"; then
+        bullet "Skill backup: ${BOLD}${SKILL_BACKUP_DIR}${NC}"
+    fi
+    if update_recovery_has_files "${OTHER_BACKUP_DIR:-}"; then
+        bullet "Other changed-file backup: ${BOLD}${OTHER_BACKUP_DIR}${NC}"
+    fi
+    if git stash list --format='%gd %gs' 2>/dev/null | grep -q 'agentic-os-update-'; then
+        bullet "Agentic OS update stashes: ${BOLD}git stash list | grep agentic-os-update${NC}"
+    fi
+    bullet "Pre-update commit: ${BOLD}${OLD_HEAD:-unknown}${NC}"
+    bullet "Recovery report: ${BOLD}${UPDATE_RECOVERY_REPORT}${NC}"
+    echo ""
+    info "To show the latest recovery report:"
+    printf "  ${BOLD}bash scripts/update-recovery.sh --latest${NC}\n"
+    echo ""
+    info "Exit status: ${BOLD}${exit_status}${NC}"
+}
+
+update_recovery_on_exit() {
+    local exit_status="$1"
+
+    if declare -F restore_update_background_services >/dev/null 2>&1; then
+        set +e
+        restore_update_background_services "$exit_status"
+        set -e
+    fi
+
+    [[ "$exit_status" -ne 0 ]] || return 0
+    [[ "${UPDATE_RECOVERY_GUARD_ACTIVE:-false}" == true ]] || return 0
+
+    set +e
+    restore_update_backups
+    update_recovery_write_report "$exit_status"
+    update_recovery_print_failure_message "$exit_status"
+    return 0
+}
+
+trap 'update_recovery_on_exit $?' EXIT
 
 # ---------- Reviewed-state helpers ----------
 file_md5() {
@@ -460,25 +646,9 @@ PROTECTED_DIR_PATHS=(
     ".planning/"
 )
 
-is_client_only_skill_path() {
-    local path="${1:-}"
-    local rest skill_name
-
-    case "$path" in
-        clients/*/.claude/skills/*/*)
-            rest="${path#clients/}"
-            rest="${rest#*/.claude/skills/}"
-            skill_name="${rest%%/*}"
-            [[ -n "$skill_name" ]] || return 1
-            [[ "$skill_name" == "_catalog" ]] && return 1
-            [[ ! -d "$REPO_ROOT/.claude/skills/$skill_name" ]]
-            return
-            ;;
-    esac
-
-    return 1
-}
-
+# Everything under clients/<slug>/.claude/skills/ is client-owned.
+# Clients inherit the root skill pack via project-root skill discovery, so
+# nothing inside a client skills directory is a root-managed copy anymore.
 is_protected_path() {
     local path="${1:-}"
     path="${path#./}"
@@ -507,13 +677,8 @@ is_protected_path() {
         clients/*/.mcp.json) return 0 ;;
         clients/*/.claude/settings.local.json) return 0 ;;
         clients/*/AGENTS.md) return 0 ;;
-        clients/*/.claude/skills/*/SKILL.local.md) return 0 ;;
-        clients/*/.claude/skills/_catalog/installed.json) return 0 ;;
+        clients/*/.claude/skills|clients/*/.claude/skills/*) return 0 ;;
     esac
-
-    if is_client_only_skill_path "$path"; then
-        return 0
-    fi
 
     return 1
 }

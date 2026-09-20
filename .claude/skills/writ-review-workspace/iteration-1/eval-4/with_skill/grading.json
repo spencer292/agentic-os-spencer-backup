@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "Produces a complete Map plus posture and device scores against Dennis Ross with line/section evidence",
+      "passed": true,
+      "evidence": "Full Map + postures P1-P4 + device scores (D7 athletic 5) with line evidence"
+    },
+    {
+      "text": "Gives a coherent verdict against the 9/10 book gate with the top 1-3 highest-leverage fixes",
+      "passed": true,
+      "evidence": "Verdict REVISE ~7/10 vs the 9/10 book gate; 3 top fixes named"
+    },
+    {
+      "text": "Prescriptions are located and specific (named sections/lines), not generic advice",
+      "passed": true,
+      "evidence": "Located fixes: de-staccato the back third; named opener and close"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  }
+}

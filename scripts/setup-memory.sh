@@ -609,6 +609,39 @@ run_npm_script() {
     fi
 }
 
+# Offer to import prior Claude Code sessions into memory. Opt-in and never
+# silent: detection is read-only, and the import only runs if the user says yes
+# in an interactive terminal. In non-interactive runs we just print a hint.
+offer_session_import() {
+    [[ -f "$COMMAND_CENTRE_DIR/package.json" ]] || return 0
+    command -v npm >/dev/null 2>&1 || return 0
+
+    if [[ ! -t 0 ]]; then
+        info "Tip: import prior Claude Code sessions anytime with: ${BOLD}npm --prefix command-centre run memory:import-sessions${NC}"
+        return 0
+    fi
+
+    # Read-only detection. Any non-zero "N available" means there is something to offer.
+    if ! run_npm_script memory:import-sessions --dry-run 2>/dev/null | grep -qE '[1-9][0-9]* available'; then
+        return 0
+    fi
+
+    echo ""
+    info "Found prior Claude Code sessions that can be imported into memory."
+    warn "Importing older conversations can take a while and may use Claude subscription usage."
+    info "You can import a few now and more later — nothing is lost, and re-running never duplicates."
+    printf "  Import prior sessions now? ${BOLD}[y/N]${NC} "
+    local reply=""
+    read -r reply || reply="N"
+    reply="${reply:-N}"
+    if [[ "$reply" =~ ^[Yy]$ ]]; then
+        run_npm_script memory:import-sessions --interactive \
+            || warn "Session import did not finish; run 'npm --prefix command-centre run memory:import-sessions' anytime."
+    else
+        info "Skipped. Run ${BOLD}npm --prefix command-centre run memory:import-sessions${NC} whenever you like."
+    fi
+}
+
 # --- Robust BGE-M3 model prefetch -------------------------------------------
 # transformers.js's built-in downloader mis-reads Content-Length across
 # HuggingFace's Xet 302 redirect (the redirect body reports a tiny length; the
@@ -673,6 +706,18 @@ run_model_warmup() {
     run_npm_script memory:warmup
 }
 
+ensure_local_memory_identity() {
+    local helper="$COMMAND_CENTRE_DIR/scripts/local-memory-identity.cjs"
+    if [[ ! -f "$helper" ]]; then
+        fail "Local memory identity helper was not found."
+        return 1
+    fi
+    if ! node "$helper" --ensure --root "$REPO_ROOT" >/dev/null; then
+        fail "Could not preserve the local memory owner before rebuilding the store."
+        return 1
+    fi
+}
+
 prepare_local_store_for_rebuild() {
     LOCAL_MEMORY_REBUILT=0
     LEGACY_LOCAL_MEMORY_DIR=""
@@ -680,6 +725,10 @@ prepare_local_store_for_rebuild() {
     if [[ "$BACKEND" != "local" || ! -d "$LOCAL_MEMORY_DIR" ]]; then
         return 0
     fi
+
+    # The compatibility probe can open PGLite and quarantine a corrupt index.
+    # Promote/validate the legacy owner before that first open.
+    ensure_local_memory_identity || return 1
 
     if memory_store_compatible; then
         return 0
@@ -726,6 +775,34 @@ finalize_legacy_local_store() {
     return 1
 }
 
+reindex_client_workspaces() {
+    [[ -d "$REPO_ROOT/clients" ]] || return 0
+
+    local client_dir slug failed=0 failed_slugs=""
+    for client_dir in "$REPO_ROOT/clients"/*/; do
+        [[ -d "$client_dir" ]] || continue
+        [[ -d "${client_dir}.claude" ]] || continue
+
+        slug="$(basename "$client_dir")"
+        [[ -d "${client_dir}context/memory" || -e "${client_dir}context/learnings.md" ]] || continue
+
+        info "Re-indexing client '$slug' memory..."
+        if ! run_npm_script memory:capture --reason refresh --force \
+                --cwd "$client_dir" --workspace "$client_dir" \
+                --visibility client --client "$slug"; then
+            warn "Client '$slug' memory reindex failed."
+            failed=$((failed + 1))
+            failed_slugs="$failed_slugs $slug"
+        fi
+    done
+
+    if [[ "$failed" -gt 0 ]]; then
+        warn "Client memory reindex failed for:${failed_slugs}. Re-run memory:capture for those clients after setup."
+        return 1
+    fi
+    return 0
+}
+
 run_memory_reindex() {
     collect_reindex_args
 
@@ -741,7 +818,12 @@ run_memory_reindex() {
             run_npm_script memory:migrate --check || return 1
         fi
         info "Re-indexing memory into hosted Postgres..."
-        run_npm_script memory:reindex --force "${REINDEX_ARGS[@]}"
+        if ! run_npm_script memory:reindex --visibility system --force "${REINDEX_ARGS[@]}"; then
+            return 1
+        fi
+        if ! reindex_client_workspaces; then
+            return 1
+        fi
         return 0
     fi
 
@@ -754,6 +836,9 @@ run_memory_reindex() {
     fi
     if ! finalize_legacy_local_store; then
         restore_legacy_local_store
+        return 1
+    fi
+    if ! reindex_client_workspaces; then
         return 1
     fi
     return 0
@@ -996,6 +1081,10 @@ fi
 if [[ $ERRORS -eq 0 && $LEGACY_MEMSEARCH_FOUND -eq 1 ]]; then
     archive_memsearch_dirs || ERRORS=$((ERRORS + 1))
     uninstall_legacy_memsearch || ERRORS=$((ERRORS + 1))
+fi
+
+if [[ $ERRORS -eq 0 ]]; then
+    offer_session_import || true
 fi
 
 echo ""

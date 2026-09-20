@@ -8,7 +8,7 @@ Check whether `brand_context/` contains populated `.md` files.
 - **Files exist** → respond "You're already set up. Just tell me what you're working on." and **stop**. Do not continue to any steps below.
 - **No files** → continue to First-Run Mode below.
 
-**Skill selection check:** Read `.claude/skills/_catalog/installed.json`. If `selection_pending` is `true` (or the field is missing), the user hasn't chosen their skills yet. Run Step 8 (Skill Selection) before finishing.
+**Skill selection check:** Read `.claude/skills/_catalog/installed.json`. If `selection_pending` is `true` (or the field is missing), the user hasn't chosen their skills yet. Run Step 9 (Skill Selection) before finishing.
 
 ## Always (both modes)
 
@@ -66,7 +66,7 @@ Read README.md and give the user a brief, genuine explanation of what they've se
 - The learnings loop (feedback improves future output)
 - That skills can be built for any domain as needs grow
 
-Keep it conversational — 4-6 sentences max, not a feature dump. Don't list installed skills here — that happens in Step 8 after brand context is built, so skills can be framed for their specific business. End with the first question.
+Keep it conversational — 4-6 sentences max, not a feature dump. Don't list installed skills here — that happens in Step 9 after brand context is built, so skills can be framed for their specific business. End with the first question.
 
 ### Step 2: Core Questions (ONE AT A TIME, SKIP IF ALREADY ANSWERED)
 
@@ -159,14 +159,25 @@ Read each skill's SKILL.md for the full methodology:
 
 Create `context/learnings.md` with sections matching installed skill folder names (e.g., `## mkt-brand-voice`).
 
-### Step 6: Update context/USER.md
+### Step 6: Visual Identity
+
+Now build the brand's **visual** foundation. `mkt-visual-identity` is a foundation skill (ships by default): it extracts design tokens — typography, colors, layout — and produces a `visual-identity.pdf` brand bible that every downstream visual skill (image generation, slides, diagrams) consumes.
+
+Trigger the setup:
+```
+/mkt-visual-identity
+```
+
+Feed it the brand assets collected in Step 3 (logo, colors, fonts, website, screenshots) as reference material. If no visual references were provided, the skill works from sensible defaults and you can refine the identity later. This is deterministic — no API key required.
+
+### Step 7: Update context/USER.md
 
 Populate context/USER.md with what you've learned:
 - Name and business from the conversation
 - Communication style signals observed
 - Role (founder / marketer / agency / student)
 
-### Step 7: Show Results
+### Step 8: Show Results
 
 Show actual excerpts — not just filenames.
 
@@ -181,9 +192,9 @@ Here's what I built:
 Everything's saved in brand_context/. I'll use this in every skill going forward.
 ```
 
-**IMPORTANT: After showing results, you MUST proceed to Step 8 (Skill Selection) in the SAME response. Do NOT wait for user input between Step 7 and Step 8. Show the results, then immediately present the skill selection checklist below.**
+**IMPORTANT: After showing results, you MUST proceed to Step 9 (Skill Selection) in the SAME response. Do NOT wait for user input between Step 8 and Step 9. Show the results, then immediately present the skill selection checklist below.**
 
-### Step 8: Skill Selection (MANDATORY — do NOT skip)
+### Step 9: Skill Selection (MANDATORY — do NOT skip)
 
 **This step is required during first-run mode.** Always run it after showing brand context results, even if skills are already installed. The user needs to choose which optional skills to keep for their business.
 
@@ -214,7 +225,7 @@ Everything's pre-selected. Tell me which to remove — or say "keep all" to move
 
 **Visual & Video**
  5. viz-excalidraw-diagram — architecture and workflow diagrams
- 6. viz-nano-banana — AI image generation (needs GEMINI_API_KEY)
+ 6. viz-image-gen — AI image generation (needs OPENAI_API_KEY or GEMINI_API_KEY)
  7. viz-ugc-heygen — AI avatar videos (needs HEYGEN_API_KEY)
 
 **Utility**
@@ -230,7 +241,7 @@ Which would you like to remove? (e.g. "remove 5, 6, 7" or "keep all")
 
 Wait for the user's response. Then run the script in CLI mode with their selections:
 ```bash
-python3 scripts/select-skills.py --remove "viz-excalidraw-diagram,viz-nano-banana,viz-ugc-heygen"
+python3 scripts/select-skills.py --remove "viz-excalidraw-diagram,viz-image-gen,viz-ugc-heygen"
 ```
 
 If the user says "keep all" or similar, run:
@@ -244,9 +255,9 @@ The script handles dependency resolution, folder removal, `installed.json` updat
 
 **After the script completes**, read `.claude/skills/_catalog/selection-result.json` and acknowledge briefly: "All set — [N] skills ready to go."
 
-**Do NOT proceed to Step 9 until the user has made their skill selection and the script has run.**
+**Do NOT proceed to Step 10 until the user has made their skill selection and the script has run.**
 
-### Step 9: How It Works Primer (MANDATORY — do NOT skip)
+### Step 10: How It Works Primer (MANDATORY — do NOT skip)
 
 **This step is required.** After showing skills, ALWAYS give the user a quick orientation before recommending a task. This is their only onboarding — they won't read docs unless you tell them what exists.
 
@@ -277,7 +288,7 @@ Only skip this if the user is clearly a solo founder with a single product/brand
 >
 > For a quick reference of commands and paths, see [docs/cheat-sheet.md](docs/cheat-sheet.md)."
 
-### Step 10: First Recommendation
+### Step 11: First Recommendation
 
 End with ONE recommendation based on their business context:
 "Given you're [situation], I'd start with [skill] — [reason]."

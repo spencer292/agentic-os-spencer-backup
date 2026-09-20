@@ -326,51 +326,41 @@ LIMIT $${limitParam}`;
     query: string,
     topK = 10,
   ): Promise<VectorSearchResult[]> {
-    const terms = keywordTerms(query);
-    if (terms.length === 0) return [];
+    if (query.trim().length === 0) return [];
 
     // The scope predicate is the single source of the leak boundary. It emits
     // UNQUALIFIED column names, so the query below uses no table alias.
     const { sql: scopeSql, params: scopeParams } = buildScopeWhere(searchScope, 0);
-    const clauses: string[] = [];
-    const params: unknown[] = [...scopeParams];
+    const queryParam = scopeParams.length + 1;
+    const limitParam = scopeParams.length + 2;
+    const params = [...scopeParams, query, topK];
 
-    for (const term of terms) {
-      const paramIndex = params.length + 1;
-      params.push(`%${escapeLike(term)}%`);
-      clauses.push(
-        `(content ILIKE $${paramIndex} ESCAPE '\\' ` +
-          `OR source_path ILIKE $${paramIndex} ESCAPE '\\' ` +
-          `OR COALESCE(heading, '') ILIKE $${paramIndex} ESCAPE '\\')`,
-      );
-    }
-
-    const limitParam = params.length + 1;
-    params.push(topK);
-
+    // 'simple' config: lowercasing + tokenizing, no stemming — the embedder
+    // (BGE-M3) is multilingual, so the keyword leg must not assume English.
     const sql = `
 SELECT id, source_id, content, heading, heading_level, start_line, end_line,
        content_hash, chunk_key, source_path, source_type,
        content_date::text AS content_date, authority_weight,
-       1.0::float8 AS distance
+       1.0::float8 AS distance,
+       ts_rank_cd(content_tsv, websearch_to_tsquery('simple', $${queryParam})) AS keyword_score
 FROM memory_chunks
 WHERE ${scopeSql}
-  AND (${clauses.join(" OR ")})
-ORDER BY content_date DESC NULLS LAST, source_path ASC, chunk_index ASC
+  AND content_tsv @@ websearch_to_tsquery('simple', $${queryParam})
+ORDER BY keyword_score DESC, content_date DESC NULLS LAST, source_path ASC, chunk_index ASC
 LIMIT $${limitParam}`;
 
     const { rows } = await this.client.query<Record<string, unknown>>(sql, params);
 
     return rows.map((r, index) => {
       const hit = mapSearchResultRow(r);
-      const keywordScore = scoreKeywordHit(hit, terms);
+      const keywordScore = Number(r.keyword_score);
       return {
         ...hit,
         keywordRank: index + 1,
         keywordScore,
         // Convert keyword-only scores to a distance-like value. Hybrid fusion in
         // search.ts may overwrite this, but keywordSearch remains useful alone.
-        distance: Math.max(0, 1 - Math.min(1, keywordScore / Math.max(1, terms.length))),
+        distance: Math.max(0, 1 - Math.min(1, keywordScore)),
         matchType: "keyword" as const,
       };
     });
@@ -398,32 +388,6 @@ function mapSearchResultRow(r: Record<string, unknown>): VectorSearchResult {
     authorityWeight: Number(r.authority_weight),
     distance: Number(r.distance),
   };
-}
-
-function keywordTerms(query: string): string[] {
-  const seen = new Set<string>();
-  const terms: string[] = [];
-  for (const raw of query.toLowerCase().match(/[a-z0-9][a-z0-9._:-]{1,}/g) ?? []) {
-    const term = raw.replace(/^[-_:]+|[-_:]+$/g, "");
-    if (term.length < 2 || seen.has(term)) continue;
-    seen.add(term);
-    terms.push(term);
-    if (terms.length >= 12) break;
-  }
-  return terms;
-}
-
-function escapeLike(value: string): string {
-  return value.replace(/\\/g, "\\\\").replace(/%/g, "\\%").replace(/_/g, "\\_");
-}
-
-function scoreKeywordHit(hit: VectorSearchResult, terms: string[]): number {
-  const haystack = `${hit.content} ${hit.sourcePath} ${hit.heading ?? ""}`.toLowerCase();
-  let score = 0;
-  for (const term of terms) {
-    if (haystack.includes(term)) score += 1;
-  }
-  return score;
 }
 
 /**

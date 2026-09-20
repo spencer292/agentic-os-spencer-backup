@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "Adds a fire/consequence reader-facing opener and converts the bare CTA toward a call-to-mirror",
+      "passed": true,
+      "evidence": "Opens with fire on reader consequence; call-to-mirror CTA"
+    },
+    {
+      "text": "Turns 'we/our' into 'you' (reader in the copy)",
+      "passed": true,
+      "evidence": "Flips 'we/our' to 'you'"
+    },
+    {
+      "text": "Placeholders a real client result rather than fabricating one; no device-soup",
+      "passed": false,
+      "evidence": "INVENTED a '14-person agency, two days a month, four systems' with a 'real before/after'"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  }
+}

@@ -29,7 +29,7 @@ process.stdin.on("end", () => {
     return;
   }
 
-  const { taskId, port, syncMode = "managed" } = mapping;
+  const { taskId, port, syncMode = "managed", profileKey = "solo" } = mapping;
   if (!taskId) return;
   if (syncMode === "managed") return;
 
@@ -85,7 +85,7 @@ process.stdin.on("end", () => {
       port: ${safePort},
       path: "/api/tasks/${taskId}/status",
       method: "PATCH",
-      headers: { "Content-Type": "application/json", "Content-Length": Buffer.byteLength(statusPayload) },
+      headers: { "Content-Type": "application/json", "Content-Length": Buffer.byteLength(statusPayload), "x-agentic-os-profile-key": ${JSON.stringify(profileKey)}, "x-agentic-os-profile-source": "hook" },
       timeout: 3000,
     }, () => {});
     statusReq.on("error", () => {});
@@ -107,7 +107,7 @@ process.stdin.on("end", () => {
       port: ${safePort},
       path: "/api/tasks/${taskId}/logs",
       method: "POST",
-      headers: { "Content-Type": "application/json", "Content-Length": Buffer.byteLength(logPayload) },
+      headers: { "Content-Type": "application/json", "Content-Length": Buffer.byteLength(logPayload), "x-agentic-os-profile-key": ${JSON.stringify(profileKey)}, "x-agentic-os-profile-source": "hook" },
       timeout: 3000,
     }, () => {});
     logReq.on("error", () => {});

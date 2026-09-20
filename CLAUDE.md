@@ -4,12 +4,19 @@ This file keeps Claude Code compatible with the shared `AGENTS.md` guidance and 
 
 @AGENTS.md
 @GOT-MOLES.md
-
 ---
 
 ## Local Overrides
 
-If `CLAUDE.local.md` exists in this directory, **read it now** before anything else. Its `## Rules` entries and any other instructions extend and override this file for the entire session. This file is user-owned and never touched by updates.
+In Solo mode, if `AGENTS.local.md` exists in this directory, **read it now**
+after `AGENTS.md`. In Team OS mode, do not read the workspace copy; use only
+the private-user rules injected by the session-scoped Team OS runtime snapshot.
+This file is user-owned and never touched by updates.
+
+In Solo mode, if `CLAUDE.local.md` exists in this directory, **read it now**
+before anything else. In Team OS mode, do not read the workspace copy. Its
+`## Rules` entries and any other instructions extend and override this file for
+the entire Solo session. This file is user-owned and never touched by updates.
 
 ---
 
@@ -17,19 +24,24 @@ If `CLAUDE.local.md` exists in this directory, **read it now** before anything e
 
 ### Session Type Detection
 
-Scan `brand_context/` for populated `.md` files (ls, not read).
-- **No files** → first-run → run `/start-here`
+Only in Solo mode, scan `brand_context/` for populated `.md` files (ls, not
+read). Team OS mode receives its session type and context from the injected
+runtime overlay and must not inspect the workspace `brand_context/` directory.
+- **No files** → first-run → run the `/start-here` onboarding. The `detect-first-run.js` SessionStart hook fires this automatically — begin onboarding immediately, without waiting for the user to type `/start-here`.
 - **Files exist** → returning mode → silent startup (below)
 
 ### Returning Mode (silent — zero output)
 
-Do these five steps silently. Do NOT output anything — no greeting, no recap, no capabilities list.
+Do these steps silently. Do NOT output anything — no greeting, no recap, no capabilities list.
 
-1. Read `context/SOUL.md` (~3 KB). Fall back to `../../context/SOUL.md` if not in the current folder.
-2. Read `context/USER.md` (~1.5 KB). Fall back to `../../context/USER.md`.
-3. Read today's memory file `context/memory/{YYYY-MM-DD}.md`. Only read yesterday's if today has no prior sessions. If a `### Project` reference exists, load that brief. Note any `### Open threads`.
-4. Read `context/MEMORY.md` (~2.5 KB max — curated working scratchpad with Active Threads, Environment Notes, Pending Decisions). Fall back to `../../context/MEMORY.md`. This is a frozen snapshot — mid-session writes persist to disk but only take effect on the next session.
-5. Create or append a `## Session N` block in today's memory file. Scan `.claude/skills/` silently (ls only).
+1. Use any Team OS context injected at SessionStart from the session-scoped
+   runtime overlay. Never read `.agentic-os/context-snapshot/current.md` or
+   workspace-materialized private/Team/brand context as a runtime fallback.
+2. Read `context/SOUL.md` (~3 KB). Fall back to `../../context/SOUL.md` if not in the current folder.
+3. Only in Solo mode, read `context/USER.md` (~1.5 KB). Fall back to `../../context/USER.md`.
+4. Only in Solo mode, read today's memory file `context/memory/{YYYY-MM-DD}.md`. Only read yesterday's if today has no prior sessions. If a `### Project` reference exists, load that brief. Note any `### Open threads`.
+5. Only in Solo mode, read `context/MEMORY.md` (~2.5 KB max — curated working scratchpad with Active Threads, Environment Notes, Pending Decisions). Fall back to `../../context/MEMORY.md`. This is a frozen snapshot — mid-session writes persist to disk but only take effect on the next session.
+6. Only in Solo mode, create or append a `## Session N` block in today's memory file. Scan `.claude/skills/` silently (ls only), but in Team OS mode never read workspace `SKILL.local.md` files.
 
 **What NOT to do at startup (deferred to wrap-up or on-demand):**
 - Do NOT read `brand_context/` files — skills lazy-load these per Context Matrix when needed
@@ -39,7 +51,6 @@ Do these five steps silently. Do NOT output anything — no greeting, no recap, 
 - Do NOT scan and report active projects — only load if memory references one
 - Do NOT run reconciliation — deferred to wrap-up
 - Do NOT check cron dispatcher status — only if user asks
-- Do NOT auto-run `/start-here`
 - Do NOT output anything
 
 **GitHub backup check (once per day):** Only on the first session of the day (today's memory file had no prior session blocks). First check `.env` for `IS_TEMPLATE_MAINTAINER=true` — if set, skip entirely. Otherwise, if `origin` still points to the upstream template repo, warn once. Otherwise silent.
