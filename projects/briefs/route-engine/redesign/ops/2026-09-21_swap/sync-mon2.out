@@ -1,0 +1,89 @@
+[write-gate] WRITES ENABLED until 2026-09-20T00:52:34.594Z (spenc@Got-Moles: 07:00 starts: re-plan Monday from scratch with new driver defaults) — ceiling 1500/run — run 15e8e51d
+=== SYNC + PLAN + TIMES 2026-09-19 16:56:12 PT ===
+mode: LIVE (--execute)   window: 2026-09-21..2026-09-21
+live Jobber: 142 visits, 142 not complete, 142 on a routed driver, 0 skipped (no tech / not a driver)
+  2026-09-21  Alias 28  Robert 30  Luke 29  Cory 26  Spencer 29
+
+OptimoRoute: 142 orders in the window
+  CREATE 0   UPDATE 0   DELETE 0   unchanged 142
+
+driver availability: 09-21: Alias/Cory/Luke/Robert/Spencer
+
+=== OPTIMOROUTE: 0 CREATE ===
+=== OPTIMOROUTE: 0 UPDATE ===
+=== OPTIMOROUTE: 0 DELETE ===
+
+=== OPTIMOROUTE: driver availability ===
+  6/6 succeeded
+
+=== PLAN 2026-09-21 (balancing OFF) ===
+  Cory Ventura        26 stops   515 min   206 km  first 07:38  last 14:44
+  Luke LaVergne       29 stops   758 min   255 km  first 07:35  last 18:42
+  Robert Norton       30 stops   618 min    98 km  first 07:14  last 16:48
+  Spencer Hill        29 stops   679 min   164 km  first 07:48  last 17:07
+  Alias Franks        28 stops   616 min   130 km  first 07:13  last 16:20
+
+=== JOBBER: write planned times (startAt = arrival, endAt = +3 h) ===
+  to write 56   already correct 86   not on a route 0
+  [  1/56] 2026-09-21 16:48 #4711 Robert   Jeff  Boggs                  was 09-21 07:14  ok
+  [  2/56] 2026-09-21 16:27 #7961 Robert   Kelly Kunz                   was 09-21 07:36  ok
+  [  3/56] 2026-09-21 16:07 #8522 Robert   Gourav Saha                  was 09-21 07:55  ok
+  [  4/56] 2026-09-21 15:49 #8459 Robert   Melody Deisher               was 09-21 08:14  ok
+  [  5/56] 2026-09-21 15:32 #6495 Robert   Gary Hollins                 was 09-21 08:30  ok
+  [  6/56] 2026-09-21 09:27 #8209 Spencer  Charlie Allaire              was 09-21 08:48  ok
+  [  7/56] 2026-09-21 15:11 #7943 Robert   Stephen Van Ingen            was 09-21 08:51  ok
+  [  8/56] 2026-09-21 09:46 #7788 Spencer  Bonnie Mccracken             was 09-21 09:07  ok
+  [  9/56] 2026-09-21 14:55 #7987 Robert   David  Lloyd                 was 09-21 09:08  ok
+  [ 10/56] 2026-09-21 14:32 #8453 Robert   Polly Prince                 was 09-21 09:32  ok
+  [ 11/56] 2026-09-21 11:18 #8470 Spencer  Alice Collins                was 09-21 09:33  ok
+  [ 12/56] 2026-09-21 14:12 #8442 Robert   Michele Rustvold             was 09-21 09:50  ok
+  [ 13/56] 2026-09-21 12:51 #8533 Spencer  Bob Chatalas                 was 09-21 09:55  ok
+  [ 14/56] 2026-09-21 13:36 #8480 Robert   Munene Peter                 was 09-21 10:11  ok
+  [ 15/56] 2026-09-21 13:32 #7574 Spencer  Steve  Huling                was 09-21 10:16  ok
+  [ 16/56] 2026-09-21 13:52 #7753 Robert   Galilee Baptist Church       was 09-21 10:27  ok
+  [ 17/56] 2026-09-21 13:50 #8426 Spencer  Chris Kerr                   was 09-21 10:33  ok
+  [ 18/56] 2026-09-21 12:55 #8072 Robert   Prologis                     was 09-21 10:48  ok
+  [ 19/56] 2026-09-21 14:07 #8461 Spencer  Mary Greco                   was 09-21 10:51  ok
+  [ 20/56] 2026-09-21 12:33 #8202 Robert   Amy  Collins                 was 09-21 11:09  ok
+  [ 21/56] 2026-09-21 17:07 #5947 Spencer  Neil Kanungo                 was 09-21 11:15  ok
+  [ 22/56] 2026-09-21 13:16 #5324 Robert   Scott  Moser                 was 09-21 11:29  ok
+  [ 23/56] 2026-09-21 16:44 #8583 Spencer  Timothy Hoover               was 09-21 11:37  ok
+  [ 24/56] 2026-09-21 11:55 #6440 Robert   Marta Dickerson              was 09-21 11:50  ok
+  [ 25/56] 2026-09-21 16:28 #8525 Spencer  Joseph Trump                 was 09-21 11:53  ok
+  [ 26/56] 2026-09-21 12:12 #8451 Robert   Holy Chea                    was 09-21 12:07  ok
+  [ 27/56] 2026-09-21 16:06 #8397 Spencer  Point Nautica                was 09-21 12:15  ok
+  [ 28/56] 2026-09-21 11:37 #8475 Robert   Constance Pivonka            was 09-21 12:25  ok
+  [ 29/56] 2026-09-21 15:47 #8607 Spencer  Ben Mathes                   was 09-21 12:34  ok
+  [ 30/56] 2026-09-21 11:20 #7736 Robert   Rita Conger                  was 09-21 12:42  ok
+  [ 31/56] 2026-09-21 15:09 #8600 Spencer  Sam Leonard                  was 09-21 12:55  ok
+  [ 32/56] 2026-09-21 10:54 #5025 Robert   Bye The Green Condominiums   was 09-21 13:07  ok
+  [ 33/56] 2026-09-21 14:47 #8359 Spencer  Mary Suhadolnik              was 09-21 13:31  ok
+  [ 34/56] 2026-09-21 10:30 #8514 Robert   Cathy Conner                 was 09-21 13:32  ok
+  [ 35/56] 2026-09-21 14:26 #8486 Spencer  Phyllis Barbante             was 09-21 13:52  ok
+  [ 36/56] 2026-09-21 09:50 #8602 Robert   Mike Laidley                 was 09-21 13:55  ok
+  [ 37/56] 2026-09-21 13:12 #8524 Spencer  Michael Sobieck              was 09-21 14:11  ok
+  [ 38/56] 2026-09-21 10:09 #7010 Robert   Charles Lindsey              was 09-21 14:13  ok
+  [ 39/56] 2026-09-21 12:32 #8440 Spencer  Klaudia Elam                 was 09-21 14:32  ok
+  [ 40/56] 2026-09-21 09:29 #8579 Robert   Gurwinder Sandhu             was 09-21 14:33  ok
+  [ 41/56] 2026-09-21 09:13 #4777 Robert   Al Chappell                  was 09-21 14:49  ok
+  [ 42/56] 2026-09-21 12:12 #8601 Spencer  Kevin Shaver                 was 09-21 14:51  ok
+  [ 43/56] 2026-09-21 08:53 #6334 Robert   Alexandra Daley              was 09-21 15:09  ok
+  [ 44/56] 2026-09-21 11:53 #6581 Spencer  Greg Flynn                   was 09-21 15:10  ok
+  [ 45/56] 2026-09-21 11:35 #6447 Spencer  Larena Walshe                was 09-21 15:29  ok
+  [ 46/56] 2026-09-21 08:33 #4930 Robert   Plemmons Industries          was 09-21 15:29  ok
+  [ 47/56] 2026-09-21 11:01 #7608 Spencer  Scott Hamilton               was 09-21 15:45  ok
+  [ 48/56] 2026-09-21 08:12 #6674 Robert   Larry Desmet                 was 09-21 15:51  ok
+  [ 49/56] 2026-09-21 10:40 #8518 Spencer  Leo Coronado                 was 09-21 16:06  ok
+  [ 50/56] 2026-09-21 07:52 #7797 Robert   Gary Fredericks              was 09-21 16:11  ok
+  [ 51/56] 2026-09-21 10:24 #8361 Spencer  Erik Guttridge               was 09-21 16:22  ok
+  [ 52/56] 2026-09-21 07:34 #7712 Robert   Nancy Hawkins                was 09-21 16:29  ok
+  [ 53/56] 2026-09-21 10:08 #4705 Spencer  Pam Northrip                 was 09-21 16:38  ok
+  [ 54/56] 2026-09-21 07:14 #7697 Robert   Jennifer Cramer              was 09-21 16:49  ok
+  [ 55/56] 2026-09-21 09:05 #6239 Spencer  Lauren Kenyon                was 09-21 16:58  ok
+  [ 56/56] 2026-09-21 08:46 #7724 Spencer  Seattle Rental Management    was 09-21 17:17  ok
+  written 56  failed 0
+
+=== VERIFY === 142 visits match the plan, 0 do not
+
+✅ done 2026-09-19 16:56:52 PT — log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-09-21_swap\sync-plan-times.log
+Next: the arrival-window sweep (node projects/tool-jobber/scripts/arrival-window-sweep.mjs) so every visit carries the 3-hour window.

@@ -1,0 +1,126 @@
+window 2026-08-14..2026-10-16  jobs 1063  visits 4290  asOf 2026-09-18
+
+DELIVERED cadence (consecutive completed-visit gaps, unattributed)
+  TMCP       {"n":1401,"median":7,"p25":7,"p75":9,"min":3,"max":34,"shareWeekly":79.9,"shareMonthlyish":4.1}
+  Quick Fix  {"n":476,"median":7,"p25":7,"p75":7,"min":3,"max":23,"shareWeekly":99.6,"shareMonthlyish":0}
+  all        {"n":1922,"median":7,"p25":7,"p75":8,"min":3,"max":34,"shareWeekly":85.1,"shareMonthlyish":3}
+
+BOOKED-NEXT interval after last completed visit, BY TRIGGER (1 row/job).
+  NOTE: every row here is a SCHEDULED date, never a delivered one (bookedOnly=false).
+trigger                                 n    med    p25    p75  %<=10d
+quiet (None, no catch/miss)           446      9      7     25    55.2
+catch                                 138     14      7     26      37
+miss (no catch)                       106     14      7   24.5    45.3
+activity Low (no catch/miss)          104     14      7     21    45.2
+activity Moderate (no catch/miss)      13     14     13     21    23.1
+activity High (no catch/miss)           5     14      7     27      40
+
+  TMCP only:
+  quiet (None, no catch/miss)         324     14      7     28    40.4
+  catch                               136     14      7   26.3    37.5
+  activity Low (no catch/miss)        101     14      7     21    43.6
+  miss (no catch)                      98     14      7   26.5    42.9
+  activity Moderate (no catch/miss)    12     14   13.8     22    16.7
+  activity High (no catch/miss)         5     14      7     27      40
+
+NOTES CROSS-CHECK (true per-visit state, 40-job sample)  rows=171  {"note only":59,"next note (visit-linked)":89,"next scheduled visit":20,"next completed visit":3}
+  -- all rows --
+  quiet (None, no catch/miss)          51      9  %<=10d 51
+  activity Low (no catch/miss)         45      7  %<=10d 88.9
+  miss (no catch)                      37      7  %<=10d 94.6
+  catch                                29      8  %<=10d 62.1
+  activity Moderate (no catch/miss)     4      7  %<=10d 100
+  unknown                               3      7  %<=10d 100
+  activity High (no catch/miss)         2    6.5  %<=10d 100
+  -- DELIVERED rows only (the follow-up actually happened) --
+  quiet (None, no catch/miss)          29      7  p25 7 p75 16  %<=10d 65.5
+  activity Low (no catch/miss)         25      7  p25 7 p75 8  %<=10d 80
+  miss (no catch)                      23      7  p25 7 p75 7  %<=10d 95.7
+  catch                                11      7  p25 7 p75 9.5  %<=10d 81.8
+  unknown                               2    7.5  p25 7.3 p75 7.8  %<=10d 100
+  activity Moderate (no catch/miss)     1      7  p25 7 p75 7  %<=10d 100
+  activity High (no catch/miss)         1      7  p25 7 p75 7  %<=10d 100
+  -- by Next Action written on the note --
+  Add visit                            83      7  %<=10d 89.2
+  Monthly                              17     28  %<=10d 11.8
+  Add visit 1 week                     15      7  %<=10d 93.3
+  2 weeks                              11     14  %<=10d 9.1
+  Add visit 2 week                      5     16  %<=10d 0
+
+QUICK FIX all       {"jobs":274,"visitsPerJob":{"n":274,"median":3,"p25":1,"p75":4,"min":0,"max":5,"shareWeekly":100,"shareMonthlyish":0},"completedInSeries":{"n":274,"median":3,"p25":1,"p75":4,"min":0,"max":5,"shareWeekly":100,"shareMonthlyish":0},"scheduledRemaining":{"n":274,"median":0,"p25":0,"p75":2,"min":0,"max":4,"shareWeekly":100,"shareMonthlyish":0},"scheduledVisitsPerJob":{"n":274,"median":5,"p25":2,"p75":5,"min":0,"max":6,"shareWeekly":100,"shareMonthlyish":0},"spacingDays":{"n":476,"median":7,"p25":7,"p75":7,"min":3,"max":23,"shareWeekly":99.6,"shareMonthlyish":0},"ranPastFiveScheduled":19,"ranPastFiveCompleted":0,"completedFiveOrMore":46,"scheduledFiveOrMore":147,"jobsWithAnyIncompleteVisit":124,"stillHaveFutureVisit":116,"archived":150,"shareSpacingWeeklyPct":99.6,"withAnyCompleted":237}
+QUICK FIX clean     {"jobs":18,"visitsPerJob":{"n":18,"median":4,"p25":3,"p75":5,"min":1,"max":5,"shareWeekly":100,"shareMonthlyish":0},"completedInSeries":{"n":18,"median":4,"p25":3,"p75":5,"min":1,"max":5,"shareWeekly":100,"shareMonthlyish":0},"scheduledRemaining":{"n":18,"median":0,"p25":0,"p75":0,"min":0,"max":0,"shareWeekly":100,"shareMonthlyish":0},"scheduledVisitsPerJob":{"n":18,"median":4,"p25":3,"p75":5,"min":1,"max":6,"shareWeekly":100,"shareMonthlyish":0},"spacingDays":{"n":48,"median":7,"p25":7,"p75":7,"min":4,"max":9,"shareWeekly":100,"shareMonthlyish":0},"ranPastFiveScheduled":1,"ranPastFiveCompleted":0,"completedFiveOrMore":8,"scheduledFiveOrMore":8,"jobsWithAnyIncompleteVisit":1,"stillHaveFutureVisit":0,"archived":17,"shareSpacingWeeklyPct":100,"withAnyCompleted":18}
+  clean cohort = first visit inside the window AND >=35d before 2026-09-18  (n=18)
+    completed in series   median 4  p25 3  p75 5
+    scheduled remaining   median 0  max 0
+    completed >=5 visits  8 of 18   scheduled >=5: 8
+
+TMCP QUIET {"quietJobs":324,"forwardInterval":{"n":324,"median":14,"p25":7,"p75":28,"min":4,"max":42,"shareWeekly":40.4,"shareMonthlyish":34.3},"allTmcpCompletedIntervals":{"n":1401,"median":7,"p25":7,"p75":9,"min":3,"max":34,"shareWeekly":79.9,"shareMonthlyish":4.1},"weekdayHoldPct":75.6,"techHoldPct":88.9,"holdBasis":"COMPLETED visits only, by the weekday the visit was worked (S6 D-holdstats)","holdVisitsCounted":1972,"jobsMeasuredForHold":567,"jobsWith100PctDowHold":253}
+
+SEASONALITY (TMCP; denominator for the rate column = 722 TMCP jobs with a completed visit 08-17..09-17)
+  2026-08-17  visits= 450  weekly   100%  median    7d  visits/job 0.623  implied  11.2d  fieldDays 5  v/fieldDay     90  rate@5d 0.623  <<BIASED
+  2026-08-24  visits= 444  weekly  97.5%  median    7d  visits/job 0.615  implied  11.4d  fieldDays 5  v/fieldDay   88.8  rate@5d 0.615
+  2026-08-31  visits= 422  weekly  82.8%  median    7d  visits/job 0.584  implied    12d  fieldDays 5  v/fieldDay   84.4  rate@5d 0.584
+  2026-09-07  visits= 321  weekly  84.6%  median    7d  visits/job 0.445  implied  15.7d  fieldDays 4  v/fieldDay   80.3  rate@5d 0.556
+  2026-09-14  visits= 405  weekly  53.5%  median    8d  visits/job 0.561  implied  12.5d  fieldDays 5  v/fieldDay     81  rate@5d 0.561  <<PARTIAL
+
+OVERDUE as of 2026-09-18
+  active jobs 881  unsatisfied 472  hard overdue 165  no future visit 81
+  missed stale visits 112 across 110 active jobs (booked on or before 2026-09-18, never completed)
+  REPAIRS: 0 completed visits had no completedAt (fell back to the booked day); 1 delivered gaps dropped for stepping over a skipped visit
+  unsatisfied by product    {"TMCP":443,"Quick Fix":22,"Barter":4,"none (bid)":2,"Friends and family":1}
+  unsatisfied by NextAction {"Add visit":419,"2 weeks":36,"Monthly":17}
+  unsatisfied by trigger    {"quiet (None, no catch/miss)":218,"catch":98,"miss (no catch)":72,"activity Low (no catch/miss)":70,"activity Moderate (no catch/miss)":11,"activity High (no catch/miss)":3}
+  hard overdue by product   {"TMCP":158,"Barter":3,"Quick Fix":3,"Friends and family":1}
+  unsatisfied by route-day:
+    Tavis Alexander / fri       33
+    Cory Ventura / mon          30
+    Alias Franks / fri          29
+    Robert Norton / fri         25
+    Robert Norton / wed         23
+    Tavis Alexander / wed       23
+    Tavis Alexander / thu       22
+    Luke LaVergne / fri         22
+    Robert Norton / thu         20
+    Tavis Alexander / tue       19
+    Tavis Alexander / mon       19
+    Cory Ventura / fri          18
+    Alias Franks / mon          18
+    Cory Ventura / wed          18
+    Robert Norton / tue         18
+    Luke LaVergne / mon         18
+    Luke LaVergne / tue         16
+    Alias Franks / tue          16
+    Luke LaVergne / thu         15
+    Cory Ventura / thu          15
+    Cory Ventura / tue          15
+    Alias Franks / wed          14
+    Alias Franks / thu          12
+    Robert Norton / mon         8
+    Luke LaVergne / wed         6
+  hard overdue by route-day:
+    Tavis Alexander / fri       15
+    Luke LaVergne / fri         13
+    Cory Ventura / wed          11
+    Tavis Alexander / thu       10
+    Luke LaVergne / mon         10
+    Cory Ventura / tue          8
+    Alias Franks / thu          7
+    Luke LaVergne / thu         7
+    Robert Norton / fri         7
+    Robert Norton / tue         7
+    Cory Ventura / thu          7
+    Alias Franks / fri          7
+    Tavis Alexander / tue       7
+    Tavis Alexander / wed       7
+    Alias Franks / wed          6
+    Cory Ventura / mon          6
+    Robert Norton / wed         5
+    Robert Norton / thu         5
+    Luke LaVergne / tue         4
+    Tavis Alexander / mon       4
+    Alias Franks / tue          4
+    Cory Ventura / fri          3
+    Alias Franks / mon          2
+    Robert Norton / mon         2
+    Luke LaVergne / wed         1
+  worst 10: #4929 35d miss (no catch) | #5066 35d quiet (None, no catch/miss) | #5109 35d quiet (None, no catch/miss) | #6339 35d quiet (None, no catch/miss) | #6649 35d miss (no catch) | #5412 32d quiet (None, no catch/miss) | #7026 32d quiet (None, no catch/miss) | #7529 32d catch | #7824 32d catch | #7896 32d catch

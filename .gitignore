@@ -108,3 +108,29 @@ Voip Passwords.txt
 # Root-level scratch probes (.tmp_*). Project containment rule: the OS root is not a
 # workspace. These are one-off API probes that should never be tracked.
 .tmp_*
+
+# HR sensitive data. NEVER committed, NEVER pushed to the private backup either.
+# Personnel records that contain SSN, DOB, I-9 documents, medical/ADA information,
+# bank/direct-deposit details, driver's licence or MVR scans live here and here only.
+# The tracked HR material in projects/briefs/hr-in-house/ holds policy, process and
+# documentation ONLY — see .claude/skills/ops-hr/references/data-handling.md.
+hr-private/
+
+# Financial source documents. NEVER committed, NEVER pushed to the private backup either.
+# Raw bookkeeper/CPA statements live here and here only: P&Ls and balance sheets that carry
+# per-person payroll detail, owner compensation, bank and merchant account numbers, and tax
+# filings. The tracked CFO material in projects/briefs/cfo/ holds NORMALIZED AGGREGATE
+# figures, models and method ONLY — never a per-person payroll line.
+# See .claude/skills/acc-cfo/SKILL.md "Data contract".
+cfo-private/
+
+# Jobber junk-client audit scratch caches. Rebuilt by re-running the audit; committing
+# them would add a ~4 MB blob of the whole client book on every run.
+projects/briefs/jobber-duplicate-cleanup/data/.junk-sweep-cache.json
+projects/briefs/jobber-duplicate-cleanup/data/.junk-history-cache.json
+
+# route-engine redesign: payroll + telematics raw exports never enter git
+projects/briefs/route-engine/redesign/private/
+
+# timesheet-audit: Gusto CSV exports + full audit JSON (payroll source data) never enter git
+projects/briefs/timesheet-audit/private/

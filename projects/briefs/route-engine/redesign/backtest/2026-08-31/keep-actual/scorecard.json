@@ -1,0 +1,1405 @@
+{
+  "generatedAt": "2026-09-19T16:42:43.064Z",
+  "week": "2026-08-31",
+  "days": [
+    "2026-08-31",
+    "2026-09-01",
+    "2026-09-02",
+    "2026-09-03",
+    "2026-09-04"
+  ],
+  "asOf": "2026-08-28T21:00:00.000Z",
+  "policy": {
+    "name": "keep-actual",
+    "description": "Oracle baseline — the tech and day each visit actually got.",
+    "usesOracle": true
+  },
+  "runtimeMs": 1559,
+  "thresholds": {
+    "sameTechPct": 95,
+    "sameDayPct": 95,
+    "hoursTolerancePct": 10,
+    "compactnessTolerancePct": 5,
+    "wallHours": 9.5,
+    "softHours": 8
+  },
+  "coverage": {
+    "dueVisits": 532,
+    "lateBookings": 54,
+    "proposed": 532,
+    "dropped": 0,
+    "invented": 0,
+    "duplicates": 0,
+    "noActual": 0,
+    "weekendPlacements": 0,
+    "offWeekPlacements": 1,
+    "ghostOrders": 5
+  },
+  "agreement": {
+    "vsActualRun": {
+      "n": 532,
+      "sameTech": 532,
+      "sameTechPct": 100,
+      "sameDay": 532,
+      "sameDayPct": 100,
+      "sameBoth": 532,
+      "sameBothPct": 100
+    },
+    "vsOptimoHeld": {
+      "n": 525,
+      "sameTechPct": 99.6,
+      "sameDayPct": 99.8,
+      "sameBothPct": 99.4
+    }
+  },
+  "hours": {
+    "routeDaysScored": 25,
+    "withinTolerance": 21,
+    "withinTolerancePct": 84,
+    "medianRatio": 0.96,
+    "boardOnly": {
+      "routeDaysScored": 25,
+      "withinTolerance": 25,
+      "withinTolerancePct": 100,
+      "medianRatio": 1
+    },
+    "actualOrderSource": {
+      "optimo": 524,
+      "stamp": 8,
+      "scheduled": 0
+    },
+    "proposalOnlyDays": 0,
+    "actualOnlyDays": 0,
+    "totalProposalHours": 186,
+    "totalActualHours": 197
+  },
+  "sequence": {
+    "routeDaysCompared": 24,
+    "medianDriveRatio": 0.87,
+    "medianDistanceRatio": 0.85,
+    "medianUniformDriveRatio": 0.9,
+    "medianProposalEstimatedLegPct": 37.6,
+    "medianActualEstimatedLegPct": 9.2,
+    "betterThanOptimo": 23,
+    "worseThanOptimo": 1,
+    "betterThanOptimoUniform": 21,
+    "totalProposalDriveMin": 3366.4,
+    "totalActualDriveMin": 4025.6
+  },
+  "windowCompliance": null,
+  "capacity": {
+    "proposal": {
+      "routeDays": 25,
+      "over8h": 8,
+      "over95h": 3,
+      "maxHours": 10.22,
+      "medianHours": 7.66
+    },
+    "actual": {
+      "routeDays": 25,
+      "over8h": 13,
+      "over95h": 4,
+      "maxHours": 10.82,
+      "medianHours": 8.03
+    }
+  },
+  "compactness": {
+    "routeDaysScored": 25,
+    "within5Pct": 14,
+    "within5PctShare": 56,
+    "medianRatio": 0.96,
+    "boardOnlyWithin5Pct": 25,
+    "boardOnlyRouteDays": 25,
+    "ratioMin": 0.82,
+    "ratioMax": 1
+  },
+  "overflow": {
+    "count": 0,
+    "keys": []
+  },
+  "gates": [
+    {
+      "gate": "same tech >= 95%",
+      "value": 100,
+      "pass": true
+    },
+    {
+      "gate": "same day >= 95%",
+      "value": 100,
+      "pass": true
+    },
+    {
+      "gate": "route-day hours within +-10%",
+      "value": "21/25 (84%)",
+      "pass": false
+    },
+    {
+      "gate": "route-day hours within +-10% (board only, same sequencer)",
+      "value": "25/25 (100%)",
+      "pass": true,
+      "advisory": true
+    },
+    {
+      "gate": "no dropped visits",
+      "value": 0,
+      "pass": true
+    },
+    {
+      "gate": "no invented visits",
+      "value": 0,
+      "pass": true
+    },
+    {
+      "gate": "no weekend placements",
+      "value": 0,
+      "pass": true
+    },
+    {
+      "gate": "no route-day over 9.5 h (modelled travel + service)",
+      "value": "3 of 25 (actual: 4/25)",
+      "pass": false,
+      "advisory": true
+    },
+    {
+      "gate": "route-day total time within +-5% of the OptimoRoute day (compactness)",
+      "value": "14/25 (56%)",
+      "pass": false,
+      "advisory": true
+    },
+    {
+      "gate": "late bookings (created after the cutoff — the add-queue load)",
+      "value": 54,
+      "pass": true,
+      "advisory": true
+    }
+  ],
+  "passed": false,
+  "perTech": [
+    {
+      "tech": "Alias Franks",
+      "proposalDays": 6,
+      "proposalStops": 115,
+      "proposalHours": 41.6,
+      "actualDays": 6,
+      "actualStops": 115,
+      "actualHours": 43.4,
+      "hoursDelta": -1.8
+    },
+    {
+      "tech": "Cory Ventura",
+      "proposalDays": 4,
+      "proposalStops": 90,
+      "proposalHours": 25.7,
+      "actualDays": 4,
+      "actualStops": 90,
+      "actualHours": 27,
+      "hoursDelta": -1.3
+    },
+    {
+      "tech": "Luke LaVergne",
+      "proposalDays": 5,
+      "proposalStops": 92,
+      "proposalHours": 38.9,
+      "actualDays": 5,
+      "actualStops": 92,
+      "actualHours": 41.9,
+      "hoursDelta": -3
+    },
+    {
+      "tech": "Robert Norton",
+      "proposalDays": 5,
+      "proposalStops": 112,
+      "proposalHours": 38.2,
+      "actualDays": 5,
+      "actualStops": 112,
+      "actualHours": 39.6,
+      "hoursDelta": -1.4
+    },
+    {
+      "tech": "Tavis Alexander",
+      "proposalDays": 5,
+      "proposalStops": 123,
+      "proposalHours": 41.6,
+      "actualDays": 5,
+      "actualStops": 123,
+      "actualHours": 45.1,
+      "hoursDelta": -3.5
+    }
+  ],
+  "routeDays": [
+    {
+      "id": "Alias Franks|2026-08-25",
+      "tech": "Alias Franks",
+      "date": "2026-08-25",
+      "dow": "tue",
+      "proposal": {
+        "stops": 1,
+        "driveMin": 15.5,
+        "serviceMin": 15,
+        "totalMin": 30.5,
+        "hours": 0.51,
+        "miles": 7.8,
+        "observedLegs": 0,
+        "estimatedLegs": 1,
+        "nnImprovedPct": null
+      },
+      "actual": {
+        "stops": 1,
+        "driveMin": 15.5,
+        "serviceMin": 15,
+        "totalMin": 30.5,
+        "hours": 0.51,
+        "miles": 7.8
+      },
+      "actualResequenced": {
+        "driveMin": 15.5,
+        "totalMin": 30.5,
+        "hours": 0.51
+      },
+      "hoursRatio": 1,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": null,
+      "only": null
+    },
+    {
+      "id": "Alias Franks|2026-08-31",
+      "tech": "Alias Franks",
+      "date": "2026-08-31",
+      "dow": "mon",
+      "proposal": {
+        "stops": 25,
+        "driveMin": 130.5,
+        "serviceMin": 375,
+        "totalMin": 505.5,
+        "hours": 8.43,
+        "miles": 45.5,
+        "observedLegs": 15,
+        "estimatedLegs": 10,
+        "nnImprovedPct": 4.9
+      },
+      "actual": {
+        "stops": 25,
+        "driveMin": 144.4,
+        "serviceMin": 375,
+        "totalMin": 519.4,
+        "hours": 8.66,
+        "miles": 48.5
+      },
+      "actualResequenced": {
+        "driveMin": 130.5,
+        "totalMin": 505.5,
+        "hours": 8.43
+      },
+      "hoursRatio": 0.97,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 25,
+        "proposalDriveMin": 130.5,
+        "actualDriveMin": 144.4,
+        "driveRatio": 0.9,
+        "proposalMiles": 45.5,
+        "actualMiles": 48.5,
+        "distanceRatio": 0.94,
+        "uniformDriveRatio": 0.97,
+        "proposalEstimatedLegPct": 40,
+        "actualEstimatedLegPct": 4
+      },
+      "only": null
+    },
+    {
+      "id": "Alias Franks|2026-09-01",
+      "tech": "Alias Franks",
+      "date": "2026-09-01",
+      "dow": "tue",
+      "proposal": {
+        "stops": 25,
+        "driveMin": 152.7,
+        "serviceMin": 405,
+        "totalMin": 557.7,
+        "hours": 9.3,
+        "miles": 51.8,
+        "observedLegs": 17,
+        "estimatedLegs": 8,
+        "nnImprovedPct": 5.3
+      },
+      "actual": {
+        "stops": 25,
+        "driveMin": 163.3,
+        "serviceMin": 405,
+        "totalMin": 568.3,
+        "hours": 9.47,
+        "miles": 53.3
+      },
+      "actualResequenced": {
+        "driveMin": 152.7,
+        "totalMin": 557.7,
+        "hours": 9.3
+      },
+      "hoursRatio": 0.98,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 25,
+        "proposalDriveMin": 152.7,
+        "actualDriveMin": 163.3,
+        "driveRatio": 0.94,
+        "proposalMiles": 51.8,
+        "actualMiles": 53.3,
+        "distanceRatio": 0.97,
+        "uniformDriveRatio": 1.02,
+        "proposalEstimatedLegPct": 32,
+        "actualEstimatedLegPct": 12
+      },
+      "only": null
+    },
+    {
+      "id": "Alias Franks|2026-09-02",
+      "tech": "Alias Franks",
+      "date": "2026-09-02",
+      "dow": "wed",
+      "proposal": {
+        "stops": 20,
+        "driveMin": 146.6,
+        "serviceMin": 315,
+        "totalMin": 461.6,
+        "hours": 7.69,
+        "miles": 61.7,
+        "observedLegs": 12,
+        "estimatedLegs": 8,
+        "nnImprovedPct": 12.8
+      },
+      "actual": {
+        "stops": 20,
+        "driveMin": 191.7,
+        "serviceMin": 315,
+        "totalMin": 506.7,
+        "hours": 8.44,
+        "miles": 82.2
+      },
+      "actualResequenced": {
+        "driveMin": 146.6,
+        "totalMin": 461.6,
+        "hours": 7.69
+      },
+      "hoursRatio": 0.91,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 20,
+        "proposalDriveMin": 146.6,
+        "actualDriveMin": 191.7,
+        "driveRatio": 0.76,
+        "proposalMiles": 61.7,
+        "actualMiles": 82.2,
+        "distanceRatio": 0.75,
+        "uniformDriveRatio": 0.88,
+        "proposalEstimatedLegPct": 40,
+        "actualEstimatedLegPct": 10
+      },
+      "only": null
+    },
+    {
+      "id": "Alias Franks|2026-09-03",
+      "tech": "Alias Franks",
+      "date": "2026-09-03",
+      "dow": "thu",
+      "proposal": {
+        "stops": 20,
+        "driveMin": 153.2,
+        "serviceMin": 300,
+        "totalMin": 453.2,
+        "hours": 7.55,
+        "miles": 64,
+        "observedLegs": 11,
+        "estimatedLegs": 9,
+        "nnImprovedPct": 15.2
+      },
+      "actual": {
+        "stops": 20,
+        "driveMin": 179,
+        "serviceMin": 300,
+        "totalMin": 479,
+        "hours": 7.98,
+        "miles": 82.2
+      },
+      "actualResequenced": {
+        "driveMin": 153.2,
+        "totalMin": 453.2,
+        "hours": 7.55
+      },
+      "hoursRatio": 0.95,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 20,
+        "proposalDriveMin": 153.2,
+        "actualDriveMin": 179,
+        "driveRatio": 0.86,
+        "proposalMiles": 64,
+        "actualMiles": 82.2,
+        "distanceRatio": 0.78,
+        "uniformDriveRatio": 0.87,
+        "proposalEstimatedLegPct": 45,
+        "actualEstimatedLegPct": 5
+      },
+      "only": null
+    },
+    {
+      "id": "Alias Franks|2026-09-04",
+      "tech": "Alias Franks",
+      "date": "2026-09-04",
+      "dow": "fri",
+      "proposal": {
+        "stops": 24,
+        "driveMin": 125.7,
+        "serviceMin": 360,
+        "totalMin": 485.7,
+        "hours": 8.09,
+        "miles": 42.7,
+        "observedLegs": 17,
+        "estimatedLegs": 7,
+        "nnImprovedPct": 7.1
+      },
+      "actual": {
+        "stops": 24,
+        "driveMin": 137.9,
+        "serviceMin": 360,
+        "totalMin": 497.9,
+        "hours": 8.3,
+        "miles": 49.2
+      },
+      "actualResequenced": {
+        "driveMin": 125.7,
+        "totalMin": 485.7,
+        "hours": 8.09
+      },
+      "hoursRatio": 0.98,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 24,
+        "proposalDriveMin": 125.7,
+        "actualDriveMin": 137.9,
+        "driveRatio": 0.91,
+        "proposalMiles": 42.7,
+        "actualMiles": 49.2,
+        "distanceRatio": 0.87,
+        "uniformDriveRatio": 0.9,
+        "proposalEstimatedLegPct": 29.2,
+        "actualEstimatedLegPct": 8.3
+      },
+      "only": null
+    },
+    {
+      "id": "Cory Ventura|2026-08-31",
+      "tech": "Cory Ventura",
+      "date": "2026-08-31",
+      "dow": "mon",
+      "proposal": {
+        "stops": 24,
+        "driveMin": 119.9,
+        "serviceMin": 300,
+        "totalMin": 419.9,
+        "hours": 7,
+        "miles": 59.8,
+        "observedLegs": 16,
+        "estimatedLegs": 8,
+        "nnImprovedPct": 2.1
+      },
+      "actual": {
+        "stops": 24,
+        "driveMin": 135.4,
+        "serviceMin": 300,
+        "totalMin": 435.4,
+        "hours": 7.26,
+        "miles": 69.9
+      },
+      "actualResequenced": {
+        "driveMin": 119.9,
+        "totalMin": 419.9,
+        "hours": 7
+      },
+      "hoursRatio": 0.96,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 24,
+        "proposalDriveMin": 119.9,
+        "actualDriveMin": 135.4,
+        "driveRatio": 0.89,
+        "proposalMiles": 59.8,
+        "actualMiles": 69.9,
+        "distanceRatio": 0.86,
+        "uniformDriveRatio": 0.91,
+        "proposalEstimatedLegPct": 33.3,
+        "actualEstimatedLegPct": 12.5
+      },
+      "only": null
+    },
+    {
+      "id": "Cory Ventura|2026-09-01",
+      "tech": "Cory Ventura",
+      "date": "2026-09-01",
+      "dow": "tue",
+      "proposal": {
+        "stops": 20,
+        "driveMin": 132.4,
+        "serviceMin": 240,
+        "totalMin": 372.4,
+        "hours": 6.21,
+        "miles": 67.4,
+        "observedLegs": 13,
+        "estimatedLegs": 7,
+        "nnImprovedPct": 3.1
+      },
+      "actual": {
+        "stops": 20,
+        "driveMin": 159.9,
+        "serviceMin": 240,
+        "totalMin": 399.9,
+        "hours": 6.66,
+        "miles": 76.3
+      },
+      "actualResequenced": {
+        "driveMin": 132.4,
+        "totalMin": 372.4,
+        "hours": 6.21
+      },
+      "hoursRatio": 0.93,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 20,
+        "proposalDriveMin": 132.4,
+        "actualDriveMin": 159.9,
+        "driveRatio": 0.83,
+        "proposalMiles": 67.4,
+        "actualMiles": 76.3,
+        "distanceRatio": 0.88,
+        "uniformDriveRatio": 0.97,
+        "proposalEstimatedLegPct": 35,
+        "actualEstimatedLegPct": 10
+      },
+      "only": null
+    },
+    {
+      "id": "Cory Ventura|2026-09-02",
+      "tech": "Cory Ventura",
+      "date": "2026-09-02",
+      "dow": "wed",
+      "proposal": {
+        "stops": 24,
+        "driveMin": 95.2,
+        "serviceMin": 288,
+        "totalMin": 383.2,
+        "hours": 6.39,
+        "miles": 42.1,
+        "observedLegs": 14,
+        "estimatedLegs": 10,
+        "nnImprovedPct": 15.7
+      },
+      "actual": {
+        "stops": 24,
+        "driveMin": 112,
+        "serviceMin": 288,
+        "totalMin": 400,
+        "hours": 6.67,
+        "miles": 53.6
+      },
+      "actualResequenced": {
+        "driveMin": 95.2,
+        "totalMin": 383.2,
+        "hours": 6.39
+      },
+      "hoursRatio": 0.96,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 24,
+        "proposalDriveMin": 95.2,
+        "actualDriveMin": 112,
+        "driveRatio": 0.85,
+        "proposalMiles": 42.1,
+        "actualMiles": 53.6,
+        "distanceRatio": 0.79,
+        "uniformDriveRatio": 0.87,
+        "proposalEstimatedLegPct": 41.7,
+        "actualEstimatedLegPct": 16.7
+      },
+      "only": null
+    },
+    {
+      "id": "Cory Ventura|2026-09-03",
+      "tech": "Cory Ventura",
+      "date": "2026-09-03",
+      "dow": "thu",
+      "proposal": {
+        "stops": 22,
+        "driveMin": 100,
+        "serviceMin": 264,
+        "totalMin": 364,
+        "hours": 6.07,
+        "miles": 50.9,
+        "observedLegs": 13,
+        "estimatedLegs": 9,
+        "nnImprovedPct": 8.3
+      },
+      "actual": {
+        "stops": 22,
+        "driveMin": 120,
+        "serviceMin": 264,
+        "totalMin": 384,
+        "hours": 6.4,
+        "miles": 58.6
+      },
+      "actualResequenced": {
+        "driveMin": 100,
+        "totalMin": 364,
+        "hours": 6.07
+      },
+      "hoursRatio": 0.95,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 22,
+        "proposalDriveMin": 100,
+        "actualDriveMin": 120,
+        "driveRatio": 0.83,
+        "proposalMiles": 50.9,
+        "actualMiles": 58.6,
+        "distanceRatio": 0.87,
+        "uniformDriveRatio": 0.97,
+        "proposalEstimatedLegPct": 40.9,
+        "actualEstimatedLegPct": 13.6
+      },
+      "only": null
+    },
+    {
+      "id": "Luke LaVergne|2026-08-31",
+      "tech": "Luke LaVergne",
+      "date": "2026-08-31",
+      "dow": "mon",
+      "proposal": {
+        "stops": 18,
+        "driveMin": 174.9,
+        "serviceMin": 285,
+        "totalMin": 459.9,
+        "hours": 7.66,
+        "miles": 76.3,
+        "observedLegs": 8,
+        "estimatedLegs": 10,
+        "nnImprovedPct": 10.3
+      },
+      "actual": {
+        "stops": 18,
+        "driveMin": 240.1,
+        "serviceMin": 285,
+        "totalMin": 525.1,
+        "hours": 8.75,
+        "miles": 105.1
+      },
+      "actualResequenced": {
+        "driveMin": 174.9,
+        "totalMin": 459.9,
+        "hours": 7.66
+      },
+      "hoursRatio": 0.88,
+      "hoursWithinTolerance": false,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 18,
+        "proposalDriveMin": 174.9,
+        "actualDriveMin": 240.1,
+        "driveRatio": 0.73,
+        "proposalMiles": 76.3,
+        "actualMiles": 105.1,
+        "distanceRatio": 0.73,
+        "uniformDriveRatio": 0.8,
+        "proposalEstimatedLegPct": 55.6,
+        "actualEstimatedLegPct": 16.7
+      },
+      "only": null
+    },
+    {
+      "id": "Luke LaVergne|2026-09-01",
+      "tech": "Luke LaVergne",
+      "date": "2026-09-01",
+      "dow": "tue",
+      "proposal": {
+        "stops": 24,
+        "driveMin": 253.4,
+        "serviceMin": 360,
+        "totalMin": 613.4,
+        "hours": 10.22,
+        "miles": 105.9,
+        "observedLegs": 19,
+        "estimatedLegs": 5,
+        "nnImprovedPct": 0
+      },
+      "actual": {
+        "stops": 24,
+        "driveMin": 289,
+        "serviceMin": 360,
+        "totalMin": 649,
+        "hours": 10.82,
+        "miles": 124.7
+      },
+      "actualResequenced": {
+        "driveMin": 253.4,
+        "totalMin": 613.4,
+        "hours": 10.22
+      },
+      "hoursRatio": 0.95,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 24,
+        "proposalDriveMin": 253.4,
+        "actualDriveMin": 289,
+        "driveRatio": 0.88,
+        "proposalMiles": 105.9,
+        "actualMiles": 124.7,
+        "distanceRatio": 0.85,
+        "uniformDriveRatio": 0.93,
+        "proposalEstimatedLegPct": 20.8,
+        "actualEstimatedLegPct": 4.2
+      },
+      "only": null
+    },
+    {
+      "id": "Luke LaVergne|2026-09-02",
+      "tech": "Luke LaVergne",
+      "date": "2026-09-02",
+      "dow": "wed",
+      "proposal": {
+        "stops": 13,
+        "driveMin": 181.6,
+        "serviceMin": 195,
+        "totalMin": 376.6,
+        "hours": 6.28,
+        "miles": 83.5,
+        "observedLegs": 6,
+        "estimatedLegs": 7,
+        "nnImprovedPct": 10
+      },
+      "actual": {
+        "stops": 13,
+        "driveMin": 231.8,
+        "serviceMin": 195,
+        "totalMin": 426.8,
+        "hours": 7.11,
+        "miles": 108
+      },
+      "actualResequenced": {
+        "driveMin": 181.6,
+        "totalMin": 376.6,
+        "hours": 6.28
+      },
+      "hoursRatio": 0.88,
+      "hoursWithinTolerance": false,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 13,
+        "proposalDriveMin": 181.6,
+        "actualDriveMin": 231.8,
+        "driveRatio": 0.78,
+        "proposalMiles": 83.5,
+        "actualMiles": 108,
+        "distanceRatio": 0.77,
+        "uniformDriveRatio": 0.76,
+        "proposalEstimatedLegPct": 53.8,
+        "actualEstimatedLegPct": 15.4
+      },
+      "only": null
+    },
+    {
+      "id": "Luke LaVergne|2026-09-03",
+      "tech": "Luke LaVergne",
+      "date": "2026-09-03",
+      "dow": "thu",
+      "proposal": {
+        "stops": 16,
+        "driveMin": 182.5,
+        "serviceMin": 240,
+        "totalMin": 422.5,
+        "hours": 7.04,
+        "miles": 85.3,
+        "observedLegs": 11,
+        "estimatedLegs": 5,
+        "nnImprovedPct": 2.3
+      },
+      "actual": {
+        "stops": 16,
+        "driveMin": 191.7,
+        "serviceMin": 240,
+        "totalMin": 431.7,
+        "hours": 7.2,
+        "miles": 95.7
+      },
+      "actualResequenced": {
+        "driveMin": 182.5,
+        "totalMin": 422.5,
+        "hours": 7.04
+      },
+      "hoursRatio": 0.98,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 16,
+        "proposalDriveMin": 182.5,
+        "actualDriveMin": 191.7,
+        "driveRatio": 0.95,
+        "proposalMiles": 85.3,
+        "actualMiles": 95.7,
+        "distanceRatio": 0.89,
+        "uniformDriveRatio": 0.9,
+        "proposalEstimatedLegPct": 31.3,
+        "actualEstimatedLegPct": 6.3
+      },
+      "only": null
+    },
+    {
+      "id": "Luke LaVergne|2026-09-04",
+      "tech": "Luke LaVergne",
+      "date": "2026-09-04",
+      "dow": "fri",
+      "proposal": {
+        "stops": 21,
+        "driveMin": 132,
+        "serviceMin": 330,
+        "totalMin": 462,
+        "hours": 7.7,
+        "miles": 48.7,
+        "observedLegs": 19,
+        "estimatedLegs": 2,
+        "nnImprovedPct": 16
+      },
+      "actual": {
+        "stops": 21,
+        "driveMin": 151.8,
+        "serviceMin": 330,
+        "totalMin": 481.8,
+        "hours": 8.03,
+        "miles": 59.2
+      },
+      "actualResequenced": {
+        "driveMin": 132,
+        "totalMin": 462,
+        "hours": 7.7
+      },
+      "hoursRatio": 0.96,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 21,
+        "proposalDriveMin": 132,
+        "actualDriveMin": 151.8,
+        "driveRatio": 0.87,
+        "proposalMiles": 48.7,
+        "actualMiles": 59.2,
+        "distanceRatio": 0.82,
+        "uniformDriveRatio": 0.89,
+        "proposalEstimatedLegPct": 9.5,
+        "actualEstimatedLegPct": 4.8
+      },
+      "only": null
+    },
+    {
+      "id": "Robert Norton|2026-08-31",
+      "tech": "Robert Norton",
+      "date": "2026-08-31",
+      "dow": "mon",
+      "proposal": {
+        "stops": 20,
+        "driveMin": 121.2,
+        "serviceMin": 300,
+        "totalMin": 421.2,
+        "hours": 7.02,
+        "miles": 50.7,
+        "observedLegs": 10,
+        "estimatedLegs": 10,
+        "nnImprovedPct": 11.3
+      },
+      "actual": {
+        "stops": 20,
+        "driveMin": 132.1,
+        "serviceMin": 300,
+        "totalMin": 432.1,
+        "hours": 7.2,
+        "miles": 56.5
+      },
+      "actualResequenced": {
+        "driveMin": 121.2,
+        "totalMin": 421.2,
+        "hours": 7.02
+      },
+      "hoursRatio": 0.97,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 20,
+        "proposalDriveMin": 121.2,
+        "actualDriveMin": 132.1,
+        "driveRatio": 0.92,
+        "proposalMiles": 50.7,
+        "actualMiles": 56.5,
+        "distanceRatio": 0.9,
+        "uniformDriveRatio": 0.98,
+        "proposalEstimatedLegPct": 50,
+        "actualEstimatedLegPct": 5
+      },
+      "only": null
+    },
+    {
+      "id": "Robert Norton|2026-09-01",
+      "tech": "Robert Norton",
+      "date": "2026-09-01",
+      "dow": "tue",
+      "proposal": {
+        "stops": 25,
+        "driveMin": 143.2,
+        "serviceMin": 375,
+        "totalMin": 518.2,
+        "hours": 8.64,
+        "miles": 58.3,
+        "observedLegs": 16,
+        "estimatedLegs": 9,
+        "nnImprovedPct": 5.7
+      },
+      "actual": {
+        "stops": 25,
+        "driveMin": 160.9,
+        "serviceMin": 375,
+        "totalMin": 535.9,
+        "hours": 8.93,
+        "miles": 69.3
+      },
+      "actualResequenced": {
+        "driveMin": 143.2,
+        "totalMin": 518.2,
+        "hours": 8.64
+      },
+      "hoursRatio": 0.97,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 25,
+        "proposalDriveMin": 143.2,
+        "actualDriveMin": 160.9,
+        "driveRatio": 0.89,
+        "proposalMiles": 58.3,
+        "actualMiles": 69.3,
+        "distanceRatio": 0.84,
+        "uniformDriveRatio": 0.9,
+        "proposalEstimatedLegPct": 36,
+        "actualEstimatedLegPct": 4
+      },
+      "only": null
+    },
+    {
+      "id": "Robert Norton|2026-09-02",
+      "tech": "Robert Norton",
+      "date": "2026-09-02",
+      "dow": "wed",
+      "proposal": {
+        "stops": 22,
+        "driveMin": 110.8,
+        "serviceMin": 330,
+        "totalMin": 440.8,
+        "hours": 7.35,
+        "miles": 43.1,
+        "observedLegs": 13,
+        "estimatedLegs": 9,
+        "nnImprovedPct": 3.7
+      },
+      "actual": {
+        "stops": 22,
+        "driveMin": 120.5,
+        "serviceMin": 330,
+        "totalMin": 450.5,
+        "hours": 7.51,
+        "miles": 45
+      },
+      "actualResequenced": {
+        "driveMin": 110.8,
+        "totalMin": 440.8,
+        "hours": 7.35
+      },
+      "hoursRatio": 0.98,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 22,
+        "proposalDriveMin": 110.8,
+        "actualDriveMin": 120.5,
+        "driveRatio": 0.92,
+        "proposalMiles": 43.1,
+        "actualMiles": 45,
+        "distanceRatio": 0.96,
+        "uniformDriveRatio": 1.01,
+        "proposalEstimatedLegPct": 40.9,
+        "actualEstimatedLegPct": 0
+      },
+      "only": null
+    },
+    {
+      "id": "Robert Norton|2026-09-03",
+      "tech": "Robert Norton",
+      "date": "2026-09-03",
+      "dow": "thu",
+      "proposal": {
+        "stops": 21,
+        "driveMin": 126.3,
+        "serviceMin": 315,
+        "totalMin": 441.3,
+        "hours": 7.35,
+        "miles": 51.2,
+        "observedLegs": 14,
+        "estimatedLegs": 7,
+        "nnImprovedPct": 4.4
+      },
+      "actual": {
+        "stops": 21,
+        "driveMin": 145,
+        "serviceMin": 315,
+        "totalMin": 460,
+        "hours": 7.67,
+        "miles": 61.9
+      },
+      "actualResequenced": {
+        "driveMin": 126.3,
+        "totalMin": 441.3,
+        "hours": 7.35
+      },
+      "hoursRatio": 0.96,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 21,
+        "proposalDriveMin": 126.3,
+        "actualDriveMin": 145,
+        "driveRatio": 0.87,
+        "proposalMiles": 51.2,
+        "actualMiles": 61.9,
+        "distanceRatio": 0.83,
+        "uniformDriveRatio": 0.87,
+        "proposalEstimatedLegPct": 33.3,
+        "actualEstimatedLegPct": 14.3
+      },
+      "only": null
+    },
+    {
+      "id": "Robert Norton|2026-09-04",
+      "tech": "Robert Norton",
+      "date": "2026-09-04",
+      "dow": "fri",
+      "proposal": {
+        "stops": 24,
+        "driveMin": 110.5,
+        "serviceMin": 360,
+        "totalMin": 470.5,
+        "hours": 7.84,
+        "miles": 41.7,
+        "observedLegs": 16,
+        "estimatedLegs": 8,
+        "nnImprovedPct": 17.5
+      },
+      "actual": {
+        "stops": 24,
+        "driveMin": 137.1,
+        "serviceMin": 360,
+        "totalMin": 497.1,
+        "hours": 8.28,
+        "miles": 57
+      },
+      "actualResequenced": {
+        "driveMin": 110.5,
+        "totalMin": 470.5,
+        "hours": 7.84
+      },
+      "hoursRatio": 0.95,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 24,
+        "proposalDriveMin": 110.5,
+        "actualDriveMin": 137.1,
+        "driveRatio": 0.81,
+        "proposalMiles": 41.7,
+        "actualMiles": 57,
+        "distanceRatio": 0.73,
+        "uniformDriveRatio": 0.89,
+        "proposalEstimatedLegPct": 33.3,
+        "actualEstimatedLegPct": 4.2
+      },
+      "only": null
+    },
+    {
+      "id": "Tavis Alexander|2026-08-31",
+      "tech": "Tavis Alexander",
+      "date": "2026-08-31",
+      "dow": "mon",
+      "proposal": {
+        "stops": 28,
+        "driveMin": 143.4,
+        "serviceMin": 435,
+        "totalMin": 578.4,
+        "hours": 9.64,
+        "miles": 54,
+        "observedLegs": 19,
+        "estimatedLegs": 9,
+        "nnImprovedPct": 6.9
+      },
+      "actual": {
+        "stops": 28,
+        "driveMin": 140.7,
+        "serviceMin": 435,
+        "totalMin": 575.7,
+        "hours": 9.6,
+        "miles": 48.8
+      },
+      "actualResequenced": {
+        "driveMin": 143.4,
+        "totalMin": 578.4,
+        "hours": 9.64
+      },
+      "hoursRatio": 1,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 28,
+        "proposalDriveMin": 143.4,
+        "actualDriveMin": 140.7,
+        "driveRatio": 1.02,
+        "proposalMiles": 54,
+        "actualMiles": 48.8,
+        "distanceRatio": 1.11,
+        "uniformDriveRatio": 1.06,
+        "proposalEstimatedLegPct": 32.1,
+        "actualEstimatedLegPct": 3.6
+      },
+      "only": null
+    },
+    {
+      "id": "Tavis Alexander|2026-09-01",
+      "tech": "Tavis Alexander",
+      "date": "2026-09-01",
+      "dow": "tue",
+      "proposal": {
+        "stops": 28,
+        "driveMin": 161.5,
+        "serviceMin": 420,
+        "totalMin": 581.5,
+        "hours": 9.69,
+        "miles": 52.4,
+        "observedLegs": 22,
+        "estimatedLegs": 6,
+        "nnImprovedPct": 2.5
+      },
+      "actual": {
+        "stops": 28,
+        "driveMin": 180.1,
+        "serviceMin": 420,
+        "totalMin": 600.1,
+        "hours": 10,
+        "miles": 56.7
+      },
+      "actualResequenced": {
+        "driveMin": 161.5,
+        "totalMin": 581.5,
+        "hours": 9.69
+      },
+      "hoursRatio": 0.97,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 28,
+        "proposalDriveMin": 161.5,
+        "actualDriveMin": 180.1,
+        "driveRatio": 0.9,
+        "proposalMiles": 52.4,
+        "actualMiles": 56.7,
+        "distanceRatio": 0.92,
+        "uniformDriveRatio": 0.95,
+        "proposalEstimatedLegPct": 21.4,
+        "actualEstimatedLegPct": 10.7
+      },
+      "only": null
+    },
+    {
+      "id": "Tavis Alexander|2026-09-02",
+      "tech": "Tavis Alexander",
+      "date": "2026-09-02",
+      "dow": "wed",
+      "proposal": {
+        "stops": 23,
+        "driveMin": 68.9,
+        "serviceMin": 309,
+        "totalMin": 377.9,
+        "hours": 6.3,
+        "miles": 22.4,
+        "observedLegs": 14,
+        "estimatedLegs": 9,
+        "nnImprovedPct": 3.4
+      },
+      "actual": {
+        "stops": 23,
+        "driveMin": 89.9,
+        "serviceMin": 309,
+        "totalMin": 398.9,
+        "hours": 6.65,
+        "miles": 31
+      },
+      "actualResequenced": {
+        "driveMin": 68.9,
+        "totalMin": 377.9,
+        "hours": 6.3
+      },
+      "hoursRatio": 0.95,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 23,
+        "proposalDriveMin": 68.9,
+        "actualDriveMin": 89.9,
+        "driveRatio": 0.77,
+        "proposalMiles": 22.4,
+        "actualMiles": 31,
+        "distanceRatio": 0.72,
+        "uniformDriveRatio": 0.92,
+        "proposalEstimatedLegPct": 39.1,
+        "actualEstimatedLegPct": 0
+      },
+      "only": null
+    },
+    {
+      "id": "Tavis Alexander|2026-09-03",
+      "tech": "Tavis Alexander",
+      "date": "2026-09-03",
+      "dow": "thu",
+      "proposal": {
+        "stops": 23,
+        "driveMin": 134.1,
+        "serviceMin": 345,
+        "totalMin": 479.1,
+        "hours": 7.98,
+        "miles": 52.5,
+        "observedLegs": 10,
+        "estimatedLegs": 13,
+        "nnImprovedPct": 5.2
+      },
+      "actual": {
+        "stops": 23,
+        "driveMin": 199.1,
+        "serviceMin": 345,
+        "totalMin": 544.1,
+        "hours": 9.07,
+        "miles": 85
+      },
+      "actualResequenced": {
+        "driveMin": 134.1,
+        "totalMin": 479.1,
+        "hours": 7.98
+      },
+      "hoursRatio": 0.88,
+      "hoursWithinTolerance": false,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 23,
+        "proposalDriveMin": 134.1,
+        "actualDriveMin": 199.1,
+        "driveRatio": 0.67,
+        "proposalMiles": 52.5,
+        "actualMiles": 85,
+        "distanceRatio": 0.62,
+        "uniformDriveRatio": 0.75,
+        "proposalEstimatedLegPct": 56.5,
+        "actualEstimatedLegPct": 21.7
+      },
+      "only": null
+    },
+    {
+      "id": "Tavis Alexander|2026-09-04",
+      "tech": "Tavis Alexander",
+      "date": "2026-09-04",
+      "dow": "fri",
+      "proposal": {
+        "stops": 21,
+        "driveMin": 165.9,
+        "serviceMin": 315,
+        "totalMin": 480.9,
+        "hours": 8.01,
+        "miles": 71.8,
+        "observedLegs": 9,
+        "estimatedLegs": 12,
+        "nnImprovedPct": 4.5
+      },
+      "actual": {
+        "stops": 21,
+        "driveMin": 272.2,
+        "serviceMin": 315,
+        "totalMin": 587.2,
+        "hours": 9.79,
+        "miles": 130.6
+      },
+      "actualResequenced": {
+        "driveMin": 165.9,
+        "totalMin": 480.9,
+        "hours": 8.01
+      },
+      "hoursRatio": 0.82,
+      "hoursWithinTolerance": false,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 21,
+        "proposalDriveMin": 165.9,
+        "actualDriveMin": 272.2,
+        "driveRatio": 0.61,
+        "proposalMiles": 71.8,
+        "actualMiles": 130.6,
+        "distanceRatio": 0.55,
+        "uniformDriveRatio": 0.65,
+        "proposalEstimatedLegPct": 57.1,
+        "actualEstimatedLegPct": 14.3
+      },
+      "only": null
+    }
+  ],
+  "mismatches": [],
+  "mismatchTotal": 0,
+  "droppedKeys": [],
+  "inventedKeys": [],
+  "weekendKeys": [],
+  "policyNotes": {
+    "unresolvedVisits": 0,
+    "unresolvedKeys": [],
+    "comment": "Visits with no resolvable actual are left unassigned and count as drops; they are the same visits the scorer cannot score."
+  }
+}

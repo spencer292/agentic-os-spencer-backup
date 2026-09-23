@@ -1,0 +1,332 @@
+--- travel-model built ---
+{
+ "dayFiles": 23,
+ "emptyDayFiles": 1,
+ "routes": 113,
+ "stops": 2577,
+ "legs": 2464,
+ "distinctPlaces": 941,
+ "observedPairs": 1676,
+ "possiblePairs": 442270,
+ "pairCoveragePct": 0.379,
+ "pairsSeenOnce": 1156,
+ "pairsSeenMultiple": 520,
+ "medianRepeatPairSpreadPct": 0,
+ "directedPairs": 1900,
+ "directedPairsSeenOnce": 1479,
+ "pairsSeenBothDirections": 224,
+ "medianDirectionalDiffPct": 4.37,
+ "drivers": [
+  "Luke LaVergne",
+  "Robert Norton",
+  "Alias Franks",
+  "Cory Ventura",
+  "Tavis Alexander"
+ ],
+ "dates": [
+  "2026-08-17",
+  "2026-08-18",
+  "2026-08-19",
+  "2026-08-20",
+  "2026-08-21",
+  "2026-08-24",
+  "2026-08-25",
+  "2026-08-26",
+  "2026-08-27",
+  "2026-08-28",
+  "2026-08-31",
+  "2026-09-01",
+  "2026-09-02",
+  "2026-09-03",
+  "2026-09-04",
+  "2026-09-08",
+  "2026-09-09",
+  "2026-09-10",
+  "2026-09-11",
+  "2026-09-14",
+  "2026-09-15",
+  "2026-09-16",
+  "2026-09-17"
+ ]
+}
+--- quirks ---
+{
+ "emptyDays": [
+  {
+   "date": "2026-09-07",
+   "reason": "no routes held for this date"
+  }
+ ],
+ "zeroSecondLegs": 9,
+ "zeroMetreLegs": 9,
+ "identicalCoordAdjacentStops": 9,
+ "legsOver60Min": [
+  {
+   "date": "2026-09-15",
+   "driver": "Luke LaVergne",
+   "from": "14307 501st Street East, Eatonville, Washington 98328",
+   "to": "22436 Clearview Court Southeast, Yelm, Washington 98597",
+   "minutes": 67.4,
+   "km": 31.5
+  },
+  {
+   "date": "2026-09-16",
+   "driver": "Luke LaVergne",
+   "from": "2619 Northeast Sylvan Way, Bremerton, Washington 98310",
+   "to": "5222 Mahncke Road Southwest, Longbranch, Washington 98351",
+   "minutes": 68.5,
+   "km": 54.9
+  }
+ ],
+ "legsOver30Min": 17,
+ "missingCoords": 0,
+ "missingService": 0,
+ "stopsOutOfSequence": 0,
+ "routesWithOneStop": 0
+}
+--- estimator ---
+{
+ "Luke LaVergne": {
+  "legs": 406,
+  "metres": {
+   "a": 1121.765,
+   "b": 1.360586,
+   "r2": 0.8855
+  },
+  "seconds": {
+   "c": 125.0067,
+   "d": 0.069735,
+   "r2": 0.9257
+  },
+  "quality": {
+   "medianAbsErrMetres": 1084,
+   "medianAbsPctMetres": 0.2177,
+   "medianAbsErrSeconds": 94.9,
+   "medianAbsPctSeconds": 0.1783,
+   "medianAbsErrSecondsGivenTrueMetres": 64.1,
+   "pctSampleLegs": 387
+  }
+ },
+ "Robert Norton": {
+  "legs": 488,
+  "metres": {
+   "a": 677.0501,
+   "b": 1.312829,
+   "r2": 0.7913
+  },
+  "seconds": {
+   "c": 99.3886,
+   "d": 0.066611,
+   "r2": 0.9178
+  },
+  "quality": {
+   "medianAbsErrMetres": 572.6,
+   "medianAbsPctMetres": 0.2252,
+   "medianAbsErrSeconds": 62.2,
+   "medianAbsPctSeconds": 0.1898,
+   "medianAbsErrSecondsGivenTrueMetres": 34,
+   "pctSampleLegs": 471
+  }
+ },
+ "Alias Franks": {
+  "legs": 518,
+  "metres": {
+   "a": 556.6027,
+   "b": 1.428094,
+   "r2": 0.8881
+  },
+  "seconds": {
+   "c": 151.7553,
+   "d": 0.062422,
+   "r2": 0.8505
+  },
+  "quality": {
+   "medianAbsErrMetres": 553.3,
+   "medianAbsPctMetres": 0.2083,
+   "medianAbsErrSeconds": 69.7,
+   "medianAbsPctSeconds": 0.1929,
+   "medianAbsErrSecondsGivenTrueMetres": 46.6,
+   "pctSampleLegs": 506
+  }
+ },
+ "Cory Ventura": {
+  "legs": 494,
+  "metres": {
+   "a": 627.2584,
+   "b": 1.467258,
+   "r2": 0.8013
+  },
+  "seconds": {
+   "c": 74.5039,
+   "d": 0.057161,
+   "r2": 0.8644
+  },
+  "quality": {
+   "medianAbsErrMetres": 604.9,
+   "medianAbsPctMetres": 0.2151,
+   "medianAbsErrSeconds": 56.3,
+   "medianAbsPctSeconds": 0.2311,
+   "medianAbsErrSecondsGivenTrueMetres": 29.6,
+   "pctSampleLegs": 474
+  }
+ },
+ "Tavis Alexander": {
+  "legs": 558,
+  "metres": {
+   "a": 336.8647,
+   "b": 1.462489,
+   "r2": 0.8367
+  },
+  "seconds": {
+   "c": 108.121,
+   "d": 0.070501,
+   "r2": 0.8763
+  },
+  "quality": {
+   "medianAbsErrMetres": 409.4,
+   "medianAbsPctMetres": 0.2413,
+   "medianAbsErrSeconds": 64.6,
+   "medianAbsPctSeconds": 0.1966,
+   "medianAbsErrSecondsGivenTrueMetres": 43.5,
+   "pctSampleLegs": 504
+  }
+ },
+ "ALL": {
+  "legs": 2464,
+  "metres": {
+   "a": 628.4069,
+   "b": 1.403305,
+   "r2": 0.8811
+  },
+  "seconds": {
+   "c": 99.7649,
+   "d": 0.068499,
+   "r2": 0.9045
+  },
+  "quality": {
+   "medianAbsErrMetres": 606.9,
+   "medianAbsPctMetres": 0.2206,
+   "medianAbsErrSeconds": 71.5,
+   "medianAbsPctSeconds": 0.2115,
+   "medianAbsErrSecondsGivenTrueMetres": 48.8,
+   "pctSampleLegs": 2342
+  }
+ }
+}
+--- inferred start areas ---
+{
+ "Luke LaVergne": {
+  "lat": 47.19741,
+  "lng": -122.52628,
+  "address": "6600 Flanegan Road West, Tacoma, Washington, 98499",
+  "date": "2026-08-17",
+  "days": 23,
+  "meanKmToOtherDays": 18.09,
+  "medianKmToOtherDays": 18.2,
+  "maxKmToOtherDays": 37.13,
+  "medianRouteStartMinutes": 420,
+  "inboundLegMedianMinutes": 31
+ },
+ "Robert Norton": {
+  "lat": 47.17666,
+  "lng": -122.06691,
+  "address": "27115 Sumner Buckley Highway, Buckley, Washington, 98321",
+  "date": "2026-09-02",
+  "days": 23,
+  "meanKmToOtherDays": 9.45,
+  "medianKmToOtherDays": 7.61,
+  "maxKmToOtherDays": 21.91,
+  "medianRouteStartMinutes": 420,
+  "inboundLegMedianMinutes": 15.7
+ },
+ "Alias Franks": {
+  "lat": 47.75612,
+  "lng": -122.21655,
+  "address": "9308 Northeast 176th Street, Bothell, Washington, 98011",
+  "date": "2026-09-09",
+  "days": 23,
+  "meanKmToOtherDays": 12.02,
+  "medianKmToOtherDays": 13.55,
+  "maxKmToOtherDays": 17.48,
+  "medianRouteStartMinutes": 405,
+  "inboundLegMedianMinutes": 29.8
+ },
+ "Cory Ventura": {
+  "lat": 47.33894,
+  "lng": -122.05728,
+  "address": "21405 Southeast 292nd Place, Kent, Washington, 98042",
+  "date": "2026-08-17",
+  "days": 21,
+  "meanKmToOtherDays": 12.02,
+  "medianKmToOtherDays": 10.31,
+  "maxKmToOtherDays": 27.01,
+  "medianRouteStartMinutes": 420,
+  "inboundLegMedianMinutes": 26.9
+ },
+ "Tavis Alexander": {
+  "lat": 47.50623,
+  "lng": -122.18592,
+  "address": "2425 Northeast 16th Street, Renton, Washington, 98056",
+  "date": "2026-09-02",
+  "days": 23,
+  "meanKmToOtherDays": 11.94,
+  "medianKmToOtherDays": 11.86,
+  "maxKmToOtherDays": 23.25,
+  "medianRouteStartMinutes": 420,
+  "inboundLegMedianMinutes": 37.2
+ }
+}
+--- inferred end areas ---
+{
+ "Luke LaVergne": {
+  "lat": 47.12172,
+  "lng": -122.56608,
+  "address": "9081 Eagle Point Loop Road Southwest, Lakewood, Washington, 98498",
+  "date": "2026-08-17",
+  "days": 23,
+  "meanKmToOtherDays": 16.2,
+  "medianKmToOtherDays": 16.54,
+  "maxKmToOtherDays": 31.23
+ },
+ "Robert Norton": {
+  "lat": 47.16973,
+  "lng": -122.09391,
+  "address": "25206 96th Street East, Buckley, Washington, 98321",
+  "date": "2026-09-02",
+  "days": 23,
+  "meanKmToOtherDays": 9,
+  "medianKmToOtherDays": 7.79,
+  "maxKmToOtherDays": 16.17
+ },
+ "Alias Franks": {
+  "lat": 47.69071,
+  "lng": -122.15816,
+  "address": "13780 Northeast 101st Street, Kirkland, Washington 98033",
+  "date": "2026-09-14",
+  "days": 23,
+  "meanKmToOtherDays": 10.44,
+  "medianKmToOtherDays": 9.81,
+  "maxKmToOtherDays": 20.88
+ },
+ "Cory Ventura": {
+  "lat": 47.35036,
+  "lng": -122.05805,
+  "address": "27949 212th Place Southeast, Maple Valley, Washington 98038",
+  "date": "2026-09-17",
+  "days": 21,
+  "meanKmToOtherDays": 12.58,
+  "medianKmToOtherDays": 8.43,
+  "maxKmToOtherDays": 30.57
+ },
+ "Tavis Alexander": {
+  "lat": 47.50954,
+  "lng": -122.14257,
+  "address": "10412 148th Avenue Southeast, Renton, Washington, 98059",
+  "date": "2026-09-09",
+  "days": 23,
+  "meanKmToOtherDays": 11.02,
+  "medianKmToOtherDays": 7.68,
+  "maxKmToOtherDays": 31.36
+ }
+}
+written: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\data\travel-model.json

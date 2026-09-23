@@ -1,0 +1,59 @@
+[write-gate] WRITES ENABLED until 2026-09-23T00:21:05.392Z (spenc@Got-Moles: Robert ends Wed 09-23 in Fife: anchor kept, re-plan Wed, write times) — ceiling 400/run — run f83eca6e
+=== SYNC + PLAN + TIMES 2026-09-22 16:51:06 PT ===
+mode: LIVE (--execute)   window: 2026-09-23..2026-09-23
+live Jobber: 124 visits, 124 not complete, 124 on a routed driver, 0 skipped (no tech / not a driver)
+  2026-09-23  Alias 23  Spencer 27  Robert 29  Luke 20  Cory 25
+
+OptimoRoute: 124 orders in the window
+  CREATE 1   UPDATE 0   DELETE 0   unchanged 123
+    CREATE 8626-2339788275 2026-09-23 Robert Norton 15m  Isabella Kestner  10510 33rd Street East, Edgewood, Washington, 98372
+
+driver availability: 09-23: Alias/Cory/Luke/Robert/Spencer
+
+=== OPTIMOROUTE: 1 CREATE ===
+  CREATE 8626-2339788275 2026-09-23 Robert Norton  ok
+=== OPTIMOROUTE: 0 UPDATE ===
+=== OPTIMOROUTE: 0 DELETE ===
+
+=== OPTIMOROUTE: driver availability ===
+  6/6 succeeded
+
+=== PLAN 2026-09-23 (balancing OFF) ===
+  Alias Franks        23 stops   570 min   148 km  first 07:00  last 15:49
+  Cory Ventura        25 stops   518 min   233 km  first 07:47  last 14:39
+  Luke LaVergne       20 stops   698 min   293 km  first 07:33  last 17:47
+  Robert Norton       29 stops   619 min   130 km  first 07:26  last 16:42
+  Spencer Hill        27 stops   558 min    81 km  first 07:05  last 15:53
+  ⚠ 1 unscheduled on 2026-09-23: Robert #8596
+
+=== JOBBER: write planned times (startAt = arrival, endAt = +3 h) ===
+  to write 23   already correct 100   not on a route 1
+  [  1/23] 2026-09-23 09:19 #8489 Robert   Jason Kjellesvik             was 09-23 09:50  ok
+  [  2/23] 2026-09-23 09:38 #7247 Robert   Lynn Clapp                   was 09-23 10:09  ok
+  [  3/23] 2026-09-23 09:56 #6649 Robert   Theresa  Hall                was 09-23 10:27  ok
+  [  4/23] 2026-09-23 10:18 #8159 Robert   Jonae                        was 09-23 10:49  ok
+  [  5/23] 2026-09-23 10:40 #8515 Robert   Dean Shull                   was 09-23 11:11  ok
+  [  6/23] 2026-09-23 10:59 #8576 Robert   Kevin Voelker                was 09-23 11:30  ok
+  [  7/23] 2026-09-23 11:19 #7476 Robert   Craig Koester                was 09-23 11:50  ok
+  [  8/23] 2026-09-23 11:40 #8568 Robert   Dorthya Dunford              was 09-23 12:11  ok
+  [  9/23] 2026-09-23 15:45 #8415 Robert   Kevin Mcginnity              was 09-23 12:30  ok
+  [ 10/23] 2026-09-23 13:00 #5369 Robert   Chris Doll                   was 09-23 12:53  ok
+  [ 11/23] 2026-09-23 13:38 #7701 Robert   Susan Mcdonald               was 09-23 13:14  ok
+  [ 12/23] 2026-09-23 13:58 #4741 Robert   Ron Krebbs                   was 09-23 13:33  ok
+  [ 13/23] 2026-09-23 14:15 #8381 Robert   Michael Colella              was 09-23 13:50  ok
+  [ 14/23] 2026-09-23 13:17 #8626 Robert   Isabella Kestner             was 09-23 14:00  ok
+  [ 15/23] 2026-09-23 14:32 #5672 Robert   Rachel Brouhard              was 09-23 14:08  ok
+  [ 16/23] 2026-09-23 14:52 #7617 Robert   Prologis - Sumner Landing    was 09-23 14:28  ok
+  [ 17/23] 2026-09-23 15:23 #6840 Robert   Bill Harris                  was 09-23 14:52  ok
+  [ 18/23] 2026-09-23 16:03 #8395 Robert   Beverly Worthen              was 09-23 15:15  ok
+  [ 19/23] 2026-09-23 12:37 #8438 Robert   Jay Poole                    was 09-23 15:33  ok
+  [ 20/23] 2026-09-23 12:19 #8100 Robert   Melissa Weythman             was 09-23 15:51  ok
+  [ 21/23] 2026-09-23 12:00 #7548 Robert   HyperGreen Landscaping       was 09-23 16:09  ok
+  [ 22/23] 2026-09-23 16:23 #6382 Robert   Jared Haines                 was 09-23 16:29  ok
+  [ 23/23] 2026-09-23 16:42 #7713 Robert   Scott Fritschle              was 09-23 16:48  ok
+  written 23  failed 0
+
+=== VERIFY === 123 visits match the plan, 0 do not
+
+✅ done 2026-09-22 16:51:29 PT — log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-09-21_swap\sync-plan-times.log
+Next: the arrival-window sweep (node projects/tool-jobber/scripts/arrival-window-sweep.mjs) so every visit carries the 3-hour window.

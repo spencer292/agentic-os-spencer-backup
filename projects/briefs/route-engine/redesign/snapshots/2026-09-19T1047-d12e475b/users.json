@@ -1,0 +1,157 @@
+{
+ "part": "users",
+ "capturedAt": "2026-09-19T17:59:51.895Z",
+ "source": "jobber graphql query users(first:50)",
+ "fieldsCaptured": "id name.full email.raw status isAccountAdmin",
+ "attempts": [
+  {
+   "fields": "id name.full email.raw status isAccountAdmin",
+   "ok": true
+  }
+ ],
+ "totalCount": 20,
+ "hasNextPage": false,
+ "count": 20,
+ "users": [
+  {
+   "id": "Z2lkOi8vSm9iYmVyL1VzZXIvMzkwMTY0OQ==",
+   "name": "Roy Castleman",
+   "email": "roy@atpbos.com",
+   "status": "ACTIVATED",
+   "isAccountAdmin": false
+  },
+  {
+   "id": "Z2lkOi8vSm9iYmVyL1VzZXIvMjc2NjMwNw==",
+   "name": "Jeff Mitchell",
+   "email": "rockhoundpnw@gmail.com",
+   "status": "DEACTIVATED",
+   "isAccountAdmin": false
+  },
+  {
+   "id": "Z2lkOi8vSm9iYmVyL1VzZXIvMTczMjgxOQ==",
+   "name": "Kathy Hill",
+   "email": "office@got-moles.com",
+   "status": "DEACTIVATED",
+   "isAccountAdmin": false
+  },
+  {
+   "id": "Z2lkOi8vSm9iYmVyL1VzZXIvMTc0MzQwNw==",
+   "name": "Chris",
+   "email": "chrisbowen567@gmail.com",
+   "status": "DEACTIVATED",
+   "isAccountAdmin": false
+  },
+  {
+   "id": "Z2lkOi8vSm9iYmVyL1VzZXIvODk3MDU5",
+   "name": "Kaelyn Holten",
+   "email": "Kaelyn@oceantosummit.com",
+   "status": "DEACTIVATED",
+   "isAccountAdmin": false
+  },
+  {
+   "id": "Z2lkOi8vSm9iYmVyL1VzZXIvNDE4MTE1Ng==",
+   "name": "Robert Norton",
+   "email": "robertnorton007@gmail.com",
+   "status": "ACTIVATED",
+   "isAccountAdmin": false
+  },
+  {
+   "id": "Z2lkOi8vSm9iYmVyL1VzZXIvMjI0NzQ0NA==",
+   "name": "Brooke Jessen",
+   "email": "jessen.brooke97@gmail.com",
+   "status": "DEACTIVATED",
+   "isAccountAdmin": false
+  },
+  {
+   "id": "Z2lkOi8vSm9iYmVyL1VzZXIvMjk2Mjk5Ng==",
+   "name": "Brayden Rich",
+   "email": "bmkrich81@gmail.com",
+   "status": "DEACTIVATED",
+   "isAccountAdmin": false
+  },
+  {
+   "id": "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2",
+   "name": "Spencer Hill",
+   "email": "spencer@got-moles.com",
+   "status": "ACTIVATED",
+   "isAccountAdmin": true
+  },
+  {
+   "id": "Z2lkOi8vSm9iYmVyL1VzZXIvMzM1MzI5MA==",
+   "name": "Jack Spence",
+   "email": "jackspence13@gmail.com",
+   "status": "DEACTIVATED",
+   "isAccountAdmin": false
+  },
+  {
+   "id": "Z2lkOi8vSm9iYmVyL1VzZXIvNDE3NTQ5Mg==",
+   "name": "Alias Franks",
+   "email": "aliasfranks@gmail.com",
+   "status": "ACTIVATED",
+   "isAccountAdmin": false
+  },
+  {
+   "id": "Z2lkOi8vSm9iYmVyL1VzZXIvMTUyMzU5Nw==",
+   "name": "Courtney ",
+   "email": "courtney@got-moles.com",
+   "status": "ACTIVATED",
+   "isAccountAdmin": true
+  },
+  {
+   "id": "Z2lkOi8vSm9iYmVyL1VzZXIvMzI3NDcwMQ==",
+   "name": "Brandon Boone",
+   "email": "brandonaboone@gmail.com",
+   "status": "DEACTIVATED",
+   "isAccountAdmin": false
+  },
+  {
+   "id": "Z2lkOi8vSm9iYmVyL1VzZXIvMzQwNzU1Mg==",
+   "name": "Roy Castleman",
+   "email": "roy@allthepower.co.uk",
+   "status": "DEACTIVATED",
+   "isAccountAdmin": false
+  },
+  {
+   "id": "Z2lkOi8vSm9iYmVyL1VzZXIvMzE0NDEwNQ==",
+   "name": "Tavis Alexander",
+   "email": "tavisalexander19@gmail.com",
+   "status": "ACTIVATED",
+   "isAccountAdmin": false
+  },
+  {
+   "id": "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg==",
+   "name": "Cory Ventura",
+   "email": "cory@got-moles.com",
+   "status": "ACTIVATED",
+   "isAccountAdmin": true
+  },
+  {
+   "id": "Z2lkOi8vSm9iYmVyL1VzZXIvNDA2MDE5OQ==",
+   "name": "Cammeron Anderson",
+   "email": "cammeron8511@gmail.com",
+   "status": "DEACTIVATED",
+   "isAccountAdmin": false
+  },
+  {
+   "id": "Z2lkOi8vSm9iYmVyL1VzZXIvMzc3NDU2OA==",
+   "name": "Luke LaVergne",
+   "email": "lavergnelukas@gmail.com",
+   "status": "ACTIVATED",
+   "isAccountAdmin": false
+  },
+  {
+   "id": "Z2lkOi8vSm9iYmVyL1VzZXIvNDI1NTYyNQ==",
+   "name": "Muhammad Javed ",
+   "email": "muhammad.j1461@gmail.com",
+   "status": "ACTIVATED",
+   "isAccountAdmin": false
+  },
+  {
+   "id": "Z2lkOi8vSm9iYmVyL1VzZXIvMjEyOTEyNg==",
+   "name": "Kellen Jemeysonllc.com",
+   "email": "kellen@jemeysonllc.com",
+   "status": "ACTIVATED",
+   "isAccountAdmin": true
+  }
+ ]
+}

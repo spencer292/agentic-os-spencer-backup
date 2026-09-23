@@ -1,0 +1,5218 @@
+{
+ "generatedAt": "2026-09-19T19:12:56.837Z",
+ "generatedAtPT": "2026-09-19 12:12:56",
+ "pulledAtPT": "2026-09-19 12:12:32",
+ "window": [
+  "2026-09-21",
+  "2026-09-22",
+  "2026-09-23",
+  "2026-09-24"
+ ],
+ "writeGate": {
+  "state": "CLOSED",
+  "file": "projects/briefs/route-engine/write-authority.json",
+  "writesEnabled": false
+ },
+ "jobber": {
+  "visitsInWindow": 431,
+  "visitsReturnedOutsideWindow": 0,
+  "weekendVisits": 0,
+  "completedAlready": 0,
+  "unassigned": 0,
+  "rideAlongVisits": 0,
+  "duplicateVisitIds": 0,
+  "sameJobSameDay": [
+   {
+    "key": "8473|2026-09-21",
+    "visits": [
+     "2305383661",
+     "2305383857"
+    ]
+   },
+   {
+    "key": "4425|2026-09-22",
+    "visits": [
+     "2312659779",
+     "1850020027"
+    ]
+   },
+   {
+    "key": "6181|2026-09-24",
+    "visits": [
+     "2289304400",
+     "1995423696"
+    ]
+   },
+   {
+    "key": "7875|2026-09-24",
+    "visits": [
+     "2319748972",
+     "2319750064"
+    ]
+   }
+  ],
+  "userIds": {
+   "Tavis Alexander": "Z2lkOi8vSm9iYmVyL1VzZXIvMzE0NDEwNQ==",
+   "Cory Ventura": "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg==",
+   "Spencer Hill": "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+  },
+  "perDay": {
+   "2026-09-21": {
+    "dow": "mon",
+    "totalJobberVisits": 112,
+    "tavis": 27,
+    "cory": 18,
+    "spencer": 0,
+    "unassigned": 0,
+    "complete": 0,
+    "byAssigneeList": {
+     "Cory Ventura": 18,
+     "Alias Franks": 29,
+     "Robert Norton": 18,
+     "Luke LaVergne": 20,
+     "Tavis Alexander": 27
+    }
+   },
+   "2026-09-22": {
+    "dow": "tue",
+    "totalJobberVisits": 103,
+    "tavis": 32,
+    "cory": 18,
+    "spencer": 0,
+    "unassigned": 0,
+    "complete": 0,
+    "byAssigneeList": {
+     "Robert Norton": 37,
+     "Luke LaVergne": 10,
+     "Alias Franks": 6,
+     "Cory Ventura": 18,
+     "Tavis Alexander": 32
+    }
+   },
+   "2026-09-23": {
+    "dow": "wed",
+    "totalJobberVisits": 103,
+    "tavis": 17,
+    "cory": 19,
+    "spencer": 0,
+    "unassigned": 0,
+    "complete": 0,
+    "byAssigneeList": {
+     "Alias Franks": 31,
+     "Cory Ventura": 19,
+     "Robert Norton": 16,
+     "Luke LaVergne": 20,
+     "Tavis Alexander": 17
+    }
+   },
+   "2026-09-24": {
+    "dow": "thu",
+    "totalJobberVisits": 113,
+    "tavis": 26,
+    "cory": 30,
+    "spencer": 0,
+    "unassigned": 0,
+    "complete": 0,
+    "byAssigneeList": {
+     "Cory Ventura": 30,
+     "Luke LaVergne": 27,
+     "Robert Norton": 19,
+     "Alias Franks": 11,
+     "Tavis Alexander": 26
+    }
+   }
+  },
+  "tavisTotal": 102,
+  "coryTotal": 85,
+  "spencerTotal": 0,
+  "movingTotal": 187
+ },
+ "optimoroute": {
+  "routes": {
+   "2026-09-21": [
+    {
+     "driver": "Cory Ventura",
+     "stops": 17,
+     "durationMin": 464,
+     "distanceKm": 259.701,
+     "startTime": "2026-09-21 07:18:59",
+     "endTime": "2026-09-21 14:16:17"
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 19,
+     "durationMin": 539,
+     "distanceKm": 222.035,
+     "startTime": "2026-09-21 07:39:24",
+     "endTime": "2026-09-21 14:58:43"
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 19,
+     "durationMin": 456,
+     "distanceKm": 117.507,
+     "startTime": "2026-09-21 07:05:28",
+     "endTime": "2026-09-21 14:07:32"
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 26,
+     "durationMin": 668,
+     "distanceKm": 213.334,
+     "startTime": "2026-09-21 07:51:38",
+     "endTime": "2026-09-21 17:01:01"
+    },
+    {
+     "driver": "Alias Franks",
+     "stops": 29,
+     "durationMin": 716,
+     "distanceKm": 202.089,
+     "startTime": "2026-09-21 06:56:51",
+     "endTime": "2026-09-21 18:08:13"
+    }
+   ],
+   "2026-09-22": [
+    {
+     "driver": "Cory Ventura",
+     "stops": 18,
+     "durationMin": 490,
+     "distanceKm": 250.89,
+     "startTime": "2026-09-22 07:19:19",
+     "endTime": "2026-09-22 14:46:02"
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 5,
+     "durationMin": 182,
+     "distanceKm": 97.737,
+     "startTime": "2026-09-22 07:35:03",
+     "endTime": "2026-09-22 09:20:05"
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 30,
+     "durationMin": 615,
+     "distanceKm": 104.457,
+     "startTime": "2026-09-22 07:08:58",
+     "endTime": "2026-09-22 16:52:30"
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 31,
+     "durationMin": 718,
+     "distanceKm": 166.547,
+     "startTime": "2026-09-22 07:35:01",
+     "endTime": "2026-09-22 18:02:30"
+    },
+    {
+     "driver": "Alias Franks",
+     "stops": 4,
+     "durationMin": 244,
+     "distanceKm": 192.3,
+     "startTime": "2026-09-22 07:15:48",
+     "endTime": "2026-09-22 09:46:51"
+    }
+   ],
+   "2026-09-23": [
+    {
+     "driver": "Cory Ventura",
+     "stops": 18,
+     "durationMin": 312,
+     "distanceKm": 90.39,
+     "startTime": "2026-09-23 07:16:25",
+     "endTime": "2026-09-23 11:52:10"
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 17,
+     "durationMin": 589,
+     "distanceKm": 261.109,
+     "startTime": "2026-09-23 07:34:08",
+     "endTime": "2026-09-23 15:58:47"
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 17,
+     "durationMin": 417,
+     "distanceKm": 120.625,
+     "startTime": "2026-09-23 07:06:56",
+     "endTime": "2026-09-23 13:37:53"
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 16,
+     "durationMin": 478,
+     "distanceKm": 191.68,
+     "startTime": "2026-09-23 07:42:04",
+     "endTime": "2026-09-23 13:26:53"
+    },
+    {
+     "driver": "Alias Franks",
+     "stops": 29,
+     "durationMin": 717,
+     "distanceKm": 204.248,
+     "startTime": "2026-09-23 07:04:35",
+     "endTime": "2026-09-23 18:08:44"
+    }
+   ],
+   "2026-09-24": [
+    {
+     "driver": "Cory Ventura",
+     "stops": 23,
+     "durationMin": 414,
+     "distanceKm": 128.116,
+     "startTime": "2026-09-24 07:20:06",
+     "endTime": "2026-09-24 13:20:21"
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 19,
+     "durationMin": 510,
+     "distanceKm": 196.798,
+     "startTime": "2026-09-24 07:42:51",
+     "endTime": "2026-09-24 14:38:00"
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 16,
+     "durationMin": 384,
+     "distanceKm": 106.229,
+     "startTime": "2026-09-24 07:24:17",
+     "endTime": "2026-09-24 13:04:36"
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 24,
+     "durationMin": 608,
+     "distanceKm": 199.638,
+     "startTime": "2026-09-24 07:43:24",
+     "endTime": "2026-09-24 16:24:58"
+    },
+    {
+     "driver": "Alias Franks",
+     "stops": 3,
+     "durationMin": 151,
+     "distanceKm": 102.579,
+     "startTime": "2026-09-24 07:16:00",
+     "endTime": "2026-09-24 08:14:04"
+    }
+   ]
+  },
+  "ordersInWindow": 389,
+  "foreignOrders": 0,
+  "movingVisitsWithNoOrder": 16,
+  "orderDateDisagreesWithJobber": [],
+  "ghostStops": [
+   {
+    "date": "2026-09-21",
+    "driver": "Robert Norton",
+    "orderNo": "8439-2299131242"
+   },
+   {
+    "date": "2026-09-22",
+    "driver": "Tavis Alexander",
+    "orderNo": "8142-2325408630"
+   },
+   {
+    "date": "2026-09-23",
+    "driver": "Robert Norton",
+    "orderNo": "8425-2334698805"
+   },
+   {
+    "date": "2026-09-24",
+    "driver": "Tavis Alexander",
+    "orderNo": "8580-2332467733"
+   }
+  ],
+  "ghostStopCount": 4,
+  "liveVisitsWithNoOrder": 46,
+  "driverProbe": {
+   "get_drivers": {
+    "status": 200,
+    "body": "{\"success\":false,\"code\":\"AUTH_KEY_UNKNOWN\",\"message\":\"Unknown authorization key.\"}"
+   },
+   "spencerHillExistsAsDriver": true,
+   "spencerHillLastRouteDay": "2026-07-31",
+   "spencerHillRouteDays": [
+    "2026-07-21",
+    "2026-07-22",
+    "2026-07-23",
+    "2026-07-24",
+    "2026-07-29",
+    "2026-07-30",
+    "2026-07-31"
+   ],
+   "availabilityReadable": false,
+   "availabilityNote": "OptimoRoute exposes no read endpoint for per-date driver availability (get_drivers and get_vehicles both return AUTH_KEY_UNKNOWN on this key; get_drivers_parameters is 404). Enabled/disabled state for 09-21..24 is therefore UNVERIFIED and the live run must set it explicitly."
+  }
+ },
+ "freeze": [
+  {
+   "date": "2026-09-21",
+   "writableNow": true,
+   "freezesAt": "2026-09-20 14:00 PT"
+  },
+  {
+   "date": "2026-09-22",
+   "writableNow": true,
+   "freezesAt": "2026-09-21 14:00 PT"
+  },
+  {
+   "date": "2026-09-23",
+   "writableNow": true,
+   "freezesAt": "2026-09-22 14:00 PT"
+  },
+  {
+   "date": "2026-09-24",
+   "writableNow": true,
+   "freezesAt": "2026-09-23 14:00 PT"
+  }
+ ],
+ "freezeRule": "jobber-to-optimo-sync emailCutoffOk(): a date is frozen once it is today or past, and tomorrow freezes at 14:00 PT today. It is a clock rule — it does not check whether notifications actually went out.",
+ "plan": {
+  "passA_coryToSpencer": [
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzY1NTk2Mjg=",
+    "visitNum": "2336559628",
+    "jobNumber": 8603,
+    "client": "Mary Hendrickson",
+    "city": "Renton",
+    "zip": "98056",
+    "date": "2026-09-21",
+    "title": "Mary Hendrickson (SET)",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTE5NjAxNTg=",
+    "visitNum": "2311960158",
+    "jobNumber": 7853,
+    "client": "Jim Vaughn",
+    "city": "Orting",
+    "zip": "98360",
+    "date": "2026-09-21",
+    "title": "Jim Vaughn",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjUyNDcxOTc=",
+    "visitNum": "2325247197",
+    "jobNumber": 7496,
+    "client": "Vince Preece",
+    "city": "Orting",
+    "zip": "98360",
+    "date": "2026-09-21",
+    "title": "Vince Preece",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE5ODA3OTM4NDg=",
+    "visitNum": "1980793848",
+    "jobNumber": 6064,
+    "client": "Joe  Edmunson",
+    "city": "Graham",
+    "zip": "98338",
+    "date": "2026-09-21",
+    "title": "Joe  Edmunson",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjE5MDI0OTg=",
+    "visitNum": "2321902498",
+    "jobNumber": 7747,
+    "client": "Leeroy Perkins",
+    "city": "Graham",
+    "zip": "98338",
+    "date": "2026-09-21",
+    "title": "Leeroy Perkins",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU0MTA4Nzc=",
+    "visitNum": "2325410877",
+    "jobNumber": 5413,
+    "client": "Ron Houlihan",
+    "city": "graham",
+    "zip": "98338",
+    "date": "2026-09-21",
+    "title": "Ron Houlihan",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjUzNTMwMDU=",
+    "visitNum": "2325353005",
+    "jobNumber": 5954,
+    "client": "Loren Vail",
+    "city": "Graham",
+    "zip": "98338",
+    "date": "2026-09-21",
+    "title": "Loren Vail",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTcwMjcxMjg=",
+    "visitNum": "2317027128",
+    "jobNumber": 8526,
+    "client": "Jake Fox",
+    "city": "Graham",
+    "zip": "98338",
+    "date": "2026-09-21",
+    "title": "Jake Fox",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzIzNjM5NTg=",
+    "visitNum": "2332363958",
+    "jobNumber": 6737,
+    "client": "Kristina Rollings",
+    "city": "Yelm",
+    "zip": "98597",
+    "date": "2026-09-21",
+    "title": "Kristina Rollings",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzIyNjM4MjU=",
+    "visitNum": "2332263825",
+    "jobNumber": 7728,
+    "client": "Sam Williams",
+    "city": "Yelm",
+    "zip": "98597",
+    "date": "2026-09-21",
+    "title": "Sam Williams",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjcxMTk0MjA=",
+    "visitNum": "2327119420",
+    "jobNumber": 5192,
+    "client": "Candice Storm",
+    "city": "Eatonville",
+    "zip": "98328",
+    "date": "2026-09-21",
+    "title": "Candice Storm",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE3NzY5MzA0MTc=",
+    "visitNum": "1776930417",
+    "jobNumber": 6619,
+    "client": "Pam Griffin",
+    "city": "Eatonville",
+    "zip": "98328",
+    "date": "2026-09-21",
+    "title": "Pam Griffin",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzE5NTA5ODY=",
+    "visitNum": "2331950986",
+    "jobNumber": 7805,
+    "client": "Dave Combs",
+    "city": "Eatonville",
+    "zip": "98328",
+    "date": "2026-09-21",
+    "title": "Dave Combs",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTE5NjM0MDM=",
+    "visitNum": "2311963403",
+    "jobNumber": 7172,
+    "client": "Ray Pritchett",
+    "city": "Graham",
+    "zip": "98338",
+    "date": "2026-09-21",
+    "title": "Ray Pritchett",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTE5NjY5MjQ=",
+    "visitNum": "2311966924",
+    "jobNumber": 7725,
+    "client": "Suzanne Gullace",
+    "city": "Orting",
+    "zip": "98360",
+    "date": "2026-09-21",
+    "title": "Suzanne Gullace",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyOTcxMjYzNjY=",
+    "visitNum": "2297126366",
+    "jobNumber": 7670,
+    "client": "Jessica Rakos",
+    "city": "Orting",
+    "zip": "98360",
+    "date": "2026-09-21",
+    "title": "Jessica Rakos",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTE4ODMwNTk=",
+    "visitNum": "2311883059",
+    "jobNumber": 4926,
+    "client": "HyperGreen Landscaping",
+    "city": "Pierce County",
+    "zip": "98360",
+    "date": "2026-09-21",
+    "title": "HyperGreen Landscaping",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI1MzgxOTU=",
+    "visitNum": "2332538195",
+    "jobNumber": 7858,
+    "client": "Laura Tallmadge",
+    "city": "Orting",
+    "zip": "98360",
+    "date": "2026-09-21",
+    "title": "Laura Tallmadge",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzM5NDQxMDg=",
+    "visitNum": "2333944108",
+    "jobNumber": 8593,
+    "client": "Kevin Milliren",
+    "city": "Orting",
+    "zip": "98360",
+    "date": "2026-09-22",
+    "title": "Kevin Milliren",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyMTYyODMzNjk=",
+    "visitNum": "2216283369",
+    "jobNumber": 7997,
+    "client": "Anita Leigh",
+    "city": "Orting",
+    "zip": "98360",
+    "date": "2026-09-22",
+    "title": "Anita Leigh",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE2NTQ3NjA4OTM=",
+    "visitNum": "1654760893",
+    "jobNumber": 6241,
+    "client": "Mickey Boerner",
+    "city": "Orting",
+    "zip": "98360",
+    "date": "2026-09-22",
+    "title": "Mickey Boerner - ANNUAL CUSTOMER",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyOTc2Mzc0Mjg=",
+    "visitNum": "2297637428",
+    "jobNumber": 8432,
+    "client": "Stacey Boydell",
+    "city": "Graham",
+    "zip": "98338",
+    "date": "2026-09-22",
+    "title": "Stacey Boydell",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTE2NjE3NTk=",
+    "visitNum": "2311661759",
+    "jobNumber": 8318,
+    "client": "Dave Sinner",
+    "city": "Graham",
+    "zip": "98338",
+    "date": "2026-09-22",
+    "title": "Dave Sinner",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU0NjExOTQ=",
+    "visitNum": "2325461194",
+    "jobNumber": 5727,
+    "client": "Eric Crossley",
+    "city": "Graham",
+    "zip": "98338",
+    "date": "2026-09-22",
+    "title": "Eric Crossley",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjcwMTUzMDA=",
+    "visitNum": "2327015300",
+    "jobNumber": 8356,
+    "client": "Brian Honig",
+    "city": "Eatonville",
+    "zip": "98328",
+    "date": "2026-09-22",
+    "title": "Brian Honig",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyOTg2NTgzNzA=",
+    "visitNum": "2298658370",
+    "jobNumber": 8436,
+    "client": "Monty Mansfield",
+    "city": "Eatonville",
+    "zip": "98328",
+    "date": "2026-09-22",
+    "title": "Monty Mansfield",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjIzNTU1MTc=",
+    "visitNum": "2322355517",
+    "jobNumber": 5639,
+    "client": "Larry Lemmon",
+    "city": "Eatonville",
+    "zip": "98328",
+    "date": "2026-09-22",
+    "title": "Larry Lemmon",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzIzNjU4Nzk=",
+    "visitNum": "2332365879",
+    "jobNumber": 6246,
+    "client": "Lisa Miles",
+    "city": "Yelm",
+    "zip": "98597",
+    "date": "2026-09-22",
+    "title": "Lisa Miles - ANNUAL CUSTOMER",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI0MDE4OTg=",
+    "visitNum": "2332401898",
+    "jobNumber": 7829,
+    "client": "Joey Russo",
+    "city": "Yelm",
+    "zip": "98597",
+    "date": "2026-09-22",
+    "title": "Joey Russo",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI1ODEyMDQ=",
+    "visitNum": "2332581204",
+    "jobNumber": 8587,
+    "client": "Mitchell Gasser",
+    "city": "Graham",
+    "zip": "98338",
+    "date": "2026-09-22",
+    "title": "Mitchell Gasser",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE3MDI1MTAwMjI=",
+    "visitNum": "1702510022",
+    "jobNumber": 5044,
+    "client": "Sandy Blackburn",
+    "city": "Eatonville",
+    "zip": "98328",
+    "date": "2026-09-22",
+    "title": "Sandy Blackburn",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyMzIyMTk1Mzc=",
+    "visitNum": "2232219537",
+    "jobNumber": 8067,
+    "client": "Gerryann Jurva",
+    "city": "Graham",
+    "zip": "98338",
+    "date": "2026-09-22",
+    "title": "Gerryann Jurva",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjYzNTA1MDU=",
+    "visitNum": "2326350505",
+    "jobNumber": 8578,
+    "client": "Eric Hill",
+    "city": "Graham",
+    "zip": "98338",
+    "date": "2026-09-22",
+    "title": "Eric Hill",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDg2MzQ4NjI=",
+    "visitNum": "2308634862",
+    "jobNumber": 8490,
+    "client": "Donald Ward",
+    "city": "Orting",
+    "zip": "98360",
+    "date": "2026-09-22",
+    "title": "Donald Ward",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTI1MjE2MzY=",
+    "visitNum": "2312521636",
+    "jobNumber": 8053,
+    "client": "Vicky Dougan",
+    "city": "Orting",
+    "zip": "98360",
+    "date": "2026-09-22",
+    "title": "Vicky Dougan",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI1Njc4Njc=",
+    "visitNum": "2332567867",
+    "jobNumber": 7637,
+    "client": "Tommy Marshall",
+    "city": "Orting",
+    "zip": "98360",
+    "date": "2026-09-22",
+    "title": "Tommy Marshall - 1 Year Mole Control Service",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzY1MzIwMTA=",
+    "visitNum": "2336532010",
+    "jobNumber": 8597,
+    "client": "Jeff Westcott",
+    "city": "Maple Valley",
+    "zip": "98038",
+    "date": "2026-09-23",
+    "title": "Jeff Westcott (SET)",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTI1MTY3ODY=",
+    "visitNum": "2312516786",
+    "jobNumber": 8504,
+    "client": "Todd Allen",
+    "city": "Bonney Lake",
+    "zip": "98391",
+    "date": "2026-09-23",
+    "title": "Todd Allen",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNzE5NDM0NTA=",
+    "visitNum": "2271943450",
+    "jobNumber": 8274,
+    "client": "Alex Stevenson",
+    "city": "Bonney Lake",
+    "zip": "98391",
+    "date": "2026-09-23",
+    "title": "Alex Stevenson",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE5MzExOTAxODU=",
+    "visitNum": "1931190185",
+    "jobNumber": 7427,
+    "client": "Gabrielle  Burnham",
+    "city": "Bonney Lake",
+    "zip": "98391",
+    "date": "2026-09-23",
+    "title": "Gabrielle  Burnham",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzMxOTE2ODA=",
+    "visitNum": "2333191680",
+    "jobNumber": 7739,
+    "client": "Joey Deluca",
+    "city": "Bonney Lake",
+    "zip": "98391",
+    "date": "2026-09-23",
+    "title": "Joey Deluca",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzMyNjcxNzU=",
+    "visitNum": "2333267175",
+    "jobNumber": 4994,
+    "client": "Liki Estes",
+    "city": "Lake Tapps",
+    "zip": "98391",
+    "date": "2026-09-23",
+    "title": "Liki Estes",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjA4ODU3ODI=",
+    "visitNum": "2320885782",
+    "jobNumber": 5424,
+    "client": "Martha Copeland",
+    "city": "Sumner",
+    "zip": "98390",
+    "date": "2026-09-23",
+    "title": "Martha Copeland",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDQ2OTQyMzY=",
+    "visitNum": "2304694236",
+    "jobNumber": 8466,
+    "client": "Chris Heacox",
+    "city": "Lake Tapps",
+    "zip": "98391",
+    "date": "2026-09-23",
+    "title": "Chris Heacox (5th Visit)",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzM2ODgyNzg=",
+    "visitNum": "2333688278",
+    "jobNumber": 7694,
+    "client": "Chelsea Scott",
+    "city": "Lake Tapps",
+    "zip": "98391",
+    "date": "2026-09-23",
+    "title": "Chelsea Scott",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE5NjY4MTcwMTM=",
+    "visitNum": "1966817013",
+    "jobNumber": 4728,
+    "client": "Larry Gasser",
+    "city": "Bonney Lake",
+    "zip": "98391",
+    "date": "2026-09-23",
+    "title": "Larry Gasser",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDM1MTAzMjM=",
+    "visitNum": "2303510323",
+    "jobNumber": 6454,
+    "client": "Leslie Turner",
+    "city": "Bonney Lake",
+    "zip": "98391",
+    "date": "2026-09-23",
+    "title": "Leslie Turner",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzIzOTIwMjQ=",
+    "visitNum": "2332392024",
+    "jobNumber": 7540,
+    "client": "Jennifer Flanegan",
+    "city": "Pierce County",
+    "zip": "98391",
+    "date": "2026-09-23",
+    "title": "Jennifer Flanegan",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzIzNjY0ODI=",
+    "visitNum": "2332366482",
+    "jobNumber": 7671,
+    "client": "Marcus  Hoff",
+    "city": "Buckley",
+    "zip": "98321",
+    "date": "2026-09-23",
+    "title": "Marcus  Hoff",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE3OTc0NDQxMDQ=",
+    "visitNum": "1797444104",
+    "jobNumber": 6356,
+    "client": "Jason Wittenberger",
+    "city": "Buckley",
+    "zip": "98321",
+    "date": "2026-09-23",
+    "title": "Jason Wittenberger - Total Mole Control Package",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzIzMDEyMDc=",
+    "visitNum": "2332301207",
+    "jobNumber": 8402,
+    "client": "Tom & Sarah Long",
+    "city": "Buckley",
+    "zip": "98321",
+    "date": "2026-09-23",
+    "title": "Tom & Sarah Long",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzM4Njg3OTQ=",
+    "visitNum": "2333868794",
+    "jobNumber": 5515,
+    "client": "Dale Bundy",
+    "city": "Buckley",
+    "zip": "98321",
+    "date": "2026-09-23",
+    "title": "Dale Bundy",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDQ5NzkzNjU=",
+    "visitNum": "2304979365",
+    "jobNumber": 4749,
+    "client": "Thomas  Varrelman",
+    "city": "Buckley",
+    "zip": "98321",
+    "date": "2026-09-23",
+    "title": "Thomas  Varrelman",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDM0MzkzNjY=",
+    "visitNum": "2303439366",
+    "jobNumber": 7705,
+    "client": "Tyler Smythe",
+    "city": "Buckley",
+    "zip": "98321",
+    "date": "2026-09-23",
+    "title": "Tyler Smythe",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDYyNTU4OTQ=",
+    "visitNum": "2306255894",
+    "jobNumber": 8474,
+    "client": "Mike Miller",
+    "city": "Buckley",
+    "zip": "98321",
+    "date": "2026-09-23",
+    "title": "Mike Miller",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzQ4ODIxMTg=",
+    "visitNum": "2334882118",
+    "jobNumber": 8160,
+    "client": "Sharry Kim",
+    "city": "Renton",
+    "zip": "98059",
+    "date": "2026-09-24",
+    "title": "Sharry Kim",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzQ5NTkwNTE=",
+    "visitNum": "2334959051",
+    "jobNumber": 4930,
+    "client": "Plemmons Industries",
+    "city": "Kent",
+    "zip": "98030",
+    "date": "2026-09-24",
+    "title": "Plemmons Industries",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzUwMTMwNzA=",
+    "visitNum": "2335013070",
+    "jobNumber": 7697,
+    "client": "Jennifer Cramer",
+    "city": "Kent",
+    "zip": "98042",
+    "date": "2026-09-24",
+    "title": "Jennifer Cramer - Jennifer Cramer",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzUwNTk0NjE=",
+    "visitNum": "2335059461",
+    "jobNumber": 6953,
+    "client": "Jean Brannen",
+    "city": "Covington",
+    "zip": "98042",
+    "date": "2026-09-24",
+    "title": "Jean Brannen",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzUwNjEwMTI=",
+    "visitNum": "2335061012",
+    "jobNumber": 5602,
+    "client": "Sandee Smith",
+    "city": "Covington",
+    "zip": "98042",
+    "date": "2026-09-24",
+    "title": "Sandee Smith",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzUwNjM4OTk=",
+    "visitNum": "2335063899",
+    "jobNumber": 7407,
+    "client": "Steven Friedrichsen",
+    "city": "Covington",
+    "zip": "98042",
+    "date": "2026-09-24",
+    "title": "Steven Friedrichsen",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE4Njc4MTU5Mjg=",
+    "visitNum": "1867815928",
+    "jobNumber": 7087,
+    "client": "Todd Merry",
+    "city": "Puyallup",
+    "zip": "98374",
+    "date": "2026-09-24",
+    "title": "Todd Merry",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjM3ODUzODc=",
+    "visitNum": "2323785387",
+    "jobNumber": 4480,
+    "client": "Amanda Willard",
+    "city": "Puyallup",
+    "zip": "98372",
+    "date": "2026-09-24",
+    "title": "Amanda Willard",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTI0MjA4OTY=",
+    "visitNum": "2312420896",
+    "jobNumber": 5780,
+    "client": "Susy Bevans",
+    "city": "Puyallup",
+    "zip": "98372",
+    "date": "2026-09-24",
+    "title": "Susy Bevans",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzM0MTQyODM=",
+    "visitNum": "2333414283",
+    "jobNumber": 4549,
+    "client": "Carrie Williamson",
+    "city": "Puyallup",
+    "zip": "98372",
+    "date": "2026-09-24",
+    "title": "Carrie Williamson",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzMzNjI4NDU=",
+    "visitNum": "2333362845",
+    "jobNumber": 4644,
+    "client": "Eric Fraumeni",
+    "city": "Puyallup",
+    "zip": "98374",
+    "date": "2026-09-24",
+    "title": "Eric Fraumeni - !!! Annual Customer !!!",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE3NzA3NTQyODM=",
+    "visitNum": "1770754283",
+    "jobNumber": 5565,
+    "client": "Mike Baril",
+    "city": "Puyallup",
+    "zip": "98374",
+    "date": "2026-09-24",
+    "title": "Mike Baril",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE4NjM0MjU0ODA=",
+    "visitNum": "1863425480",
+    "jobNumber": 7058,
+    "client": "Skookum Archers",
+    "city": "Puyallup",
+    "zip": "98374",
+    "date": "2026-09-24",
+    "title": "Skookum Archers",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDgxMzY2NzM=",
+    "visitNum": "2308136673",
+    "jobNumber": 8479,
+    "client": "Tanner Aden",
+    "city": "Puyallup",
+    "zip": "98374",
+    "date": "2026-09-24",
+    "title": "Tanner Aden",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTIwMjEyNDQ=",
+    "visitNum": "2312021244",
+    "jobNumber": 7320,
+    "client": "Mike Menigoz",
+    "city": "Puyallup",
+    "zip": "98374",
+    "date": "2026-09-24",
+    "title": "Mike Menigoz",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU5NjM1Mjc=",
+    "visitNum": "2325963527",
+    "jobNumber": 8375,
+    "client": "Johnny Evans",
+    "city": "Puyallup",
+    "zip": "98374",
+    "date": "2026-09-24",
+    "title": "Johnny Evans",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjMzODQ4NDY=",
+    "visitNum": "2323384846",
+    "jobNumber": 8560,
+    "client": "Patty  Ring",
+    "city": "Puyallup",
+    "zip": "98375",
+    "date": "2026-09-24",
+    "title": "Patty  Ring",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU3NTY4OTU=",
+    "visitNum": "2325756895",
+    "jobNumber": 5024,
+    "client": "Brienna Dyberg",
+    "city": "Puyallup",
+    "zip": "98375",
+    "date": "2026-09-24",
+    "title": "Brienna Dyberg",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU3MTc3ODg=",
+    "visitNum": "2325717788",
+    "jobNumber": 7884,
+    "client": "Matt Arnold",
+    "city": "Puyallup",
+    "zip": "98375",
+    "date": "2026-09-24",
+    "title": "Matt Arnold",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjMxMzcwNzg=",
+    "visitNum": "2323137078",
+    "jobNumber": 7737,
+    "client": "James Evenson",
+    "city": "Puyallup",
+    "zip": "98373",
+    "date": "2026-09-24",
+    "title": "James Evenson",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzY1NDg1MjQ=",
+    "visitNum": "2336548524",
+    "jobNumber": 8602,
+    "client": "Mike Laidley",
+    "city": "Auburn",
+    "zip": "98092",
+    "date": "2026-09-24",
+    "title": "Mike Laidley",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE3NzE5NzYxOTk=",
+    "visitNum": "1771976199",
+    "jobNumber": 5344,
+    "client": "Rick Ternosky",
+    "city": "Puyallup",
+    "zip": "98373",
+    "date": "2026-09-24",
+    "title": "Rick Ternosky",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIxOTIxOTI0Njc=",
+    "visitNum": "2192192467",
+    "jobNumber": 7941,
+    "client": "Tim Lubic",
+    "city": "Puyallup",
+    "zip": "98371",
+    "date": "2026-09-24",
+    "title": "Tim Lubic",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIwMTUxODUyNDk=",
+    "visitNum": "2015185249",
+    "jobNumber": 7617,
+    "client": "Prologis - Sumner Landing",
+    "city": "Puyallup",
+    "zip": "98371",
+    "date": "2026-09-24",
+    "title": "Prologis - Sumner Landing - RIVER FRONT INDUSTRIAL PARK",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE4MTk2MjY0NTI=",
+    "visitNum": "1819626452",
+    "jobNumber": 6840,
+    "client": "Bill Harris",
+    "city": "Milton",
+    "zip": "98354",
+    "date": "2026-09-24",
+    "title": "Bill Harris",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIwNzc4MjQ3NTY=",
+    "visitNum": "2077824756",
+    "jobNumber": 7701,
+    "client": "Susan Mcdonald",
+    "city": "Edgewood",
+    "zip": "98372",
+    "date": "2026-09-24",
+    "title": "Susan Mcdonald",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTU2NzIzOTg=",
+    "visitNum": "2315672398",
+    "jobNumber": 5672,
+    "client": "Rachel Brouhard",
+    "city": "Puyallup",
+    "zip": "98372",
+    "date": "2026-09-24",
+    "title": "Rachel Brouhard",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjI1MjEzNzM=",
+    "visitNum": "2322521373",
+    "jobNumber": 4741,
+    "client": "Ron Krebbs",
+    "city": "Puyallup",
+    "zip": "98372",
+    "date": "2026-09-24",
+    "title": "Ron Krebbs",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyOTA1MjMzODQ=",
+    "visitNum": "2290523384",
+    "jobNumber": 8381,
+    "client": "Michael Colella",
+    "city": "Puyallup",
+    "zip": "98372",
+    "date": "2026-09-24",
+    "title": "Michael Colella",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzM0NTU1MjA=",
+    "visitNum": "2333455520",
+    "jobNumber": 4941,
+    "client": "Daniel Hoffman",
+    "city": "Puyallup",
+    "zip": "98372",
+    "date": "2026-09-24",
+    "title": "Daniel Hoffman",
+    "from": "Cory Ventura",
+    "to": "Spencer Hill",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignees": [
+     "Spencer Hill"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"
+    ],
+    "isComplete": false
+   }
+  ],
+  "passB_tavisToCory": [
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzIxNzc4OTg=",
+    "visitNum": "2332177898",
+    "jobNumber": 6436,
+    "client": "Bobby  Holt",
+    "city": "Seattle",
+    "zip": "98112",
+    "date": "2026-09-21",
+    "title": "Bobby  Holt",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzIyMjQ1NzU=",
+    "visitNum": "2332224575",
+    "jobNumber": 4502,
+    "client": "Doreen Rigos",
+    "city": "Seattle",
+    "zip": "98112",
+    "date": "2026-09-21",
+    "title": "Doreen Rigos",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDgxMzkxMzY=",
+    "visitNum": "2308139136",
+    "jobNumber": 8481,
+    "client": "Craig Suffian",
+    "city": "Seattle",
+    "zip": "98115",
+    "date": "2026-09-21",
+    "title": "Craig Suffian",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU4MjU2NTQ=",
+    "visitNum": "2325825654",
+    "jobNumber": 8570,
+    "client": "Michael Glover",
+    "city": "Seattle",
+    "zip": "98115",
+    "date": "2026-09-21",
+    "title": "Michael Glover",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjIyNzkwNDc=",
+    "visitNum": "2322279047",
+    "jobNumber": 8557,
+    "client": "Tad Hutchison",
+    "city": "Seattle",
+    "zip": "98115",
+    "date": "2026-09-21",
+    "title": "Tad Hutchison",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDgxMzk5Njg=",
+    "visitNum": "2308139968",
+    "jobNumber": 8482,
+    "client": "Joseph Rollins",
+    "city": "Seattle",
+    "zip": "98115",
+    "date": "2026-09-21",
+    "title": "Joseph Rollins",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjY5MTc1MTg=",
+    "visitNum": "2326917518",
+    "jobNumber": 8462,
+    "client": "Spencer Jacobs",
+    "city": "Seattle",
+    "zip": "98125",
+    "date": "2026-09-21",
+    "title": "Spencer Jacobs",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTkwMTg4Nzk=",
+    "visitNum": "2319018879",
+    "jobNumber": 8238,
+    "client": "Joshua  Chao",
+    "city": "Seattle",
+    "zip": "98125",
+    "date": "2026-09-21",
+    "title": "Joshua  Chao",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDUzODM2NjE=",
+    "visitNum": "2305383661",
+    "jobNumber": 8473,
+    "client": "Nate Ceres",
+    "city": "Seattle",
+    "zip": "98125",
+    "date": "2026-09-21",
+    "title": "Nate Ceres",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDUzODM4NTc=",
+    "visitNum": "2305383857",
+    "jobNumber": 8473,
+    "client": "Nate Ceres",
+    "city": "Seattle",
+    "zip": "98125",
+    "date": "2026-09-21",
+    "title": "Nate Ceres",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyODQ0MTI0MDI=",
+    "visitNum": "2284412402",
+    "jobNumber": 8347,
+    "client": "David Jones",
+    "city": "Kenmore",
+    "zip": "98028",
+    "date": "2026-09-21",
+    "title": "David Jones",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTg5MjAxNDE=",
+    "visitNum": "2318920141",
+    "jobNumber": 8036,
+    "client": "Garett Gowens",
+    "city": "Lake Forest Park",
+    "zip": "98155",
+    "date": "2026-09-21",
+    "title": "Garett Gowens",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzY1NjkyMTQ=",
+    "visitNum": "2336569214",
+    "jobNumber": 8605,
+    "client": "Yara Chen",
+    "city": "Bellevue",
+    "zip": "98004",
+    "date": "2026-09-21",
+    "title": "Yara Chen (SET)",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI2OTg0NTQ=",
+    "visitNum": "2332698454",
+    "jobNumber": 8564,
+    "client": "Jared Schapiro",
+    "city": "Shoreline",
+    "zip": "98133",
+    "date": "2026-09-21",
+    "title": "Jared Schapiro",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI3MTA3OTM=",
+    "visitNum": "2332710793",
+    "jobNumber": 8388,
+    "client": "Mike Marinella",
+    "city": "Shoreline",
+    "zip": "98133",
+    "date": "2026-09-21",
+    "title": "Mike Marinella",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI3MzAzOTE=",
+    "visitNum": "2332730391",
+    "jobNumber": 7543,
+    "client": "Edward Yang",
+    "city": "Shoreline",
+    "zip": "98177",
+    "date": "2026-09-21",
+    "title": "Edward Yang",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTk2OTM5MzM=",
+    "visitNum": "2319693933",
+    "jobNumber": 8248,
+    "client": "Marian and Phil Thom",
+    "city": "Shoreline",
+    "zip": "98177",
+    "date": "2026-09-21",
+    "title": "Marian and Phil Thom",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI2MzAzNjU=",
+    "visitNum": "2332630365",
+    "jobNumber": 8407,
+    "client": "Caitlin Mccormick",
+    "city": "Shoreline",
+    "zip": "98177",
+    "date": "2026-09-21",
+    "title": "Caitlin Mccormick",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTk3MDYzNjM=",
+    "visitNum": "2319706363",
+    "jobNumber": 8535,
+    "client": "Dan Dawkins",
+    "city": "Seattle",
+    "zip": "98133",
+    "date": "2026-09-21",
+    "title": "Dan Dawkins",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIxMzAxMjMzMzE=",
+    "visitNum": "2130123331",
+    "jobNumber": 7849,
+    "client": "Jason Pedersen",
+    "city": "Seattle",
+    "zip": "98133",
+    "date": "2026-09-21",
+    "title": "Jason Pedersen",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTk3MDI3MjI=",
+    "visitNum": "2319702722",
+    "jobNumber": 8534,
+    "client": "Mary Jeffers",
+    "city": "Seattle",
+    "zip": "98177",
+    "date": "2026-09-21",
+    "title": "Mary Jeffers",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI1NTUwODI=",
+    "visitNum": "2332555082",
+    "jobNumber": 7493,
+    "client": "Ashleigh  Root",
+    "city": "Seattle",
+    "zip": "98177",
+    "date": "2026-09-21",
+    "title": "Ashleigh  Root",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyOTQ2NzAxODU=",
+    "visitNum": "2294670185",
+    "jobNumber": 8414,
+    "client": "Richard Moore",
+    "city": "Seattle",
+    "zip": "98117",
+    "date": "2026-09-21",
+    "title": "Richard Moore (5th Visit)",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTEwNzcxNTk=",
+    "visitNum": "2311077159",
+    "jobNumber": 8494,
+    "client": "Aaron Burke",
+    "city": "Seattle",
+    "zip": "98199",
+    "date": "2026-09-21",
+    "title": "Aaron Burke",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjIyODE3Njg=",
+    "visitNum": "2322281768",
+    "jobNumber": 8558,
+    "client": "John Obrien",
+    "city": "Seattle",
+    "zip": "98199",
+    "date": "2026-09-21",
+    "title": "John Obrien",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjYzMTI5MTA=",
+    "visitNum": "2326312910",
+    "jobNumber": 8574,
+    "client": "Saber Mirzaei",
+    "city": "Seattle",
+    "zip": "98199",
+    "date": "2026-09-21",
+    "title": "Saber Mirzaei",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIxNjY1NDkyNTI=",
+    "visitNum": "2166549252",
+    "jobNumber": 7903,
+    "client": "Mike Doud",
+    "city": "Seattle",
+    "zip": "98109",
+    "date": "2026-09-21",
+    "title": "Mike Doud",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjY5NTE5OTc=",
+    "visitNum": "2326951997",
+    "jobNumber": 7475,
+    "client": "Hannah  Jacobson",
+    "city": "Normandy Park",
+    "zip": "98166",
+    "date": "2026-09-22",
+    "title": "Hannah  Jacobson",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTI1NzcyMjU=",
+    "visitNum": "2312577225",
+    "jobNumber": 8510,
+    "client": "Sara Wade",
+    "city": "Normandy Park",
+    "zip": "98166",
+    "date": "2026-09-22",
+    "title": "Sara Wade",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjcwMTI4NTc=",
+    "visitNum": "2327012857",
+    "jobNumber": 7317,
+    "client": "Chris Bartlett",
+    "city": "Normandy Park",
+    "zip": "98166",
+    "date": "2026-09-22",
+    "title": "Chris Bartlett",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIwNTYwNDY5OTg=",
+    "visitNum": "2056046998",
+    "jobNumber": 7724,
+    "client": "Seattle Rental Management",
+    "city": "Burien",
+    "zip": "98148",
+    "date": "2026-09-22",
+    "title": "Seattle Rental Management",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNjA5ODgzNTU=",
+    "visitNum": "2260988355",
+    "jobNumber": 8209,
+    "client": "Charlie Allaire",
+    "city": "Burien",
+    "zip": "98166",
+    "date": "2026-09-22",
+    "title": "Charlie Allaire",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIwODYxMDA1NDQ=",
+    "visitNum": "2086100544",
+    "jobNumber": 7788,
+    "client": "Bonnie Mccracken",
+    "city": "Burien",
+    "zip": "98166",
+    "date": "2026-09-22",
+    "title": "Bonnie Mccracken",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjYxNDE0NzM=",
+    "visitNum": "2326141473",
+    "jobNumber": 4705,
+    "client": "Pam Northrip",
+    "city": "Burien",
+    "zip": "98146",
+    "date": "2026-09-22",
+    "title": "Pam Northrip",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjYxNDAxMTA=",
+    "visitNum": "2326140110",
+    "jobNumber": 8361,
+    "client": "Erik Guttridge",
+    "city": "Burien",
+    "zip": "98146",
+    "date": "2026-09-22",
+    "title": "Erik Guttridge",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzY1NDA1NDk=",
+    "visitNum": "2336540549",
+    "jobNumber": 8601,
+    "client": "Kevin Shaver",
+    "city": "Seattle",
+    "zip": "98136",
+    "date": "2026-09-22",
+    "title": "Kevin Shaver",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTU2NjE5NjM=",
+    "visitNum": "2315661963",
+    "jobNumber": 8518,
+    "client": "Leo Coronado",
+    "city": "Burien",
+    "zip": "98146",
+    "date": "2026-09-22",
+    "title": "Leo Coronado",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjYwNTYyMjU=",
+    "visitNum": "2326056225",
+    "jobNumber": 7608,
+    "client": "Scott Hamilton",
+    "city": "Seattle",
+    "zip": "98146",
+    "date": "2026-09-22",
+    "title": "Scott Hamilton",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDUzNzg1ODk=",
+    "visitNum": "2305378589",
+    "jobNumber": 8470,
+    "client": "Alice Collins",
+    "city": "Seattle",
+    "zip": "98146",
+    "date": "2026-09-22",
+    "title": "Alice Collins",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjUyNzEyNTg=",
+    "visitNum": "2325271258",
+    "jobNumber": 6447,
+    "client": "Larena Walshe",
+    "city": "Seattle",
+    "zip": "98146",
+    "date": "2026-09-22",
+    "title": "Larena Walshe",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE3NTc2ODQzNDE=",
+    "visitNum": "1757684341",
+    "jobNumber": 6581,
+    "client": "Greg Flynn",
+    "city": "Seattle",
+    "zip": "98146",
+    "date": "2026-09-22",
+    "title": "Greg Flynn",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU0NDc3NzM=",
+    "visitNum": "2325447773",
+    "jobNumber": 8440,
+    "client": "Klaudia Elam",
+    "city": "Seattle",
+    "zip": "98136",
+    "date": "2026-09-22",
+    "title": "Klaudia Elam",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzY1NzQ0MDU=",
+    "visitNum": "2336574405",
+    "jobNumber": 8607,
+    "client": "Ben Mathes",
+    "city": "Seattle",
+    "zip": "98116",
+    "date": "2026-09-22",
+    "title": "Ben Mathes",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTk2NTE3ODc=",
+    "visitNum": "2319651787",
+    "jobNumber": 8533,
+    "client": "Bob Chatalas",
+    "city": "Seattle",
+    "zip": "98136",
+    "date": "2026-09-22",
+    "title": "Bob Chatalas",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTY4MzA4NzE=",
+    "visitNum": "2316830871",
+    "jobNumber": 8524,
+    "client": "Michael Sobieck",
+    "city": "Seattle",
+    "zip": "98136",
+    "date": "2026-09-22",
+    "title": "Michael Sobieck",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU5NjQ5MDk=",
+    "visitNum": "2325964909",
+    "jobNumber": 7574,
+    "client": "Steve  Huling",
+    "city": "Seattle",
+    "zip": "98136",
+    "date": "2026-09-22",
+    "title": "Steve  Huling",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyOTcxMTMwNTY=",
+    "visitNum": "2297113056",
+    "jobNumber": 8426,
+    "client": "Chris Kerr",
+    "city": "Seattle",
+    "zip": "98136",
+    "date": "2026-09-22",
+    "title": "Chris Kerr (5th Visit)",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU4NTU4MTM=",
+    "visitNum": "2325855813",
+    "jobNumber": 8461,
+    "client": "Mary Greco",
+    "city": "Seattle",
+    "zip": "98136",
+    "date": "2026-09-22",
+    "title": "Mary Greco",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDgxNDM5ODU=",
+    "visitNum": "2308143985",
+    "jobNumber": 8486,
+    "client": "Phyllis Barbante",
+    "city": "Seattle",
+    "zip": "98116",
+    "date": "2026-09-22",
+    "title": "Phyllis Barbante",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU1NzU0MjI=",
+    "visitNum": "2325575422",
+    "jobNumber": 8359,
+    "client": "Mary Suhadolnik",
+    "city": "Seattle",
+    "zip": "98116",
+    "date": "2026-09-22",
+    "title": "Mary Suhadolnik",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI1MDQyNTk=",
+    "visitNum": "2332504259",
+    "jobNumber": 8583,
+    "client": "Timothy Hoover",
+    "city": "Seattle",
+    "zip": "98126",
+    "date": "2026-09-22",
+    "title": "Timothy Hoover",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTY4MzI1Mzg=",
+    "visitNum": "2316832538",
+    "jobNumber": 8525,
+    "client": "Joseph Trump",
+    "city": "Seattle",
+    "zip": "98126",
+    "date": "2026-09-22",
+    "title": "Joseph Trump",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU3MjI2NTI=",
+    "visitNum": "2325722652",
+    "jobNumber": 8397,
+    "client": "Point Nautica",
+    "city": "Seattle",
+    "zip": "98116",
+    "date": "2026-09-22",
+    "title": "Point Nautica",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE5MTIyMTM4MTc=",
+    "visitNum": "1912213817",
+    "jobNumber": 5947,
+    "client": "Neil Kanungo",
+    "city": "Seattle",
+    "zip": "98106",
+    "date": "2026-09-22",
+    "title": "Neil Kanungo",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDgxNDM1ODA=",
+    "visitNum": "2308143580",
+    "jobNumber": 8485,
+    "client": "Kailey L Lacy",
+    "city": "Seattle",
+    "zip": "98119",
+    "date": "2026-09-22",
+    "title": "Kailey L Lacy",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDA3NjczNTY=",
+    "visitNum": "2300767356",
+    "jobNumber": 8443,
+    "client": "George Elissaios",
+    "city": "Seattle",
+    "zip": "98144",
+    "date": "2026-09-22",
+    "title": "George Elissaios (5th Visit)",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI0NTA2NzI=",
+    "visitNum": "2332450672",
+    "jobNumber": 8409,
+    "client": "Chris Higgs",
+    "city": "Seattle",
+    "zip": "98108",
+    "date": "2026-09-22",
+    "title": "Chris Higgs",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIwNTUzODAyNTE=",
+    "visitNum": "2055380251",
+    "jobNumber": 7715,
+    "client": "Elizabeth Duroe",
+    "city": "Seattle",
+    "zip": "98108",
+    "date": "2026-09-22",
+    "title": "Elizabeth Duroe",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzIyMDM2Nzc=",
+    "visitNum": "2332203677",
+    "jobNumber": 8372,
+    "client": "Travis Bruce",
+    "city": "Seattle",
+    "zip": "98108",
+    "date": "2026-09-22",
+    "title": "Travis Bruce",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIxMDczNzcyODI=",
+    "visitNum": "2107377282",
+    "jobNumber": 7823,
+    "client": "Erik Yang",
+    "city": "Bellevue",
+    "zip": "98006",
+    "date": "2026-09-23",
+    "title": "Erik Yang",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzQ2MzYyNzU=",
+    "visitNum": "2334636275",
+    "jobNumber": 5751,
+    "client": "Jane Gallagher",
+    "city": "Bellevue",
+    "zip": "98006",
+    "date": "2026-09-23",
+    "title": "Jane Gallagher",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE4MjA3MTc0NzM=",
+    "visitNum": "1820717473",
+    "jobNumber": 5411,
+    "client": "Paul Klansnic",
+    "city": "Bellevue",
+    "zip": "98006",
+    "date": "2026-09-23",
+    "title": "Paul Klansnic",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE3NzQ3NzQ5Nzk=",
+    "visitNum": "1774774979",
+    "jobNumber": 5138,
+    "client": "Shelley Bensussen",
+    "city": "Bellevue",
+    "zip": "98006",
+    "date": "2026-09-23",
+    "title": "Shelley Bensussen",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzQ2Njc4MDY=",
+    "visitNum": "2334667806",
+    "jobNumber": 7960,
+    "client": "Danielle Steele",
+    "city": "Bellevue",
+    "zip": "98006",
+    "date": "2026-09-23",
+    "title": "Danielle Steele",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzQ4MzAzMDc=",
+    "visitNum": "2334830307",
+    "jobNumber": 6757,
+    "client": "Ryan Tacher",
+    "city": "Mercer Island",
+    "zip": "98040",
+    "date": "2026-09-23",
+    "title": "Ryan Tacher",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjQ0MjIzMTg=",
+    "visitNum": "2324422318",
+    "jobNumber": 8566,
+    "client": "Janelle Stewart",
+    "city": "Mercer Island",
+    "zip": "98040",
+    "date": "2026-09-23",
+    "title": "Janelle Stewart",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyMjY2MTI5MDQ=",
+    "visitNum": "2226612904",
+    "jobNumber": 8045,
+    "client": "Melissa Bay",
+    "city": "Mercer Island",
+    "zip": "98040",
+    "date": "2026-09-23",
+    "title": "Melissa Bay",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjE3OTI1MDA=",
+    "visitNum": "2321792500",
+    "jobNumber": 8551,
+    "client": "Liz Silke",
+    "city": "Mercer Island",
+    "zip": "98040",
+    "date": "2026-09-23",
+    "title": "Liz Silke",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTI1MjIxNzA=",
+    "visitNum": "2312522170",
+    "jobNumber": 8505,
+    "client": "Roberto Dondisch",
+    "city": "Mercer Island",
+    "zip": "98040",
+    "date": "2026-09-23",
+    "title": "Roberto Dondisch",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDUzNzgxMzY=",
+    "visitNum": "2305378136",
+    "jobNumber": 8469,
+    "client": "Damien Gallot",
+    "city": "Mercer Island",
+    "zip": "98040",
+    "date": "2026-09-23",
+    "title": "Damien Gallot (5th Visit)",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjE5MTI3NzU=",
+    "visitNum": "2321912775",
+    "jobNumber": 6116,
+    "client": "Noel Murphy",
+    "city": "Bellevue",
+    "zip": "98004",
+    "date": "2026-09-23",
+    "title": "Noel Murphy",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzY1OTUwOTA=",
+    "visitNum": "2336595090",
+    "jobNumber": 6380,
+    "client": "Rob Chadek",
+    "city": "Carnation",
+    "zip": "98014",
+    "date": "2026-09-23",
+    "title": "Rob Chadek (PULL)",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIwNjM1NDEwMzU=",
+    "visitNum": "2063541035",
+    "jobNumber": 7744,
+    "client": "GC Bellefield, LLC.",
+    "city": "Bellevue",
+    "zip": "98004",
+    "date": "2026-09-23",
+    "title": "GC Bellefield, LLC.",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU2NTQxOTQ=",
+    "visitNum": "2325654194",
+    "jobNumber": 8569,
+    "client": "Tia Avril",
+    "city": "Clyde Hill",
+    "zip": "98004",
+    "date": "2026-09-23",
+    "title": "Tia Avril",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTIxODg4Mjg=",
+    "visitNum": "2312188828",
+    "jobNumber": 8501,
+    "client": "Pia Matsuno",
+    "city": "Clyde Hill",
+    "zip": "98004",
+    "date": "2026-09-23",
+    "title": "Pia Matsuno",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzQzODc2OTk=",
+    "visitNum": "2334387699",
+    "jobNumber": 8595,
+    "client": "Susan Eggleton",
+    "city": "Seattle",
+    "zip": "98199",
+    "date": "2026-09-23",
+    "title": "Susan Eggleton",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzQ5ODEyMjY=",
+    "visitNum": "2334981226",
+    "jobNumber": 8488,
+    "client": "Terry Wirth",
+    "city": "Bellevue",
+    "zip": "98004",
+    "date": "2026-09-24",
+    "title": "Terry Wirth",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzUyNDUzNjI=",
+    "visitNum": "2335245362",
+    "jobNumber": 8275,
+    "client": "Damien Romanik",
+    "city": "Issaquah",
+    "zip": "98029",
+    "date": "2026-09-24",
+    "title": "Damien Romanik",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzY1MzYwMDA=",
+    "visitNum": "2336536000",
+    "jobNumber": 8599,
+    "client": "Anne-Marie Jones",
+    "city": "Renton",
+    "zip": "98059",
+    "date": "2026-09-24",
+    "title": "Anne-Marie Jones",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNjI0MTU4NzQ=",
+    "visitNum": "2262415874",
+    "jobNumber": 8224,
+    "client": "Kelsey Peck",
+    "city": "North Bend",
+    "zip": "98045",
+    "date": "2026-09-24",
+    "title": "Kelsey Peck",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTI1Njg0OTY=",
+    "visitNum": "2312568496",
+    "jobNumber": 8508,
+    "client": "Zoe Wu",
+    "city": "North Bend",
+    "zip": "98045",
+    "date": "2026-09-24",
+    "title": "Zoe Wu",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE5MjIxNjY1NjI=",
+    "visitNum": "1922166562",
+    "jobNumber": 7388,
+    "client": "MT Landscape",
+    "city": "Fall City",
+    "zip": "98024",
+    "date": "2026-09-24",
+    "title": "MT Landscape",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzM0MDQ2NzM=",
+    "visitNum": "2333404673",
+    "jobNumber": 7812,
+    "client": "Kelly  Scott",
+    "city": "Renton",
+    "zip": "98059",
+    "date": "2026-09-24",
+    "title": "Kelly  Scott",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzE2MjA3NjYzMTk=",
+    "visitNum": "1620766319",
+    "jobNumber": 4929,
+    "client": "Susanna Suiter",
+    "city": "Renton",
+    "zip": "98059",
+    "date": "2026-09-24",
+    "title": "Susanna Suiter",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzQ4MjIzNDI=",
+    "visitNum": "2334822342",
+    "jobNumber": 7406,
+    "client": "Evan Henke",
+    "city": "Renton",
+    "zip": "98059",
+    "date": "2026-09-24",
+    "title": "Evan Henke",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzQ4MjQyMjI=",
+    "visitNum": "2334824222",
+    "jobNumber": 5594,
+    "client": "Michael Satran",
+    "city": "Renton",
+    "zip": "98059",
+    "date": "2026-09-24",
+    "title": "Michael Satran",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzMxNTAwODg=",
+    "visitNum": "2333150088",
+    "jobNumber": 5071,
+    "client": "Jim Nelsen",
+    "city": "Renton",
+    "zip": "98059",
+    "date": "2026-09-24",
+    "title": "Jim Nelsen",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzQ4NDc1MDk=",
+    "visitNum": "2334847509",
+    "jobNumber": 8214,
+    "client": "Joseph  Syejoon Lee",
+    "city": "Renton",
+    "zip": "98059",
+    "date": "2026-09-24",
+    "title": "Joseph  Syejoon Lee",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzMzNjYwNTc=",
+    "visitNum": "2333366057",
+    "jobNumber": 8219,
+    "client": "Trent Bryan",
+    "city": "Renton",
+    "zip": "98059",
+    "date": "2026-09-24",
+    "title": "Trent Bryan",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIxMDk1ODk5NTU=",
+    "visitNum": "2109589955",
+    "jobNumber": 7826,
+    "client": "John Luger",
+    "city": "Newcastle",
+    "zip": "98059",
+    "date": "2026-09-24",
+    "title": "John Luger",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjExNjkyMTc=",
+    "visitNum": "2321169217",
+    "jobNumber": 6396,
+    "client": "Deborah Canon",
+    "city": "Newcastle",
+    "zip": "98059",
+    "date": "2026-09-24",
+    "title": "Deborah Canon",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzM3MjAwMTU=",
+    "visitNum": "2333720015",
+    "jobNumber": 8320,
+    "client": "Jay Hickenbottom",
+    "city": "Renton",
+    "zip": "98056",
+    "date": "2026-09-24",
+    "title": "Jay Hickenbottom",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzM4MjgwMDM=",
+    "visitNum": "2333828003",
+    "jobNumber": 5667,
+    "client": "Ron Short",
+    "city": "Renton",
+    "zip": "98056",
+    "date": "2026-09-24",
+    "title": "Ron Short",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTM3OTYxNDk=",
+    "visitNum": "2313796149",
+    "jobNumber": 8512,
+    "client": "Raman Mann",
+    "city": "Renton",
+    "zip": "98057",
+    "date": "2026-09-24",
+    "title": "Raman Mann",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIxNzM5MjMzMTY=",
+    "visitNum": "2173923316",
+    "jobNumber": 7915,
+    "client": "Elbisa Duderija",
+    "city": "Renton",
+    "zip": "98057",
+    "date": "2026-09-24",
+    "title": "Elbisa Duderija",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU3NzU5MjE=",
+    "visitNum": "2325775921",
+    "jobNumber": 7943,
+    "client": "Stephen Van Ingen",
+    "city": "Renton",
+    "zip": "98058",
+    "date": "2026-09-24",
+    "title": "Stephen Van Ingen",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDAzNDU4MjU=",
+    "visitNum": "2300345825",
+    "jobNumber": 8442,
+    "client": "Michele Rustvold",
+    "city": "Renton",
+    "zip": "98058",
+    "date": "2026-09-24",
+    "title": "Michele Rustvold  (5th visit)",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU1MjM3NTI=",
+    "visitNum": "2325523752",
+    "jobNumber": 7961,
+    "client": "Kelly Kunz",
+    "city": "Renton",
+    "zip": "98058",
+    "date": "2026-09-24",
+    "title": "Kelly Kunz",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDMxMDI2ODE=",
+    "visitNum": "2303102681",
+    "jobNumber": 8459,
+    "client": "Melody Deisher",
+    "city": "Renton",
+    "zip": "98058",
+    "date": "2026-09-24",
+    "title": "Melody Deisher",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU3OTY5MzE=",
+    "visitNum": "2325796931",
+    "jobNumber": 8422,
+    "client": "Mauricio Silva",
+    "city": "Renton",
+    "zip": "98058",
+    "date": "2026-09-24",
+    "title": "Mauricio Silva",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTkzOTU0NDk=",
+    "visitNum": "2319395449",
+    "jobNumber": 8530,
+    "client": "Phyllis Miller",
+    "city": "Renton",
+    "zip": "98058",
+    "date": "2026-09-24",
+    "title": "Phyllis Miller",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   },
+   {
+    "visitId": "Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU5NDcyMjA=",
+    "visitNum": "2325947220",
+    "jobNumber": 4550,
+    "client": "Lee Hansen",
+    "city": "Renton",
+    "zip": "98058",
+    "date": "2026-09-24",
+    "title": "Lee Hansen",
+    "from": "Tavis Alexander",
+    "to": "Cory Ventura",
+    "rideAlong": false,
+    "collapsed": false,
+    "currentAssignees": [
+     "Tavis Alexander"
+    ],
+    "newAssignees": [
+     "Cory Ventura"
+    ],
+    "newAssignedUserIds": [
+     "Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="
+    ],
+    "isComplete": false
+   }
+  ],
+  "mutationCount": 187
+ },
+ "projectedLoad": {
+  "2026-09-21": {
+   "dow": "mon",
+   "rows": [
+    {
+     "driver": "Alias Franks",
+     "stops": 29,
+     "beforeStops": 29,
+     "cycleMinPerStop": 17.5,
+     "rateBasis": "Alias Franks mon GPS cycle",
+     "hours": 8.46,
+     "over8": true,
+     "over95": false
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 27,
+     "beforeStops": 18,
+     "cycleMinPerStop": 13.1,
+     "rateBasis": "Cory Ventura mon GPS cycle",
+     "hours": 5.89,
+     "over8": false,
+     "over95": false
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 20,
+     "beforeStops": 20,
+     "cycleMinPerStop": 23.4,
+     "rateBasis": "Luke LaVergne mon GPS cycle",
+     "hours": 7.8,
+     "over8": false,
+     "over95": false
+    },
+    {
+     "driver": "Spencer Hill",
+     "stops": 18,
+     "beforeStops": 0,
+     "cycleMinPerStop": 19.5,
+     "rateBasis": "all-tech median (no GPS row for this tech)",
+     "hours": 5.85,
+     "over8": false,
+     "over95": false
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 18,
+     "beforeStops": 18,
+     "cycleMinPerStop": 20.9,
+     "rateBasis": "Robert Norton mon GPS cycle",
+     "hours": 6.27,
+     "over8": false,
+     "over95": false
+    }
+   ]
+  },
+  "2026-09-22": {
+   "dow": "tue",
+   "rows": [
+    {
+     "driver": "Robert Norton",
+     "stops": 37,
+     "beforeStops": 37,
+     "cycleMinPerStop": 17.7,
+     "rateBasis": "Robert Norton tue GPS cycle",
+     "hours": 10.91,
+     "over8": true,
+     "over95": true
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 32,
+     "beforeStops": 18,
+     "cycleMinPerStop": 15.9,
+     "rateBasis": "Cory Ventura tue GPS cycle",
+     "hours": 8.48,
+     "over8": true,
+     "over95": false
+    },
+    {
+     "driver": "Spencer Hill",
+     "stops": 18,
+     "beforeStops": 0,
+     "cycleMinPerStop": 19.5,
+     "rateBasis": "all-tech median (no GPS row for this tech)",
+     "hours": 5.85,
+     "over8": false,
+     "over95": false
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 10,
+     "beforeStops": 10,
+     "cycleMinPerStop": 25.7,
+     "rateBasis": "Luke LaVergne tue GPS cycle",
+     "hours": 4.28,
+     "over8": false,
+     "over95": false
+    },
+    {
+     "driver": "Alias Franks",
+     "stops": 6,
+     "beforeStops": 6,
+     "cycleMinPerStop": 22.9,
+     "rateBasis": "Alias Franks tue GPS cycle",
+     "hours": 2.29,
+     "over8": false,
+     "over95": false
+    }
+   ]
+  },
+  "2026-09-23": {
+   "dow": "wed",
+   "rows": [
+    {
+     "driver": "Alias Franks",
+     "stops": 31,
+     "beforeStops": 31,
+     "cycleMinPerStop": 27.7,
+     "rateBasis": "Alias Franks wed GPS cycle",
+     "hours": 14.31,
+     "over8": true,
+     "over95": true
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 20,
+     "beforeStops": 20,
+     "cycleMinPerStop": 31.7,
+     "rateBasis": "Luke LaVergne wed GPS cycle",
+     "hours": 10.57,
+     "over8": true,
+     "over95": true
+    },
+    {
+     "driver": "Spencer Hill",
+     "stops": 19,
+     "beforeStops": 0,
+     "cycleMinPerStop": 19.5,
+     "rateBasis": "all-tech median (no GPS row for this tech)",
+     "hours": 6.17,
+     "over8": false,
+     "over95": false
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 17,
+     "beforeStops": 19,
+     "cycleMinPerStop": 14.4,
+     "rateBasis": "Cory Ventura wed GPS cycle",
+     "hours": 4.08,
+     "over8": false,
+     "over95": false
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 16,
+     "beforeStops": 16,
+     "cycleMinPerStop": 18.1,
+     "rateBasis": "Robert Norton wed GPS cycle",
+     "hours": 4.83,
+     "over8": false,
+     "over95": false
+    }
+   ]
+  },
+  "2026-09-24": {
+   "dow": "thu",
+   "rows": [
+    {
+     "driver": "Spencer Hill",
+     "stops": 30,
+     "beforeStops": 0,
+     "cycleMinPerStop": 19.5,
+     "rateBasis": "all-tech median (no GPS row for this tech)",
+     "hours": 9.75,
+     "over8": true,
+     "over95": true
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 27,
+     "beforeStops": 27,
+     "cycleMinPerStop": 27.1,
+     "rateBasis": "Luke LaVergne thu GPS cycle",
+     "hours": 12.2,
+     "over8": true,
+     "over95": true
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 26,
+     "beforeStops": 30,
+     "cycleMinPerStop": 15.9,
+     "rateBasis": "Cory Ventura thu GPS cycle",
+     "hours": 6.89,
+     "over8": false,
+     "over95": false
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 19,
+     "beforeStops": 19,
+     "cycleMinPerStop": 20.3,
+     "rateBasis": "Robert Norton thu GPS cycle",
+     "hours": 6.43,
+     "over8": false,
+     "over95": false
+    },
+    {
+     "driver": "Alias Franks",
+     "stops": 11,
+     "beforeStops": 11,
+     "cycleMinPerStop": 26.2,
+     "rateBasis": "Alias Franks thu GPS cycle",
+     "hours": 4.8,
+     "over8": false,
+     "over95": false
+    }
+   ]
+  }
+ },
+ "geography": {
+  "2026-09-21": {
+   "tavis->cory": {
+    "from": "Tavis Alexander",
+    "stops": 27,
+    "cities": [
+     "Seattle 19",
+     "Shoreline 5",
+     "Kenmore 1",
+     "Lake Forest Park 1",
+     "Bellevue 1"
+    ]
+   },
+   "cory->spencer": {
+    "from": "Cory Ventura",
+    "stops": 18,
+    "cities": [
+     "Orting 5",
+     "Graham 5",
+     "Eatonville 3",
+     "Yelm 2",
+     "Renton 1",
+     "graham 1",
+     "Pierce County 1"
+    ]
+   }
+  },
+  "2026-09-22": {
+   "tavis->cory": {
+    "from": "Tavis Alexander",
+    "stops": 32,
+    "cities": [
+     "Seattle 23",
+     "Burien 6",
+     "Normandy Park 3"
+    ]
+   },
+   "cory->spencer": {
+    "from": "Cory Ventura",
+    "stops": 18,
+    "cities": [
+     "Orting 6",
+     "Graham 6",
+     "Eatonville 4",
+     "Yelm 2"
+    ]
+   }
+  },
+  "2026-09-23": {
+   "tavis->cory": {
+    "from": "Tavis Alexander",
+    "stops": 17,
+    "cities": [
+     "Bellevue 7",
+     "Mercer Island 6",
+     "Clyde Hill 2",
+     "Carnation 1",
+     "Seattle 1"
+    ]
+   },
+   "cory->spencer": {
+    "from": "Cory Ventura",
+    "stops": 19,
+    "cities": [
+     "Buckley 7",
+     "Bonney Lake 6",
+     "Lake Tapps 3",
+     "Maple Valley 1",
+     "Sumner 1",
+     "Pierce County 1"
+    ]
+   }
+  },
+  "2026-09-24": {
+   "tavis->cory": {
+    "from": "Tavis Alexander",
+    "stops": 26,
+    "cities": [
+     "Renton 19",
+     "North Bend 2",
+     "Newcastle 2",
+     "Bellevue 1",
+     "Issaquah 1",
+     "Fall City 1"
+    ]
+   },
+   "cory->spencer": {
+    "from": "Cory Ventura",
+    "stops": 30,
+    "cities": [
+     "Puyallup 21",
+     "Covington 3",
+     "Kent 2",
+     "Renton 1",
+     "Auburn 1",
+     "Milton 1",
+     "Edgewood 1"
+    ]
+   }
+  }
+ },
+ "loadCaveat": "cycleMinPerStop is first-customer-arrival to last-customer-departure divided by visits. The home commute at each end is NOT in it. Both receiving techs are being sent to ground they do not normally drive, so add their commute separately before reading any hours figure as a working day.",
+ "spencerSensitivity": [
+  {
+   "date": "2026-09-21",
+   "stops": 18,
+   "atAllTechMedian": 5.85,
+   "atCorysOwnRateForThisGround": 3.93
+  },
+  {
+   "date": "2026-09-22",
+   "stops": 18,
+   "atAllTechMedian": 5.85,
+   "atCorysOwnRateForThisGround": 4.77
+  },
+  {
+   "date": "2026-09-23",
+   "stops": 19,
+   "atAllTechMedian": 6.17,
+   "atCorysOwnRateForThisGround": 4.56
+  },
+  {
+   "date": "2026-09-24",
+   "stops": 30,
+   "atAllTechMedian": 9.75,
+   "atCorysOwnRateForThisGround": 7.95
+  }
+ ],
+ "rideAlongDetail": []
+}

@@ -1,0 +1,184 @@
+S2c GPS GROUND TRUTH  2026-08-17..2026-09-17
+stops 3637 raw (75 duplicate rows dropped) -> 3097 merged  (dropped 32 short idles, merged 433)
+trips 1126   paid-hours source data/route-day-ledger.json
+
+TRUCK -> TECH
+  truck            tech              basis                                          days  fieldStops  match%
+  Maverick 2024    Cory Ventura      stop-to-visit proximity (150 m, same date)      26         604    83.6
+  maverick 2026    Alias Franks      stop-to-visit proximity (150 m, same date)      24         650    82.2
+  2022 Ranger      Tavis Alexander   tracker appDriverName + stop-to-visit proximi   24         648    89.7
+  white ranger     Robert Norton     stop-to-visit proximity (150 m, same date)      23         574    85.2
+  Luke Lavergne    Luke LaVergne     truck named for the tech + stop-to-visit prox   22         493      84
+
+HOME (medoid of overnight stops)
+  Cory Ventura      27009 155th Street East, Buckley 98321   nights at home 28/31 (90.3%)
+  Alias Franks      1024 Ludwig Road, Snohomish 98290   nights at home 25/26 (96.2%)
+  Tavis Alexander   19328 Southeast Green Valley Road, Auburn 98092   nights at home 25/25 (100%)
+  Robert Norton     22215 Southeast 268th Street, Maple Valley 98038   nights at home 22/24 (91.7%)
+  Luke LaVergne     11210 45th Street East, Edgewood 98372   nights at home 23/23 (100%)
+
+ANOMALY DATES
+  Maverick 2024   2026-08-22 sat  stops   2  match     0%  no customer match (non-field day)
+  Maverick 2024   2026-09-04 fri  stops   2  match     0%  no customer match (non-field day)
+  Maverick 2024   2026-09-07 mon  stops   2  match     0%  no customer match (non-field day)
+  Maverick 2024   2026-09-13 sun  stops   5  match     0%  no customer match (non-field day)
+  maverick 2026   2026-08-30 sun  stops   3  match     0%  no customer match (non-field day)
+  2022 Ranger     2026-09-05 sat  stops   2  match     0%  no customer match (non-field day)
+
+TRUCK x WEEK MATCH SHARE
+  2022 Ranger     2026-08-17  days 5  fieldStops  135  matched  118   87.4%  {"Tavis Alexander":5}
+  2022 Ranger     2026-08-24  days 5  fieldStops  151  matched  136   90.1%  {"Tavis Alexander":5}
+  2022 Ranger     2026-08-31  days 6  fieldStops  140  matched  129   92.1%  {"Tavis Alexander":5}
+  2022 Ranger     2026-09-07  days 4  fieldStops  100  matched   93     93%  {"Tavis Alexander":4}
+  2022 Ranger     2026-09-14  days 4  fieldStops  122  matched  105   86.1%  {"Tavis Alexander":4}
+  Luke Lavergne   2026-08-17  days 5  fieldStops  108  matched   96   88.9%  {"Luke LaVergne":5}
+  Luke Lavergne   2026-08-24  days 4  fieldStops   87  matched   73   83.9%  {"Luke LaVergne":4}
+  Luke Lavergne   2026-08-31  days 5  fieldStops  108  matched   91   84.3%  {"Luke LaVergne":5}
+  Luke Lavergne   2026-09-07  days 4  fieldStops   98  matched   79   80.6%  {"Luke LaVergne":4}
+  Luke Lavergne   2026-09-14  days 4  fieldStops   92  matched   75   81.5%  {"Luke LaVergne":4}
+  Maverick 2024   2026-08-17  days 6  fieldStops  139  matched  112   80.6%  {"Cory Ventura":5}
+  Maverick 2024   2026-08-24  days 5  fieldStops  133  matched  113     85%  {"Cory Ventura":5}
+  Maverick 2024   2026-08-31  days 5  fieldStops  104  matched   88   84.6%  {"Cory Ventura":4}
+  Maverick 2024   2026-09-07  days 6  fieldStops  110  matched   92   83.6%  {"Cory Ventura":4}
+  Maverick 2024   2026-09-14  days 4  fieldStops  118  matched  100   84.7%  {"Cory Ventura":4}
+  maverick 2026   2026-08-17  days 5  fieldStops  140  matched  113   80.7%  {"Alias Franks":5}
+  maverick 2026   2026-08-24  days 6  fieldStops  146  matched  117   80.1%  {"Alias Franks":5}
+  maverick 2026   2026-08-31  days 5  fieldStops  143  matched  115   80.4%  {"Alias Franks":5}
+  maverick 2026   2026-09-07  days 4  fieldStops  107  matched   90   84.1%  {"Alias Franks":4}
+  maverick 2026   2026-09-14  days 4  fieldStops  114  matched   99   86.8%  {"Alias Franks":4}
+  white ranger    2026-08-17  days 5  fieldStops  121  matched   97   80.2%  {"Robert Norton":5}
+  white ranger    2026-08-24  days 5  fieldStops  133  matched  116   87.2%  {"Robert Norton":5}
+  white ranger    2026-08-31  days 5  fieldStops  129  matched  110   85.3%  {"Robert Norton":5}
+  white ranger    2026-09-07  days 4  fieldStops   99  matched   85   85.9%  {"Robert Norton":4}
+  white ranger    2026-09-14  days 4  fieldStops   92  matched   81     88%  {"Robert Norton":4}
+
+STOP CLASSIFICATION  {"HOME":127,"OTHER":376,"CUSTOMER":2546,"CUSTOMER_UNSTAMPED":21,"PARKED":9,"DEPOT":18}
+DEPOT / SHARED COMPANY LOCATIONS (>=3 trucks, >=4 days)
+  35705 Cumberland Way Southeast      Enumclaw      trucks 4  calls  18  days  10  totMin  2100.8  medMin   23.5   nearest Jobber job #7778 Spencer Hill (19 m)
+
+TOP RECURRING NON-CUSTOMER STOPS (fuel / food / break)
+  21310 Southeast 11th Street         Sammamish     visits   1  days   1  med 4189.4m  tot  4189.4m  maverick 2026
+  525 Roosevelt Avenue                Enumclaw      visits   2  days   2  med 270.7m  tot   541.3m  Maverick 2024
+  5003 Pacific Highway East           Fife          visits   4  days   4  med 128.5m  tot     510m  white ranger
+  1323 East Main Avenue               Puyallup      visits   3  days   3  med 158.3m  tot   508.9m  Maverick 2024
+  3309 108th Avenue East              Edgewood      visits   2  days   2  med  82.7m  tot   165.3m  Luke Lavergne
+  27815 Southeast 416th Street        Enumclaw      visits   5  days   5  med  28.6m  tot     150m  Maverick 2024,white ranger
+  8514 240th Avenue East              Buckley       visits   2  days   2  med  74.7m  tot   149.4m  Maverick 2024
+  111 Valley Avenue East              Puyallup      visits   1  days   1  med 140.7m  tot   140.7m  Maverick 2024
+  1730 112th Street Southwest         Everett       visits   1  days   1  med   135m  tot     135m  maverick 2026
+  18207 State Route 302 Northwest     Gig Harbor    visits   2  days   1  med  61.4m  tot   122.8m  white ranger
+  3525 Northeast 105th Street         Seattle       visits   5  days   5  med  17.4m  tot    97.1m  maverick 2026
+  1915 Maple Valley Highway           Renton        visits   1  days   1  med  95.6m  tot    95.6m  white ranger
+
+PER TECH (medians over field days)
+  tech              days  stops  onSite/stop p25-med-p75   drive/stop  cycle  d2d(h)  f2l(h)  onSite(h)  drive(h)  other(m)  commute(m)  paid(h)
+  Alias Franks        23     24   9.2 - 14.3 - 20.3               8.5   24.3   11.61   10.12       6.25      3.17      31.1        85.7     9.95
+  Cory Ventura        22   23.5   5.1 - 8.1 - 11.2                7.1   16.9    8.42    6.87       3.45      2.75      22.1          85     null
+  Luke LaVergne       22     19   9.2 - 12.2 - 17.3              11.9     27    10.8    8.96       4.78      3.68      44.3        93.8      8.5
+  Robert Norton       23     21   8.2 - 12.3 - 18.4               6.5   22.2    9.18    7.99       4.92      2.43      32.8        70.1     8.15
+  Tavis Alexander     23     26   6.1 - 9 - 12.7                  8.1   18.8    9.71    7.98       4.33      3.44      12.6       104.8     8.25
+  (drive/stop and drive(h) are INSIDE the route; commute is the home legs, reported apart)
+
+DAY SHAPE (median minutes per field day)
+  tech              commuteOut  commuteIn  otherBefore  otherDuring  otherAfter
+  Alias Franks            42.8       42.7          0.9         18.3         6.1
+  Cory Ventura            42.5       42.6          0.3         10.2         1.2
+  Luke LaVergne           34.9       58.8            0         13.6         8.1
+  Robert Norton           34.6       39.2            0         23.5           0
+  Tavis Alexander         51.4       56.5            0         11.5           0
+
+ON-SITE PER STOP vs DIRECTED SERVICE TIME
+  tech              gps median  directed check  delta   n stops
+  Alias Franks            14.3              15   -0.8      538
+  Cory Ventura             8.1              12   -3.9      520
+  Luke LaVergne           12.2              15   -2.8      425
+  Robert Norton           12.3              15   -2.8      496
+  Tavis Alexander            9              15     -6      588
+
+GPS vs STAMPS (median per tech, minutes)
+  tech              stampSpan-gpsF2L   gpsOnSite-stampService   gpsDrive-stampDrive   gpsStops-jobberStops
+  Alias Franks                 -10.4                    -18.3                  67.8                     -1
+  Cory Ventura                 -14.6                   -116.8                 205.2                     -2
+  Luke LaVergne                  -19                    -48.4                 198.1                     -1
+  Robert Norton                 -9.2                      -46                 103.2                     -2
+  Tavis Alexander               -7.7                   -170.7                 262.4                     -1
+
+PAID TIME DEFINITION  (n=91 clocked field days)
+  paid - door-to-door   median -97.3m  (p25 -127.1, p75 -72.5)  |median| 98
+  paid - first-to-last  median 1.4m  (p25 -4.2, p75 9)  |median| 6.3
+  clock-in - depart home    median 40.9m
+  clock-out - arrive home   median -48.9m
+  VERDICT: paid time tracks FIRST-JOB-TO-LAST-JOB: the commute is unpaid
+
+PER TECH x WEEKDAY CYCLE (GPS vs stamp)
+  tech              dow  days  gpsStops  visits  onSite/stop  drive/stop  cyc/visit  cyc/stop  stampCycle  delta   f2l(h)  d2d(h)
+  Alias Franks      mon     4        23    27.5         11.2         6.1       17.5        21        19.2   -1.7        8   11.12
+  Alias Franks      tue     5        25      27         12.2         9.9       22.9      24.4        23.6   -0.7    10.15   12.03
+  Alias Franks      wed     5        24      25         15.3        11.2       27.7      27.8        28.3   -0.6    11.84   12.77
+  Alias Franks      thu     5        21      23         15.3         8.5       26.2      27.5        25.3    0.9     9.61   11.53
+  Alias Franks      fri     4        26    25.5         15.3         5.4         23      22.1        22.4    0.7      9.6   11.35
+  Cory Ventura      mon     4        28      31          7.2         5.7       13.1      14.1        12.8    0.3     6.74    8.32
+  Cory Ventura      tue     5        23      23          7.2        10.2       15.9      19.8        15.1    0.8     6.93    7.64
+  Cory Ventura      wed     5        23      28          8.1         7.2       14.4      17.9        15.2   -0.8     6.92    8.58
+  Cory Ventura      thu     5        24      24          8.2         6.9       15.9      16.4          16   -0.1     6.38    8.41
+  Cory Ventura      fri     3        22      24          8.2         7.3       15.5        17        15.5      0     6.22    8.03
+  Luke LaVergne     mon     4        22      22         10.2        10.7       23.4      22.8        22.1    1.3     8.19   10.62
+  Luke LaVergne     tue     5        17      17         13.8        12.6       25.7      28.9        28.9   -3.2     8.96   10.97
+  Luke LaVergne     wed     5        14      17         14.2        17.5       31.7      36.5        32.1   -0.4     8.98    10.6
+  Luke LaVergne     thu     5        22      21         12.2        11.1       27.1      26.5        27.4   -0.3     9.49   11.36
+  Luke LaVergne     fri     3        20      24         11.2           8       18.6      21.3          20   -1.4     8.36    9.18
+  Robert Norton     mon     4        20    21.5         13.3         6.3       20.9      21.1        21.5   -0.5      7.5    9.11
+  Robert Norton     tue     5        23      25         11.2         6.1       17.7      19.2        19.9   -2.2     7.99    9.18
+  Robert Norton     wed     5        20      23         12.8         5.7       18.1      23.9        20.1     -2     7.62   12.95
+  Robert Norton     thu     5        24      25         12.3         6.6       20.3      23.2        21.1   -0.8     8.81   10.04
+  Robert Norton     fri     4        20      22         14.3           7       24.5      25.7        23.7    0.8     8.83   10.08
+  Tavis Alexander   mon     4      25.5    27.5          7.6           7       15.6      15.9        16.4   -0.8     7.32    9.14
+  Tavis Alexander   tue     5        28      29          8.8           8       17.7      18.3        18.2   -0.5     8.53   10.47
+  Tavis Alexander   wed     5        24      32          8.9         8.5       15.1      20.1          15    0.1     7.98     9.3
+  Tavis Alexander   thu     5        25      26           10         8.6       19.3        20        18.7    0.6     8.05    10.2
+  Tavis Alexander   fri     4        25      25          9.5         8.6       19.1      19.9        21.1     -2     8.55   10.32
+
+PER TECH x WEEK
+  tech              week        days  stops  d2d(h)  work(h)  f2l(h)  onSite(h)  drive(h)  commute(h)  other(h)  paid(h)
+  Alias Franks      2026-08-17     5    112   53.68    52.92   47.06      27.68     16.64        5.86      3.51     51.9
+  Alias Franks      2026-08-24     5    120   62.61    59.77    53.2      35.14     15.92        6.58      4.98     54.2
+  Alias Franks      2026-08-31     5    116   55.13     53.2   45.67      28.73     15.84        7.53      3.04    45.38
+  Alias Franks      2026-09-07     4     90   45.43    44.63   38.93      24.94     13.02         5.7      1.76    38.87
+  Alias Franks      2026-09-14     4    100   46.45     45.7   39.81      25.36     13.46        5.89      1.75    40.34
+  Cory Ventura      2026-08-17     5    117   46.88    40.87   34.86      17.93     16.02        6.01      6.91     null
+  Cory Ventura      2026-08-24     5    117   45.78    40.37   34.07      17.12     15.82         6.3      6.55     null
+  Cory Ventura      2026-08-31     4     90   32.48    31.81    25.6      13.67     11.04        6.21      1.56     null
+  Cory Ventura      2026-09-07     4     93   31.73    31.31   25.51      13.76     11.28         5.8      0.89     null
+  Cory Ventura      2026-09-14     4    103   34.58    33.17   27.75      14.85      11.2        5.42       3.1     null
+  Luke LaVergne     2026-08-17     5     96   49.55    48.14   40.91      21.52     18.03        7.23      2.77    39.84
+  Luke LaVergne     2026-08-24     4     75   45.53    41.85   35.17       17.9     16.67        6.68      4.28    33.14
+  Luke LaVergne     2026-08-31     5     92   53.52    50.66    43.7      24.74     17.91        6.96      3.91    43.65
+  Luke LaVergne     2026-09-07     4     81   45.67    42.42      37      20.33     15.04        5.42      4.89     37.7
+  Luke LaVergne     2026-09-14     4     81   42.96    41.98   35.42      18.18     15.94        6.57      2.28    32.66
+  Robert Norton     2026-08-17     5     98   53.41     47.5   42.21      26.44     11.86        5.29      9.82    39.12
+  Robert Norton     2026-08-24     5    117   48.36    47.64   42.15      29.34     11.21        5.49      2.31    41.97
+  Robert Norton     2026-08-31     5    112   48.13    47.44   41.15      27.18        12        6.29      2.67    41.98
+  Robert Norton     2026-09-07     4     86   42.94    39.35   33.27       22.2       9.3        6.08      5.36     33.8
+  Robert Norton     2026-09-14     4     83   37.64    35.83   29.12      17.74     10.49         6.7       2.7    28.77
+  Tavis Alexander   2026-08-17     5    121   49.58    48.24   39.07      21.31     16.69        9.18       2.4    40.81
+  Tavis Alexander   2026-08-24     5    137   50.36    50.33   41.84      21.37     18.51         8.5      1.99    43.37
+  Tavis Alexander   2026-08-31     5    131   51.35    50.42   42.66      22.58     19.24        7.76      1.76    43.52
+  Tavis Alexander   2026-09-07     4     93   37.46    37.24   30.05      17.13     12.36        7.19      0.78     30.9
+  Tavis Alexander   2026-09-14     4    106   39.32    39.16   31.67      16.52     14.37        7.49      0.94    33.08
+
+TRUCK IDLE WEEKDAYS (truck did no customer work while others did)
+  Cory Ventura      2026-09-04 fri  truckStops   2  techStampedVisits   0  tech did no customer work — absence or holiday
+  Luke LaVergne     2026-08-28 fri  truckStops   0  techStampedVisits   0  tech did no customer work — absence or holiday
+
+COVER DAYS FROM GPS (worked far outside their own ground)
+  Tavis Alexander   2026-08-21 fri  stops  24  median   32.6 km from own ground (usual 9.1 km)
+
+NON-FIELD TRUCK DAYS
+  Maverick 2024   2026-08-22 sat  stops 2  tripMin 43  miles 7.7
+  maverick 2026   2026-08-30 sun  stops 3  tripMin 185  miles 167.9
+  Maverick 2024   2026-09-04 fri  stops 2  tripMin 74  miles 8.8
+  2022 Ranger     2026-09-05 sat  stops 2  tripMin 54  miles 0
+  Maverick 2024   2026-09-07 mon  stops 2  tripMin 41  miles 10.5
+  Maverick 2024   2026-09-13 sun  stops 5  tripMin 189  miles 45.5
+
+wrote data/gps-ground-truth.json and data/cycle-times-gps.json

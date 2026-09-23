@@ -1,0 +1,2077 @@
+{
+  "generatedAt": "2026-09-19T16:42:41.504Z",
+  "week": "2026-08-31",
+  "days": [
+    "2026-08-31",
+    "2026-09-01",
+    "2026-09-02",
+    "2026-09-03",
+    "2026-09-04"
+  ],
+  "asOf": "2026-08-28T21:00:00.000Z",
+  "policy": {
+    "name": "dominant-routeday",
+    "description": "Static master route — each job to the tech and weekday it was most often served on before the week.",
+    "usesOracle": false
+  },
+  "runtimeMs": 1716,
+  "thresholds": {
+    "sameTechPct": 95,
+    "sameDayPct": 95,
+    "hoursTolerancePct": 10,
+    "compactnessTolerancePct": 5,
+    "wallHours": 9.5,
+    "softHours": 8
+  },
+  "coverage": {
+    "dueVisits": 532,
+    "lateBookings": 54,
+    "proposed": 532,
+    "dropped": 0,
+    "invented": 0,
+    "duplicates": 0,
+    "noActual": 0,
+    "weekendPlacements": 0,
+    "offWeekPlacements": 0,
+    "ghostOrders": 5
+  },
+  "agreement": {
+    "vsActualRun": {
+      "n": 532,
+      "sameTech": 480,
+      "sameTechPct": 90.2,
+      "sameDay": 404,
+      "sameDayPct": 75.9,
+      "sameBoth": 382,
+      "sameBothPct": 71.8
+    },
+    "vsOptimoHeld": {
+      "n": 525,
+      "sameTechPct": 90.7,
+      "sameDayPct": 77.1,
+      "sameBothPct": 73
+    }
+  },
+  "hours": {
+    "routeDaysScored": 24,
+    "withinTolerance": 9,
+    "withinTolerancePct": 37.5,
+    "medianRatio": 0.96,
+    "boardOnly": {
+      "routeDaysScored": 24,
+      "withinTolerance": 7,
+      "withinTolerancePct": 29.2,
+      "medianRatio": 0.98
+    },
+    "actualOrderSource": {
+      "optimo": 524,
+      "stamp": 8,
+      "scheduled": 0
+    },
+    "proposalOnlyDays": 1,
+    "actualOnlyDays": 1,
+    "totalProposalHours": 191.8,
+    "totalActualHours": 197
+  },
+  "sequence": {
+    "routeDaysCompared": 23,
+    "medianDriveRatio": 0.89,
+    "medianDistanceRatio": 0.87,
+    "medianUniformDriveRatio": 0.92,
+    "medianProposalEstimatedLegPct": 37.5,
+    "medianActualEstimatedLegPct": 16.7,
+    "betterThanOptimo": 22,
+    "worseThanOptimo": 1,
+    "betterThanOptimoUniform": 19,
+    "totalProposalDriveMin": 2791.6,
+    "totalActualDriveMin": 3160.1
+  },
+  "windowCompliance": null,
+  "capacity": {
+    "proposal": {
+      "routeDays": 25,
+      "over8h": 10,
+      "over95h": 2,
+      "maxHours": 10.92,
+      "medianHours": 7.76
+    },
+    "actual": {
+      "routeDays": 25,
+      "over8h": 13,
+      "over95h": 4,
+      "maxHours": 10.82,
+      "medianHours": 8.03
+    }
+  },
+  "compactness": {
+    "routeDaysScored": 24,
+    "within5Pct": 5,
+    "within5PctShare": 20.8,
+    "medianRatio": 0.96,
+    "boardOnlyWithin5Pct": 5,
+    "boardOnlyRouteDays": 24,
+    "ratioMin": 0.62,
+    "ratioMax": 1.32
+  },
+  "overflow": {
+    "count": 0,
+    "keys": []
+  },
+  "gates": [
+    {
+      "gate": "same tech >= 95%",
+      "value": 90.2,
+      "pass": false
+    },
+    {
+      "gate": "same day >= 95%",
+      "value": 75.9,
+      "pass": false
+    },
+    {
+      "gate": "route-day hours within +-10%",
+      "value": "9/24 (37.5%)",
+      "pass": false
+    },
+    {
+      "gate": "route-day hours within +-10% (board only, same sequencer)",
+      "value": "7/24 (29.2%)",
+      "pass": false,
+      "advisory": true
+    },
+    {
+      "gate": "no dropped visits",
+      "value": 0,
+      "pass": true
+    },
+    {
+      "gate": "no invented visits",
+      "value": 0,
+      "pass": true
+    },
+    {
+      "gate": "no weekend placements",
+      "value": 0,
+      "pass": true
+    },
+    {
+      "gate": "no route-day over 9.5 h (modelled travel + service)",
+      "value": "2 of 25 (actual: 4/25)",
+      "pass": false,
+      "advisory": true
+    },
+    {
+      "gate": "route-day total time within +-5% of the OptimoRoute day (compactness)",
+      "value": "5/24 (20.8%)",
+      "pass": false,
+      "advisory": true
+    },
+    {
+      "gate": "late bookings (created after the cutoff — the add-queue load)",
+      "value": 54,
+      "pass": true,
+      "advisory": true
+    }
+  ],
+  "passed": false,
+  "perTech": [
+    {
+      "tech": "Alias Franks",
+      "proposalDays": 5,
+      "proposalStops": 115,
+      "proposalHours": 41.4,
+      "actualDays": 6,
+      "actualStops": 115,
+      "actualHours": 43.4,
+      "hoursDelta": -2
+    },
+    {
+      "tech": "Cory Ventura",
+      "proposalDays": 5,
+      "proposalStops": 114,
+      "proposalHours": 37.8,
+      "actualDays": 4,
+      "actualStops": 90,
+      "actualHours": 27,
+      "hoursDelta": 10.8
+    },
+    {
+      "tech": "Luke LaVergne",
+      "proposalDays": 5,
+      "proposalStops": 73,
+      "proposalHours": 33.9,
+      "actualDays": 5,
+      "actualStops": 92,
+      "actualHours": 41.9,
+      "hoursDelta": -8
+    },
+    {
+      "tech": "Robert Norton",
+      "proposalDays": 5,
+      "proposalStops": 103,
+      "proposalHours": 35.7,
+      "actualDays": 5,
+      "actualStops": 112,
+      "actualHours": 39.6,
+      "hoursDelta": -3.9
+    },
+    {
+      "tech": "Tavis Alexander",
+      "proposalDays": 5,
+      "proposalStops": 127,
+      "proposalHours": 43,
+      "actualDays": 5,
+      "actualStops": 123,
+      "actualHours": 45.1,
+      "hoursDelta": -2.1
+    }
+  ],
+  "routeDays": [
+    {
+      "id": "Alias Franks|2026-08-25",
+      "tech": "Alias Franks",
+      "date": "2026-08-25",
+      "dow": "tue",
+      "proposal": null,
+      "actual": {
+        "stops": 1,
+        "driveMin": 15.5,
+        "serviceMin": 15,
+        "totalMin": 30.5,
+        "hours": 0.51,
+        "miles": 7.8
+      },
+      "actualResequenced": {
+        "driveMin": 15.5,
+        "totalMin": 30.5,
+        "hours": 0.51
+      },
+      "hoursRatio": null,
+      "hoursWithinTolerance": null,
+      "boardRatio": null,
+      "boardWithinTolerance": null,
+      "sequence": null,
+      "only": "actual-only"
+    },
+    {
+      "id": "Alias Franks|2026-08-31",
+      "tech": "Alias Franks",
+      "date": "2026-08-31",
+      "dow": "mon",
+      "proposal": {
+        "stops": 25,
+        "driveMin": 131,
+        "serviceMin": 375,
+        "totalMin": 506,
+        "hours": 8.43,
+        "miles": 47,
+        "observedLegs": 14,
+        "estimatedLegs": 11,
+        "nnImprovedPct": 8.6
+      },
+      "actual": {
+        "stops": 25,
+        "driveMin": 144.4,
+        "serviceMin": 375,
+        "totalMin": 519.4,
+        "hours": 8.66,
+        "miles": 48.5
+      },
+      "actualResequenced": {
+        "driveMin": 130.5,
+        "totalMin": 505.5,
+        "hours": 8.43
+      },
+      "hoursRatio": 0.97,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 23,
+        "proposalDriveMin": 127.7,
+        "actualDriveMin": 139.3,
+        "driveRatio": 0.92,
+        "proposalMiles": 45.9,
+        "actualMiles": 48.4,
+        "distanceRatio": 0.95,
+        "uniformDriveRatio": 0.97,
+        "proposalEstimatedLegPct": 47.8,
+        "actualEstimatedLegPct": 13
+      },
+      "only": null
+    },
+    {
+      "id": "Alias Franks|2026-09-01",
+      "tech": "Alias Franks",
+      "date": "2026-09-01",
+      "dow": "tue",
+      "proposal": {
+        "stops": 25,
+        "driveMin": 135.8,
+        "serviceMin": 405,
+        "totalMin": 540.8,
+        "hours": 9.01,
+        "miles": 45.1,
+        "observedLegs": 19,
+        "estimatedLegs": 6,
+        "nnImprovedPct": 6.8
+      },
+      "actual": {
+        "stops": 25,
+        "driveMin": 163.3,
+        "serviceMin": 405,
+        "totalMin": 568.3,
+        "hours": 9.47,
+        "miles": 53.3
+      },
+      "actualResequenced": {
+        "driveMin": 152.7,
+        "totalMin": 557.7,
+        "hours": 9.3
+      },
+      "hoursRatio": 0.95,
+      "hoursWithinTolerance": true,
+      "boardRatio": 0.97,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 24,
+        "proposalDriveMin": 135.8,
+        "actualDriveMin": 153.1,
+        "driveRatio": 0.89,
+        "proposalMiles": 45.1,
+        "actualMiles": 51.1,
+        "distanceRatio": 0.88,
+        "uniformDriveRatio": 0.97,
+        "proposalEstimatedLegPct": 25,
+        "actualEstimatedLegPct": 12.5
+      },
+      "only": null
+    },
+    {
+      "id": "Alias Franks|2026-09-02",
+      "tech": "Alias Franks",
+      "date": "2026-09-02",
+      "dow": "wed",
+      "proposal": {
+        "stops": 21,
+        "driveMin": 161.2,
+        "serviceMin": 330,
+        "totalMin": 491.2,
+        "hours": 8.19,
+        "miles": 69.2,
+        "observedLegs": 9,
+        "estimatedLegs": 12,
+        "nnImprovedPct": 21.9
+      },
+      "actual": {
+        "stops": 20,
+        "driveMin": 191.7,
+        "serviceMin": 315,
+        "totalMin": 506.7,
+        "hours": 8.44,
+        "miles": 82.2
+      },
+      "actualResequenced": {
+        "driveMin": 146.6,
+        "totalMin": 461.6,
+        "hours": 7.69
+      },
+      "hoursRatio": 0.97,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1.06,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 20,
+        "proposalDriveMin": 146.1,
+        "actualDriveMin": 191.7,
+        "driveRatio": 0.76,
+        "proposalMiles": 61.8,
+        "actualMiles": 82.2,
+        "distanceRatio": 0.75,
+        "uniformDriveRatio": 0.87,
+        "proposalEstimatedLegPct": 50,
+        "actualEstimatedLegPct": 10
+      },
+      "only": null
+    },
+    {
+      "id": "Alias Franks|2026-09-03",
+      "tech": "Alias Franks",
+      "date": "2026-09-03",
+      "dow": "thu",
+      "proposal": {
+        "stops": 17,
+        "driveMin": 127.8,
+        "serviceMin": 255,
+        "totalMin": 382.8,
+        "hours": 6.38,
+        "miles": 55.5,
+        "observedLegs": 11,
+        "estimatedLegs": 6,
+        "nnImprovedPct": 6.2
+      },
+      "actual": {
+        "stops": 20,
+        "driveMin": 179,
+        "serviceMin": 300,
+        "totalMin": 479,
+        "hours": 7.98,
+        "miles": 82.2
+      },
+      "actualResequenced": {
+        "driveMin": 153.2,
+        "totalMin": 453.2,
+        "hours": 7.55
+      },
+      "hoursRatio": 0.8,
+      "hoursWithinTolerance": false,
+      "boardRatio": 0.84,
+      "boardWithinTolerance": false,
+      "sequence": {
+        "commonStops": 17,
+        "proposalDriveMin": 127.8,
+        "actualDriveMin": 142.2,
+        "driveRatio": 0.9,
+        "proposalMiles": 55.5,
+        "actualMiles": 63.3,
+        "distanceRatio": 0.88,
+        "uniformDriveRatio": 0.94,
+        "proposalEstimatedLegPct": 35.3,
+        "actualEstimatedLegPct": 11.8
+      },
+      "only": null
+    },
+    {
+      "id": "Alias Franks|2026-09-04",
+      "tech": "Alias Franks",
+      "date": "2026-09-04",
+      "dow": "fri",
+      "proposal": {
+        "stops": 27,
+        "driveMin": 158.3,
+        "serviceMin": 405,
+        "totalMin": 563.3,
+        "hours": 9.39,
+        "miles": 65.2,
+        "observedLegs": 17,
+        "estimatedLegs": 10,
+        "nnImprovedPct": 12.3
+      },
+      "actual": {
+        "stops": 24,
+        "driveMin": 137.9,
+        "serviceMin": 360,
+        "totalMin": 497.9,
+        "hours": 8.3,
+        "miles": 49.2
+      },
+      "actualResequenced": {
+        "driveMin": 125.7,
+        "totalMin": 485.7,
+        "hours": 8.09
+      },
+      "hoursRatio": 1.13,
+      "hoursWithinTolerance": false,
+      "boardRatio": 1.16,
+      "boardWithinTolerance": false,
+      "sequence": {
+        "commonStops": 24,
+        "proposalDriveMin": 129,
+        "actualDriveMin": 137.9,
+        "driveRatio": 0.94,
+        "proposalMiles": 44.4,
+        "actualMiles": 49.2,
+        "distanceRatio": 0.9,
+        "uniformDriveRatio": 0.92,
+        "proposalEstimatedLegPct": 37.5,
+        "actualEstimatedLegPct": 8.3
+      },
+      "only": null
+    },
+    {
+      "id": "Cory Ventura|2026-08-31",
+      "tech": "Cory Ventura",
+      "date": "2026-08-31",
+      "dow": "mon",
+      "proposal": {
+        "stops": 28,
+        "driveMin": 123.8,
+        "serviceMin": 342,
+        "totalMin": 465.8,
+        "hours": 7.76,
+        "miles": 60.1,
+        "observedLegs": 15,
+        "estimatedLegs": 13,
+        "nnImprovedPct": 7.7
+      },
+      "actual": {
+        "stops": 24,
+        "driveMin": 135.4,
+        "serviceMin": 300,
+        "totalMin": 435.4,
+        "hours": 7.26,
+        "miles": 69.9
+      },
+      "actualResequenced": {
+        "driveMin": 119.9,
+        "totalMin": 419.9,
+        "hours": 7
+      },
+      "hoursRatio": 1.07,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1.11,
+      "boardWithinTolerance": false,
+      "sequence": {
+        "commonStops": 13,
+        "proposalDriveMin": 87.6,
+        "actualDriveMin": 89.7,
+        "driveRatio": 0.98,
+        "proposalMiles": 46.1,
+        "actualMiles": 47.6,
+        "distanceRatio": 0.97,
+        "uniformDriveRatio": 1.02,
+        "proposalEstimatedLegPct": 46.2,
+        "actualEstimatedLegPct": 30.8
+      },
+      "only": null
+    },
+    {
+      "id": "Cory Ventura|2026-09-01",
+      "tech": "Cory Ventura",
+      "date": "2026-09-01",
+      "dow": "tue",
+      "proposal": {
+        "stops": 18,
+        "driveMin": 152.2,
+        "serviceMin": 258,
+        "totalMin": 410.2,
+        "hours": 6.84,
+        "miles": 84,
+        "observedLegs": 6,
+        "estimatedLegs": 12,
+        "nnImprovedPct": 5.1
+      },
+      "actual": {
+        "stops": 20,
+        "driveMin": 159.9,
+        "serviceMin": 240,
+        "totalMin": 399.9,
+        "hours": 6.66,
+        "miles": 76.3
+      },
+      "actualResequenced": {
+        "driveMin": 132.4,
+        "totalMin": 372.4,
+        "hours": 6.21
+      },
+      "hoursRatio": 1.03,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1.1,
+      "boardWithinTolerance": false,
+      "sequence": {
+        "commonStops": 7,
+        "proposalDriveMin": 101.2,
+        "actualDriveMin": 112.3,
+        "driveRatio": 0.9,
+        "proposalMiles": 53.1,
+        "actualMiles": 55.4,
+        "distanceRatio": 0.96,
+        "uniformDriveRatio": 0.98,
+        "proposalEstimatedLegPct": 57.1,
+        "actualEstimatedLegPct": 28.6
+      },
+      "only": null
+    },
+    {
+      "id": "Cory Ventura|2026-09-02",
+      "tech": "Cory Ventura",
+      "date": "2026-09-02",
+      "dow": "wed",
+      "proposal": {
+        "stops": 17,
+        "driveMin": 109,
+        "serviceMin": 231,
+        "totalMin": 340,
+        "hours": 5.67,
+        "miles": 56.1,
+        "observedLegs": 8,
+        "estimatedLegs": 9,
+        "nnImprovedPct": 3
+      },
+      "actual": {
+        "stops": 24,
+        "driveMin": 112,
+        "serviceMin": 288,
+        "totalMin": 400,
+        "hours": 6.67,
+        "miles": 53.6
+      },
+      "actualResequenced": {
+        "driveMin": 95.2,
+        "totalMin": 383.2,
+        "hours": 6.39
+      },
+      "hoursRatio": 0.85,
+      "hoursWithinTolerance": false,
+      "boardRatio": 0.89,
+      "boardWithinTolerance": false,
+      "sequence": null,
+      "only": null
+    },
+    {
+      "id": "Cory Ventura|2026-09-03",
+      "tech": "Cory Ventura",
+      "date": "2026-09-03",
+      "dow": "thu",
+      "proposal": {
+        "stops": 24,
+        "driveMin": 182.5,
+        "serviceMin": 297,
+        "totalMin": 479.5,
+        "hours": 7.99,
+        "miles": 101.5,
+        "observedLegs": 12,
+        "estimatedLegs": 12,
+        "nnImprovedPct": 5.4
+      },
+      "actual": {
+        "stops": 22,
+        "driveMin": 120,
+        "serviceMin": 264,
+        "totalMin": 384,
+        "hours": 6.4,
+        "miles": 58.6
+      },
+      "actualResequenced": {
+        "driveMin": 100,
+        "totalMin": 364,
+        "hours": 6.07
+      },
+      "hoursRatio": 1.25,
+      "hoursWithinTolerance": false,
+      "boardRatio": 1.32,
+      "boardWithinTolerance": false,
+      "sequence": {
+        "commonStops": 8,
+        "proposalDriveMin": 57,
+        "actualDriveMin": 58,
+        "driveRatio": 0.98,
+        "proposalMiles": 33.5,
+        "actualMiles": 32.5,
+        "distanceRatio": 1.03,
+        "uniformDriveRatio": 1.07,
+        "proposalEstimatedLegPct": 37.5,
+        "actualEstimatedLegPct": 37.5
+      },
+      "only": null
+    },
+    {
+      "id": "Cory Ventura|2026-09-04",
+      "tech": "Cory Ventura",
+      "date": "2026-09-04",
+      "dow": "fri",
+      "proposal": {
+        "stops": 27,
+        "driveMin": 200.5,
+        "serviceMin": 372,
+        "totalMin": 572.5,
+        "hours": 9.54,
+        "miles": 108.2,
+        "observedLegs": 10,
+        "estimatedLegs": 17,
+        "nnImprovedPct": 5.6
+      },
+      "actual": null,
+      "actualResequenced": null,
+      "hoursRatio": null,
+      "hoursWithinTolerance": null,
+      "boardRatio": null,
+      "boardWithinTolerance": null,
+      "sequence": null,
+      "only": "proposal-only"
+    },
+    {
+      "id": "Luke LaVergne|2026-08-31",
+      "tech": "Luke LaVergne",
+      "date": "2026-08-31",
+      "dow": "mon",
+      "proposal": {
+        "stops": 14,
+        "driveMin": 149.2,
+        "serviceMin": 225,
+        "totalMin": 374.2,
+        "hours": 6.24,
+        "miles": 67.1,
+        "observedLegs": 7,
+        "estimatedLegs": 7,
+        "nnImprovedPct": 22.6
+      },
+      "actual": {
+        "stops": 18,
+        "driveMin": 240.1,
+        "serviceMin": 285,
+        "totalMin": 525.1,
+        "hours": 8.75,
+        "miles": 105.1
+      },
+      "actualResequenced": {
+        "driveMin": 174.9,
+        "totalMin": 459.9,
+        "hours": 7.66
+      },
+      "hoursRatio": 0.71,
+      "hoursWithinTolerance": false,
+      "boardRatio": 0.81,
+      "boardWithinTolerance": false,
+      "sequence": {
+        "commonStops": 14,
+        "proposalDriveMin": 149.2,
+        "actualDriveMin": 184.5,
+        "driveRatio": 0.81,
+        "proposalMiles": 67.1,
+        "actualMiles": 81.4,
+        "distanceRatio": 0.82,
+        "uniformDriveRatio": 0.86,
+        "proposalEstimatedLegPct": 50,
+        "actualEstimatedLegPct": 21.4
+      },
+      "only": null
+    },
+    {
+      "id": "Luke LaVergne|2026-09-01",
+      "tech": "Luke LaVergne",
+      "date": "2026-09-01",
+      "dow": "tue",
+      "proposal": {
+        "stops": 17,
+        "driveMin": 228.9,
+        "serviceMin": 255,
+        "totalMin": 483.9,
+        "hours": 8.07,
+        "miles": 98.9,
+        "observedLegs": 10,
+        "estimatedLegs": 7,
+        "nnImprovedPct": 0.8
+      },
+      "actual": {
+        "stops": 24,
+        "driveMin": 289,
+        "serviceMin": 360,
+        "totalMin": 649,
+        "hours": 10.82,
+        "miles": 124.7
+      },
+      "actualResequenced": {
+        "driveMin": 253.4,
+        "totalMin": 613.4,
+        "hours": 10.22
+      },
+      "hoursRatio": 0.75,
+      "hoursWithinTolerance": false,
+      "boardRatio": 0.79,
+      "boardWithinTolerance": false,
+      "sequence": {
+        "commonStops": 17,
+        "proposalDriveMin": 228.9,
+        "actualDriveMin": 267.7,
+        "driveRatio": 0.86,
+        "proposalMiles": 98.9,
+        "actualMiles": 118.5,
+        "distanceRatio": 0.83,
+        "uniformDriveRatio": 0.92,
+        "proposalEstimatedLegPct": 41.2,
+        "actualEstimatedLegPct": 23.5
+      },
+      "only": null
+    },
+    {
+      "id": "Luke LaVergne|2026-09-02",
+      "tech": "Luke LaVergne",
+      "date": "2026-09-02",
+      "dow": "wed",
+      "proposal": {
+        "stops": 12,
+        "driveMin": 190.7,
+        "serviceMin": 180,
+        "totalMin": 370.7,
+        "hours": 6.18,
+        "miles": 88.8,
+        "observedLegs": 8,
+        "estimatedLegs": 4,
+        "nnImprovedPct": 2.9
+      },
+      "actual": {
+        "stops": 13,
+        "driveMin": 231.8,
+        "serviceMin": 195,
+        "totalMin": 426.8,
+        "hours": 7.11,
+        "miles": 108
+      },
+      "actualResequenced": {
+        "driveMin": 181.6,
+        "totalMin": 376.6,
+        "hours": 6.28
+      },
+      "hoursRatio": 0.87,
+      "hoursWithinTolerance": false,
+      "boardRatio": 0.98,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 12,
+        "proposalDriveMin": 190.7,
+        "actualDriveMin": 226.9,
+        "driveRatio": 0.84,
+        "proposalMiles": 88.8,
+        "actualMiles": 105.7,
+        "distanceRatio": 0.84,
+        "uniformDriveRatio": 0.85,
+        "proposalEstimatedLegPct": 33.3,
+        "actualEstimatedLegPct": 16.7
+      },
+      "only": null
+    },
+    {
+      "id": "Luke LaVergne|2026-09-03",
+      "tech": "Luke LaVergne",
+      "date": "2026-09-03",
+      "dow": "thu",
+      "proposal": {
+        "stops": 19,
+        "driveMin": 221.3,
+        "serviceMin": 285,
+        "totalMin": 506.3,
+        "hours": 8.44,
+        "miles": 102.5,
+        "observedLegs": 13,
+        "estimatedLegs": 6,
+        "nnImprovedPct": 8.9
+      },
+      "actual": {
+        "stops": 16,
+        "driveMin": 191.7,
+        "serviceMin": 240,
+        "totalMin": 431.7,
+        "hours": 7.2,
+        "miles": 95.7
+      },
+      "actualResequenced": {
+        "driveMin": 182.5,
+        "totalMin": 422.5,
+        "hours": 7.04
+      },
+      "hoursRatio": 1.17,
+      "hoursWithinTolerance": false,
+      "boardRatio": 1.2,
+      "boardWithinTolerance": false,
+      "sequence": {
+        "commonStops": 16,
+        "proposalDriveMin": 206.3,
+        "actualDriveMin": 191.7,
+        "driveRatio": 1.08,
+        "proposalMiles": 98,
+        "actualMiles": 95.7,
+        "distanceRatio": 1.02,
+        "uniformDriveRatio": 1,
+        "proposalEstimatedLegPct": 31.3,
+        "actualEstimatedLegPct": 6.3
+      },
+      "only": null
+    },
+    {
+      "id": "Luke LaVergne|2026-09-04",
+      "tech": "Luke LaVergne",
+      "date": "2026-09-04",
+      "dow": "fri",
+      "proposal": {
+        "stops": 11,
+        "driveMin": 133.6,
+        "serviceMin": 165,
+        "totalMin": 298.6,
+        "hours": 4.98,
+        "miles": 60.7,
+        "observedLegs": 5,
+        "estimatedLegs": 6,
+        "nnImprovedPct": 6.6
+      },
+      "actual": {
+        "stops": 21,
+        "driveMin": 151.8,
+        "serviceMin": 330,
+        "totalMin": 481.8,
+        "hours": 8.03,
+        "miles": 59.2
+      },
+      "actualResequenced": {
+        "driveMin": 132,
+        "totalMin": 462,
+        "hours": 7.7
+      },
+      "hoursRatio": 0.62,
+      "hoursWithinTolerance": false,
+      "boardRatio": 0.65,
+      "boardWithinTolerance": false,
+      "sequence": {
+        "commonStops": 8,
+        "proposalDriveMin": 60.4,
+        "actualDriveMin": 69.4,
+        "driveRatio": 0.87,
+        "proposalMiles": 24.9,
+        "actualMiles": 29.2,
+        "distanceRatio": 0.86,
+        "uniformDriveRatio": 0.88,
+        "proposalEstimatedLegPct": 37.5,
+        "actualEstimatedLegPct": 25
+      },
+      "only": null
+    },
+    {
+      "id": "Robert Norton|2026-08-31",
+      "tech": "Robert Norton",
+      "date": "2026-08-31",
+      "dow": "mon",
+      "proposal": {
+        "stops": 23,
+        "driveMin": 136.7,
+        "serviceMin": 339,
+        "totalMin": 475.7,
+        "hours": 7.93,
+        "miles": 57.8,
+        "observedLegs": 14,
+        "estimatedLegs": 9,
+        "nnImprovedPct": 11
+      },
+      "actual": {
+        "stops": 20,
+        "driveMin": 132.1,
+        "serviceMin": 300,
+        "totalMin": 432.1,
+        "hours": 7.2,
+        "miles": 56.5
+      },
+      "actualResequenced": {
+        "driveMin": 121.2,
+        "totalMin": 421.2,
+        "hours": 7.02
+      },
+      "hoursRatio": 1.1,
+      "hoursWithinTolerance": false,
+      "boardRatio": 1.13,
+      "boardWithinTolerance": false,
+      "sequence": {
+        "commonStops": 17,
+        "proposalDriveMin": 100.2,
+        "actualDriveMin": 110.2,
+        "driveRatio": 0.91,
+        "proposalMiles": 41.9,
+        "actualMiles": 46.6,
+        "distanceRatio": 0.9,
+        "uniformDriveRatio": 0.95,
+        "proposalEstimatedLegPct": 35.3,
+        "actualEstimatedLegPct": 11.8
+      },
+      "only": null
+    },
+    {
+      "id": "Robert Norton|2026-09-01",
+      "tech": "Robert Norton",
+      "date": "2026-09-01",
+      "dow": "tue",
+      "proposal": {
+        "stops": 21,
+        "driveMin": 126.9,
+        "serviceMin": 315,
+        "totalMin": 441.9,
+        "hours": 7.37,
+        "miles": 51.9,
+        "observedLegs": 11,
+        "estimatedLegs": 10,
+        "nnImprovedPct": 6.2
+      },
+      "actual": {
+        "stops": 25,
+        "driveMin": 160.9,
+        "serviceMin": 375,
+        "totalMin": 535.9,
+        "hours": 8.93,
+        "miles": 69.3
+      },
+      "actualResequenced": {
+        "driveMin": 143.2,
+        "totalMin": 518.2,
+        "hours": 8.64
+      },
+      "hoursRatio": 0.82,
+      "hoursWithinTolerance": false,
+      "boardRatio": 0.85,
+      "boardWithinTolerance": false,
+      "sequence": {
+        "commonStops": 20,
+        "proposalDriveMin": 120,
+        "actualDriveMin": 140,
+        "driveRatio": 0.86,
+        "proposalMiles": 48.9,
+        "actualMiles": 57.9,
+        "distanceRatio": 0.85,
+        "uniformDriveRatio": 0.9,
+        "proposalEstimatedLegPct": 45,
+        "actualEstimatedLegPct": 20
+      },
+      "only": null
+    },
+    {
+      "id": "Robert Norton|2026-09-02",
+      "tech": "Robert Norton",
+      "date": "2026-09-02",
+      "dow": "wed",
+      "proposal": {
+        "stops": 15,
+        "driveMin": 88.8,
+        "serviceMin": 225,
+        "totalMin": 313.8,
+        "hours": 5.23,
+        "miles": 35.9,
+        "observedLegs": 9,
+        "estimatedLegs": 6,
+        "nnImprovedPct": 3.5
+      },
+      "actual": {
+        "stops": 22,
+        "driveMin": 120.5,
+        "serviceMin": 330,
+        "totalMin": 450.5,
+        "hours": 7.51,
+        "miles": 45
+      },
+      "actualResequenced": {
+        "driveMin": 110.8,
+        "totalMin": 440.8,
+        "hours": 7.35
+      },
+      "hoursRatio": 0.7,
+      "hoursWithinTolerance": false,
+      "boardRatio": 0.71,
+      "boardWithinTolerance": false,
+      "sequence": {
+        "commonStops": 14,
+        "proposalDriveMin": 73.9,
+        "actualDriveMin": 83.4,
+        "driveRatio": 0.89,
+        "proposalMiles": 28.5,
+        "actualMiles": 33.6,
+        "distanceRatio": 0.85,
+        "uniformDriveRatio": 0.92,
+        "proposalEstimatedLegPct": 35.7,
+        "actualEstimatedLegPct": 28.6
+      },
+      "only": null
+    },
+    {
+      "id": "Robert Norton|2026-09-03",
+      "tech": "Robert Norton",
+      "date": "2026-09-03",
+      "dow": "thu",
+      "proposal": {
+        "stops": 21,
+        "driveMin": 141.2,
+        "serviceMin": 312,
+        "totalMin": 453.2,
+        "hours": 7.55,
+        "miles": 59.1,
+        "observedLegs": 14,
+        "estimatedLegs": 7,
+        "nnImprovedPct": 11.1
+      },
+      "actual": {
+        "stops": 21,
+        "driveMin": 145,
+        "serviceMin": 315,
+        "totalMin": 460,
+        "hours": 7.67,
+        "miles": 61.9
+      },
+      "actualResequenced": {
+        "driveMin": 126.3,
+        "totalMin": 441.3,
+        "hours": 7.35
+      },
+      "hoursRatio": 0.99,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1.03,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 18,
+        "proposalDriveMin": 121.9,
+        "actualDriveMin": 137.6,
+        "driveRatio": 0.89,
+        "proposalMiles": 51.2,
+        "actualMiles": 59.8,
+        "distanceRatio": 0.86,
+        "uniformDriveRatio": 0.89,
+        "proposalEstimatedLegPct": 27.8,
+        "actualEstimatedLegPct": 16.7
+      },
+      "only": null
+    },
+    {
+      "id": "Robert Norton|2026-09-04",
+      "tech": "Robert Norton",
+      "date": "2026-09-04",
+      "dow": "fri",
+      "proposal": {
+        "stops": 23,
+        "driveMin": 110.9,
+        "serviceMin": 345,
+        "totalMin": 455.9,
+        "hours": 7.6,
+        "miles": 44.2,
+        "observedLegs": 13,
+        "estimatedLegs": 10,
+        "nnImprovedPct": 11.1
+      },
+      "actual": {
+        "stops": 24,
+        "driveMin": 137.1,
+        "serviceMin": 360,
+        "totalMin": 497.1,
+        "hours": 8.28,
+        "miles": 57
+      },
+      "actualResequenced": {
+        "driveMin": 110.5,
+        "totalMin": 470.5,
+        "hours": 7.84
+      },
+      "hoursRatio": 0.92,
+      "hoursWithinTolerance": true,
+      "boardRatio": 0.97,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 17,
+        "proposalDriveMin": 78,
+        "actualDriveMin": 87,
+        "driveRatio": 0.9,
+        "proposalMiles": 30.3,
+        "actualMiles": 35,
+        "distanceRatio": 0.87,
+        "uniformDriveRatio": 0.9,
+        "proposalEstimatedLegPct": 35.3,
+        "actualEstimatedLegPct": 17.6
+      },
+      "only": null
+    },
+    {
+      "id": "Tavis Alexander|2026-08-31",
+      "tech": "Tavis Alexander",
+      "date": "2026-08-31",
+      "dow": "mon",
+      "proposal": {
+        "stops": 27,
+        "driveMin": 146.4,
+        "serviceMin": 405,
+        "totalMin": 551.4,
+        "hours": 9.19,
+        "miles": 55.7,
+        "observedLegs": 17,
+        "estimatedLegs": 10,
+        "nnImprovedPct": 5.8
+      },
+      "actual": {
+        "stops": 28,
+        "driveMin": 140.7,
+        "serviceMin": 435,
+        "totalMin": 575.7,
+        "hours": 9.6,
+        "miles": 48.8
+      },
+      "actualResequenced": {
+        "driveMin": 143.4,
+        "totalMin": 578.4,
+        "hours": 9.64
+      },
+      "hoursRatio": 0.96,
+      "hoursWithinTolerance": true,
+      "boardRatio": 0.95,
+      "boardWithinTolerance": true,
+      "sequence": {
+        "commonStops": 19,
+        "proposalDriveMin": 109.2,
+        "actualDriveMin": 110.1,
+        "driveRatio": 0.99,
+        "proposalMiles": 42.7,
+        "actualMiles": 40.7,
+        "distanceRatio": 1.05,
+        "uniformDriveRatio": 1.04,
+        "proposalEstimatedLegPct": 36.8,
+        "actualEstimatedLegPct": 15.8
+      },
+      "only": null
+    },
+    {
+      "id": "Tavis Alexander|2026-09-01",
+      "tech": "Tavis Alexander",
+      "date": "2026-09-01",
+      "dow": "tue",
+      "proposal": {
+        "stops": 30,
+        "driveMin": 190.4,
+        "serviceMin": 465,
+        "totalMin": 655.4,
+        "hours": 10.92,
+        "miles": 64.4,
+        "observedLegs": 17,
+        "estimatedLegs": 13,
+        "nnImprovedPct": 12.4
+      },
+      "actual": {
+        "stops": 28,
+        "driveMin": 180.1,
+        "serviceMin": 420,
+        "totalMin": 600.1,
+        "hours": 10,
+        "miles": 56.7
+      },
+      "actualResequenced": {
+        "driveMin": 161.5,
+        "totalMin": 581.5,
+        "hours": 9.69
+      },
+      "hoursRatio": 1.09,
+      "hoursWithinTolerance": true,
+      "boardRatio": 1.13,
+      "boardWithinTolerance": false,
+      "sequence": {
+        "commonStops": 20,
+        "proposalDriveMin": 147.4,
+        "actualDriveMin": 161.1,
+        "driveRatio": 0.91,
+        "proposalMiles": 49.6,
+        "actualMiles": 54.6,
+        "distanceRatio": 0.91,
+        "uniformDriveRatio": 0.94,
+        "proposalEstimatedLegPct": 30,
+        "actualEstimatedLegPct": 25
+      },
+      "only": null
+    },
+    {
+      "id": "Tavis Alexander|2026-09-02",
+      "tech": "Tavis Alexander",
+      "date": "2026-09-02",
+      "dow": "wed",
+      "proposal": {
+        "stops": 32,
+        "driveMin": 104.7,
+        "serviceMin": 420,
+        "totalMin": 524.7,
+        "hours": 8.74,
+        "miles": 35.9,
+        "observedLegs": 20,
+        "estimatedLegs": 12,
+        "nnImprovedPct": 14.1
+      },
+      "actual": {
+        "stops": 23,
+        "driveMin": 89.9,
+        "serviceMin": 309,
+        "totalMin": 398.9,
+        "hours": 6.65,
+        "miles": 31
+      },
+      "actualResequenced": {
+        "driveMin": 68.9,
+        "totalMin": 377.9,
+        "hours": 6.3
+      },
+      "hoursRatio": 1.32,
+      "hoursWithinTolerance": false,
+      "boardRatio": 1.39,
+      "boardWithinTolerance": false,
+      "sequence": {
+        "commonStops": 20,
+        "proposalDriveMin": 51.7,
+        "actualDriveMin": 58.9,
+        "driveRatio": 0.88,
+        "proposalMiles": 16.1,
+        "actualMiles": 18.5,
+        "distanceRatio": 0.87,
+        "uniformDriveRatio": 0.96,
+        "proposalEstimatedLegPct": 25,
+        "actualEstimatedLegPct": 10
+      },
+      "only": null
+    },
+    {
+      "id": "Tavis Alexander|2026-09-03",
+      "tech": "Tavis Alexander",
+      "date": "2026-09-03",
+      "dow": "thu",
+      "proposal": {
+        "stops": 20,
+        "driveMin": 124.5,
+        "serviceMin": 300,
+        "totalMin": 424.5,
+        "hours": 7.08,
+        "miles": 47.2,
+        "observedLegs": 8,
+        "estimatedLegs": 12,
+        "nnImprovedPct": 10.6
+      },
+      "actual": {
+        "stops": 23,
+        "driveMin": 199.1,
+        "serviceMin": 345,
+        "totalMin": 544.1,
+        "hours": 9.07,
+        "miles": 85
+      },
+      "actualResequenced": {
+        "driveMin": 134.1,
+        "totalMin": 479.1,
+        "hours": 7.98
+      },
+      "hoursRatio": 0.78,
+      "hoursWithinTolerance": false,
+      "boardRatio": 0.89,
+      "boardWithinTolerance": false,
+      "sequence": {
+        "commonStops": 16,
+        "proposalDriveMin": 86.3,
+        "actualDriveMin": 117.1,
+        "driveRatio": 0.74,
+        "proposalMiles": 31.9,
+        "actualMiles": 47.7,
+        "distanceRatio": 0.67,
+        "uniformDriveRatio": 0.82,
+        "proposalEstimatedLegPct": 56.3,
+        "actualEstimatedLegPct": 12.5
+      },
+      "only": null
+    },
+    {
+      "id": "Tavis Alexander|2026-09-04",
+      "tech": "Tavis Alexander",
+      "date": "2026-09-04",
+      "dow": "fri",
+      "proposal": {
+        "stops": 18,
+        "driveMin": 155.3,
+        "serviceMin": 270,
+        "totalMin": 425.3,
+        "hours": 7.09,
+        "miles": 68.9,
+        "observedLegs": 10,
+        "estimatedLegs": 8,
+        "nnImprovedPct": 16.5
+      },
+      "actual": {
+        "stops": 21,
+        "driveMin": 272.2,
+        "serviceMin": 315,
+        "totalMin": 587.2,
+        "hours": 9.79,
+        "miles": 130.6
+      },
+      "actualResequenced": {
+        "driveMin": 165.9,
+        "totalMin": 480.9,
+        "hours": 8.01
+      },
+      "hoursRatio": 0.72,
+      "hoursWithinTolerance": false,
+      "boardRatio": 0.88,
+      "boardWithinTolerance": false,
+      "sequence": {
+        "commonStops": 18,
+        "proposalDriveMin": 155.3,
+        "actualDriveMin": 190.3,
+        "driveRatio": 0.82,
+        "proposalMiles": 68.9,
+        "actualMiles": 90.5,
+        "distanceRatio": 0.76,
+        "uniformDriveRatio": 0.87,
+        "proposalEstimatedLegPct": 44.4,
+        "actualEstimatedLegPct": 5.6
+      },
+      "only": null
+    }
+  ],
+  "mismatches": [
+    {
+      "key": "8300-2275366634",
+      "title": "Rick Little (5th Visit)",
+      "zip": "98466",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Luke LaVergne",
+      "proposedDate": "2026-09-04",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "tech+day"
+    },
+    {
+      "key": "8419-2296253681",
+      "title": "Kim Anderson",
+      "zip": "98092",
+      "proposedTech": "Robert Norton",
+      "actualTech": "Robert Norton",
+      "proposedDate": "2026-09-01",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "7517-1970470240",
+      "title": "Balbir Houthi",
+      "zip": "98001",
+      "proposedTech": "Robert Norton",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-03",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "tech+day"
+    },
+    {
+      "key": "8098-2302898802",
+      "title": "Gyasi Ross",
+      "zip": "98178",
+      "proposedTech": "Tavis Alexander",
+      "actualTech": "Tavis Alexander",
+      "proposedDate": "2026-09-01",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8454-2302702231",
+      "title": "John Croonquist",
+      "zip": "98188",
+      "proposedTech": "Tavis Alexander",
+      "actualTech": "Tavis Alexander",
+      "proposedDate": "2026-09-01",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8413-2301914123",
+      "title": "Rick Broderick",
+      "zip": "98168",
+      "proposedTech": "Tavis Alexander",
+      "actualTech": "Tavis Alexander",
+      "proposedDate": "2026-09-01",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8030-2301955413",
+      "title": "Briana Watson",
+      "zip": "98168",
+      "proposedTech": "Tavis Alexander",
+      "actualTech": "Tavis Alexander",
+      "proposedDate": "2026-09-01",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8451-2301461807",
+      "title": "Holy Chea",
+      "zip": "98031",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-03",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "6492-1750196089",
+      "title": "Greg Hastings",
+      "zip": "98039",
+      "proposedTech": "Tavis Alexander",
+      "actualTech": "Alias Franks",
+      "proposedDate": "2026-09-03",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "tech+day"
+    },
+    {
+      "key": "8448-2301451770",
+      "title": "Kelly Wan",
+      "zip": "98168",
+      "proposedTech": "Tavis Alexander",
+      "actualTech": "Tavis Alexander",
+      "proposedDate": "2026-09-01",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8475-2306272044",
+      "title": "Constance Pivonka",
+      "zip": "98031",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-01",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8065-2232218120",
+      "title": "Aleyna Yamaguchi",
+      "zip": "98168",
+      "proposedTech": "Tavis Alexander",
+      "actualTech": "Tavis Alexander",
+      "proposedDate": "2026-09-01",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "7962-2201297328",
+      "title": "Joann Mortenson",
+      "zip": "98042",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Robert Norton",
+      "proposedDate": "2026-08-31",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "tech"
+    },
+    {
+      "key": "8457-2303099608",
+      "title": "Caroline Irwin",
+      "zip": "98516",
+      "proposedTech": "Luke LaVergne",
+      "actualTech": "Luke LaVergne",
+      "proposedDate": "2026-09-03",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8470-2305378584",
+      "title": "Alice Collins (SET)",
+      "zip": "98146",
+      "proposedTech": "Tavis Alexander",
+      "actualTech": "Tavis Alexander",
+      "proposedDate": "2026-09-01",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8449-2301457003",
+      "title": "Steve Vernon",
+      "zip": "98516",
+      "proposedTech": "Luke LaVergne",
+      "actualTech": "Luke LaVergne",
+      "proposedDate": "2026-09-03",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8122-2242745157",
+      "title": "Bob Roggenbach",
+      "zip": "98042",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-04",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "7971-2205670730",
+      "title": "David Marsh",
+      "zip": "98042",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-03",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8459-2303103317",
+      "title": "Melody Deisher",
+      "zip": "98058",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-03",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "7634-2019950707",
+      "title": "Michael Blondin",
+      "zip": "98513",
+      "proposedTech": "Luke LaVergne",
+      "actualTech": "Luke LaVergne",
+      "proposedDate": "2026-09-03",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "6500-1770760668",
+      "title": "Sheri Powers",
+      "zip": "98058",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-04",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "6628-2300151891",
+      "title": "Shana Valencia",
+      "zip": "98038",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Robert Norton",
+      "proposedDate": "2026-08-31",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "tech"
+    },
+    {
+      "key": "8201-2259577854",
+      "title": "Jenna Elberts",
+      "zip": "98146",
+      "proposedTech": "Tavis Alexander",
+      "actualTech": "Tavis Alexander",
+      "proposedDate": "2026-09-01",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8453-2301467891",
+      "title": "Polly Prince",
+      "zip": "98055",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-03",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "7837-2115889337",
+      "title": "Karen Baker",
+      "zip": "98055",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-04",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8200-2259574191",
+      "title": "GenCare - 1 Year Mole Control Service",
+      "zip": "98055",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-04",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "7987-2212575340",
+      "title": "David  Lloyd",
+      "zip": "98058",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-04",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8112-2240793540",
+      "title": "Colleen Hunter",
+      "zip": "98146",
+      "proposedTech": "Tavis Alexander",
+      "actualTech": "Tavis Alexander",
+      "proposedDate": "2026-09-01",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8447-2301448513",
+      "title": "Tia Gong",
+      "zip": "98008",
+      "proposedTech": "Alias Franks",
+      "actualTech": "Alias Franks",
+      "proposedDate": "2026-09-02",
+      "actualDate": "2026-08-31",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8302-2275942854",
+      "title": "Spencer Jacobs (5th Visit)",
+      "zip": "98125",
+      "proposedTech": "Alias Franks",
+      "actualTech": "Alias Franks",
+      "proposedDate": "2026-09-01",
+      "actualDate": "2026-08-25",
+      "actualSource": "stamp-offweek",
+      "wrong": "day"
+    },
+    {
+      "key": "5298-1741959807",
+      "title": "Zach Usher",
+      "zip": "98108",
+      "proposedTech": "Tavis Alexander",
+      "actualTech": "Tavis Alexander",
+      "proposedDate": "2026-08-31",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8318-2277596699",
+      "title": "Dave Sinner",
+      "zip": "98338",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Luke LaVergne",
+      "proposedDate": "2026-09-01",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "tech"
+    },
+    {
+      "key": "7747-2306559626",
+      "title": "Leeroy Perkins",
+      "zip": "98338",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Luke LaVergne",
+      "proposedDate": "2026-09-01",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "tech"
+    },
+    {
+      "key": "8432-2297638277",
+      "title": "Stacey Boydell",
+      "zip": "98338",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Luke LaVergne",
+      "proposedDate": "2026-09-01",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "tech"
+    },
+    {
+      "key": "5540-1718978553",
+      "title": "Chris Thornhill",
+      "zip": "98338",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Luke LaVergne",
+      "proposedDate": "2026-09-01",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "tech"
+    },
+    {
+      "key": "7449-2306558170",
+      "title": "Sally  Gasser",
+      "zip": "98051",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Robert Norton",
+      "proposedDate": "2026-09-03",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "tech+day"
+    },
+    {
+      "key": "5727-1902275237",
+      "title": "Eric Crossley",
+      "zip": "98338",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Luke LaVergne",
+      "proposedDate": "2026-09-01",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "tech"
+    },
+    {
+      "key": "5413-1718745013",
+      "title": "Ron Houlihan",
+      "zip": "98338",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Luke LaVergne",
+      "proposedDate": "2026-09-01",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "tech"
+    },
+    {
+      "key": "7735-2300147947",
+      "title": "Mike Coile",
+      "zip": "98051",
+      "proposedTech": "Robert Norton",
+      "actualTech": "Robert Norton",
+      "proposedDate": "2026-08-31",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "7771-2300255166",
+      "title": "McKenzie  Dickson",
+      "zip": "98051",
+      "proposedTech": "Robert Norton",
+      "actualTech": "Robert Norton",
+      "proposedDate": "2026-08-31",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "7320-1909920913",
+      "title": "Mike Menigoz",
+      "zip": "98374",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-02",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "7725-2057513406",
+      "title": "Suzanne Gullace",
+      "zip": "98360",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Luke LaVergne",
+      "proposedDate": "2026-09-01",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "tech"
+    },
+    {
+      "key": "8375-2288867788",
+      "title": "Johnny Evans",
+      "zip": "98374",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-02",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "7450-2300307120",
+      "title": "Amy Thomas",
+      "zip": "98051",
+      "proposedTech": "Robert Norton",
+      "actualTech": "Robert Norton",
+      "proposedDate": "2026-08-31",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8431-2297636572",
+      "title": "Julie Woods",
+      "zip": "98375",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-02",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8373-2288590962",
+      "title": "Carey Jenkins",
+      "zip": "98102",
+      "proposedTech": "Tavis Alexander",
+      "actualTech": "Alias Franks",
+      "proposedDate": "2026-09-01",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "tech"
+    },
+    {
+      "key": "7884-2153405149",
+      "title": "Matt Arnold (PROBLEM JOB)",
+      "zip": "98375",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-02",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "5024-1702511846",
+      "title": "Brienna Dyberg",
+      "zip": "98375",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-02",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8118-2304496381",
+      "title": "Patty  Ring (PROBLEM JOB)",
+      "zip": "98375",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-02",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8133-2244933522",
+      "title": "Shane Taylor",
+      "zip": "98375",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-02",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "7839-2117235404",
+      "title": "Jason Andrews",
+      "zip": "98446",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-02",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "4608-2295808602",
+      "title": "Kristi Rice",
+      "zip": "98373",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-02",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "5440-2027785822",
+      "title": "Steve Hewitt",
+      "zip": "98092",
+      "proposedTech": "Robert Norton",
+      "actualTech": "Robert Norton",
+      "proposedDate": "2026-08-31",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "7723-2056042316",
+      "title": "Chad Peterson",
+      "zip": "98363",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-02",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "7737-2062875612",
+      "title": "James Evenson",
+      "zip": "98373",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-02",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "7764-2071869386",
+      "title": "Michallea Schuelke",
+      "zip": "98373",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-02",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "5780-1880520514",
+      "title": "Susy Bevans",
+      "zip": "98372",
+      "proposedTech": "Cory Ventura",
+      "actualTech": "Cory Ventura",
+      "proposedDate": "2026-09-02",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8359-2286336675",
+      "title": "Mary Suhadolnik",
+      "zip": "98116",
+      "proposedTech": "Tavis Alexander",
+      "actualTech": "Tavis Alexander",
+      "proposedDate": "2026-08-31",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8015-2300631052",
+      "title": "Toby Aldrich",
+      "zip": "98116",
+      "proposedTech": "Tavis Alexander",
+      "actualTech": "Tavis Alexander",
+      "proposedDate": "2026-08-31",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "day"
+    },
+    {
+      "key": "8346-2284399350",
+      "title": "Kenton Phillips",
+      "zip": "98116",
+      "proposedTech": "Tavis Alexander",
+      "actualTech": "Tavis Alexander",
+      "proposedDate": "2026-08-31",
+      "actualDate": "2026-09-01",
+      "actualSource": "stamp",
+      "wrong": "day"
+    }
+  ],
+  "mismatchTotal": 150,
+  "droppedKeys": [],
+  "inventedKeys": [],
+  "weekendKeys": [],
+  "policyNotes": {
+    "tiers": {
+      "job": 487,
+      "zip": 44,
+      "nearestStart": 1,
+      "floor": 0
+    },
+    "jobsWithHistory": 788,
+    "historyVisits": 1329,
+    "historyDays": 12,
+    "comment": "History is every completed visit strictly before the golden week Monday. No lookahead, no oracle."
+  }
+}

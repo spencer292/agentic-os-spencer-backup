@@ -1,0 +1,127 @@
+[load] plan     C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\data\optimo-routes
+[load] plan     24 day files, 2577 planned stops
+[load] actual   C:\Agentic-os-got-moles\projects\briefs\route-engine\data\completed-visits_2026-08-17_2026-09-17.json
+[load] actual   2793 completions with stamps (0 unkeyable)
+[load] stamps   C:\Agentic-os-got-moles\projects\briefs\route-engine\data\route-day-drive_2026-08-17_2026-09-17.json
+[load] stamps   113 stamp-derived route-days
+[join] 2577 distinct planned orders (0 planned on more than one day)
+
+[write] C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\data\plan-vs-actual.json  (1.48 MB)
+
+=== WINDOW TOTALS ===
+{
+ "plannedStops": 2577,
+ "matched": 2506,
+ "movedDay": 11,
+ "movedTech": 31,
+ "ghost": 29,
+ "completions": 2793,
+ "offMap": 245,
+ "eveningStamps": 15,
+ "routeDaysPlanned": 113,
+ "routeDaysActual": 114,
+ "routeDaysBoth": 112,
+ "routeDaysPlanOnly": 1,
+ "routeDaysActualOnly": 2,
+ "matchedPct": 97.2,
+ "arrivalDeltaVsDeparture": {
+  "n": 2506,
+  "median": -5.6,
+  "p10": -69.9,
+  "p90": 81.3,
+  "mean": 3.9,
+  "min": -210.4,
+  "max": 487.6
+ },
+ "arrivalDeltaVsArrival": {
+  "n": 2506,
+  "median": 8.7,
+  "p10": -54.9,
+  "p90": 96.1,
+  "mean": 18.6,
+  "min": -198.4,
+  "max": 499.6
+ }
+}
+
+=== WEEKLY ===
+2026-08-17  rdays 26  planned  570  matched  97.7%  movedDay  1.1%  movedTech  0.4%  ghost   5  offMap  44  movedDayIn   6  completed  609  evening   4  delta med -16.5 p90 42.3
+2026-08-24  rdays 25  planned  576  matched  95.5%  movedDay  0.3%  movedTech  3.5%  ghost   4  offMap  32  movedDayIn   2  completed  604  evening   9  delta med -19.7 p90 106.5
+2026-08-31  rdays 24  planned  553  matched  98.4%  movedDay  0.2%  movedTech  0.4%  ghost   6  offMap  36  movedDayIn   1  completed  583  evening   0  delta med -2.7 p90 63.2
+2026-09-07  rdays 20  planned  454  matched  97.6%  movedDay  0.2%  movedTech  1.1%  ghost   5  offMap  27  movedDayIn   1  completed  476  evening   1  delta med 16.1 p90 78.2
+2026-09-14  rdays 20  planned  424  matched  97.2%  movedDay  0.2%  movedTech  0.5%  ghost   9  offMap 106  movedDayIn   1  completed  521  evening   1  delta med 2.3 p90 191.3
+
+=== PER DRIVER ===
+Alias Franks     rdays 23  planned  541  matched  99.1%  delta-vs-departure med    20.8 p90     120  delta-vs-arrival med    36.1  spanDelta med 86.6  startDelta med 17.7  evening 12
+Cory Ventura     rdays 22  planned  515  matched  97.3%  delta-vs-departure med    11.8 p90      83  delta-vs-arrival med    23.9  spanDelta med -41.7  startDelta med 49.1  evening 0
+Luke LaVergne    rdays 23  planned  429  matched  92.5%  delta-vs-departure med   -34.5 p90    55.8  delta-vs-arrival med   -19.5  spanDelta med 2.9  startDelta med -13.3  evening 1
+Robert Norton    rdays 23  planned  511  matched  97.8%  delta-vs-departure med    -4.8 p90    70.3  delta-vs-arrival med    10.2  spanDelta med 3  startDelta med 15  evening 1
+Tavis Alexander  rdays 24  planned  581  matched  98.5%  delta-vs-departure med     -31 p90      37  delta-vs-arrival med   -15.5  spanDelta med -32.7  startDelta med 9.1  evening 1
+
+=== GOLDEN WEEKS 2026-08-24 / 2026-08-31 ===
+2026-08-24 mon Alias Franks     stops 27/27  span  539.9/   553 (+13.1)  drive plan 134.9 stamp    163  svc 405/405  m/md/mt/gh 27/0/0/0  in off/md/mt 0/0/0  eve 0
+2026-08-24 mon Cory Ventura     stops 30/30  span  502.2/ 457.3 (-44.9)  drive plan 130.2 stamp   85.3  svc 372/384  m/md/mt/gh 29/0/0/1  in off/md/mt 1/0/0  eve 0
+2026-08-24 mon Luke LaVergne    stops 23/23  span  592.3/ 486.5 (-105.8)  drive plan 232.3 stamp  141.5  svc 360/360  m/md/mt/gh 23/0/0/0  in off/md/mt 0/0/0  eve 0
+2026-08-24 mon Robert Norton    stops 23/22  span  465.4/ 519.4 (+54)  drive plan 120.4 stamp  204.4  svc 345/330  m/md/mt/gh 22/0/0/1  in off/md/mt 0/0/0  eve 0
+2026-08-24 mon Tavis Alexander  stops 27/26  span    530/ 463.9 (-66.1)  drive plan   125 stamp   73.9  svc 405/405  m/md/mt/gh 26/1/0/0  in off/md/mt 0/0/0  eve 0
+2026-08-25 tue Alias Franks     stops 19/22  span  437.2/ 828.8 (+391.6)  drive plan 137.2 stamp  243.2  svc 300/360  m/md/mt/gh 19/0/0/0  in off/md/mt 3/0/0  eve 1
+2026-08-25 tue Cory Ventura     stops 23/23  span  434.8/ 334.3 (-100.5)  drive plan 158.8 stamp   70.3  svc 276/276  m/md/mt/gh 23/0/0/0  in off/md/mt 0/0/0  eve 0
+2026-08-25 tue Luke LaVergne    stops 17/17  span  497.6/   479 (-18.6)  drive plan 227.6 stamp   97.7  svc 270/270  m/md/mt/gh 17/0/0/0  in off/md/mt 0/0/0  eve 0
+2026-08-25 tue Robert Norton    stops 27/30  span  552.1/ 862.3 (+310.2)  drive plan 147.1 stamp    7.6  svc 405/480  m/md/mt/gh 27/0/0/0  in off/md/mt 3/0/0  eve 1
+2026-08-25 tue Tavis Alexander  stops 28/33  span  653.7/ 799.7 (+146)  drive plan 188.7 stamp   40.4  svc 465/585  m/md/mt/gh 28/0/0/0  in off/md/mt 4/1/0  eve 1
+2026-08-26 wed Alias Franks     stops 22/25  span  498.4/ 741.1 (+242.7)  drive plan 168.4 stamp  336.1  svc 330/420  m/md/mt/gh 22/0/0/0  in off/md/mt 3/0/0  eve 4
+2026-08-26 wed Cory Ventura     stops 20/20  span  326.5/ 254.3 (-72.2)  drive plan  86.5 stamp   26.3  svc 240/240  m/md/mt/gh 20/0/0/0  in off/md/mt 0/0/0  eve 0
+2026-08-26 wed Luke LaVergne    stops 14/14  span  437.1/ 396.6 (-40.5)  drive plan 227.1 stamp  186.6  svc 210/225  m/md/mt/gh 14/0/0/0  in off/md/mt 0/0/0  eve 0
+2026-08-26 wed Robert Norton    stops 25/26  span  476.4/ 445.8 (-30.6)  drive plan 101.4 stamp   55.8  svc 375/405  m/md/mt/gh 25/0/0/0  in off/md/mt 1/0/0  eve 0
+2026-08-26 wed Tavis Alexander  stops 32/33  span  568.3/ 442.5 (-125.8)  drive plan 120.3 stamp   -4.8  svc 448/462.3  m/md/mt/gh 32/0/0/0  in off/md/mt 1/0/0  eve 0
+2026-08-27 thu Alias Franks     stops 24/25  span  504.9/ 651.8 (+146.9)  drive plan 144.8 stamp  276.8  svc 360/390  m/md/mt/gh 24/0/0/0  in off/md/mt 1/0/0  eve 0
+2026-08-27 thu Cory Ventura     stops 29/33  span  487.7/   509 (+21.3)  drive plan 139.7 stamp     89  svc 348/432  m/md/mt/gh 29/0/0/0  in off/md/mt 4/0/0  eve 0
+2026-08-27 thu Luke LaVergne    stops 20/21  span  494.6/ 565.3 (+70.7)  drive plan 194.6 stamp    141  svc 300/345  m/md/mt/gh 19/0/0/1  in off/md/mt 2/0/0  eve 0
+2026-08-27 thu Robert Norton    stops 23/25  span  492.6/ 595.3 (+102.7)  drive plan 132.6 stamp  220.3  svc 360/390  m/md/mt/gh 23/0/0/0  in off/md/mt 2/0/0  eve 0
+2026-08-27 thu Tavis Alexander  stops 26/26  span  530.2/ 457.9 (-72.3)  drive plan 140.2 stamp   67.9  svc 390/405  m/md/mt/gh 24/1/0/1  in off/md/mt 2/0/0  eve 0
+2026-08-28 fri Alias Franks     stops 28/29  span  556.6/ 660.6 (+104)  drive plan 121.6 stamp  225.6  svc 435/450  m/md/mt/gh 28/0/0/0  in off/md/mt 1/0/0  eve 2
+2026-08-28 Cory Ventura     ACTUAL ONLY, no plan stops 21
+2026-08-28 Luke LaVergne    PLAN ONLY, no completions stops 20
+2026-08-28 fri Robert Norton    stops 20/22  span  384.9/   429 (+44.1)  drive plan  84.9 stamp     84  svc 300/360  m/md/mt/gh 20/0/0/0  in off/md/mt 2/0/0  eve 0
+2026-08-28 fri Tavis Alexander  stops 29/31  span  628.1/ 555.2 (-72.9)  drive plan 193.1 stamp   90.2  svc 435/480  m/md/mt/gh 29/0/0/0  in off/md/mt 1/1/0  eve 0
+2026-08-31 mon Alias Franks     stops 25/25  span  497.9/ 467.2 (-30.7)  drive plan 122.9 stamp  107.2  svc 375/375  m/md/mt/gh 25/0/0/0  in off/md/mt 0/0/0  eve 0
+2026-08-31 mon Cory Ventura     stops 27/26  span  478.3/ 359.3 (-119)  drive plan 118.3 stamp   23.3  svc 360/348  m/md/mt/gh 26/0/0/1  in off/md/mt 0/0/0  eve 0
+2026-08-31 mon Luke LaVergne    stops 18/20  span  491.2/ 513.7 (+22.5)  drive plan 191.2 stamp  183.7  svc 300/345  m/md/mt/gh 18/0/0/0  in off/md/mt 1/1/0  eve 0
+2026-08-31 mon Robert Norton    stops 21/21  span  428.5/ 357.4 (-71.1)  drive plan 113.5 stamp   57.4  svc 315/315  m/md/mt/gh 21/0/0/0  in off/md/mt 0/0/0  eve 0
+2026-08-31 mon Tavis Alexander  stops 28/29  span  565.7/   457 (-108.7)  drive plan 130.7 stamp     22  svc 435/450  m/md/mt/gh 28/0/0/0  in off/md/mt 1/0/0  eve 0
+2026-09-01 tue Alias Franks     stops 28/27  span  652.5/ 587.4 (-65.1)  drive plan 172.5 stamp  152.4  svc 480/450  m/md/mt/gh 27/0/1/0  in off/md/mt 0/0/0  eve 0
+2026-09-01 tue Cory Ventura     stops 22/22  span  431.3/ 383.7 (-47.6)  drive plan 143.3 stamp  107.7  svc 288/288  m/md/mt/gh 22/0/0/0  in off/md/mt 0/0/0  eve 0
+2026-09-01 tue Luke LaVergne    stops 25/24  span  634.2/ 555.5 (-78.7)  drive plan 259.2 stamp  110.7  svc 375/360  m/md/mt/gh 24/0/0/1  in off/md/mt 0/0/0  eve 0
+2026-09-01 tue Robert Norton    stops 25/25  span  524.5/ 513.5 (-11)  drive plan 149.5 stamp  153.5  svc 375/375  m/md/mt/gh 25/0/0/0  in off/md/mt 0/0/0  eve 0
+2026-09-01 tue Tavis Alexander  stops 30/32  span  628.9/ 596.2 (-32.7)  drive plan 163.9 stamp   71.1  svc 465/540  m/md/mt/gh 29/0/0/1  in off/md/mt 2/0/1  eve 0
+2026-09-02 wed Alias Franks     stops 21/22  span  517.3/   604 (+86.7)  drive plan 172.3 stamp    259  svc 345/360  m/md/mt/gh 21/0/0/0  in off/md/mt 1/0/0  eve 0
+2026-09-02 wed Cory Ventura     stops 23/29  span  358.1/ 383.5 (+25.4)  drive plan  82.1 stamp  -12.5  svc 276/408  m/md/mt/gh 23/0/0/0  in off/md/mt 6/0/0  eve 0
+2026-09-02 wed Luke LaVergne    stops 15/17  span  459.3/   532 (+72.7)  drive plan 219.3 stamp    232  svc 240/315  m/md/mt/gh 14/0/0/1  in off/md/mt 3/0/0  eve 0
+2026-09-02 wed Robert Norton    stops 22/22  span  450.5/ 448.9 (-1.6)  drive plan 120.5 stamp  133.9  svc 330/330  m/md/mt/gh 22/0/0/0  in off/md/mt 0/0/0  eve 0
+2026-09-02 wed Tavis Alexander  stops 23/24  span  398.9/ 380.7 (-18.2)  drive plan  89.9 stamp   57.6  svc 309/338.2  m/md/mt/gh 23/0/0/0  in off/md/mt 1/0/0  eve 0
+2026-09-03 thu Alias Franks     stops 21/21  span  471.5/ 493.1 (+21.6)  drive plan 156.5 stamp  193.1  svc 315/315  m/md/mt/gh 21/0/0/0  in off/md/mt 0/0/0  eve 0
+2026-09-03 thu Cory Ventura     stops 22/24  span    364/   374 (+10)  drive plan   100 stamp     86  svc 264/300  m/md/mt/gh 22/0/0/0  in off/md/mt 2/0/0  eve 0
+2026-09-03 thu Luke LaVergne    stops 17/20  span  411.2/ 533.3 (+122.1)  drive plan 156.2 stamp   89.8  svc 255/360  m/md/mt/gh 16/1/0/0  in off/md/mt 4/0/0  eve 0
+2026-09-03 thu Robert Norton    stops 25/26  span  512.9/ 515.9 (+3)  drive plan 122.9 stamp  125.9  svc 390/405  m/md/mt/gh 25/0/0/0  in off/md/mt 1/0/0  eve 0
+2026-09-03 thu Tavis Alexander  stops 22/27  span  489.3/ 516.8 (+27.5)  drive plan 144.3 stamp   96.8  svc 345/435  m/md/mt/gh 21/0/0/1  in off/md/mt 6/0/0  eve 0
+2026-09-04 fri Alias Franks     stops 26/25  span  545.7/ 481.3 (-64.4)  drive plan 155.7 stamp  121.3  svc 390/375  m/md/mt/gh 25/0/1/0  in off/md/mt 0/0/0  eve 0
+2026-09-04 fri Luke LaVergne    stops 22/23  span  480.1/ 466.2 (-13.9)  drive plan 135.1 stamp  136.2  svc 345/345  m/md/mt/gh 22/0/0/0  in off/md/mt 1/0/0  eve 0
+2026-09-04 fri Robert Norton    stops 25/27  span    504/ 615.5 (+111.5)  drive plan   129 stamp  180.5  svc 375/450  m/md/mt/gh 24/0/0/1  in off/md/mt 3/0/0  eve 0
+2026-09-04 fri Tavis Alexander  stops 20/25  span  460.4/ 517.4 (+57)  drive plan 160.4 stamp  112.4  svc 300/435  m/md/mt/gh 20/0/0/0  in off/md/mt 4/0/1  eve 0
+
+=== WORST 10 ROUTE-DAYS BY SPAN OVERRUN ===
+2026-08-25 Alias Franks     plan  437.2 actual  828.8 (+391.6)  07:13->07:27 / 14:30->21:16  stops 19/22  :: 1 evening stamp after 18:30 (admin); 3 unplanned stops worked; 241m gap between stamps
+2026-08-25 Robert Norton    plan  552.1 actual  862.3 (+310.2)  07:15->07:05 / 16:27->21:28  stops 27/30  :: 1 evening stamp after 18:30 (admin); 3 unplanned stops worked; 390m gap between stamps
+2026-09-09 Luke LaVergne    plan  538.9 actual  800.8 (+261.9)  07:31->07:18 / 16:30->20:39  stops 17/16  :: 1 evening stamp after 18:30 (admin); 204m gap between stamps
+2026-09-14 Luke LaVergne    plan  177.5 actual  424.2 (+246.7)  07:51->07:02 / 10:49->14:06  stops 7/22  :: 15 unplanned stops worked
+2026-08-26 Alias Franks     plan  498.4 actual  741.1 (+242.7)  07:05->07:29 / 15:23->19:51  stops 22/25  :: 4 evening stamps after 18:30 (admin); 3 unplanned stops worked
+2026-08-19 Alias Franks     plan  499.7 actual  739.1 (+239.4)  06:56->07:17 / 15:16->19:36  stops 22/27  :: 3 evening stamps after 18:30 (admin); 5 unplanned stops worked
+2026-09-14 Robert Norton    plan  186.5 actual  415.7 (+229.2)  07:36->07:35 / 10:43->14:31  stops 9/22  :: 13 unplanned stops worked
+2026-09-14 Alias Franks     plan  248.9 actual  471.9 (+223)  07:17->07:28 / 11:26->15:20  stops 13/28  :: 15 unplanned stops worked
+2026-09-14 Cory Ventura     plan  168.1 actual  381.5 (+213.4)  07:39->07:38 / 10:27->13:59  stops 10/32  :: 22 unplanned stops worked
+2026-09-14 Tavis Alexander  plan  231.7 actual  410.4 (+178.7)  07:48->07:38 / 11:40->14:29  stops 13/29  :: 16 unplanned stops worked
+
+=== MOVED-DAY SHIFT HISTOGRAM (days, negative = done early) ===
+{"1":2,"4":1,"-1":2,"-2":5,"-3":1}
+
+[done]

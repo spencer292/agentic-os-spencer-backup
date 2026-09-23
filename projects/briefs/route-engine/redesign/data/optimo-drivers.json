@@ -1,0 +1,71 @@
+{
+ "generatedAt": "2026-09-18T15:30:45.923Z",
+ "note": "get_drivers returns AUTH_KEY_UNKNOWN on this API key, so the roster is inferred from routes. Driver start/end locations are not exposed by any endpoint available here.",
+ "depots": [
+  {
+   "id": "97f3605a1fd2635c802d1cfaf470ab77",
+   "data": {
+    "name": "Depot",
+    "type": "depot",
+    "visitDuration": 0,
+    "enabled": true,
+    "depotLocation": {
+     "address": "27009 155th St E, Buckley, WA 98321, USA",
+     "latitude": 47.1172496,
+     "longitude": -122.0697043
+    },
+    "isMainDepot": true
+   },
+   "success": true
+  }
+ ],
+ "drivers": [
+  {
+   "driverSerial": "Alias Franks",
+   "driverExternalId": "",
+   "daysWithRoutes": 23,
+   "totalStops": 541,
+   "vehicles": [],
+   "firstDate": "2026-08-17",
+   "lastDate": "2026-09-17"
+  },
+  {
+   "driverSerial": "Cory Ventura",
+   "driverExternalId": "",
+   "daysWithRoutes": 21,
+   "totalStops": 515,
+   "vehicles": [
+    "001"
+   ],
+   "firstDate": "2026-08-17",
+   "lastDate": "2026-09-17"
+  },
+  {
+   "driverSerial": "Luke LaVergne",
+   "driverExternalId": "",
+   "daysWithRoutes": 23,
+   "totalStops": 429,
+   "vehicles": [],
+   "firstDate": "2026-08-17",
+   "lastDate": "2026-09-17"
+  },
+  {
+   "driverSerial": "Robert Norton",
+   "driverExternalId": "",
+   "daysWithRoutes": 23,
+   "totalStops": 511,
+   "vehicles": [],
+   "firstDate": "2026-08-17",
+   "lastDate": "2026-09-17"
+  },
+  {
+   "driverSerial": "Tavis Alexander",
+   "driverExternalId": "",
+   "daysWithRoutes": 23,
+   "totalStops": 581,
+   "vehicles": [],
+   "firstDate": "2026-08-17",
+   "lastDate": "2026-09-17"
+  }
+ ]
+}

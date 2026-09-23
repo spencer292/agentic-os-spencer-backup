@@ -1,0 +1,32 @@
+pull-optimo-history — READ ONLY
+range 2026-08-17..2026-09-17 (24 weekdays)  sleep=250ms
+out   C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\data
+
+depots: 1
+2026-08-17  routes=5 stops=124 orders=124 matched=124 actuals=0  Luke:21 Robert:19 Alias:27 Cory:32 Tavis:25
+2026-08-18  routes=5 stops=107 orders=107 matched=107 actuals=0  Cory:18 Robert:20 Tavis:26 Alias:26 Luke:17
+2026-08-19  routes=5 stops=113 orders=113 matched=113 actuals=0  Luke:16 Robert:22 Tavis:26 Cory:27 Alias:22
+2026-08-20  routes=5 stops=108 orders=108 matched=108 actuals=0  Luke:21 Alias:23 Robert:26 Tavis:22 Cory:16
+2026-08-21  routes=5 stops=118 orders=118 matched=118 actuals=0  Luke:19 Alias:27 Robert:17 Tavis:25 Cory:30
+2026-08-24  routes=5 stops=130 orders=130 matched=130 actuals=0  Alias:27 Cory:30 Luke:23 Robert:23 Tavis:27
+2026-08-25  routes=5 stops=114 orders=114 matched=114 actuals=0  Alias:19 Cory:23 Luke:17 Robert:27 Tavis:28
+2026-08-26  routes=5 stops=113 orders=113 matched=113 actuals=0  Alias:22 Cory:20 Luke:14 Robert:25 Tavis:32
+2026-08-27  routes=5 stops=122 orders=122 matched=122 actuals=0  Alias:24 Cory:29 Luke:20 Robert:23 Tavis:26
+2026-08-28  routes=4 stops=97 orders=97 matched=97 actuals=0  Alias:28 Luke:20 Robert:20 Tavis:29
+2026-08-31  routes=5 stops=119 orders=119 matched=119 actuals=0  Alias:25 Cory:27 Luke:18 Robert:21 Tavis:28
+2026-09-01  routes=5 stops=130 orders=130 matched=130 actuals=0  Alias:28 Cory:22 Luke:25 Robert:25 Tavis:30
+2026-09-02  routes=5 stops=104 orders=104 matched=104 actuals=0  Tavis:23 Alias:21 Cory:23 Luke:15 Robert:22
+2026-09-03  routes=5 stops=107 orders=107 matched=107 actuals=0  Alias:21 Cory:22 Luke:17 Robert:25 Tavis:22
+2026-09-04  routes=4 stops=93 orders=93 matched=93 actuals=0  Alias:26 Luke:22 Robert:25 Tavis:20
+2026-09-07  NO ROUTES (gap recorded)
+2026-09-08  routes=5 stops=119 orders=119 matched=119 actuals=0  Alias:20 Cory:25 Luke:22 Robert:25 Tavis:27
+2026-09-09  routes=5 stops=115 orders=115 matched=115 actuals=0  Alias:23 Cory:24 Luke:17 Robert:22 Tavis:29
+2026-09-10  routes=5 stops=107 orders=107 matched=107 actuals=0  Alias:23 Cory:23 Luke:18 Robert:22 Tavis:21
+2026-09-11  routes=5 stops=113 orders=113 matched=113 actuals=0  Alias:24 Cory:22 Luke:23 Robert:26 Tavis:18
+2026-09-14  routes=5 stops=52 orders=52 matched=52 actuals=0  Tavis:13 Robert:9 Luke:7 Cory:10 Alias:13
+2026-09-15  routes=5 stops=120 orders=120 matched=120 actuals=0  Tavis:27 Robert:23 Luke:16 Alias:26 Cory:28
+2026-09-16  routes=5 stops=131 orders=131 matched=131 actuals=0  Tavis:31 Robert:22 Luke:19 Cory:33 Alias:26
+2026-09-17  routes=5 stops=121 orders=121 matched=121 actuals=0  Tavis:26 Robert:22 Luke:22 Cory:31 Alias:20
+
+DONE  dates=24 withRoutes=23 gaps=1 stops=2577 actuals=0
+  GAP 2026-09-07 — get_routes returned zero routes

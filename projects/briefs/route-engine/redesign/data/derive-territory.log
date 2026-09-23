@@ -1,0 +1,96 @@
+[load] 1063 jobs, 1063 geocoded and route-dayed
+[load] 345 STABLE jobs define the geometry
+[overlap] 200 customers sit where the nearest stable work splits across techs
+[zip] 123 zips; 24 are not tech-clean, 49 are not day-clean
+[seam] 196 assigned-customer pairs within 1.5 km across different techs (all 1063 customers)
+[seam] stable-only tier: 26 pairs within 3 km (0 within 1.5 km — closest stable cross-tech pair is 1.94 km)
+
+=== TERRITORY (from STABLE customers) ===
+  tech                jobs  stable  share  hull km2   top cities
+  Alias Franks         223     106    48%     779.3   Seattle:39 Sammamish:39 Redmond:30 Bellevue:22 Woodinville:21
+  Cory Ventura         223      10     5%     453.6   Renton:41 Kent:35 Maple Valley:32 Puyallup:29 Auburn:16
+  Luke LaVergne        188      63    34%    2738.7   Olympia:48 Tacoma:32 Gig Harbor:20 Graham:19 Lacey:13
+  Robert Norton        193      80    42%     517.5   Buckley:37 Enumclaw:31 Bonney Lake:26 Auburn:23 Federal Way:16
+  Tavis Alexander      236      86    36%     950.9   Seattle:63 Bellevue:31 Renton:29 Burien:16 Issaquah:15
+
+=== OVERLAP ZONES ===
+  Alias Franks / Tavis Alexander       52 customers,  10 assigned against their neighbours | Bellevue:14 Seattle:12 Issaquah:9 Sammamish:6 Clyde Hill:4
+  Cory Ventura / Robert Norton         51 customers,  13 assigned against their neighbours | Maple Valley:16 Kent:13 Auburn:7 Covington:7 Ravensdale:5
+  Cory Ventura / Tavis Alexander       46 customers,   4 assigned against their neighbours | Renton:18 Kent:15 Maple Valley:8 Issaquah:5
+  Luke LaVergne / Robert Norton        36 customers,  19 assigned against their neighbours | Tacoma:15 Graham:11 Puyallup:4 Orting:4 graham:1
+  Robert Norton / Tavis Alexander      14 customers,   4 assigned against their neighbours | Normandy Park:7 SeaTac:2 Kent:2 Des Moines:2 Burien:1
+  Luke LaVergne / Tavis Alexander       1 customers,   1 assigned against their neighbours | Port Orchard:1
+
+=== TECH SEAMS ===
+  Cory Ventura | Robert Norton         93 pairs,   97 customers, closest 0 km
+      - 14: Buckley (13), Pierce County (1) around Connells Prairie Road / 78th Street East / 70th Street East
+      - 8: Enumclaw (8) around Cole Street / Southeast 432nd Street / Merritt Avenue
+      - 8: Buckley (8) around 241st Avenue Court East / 108th Street Court East / 112th Street East
+  Alias Franks | Tavis Alexander       45 pairs,   45 customers, closest 0.153 km
+      - 14: Medina (8), Clyde Hill (4), Bellevue (2) around Evergreen Point Road / Northeast 28th Street / 79th Avenue Northeast
+      - 6: North Bend (6) around Northeast 12th Street / Southeast 127th Place / Northeast 4th Street
+      - 6: Seattle (6) around 40th Avenue West / 31st Avenue West / 39th Avenue West
+  Cory Ventura | Tavis Alexander       32 pairs,   33 customers, closest 0 km
+      - 11: Renton (8), Newcastle (3) around Southeast 100th Street / 143rd Avenue Southeast / 148th Avenue Southeast
+      - 6: Issaquah (4), Sammamish (2) around 238th PL Southeast / 260th Avenue Southeast / Southeast 45th Place
+      - 6: Renton (6) around Southeast 128th Street / Southeast 116th Street / 164th Avenue Southeast
+  Cory Ventura | Luke LaVergne         18 pairs,   22 customers, closest 0 km
+      - 8: Tacoma (8) around North 33rd Street / North 39th Street / North 28th Street
+      - 6: Graham (5), Orting (1) around 150th Avenue East / 199th Street Court East / 210th Street East
+      - 3: Graham (2), graham (1) around Orting Kapowsin Hwy / 135th Avenue Court East / Orting Kapowsin Highway East
+  Luke LaVergne | Robert Norton         7 pairs,   10 customers, closest 0.251 km
+      - 5: Puyallup (3), Edgewood (2) around Valley Ave. E / 117th Avenue Court East / 118th Avenue Court East
+      - 5: Federal Way (5) around 13th Avenue Southwest / Southwest 349th Place / Southwest 349th Street
+  Alias Franks | Cory Ventura           1 pairs,    2 customers, closest 0.754 km
+      - 2: Sammamish (2) around Southeast 36th Court / Southeast 30th Street
+
+=== WEEKDAY SEAMS (within a tech) ===
+  Alias Franks: 30 cross-day pairs within 1.5 km
+      thu | wed     17 pairs | Woodinville:9 Duvall:5 Redmond:2 Kirkland:2
+      mon | wed      7 pairs | Kirkland:9 Redmond:1 Bellevue:1
+      fri | thu      3 pairs | Redmond:2 Sammamish:2
+      fri | mon      2 pairs | Redmond:2 Bellevue:1
+  Cory Ventura: 142 cross-day pairs within 1.5 km
+      fri | mon     43 pairs | Maple Valley:17 Renton:11 Kent:8 Covington:4
+      mon | wed     20 pairs | Auburn:8 Maple Valley:4 Puyallup:3 Covington:2
+      fri | thu     18 pairs | Renton:18 Maple Valley:2
+      mon | thu     17 pairs | Maple Valley:7 Kent:5 Renton:5 Covington:4
+  Luke LaVergne: 25 cross-day pairs within 1.5 km
+      mon | thu     18 pairs | Olympia:16 Lacey:5 Tumwater:1
+      thu | tue      2 pairs | Yelm:2 Graham:2
+      mon | tue      2 pairs | Graham:3
+      fri | mon      1 pairs | Steilacoom:2
+  Robert Norton: 43 cross-day pairs within 1.5 km
+      fri | wed     33 pairs | Buckley:14 Lake Tapps:8 Bonney Lake:6 Pierce County:1
+      thu | wed      8 pairs | Sumner:7 Edgewood:2 Lake Tapps:1 Auburn:1
+      fri | mon      2 pairs | Auburn:2 Kent:1
+  Tavis Alexander: 151 cross-day pairs within 1.5 km
+      mon | tue     94 pairs | Seattle:41 Burien:12 Normandy Park:9 Tukwila:2
+      thu | wed     45 pairs | Renton:18 Newcastle:12 Bellevue:6 Mercer Island:5
+      fri | wed      5 pairs | Renton:4 Newcastle:2
+      fri | thu      3 pairs | Issaquah:3 Renton:2
+
+=== ZIPS THAT ARE NOT CLEAN ===
+  98022 Enumclaw          41 jobs | tech Robert:31 Cory:10 | day tue:41
+  98059 Renton            38 jobs | tech Cory:19 Tavis:19 | day wed:16 thu:13 fri:9
+  98092 Auburn            28 jobs | tech Cory:14 Robert:14 | day mon:15 wed:6 tue:6 thu:1
+  98338 Graham            25 jobs | tech Luke:19 Cory:6 | day tue:20 thu:3 mon:2
+  98075 Sammamish         24 jobs | tech Alias:19 Tavis:5 | day fri:24
+  98045 North Bend        19 jobs | tech Tavis:15 Alias:4 | day fri:19
+  98372 Puyallup          16 jobs | tech Robert:11 Cory:4 Luke:1 | day thu:9 wed:5 tue:1 fri:1
+  98004 Bellevue          14 jobs | tech Tavis:7 Alias:7 | day mon:9 thu:5
+  98027 Issaquah          14 jobs | tech Cory:9 Tavis:5 | day thu:13 fri:1
+  98023 Federal Way       13 jobs | tech Robert:9 Luke:4 | day thu:9 fri:4
+  98199 Seattle            8 jobs | tech Alias:5 Tavis:3 | day tue:8
+  98008 Bellevue           7 jobs | tech Tavis:4 Alias:3 | day thu:4 mon:3
+  98032 Kent               6 jobs | tech Cory:4 Robert:1 Tavis:1 | day tue:2 mon:2 thu:1 wed:1
+  98371 Puyallup           6 jobs | tech Luke:3 Cory:2 Robert:1 | day fri:3 wed:2 thu:1
+  98407 Tacoma             6 jobs | tech Luke:4 Cory:2 | day fri:6
+  98422 Tacoma             6 jobs | tech Robert:4 Luke:2 | day thu:4 fri:2
+  98446 Tacoma             6 jobs | tech Cory:3 Luke:3 | day fri:4 wed:2
+  98466 University Place   4 jobs | tech Luke:3 Cory:1 | day fri:2 wed:1 mon:1
+  98499 Tacoma             4 jobs | tech Luke:3 Cory:1 | day mon:3 fri:1
+  98057 Renton             3 jobs | tech Tavis:2 Cory:1 | day tue:2 wed:1
+
+wrote C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\data\territory-asbuilt.json
+wrote C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\data\territory-asbuilt.geojson

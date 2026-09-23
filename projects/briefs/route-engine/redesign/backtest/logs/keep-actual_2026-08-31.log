@@ -1,0 +1,9 @@
+
+=== 2026-08-31 · keep-actual ===
+due 532  late 54  placed 532  dropped 0  invented 0  weekend 0
+same tech 100%  same day 100%  both 100%  (n=532)
+hours within +-10%: 21/25 (median ratio 0.96)  |  board only: 25/25 (median 1)
+sequence drive ratio median 0.87 (uniform-model control 0.9) over 24 route-days  (ours 3366.4 min vs OR 4025.6 min)
+capacity: proposal over 9.5h 3/25 (actual 4/25)  max 10.22h  |  compactness within +-5%: 14/25
+gates: PASS same tech >= 95% | PASS same day >= 95% | FAIL route-day hours within +-10% | PASS route-day hours within +-10% (board only, same sequencer) | PASS no dropped visits | PASS no invented visits | PASS no weekend placements | FAIL no route-day over 9.5 h (modelled travel + service) | FAIL route-day total time within +-5% of the OptimoRoute day (compactness) | PASS late bookings (created after the cutoff — the add-queue load)
+-> C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\backtest\2026-08-31\keep-actual  (1550 ms)

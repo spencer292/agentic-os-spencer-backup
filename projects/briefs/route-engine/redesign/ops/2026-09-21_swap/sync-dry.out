@@ -1,0 +1,480 @@
+[write-gate] writes BLOCKED — writes disabled: Revoked. — run a0f2c8ed
+=== SYNC + PLAN + TIMES 2026-09-19 15:34:14 PT ===
+mode: DRY (default) — queries only   window: 2026-09-21..2026-09-25
+live Jobber: 592 visits, 592 not complete, 592 on a routed driver, 0 skipped (no tech / not a driver)
+  2026-09-21  Robert 30  Luke 29  Spencer 29  Cory 26  Alias 28
+  2026-09-22  Robert 28  Luke 17  Alias 23  Cory 25
+  2026-09-23  Spencer 27  Robert 28  Cory 25  Alias 22  Luke 20
+  2026-09-24  Luke 24  Alias 22  Robert 25  Cory 24
+  2026-09-25  Robert 26  Cory 22  Luke 25  Tavis 40  Alias 27
+
+OptimoRoute: 522 orders in the window
+  CREATE 71   UPDATE 392   DELETE 1   unchanged 129
+    CREATE 8452-2335689935 2026-09-22 Robert Norton 15m  Shawna Mobley  19216 Southeast 328th Place, Kent, Washington, 98042
+    CREATE 7449-2335772160 2026-09-22 Robert Norton 15m  Sally  Gasser  30655 Kanaskat Kangley Road Southeast, Ravensdale, Washington, 98051
+    CREATE 8463-2335787926 2026-09-22 Robert Norton 15m  Darren Mccullough  30010 Retreat Kanasket Road Southeast, Ravensdale, Washington, 98051
+    CREATE 7735-2335804304 2026-09-22 Robert Norton 15m  Mike Coile  27230 304th AVE se, Ravensdale, Wa, 98051
+    CREATE 7450-2335865842 2026-09-22 Robert Norton 15m  Amy Thomas  26255 Southeast 276th Street, Ravensdale, Washington, 98051
+    CREATE 7686-2335732922 2026-09-23 Cory Ventura 12m  Brent Fernyhough  25505 Southeast Issaquah-Fall City Road, Issaquah, Washington, 98029
+    CREATE 8520-2335788993 2026-09-23 Cory Ventura 12m  Richard Depencier  3708 260th Avenue Southeast, Issaquah, Washington, 98029
+    CREATE 7477-2335861773 2026-09-23 Cory Ventura 12m  Melissa  Osvaldik  1730 298th Crescent Southeast, Fall City, Washington, 98024
+    CREATE 7472-2335948164 2026-09-23 Cory Ventura 12m  Tino Perrina  10603 Upper Preston Road Southeast, Issaquah, Washington, 98027
+    CREATE 5201-2336040245 2026-09-23 Cory Ventura 12m  Michelle  Mueller  45609 Southeast Edgewick Road, North Bend, Washington, 98045
+    CREATE 8315-2336074615 2026-09-23 Cory Ventura 12m  Scott Vojik  47150 Southeast 162nd Street, North Bend, Washington, 98045
+    CREATE 6739-2336141093 2026-09-23 Cory Ventura 12m  Matt  Wurdeman  43923 Southeast 127th Place, North Bend, Washington, 98045
+    CREATE 4504-2336169710 2026-09-23 Cory Ventura 12m  Evan Epstein  12803 452nd Avenue Southeast, North Bend, Washington, 98045
+    CREATE 4754-2336191252 2026-09-23 Cory Ventura 12m  Barry Heimbigner  12570 465th Avenue Southeast, North Bend, Washington, 98045
+    CREATE 5325-2336230829 2026-09-23 Cory Ventura 12m  Julie Carper  351 Merritt Place Northeast, North Bend, Washington, 98045
+    CREATE 5004-2336279418 2026-09-23 Cory Ventura 12m  Wanda Neste  7421 442nd Place Southeast, Snoqualmie, Washington, 98065
+    CREATE 6088-2336296380 2026-09-23 Cory Ventura 12m  Gary Patterson  7418 408th Avenue Southeast, Snoqualmie, Washington, 98065
+    CREATE 8596-2336529776 2026-09-23 Robert Norton 30m  Barbara Kupietz  5811 Frances Avenue Northeast, Tacoma, Washington, 98422
+    CREATE 8169-2335646412 2026-09-24 Robert Norton 15m  Donna Jensen  3824 165th Place Southeast, Bellevue, Washington, 98008
+    CREATE 7657-2336148072 2026-09-24 Cory Ventura 12m  Mary Linda Epps  13113 Fettig Road E, Buckley, Washington, 98321
+    CREATE 5178-2335618040 2026-09-25 Luke LaVergne 15m  Washington Premier Soccer Club  5702 44th STREET E, Puyallup, Washington, 98371
+    CREATE 8319-2335723626 2026-09-25 Luke LaVergne 15m  Jill Robinson  911 North J Street, Tacoma, Washington, 98403
+    CREATE 5148-2335738221 2026-09-25 Tavis Alexander 15m  Brant Bengston  25017 112th Street East, Buckley, Washington, 98321
+    CREATE 7816-2335742379 2026-09-25 Tavis Alexander 15m  Derek Smith  11711 242nd Avenue East, Buckley, Washington, 98321
+    CREATE 7675-2335750323 2026-09-25 Luke LaVergne 15m  Charlie  Brown  63 West Road, Tacoma, Washington, 98406
+    CREATE 7430-2335757332 2026-09-25 Tavis Alexander 15m  Darren Bartels  12126 243rd Avenue East, Buckley, Washington, 98321
+    CREATE 4614-2335766920 2026-09-25 Alias Franks 15m  Jennifer Beardall  821 217th Place Northeast, Sammamish, Washington, 98074
+    CREATE 7497-2335794170 2026-09-25 Luke LaVergne 15m  Bess  Poehlmann  4105 North 39th Street, Tacoma, Washington, 98407
+    CREATE 7017-2335809514 2026-09-25 Tavis Alexander 15m  Steve Lees  10806 234th Avenue East, Buckley, Washington, 98321
+    CREATE 8277-2335811460 2026-09-25 Luke LaVergne 15m  Jon Gomes  4107 North 34th Street, Tacoma, Washington, 98407
+    CREATE 8390-2335815117 2026-09-25 Tavis Alexander 15m  Jane Molenda  11907 241st Avenue Court East, Buckley, Washington, 98321
+    CREATE 8339-2335819744 2026-09-25 Alias Franks 15m  Donald Kaplan  205 East Lake Sammamish Shore Lane Northeast, Sammamish, Washington, 98074
+    CREATE 8265-2335858333 2026-09-25 Alias Franks 15m  Jepson Fuller  2423 East Lake Sammamish Place Southeast, Sammamish, Washington, 98075
+    CREATE 7817-2335893468 2026-09-25 Alias Franks 15m  Josh Hedrick  3808 202nd Place Southeast, Sammamish, Washington, 98075
+    CREATE 8394-2335909648 2026-09-25 Alias Franks 15m  Sachin Gupta  3119 199th Avenue Southeast, Sammamish, Washington, 98075
+    CREATE 6409-2335912789 2026-09-25 Cory Ventura 12m  Kevin Hoffman  28605 Southeast 216th Lane, Maple Valley, Washington, 98038
+    CREATE 5696-2335916061 2026-09-25 Luke LaVergne 15m  Amber John  4808 93rd Ave W, University Place, Washington, 98466
+    CREATE 8352-2335930711 2026-09-25 Tavis Alexander 15m  Tyler Donaldson  11405 197th Avenue East, Bonney Lake, Washington, 98391
+    CREATE 7793-2335933566 2026-09-25 Tavis Alexander 15m  Tim Saiz  11413 197th Avenue East, Bonney Lake, Washington, 98391
+    CREATE 6919-2335961438 2026-09-25 Alias Franks 15m  Corky Heimbigner  20120 Southeast 30th Street, Sammamish, Washington, 98075
+    CREATE 5412-2335977314 2026-09-25 Luke LaVergne 15m  Mike Ahquin  6600 Flanegan Road West, Tacoma, Washington, 98499
+    CREATE 6355-2335995689 2026-09-25 Alias Franks 15m  Julie James  21806 Southeast 38th Place, Sammamish, Washington, 98075
+    CREATE 7011-2336014750 2026-09-25 Alias Franks 15m  Sara Houpis  3509 219th Place Southeast, Sammamish, Washington, 98075
+    CREATE 8430-2336040195 2026-09-25 Luke LaVergne 15m  Lourdes Orive  9409 110th Street Southwest, Tacoma, Washington, 98498
+    CREATE 8058-2336041624 2026-09-25 Tavis Alexander 15m  Samantha Sieverling  21917 147th Street East, BonneyLake, Washington, 98391
+    CREATE 8368-2336043249 2026-09-25 Tavis Alexander 15m  Cameron Caviezel  14410 Greenbelt Drive East, Bonney Lake, Washington, 98391
+    CREATE 8156-2336062776 2026-09-25 Alias Franks 15m  Deborah Berger  2809 226th Avenue Southeast, Sammamish, Washington, 98075
+    CREATE 8531-2336081214 2026-09-25 Cory Ventura 12m  Lewis Henry  26002 Southeast 208th Street, Maple Valley, Washington, 98038
+    CREATE 7026-2336106823 2026-09-25 Luke LaVergne 15m  Tom Falk  7909 Interlaaken Drive Southwest, Lakewood, Washington, 98498
+    CREATE 5458-2336109551 2026-09-25 Cory Ventura 12m  Jake Nettleton  23308 Southeast 218th Street, Maple Valley, Washington, 98038
+    CREATE 8046-2336120931 2026-09-25 Alias Franks 15m  Daniel Bay  1829 244th Avenue Southeast, Issaquah, Washington, 98075
+    CREATE 6275-2336124356 2026-09-25 Cory Ventura 12m  Mike Tonda  21667 227th pl SE, Maple valley, Wa, 98038
+    CREATE 4545-2336153612 2026-09-25 Cory Ventura 12m  Randy Stegmeier  23828 Southeast 216th Street, Maple Valley, Washington, 98038
+    CREATE 5441-2336170075 2026-09-25 Alias Franks 15m  Tom Craig  2020 239th Place Southeast, Sammamish, Washington, 98075
+    CREATE 6287-2336170574 2026-09-25 Cory Ventura 12m  Charles Hahn  25503 SE 192nd Street, Maple Valley, Washington, 98038
+    CREATE 7767-2336190090 2026-09-25 Cory Ventura 12m  Jamie Randall  20507 244th Avenue Southeast, Maple Valley, Washington, 98038
+    CREATE 7867-2336191028 2026-09-25 Luke LaVergne 15m  Weston Hutchings  2616 92nd Street South, Tacoma, Washington, 98499
+    CREATE 8435-2336236881 2026-09-25 Luke LaVergne 15m  Lyle Penrod  1928 137th Street Court South, Tacoma, Washington, 98444
+    CREATE 8256-2336287864 2026-09-25 Alias Franks 15m  Doug Crow  21805 Southeast 20th Street, Sammamish, Washington, 98075
+    CREATE 6338-2336305018 2026-09-25 Luke LaVergne 15m  Barbara Wood  1615 Brookdale Road East, Tacoma, Washington, 98445
+    CREATE 8547-2336307355 2026-09-25 Alias Franks 15m  Shannon Supple  21310 Southeast 11th Street, Sammamish, Washington, 98075
+    CREATE 8276-2336315171 2026-09-25 Luke LaVergne 15m  Diana Miller  1213 123rd Street Court East, Tacoma, Washington, 98445
+    CREATE 7676-2336322368 2026-09-25 Alias Franks 15m  Jeannine Rouleau  21250 Northeast 4th Street, Sammamish, Washington, 98074
+    CREATE 8416-2336334776 2026-09-25 Luke LaVergne 15m  Sharon Young  9227 60th Avenue Court East, Puyallup, Washington, 98371
+    CREATE 7589-2336340514 2026-09-25 Alias Franks 15m  Rahul Newaskar  20709 Southeast 3rd Way, Sammamish, Washington, 98074
+    CREATE 8279-2336346109 2026-09-25 Alias Franks 15m  Santush Kumar  22319 Southeast 12th Lane, Sammamish, Washington, 98075
+    CREATE 7669-2336354258 2026-09-25 Alias Franks 15m  Tom Li  24215 Ne 7th Pl, Sammamish, Washington, 98074
+    CREATE 8064-2336370574 2026-09-25 Alias Franks 15m  Jinzhi Liu  2521 238th Court Northeast, Sammamish, Washington, 98074
+    CREATE 8609-2336578955 2026-09-25 Robert Norton 15m  Michael Sexton  25326 Southeast Mirrormont Boulevard, Issaquah, Washington, 98027
+    CREATE 8084-2323725107 2026-09-25 Tavis Alexander 15m  Larry Brewer  12626 194th Avenue Court East, Sumner, Washington, 98391
+    CREATE 8604-2336566059 2026-09-25 Alias Franks 30m  Karen  Horvath  2713 East Lake Sammamish Parkway Southeast, Sammamish, Washington, 98075
+    UPDATE 4930-2334959051 2026-09-21 Robert Norton  date 2026-09-24->2026-09-21, tech Spencer Hill->Robert Norton
+    UPDATE 7697-2335013070 2026-09-21 Robert Norton  date 2026-09-24->2026-09-21, tech Spencer Hill->Robert Norton
+    UPDATE 5335-2325181613 2026-09-21 Luke LaVergne  date 2026-09-22->2026-09-21
+    UPDATE 7475-2326951997 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 7996-2216280499 2026-09-21 Luke LaVergne  date 2026-09-24->2026-09-21
+    UPDATE 6436-2332177898 2026-09-21 Cory Ventura  dur 15->12
+    UPDATE 8510-2312577225 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 8589-2333455046 2026-09-21 Luke LaVergne  date 2026-09-22->2026-09-21
+    UPDATE 4502-2332224575 2026-09-21 Cory Ventura  dur 15->12
+    UPDATE 7317-2327012857 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 7724-2056046998 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 8514-2313850347 2026-09-21 Robert Norton  date 2026-09-25->2026-09-21
+    UPDATE 8209-2260988355 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 7788-2086100544 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 4777-2333920342 2026-09-21 Robert Norton  date 2026-09-25->2026-09-21
+    UPDATE 6334-2333942086 2026-09-21 Robert Norton  date 2026-09-25->2026-09-21
+    UPDATE 4705-2326141473 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 8421-2296258866 2026-09-21 Cory Ventura  date 2026-09-22->2026-09-21, tech Alias Franks->Cory Ventura, dur 15->12
+    UPDATE 8361-2326140110 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 6674-2320621910 2026-09-21 Robert Norton  date 2026-09-25->2026-09-21
+    UPDATE 8601-2336540549 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill, dur 12->15
+    UPDATE 7852-2132525841 2026-09-21 Cory Ventura  date 2026-09-25->2026-09-21, tech Tavis Alexander->Cory Ventura, dur 15->12
+    UPDATE 8475-2306272065 2026-09-21 Robert Norton  date 2026-09-24->2026-09-21
+    UPDATE 8518-2315661963 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 7511-2332556035 2026-09-21 Cory Ventura  date 2026-09-25->2026-09-21, tech Tavis Alexander->Cory Ventura, dur 15->12
+    UPDATE 7712-2054364451 2026-09-21 Robert Norton  date 2026-09-25->2026-09-21
+    UPDATE 6440-2333745843 2026-09-21 Robert Norton  date 2026-09-24->2026-09-21
+    UPDATE 7608-2326056225 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 5390-2050099327 2026-09-21 Cory Ventura  date 2026-09-25->2026-09-21, tech Tavis Alexander->Cory Ventura, dur 15->12
+    UPDATE 8470-2305378589 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 8202-2333652374 2026-09-21 Robert Norton  date 2026-09-24->2026-09-21
+    UPDATE 8055-2229493549 2026-09-21 Cory Ventura  date 2026-09-25->2026-09-21, tech Tavis Alexander->Cory Ventura, dur 15->12
+    UPDATE 8602-2336548524 2026-09-21 Robert Norton  date 2026-09-24->2026-09-21, tech Spencer Hill->Robert Norton
+    UPDATE 6447-2325271258 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 8480-2308137626 2026-09-21 Robert Norton  date 2026-09-24->2026-09-21
+    UPDATE 8404-2326011273 2026-09-21 Luke LaVergne  date 2026-09-24->2026-09-21
+    UPDATE 8098-2320721141 2026-09-21 Cory Ventura  date 2026-09-25->2026-09-21, tech Tavis Alexander->Cory Ventura, dur 15->12
+    UPDATE 6581-1757684341 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 8072-2333627206 2026-09-21 Robert Norton  date 2026-09-23->2026-09-21
+    UPDATE 6277-2325748620 2026-09-21 Luke LaVergne  date 2026-09-24->2026-09-21
+    UPDATE 5700-2332156115 2026-09-21 Cory Ventura  date 2026-09-25->2026-09-21, tech Tavis Alexander->Cory Ventura, dur 15->12
+    UPDATE 7736-2333803982 2026-09-21 Robert Norton  date 2026-09-23->2026-09-21
+    UPDATE 7936-2325964470 2026-09-21 Luke LaVergne  date 2026-09-24->2026-09-21
+    UPDATE 8440-2325447773 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 8600-2336538524 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Alias Franks->Spencer Hill
+    UPDATE 8605-2336569214 2026-09-21 Alias Franks  tech Cory Ventura->Alias Franks, dur 24->30
+    UPDATE 8607-2336574405 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill, dur 12->15
+    UPDATE 7702-2049953369 2026-09-21 Cory Ventura  date 2026-09-25->2026-09-21, tech Tavis Alexander->Cory Ventura, dur 15->12
+    UPDATE 8451-2301461810 2026-09-21 Robert Norton  date 2026-09-23->2026-09-21
+    UPDATE 8533-2319651787 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 7825-2108542954 2026-09-21 Cory Ventura  date 2026-09-25->2026-09-21, tech Tavis Alexander->Cory Ventura, dur 15->12
+    UPDATE 8294-2320879488 2026-09-21 Alias Franks  date 2026-09-23->2026-09-21
+    UPDATE 8437-2298668701 2026-09-21 Luke LaVergne  date 2026-09-24->2026-09-21
+    UPDATE 8569-2325654194 2026-09-21 Alias Franks  date 2026-09-23->2026-09-21, tech Cory Ventura->Alias Franks
+    UPDATE 5324-2333685916 2026-09-21 Robert Norton  date 2026-09-23->2026-09-21
+    UPDATE 8293-2320872724 2026-09-21 Alias Franks  date 2026-09-23->2026-09-21
+    UPDATE 8524-2316830871 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 6239-2320589737 2026-09-21 Spencer Hill  date 2026-09-25->2026-09-21, tech Tavis Alexander->Spencer Hill
+    UPDATE 8501-2312188828 2026-09-21 Alias Franks  date 2026-09-23->2026-09-21, tech Cory Ventura->Alias Franks
+    UPDATE 7753-2333688832 2026-09-21 Robert Norton  date 2026-09-23->2026-09-21
+    UPDATE 8447-2301448517 2026-09-21 Alias Franks  date 2026-09-23->2026-09-21
+    UPDATE 7574-2325964909 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 8448-2301451779 2026-09-21 Cory Ventura  date 2026-09-25->2026-09-21, tech Tavis Alexander->Cory Ventura, dur 15->12
+    UPDATE 4711-2325424271 2026-09-21 Robert Norton  date 2026-09-23->2026-09-21
+    UPDATE 8426-2297113056 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 7751-2332138056 2026-09-21 Cory Ventura  date 2026-09-25->2026-09-21, tech Tavis Alexander->Cory Ventura, dur 15->12
+    UPDATE 8595-2334387699 2026-09-21 Cory Ventura  date 2026-09-23->2026-09-21, dur 30->12
+    UPDATE 8512-2313796149 2026-09-21 Cory Ventura  date 2026-09-24->2026-09-21, dur 15->12
+    UPDATE 8461-2325855813 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 8454-2302702245 2026-09-21 Cory Ventura  date 2026-09-25->2026-09-21, tech Tavis Alexander->Cory Ventura, dur 15->12
+    UPDATE 7915-2173923316 2026-09-21 Cory Ventura  date 2026-09-24->2026-09-21, dur 15->12
+    UPDATE 8486-2308143985 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 5355-2335219933 2026-09-21 Alias Franks  date 2026-09-24->2026-09-21
+    UPDATE 7987-2325752250 2026-09-21 Robert Norton  date 2026-09-25->2026-09-21, tech Tavis Alexander->Robert Norton
+    UPDATE 8332-2334490636 2026-09-21 Luke LaVergne  date 2026-09-24->2026-09-21
+    UPDATE 8359-2325575422 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 7943-2325775921 2026-09-21 Robert Norton  date 2026-09-24->2026-09-21, tech Cory Ventura->Robert Norton
+    UPDATE 6545-2322029443 2026-09-21 Alias Franks  date 2026-09-23->2026-09-21
+    UPDATE 8453-2301467895 2026-09-21 Robert Norton  date 2026-09-25->2026-09-21, tech Tavis Alexander->Robert Norton
+    UPDATE 8537-2319722021 2026-09-21 Alias Franks  date 2026-09-23->2026-09-21
+    UPDATE 8583-2332504259 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill, dur 30->15
+    UPDATE 8492-2334452192 2026-09-21 Luke LaVergne  date 2026-09-24->2026-09-21
+    UPDATE 8442-2300345825 2026-09-21 Robert Norton  date 2026-09-24->2026-09-21, tech Cory Ventura->Robert Norton
+    UPDATE 8522-2316822254 2026-09-21 Robert Norton  date 2026-09-25->2026-09-21, tech Tavis Alexander->Robert Norton
+    UPDATE 8536-2319711383 2026-09-21 Alias Franks  date 2026-09-23->2026-09-21
+    UPDATE 7961-2325523752 2026-09-21 Robert Norton  date 2026-09-24->2026-09-21, tech Cory Ventura->Robert Norton
+    UPDATE 8525-2316832538 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 6495-1770758458 2026-09-21 Robert Norton  date 2026-09-25->2026-09-21, tech Tavis Alexander->Robert Norton
+    UPDATE 8459-2303102681 2026-09-21 Robert Norton  date 2026-09-24->2026-09-21, tech Cory Ventura->Robert Norton
+    UPDATE 7834-2326070617 2026-09-21 Alias Franks  date 2026-09-23->2026-09-21
+    UPDATE 8397-2325722652 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 8572-2325840891 2026-09-21 Alias Franks  date 2026-09-23->2026-09-21
+    UPDATE 5947-1912213817 2026-09-21 Spencer Hill  date 2026-09-22->2026-09-21, tech Cory Ventura->Spencer Hill
+    UPDATE 8494-2311077159 2026-09-21 Cory Ventura  dur 15->12
+    UPDATE 8506-2312525464 2026-09-21 Alias Franks  date 2026-09-23->2026-09-21
+    UPDATE 8558-2322281768 2026-09-21 Cory Ventura  dur 15->12
+    UPDATE 8485-2308143580 2026-09-21 Cory Ventura  date 2026-09-22->2026-09-21, dur 15->12
+    UPDATE 8592-2333909021 2026-09-21 Alias Franks  date 2026-09-23->2026-09-21
+    UPDATE 8574-2326312910 2026-09-21 Cory Ventura  dur 15->12
+    UPDATE 8450-2301459644 2026-09-21 Alias Franks  date 2026-09-23->2026-09-21
+    UPDATE 8443-2300767356 2026-09-21 Cory Ventura  date 2026-09-22->2026-09-21, dur 15->12
+    UPDATE 7903-2166549252 2026-09-21 Cory Ventura  dur 15->12
+    UPDATE 8455-2303096703 2026-09-21 Alias Franks  date 2026-09-23->2026-09-21
+    UPDATE 8409-2332450672 2026-09-21 Cory Ventura  date 2026-09-22->2026-09-21, dur 15->12
+    UPDATE 7715-2055380251 2026-09-21 Cory Ventura  date 2026-09-22->2026-09-21, dur 15->12
+    UPDATE 8372-2332203677 2026-09-21 Cory Ventura  date 2026-09-22->2026-09-21, dur 15->12
+    UPDATE 8495-2311098126 2026-09-22 Robert Norton  date 2026-09-21->2026-09-22
+    UPDATE 8573-2325849157 2026-09-22 Alias Franks  date 2026-09-21->2026-09-22
+    UPDATE 6653-2300322228 2026-09-22 Robert Norton  date 2026-09-21->2026-09-22
+    UPDATE 7962-2333944923 2026-09-22 Robert Norton  date 2026-09-25->2026-09-22
+    UPDATE 7496-2325247197 2026-09-22 Cory Ventura  date 2026-09-21->2026-09-22, tech Spencer Hill->Cory Ventura
+    UPDATE 5780-2312420896 2026-09-22 Cory Ventura  date 2026-09-24->2026-09-22, tech Spencer Hill->Cory Ventura
+    UPDATE 6241-1654760893 2026-09-22 Cory Ventura  tech Spencer Hill->Cory Ventura
+    UPDATE 6555-2333273022 2026-09-22 Robert Norton  date 2026-09-25->2026-09-22
+    UPDATE 7857-2333309267 2026-09-22 Robert Norton  date 2026-09-21->2026-09-22
+    UPDATE 6064-1980793848 2026-09-22 Cory Ventura  date 2026-09-21->2026-09-22, tech Spencer Hill->Cory Ventura
+    UPDATE 4549-2333414283 2026-09-22 Cory Ventura  date 2026-09-24->2026-09-22, tech Spencer Hill->Cory Ventura
+    UPDATE 8432-2297637428 2026-09-22 Cory Ventura  tech Spencer Hill->Cory Ventura
+    UPDATE 8509-2312573039 2026-09-22 Robert Norton  date 2026-09-25->2026-09-22
+    UPDATE 8023-2327100597 2026-09-22 Robert Norton  date 2026-09-21->2026-09-22
+    UPDATE 4644-2333362845 2026-09-22 Cory Ventura  date 2026-09-24->2026-09-22, tech Spencer Hill->Cory Ventura
+    UPDATE 7747-2321902498 2026-09-22 Cory Ventura  date 2026-09-21->2026-09-22, tech Spencer Hill->Cory Ventura
+    UPDATE 8318-2311661759 2026-09-22 Cory Ventura  tech Spencer Hill->Cory Ventura
+    UPDATE 6083-2327074582 2026-09-22 Robert Norton  date 2026-09-21->2026-09-22
+    UPDATE 5413-2325410877 2026-09-22 Cory Ventura  date 2026-09-21->2026-09-22, tech Spencer Hill->Cory Ventura
+    UPDATE 5565-1770754283 2026-09-22 Cory Ventura  date 2026-09-24->2026-09-22, tech Spencer Hill->Cory Ventura
+    UPDATE 8481-2308139136 2026-09-22 Alias Franks  date 2026-09-21->2026-09-22, tech Cory Ventura->Alias Franks
+    UPDATE 5727-2325461194 2026-09-22 Cory Ventura  tech Spencer Hill->Cory Ventura
+    UPDATE 5954-2325353005 2026-09-22 Cory Ventura  date 2026-09-21->2026-09-22, tech Spencer Hill->Cory Ventura
+    UPDATE 7058-1863425480 2026-09-22 Cory Ventura  date 2026-09-24->2026-09-22, tech Spencer Hill->Cory Ventura
+    UPDATE 8570-2325825654 2026-09-22 Alias Franks  date 2026-09-21->2026-09-22, tech Cory Ventura->Alias Franks
+    UPDATE 5503-2332266099 2026-09-22 Robert Norton  date 2026-09-21->2026-09-22
+    UPDATE 8526-2317027128 2026-09-22 Luke LaVergne  date 2026-09-21->2026-09-22, tech Spencer Hill->Luke LaVergne, dur 12->15
+    UPDATE 8479-2308136673 2026-09-22 Cory Ventura  date 2026-09-24->2026-09-22, tech Spencer Hill->Cory Ventura
+    UPDATE 8356-2327015300 2026-09-22 Luke LaVergne  tech Spencer Hill->Luke LaVergne, dur 12->15
+    UPDATE 4962-2332324175 2026-09-22 Robert Norton  date 2026-09-21->2026-09-22
+    UPDATE 8557-2322279047 2026-09-22 Alias Franks  date 2026-09-21->2026-09-22, tech Cory Ventura->Alias Franks
+    UPDATE 7320-2312021244 2026-09-22 Cory Ventura  date 2026-09-24->2026-09-22, tech Spencer Hill->Cory Ventura
+    UPDATE 8482-2308139968 2026-09-22 Alias Franks  date 2026-09-21->2026-09-22, tech Cory Ventura->Alias Franks
+    UPDATE 8375-2325963527 2026-09-22 Cory Ventura  date 2026-09-24->2026-09-22, tech Spencer Hill->Cory Ventura
+    UPDATE 8436-2298658370 2026-09-22 Luke LaVergne  tech Spencer Hill->Luke LaVergne, dur 12->15
+    UPDATE 8462-2326917518 2026-09-22 Alias Franks  date 2026-09-21->2026-09-22, tech Cory Ventura->Alias Franks
+    UPDATE 8560-2323384846 2026-09-22 Cory Ventura  date 2026-09-24->2026-09-22, tech Spencer Hill->Cory Ventura
+    UPDATE 8238-2319018879 2026-09-22 Alias Franks  date 2026-09-21->2026-09-22, tech Cory Ventura->Alias Franks
+    UPDATE 5024-2325756895 2026-09-22 Cory Ventura  date 2026-09-24->2026-09-22, tech Spencer Hill->Cory Ventura
+    UPDATE 5639-2322355517 2026-09-22 Luke LaVergne  tech Spencer Hill->Luke LaVergne, dur 12->15
+    UPDATE 7884-2325717788 2026-09-22 Cory Ventura  date 2026-09-24->2026-09-22, tech Spencer Hill->Cory Ventura
+    UPDATE 8473-2305383661 2026-09-22 Alias Franks  date 2026-09-21->2026-09-22, tech Cory Ventura->Alias Franks
+    UPDATE 7737-2323137078 2026-09-22 Cory Ventura  date 2026-09-24->2026-09-22, tech Spencer Hill->Cory Ventura
+    UPDATE 8473-2305383857 2026-09-22 Alias Franks  date 2026-09-21->2026-09-22, tech Cory Ventura->Alias Franks
+    UPDATE 5344-1771976199 2026-09-22 Cory Ventura  date 2026-09-24->2026-09-22, tech Spencer Hill->Cory Ventura
+    UPDATE 5192-2327119420 2026-09-22 Luke LaVergne  date 2026-09-21->2026-09-22, tech Spencer Hill->Luke LaVergne, dur 12->15
+    UPDATE 8347-2284412402 2026-09-22 Alias Franks  date 2026-09-21->2026-09-22, tech Cory Ventura->Alias Franks
+    UPDATE 8036-2318920141 2026-09-22 Alias Franks  date 2026-09-21->2026-09-22, tech Cory Ventura->Alias Franks
+    UPDATE 6619-1776930417 2026-09-22 Luke LaVergne  date 2026-09-21->2026-09-22, tech Spencer Hill->Luke LaVergne, dur 12->15
+    UPDATE 8610-2336586800 2026-09-22 Cory Ventura  tech Luke LaVergne->Cory Ventura, dur 30->24
+    UPDATE 8611-2336588201 2026-09-22 Cory Ventura  tech Luke LaVergne->Cory Ventura, dur 30->24
+    UPDATE 8587-2332581204 2026-09-22 Luke LaVergne  tech Spencer Hill->Luke LaVergne, dur 24->15
+    UPDATE 8564-2332698454 2026-09-22 Alias Franks  date 2026-09-21->2026-09-22, tech Cory Ventura->Alias Franks
+    UPDATE 7805-2331950986 2026-09-22 Luke LaVergne  date 2026-09-21->2026-09-22, tech Spencer Hill->Luke LaVergne, dur 12->15
+    UPDATE 8388-2332710793 2026-09-22 Alias Franks  date 2026-09-21->2026-09-22, tech Cory Ventura->Alias Franks
+    UPDATE 5044-1702510022 2026-09-22 Luke LaVergne  tech Spencer Hill->Luke LaVergne, dur 12->15
+    UPDATE 8561-2326093242 2026-09-22 Robert Norton  date 2026-09-24->2026-09-22
+    UPDATE 8067-2232219537 2026-09-22 Luke LaVergne  tech Spencer Hill->Luke LaVergne, dur 12->15
+    UPDATE 7543-2332730391 2026-09-22 Alias Franks  date 2026-09-21->2026-09-22, tech Cory Ventura->Alias Franks
+    UPDATE 7172-2311963403 2026-09-22 Luke LaVergne  date 2026-09-21->2026-09-22, tech Spencer Hill->Luke LaVergne, dur 12->15
+    UPDATE 8578-2326350505 2026-09-22 Luke LaVergne  tech Spencer Hill->Luke LaVergne, dur 12->15
+    UPDATE 8248-2319693933 2026-09-22 Alias Franks  date 2026-09-21->2026-09-22, tech Cory Ventura->Alias Franks
+    UPDATE 4941-2333455520 2026-09-22 Cory Ventura  date 2026-09-24->2026-09-22, tech Spencer Hill->Cory Ventura
+    UPDATE 5511-2319485463 2026-09-22 Robert Norton  date 2026-09-25->2026-09-22
+    UPDATE 8407-2332630365 2026-09-22 Alias Franks  date 2026-09-21->2026-09-22, tech Cory Ventura->Alias Franks
+    UPDATE 8571-2325833328 2026-09-22 Robert Norton  date 2026-09-25->2026-09-22
+    UPDATE 8535-2319706363 2026-09-22 Alias Franks  date 2026-09-21->2026-09-22, tech Cory Ventura->Alias Franks
+    UPDATE 8507-2312560328 2026-09-22 Robert Norton  date 2026-09-25->2026-09-22
+    UPDATE 7849-2130123331 2026-09-22 Alias Franks  date 2026-09-21->2026-09-22, tech Cory Ventura->Alias Franks
+    UPDATE 8534-2319702722 2026-09-22 Alias Franks  date 2026-09-21->2026-09-22, tech Cory Ventura->Alias Franks
+    UPDATE 7493-2332555082 2026-09-22 Alias Franks  date 2026-09-21->2026-09-22, tech Cory Ventura->Alias Franks
+    UPDATE 8414-2294670185 2026-09-22 Alias Franks  date 2026-09-21->2026-09-22, tech Cory Ventura->Alias Franks
+    UPDATE 7624-2333255621 2026-09-22 Alias Franks  date 2026-09-23->2026-09-22
+    UPDATE 4469-2332184002 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 6198-2332268601 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 7765-2332392375 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 7476-2334927737 2026-09-23 Robert Norton  date 2026-09-24->2026-09-23
+    UPDATE 8415-2334974233 2026-09-23 Robert Norton  date 2026-09-24->2026-09-23
+    UPDATE 5369-2335024678 2026-09-23 Robert Norton  date 2026-09-24->2026-09-23
+    UPDATE 8275-2335245362 2026-09-23 Cory Ventura  date 2026-09-24->2026-09-23
+    UPDATE 8541-2320967233 2026-09-23 Alias Franks  date 2026-09-21->2026-09-23
+    UPDATE 5329-1702468686 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 6649-1783833893 2026-09-23 Robert Norton  date 2026-09-25->2026-09-23, tech Luke LaVergne->Robert Norton
+    UPDATE 8568-2325548233 2026-09-23 Robert Norton  date 2026-09-24->2026-09-23
+    UPDATE 7247-1899450454 2026-09-23 Robert Norton  date 2026-09-25->2026-09-23, tech Luke LaVergne->Robert Norton
+    UPDATE 8224-2262415874 2026-09-23 Cory Ventura  date 2026-09-24->2026-09-23, dur 15->12
+    UPDATE 8159-2250286140 2026-09-23 Robert Norton  date 2026-09-24->2026-09-23
+    UPDATE 8489-2308151696 2026-09-23 Robert Norton  date 2026-09-25->2026-09-23, tech Luke LaVergne->Robert Norton
+    UPDATE 8269-2332354554 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 8508-2312568496 2026-09-23 Cory Ventura  date 2026-09-24->2026-09-23, dur 15->12
+    UPDATE 8515-2314137341 2026-09-23 Robert Norton  date 2026-09-24->2026-09-23
+    UPDATE 8251-2319294285 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 8576-2326325461 2026-09-23 Robert Norton  date 2026-09-24->2026-09-23
+    UPDATE 7388-1922166562 2026-09-23 Cory Ventura  date 2026-09-24->2026-09-23, dur 15->12
+    UPDATE 5713-2319215793 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 7841-2118313207 2026-09-23 Cory Ventura  date 2026-09-22->2026-09-23, tech Alias Franks->Cory Ventura, dur 15->12
+    UPDATE 8056-2322087029 2026-09-23 Robert Norton  date 2026-09-24->2026-09-23
+    UPDATE 6856-2332412902 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 8393-2334761385 2026-09-23 Robert Norton  date 2026-09-24->2026-09-23
+    UPDATE 7417-1926987069 2026-09-23 Cory Ventura  date 2026-09-25->2026-09-23, tech Alias Franks->Cory Ventura, dur 15->12
+    UPDATE 4655-2332132266 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 8543-2321122924 2026-09-23 Cory Ventura  date 2026-09-25->2026-09-23, tech Alias Franks->Cory Ventura, dur 15->12
+    UPDATE 8586-2332552725 2026-09-23 Robert Norton  date 2026-09-24->2026-09-23
+    UPDATE 5330-2327093188 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 8496-2311099031 2026-09-23 Cory Ventura  date 2026-09-25->2026-09-23, tech Alias Franks->Cory Ventura, dur 15->12
+    UPDATE 8428-2332166332 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 8288-2323366718 2026-09-23 Cory Ventura  date 2026-09-25->2026-09-23, tech Alias Franks->Cory Ventura, dur 15->12
+    UPDATE 8538-2319780443 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 8460-2303103962 2026-09-23 Cory Ventura  date 2026-09-25->2026-09-23, tech Alias Franks->Cory Ventura, dur 15->12
+    UPDATE 5948-2332149449 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 7713-2054378854 2026-09-23 Robert Norton  date 2026-09-21->2026-09-23
+    UPDATE 8155-2333507820 2026-09-23 Robert Norton  date 2026-09-25->2026-09-23
+    UPDATE 8213-2323103856 2026-09-23 Cory Ventura  date 2026-09-25->2026-09-23, tech Alias Franks->Cory Ventura, dur 15->12
+    UPDATE 8539-2332304644 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 6382-2334561585 2026-09-23 Robert Norton  date 2026-09-21->2026-09-23
+    UPDATE 7517-2333479975 2026-09-23 Robert Norton  date 2026-09-25->2026-09-23
+    UPDATE 5442-2327048094 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 8528-2317029217 2026-09-23 Cory Ventura  date 2026-09-25->2026-09-23, tech Alias Franks->Cory Ventura, dur 15->12
+    UPDATE 5328-1702467448 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 8438-2322366938 2026-09-23 Robert Norton  date 2026-09-21->2026-09-23
+    UPDATE 8441-2300302095 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 8395-2293212664 2026-09-23 Robert Norton  date 2026-09-25->2026-09-23
+    UPDATE 8497-2312055075 2026-09-23 Cory Ventura  date 2026-09-25->2026-09-23, tech Alias Franks->Cory Ventura, dur 15->12
+    UPDATE 7617-2015185249 2026-09-23 Robert Norton  date 2026-09-24->2026-09-23, tech Spencer Hill->Robert Norton, dur 12->15
+    UPDATE 8100-2239936896 2026-09-23 Robert Norton  date 2026-09-21->2026-09-23
+    UPDATE 8532-2319525864 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 7548-2322348112 2026-09-23 Robert Norton  date 2026-09-25->2026-09-23
+    UPDATE 6840-1819626452 2026-09-23 Robert Norton  date 2026-09-24->2026-09-23, tech Spencer Hill->Robert Norton, dur 12->15
+    UPDATE 4997-2326934380 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 6449-2326959115 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 7701-2077824756 2026-09-23 Robert Norton  date 2026-09-24->2026-09-23, tech Spencer Hill->Robert Norton, dur 12->15
+    UPDATE 5672-2315672398 2026-09-23 Robert Norton  date 2026-09-24->2026-09-23, tech Spencer Hill->Robert Norton, dur 12->15
+    UPDATE 6162-2319834044 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 4741-2322521373 2026-09-23 Robert Norton  date 2026-09-24->2026-09-23, tech Spencer Hill->Robert Norton, dur 12->15
+    UPDATE 4479-2326882711 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 8381-2290523384 2026-09-23 Robert Norton  date 2026-09-24->2026-09-23, tech Spencer Hill->Robert Norton, dur 12->15
+    UPDATE 5260-2327010280 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 6427-1661077500 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 7482-2332473777 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 7757-2068214523 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 5818-2319331051 2026-09-23 Spencer Hill  date 2026-09-22->2026-09-23, tech Robert Norton->Spencer Hill
+    UPDATE 8194-2333900850 2026-09-23 Alias Franks  date 2026-09-21->2026-09-23
+    UPDATE 6375-2333924329 2026-09-23 Alias Franks  date 2026-09-21->2026-09-23
+    UPDATE 8246-2333950696 2026-09-23 Alias Franks  date 2026-09-21->2026-09-23
+    UPDATE 6270-2333612903 2026-09-23 Alias Franks  date 2026-09-21->2026-09-23
+    UPDATE 6607-2321913866 2026-09-23 Alias Franks  date 2026-09-21->2026-09-23
+    UPDATE 5099-1682274130 2026-09-23 Alias Franks  date 2026-09-21->2026-09-23
+    UPDATE 7504-2333333766 2026-09-23 Alias Franks  date 2026-09-21->2026-09-23
+    UPDATE 8285-2334047643 2026-09-23 Alias Franks  date 2026-09-21->2026-09-23
+    UPDATE 8042-2334003815 2026-09-23 Alias Franks  date 2026-09-21->2026-09-23
+    UPDATE 7758-2334066302 2026-09-23 Alias Franks  date 2026-09-21->2026-09-23
+    UPDATE 8488-2334981226 2026-09-24 Robert Norton  tech Cory Ventura->Robert Norton, dur 12->15
+    UPDATE 8603-2336559628 2026-09-24 Robert Norton  date 2026-09-21->2026-09-24, tech Spencer Hill->Robert Norton
+    UPDATE 8577-2326337248 2026-09-24 Alias Franks  date 2026-09-23->2026-09-24
+    UPDATE 4676-2320469395 2026-09-24 Cory Ventura  date 2026-09-25->2026-09-24
+    UPDATE 7802-2097019396 2026-09-24 Alias Franks  date 2026-09-22->2026-09-24
+    UPDATE 7853-2311960158 2026-09-24 Cory Ventura  date 2026-09-21->2026-09-24, tech Spencer Hill->Cory Ventura
+    UPDATE 8593-2333944108 2026-09-24 Cory Ventura  date 2026-09-22->2026-09-24, tech Spencer Hill->Cory Ventura
+    UPDATE 7087-1867815928 2026-09-24 Cory Ventura  tech Spencer Hill->Cory Ventura
+    UPDATE 4480-2323785387 2026-09-24 Cory Ventura  tech Spencer Hill->Cory Ventura
+    UPDATE 7997-2216283369 2026-09-24 Cory Ventura  date 2026-09-22->2026-09-24, tech Spencer Hill->Cory Ventura
+    UPDATE 7823-2107377282 2026-09-24 Robert Norton  date 2026-09-23->2026-09-24, tech Cory Ventura->Robert Norton
+    UPDATE 6990-1846546651 2026-09-24 Alias Franks  date 2026-09-22->2026-09-24
+    UPDATE 5751-2334636275 2026-09-24 Robert Norton  date 2026-09-23->2026-09-24, tech Cory Ventura->Robert Norton
+    UPDATE 5411-1820717473 2026-09-24 Robert Norton  date 2026-09-23->2026-09-24, tech Cory Ventura->Robert Norton
+    UPDATE 5138-1774774979 2026-09-24 Robert Norton  date 2026-09-23->2026-09-24, tech Cory Ventura->Robert Norton
+    UPDATE 5424-2320885782 2026-09-24 Cory Ventura  date 2026-09-23->2026-09-24, tech Spencer Hill->Cory Ventura
+    UPDATE 7960-2334667806 2026-09-24 Robert Norton  date 2026-09-23->2026-09-24, tech Cory Ventura->Robert Norton
+    UPDATE 8540-2320735309 2026-09-24 Robert Norton  date 2026-09-25->2026-09-24, tech Tavis Alexander->Robert Norton
+    UPDATE 6757-2334830307 2026-09-24 Robert Norton  date 2026-09-23->2026-09-24, tech Cory Ventura->Robert Norton
+    UPDATE 8418-2333762002 2026-09-24 Robert Norton  date 2026-09-25->2026-09-24, tech Tavis Alexander->Robert Norton
+    UPDATE 8566-2324422318 2026-09-24 Robert Norton  date 2026-09-23->2026-09-24, tech Cory Ventura->Robert Norton
+    UPDATE 6418-2326951632 2026-09-24 Cory Ventura  date 2026-09-21->2026-09-24, tech Robert Norton->Cory Ventura, dur 15->12
+    UPDATE 6737-2332363958 2026-09-24 Luke LaVergne  date 2026-09-21->2026-09-24, tech Spencer Hill->Luke LaVergne, dur 12->15
+    UPDATE 8045-2226612904 2026-09-24 Robert Norton  date 2026-09-23->2026-09-24, tech Cory Ventura->Robert Norton
+    UPDATE 7623-2326927660 2026-09-24 Cory Ventura  date 2026-09-21->2026-09-24, tech Robert Norton->Cory Ventura, dur 15->12
+    UPDATE 7728-2332263825 2026-09-24 Luke LaVergne  date 2026-09-21->2026-09-24, tech Spencer Hill->Luke LaVergne, dur 12->15
+    UPDATE 8551-2321792500 2026-09-24 Robert Norton  date 2026-09-23->2026-09-24, tech Cory Ventura->Robert Norton
+    UPDATE 7869-2334536066 2026-09-24 Alias Franks  date 2026-09-23->2026-09-24
+    UPDATE 8505-2312522170 2026-09-24 Robert Norton  date 2026-09-23->2026-09-24, tech Cory Ventura->Robert Norton
+    UPDATE 8074-2334758042 2026-09-24 Alias Franks  date 2026-09-23->2026-09-24
+    UPDATE 6246-2332365879 2026-09-24 Luke LaVergne  date 2026-09-22->2026-09-24, tech Spencer Hill->Luke LaVergne, dur 12->15
+    UPDATE 8469-2305378136 2026-09-24 Robert Norton  date 2026-09-23->2026-09-24, tech Cory Ventura->Robert Norton
+    UPDATE 7762-2334800906 2026-09-24 Robert Norton  date 2026-09-21->2026-09-24, tech Alias Franks->Robert Norton
+    UPDATE 7829-2332401898 2026-09-24 Luke LaVergne  date 2026-09-22->2026-09-24, tech Spencer Hill->Luke LaVergne, dur 12->15
+    UPDATE 6809-2334780436 2026-09-24 Alias Franks  date 2026-09-23->2026-09-24
+    UPDATE 7705-2303439366 2026-09-24 Cory Ventura  date 2026-09-23->2026-09-24, tech Spencer Hill->Cory Ventura
+    UPDATE 6116-2321912775 2026-09-24 Robert Norton  date 2026-09-23->2026-09-24, tech Cory Ventura->Robert Norton
+    UPDATE 8474-2306255894 2026-09-24 Cory Ventura  date 2026-09-23->2026-09-24, tech Spencer Hill->Cory Ventura
+    UPDATE 6602-2334689017 2026-09-24 Alias Franks  date 2026-09-23->2026-09-24
+    UPDATE 6380-2336595090 2026-09-24 Alias Franks  date 2026-09-23->2026-09-24, tech Cory Ventura->Alias Franks, dur 12->15
+    UPDATE 7744-2063541035 2026-09-24 Robert Norton  date 2026-09-23->2026-09-24, tech Cory Ventura->Robert Norton
+    UPDATE 7826-2109589955 2026-09-24 Robert Norton  tech Cory Ventura->Robert Norton
+    UPDATE 6396-2321169217 2026-09-24 Robert Norton  tech Cory Ventura->Robert Norton
+    UPDATE 6890-2283867307 2026-09-24 Cory Ventura  date 2026-09-25->2026-09-24, tech Robert Norton->Cory Ventura, dur 15->12
+    UPDATE 5023-2316974241 2026-09-24 Cory Ventura  date 2026-09-25->2026-09-24
+    UPDATE 8320-2333720015 2026-09-24 Robert Norton  tech Cory Ventura->Robert Norton
+    UPDATE 8419-2319772895 2026-09-24 Cory Ventura  date 2026-09-25->2026-09-24, tech Robert Norton->Cory Ventura, dur 15->12
+    UPDATE 7673-2334005739 2026-09-24 Cory Ventura  date 2026-09-25->2026-09-24
+    UPDATE 4673-1912576292 2026-09-24 Alias Franks  date 2026-09-21->2026-09-24
+    UPDATE 5667-2333828003 2026-09-24 Robert Norton  tech Cory Ventura->Robert Norton
+    UPDATE 6720-2326974036 2026-09-24 Cory Ventura  date 2026-09-25->2026-09-24, tech Robert Norton->Cory Ventura, dur 15->12
+    UPDATE 7725-2311966924 2026-09-24 Cory Ventura  date 2026-09-21->2026-09-24, tech Spencer Hill->Cory Ventura
+    UPDATE 7914-2173617814 2026-09-24 Robert Norton  date 2026-09-23->2026-09-24, tech Alias Franks->Robert Norton
+    UPDATE 5489-2334835470 2026-09-24 Alias Franks  date 2026-09-21->2026-09-24
+    UPDATE 7670-2297126366 2026-09-24 Cory Ventura  date 2026-09-21->2026-09-24, tech Spencer Hill->Cory Ventura
+    UPDATE 8490-2308634862 2026-09-24 Cory Ventura  date 2026-09-22->2026-09-24, tech Spencer Hill->Cory Ventura
+    UPDATE 7183-2322635643 2026-09-24 Robert Norton  date 2026-09-23->2026-09-24, tech Alias Franks->Robert Norton
+    UPDATE 4926-2311883059 2026-09-24 Cory Ventura  date 2026-09-21->2026-09-24, tech Spencer Hill->Cory Ventura
+    UPDATE 5084-2334581166 2026-09-24 Alias Franks  date 2026-09-21->2026-09-24
+    UPDATE 8386-2334656949 2026-09-24 Alias Franks  date 2026-09-21->2026-09-24
+    UPDATE 8053-2312521636 2026-09-24 Cory Ventura  date 2026-09-22->2026-09-24, tech Spencer Hill->Cory Ventura
+    UPDATE 7858-2332538195 2026-09-24 Cory Ventura  date 2026-09-21->2026-09-24, tech Spencer Hill->Cory Ventura
+    UPDATE 7637-2332567867 2026-09-24 Cory Ventura  date 2026-09-22->2026-09-24, tech Spencer Hill->Cory Ventura
+    UPDATE 8160-2334882118 2026-09-25 Robert Norton  date 2026-09-24->2026-09-25, tech Spencer Hill->Robert Norton
+    UPDATE 6953-2335059461 2026-09-25 Cory Ventura  date 2026-09-24->2026-09-25, tech Spencer Hill->Cory Ventura, dur 15->12
+    UPDATE 5602-2335061012 2026-09-25 Cory Ventura  date 2026-09-24->2026-09-25, tech Spencer Hill->Cory Ventura, dur 15->12
+    UPDATE 7407-2335063899 2026-09-25 Cory Ventura  date 2026-09-24->2026-09-25, tech Spencer Hill->Cory Ventura, dur 15->12
+    UPDATE 8599-2336536000 2026-09-25 Robert Norton  date 2026-09-24->2026-09-25, tech Cory Ventura->Robert Norton, dur 12->15
+    UPDATE 8597-2336532010 2026-09-25 Cory Ventura  date 2026-09-23->2026-09-25, tech Spencer Hill->Cory Ventura, dur 30->24
+    UPDATE 5982-2334542478 2026-09-25 Cory Ventura  date 2026-09-23->2026-09-25, tech Robert Norton->Cory Ventura, dur 15->12
+    UPDATE 7084-2319332214 2026-09-25 Cory Ventura  tech Robert Norton->Cory Ventura, dur 15->12
+    UPDATE 8504-2312516786 2026-09-25 Tavis Alexander  date 2026-09-23->2026-09-25, tech Spencer Hill->Tavis Alexander, dur 12->15
+    UPDATE 4825-2333948467 2026-09-25 Tavis Alexander  tech Cory Ventura->Tavis Alexander, dur 12->15
+    UPDATE 5427-2334540120 2026-09-25 Cory Ventura  date 2026-09-23->2026-09-25, tech Robert Norton->Cory Ventura, dur 15->12
+    UPDATE 6144-2325942481 2026-09-25 Robert Norton  tech Tavis Alexander->Robert Norton
+    UPDATE 8274-2271943450 2026-09-25 Tavis Alexander  date 2026-09-23->2026-09-25, tech Spencer Hill->Tavis Alexander, dur 12->15
+    UPDATE 6300-2332434144 2026-09-25 Tavis Alexander  tech Cory Ventura->Tavis Alexander, dur 12->15
+    UPDATE 7427-1931190185 2026-09-25 Tavis Alexander  date 2026-09-23->2026-09-25, tech Spencer Hill->Tavis Alexander, dur 12->15
+    UPDATE 5147-2303486984 2026-09-25 Tavis Alexander  tech Cory Ventura->Tavis Alexander, dur 12->15
+    UPDATE 8519-2315673749 2026-09-25 Cory Ventura  date 2026-09-23->2026-09-25, tech Robert Norton->Cory Ventura, dur 15->12
+    UPDATE 8513-2313803359 2026-09-25 Robert Norton  tech Tavis Alexander->Robert Norton
+    UPDATE 6985-2320501527 2026-09-25 Tavis Alexander  tech Cory Ventura->Tavis Alexander, dur 12->15
+    UPDATE 7739-2333191680 2026-09-25 Tavis Alexander  date 2026-09-23->2026-09-25, tech Spencer Hill->Tavis Alexander, dur 12->15
+    UPDATE 5409-2320523686 2026-09-25 Tavis Alexander  tech Cory Ventura->Tavis Alexander, dur 12->15
+    UPDATE 5371-2333292244 2026-09-25 Robert Norton  tech Tavis Alexander->Robert Norton
+    UPDATE 7644-2024390319 2026-09-25 Cory Ventura  date 2026-09-23->2026-09-25, tech Robert Norton->Cory Ventura, dur 15->12
+    UPDATE 4994-2333267175 2026-09-25 Tavis Alexander  date 2026-09-23->2026-09-25, tech Spencer Hill->Tavis Alexander, dur 12->15
+    UPDATE 8529-2319354332 2026-09-25 Luke LaVergne  date 2026-09-22->2026-09-25
+    UPDATE 4979-2332327636 2026-09-25 Tavis Alexander  tech Cory Ventura->Tavis Alexander, dur 12->15
+    UPDATE 5139-2134948187 2026-09-25 Robert Norton  tech Tavis Alexander->Robert Norton
+    UPDATE 6475-2334637404 2026-09-25 Robert Norton  date 2026-09-23->2026-09-25
+    UPDATE 8585-2332546927 2026-09-25 Tavis Alexander  tech Cory Ventura->Tavis Alexander, dur 12->15
+    UPDATE 8466-2304694236 2026-09-25 Tavis Alexander  date 2026-09-23->2026-09-25, tech Spencer Hill->Tavis Alexander, dur 12->15
+    UPDATE 5227-2321080210 2026-09-25 Tavis Alexander  tech Cory Ventura->Tavis Alexander, dur 12->15
+    UPDATE 5040-1651220347 2026-09-25 Robert Norton  date 2026-09-23->2026-09-25
+    UPDATE 7694-2333688278 2026-09-25 Tavis Alexander  date 2026-09-23->2026-09-25, tech Spencer Hill->Tavis Alexander, dur 12->15
+    UPDATE 5152-2334652378 2026-09-25 Robert Norton  date 2026-09-23->2026-09-25
+    UPDATE 4728-1966817013 2026-09-25 Tavis Alexander  date 2026-09-23->2026-09-25, tech Spencer Hill->Tavis Alexander, dur 12->15
+    UPDATE 7812-2333404673 2026-09-25 Robert Norton  date 2026-09-24->2026-09-25, tech Cory Ventura->Robert Norton
+    UPDATE 6454-2303510323 2026-09-25 Tavis Alexander  date 2026-09-23->2026-09-25, tech Spencer Hill->Tavis Alexander, dur 12->15
+    UPDATE 7672-2334873892 2026-09-25 Robert Norton  tech Cory Ventura->Robert Norton, dur 12->15
+    UPDATE 4929-1620766319 2026-09-25 Robert Norton  date 2026-09-24->2026-09-25, tech Cory Ventura->Robert Norton
+    UPDATE 7540-2332392024 2026-09-25 Tavis Alexander  date 2026-09-23->2026-09-25, tech Spencer Hill->Tavis Alexander, dur 12->15
+    UPDATE 7382-2334713382 2026-09-25 Robert Norton  date 2026-09-23->2026-09-25
+    UPDATE 7671-2332366482 2026-09-25 Tavis Alexander  date 2026-09-23->2026-09-25, tech Spencer Hill->Tavis Alexander, dur 12->15
+    UPDATE 7406-2334822342 2026-09-25 Robert Norton  date 2026-09-24->2026-09-25, tech Cory Ventura->Robert Norton
+    UPDATE 8231-2320901835 2026-09-25 Tavis Alexander  tech Cory Ventura->Tavis Alexander, dur 12->15
+    UPDATE 6356-1797444104 2026-09-25 Tavis Alexander  date 2026-09-23->2026-09-25, tech Spencer Hill->Tavis Alexander, dur 12->15
+    UPDATE 6663-2334762916 2026-09-25 Robert Norton  date 2026-09-23->2026-09-25
+    UPDATE 5594-2334824222 2026-09-25 Robert Norton  date 2026-09-24->2026-09-25, tech Cory Ventura->Robert Norton
+    UPDATE 8123-2333628199 2026-09-25 Tavis Alexander  tech Cory Ventura->Tavis Alexander, dur 12->15
+    UPDATE 8402-2332301207 2026-09-25 Tavis Alexander  date 2026-09-23->2026-09-25, tech Spencer Hill->Tavis Alexander, dur 12->15
+    UPDATE 5071-2333150088 2026-09-25 Robert Norton  date 2026-09-24->2026-09-25, tech Cory Ventura->Robert Norton
+    UPDATE 5515-2333868794 2026-09-25 Tavis Alexander  date 2026-09-23->2026-09-25, tech Spencer Hill->Tavis Alexander, dur 12->15
+    UPDATE 7720-2320801944 2026-09-25 Tavis Alexander  tech Cory Ventura->Tavis Alexander, dur 12->15
+    UPDATE 8325-2333211534 2026-09-25 Tavis Alexander  tech Cory Ventura->Tavis Alexander, dur 12->15
+    UPDATE 4749-2304979365 2026-09-25 Tavis Alexander  date 2026-09-23->2026-09-25, tech Spencer Hill->Tavis Alexander, dur 12->15
+    UPDATE 8214-2334847509 2026-09-25 Robert Norton  date 2026-09-24->2026-09-25, tech Cory Ventura->Robert Norton
+    UPDATE 7941-2192192467 2026-09-25 Luke LaVergne  date 2026-09-24->2026-09-25, tech Spencer Hill->Luke LaVergne, dur 12->15
+    UPDATE 4701-2325256982 2026-09-25 Cory Ventura  date 2026-09-24->2026-09-25, tech Robert Norton->Cory Ventura, dur 15->12
+    UPDATE 8468-2305377147 2026-09-25 Tavis Alexander  tech Cory Ventura->Tavis Alexander, dur 12->15
+    UPDATE 8219-2333366057 2026-09-25 Robert Norton  date 2026-09-24->2026-09-25, tech Cory Ventura->Robert Norton
+    UPDATE 8516-2314148415 2026-09-25 Tavis Alexander  tech Cory Ventura->Tavis Alexander, dur 12->15
+    UPDATE 7306-1909016236 2026-09-25 Cory Ventura  date 2026-09-24->2026-09-25, tech Robert Norton->Cory Ventura, dur 15->12
+    UPDATE 8521-2316817001 2026-09-25 Tavis Alexander  tech Cory Ventura->Tavis Alexander, dur 12->15
+    UPDATE 8484-2308142906 2026-09-25 Cory Ventura  date 2026-09-24->2026-09-25, tech Robert Norton->Cory Ventura, dur 15->12
+    UPDATE 7199-1891621394 2026-09-25 Cory Ventura  date 2026-09-24->2026-09-25, tech Robert Norton->Cory Ventura, dur 15->12
+    UPDATE 7684-2326061180 2026-09-25 Cory Ventura  date 2026-09-23->2026-09-25, tech Robert Norton->Cory Ventura, dur 15->12
+    UPDATE 7626-2325285648 2026-09-25 Cory Ventura  date 2026-09-21->2026-09-25, tech Robert Norton->Cory Ventura, dur 15->12
+    UPDATE 8478-2308133924 2026-09-25 Robert Norton  tech Tavis Alexander->Robert Norton
+    UPDATE 8422-2325796931 2026-09-25 Robert Norton  date 2026-09-24->2026-09-25, tech Cory Ventura->Robert Norton
+    UPDATE 8530-2319395449 2026-09-25 Robert Norton  date 2026-09-24->2026-09-25, tech Cory Ventura->Robert Norton
+    UPDATE 7766-2325831248 2026-09-25 Robert Norton  tech Tavis Alexander->Robert Norton
+    UPDATE 8270-2326010506 2026-09-25 Robert Norton  tech Tavis Alexander->Robert Norton
+    UPDATE 4550-2325947220 2026-09-25 Robert Norton  date 2026-09-24->2026-09-25, tech Cory Ventura->Robert Norton
+    DELETE 7704-2050067388 2026-09-22 Robert Norton  Tyler Smythe · #7704
+
+driver availability: 09-21: Alias/Cory/Luke/Robert/Spencer   09-22: Alias/Cory/Luke/Robert   09-23: Alias/Cory/Luke/Robert/Spencer   09-24: Alias/Cory/Luke/Robert   09-25: Alias/Cory/Luke/Robert/Tavis
+
+DRY RUN — nothing written. Planning and time write-back happen only with --execute. Log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-09-21_swap\sync-plan-times.log

@@ -1,0 +1,4146 @@
+{
+ "generatedAt": "2026-09-19T18:22:39.925Z",
+ "asOf": "2026-09-18",
+ "calibration": [
+  {
+   "policy": "P0",
+   "visitsPerWeek": 688.7,
+   "observedStopsPerWeek": 615,
+   "deltaVisitsPct": 12,
+   "hoursPerWeek": 231,
+   "observedHoursPerWeek": 207.9,
+   "deltaHoursPct": 11.1
+  },
+  {
+   "policy": "P1",
+   "visitsPerWeek": 411.8,
+   "observedStopsPerWeek": 615,
+   "deltaVisitsPct": -33,
+   "hoursPerWeek": 137.7,
+   "observedHoursPerWeek": 207.9,
+   "deltaHoursPct": -33.8
+  },
+  {
+   "policy": "P2",
+   "visitsPerWeek": 589.6,
+   "observedStopsPerWeek": 615,
+   "deltaVisitsPct": -4.1,
+   "hoursPerWeek": 196.6,
+   "observedHoursPerWeek": 207.9,
+   "deltaHoursPct": -5.4
+  },
+  {
+   "policy": "P3",
+   "visitsPerWeek": 776.2,
+   "observedStopsPerWeek": 615,
+   "deltaVisitsPct": 26.2,
+   "hoursPerWeek": 259.8,
+   "observedHoursPerWeek": 207.9,
+   "deltaHoursPct": 25
+  }
+ ],
+ "calibrationNote": "The observed baseline is what the five techs actually delivered. A policy whose visits/week sits far above it is describing a service level the company has never run, not a forecast of the same work.",
+ "basis": {
+  "activeJobs": 881,
+  "routeDayAssignment": "master-asbuilt.json where present, else dominant tech/weekday from this job visits",
+  "masterAsbuiltPresent": true,
+  "masterRowsParsed": 1063,
+  "assignmentSources": {
+   "master-asbuilt.json": 881
+  },
+  "nearestNeighborUsed": 0,
+  "unassignable": 0,
+  "cycleTimeSource": "Jobber stamps, median of per-route-day (span / stops) [route-day-drive_2026-08-17_2026-09-17.json]",
+  "cycleTime": "lib/cycle-time.mjs, the one estimator: the MEDIAN over that tech x weekday route-days of (first-stop-to-last-stop minutes / stops that day). Spans and stops are Jobber completion stamps. Fallback: that tech median across their days, then the global median.",
+  "cycleTimeEstimator": "median of per-route-day ratios",
+  "cycleTimeFile": "route-day-drive_2026-08-17_2026-09-17.json",
+  "cycleTimeRouteDaysUsed": 113,
+  "cycleTimeDegraded": null,
+  "globalCycleMinPerStop": 20.1,
+  "quickFixNote": "Headline policies hold Quick Fix at 7 days because the product IS a weekly 5-week series; policiesPure applies each policy to Quick Fix too, for comparison.",
+  "capacityReference": "25 route-days x 8h = 200h per week."
+ },
+ "caveats": [
+  "Demand is a steady-state rate: each job contributes 7/interval visits per week. It does not model the Quick Fix series ending, new sales arriving, or churn.",
+  "Cycle time is a route-day median measured over 3-5 weeks at the stop counts actually run. Pushing a route-day well past its observed stop count will not scale linearly - drive per stop falls as density rises, so hours at much higher volume are over-estimated, and at much lower volume under-estimated.",
+  "P0 uses each job own measured gap, which is itself the product of a schedule the office has been manually patching. It reproduces current behavior, including its defects.",
+  "Trigger state is job-level and describes only the last completed visit, so P1/P2/P3 classify each job by one observation, not by a steady-state probability of catching.",
+  "Cycle time is measured per tech, and techs differ by up to about 2x (Cory 12.8-16.0 min/stop, Luke 20.0-32.1). Hours per route-day are therefore not comparable between techs as a measure of workload difficulty."
+ ],
+ "observedBaseline": {
+  "rows": [
+   {
+    "tech": "Alias Franks",
+    "dow": "mon",
+    "medianStops": 27.5,
+    "medianSpanH": 8.8,
+    "cycleMinPerStop": 19.2,
+    "weeksObserved": 4,
+    "hoursOver8": 0.8,
+    "hoursOver9": -0.2
+   },
+   {
+    "tech": "Alias Franks",
+    "dow": "tue",
+    "medianStops": 27,
+    "medianSpanH": 10.6,
+    "cycleMinPerStop": 23.56,
+    "weeksObserved": 5,
+    "hoursOver8": 2.6,
+    "hoursOver9": 1.6
+   },
+   {
+    "tech": "Alias Franks",
+    "dow": "wed",
+    "medianStops": 25,
+    "medianSpanH": 11.8,
+    "cycleMinPerStop": 28.32,
+    "weeksObserved": 5,
+    "hoursOver8": 3.8,
+    "hoursOver9": 2.8
+   },
+   {
+    "tech": "Alias Franks",
+    "dow": "thu",
+    "medianStops": 23,
+    "medianSpanH": 9.7,
+    "cycleMinPerStop": 25.3,
+    "weeksObserved": 5,
+    "hoursOver8": 1.7,
+    "hoursOver9": 0.7
+   },
+   {
+    "tech": "Alias Franks",
+    "dow": "fri",
+    "medianStops": 25.5,
+    "medianSpanH": 9.5,
+    "cycleMinPerStop": 22.35,
+    "weeksObserved": 4,
+    "hoursOver8": 1.5,
+    "hoursOver9": 0.5
+   },
+   {
+    "tech": "Cory Ventura",
+    "dow": "mon",
+    "medianStops": 31,
+    "medianSpanH": 6.6,
+    "cycleMinPerStop": 12.77,
+    "weeksObserved": 4,
+    "hoursOver8": -1.4,
+    "hoursOver9": -2.4
+   },
+   {
+    "tech": "Cory Ventura",
+    "dow": "tue",
+    "medianStops": 23,
+    "medianSpanH": 5.8,
+    "cycleMinPerStop": 15.13,
+    "weeksObserved": 5,
+    "hoursOver8": -2.2,
+    "hoursOver9": -3.2
+   },
+   {
+    "tech": "Cory Ventura",
+    "dow": "wed",
+    "medianStops": 28,
+    "medianSpanH": 7.1,
+    "cycleMinPerStop": 15.21,
+    "weeksObserved": 5,
+    "hoursOver8": -0.9,
+    "hoursOver9": -1.9
+   },
+   {
+    "tech": "Cory Ventura",
+    "dow": "thu",
+    "medianStops": 24,
+    "medianSpanH": 6.4,
+    "cycleMinPerStop": 16,
+    "weeksObserved": 5,
+    "hoursOver8": -1.6,
+    "hoursOver9": -2.6
+   },
+   {
+    "tech": "Cory Ventura",
+    "dow": "fri",
+    "medianStops": 24,
+    "medianSpanH": 6.2,
+    "cycleMinPerStop": 15.5,
+    "weeksObserved": 3,
+    "hoursOver8": -1.8,
+    "hoursOver9": -2.8
+   },
+   {
+    "tech": "Luke LaVergne",
+    "dow": "mon",
+    "medianStops": 22,
+    "medianSpanH": 8.1,
+    "cycleMinPerStop": 22.09,
+    "weeksObserved": 4,
+    "hoursOver8": 0.1,
+    "hoursOver9": -0.9
+   },
+   {
+    "tech": "Luke LaVergne",
+    "dow": "tue",
+    "medianStops": 17,
+    "medianSpanH": 8.2,
+    "cycleMinPerStop": 28.94,
+    "weeksObserved": 5,
+    "hoursOver8": 0.2,
+    "hoursOver9": -0.8
+   },
+   {
+    "tech": "Luke LaVergne",
+    "dow": "wed",
+    "medianStops": 17,
+    "medianSpanH": 9.1,
+    "cycleMinPerStop": 32.12,
+    "weeksObserved": 5,
+    "hoursOver8": 1.1,
+    "hoursOver9": 0.1
+   },
+   {
+    "tech": "Luke LaVergne",
+    "dow": "thu",
+    "medianStops": 21,
+    "medianSpanH": 9.6,
+    "cycleMinPerStop": 27.43,
+    "weeksObserved": 5,
+    "hoursOver8": 1.6,
+    "hoursOver9": 0.6
+   },
+   {
+    "tech": "Luke LaVergne",
+    "dow": "fri",
+    "medianStops": 24,
+    "medianSpanH": 8,
+    "cycleMinPerStop": 20,
+    "weeksObserved": 3,
+    "hoursOver8": 0,
+    "hoursOver9": -1
+   },
+   {
+    "tech": "Robert Norton",
+    "dow": "mon",
+    "medianStops": 21.5,
+    "medianSpanH": 7.7,
+    "cycleMinPerStop": 21.49,
+    "weeksObserved": 4,
+    "hoursOver8": -0.3,
+    "hoursOver9": -1.3
+   },
+   {
+    "tech": "Robert Norton",
+    "dow": "tue",
+    "medianStops": 25,
+    "medianSpanH": 8.3,
+    "cycleMinPerStop": 19.92,
+    "weeksObserved": 5,
+    "hoursOver8": 0.3,
+    "hoursOver9": -0.7
+   },
+   {
+    "tech": "Robert Norton",
+    "dow": "wed",
+    "medianStops": 23,
+    "medianSpanH": 7.7,
+    "cycleMinPerStop": 20.09,
+    "weeksObserved": 5,
+    "hoursOver8": -0.3,
+    "hoursOver9": -1.3
+   },
+   {
+    "tech": "Robert Norton",
+    "dow": "thu",
+    "medianStops": 25,
+    "medianSpanH": 8.8,
+    "cycleMinPerStop": 21.12,
+    "weeksObserved": 5,
+    "hoursOver8": 0.8,
+    "hoursOver9": -0.2
+   },
+   {
+    "tech": "Robert Norton",
+    "dow": "fri",
+    "medianStops": 22,
+    "medianSpanH": 8.7,
+    "cycleMinPerStop": 23.73,
+    "weeksObserved": 4,
+    "hoursOver8": 0.7,
+    "hoursOver9": -0.3
+   },
+   {
+    "tech": "Tavis Alexander",
+    "dow": "mon",
+    "medianStops": 27.5,
+    "medianSpanH": 7.5,
+    "cycleMinPerStop": 16.36,
+    "weeksObserved": 4,
+    "hoursOver8": -0.5,
+    "hoursOver9": -1.5
+   },
+   {
+    "tech": "Tavis Alexander",
+    "dow": "tue",
+    "medianStops": 29,
+    "medianSpanH": 8.8,
+    "cycleMinPerStop": 18.21,
+    "weeksObserved": 5,
+    "hoursOver8": 0.8,
+    "hoursOver9": -0.2
+   },
+   {
+    "tech": "Tavis Alexander",
+    "dow": "wed",
+    "medianStops": 32,
+    "medianSpanH": 8,
+    "cycleMinPerStop": 15,
+    "weeksObserved": 5,
+    "hoursOver8": 0,
+    "hoursOver9": -1
+   },
+   {
+    "tech": "Tavis Alexander",
+    "dow": "thu",
+    "medianStops": 26,
+    "medianSpanH": 8.1,
+    "cycleMinPerStop": 18.69,
+    "weeksObserved": 5,
+    "hoursOver8": 0.1,
+    "hoursOver9": -0.9
+   },
+   {
+    "tech": "Tavis Alexander",
+    "dow": "fri",
+    "medianStops": 25,
+    "medianSpanH": 8.8,
+    "cycleMinPerStop": 21.12,
+    "weeksObserved": 4,
+    "hoursOver8": 0.8,
+    "hoursOver9": -0.2
+   }
+  ],
+  "totals": {
+   "stopsPerWeek": 615,
+   "hoursPerWeek": 207.9,
+   "routeDaysOver8": 15,
+   "routeDaysOver9": 6
+  },
+  "source": "Jobber completion stamps (route-day-drive summary)",
+  "note": "What the five techs actually delivered over 08-17..09-17. The right sanity check for any policy total."
+ },
+ "policies": {
+  "P0": {
+   "policy": "P0",
+   "label": "as the office actually runs it (measured intervals)",
+   "quickFixHeldWeekly": true,
+   "rows": [
+    {
+     "tech": "Alias Franks",
+     "dow": "mon",
+     "jobs": 38,
+     "visitsPerWeek": 31.71,
+     "cycleMinPerStop": 20.16,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 10.65,
+     "hoursOver8": 2.65,
+     "hoursOver9": 1.65,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 24.71,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "tue",
+     "jobs": 38,
+     "visitsPerWeek": 32.5,
+     "cycleMinPerStop": 23.2,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 12.57,
+     "hoursOver8": 4.57,
+     "hoursOver9": 3.57,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 19.496,
+      "Quick Fix": 13
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "wed",
+     "jobs": 34,
+     "visitsPerWeek": 26.35,
+     "cycleMinPerStop": 27.93,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 12.27,
+     "hoursOver8": 4.27,
+     "hoursOver9": 3.27,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 18.349,
+      "Quick Fix": 8
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 26.68,
+     "cycleMinPerStop": 26.41,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 11.74,
+     "hoursOver8": 3.74,
+     "hoursOver9": 2.74,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 23.676,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "fri",
+     "jobs": 35,
+     "visitsPerWeek": 29.94,
+     "cycleMinPerStop": 22.25,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 11.1,
+     "hoursOver8": 3.1,
+     "hoursOver9": 2.1,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 23.935,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "mon",
+     "jobs": 54,
+     "visitsPerWeek": 44.03,
+     "cycleMinPerStop": 13.38,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.82,
+     "hoursOver8": 1.82,
+     "hoursOver9": 0.82,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 38.031,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 22.07,
+     "cycleMinPerStop": 15.06,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.54,
+     "hoursOver8": -2.46,
+     "hoursOver9": -3.46,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 18.908,
+      "Quick Fix": 2,
+      "other": 1.167
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 27.57,
+     "cycleMinPerStop": 14.04,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6.45,
+     "hoursOver8": -1.55,
+     "hoursOver9": -2.55,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 22.38,
+      "Barter": 0.189,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "thu",
+     "jobs": 32,
+     "visitsPerWeek": 25.52,
+     "cycleMinPerStop": 16.08,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6.84,
+     "hoursOver8": -1.16,
+     "hoursOver9": -2.16,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 22.518,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "fri",
+     "jobs": 45,
+     "visitsPerWeek": 35.64,
+     "cycleMinPerStop": 15.54,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.23,
+     "hoursOver8": 1.23,
+     "hoursOver9": 0.23,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 31.646,
+      "Quick Fix": 4
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 28.65,
+     "cycleMinPerStop": 21.47,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 10.25,
+     "hoursOver8": 2.25,
+     "hoursOver9": 1.25,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 20.157,
+      "Barter": 0.5,
+      "Quick Fix": 8
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "tue",
+     "jobs": 27,
+     "visitsPerWeek": 23.51,
+     "cycleMinPerStop": 24.15,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.46,
+     "hoursOver8": 1.46,
+     "hoursOver9": 0.46,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 21.505,
+      "none (bid)": 1,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "wed",
+     "jobs": 25,
+     "visitsPerWeek": 22.17,
+     "cycleMinPerStop": 29.4,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 10.86,
+     "hoursOver8": 2.86,
+     "hoursOver9": 1.86,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 17.166,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 27.48,
+     "cycleMinPerStop": 27.41,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 12.55,
+     "hoursOver8": 4.55,
+     "hoursOver9": 3.55,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 22.483,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "fri",
+     "jobs": 27,
+     "visitsPerWeek": 20.7,
+     "cycleMinPerStop": 19.98,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6.89,
+     "hoursOver8": -1.11,
+     "hoursOver9": -2.11,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.7,
+      "other": 1,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "mon",
+     "jobs": 18,
+     "visitsPerWeek": 14.79,
+     "cycleMinPerStop": 21.57,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.32,
+     "hoursOver8": -2.68,
+     "hoursOver9": -3.68,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 14.089,
+      "other": 0.7
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 24.43,
+     "cycleMinPerStop": 18.76,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 7.64,
+     "hoursOver8": -0.36,
+     "hoursOver9": -1.36,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 20.176,
+      "Barter": 2.25,
+      "Quick Fix": 2
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 24.43,
+     "cycleMinPerStop": 19.49,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 7.94,
+     "hoursOver8": -0.06,
+     "hoursOver9": -1.06,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 23.435,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 26.6,
+     "cycleMinPerStop": 20.42,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.05,
+     "hoursOver8": 1.05,
+     "hoursOver9": 0.05,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 20.602,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "fri",
+     "jobs": 40,
+     "visitsPerWeek": 30.97,
+     "cycleMinPerStop": 24.34,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 12.56,
+     "hoursOver8": 4.56,
+     "hoursOver9": 3.56,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 20.065,
+      "Barter": 2.4,
+      "Friends and family": 0.5,
+      "none (bid)": 1,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 29.93,
+     "cycleMinPerStop": 15.88,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 7.92,
+     "hoursOver8": -0.08,
+     "hoursOver9": -1.08,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 23.931,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "tue",
+     "jobs": 37,
+     "visitsPerWeek": 28.24,
+     "cycleMinPerStop": 18.11,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 8.52,
+     "hoursOver8": 0.52,
+     "hoursOver9": -0.48,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 18.246,
+      "Quick Fix": 9,
+      "other": 1
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "wed",
+     "jobs": 29,
+     "visitsPerWeek": 23.3,
+     "cycleMinPerStop": 15.34,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.96,
+     "hoursOver8": -2.04,
+     "hoursOver9": -3.04,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 19.298,
+      "Quick Fix": 4
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "thu",
+     "jobs": 37,
+     "visitsPerWeek": 25.13,
+     "cycleMinPerStop": 19.36,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 8.11,
+     "hoursOver8": 0.11,
+     "hoursOver9": -0.89,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 18.13,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "fri",
+     "jobs": 41,
+     "visitsPerWeek": 36.33,
+     "cycleMinPerStop": 19.36,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 11.72,
+     "hoursOver8": 3.72,
+     "hoursOver9": 2.72,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 33.329,
+      "Quick Fix": 3
+     }
+    }
+   ],
+   "totals": {
+    "visitsPerWeek": 688.7,
+    "hoursPerWeek": 231,
+    "routeDays": 25,
+    "capacityHoursAt8": 200,
+    "capacityHoursAt9": 225,
+    "hoursOverCapacityAt8": 31,
+    "hoursOverCapacityAt9": 6,
+    "routeDaysOver8": 16,
+    "routeDaysOver9": 14,
+    "utilizationAt8Pct": 115.5,
+    "techDaysNeededAt8": 28.9
+   },
+   "intervalBasisCounts": {
+    "own measured gap median": 574,
+    "own next booked gap (only one completed visit)": 158,
+    "product delivered median (no gap evidence)": 25,
+    "Quick Fix product cadence (weekly series)": 124
+   },
+   "jobsUnplaced": 0
+  },
+  "P1": {
+   "policy": "P1",
+   "label": "weekly after a catch, monthly otherwise",
+   "quickFixHeldWeekly": true,
+   "rows": [
+    {
+     "tech": "Alias Franks",
+     "dow": "mon",
+     "jobs": 38,
+     "visitsPerWeek": 20.37,
+     "cycleMinPerStop": 20.16,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6.84,
+     "hoursOver8": -1.16,
+     "hoursOver9": -2.16,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 13.359,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "tue",
+     "jobs": 38,
+     "visitsPerWeek": 18.83,
+     "cycleMinPerStop": 23.2,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 7.28,
+     "hoursOver8": -0.72,
+     "hoursOver9": -1.72,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 5.825,
+      "Quick Fix": 13
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "wed",
+     "jobs": 34,
+     "visitsPerWeek": 18.67,
+     "cycleMinPerStop": 27.93,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 8.69,
+     "hoursOver8": 0.69,
+     "hoursOver9": -0.31,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 10.66,
+      "Quick Fix": 8
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 12.53,
+     "cycleMinPerStop": 26.41,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.52,
+     "hoursOver8": -2.48,
+     "hoursOver9": -3.48,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 9.524,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "fri",
+     "jobs": 35,
+     "visitsPerWeek": 16.6,
+     "cycleMinPerStop": 22.25,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6.16,
+     "hoursOver8": -1.84,
+     "hoursOver9": -2.84,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 10.592,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "mon",
+     "jobs": 54,
+     "visitsPerWeek": 26.4,
+     "cycleMinPerStop": 13.38,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.89,
+     "hoursOver8": -2.11,
+     "hoursOver9": -3.11,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 20.388,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 14.6,
+     "cycleMinPerStop": 15.06,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 3.66,
+     "hoursOver8": -4.34,
+     "hoursOver9": -5.34,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 12.359,
+      "Quick Fix": 2,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 15.3,
+     "cycleMinPerStop": 14.04,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 3.58,
+     "hoursOver8": -4.42,
+     "hoursOver9": -5.42,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 10.058,
+      "Barter": 0.233,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "thu",
+     "jobs": 32,
+     "visitsPerWeek": 12.83,
+     "cycleMinPerStop": 16.08,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 3.44,
+     "hoursOver8": -4.56,
+     "hoursOver9": -5.56,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 9.825,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "fri",
+     "jobs": 45,
+     "visitsPerWeek": 19.7,
+     "cycleMinPerStop": 15.54,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.1,
+     "hoursOver8": -2.9,
+     "hoursOver9": -3.9,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 15.689,
+      "Quick Fix": 4
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 23.6,
+     "cycleMinPerStop": 21.47,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 8.44,
+     "hoursOver8": 0.44,
+     "hoursOver9": -0.56,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 15.359,
+      "Barter": 0.233,
+      "Quick Fix": 8
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "tue",
+     "jobs": 27,
+     "visitsPerWeek": 9.37,
+     "cycleMinPerStop": 24.15,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 3.77,
+     "hoursOver8": -4.23,
+     "hoursOver9": -5.23,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 8.126,
+      "none (bid)": 0.233,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "wed",
+     "jobs": 25,
+     "visitsPerWeek": 11.2,
+     "cycleMinPerStop": 29.4,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.49,
+     "hoursOver8": -2.51,
+     "hoursOver9": -3.51,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 6.194,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 15.6,
+     "cycleMinPerStop": 27.41,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 7.13,
+     "hoursOver8": -0.87,
+     "hoursOver9": -1.87,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 10.592,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "fri",
+     "jobs": 27,
+     "visitsPerWeek": 11.67,
+     "cycleMinPerStop": 19.98,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 3.89,
+     "hoursOver8": -4.11,
+     "hoursOver9": -5.11,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 8.427,
+      "other": 0.233,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "mon",
+     "jobs": 18,
+     "visitsPerWeek": 6.5,
+     "cycleMinPerStop": 21.57,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 2.34,
+     "hoursOver8": -5.66,
+     "hoursOver9": -6.66,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 6.262,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 15.37,
+     "cycleMinPerStop": 18.76,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 4.81,
+     "hoursOver8": -3.19,
+     "hoursOver9": -4.19,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 11.893,
+      "Barter": 1.466,
+      "Quick Fix": 2
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 15.3,
+     "cycleMinPerStop": 19.49,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 4.97,
+     "hoursOver8": -3.03,
+     "hoursOver9": -4.03,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 14.291,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 14.83,
+     "cycleMinPerStop": 20.42,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.05,
+     "hoursOver8": -2.95,
+     "hoursOver9": -3.95,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 8.825,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "fri",
+     "jobs": 40,
+     "visitsPerWeek": 21.6,
+     "cycleMinPerStop": 24.34,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 8.76,
+     "hoursOver8": 0.76,
+     "hoursOver9": -0.24,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 12.893,
+      "Barter": 0.466,
+      "Friends and family": 1,
+      "none (bid)": 0.233,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 21.3,
+     "cycleMinPerStop": 15.88,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.64,
+     "hoursOver8": -2.36,
+     "hoursOver9": -3.36,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 15.291,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "tue",
+     "jobs": 37,
+     "visitsPerWeek": 20.9,
+     "cycleMinPerStop": 18.11,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6.31,
+     "hoursOver8": -1.69,
+     "hoursOver9": -2.69,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 11.66,
+      "Quick Fix": 9,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "wed",
+     "jobs": 29,
+     "visitsPerWeek": 12.13,
+     "cycleMinPerStop": 15.34,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 3.1,
+     "hoursOver8": -4.9,
+     "hoursOver9": -5.9,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 8.126,
+      "Quick Fix": 4
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "thu",
+     "jobs": 37,
+     "visitsPerWeek": 18.6,
+     "cycleMinPerStop": 19.36,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6,
+     "hoursOver8": -2,
+     "hoursOver9": -3,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 11.592,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "fri",
+     "jobs": 41,
+     "visitsPerWeek": 18,
+     "cycleMinPerStop": 19.36,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.81,
+     "hoursOver8": -2.19,
+     "hoursOver9": -3.19,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 14.99,
+      "Quick Fix": 3
+     }
+    }
+   ],
+   "totals": {
+    "visitsPerWeek": 411.8,
+    "hoursPerWeek": 137.7,
+    "routeDays": 25,
+    "capacityHoursAt8": 200,
+    "capacityHoursAt9": 225,
+    "hoursOverCapacityAt8": -62.3,
+    "hoursOverCapacityAt9": -87.3,
+    "routeDaysOver8": 3,
+    "routeDaysOver9": 0,
+    "utilizationAt8Pct": 68.8,
+    "techDaysNeededAt8": 17.2
+   },
+   "intervalBasisCounts": {
+    "no catch": 612,
+    "catch": 145,
+    "Quick Fix product cadence (weekly series)": 124
+   },
+   "jobsUnplaced": 0
+  },
+  "P2": {
+   "policy": "P2",
+   "label": "weekly after catch OR miss OR any activity, monthly otherwise",
+   "quickFixHeldWeekly": true,
+   "rows": [
+    {
+     "tech": "Alias Franks",
+     "dow": "mon",
+     "jobs": 38,
+     "visitsPerWeek": 29.57,
+     "cycleMinPerStop": 20.16,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.94,
+     "hoursOver8": 1.94,
+     "hoursOver9": 0.94,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 22.563,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "tue",
+     "jobs": 38,
+     "visitsPerWeek": 23.43,
+     "cycleMinPerStop": 23.2,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.06,
+     "hoursOver8": 1.06,
+     "hoursOver9": 0.06,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 10.427,
+      "Quick Fix": 13
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "wed",
+     "jobs": 34,
+     "visitsPerWeek": 26.33,
+     "cycleMinPerStop": 27.93,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 12.26,
+     "hoursOver8": 4.26,
+     "hoursOver9": 3.26,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 18.33,
+      "Quick Fix": 8
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 24.03,
+     "cycleMinPerStop": 26.41,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 10.58,
+     "hoursOver8": 2.58,
+     "hoursOver9": 1.58,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 21.029,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "fri",
+     "jobs": 35,
+     "visitsPerWeek": 25.03,
+     "cycleMinPerStop": 22.25,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.28,
+     "hoursOver8": 1.28,
+     "hoursOver9": 0.28,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 19.029,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "mon",
+     "jobs": 54,
+     "visitsPerWeek": 40.97,
+     "cycleMinPerStop": 13.38,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.14,
+     "hoursOver8": 1.14,
+     "hoursOver9": 0.14,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 34.961,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 18.43,
+     "cycleMinPerStop": 15.06,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 4.63,
+     "hoursOver8": -3.37,
+     "hoursOver9": -4.37,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.194,
+      "Quick Fix": 2,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 22.2,
+     "cycleMinPerStop": 14.04,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.19,
+     "hoursOver8": -2.81,
+     "hoursOver9": -3.81,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.961,
+      "Barter": 0.233,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "thu",
+     "jobs": 32,
+     "visitsPerWeek": 22.03,
+     "cycleMinPerStop": 16.08,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.9,
+     "hoursOver8": -2.1,
+     "hoursOver9": -3.1,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 19.029,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "fri",
+     "jobs": 45,
+     "visitsPerWeek": 30.43,
+     "cycleMinPerStop": 15.54,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 7.88,
+     "hoursOver8": -0.12,
+     "hoursOver9": -1.12,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 26.427,
+      "Quick Fix": 4
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 27.43,
+     "cycleMinPerStop": 21.47,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.82,
+     "hoursOver8": 1.82,
+     "hoursOver9": 0.82,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 19.194,
+      "Barter": 0.233,
+      "Quick Fix": 8
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "tue",
+     "jobs": 27,
+     "visitsPerWeek": 13.97,
+     "cycleMinPerStop": 24.15,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.62,
+     "hoursOver8": -2.38,
+     "hoursOver9": -3.38,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 11.961,
+      "none (bid)": 1,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "wed",
+     "jobs": 25,
+     "visitsPerWeek": 14.27,
+     "cycleMinPerStop": 29.4,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6.99,
+     "hoursOver8": -1.01,
+     "hoursOver9": -2.01,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 9.262,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 21.73,
+     "cycleMinPerStop": 27.41,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.93,
+     "hoursOver8": 1.93,
+     "hoursOver9": 0.93,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 16.728,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "fri",
+     "jobs": 27,
+     "visitsPerWeek": 17.03,
+     "cycleMinPerStop": 19.98,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.67,
+     "hoursOver8": -2.33,
+     "hoursOver9": -3.33,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 13.796,
+      "other": 0.233,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "mon",
+     "jobs": 18,
+     "visitsPerWeek": 13.4,
+     "cycleMinPerStop": 21.57,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 4.82,
+     "hoursOver8": -3.18,
+     "hoursOver9": -4.18,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 13.165,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 21.5,
+     "cycleMinPerStop": 18.76,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6.72,
+     "hoursOver8": -1.28,
+     "hoursOver9": -2.28,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 18.029,
+      "Barter": 1.466,
+      "Quick Fix": 2
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 20.67,
+     "cycleMinPerStop": 19.49,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6.71,
+     "hoursOver8": -1.29,
+     "hoursOver9": -2.29,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 19.66,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 20.97,
+     "cycleMinPerStop": 20.42,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 7.14,
+     "hoursOver8": -0.86,
+     "hoursOver9": -1.86,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 14.961,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "fri",
+     "jobs": 40,
+     "visitsPerWeek": 30.03,
+     "cycleMinPerStop": 24.34,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 12.18,
+     "hoursOver8": 4.18,
+     "hoursOver9": 3.18,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 20.563,
+      "Barter": 1.233,
+      "Friends and family": 1,
+      "none (bid)": 0.233,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 30.5,
+     "cycleMinPerStop": 15.88,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 8.07,
+     "hoursOver8": 0.07,
+     "hoursOver9": -0.93,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 24.495,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "tue",
+     "jobs": 37,
+     "visitsPerWeek": 23.97,
+     "cycleMinPerStop": 18.11,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 7.23,
+     "hoursOver8": -0.77,
+     "hoursOver9": -1.77,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 14.728,
+      "Quick Fix": 9,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "wed",
+     "jobs": 29,
+     "visitsPerWeek": 19.03,
+     "cycleMinPerStop": 15.34,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 4.87,
+     "hoursOver8": -3.13,
+     "hoursOver9": -4.13,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 15.029,
+      "Quick Fix": 4
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "thu",
+     "jobs": 37,
+     "visitsPerWeek": 23.97,
+     "cycleMinPerStop": 19.36,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 7.73,
+     "hoursOver8": -0.27,
+     "hoursOver9": -1.27,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.961,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "fri",
+     "jobs": 41,
+     "visitsPerWeek": 28.73,
+     "cycleMinPerStop": 19.36,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.27,
+     "hoursOver8": 1.27,
+     "hoursOver9": 0.27,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 25.728,
+      "Quick Fix": 3
+     }
+    }
+   ],
+   "totals": {
+    "visitsPerWeek": 589.6,
+    "hoursPerWeek": 196.6,
+    "routeDays": 25,
+    "capacityHoursAt8": 200,
+    "capacityHoursAt9": 225,
+    "hoursOverCapacityAt8": -3.4,
+    "hoursOverCapacityAt9": -28.4,
+    "routeDaysOver8": 11,
+    "routeDaysOver9": 10,
+    "utilizationAt8Pct": 98.3,
+    "techDaysNeededAt8": 24.6
+   },
+   "intervalBasisCounts": {
+    "quiet": 380,
+    "catch/miss/activity": 377,
+    "Quick Fix product cadence (weekly series)": 124
+   },
+   "jobsUnplaced": 0
+  },
+  "P3": {
+   "policy": "P3",
+   "label": "the office's own Next Action field taken literally",
+   "quickFixHeldWeekly": true,
+   "rows": [
+    {
+     "tech": "Alias Franks",
+     "dow": "mon",
+     "jobs": 38,
+     "visitsPerWeek": 33.2,
+     "cycleMinPerStop": 20.16,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 11.16,
+     "hoursOver8": 3.16,
+     "hoursOver9": 2.16,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 26.199,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "tue",
+     "jobs": 38,
+     "visitsPerWeek": 32.17,
+     "cycleMinPerStop": 23.2,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 12.44,
+     "hoursOver8": 4.44,
+     "hoursOver9": 3.44,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 19.165,
+      "Quick Fix": 13
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "wed",
+     "jobs": 34,
+     "visitsPerWeek": 31.23,
+     "cycleMinPerStop": 27.93,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 14.54,
+     "hoursOver8": 6.54,
+     "hoursOver9": 5.54,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 23.233,
+      "Quick Fix": 8
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 31.23,
+     "cycleMinPerStop": 26.41,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 13.75,
+     "hoursOver8": 5.75,
+     "hoursOver9": 4.75,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 28.233,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "fri",
+     "jobs": 35,
+     "visitsPerWeek": 31.7,
+     "cycleMinPerStop": 22.25,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 11.76,
+     "hoursOver8": 3.76,
+     "hoursOver9": 2.76,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 25.699,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "mon",
+     "jobs": 54,
+     "visitsPerWeek": 49.7,
+     "cycleMinPerStop": 13.38,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 11.08,
+     "hoursOver8": 3.08,
+     "hoursOver9": 2.08,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 43.699,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 27.67,
+     "cycleMinPerStop": 15.06,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6.95,
+     "hoursOver8": -1.05,
+     "hoursOver9": -2.05,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 24.665,
+      "Quick Fix": 2,
+      "other": 1
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 29.9,
+     "cycleMinPerStop": 14.04,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 7,
+     "hoursOver8": -1,
+     "hoursOver9": -2,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 24.398,
+      "Barter": 0.5,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "thu",
+     "jobs": 32,
+     "visitsPerWeek": 29.47,
+     "cycleMinPerStop": 16.08,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 7.9,
+     "hoursOver8": -0.1,
+     "hoursOver9": -1.1,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 26.466,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "fri",
+     "jobs": 45,
+     "visitsPerWeek": 36.37,
+     "cycleMinPerStop": 15.54,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.42,
+     "hoursOver8": 1.42,
+     "hoursOver9": 0.42,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 32.364,
+      "Quick Fix": 4
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 38.73,
+     "cycleMinPerStop": 21.47,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 13.86,
+     "hoursOver8": 5.86,
+     "hoursOver9": 4.86,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 29.733,
+      "Barter": 1,
+      "Quick Fix": 8
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "tue",
+     "jobs": 27,
+     "visitsPerWeek": 20.13,
+     "cycleMinPerStop": 24.15,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 8.1,
+     "hoursOver8": 0.1,
+     "hoursOver9": -0.9,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 18.131,
+      "none (bid)": 1,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "wed",
+     "jobs": 25,
+     "visitsPerWeek": 22.2,
+     "cycleMinPerStop": 29.4,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 10.88,
+     "hoursOver8": 2.88,
+     "hoursOver9": 1.88,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 17.199,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 33,
+     "cycleMinPerStop": 27.41,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 15.08,
+     "hoursOver8": 7.08,
+     "hoursOver9": 6.08,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 28,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "fri",
+     "jobs": 27,
+     "visitsPerWeek": 24.2,
+     "cycleMinPerStop": 19.98,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 8.06,
+     "hoursOver8": 0.06,
+     "hoursOver9": -0.94,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 20.199,
+      "other": 1,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "mon",
+     "jobs": 18,
+     "visitsPerWeek": 17.5,
+     "cycleMinPerStop": 21.57,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6.29,
+     "hoursOver8": -1.71,
+     "hoursOver9": -2.71,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.5,
+      "other": 1
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 28.43,
+     "cycleMinPerStop": 18.76,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 8.89,
+     "hoursOver8": 0.89,
+     "hoursOver9": -0.11,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 23.432,
+      "Barter": 3,
+      "Quick Fix": 2
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 31.67,
+     "cycleMinPerStop": 19.49,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 10.29,
+     "hoursOver8": 2.29,
+     "hoursOver9": 1.29,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 30.665,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 30.73,
+     "cycleMinPerStop": 20.42,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 10.46,
+     "hoursOver8": 2.46,
+     "hoursOver9": 1.46,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 24.733,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "fri",
+     "jobs": 40,
+     "visitsPerWeek": 34.67,
+     "cycleMinPerStop": 24.34,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 14.06,
+     "hoursOver8": 6.06,
+     "hoursOver9": 5.06,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 23.665,
+      "Barter": 2,
+      "Friends and family": 1,
+      "none (bid)": 1,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 36.4,
+     "cycleMinPerStop": 15.88,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.63,
+     "hoursOver8": 1.63,
+     "hoursOver9": 0.63,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 30.398,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "tue",
+     "jobs": 37,
+     "visitsPerWeek": 30.13,
+     "cycleMinPerStop": 18.11,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.09,
+     "hoursOver8": 1.09,
+     "hoursOver9": 0.09,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 20.131,
+      "Quick Fix": 9,
+      "other": 1
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "wed",
+     "jobs": 29,
+     "visitsPerWeek": 27.47,
+     "cycleMinPerStop": 15.34,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 7.02,
+     "hoursOver8": -0.98,
+     "hoursOver9": -1.98,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 23.466,
+      "Quick Fix": 4
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "thu",
+     "jobs": 37,
+     "visitsPerWeek": 32.67,
+     "cycleMinPerStop": 19.36,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 10.54,
+     "hoursOver8": 2.54,
+     "hoursOver9": 1.54,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 25.665,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "fri",
+     "jobs": 41,
+     "visitsPerWeek": 35.67,
+     "cycleMinPerStop": 19.36,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 11.51,
+     "hoursOver8": 3.51,
+     "hoursOver9": 2.51,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 32.665,
+      "Quick Fix": 3
+     }
+    }
+   ],
+   "totals": {
+    "visitsPerWeek": 776.2,
+    "hoursPerWeek": 259.8,
+    "routeDays": 25,
+    "capacityHoursAt8": 200,
+    "capacityHoursAt9": 225,
+    "hoursOverCapacityAt8": 59.8,
+    "hoursOverCapacityAt9": 34.8,
+    "routeDaysOver8": 20,
+    "routeDaysOver9": 17,
+    "utilizationAt8Pct": 129.9,
+    "techDaysNeededAt8": 32.5
+   },
+   "intervalBasisCounts": {
+    "Next Action = Add visit": 596,
+    "Next Action = Monthly": 91,
+    "Next Action = 2 weeks": 70,
+    "Quick Fix product cadence (weekly series)": 124
+   },
+   "jobsUnplaced": 0
+  }
+ },
+ "policiesPure": {
+  "P0": {
+   "policy": "P0",
+   "label": "as the office actually runs it (measured intervals)",
+   "quickFixHeldWeekly": false,
+   "rows": [
+    {
+     "tech": "Alias Franks",
+     "dow": "mon",
+     "jobs": 38,
+     "visitsPerWeek": 34.89,
+     "cycleMinPerStop": 20.16,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 11.72,
+     "hoursOver8": 3.72,
+     "hoursOver9": 2.72,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 24.71,
+      "Quick Fix": 10.178
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "tue",
+     "jobs": 38,
+     "visitsPerWeek": 33.33,
+     "cycleMinPerStop": 23.2,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 12.89,
+     "hoursOver8": 4.89,
+     "hoursOver9": 3.89,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 19.496,
+      "Quick Fix": 13.835
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "wed",
+     "jobs": 34,
+     "visitsPerWeek": 26.52,
+     "cycleMinPerStop": 27.93,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 12.35,
+     "hoursOver8": 4.35,
+     "hoursOver9": 3.35,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 18.349,
+      "Quick Fix": 8.167
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 27.01,
+     "cycleMinPerStop": 26.41,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 11.89,
+     "hoursOver8": 3.89,
+     "hoursOver9": 2.89,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 23.676,
+      "Quick Fix": 3.334
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "fri",
+     "jobs": 35,
+     "visitsPerWeek": 29.94,
+     "cycleMinPerStop": 22.25,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 11.1,
+     "hoursOver8": 3.1,
+     "hoursOver9": 2.1,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 23.935,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "mon",
+     "jobs": 54,
+     "visitsPerWeek": 44.78,
+     "cycleMinPerStop": 13.38,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.99,
+     "hoursOver8": 1.99,
+     "hoursOver9": 0.99,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 38.031,
+      "Quick Fix": 6.752
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 22.07,
+     "cycleMinPerStop": 15.06,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.54,
+     "hoursOver8": -2.46,
+     "hoursOver9": -3.46,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 18.908,
+      "Quick Fix": 2,
+      "other": 1.167
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 27.17,
+     "cycleMinPerStop": 14.04,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6.36,
+     "hoursOver8": -1.64,
+     "hoursOver9": -2.64,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 22.38,
+      "Barter": 0.189,
+      "Quick Fix": 4.605
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "thu",
+     "jobs": 32,
+     "visitsPerWeek": 25.61,
+     "cycleMinPerStop": 16.08,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6.86,
+     "hoursOver8": -1.14,
+     "hoursOver9": -2.14,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 22.518,
+      "Quick Fix": 3.087
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "fri",
+     "jobs": 45,
+     "visitsPerWeek": 35.43,
+     "cycleMinPerStop": 15.54,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.18,
+     "hoursOver8": 1.18,
+     "hoursOver9": 0.18,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 31.646,
+      "Quick Fix": 3.788
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 29.83,
+     "cycleMinPerStop": 21.47,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 10.67,
+     "hoursOver8": 2.67,
+     "hoursOver9": 1.67,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 20.157,
+      "Barter": 0.5,
+      "Quick Fix": 9.181
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "tue",
+     "jobs": 27,
+     "visitsPerWeek": 23.51,
+     "cycleMinPerStop": 24.15,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.46,
+     "hoursOver8": 1.46,
+     "hoursOver9": 0.46,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 21.505,
+      "none (bid)": 1,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "wed",
+     "jobs": 25,
+     "visitsPerWeek": 22.17,
+     "cycleMinPerStop": 29.4,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 10.86,
+     "hoursOver8": 2.86,
+     "hoursOver9": 1.86,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 17.166,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 28.98,
+     "cycleMinPerStop": 27.41,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 13.24,
+     "hoursOver8": 5.24,
+     "hoursOver9": 4.24,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 22.483,
+      "Quick Fix": 6.5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "fri",
+     "jobs": 27,
+     "visitsPerWeek": 20.7,
+     "cycleMinPerStop": 19.98,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6.89,
+     "hoursOver8": -1.11,
+     "hoursOver9": -2.11,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.7,
+      "other": 1,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "mon",
+     "jobs": 18,
+     "visitsPerWeek": 14.79,
+     "cycleMinPerStop": 21.57,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.32,
+     "hoursOver8": -2.68,
+     "hoursOver9": -3.68,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 14.089,
+      "other": 0.7
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 24.43,
+     "cycleMinPerStop": 18.76,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 7.64,
+     "hoursOver8": -0.36,
+     "hoursOver9": -1.36,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 20.176,
+      "Barter": 2.25,
+      "Quick Fix": 2
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 24.43,
+     "cycleMinPerStop": 19.49,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 7.94,
+     "hoursOver8": -0.06,
+     "hoursOver9": -1.06,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 23.435,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 26.6,
+     "cycleMinPerStop": 20.42,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.05,
+     "hoursOver8": 1.05,
+     "hoursOver9": 0.05,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 20.602,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "fri",
+     "jobs": 40,
+     "visitsPerWeek": 30.97,
+     "cycleMinPerStop": 24.34,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 12.56,
+     "hoursOver8": 4.56,
+     "hoursOver9": 3.56,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 20.065,
+      "Barter": 2.4,
+      "Friends and family": 0.5,
+      "none (bid)": 1,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 30.45,
+     "cycleMinPerStop": 15.88,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 8.06,
+     "hoursOver8": 0.06,
+     "hoursOver9": -0.94,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 23.931,
+      "Quick Fix": 6.519
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "tue",
+     "jobs": 37,
+     "visitsPerWeek": 28.73,
+     "cycleMinPerStop": 18.11,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 8.67,
+     "hoursOver8": 0.67,
+     "hoursOver9": -0.33,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 18.246,
+      "Quick Fix": 9.488,
+      "other": 1
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "wed",
+     "jobs": 29,
+     "visitsPerWeek": 23.17,
+     "cycleMinPerStop": 15.34,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.92,
+     "hoursOver8": -2.08,
+     "hoursOver9": -3.08,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 19.298,
+      "Quick Fix": 3.875
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "thu",
+     "jobs": 37,
+     "visitsPerWeek": 26.49,
+     "cycleMinPerStop": 19.36,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 8.55,
+     "hoursOver8": 0.55,
+     "hoursOver9": -0.45,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 18.13,
+      "Quick Fix": 8.357
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "fri",
+     "jobs": 41,
+     "visitsPerWeek": 36.33,
+     "cycleMinPerStop": 19.36,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 11.72,
+     "hoursOver8": 3.72,
+     "hoursOver9": 2.72,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 33.329,
+      "Quick Fix": 3
+     }
+    }
+   ],
+   "totals": {
+    "visitsPerWeek": 698.3,
+    "hoursPerWeek": 234.4,
+    "routeDays": 25,
+    "capacityHoursAt8": 200,
+    "capacityHoursAt9": 225,
+    "hoursOverCapacityAt8": 34.4,
+    "hoursOverCapacityAt9": 9.4,
+    "routeDaysOver8": 17,
+    "routeDaysOver9": 14,
+    "utilizationAt8Pct": 117.2,
+    "techDaysNeededAt8": 29.3
+   },
+   "intervalBasisCounts": {
+    "own measured gap median": 666,
+    "own next booked gap (only one completed visit)": 187,
+    "product delivered median (no gap evidence)": 28
+   },
+   "jobsUnplaced": 0
+  },
+  "P1": {
+   "policy": "P1",
+   "label": "weekly after a catch, monthly otherwise",
+   "quickFixHeldWeekly": false,
+   "rows": [
+    {
+     "tech": "Alias Franks",
+     "dow": "mon",
+     "jobs": 38,
+     "visitsPerWeek": 15,
+     "cycleMinPerStop": 20.16,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.04,
+     "hoursOver8": -2.96,
+     "hoursOver9": -3.96,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 13.359,
+      "Quick Fix": 1.631
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "tue",
+     "jobs": 38,
+     "visitsPerWeek": 8.87,
+     "cycleMinPerStop": 23.2,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 3.43,
+     "hoursOver8": -4.57,
+     "hoursOver9": -5.57,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 5.825,
+      "Quick Fix": 3.029
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "wed",
+     "jobs": 34,
+     "visitsPerWeek": 12.53,
+     "cycleMinPerStop": 27.93,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.83,
+     "hoursOver8": -2.17,
+     "hoursOver9": -3.17,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 10.66,
+      "Quick Fix": 1.864
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 10.23,
+     "cycleMinPerStop": 26.41,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 4.5,
+     "hoursOver8": -3.5,
+     "hoursOver9": -4.5,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 9.524,
+      "Quick Fix": 0.699
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "fri",
+     "jobs": 35,
+     "visitsPerWeek": 12,
+     "cycleMinPerStop": 22.25,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 4.45,
+     "hoursOver8": -3.55,
+     "hoursOver9": -4.55,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 10.592,
+      "Quick Fix": 1.398
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "mon",
+     "jobs": 54,
+     "visitsPerWeek": 21.8,
+     "cycleMinPerStop": 13.38,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 4.86,
+     "hoursOver8": -3.14,
+     "hoursOver9": -4.14,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 20.388,
+      "Quick Fix": 1.398
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 13.07,
+     "cycleMinPerStop": 15.06,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 3.28,
+     "hoursOver8": -4.72,
+     "hoursOver9": -5.72,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 12.359,
+      "Quick Fix": 0.466,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 11.47,
+     "cycleMinPerStop": 14.04,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 2.68,
+     "hoursOver8": -5.32,
+     "hoursOver9": -6.32,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 10.058,
+      "Barter": 0.233,
+      "Quick Fix": 1.165
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "thu",
+     "jobs": 32,
+     "visitsPerWeek": 10.53,
+     "cycleMinPerStop": 16.08,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 2.82,
+     "hoursOver8": -5.18,
+     "hoursOver9": -6.18,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 9.825,
+      "Quick Fix": 0.699
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "fri",
+     "jobs": 45,
+     "visitsPerWeek": 16.63,
+     "cycleMinPerStop": 15.54,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 4.31,
+     "hoursOver8": -3.69,
+     "hoursOver9": -4.69,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 15.689,
+      "Quick Fix": 0.932
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 17.47,
+     "cycleMinPerStop": 21.47,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6.25,
+     "hoursOver8": -1.75,
+     "hoursOver9": -2.75,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 15.359,
+      "Barter": 0.233,
+      "Quick Fix": 1.864
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "tue",
+     "jobs": 27,
+     "visitsPerWeek": 8.6,
+     "cycleMinPerStop": 24.15,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 3.46,
+     "hoursOver8": -4.54,
+     "hoursOver9": -5.54,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 8.126,
+      "none (bid)": 0.233,
+      "Quick Fix": 0.233
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "wed",
+     "jobs": 25,
+     "visitsPerWeek": 7.37,
+     "cycleMinPerStop": 29.4,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 3.61,
+     "hoursOver8": -4.39,
+     "hoursOver9": -5.39,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 6.194,
+      "Quick Fix": 1.165
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 11.77,
+     "cycleMinPerStop": 27.41,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.38,
+     "hoursOver8": -2.62,
+     "hoursOver9": -3.62,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 10.592,
+      "Quick Fix": 1.165
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "fri",
+     "jobs": 27,
+     "visitsPerWeek": 9.37,
+     "cycleMinPerStop": 19.98,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 3.12,
+     "hoursOver8": -4.88,
+     "hoursOver9": -5.88,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 8.427,
+      "other": 0.233,
+      "Quick Fix": 0.699
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "mon",
+     "jobs": 18,
+     "visitsPerWeek": 6.5,
+     "cycleMinPerStop": 21.57,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 2.34,
+     "hoursOver8": -5.66,
+     "hoursOver9": -6.66,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 6.262,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 13.83,
+     "cycleMinPerStop": 18.76,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 4.32,
+     "hoursOver8": -3.68,
+     "hoursOver9": -4.68,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 11.893,
+      "Barter": 1.466,
+      "Quick Fix": 0.466
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 14.53,
+     "cycleMinPerStop": 19.49,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 4.72,
+     "hoursOver8": -3.28,
+     "hoursOver9": -4.28,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 14.291,
+      "Quick Fix": 0.233
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 10.23,
+     "cycleMinPerStop": 20.42,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 3.48,
+     "hoursOver8": -4.52,
+     "hoursOver9": -5.52,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 8.825,
+      "Quick Fix": 1.398
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "fri",
+     "jobs": 40,
+     "visitsPerWeek": 16.23,
+     "cycleMinPerStop": 24.34,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6.58,
+     "hoursOver8": -1.42,
+     "hoursOver9": -2.42,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 12.893,
+      "Barter": 0.466,
+      "Friends and family": 1,
+      "none (bid)": 0.233,
+      "Quick Fix": 1.631
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 16.7,
+     "cycleMinPerStop": 15.88,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 4.42,
+     "hoursOver8": -3.58,
+     "hoursOver9": -4.58,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 15.291,
+      "Quick Fix": 1.398
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "tue",
+     "jobs": 37,
+     "visitsPerWeek": 14,
+     "cycleMinPerStop": 18.11,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 4.23,
+     "hoursOver8": -3.77,
+     "hoursOver9": -4.77,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 11.66,
+      "Quick Fix": 2.097,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "wed",
+     "jobs": 29,
+     "visitsPerWeek": 9.07,
+     "cycleMinPerStop": 15.34,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 2.32,
+     "hoursOver8": -5.68,
+     "hoursOver9": -6.68,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 8.126,
+      "Quick Fix": 0.932
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "thu",
+     "jobs": 37,
+     "visitsPerWeek": 13.23,
+     "cycleMinPerStop": 19.36,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 4.27,
+     "hoursOver8": -3.73,
+     "hoursOver9": -4.73,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 11.592,
+      "Quick Fix": 1.631
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "fri",
+     "jobs": 41,
+     "visitsPerWeek": 15.7,
+     "cycleMinPerStop": 19.36,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.07,
+     "hoursOver8": -2.93,
+     "hoursOver9": -3.93,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 14.99,
+      "Quick Fix": 0.699
+     }
+    }
+   ],
+   "totals": {
+    "visitsPerWeek": 316.7,
+    "hoursPerWeek": 104.8,
+    "routeDays": 25,
+    "capacityHoursAt8": 200,
+    "capacityHoursAt9": 225,
+    "hoursOverCapacityAt8": -95.2,
+    "hoursOverCapacityAt9": -120.2,
+    "routeDaysOver8": 0,
+    "routeDaysOver9": 0,
+    "utilizationAt8Pct": 52.4,
+    "techDaysNeededAt8": 13.1
+   },
+   "intervalBasisCounts": {
+    "no catch": 736,
+    "catch": 145
+   },
+   "jobsUnplaced": 0
+  },
+  "P2": {
+   "policy": "P2",
+   "label": "weekly after catch OR miss OR any activity, monthly otherwise",
+   "quickFixHeldWeekly": false,
+   "rows": [
+    {
+     "tech": "Alias Franks",
+     "dow": "mon",
+     "jobs": 38,
+     "visitsPerWeek": 24.2,
+     "cycleMinPerStop": 20.16,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 8.13,
+     "hoursOver8": 0.13,
+     "hoursOver9": -0.87,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 22.563,
+      "Quick Fix": 1.631
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "tue",
+     "jobs": 38,
+     "visitsPerWeek": 13.47,
+     "cycleMinPerStop": 23.2,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.21,
+     "hoursOver8": -2.79,
+     "hoursOver9": -3.79,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 10.427,
+      "Quick Fix": 3.029
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "wed",
+     "jobs": 34,
+     "visitsPerWeek": 20.2,
+     "cycleMinPerStop": 27.93,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.4,
+     "hoursOver8": 1.4,
+     "hoursOver9": 0.4,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 18.33,
+      "Quick Fix": 1.864
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 21.73,
+     "cycleMinPerStop": 26.41,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.56,
+     "hoursOver8": 1.56,
+     "hoursOver9": 0.56,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 21.029,
+      "Quick Fix": 0.699
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "fri",
+     "jobs": 35,
+     "visitsPerWeek": 21.2,
+     "cycleMinPerStop": 22.25,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 7.86,
+     "hoursOver8": -0.14,
+     "hoursOver9": -1.14,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 19.029,
+      "Quick Fix": 2.165
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "mon",
+     "jobs": 54,
+     "visitsPerWeek": 36.37,
+     "cycleMinPerStop": 13.38,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 8.11,
+     "hoursOver8": 0.11,
+     "hoursOver9": -0.89,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 34.961,
+      "Quick Fix": 1.398
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 16.9,
+     "cycleMinPerStop": 15.06,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 4.24,
+     "hoursOver8": -3.76,
+     "hoursOver9": -4.76,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.194,
+      "Quick Fix": 0.466,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 18.37,
+     "cycleMinPerStop": 14.04,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 4.3,
+     "hoursOver8": -3.7,
+     "hoursOver9": -4.7,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.961,
+      "Barter": 0.233,
+      "Quick Fix": 1.165
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "thu",
+     "jobs": 32,
+     "visitsPerWeek": 19.73,
+     "cycleMinPerStop": 16.08,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.29,
+     "hoursOver8": -2.71,
+     "hoursOver9": -3.71,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 19.029,
+      "Quick Fix": 0.699
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "fri",
+     "jobs": 45,
+     "visitsPerWeek": 27.37,
+     "cycleMinPerStop": 15.54,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 7.09,
+     "hoursOver8": -0.91,
+     "hoursOver9": -1.91,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 26.427,
+      "Quick Fix": 0.932
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 22.07,
+     "cycleMinPerStop": 21.47,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 7.9,
+     "hoursOver8": -0.1,
+     "hoursOver9": -1.1,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 19.194,
+      "Barter": 0.233,
+      "Quick Fix": 2.631
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "tue",
+     "jobs": 27,
+     "visitsPerWeek": 13.97,
+     "cycleMinPerStop": 24.15,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.62,
+     "hoursOver8": -2.38,
+     "hoursOver9": -3.38,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 11.961,
+      "none (bid)": 1,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "wed",
+     "jobs": 25,
+     "visitsPerWeek": 10.43,
+     "cycleMinPerStop": 29.4,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.11,
+     "hoursOver8": -2.89,
+     "hoursOver9": -3.89,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 9.262,
+      "Quick Fix": 1.165
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 17.9,
+     "cycleMinPerStop": 27.41,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 8.18,
+     "hoursOver8": 0.18,
+     "hoursOver9": -0.82,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.728,
+      "Quick Fix": 1.165
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "fri",
+     "jobs": 27,
+     "visitsPerWeek": 14.73,
+     "cycleMinPerStop": 19.98,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 4.91,
+     "hoursOver8": -3.09,
+     "hoursOver9": -4.09,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 13.796,
+      "other": 0.233,
+      "Quick Fix": 0.699
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "mon",
+     "jobs": 18,
+     "visitsPerWeek": 13.4,
+     "cycleMinPerStop": 21.57,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 4.82,
+     "hoursOver8": -3.18,
+     "hoursOver9": -4.18,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 13.165,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 20.73,
+     "cycleMinPerStop": 18.76,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6.48,
+     "hoursOver8": -1.52,
+     "hoursOver9": -2.52,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 18.029,
+      "Barter": 1.466,
+      "Quick Fix": 1.233
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 19.9,
+     "cycleMinPerStop": 19.49,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6.46,
+     "hoursOver8": -1.54,
+     "hoursOver9": -2.54,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 19.66,
+      "Quick Fix": 0.233
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 16.37,
+     "cycleMinPerStop": 20.42,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.57,
+     "hoursOver8": -2.43,
+     "hoursOver9": -3.43,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 14.961,
+      "Quick Fix": 1.398
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "fri",
+     "jobs": 40,
+     "visitsPerWeek": 24.67,
+     "cycleMinPerStop": 24.34,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 10.01,
+     "hoursOver8": 2.01,
+     "hoursOver9": 1.01,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 20.563,
+      "Barter": 1.233,
+      "Friends and family": 1,
+      "none (bid)": 0.233,
+      "Quick Fix": 1.631
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 26.67,
+     "cycleMinPerStop": 15.88,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 7.06,
+     "hoursOver8": -0.94,
+     "hoursOver9": -1.94,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 24.495,
+      "Quick Fix": 2.165
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "tue",
+     "jobs": 37,
+     "visitsPerWeek": 17.07,
+     "cycleMinPerStop": 18.11,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 5.15,
+     "hoursOver8": -2.85,
+     "hoursOver9": -3.85,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 14.728,
+      "Quick Fix": 2.097,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "wed",
+     "jobs": 29,
+     "visitsPerWeek": 15.97,
+     "cycleMinPerStop": 15.34,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 4.08,
+     "hoursOver8": -3.92,
+     "hoursOver9": -4.92,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 15.029,
+      "Quick Fix": 0.932
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "thu",
+     "jobs": 37,
+     "visitsPerWeek": 19.37,
+     "cycleMinPerStop": 19.36,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6.25,
+     "hoursOver8": -1.75,
+     "hoursOver9": -2.75,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.961,
+      "Quick Fix": 2.398
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "fri",
+     "jobs": 41,
+     "visitsPerWeek": 27.2,
+     "cycleMinPerStop": 19.36,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 8.78,
+     "hoursOver8": 0.78,
+     "hoursOver9": -0.22,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 25.728,
+      "Quick Fix": 1.466
+     }
+    }
+   ],
+   "totals": {
+    "visitsPerWeek": 500,
+    "hoursPerWeek": 165.6,
+    "routeDays": 25,
+    "capacityHoursAt8": 200,
+    "capacityHoursAt9": 225,
+    "hoursOverCapacityAt8": -34.4,
+    "hoursOverCapacityAt9": -59.4,
+    "routeDaysOver8": 7,
+    "routeDaysOver9": 3,
+    "utilizationAt8Pct": 82.8,
+    "techDaysNeededAt8": 20.7
+   },
+   "intervalBasisCounts": {
+    "quiet": 497,
+    "catch/miss/activity": 384
+   },
+   "jobsUnplaced": 0
+  },
+  "P3": {
+   "policy": "P3",
+   "label": "the office's own Next Action field taken literally",
+   "quickFixHeldWeekly": false,
+   "rows": [
+    {
+     "tech": "Alias Franks",
+     "dow": "mon",
+     "jobs": 38,
+     "visitsPerWeek": 33.2,
+     "cycleMinPerStop": 20.16,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 11.16,
+     "hoursOver8": 3.16,
+     "hoursOver9": 2.16,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 26.199,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "tue",
+     "jobs": 38,
+     "visitsPerWeek": 32.17,
+     "cycleMinPerStop": 23.2,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 12.44,
+     "hoursOver8": 4.44,
+     "hoursOver9": 3.44,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 19.165,
+      "Quick Fix": 13
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "wed",
+     "jobs": 34,
+     "visitsPerWeek": 31.23,
+     "cycleMinPerStop": 27.93,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 14.54,
+     "hoursOver8": 6.54,
+     "hoursOver9": 5.54,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 23.233,
+      "Quick Fix": 8
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 31.23,
+     "cycleMinPerStop": 26.41,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 13.75,
+     "hoursOver8": 5.75,
+     "hoursOver9": 4.75,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 28.233,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "fri",
+     "jobs": 35,
+     "visitsPerWeek": 31.7,
+     "cycleMinPerStop": 22.25,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 11.76,
+     "hoursOver8": 3.76,
+     "hoursOver9": 2.76,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 25.699,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "mon",
+     "jobs": 54,
+     "visitsPerWeek": 49.7,
+     "cycleMinPerStop": 13.38,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 11.08,
+     "hoursOver8": 3.08,
+     "hoursOver9": 2.08,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 43.699,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 27.67,
+     "cycleMinPerStop": 15.06,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6.95,
+     "hoursOver8": -1.05,
+     "hoursOver9": -2.05,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 24.665,
+      "Quick Fix": 2,
+      "other": 1
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 29.9,
+     "cycleMinPerStop": 14.04,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 7,
+     "hoursOver8": -1,
+     "hoursOver9": -2,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 24.398,
+      "Barter": 0.5,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "thu",
+     "jobs": 32,
+     "visitsPerWeek": 29.47,
+     "cycleMinPerStop": 16.08,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 7.9,
+     "hoursOver8": -0.1,
+     "hoursOver9": -1.1,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 26.466,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "fri",
+     "jobs": 45,
+     "visitsPerWeek": 36.37,
+     "cycleMinPerStop": 15.54,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.42,
+     "hoursOver8": 1.42,
+     "hoursOver9": 0.42,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 32.364,
+      "Quick Fix": 4
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 38.73,
+     "cycleMinPerStop": 21.47,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 13.86,
+     "hoursOver8": 5.86,
+     "hoursOver9": 4.86,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 29.733,
+      "Barter": 1,
+      "Quick Fix": 8
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "tue",
+     "jobs": 27,
+     "visitsPerWeek": 20.13,
+     "cycleMinPerStop": 24.15,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 8.1,
+     "hoursOver8": 0.1,
+     "hoursOver9": -0.9,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 18.131,
+      "none (bid)": 1,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "wed",
+     "jobs": 25,
+     "visitsPerWeek": 22.2,
+     "cycleMinPerStop": 29.4,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 10.88,
+     "hoursOver8": 2.88,
+     "hoursOver9": 1.88,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 17.199,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 33,
+     "cycleMinPerStop": 27.41,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 15.08,
+     "hoursOver8": 7.08,
+     "hoursOver9": 6.08,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 28,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "fri",
+     "jobs": 27,
+     "visitsPerWeek": 24.2,
+     "cycleMinPerStop": 19.98,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 8.06,
+     "hoursOver8": 0.06,
+     "hoursOver9": -0.94,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 20.199,
+      "other": 1,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "mon",
+     "jobs": 18,
+     "visitsPerWeek": 17.5,
+     "cycleMinPerStop": 21.57,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 6.29,
+     "hoursOver8": -1.71,
+     "hoursOver9": -2.71,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.5,
+      "other": 1
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 28.43,
+     "cycleMinPerStop": 18.76,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 8.89,
+     "hoursOver8": 0.89,
+     "hoursOver9": -0.11,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 23.432,
+      "Barter": 3,
+      "Quick Fix": 2
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 31.67,
+     "cycleMinPerStop": 19.49,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 10.29,
+     "hoursOver8": 2.29,
+     "hoursOver9": 1.29,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 30.665,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 30.73,
+     "cycleMinPerStop": 20.42,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 10.46,
+     "hoursOver8": 2.46,
+     "hoursOver9": 1.46,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 24.733,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "fri",
+     "jobs": 40,
+     "visitsPerWeek": 34.67,
+     "cycleMinPerStop": 24.34,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 14.06,
+     "hoursOver8": 6.06,
+     "hoursOver9": 5.06,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 23.665,
+      "Barter": 2,
+      "Friends and family": 1,
+      "none (bid)": 1,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 36.4,
+     "cycleMinPerStop": 15.88,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.63,
+     "hoursOver8": 1.63,
+     "hoursOver9": 0.63,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 30.398,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "tue",
+     "jobs": 37,
+     "visitsPerWeek": 30.13,
+     "cycleMinPerStop": 18.11,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 9.09,
+     "hoursOver8": 1.09,
+     "hoursOver9": 0.09,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 20.131,
+      "Quick Fix": 9,
+      "other": 1
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "wed",
+     "jobs": 29,
+     "visitsPerWeek": 27.47,
+     "cycleMinPerStop": 15.34,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 7.02,
+     "hoursOver8": -0.98,
+     "hoursOver9": -1.98,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 23.466,
+      "Quick Fix": 4
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "thu",
+     "jobs": 37,
+     "visitsPerWeek": 32.67,
+     "cycleMinPerStop": 19.36,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 10.54,
+     "hoursOver8": 2.54,
+     "hoursOver9": 1.54,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 25.665,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "fri",
+     "jobs": 41,
+     "visitsPerWeek": 35.67,
+     "cycleMinPerStop": 19.36,
+     "cycleSource": "Jobber stamps, median of per-route-day (span / stops)",
+     "hoursPerWeek": 11.51,
+     "hoursOver8": 3.51,
+     "hoursOver9": 2.51,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 32.665,
+      "Quick Fix": 3
+     }
+    }
+   ],
+   "totals": {
+    "visitsPerWeek": 776.2,
+    "hoursPerWeek": 259.8,
+    "routeDays": 25,
+    "capacityHoursAt8": 200,
+    "capacityHoursAt9": 225,
+    "hoursOverCapacityAt8": 59.8,
+    "hoursOverCapacityAt9": 34.8,
+    "routeDaysOver8": 20,
+    "routeDaysOver9": 17,
+    "utilizationAt8Pct": 129.9,
+    "techDaysNeededAt8": 32.5
+   },
+   "intervalBasisCounts": {
+    "Next Action = Add visit": 720,
+    "Next Action = Monthly": 91,
+    "Next Action = 2 weeks": 70
+   },
+   "jobsUnplaced": 0
+  }
+ },
+ "seasonality": [
+  {
+   "weekStart": "2026-08-17",
+   "weekEnd": "2026-08-23",
+   "tmcpCompletedVisits": 450,
+   "tmcpVisitsWithPriorVisit": 64,
+   "onWeeklyCadence": 64,
+   "shareWeeklyPct": 100,
+   "medianIntervalDays": 7,
+   "lookbackObservable": false,
+   "partialWeek": false,
+   "visitsPerActiveTmcpJob": 0.623,
+   "impliedCadenceDays": 11.2,
+   "fieldDaysObserved": 5,
+   "fieldDays": [
+    "2026-08-17",
+    "2026-08-18",
+    "2026-08-19",
+    "2026-08-20",
+    "2026-08-21"
+   ],
+   "tmcpVisitsPerFieldDay": 90,
+   "ratePerFieldDayNormalized": 0.623,
+   "caveat": "BIASED: the <=10d lookback falls outside the visit window, so shareWeeklyPct is inflated toward 100 by construction. Use visitsPerActiveTmcpJob for this week."
+  },
+  {
+   "weekStart": "2026-08-24",
+   "weekEnd": "2026-08-30",
+   "tmcpCompletedVisits": 444,
+   "tmcpVisitsWithPriorVisit": 322,
+   "onWeeklyCadence": 314,
+   "shareWeeklyPct": 97.5,
+   "medianIntervalDays": 7,
+   "lookbackObservable": true,
+   "partialWeek": false,
+   "visitsPerActiveTmcpJob": 0.615,
+   "impliedCadenceDays": 11.4,
+   "fieldDaysObserved": 5,
+   "fieldDays": [
+    "2026-08-24",
+    "2026-08-25",
+    "2026-08-26",
+    "2026-08-27",
+    "2026-08-28"
+   ],
+   "tmcpVisitsPerFieldDay": 88.8,
+   "ratePerFieldDayNormalized": 0.615,
+   "caveat": null
+  },
+  {
+   "weekStart": "2026-08-31",
+   "weekEnd": "2026-09-06",
+   "tmcpCompletedVisits": 422,
+   "tmcpVisitsWithPriorVisit": 367,
+   "onWeeklyCadence": 304,
+   "shareWeeklyPct": 82.8,
+   "medianIntervalDays": 7,
+   "lookbackObservable": true,
+   "partialWeek": false,
+   "visitsPerActiveTmcpJob": 0.584,
+   "impliedCadenceDays": 12,
+   "fieldDaysObserved": 5,
+   "fieldDays": [
+    "2026-08-31",
+    "2026-09-01",
+    "2026-09-02",
+    "2026-09-03",
+    "2026-09-04"
+   ],
+   "tmcpVisitsPerFieldDay": 84.4,
+   "ratePerFieldDayNormalized": 0.584,
+   "caveat": null
+  },
+  {
+   "weekStart": "2026-09-07",
+   "weekEnd": "2026-09-13",
+   "tmcpCompletedVisits": 321,
+   "tmcpVisitsWithPriorVisit": 293,
+   "onWeeklyCadence": 248,
+   "shareWeeklyPct": 84.6,
+   "medianIntervalDays": 7,
+   "lookbackObservable": true,
+   "partialWeek": false,
+   "visitsPerActiveTmcpJob": 0.445,
+   "impliedCadenceDays": 15.7,
+   "fieldDaysObserved": 4,
+   "fieldDays": [
+    "2026-09-08",
+    "2026-09-09",
+    "2026-09-10",
+    "2026-09-11"
+   ],
+   "tmcpVisitsPerFieldDay": 80.3,
+   "ratePerFieldDayNormalized": 0.556,
+   "caveat": null
+  },
+  {
+   "weekStart": "2026-09-14",
+   "weekEnd": "2026-09-20",
+   "tmcpCompletedVisits": 405,
+   "tmcpVisitsWithPriorVisit": 355,
+   "onWeeklyCadence": 190,
+   "shareWeeklyPct": 53.5,
+   "medianIntervalDays": 8,
+   "lookbackObservable": true,
+   "partialWeek": true,
+   "visitsPerActiveTmcpJob": 0.561,
+   "impliedCadenceDays": 12.5,
+   "fieldDaysObserved": 5,
+   "fieldDays": [
+    "2026-09-14",
+    "2026-09-15",
+    "2026-09-16",
+    "2026-09-17",
+    "2026-09-18"
+   ],
+   "tmcpVisitsPerFieldDay": 81,
+   "ratePerFieldDayNormalized": 0.561,
+   "caveat": "PARTIAL: week extends past the last completed visit date, so counts are low."
+  }
+ ],
+ "seasonalityNote": "Share of TMCP completed visits whose gap from the prior visit was <=10 days, by week. Week 1 is flagged BIASED (the lookback runs off the front of the visit window). Week 4 lost Labor Day (4 field days), which stretched gaps into week 5 and is the main reason week 5 reads low. The truncation-free companion is ratePerFieldDayNormalized: 0.622 -> 0.556 visits per active TMCP job per 5-day week across the month."
+}

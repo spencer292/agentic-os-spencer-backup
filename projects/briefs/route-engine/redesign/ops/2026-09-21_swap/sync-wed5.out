@@ -1,0 +1,75 @@
+[write-gate] WRITES ENABLED until 2026-09-23T00:26:23.282Z (spenc@Got-Moles: Robert Wed 09-23: restore feasible plan (anchor 15:00-20:30), all customers scheduled) — ceiling 400/run — run c6acf895
+=== SYNC + PLAN + TIMES 2026-09-22 16:56:36 PT ===
+mode: LIVE (--execute)   window: 2026-09-23..2026-09-23
+live Jobber: 124 visits, 124 not complete, 124 on a routed driver, 0 skipped (no tech / not a driver)
+  2026-09-23  Alias 23  Spencer 27  Robert 29  Luke 20  Cory 25
+
+OptimoRoute: 125 orders in the window
+  CREATE 0   UPDATE 0   DELETE 0   unchanged 124
+
+driver availability: 09-23: Alias/Cory/Luke/Robert/Spencer
+
+=== OPTIMOROUTE: 0 CREATE ===
+=== OPTIMOROUTE: 0 UPDATE ===
+=== OPTIMOROUTE: 0 DELETE ===
+
+=== OPTIMOROUTE: driver availability ===
+  6/6 succeeded
+
+=== PLAN 2026-09-23 (balancing OFF) ===
+  Alias Franks        23 stops   570 min   148 km  first 07:00  last 15:49
+  Cory Ventura        25 stops   518 min   233 km  first 07:47  last 14:39
+  Luke LaVergne       20 stops   698 min   293 km  first 07:33  last 17:47
+  Robert Norton       28 stops   600 min   129 km  first 07:26  last 16:23
+  Spencer Hill        27 stops   560 min    80 km  first 07:05  last 15:55
+  ⚠ 2 unscheduled on 2026-09-23: Robert #8596, Robert #8626
+
+=== JOBBER: write planned times (startAt = arrival, endAt = +3 h) ===
+  to write 41   already correct 81   not on a route 2
+  [  1/41] 2026-09-23 15:28 #4655 Spencer  Bruce  Sprague               was 09-23 07:30  ok
+  [  2/41] 2026-09-23 15:07 #8428 Spencer  Keith Mathews                was 09-23 07:51  ok
+  [  3/41] 2026-09-23 14:51 #5330 Spencer  Maggie Pierotti              was 09-23 08:07  ok
+  [  4/41] 2026-09-23 14:31 #8441 Spencer  Dan Froemke                  was 09-23 08:27  ok
+  [  5/41] 2026-09-23 14:12 #8532 Spencer  Elaine Rustvold              was 09-23 08:47  ok
+  [  6/41] 2026-09-23 13:34 #8618 Spencer  Shawn Tobius                 was 09-23 09:06  ok
+  [  7/41] 2026-09-23 13:51 #5442 Spencer  Jeff Hardman                 was 09-23 09:23  ok
+  [  8/41] 2026-09-23 13:16 #5948 Spencer  Tom Rebek                    was 09-23 09:43  ok
+  [  9/41] 2026-09-23 12:59 #8538 Spencer  Gina Shields                 was 09-23 10:00  ok
+  [ 10/41] 2026-09-23 12:38 #4469 Spencer  Yvonne Hall                  was 09-23 10:21  ok
+  [ 11/41] 2026-09-23 12:15 #5329 Spencer  Pat Birkeland                was 09-23 10:45  ok
+  [ 12/41] 2026-09-23 11:58 #5328 Spencer  Dave Belmont                 was 09-23 11:02  ok
+  [ 13/41] 2026-09-23 11:41 #6198 Spencer  Jeff Boyd                    was 09-23 11:19  ok
+  [ 14/41] 2026-09-23 15:46 #8568 Robert   Dorthya Dunford              was 09-23 11:40  ok
+  [ 15/41] 2026-09-23 11:14 #4997 Spencer  Josh Mckee                   was 09-23 11:46  ok
+  [ 16/41] 2026-09-23 11:41 #8415 Robert   Kevin Mcginnity              was 09-23 11:59  ok
+  [ 17/41] 2026-09-23 10:46 #6449 Spencer  Daniel Issacs                was 09-23 12:13  ok
+  [ 18/41] 2026-09-23 10:21 #6162 Spencer  Scott Barker                 was 09-23 12:36  ok
+  [ 19/41] 2026-09-23 10:03 #4479 Spencer  Charles Bender               was 09-23 12:53  ok
+  [ 20/41] 2026-09-23 13:17 #5369 Robert   Chris Doll                   was 09-23 12:53  ok
+  [ 21/41] 2026-09-23 09:43 #5260 Spencer  Kathy Lewis                  was 09-23 13:13  ok
+  [ 22/41] 2026-09-23 13:38 #7701 Robert   Susan Mcdonald               was 09-23 13:14  ok
+  [ 23/41] 2026-09-23 09:26 #6427 Spencer  Ally Sharp                   was 09-23 13:30  ok
+  [ 24/41] 2026-09-23 13:58 #4741 Robert   Ron Krebbs                   was 09-23 13:34  ok
+  [ 25/41] 2026-09-23 08:51 #7482 Spencer  Mark Dumler                  was 09-23 13:49  ok
+  [ 26/41] 2026-09-23 14:15 #8381 Robert   Michael Colella              was 09-23 13:51  ok
+  [ 27/41] 2026-09-23 09:07 #7757 Spencer  Dan Flood                    was 09-23 14:06  ok
+  [ 28/41] 2026-09-23 14:32 #5672 Robert   Rachel Brouhard              was 09-23 14:08  ok
+  [ 29/41] 2026-09-23 08:32 #5818 Spencer  Blaine Wright                was 09-23 14:24  ok
+  [ 30/41] 2026-09-23 14:52 #7617 Robert   Prologis - Sumner Landing    was 09-23 14:28  ok
+  [ 31/41] 2026-09-23 08:09 #8251 Spencer  Mike Malgarini               was 09-23 14:47  ok
+  [ 32/41] 2026-09-23 15:23 #6840 Robert   Bill Harris                  was 09-23 14:52  ok
+  [ 33/41] 2026-09-23 07:47 #8269 Spencer  Holly Quionez                was 09-23 15:09  ok
+  [ 34/41] 2026-09-23 11:59 #8395 Robert   Beverly Worthen              was 09-23 15:15  ok
+  [ 35/41] 2026-09-23 07:27 #5713 Spencer  Jeff Hudson                  was 09-23 15:30  ok
+  [ 36/41] 2026-09-23 12:54 #8438 Robert   Jay Poole                    was 09-23 15:33  ok
+  [ 37/41] 2026-09-23 12:36 #8100 Robert   Melissa Weythman             was 09-23 15:51  ok
+  [ 38/41] 2026-09-23 15:55 #7765 Spencer  Brenton Unger                was 09-23 15:53  ok
+  [ 39/41] 2026-09-23 12:18 #7548 Robert   HyperGreen Landscaping       was 09-23 16:09  ok
+  [ 40/41] 2026-09-23 16:05 #6382 Robert   Jared Haines                 was 09-23 16:29  ok
+  [ 41/41] 2026-09-23 16:23 #7713 Robert   Scott Fritschle              was 09-23 16:48  ok
+  written 41  failed 0
+
+=== VERIFY === 122 visits match the plan, 0 do not
+
+✅ done 2026-09-22 16:57:10 PT — log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-09-21_swap\sync-plan-times.log
+Next: the arrival-window sweep (node projects/tool-jobber/scripts/arrival-window-sweep.mjs) so every visit carries the 3-hour window.

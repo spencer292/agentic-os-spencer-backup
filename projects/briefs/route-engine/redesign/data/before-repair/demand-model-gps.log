@@ -1,0 +1,146 @@
+cycle times: GPS measured (data/cycle-times-gps.json)   ->  data/demand-model-gps.json
+active jobs 881  route-days 25  master-asbuilt USED  nearest-neighbor 0  unassignable 0
+
+OBSERVED BASELINE (what actually ran 08-17..09-17) - GPS measured
+  stops/week 615  hours/week 207.6  route-days over 8h 14  over 9h 5
+
+P0 - as the office actually runs it (measured intervals)  [Quick Fix held weekly]
+  tech             dow  jobs  visits/wk  cyc(min)  hours  over8  over9
+  Alias Franks     mon    38      31.71      17.5   9.25   1.25   0.25
+  Alias Franks     tue    38       32.5      22.9   12.4    4.4    3.4
+  Alias Franks     wed    34      26.35      27.7  12.16   4.16   3.16
+  Alias Franks     thu    34      26.68      26.2  11.65   3.65   2.65
+  Alias Franks     fri    35      29.94        23  11.48   3.48   2.48
+  Cory Ventura     mon    54      44.03      13.1   9.61   1.61   0.61
+  Cory Ventura     tue    33      22.07      15.9   5.85  -2.15  -3.15
+  Cory Ventura     wed    36      27.57      14.4   6.62  -1.38  -2.38
+  Cory Ventura     thu    32      25.52      15.9   6.76  -1.24  -2.24
+  Cory Ventura     fri    45      35.64      15.5   9.21   1.21   0.21
+  Luke LaVergne    mon    42      28.65      23.4  11.17   3.17   2.17
+  Luke LaVergne    tue    27      23.51      25.7  10.07   2.07   1.07
+  Luke LaVergne    wed    25      22.17      31.7  11.71   3.71   2.71
+  Luke LaVergne    thu    34      27.48      27.1  12.41   4.41   3.41
+  Luke LaVergne    fri    27       20.7      18.6   6.42  -1.58  -2.58
+  Robert Norton    mon    18      14.79      20.9   5.15  -2.85  -3.85
+  Robert Norton    tue    33      24.43      17.7   7.21  -0.79  -1.79
+  Robert Norton    wed    36      24.43      18.1   7.37  -0.63  -1.63
+  Robert Norton    thu    34       26.6      20.3      9      1      0
+  Robert Norton    fri    40      31.15      24.5  12.72   4.72   3.72
+  Tavis Alexander  mon    42      29.93      15.6   7.78  -0.22  -1.22
+  Tavis Alexander  tue    37      28.24      17.7   8.33   0.33  -0.67
+  Tavis Alexander  wed    29       23.3      15.1   5.86  -2.14  -3.14
+  Tavis Alexander  thu    37      25.13      19.3   8.08   0.08  -0.92
+  Tavis Alexander  fri    41      36.33      19.1  11.57   3.57   2.57
+  TOTAL visits/wk 688.8  hours/wk 229.8  vs 200h = +29.8  util 114.9%  days>8h 16  days>9h 13  tech-days needed@8h 28.7
+  interval basis: {"own measured gap median":574,"own next booked gap (only one completed visit)":158,"product delivered median (no gap evidence)":25,"Quick Fix product cadence (weekly series)":124}
+
+P1 - weekly after a catch, monthly otherwise  [Quick Fix held weekly]
+  tech             dow  jobs  visits/wk  cyc(min)  hours  over8  over9
+  Alias Franks     mon    38      20.37      17.5   5.94  -2.06  -3.06
+  Alias Franks     tue    38      18.83      22.9   7.19  -0.81  -1.81
+  Alias Franks     wed    34      18.67      27.7   8.62   0.62  -0.38
+  Alias Franks     thu    34      12.53      26.2   5.47  -2.53  -3.53
+  Alias Franks     fri    35       16.6        23   6.36  -1.64  -2.64
+  Cory Ventura     mon    54       26.4      13.1   5.76  -2.24  -3.24
+  Cory Ventura     tue    33       14.6      15.9   3.87  -4.13  -5.13
+  Cory Ventura     wed    36       15.3      14.4   3.67  -4.33  -5.33
+  Cory Ventura     thu    32      12.83      15.9    3.4   -4.6   -5.6
+  Cory Ventura     fri    45       19.7      15.5   5.09  -2.91  -3.91
+  Luke LaVergne    mon    42       23.6      23.4    9.2    1.2    0.2
+  Luke LaVergne    tue    27       9.37      25.7   4.01  -3.99  -4.99
+  Luke LaVergne    wed    25       11.2      31.7   5.92  -2.08  -3.08
+  Luke LaVergne    thu    34       15.6      27.1   7.05  -0.95  -1.95
+  Luke LaVergne    fri    27      11.67      18.6   3.62  -4.38  -5.38
+  Robert Norton    mon    18        6.5      20.9   2.26  -5.74  -6.74
+  Robert Norton    tue    33      15.37      17.7   4.53  -3.47  -4.47
+  Robert Norton    wed    36       15.3      18.1   4.62  -3.38  -4.38
+  Robert Norton    thu    34      14.83      20.3   5.02  -2.98  -3.98
+  Robert Norton    fri    40       21.6      24.5   8.82   0.82  -0.18
+  Tavis Alexander  mon    42       21.3      15.6   5.54  -2.46  -3.46
+  Tavis Alexander  tue    37       20.9      17.7   6.17  -1.83  -2.83
+  Tavis Alexander  wed    29      12.13      15.1   3.05  -4.95  -5.95
+  Tavis Alexander  thu    37       18.6      19.3   5.98  -2.02  -3.02
+  Tavis Alexander  fri    41         18      19.1   5.73  -2.27  -3.27
+  TOTAL visits/wk 411.8  hours/wk 136.9  vs 200h = -63.1  util 68.5%  days>8h 3  days>9h 1  tech-days needed@8h 17.1
+  interval basis: {"no catch":612,"catch":145,"Quick Fix product cadence (weekly series)":124}
+
+P2 - weekly after catch OR miss OR any activity, monthly otherwise  [Quick Fix held weekly]
+  tech             dow  jobs  visits/wk  cyc(min)  hours  over8  over9
+  Alias Franks     mon    38      29.57      17.5   8.62   0.62  -0.38
+  Alias Franks     tue    38      23.43      22.9   8.94   0.94  -0.06
+  Alias Franks     wed    34      26.33      27.7  12.16   4.16   3.16
+  Alias Franks     thu    34      24.03      26.2  10.49   2.49   1.49
+  Alias Franks     fri    35      25.03        23   9.59   1.59   0.59
+  Cory Ventura     mon    54      40.97      13.1   8.95   0.95  -0.05
+  Cory Ventura     tue    33      18.43      15.9   4.88  -3.12  -4.12
+  Cory Ventura     wed    36       22.2      14.4   5.33  -2.67  -3.67
+  Cory Ventura     thu    32      22.03      15.9   5.84  -2.16  -3.16
+  Cory Ventura     fri    45      30.43      15.5   7.86  -0.14  -1.14
+  Luke LaVergne    mon    42      27.43      23.4   10.7    2.7    1.7
+  Luke LaVergne    tue    27      13.97      25.7   5.98  -2.02  -3.02
+  Luke LaVergne    wed    25      14.27      31.7   7.54  -0.46  -1.46
+  Luke LaVergne    thu    34      21.73      27.1   9.81   1.81   0.81
+  Luke LaVergne    fri    27      17.03      18.6   5.28  -2.72  -3.72
+  Robert Norton    mon    18       13.4      20.9   4.67  -3.33  -4.33
+  Robert Norton    tue    33       21.5      17.7   6.34  -1.66  -2.66
+  Robert Norton    wed    36      20.67      18.1   6.24  -1.76  -2.76
+  Robert Norton    thu    34      20.97      20.3   7.09  -0.91  -1.91
+  Robert Norton    fri    40      30.03      24.5  12.26   4.26   3.26
+  Tavis Alexander  mon    42       30.5      15.6   7.93  -0.07  -1.07
+  Tavis Alexander  tue    37      23.97      17.7   7.07  -0.93  -1.93
+  Tavis Alexander  wed    29      19.03      15.1   4.79  -3.21  -4.21
+  Tavis Alexander  thu    37      23.97      19.3   7.71  -0.29  -1.29
+  Tavis Alexander  fri    41      28.73      19.1   9.15   1.15   0.15
+  TOTAL visits/wk 589.6  hours/wk 195.2  vs 200h = -4.8  util 97.6%  days>8h 10  days>9h 7  tech-days needed@8h 24.4
+  interval basis: {"quiet":380,"catch/miss/activity":377,"Quick Fix product cadence (weekly series)":124}
+
+P3 - the office's own Next Action field taken literally  [Quick Fix held weekly]
+  tech             dow  jobs  visits/wk  cyc(min)  hours  over8  over9
+  Alias Franks     mon    38       33.2      17.5   9.68   1.68   0.68
+  Alias Franks     tue    38      32.17      22.9  12.28   4.28   3.28
+  Alias Franks     wed    34      31.23      27.7  14.42   6.42   5.42
+  Alias Franks     thu    34      31.23      26.2  13.64   5.64   4.64
+  Alias Franks     fri    35       31.7        23  12.15   4.15   3.15
+  Cory Ventura     mon    54       49.7      13.1  10.85   2.85   1.85
+  Cory Ventura     tue    33      27.67      15.9   7.33  -0.67  -1.67
+  Cory Ventura     wed    36       29.9      14.4   7.18  -0.82  -1.82
+  Cory Ventura     thu    32      29.47      15.9   7.81  -0.19  -1.19
+  Cory Ventura     fri    45      36.37      15.5    9.4    1.4    0.4
+  Luke LaVergne    mon    42      38.73      23.4   15.1    7.1    6.1
+  Luke LaVergne    tue    27      20.13      25.7   8.62   0.62  -0.38
+  Luke LaVergne    wed    25       22.2      31.7  11.73   3.73   2.73
+  Luke LaVergne    thu    34         33      27.1  14.91   6.91   5.91
+  Luke LaVergne    fri    27       24.2      18.6    7.5   -0.5   -1.5
+  Robert Norton    mon    18       17.5      20.9    6.1   -1.9   -2.9
+  Robert Norton    tue    33      28.43      17.7   8.39   0.39  -0.61
+  Robert Norton    wed    36      31.67      18.1   9.55   1.55   0.55
+  Robert Norton    thu    34      30.73      20.3   10.4    2.4    1.4
+  Robert Norton    fri    40      34.67      24.5  14.16   6.16   5.16
+  Tavis Alexander  mon    42       36.4      15.6   9.46   1.46   0.46
+  Tavis Alexander  tue    37      30.13      17.7   8.89   0.89  -0.11
+  Tavis Alexander  wed    29      27.47      15.1   6.91  -1.09  -2.09
+  Tavis Alexander  thu    37      32.67      19.3  10.51   2.51   1.51
+  Tavis Alexander  fri    41      35.67      19.1  11.35   3.35   2.35
+  TOTAL visits/wk 776.2  hours/wk 258.3  vs 200h = +58.3  util 129.2%  days>8h 19  days>9h 16  tech-days needed@8h 32.3
+  interval basis: {"Next Action = Add visit":596,"Next Action = Monthly":91,"Next Action = 2 weeks":70,"Quick Fix product cadence (weekly series)":124}
+
+CALIBRATION vs observed (615 stops/wk, 207.6 h/wk)
+  P0  visits/wk   688.8 (+12%)   hours/wk   229.8 (+10.7%)
+  P1  visits/wk   411.8 (-33%)   hours/wk   136.9 (-34.1%)
+  P2  visits/wk   589.6 (-4.1%)   hours/wk   195.2 (-6%)
+  P3  visits/wk   776.2 (+26.2%)   hours/wk   258.3 (+24.4%)
+
+ROUTE-DAY ASSIGNMENT SOURCE: {"master-asbuilt.json":881}
+
+PURE POLICY (Quick Fix NOT held weekly) totals:
+  P0  visits/wk   698.5  hours/wk   233.2  vs200    33.2  days>8h 16
+  P1  visits/wk   316.7  hours/wk   104.1  vs200   -95.9  days>8h 0
+  P2  visits/wk     500  hours/wk   164.3  vs200   -35.7  days>8h 7
+  P3  visits/wk   776.2  hours/wk   258.3  vs200    58.3  days>8h 19
+
+SEASONALITY
+  2026-08-17  TMCP visits  449  share weekly   100%  rate@5d 0.622  <<BIASED
+  2026-08-24  TMCP visits  444  share weekly  97.5%  rate@5d 0.615
+  2026-08-31  TMCP visits  422  share weekly  82.8%  rate@5d 0.584
+  2026-09-07  TMCP visits  321  share weekly  84.7%  rate@5d 0.556
+  2026-09-14  TMCP visits  405  share weekly  53.5%  rate@5d 0.561  <<PARTIAL

@@ -1,0 +1,175 @@
+{
+ "snapshotId": "2026-09-19T1047-d12e475b",
+ "immutable": "Snapshots are never edited or corrected in place. A wrong snapshot gets a NEW snapshot; this one stays as the record of what was true at capture time. See snapshots/README.md.",
+ "readOnly": "Captured with query-only Jobber GraphQL and the OptimoRoute read-only endpoint allow-list. No write was issued.",
+ "capture": {
+  "startPacific": "2026-09-19 10:47:10 PT",
+  "startUtc": "2026-09-19T17:47:10.955Z",
+  "endPacific": "2026-09-19 11:02:36 PT",
+  "endUtc": "2026-09-19T18:02:36.634Z",
+  "pacificOffsetHours": 7
+ },
+ "gitHead": "85fc96b2aea9ee807d75725b2a693f1a430a9780",
+ "argv": [
+  "C:\\Agentic-os-got-moles\\projects\\briefs\\route-engine\\redesign\\scripts\\snapshot-week.mjs",
+  "--part=notes",
+  "--dir=2026-09-19T1047-d12e475b"
+ ],
+ "windows": {
+  "visitsAndJobs": {
+   "from": "2026-09-05",
+   "to": "2026-11-03",
+   "note": "Pacific, capture date -14d .. +45d"
+  },
+  "notesSince": "2026-08-29T18:00:27.773Z",
+  "optimoWeekdays": 21
+ },
+ "parts": {
+  "jobs": {
+   "status": "ok",
+   "elapsedSeconds": 360.6,
+   "ranAt": "2026-09-19T17:53:11.640Z",
+   "count": 951
+  },
+  "visits": {
+   "status": "ok",
+   "elapsedSeconds": 379.7,
+   "ranAt": "2026-09-19T17:59:41.405Z",
+   "count": 2846
+  },
+  "users": {
+   "status": "ok",
+   "elapsedSeconds": 0.6,
+   "ranAt": "2026-09-19T17:59:52.499Z",
+   "count": 20,
+   "fields": "id name.full email.raw status isAccountAdmin"
+  },
+  "config": {
+   "status": "ok",
+   "elapsedSeconds": 0,
+   "ranAt": "2026-09-19T17:59:52.619Z",
+   "count": 3,
+   "missing": []
+  },
+  "optimo": {
+   "status": "ok",
+   "elapsedSeconds": 11.9,
+   "ranAt": "2026-09-19T18:00:13.160Z",
+   "count": 471,
+   "gaps": 16,
+   "datesWithRoutes": 5
+  },
+  "notes": {
+   "status": "ok",
+   "elapsedSeconds": 128.8,
+   "ranAt": "2026-09-19T18:02:36.634Z",
+   "count": 1689,
+   "jobsWithNotes": 841,
+   "jobsScanned": 951
+  }
+ },
+ "runs": [
+  {
+   "argv": [
+    "C:\\Agentic-os-got-moles\\projects\\briefs\\route-engine\\redesign\\scripts\\snapshot-week.mjs",
+    "--part=jobs"
+   ],
+   "part": "jobs",
+   "force": false,
+   "startPacific": "2026-09-19 10:47:10 PT",
+   "startUtc": "2026-09-19T17:47:10.955Z",
+   "endPacific": "2026-09-19 10:53:11 PT",
+   "endUtc": "2026-09-19T17:53:11.641Z",
+   "elapsedSeconds": 360.7,
+   "gitHead": "85fc96b2aea9ee807d75725b2a693f1a430a9780"
+  },
+  {
+   "argv": [
+    "C:\\Agentic-os-got-moles\\projects\\briefs\\route-engine\\redesign\\scripts\\snapshot-week.mjs",
+    "--part=visits",
+    "--dir=2026-09-19T1047-d12e475b"
+   ],
+   "part": "visits",
+   "force": false,
+   "startPacific": "2026-09-19 10:53:21 PT",
+   "startUtc": "2026-09-19T17:53:21.704Z",
+   "endPacific": "2026-09-19 10:59:41 PT",
+   "endUtc": "2026-09-19T17:59:41.405Z",
+   "elapsedSeconds": 379.7,
+   "gitHead": "85fc96b2aea9ee807d75725b2a693f1a430a9780"
+  },
+  {
+   "argv": [
+    "C:\\Agentic-os-got-moles\\projects\\briefs\\route-engine\\redesign\\scripts\\snapshot-week.mjs",
+    "--part=users",
+    "--dir=2026-09-19T1047-d12e475b"
+   ],
+   "part": "users",
+   "force": false,
+   "startPacific": "2026-09-19 10:59:51 PT",
+   "startUtc": "2026-09-19T17:59:51.895Z",
+   "endPacific": "2026-09-19 10:59:52 PT",
+   "endUtc": "2026-09-19T17:59:52.499Z",
+   "elapsedSeconds": 0.6,
+   "gitHead": "85fc96b2aea9ee807d75725b2a693f1a430a9780"
+  },
+  {
+   "argv": [
+    "C:\\Agentic-os-got-moles\\projects\\briefs\\route-engine\\redesign\\scripts\\snapshot-week.mjs",
+    "--part=config",
+    "--dir=2026-09-19T1047-d12e475b"
+   ],
+   "part": "config",
+   "force": false,
+   "startPacific": "2026-09-19 10:59:52 PT",
+   "startUtc": "2026-09-19T17:59:52.582Z",
+   "endPacific": "2026-09-19 10:59:52 PT",
+   "endUtc": "2026-09-19T17:59:52.620Z",
+   "elapsedSeconds": 0,
+   "gitHead": "85fc96b2aea9ee807d75725b2a693f1a430a9780"
+  },
+  {
+   "argv": [
+    "C:\\Agentic-os-got-moles\\projects\\briefs\\route-engine\\redesign\\scripts\\snapshot-week.mjs",
+    "--part=optimo",
+    "--dir=2026-09-19T1047-d12e475b"
+   ],
+   "part": "optimo",
+   "force": false,
+   "startPacific": "2026-09-19 11:00:01 PT",
+   "startUtc": "2026-09-19T18:00:01.195Z",
+   "endPacific": "2026-09-19 11:00:13 PT",
+   "endUtc": "2026-09-19T18:00:13.160Z",
+   "elapsedSeconds": 12,
+   "gitHead": "85fc96b2aea9ee807d75725b2a693f1a430a9780"
+  },
+  {
+   "argv": [
+    "C:\\Agentic-os-got-moles\\projects\\briefs\\route-engine\\redesign\\scripts\\snapshot-week.mjs",
+    "--part=notes",
+    "--dir=2026-09-19T1047-d12e475b"
+   ],
+   "part": "notes",
+   "force": false,
+   "startPacific": "2026-09-19 11:00:27 PT",
+   "startUtc": "2026-09-19T18:00:27.773Z",
+   "endPacific": "2026-09-19 11:02:36 PT",
+   "endUtc": "2026-09-19T18:02:36.634Z",
+   "elapsedSeconds": 128.9,
+   "gitHead": "85fc96b2aea9ee807d75725b2a693f1a430a9780"
+  }
+ ],
+ "fileDigests": {
+  "capture.log": "a8aaf6ae2b583da78e3bd1700857d709ffb5c12f4309baa8ab9819307b95f962",
+  "config/_config-manifest.json": "d2b58e823c6bb2cff671370d938b232c5ec1eeae86bb6ad2e536734b51e604a7",
+  "config/cycle-times-gps.json": "e7d9b060318e6dbd7d2e35ea9a32900d142cefb1cbc29d712f84aa352d28addc",
+  "config/tech-service-times.json": "5e80cd278842d8c8bc38ba35d7b8b1b1eebd9308375b1c04943a210187341475",
+  "config/territories.json": "df6b3c2bbe7d4ea2668152d4503529d2f80132e78c64a5fe8008d757607639bd",
+  "jobs.json": "056c9e5c138df747bc5741c6dffe873c322450c3020a05d66a205e0faa656441",
+  "notes.json": "3278c7fad4dca12b5284f8442fc70b871c63073fbe34a95942231f9a19d7917a",
+  "optimo.json": "18ee4e082026981027670e1839592a7e42304293945be244df31f793762452d4",
+  "users.json": "3f382b3e3e59ac04427875b5b7e408272f3df18575325e9ef5a4b784dd82f297",
+  "visits.json": "2b30efc4476ae9ae07d80b83e712814402828e0b9505a0a70edead1191a3f19c"
+ },
+ "fileDigestNote": "sha256 of every file in the snapshot folder except manifest.json itself. capture.log is hashed at manifest-write time; nothing is appended to it afterwards."
+}

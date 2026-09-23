@@ -1,0 +1,142 @@
+
+=== snapshot-week  READ ONLY  ===
+snapshot  2026-09-19T1047-d12e475b
+folder    C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\snapshots\2026-09-19T1047-d12e475b
+captured  2026-09-19 10:47:10 PT  /  2026-09-19T17:47:10.955Z
+git HEAD  85fc96b2aea9ee807d75725b2a693f1a430a9780
+part      jobs
+windows   visits/jobs 2026-09-05 .. 2026-11-03   notes since 2026-08-29
+
+[jobs] starting…
+  jobs[window] page 10, 250 unique (totalCount 947)
+  jobs[window] page 20, 500 unique (totalCount 947)
+  jobs[window] page 30, 750 unique (totalCount 947)
+  jobs[window] done: 38 pages, 947 unique so far
+  jobs[active] page 10, 947 unique (totalCount 889)
+  jobs[active] page 20, 947 unique (totalCount 889)
+  jobs[active] page 30, 947 unique (totalCount 889)
+  jobs[active] done: 36 pages, 951 unique so far
+  wrote jobs.json — 951 jobs
+[jobs] ok in 360.6s — 951 records
+
+rebuilding manifest…
+
+=== snapshot-week  READ ONLY  ===
+snapshot  2026-09-19T1047-d12e475b  (resuming existing folder)
+folder    C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\snapshots\2026-09-19T1047-d12e475b
+captured  2026-09-19 10:53:21 PT  /  2026-09-19T17:53:21.704Z
+git HEAD  85fc96b2aea9ee807d75725b2a693f1a430a9780
+part      visits
+windows   visits/jobs 2026-09-05 .. 2026-11-03   notes since 2026-08-29
+
+[visits] starting…
+  visits page 10, 500 rows (totalCount 2846)
+  visits page 20, 1000 rows (totalCount 2846)
+  visits page 30, 1500 rows (totalCount 2846)
+  visits page 40, 2000 rows (totalCount 2846)
+  … throttled — backing off 3s
+  … throttled — backing off 6s
+  … throttled — backing off 3s
+  … throttled — backing off 6s
+  … throttled — backing off 12s
+  … throttled — backing off 24s
+  … throttled — backing off 48s
+  … throttled — backing off 90s
+  visits page 50, 2500 rows (totalCount 2846)
+  wrote visits.json — 2846 visits over 57 pages
+[visits] ok in 379.7s — 2846 records
+
+rebuilding manifest…
+
+=== snapshot-week  READ ONLY  ===
+snapshot  2026-09-19T1047-d12e475b  (resuming existing folder)
+folder    C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\snapshots\2026-09-19T1047-d12e475b
+captured  2026-09-19 10:59:51 PT  /  2026-09-19T17:59:51.895Z
+git HEAD  85fc96b2aea9ee807d75725b2a693f1a430a9780
+part      users
+windows   visits/jobs 2026-09-05 .. 2026-11-03   notes since 2026-08-29
+
+[users] starting…
+  wrote users.json — 20 users (fields: id name.full email.raw status isAccountAdmin)
+[users] ok in 0.6s — 20 records
+
+rebuilding manifest…
+
+=== snapshot-week  READ ONLY  ===
+snapshot  2026-09-19T1047-d12e475b  (resuming existing folder)
+folder    C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\snapshots\2026-09-19T1047-d12e475b
+captured  2026-09-19 10:59:52 PT  /  2026-09-19T17:59:52.582Z
+git HEAD  85fc96b2aea9ee807d75725b2a693f1a430a9780
+part      config
+windows   visits/jobs 2026-09-05 .. 2026-11-03   notes since 2026-08-29
+
+[config] starting…
+  config: copied territories.json (45849 bytes)
+  config: copied tech-service-times.json (5204 bytes)
+  config: copied cycle-times-gps.json (18553 bytes)
+[config] ok in 0s — 3 records
+
+rebuilding manifest…
+
+=== snapshot-week  READ ONLY  ===
+snapshot  2026-09-19T1047-d12e475b  (resuming existing folder)
+folder    C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\snapshots\2026-09-19T1047-d12e475b
+captured  2026-09-19 11:00:01 PT  /  2026-09-19T18:00:01.195Z
+git HEAD  85fc96b2aea9ee807d75725b2a693f1a430a9780
+part      optimo
+windows   visits/jobs 2026-09-05 .. 2026-11-03   notes since 2026-08-29
+
+[optimo] starting…
+  optimo: 21 weekdays 2026-09-21 .. 2026-10-19
+  2026-09-21  routes=5 stops=110 orders=110
+  2026-09-22  routes=5 stops=88 orders=95
+  2026-09-23  routes=5 stops=97 orders=99
+  2026-09-24  routes=5 stops=85 orders=85
+  2026-09-25  routes=5 stops=91 orders=91
+  2026-09-28  NO ROUTES (gap recorded)
+  2026-09-29  NO ROUTES (gap recorded)
+  2026-09-30  NO ROUTES (gap recorded)
+  2026-10-01  NO ROUTES (gap recorded)
+  2026-10-02  NO ROUTES (gap recorded)
+  2026-10-05  NO ROUTES (gap recorded)
+  2026-10-06  NO ROUTES (gap recorded)
+  2026-10-07  NO ROUTES (gap recorded)
+  2026-10-08  NO ROUTES (gap recorded)
+  2026-10-09  NO ROUTES (gap recorded)
+  2026-10-12  NO ROUTES (gap recorded)
+  2026-10-13  NO ROUTES (gap recorded)
+  2026-10-14  NO ROUTES (gap recorded)
+  2026-10-15  NO ROUTES (gap recorded)
+  2026-10-16  NO ROUTES (gap recorded)
+  2026-10-19  NO ROUTES (gap recorded)
+  wrote optimo.json — 5/21 dates with routes, 471 stops, 16 gaps
+[optimo] ok in 11.9s — 471 records
+
+rebuilding manifest…
+
+=== snapshot-week  READ ONLY  ===
+snapshot  2026-09-19T1047-d12e475b  (resuming existing folder)
+folder    C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\snapshots\2026-09-19T1047-d12e475b
+captured  2026-09-19 11:00:27 PT  /  2026-09-19T18:00:27.773Z
+git HEAD  85fc96b2aea9ee807d75725b2a693f1a430a9780
+part      notes
+windows   visits/jobs 2026-09-05 .. 2026-11-03   notes since 2026-08-29
+
+[notes] starting…
+  notes: scanning 951 jobs (of 951) for notes since 2026-08-29T18:00:27.773Z
+  notes chunk 10/119 — 80 jobs scanned, 70 with notes
+  notes chunk 20/119 — 160 jobs scanned, 137 with notes
+  notes chunk 30/119 — 240 jobs scanned, 205 with notes
+  notes chunk 40/119 — 320 jobs scanned, 268 with notes
+  notes chunk 50/119 — 400 jobs scanned, 345 with notes
+  notes chunk 60/119 — 480 jobs scanned, 407 with notes
+  notes chunk 70/119 — 560 jobs scanned, 474 with notes
+  notes chunk 80/119 — 640 jobs scanned, 543 with notes
+  notes chunk 90/119 — 720 jobs scanned, 620 with notes
+  notes chunk 100/119 — 800 jobs scanned, 700 with notes
+  notes chunk 110/119 — 880 jobs scanned, 779 with notes
+  notes chunk 119/119 — 951 jobs scanned, 841 with notes
+  wrote notes.json — 841 jobs with in-window notes, 1689 notes (scanned 951)
+[notes] ok in 128.8s — 1689 records
+
+rebuilding manifest…

@@ -1,0 +1,1061 @@
+{
+ "probedAt": "2026-09-19T19:03:50.752Z",
+ "endpoints": {
+  "get_drivers": {
+   "status": 200,
+   "body": "{\"success\":false,\"code\":\"AUTH_KEY_UNKNOWN\",\"message\":\"Unknown authorization key.\"}"
+  },
+  "get_drivers_parameters": {
+   "status": 404,
+   "body": "{}"
+  },
+  "get_vehicles": {
+   "status": 200,
+   "body": "{\"success\":false,\"code\":\"AUTH_KEY_UNKNOWN\",\"message\":\"Unknown authorization key.\"}"
+  }
+ },
+ "history": [
+  {
+   "date": "2026-07-20",
+   "drivers": [
+    {
+     "driver": "Luke LaVergne",
+     "stops": 32
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 33
+    },
+    {
+     "driver": "Cammeron Anderson",
+     "stops": 28
+    }
+   ]
+  },
+  {
+   "date": "2026-07-21",
+   "drivers": [
+    {
+     "driver": "Cory Ventura",
+     "stops": 31
+    },
+    {
+     "driver": "Cammeron Anderson",
+     "stops": 37
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 28
+    },
+    {
+     "driver": "Spencer Hill",
+     "stops": 15
+    }
+   ]
+  },
+  {
+   "date": "2026-07-22",
+   "drivers": [
+    {
+     "driver": "Luke LaVergne",
+     "stops": 27
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 35
+    },
+    {
+     "driver": "Cammeron Anderson",
+     "stops": 40
+    },
+    {
+     "driver": "Spencer Hill",
+     "stops": 19
+    }
+   ]
+  },
+  {
+   "date": "2026-07-23",
+   "drivers": [
+    {
+     "driver": "Spencer Hill",
+     "stops": 33
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 32
+    },
+    {
+     "driver": "Cammeron Anderson",
+     "stops": 33
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 30
+    }
+   ]
+  },
+  {
+   "date": "2026-07-24",
+   "drivers": [
+    {
+     "driver": "Cory Ventura",
+     "stops": 21
+    },
+    {
+     "driver": "Spencer Hill",
+     "stops": 17
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 35
+    },
+    {
+     "driver": "Cammeron Anderson",
+     "stops": 27
+    }
+   ]
+  },
+  {
+   "date": "2026-07-27",
+   "drivers": [
+    {
+     "driver": "Luke LaVergne",
+     "stops": 31
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 36
+    },
+    {
+     "driver": "Cammeron Anderson",
+     "stops": 30
+    }
+   ]
+  },
+  {
+   "date": "2026-07-28",
+   "drivers": [
+    {
+     "driver": "Luke LaVergne",
+     "stops": 33
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 24
+    },
+    {
+     "driver": "Cammeron Anderson",
+     "stops": 31
+    }
+   ]
+  },
+  {
+   "date": "2026-07-29",
+   "drivers": [
+    {
+     "driver": "Luke LaVergne",
+     "stops": 29
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 28
+    },
+    {
+     "driver": "Cammeron Anderson",
+     "stops": 37
+    },
+    {
+     "driver": "Spencer Hill",
+     "stops": 13
+    }
+   ]
+  },
+  {
+   "date": "2026-07-30",
+   "drivers": [
+    {
+     "driver": "Cory Ventura",
+     "stops": 33
+    },
+    {
+     "driver": "Cammeron Anderson",
+     "stops": 32
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 24
+    },
+    {
+     "driver": "Spencer Hill",
+     "stops": 30
+    }
+   ]
+  },
+  {
+   "date": "2026-07-31",
+   "drivers": [
+    {
+     "driver": "Luke LaVergne",
+     "stops": 35
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 25
+    },
+    {
+     "driver": "Spencer Hill",
+     "stops": 20
+    }
+   ]
+  },
+  {
+   "date": "2026-08-03",
+   "drivers": [
+    {
+     "driver": "Alias Franks",
+     "stops": 18
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 18
+    },
+    {
+     "driver": "Cammeron Anderson",
+     "stops": 29
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 40
+    }
+   ]
+  },
+  {
+   "date": "2026-08-04",
+   "drivers": [
+    {
+     "driver": "Alias Franks",
+     "stops": 28
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 27
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 32
+    },
+    {
+     "driver": "Cammeron Anderson",
+     "stops": 26
+    }
+   ]
+  },
+  {
+   "date": "2026-08-05",
+   "drivers": [
+    {
+     "driver": "Alias Franks",
+     "stops": 31
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 22
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 32
+    },
+    {
+     "driver": "Cammeron Anderson",
+     "stops": 28
+    }
+   ]
+  },
+  {
+   "date": "2026-08-06",
+   "drivers": [
+    {
+     "driver": "Alias Franks",
+     "stops": 32
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 35
+    },
+    {
+     "driver": "Cammeron Anderson",
+     "stops": 28
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 20
+    }
+   ]
+  },
+  {
+   "date": "2026-08-07",
+   "drivers": [
+    {
+     "driver": "Alias Franks",
+     "stops": 30
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 19
+    },
+    {
+     "driver": "Cammeron Anderson",
+     "stops": 29
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 29
+    }
+   ]
+  },
+  {
+   "date": "2026-08-10",
+   "drivers": [
+    {
+     "driver": "Robert Norton",
+     "stops": 23
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 34
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 24
+    },
+    {
+     "driver": "Alias Franks",
+     "stops": 34
+    }
+   ]
+  },
+  {
+   "date": "2026-08-11",
+   "drivers": [
+    {
+     "driver": "Alias Franks",
+     "stops": 29
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 38
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 26
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 33
+    }
+   ]
+  },
+  {
+   "date": "2026-08-12",
+   "drivers": [
+    {
+     "driver": "Robert Norton",
+     "stops": 27
+    },
+    {
+     "driver": "Alias Franks",
+     "stops": 30
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 36
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 24
+    }
+   ]
+  },
+  {
+   "date": "2026-08-13",
+   "drivers": [
+    {
+     "driver": "Alias Franks",
+     "stops": 36
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 26
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 31
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 39
+    }
+   ]
+  },
+  {
+   "date": "2026-08-14",
+   "drivers": [
+    {
+     "driver": "Robert Norton",
+     "stops": 26
+    },
+    {
+     "driver": "Alias Franks",
+     "stops": 22
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 33
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 26
+    }
+   ]
+  },
+  {
+   "date": "2026-08-17",
+   "drivers": [
+    {
+     "driver": "Luke LaVergne",
+     "stops": 21
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 19
+    },
+    {
+     "driver": "Alias Franks",
+     "stops": 27
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 32
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 25
+    }
+   ]
+  },
+  {
+   "date": "2026-08-18",
+   "drivers": [
+    {
+     "driver": "Cory Ventura",
+     "stops": 18
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 20
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 26
+    },
+    {
+     "driver": "Alias Franks",
+     "stops": 26
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 17
+    }
+   ]
+  },
+  {
+   "date": "2026-08-19",
+   "drivers": [
+    {
+     "driver": "Luke LaVergne",
+     "stops": 16
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 22
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 26
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 27
+    },
+    {
+     "driver": "Alias Franks",
+     "stops": 22
+    }
+   ]
+  },
+  {
+   "date": "2026-08-20",
+   "drivers": [
+    {
+     "driver": "Luke LaVergne",
+     "stops": 21
+    },
+    {
+     "driver": "Alias Franks",
+     "stops": 23
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 26
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 22
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 16
+    }
+   ]
+  },
+  {
+   "date": "2026-08-21",
+   "drivers": [
+    {
+     "driver": "Luke LaVergne",
+     "stops": 19
+    },
+    {
+     "driver": "Alias Franks",
+     "stops": 27
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 17
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 25
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 30
+    }
+   ]
+  },
+  {
+   "date": "2026-08-24",
+   "drivers": [
+    {
+     "driver": "Alias Franks",
+     "stops": 27
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 30
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 23
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 23
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 27
+    }
+   ]
+  },
+  {
+   "date": "2026-08-25",
+   "drivers": [
+    {
+     "driver": "Alias Franks",
+     "stops": 19
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 23
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 17
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 27
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 28
+    }
+   ]
+  },
+  {
+   "date": "2026-08-26",
+   "drivers": [
+    {
+     "driver": "Alias Franks",
+     "stops": 22
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 20
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 14
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 25
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 32
+    }
+   ]
+  },
+  {
+   "date": "2026-08-27",
+   "drivers": [
+    {
+     "driver": "Alias Franks",
+     "stops": 24
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 29
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 20
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 23
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 26
+    }
+   ]
+  },
+  {
+   "date": "2026-08-28",
+   "drivers": [
+    {
+     "driver": "Alias Franks",
+     "stops": 28
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 20
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 20
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 29
+    }
+   ]
+  },
+  {
+   "date": "2026-08-31",
+   "drivers": [
+    {
+     "driver": "Alias Franks",
+     "stops": 25
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 27
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 18
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 21
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 28
+    }
+   ]
+  },
+  {
+   "date": "2026-09-01",
+   "drivers": [
+    {
+     "driver": "Alias Franks",
+     "stops": 28
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 22
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 25
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 25
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 30
+    }
+   ]
+  },
+  {
+   "date": "2026-09-02",
+   "drivers": [
+    {
+     "driver": "Tavis Alexander",
+     "stops": 23
+    },
+    {
+     "driver": "Alias Franks",
+     "stops": 21
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 23
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 15
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 22
+    }
+   ]
+  },
+  {
+   "date": "2026-09-03",
+   "drivers": [
+    {
+     "driver": "Alias Franks",
+     "stops": 21
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 22
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 17
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 25
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 22
+    }
+   ]
+  },
+  {
+   "date": "2026-09-04",
+   "drivers": [
+    {
+     "driver": "Alias Franks",
+     "stops": 26
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 22
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 25
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 20
+    }
+   ]
+  },
+  {
+   "date": "2026-09-07",
+   "drivers": []
+  },
+  {
+   "date": "2026-09-08",
+   "drivers": [
+    {
+     "driver": "Alias Franks",
+     "stops": 20
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 25
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 22
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 25
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 27
+    }
+   ]
+  },
+  {
+   "date": "2026-09-09",
+   "drivers": [
+    {
+     "driver": "Alias Franks",
+     "stops": 23
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 24
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 17
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 22
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 29
+    }
+   ]
+  },
+  {
+   "date": "2026-09-10",
+   "drivers": [
+    {
+     "driver": "Alias Franks",
+     "stops": 23
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 23
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 18
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 22
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 21
+    }
+   ]
+  },
+  {
+   "date": "2026-09-11",
+   "drivers": [
+    {
+     "driver": "Alias Franks",
+     "stops": 24
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 22
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 23
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 26
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 18
+    }
+   ]
+  },
+  {
+   "date": "2026-09-14",
+   "drivers": [
+    {
+     "driver": "Tavis Alexander",
+     "stops": 13
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 9
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 7
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 10
+    },
+    {
+     "driver": "Alias Franks",
+     "stops": 13
+    }
+   ]
+  },
+  {
+   "date": "2026-09-15",
+   "drivers": [
+    {
+     "driver": "Tavis Alexander",
+     "stops": 27
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 23
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 16
+    },
+    {
+     "driver": "Alias Franks",
+     "stops": 26
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 28
+    }
+   ]
+  },
+  {
+   "date": "2026-09-16",
+   "drivers": [
+    {
+     "driver": "Tavis Alexander",
+     "stops": 31
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 22
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 19
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 33
+    },
+    {
+     "driver": "Alias Franks",
+     "stops": 26
+    }
+   ]
+  },
+  {
+   "date": "2026-09-17",
+   "drivers": [
+    {
+     "driver": "Tavis Alexander",
+     "stops": 26
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 22
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 22
+    },
+    {
+     "driver": "Cory Ventura",
+     "stops": 31
+    },
+    {
+     "driver": "Alias Franks",
+     "stops": 20
+    }
+   ]
+  },
+  {
+   "date": "2026-09-25",
+   "drivers": [
+    {
+     "driver": "Cory Ventura",
+     "stops": 19
+    },
+    {
+     "driver": "Luke LaVergne",
+     "stops": 12
+    },
+    {
+     "driver": "Robert Norton",
+     "stops": 19
+    },
+    {
+     "driver": "Tavis Alexander",
+     "stops": 25
+    },
+    {
+     "driver": "Alias Franks",
+     "stops": 16
+    }
+   ]
+  },
+  {
+   "date": "2026-09-28",
+   "drivers": []
+  },
+  {
+   "date": "2026-09-29",
+   "drivers": []
+  },
+  {
+   "date": "2026-09-30",
+   "drivers": []
+  }
+ ],
+ "driversEverSeen": [
+  {
+   "driver": "Cory Ventura",
+   "stops": 1180
+  },
+  {
+   "driver": "Luke LaVergne",
+   "stops": 977
+  },
+  {
+   "driver": "Alias Franks",
+   "stops": 847
+  },
+  {
+   "driver": "Robert Norton",
+   "stops": 670
+  },
+  {
+   "driver": "Tavis Alexander",
+   "stops": 606
+  },
+  {
+   "driver": "Cammeron Anderson",
+   "stops": 435
+  },
+  {
+   "driver": "Spencer Hill",
+   "stops": 147
+  }
+ ]
+}

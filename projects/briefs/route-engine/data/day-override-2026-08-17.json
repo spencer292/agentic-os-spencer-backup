@@ -1,0 +1,43 @@
+{
+  "_comment": "WEEK-LEVEL day map adjustment for 2026-08-17..2026-08-21. NOT a change to the standing v9 map. territories.json rhythmChanges is tuned on the 07-27..08-07 census (537 visits/wk of typical mix); a real week never matches that mix, and next week is lumpy in two places: Snoqualmie Valley is booked at HALF its census volume (16 vs 31.5), which empties Alias's tue+thu and pushes Points+Redmond to 9.2-9.5h on mon/wed/fri, and West Seattle is booked heavy (37 vs 31.5), which alone puts 11.5h on Tavis's Tuesday - his first day back. rebalance-week never lets a visit leave its region's days (that rule is what stopped the 474-mile Friday), so the only lever is to widen the days of the affected blocks for this week. Costed read-only with project-week.mjs: this removes every over-9h day (worst becomes 8.3h), keeps zero dead route-days, and costs 4 extra visits changing weekday over the unadjusted map (295 vs 291 of 491).",
+  "effective": "2026-08-17",
+  "expires": "2026-08-22",
+  "_round2": "First pass planned clean geographically but left 9 tech-days over 9h (worst 11.1h, Alias thu and Tavis tue). The estimate in project-week.mjs reads ~2h light on heavy days because it uses the census driveMinPerStop, while OptimoRoute charges real road time including the run out from home. Widened again below against the PLANNED hours, not the estimate. Note the floor: Alias holds 46.5h of work next week and Robert 44.6h, so even a perfectly flat week is 9.3h and 8.9h a day for them — spreading cannot fix that, only moving ground or volume can. See the review doc.",
+  "byRegion": {
+    "West Seattle / White Center / Burien / Normandy Park": {
+      "days": "mon + tue + wed + fri",
+      "standing": "tue",
+      "why": "37 booked vs 31.5 census. On tue alone it is 11.1h planned, on Tavis's first week. Mon carries only North Seattle and West Seattle is 20 min down I-5 from it, so mon is the cheapest place for the overflow; wed and fri take the rest."
+    },
+    "North Seattle / Shoreline": {
+      "days": "mon + thu",
+      "standing": "mon",
+      "why": "25 visits alone made Tavis's monday 10.0h. His thu is 6.5h and Renton is the only thing on it."
+    },
+    "Redmond / Woodinville / Cottage Lake": {
+      "days": "mon + wed + thu",
+      "standing": "mon + wed",
+      "why": "Alias's thu was nearly empty because Snoqualmie is at half volume this week. Adding thu here pulls his mon/wed down."
+    },
+    "Points / NE 8th / Kirkland": {
+      "days": "mon + wed + fri",
+      "standing": "mon + wed",
+      "why": "Alias's mon and wed both planned at 10.1h while fri sat at 7.0h. The Points/Kirkland end is the part of his ground that reaches Friday's Sammamish run cheaply."
+    },
+    "Snoqualmie Valley / Duvall": {
+      "days": "tue + thu + fri",
+      "standing": "tue + thu",
+      "why": "Alias's thu held Snoqualmie plus Redmond overflow at 10.9h — the only day left over 10h after the balance sweep. The valley's drive cost is understated in the census, so the sweep could not see the gap. Friday is Sammamish, and Sammamish to Fall City is ~15 min over the plateau."
+    },
+    "Sammamish / Issaquah Highlands": {
+      "days": "tue + fri",
+      "standing": "fri",
+      "why": "32 booked on a single fri. Tue is Alias's emptiest day and Sammamish is contiguous with the Issaquah Highlands end of it."
+    },
+    "Enumclaw / Black Diamond / Ravensdale": {
+      "days": "tue + fri",
+      "standing": "tue",
+      "why": "27 visits alone made Robert's tuesday 10.0h. His fri is 8.1h of Auburn/Kent/Pacific, and Auburn to Enumclaw is ~20 min along SR-164 — the cheapest place to put the overflow."
+    }
+  }
+}

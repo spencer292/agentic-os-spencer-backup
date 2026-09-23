@@ -1,0 +1,9 @@
+
+=== 2026-08-31 · dominant-routeday ===
+due 532  late 54  placed 532  dropped 0  invented 0  weekend 0
+same tech 90.2%  same day 75.9%  both 71.8%  (n=532)
+hours within +-10%: 9/24 (median ratio 0.96)  |  board only: 7/24 (median 0.98)
+sequence drive ratio median 0.89 (uniform-model control 0.92) over 23 route-days  (ours 2791.6 min vs OR 3160.1 min)
+capacity: proposal over 9.5h 2/25 (actual 4/25)  max 10.92h  |  compactness within +-5%: 5/24
+gates: FAIL same tech >= 95% | FAIL same day >= 95% | FAIL route-day hours within +-10% | FAIL route-day hours within +-10% (board only, same sequencer) | PASS no dropped visits | PASS no invented visits | PASS no weekend placements | FAIL no route-day over 9.5 h (modelled travel + service) | FAIL route-day total time within +-5% of the OptimoRoute day (compactness) | PASS late bookings (created after the cutoff — the add-queue load)
+-> C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\backtest\2026-08-31\dominant-routeday  (1718 ms)

@@ -1,0 +1,10 @@
+
+=== 2026-08-31 · week-solve ===
+due 532  late 54  placed 528  dropped 4  invented 0  weekend 0
+same tech 89.2%  same day 47.7%  both 45.3%  (n=528)
+hours within +-10%: 5/24 (median ratio 1.01)  |  board only: 4/24 (median 1.09)
+sequence drive ratio median 0.92 (uniform-model control 0.97) over 22 route-days  (ours 1961.9 min vs OR 2146.7 min)
+due windows: inside clamped 528/528 (100%)  inside raw 446/528 (84.5%)  overflow 4
+capacity: proposal over 9.5h 6/25 (actual 4/25)  max 12.84h  |  compactness within +-5%: 2/24
+gates: FAIL same tech >= 95% | FAIL same day >= 95% | FAIL route-day hours within +-10% | FAIL route-day hours within +-10% (board only, same sequencer) | FAIL no dropped visits | PASS no invented visits | PASS no weekend placements | PASS every visit inside its due window (clamped to the week) | FAIL inside the raw due window, before clamping to the week | FAIL no route-day over 9.5 h (modelled travel + service) | FAIL route-day total time within +-5% of the OptimoRoute day (compactness) | FAIL no overflow (visits that would not fit under the wall) | PASS late bookings (created after the cutoff — the add-queue load)
+-> C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\backtest\2026-08-31\week-solve  (1922 ms)

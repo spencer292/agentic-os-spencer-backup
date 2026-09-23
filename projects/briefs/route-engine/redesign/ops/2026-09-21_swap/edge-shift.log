@@ -1,0 +1,122 @@
+=== EDGE SHIFT (layer 2) 2026-09-19 14:45:42 PT ===
+592 visits (1 duplicate row dropped), 7 names on the board
+
+--- layer 1: levelling each tech's own week ---
+  Alias Franks     10.0 10.0 9.6 9.6 9.9
+  Cory Ventura     8.4 8.8 8.5 8.6 7.9
+  Luke LaVergne    9.8 9.5 9.9 9.8 9.1
+  Robert Norton    8.5 8.4 8.3 8.5 8.6
+  Spencer Hill     8.1 7.2 7.9 8.0
+
+--- load after layer 1 ---
+  Alias Franks     week 49.1 h   heaviest day 10.0 h   DAY OVER WEEK OVER 42
+  Cory Ventura     week 42.3 h   heaviest day 8.8 h    WEEK OVER 42
+  Courtney         week 0.0 h   heaviest day 0.0 h   
+  Luke LaVergne    week 48.2 h   heaviest day 9.9 h   DAY OVER WEEK OVER 42
+  Robert Norton    week 42.4 h   heaviest day 8.6 h    WEEK OVER 42
+  Spencer Hill     week 31.2 h   heaviest day 8.1 h   
+  Tavis Alexander  week 13.5 h   heaviest day 13.5 h   DAY OVER
+
+donors (a day over 9 h): Alias Franks, Luke LaVergne
+over 42 h for the week but no day over the cap: Cory Ventura, Robert Norton
+
+--- layer 2: edge blocks ---
+  Alias Franks     neighbours within 6 km: Cory Ventura 0.21 km
+  Cory Ventura     neighbours within 6 km: Spencer Hill 0.09 km, Alias Franks 0.21 km, Robert Norton 0.8 km
+  Luke LaVergne    neighbours within 6 km: Spencer Hill 0.57 km, Robert Norton 2.73 km
+  Robert Norton    neighbours within 6 km: Spencer Hill 0.38 km, Cory Ventura 0.8 km, Luke LaVergne 2.73 km
+  Spencer Hill     neighbours within 6 km: Cory Ventura 0.09 km, Robert Norton 0.38 km, Luke LaVergne 0.57 km
+
+  MOVE  North Bend 98045 — Southeast 92nd Street — 1 customer, Alias Franks -> Cory Ventura, 47.84 km saved, 0.69 h of overtime cleared, lands thu
+  MOVE  Seattle 98119 — 3rd Avenue West, 10th Avenue West — 2 customers, Alias Franks -> Cory Ventura, 3.7 km saved, 1.02 h of overtime cleared, lands mon/wed
+  MOVE  Graham 98338 — 234th Street East — 1 customer, Luke LaVergne -> Spencer Hill, 9.88 km saved, 0.64 h of overtime cleared, lands tue
+  MOVE  Issaquah 98029 — 235th Avenue Southeast — 1 customer, Alias Franks -> Cory Ventura, 0.73 km saved, 0.44 h of overtime cleared, lands thu
+  MOVE  Yelm 98597 — Zeller Road Southeast — 1 customer, Luke LaVergne -> Spencer Hill, 0.13 km saved, 0.47 h of overtime cleared, lands tue
+  MOVE  Carnation 98014 — Northeast 17th Street — 1 customer, Alias Franks -> Cory Ventura, 0.18 km saved, 0.51 h of overtime cleared, lands thu
+  MOVE  Tacoma 98446 — 51st Avenue East — 1 customer, Luke LaVergne -> Spencer Hill, -1.63 km saved, 0.39 h of overtime cleared, lands tue
+  MOVE  Spanaway 98387 — 223rd Street Court East — 1 customer, Luke LaVergne -> Spencer Hill, 6.1 km saved, 0.87 h of overtime cleared, lands mon
+  MOVE  Yelm 98597 — Maxvale Hill Court Southeast — 1 customer, Luke LaVergne -> Spencer Hill, -0.9 km saved, 0.48 h of overtime cleared, lands tue
+  MOVE  Issaquah 98027 — Southeast Mirrormont Boulevard — 1 customer, Cory Ventura -> Spencer Hill, 37.65 km saved, 0 h of overtime cleared, lands fri
+  MOVE  Bonney Lake 98391 — 178th Avenue Court East — 1 customer, Cory Ventura -> Spencer Hill, 2.83 km saved, 0 h of overtime cleared, lands wed
+  MOVE  Bonney Lake 98391 — Trilogy Parkway East — 1 customer, Cory Ventura -> Spencer Hill, 2.56 km saved, 0 h of overtime cleared, lands thu
+  MOVE  BonneyLake / Bonney Lake 98391 — 147th Street East, Greenbelt Drive East — 2 customers, Cory Ventura -> Spencer Hill, 8.92 km saved, 0 h of overtime cleared, lands fri
+  MOVE  Buckley 98321 — 54th Street East — 1 customer, Cory Ventura -> Robert Norton, 6.95 km saved, 0 h of overtime cleared, lands mon
+  MOVE  Renton 98056 — Northeast 16th Street — 1 customer, Cory Ventura -> Spencer Hill, 2.62 km saved, 0 h of overtime cleared, lands wed
+  MOVE  Bothell 98011 — Northeast 176th Street — 1 customer, Alias Franks -> Cory Ventura, -2.2 km saved, 0.44 h of overtime cleared, lands mon
+  MOVE  Lake Tapps / Bonney Lake 98391 — 210th Avenue East, 213th Avenue East — 2 customers, Cory Ventura -> Spencer Hill, 7.16 km saved, 0 h of overtime cleared, lands mon
+  MOVE  Sumner 98391 — 194th Avenue Court East — 1 customer, Cory Ventura -> Spencer Hill, 2.56 km saved, 0 h of overtime cleared, lands fri
+  MOVE  Bonney Lake 98391 — 197th Avenue East, 103rd Street East — 3 customers, Cory Ventura -> Spencer Hill, 6.55 km saved, 0 h of overtime cleared, lands fri
+  MOVE  Bonney Lake 98391 — McGhee Drive East, Bonney Lake Boulevard East — 2 customers, Cory Ventura -> Spencer Hill, 2.85 km saved, 0 h of overtime cleared, lands wed
+  MOVE  Lake Tapps 98391 — 162nd Avenue Court East — 1 customer, Cory Ventura -> Spencer Hill, 4.41 km saved, 0 h of overtime cleared, lands wed
+  MOVE  Lake Tapps 98391 — 26th Street Court East — 1 customer, Cory Ventura -> Spencer Hill, 10 km saved, 0 h of overtime cleared, lands fri
+  MOVE  Buckley 98321 — Hinkleman Road — 1 customer, Cory Ventura -> Spencer Hill, 36.71 km saved, 0 h of overtime cleared, lands tue
+  MOVE  Buckley 98321 — Sumner Buckley Highway — 1 customer, Cory Ventura -> Spencer Hill, 10.96 km saved, 0 h of overtime cleared, lands thu
+        search: {"edgeCustomers":15,"clusters":10,"loneHouseSkipped":5,"noSlot":2,"receiverOverCap":2,"legal":1}
+  STUCK Alias Franks — 2.86 h of overtime left. 1 legal blocks existed; the best were rejected: Bothell to Cory Ventura (costs 3.89 km of extra driving for 0.17 h)
+        neighbour room: Cory Ventura 2.33 h
+  MOVE  Puyallup 98371 — 44th STREET E — 1 customer, Luke LaVergne -> Spencer Hill, 0.99 km saved, 0.04 h of overtime cleared, lands thu
+  MOVE  Renton 98056 — Pierce Place Northeast, Northeast 16th Street — 2 customers, Spencer Hill -> Cory Ventura, 26.62 km saved, 0 h of overtime cleared, lands mon/wed
+  MOVE  Issaquah 98027 — Southeast Mirrormont Boulevard — 1 customer, Spencer Hill -> Cory Ventura, 52.61 km saved, 0 h of overtime cleared, lands fri
+  MOVE  Renton 98059 — Southeast 138th Place — 1 customer, Spencer Hill -> Cory Ventura, 32.18 km saved, 0 h of overtime cleared, lands fri
+  MOVE  Auburn 98092 — Southeast 293rd Street — 1 customer, Spencer Hill -> Robert Norton, 24.47 km saved, 0 h of overtime cleared, lands thu
+  MOVE  Maple Valley 98038 — Southeast 204th Street — 1 customer, Spencer Hill -> Robert Norton, 18.24 km saved, 0 h of overtime cleared, lands wed
+  MOVE  Milton 98354 — 9th Avenue — 1 customer, Spencer Hill -> Robert Norton, 13.08 km saved, 0 h of overtime cleared, lands thu
+  MOVE  Edgewood 98372 — 110th Avenue East — 1 customer, Robert Norton -> Spencer Hill, 5.8 km saved, 0 h of overtime cleared, lands fri
+  MOVE  Maple Valley 98038 — 212th Place Southeast, Southeast 259th Street — 2 customers, Robert Norton -> Cory Ventura, 4.7 km saved, 0 h of overtime cleared, lands fri
+        search: {"edgeCustomers":7,"clusters":7,"loneHouseSkipped":4,"noSlot":3,"receiverOverCap":0,"legal":3}
+  STUCK Luke LaVergne — 2.07 h of overtime left. 3 legal blocks existed; the best were rejected: Roy to Spencer Hill (clears no overtime); Spanaway to Spencer Hill (clears no overtime); Puyallup to Spencer Hill (clears no overtime)
+        neighbour room: Spencer Hill 6.66 h, Robert Norton 2.23 h
+  Alias Franks     9.4 9.3 9.2 9.5 9.5
+  Cory Ventura     8.9 8.9 8.8 8.9 8.3
+  Luke LaVergne    9.4 9.5 9.0 9.4 9.0
+  Robert Norton    8.5 8.7 8.6 8.3 8.6
+  Spencer Hill     7.7 8.2 7.6 7.6 7.3
+
+--- re-levelling after the handovers: Alias Franks, Cory Ventura, Luke LaVergne, Spencer Hill, Robert Norton ---
+  Alias Franks     9.4 9.3 9.1 9.2 9.5
+  Cory Ventura     8.9 8.9 8.8 8.9 8.3
+  Luke LaVergne    9.4 9.5 9.0 9.4 9.0
+  Spencer Hill     7.7 7.9 7.6 7.6 7.4
+  Robert Norton    8.5 8.7 8.6 8.3 8.6
+  UNDO  Maple Valley 98038 — Southeast 259th Street, 212th Place Southeast — Robert Norton -> Cory Ventura costs 27.76 km and clears only 0.26 h
+  UNDO  Milton 98354 — 9th Avenue — Spencer Hill -> Robert Norton costs 1.15 km and clears only 0 h
+  UNDO  Buckley 98321 — Hinkleman Road — Cory Ventura -> Spencer Hill costs 1.21 km and clears only 0 h
+  UNDO  Buckley 98321 — 54th Street East — Cory Ventura -> Robert Norton costs 6.2 km and clears only 0 h
+  UNDO  Spanaway 98387 — 223rd Street Court East — Luke LaVergne -> Spencer Hill costs 13.94 km and clears only 0.45 h
+
+net blocks after collapsing the search trace: 24 (search made 33 intermediate handovers)
+  Cory Ventura -> Spencer Hill   4 customers  Bonney Lake / Sumner 98391 — 197th Avenue East, 194th Avenue Court East  18.47 km, 1 h off the donor
+  Alias Franks -> Cory Ventura   2 customers  Seattle 98119 — 10th Avenue West, 3rd Avenue West  55.13 km, 1.31 h off the donor
+  Cory Ventura -> Spencer Hill   2 customers  BonneyLake / Bonney Lake 98391 — 147th Street East, Greenbelt Drive East  18.07 km, 0.62 h off the donor
+  Cory Ventura -> Spencer Hill   2 customers  Bonney Lake 98391 — Bonney Lake Boulevard East, McGhee Drive East  14.39 km, 0.44 h off the donor
+  Cory Ventura -> Spencer Hill   2 customers  Bonney Lake / Lake Tapps 98391 — 213th Avenue East, 210th Avenue East  -0.41 km, 0.24 h off the donor
+  Spencer Hill -> Cory Ventura   1 customers  Renton 98059 — Southeast 138th Place  56.06 km, 0.61 h off the donor
+  Alias Franks -> Cory Ventura   1 customers  North Bend 98045 — Southeast 92nd Street  47.22 km, 0.44 h off the donor
+  Spencer Hill -> Cory Ventura   1 customers  Renton 98056 — Pierce Place Northeast  35.01 km, 0.33 h off the donor
+  Spencer Hill -> Robert Norton   1 customers  Auburn 98092 — Southeast 293rd Street  19.42 km, 0.32 h off the donor
+  Spencer Hill -> Robert Norton   1 customers  Maple Valley 98038 — Southeast 204th Street  18.18 km, 0.45 h off the donor
+  Cory Ventura -> Spencer Hill   1 customers  Bonney Lake 98391 — Trilogy Parkway East  17.93 km, 0.44 h off the donor
+  Luke LaVergne -> Spencer Hill   1 customers  Graham 98338 — 234th Street East  13.79 km, 0.43 h off the donor
+  Luke LaVergne -> Spencer Hill   1 customers  Yelm 98597 — Zeller Road Southeast  12.52 km, 0.43 h off the donor
+  Luke LaVergne -> Spencer Hill   1 customers  Yelm 98597 — Maxvale Hill Court Southeast  11.91 km, 0.43 h off the donor
+  Alias Franks -> Cory Ventura   1 customers  Issaquah 98029 — 235th Avenue Southeast  9.5 km, 0.44 h off the donor
+  Alias Franks -> Cory Ventura   1 customers  Bothell 98011 — Northeast 176th Street  9.03 km, 0.52 h off the donor
+  Robert Norton -> Spencer Hill   1 customers  Edgewood 98372 — 110th Avenue East  6.71 km, 0.34 h off the donor
+  Cory Ventura -> Spencer Hill   1 customers  Bonney Lake 98391 — 178th Avenue Court East  6.69 km, 0.3 h off the donor
+  Alias Franks -> Cory Ventura   1 customers  Carnation 98014 — Northeast 17th Street  3.72 km, 0.44 h off the donor
+  Cory Ventura -> Spencer Hill   1 customers  Buckley 98321 — Sumner Buckley Highway  3.46 km, 0.22 h off the donor
+  Luke LaVergne -> Spencer Hill   1 customers  Tacoma 98446 — 51st Avenue East  0.59 km, 0.33 h off the donor
+  Luke LaVergne -> Spencer Hill   1 customers  Puyallup 98371 — 44th STREET E  0.54 km, 0.27 h off the donor
+  Cory Ventura -> Spencer Hill   1 customers  Lake Tapps 98391 — 26th Street Court East  0.15 km, 0.06 h off the donor
+  Cory Ventura -> Spencer Hill   1 customers  Lake Tapps 98391 — 162nd Avenue Court East  -0.26 km, 0.07 h off the donor
+
+--- fleet totals ---
+  stage0: overtime 39.69 h, 4762.91 km, 234.16 capacity h, 592 stops
+  stage1: overtime 11.71 h, 4745.04 km, 226.61 capacity h, 592 stops
+  stage2: overtime 7.56 h, 4678.12 km, 228.83 capacity h, 592 stops
+
+apply list: 31 technician changes, 208 date changes
+wrote leveled-plan-2.json
+wrote leveled-plan-2.md
+wrote leveled-map-data.json
+wrote leveled-map.html

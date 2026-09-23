@@ -1,0 +1,497 @@
+[write-gate] writes BLOCKED — writes disabled: Revoked. — run eb78920e
+=== TAVIS-OUT SWAP 2026-09-19 12:37:05 PT ===
+mode: DRY (default) — queries only
+window: 2026-09-21 2026-09-22 2026-09-23 2026-09-24
+Tavis Alexander -> Cory Ventura -> Spencer Hill
+
+Jobber user ids resolved: Tavis Alexander=Z2lkOi8vSm9iYmVyL1VzZXIvMzE0NDEwNQ==, Cory Ventura=Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg==, Spencer Hill=Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2
+live Jobber: 431 visits across the four dates
+
+
+PLAN
+  pass A  Cory Ventura -> Spencer Hill : 85
+  pass B  Tavis Alexander -> Cory Ventura   : 102
+  total mutations                : 187
+  2026-09-21  A=18  B=27
+  2026-09-22  A=18  B=32
+  2026-09-23  A=19  B=17
+  2026-09-24  A=30  B=26
+  ride-alongs preserved          : 0
+
+--- JOBBER MUTATION LIST (187) ---
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzY1NTk2Mjg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8603 2026-09-21 Renton Mary Hendrickson : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTE5NjAxNTg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7853 2026-09-21 Orting Jim Vaughn : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjUyNDcxOTc=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7496 2026-09-21 Orting Vince Preece : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzE5ODA3OTM4NDg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #6064 2026-09-21 Graham Joe  Edmunson : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjE5MDI0OTg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7747 2026-09-21 Graham Leeroy Perkins : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU0MTA4Nzc=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #5413 2026-09-21 graham Ron Houlihan : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjUzNTMwMDU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #5954 2026-09-21 Graham Loren Vail : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTcwMjcxMjg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8526 2026-09-21 Graham Jake Fox : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzIzNjM5NTg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #6737 2026-09-21 Yelm Kristina Rollings : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzIyNjM4MjU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7728 2026-09-21 Yelm Sam Williams : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjcxMTk0MjA=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #5192 2026-09-21 Eatonville Candice Storm : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzE3NzY5MzA0MTc=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #6619 2026-09-21 Eatonville Pam Griffin : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzE5NTA5ODY=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7805 2026-09-21 Eatonville Dave Combs : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTE5NjM0MDM=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7172 2026-09-21 Graham Ray Pritchett : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTE5NjY5MjQ=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7725 2026-09-21 Orting Suzanne Gullace : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyOTcxMjYzNjY=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7670 2026-09-21 Orting Jessica Rakos : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTE4ODMwNTk=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #4926 2026-09-21 Pierce County HyperGreen Landscaping : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI1MzgxOTU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7858 2026-09-21 Orting Laura Tallmadge : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzM5NDQxMDg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8593 2026-09-22 Orting Kevin Milliren : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyMTYyODMzNjk=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7997 2026-09-22 Orting Anita Leigh : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzE2NTQ3NjA4OTM=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #6241 2026-09-22 Orting Mickey Boerner : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyOTc2Mzc0Mjg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8432 2026-09-22 Graham Stacey Boydell : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTE2NjE3NTk=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8318 2026-09-22 Graham Dave Sinner : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU0NjExOTQ=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #5727 2026-09-22 Graham Eric Crossley : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjcwMTUzMDA=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8356 2026-09-22 Eatonville Brian Honig : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyOTg2NTgzNzA=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8436 2026-09-22 Eatonville Monty Mansfield : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjIzNTU1MTc=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #5639 2026-09-22 Eatonville Larry Lemmon : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzIzNjU4Nzk=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #6246 2026-09-22 Yelm Lisa Miles : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI0MDE4OTg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7829 2026-09-22 Yelm Joey Russo : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI1ODEyMDQ=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8587 2026-09-22 Graham Mitchell Gasser : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzE3MDI1MTAwMjI=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #5044 2026-09-22 Eatonville Sandy Blackburn : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyMzIyMTk1Mzc=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8067 2026-09-22 Graham Gerryann Jurva : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjYzNTA1MDU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8578 2026-09-22 Graham Eric Hill : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDg2MzQ4NjI=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8490 2026-09-22 Orting Donald Ward : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTI1MjE2MzY=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8053 2026-09-22 Orting Vicky Dougan : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI1Njc4Njc=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7637 2026-09-22 Orting Tommy Marshall : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzY1MzIwMTA=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8597 2026-09-23 Maple Valley Jeff Westcott : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTI1MTY3ODY=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8504 2026-09-23 Bonney Lake Todd Allen : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNzE5NDM0NTA=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8274 2026-09-23 Bonney Lake Alex Stevenson : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzE5MzExOTAxODU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7427 2026-09-23 Bonney Lake Gabrielle  Burnham : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzMxOTE2ODA=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7739 2026-09-23 Bonney Lake Joey Deluca : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzMyNjcxNzU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #4994 2026-09-23 Lake Tapps Liki Estes : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjA4ODU3ODI=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #5424 2026-09-23 Sumner Martha Copeland : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDQ2OTQyMzY=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8466 2026-09-23 Lake Tapps Chris Heacox : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzM2ODgyNzg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7694 2026-09-23 Lake Tapps Chelsea Scott : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzE5NjY4MTcwMTM=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #4728 2026-09-23 Bonney Lake Larry Gasser : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDM1MTAzMjM=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #6454 2026-09-23 Bonney Lake Leslie Turner : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzIzOTIwMjQ=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7540 2026-09-23 Pierce County Jennifer Flanegan : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzIzNjY0ODI=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7671 2026-09-23 Buckley Marcus  Hoff : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzE3OTc0NDQxMDQ=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #6356 2026-09-23 Buckley Jason Wittenberger : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzIzMDEyMDc=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8402 2026-09-23 Buckley Tom & Sarah Long : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzM4Njg3OTQ=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #5515 2026-09-23 Buckley Dale Bundy : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDQ5NzkzNjU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #4749 2026-09-23 Buckley Thomas  Varrelman : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDM0MzkzNjY=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7705 2026-09-23 Buckley Tyler Smythe : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDYyNTU4OTQ=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8474 2026-09-23 Buckley Mike Miller : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzQ4ODIxMTg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8160 2026-09-24 Renton Sharry Kim : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzQ5NTkwNTE=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #4930 2026-09-24 Kent Plemmons Industries : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzUwMTMwNzA=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7697 2026-09-24 Kent Jennifer Cramer : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzUwNTk0NjE=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #6953 2026-09-24 Covington Jean Brannen : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzUwNjEwMTI=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #5602 2026-09-24 Covington Sandee Smith : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzUwNjM4OTk=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7407 2026-09-24 Covington Steven Friedrichsen : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzE4Njc4MTU5Mjg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7087 2026-09-24 Puyallup Todd Merry : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjM3ODUzODc=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #4480 2026-09-24 Puyallup Amanda Willard : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTI0MjA4OTY=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #5780 2026-09-24 Puyallup Susy Bevans : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzM0MTQyODM=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #4549 2026-09-24 Puyallup Carrie Williamson : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzMzNjI4NDU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #4644 2026-09-24 Puyallup Eric Fraumeni : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzE3NzA3NTQyODM=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #5565 2026-09-24 Puyallup Mike Baril : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzE4NjM0MjU0ODA=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7058 2026-09-24 Puyallup Skookum Archers : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDgxMzY2NzM=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8479 2026-09-24 Puyallup Tanner Aden : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTIwMjEyNDQ=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7320 2026-09-24 Puyallup Mike Menigoz : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU5NjM1Mjc=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8375 2026-09-24 Puyallup Johnny Evans : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjMzODQ4NDY=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8560 2026-09-24 Puyallup Patty  Ring : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU3NTY4OTU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #5024 2026-09-24 Puyallup Brienna Dyberg : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU3MTc3ODg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7884 2026-09-24 Puyallup Matt Arnold : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjMxMzcwNzg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7737 2026-09-24 Puyallup James Evenson : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzY1NDg1MjQ=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8602 2026-09-24 Auburn Mike Laidley : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzE3NzE5NzYxOTk=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #5344 2026-09-24 Puyallup Rick Ternosky : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIxOTIxOTI0Njc=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7941 2026-09-24 Puyallup Tim Lubic : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIwMTUxODUyNDk=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7617 2026-09-24 Puyallup Prologis - Sumner Landing : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzE4MTk2MjY0NTI=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #6840 2026-09-24 Milton Bill Harris : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIwNzc4MjQ3NTY=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #7701 2026-09-24 Edgewood Susan Mcdonald : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTU2NzIzOTg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #5672 2026-09-24 Puyallup Rachel Brouhard : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjI1MjEzNzM=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #4741 2026-09-24 Puyallup Ron Krebbs : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyOTA1MjMzODQ=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #8381 2026-09-24 Puyallup Michael Colella : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzM0NTU1MjA=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2"]})   #4941 2026-09-24 Puyallup Daniel Hoffman : Cory Ventura -> Spencer Hill
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzIxNzc4OTg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #6436 2026-09-21 Seattle Bobby  Holt : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzIyMjQ1NzU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #4502 2026-09-21 Seattle Doreen Rigos : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDgxMzkxMzY=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8481 2026-09-21 Seattle Craig Suffian : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU4MjU2NTQ=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8570 2026-09-21 Seattle Michael Glover : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjIyNzkwNDc=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8557 2026-09-21 Seattle Tad Hutchison : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDgxMzk5Njg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8482 2026-09-21 Seattle Joseph Rollins : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjY5MTc1MTg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8462 2026-09-21 Seattle Spencer Jacobs : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTkwMTg4Nzk=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8238 2026-09-21 Seattle Joshua  Chao : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDUzODM2NjE=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8473 2026-09-21 Seattle Nate Ceres : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDUzODM4NTc=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8473 2026-09-21 Seattle Nate Ceres : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyODQ0MTI0MDI=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8347 2026-09-21 Kenmore David Jones : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTg5MjAxNDE=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8036 2026-09-21 Lake Forest Park Garett Gowens : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzY1NjkyMTQ=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8605 2026-09-21 Bellevue Yara Chen : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI2OTg0NTQ=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8564 2026-09-21 Shoreline Jared Schapiro : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI3MTA3OTM=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8388 2026-09-21 Shoreline Mike Marinella : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI3MzAzOTE=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #7543 2026-09-21 Shoreline Edward Yang : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTk2OTM5MzM=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8248 2026-09-21 Shoreline Marian and Phil Thom : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI2MzAzNjU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8407 2026-09-21 Shoreline Caitlin Mccormick : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTk3MDYzNjM=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8535 2026-09-21 Seattle Dan Dawkins : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIxMzAxMjMzMzE=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #7849 2026-09-21 Seattle Jason Pedersen : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTk3MDI3MjI=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8534 2026-09-21 Seattle Mary Jeffers : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI1NTUwODI=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #7493 2026-09-21 Seattle Ashleigh  Root : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyOTQ2NzAxODU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8414 2026-09-21 Seattle Richard Moore : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTEwNzcxNTk=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8494 2026-09-21 Seattle Aaron Burke : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjIyODE3Njg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8558 2026-09-21 Seattle John Obrien : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjYzMTI5MTA=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8574 2026-09-21 Seattle Saber Mirzaei : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIxNjY1NDkyNTI=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #7903 2026-09-21 Seattle Mike Doud : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjY5NTE5OTc=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #7475 2026-09-22 Normandy Park Hannah  Jacobson : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTI1NzcyMjU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8510 2026-09-22 Normandy Park Sara Wade : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjcwMTI4NTc=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #7317 2026-09-22 Normandy Park Chris Bartlett : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIwNTYwNDY5OTg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #7724 2026-09-22 Burien Seattle Rental Management : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNjA5ODgzNTU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8209 2026-09-22 Burien Charlie Allaire : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIwODYxMDA1NDQ=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #7788 2026-09-22 Burien Bonnie Mccracken : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjYxNDE0NzM=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #4705 2026-09-22 Burien Pam Northrip : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjYxNDAxMTA=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8361 2026-09-22 Burien Erik Guttridge : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzY1NDA1NDk=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8601 2026-09-22 Seattle Kevin Shaver : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTU2NjE5NjM=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8518 2026-09-22 Burien Leo Coronado : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjYwNTYyMjU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #7608 2026-09-22 Seattle Scott Hamilton : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDUzNzg1ODk=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8470 2026-09-22 Seattle Alice Collins : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjUyNzEyNTg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #6447 2026-09-22 Seattle Larena Walshe : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzE3NTc2ODQzNDE=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #6581 2026-09-22 Seattle Greg Flynn : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU0NDc3NzM=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8440 2026-09-22 Seattle Klaudia Elam : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzY1NzQ0MDU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8607 2026-09-22 Seattle Ben Mathes : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTk2NTE3ODc=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8533 2026-09-22 Seattle Bob Chatalas : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTY4MzA4NzE=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8524 2026-09-22 Seattle Michael Sobieck : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU5NjQ5MDk=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #7574 2026-09-22 Seattle Steve  Huling : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyOTcxMTMwNTY=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8426 2026-09-22 Seattle Chris Kerr : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU4NTU4MTM=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8461 2026-09-22 Seattle Mary Greco : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDgxNDM5ODU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8486 2026-09-22 Seattle Phyllis Barbante : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU1NzU0MjI=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8359 2026-09-22 Seattle Mary Suhadolnik : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI1MDQyNTk=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8583 2026-09-22 Seattle Timothy Hoover : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTY4MzI1Mzg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8525 2026-09-22 Seattle Joseph Trump : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU3MjI2NTI=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8397 2026-09-22 Seattle Point Nautica : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzE5MTIyMTM4MTc=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #5947 2026-09-22 Seattle Neil Kanungo : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDgxNDM1ODA=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8485 2026-09-22 Seattle Kailey L Lacy : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDA3NjczNTY=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8443 2026-09-22 Seattle George Elissaios : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzI0NTA2NzI=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8409 2026-09-22 Seattle Chris Higgs : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIwNTUzODAyNTE=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #7715 2026-09-22 Seattle Elizabeth Duroe : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzIyMDM2Nzc=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8372 2026-09-22 Seattle Travis Bruce : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIxMDczNzcyODI=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #7823 2026-09-23 Bellevue Erik Yang : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzQ2MzYyNzU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #5751 2026-09-23 Bellevue Jane Gallagher : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzE4MjA3MTc0NzM=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #5411 2026-09-23 Bellevue Paul Klansnic : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzE3NzQ3NzQ5Nzk=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #5138 2026-09-23 Bellevue Shelley Bensussen : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzQ2Njc4MDY=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #7960 2026-09-23 Bellevue Danielle Steele : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzQ4MzAzMDc=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #6757 2026-09-23 Mercer Island Ryan Tacher : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjQ0MjIzMTg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8566 2026-09-23 Mercer Island Janelle Stewart : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyMjY2MTI5MDQ=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8045 2026-09-23 Mercer Island Melissa Bay : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjE3OTI1MDA=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8551 2026-09-23 Mercer Island Liz Silke : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTI1MjIxNzA=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8505 2026-09-23 Mercer Island Roberto Dondisch : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDUzNzgxMzY=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8469 2026-09-23 Mercer Island Damien Gallot : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjE5MTI3NzU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #6116 2026-09-23 Bellevue Noel Murphy : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzY1OTUwOTA=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #6380 2026-09-23 Carnation Rob Chadek : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIwNjM1NDEwMzU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #7744 2026-09-23 Bellevue GC Bellefield, LLC. : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU2NTQxOTQ=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8569 2026-09-23 Clyde Hill Tia Avril : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTIxODg4Mjg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8501 2026-09-23 Clyde Hill Pia Matsuno : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzQzODc2OTk=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8595 2026-09-23 Seattle Susan Eggleton : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzQ5ODEyMjY=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8488 2026-09-24 Bellevue Terry Wirth : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzUyNDUzNjI=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8275 2026-09-24 Issaquah Damien Romanik : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzY1MzYwMDA=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8599 2026-09-24 Renton Anne-Marie Jones : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIyNjI0MTU4NzQ=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8224 2026-09-24 North Bend Kelsey Peck : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTI1Njg0OTY=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8508 2026-09-24 North Bend Zoe Wu : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzE5MjIxNjY1NjI=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #7388 2026-09-24 Fall City MT Landscape : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzM0MDQ2NzM=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #7812 2026-09-24 Renton Kelly  Scott : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzE2MjA3NjYzMTk=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #4929 2026-09-24 Renton Susanna Suiter : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzQ4MjIzNDI=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #7406 2026-09-24 Renton Evan Henke : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzQ4MjQyMjI=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #5594 2026-09-24 Renton Michael Satran : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzMxNTAwODg=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #5071 2026-09-24 Renton Jim Nelsen : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzQ4NDc1MDk=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8214 2026-09-24 Renton Joseph  Syejoon Lee : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzMzNjYwNTc=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8219 2026-09-24 Renton Trent Bryan : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIxMDk1ODk5NTU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #7826 2026-09-24 Newcastle John Luger : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjExNjkyMTc=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #6396 2026-09-24 Newcastle Deborah Canon : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzM3MjAwMTU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8320 2026-09-24 Renton Jay Hickenbottom : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMzM4MjgwMDM=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #5667 2026-09-24 Renton Ron Short : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTM3OTYxNDk=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8512 2026-09-24 Renton Raman Mann : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIxNzM5MjMzMTY=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #7915 2026-09-24 Renton Elbisa Duderija : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU3NzU5MjE=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #7943 2026-09-24 Renton Stephen Van Ingen : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDAzNDU4MjU=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8442 2026-09-24 Renton Michele Rustvold : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU1MjM3NTI=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #7961 2026-09-24 Renton Kelly Kunz : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMDMxMDI2ODE=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8459 2026-09-24 Renton Melody Deisher : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU3OTY5MzE=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8422 2026-09-24 Renton Mauricio Silva : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMTkzOTU0NDk=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #8530 2026-09-24 Renton Phyllis Miller : Tavis Alexander -> Cory Ventura
+  visitEditAssignedUsers(visitId:"Z2lkOi8vSm9iYmVyL1Zpc2l0LzIzMjU5NDcyMjA=", input:{assignedUserIds:["Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg=="]})   #4550 2026-09-24 Renton Lee Hansen : Tavis Alexander -> Cory Ventura
+
+OptimoRoute: 389 orders in the window
+  order UPDATEs needed          : 171
+  orders to CREATE (no order)   : 46   (16 of them are moving visits)
+    CREATE 8603-2336559628 2026-09-21 Spencer Hill     30 min  Mary Hendrickson  1317 Pierce Place Northeast, Renton, Washington, 98056
+    CREATE 8605-2336569214 2026-09-21 Cory Ventura     24 min  Yara Chen  9812 Northeast 31st Street, Bellevue, Washington, 98004
+    CREATE 7745-2336585102 2026-09-21 Luke LaVergne    15 min  Hector Soto-Garcia  3727 Santis Loop SE, Lacey, Washington, 98503
+    CREATE 8222-2336554165 2026-09-22 Luke LaVergne    15 min  Oscar Alvaravo  5124 223rd Street Court East, Spanaway, Washington, 98387
+    CREATE 7708-2336560016 2026-09-22 Luke LaVergne    15 min  Vernie Dunham  26814 39th Ave E, Spanaway, Wa, 98387
+    CREATE 4935-2336562710 2026-09-22 Luke LaVergne    15 min  Maja Haloway  30110 39th Avenue South, Roy, Washington, 98580
+    CREATE 8598-2336532995 2026-09-22 Alias Franks     30 min  John Mcinerny  17240 13th Avenue Northwest, Shoreline, Washington, 98177
+    CREATE 8601-2336540549 2026-09-22 Cory Ventura     12 min  Kevin Shaver  8830 40th Avenue Southwest, Seattle, Washington, 98136
+    CREATE 8600-2336538524 2026-09-22 Alias Franks     30 min  Sam Leonard  3035 46th Avenue Southwest, Seattle, Washington, 98116
+    CREATE 8607-2336574405 2026-09-22 Cory Ventura     12 min  Ben Mathes  1429 Sunset Avenue Southwest, Seattle, Washington, 98116
+    CREATE 8610-2336586800 2026-09-22 Luke LaVergne    30 min  Chris Gregg  10622 125th Street East, Puyallup, Washington, 98374
+    CREATE 8611-2336588201 2026-09-22 Luke LaVergne    30 min  Melissa  Bobbit  14712 234th Street East, Graham, Washington, 98338
+    CREATE 8597-2336532010 2026-09-23 Spencer Hill     30 min  Jeff Westcott  28603 Southeast 204th Street, Maple Valley, Washington, 98038
+    CREATE 8606-2336571429 2026-09-23 Luke LaVergne    30 min  Scott Campbell  7012 42nd Street Northwest, Gig Harbor, Washington, 98335
+    CREATE 8608-2336577048 2026-09-23 Luke LaVergne    15 min  Carol Miller  1013 Northeast Coco Court, Bremerton, Washington, 98311
+    CREATE 6380-2336595090 2026-09-23 Cory Ventura     12 min  Rob Chadek  28811 Northeast 10th Street, Carnation, Washington, 98014
+    CREATE 8612-2336595348 2026-09-23 Luke LaVergne    30 min  Mike Ruff  1170 Southwest Wildwood Road, Port Orchard, Washington, 98367
+    CREATE 8160-2334882118 2026-09-24 Spencer Hill     15 min  Sharry Kim  15003 Southeast 138th Place, Renton, Washington, 98059
+    CREATE 7337-2334904305 2026-09-24 Luke LaVergne    15 min  Deschutes Storage  607 Durell Road Southeast, Tumwater, Washington, 98501
+    CREATE 7618-2334907997 2026-09-24 Luke LaVergne    15 min  Kathleen Nurmi  9012 Littlerock Road Southwest, Olympia, Washington, 98512
+    CREATE 7461-2334909076 2026-09-24 Luke LaVergne    15 min  Rachel Decker  6441 Nels Street Southwest, Olympia, Washington, 98512
+    CREATE 7476-2334927737 2026-09-24 Robert Norton    15 min  Craig Koester  34420 9th Avenue South, Federal Way, Washington, 98003
+    CREATE 8286-2334932695 2026-09-24 Alias Franks     15 min  Colleen Hart  6819 Ames Lake-Carnation Road Northeast, Carnation, Washington, 98014
+    CREATE 4930-2334959051 2026-09-24 Spencer Hill     15 min  Plemmons Industries  25454 129th Avenue Southeast, Kent, Washington, 98030
+    CREATE 5545-2334971331 2026-09-24 Alias Franks     15 min  Nichole  Jacobson  31015 Northeast 60th Street, Carnation, Washington, 98014
+    CREATE 7527-2334971341 2026-09-24 Luke LaVergne    15 min  Katherine Cavanaugh  1001 South Street Southeast, Tumwater, Washington, 98501
+    CREATE 8415-2334974233 2026-09-24 Robert Norton    15 min  Kevin Mcginnity  37809 26th Drive South, Federal Way, Washington, 98003
+    CREATE 8488-2334981226 2026-09-24 Cory Ventura     12 min  Terry Wirth  3109 109th Avenue Southeast, Bellevue, Washington, 98004
+    CREATE 7697-2335013070 2026-09-24 Spencer Hill     15 min  Jennifer Cramer  24624 156th Avenue Southeast, Kent, Washington, 98042
+    CREATE 5369-2335024678 2026-09-24 Robert Norton    15 min  Chris Doll  3021 110th Avenue East, Edgewood, Washington, 98372
+    CREATE 7022-2335037547 2026-09-24 Alias Franks     15 min  Seddik Belyamani  5605 228th Avenue Northeast, Redmond, Washington, 98053
+    CREATE 6953-2335059461 2026-09-24 Spencer Hill     15 min  Jean Brannen  25612 209th Loop Southeast, Covington, Washington, 98042
+    CREATE 5602-2335061012 2026-09-24 Spencer Hill     15 min  Sandee Smith  25719 209th Loop Southeast, Covington, Washington, 98042
+    CREATE 7407-2335063899 2026-09-24 Spencer Hill     15 min  Steven Friedrichsen  25806 209th Loop Southeast, Covington, Washington, 98042
+    CREATE 7116-2335073672 2026-09-24 Alias Franks     15 min  Sherry Lotze  18691 Northeast 55th Street, Redmond, Washington, 98052
+    CREATE 8233-2335104025 2026-09-24 Alias Franks     15 min  Vicky Marxen  3629 East Lake Sammamish Shore Lane Northeast, Sammamish, Washington, 98074
+    CREATE 8412-2335129052 2026-09-24 Luke LaVergne    15 min  Bill Henshaw  6843 75th Avenue Southeast, Olympia, Washington, 98513
+    CREATE 8154-2335130746 2026-09-24 Alias Franks     15 min  Kim Suver  18845 Northeast 49th Place, Sammamish, Washington, 98074
+    CREATE 5015-2335152874 2026-09-24 Luke LaVergne    15 min  Brian Muirhead  6527 Alternate Lane Southeast, Olympia, Washington, 98513
+    CREATE 7546-2335191681 2026-09-24 Alias Franks     15 min  Marymoor Park  6046 West Lake Sammamish Parkway Northeast, Redmond, Washington, 98052
+    CREATE 5355-2335219933 2026-09-24 Alias Franks     15 min  Debra Chrapaty  12149 Northeast 28th Street, Bellevue, Washington, 98005
+    CREATE 7478-2335241807 2026-09-24 Luke LaVergne    15 min  Marc Abraham  6645 Rehklau Road Southeast, Olympia, Washington, 98513
+    CREATE 8275-2335245362 2026-09-24 Cory Ventura     12 min  Damien Romanik  4939 229th Avenue Southeast, Issaquah, Washington, 98029
+    CREATE 8599-2336536000 2026-09-24 Cory Ventura     12 min  Anne-Marie Jones  17107 Southeast 100th Street, Renton, Washington, 98059
+    CREATE 7488-1957237434 2026-09-24 Luke LaVergne    15 min  Eric Tilton  8524 Valley Green Drive Southeast, Olympia, Washington, 98513
+    CREATE 8602-2336548524 2026-09-24 Spencer Hill     15 min  Mike Laidley  10914 Southeast 293rd Street, Auburn, Washington, 98092
+  ghost orders to DELETE        : 4
+    DELETE 8439-2299131242 2026-09-21 (Robert Norton)
+    DELETE 8142-2325408630 2026-09-22 (Tavis Alexander)
+    DELETE 8425-2334698805 2026-09-23 (Robert Norton)
+    DELETE 8580-2332467733 2026-09-24 (Tavis Alexander)
+
+--- OPTIMOROUTE CALL LIST ---
+  create_order {operation:"CREATE", orderNo:"8603-2336559628", date:"2026-09-21", duration:30, assignedTo:{serial:"Spencer Hill"}}
+  create_order {operation:"CREATE", orderNo:"8605-2336569214", date:"2026-09-21", duration:24, assignedTo:{serial:"Cory Ventura"}}
+  create_order {operation:"CREATE", orderNo:"7745-2336585102", date:"2026-09-21", duration:15, assignedTo:{serial:"Luke LaVergne"}}
+  create_order {operation:"CREATE", orderNo:"8222-2336554165", date:"2026-09-22", duration:15, assignedTo:{serial:"Luke LaVergne"}}
+  create_order {operation:"CREATE", orderNo:"7708-2336560016", date:"2026-09-22", duration:15, assignedTo:{serial:"Luke LaVergne"}}
+  create_order {operation:"CREATE", orderNo:"4935-2336562710", date:"2026-09-22", duration:15, assignedTo:{serial:"Luke LaVergne"}}
+  create_order {operation:"CREATE", orderNo:"8598-2336532995", date:"2026-09-22", duration:30, assignedTo:{serial:"Alias Franks"}}
+  create_order {operation:"CREATE", orderNo:"8601-2336540549", date:"2026-09-22", duration:12, assignedTo:{serial:"Cory Ventura"}}
+  create_order {operation:"CREATE", orderNo:"8600-2336538524", date:"2026-09-22", duration:30, assignedTo:{serial:"Alias Franks"}}
+  create_order {operation:"CREATE", orderNo:"8607-2336574405", date:"2026-09-22", duration:12, assignedTo:{serial:"Cory Ventura"}}
+  create_order {operation:"CREATE", orderNo:"8610-2336586800", date:"2026-09-22", duration:30, assignedTo:{serial:"Luke LaVergne"}}
+  create_order {operation:"CREATE", orderNo:"8611-2336588201", date:"2026-09-22", duration:30, assignedTo:{serial:"Luke LaVergne"}}
+  create_order {operation:"CREATE", orderNo:"8597-2336532010", date:"2026-09-23", duration:30, assignedTo:{serial:"Spencer Hill"}}
+  create_order {operation:"CREATE", orderNo:"8606-2336571429", date:"2026-09-23", duration:30, assignedTo:{serial:"Luke LaVergne"}}
+  create_order {operation:"CREATE", orderNo:"8608-2336577048", date:"2026-09-23", duration:15, assignedTo:{serial:"Luke LaVergne"}}
+  create_order {operation:"CREATE", orderNo:"6380-2336595090", date:"2026-09-23", duration:12, assignedTo:{serial:"Cory Ventura"}}
+  create_order {operation:"CREATE", orderNo:"8612-2336595348", date:"2026-09-23", duration:30, assignedTo:{serial:"Luke LaVergne"}}
+  create_order {operation:"CREATE", orderNo:"8160-2334882118", date:"2026-09-24", duration:15, assignedTo:{serial:"Spencer Hill"}}
+  create_order {operation:"CREATE", orderNo:"7337-2334904305", date:"2026-09-24", duration:15, assignedTo:{serial:"Luke LaVergne"}}
+  create_order {operation:"CREATE", orderNo:"7618-2334907997", date:"2026-09-24", duration:15, assignedTo:{serial:"Luke LaVergne"}}
+  create_order {operation:"CREATE", orderNo:"7461-2334909076", date:"2026-09-24", duration:15, assignedTo:{serial:"Luke LaVergne"}}
+  create_order {operation:"CREATE", orderNo:"7476-2334927737", date:"2026-09-24", duration:15, assignedTo:{serial:"Robert Norton"}}
+  create_order {operation:"CREATE", orderNo:"8286-2334932695", date:"2026-09-24", duration:15, assignedTo:{serial:"Alias Franks"}}
+  create_order {operation:"CREATE", orderNo:"4930-2334959051", date:"2026-09-24", duration:15, assignedTo:{serial:"Spencer Hill"}}
+  create_order {operation:"CREATE", orderNo:"5545-2334971331", date:"2026-09-24", duration:15, assignedTo:{serial:"Alias Franks"}}
+  create_order {operation:"CREATE", orderNo:"7527-2334971341", date:"2026-09-24", duration:15, assignedTo:{serial:"Luke LaVergne"}}
+  create_order {operation:"CREATE", orderNo:"8415-2334974233", date:"2026-09-24", duration:15, assignedTo:{serial:"Robert Norton"}}
+  create_order {operation:"CREATE", orderNo:"8488-2334981226", date:"2026-09-24", duration:12, assignedTo:{serial:"Cory Ventura"}}
+  create_order {operation:"CREATE", orderNo:"7697-2335013070", date:"2026-09-24", duration:15, assignedTo:{serial:"Spencer Hill"}}
+  create_order {operation:"CREATE", orderNo:"5369-2335024678", date:"2026-09-24", duration:15, assignedTo:{serial:"Robert Norton"}}
+  create_order {operation:"CREATE", orderNo:"7022-2335037547", date:"2026-09-24", duration:15, assignedTo:{serial:"Alias Franks"}}
+  create_order {operation:"CREATE", orderNo:"6953-2335059461", date:"2026-09-24", duration:15, assignedTo:{serial:"Spencer Hill"}}
+  create_order {operation:"CREATE", orderNo:"5602-2335061012", date:"2026-09-24", duration:15, assignedTo:{serial:"Spencer Hill"}}
+  create_order {operation:"CREATE", orderNo:"7407-2335063899", date:"2026-09-24", duration:15, assignedTo:{serial:"Spencer Hill"}}
+  create_order {operation:"CREATE", orderNo:"7116-2335073672", date:"2026-09-24", duration:15, assignedTo:{serial:"Alias Franks"}}
+  create_order {operation:"CREATE", orderNo:"8233-2335104025", date:"2026-09-24", duration:15, assignedTo:{serial:"Alias Franks"}}
+  create_order {operation:"CREATE", orderNo:"8412-2335129052", date:"2026-09-24", duration:15, assignedTo:{serial:"Luke LaVergne"}}
+  create_order {operation:"CREATE", orderNo:"8154-2335130746", date:"2026-09-24", duration:15, assignedTo:{serial:"Alias Franks"}}
+  create_order {operation:"CREATE", orderNo:"5015-2335152874", date:"2026-09-24", duration:15, assignedTo:{serial:"Luke LaVergne"}}
+  create_order {operation:"CREATE", orderNo:"7546-2335191681", date:"2026-09-24", duration:15, assignedTo:{serial:"Alias Franks"}}
+  create_order {operation:"CREATE", orderNo:"5355-2335219933", date:"2026-09-24", duration:15, assignedTo:{serial:"Alias Franks"}}
+  create_order {operation:"CREATE", orderNo:"7478-2335241807", date:"2026-09-24", duration:15, assignedTo:{serial:"Luke LaVergne"}}
+  create_order {operation:"CREATE", orderNo:"8275-2335245362", date:"2026-09-24", duration:12, assignedTo:{serial:"Cory Ventura"}}
+  create_order {operation:"CREATE", orderNo:"8599-2336536000", date:"2026-09-24", duration:12, assignedTo:{serial:"Cory Ventura"}}
+  create_order {operation:"CREATE", orderNo:"7488-1957237434", date:"2026-09-24", duration:15, assignedTo:{serial:"Luke LaVergne"}}
+  create_order {operation:"CREATE", orderNo:"8602-2336548524", date:"2026-09-24", duration:15, assignedTo:{serial:"Spencer Hill"}}
+  delete_order {orderNo:"8439-2299131242"}
+  delete_order {orderNo:"8142-2325408630"}
+  delete_order {orderNo:"8425-2334698805"}
+  delete_order {orderNo:"8580-2332467733"}
+  create_order {operation:"UPDATE", orderNo:"7853-2311960158", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7496-2325247197", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"6064-1980793848", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7747-2321902498", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"5413-2325410877", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"5954-2325353005", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"8526-2317027128", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"6737-2332363958", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7728-2332263825", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"5192-2327119420", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"6619-1776930417", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7805-2331950986", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7172-2311963403", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7725-2311966924", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7670-2297126366", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"4926-2311883059", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7858-2332538195", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"8593-2333944108", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7997-2216283369", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"6241-1654760893", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"8432-2297637428", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"8318-2311661759", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"5727-2325461194", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"8356-2327015300", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"8436-2298658370", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"5639-2322355517", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"6246-2332365879", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7829-2332401898", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"8587-2332581204", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"5044-1702510022", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"8067-2232219537", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"8578-2326350505", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"8490-2308634862", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"8053-2312521636", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7637-2332567867", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"8504-2312516786", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"8274-2271943450", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7427-1931190185", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7739-2333191680", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"4994-2333267175", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"5424-2320885782", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"8466-2304694236", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7694-2333688278", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"4728-1966817013", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"6454-2303510323", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7540-2332392024", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7671-2332366482", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"6356-1797444104", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"8402-2332301207", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"5515-2333868794", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"4749-2304979365", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7705-2303439366", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"8474-2306255894", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7087-1867815928", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"4480-2323785387", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"5780-2312420896", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"4549-2333414283", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"4644-2333362845", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"5565-1770754283", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7058-1863425480", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"8479-2308136673", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7320-2312021244", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"8375-2325963527", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"8560-2323384846", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"5024-2325756895", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7884-2325717788", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7737-2323137078", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"5344-1771976199", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7941-2192192467", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7617-2015185249", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"6840-1819626452", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"7701-2077824756", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"5672-2315672398", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"4741-2322521373", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"8381-2290523384", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"4941-2333455520", assignedTo:{serial:"Spencer Hill"}}   (was Cory Ventura)
+  create_order {operation:"UPDATE", orderNo:"6436-2332177898", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"4502-2332224575", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8481-2308139136", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8570-2325825654", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8557-2322279047", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8482-2308139968", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8462-2326917518", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8238-2319018879", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8473-2305383661", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8473-2305383857", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8347-2284412402", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8036-2318920141", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8564-2332698454", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8388-2332710793", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"7543-2332730391", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8248-2319693933", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8407-2332630365", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8535-2319706363", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"7849-2130123331", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8534-2319702722", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"7493-2332555082", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8414-2294670185", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8494-2311077159", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8558-2322281768", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8574-2326312910", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"7903-2166549252", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"7475-2326951997", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8510-2312577225", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"7317-2327012857", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"7724-2056046998", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8209-2260988355", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"7788-2086100544", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"4705-2326141473", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8361-2326140110", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8518-2315661963", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"7608-2326056225", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8470-2305378589", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"6447-2325271258", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"6581-1757684341", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8440-2325447773", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8533-2319651787", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8524-2316830871", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"7574-2325964909", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8426-2297113056", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8461-2325855813", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8486-2308143985", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8359-2325575422", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8583-2332504259", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8525-2316832538", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8397-2325722652", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"5947-1912213817", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8485-2308143580", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8443-2300767356", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8409-2332450672", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"7715-2055380251", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8372-2332203677", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"7823-2107377282", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"5751-2334636275", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"5411-1820717473", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"5138-1774774979", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"7960-2334667806", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"6757-2334830307", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8566-2324422318", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8045-2226612904", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8551-2321792500", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8505-2312522170", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8469-2305378136", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"6116-2321912775", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"7744-2063541035", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8569-2325654194", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8501-2312188828", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8595-2334387699", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8224-2262415874", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8508-2312568496", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"7388-1922166562", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"7812-2333404673", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"4929-1620766319", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"7406-2334822342", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"5594-2334824222", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"5071-2333150088", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8214-2334847509", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8219-2333366057", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"7826-2109589955", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"6396-2321169217", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8320-2333720015", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"5667-2333828003", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8512-2313796149", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"7915-2173923316", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"7943-2325775921", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8442-2300345825", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"7961-2325523752", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8459-2303102681", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8422-2325796931", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"8530-2319395449", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  create_order {operation:"UPDATE", orderNo:"4550-2325947220", assignedTo:{serial:"Cory Ventura"}}   (was Tavis Alexander)
+  update_drivers_parameters {updates:[{driver:{serial:"Spencer Hill"},date:"2026-09-21",enabled:true},{driver:{serial:"Tavis Alexander"},date:"2026-09-21",enabled:false},{driver:{serial:"Cory Ventura"},date:"2026-09-21",enabled:true}]}
+  update_drivers_parameters {updates:[{driver:{serial:"Spencer Hill"},date:"2026-09-22",enabled:true},{driver:{serial:"Tavis Alexander"},date:"2026-09-22",enabled:false},{driver:{serial:"Cory Ventura"},date:"2026-09-22",enabled:true}]}
+  update_drivers_parameters {updates:[{driver:{serial:"Spencer Hill"},date:"2026-09-23",enabled:true},{driver:{serial:"Tavis Alexander"},date:"2026-09-23",enabled:false},{driver:{serial:"Cory Ventura"},date:"2026-09-23",enabled:true}]}
+  update_drivers_parameters {updates:[{driver:{serial:"Spencer Hill"},date:"2026-09-24",enabled:true},{driver:{serial:"Tavis Alexander"},date:"2026-09-24",enabled:false},{driver:{serial:"Cory Ventura"},date:"2026-09-24",enabled:true}]}
+  start_planning {dateRange:{from:"2026-09-21",to:"2026-09-21"}, balancing:"OFF", startWith:"CURRENT", lockType:"NONE"}  -> poll get_planning_status -> get_routes?date=2026-09-21
+  start_planning {dateRange:{from:"2026-09-22",to:"2026-09-22"}, balancing:"OFF", startWith:"CURRENT", lockType:"NONE"}  -> poll get_planning_status -> get_routes?date=2026-09-22
+  start_planning {dateRange:{from:"2026-09-23",to:"2026-09-23"}, balancing:"OFF", startWith:"CURRENT", lockType:"NONE"}  -> poll get_planning_status -> get_routes?date=2026-09-23
+  start_planning {dateRange:{from:"2026-09-24",to:"2026-09-24"}, balancing:"OFF", startWith:"CURRENT", lockType:"NONE"}  -> poll get_planning_status -> get_routes?date=2026-09-24
+
+DRY RUN — nothing written. Log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-09-21_swap\live-run.log
+Re-run with --execute once the write gate is open.

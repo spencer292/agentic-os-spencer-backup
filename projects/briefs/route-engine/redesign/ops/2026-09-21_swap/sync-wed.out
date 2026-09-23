@@ -1,0 +1,67 @@
+[write-gate] WRITES ENABLED until 2026-09-23T00:20:16.017Z (spenc@Got-Moles: Robert ends Wed 09-23 in Fife (Spencer approved 09-22 16:40): anchor order, re-plan Wed, write times) — ceiling 400/run — run 477fecd1
+=== SYNC + PLAN + TIMES 2026-09-22 16:50:16 PT ===
+mode: LIVE (--execute)   window: 2026-09-23..2026-09-23
+live Jobber: 123 visits, 123 not complete, 123 on a routed driver, 0 skipped (no tech / not a driver)
+  2026-09-23  Alias 23  Spencer 27  Robert 28  Luke 20  Cory 25
+
+OptimoRoute: 123 orders in the window
+  CREATE 2   UPDATE 0   DELETE 2   unchanged 121
+    CREATE 8618-2338504257 2026-09-23 Spencer Hill 15m  Shawn Tobius  3336 Cole Street, Enumclaw, Washington, 98022
+    CREATE 8624-2339776473 2026-09-23 Alias Franks 30m  Tyler Guion  8307 157th Avenue Southeast, Snohomish, Washington, 98290
+    DELETE 8539-2332304644 2026-09-23 Spencer Hill  Shawn Tobius (pull) · #8539
+    DELETE END-FIFE-20260923 2026-09-23 Robert Norton  END OF DAY - Fife (anchor, not a customer)
+
+driver availability: 09-23: Alias/Cory/Luke/Robert/Spencer
+
+=== OPTIMOROUTE: 2 CREATE ===
+  CREATE 8618-2338504257 2026-09-23 Spencer Hill  ok
+  CREATE 8624-2339776473 2026-09-23 Alias Franks  ok
+=== OPTIMOROUTE: 0 UPDATE ===
+=== OPTIMOROUTE: 2 DELETE ===
+  DELETE 8539-2332304644 2026-09-23  ok
+  DELETE END-FIFE-20260923 2026-09-23  ok
+
+=== OPTIMOROUTE: driver availability ===
+  6/6 succeeded
+
+=== PLAN 2026-09-23 (balancing OFF) ===
+  Alias Franks        23 stops   570 min   148 km  first 07:00  last 15:49
+  Cory Ventura        25 stops   518 min   233 km  first 07:47  last 14:39
+  Luke LaVergne       20 stops   698 min   293 km  first 07:33  last 17:47
+  Robert Norton       28 stops   625 min   126 km  first 07:26  last 16:48
+  Spencer Hill        27 stops   558 min    81 km  first 07:05  last 15:53
+
+=== JOBBER: write planned times (startAt = arrival, endAt = +3 h) ===
+  to write 26   already correct 97   not on a route 0
+  [  1/26] 2026-09-23 14:56 #8541 Alias    Aditya Singh                 was 09-23 07:00  ok
+  [  2/26] 2026-09-23 07:50 #7758 Alias    Joe Kelley                   was 09-23 07:25  ok
+  [  3/26] 2026-09-23 07:33 #8487 Luke     Ashley Daniel                was 09-23 07:34  ok
+  [  4/26] 2026-09-23 08:12 #8406 Alias    Jessica Angel                was 09-23 07:48  ok
+  [  5/26] 2026-09-23 08:45 #8042 Alias    Dave Parker                  was 09-23 08:20  ok
+  [  6/26] 2026-09-23 09:06 #8618 Spencer  Shawn Tobius                 was 09-23 08:30  ok
+  [  7/26] 2026-09-23 09:12 #6270 Alias    Gwen Morton                  was 09-23 08:47  ok
+  [  8/26] 2026-09-23 08:58 #7560 Luke     Alex Alexeev                 was 09-23 08:59  ok
+  [  9/26] 2026-09-23 09:33 #7434 Alias    Linda Lowe                   was 09-23 09:09  ok
+  [ 10/26] 2026-09-23 09:57 #8472 Alias    David Johal                  was 09-23 09:33  ok
+  [ 11/26] 2026-09-23 10:16 #8246 Alias    Pia Graves                   was 09-23 09:52  ok
+  [ 12/26] 2026-09-23 10:33 #7776 Alias    Marius Ungureanu             was 09-23 10:09  ok
+  [ 13/26] 2026-09-23 10:50 #6375 Alias    Mike Cushman                 was 09-23 10:25  ok
+  [ 14/26] 2026-09-23 11:10 #8194 Alias    Steve Murdock                was 09-23 10:45  ok
+  [ 15/26] 2026-09-23 11:31 #8467 Alias    Sandy Goodkin                was 09-23 11:06  ok
+  [ 16/26] 2026-09-23 11:53 #6607 Alias    Jonathan Kim-Hull            was 09-23 11:28  ok
+  [ 17/26] 2026-09-23 12:12 #8217 Alias    Aziz El-solh                 was 09-23 11:47  ok
+  [ 18/26] 2026-09-23 12:32 #8298 Alias    Melinda Holland              was 09-23 12:08  ok
+  [ 19/26] 2026-09-23 12:54 #5099 Alias    Buff Nelson                  was 09-23 12:30  ok
+  [ 20/26] 2026-09-23 13:20 #7504 Alias    Lisa Shaughnessy             was 09-23 12:56  ok
+  [ 21/26] 2026-09-23 13:46 #7639 Alias    Marla Poor                   was 09-23 13:22  ok
+  [ 22/26] 2026-09-23 14:09 #6849 Alias    Michelle  Rasmussen          was 09-23 13:45  ok
+  [ 23/26] 2026-09-23 14:27 #8285 Alias    David Alexander              was 09-23 14:02  ok
+  [ 24/26] 2026-09-23 15:21 #8563 Alias    Brian Sasville               was 09-23 14:37  ok
+  [ 25/26] 2026-09-23 15:49 #8405 Alias    Steve  Mcdonough             was 09-23 15:04  ok
+  [ 26/26] 2026-09-23 07:00 #8624 Alias    Tyler Guion                  was 09-23 15:05  ok
+  written 26  failed 0
+
+=== VERIFY === 123 visits match the plan, 0 do not
+
+✅ done 2026-09-22 16:50:44 PT — log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-09-21_swap\sync-plan-times.log
+Next: the arrival-window sweep (node projects/tool-jobber/scripts/arrival-window-sweep.mjs) so every visit carries the 3-hour window.

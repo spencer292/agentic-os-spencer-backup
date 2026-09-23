@@ -1,0 +1,122 @@
+S2b join-paid-hours
+  gusto   : rainier-power-wash-time-tracking-hours-2026-08-17-to-2026-09-20.csv | 140 rows
+  pva     : 115 route-days {"from":"2026-08-17","to":"2026-09-17","tz":"America/Los_Angeles","eveningCutoff":"18:30"}
+  drive   : 113 route-days 2026-08-17 -> 2026-09-17
+  optimo  : 24 planned dates {"from":"2026-08-17","to":"2026-09-17"}
+  ledger  : 123 tech-days for 5 techs
+  wrote   : data\route-day-ledger.json
+
+WEEKLY (paid / OT / planned span / stamped span / label)
+  Alias Franks
+    2026-08-17  paid   51.9  OT  11.9  plan  44.93  stamp  51.48  stops  125/ 132  G/A/R 0/1/4  UNSUCCESSFUL - 4 RED days (08-18 span, 08-19 span, 08-20 overtime, 08-21 overtime); 11.9 h overtime, i.e. the week passed 40 h
+    2026-08-24  paid   54.2  OT  14.2  plan  42.29  stamp  57.25  stops  120/ 128  G/A/R 0/2/3  UNSUCCESSFUL - 3 RED days (08-26 span, 08-27 span+overtime, 08-28 span+overtime); 14.2 h overtime, i.e. the week passed 40 h
+    2026-08-31  paid  45.38  OT  5.38  plan  44.76  stamp  43.89  stops  121/ 120  G/A/R 2/0/3  UNSUCCESSFUL - 3 RED days (09-01 span, 09-02 span, 09-04 overtime); 5.38 h overtime, i.e. the week passed 40 h
+    2026-09-07  paid  38.87  OT     0  plan  31.86  stamp  37.87  stops   90/  94  G/A/R 1/1/2  UNSUCCESSFUL - 2 RED days (09-09 span, 09-10 span)
+    2026-09-14  paid  51.11 (inWin 40.34)  OT  11.1  plan  31.78  stamp  39.18  stops   85/ 105  G/A/R 1/1/3  UNSUCCESSFUL - 3 RED days (09-15 span, 09-16 span, 09-18 span+overtime); 11.1 h overtime, i.e. the week passed 40 h
+  Cory Ventura
+    2026-08-17  paid      -  OT     -  plan  34.51  stamp  31.57  stops  123/ 128  G/A/R 0/0/0  NO_CLOCK - salaried - no time clock, hours cannot be labelled
+    2026-08-24  paid      -  OT     -  plan  29.19  stamp  30.75  stops  102/ 127  G/A/R 0/0/0  NO_CLOCK - salaried - no time clock, hours cannot be labelled
+    2026-08-31  paid      -  OT     -  plan   27.2  stamp  25.01  stops   94/ 101  G/A/R 0/0/0  NO_CLOCK - salaried - no time clock, hours cannot be labelled
+    2026-09-07  paid      -  OT     -  plan  25.87  stamp  26.03  stops   94/  99  G/A/R 0/0/0  NO_CLOCK - salaried - no time clock, hours cannot be labelled
+    2026-09-14  paid      -  OT     -  plan   28.2  stamp  26.45  stops  102/ 121  G/A/R 0/0/0  NO_CLOCK - salaried - no time clock, hours cannot be labelled
+  Luke LaVergne
+    2026-08-17  paid  39.84  OT     0  plan  40.33  stamp  38.66  stops   94/ 104  G/A/R 4/1/0  SUCCESSFUL - no RED days, 0 h overtime
+    2026-08-24  paid  33.14  OT     0  plan   40.8  stamp  32.12  stops   94/  75  G/A/R 3/1/0  SUCCESSFUL - no RED days, 0 h overtime
+    2026-08-31  paid  43.65  OT  3.65  plan  41.27  stamp  43.35  stops   97/ 104  G/A/R 0/4/1  UNSUCCESSFUL - 1 RED day (09-04 overtime); 3.65 h overtime, i.e. the week passed 40 h
+    2026-09-07  paid   37.7  OT     0  plan  34.22  stamp  40.67  stops   80/  86  G/A/R 0/3/1  UNSUCCESSFUL - 1 RED day (09-10 span)
+    2026-09-14  paid  41.99 (inWin 32.66)  OT     2  plan  30.43  stamp   31.1  stops   64/  79  G/A/R 3/1/1  UNSUCCESSFUL - 1 RED day (09-18 overtime); 2 h overtime, i.e. the week passed 40 h
+  Robert Norton
+    2026-08-17  paid  39.12  OT     0  plan  36.18  stamp  37.09  stops  104/ 109  G/A/R 4/1/0  SUCCESSFUL - no RED days, 0 h overtime
+    2026-08-24  paid  41.97  OT  1.97  plan  39.53  stamp  47.53  stops  118/ 125  G/A/R 2/1/2  UNSUCCESSFUL - 2 RED days (08-27 span, 08-28 overtime)
+    2026-08-31  paid  41.98  OT  1.98  plan  40.34  stamp  40.86  stops  118/ 121  G/A/R 2/2/1  UNSUCCESSFUL - 1 RED day (09-04 span+overtime)
+    2026-09-07  paid   33.8  OT     0  plan  32.03  stamp   32.7  stops   95/  94  G/A/R 2/2/0  SUCCESSFUL - no RED days, 0 h overtime
+    2026-09-14  paid  35.49 (inWin 28.77)  OT     0  plan  24.98  stamp  28.65  stops   76/  99  G/A/R 4/1/0  SUCCESSFUL - no RED days, 0 h overtime
+  Tavis Alexander
+    2026-08-17  paid  40.81  OT  0.82  plan  40.77  stamp  38.35  stops  124/ 136  G/A/R 2/3/0  SUCCESSFUL - no RED days, 0.82 h overtime
+    2026-08-24  paid  43.37  OT  3.37  plan  48.51  stamp  45.32  stops  142/ 149  G/A/R 2/1/2  UNSUCCESSFUL - 2 RED days (08-25 span, 08-28 overtime); 3.37 h overtime, i.e. the week passed 40 h
+    2026-08-31  paid  43.52  OT  3.52  plan  42.38  stamp  41.14  stops  123/ 137  G/A/R 1/2/2  UNSUCCESSFUL - 2 RED days (09-01 span, 09-04 overtime); 3.52 h overtime, i.e. the week passed 40 h
+    2026-09-07  paid   30.9  OT     0  plan  32.26  stamp  29.29  stops   95/ 103  G/A/R 4/0/0  SUCCESSFUL - no RED days, 0 h overtime
+    2026-09-14  paid  40.96 (inWin 33.08)  OT  0.97  plan  31.47  stamp  31.32  stops   97/ 117  G/A/R 4/1/0  SUCCESSFUL - no RED days, 0.97 h overtime
+
+PER-TECH DISTRIBUTIONS
+  Alias Franks      fieldDays 23  paid 230.69  OT 31.81  G/A/R 4/5/14  absent 0  cover 0
+      paid-minus-planned span h  med 1.7  p10 -0.2  p90 3.7  (n=23)
+      paid-minus-stamped span h  med 0.2  p10 0  p90 0.3
+      clockIn->firstStamp min    med 12  p10 6  p90 21
+      lastStamp->clockOut min    med 1  p10 -2.8  p90 2
+      CLEAN days (no evening stamping) n=17  clockIn->first med 11 (p90 20.4)  last->clockOut med 1 (p90 2.4)  paid-minus-stamped med 0.2
+      paid h med 10  stamped span h med 9.8  planned span h med 8.4  stops/paid h med 2.6
+  Cory Ventura      fieldDays 22  paid salaried  OT -  G/A/R 0/0/0  absent 0  cover 1
+      paid-minus-planned span h  med null  p10 null  p90 null  (n=0)
+      paid-minus-stamped span h  med null  p10 null  p90 null
+      clockIn->firstStamp min    med null  p10 null  p90 null
+      lastStamp->clockOut min    med null  p10 null  p90 null
+      CLEAN days (no evening stamping) n=0  clockIn->first med null (p90 null)  last->clockOut med null (p90 null)  paid-minus-stamped med null
+      paid h med null  stamped span h med 6.4  planned span h med 7.2  stops/paid h med null
+  Luke LaVergne     fieldDays 22  paid 186.99  OT 3.65  G/A/R 10/10/2  absent 1  cover 1
+      paid-minus-planned span h  med 0.2  p10 -1  p90 1.8  (n=22)
+      paid-minus-stamped span h  med 0.2  p10 -0.7  p90 0.6
+      clockIn->firstStamp min    med 10.5  p10 7.1  p90 23.7
+      lastStamp->clockOut min    med 1  p10 -1.8  p90 18
+      CLEAN days (no evening stamping) n=21  clockIn->first med 11 (p90 24)  last->clockOut med 1 (p90 18)  paid-minus-stamped med 0.2
+      paid h med 8.5  stamped span h med 8.6  planned span h med 8.3  stops/paid h med 2.4
+  Robert Norton     fieldDays 23  paid 185.64  OT 3.95  G/A/R 13/7/3  absent 0  cover 0
+      paid-minus-planned span h  med 0.3  p10 -1  p90 2  (n=23)
+      paid-minus-stamped span h  med 0.2  p10 0.1  p90 0.4
+      clockIn->firstStamp min    med 10  p10 6.2  p90 19.4
+      lastStamp->clockOut min    med 2  p10 0.2  p90 7.6
+      CLEAN days (no evening stamping) n=22  clockIn->first med 10.5 (p90 19.7)  last->clockOut med 2 (p90 7.8)  paid-minus-stamped med 0.2
+      paid h med 8.2  stamped span h med 8  planned span h med 7.5  stops/paid h med 3
+  Tavis Alexander   fieldDays 24  paid 191.68  OT 7.71  G/A/R 12/7/4  absent 0  cover 0
+      paid-minus-planned span h  med -0.4  p10 -1.5  p90 1.3  (n=23)
+      paid-minus-stamped span h  med 0.2  p10 0.1  p90 1.2
+      clockIn->firstStamp min    med 9  p10 5.2  p90 15.8
+      lastStamp->clockOut min    med 3  p10 -1.6  p90 64.2
+      CLEAN days (no evening stamping) n=22  clockIn->first med 8.5 (p90 15.9)  last->clockOut med 3 (p90 65.1)  paid-minus-stamped med 0.2
+      paid h med 8.3  stamped span h med 7.8  planned span h med 8.8  stops/paid h med 3.3
+
+RED DAYS: 25
+  2026-08-26 wed Alias Franks      paid 12.52 OT     0 span          planned  22 / 8.31 h   stamped  25 /12.35 h  7:16 AM-7:47 PM  note: Forgot to clock in - Alias Franks
+  2026-08-19 wed Alias Franks      paid 12.28 OT     0 span          planned  22 / 8.33 h   stamped  27 /12.32 h  7:20 AM-7:37 PM
+  2026-08-18 tue Alias Franks      paid 11.87 OT     0 span          planned  26 / 9.75 h   stamped  28 /11.66 h  7:20 AM-7:12 PM
+  2026-09-16 wed Alias Franks      paid 11.87 OT     0 span          planned  26 /10.21 h   stamped  27 /11.55 h  6:58 AM-6:50 PM  note: Forgot to clock out lol - Alias Franks
+  2026-08-28 fri Alias Franks      paid 11.38 OT 11.38 span+overtime planned  28 / 9.28 h   stamped  29 /11.01 h  7:41 AM-7:04 PM
+  2026-08-27 thu Alias Franks      paid 11.05 OT  2.82 span+overtime planned  24 / 8.41 h   stamped  25 /10.86 h  7:13 AM-6:16 PM
+  2026-09-10 thu Alias Franks      paid 10.77 OT     0 span          planned  23 / 8.79 h   stamped  23 /10.48 h  6:55 AM-5:41 PM
+  2026-09-18 fri Alias Franks      paid 10.77 OT 10.77 span+overtime planned   - /    - h   stamped   - /    - h  7:22 AM-6:08 PM  [outside plan window]
+  2026-09-15 tue Alias Franks      paid 10.68 OT     0 span          planned  26 /10.19 h   stamped  28 /10.33 h  7:32 AM-6:13 PM  note: Forgot to clock in - Alias Franks
+  2026-09-04 fri Robert Norton     paid 10.55 OT  1.98 span+overtime planned  25 /  8.4 h   stamped  27 /10.26 h  7:35 AM-6:08 PM  note: Did not clock in upon first stop arrival - Robert Norton
+  2026-09-10 thu Luke LaVergne     paid 10.45 OT     0 span          planned  18 / 8.15 h   stamped  19 /10.13 h  7:11 AM-5:38 PM
+  2026-08-25 tue Tavis Alexander   paid 10.33 OT     0 span          planned  28 / 10.9 h   stamped  33 /13.33 h  7:41 AM-6:01 PM
+  2026-09-02 wed Alias Franks      paid 10.28 OT     0 span          planned  21 / 8.62 h   stamped  22 /10.07 h  7:20 AM-5:37 PM  note: Forgot to clock in - Alias Franks
+  2026-08-27 thu Robert Norton     paid  10.2 OT     0 span          planned  23 / 8.21 h   stamped  25 / 9.92 h  7:16 AM-5:28 PM
+  2026-09-09 wed Alias Franks      paid  10.2 OT     0 span          planned  23 / 8.04 h   stamped  24 / 9.88 h  7:16 AM-5:28 PM  note: Forgot to clock in - Alias Franks
+  2026-09-01 tue Alias Franks      paid 10.08 OT     0 span          planned  28 /10.88 h   stamped  27 / 9.79 h  7:20 AM-5:25 PM  note: Forgot to clock in - Alias Franks
+  2026-09-01 tue Tavis Alexander   paid 10.05 OT     0 span          planned  30 /10.48 h   stamped  32 / 9.94 h  7:41 AM-5:44 PM
+  2026-08-21 fri Alias Franks      paid  9.35 OT  9.35 overtime      planned  27 / 9.12 h   stamped  26 / 9.16 h  7:15 AM-4:36 PM
+  2026-09-18 fri Luke LaVergne     paid  9.33 OT     2 overtime      planned   - /    - h   stamped   - /    - h  6:57 AM-4:17 PM  [outside plan window]
+  2026-08-28 fri Tavis Alexander   paid  8.97 OT  3.37 overtime      planned  29 /10.47 h   stamped  31 / 9.25 h  7:20 AM-4:18 PM  note: forgot to punch out - Tavis Alexander
+  2026-09-04 fri Tavis Alexander   paid  8.97 OT  3.52 overtime      planned  20 / 7.67 h   stamped  25 / 8.62 h  8:02 AM-5:00 PM
+  2026-08-20 thu Alias Franks      paid  8.83 OT  2.55 overtime      planned  23 / 8.39 h   stamped  23 / 8.72 h  7:15 AM-4:05 PM  note: Forgot to clock in - Alias Franks
+  2026-09-04 fri Alias Franks      paid  8.57 OT  5.38 overtime      planned  26 /  9.1 h   stamped  25 / 8.02 h  7:10 AM-3:44 PM
+  2026-09-04 fri Luke LaVergne     paid  8.28 OT  3.65 overtime      planned  22 /    8 h   stamped  23 / 7.77 h  7:04 AM-3:21 PM
+  2026-08-28 fri Robert Norton     paid  7.32 OT  1.97 overtime      planned  20 / 6.42 h   stamped  22 / 7.15 h  7:15 AM-2:45 PM  note: Forgot to clock in.  - Robert Norton
+
+ABSENT WEEKDAYS: 1
+  2026-08-28 fri Luke LaVergne  planned 20  stamped 0
+
+COVER DAYS: 2
+  2026-08-28 fri Cory Ventura  planned 0  stamped 21  in-from [{"tech":"Luke LaVergne","stops":20}]  paid salaried
+  2026-09-11 fri Luke LaVergne  planned 23  stamped 29  in-from [{"tech":"Robert Norton","stops":5}]  paid 9
+
+ALL-TECH (hourly only, n=95; clean n=86)
+  paid-minus-planned span h : {"n":91,"median":0.3,"p10":-1.1,"p90":2.3,"min":-2,"max":4.3}
+  paid-minus-stamped span h : {"n":91,"median":0.2,"p10":-0.2,"p90":0.6,"min":-6.3,"max":3}
+  clockIn->firstStamp min   : {"n":91,"median":11,"p10":6,"p90":21,"min":-38,"max":38}
+  lastStamp->clockOut min   : {"n":91,"median":1,"p10":-2,"p90":17,"min":-388,"max":172}
+  CLEAN paid-minus-stamped  : {"n":82,"median":0.2,"p10":0,"p90":0.6,"min":-0.9,"max":3}
+  CLEAN clockIn->firstStamp : {"n":82,"median":11,"p10":6,"p90":20,"min":-38,"max":38}
+  CLEAN lastStamp->clockOut : {"n":82,"median":2,"p10":0,"p90":17.9,"min":-32,"max":172}
+  days with evening stamping: 9
+
+done

@@ -1,0 +1,43 @@
+=== 2026-08-24
+ tech accuracy by owner basis:
+   neighbourVote  n=121  same tech 88.4%
+   dominant       n=415  same tech 87.2%
+ top proposed->actual tech mismatches: Alias Franks -> Tavis Alexander x18 | Luke LaVergne -> Cory Ventura x16 | Cory Ventura -> Tavis Alexander x13 | Cory Ventura -> Robert Norton x9 | Tavis Alexander -> Cory Ventura x7 | Robert Norton -> Cory Ventura x2
+ same-day by window tier:
+   active-assumed           n=233  same day 74.7%
+   no-anchor                n=121  same day 75.2%
+   active-series            n=109  same day 76.1%
+   active-measured          n=48  same day 62.5%
+   other-product            n=16  same day 75.0%
+   active-assumed+overdue   n=9  same day 0.0%
+ overflow keys: 16 8378-2289327632 8298-2275009701 5531-1805401520 8060-2231424547 5171-2283811117 7624-2295322744 6323-2010568147 6325-2010572719 8255-2295236441 8405-2294172698 8092-2295123987 7454-2295826393 8386-2295781986 8194-2295882795 8217-2295665641 8302-2275942854
+=== 2026-08-31
+ tech accuracy by owner basis:
+   dominant       n=481  same tech 89.8%
+   neighbourVote  n=47  same tech 83.0%
+ top proposed->actual tech mismatches: Cory Ventura -> Luke LaVergne x24 | Cory Ventura -> Robert Norton x11 | Tavis Alexander -> Cory Ventura x8 | Cory Ventura -> Tavis Alexander x6 | Tavis Alexander -> Alias Franks x2 | Alias Franks -> Tavis Alexander x2
+ same-day by window tier:
+   active-measured          n=223  same day 53.8%
+   active-series            n=115  same day 54.8%
+   active-assumed+overdue   n=69  same day 21.7%
+   active-assumed           n=49  same day 51.0%
+   no-anchor                n=47  same day 46.8%
+   active-measured+overdue  n=12  same day 0.0%
+   other-product            n=11  same day 54.5%
+   ambiguous-gap            n=1  same day 100.0%
+   active-series+overdue    n=1  same day 0.0%
+ overflow keys: 4 7624-2016838571 6325-2010572722 8405-2294172702 8092-2237678669
+=== 2026-08-24
+  Alias Franks       book 134 wallCapacity 118 placed 118 overflow 16 | cycleHours/wk 46.6 | slack -16
+  Cory Ventura       book 114 wallCapacity 185 placed 114 overflow 0 | cycleHours/wk 28.1 | slack 71
+  Luke LaVergne      book  85 wallCapacity 121 placed  85 overflow 0 | cycleHours/wk 33.0 | slack 36
+  Robert Norton      book 107 wallCapacity 136 placed 107 overflow 0 | cycleHours/wk 37.1 | slack 29
+  Tavis Alexander    book 112 wallCapacity 161 placed 112 overflow 0 | cycleHours/wk 32.5 | slack 49
+  harness hours p/a: Alias 44.4/43.2  Cory 35.6/36.2  Luke 39.1/33.2  Robert 36.4/39.7  Tavis 37.2/49.4
+=== 2026-08-31
+  Alias Franks       book 114 wallCapacity 110 placed 110 overflow 4 | cycleHours/wk 46.3 | slack -4
+  Cory Ventura       book 123 wallCapacity 186 placed 123 overflow 0 | cycleHours/wk 30.7 | slack 63
+  Luke LaVergne      book  70 wallCapacity 116 placed  70 overflow 0 | cycleHours/wk 29.5 | slack 46
+  Robert Norton      book 100 wallCapacity 127 placed 100 overflow 0 | cycleHours/wk 36.8 | slack 27
+  Tavis Alexander    book 125 wallCapacity 157 placed 125 overflow 0 | cycleHours/wk 36.9 | slack 32
+  harness hours p/a: Alias 42.1/43.4  Cory 41/27  Luke 36.5/41.9  Robert 35.5/39.6  Tavis 45.1/45.1

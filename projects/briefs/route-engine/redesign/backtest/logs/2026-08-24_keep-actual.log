@@ -1,0 +1,8 @@
+
+=== 2026-08-24 · keep-actual ===
+due 552  late 55  placed 552  dropped 0  invented 0  weekend 0
+same tech 100%  same day 100%  both 100%  (n=552)
+hours within +-10%: 21/24 (median ratio 0.96)  |  board only: 24/24 (median 1)
+sequence drive ratio median 0.87 over 24 route-days  (ours 3430.2 min vs OR 4088.4 min)
+gates: PASS same tech >= 95% | PASS same day >= 95% | FAIL route-day hours within +-10% | PASS route-day hours within +-10% (board only, same sequencer) | PASS no dropped visits | PASS no invented visits | PASS no weekend placements
+-> C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\backtest\2026-08-24\keep-actual  (1977 ms)

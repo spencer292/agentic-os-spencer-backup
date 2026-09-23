@@ -1,0 +1,4146 @@
+{
+ "generatedAt": "2026-09-19T18:22:40.006Z",
+ "asOf": "2026-09-18",
+ "calibration": [
+  {
+   "policy": "P0",
+   "visitsPerWeek": 688.7,
+   "observedStopsPerWeek": 615,
+   "deltaVisitsPct": 12,
+   "hoursPerWeek": 229.8,
+   "observedHoursPerWeek": 207.6,
+   "deltaHoursPct": 10.7
+  },
+  {
+   "policy": "P1",
+   "visitsPerWeek": 411.8,
+   "observedStopsPerWeek": 615,
+   "deltaVisitsPct": -33,
+   "hoursPerWeek": 136.9,
+   "observedHoursPerWeek": 207.6,
+   "deltaHoursPct": -34.1
+  },
+  {
+   "policy": "P2",
+   "visitsPerWeek": 589.6,
+   "observedStopsPerWeek": 615,
+   "deltaVisitsPct": -4.1,
+   "hoursPerWeek": 195.3,
+   "observedHoursPerWeek": 207.6,
+   "deltaHoursPct": -5.9
+  },
+  {
+   "policy": "P3",
+   "visitsPerWeek": 776.2,
+   "observedStopsPerWeek": 615,
+   "deltaVisitsPct": 26.2,
+   "hoursPerWeek": 258.4,
+   "observedHoursPerWeek": 207.6,
+   "deltaHoursPct": 24.5
+  }
+ ],
+ "calibrationNote": "The observed baseline is what the five techs actually delivered. A policy whose visits/week sits far above it is describing a service level the company has never run, not a forecast of the same work.",
+ "basis": {
+  "activeJobs": 881,
+  "routeDayAssignment": "master-asbuilt.json where present, else dominant tech/weekday from this job visits",
+  "masterAsbuiltPresent": true,
+  "masterRowsParsed": 1063,
+  "assignmentSources": {
+   "master-asbuilt.json": 881
+  },
+  "nearestNeighborUsed": 0,
+  "unassignable": 0,
+  "cycleTimeSource": "GPS measured, median of per-route-day (first-to-last / visits) [gps-ground-truth.json]",
+  "cycleTime": "lib/cycle-time.mjs, the one estimator: the MEDIAN over that tech x weekday route-days of (first-stop-to-last-stop minutes / stops that day). Stops are Jobber completed visits, spans are vehicle GPS, because the model counts visits and one GPS stop can serve several jobs at one address. Fallback: that tech median across their days, then the global median.",
+  "cycleTimeEstimator": "median of per-route-day ratios",
+  "cycleTimeFile": "gps-ground-truth.json",
+  "cycleTimeRouteDaysUsed": 113,
+  "cycleTimeDegraded": null,
+  "globalCycleMinPerStop": 19.5,
+  "quickFixNote": "Headline policies hold Quick Fix at 7 days because the product IS a weekly 5-week series; policiesPure applies each policy to Quick Fix too, for comparison.",
+  "capacityReference": "25 route-days x 8h = 200h per week."
+ },
+ "caveats": [
+  "Demand is a steady-state rate: each job contributes 7/interval visits per week. It does not model the Quick Fix series ending, new sales arriving, or churn.",
+  "Cycle time is a route-day median measured over 3-5 weeks at the stop counts actually run. Pushing a route-day well past its observed stop count will not scale linearly - drive per stop falls as density rises, so hours at much higher volume are over-estimated, and at much lower volume under-estimated.",
+  "P0 uses each job own measured gap, which is itself the product of a schedule the office has been manually patching. It reproduces current behavior, including its defects.",
+  "Trigger state is job-level and describes only the last completed visit, so P1/P2/P3 classify each job by one observation, not by a steady-state probability of catching.",
+  "Cycle time is measured per tech, and techs differ by up to about 2x (Cory 12.8-16.0 min/stop, Luke 20.0-32.1). Hours per route-day are therefore not comparable between techs as a measure of workload difficulty."
+ ],
+ "observedBaseline": {
+  "rows": [
+   {
+    "tech": "Alias Franks",
+    "dow": "mon",
+    "medianStops": 27.5,
+    "medianSpanH": 8,
+    "cycleMinPerStop": 17.45,
+    "weeksObserved": 4,
+    "hoursOver8": 0,
+    "hoursOver9": -1
+   },
+   {
+    "tech": "Alias Franks",
+    "dow": "tue",
+    "medianStops": 27,
+    "medianSpanH": 10.15,
+    "cycleMinPerStop": 22.56,
+    "weeksObserved": 5,
+    "hoursOver8": 2.15,
+    "hoursOver9": 1.15
+   },
+   {
+    "tech": "Alias Franks",
+    "dow": "wed",
+    "medianStops": 25,
+    "medianSpanH": 11.84,
+    "cycleMinPerStop": 28.42,
+    "weeksObserved": 5,
+    "hoursOver8": 3.84,
+    "hoursOver9": 2.84
+   },
+   {
+    "tech": "Alias Franks",
+    "dow": "thu",
+    "medianStops": 23,
+    "medianSpanH": 9.61,
+    "cycleMinPerStop": 25.07,
+    "weeksObserved": 5,
+    "hoursOver8": 1.61,
+    "hoursOver9": 0.61
+   },
+   {
+    "tech": "Alias Franks",
+    "dow": "fri",
+    "medianStops": 25.5,
+    "medianSpanH": 9.6,
+    "cycleMinPerStop": 22.59,
+    "weeksObserved": 4,
+    "hoursOver8": 1.6,
+    "hoursOver9": 0.6
+   },
+   {
+    "tech": "Cory Ventura",
+    "dow": "mon",
+    "medianStops": 31,
+    "medianSpanH": 6.74,
+    "cycleMinPerStop": 13.05,
+    "weeksObserved": 4,
+    "hoursOver8": -1.26,
+    "hoursOver9": -2.26
+   },
+   {
+    "tech": "Cory Ventura",
+    "dow": "tue",
+    "medianStops": 23,
+    "medianSpanH": 6.93,
+    "cycleMinPerStop": 18.08,
+    "weeksObserved": 5,
+    "hoursOver8": -1.07,
+    "hoursOver9": -2.07
+   },
+   {
+    "tech": "Cory Ventura",
+    "dow": "wed",
+    "medianStops": 28,
+    "medianSpanH": 6.92,
+    "cycleMinPerStop": 14.83,
+    "weeksObserved": 5,
+    "hoursOver8": -1.08,
+    "hoursOver9": -2.08
+   },
+   {
+    "tech": "Cory Ventura",
+    "dow": "thu",
+    "medianStops": 24,
+    "medianSpanH": 6.38,
+    "cycleMinPerStop": 15.95,
+    "weeksObserved": 5,
+    "hoursOver8": -1.62,
+    "hoursOver9": -2.62
+   },
+   {
+    "tech": "Cory Ventura",
+    "dow": "fri",
+    "medianStops": 24,
+    "medianSpanH": 6.22,
+    "cycleMinPerStop": 15.55,
+    "weeksObserved": 3,
+    "hoursOver8": -1.78,
+    "hoursOver9": -2.78
+   },
+   {
+    "tech": "Luke LaVergne",
+    "dow": "mon",
+    "medianStops": 22,
+    "medianSpanH": 8.19,
+    "cycleMinPerStop": 22.34,
+    "weeksObserved": 4,
+    "hoursOver8": 0.19,
+    "hoursOver9": -0.81
+   },
+   {
+    "tech": "Luke LaVergne",
+    "dow": "tue",
+    "medianStops": 17,
+    "medianSpanH": 8.96,
+    "cycleMinPerStop": 31.62,
+    "weeksObserved": 5,
+    "hoursOver8": 0.96,
+    "hoursOver9": -0.04
+   },
+   {
+    "tech": "Luke LaVergne",
+    "dow": "wed",
+    "medianStops": 17,
+    "medianSpanH": 8.98,
+    "cycleMinPerStop": 31.69,
+    "weeksObserved": 5,
+    "hoursOver8": 0.98,
+    "hoursOver9": -0.02
+   },
+   {
+    "tech": "Luke LaVergne",
+    "dow": "thu",
+    "medianStops": 21,
+    "medianSpanH": 9.49,
+    "cycleMinPerStop": 27.11,
+    "weeksObserved": 5,
+    "hoursOver8": 1.49,
+    "hoursOver9": 0.49
+   },
+   {
+    "tech": "Luke LaVergne",
+    "dow": "fri",
+    "medianStops": 24,
+    "medianSpanH": 8.36,
+    "cycleMinPerStop": 20.9,
+    "weeksObserved": 3,
+    "hoursOver8": 0.36,
+    "hoursOver9": -0.64
+   },
+   {
+    "tech": "Robert Norton",
+    "dow": "mon",
+    "medianStops": 21.5,
+    "medianSpanH": 7.5,
+    "cycleMinPerStop": 20.93,
+    "weeksObserved": 4,
+    "hoursOver8": -0.5,
+    "hoursOver9": -1.5
+   },
+   {
+    "tech": "Robert Norton",
+    "dow": "tue",
+    "medianStops": 25,
+    "medianSpanH": 7.99,
+    "cycleMinPerStop": 19.18,
+    "weeksObserved": 5,
+    "hoursOver8": -0.01,
+    "hoursOver9": -1.01
+   },
+   {
+    "tech": "Robert Norton",
+    "dow": "wed",
+    "medianStops": 23,
+    "medianSpanH": 7.62,
+    "cycleMinPerStop": 19.88,
+    "weeksObserved": 5,
+    "hoursOver8": -0.38,
+    "hoursOver9": -1.38
+   },
+   {
+    "tech": "Robert Norton",
+    "dow": "thu",
+    "medianStops": 25,
+    "medianSpanH": 8.81,
+    "cycleMinPerStop": 21.14,
+    "weeksObserved": 5,
+    "hoursOver8": 0.81,
+    "hoursOver9": -0.19
+   },
+   {
+    "tech": "Robert Norton",
+    "dow": "fri",
+    "medianStops": 22,
+    "medianSpanH": 8.83,
+    "cycleMinPerStop": 24.08,
+    "weeksObserved": 4,
+    "hoursOver8": 0.83,
+    "hoursOver9": -0.17
+   },
+   {
+    "tech": "Tavis Alexander",
+    "dow": "mon",
+    "medianStops": 27.5,
+    "medianSpanH": 7.32,
+    "cycleMinPerStop": 15.97,
+    "weeksObserved": 4,
+    "hoursOver8": -0.68,
+    "hoursOver9": -1.68
+   },
+   {
+    "tech": "Tavis Alexander",
+    "dow": "tue",
+    "medianStops": 29,
+    "medianSpanH": 8.53,
+    "cycleMinPerStop": 17.65,
+    "weeksObserved": 5,
+    "hoursOver8": 0.53,
+    "hoursOver9": -0.47
+   },
+   {
+    "tech": "Tavis Alexander",
+    "dow": "wed",
+    "medianStops": 32,
+    "medianSpanH": 7.98,
+    "cycleMinPerStop": 14.96,
+    "weeksObserved": 5,
+    "hoursOver8": -0.02,
+    "hoursOver9": -1.02
+   },
+   {
+    "tech": "Tavis Alexander",
+    "dow": "thu",
+    "medianStops": 26,
+    "medianSpanH": 8.05,
+    "cycleMinPerStop": 18.58,
+    "weeksObserved": 5,
+    "hoursOver8": 0.05,
+    "hoursOver9": -0.95
+   },
+   {
+    "tech": "Tavis Alexander",
+    "dow": "fri",
+    "medianStops": 25,
+    "medianSpanH": 8.55,
+    "cycleMinPerStop": 20.52,
+    "weeksObserved": 4,
+    "hoursOver8": 0.55,
+    "hoursOver9": -0.45
+   }
+  ],
+  "totals": {
+   "stopsPerWeek": 615,
+   "hoursPerWeek": 207.6,
+   "routeDaysOver8": 14,
+   "routeDaysOver9": 5
+  },
+  "source": "GPS (cycle-times-gps.json observedBaseline)",
+  "note": "What the five techs actually delivered over 08-17..09-17. The right sanity check for any policy total."
+ },
+ "policies": {
+  "P0": {
+   "policy": "P0",
+   "label": "as the office actually runs it (measured intervals)",
+   "quickFixHeldWeekly": true,
+   "rows": [
+    {
+     "tech": "Alias Franks",
+     "dow": "mon",
+     "jobs": 38,
+     "visitsPerWeek": 31.71,
+     "cycleMinPerStop": 17.45,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 9.22,
+     "hoursOver8": 1.22,
+     "hoursOver9": 0.22,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 24.71,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "tue",
+     "jobs": 38,
+     "visitsPerWeek": 32.5,
+     "cycleMinPerStop": 22.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 12.4,
+     "hoursOver8": 4.4,
+     "hoursOver9": 3.4,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 19.496,
+      "Quick Fix": 13
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "wed",
+     "jobs": 34,
+     "visitsPerWeek": 26.35,
+     "cycleMinPerStop": 27.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 12.16,
+     "hoursOver8": 4.16,
+     "hoursOver9": 3.16,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 18.349,
+      "Quick Fix": 8
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 26.68,
+     "cycleMinPerStop": 26.2,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 11.65,
+     "hoursOver8": 3.65,
+     "hoursOver9": 2.65,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 23.676,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "fri",
+     "jobs": 35,
+     "visitsPerWeek": 29.94,
+     "cycleMinPerStop": 23.05,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 11.5,
+     "hoursOver8": 3.5,
+     "hoursOver9": 2.5,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 23.935,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "mon",
+     "jobs": 54,
+     "visitsPerWeek": 44.03,
+     "cycleMinPerStop": 13.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 9.61,
+     "hoursOver8": 1.61,
+     "hoursOver9": 0.61,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 38.031,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 22.07,
+     "cycleMinPerStop": 15.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.85,
+     "hoursOver8": -2.15,
+     "hoursOver9": -3.15,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 18.908,
+      "Quick Fix": 2,
+      "other": 1.167
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 27.57,
+     "cycleMinPerStop": 14.4,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 6.62,
+     "hoursOver8": -1.38,
+     "hoursOver9": -2.38,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 22.38,
+      "Barter": 0.189,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "thu",
+     "jobs": 32,
+     "visitsPerWeek": 25.52,
+     "cycleMinPerStop": 15.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 6.76,
+     "hoursOver8": -1.24,
+     "hoursOver9": -2.24,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 22.518,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "fri",
+     "jobs": 45,
+     "visitsPerWeek": 35.64,
+     "cycleMinPerStop": 15.5,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 9.21,
+     "hoursOver8": 1.21,
+     "hoursOver9": 0.21,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 31.646,
+      "Quick Fix": 4
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 28.65,
+     "cycleMinPerStop": 23.35,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 11.15,
+     "hoursOver8": 3.15,
+     "hoursOver9": 2.15,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 20.157,
+      "Barter": 0.5,
+      "Quick Fix": 8
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "tue",
+     "jobs": 27,
+     "visitsPerWeek": 23.51,
+     "cycleMinPerStop": 25.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 10.07,
+     "hoursOver8": 2.07,
+     "hoursOver9": 1.07,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 21.505,
+      "none (bid)": 1,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "wed",
+     "jobs": 25,
+     "visitsPerWeek": 22.17,
+     "cycleMinPerStop": 31.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 11.71,
+     "hoursOver8": 3.71,
+     "hoursOver9": 2.71,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 17.166,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 27.48,
+     "cycleMinPerStop": 27.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 12.41,
+     "hoursOver8": 4.41,
+     "hoursOver9": 3.41,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 22.483,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "fri",
+     "jobs": 27,
+     "visitsPerWeek": 20.7,
+     "cycleMinPerStop": 18.6,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 6.42,
+     "hoursOver8": -1.58,
+     "hoursOver9": -2.58,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.7,
+      "other": 1,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "mon",
+     "jobs": 18,
+     "visitsPerWeek": 14.79,
+     "cycleMinPerStop": 20.95,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.16,
+     "hoursOver8": -2.84,
+     "hoursOver9": -3.84,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 14.089,
+      "other": 0.7
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 24.43,
+     "cycleMinPerStop": 17.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.21,
+     "hoursOver8": -0.79,
+     "hoursOver9": -1.79,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 20.176,
+      "Barter": 2.25,
+      "Quick Fix": 2
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 24.43,
+     "cycleMinPerStop": 18.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.37,
+     "hoursOver8": -0.63,
+     "hoursOver9": -1.63,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 23.435,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 26.6,
+     "cycleMinPerStop": 20.3,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 9,
+     "hoursOver8": 1,
+     "hoursOver9": 0,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 20.602,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "fri",
+     "jobs": 40,
+     "visitsPerWeek": 30.97,
+     "cycleMinPerStop": 24.55,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 12.67,
+     "hoursOver8": 4.67,
+     "hoursOver9": 3.67,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 20.065,
+      "Barter": 2.4,
+      "Friends and family": 0.5,
+      "none (bid)": 1,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 29.93,
+     "cycleMinPerStop": 15.6,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.78,
+     "hoursOver8": -0.22,
+     "hoursOver9": -1.22,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 23.931,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "tue",
+     "jobs": 37,
+     "visitsPerWeek": 28.24,
+     "cycleMinPerStop": 17.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 8.33,
+     "hoursOver8": 0.33,
+     "hoursOver9": -0.67,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 18.246,
+      "Quick Fix": 9,
+      "other": 1
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "wed",
+     "jobs": 29,
+     "visitsPerWeek": 23.3,
+     "cycleMinPerStop": 15.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.86,
+     "hoursOver8": -2.14,
+     "hoursOver9": -3.14,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 19.298,
+      "Quick Fix": 4
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "thu",
+     "jobs": 37,
+     "visitsPerWeek": 25.13,
+     "cycleMinPerStop": 19.3,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 8.08,
+     "hoursOver8": 0.08,
+     "hoursOver9": -0.92,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 18.13,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "fri",
+     "jobs": 41,
+     "visitsPerWeek": 36.33,
+     "cycleMinPerStop": 19.15,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 11.6,
+     "hoursOver8": 3.6,
+     "hoursOver9": 2.6,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 33.329,
+      "Quick Fix": 3
+     }
+    }
+   ],
+   "totals": {
+    "visitsPerWeek": 688.7,
+    "hoursPerWeek": 229.8,
+    "routeDays": 25,
+    "capacityHoursAt8": 200,
+    "capacityHoursAt9": 225,
+    "hoursOverCapacityAt8": 29.8,
+    "hoursOverCapacityAt9": 4.8,
+    "routeDaysOver8": 16,
+    "routeDaysOver9": 13,
+    "utilizationAt8Pct": 114.9,
+    "techDaysNeededAt8": 28.7
+   },
+   "intervalBasisCounts": {
+    "own measured gap median": 574,
+    "own next booked gap (only one completed visit)": 158,
+    "product delivered median (no gap evidence)": 25,
+    "Quick Fix product cadence (weekly series)": 124
+   },
+   "jobsUnplaced": 0
+  },
+  "P1": {
+   "policy": "P1",
+   "label": "weekly after a catch, monthly otherwise",
+   "quickFixHeldWeekly": true,
+   "rows": [
+    {
+     "tech": "Alias Franks",
+     "dow": "mon",
+     "jobs": 38,
+     "visitsPerWeek": 20.37,
+     "cycleMinPerStop": 17.45,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.92,
+     "hoursOver8": -2.08,
+     "hoursOver9": -3.08,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 13.359,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "tue",
+     "jobs": 38,
+     "visitsPerWeek": 18.83,
+     "cycleMinPerStop": 22.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.19,
+     "hoursOver8": -0.81,
+     "hoursOver9": -1.81,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 5.825,
+      "Quick Fix": 13
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "wed",
+     "jobs": 34,
+     "visitsPerWeek": 18.67,
+     "cycleMinPerStop": 27.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 8.62,
+     "hoursOver8": 0.62,
+     "hoursOver9": -0.38,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 10.66,
+      "Quick Fix": 8
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 12.53,
+     "cycleMinPerStop": 26.2,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.47,
+     "hoursOver8": -2.53,
+     "hoursOver9": -3.53,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 9.524,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "fri",
+     "jobs": 35,
+     "visitsPerWeek": 16.6,
+     "cycleMinPerStop": 23.05,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 6.38,
+     "hoursOver8": -1.62,
+     "hoursOver9": -2.62,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 10.592,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "mon",
+     "jobs": 54,
+     "visitsPerWeek": 26.4,
+     "cycleMinPerStop": 13.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.76,
+     "hoursOver8": -2.24,
+     "hoursOver9": -3.24,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 20.388,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 14.6,
+     "cycleMinPerStop": 15.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 3.87,
+     "hoursOver8": -4.13,
+     "hoursOver9": -5.13,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 12.359,
+      "Quick Fix": 2,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 15.3,
+     "cycleMinPerStop": 14.4,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 3.67,
+     "hoursOver8": -4.33,
+     "hoursOver9": -5.33,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 10.058,
+      "Barter": 0.233,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "thu",
+     "jobs": 32,
+     "visitsPerWeek": 12.83,
+     "cycleMinPerStop": 15.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 3.4,
+     "hoursOver8": -4.6,
+     "hoursOver9": -5.6,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 9.825,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "fri",
+     "jobs": 45,
+     "visitsPerWeek": 19.7,
+     "cycleMinPerStop": 15.5,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.09,
+     "hoursOver8": -2.91,
+     "hoursOver9": -3.91,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 15.689,
+      "Quick Fix": 4
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 23.6,
+     "cycleMinPerStop": 23.35,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 9.18,
+     "hoursOver8": 1.18,
+     "hoursOver9": 0.18,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 15.359,
+      "Barter": 0.233,
+      "Quick Fix": 8
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "tue",
+     "jobs": 27,
+     "visitsPerWeek": 9.37,
+     "cycleMinPerStop": 25.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 4.01,
+     "hoursOver8": -3.99,
+     "hoursOver9": -4.99,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 8.126,
+      "none (bid)": 0.233,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "wed",
+     "jobs": 25,
+     "visitsPerWeek": 11.2,
+     "cycleMinPerStop": 31.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.92,
+     "hoursOver8": -2.08,
+     "hoursOver9": -3.08,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 6.194,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 15.6,
+     "cycleMinPerStop": 27.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.05,
+     "hoursOver8": -0.95,
+     "hoursOver9": -1.95,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 10.592,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "fri",
+     "jobs": 27,
+     "visitsPerWeek": 11.67,
+     "cycleMinPerStop": 18.6,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 3.62,
+     "hoursOver8": -4.38,
+     "hoursOver9": -5.38,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 8.427,
+      "other": 0.233,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "mon",
+     "jobs": 18,
+     "visitsPerWeek": 6.5,
+     "cycleMinPerStop": 20.95,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 2.27,
+     "hoursOver8": -5.73,
+     "hoursOver9": -6.73,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 6.262,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 15.37,
+     "cycleMinPerStop": 17.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 4.53,
+     "hoursOver8": -3.47,
+     "hoursOver9": -4.47,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 11.893,
+      "Barter": 1.466,
+      "Quick Fix": 2
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 15.3,
+     "cycleMinPerStop": 18.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 4.62,
+     "hoursOver8": -3.38,
+     "hoursOver9": -4.38,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 14.291,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 14.83,
+     "cycleMinPerStop": 20.3,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.02,
+     "hoursOver8": -2.98,
+     "hoursOver9": -3.98,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 8.825,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "fri",
+     "jobs": 40,
+     "visitsPerWeek": 21.6,
+     "cycleMinPerStop": 24.55,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 8.84,
+     "hoursOver8": 0.84,
+     "hoursOver9": -0.16,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 12.893,
+      "Barter": 0.466,
+      "Friends and family": 1,
+      "none (bid)": 0.233,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 21.3,
+     "cycleMinPerStop": 15.6,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.54,
+     "hoursOver8": -2.46,
+     "hoursOver9": -3.46,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 15.291,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "tue",
+     "jobs": 37,
+     "visitsPerWeek": 20.9,
+     "cycleMinPerStop": 17.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 6.17,
+     "hoursOver8": -1.83,
+     "hoursOver9": -2.83,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 11.66,
+      "Quick Fix": 9,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "wed",
+     "jobs": 29,
+     "visitsPerWeek": 12.13,
+     "cycleMinPerStop": 15.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 3.05,
+     "hoursOver8": -4.95,
+     "hoursOver9": -5.95,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 8.126,
+      "Quick Fix": 4
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "thu",
+     "jobs": 37,
+     "visitsPerWeek": 18.6,
+     "cycleMinPerStop": 19.3,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.98,
+     "hoursOver8": -2.02,
+     "hoursOver9": -3.02,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 11.592,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "fri",
+     "jobs": 41,
+     "visitsPerWeek": 18,
+     "cycleMinPerStop": 19.15,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.75,
+     "hoursOver8": -2.25,
+     "hoursOver9": -3.25,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 14.99,
+      "Quick Fix": 3
+     }
+    }
+   ],
+   "totals": {
+    "visitsPerWeek": 411.8,
+    "hoursPerWeek": 136.9,
+    "routeDays": 25,
+    "capacityHoursAt8": 200,
+    "capacityHoursAt9": 225,
+    "hoursOverCapacityAt8": -63.1,
+    "hoursOverCapacityAt9": -88.1,
+    "routeDaysOver8": 3,
+    "routeDaysOver9": 1,
+    "utilizationAt8Pct": 68.5,
+    "techDaysNeededAt8": 17.1
+   },
+   "intervalBasisCounts": {
+    "no catch": 612,
+    "catch": 145,
+    "Quick Fix product cadence (weekly series)": 124
+   },
+   "jobsUnplaced": 0
+  },
+  "P2": {
+   "policy": "P2",
+   "label": "weekly after catch OR miss OR any activity, monthly otherwise",
+   "quickFixHeldWeekly": true,
+   "rows": [
+    {
+     "tech": "Alias Franks",
+     "dow": "mon",
+     "jobs": 38,
+     "visitsPerWeek": 29.57,
+     "cycleMinPerStop": 17.45,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 8.6,
+     "hoursOver8": 0.6,
+     "hoursOver9": -0.4,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 22.563,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "tue",
+     "jobs": 38,
+     "visitsPerWeek": 23.43,
+     "cycleMinPerStop": 22.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 8.94,
+     "hoursOver8": 0.94,
+     "hoursOver9": -0.06,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 10.427,
+      "Quick Fix": 13
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "wed",
+     "jobs": 34,
+     "visitsPerWeek": 26.33,
+     "cycleMinPerStop": 27.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 12.16,
+     "hoursOver8": 4.16,
+     "hoursOver9": 3.16,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 18.33,
+      "Quick Fix": 8
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 24.03,
+     "cycleMinPerStop": 26.2,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 10.49,
+     "hoursOver8": 2.49,
+     "hoursOver9": 1.49,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 21.029,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "fri",
+     "jobs": 35,
+     "visitsPerWeek": 25.03,
+     "cycleMinPerStop": 23.05,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 9.62,
+     "hoursOver8": 1.62,
+     "hoursOver9": 0.62,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 19.029,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "mon",
+     "jobs": 54,
+     "visitsPerWeek": 40.97,
+     "cycleMinPerStop": 13.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 8.95,
+     "hoursOver8": 0.95,
+     "hoursOver9": -0.05,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 34.961,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 18.43,
+     "cycleMinPerStop": 15.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 4.88,
+     "hoursOver8": -3.12,
+     "hoursOver9": -4.12,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.194,
+      "Quick Fix": 2,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 22.2,
+     "cycleMinPerStop": 14.4,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.33,
+     "hoursOver8": -2.67,
+     "hoursOver9": -3.67,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.961,
+      "Barter": 0.233,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "thu",
+     "jobs": 32,
+     "visitsPerWeek": 22.03,
+     "cycleMinPerStop": 15.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.84,
+     "hoursOver8": -2.16,
+     "hoursOver9": -3.16,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 19.029,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "fri",
+     "jobs": 45,
+     "visitsPerWeek": 30.43,
+     "cycleMinPerStop": 15.5,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.86,
+     "hoursOver8": -0.14,
+     "hoursOver9": -1.14,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 26.427,
+      "Quick Fix": 4
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 27.43,
+     "cycleMinPerStop": 23.35,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 10.67,
+     "hoursOver8": 2.67,
+     "hoursOver9": 1.67,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 19.194,
+      "Barter": 0.233,
+      "Quick Fix": 8
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "tue",
+     "jobs": 27,
+     "visitsPerWeek": 13.97,
+     "cycleMinPerStop": 25.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.98,
+     "hoursOver8": -2.02,
+     "hoursOver9": -3.02,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 11.961,
+      "none (bid)": 1,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "wed",
+     "jobs": 25,
+     "visitsPerWeek": 14.27,
+     "cycleMinPerStop": 31.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.54,
+     "hoursOver8": -0.46,
+     "hoursOver9": -1.46,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 9.262,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 21.73,
+     "cycleMinPerStop": 27.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 9.81,
+     "hoursOver8": 1.81,
+     "hoursOver9": 0.81,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 16.728,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "fri",
+     "jobs": 27,
+     "visitsPerWeek": 17.03,
+     "cycleMinPerStop": 18.6,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.28,
+     "hoursOver8": -2.72,
+     "hoursOver9": -3.72,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 13.796,
+      "other": 0.233,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "mon",
+     "jobs": 18,
+     "visitsPerWeek": 13.4,
+     "cycleMinPerStop": 20.95,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 4.68,
+     "hoursOver8": -3.32,
+     "hoursOver9": -4.32,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 13.165,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 21.5,
+     "cycleMinPerStop": 17.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 6.34,
+     "hoursOver8": -1.66,
+     "hoursOver9": -2.66,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 18.029,
+      "Barter": 1.466,
+      "Quick Fix": 2
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 20.67,
+     "cycleMinPerStop": 18.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 6.24,
+     "hoursOver8": -1.76,
+     "hoursOver9": -2.76,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 19.66,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 20.97,
+     "cycleMinPerStop": 20.3,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.09,
+     "hoursOver8": -0.91,
+     "hoursOver9": -1.91,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 14.961,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "fri",
+     "jobs": 40,
+     "visitsPerWeek": 30.03,
+     "cycleMinPerStop": 24.55,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 12.29,
+     "hoursOver8": 4.29,
+     "hoursOver9": 3.29,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 20.563,
+      "Barter": 1.233,
+      "Friends and family": 1,
+      "none (bid)": 0.233,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 30.5,
+     "cycleMinPerStop": 15.6,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.93,
+     "hoursOver8": -0.07,
+     "hoursOver9": -1.07,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 24.495,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "tue",
+     "jobs": 37,
+     "visitsPerWeek": 23.97,
+     "cycleMinPerStop": 17.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.07,
+     "hoursOver8": -0.93,
+     "hoursOver9": -1.93,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 14.728,
+      "Quick Fix": 9,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "wed",
+     "jobs": 29,
+     "visitsPerWeek": 19.03,
+     "cycleMinPerStop": 15.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 4.79,
+     "hoursOver8": -3.21,
+     "hoursOver9": -4.21,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 15.029,
+      "Quick Fix": 4
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "thu",
+     "jobs": 37,
+     "visitsPerWeek": 23.97,
+     "cycleMinPerStop": 19.3,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.71,
+     "hoursOver8": -0.29,
+     "hoursOver9": -1.29,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.961,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "fri",
+     "jobs": 41,
+     "visitsPerWeek": 28.73,
+     "cycleMinPerStop": 19.15,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 9.17,
+     "hoursOver8": 1.17,
+     "hoursOver9": 0.17,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 25.728,
+      "Quick Fix": 3
+     }
+    }
+   ],
+   "totals": {
+    "visitsPerWeek": 589.6,
+    "hoursPerWeek": 195.3,
+    "routeDays": 25,
+    "capacityHoursAt8": 200,
+    "capacityHoursAt9": 225,
+    "hoursOverCapacityAt8": -4.7,
+    "hoursOverCapacityAt9": -29.7,
+    "routeDaysOver8": 10,
+    "routeDaysOver9": 7,
+    "utilizationAt8Pct": 97.7,
+    "techDaysNeededAt8": 24.4
+   },
+   "intervalBasisCounts": {
+    "quiet": 380,
+    "catch/miss/activity": 377,
+    "Quick Fix product cadence (weekly series)": 124
+   },
+   "jobsUnplaced": 0
+  },
+  "P3": {
+   "policy": "P3",
+   "label": "the office's own Next Action field taken literally",
+   "quickFixHeldWeekly": true,
+   "rows": [
+    {
+     "tech": "Alias Franks",
+     "dow": "mon",
+     "jobs": 38,
+     "visitsPerWeek": 33.2,
+     "cycleMinPerStop": 17.45,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 9.66,
+     "hoursOver8": 1.66,
+     "hoursOver9": 0.66,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 26.199,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "tue",
+     "jobs": 38,
+     "visitsPerWeek": 32.17,
+     "cycleMinPerStop": 22.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 12.28,
+     "hoursOver8": 4.28,
+     "hoursOver9": 3.28,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 19.165,
+      "Quick Fix": 13
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "wed",
+     "jobs": 34,
+     "visitsPerWeek": 31.23,
+     "cycleMinPerStop": 27.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 14.42,
+     "hoursOver8": 6.42,
+     "hoursOver9": 5.42,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 23.233,
+      "Quick Fix": 8
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 31.23,
+     "cycleMinPerStop": 26.2,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 13.64,
+     "hoursOver8": 5.64,
+     "hoursOver9": 4.64,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 28.233,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "fri",
+     "jobs": 35,
+     "visitsPerWeek": 31.7,
+     "cycleMinPerStop": 23.05,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 12.18,
+     "hoursOver8": 4.18,
+     "hoursOver9": 3.18,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 25.699,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "mon",
+     "jobs": 54,
+     "visitsPerWeek": 49.7,
+     "cycleMinPerStop": 13.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 10.85,
+     "hoursOver8": 2.85,
+     "hoursOver9": 1.85,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 43.699,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 27.67,
+     "cycleMinPerStop": 15.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.33,
+     "hoursOver8": -0.67,
+     "hoursOver9": -1.67,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 24.665,
+      "Quick Fix": 2,
+      "other": 1
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 29.9,
+     "cycleMinPerStop": 14.4,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.18,
+     "hoursOver8": -0.82,
+     "hoursOver9": -1.82,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 24.398,
+      "Barter": 0.5,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "thu",
+     "jobs": 32,
+     "visitsPerWeek": 29.47,
+     "cycleMinPerStop": 15.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.81,
+     "hoursOver8": -0.19,
+     "hoursOver9": -1.19,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 26.466,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "fri",
+     "jobs": 45,
+     "visitsPerWeek": 36.37,
+     "cycleMinPerStop": 15.5,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 9.4,
+     "hoursOver8": 1.4,
+     "hoursOver9": 0.4,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 32.364,
+      "Quick Fix": 4
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 38.73,
+     "cycleMinPerStop": 23.35,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 15.07,
+     "hoursOver8": 7.07,
+     "hoursOver9": 6.07,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 29.733,
+      "Barter": 1,
+      "Quick Fix": 8
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "tue",
+     "jobs": 27,
+     "visitsPerWeek": 20.13,
+     "cycleMinPerStop": 25.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 8.62,
+     "hoursOver8": 0.62,
+     "hoursOver9": -0.38,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 18.131,
+      "none (bid)": 1,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "wed",
+     "jobs": 25,
+     "visitsPerWeek": 22.2,
+     "cycleMinPerStop": 31.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 11.73,
+     "hoursOver8": 3.73,
+     "hoursOver9": 2.73,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 17.199,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 33,
+     "cycleMinPerStop": 27.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 14.91,
+     "hoursOver8": 6.91,
+     "hoursOver9": 5.91,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 28,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "fri",
+     "jobs": 27,
+     "visitsPerWeek": 24.2,
+     "cycleMinPerStop": 18.6,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.5,
+     "hoursOver8": -0.5,
+     "hoursOver9": -1.5,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 20.199,
+      "other": 1,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "mon",
+     "jobs": 18,
+     "visitsPerWeek": 17.5,
+     "cycleMinPerStop": 20.95,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 6.11,
+     "hoursOver8": -1.89,
+     "hoursOver9": -2.89,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.5,
+      "other": 1
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 28.43,
+     "cycleMinPerStop": 17.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 8.39,
+     "hoursOver8": 0.39,
+     "hoursOver9": -0.61,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 23.432,
+      "Barter": 3,
+      "Quick Fix": 2
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 31.67,
+     "cycleMinPerStop": 18.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 9.55,
+     "hoursOver8": 1.55,
+     "hoursOver9": 0.55,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 30.665,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 30.73,
+     "cycleMinPerStop": 20.3,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 10.4,
+     "hoursOver8": 2.4,
+     "hoursOver9": 1.4,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 24.733,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "fri",
+     "jobs": 40,
+     "visitsPerWeek": 34.67,
+     "cycleMinPerStop": 24.55,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 14.19,
+     "hoursOver8": 6.19,
+     "hoursOver9": 5.19,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 23.665,
+      "Barter": 2,
+      "Friends and family": 1,
+      "none (bid)": 1,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 36.4,
+     "cycleMinPerStop": 15.6,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 9.46,
+     "hoursOver8": 1.46,
+     "hoursOver9": 0.46,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 30.398,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "tue",
+     "jobs": 37,
+     "visitsPerWeek": 30.13,
+     "cycleMinPerStop": 17.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 8.89,
+     "hoursOver8": 0.89,
+     "hoursOver9": -0.11,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 20.131,
+      "Quick Fix": 9,
+      "other": 1
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "wed",
+     "jobs": 29,
+     "visitsPerWeek": 27.47,
+     "cycleMinPerStop": 15.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 6.91,
+     "hoursOver8": -1.09,
+     "hoursOver9": -2.09,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 23.466,
+      "Quick Fix": 4
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "thu",
+     "jobs": 37,
+     "visitsPerWeek": 32.67,
+     "cycleMinPerStop": 19.3,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 10.51,
+     "hoursOver8": 2.51,
+     "hoursOver9": 1.51,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 25.665,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "fri",
+     "jobs": 41,
+     "visitsPerWeek": 35.67,
+     "cycleMinPerStop": 19.15,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 11.38,
+     "hoursOver8": 3.38,
+     "hoursOver9": 2.38,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 32.665,
+      "Quick Fix": 3
+     }
+    }
+   ],
+   "totals": {
+    "visitsPerWeek": 776.2,
+    "hoursPerWeek": 258.4,
+    "routeDays": 25,
+    "capacityHoursAt8": 200,
+    "capacityHoursAt9": 225,
+    "hoursOverCapacityAt8": 58.4,
+    "hoursOverCapacityAt9": 33.4,
+    "routeDaysOver8": 19,
+    "routeDaysOver9": 16,
+    "utilizationAt8Pct": 129.2,
+    "techDaysNeededAt8": 32.3
+   },
+   "intervalBasisCounts": {
+    "Next Action = Add visit": 596,
+    "Next Action = Monthly": 91,
+    "Next Action = 2 weeks": 70,
+    "Quick Fix product cadence (weekly series)": 124
+   },
+   "jobsUnplaced": 0
+  }
+ },
+ "policiesPure": {
+  "P0": {
+   "policy": "P0",
+   "label": "as the office actually runs it (measured intervals)",
+   "quickFixHeldWeekly": false,
+   "rows": [
+    {
+     "tech": "Alias Franks",
+     "dow": "mon",
+     "jobs": 38,
+     "visitsPerWeek": 34.89,
+     "cycleMinPerStop": 17.45,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 10.15,
+     "hoursOver8": 2.15,
+     "hoursOver9": 1.15,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 24.71,
+      "Quick Fix": 10.178
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "tue",
+     "jobs": 38,
+     "visitsPerWeek": 33.33,
+     "cycleMinPerStop": 22.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 12.72,
+     "hoursOver8": 4.72,
+     "hoursOver9": 3.72,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 19.496,
+      "Quick Fix": 13.835
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "wed",
+     "jobs": 34,
+     "visitsPerWeek": 26.52,
+     "cycleMinPerStop": 27.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 12.24,
+     "hoursOver8": 4.24,
+     "hoursOver9": 3.24,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 18.349,
+      "Quick Fix": 8.167
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 27.01,
+     "cycleMinPerStop": 26.2,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 11.79,
+     "hoursOver8": 3.79,
+     "hoursOver9": 2.79,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 23.676,
+      "Quick Fix": 3.334
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "fri",
+     "jobs": 35,
+     "visitsPerWeek": 29.94,
+     "cycleMinPerStop": 23.05,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 11.5,
+     "hoursOver8": 3.5,
+     "hoursOver9": 2.5,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 23.935,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "mon",
+     "jobs": 54,
+     "visitsPerWeek": 44.78,
+     "cycleMinPerStop": 13.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 9.78,
+     "hoursOver8": 1.78,
+     "hoursOver9": 0.78,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 38.031,
+      "Quick Fix": 6.752
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 22.07,
+     "cycleMinPerStop": 15.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.85,
+     "hoursOver8": -2.15,
+     "hoursOver9": -3.15,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 18.908,
+      "Quick Fix": 2,
+      "other": 1.167
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 27.17,
+     "cycleMinPerStop": 14.4,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 6.52,
+     "hoursOver8": -1.48,
+     "hoursOver9": -2.48,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 22.38,
+      "Barter": 0.189,
+      "Quick Fix": 4.605
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "thu",
+     "jobs": 32,
+     "visitsPerWeek": 25.61,
+     "cycleMinPerStop": 15.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 6.79,
+     "hoursOver8": -1.21,
+     "hoursOver9": -2.21,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 22.518,
+      "Quick Fix": 3.087
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "fri",
+     "jobs": 45,
+     "visitsPerWeek": 35.43,
+     "cycleMinPerStop": 15.5,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 9.15,
+     "hoursOver8": 1.15,
+     "hoursOver9": 0.15,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 31.646,
+      "Quick Fix": 3.788
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 29.83,
+     "cycleMinPerStop": 23.35,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 11.61,
+     "hoursOver8": 3.61,
+     "hoursOver9": 2.61,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 20.157,
+      "Barter": 0.5,
+      "Quick Fix": 9.181
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "tue",
+     "jobs": 27,
+     "visitsPerWeek": 23.51,
+     "cycleMinPerStop": 25.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 10.07,
+     "hoursOver8": 2.07,
+     "hoursOver9": 1.07,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 21.505,
+      "none (bid)": 1,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "wed",
+     "jobs": 25,
+     "visitsPerWeek": 22.17,
+     "cycleMinPerStop": 31.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 11.71,
+     "hoursOver8": 3.71,
+     "hoursOver9": 2.71,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 17.166,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 28.98,
+     "cycleMinPerStop": 27.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 13.09,
+     "hoursOver8": 5.09,
+     "hoursOver9": 4.09,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 22.483,
+      "Quick Fix": 6.5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "fri",
+     "jobs": 27,
+     "visitsPerWeek": 20.7,
+     "cycleMinPerStop": 18.6,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 6.42,
+     "hoursOver8": -1.58,
+     "hoursOver9": -2.58,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.7,
+      "other": 1,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "mon",
+     "jobs": 18,
+     "visitsPerWeek": 14.79,
+     "cycleMinPerStop": 20.95,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.16,
+     "hoursOver8": -2.84,
+     "hoursOver9": -3.84,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 14.089,
+      "other": 0.7
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 24.43,
+     "cycleMinPerStop": 17.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.21,
+     "hoursOver8": -0.79,
+     "hoursOver9": -1.79,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 20.176,
+      "Barter": 2.25,
+      "Quick Fix": 2
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 24.43,
+     "cycleMinPerStop": 18.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.37,
+     "hoursOver8": -0.63,
+     "hoursOver9": -1.63,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 23.435,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 26.6,
+     "cycleMinPerStop": 20.3,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 9,
+     "hoursOver8": 1,
+     "hoursOver9": 0,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 20.602,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "fri",
+     "jobs": 40,
+     "visitsPerWeek": 30.97,
+     "cycleMinPerStop": 24.55,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 12.67,
+     "hoursOver8": 4.67,
+     "hoursOver9": 3.67,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 20.065,
+      "Barter": 2.4,
+      "Friends and family": 0.5,
+      "none (bid)": 1,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 30.45,
+     "cycleMinPerStop": 15.6,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.92,
+     "hoursOver8": -0.08,
+     "hoursOver9": -1.08,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 23.931,
+      "Quick Fix": 6.519
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "tue",
+     "jobs": 37,
+     "visitsPerWeek": 28.73,
+     "cycleMinPerStop": 17.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 8.48,
+     "hoursOver8": 0.48,
+     "hoursOver9": -0.52,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 18.246,
+      "Quick Fix": 9.488,
+      "other": 1
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "wed",
+     "jobs": 29,
+     "visitsPerWeek": 23.17,
+     "cycleMinPerStop": 15.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.83,
+     "hoursOver8": -2.17,
+     "hoursOver9": -3.17,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 19.298,
+      "Quick Fix": 3.875
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "thu",
+     "jobs": 37,
+     "visitsPerWeek": 26.49,
+     "cycleMinPerStop": 19.3,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 8.52,
+     "hoursOver8": 0.52,
+     "hoursOver9": -0.48,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 18.13,
+      "Quick Fix": 8.357
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "fri",
+     "jobs": 41,
+     "visitsPerWeek": 36.33,
+     "cycleMinPerStop": 19.15,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 11.6,
+     "hoursOver8": 3.6,
+     "hoursOver9": 2.6,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 33.329,
+      "Quick Fix": 3
+     }
+    }
+   ],
+   "totals": {
+    "visitsPerWeek": 698.3,
+    "hoursPerWeek": 233.1,
+    "routeDays": 25,
+    "capacityHoursAt8": 200,
+    "capacityHoursAt9": 225,
+    "hoursOverCapacityAt8": 33.1,
+    "hoursOverCapacityAt9": 8.1,
+    "routeDaysOver8": 16,
+    "routeDaysOver9": 13,
+    "utilizationAt8Pct": 116.5,
+    "techDaysNeededAt8": 29.1
+   },
+   "intervalBasisCounts": {
+    "own measured gap median": 666,
+    "own next booked gap (only one completed visit)": 187,
+    "product delivered median (no gap evidence)": 28
+   },
+   "jobsUnplaced": 0
+  },
+  "P1": {
+   "policy": "P1",
+   "label": "weekly after a catch, monthly otherwise",
+   "quickFixHeldWeekly": false,
+   "rows": [
+    {
+     "tech": "Alias Franks",
+     "dow": "mon",
+     "jobs": 38,
+     "visitsPerWeek": 15,
+     "cycleMinPerStop": 17.45,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 4.36,
+     "hoursOver8": -3.64,
+     "hoursOver9": -4.64,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 13.359,
+      "Quick Fix": 1.631
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "tue",
+     "jobs": 38,
+     "visitsPerWeek": 8.87,
+     "cycleMinPerStop": 22.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 3.39,
+     "hoursOver8": -4.61,
+     "hoursOver9": -5.61,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 5.825,
+      "Quick Fix": 3.029
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "wed",
+     "jobs": 34,
+     "visitsPerWeek": 12.53,
+     "cycleMinPerStop": 27.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.78,
+     "hoursOver8": -2.22,
+     "hoursOver9": -3.22,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 10.66,
+      "Quick Fix": 1.864
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 10.23,
+     "cycleMinPerStop": 26.2,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 4.47,
+     "hoursOver8": -3.53,
+     "hoursOver9": -4.53,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 9.524,
+      "Quick Fix": 0.699
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "fri",
+     "jobs": 35,
+     "visitsPerWeek": 12,
+     "cycleMinPerStop": 23.05,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 4.61,
+     "hoursOver8": -3.39,
+     "hoursOver9": -4.39,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 10.592,
+      "Quick Fix": 1.398
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "mon",
+     "jobs": 54,
+     "visitsPerWeek": 21.8,
+     "cycleMinPerStop": 13.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 4.76,
+     "hoursOver8": -3.24,
+     "hoursOver9": -4.24,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 20.388,
+      "Quick Fix": 1.398
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 13.07,
+     "cycleMinPerStop": 15.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 3.46,
+     "hoursOver8": -4.54,
+     "hoursOver9": -5.54,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 12.359,
+      "Quick Fix": 0.466,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 11.47,
+     "cycleMinPerStop": 14.4,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 2.75,
+     "hoursOver8": -5.25,
+     "hoursOver9": -6.25,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 10.058,
+      "Barter": 0.233,
+      "Quick Fix": 1.165
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "thu",
+     "jobs": 32,
+     "visitsPerWeek": 10.53,
+     "cycleMinPerStop": 15.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 2.79,
+     "hoursOver8": -5.21,
+     "hoursOver9": -6.21,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 9.825,
+      "Quick Fix": 0.699
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "fri",
+     "jobs": 45,
+     "visitsPerWeek": 16.63,
+     "cycleMinPerStop": 15.5,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 4.3,
+     "hoursOver8": -3.7,
+     "hoursOver9": -4.7,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 15.689,
+      "Quick Fix": 0.932
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 17.47,
+     "cycleMinPerStop": 23.35,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 6.8,
+     "hoursOver8": -1.2,
+     "hoursOver9": -2.2,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 15.359,
+      "Barter": 0.233,
+      "Quick Fix": 1.864
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "tue",
+     "jobs": 27,
+     "visitsPerWeek": 8.6,
+     "cycleMinPerStop": 25.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 3.68,
+     "hoursOver8": -4.32,
+     "hoursOver9": -5.32,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 8.126,
+      "none (bid)": 0.233,
+      "Quick Fix": 0.233
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "wed",
+     "jobs": 25,
+     "visitsPerWeek": 7.37,
+     "cycleMinPerStop": 31.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 3.89,
+     "hoursOver8": -4.11,
+     "hoursOver9": -5.11,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 6.194,
+      "Quick Fix": 1.165
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 11.77,
+     "cycleMinPerStop": 27.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.32,
+     "hoursOver8": -2.68,
+     "hoursOver9": -3.68,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 10.592,
+      "Quick Fix": 1.165
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "fri",
+     "jobs": 27,
+     "visitsPerWeek": 9.37,
+     "cycleMinPerStop": 18.6,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 2.9,
+     "hoursOver8": -5.1,
+     "hoursOver9": -6.1,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 8.427,
+      "other": 0.233,
+      "Quick Fix": 0.699
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "mon",
+     "jobs": 18,
+     "visitsPerWeek": 6.5,
+     "cycleMinPerStop": 20.95,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 2.27,
+     "hoursOver8": -5.73,
+     "hoursOver9": -6.73,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 6.262,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 13.83,
+     "cycleMinPerStop": 17.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 4.08,
+     "hoursOver8": -3.92,
+     "hoursOver9": -4.92,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 11.893,
+      "Barter": 1.466,
+      "Quick Fix": 0.466
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 14.53,
+     "cycleMinPerStop": 18.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 4.38,
+     "hoursOver8": -3.62,
+     "hoursOver9": -4.62,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 14.291,
+      "Quick Fix": 0.233
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 10.23,
+     "cycleMinPerStop": 20.3,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 3.46,
+     "hoursOver8": -4.54,
+     "hoursOver9": -5.54,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 8.825,
+      "Quick Fix": 1.398
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "fri",
+     "jobs": 40,
+     "visitsPerWeek": 16.23,
+     "cycleMinPerStop": 24.55,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 6.64,
+     "hoursOver8": -1.36,
+     "hoursOver9": -2.36,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 12.893,
+      "Barter": 0.466,
+      "Friends and family": 1,
+      "none (bid)": 0.233,
+      "Quick Fix": 1.631
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 16.7,
+     "cycleMinPerStop": 15.6,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 4.34,
+     "hoursOver8": -3.66,
+     "hoursOver9": -4.66,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 15.291,
+      "Quick Fix": 1.398
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "tue",
+     "jobs": 37,
+     "visitsPerWeek": 14,
+     "cycleMinPerStop": 17.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 4.13,
+     "hoursOver8": -3.87,
+     "hoursOver9": -4.87,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 11.66,
+      "Quick Fix": 2.097,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "wed",
+     "jobs": 29,
+     "visitsPerWeek": 9.07,
+     "cycleMinPerStop": 15.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 2.28,
+     "hoursOver8": -5.72,
+     "hoursOver9": -6.72,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 8.126,
+      "Quick Fix": 0.932
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "thu",
+     "jobs": 37,
+     "visitsPerWeek": 13.23,
+     "cycleMinPerStop": 19.3,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 4.26,
+     "hoursOver8": -3.74,
+     "hoursOver9": -4.74,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 11.592,
+      "Quick Fix": 1.631
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "fri",
+     "jobs": 41,
+     "visitsPerWeek": 15.7,
+     "cycleMinPerStop": 19.15,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.01,
+     "hoursOver8": -2.99,
+     "hoursOver9": -3.99,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 14.99,
+      "Quick Fix": 0.699
+     }
+    }
+   ],
+   "totals": {
+    "visitsPerWeek": 316.7,
+    "hoursPerWeek": 104.1,
+    "routeDays": 25,
+    "capacityHoursAt8": 200,
+    "capacityHoursAt9": 225,
+    "hoursOverCapacityAt8": -95.9,
+    "hoursOverCapacityAt9": -120.9,
+    "routeDaysOver8": 0,
+    "routeDaysOver9": 0,
+    "utilizationAt8Pct": 52,
+    "techDaysNeededAt8": 13
+   },
+   "intervalBasisCounts": {
+    "no catch": 736,
+    "catch": 145
+   },
+   "jobsUnplaced": 0
+  },
+  "P2": {
+   "policy": "P2",
+   "label": "weekly after catch OR miss OR any activity, monthly otherwise",
+   "quickFixHeldWeekly": false,
+   "rows": [
+    {
+     "tech": "Alias Franks",
+     "dow": "mon",
+     "jobs": 38,
+     "visitsPerWeek": 24.2,
+     "cycleMinPerStop": 17.45,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.04,
+     "hoursOver8": -0.96,
+     "hoursOver9": -1.96,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 22.563,
+      "Quick Fix": 1.631
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "tue",
+     "jobs": 38,
+     "visitsPerWeek": 13.47,
+     "cycleMinPerStop": 22.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.14,
+     "hoursOver8": -2.86,
+     "hoursOver9": -3.86,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 10.427,
+      "Quick Fix": 3.029
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "wed",
+     "jobs": 34,
+     "visitsPerWeek": 20.2,
+     "cycleMinPerStop": 27.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 9.33,
+     "hoursOver8": 1.33,
+     "hoursOver9": 0.33,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 18.33,
+      "Quick Fix": 1.864
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 21.73,
+     "cycleMinPerStop": 26.2,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 9.49,
+     "hoursOver8": 1.49,
+     "hoursOver9": 0.49,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 21.029,
+      "Quick Fix": 0.699
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "fri",
+     "jobs": 35,
+     "visitsPerWeek": 21.2,
+     "cycleMinPerStop": 23.05,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 8.14,
+     "hoursOver8": 0.14,
+     "hoursOver9": -0.86,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 19.029,
+      "Quick Fix": 2.165
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "mon",
+     "jobs": 54,
+     "visitsPerWeek": 36.37,
+     "cycleMinPerStop": 13.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.94,
+     "hoursOver8": -0.06,
+     "hoursOver9": -1.06,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 34.961,
+      "Quick Fix": 1.398
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 16.9,
+     "cycleMinPerStop": 15.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 4.48,
+     "hoursOver8": -3.52,
+     "hoursOver9": -4.52,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.194,
+      "Quick Fix": 0.466,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 18.37,
+     "cycleMinPerStop": 14.4,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 4.41,
+     "hoursOver8": -3.59,
+     "hoursOver9": -4.59,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.961,
+      "Barter": 0.233,
+      "Quick Fix": 1.165
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "thu",
+     "jobs": 32,
+     "visitsPerWeek": 19.73,
+     "cycleMinPerStop": 15.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.23,
+     "hoursOver8": -2.77,
+     "hoursOver9": -3.77,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 19.029,
+      "Quick Fix": 0.699
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "fri",
+     "jobs": 45,
+     "visitsPerWeek": 27.37,
+     "cycleMinPerStop": 15.5,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.07,
+     "hoursOver8": -0.93,
+     "hoursOver9": -1.93,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 26.427,
+      "Quick Fix": 0.932
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 22.07,
+     "cycleMinPerStop": 23.35,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 8.59,
+     "hoursOver8": 0.59,
+     "hoursOver9": -0.41,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 19.194,
+      "Barter": 0.233,
+      "Quick Fix": 2.631
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "tue",
+     "jobs": 27,
+     "visitsPerWeek": 13.97,
+     "cycleMinPerStop": 25.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.98,
+     "hoursOver8": -2.02,
+     "hoursOver9": -3.02,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 11.961,
+      "none (bid)": 1,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "wed",
+     "jobs": 25,
+     "visitsPerWeek": 10.43,
+     "cycleMinPerStop": 31.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.51,
+     "hoursOver8": -2.49,
+     "hoursOver9": -3.49,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 9.262,
+      "Quick Fix": 1.165
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 17.9,
+     "cycleMinPerStop": 27.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 8.08,
+     "hoursOver8": 0.08,
+     "hoursOver9": -0.92,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.728,
+      "Quick Fix": 1.165
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "fri",
+     "jobs": 27,
+     "visitsPerWeek": 14.73,
+     "cycleMinPerStop": 18.6,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 4.57,
+     "hoursOver8": -3.43,
+     "hoursOver9": -4.43,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 13.796,
+      "other": 0.233,
+      "Quick Fix": 0.699
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "mon",
+     "jobs": 18,
+     "visitsPerWeek": 13.4,
+     "cycleMinPerStop": 20.95,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 4.68,
+     "hoursOver8": -3.32,
+     "hoursOver9": -4.32,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 13.165,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 20.73,
+     "cycleMinPerStop": 17.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 6.12,
+     "hoursOver8": -1.88,
+     "hoursOver9": -2.88,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 18.029,
+      "Barter": 1.466,
+      "Quick Fix": 1.233
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 19.9,
+     "cycleMinPerStop": 18.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 6,
+     "hoursOver8": -2,
+     "hoursOver9": -3,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 19.66,
+      "Quick Fix": 0.233
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 16.37,
+     "cycleMinPerStop": 20.3,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.54,
+     "hoursOver8": -2.46,
+     "hoursOver9": -3.46,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 14.961,
+      "Quick Fix": 1.398
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "fri",
+     "jobs": 40,
+     "visitsPerWeek": 24.67,
+     "cycleMinPerStop": 24.55,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 10.09,
+     "hoursOver8": 2.09,
+     "hoursOver9": 1.09,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 20.563,
+      "Barter": 1.233,
+      "Friends and family": 1,
+      "none (bid)": 0.233,
+      "Quick Fix": 1.631
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 26.67,
+     "cycleMinPerStop": 15.6,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 6.93,
+     "hoursOver8": -1.07,
+     "hoursOver9": -2.07,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 24.495,
+      "Quick Fix": 2.165
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "tue",
+     "jobs": 37,
+     "visitsPerWeek": 17.07,
+     "cycleMinPerStop": 17.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 5.04,
+     "hoursOver8": -2.96,
+     "hoursOver9": -3.96,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 14.728,
+      "Quick Fix": 2.097,
+      "other": 0.233
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "wed",
+     "jobs": 29,
+     "visitsPerWeek": 15.97,
+     "cycleMinPerStop": 15.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 4.02,
+     "hoursOver8": -3.98,
+     "hoursOver9": -4.98,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 15.029,
+      "Quick Fix": 0.932
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "thu",
+     "jobs": 37,
+     "visitsPerWeek": 19.37,
+     "cycleMinPerStop": 19.3,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 6.23,
+     "hoursOver8": -1.77,
+     "hoursOver9": -2.77,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.961,
+      "Quick Fix": 2.398
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "fri",
+     "jobs": 41,
+     "visitsPerWeek": 27.2,
+     "cycleMinPerStop": 19.15,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 8.68,
+     "hoursOver8": 0.68,
+     "hoursOver9": -0.32,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 25.728,
+      "Quick Fix": 1.466
+     }
+    }
+   ],
+   "totals": {
+    "visitsPerWeek": 500,
+    "hoursPerWeek": 164.3,
+    "routeDays": 25,
+    "capacityHoursAt8": 200,
+    "capacityHoursAt9": 225,
+    "hoursOverCapacityAt8": -35.7,
+    "hoursOverCapacityAt9": -60.7,
+    "routeDaysOver8": 7,
+    "routeDaysOver9": 3,
+    "utilizationAt8Pct": 82.2,
+    "techDaysNeededAt8": 20.5
+   },
+   "intervalBasisCounts": {
+    "quiet": 497,
+    "catch/miss/activity": 384
+   },
+   "jobsUnplaced": 0
+  },
+  "P3": {
+   "policy": "P3",
+   "label": "the office's own Next Action field taken literally",
+   "quickFixHeldWeekly": false,
+   "rows": [
+    {
+     "tech": "Alias Franks",
+     "dow": "mon",
+     "jobs": 38,
+     "visitsPerWeek": 33.2,
+     "cycleMinPerStop": 17.45,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 9.66,
+     "hoursOver8": 1.66,
+     "hoursOver9": 0.66,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 26.199,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "tue",
+     "jobs": 38,
+     "visitsPerWeek": 32.17,
+     "cycleMinPerStop": 22.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 12.28,
+     "hoursOver8": 4.28,
+     "hoursOver9": 3.28,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 19.165,
+      "Quick Fix": 13
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "wed",
+     "jobs": 34,
+     "visitsPerWeek": 31.23,
+     "cycleMinPerStop": 27.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 14.42,
+     "hoursOver8": 6.42,
+     "hoursOver9": 5.42,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 23.233,
+      "Quick Fix": 8
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 31.23,
+     "cycleMinPerStop": 26.2,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 13.64,
+     "hoursOver8": 5.64,
+     "hoursOver9": 4.64,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 28.233,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Alias Franks",
+     "dow": "fri",
+     "jobs": 35,
+     "visitsPerWeek": 31.7,
+     "cycleMinPerStop": 23.05,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 12.18,
+     "hoursOver8": 4.18,
+     "hoursOver9": 3.18,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 25.699,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "mon",
+     "jobs": 54,
+     "visitsPerWeek": 49.7,
+     "cycleMinPerStop": 13.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 10.85,
+     "hoursOver8": 2.85,
+     "hoursOver9": 1.85,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 43.699,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 27.67,
+     "cycleMinPerStop": 15.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.33,
+     "hoursOver8": -0.67,
+     "hoursOver9": -1.67,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 24.665,
+      "Quick Fix": 2,
+      "other": 1
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 29.9,
+     "cycleMinPerStop": 14.4,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.18,
+     "hoursOver8": -0.82,
+     "hoursOver9": -1.82,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 24.398,
+      "Barter": 0.5,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "thu",
+     "jobs": 32,
+     "visitsPerWeek": 29.47,
+     "cycleMinPerStop": 15.9,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.81,
+     "hoursOver8": -0.19,
+     "hoursOver9": -1.19,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 26.466,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Cory Ventura",
+     "dow": "fri",
+     "jobs": 45,
+     "visitsPerWeek": 36.37,
+     "cycleMinPerStop": 15.5,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 9.4,
+     "hoursOver8": 1.4,
+     "hoursOver9": 0.4,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 32.364,
+      "Quick Fix": 4
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 38.73,
+     "cycleMinPerStop": 23.35,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 15.07,
+     "hoursOver8": 7.07,
+     "hoursOver9": 6.07,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 29.733,
+      "Barter": 1,
+      "Quick Fix": 8
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "tue",
+     "jobs": 27,
+     "visitsPerWeek": 20.13,
+     "cycleMinPerStop": 25.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 8.62,
+     "hoursOver8": 0.62,
+     "hoursOver9": -0.38,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 18.131,
+      "none (bid)": 1,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "wed",
+     "jobs": 25,
+     "visitsPerWeek": 22.2,
+     "cycleMinPerStop": 31.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 11.73,
+     "hoursOver8": 3.73,
+     "hoursOver9": 2.73,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 17.199,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 33,
+     "cycleMinPerStop": 27.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 14.91,
+     "hoursOver8": 6.91,
+     "hoursOver9": 5.91,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 28,
+      "Quick Fix": 5
+     }
+    },
+    {
+     "tech": "Luke LaVergne",
+     "dow": "fri",
+     "jobs": 27,
+     "visitsPerWeek": 24.2,
+     "cycleMinPerStop": 18.6,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 7.5,
+     "hoursOver8": -0.5,
+     "hoursOver9": -1.5,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 20.199,
+      "other": 1,
+      "Quick Fix": 3
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "mon",
+     "jobs": 18,
+     "visitsPerWeek": 17.5,
+     "cycleMinPerStop": 20.95,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 6.11,
+     "hoursOver8": -1.89,
+     "hoursOver9": -2.89,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 16.5,
+      "other": 1
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "tue",
+     "jobs": 33,
+     "visitsPerWeek": 28.43,
+     "cycleMinPerStop": 17.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 8.39,
+     "hoursOver8": 0.39,
+     "hoursOver9": -0.61,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 23.432,
+      "Barter": 3,
+      "Quick Fix": 2
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "wed",
+     "jobs": 36,
+     "visitsPerWeek": 31.67,
+     "cycleMinPerStop": 18.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 9.55,
+     "hoursOver8": 1.55,
+     "hoursOver9": 0.55,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 30.665,
+      "Quick Fix": 1
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "thu",
+     "jobs": 34,
+     "visitsPerWeek": 30.73,
+     "cycleMinPerStop": 20.3,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 10.4,
+     "hoursOver8": 2.4,
+     "hoursOver9": 1.4,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 24.733,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Robert Norton",
+     "dow": "fri",
+     "jobs": 40,
+     "visitsPerWeek": 34.67,
+     "cycleMinPerStop": 24.55,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 14.19,
+     "hoursOver8": 6.19,
+     "hoursOver9": 5.19,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 23.665,
+      "Barter": 2,
+      "Friends and family": 1,
+      "none (bid)": 1,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "mon",
+     "jobs": 42,
+     "visitsPerWeek": 36.4,
+     "cycleMinPerStop": 15.6,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 9.46,
+     "hoursOver8": 1.46,
+     "hoursOver9": 0.46,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 30.398,
+      "Quick Fix": 6
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "tue",
+     "jobs": 37,
+     "visitsPerWeek": 30.13,
+     "cycleMinPerStop": 17.7,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 8.89,
+     "hoursOver8": 0.89,
+     "hoursOver9": -0.11,
+     "over8": true,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 20.131,
+      "Quick Fix": 9,
+      "other": 1
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "wed",
+     "jobs": 29,
+     "visitsPerWeek": 27.47,
+     "cycleMinPerStop": 15.1,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 6.91,
+     "hoursOver8": -1.09,
+     "hoursOver9": -2.09,
+     "over8": false,
+     "over9": false,
+     "byProduct": {
+      "TMCP": 23.466,
+      "Quick Fix": 4
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "thu",
+     "jobs": 37,
+     "visitsPerWeek": 32.67,
+     "cycleMinPerStop": 19.3,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 10.51,
+     "hoursOver8": 2.51,
+     "hoursOver9": 1.51,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 25.665,
+      "Quick Fix": 7
+     }
+    },
+    {
+     "tech": "Tavis Alexander",
+     "dow": "fri",
+     "jobs": 41,
+     "visitsPerWeek": 35.67,
+     "cycleMinPerStop": 19.15,
+     "cycleSource": "GPS measured, median of per-route-day (first-to-last / visits)",
+     "hoursPerWeek": 11.38,
+     "hoursOver8": 3.38,
+     "hoursOver9": 2.38,
+     "over8": true,
+     "over9": true,
+     "byProduct": {
+      "TMCP": 32.665,
+      "Quick Fix": 3
+     }
+    }
+   ],
+   "totals": {
+    "visitsPerWeek": 776.2,
+    "hoursPerWeek": 258.4,
+    "routeDays": 25,
+    "capacityHoursAt8": 200,
+    "capacityHoursAt9": 225,
+    "hoursOverCapacityAt8": 58.4,
+    "hoursOverCapacityAt9": 33.4,
+    "routeDaysOver8": 19,
+    "routeDaysOver9": 16,
+    "utilizationAt8Pct": 129.2,
+    "techDaysNeededAt8": 32.3
+   },
+   "intervalBasisCounts": {
+    "Next Action = Add visit": 720,
+    "Next Action = Monthly": 91,
+    "Next Action = 2 weeks": 70
+   },
+   "jobsUnplaced": 0
+  }
+ },
+ "seasonality": [
+  {
+   "weekStart": "2026-08-17",
+   "weekEnd": "2026-08-23",
+   "tmcpCompletedVisits": 450,
+   "tmcpVisitsWithPriorVisit": 64,
+   "onWeeklyCadence": 64,
+   "shareWeeklyPct": 100,
+   "medianIntervalDays": 7,
+   "lookbackObservable": false,
+   "partialWeek": false,
+   "visitsPerActiveTmcpJob": 0.623,
+   "impliedCadenceDays": 11.2,
+   "fieldDaysObserved": 5,
+   "fieldDays": [
+    "2026-08-17",
+    "2026-08-18",
+    "2026-08-19",
+    "2026-08-20",
+    "2026-08-21"
+   ],
+   "tmcpVisitsPerFieldDay": 90,
+   "ratePerFieldDayNormalized": 0.623,
+   "caveat": "BIASED: the <=10d lookback falls outside the visit window, so shareWeeklyPct is inflated toward 100 by construction. Use visitsPerActiveTmcpJob for this week."
+  },
+  {
+   "weekStart": "2026-08-24",
+   "weekEnd": "2026-08-30",
+   "tmcpCompletedVisits": 444,
+   "tmcpVisitsWithPriorVisit": 322,
+   "onWeeklyCadence": 314,
+   "shareWeeklyPct": 97.5,
+   "medianIntervalDays": 7,
+   "lookbackObservable": true,
+   "partialWeek": false,
+   "visitsPerActiveTmcpJob": 0.615,
+   "impliedCadenceDays": 11.4,
+   "fieldDaysObserved": 5,
+   "fieldDays": [
+    "2026-08-24",
+    "2026-08-25",
+    "2026-08-26",
+    "2026-08-27",
+    "2026-08-28"
+   ],
+   "tmcpVisitsPerFieldDay": 88.8,
+   "ratePerFieldDayNormalized": 0.615,
+   "caveat": null
+  },
+  {
+   "weekStart": "2026-08-31",
+   "weekEnd": "2026-09-06",
+   "tmcpCompletedVisits": 422,
+   "tmcpVisitsWithPriorVisit": 367,
+   "onWeeklyCadence": 304,
+   "shareWeeklyPct": 82.8,
+   "medianIntervalDays": 7,
+   "lookbackObservable": true,
+   "partialWeek": false,
+   "visitsPerActiveTmcpJob": 0.584,
+   "impliedCadenceDays": 12,
+   "fieldDaysObserved": 5,
+   "fieldDays": [
+    "2026-08-31",
+    "2026-09-01",
+    "2026-09-02",
+    "2026-09-03",
+    "2026-09-04"
+   ],
+   "tmcpVisitsPerFieldDay": 84.4,
+   "ratePerFieldDayNormalized": 0.584,
+   "caveat": null
+  },
+  {
+   "weekStart": "2026-09-07",
+   "weekEnd": "2026-09-13",
+   "tmcpCompletedVisits": 321,
+   "tmcpVisitsWithPriorVisit": 293,
+   "onWeeklyCadence": 248,
+   "shareWeeklyPct": 84.6,
+   "medianIntervalDays": 7,
+   "lookbackObservable": true,
+   "partialWeek": false,
+   "visitsPerActiveTmcpJob": 0.445,
+   "impliedCadenceDays": 15.7,
+   "fieldDaysObserved": 4,
+   "fieldDays": [
+    "2026-09-08",
+    "2026-09-09",
+    "2026-09-10",
+    "2026-09-11"
+   ],
+   "tmcpVisitsPerFieldDay": 80.3,
+   "ratePerFieldDayNormalized": 0.556,
+   "caveat": null
+  },
+  {
+   "weekStart": "2026-09-14",
+   "weekEnd": "2026-09-20",
+   "tmcpCompletedVisits": 405,
+   "tmcpVisitsWithPriorVisit": 355,
+   "onWeeklyCadence": 190,
+   "shareWeeklyPct": 53.5,
+   "medianIntervalDays": 8,
+   "lookbackObservable": true,
+   "partialWeek": true,
+   "visitsPerActiveTmcpJob": 0.561,
+   "impliedCadenceDays": 12.5,
+   "fieldDaysObserved": 5,
+   "fieldDays": [
+    "2026-09-14",
+    "2026-09-15",
+    "2026-09-16",
+    "2026-09-17",
+    "2026-09-18"
+   ],
+   "tmcpVisitsPerFieldDay": 81,
+   "ratePerFieldDayNormalized": 0.561,
+   "caveat": "PARTIAL: week extends past the last completed visit date, so counts are low."
+  }
+ ],
+ "seasonalityNote": "Share of TMCP completed visits whose gap from the prior visit was <=10 days, by week. Week 1 is flagged BIASED (the lookback runs off the front of the visit window). Week 4 lost Labor Day (4 field days), which stretched gaps into week 5 and is the main reason week 5 reads low. The truncation-free companion is ratePerFieldDayNormalized: 0.622 -> 0.556 visits per active TMCP job per 5-day week across the month."
+}

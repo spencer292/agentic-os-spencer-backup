@@ -1,0 +1,4159 @@
+# Linxup 2.0 API YAML
+swagger: '2.0'
+info:
+  title: API Integration
+  description:
+    Integrate our system into your application via our API. To use it, the first thing
+    you need is an API Token. You can obtain a token from your portal by visiting the "API / Developers"
+    section in the Setup page. Once you have a token, you can try out the API on this page by first
+    clicking the "Authorize" button and entering **Bearer &lt;token&gt;** in the value field (the "Bearer"
+    prefix is required). After this
+    point, you can click on any of the endpoints listed below and click the "Try it out" button to see
+    the response.
+    <br><br>
+
+    Deprecation notice "agilisGeofenceId" is being deprecated and has been replaced by "geofenceUUID" as a identifier for geofences.
+    Please update your application to use "geofenceUUID". We may remove "agilisGeofenceId" in a future release.
+
+    <br><br>
+
+    **Your API Host:** X_API_HOST_X
+  version: "2.13"
+# array of all schemes that your API supports
+schemes:
+  - https
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+# will be prefixed to all paths
+basePath: /ibis/rest/api/v2
+produces:
+  - application/json
+paths:
+  /token/generate:
+    post:
+      summary: Generate Token
+      description: |
+        The token generation endpoint can be used to create a new API token programmatically instead of via the portal. Tokens will expire after 5 years and can be revoked via the portal.
+      parameters:
+        - name: authentication
+          in: body
+          description: A valid username and password
+          required: true
+          schema:
+            $ref: '#/definitions/UsernameAndPassword'
+      tags:
+        - Authorization
+      responses:
+        200:
+          description: An API token
+          schema:
+            $ref: '#/definitions/TokenResponse'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /locations:
+    get:
+      security:
+        - Bearer: []
+      summary: Get Locations
+      description: |
+        The locations endpoint returns the current gps locations of all your
+        Linxup devices. The response includes other information like the VIN,
+        make, model and year of the vehicle the device is plugged in, along
+        with the battery and fuel level if available.
+
+        SensorData is returned with the following units:
+        - temperature: degrees Fahrenheit
+        - humidity: relative percentage
+      tags:
+        - Locations
+      responses:
+        200:
+          description: An array of locations
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CurrentLocation'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      security:
+        - Bearer: []
+      summary: Get Locations
+      description: |
+        The locations endpoint returns the current gps locations of all your
+        Linxup devices. The response includes other information like the VIN,
+        make, model and year of the vehicle the device is plugged in, along
+        with the battery and fuel level if available.
+
+        SensorData is returned with the following units:
+        - temperature: degrees Fahrenheit
+        - humidity: relative percentage
+
+        **Please note:** This endpoint is supported for legacy reasons. Please use GET instead for new integrations.
+      tags:
+        - Locations
+      responses:
+        200:
+          description: An array of locations
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CurrentLocation'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+  /locations/{imei}:
+    post:
+      security:
+        - Bearer: []
+      summary: Get Locations for a specific device, given its imei.
+      description: |
+        All the locations a specific device has been in the provided from and
+        to date.
+
+        The dates should be specified as epoch timestamps in milliseconds
+        and the range cannot be more than 48 hours.
+
+        SensorData is returned with the following units:
+        - temperature: degrees Fahrenheit
+        - humidity: relative percentage
+
+      parameters:
+        - name: imei
+          in: path
+          description: imei of device.
+          required: true
+          type: string
+        - name: dates
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FromToDates'
+      tags:
+        - Locations
+      responses:
+        200:
+          description: An array of locations
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Location'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+  /locations/uuid/{uuid}:
+    post:
+      security:
+        - Bearer: []
+      summary: Get Locations for a specific device, given its UUID.
+      description: |
+        All the locations a specific device has been in the provided from and
+        to date.
+
+        The dates should be specified as epoch timestamps in milliseconds
+        and the range cannot be more than 48 hours.
+
+        SensorData is returned with the following units:
+        - temperature: degrees Fahrenheit
+        - humidity: relative percentage
+
+      parameters:
+        - name: uuid
+          in: path
+          description: UUID of device.
+          required: true
+          type: string
+        - name: dates
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FromToDates'
+      tags:
+        - Locations
+      responses:
+        200:
+          description: An array of locations
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Location'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+  /locations/all:
+    post:
+      security:
+        - Bearer: []
+      summary: Get Locations for ALL devices for the given date range.
+      description: |
+        All the locations that all device has been in the provided from and
+        to date.
+
+        The dates should be specified as epoch timestamps in milliseconds
+        and the range cannot be more than 48 hours.
+
+        SensorData is returned with the following units:
+        - temperature: degrees Fahrenheit
+        - humidity: relative percentage
+
+      parameters:
+        - name: dates
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FromToDates'
+      tags:
+        - Locations
+      responses:
+        200:
+          description: An array of locations
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Location'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+  /stops:
+    post:
+      security:
+        - Bearer: []
+      summary: Get stops for all devices.
+      description: |
+        All the stops devices have made in the provided from and
+        to date.
+
+        The dates should be specified as epoch timestamps in milliseconds
+        and the range cannot be more than 48 hours.
+
+      parameters:
+        - name: dates
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FromToDates'
+      tags:
+        - Advanced Info
+      responses:
+        200:
+          description: An array of stops
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Stop'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /stops/{searchBy}/{value}:
+    post:
+      security:
+        - Bearer: [ ]
+      summary: Get stops for a specific device, given its imei, uuid, or serial number.
+      description: |
+        All the stops a specific device has made in the provided from and to date.
+        
+        The dates should be specified as epoch timestamps in milliseconds
+        and the range cannot be more than 48 hours.
+
+      parameters:
+        - name: searchBy
+          in: path
+          description: what to search by.
+          required: true
+          type: string
+          enum: [ "IMEI", "UUID", "SERIAL_NUMBER"]
+        - name: value
+          in: path
+          description: value of searchBy for device.
+          required: true
+          type: string
+        - name: dates
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FromToDates'
+      tags:
+        - Advanced Info
+      responses:
+        200:
+          description: An array of stops
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Stop'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /trips:
+    post:
+      security:
+        - Bearer: []
+      summary: Get trips for all devices.
+      description: |
+        All the trips devices have made in the provided from and to date.
+
+        The dates should be specified as epoch timestamps in milliseconds
+        and the range cannot be more than 48 hours.
+
+        Distances are rounded to the nearest mile. Detailed distances are provided to 3 decimal places.
+      parameters:
+        - name: dates
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FromToDates'
+      tags:
+        - Advanced Info
+      responses:
+        200:
+          description: An array of trips
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Trip'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /trips/{searchBy}/{value}:
+    post:
+      security:
+        - Bearer: [ ]
+      summary: Get trips for a specific device, given its imei, uuid, or serial number.
+      description: |
+        All the trips a specific device has made in the provided from and to date.
+        
+        The dates should be specified as epoch timestamps in milliseconds
+        and the range cannot be more than 48 hours.
+
+      parameters:
+        - name: searchBy
+          in: path
+          description: what to search by.
+          required: true
+          type: string
+          enum: [ "IMEI", "UUID", "SERIAL_NUMBER" ]
+        - name: value
+          in: path
+          description: value of searchBy for device.
+          required: true
+          type: string
+        - name: dates
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FromToDates'
+      tags:
+        - Advanced Info
+      responses:
+        200:
+          description: An array of trips
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Trip'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /advancedTrips:
+    post:
+      security:
+        - Bearer: []
+      summary: Get enhanced trip info for all devices in friendly format.
+      description: |
+        All the ignition, trips, stops and idling events devices have made in the
+        provided from and to date.
+
+        The dates should be specified as epoch timestamps in milliseconds
+        and the range cannot be more than 48 hours.
+
+        Distances are rounded to the nearest mile. Detailed distances are provided to 3 decimal places.
+      parameters:
+        - name: dates
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FromToDates'
+      tags:
+        - Advanced Info
+      responses:
+        200:
+          description: An array of advanced trips
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AdvancedTrip'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /advancedTrips/{searchBy}/{value}:
+    post:
+      security:
+        - Bearer: [ ]
+      summary: Get enhanced trip info for a specific device, given its imei, uuid, or serial number.
+      description: |
+        All the ignition, trips, stops and idling events a specific device has made in the provided from and to date.
+        
+        The dates should be specified as epoch timestamps in milliseconds
+        and the range cannot be more than 48 hours.
+
+      parameters:
+        - name: searchBy
+          in: path
+          description: what to search by.
+          required: true
+          type: string
+          enum: [ "IMEI", "UUID", "SERIAL_NUMBER" ]
+        - name: value
+          in: path
+          description: value of searchBy for device.
+          required: true
+          type: string
+        - name: dates
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FromToDates'
+      tags:
+        - Advanced Info
+      responses:
+        200:
+          description: An array of advanced trips
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AdvancedTrip'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /alerts:
+    post:
+      security:
+        - Bearer: [ ]
+      summary: Get alerts for all devices.
+      description: |
+        All the alerts devices have generated in the provided from and
+        to date.
+        
+        The dates should be specified as epoch timestamps in milliseconds
+        and the range cannot be more than 48 hours.
+      parameters:
+        - name: dates
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FromToDates'
+      tags:
+        - Advanced Info
+      responses:
+        200:
+          description: An array of alerts
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Alert'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /alerts/{searchBy}/{value}:
+    post:
+      security:
+        - Bearer: []
+      summary: Get alerts for a specific device, given its imei, uuid, or serial number.
+      description: |
+        All the alerts a specific device has generated in the provided from and to date.
+
+        The dates should be specified as epoch timestamps in milliseconds
+        and the range cannot be more than 48 hours.
+      parameters:
+        - name: searchBy
+          in: path
+          description: what to search by.
+          required: true
+          type: string
+          enum: [ "IMEI", "UUID", "SERIAL_NUMBER" ]
+        - name: value
+          in: path
+          description: value of searchBy for device.
+          required: true
+          type: string
+        - name: dates
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FromToDates'
+      tags:
+        - Advanced Info
+      responses:
+        200:
+          description: An array of alerts
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Alert'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /usagehours:
+    post:
+      security:
+        - Bearer: []
+      summary: Get usage hours for all devices.
+      description: |
+        All the usage hours for devices in the provided from and
+        to date.
+
+        The dates should be specified as epoch timestamps in milliseconds
+        and the range cannot be more than 48 hours.
+      parameters:
+        - name: dates
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FromToDates'
+      tags:
+        - Advanced Info
+      responses:
+        200:
+          description: An array of usage hours
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UsageHour'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /usagehours/{searchBy}/{value}:
+    post:
+      security:
+        - Bearer: [ ]
+      summary: Get usage hours for a specific device, given its imei, uuid, or serial number.
+      description: |
+        All the usage hours for a specific device in the provided from and
+        to date.
+        
+        The dates should be specified as epoch timestamps in milliseconds
+        and the range cannot be more than 48 hours.
+      parameters:
+        - name: searchBy
+          in: path
+          description: what to search by.
+          required: true
+          type: string
+          enum: [ "IMEI", "UUID", "SERIAL_NUMBER" ]
+        - name: value
+          in: path
+          description: value of searchBy for device.
+          required: true
+          type: string
+        - name: dates
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FromToDates'
+      tags:
+        - Advanced Info
+      responses:
+        200:
+          description: An array of usage hours
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UsageHour'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+  /job/create:
+    post:
+      security:
+        - Bearer: []
+      summary: Create a new job and assign it to a user.
+      description: |
+        Create a new job at a given address and assign it to a user.
+      parameters:
+        - name: jobinfo
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CreateJobInfo'
+      tags:
+        - Jobs
+      responses:
+        200:
+          description: UUID of created job.
+          schema:
+            $ref: '#/definitions/UuidResponse'
+        403:
+          description: Unauthorized.
+        422:
+          description: Validation error with submitted data.
+          schema:
+            $ref: '#/definitions/ErrorsMap'
+        500:
+          description: Unexpected error.
+          schema:
+            $ref: '#/definitions/ErrorsMap'
+  /job/get/{uuid}:
+    post:
+      security:
+        - Bearer: []
+      summary: Get job by UUID.
+      description: |
+        Get job by UUID.
+      parameters:
+        - name: uuid
+          in: path
+          description: UUID of job.
+          required: true
+          type: string
+      tags:
+        - Jobs
+      responses:
+        200:
+          description: Job Information.
+          schema:
+            $ref: '#/definitions/Job'
+        403:
+          description: Unauthorized.
+        404:
+          description: Job not found.
+        500:
+          description: Unexpected error.
+          schema:
+            $ref: '#/definitions/Error'
+  /job/update/{uuid}:
+    post:
+      security:
+        - Bearer: []
+      summary: Update job.
+      description: |
+        Update job information. Any field that is not submitted will be left blank. Assigned user cannot be updated through this endpoint--use /job/reassign instead.
+      parameters:
+        - name: uuid
+          in: path
+          description: UUID of job
+          required: true
+          type: string
+        - name: jobinfo
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/JobInfo'
+      tags:
+        - Jobs
+      responses:
+        200:
+          description: The updated info for the job.
+          schema:
+            $ref: '#/definitions/Job'
+        403:
+          description: Unauthorized.
+        404:
+          description: Job not found.
+        422:
+          description: Validation error with submitted data.
+          schema:
+            $ref: '#/definitions/ErrorsMap'
+        500:
+          description: Unexpected error.
+          schema:
+            $ref: '#/definitions/Error'
+  /job/reassign/{uuid}:
+    post:
+      security:
+        - Bearer: []
+      summary: Reassign job
+      description: |
+        Reassign job to different user
+      parameters:
+        - name: uuid
+          in: path
+          description: uuid of job
+          required: true
+          type: string
+        - name: emailMap
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/EmailMap'
+      tags:
+        - Jobs
+      responses:
+        200:
+          description: Job updated successfully.
+        403:
+          description: Unauthorized.
+        404:
+          description: Job not found.
+        422:
+          description: Validation error with submitted data.
+          schema:
+            $ref: '#/definitions/ErrorsMap'
+        500:
+          description: Unexpected error.
+          schema:
+            $ref: '#/definitions/Error'
+  /job/cancel/{uuid}:
+    post:
+      security:
+        - Bearer: []
+      summary: Cancel job
+      description: |
+        Cancel job if possible
+      parameters:
+        - name: uuid
+          in: path
+          description: uuid of job
+          required: true
+          type: string
+      tags:
+        - Jobs
+      responses:
+        200:
+          description: Job cancelled successfully
+        403:
+          description: Unauthorized.
+        404:
+          description: Job not found.
+        422:
+          description: Validation error with submitted data.
+          schema:
+            $ref: '#/definitions/ErrorsMap'
+        500:
+          description: Unexpected error.
+          schema:
+            $ref: '#/definitions/Error'
+  /job/complete/{uuid}:
+    post:
+      security:
+        - Bearer: []
+      summary: Complete job
+      description: |
+        Complete job if possible
+      parameters:
+        - name: uuid
+          in: path
+          description: uuid of job
+          required: true
+          type: string
+      tags:
+        - Jobs
+      responses:
+        200:
+          description: Job completed successfully, or job already complete.
+        403:
+          description: Unauthorized.
+        404:
+          description: Job not found.
+        422:
+          description: Validation error with submitted data.
+          schema:
+            $ref: '#/definitions/ErrorsMap'
+        500:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /geofences:
+    get:
+      security:
+        - Bearer: []
+      summary: Get Geofences
+      description: |
+        Returns all active geofences.
+      parameters:
+        - name: includeInactive
+          in: query
+          description: Include inactive geofences in the response
+          required: false
+          type: boolean
+          default: false
+      tags:
+        - Geofences
+      responses:
+        200:
+          description: An array of geofences
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/GeofenceWithGeofenceUUID'
+        403:
+          description: Unauthorized
+        500:
+          description: Unexpected error
+    post:
+      security:
+        - Bearer: []
+      summary: Create a new geofence
+      description: |
+        Creates a new geofence at requested location.
+
+        A name for the geofence must be provided.
+
+        The color is optional.
+
+        The type for the geofence must be one of '**Circle**', '**Polygon**' or '**Landmark**' with the following requirements:
+
+        '**Circle**': One point and a radius must be provided.
+
+        '**Polygon**': At least 3 points and no radius must be provided.
+
+        '**Landmark**': One point and no radius must be provided.
+
+      tags:
+        - Geofences
+      parameters:
+        - name: geofenceInfo
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/GeofenceInfo'
+      responses:
+        201:
+          description: Unique identifier of created geofence
+          schema:
+            $ref: '#/definitions/GeofenceUUIDResponse'
+        403:
+          description: Unauthorized
+        422:
+          description: Invalid geofence definition or invalid tracker/driver/group ID
+          schema:
+            $ref: '#/definitions/InvalidGeofence'
+        500:
+          description: Unexpected error
+
+  /geofences/{geofenceUUID}:
+    get:
+      security:
+        - Bearer: []
+      summary: Get specified geofence
+      description: |
+        Returns specified geofence.
+      tags:
+        - Geofences
+      parameters:
+        - name: geofenceUUID
+          in: path
+          description: Unique identifier of geofence.
+          required: true
+          type: string
+
+        - name: includeInactive
+          in: query
+          description: Include inactive geofences in the response
+          required: false
+          type: boolean
+          default: false
+      responses:
+        200:
+          description: Geofence information
+          schema:
+            $ref: '#/definitions/GeofenceWithGeofenceUUID'
+        403:
+          description: Unauthorized
+        404:
+          description: Geofence not found
+        422:
+          description: Missing agilisGeofenceId
+        500:
+          description: Unexpected error
+
+    put:
+      security:
+        - Bearer: []
+      summary: Update an existing geofence
+      description: |
+        Updates an existing geofence with information provided. Please note that all fields must be provided.
+
+        A name for the geofence must be provided.
+
+        The color is optional.
+
+        The type for the geofence must be one of '**Circle**', '**Polygon**' or '**Landmark**' with the following requirements
+
+        '**Circle**': One point and a radius must be provided.
+
+        '**Polygon**': At least 3 points and no radius must be provided.
+
+        '**Landmark**': One point and no radius must be provided.
+
+        A geofence can only be set up for notifications on trackers, drivers, **or** groups. As a result:
+        * Only one of these lists can be sent with a request.
+        * If any of these fields are sent, the other items will be deleted. (Submitting drivers will remove all existing tracker-based geofence notifications, etc.)
+        * If none of these fields are sent, any existing notifications will be unchanged.
+
+        Note: Updating a previously deleted geofence will undelete the geofence.
+
+      tags:
+        - Geofences
+      parameters:
+        - name: geofenceUUID
+          in: path
+          description: Unique identifier of geofence.
+          required: true
+          type: string
+        - name: geofenceInfo
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/GeofenceInfo'
+      responses:
+        204:
+          description: Geofence information
+          schema:
+            $ref: '#/definitions/GeofenceWithGeofenceUUID'
+        403:
+          description: Unauthorized
+        404:
+          description: Geofence not found
+        422:
+          description: Invalid geofence definition or invalid tracker/driver/group ID
+          schema:
+            $ref: '#/definitions/InvalidGeofence'
+        500:
+          description: Unexpected error
+    delete:
+      security:
+        - Bearer: []
+      summary: Delete a geofence
+      description: |
+        Deletes the specified geofence.
+      tags:
+        - Geofences
+      parameters:
+        - name: geofenceUUID
+          in: path
+          description: Unique identifier of geofence.
+          required: true
+          type: string
+      responses:
+        204:
+          description: Geofence deleted successfully
+        403:
+          description: Unauthorized
+        404:
+          description: Geofence not found
+        500:
+          description: Unexpected error
+
+  /geofences/bulk:
+    delete:
+      security:
+        - Bearer: []
+      summary: Deactivate Geofences
+      description: |
+        Deactivate geofences. Contains an optional JSON body, that is a simple array of geofence UUIDs to deactivate. If this list is not specified, then deactivate ALL of the geofences.
+      tags:
+        - Geofences
+      parameters:
+        - in: body
+          name: deactivationRequest
+          description: An optional array of geofence UUIDs to deactivate
+          required: false
+          schema:
+            $ref: '#/definitions/GeofenceBulkRequestRequest'
+      responses:
+        200:
+          description: Successfully deactivated geofences
+        400:
+          description: Bad Request
+        403:
+          description: Unauthorized
+        404:
+          description: A requested geofence was not found
+        500:
+          description: Unexpected error
+
+    put:
+      security:
+        - Bearer: []
+      summary: Reactivate Geofences
+      description: |
+        Reactivate geofences. Contains an optional JSON body, that is a simple array of geofence UUIDs to reactivate. If this list is not specified, then reactivate ALL of the geofences.
+      tags:
+        - Geofences
+      parameters:
+        - in: body
+          name: reactivationRequest
+          description: An optional array of geofence UUIDs to reactivate
+          required: false
+          schema:
+            $ref: '#/definitions/GeofenceBulkRequestRequest'
+      responses:
+        200:
+          description: Successfully reactivated geofences
+        400:
+          description: Bad Request
+        403:
+          description: Unauthorized
+        404:
+          description: A requested geofence was not found
+        500:
+          description: Unexpected error
+
+  /geofences/notifications/{geofenceUUID}:
+    get:
+      security:
+        - Bearer: []
+      summary: Get geofence notification
+      description: |
+        Returns the notification that is set up on a given geofence.
+      tags:
+        - Geofences
+      parameters:
+        - name: geofenceUUID
+          in: path
+          description: Unique identifier of geofence.
+          required: true
+          type: string
+      responses:
+        200:
+          description: Geofence notification information
+          schema:
+            $ref: '#/definitions/GeofenceNotification'
+        403:
+          description: Unauthorized
+        404:
+          description: Geofence not found, or no notification exists for the geofence.
+        500:
+          description: Unexpected error
+    delete:
+      security:
+        - Bearer: []
+      summary: Remove geofence notification.
+      description: |
+        Clears all custom settings on a geofence notification and deactivates it.
+
+        Note that the notification will not be outright deleted. Every geofence has a notification that does nothing
+        (monitors nothing and sends no updates) by default. This call will return the notification to that state.
+      tags:
+        - Geofences
+      parameters:
+        - name: geofenceUUID
+          in: path
+          description: Unique identifier of geofence.
+          required: true
+          type: string
+      responses:
+        204:
+          description: Notification was successfully cleared.
+        403:
+          description: Unauthorized
+        404:
+          description: Geofence not found, or no notification exists for the geofence.
+        500:
+          description: Unexpected error
+    put:
+      security:
+        - Bearer: []
+      summary: Update geofence notification
+      description: |
+        Updates the given fields on a geofence notification.
+        If the notification doesn't already exist, it will be created.
+        Most fields will not be updated if they are not sent in. The exceptions:
+        * If trackers, drivers, or groups are sent, the MonitorAll flag will be set to false.
+        * If the MonitorAll flag is set to true, any existing trackers, drivers, or groups will be removed from individual notifications, and any value submitted for those fields in the same message will be ignored.
+        * If trackers, drivers, or groups are sent, the others will be cleared. (Submitting drivers will remove all existing tracker-based geofence notifications, etc.)
+      tags:
+        - Geofences
+      parameters:
+        - name: geofenceUUID
+          in: path
+          description: Unique identifier of geofence.
+          required: true
+          type: string
+        - name: geofenceNotificationUpdateInfo
+          in: body
+          description: Object containing the fields to update.
+          schema:
+            $ref: '#/definitions/GeofenceNotificationUpdateInfo'
+      responses:
+        200:
+          description: Geofence notification information
+          schema:
+            $ref: '#/definitions/GeofenceNotification'
+        403:
+          description: Unauthorized
+        404:
+          description: Geofence not found, or no notification exists for the geofence.
+        422:
+          description: Invalid data submitted.
+        500:
+          description: Unexpected error
+
+  /geofences/activity:
+    get:
+      security:
+        - Bearer: []
+      summary: Get geofence activity
+      description: |
+        Gets geofence activity between the start and end dates. Supports paginated results if offset and limit parameters are provided.
+        If making a paginated request with a limit of &#60;= 1000, you can query for up to 93 days of data at a time. Other requests are limited to up to 48 hours.
+      tags:
+        - Geofences
+      parameters:
+        - name: start
+          in: query
+          type: integer
+          format: int64
+          required: true
+          description: Start time of the date range to search for, in milliseconds since the epoch.
+        - name: end
+          in: query
+          type: integer
+          format: int64
+          required: true
+          description: |
+            End time of the date range to search for, in milliseconds since the epoch.
+            If `limit` is &#60;= 1000, this can be up to 93 days after the start time. Otherwise, it must be 48 hours or less.
+        - name: offset
+          in: query
+          type: integer
+          format: int32
+          required: false
+          description: The number of records by which to offset the results. If paginating results, this should be equal to `([the page number you want to retrieve] - 1) * [limit]`. e.g. with a limit of 250, enter an offset of 0 for the first page, 250 for the second page, etc.
+        - name: limit
+          in: query
+          type: integer
+          format: int32
+          required: false
+          description: The number of records to retrieve in one call. Use along with the offset parameter to paginate results. Limit must be &#60;= 1000 to request more than 48 hours of data at once.
+      responses:
+        200:
+          description: Geofence notification information
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/GeofenceActivity'
+        403:
+          description: Unauthorized
+        422:
+          description: Dates are invalid or empty.
+        500:
+          description: Unexpected error
+    post:
+      security:
+        - Bearer: []
+      summary: Get filtered geofence activity
+      description: |
+        Gets geofence activity between the start and end dates, optionally filtered on geofence, groups, trackers, and drivers. Supports paginated results if offset and limit parameters are provided.
+        If making a paginated request with a limit of &#60;= 1000, you can query for up to 93 days of data at a time. Other requests are limited to up to 48 hours.
+      tags:
+        - Geofences
+      parameters:
+        - name: criteria
+          description: Criteria to use for querying the geofence visits.
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/GeofenceActivityRequest'
+      responses:
+        200:
+          description: Geofence notification information
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/GeofenceActivity'
+        403:
+          description: Unauthorized
+        404:
+          description: Request contains an invalid geofence or group ID.
+        422:
+          description: Dates are invalid or empty, or none of the requested groups contain trackers.
+        500:
+          description: Unexpected error
+
+  /tracker:
+    get:
+      security:
+        - Bearer: []
+      summary: Get info for all trackers owned by the company.
+      description: |
+        Returns info for all trackers owned by the company.
+      tags:
+        - Trackers
+      responses:
+        200:
+          description: Tracker information
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/TrackerInfo'
+        500:
+          description: Unexpected error
+
+  /tracker/{id}:
+    get:
+      security:
+        - Bearer: []
+      summary: Get specified tracker info.
+      description: |
+        Returns specified tracker info.
+      tags:
+        - Trackers
+      parameters:
+        - name: id
+          in: path
+          description: ID of the tracker. By default, this is the IMEI.
+          required: true
+          type: string
+        - name: idType
+          in: query
+          description: Identifies the type of ID that was provided.
+          required: false
+          type: string
+          allowEmptyValue: false
+          enum:
+          - imei
+          - deviceUUID
+      responses:
+        200:
+          description: Tracker information
+          schema:
+            $ref: '#/definitions/TrackerInfo'
+        403:
+          description: Unauthorized
+        404:
+          description: Tracker not found
+        500:
+          description: Unexpected error
+    put:
+      security:
+        - Bearer: []
+      summary: Update specified tracker info.
+      description: |
+        Updates specified tracker info.
+      tags:
+        - Trackers
+      parameters:
+        - name: id
+          in: path
+          description: ID of the tracker. By default, this is the IMEI.
+          required: true
+          type: string
+        - name: trackerInfo
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/TrackerUpdateInfo'
+        - name: idType
+          in: query
+          description: Identifies the type of ID that was provided.
+          required: false
+          type: string
+          allowEmptyValue: false
+          enum:
+          - imei
+          - deviceUUID
+      responses:
+        200:
+          description: The updated tracker information
+          schema:
+            $ref: '#/definitions/TrackerInfo'
+        403:
+          description: Unauthorized
+        404:
+          description: Tracker not found
+        422:
+          description: Invalid data in update.
+        500:
+          description: Unexpected error
+
+  /groups:
+    get:
+      security:
+        - Bearer: []
+      summary: Get group info.
+      description: |
+        Returns information on all groups.
+      tags:
+        - Groups
+      responses:
+        200:
+          description: Group information
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/GroupInfo'
+        403:
+          description: Unauthorized
+        500:
+          description: Unexpected error
+  /groups/{id}:
+    get:
+      security:
+        - Bearer: []
+      summary: Get group info.
+      description: |
+        Returns information on all groups.
+      tags:
+        - Groups
+      parameters:
+        - name: id
+          in: path
+          description: ID of the group to retrieve.
+          required: true
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: Group information
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/GroupInfo'
+        403:
+          description: Unauthorized
+        404:
+          description: Group not found
+        500:
+          description: Unexpected error
+
+  /users:
+    get:
+      security:
+        - Bearer: []
+      summary: Get all users.
+      description: Returns information on all users.
+      tags:
+        - Users
+      responses:
+        200:
+          description: User information
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserInfo'
+        403:
+          description: Unauthorized
+        500:
+          description: Unexpected error
+    post:
+      security:
+        - Bearer: []
+      summary: Create new user.
+      description: |
+        Creates a new user. An email and user name are required. <br/>
+        If no User Type is specified, the user will be a Limited user. <br/>
+        If no assigned group is specified, the user will belong to the default group for the company. <br/>
+        If visible groups is left blank, the user will be able to view all groups.
+      tags:
+        - Users
+      parameters:
+        - name: user
+          description: Information for the new user to create.
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserInfo'
+      responses:
+        200:
+          description: Information on the created user.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserInfo'
+        403:
+          description: Unauthorized
+        422:
+          description: A mandatory field was missing, invalid data was found, or the user already exists.
+        500:
+          description: Unexpected error
+
+  /users/{userId}:
+    get:
+      security:
+        - Bearer: []
+      summary: Get single user.
+      description: Gets information for a single user.
+      tags:
+        - Users
+      parameters:
+        - name: userId
+          in: path
+          type: integer
+          format: int64
+          description: ID of the user to retrieve.
+          required: true
+      responses:
+        200:
+          description: User information
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserInfo'
+        403:
+          description: Unauthorized
+        404:
+          description: User not found.
+        500:
+          description: Unexpected error
+    put:
+      security:
+        - Bearer: []
+      summary: Update user info.
+      description: |
+        Updates information on a user. Email, user name, and user type must be populated. <br/>
+        If no assigned group is specified, the user will belong to the default group for the company.<br/>
+        If visible groups is left blank, the user will be able to view all groups.
+      tags:
+        - Users
+      parameters:
+        - name: userId
+          in: path
+          type: integer
+          format: int64
+          description: ID of the user to update.
+          required: true
+        - name: user
+          description: Information to update on the given user.
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserInfo'
+      responses:
+        200:
+          description: User information
+          schema:
+            $ref: '#/definitions/UserInfo'
+        403:
+          description: Unauthorized
+        422:
+          description: A mandatory field was missing or invalid data was found.
+        500:
+          description: Unexpected error
+
+  /customers:
+    get:
+      security:
+        - Bearer: []
+      summary: Get all customers.
+      description: Returns information on all active customers.
+      tags:
+        - Customers
+      responses:
+        200:
+          description: Customer information
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CustomerInfo'
+        401:
+          description: Unauthorized
+        500:
+          description: Unexpected error
+    put:
+      security:
+        - Bearer: []
+      summary: Update customers
+      description: |
+        Submits an update for one or more existing customers. <br/>
+        If the update is successfully queued, an array of the newly-created Uploaded Customer objects will be returned.
+        After being queued, processing proceeds like this:
+        * The Uploaded Customer entries will start in RAW status.
+        * Every five minutes, the queue is read, and all RAW Uploaded Customer entries are validated for basic issues like missing data.
+        * If any validation errors are found with an Uploaded Customer, it's put in PROCESSED status, and any errors are recorded to it. No further action will be taken until the errors are corrected.
+        * If no validation errors are found, the Uploaded Customer moves to PROCESSING status. The system will attempt to validate the address for every location on the Uploaded Customer.
+          This is an asynchronous call, so it can take an indeterminate amount of time.
+        * After address validation, processing proceeds based on the value of the Confirmation field.
+          * **If the Confirmation field is set to NONE**, the customer will be updated with the new data immediately, regardless of whether there were any errors. The uploaded Customers will be set to CREATED status.
+          * **If the Confirmation field is set to ON UPLOAD ERROR** and _all_ customers in this upload successfully processed, this customer will be updated at the end. The Uploaded Customer will be set to CREATED status.
+          * **If the Confirmation field is set to ON UPLOAD ERROR** and _any_ customer in this upload had an error, the Uploaded Customer will be set to PROCESSED status. It won't be updated until you manually validate it in the UI or by calling the /customers
+          /uploads/finalize endpoints.
+          * **If the Confirmation field is set to NONE ON SUCCESS** and *all* customers in this upload successfully processed, this customer will be updated with new data immediately.  The uploaded Customers will be set to CREATED status.
+          * **If the Confirmation field is set to NONE ON SUCCESS** and *any* customer in this upload had an error, the Uploaded Customer will be set to CREATION FAILED status.  It will no longer be visible or accessible for corrections or updates otherwise. 
+          * **If the Confirmation field is set to ALWAYS**, the customer will not be updated. The Uploaded Customer will be set to PROCESSED status. It won't be updated until you manually validate it in the UI or by calling the /customers/uploads/finalize endpoints.
+        <!-- -->
+        During this process, you can use the /customers/uploads endpoints to check on the status of processing or make updates if needed.<br/><br/>
+        Please see the Confirmation field in the body description for more details.<br/>
+        Any entries in CREATED status will be deleted after one week, and any entries in PROCESSED status will be deleted after two weeks.
+      tags:
+        - Customers
+      parameters:
+        - name: customers
+          description: An array of customers to update.
+          in: body
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ApiUploadedCustomerCreate'
+      responses:
+        200:
+          description: Uploaded Customer information
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UploadedCustomer'
+        401:
+          description: Unauthorized
+        422:
+          description: Processing error
+          schema:
+            $ref: '#/definitions/ErrorsMap'
+        500:
+          description: Unexpected error
+    post:
+      security:
+        - Bearer: []
+      summary: Upload new customers.
+      description: |
+        Submits a request to create one or more new customers customers. <br/>
+        If the update is successfully queued, an array of the newly-created Uploaded Customer objects will be returned.
+        After being queued, processing proceeds like this:
+        * The Uploaded Customer entries will start in RAW status.
+        * Every five minutes, the queue is read, and all RAW Uploaded Customer entries are validated for basic issues like missing data.
+        * If any validation errors are found with an Uploaded Customer, it's put in PROCESSED status, and any errors are recorded to it. No further action will be taken until the errors are corrected.
+        * If no validation errors are found, the Uploaded Customer moves to PROCESSING status. The system will attempt to validate the address for every location on the Uploaded Customer.
+          This is an asynchronous call, so it can take an indeterminate amount of time.
+        * After address validation, processing proceeds based on the value of the Confirmation field.
+          * **If the Confirmation field is set to NONE**, the customer will be created with the new data immediately, regardless of whether there were any errors. The uploaded Customers will be set to CREATED status.
+          * **If the Confirmation field is set to ON UPLOAD ERROR** and _all_ customers in this upload successfully processed, this customer will be created at the end. The Uploaded Customer will be set to CREATED status.
+          * **If the Confirmation field is set to ON UPLOAD ERROR** and _any_ customer in this upload had an error, the Uploaded Customer will be set to PROCESSED status. It won't be created until you manually validate it in the UI or by calling the /customers/uploads/finalize endpoints.
+          * **If the Confirmation field is set to NONE ON SUCCESS** and *all* customers in this upload successfully processed, this customer will be updated with new data immediately.  The uploaded Customers will be set to CREATED status.
+          * **If the Confirmation field is set to NONE ON SUCCESS** and *any* customer in this upload had an error, the Uploaded Customer will be set to CREATION FAILED status.  It will no longer be visible or accessible for corrections or updates otherwise. 
+          * **If the Confirmation field is set to ALWAYS**, the customer will not be updated. The Uploaded Customer will be set to PROCESSED status. It won't be created until you manually validate it in the UI or by calling the /customers/uploads/finalize endpoints.
+        <!-- -->
+        During this process, you can use the /customers/uploads endpoints to check on the status of processing or make updates if needed.<br/><br/>
+        Please see the Confirmation field in the body description for more details.<br/>
+        Any entries in CREATED status will be deleted after one week, and any entries in PROCESSED status will be deleted after two weeks.
+      tags:
+        - Customers
+      parameters:
+        - name: customers
+          description: An array of customers to update.
+          in: body
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ApiUploadedCustomerCreate'
+      responses:
+        200:
+          description: Uploaded Customer information
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UploadedCustomer'
+        401:
+          description: Unauthorized
+        422:
+          description: Processing error
+          schema:
+            $ref: '#/definitions/ErrorsMap'
+        500:
+          description: Unexpected error
+
+  /customers/{customerId}:
+    get:
+      security:
+        - Bearer: []
+      summary: Get single customer.
+      description: Returns information on the given customer.
+      tags:
+        - Customers
+      parameters:
+        - name: customerId
+          in: path
+          description: Internal ID of the customer
+          required: true
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: Customer information
+          schema:
+            $ref: '#/definitions/CustomerInfo'
+        401:
+          description: Unauthorized
+        404:
+          description: Not found
+        500:
+          description: Unexpected error
+    delete:
+      security:
+        - Bearer: []
+      summary: Archive a customer
+      description: Archives the given customer and its locations.
+      tags:
+        - Customers
+      parameters:
+        - name: customerId
+          in: path
+          description: Internal ID of the customer
+          required: true
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: Success
+        401:
+          description: Unauthorized
+        404:
+          description: Not found
+        422:
+          description: Processing error
+          schema:
+            $ref: '#/definitions/ErrorsMap'
+        500:
+          description: Unexpected error
+
+  /customers/visits:
+    get:
+      security:
+        - Bearer: []
+      summary: Get customer visits
+      description: |
+        Gets all customer visits within the given date range.
+      tags:
+        - Customers
+      parameters:
+        - name: start
+          in: query
+          type: integer
+          format: int64
+          required: true
+          description: Start time of the date range to search for, in milliseconds since the epoch.
+        - name: end
+          in: query
+          type: integer
+          format: int64
+          required: true
+          description: End time of the date range to search for, in milliseconds since the epoch. Must be within 48 hours of the start time.
+      responses:
+        200:
+          description: Customer visit information
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CustomerVisit'
+        401:
+          description: Unauthorized
+        422:
+          description: Processing error
+          schema:
+            $ref: '#/definitions/ErrorsMap'
+        500:
+          description: Unexpected error
+    post:
+      security:
+        - Bearer: []
+      summary: Get customer visits with filtering
+      description: |
+        Gets all customer visits within the given date range, optionally filtered by the tracker or driver who performed the visit, or the customer who was visited.
+      tags:
+        - Customers
+      parameters:
+        - name: criteria
+          description: Criteria to use for querying the visits.
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CustomerVisitsRequest'
+      responses:
+        200:
+          description: Customer visit information
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CustomerVisit'
+        401:
+          description: Unauthorized
+        422:
+          description: Processing error
+          schema:
+            $ref: '#/definitions/ErrorsMap'
+        500:
+          description: Unexpected error
+
+  /customers/{customerId}/locations/{customerLocationId}:
+    delete:
+      security:
+        - Bearer: []
+      summary: Archive a customer location
+      description: Archives a given customer location. Any existing visits will be preserved.
+      tags:
+        - Customers
+      parameters:
+        - name: customerId
+          in: path
+          description: Internal ID of the customer
+          required: true
+          type: integer
+          format: int64
+        - name: customerLocationId
+          in: path
+          description: Internal ID of the customer location.
+          required: true
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: Success
+        401:
+          description: Unauthorized
+        404:
+          description: Not found
+        422:
+          description: Processing error
+          schema:
+            $ref: '#/definitions/ErrorsMap'
+        500:
+          description: Unexpected error
+
+  /customers/uploads:
+    get:
+      security:
+        - Bearer: []
+      summary: Get customer uploads.
+      description: Returns all customer uploads.
+      tags:
+        - Customers
+      responses:
+        200:
+          description: Uploaded Customer information
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UploadedCustomer'
+        401:
+          description: Unauthorized
+        500:
+          description: Unexpected error
+    put:
+      security:
+        - Bearer: []
+      summary: Update existing customer uploads.
+      description: Update existing Customer Uploads. The uploads must be in PROCESSED status.
+        After being updated, they'll be set back to RAW status and reprocessed like normal. For more information, see the /customers Post call.
+      tags:
+        - Customers
+      parameters:
+        - name: customer uploads
+          description: An array of customer uploads to update.
+          in: body
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ApiUploadedCustomerUpdate'
+      responses:
+        200:
+          description: Uploaded Customer information
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UploadedCustomer'
+        401:
+          description: Unauthorized
+        422:
+          description: Processing error
+          schema:
+            $ref: '#/definitions/ErrorsMap'
+        500:
+          description: Unexpected error
+    delete:
+      security:
+        - Bearer: []
+      summary: Delete all existing customer uploads.
+      description: Delete all existing customer uploads, including ones in CREATED and RAW statuses. Created customers will not be affected.
+      tags:
+        - Customers
+      responses:
+        200:
+          description: Success
+        401:
+          description: Unauthorized
+        500:
+          description: Unexpected error
+
+  /customers/uploads/{uploadedCustomerId}:
+    get:
+      security:
+        - Bearer: []
+      summary: Get customer upload.
+      description: Returns the requested customer upload.
+      tags:
+        - Customers
+      parameters:
+        - name: uploadedCustomerId
+          in: path
+          description: ID of the UploadedCustomer
+          required: true
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: Uploaded Customer information
+          schema:
+            $ref: '#/definitions/UploadedCustomer'
+        401:
+          description: Unauthorized
+        404:
+          description: Not found
+        500:
+          description: Unexpected error
+    delete:
+      security:
+        - Bearer: []
+      summary: Delete a customer upload.
+      description: Delete the given customer upload, including ones in CREATED and RAW statuses. Created customers will not be affected.
+      tags:
+        - Customers
+      parameters:
+        - name: uploadedCustomerId
+          in: path
+          description: ID of the UploadedCustomer
+          required: true
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: Success
+        401:
+          description: Unauthorized
+        404:
+          description: Not found
+        500:
+          description: Unexpected error
+
+  /customers/uploads/finalize:
+    post:
+      security:
+        - Bearer: []
+      summary: Finalize all Uploaded Customers.
+      description: Attempts to finish every Uploaded Customer entry that is in PROCESSED status, creating or updating a Customer as appropriate.
+        This includes entries with errors or that are missing coordinates, so any issues with the uploaded data should be addressed before calling this endpoint.
+        If successful, returns an array with the newly-created customers. The Uploaded Customer records will be deleted.
+      tags:
+        - Customers
+      responses:
+        200:
+          description: Information on the created customers
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CustomerInfo'
+        401:
+          description: Unauthorized
+        422:
+          description: Processing error
+          schema:
+            $ref: '#/definitions/ErrorsMap'
+        500:
+          description: Unexpected error
+
+  /customers/uploads/finalize/{uploadedCustomerId}:
+    post:
+      security:
+        - Bearer: []
+      summary: Finalize an Uploaded Customer.
+      description: Attempts to finish the given Uploaded Customer entry as long as it's in PROCESSED status, creating or updating a Customer as appropriate.
+        This includes entries with errors or that are missing coordinates, so any issues with the uploaded data should be addressed before calling this endpoint.
+        If successful, returns the newly-created customer. The Uploaded Customer record will be deleted.
+      tags:
+        - Customers
+      parameters:
+        - name: uploadedCustomerId
+          in: path
+          description: ID of the UploadedCustomer
+          required: true
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: Information on the created customer
+          schema:
+            $ref: '#/definitions/CustomerInfo'
+        401:
+          description: Unauthorized
+        404:
+          description: Not found
+        422:
+          description: Processing error
+          schema:
+            $ref: '#/definitions/ErrorsMap'
+        500:
+          description: Unexpected error
+
+  /safety-report-card:
+    get:
+      security:
+        - Bearer: []
+      summary: Get safety report card information over a period.
+      description: Gets safety report card information between the start and end times, for all drivers and fleets visible to the calling user.
+      tags:
+        - Safety Report Card
+      parameters:
+        - name: start
+          in: query
+          type: integer
+          format: int64
+          required: true
+          description: Start time of the date range to search for, in milliseconds since the epoch.
+        - name: end
+          in: query
+          type: integer
+          format: int64
+          required: true
+          description: End time of the date range to search for, in milliseconds since the epoch. Must be within 93 days of the start time.
+      responses:
+        200:
+          description: A summary of safety information over the period.
+          schema:
+            $ref: '#/definitions/SafetyReportCard'
+        401:
+          description: Unauthorized
+        422:
+          description: Processing error
+          schema:
+            $ref: '#/definitions/ErrorsMap'
+        500:
+          description: Unexpected error
+    post:
+      security:
+        - Bearer: []
+      summary: Get safety report card information with filtering.
+      description: Gets safety report card information between the start and end times, optionally filtered by fleet, tracker, and user.
+        The fleetIds, trackerIds, and userIds arrays are all optional. If included, only records that match all criteria will be returned. For
+        example, if group IDs and user IDs are both submitted, every must be a member of one of the groups.
+      tags:
+        - Safety Report Card
+      parameters:
+        - name: criteria
+          description: Criteria to use for querying the visits.
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/SafetyReportCardRequest'
+      responses:
+        200:
+          description: A summary of safety information over the period.
+          schema:
+            $ref: '#/definitions/SafetyReportCard'
+        401:
+          description: Unauthorized
+        422:
+          description: Processing error
+          schema:
+            $ref: '#/definitions/ErrorsMap'
+        500:
+          description: Unexpected error
+
+  /push-config:
+    get:
+      security:
+        - Bearer: []
+      summary: Get push API configuration settings.
+      description: Gets push API configuration settings for this account.
+      tags:
+        - Push API Config
+      responses:
+        200:
+          description: Push API configuration settings.
+          schema:
+            $ref: '#/definitions/PushApiConfig'
+        401:
+          description: Unauthorized
+        404:
+          description: No push API configuration exists for this account.
+        409:
+          description: Returned when this account has a non-standard push API configuration. These cannot be viewed or modified through this API at this time.
+        500:
+          description: Unexpected error
+    post:
+      security:
+        - Bearer: []
+      summary: Update push API configuration settings.
+      description: Updates push API configuration settings for this account.
+      tags:
+        - Push API Config
+      parameters:
+        - name: Push API configuration
+          description: New push API configuration for this account.
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PushApiConfig'
+      responses:
+        200:
+          description: Settings were successfully updated.
+        401:
+          description: Unauthorized
+        409:
+          description: Returned when this account has an existing non-standard push API configuration. These cannot be viewed or modified through this API at this time.
+        500:
+          description: Unexpected error
+
+  /media/{mediaId}:
+    get:
+      security:
+        - Bearer: []
+      parameters:
+        - name: mediaId
+          in: path
+          description: ID of the Media entry
+          required: true
+          type: integer
+          format: int64
+      summary: Get media entry.
+      description: Retrieves the URLs for the individual components of a dashcam media clip. 
+        These can include an internal-facing video, an external-facing video, and a thumbnail for either of these. 
+        Please note that depending on the vendor, the camera model, and the type of event that triggered the clip, 
+        these URLs will not always all be populated. Vendors also only retain the media for a clip for a fixed amount 
+        of time. In the event that the vendor no longer has videos or thumbnails to display, but the media ID represents
+        a valid record in our system, this API will return successfully, but no URLs will be populated.
+      tags:
+        - Media
+      responses:
+        200:
+          description: A summary of clip, and URLs to the individual media components, if present.
+          schema:
+            $ref: '#/definitions/Media'
+        '3XX':
+          description: An unexpected error occurred while communicating with the vendor.
+        401:
+          description: Unauthorized
+        403:
+          description: The user does not have permission to access the requested clip.
+        404:
+          description: No media clip by this ID was found.
+        '4XX':
+          description: An unexpected error occurred while communicating with the vendor.
+        500:
+          description: Unexpected error
+        '5XX':
+          description: An unexpected error occurred while communicating with the vendor.
+
+  /company:
+    get:
+      security:
+        - Bearer: []
+      summary: Retrive company info
+      description: Retrives company information like company name, created date, service tier, if it has input sensor data, and their api host.
+        It will also list if they have different types of trackers like Asset, Vehicle, Wired, Plugin, Mini and ATLT trackers.
+      tags:
+        - Company
+      responses:
+        200:
+          description: There will be a responseType field of either 'Success' or 'Error'. If successful, will list relevent company data. If the call fails, will say access denied.
+          schema:
+            $ref: '#/definitions/Company'
+        401:
+          description: Unauthorized
+        500:
+          description: Unexpected error
+
+definitions:
+  FromToDates:
+    type: object
+    properties:
+      fromDate:
+        type: integer
+        format: int64
+        description: Milliseconds since epoch.
+      toDate:
+        type: integer
+        format: int64
+        description: Milliseconds since epoch.
+  Location:
+    type: object
+    properties:
+      imei:
+        type: string
+        description: Unique identifier representing a specific Linxup device.
+      deviceUUID:
+        type: string
+        description: Unique identifier representing a specific device.
+      deviceSerialNumber:
+        type: string
+        description: The serial number for a specific device.
+      driverId:
+        type: integer
+        format: int64
+        description: Long value containing the internal system ID for the device.
+      date:
+        type: integer
+        format: int64
+        description: Long value containing milliseconds since Epoch representing GPS fix date and time.
+      editDate:
+        type: integer
+        format: int64
+        description: Long value containing milliseconds since Epoch representing when the position was saved to the database. This field is not currently being sent.
+      firstName:
+        type: string
+        description: First Name given to the device.
+      lastName:
+        type: string
+        description: Last name given to the device.
+      personName:
+        type: string
+        description:  The full name given to the device. This will usually be the first name and last name concatenated.
+      assetTracker:
+        type: boolean
+        description: if the device is an asset tracker.
+      deviceReportTypeCode:
+        type: string
+        description: A code indicating the type and/or manufacturer of the device.
+      latitude:
+        type: number
+        format: double
+        description: Last known GPS Latitude.
+      longitude:
+        type: number
+        format: double
+        description: Last known GPS Longitude.
+      heading:
+        type: string
+        description: Compass heading of device - N, NE, E, SE, S etc.
+      appDriverId:
+        type: integer
+        format: int64
+        description: Long value containing the internal system ID for the driver.
+      direction:
+        type: integer
+        description: Heading of device in degrees
+      speed:
+        type: integer
+        description: Speed in miles per hour.
+      speeding:
+        type: boolean
+        description: Whether or not the vehicle was speeding at the time of this update.
+      behaviorCd:
+        type: string
+        description: HAC = Rapid Acceleration, HBR = Harsh Braking.
+      estSpeedLimit:
+        type: integer
+        description: The estimated speed limit of the area that the vehicle was in.
+      fleetId:
+        type: integer
+        format: int64
+        description: Long value containing the internal system ID for the group the device belongs to.
+      personMisc4:
+        type: string
+        description: VIN of vehicle device is installed in. This field is only included for backward compatibility. 'vin' should be used instead.
+      personMisc5:
+        type: string
+        description: Model of vehicle (Accord, for eg). This field is only included for backward compatibility. 'model' should be used instead.
+      personMisc6:
+        type: string
+        description: Make of vehicle (Honda, for eg). This field is only included for backward compatibility. 'make' should be used instead.
+      personMisc7:
+        type: string
+        description: Year of vehicle (2015, for eg). This field is only included for backward compatibility. 'year' should be used instead.
+      personMisc8:
+        type: string
+        description: Percentage of fuel available in tank (65%, for eg). This field is only included for backward compatibility. 'fuelLevel' should be used instead.
+      vin:
+        type: string
+        description: VIN of vehicle device is installed in.
+      make:
+        type: string
+        description: Make of vehicle (Honda, for eg).
+      model:
+        type: string
+        description: Model of vehicle (Accord, for eg).
+      year:
+        type: string
+        description: Year of vehicle (2015, for eg).
+      fuelLevel:
+        type: string
+        description: Percentage of fuel available in tank (65%, for eg).
+      battery:
+        type: string
+        description: Battery voltage.
+      trueOdo:
+        type: number
+        format: double
+        description: Odometer reading for vehicle in miles. Only available for JBUS devices, null otherwise.
+      virtualOdo:
+        type: number
+        format: double
+        description: Estimated miles driven since the device was installed.
+      estimatedOdo:
+        type: integer
+        description: Not available for date based searches.
+      engineHours:
+        type: number
+        format: double
+        description: Estimated total engine hours for the vehicle, if known.
+      appDriverName:
+        type: string
+        description: Only available in Linxup Plus. Name of driver associated with device.
+      eldVehicleId:
+        type: string
+        description: Electronic Logging Device ID assigned to the vehicle.
+      sensorData:
+        type: array
+        items:
+          $ref: '#/definitions/SensorData'
+      licensePlate:
+        type: string 
+        description: License plate of the vehicle.
+
+  CurrentLocation:
+    type: object
+    properties:
+      imei:
+        type: string
+        description: Unique identifier representing a specific Linxup device.
+      deviceUUID:
+        type: string
+        description: Unique identifier representing a specific device.
+      deviceSerialNumber:
+        type: string
+        description: The serial number for a specific device.
+      driverId:
+        type: integer
+        format: int64
+        description: Long value containing the internal system ID for the device.
+      date:
+        type: integer
+        format: int64
+        description: Long value containing milliseconds since Epoch representing GPS fix date and time.
+      editDate:
+        type: integer
+        format: int64
+        description: Long value containing milliseconds since Epoch representing when the position was saved to the database. This field is not currently being sent.
+      firstName:
+        type: string
+        description: First Name given to the device.
+      lastName:
+        type: string
+        description: Last name given to the device.
+      personName:
+        type: string
+        description:  The full name given to the device. This will usually be the first name and last name concatenated.
+      assetTracker:
+        type: boolean
+        description: if the device is an asset tracker.
+      deviceReportTypeCode:
+        type: string
+        description: A code indicating the type and/or manufacturer of the device.
+      latitude:
+        type: number
+        format: double
+        description: Last known GPS Latitude.
+      longitude:
+        type: number
+        format: double
+        description: Last known GPS Longitude.
+      heading:
+        type: string
+        description: Compass heading of device - N, NE, E, SE, S etc.
+      appDriverId:
+        type: integer
+        format: int64
+        description: Long value containing the internal system ID for the driver.
+      direction:
+        type: integer
+        description: Heading of device in degrees
+      speed:
+        type: integer
+        description: Speed in miles per hour.
+      speeding:
+        type: boolean
+        description: Whether or not the vehicle was speeding at the time of this update.
+      behaviorCd:
+        type: string
+        description: HAC = Rapid Acceleration, HBR = Harsh Braking.
+      estSpeedLimit:
+        type: integer
+        description: The estimated speed limit of the area that the vehicle was in.
+      fleetId:
+        type: integer
+        format: int64
+        description: Long value containing the internal system ID for the group the device belongs to.
+      personMisc4:
+        type: string
+        description: VIN of vehicle device is installed in. This field is only included for backward compatibility. 'vin' should be used instead.
+      personMisc5:
+        type: string
+        description: Model of vehicle (Accord, for eg). This field is only included for backward compatibility. 'model' should be used instead.
+      personMisc6:
+        type: string
+        description: Make of vehicle (Honda, for eg). This field is only included for backward compatibility. 'make' should be used instead.
+      personMisc7:
+        type: string
+        description: Year of vehicle (2015, for eg). This field is only included for backward compatibility. 'year' should be used instead.
+      personMisc8:
+        type: string
+        description: Percentage of fuel available in tank (65%, for eg). This field is only included for backward compatibility. 'fuelLevel' should be used instead.
+      vin:
+        type: string
+        description: VIN of vehicle device is installed in.
+      make:
+        type: string
+        description: Make of vehicle (Honda, for eg).
+      model:
+        type: string
+        description: Model of vehicle (Accord, for eg).
+      year:
+        type: string
+        description: Year of vehicle (2015, for eg).
+      fuelLevel:
+        type: string
+        description: Percentage of fuel available in tank (65%, for eg).
+      battery:
+        type: string
+        description: Battery voltage.
+      trueOdo:
+        type: number
+        format: double
+        description: Odometer reading for vehicle in miles. Only available for JBUS devices, null otherwise.
+      virtualOdo:
+        type: number
+        format: double
+        description: Estimated miles driven since the device was installed.
+      estimatedOdo:
+        type: integer
+        description: Not available for date based searches.
+      engineHours:
+        type: number
+        format: double
+        description: Estimated total engine hours for the vehicle, if known.
+      appDriverName:
+        type: string
+        description: Only available in Linxup Plus. Name of driver associated with device.
+      eldVehicleId:
+        type: string
+        description: Electronic Logging Device ID assigned to the vehicle.
+      sensorData:
+        type: array
+        items:
+          $ref: '#/definitions/SensorData'
+      status:
+        type: string
+        description: |
+          The current status of the tracker. One of
+          * **Moving**
+          * **Idle**
+          * **Stopped**
+          * **Not Active:** The device has never reported in. You may need to activate it.
+          * **Offline:** The tracker is offline, and the reason could not be determined.
+          * **Offline - No Power:** The tracker is offline because it is unpowered.
+          * **Offline - Low Battery:** The tracker is offline because the internal battery is low.
+          * **Offline - No Gps:** The tracker is offline because it has no GPS signal.
+      licensePlate:
+        type: string 
+        description: License plate of the vehicle.
+
+  Stop:
+    type: object
+    properties:
+      imei:
+        type: string
+        description: Unique identifier representing a specific Linxup device (aka deviceNbr).
+      deviceNbr:
+        type: string
+        description: Unique identifier representing a specific Linxup device (aka imei).
+      deviceUUID:
+        type: string
+        description: Unique identifier representing a specific device.
+      deviceSerialNumber:
+        type: string
+        description: The serial number for a specific device.
+      stopType:
+        type: string
+        description: Engine Off or Idling.
+      beginDate:
+        type: integer
+        format: int64
+        description: Start time of stop (Long value containing milliseconds since Epoch).
+      endDate:
+        type: integer
+        format: int64
+        description: End time of stop (Long value containing milliseconds since Epoch).
+      duration:
+        type: integer
+        format: int64
+        description: Duration of stop in minutes.
+      firstName:
+        type: string
+        description: First Name given to the device.
+      lastName:
+        type: string
+        description: Last name given to the device.
+      driverName:
+        type: string
+        description: Name given to the device (combines first and last names).
+      latitude:
+        type: number
+        format: double
+        description: Stop Latitude.
+      longitude:
+        type: number
+        format: double
+        description: Stop Longitude.
+      geofenceName:
+        type: string
+        description: Name of fence device was stopped in, if any.
+      street:
+        type: string
+        description: Street address.
+      city:
+        type: string
+        description: City.
+      stateCode:
+        type: string
+        description: State.
+      postalCode:
+        type: string
+        description: Postal Code/Zip.
+      countryCode:
+        type: string
+        description: Country.
+      appDriverName:
+        type: string
+        description: Only available in Linxup Plus. Name of driver associated with device.
+      agilisGeofenceId:
+        type: string
+        description: Unique identifier representing a specific geofence.
+      geofenceUUID:
+        type: string
+        description: Unique identifier representing a specific geofence.
+      stopUUID:
+        type: string
+        description: Unique identifier representing a specific stop.
+
+  Trip:
+    type: object
+    properties:
+      driverName:
+        type: string
+        description: Name given to the device (combines first and last names).
+      imei:
+        type: string
+        description: Unique identifier representing a specific Linxup device.
+      deviceUUID:
+        type: string
+        description: Unique identifier representing a specific device.
+      deviceSerialNumber:
+        type: string
+        description: The serial number for a specific device.
+      startDateTime:
+        type: integer
+        format: int64
+        description: Start time of trip (Long value containing milliseconds since Epoch).
+      startLatitude:
+        type: number
+        format: double
+        description: Trip start latitude.
+      startLongitude:
+        type: number
+        format: double
+        description: Trip start longitude.
+      startAddress:
+        type: string
+        description: Trip start address.
+      endDateTime:
+        type: integer
+        format: int64
+        description: End time of trip (Long value containing milliseconds since Epoch).
+      endLatitude:
+        type: number
+        format: double
+        description: Trip end latitude.
+      endLongitude:
+        type: number
+        format: double
+        description: Trip end longitude.
+      endAddress:
+        type: string
+        description: Trip end address.
+      durationMinutes:
+        type: integer
+        format: int64
+        description: Duration of trip in minutes.
+      distanceMiles:
+        type: integer
+        format: int64
+        description: Miles traveled in trip (rounded to nearest integer).
+      authorizedMiles:
+        type: integer
+        format: int64
+        description: Miles traveled in trip that were within authorized hours (rounded to nearest integer).
+      unauthorizedMiles:
+        type: integer
+        format: int64
+        description: Miles traveled in trip that were outside of authorized hours (rounded to nearest integer).
+      distanceMilesDetailed:
+        type: number
+        format: double
+        description: Miles traveled in trip (to 3 decimal places).
+      authorizedMilesDetailed:
+        type: number
+        format: double
+        description: Miles traveled in trip that were within authorized hours (to 3 decimal places).
+      unauthorizedMilesDetailed:
+        type: number
+        format: double
+        description: Miles traveled in trip that were outside of authorized hours (to 3 decimal places).
+      authorized:
+        type: boolean
+        description: Whether the trip was within authorized hours or not.
+      appDriverName:
+        type: string
+        description: Only available in Linxup Plus. Name of driver associated with device.
+      tripUUID:
+        type: string
+        description: Unique identifier representing a specific trip.
+
+  UsageHour:
+    type: object
+    properties:
+      segmentId:
+        type: integer
+        format: int64
+        description: Unique identifier for the period of usage.
+      driverId:
+        type: integer
+        format: int64
+        description: Internal unique identifier for the driver.
+      fleetId:
+        type: integer
+        format: int64
+        description:  Internal unique identifier for the group.
+      imei:
+        type: string
+        description: Unique identifier representing a specific Linxup device (aka deviceNbr).
+      deviceNbr:
+        type: string
+        description: Unique identifier representing a specific Linxup device (aka imei).
+      deviceUUID:
+        type: string
+        description: Unique identifier representing a specific device.
+      deviceSerialNumber:
+        type: string
+        description: The serial number for a specific device.
+      firstName:
+        type: string
+        description: First name given to the device.
+      lastName:
+        type: string
+        description: Last name given to the device.
+      driverName:
+        type: string
+        description: Name given to the device (combines first and last names).
+      startDateTime:
+        type: integer
+        format: int64
+        description: Start time of trip (Long value containing milliseconds since Epoch).
+      startLatitude:
+        type: number
+        format: double
+        description: Trip start latitude.
+      startLongitude:
+        type: number
+        format: double
+        description: Trip start longitude.
+      startAddress:
+        type: string
+        description: Trip start address.
+      endDateTime:
+        type: integer
+        format: int64
+        description: End time of trip (Long value containing milliseconds since Epoch).
+      endLatitude:
+        type: number
+        format: double
+        description: Trip end latitude.
+      endLongitude:
+        type: number
+        format: double
+        description: Trip end longitude.
+      endAddress:
+        type: string
+        description: Trip end address.
+      durationMinutes:
+        type: integer
+        format: int64
+        description: Duration of trip in minutes.
+      minutesToNextSegment:
+        type: integer
+        format: int64
+        description: If this segment is in the past, the period between when it finished and the start of the next usage segment.
+      startGeofenceName:
+        type: string
+        description: The name of the geofence that the device was inside at the start of the segment, if applicable.
+      endGeofenceName:
+        type: string
+        description: The name of the geofence that the device was inside at the start of the segment, if applicable.
+
+  AdvancedTrip:
+    type: object
+    properties:
+      imei:
+        type: string
+        description: Unique identifier representing a specific Linxup device (aka deviceNbr).
+      deviceUUID:
+        type: string
+        description: Unique identifier representing a specific device.
+      deviceSerialNumber:
+        type: string
+        description: The serial number for a specific device.
+      rowType:
+        type: string
+        description: Valid values are ignitionOn, ignitionOff, moving, idle and stop
+      rowLabel:
+        type: string
+        description: Short label of info contained in this trip
+      eventDescription:
+        type: string
+        description: Valid values are Ignition On, Ignition Off, Driving, Stopped (Idling), Stopped (Ignition Off)
+      driverName:
+        type: string
+        description: Name given to the device (combines first and last names).
+      appDriverName:
+        type: string
+        description: Only available in Linxup Plus. Name of driver associated with device.
+      startDateTime:
+        type: integer
+        format: int64
+        description: Start time of trip (Long value containing milliseconds since Epoch).
+      startLatitude:
+        type: number
+        format: double
+        description: Trip start latitude.
+      startLongitude:
+        type: number
+        format: double
+        description: Trip start longitude.
+      startLocation:
+        type: string
+        description: Trip start address in HTML format.
+      endDateTime:
+        type: integer
+        format: int64
+        description: End time of trip (Long value containing milliseconds since Epoch).
+      endLatitude:
+        type: number
+        format: double
+        description: Trip end latitude.
+      endLongitude:
+        type: number
+        format: double
+        description: Trip end longitude.
+      endLocation:
+        type: string
+        description: Trip end address in HTML format.
+      distanceMiles:
+        type: integer
+        format: int64
+        description: Miles traveled in trip (rounded to nearest integer).
+      distanceMilesDetailed:
+        type: number
+        format: double
+        description: Miles traveled in trip (to 3 decimal places).
+      travelTime:
+        type: string
+        description: Duration of travel in friendly format.
+      idleTime:
+        type: string
+        description: Duration of idling in friendly format.
+      stopTime:
+        type: string
+        description: Duration of stop in friendly format.
+      authorized:
+        type: boolean
+        description: Whether the trip was within authorized hours or not.
+      agilisTrackerId:
+        type: string
+        description: Unique tracker identifier.
+      agilisTripId:
+        type: string
+        description: Unique trip identifier.
+
+  Alert:
+    type: object
+    properties:
+      deviceNumber:
+        type: string
+        description: Unique identifier representing a specific Linxup device (aka imei).
+      deviceSerialNumber:
+        type: string
+        description: Serial number of a Linxup device.
+      deviceUUID:
+        type: string
+        description: Unique identifier representing a specific device.
+      deviceTypeDescription:
+        type: string
+        description: Type of device (3G Plugin, 3G Wired etc).
+      driverNumber:
+        type: string
+        description: Unique identifier of driver assigned to device (only available in Linxup Plus).
+      firstName:
+        type: string
+        description: First Name given to the device.
+      lastName:
+        type: string
+        description: Last name given to the device.
+      appDriverName:
+        type: string
+        description: Name of driver assigned to device (only available in Linxup Plus).
+      fleetName:
+        type: string
+        description: Name of fleet (aka group) device belongs to.
+      vin:
+        type: string
+        description: VIN of vehicle device is plugged in.
+      make:
+        type: string
+        description: Make of vehicle device is plugged in.
+      model:
+        type: string
+        description: Model of vehicle device is plugged in.
+      year:
+        type: string
+        description: Model year of vehicle device is plugged in.
+      alertCode:
+        type: string
+        description: Type of alert (TAMPER, NO_SIGNAL etc).
+      alertShortDesc:
+        type: string
+        description: Short description, suitable for a subject line.
+      alertDesc:
+        type: string
+        description: Long description of alert.
+      alertDateTime:
+        type: integer
+        format: int64
+        description: Date and time of alert (Long value containing milliseconds since Epoch).
+      formattedAlertDateTime:
+        type: string
+        description: Alert date and time in ISO8601 format
+      alertUUID:
+        type: string
+        description: Alert unique identifier
+      fenceName:
+        type: string
+        description: If this is a geofence-related notification, the name of the geofence.
+      fenceGroup:
+        type: string
+        description: If this is a geofence-related notification, the name of the group that the geofence is in.
+      geofenceUUID:
+        type: string
+        description: If this is a geofence-related notification, the UUID of the geofence.
+      mediaId:
+        type: integer
+        format: int64
+        description: If the alert was generated by a dashcam, the ID needed to retrieve the video components from the Media API.
+
+  CreateJobInfo:
+    type: object
+    properties:
+      subject:
+        type: string
+        description: subject of job
+      notes:
+        type: string
+        description: Notes for job
+      street1:
+        type: string
+        description: Job address, street line 1
+      street2:
+        type: string
+        description: Job address, street line 2
+      city:
+        type: string
+        description: Job address, city
+      stateCode:
+        type: string
+        description: Job address, state code
+      postalCode:
+        type: string
+        description: Job address, postal/zip code
+      email:
+        type: string
+        description: Email address of the user assigned to work the job. Mandatory when creating a job, optional otherwise.
+  JobInfo:
+    type: object
+    properties:
+      subject:
+        type: string
+        description: subject of job
+      notes:
+        type: string
+        description: Notes for job
+      street1:
+        type: string
+        description: Job address, street line 1
+      street2:
+        type: string
+        description: Job address, street line 2
+      city:
+        type: string
+        description: Job address, city
+      stateCode:
+        type: string
+        description: Job address, state code
+      postalCode:
+        type: string
+        description: Job address, postal/zip code
+  Job:
+    type: object
+    properties:
+      job:
+        type: object
+        properties:
+          workOrderId:
+            type: integer
+            format: int64
+            description: Internal unique ID of the work order.
+          uuid:
+            type: string
+            description: unique identifier
+          subject:
+            type: string
+            description: subject of job
+          notes:
+            type: string
+            description: Notes for job
+          street1:
+            type: string
+            description: Job address, street line 1
+          street2:
+            type: string
+            description: Job address, street line 2
+          city:
+            type: string
+            description: Job address, city
+          stateCode:
+            type: string
+            description: Job address, state code
+          postalCode:
+            type: string
+            description: Job address, postal/zip code
+          statusCode:
+            type: string
+            description: Current status code of job
+          statusDescription:
+            type: string
+            description: Description of current status code of job
+          statusDate:
+            type: integer
+            format: int64
+            description: Date when job was put in the current status (expressed in milliseconds since epoch)
+          assignedPersonId:
+            type: integer
+            format: int64
+            description: Internal unique ID of the person. This can be used to look up other information on them in the Users endpoint.
+          assignedPersonEmail:
+            type: string
+            description: Email address of user assigned to work on the job
+          assignedPersonName:
+            type: string
+            description: Name of user assigned to work on the job
+          statusHistInfo:
+            type: string
+            description: A JSON-formatted string containing the history of this work order's status changes.
+
+  EmailMap:
+    type: object
+    properties:
+      email:
+        type: string
+        description: Email address of new user
+
+  UuidResponse:
+    type: object
+    properties:
+      uuid:
+        type: string
+        description: UUID of the created job.
+
+  TokenResponse:
+    type: object
+    properties:
+      responseType:
+        type: string
+        description: Should be the string Success
+      data:
+        type: object
+        properties:
+          token:
+            type: string
+            description: The generated API token
+
+  SuccessResponse:
+    type: object
+    properties:
+      responseType:
+        type: string
+        description: Should be the string Success
+
+  Error:
+    type: object
+    properties:
+      responseType:
+        type: string
+        description: Should be the string Error
+      data:
+        type: object
+        properties:
+          message:
+            type: string
+            description: The error message
+
+  ErrorsMap:
+    type: object
+    properties:
+      errors:
+        type: object
+        properties:
+          fieldName:
+            type: array
+            description: All of the errors for the given field.
+            items:
+              type: string
+
+  GeofenceWithGeofenceUUID:
+    type: object
+    properties:
+      agilisGeofenceId:
+        type: string
+        description: Agilis identifier of geofence.
+      geofenceUUID:
+        type: string
+        description: Unique identifier of geofence.
+      name:
+        type: string
+        description: Name of the geofence.
+      color:
+        type: string
+        description: Color used to display geofence.
+      type:
+        type: string
+        description: circle, polygon, landmark.
+      fenceGroup:
+        type: string
+        description: Name of the geofence group.
+      status:
+        type: string
+        description: Status of geofence ACT=active  INA=Inactive.
+      points:
+        type: array
+        items:
+          $ref: '#/definitions/Point'
+      radius:
+        type: number
+        format: float
+        description: Size for circle geofence.
+      trackers:
+        type: array
+        items:
+          type: string
+        description: IMEIs for any trackers that should trigger notifications on this geofence.
+      drivers:
+        type: array
+        items:
+          type: integer
+          format: int64
+          description: Internal IDs for any drivers that should trigger notifications on this geofence.
+      groups:
+        items:
+          type: integer
+          format: int64
+          description: Internal IDs for any groups that should trigger notifications on this geofence.
+    required:
+       - geofenceUUID
+       - name
+       - type
+       - points
+  GeofenceBulkRequestRequest:
+    type: object
+    properties:
+      geofenceUUIDs:
+        type: array
+        items:
+          type: string
+
+  GeofenceInfo:
+    type: object
+    properties:
+      name:
+        type: string
+        description: Name of the geofence.
+      color:
+        type: string
+        description: Color used to display geofence.
+      type:
+        type: string
+        description: circle, polygon, landmark.
+      fenceGroup:
+        type: string
+        description: Name of the geofence group.
+      status:
+        type: string
+        description: Status of geofence ACT=active  INA=Inactive.
+      points:
+        type: array
+        items:
+          $ref: '#/definitions/Point'
+      radius:
+        type: number
+        format: float
+        description: Size for circle geofence.
+      trackers:
+        type: array
+        items:
+          type: string
+        description: IMEIs for any trackers that should trigger notifications on this geofence.
+      drivers:
+        type: array
+        items:
+          type: integer
+          format: int64
+          description: Internal IDs for any drivers that should trigger notifications on this geofence.
+      groups:
+        type: array
+        items:
+          type: integer
+          format: int64
+          description: Internal IDs for any groups that should trigger notifications on this geofence.
+    required:
+      - name
+      - type
+      - points
+
+  Point:
+    type: object
+    properties:
+      latitude:
+        type: number
+        format: double
+        description: GPS Latitude.
+      longitude:
+         type: number
+         format: double
+         description: GPS Longitude.
+    required:
+       - latitude
+       - longitude
+
+  GeofenceUUIDResponse:
+    type: object
+    properties:
+      geofenceUUID:
+        type: string
+        description: Unique identifier of the created geofence.
+    required:
+        - geofenceUUID
+
+  InvalidGeofence:
+    type: object
+    properties:
+       errors:
+        type: object
+        properties:
+          fieldName:
+            type: array
+            description: Errors for field
+            items:
+              type: string
+              description: Error message
+
+  GeofenceNotification:
+    type: object
+    properties:
+      notificationId:
+        type: integer
+        format: int64
+        description: Internal ID of the notification.
+      notificationName:
+        type: string
+        description: Name of the notification.
+      geofenceName:
+        type: string
+        description: Name of the geofence.
+      geofenceType:
+        type: string
+        description: Type of the geofence--circle, polygon, landmark.
+      geofenceId:
+        type: integer
+        format: int64
+        description: Internal ID of the geofence.
+      trackers:
+        type: array
+        items:
+          type: string
+        description: IMEIs for any trackers that should trigger notifications on this geofence.
+      drivers:
+        type: array
+        items:
+          type: integer
+          format: int64
+        description: Internal IDs for any drivers that should trigger notifications on this geofence.
+      groups:
+        type: array
+        items:
+          type: integer
+          format: int64
+        description: Internal IDs for any groups that should trigger notifications on this geofence.
+      monitorAll:
+        type: boolean
+        description: Whether or not this notification is set to monitor all possible sources of notifications (all trackers, drivers, and groups.)
+      emailAlerts:
+        type: array
+        items:
+          type: string
+        description: The email addresses to receive email updates for this notification.
+      appAlerts:
+        type: array
+        items:
+          type: integer
+          format: int64
+        description: Internal user IDs for users who should receive push updates in the app for this notification.
+      textAlerts:
+        type: array
+        items:
+          type: string
+        description: Phone numbers to receive SMS updates for this notification. This must include area code.
+      frequency:
+        type: string
+        description: How often this notification can send alerts (Immediate, Hourly, Daily.)
+      entityType:
+        type: string
+        description: The type of entity being monitored by this notification (VEHICLE, DRIVER, GROUP.)
+      editDate:
+        type: string
+        description: The date that the notification was last edited, in milliseconds since the epoch.
+
+  GeofenceNotificationUpdateInfo:
+    description: Information used to update a geofence notification.
+    properties:
+      notificationName:
+        description: New name for the notification.
+        type: string
+      trackers:
+        type: array
+        items:
+          type: string
+        description: IMEIs for any trackers that should trigger notifications on this geofence.
+      drivers:
+        type: array
+        items:
+          type: integer
+          format: int64
+        description: Internal IDs for any drivers that should trigger notifications on this geofence.
+      groups:
+        type: array
+        items:
+          type: integer
+          format: int64
+        description: Internal IDs for any groups that should trigger notifications on this geofence.
+      monitorAll:
+        description: Whether or not the notification should be triggered for all trackers, drivers, and groups.
+                     If true, the trackers, drivers, and groups fields are ignored.
+        type: boolean
+      emailAlerts:
+        type: array
+        items:
+          type: string
+        description: The email addresses to receive email updates for this notification.
+      appAlerts:
+        type: array
+        items:
+          type: integer
+          format: int64
+        description: Internal user IDs for users who should receive push updates in the app for this notification.
+      textAlerts:
+        type: array
+        items:
+          type: string
+        description: Phone numbers to receive SMS updates for this notification. This must include area code.
+      frequency:
+        type: string
+        description: How often this notification should send alerts (Immediate, Hourly, Daily.)
+
+  GeofenceActivity:
+    description: Geofence activity
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: Internal ID of this geofence visit.
+      imei:
+        type: string
+        description: The IMEI of the device.
+      deviceUUID:
+        type: string
+        description: Unique identifier representing a specific device.
+      deviceSerialNumber:
+        type: string
+        description: The serial number of the device.
+      driverId:
+        type: integer
+        format: int64
+        description: Internal ID of the vehicle tracker.
+      driverName:
+        type: string
+        description: Name of the vehicle tracker.
+      appDriverId:
+        type: integer
+        format: int64
+        description: Internal ID of the driver, or 0 if no driver was assigned to the vehicle.
+      appDriverName:
+        type: string
+        description: Name of the driver, if any.
+      fenceUUID:
+        type: string
+        description: UUID of the geofence.
+      fenceId:
+        type: integer
+        format: int64
+        description: Internal ID of the geofence.
+      fenceName:
+        type: string
+        description: Name of the geofence.
+      fenceGroup:
+        type: string
+        description: Name of the group that the geofence is in.
+      enterDateTime:
+        type: integer
+        format: int64
+        description: Time that the geofence was entered, in milliseconds past the epoch.
+      exitDateTime:
+        type: integer
+        format: int64
+        description: Time that the geofence was exited, in milliseconds past the epoch, or null if the vehicle is still inside the geofence.
+      timeInFenceSelectedRange:
+        type: integer
+        format: int64
+        description: How long the vehicle spent inside the geofence during the filtered range, in minutes.
+      totalTimeInFence:
+        type: integer
+        format: int64
+        description: How long the vehicle spent inside the geofence during this entire visit, in minutes.
+
+  GeofenceActivityRequest:
+    type: object
+    required:
+      - start
+      - end
+    properties:
+      start:
+        type: integer
+        format: int64
+        description: Start time of the date range to search for, in milliseconds since the epoch.
+      end:
+        type: integer
+        format: int64
+        description: |
+          End time of the date range to search for, in milliseconds since the epoch.
+          If `limit` is &#60;= 1000, this can be up to 93 days after the start time. Otherwise, it must be 48 hours or less.
+      trackerIds:
+        type: array
+        items:
+          type: integer
+          format: int64
+          description: Internal IDs of the trackers to retrieve geofence activity for. If omitted, all trackers in groups that are visible to the user will be retrieved.
+      userIds:
+        type: array
+        items:
+          type: integer
+          format: int64
+          description: Internal user IDs of the drivers to retrieve geofence activity for. If omitted, all drivers in groups that are visible to the user will be retrieved.
+      fleetIds:
+        type: array
+        items:
+          type: integer
+          format: int64
+          description: Internal IDs of the groups to retrieve geofence activity for. If omitted, all groups visible to the user will be retrieved.
+      fenceUUID:
+        type: string
+        description: UUID of the geofence to retrieve geofence activity for. If omitted, all geofences will be retrieved.
+      offset:
+        type: integer
+        format: int32
+        description: The number of records by which to offset the results. If paginating results, this should be equal to `([the page number you want to retrieve] - 1) * [limit]`. e.g. with a limit of 250, enter an offset of 0 for the first page, 250 for the second page, etc.
+      limit:
+        type: integer
+        format: int32
+        description: The number of records to retrieve in one call. Use along with the offset parameter to paginate results. Limit must be &#60;= 1000 to request more than 48 hours of data at once.
+
+  TrackerInfo:
+    description: Information on a tracker
+    properties:
+      imei:
+        type: string
+        description: The device's IMEI.
+      deviceUUID:
+        type: string
+        description: The device's UUID.
+      customerUUID:
+        type: string
+        description: The UUID of the customer account the device belongs to.
+      firstName:
+        type: string
+        description: The device's first name.
+      lastName:
+        type: string
+        description: The device's last name.
+      deviceTypeDescription:
+        type: string
+        description: Description of the device type.
+      vin:
+        type: string
+        description: The VIN of the vehicle the device is installed in.
+      make:
+        type: string
+        description: The make of the vehicle the device is installed in.
+      model:
+        type: string
+        description: The model of the vehicle the device is installed in.
+      year:
+        type: string
+        description: The year of the vehicle the device is installed in.
+      driverId:
+        type: number
+        description: The driver ID assigned to the device.
+      groupId:
+        type: number
+        description: The group ID that the device is assigned to.
+      eldVehicleId:
+        type: string
+        description: Electronic Logging Device ID assigned to the vehicle.
+      licensePlate:
+        type: string 
+        description: License plate of the vehicle.
+
+  TrackerUpdateInfo:
+    description: Information to be updated on a tracker
+    properties:
+      firstName:
+        type: string
+        description: The device's first name.
+      lastName:
+        type: string
+        description: The device's last name. (Deprecated)
+      vin:
+        type: string
+        description: The VIN of the vehicle the device is installed in.
+      groupId:
+        type: number
+        description: The group ID that the device is assigned to.
+      licensePlate:
+        type: string 
+        description: License plate of the vehicle.
+
+  UsernameAndPassword:
+    description: Username and Password
+    properties:
+      username:
+        type: string
+        description: username
+      password:
+        type: string
+        description: password
+    required:
+      - username
+      - password
+
+  SensorData:
+    type: object
+    properties:
+      sensorNumber:
+        type: number
+        format: integer
+        description: Sensor number
+      temperature:
+        type: number
+        format: double
+        description: Temperature in degrees Fahrenheit.
+      humidity:
+         type: number
+         format: double
+         description: Relative humidity as a percentage.
+
+  GroupInfo:
+    type: object
+    properties:
+      groupId:
+        type: integer
+        format: int64
+        description: Internal ID of the group.
+      groupName:
+        type: string
+        description: Name of the group.
+      groupDesc:
+        type: string
+        description: Description of the group.
+      trackers:
+        type: array
+        items:
+          type: integer
+          format: int64
+          description: Internal ID of a tracker assigned to the group.
+      drivers:
+        type: array
+        items:
+          type: integer
+          format: int64
+          description: Internal ID of a driver assigned to the group.
+
+  UserInfo:
+    type: object
+    properties:
+      userId:
+        type: integer
+        format: int64
+        description: Internal user ID for the user.
+      email:
+        type: string
+        description: Email address for the user.
+      phoneNumber:
+        type: string
+        description: Phone number for the user.
+      userName:
+        type: string
+        description: User name for the user.
+      assignedVehicle:
+        type: integer
+        format: int64
+        description: Internal ID for the tracker of the vehicle the user is assigned to, if any.
+      userType:
+        type: string
+        description: The user's role within the application. One of Administrator, Driver, or Limited.
+      assignedGroup:
+        type: integer
+        format: int64
+        description: The internal ID for the group that the user belongs to.
+      visibleGroups:
+        type: array
+        items:
+          type: integer
+          format: int64
+          description: Internal ID of a group that the user is able to see in the application.
+
+  CustomerInfo:
+    type: object
+    properties:
+      customerId:
+        type: integer
+        format: int64
+        description: Internal ID for the customer.
+      statusCd:
+        type: string
+        description: Status of the customer. 'ACT' for active, 'INA' for inactive.
+      externalId:
+        type: string
+        description: User-provided ID for the customer, to identify them within other systems.
+      customerGroupId:
+        type: string
+        description: Not yet implemented. Data type may change.
+      customerName:
+        type: string
+        description: Customer's name.
+      phoneNumber:
+        type: string
+        description: Customer's contact phone number, as entered.
+      emailAddress:
+        type: string
+        description: Customer's contact email.
+      customerNotes:
+        type: string
+        description: User-provided notes on the customer.
+      createDate:
+        type: integer
+        format: int64
+        description: Date that the customer was created, in seconds since the epoch.
+      customerLocations:
+        type: array
+        items:
+          $ref: '#/definitions/CustomerLocationInfo'
+
+  CustomerLocationInfo:
+    type: object
+    properties:
+      customerLocationId:
+        type: integer
+        format: int64
+        description: Internal ID for the customer location.
+      rawAddress:
+        type: string
+        description: The location's address, as entered by the user.
+      addressValidated:
+        type: string
+        description: Y/N, indicating whether the system was able to successfully parse the address and determine its coordinates.
+      latitude:
+        type: number
+        format: double
+        description: The location's latitude, if provided by the user or the system was able to determine it based on the address.
+      longitude:
+        type: number
+        format: double
+        description: The location's longitude, if provided by the user or the system was able to determine it based on the address.
+      geofenceId:
+        type: integer
+        format: int64
+        description: Internal ID for the geofence around the customer location.
+      geofenceUUID:
+        type: string
+        description: Unique identifier for the geofence around the customer location.
+      customerLocationExternalId:
+        type: string
+        description: User-provided ID for the customer location, to identify them within other systems.
+
+  ApiUploadedCustomerCreate:
+    type: object
+    properties:
+      customerName:
+        type: string
+        description: Customer's name.
+      fleet:
+        type: string
+        description: Not yet implemented. Data type may change.
+      email:
+        type: string
+        description: Customer's contact email.
+      phone:
+        type: string
+        description: Customer's contact phone number, as entered.
+      notes:
+        type: string
+        description: User-provided notes on the customer.
+      externalId:
+        type: string
+        description: User-provided ID for the customer, to identify them within other systems.
+      confirmation:
+        type: string
+        description: |
+          Should be one of the following values:
+          * **ALWAYS**: Behaves the same as uploading a customer spreadsheet in the portal.
+          After processing, whether or not there are any errors, the Uploaded Customer will be left in PROCESSED status.
+          It won't be created until you manually validate it in the UI or by calling the /customers/uploads/finalize endpoints.
+          * **ON UPLOAD ERROR**: Default behavior for uploads through the API.
+          If _all_ customers in this upload successfully process, this customer will be created at the end. The Uploaded Customer will be set to CREATED status. The customer ID for the new customer will be added.
+          If _any_ customers in this upload have errors, this Uploaded Customer will be left in PROCESSED status.
+          It won't be created until you manually validate it in the UI or by calling the /customers/uploads/finalize endpoints.
+          * **NONE**: If the Uploaded Customer passes initial validation (isn't missing an address, doesn't have an invalid state, etc) then the customer will be updated, whether or not the address can be validated and mapped to coordinates.
+          If the Uploaded Customer fails at initial validation, it will be left in PROCESSED status.
+          Otherwise, the customer will be created, and the Uploaded Customer will be put in CREATED status. The customer ID for the new customer will be added.
+          <!-- -->
+          If left blank or not submitted, will default to ON UPLOAD ERROR.
+      customerId:
+        type: integer
+        format: int64
+        description: If this is a request to update an existing customer, the ID of the existing customer to update. If this is a request to create a new customer, this should be left blank.
+      customerLocations:
+        type: array
+        items:
+          $ref: '#/definitions/ApiUploadedCustomerLocationCreate'
+
+  ApiUploadedCustomerUpdate:
+    type: object
+    properties:
+      uploadedCustomerId:
+        type: integer
+        format: int64
+        description: ID of the Uploaded Customer to update. Required.
+      customerName:
+        type: string
+        description: Customer's name.
+      fleet:
+        type: string
+        description: Not yet implemented. Data type may change.
+      email:
+        type: string
+        description: Customer's contact email.
+      phone:
+        type: string
+        description: Customer's contact phone number, as entered.
+      notes:
+        type: string
+        description: User-provided notes on the customer.
+      externalId:
+        type: string
+        description: User-provided ID for the customer, to identify them within other systems.
+      confirmation:
+        type: string
+        description: |
+          Should be one of the following values:
+          * **ALWAYS**: After processing, whether or not there are any errors, the Uploaded Customer will be left in PROCESSED status.
+          It won't be updated until you manually validate it in the UI or by calling the /customers/uploads/finalize endpoints.
+          * **NONE ON SUCCESS**: If the Uploaded Customer was validated and mapped to GPS coordinates successfully, it will be deemed CREATED. If all customer uploads contained within a given batch feature this confirmation type, that batch will be finalized immediately and automatically - no updates can be done once this happens.  Should an error occur concerning an individual upload, this Uploaded Customer would then acquire the status *CREATION FAILED* and batch processing would continue.  However, rather than remain in progress, the upload status is final with the corresponding data discarded.
+          * **ON UPLOAD ERROR**: Default behavior for uploads through the API.
+          If _all_ customers in this upload successfully process, this customer will be updated at the end. The Uploaded Customer will be set to CREATED status.
+          If _any_ customers in this upload have errors, this Uploaded Customer will be left in PROCESSED status.
+          It won't be updated until you manually validate it in the UI or by calling the /customers/uploads/finalize endpoints.
+          * **NONE**: If the Uploaded Customer passes initial validation (isn't missing an address, doesn't have an invalid state, etc) then the customer will be updated, whether or not the address can be validated and mapped to coordinates.
+          If the Uploaded Customer fails at initial validation, it will be left in PROCESSED status.
+          Otherwise, the customer will be updated, and the Uploaded Customer will be put in CREATED status.
+          <!-- -->
+          If left blank or not submitted, will default to ON UPLOAD ERROR.
+      customerId:
+        type: integer
+        format: int64
+        description: If this is a request to update an existing customer, the ID of the existing customer to update. If this is a request to create a new customer, this should be left blank.
+      customerLocations:
+        type: array
+        description: Array of locations to update. Only locations that are being added/updated need to be submitted. If updating an existing location, the customer location ID may change.
+        items:
+          $ref: '#/definitions/ApiUploadedCustomerLocationUpdate'
+
+  ApiUploadedCustomerLocationUpdate:
+    type: object
+    properties:
+      uploadedCustomerLocationId:
+        type: integer
+        format: int64
+        description: ID of the Uploaded Customer Location to update. Required.
+      address1:
+        type: string
+        description: Line 1 of the location's street address.
+      address2:
+        type: string
+        description: Line 2 of the location's street address.
+      city:
+        type: string
+        description: The city of the location's address.
+      state:
+        type: string
+        description: The two-letter state code of the location's address.
+      zip:
+        type: string
+        description: The location's ZIP or postal code.
+      coordinates:
+        type: string
+        description: The location's coordinates, in latitude/longitude decimal degrees (e.g. 45.096926045500744, -94.41017717288022).
+          If provided, this will override the coordinates determined by parsing the address.
+      customerLocationId:
+        type: integer
+        format: int64
+        description: If this is a request to update an existing customer location, the ID of the existing location to update.
+          Please note that customer location IDs may change during processing. If a new ID is returned, you must use the new ID for future calls.
+
+  ApiUploadedCustomerLocationCreate:
+    type: object
+    properties:
+      address1:
+        type: string
+        description: Line 1 of the location's street address.
+      address2:
+        type: string
+        description: Line 2 of the location's street address.
+      city:
+        type: string
+        description: The city of the location's address.
+      state:
+        type: string
+        description: The two-letter state code of the location's address.
+      zip:
+        type: string
+        description: The location's ZIP or postal code.
+      coordinates:
+        type: string
+        description: The location's coordinates, in latitude/longitude decimal degrees (e.g. 45.096926045500744, -94.41017717288022).
+          If provided, this will override the coordinates determined by parsing the address.
+      customerLocationId:
+        type: integer
+        format: int64
+        description: If this is a request to update an existing customer location, the ID of the existing location to update. If this is a request to create a new customer location, this should be left blank.
+      customerLocationExternalId:
+        type: string
+        description: User-provided ID for the customer location, to identify them within other systems.
+
+  CustomerVisitsRequest:
+    type: object
+    properties:
+      startDate:
+        type: integer
+        format: int64
+        description: Start time of the date range to search for, in milliseconds since the epoch. Required.
+      endDate:
+        type: integer
+        format: int64
+        description: End time of the date range to search for, in milliseconds since the epoch. Must be within 48 hours of the start time. Required.
+      trackerId:
+        type: integer
+        format: int64
+        description: ID of the tracker for which to retrieve visits. If no tracker ID is submitted, visits will be pulled for all trackers.
+      driverId:
+        type: integer
+        format: int64
+        description: ID of the driver for which to retrieve visits. If no driver ID is submitted, visits will be pulled for all drivers.
+      customerId:
+        type: integer
+        format: int64
+        description: ID of the customer for which to retrieve visits. If no customer ID is submitted, visits will be pulled for all drivers
+
+  CustomerVisit:
+    type: object
+    properties:
+      customerId:
+        type: integer
+        format: int64
+        description: ID of the customer for the visit.
+      customerLocationId:
+        type: integer
+        format: int64
+        description: ID of the customer location for the visit.
+      address:
+        type: string
+        description: Full address of the location for the visit.
+      trackerName:
+        type: string
+        description: Name of the tracker that performed the visit.
+      driverName:
+        type: string
+        description: Name of the driver that performed the visit, if known.
+      startDate:
+        type: integer
+        format: int64
+        description: Start time of the visit, in milliseconds since the epoch.
+      endDate:
+        type: integer
+        format: int64
+        description: End time of the visit, in milliseconds since the epoch.
+      visitDuration:
+        type: number
+        format: double
+        description: Duration of the visit, in minutes.
+      customerName:
+        type: string
+        description: Name of the customer for the visit.
+
+  UploadedCustomer:
+    type: object
+    properties:
+      uploadedCustomerId:
+        type: integer
+        format: int64
+        description: ID of the Uploaded Customer.
+      companyId:
+        type: integer
+        format: int64
+        description: ID of the company.
+      status:
+        type: string
+        description: |
+          Status of the Uploaded Customer. One of:
+          * **RAW**: The Uploaded Customer was recently submitted, and hasn't yet been validated.
+          * **PROCESSING**: The Uploaded Customer has passed initial validation, and the system is now attempting to validate the location addresses and map them to coordinates if possible.
+          * **PROCESSED**: The Uploaded Customer has finished processing. If it doesn't have any errors, it's ready to create (see the /customers/uploads/finalize endpoints.) If it has errors, you can use the /customers/uploads PUT call to update it and reprocess it, or finalize it to create the customer with the existing errors.
+          * **CREATED**: The Uploaded Customer has created or updated a Customer as appropriate. The customer ID should be in the customerId field.
+          * **CREATION FAILED**: The Uploaded Customer was not created or updated because it encountered an error and was part of a batch designated with the confirmation level 'NONE ON SUCCESS'.  Instead of an automatic confirmation upon a completely successful upload, the individual upload was terminated and considered to have failed.
+      customerName:
+        type: string
+        description: Customer's name.
+      fleet:
+        type: string
+        description: Not yet implemented. Data type may change.
+      email:
+        type: string
+        description: Customer's contact email.
+      phone:
+        type: string
+        description: Customer's contact phone number, as entered.
+      notes:
+        type: string
+        description: User-provided notes on the customer.
+      externalId:
+        type: string
+        description: User-provided ID for the customer, to identify them within other systems.
+      confirmation:
+        type: string
+        description: |
+          Should be one of the following values:
+          * **ALWAYS**: Behaves the same as uploading a customer spreadsheet in the portal.
+          After processing, whether or not there are any errors, the Uploaded Customer will be left in PROCESSED status.
+          It won't be created until you manually validate it in the UI or by calling the /customers/uploads/finalize endpoints.
+          * **NONE ON SUCCESS**: If the Uploaded Customer was validated and mapped to GPS coordinates successfully, it will be deemed CREATED. If all customer uploads contained within a given batch feature this confirmation type, that batch will be finalized immediately and automatically - no updates can be done once this happens.  Should an error occur concerning an individual upload, this Uploaded Customer would then acquire the status *CREATION FAILED* and batch processing would continue.  However, rather than remain in progress, the upload status is final with the corresponding data discarded.
+          * **ON UPLOAD ERROR**: Default behavior for uploads through the API.
+          If _all_ customers in this upload successfully process, this customer will be created at the end. The Uploaded Customer will be set to CREATED status. The customer ID for the new customer will be added.
+          If _any_ customers in this upload have errors, this Uploaded Customer will be left in PROCESSED status.
+          It won't be created until you manually validate it in the UI or by calling the /customers/uploads/finalize endpoints.
+          * **NONE**: If the Uploaded Customer passes initial validation (isn't missing an address, doesn't have an invalid state, etc) then the customer will be updated, whether or not the address can be validated and mapped to coordinates.
+          If the Uploaded Customer fails at initial validation, it will be left in PROCESSED status.
+          Otherwise, the customer will be created, and the Uploaded Customer will be put in CREATED status. The customer ID for the new customer will be added.
+      customerId:
+        type: integer
+        format: int64
+        description: If this Uploaded Customer is a request to update an existing customer, the ID of the customer to update. Otherwise, if the Uploaded Customer is in CREATED status, the ID of the newly-created customer.
+      editPersonId:
+        type: integer
+        format: int64
+        description: ID of the last person to edit the Uploaded Customer entry.
+      processedDate:
+        type: integer
+        format: int64
+        description: |
+          The time, in seconds since the epoch, that the Uploaded Customer was last updated, including automatic processing by the system.
+      errors:
+        type: array
+        items:
+          $ref: '#/definitions/UploadedCustomerError'
+      uploadedCustomerLocations:
+        type: array
+        items:
+          $ref: '#/definitions/UploadedCustomerLocation'
+
+  UploadedCustomerLocation:
+    type: object
+    properties:
+      uploadedCustomerLocationId:
+        type: integer
+        format: int64
+        description: ID of the Uploaded Customer Location.
+      companyId:
+        type: integer
+        format: int64
+        description: ID of the company.
+      address1:
+        type: string
+        description: Line 1 of the location's street address.
+      address2:
+        type: string
+        description: Line 2 of the location's street address.
+      city:
+        type: string
+        description: The city of the location's address.
+      state:
+        type: string
+        description: The two-letter state code of the location's address.
+      zip:
+        type: string
+        description: The location's ZIP or postal code.
+      coordinates:
+        type: string
+        description: The user-provided coordinates for the location, in latitude/longitude decimal degrees (e.g. 45.096926045500744, -94.41017717288022).
+          If provided, this will override the coordinates determined by parsing the address.
+      addressString:
+        type: string
+        description: The full formatted user-provided address.
+      geocodedLatitude:
+        type: number
+        format: double
+        description: The latitude for the location, determined by looking up the address. May be blank if errors occur while trying to look up the provided address.
+      geocodedLongitude:
+        type: number
+        format: double
+        description: The longitude for the location, determined by looking up the address. May be blank if errors occur while trying to look up the provided address.
+      geocodedAddress:
+        type: string
+        description: The full, valid address for the user after processing. May be blank if errors occur while trying to look up the provided address.
+      status:
+        type: string
+        description: |
+          Status of the Uploaded Customer Location. One of:
+          * **RAW**: The Uploaded Customer was recently submitted, and hasn't yet been validated.
+          * **PROCESSING**: The Uploaded Customer Location has passed initial validation, and the system is now attempting to validate the address and map it to coordinates if possible.
+          * **PROCESSED**: The Uploaded Customer Location has finished processing. The Uploaded Customer may or may not be ready to create, depending on the status of other locations.
+          * **CREATED**: The Uploaded Customer Location has created or updated a Customer Location as appropriate. The customer location ID should be in the customerLocationId field.
+      customerLocationId:
+        type: integer
+        format: int64
+        description: If this Uploaded Customer Location is a request to update an existing Customer Location, the ID of the location to update. Otherwise, if the Uploaded Customer Location is in CREATED status, the ID of the newly-created Customer Location.
+      customerLocationExternalId:
+        type: string
+        description: User-provided ID for the customer location, to identify them within other systems.
+      errors:
+        type: array
+        items:
+          $ref: '#/definitions/UploadedCustomerLocationError'
+
+  UploadedCustomerError:
+    type: object
+    properties:
+      uploadedCustomerErrorId:
+        type: integer
+        format: int64
+        description: Internal ID of the Uploaded Customer Error.
+      companyId:
+        type: integer
+        format: int64
+        description: ID of the company.
+      columnIndex:
+        type: integer
+        format: int32
+        description: |
+          Index of the customer field that has with the error, where applicable. The columns and their indices are currently:
+          * 0 - Customer Name
+          * 1 - Group
+          * 2 - Email Address
+          * 3 - Phone Number
+          * 4 - External ID
+          * 5 - Notes
+      errorText:
+        type: string
+        description: Text describing the error.
+
+  UploadedCustomerLocationError:
+    type: object
+    properties:
+      uploadedCustomerLocationErrorId:
+        type: integer
+        format: int64
+        description: Internal ID of the Uploaded Customer Location Error.
+      companyId:
+        type: integer
+        format: int64
+        description: ID of the company.
+      columnIndex:
+        type: integer
+        format: int32
+        description: |
+          Index of the customer location field that has the error, where applicable. The columns and their indices are currently:
+          * 6 - Street Address
+          * 7 - Address Line 2
+          * 8 - City
+          * 9 - State
+          * 10 - ZIP
+          * 11 - Coordinates
+      errorText:
+        type: string
+        description: Text describing the error.
+
+  SafetyReportCardRequest:
+    type: object
+    properties:
+      start:
+        type: integer
+        format: int64
+        description: Start time of the date range to search for, in milliseconds since the epoch. Required.
+      end:
+        type: integer
+        format: int64
+        description: End time of the date range to search for, in milliseconds since the epoch. Must be within 93 days of the start time. Required.
+      fleetIds:
+        type: array
+        items:
+          type: integer
+          format: int64
+          description: IDs of groups to retrieve safety information for.
+      trackerIds:
+        type: array
+        items:
+          type: integer
+          format: int64
+          description: IDs of vehicle trackers to retrieve safety information for.
+      userIds:
+        type: array
+        items:
+          type: integer
+          format: int64
+          description: IDs of users to retrieve safety information for.
+
+  SafetyReportCard:
+    type: object
+    properties:
+      fleetId:
+        type: integer
+        format: int64
+        description: Group ID of the group, or 0 if this request matched multiple groups.
+      fleetName:
+        type: string
+        description: Name of the group, or 'All' if this request matched multiple groups.
+      driverCount:
+        type: integer
+        format: int32
+        description: Number of drivers matched by this query.
+      harshAccelerationEventCount:
+        type: integer
+        format: int32
+        description: Number of harsh acceleration events.
+      harshBrakingEventCount:
+        type: integer
+        format: int32
+        description:  Number of harsh braking events.
+      speedingEventCount:
+        type: integer
+        format: int32
+        description:  Number of speeding events.
+      minorSpeedingEventCount:
+        type: integer
+        format: int32
+        description:  Number of times that a vehicle went over the speed limit by less than 10 mph.
+      majorSpeedingEventCount:
+        type: integer
+        format: int32
+        description: Number of times that a vehicle went over the speed limit by more than 10 mph.
+      safetyEventCount:
+        type: integer
+        format: int32
+        description: Number of total alerts that were generated.
+      topSpeed:
+        type: integer
+        format: int32
+        description: The highest speed of any vehicle.
+      greatestSpeedOverLimit:
+        type: integer
+        format: int32
+        description: The highest margin by which any vehicle exceeded the posted speed limit.
+      score:
+        type: integer
+        format: int32
+        description: The overall safety score, on a scale of 1-100.
+      grade:
+        type: string
+        description: The letter grade for the safety score, on an A-F scale.
+      milesDriven:
+        type: integer
+        format: int32
+        description: Total miles driven.
+      authorizedMilesDriven:
+        type: integer
+        format: int32
+        description: Total authorized miles driven.
+      unauthorizedMilesDriven:
+        type: integer
+        format: int32
+        description: Total unauthorized miles driven.
+      driveTime:
+        type: integer
+        format: int32
+        description: Total time spent driving, in minutes.
+      stopCount:
+        type: integer
+        format: int32
+        description: Total number of stops.
+      stopTime:
+        type: integer
+        format: int32
+        description: Total time spent stopped, in minutes.
+      averageStopDuration:
+        type: integer
+        format: int32
+        description: Average duration of stops, in minutes.
+      idleEventCount:
+        type: integer
+        format: int32
+        description: Total number of times that vehicles idled.
+      idleAlertCount:
+        type: integer
+        format: int32
+        description: Total number of times that vehicles idled for long enough to generate an alert.
+      idleTime:
+        type: integer
+        format: int32
+        description: Total time spent idling, in minutes.
+      averageIdleDuration:
+        type: integer
+        format: int32
+        description: Average duration of idles, in minutes.
+
+  PushApiConfig:
+    type: object
+    required: ["bearerToken"]
+    properties:
+      bearerToken:
+        type: string
+        description: Bearer token to use for authentication to the provided webhooks.
+      alertsUrl:
+        type: string
+        description: Webhook URL for receiving alert notifications.
+      deviceStatusUrl:
+        type: string
+        description: Webhook URL for receiving device status notifications.
+      deviceUpdateUrl:
+        type: string
+        description: Webhook URL for receiving device update notifications.
+      geofenceChangeUrl:
+        type: string
+        description: Webhook URL for receiving geofence change notifications.
+      positionUrl:
+        type: string
+        description: Webhook URL for receiving tracker position notifications.
+      stopUrl:
+        type: string
+        description: Webhook URL for receiving stop notifications.
+      tripsUrl:
+        type: string
+        description: Webhook URL for receiving trip notifications.
+      usageHoursUrl:
+        type: string
+        description: Webhook URL for receiving usage hours notifications.
+
+  Media:
+    type: object
+    properties:
+      mediaId:
+        type: integer
+        format: int64
+        description: Internal ID of the media object.
+      mediaTimestamp:
+        type: integer
+        format: int64
+        description: Approximate time that the clip was recorded, in milliseconds since the epoch.
+      videoInside:
+        type: string
+        description: URL of the video from the internal-facing camera for the clip, if present.
+      videoOutside:
+        type: string
+        description: URL of the video from the external-facing camera for the clip, if present.
+      videoAux:
+        type: string
+        description: URL of the video from the auxiliary camera for the clip, if present.
+      thumbnailInside:
+        type: string
+        description: URL of the thumbnail image from the internal facing camera for the clip, if present.
+      thumbnailOutside:
+        type: string
+        description: URL of the thumbnail image from the external facing camera for the clip, if present.
+      thumbnailAux:
+        type: string
+        description: URL of the thumbnail image from the auxiliary camera for the clip, if present.
+
+  Company:
+    type: object
+    properties:
+      hasPluginVehicleTrackers:
+        type: boolean
+        description: If the company has Plugin Vehicle Trackers.
+      createdDate:
+        type: datetime
+        description: Recording of date and time the company was created.
+      hasAssetTrackers:
+        type: boolean
+        description: If the company has Asset Trackers.
+      hasMiniTrackers:
+        type: boolean
+        description: If the company has Mini Trackers.
+      hasAtltTrackers:
+        type: boolean
+        description: If the company has ATLT Trackers.
+      companyName:
+        type: string
+        description: Name of the company that the bearer token is attached to.
+      apiHost:
+        type: string
+        description: URL of where the api is hosted.
+      serviceTier:
+        type: string
+        description: Shows the companies service tier.
+      hasVehicleTrackers:
+        type: boolean
+        description: If the company has Vehicle Trackers.
+      hasWiredVehicleTrackers:
+        type: string
+        description: If the company has Wired Vehicle Trackers.
+      hasInputSensorData:
+        type: string
+        description: If the company has Input Sensor Data on.
+
