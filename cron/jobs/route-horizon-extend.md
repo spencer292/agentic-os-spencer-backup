@@ -1,11 +1,11 @@
 ---
-name: Route Horizon Extend (19 days)
+name: Route Horizon Extend (21 days / 3 weeks)
 time: '06:15'
 days: mon,tue,wed,thu,fri
 active: 'false'
 model: opus
 notify: on_finish
-description: 'DISABLED 2026-08-12 BY SPENCER — do not re-enable during routine reconciliation; only Spencer flips it back. It existed mainly to feed route-drift-check, which is retired. NOTE it is NOT read-only: step 4 chains push-week + optimize-week plan + optimize-week write, and that last one writes times back to Jobber (only on days with no routes yet — it aborts if an already-planned day falls in the window). It had in any case been ABORTING every morning since ~2026-08-07 on a stale optimize-plan.json, so the horizon stopped advancing at 2026-08-14 while it was still nominally active. Original: Every weekday before the office opens: make sure OptimoRoute has routes planned 19 days out — two full weeks beyond the current one, so a new booking always has a day to land on. Without it, route-drift-check silently ignores every new client booked past the last planned day — which is most of them.'
+description: 'HUMAN-DRIVEN BY DECISION, NOT MERELY DISABLED (Spencer 2026-08-21: human-driven until we have proven everything works flawlessly). Horizon changed 19 -> 21 days (3 weeks) by Spencer 2026-08-21. The 3-week horizon is advanced by a PERSON running extend-horizon.mjs, not by this schedule. Even if re-enabled it would now fail: its chain (push-week, optimize-week) is behind the route-engine write gate and a cron cannot hold a time-boxed grant — that is the gate working, NOT a bug to route around by adding a standing grant. First DISABLED 2026-08-12 BY SPENCER — do not re-enable during routine reconciliation; only Spencer flips it back. It existed mainly to feed route-drift-check, which is retired. NOTE it is NOT read-only: step 4 chains push-week + optimize-week plan + optimize-week write, and that last one writes times back to Jobber (only on days with no routes yet — it aborts if an already-planned day falls in the window). It had in any case been ABORTING every morning since ~2026-08-07 on a stale optimize-plan.json, so the horizon stopped advancing at 2026-08-14 while it was still nominally active. Original: Every weekday before the office opens: make sure OptimoRoute has routes planned 21 days out — three full weeks (Spencer 2026-08-21, raised from 19), so a new booking always has a day to land on. Without it, route-drift-check silently ignores every new client booked past the last planned day — which is most of them.'
 timeout: 30m
 retry: '0'
 ---
@@ -22,7 +22,7 @@ booking window so that automation actually covers new clients (Spencer 2026-08-0
 1. From the repo root, run:
    `node projects/briefs/technician-route-automation/extend-horizon.mjs dry`
 
-   Read the output. It reports which weekdays inside the 19-day horizon have no routes.
+   Read the output. It reports which weekdays inside the 21-day horizon have no routes.
 
 2. **If it says "Horizon already full" — stop and report one line.** That is the normal outcome most
    days. Do not run anything else.
