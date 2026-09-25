@@ -1,0 +1,56 @@
+service time (check/set min, updated 2026-08-15): Alias 15/30  Robert 15/30  Cory 12/24  Luke 15/30  Spencer 15/30  Tavis 15/30  |  default 15/30
+cluster: Barbee Mill (Renton 98056) — 120 min across 11 job(s) = 11 min each
+JOBBER -> OPTIMOROUTE SYNC (LIVE)  2026-08-17 .. 2026-08-21
+now 2026-08-15 22:10:49 PT   (Jobber is truth for day + tech)
+
+Jobber active visits in window: 569
+OptimoRoute own stops seen (±3d): 676
+OR drivers: robert norton, alias franks, cory ventura, luke lavergne, tavis alexander
+
+=== PLAN ===
+  create missing OR order : 0
+  move to Jobber day      : 31
+  set to Jobber tech      : 19
+  TOTAL orders touched    : 36
+  already in sync         : 533
+  days to re-plan         : 2026-08-17, 2026-08-18, 2026-08-19, 2026-08-20, 2026-08-21
+
+  changes (first 0):
+    … +36 more
+
+=== APPLYING ===
+Writing 36 order updates to OptimoRoute…
+  all order updates accepted
+
+--- 2026-08-17 (mon) ---
+  pinning 127 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 127 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 127 ok, 0 failed
+
+--- 2026-08-18 (tue) ---
+  pinning 109 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 109 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 109 ok, 0 failed
+
+--- 2026-08-19 (wed) ---
+  pinning 123 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 123 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 122 ok, 0 failed
+
+--- 2026-08-20 (thu) ---
+  pinning 86 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 102 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 102 ok, 0 failed
+
+--- 2026-08-21 (fri) ---
+  pinning 93 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 108 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 107 ok, 0 failed
+
+SYNC DONE: 36 orders synced, 0 Jobber time writes
+Report: C:\Agentic-os-got-moles\projects\briefs\technician-route-automation\drift-runs\j2o-sync-2026-08-16T05-11-02-175Z.json

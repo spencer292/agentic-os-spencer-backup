@@ -1,0 +1,41 @@
+[write-gate] WRITES ENABLED until 2026-09-05T03:19:42.422Z (spenc@Got-Moles: Re-sync Sep 8-11 after Spencer's further edits (5 off Luke Thu, 3 new SETs); plan-only, no Jobber write-back. 2026-09-04.) — ceiling 700/run — run 155488a1
+service time (check/set min, updated 2026-08-15): Alias 15/30  Robert 15/30  Cory 12/24  Luke 15/30  Spencer 15/30  Tavis 15/30  |  default 15/30
+cluster: Barbee Mill (Renton 98056) — 120 min across 11 job(s) = 11 min each
+JOBBER -> OPTIMOROUTE SYNC (LIVE)  2026-09-08 .. 2026-09-11
+now 2026-09-04 19:34:45 PT   (Jobber is truth for day + tech)
+
+Jobber active visits in window: 490
+OptimoRoute own stops seen (±3d): 487
+OR drivers: alias franks, cory ventura, luke lavergne, robert norton, tavis alexander
+
+=== PLAN ===
+  create missing OR order : 3
+  move to Jobber day      : 0
+  set to Jobber tech      : 3
+  TOTAL orders touched    : 3
+  already in sync         : 487
+  days to re-plan         : 2026-09-08, 2026-09-11
+
+  changes (first 40):
+    #8527  Olympia         tue  CREATE  none->Luke
+    #8526  Graham          tue  CREATE  none->Luke  [SET]
+    #8528  Issaquah        fri  CREATE  none->Tavis  [SET]
+
+=== APPLYING ===
+Writing 3 order updates to OptimoRoute…
+  all order updates accepted
+
+--- 2026-09-08 (tue) ---
+  pinning 128 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 130 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 130 ok, 0 failed
+
+--- 2026-09-11 (fri) ---
+  pinning 125 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 126 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 126 ok, 0 failed
+
+SYNC DONE: 3 orders synced, 0 Jobber time writes
+Report: C:\Agentic-os-got-moles\projects\briefs\technician-route-automation\drift-runs\j2o-sync-2026-09-05T02-34-56-987Z.json

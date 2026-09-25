@@ -1,0 +1,73 @@
+service time (check/set min, updated 2026-08-15): Alias 15/30  Robert 15/30  Cory 12/24  Luke 15/30  Spencer 15/30  Tavis 15/30  |  default 15/30
+cluster: Barbee Mill (Renton 98056) — 120 min across 11 job(s) = 11 min each
+PUSH NEW VISITS + REPLAN (live) 2026-08-18 16:05:51 PT — 2 day(s): 2026-08-20, 2026-08-21
+
+======================================================================
+2026-08-20 (thu)
+OptimoRoute has 102 stops on 2026-08-20.
+Jobber has 109 visits on 2026-08-20.
+
+7 visit(s) with no OptimoRoute order:
+  8387-2292793814      Joydeep Kant                  98019 chk 15min  tech Alias Franks
+  8393-2293210771      Dan Haeck                     98023 SET 30min  tech Robert Norton
+  8404-2294006016      Simmons Mill HOA  (SET)       98512 SET 30min  tech Luke LaVergne
+  8408-2294440194      Hyungon Ryu (SET)             98023 chk 15min  tech Robert Norton
+  8411-2294570805      Alissa Williams (SET)         98391 chk 15min  tech Robert Norton
+  8395-2293212658      Beverly Worthen               98001 SET 30min  tech Robert Norton
+  7637-2021592856      Tommy Marshall - 1 Year Mole  98360 chk 12min  tech Cory Ventura
+  created 8387-2292793814
+  created 8393-2293210771
+  created 8404-2294006016
+  created 8408-2294440194
+  created 8411-2294570805
+  created 8395-2293212658
+  created 7637-2021592856
+Locked 102 existing stops to day+tech.
+Re-planning (balancing OFF)…
+New stop placed: 8387-2292793814 → Alias Franks stop 21 at 14:40
+New stop placed: 8393-2293210771 → Robert Norton stop 10 at 10:54
+New stop placed: 8404-2294006016 → Luke LaVergne stop 12 at 12:33
+New stop placed: 8408-2294440194 → Robert Norton stop 14 at 12:25
+New stop placed: 8411-2294570805 → Robert Norton stop 1 at 07:20
+New stop placed: 8395-2293212658 → Robert Norton stop 7 at 09:28
+New stop placed: 7637-2021592856 → Cory Ventura stop 13 at 11:03
+
+Jobber time write-back: 42 ok, 0 failed (67 unchanged).
+Report saved: C:\Agentic-os-got-moles\projects\briefs\technician-route-automation\drift-runs\push-new-2026-08-20-2026-08-18T23-07-43-294Z.json
+
+======================================================================
+2026-08-21 (fri)
+OptimoRoute has 113 stops on 2026-08-21.
+Jobber has 119 visits on 2026-08-21.
+
+6 visit(s) with no OptimoRoute order:
+  8394-2293211674      Sachin Gupta (set)            98075 SET 30min  tech Alias Franks
+  8403-2294002233      Susan Eibey (SET)             98042 chk 12min  tech Cory Ventura
+  6919-1832480806      Corky Heimbigner              98075 chk 15min  tech Alias Franks
+  8402-2293952339      Tom & Sarah Long (SET)        98321 SET 30min  tech Robert Norton
+  8390-2292815334      Jane Molenda - TMCP Conversi  98321 SET 30min  tech Robert Norton
+  8401-2293928554      Michael Lucarel (set)         98074 SET 30min  tech Alias Franks
+  created 8394-2293211674
+  created 8403-2294002233
+  created 6919-1832480806
+  created 8402-2293952339
+  created 8390-2292815334
+  created 8401-2293928554
+Locked 113 existing stops to day+tech.
+Re-planning (balancing OFF)…
+New stop placed: 8394-2293211674 → Alias Franks stop 23 at 14:50
+New stop placed: 8403-2294002233 → Cory Ventura stop 1 at 07:31
+New stop placed: 6919-1832480806 → Alias Franks stop 21 at 14:11
+New stop placed: 8402-2293952339 → Robert Norton stop 8 at 09:36
+New stop placed: 8390-2292815334 → Robert Norton stop 5 at 08:23
+New stop placed: 8401-2293928554 → Alias Franks stop 3 at 08:04
+
+Jobber time write-back: 71 ok, 0 failed (48 unchanged).
+Report saved: C:\Agentic-os-got-moles\projects\briefs\technician-route-automation\drift-runs\push-new-2026-08-21-2026-08-18T23-09-59-327Z.json
+
+======================================================================
+SUMMARY
+  2026-08-20   7 new order(s)   42 time write(s)  42 re-timed
+  2026-08-21   6 new order(s)   71 time write(s)  71 re-timed
+
+13 new order(s) pushed across 2 day(s).

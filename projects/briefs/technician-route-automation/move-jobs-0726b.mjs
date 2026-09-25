@@ -3,6 +3,7 @@
 // jobOverride so the grid remembers, and (for Monday, which is past its email freeze and already
 // written) updates the OptimoRoute order directly since push-week's window now starts Tuesday.
 // Usage: node move-jobs-0726b.mjs dry|live
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

@@ -2,6 +2,7 @@
 // new Jobber day 7/24 BEFORE running drift-check fix, so the 7/22 re-plan can't pull them back.
 // The subsequent drift-check fix run re-detects them as missing on 7/24, SYNCs the correct
 // Jobber tech, re-plans 7/24, and writes times back.
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

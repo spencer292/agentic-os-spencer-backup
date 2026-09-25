@@ -1,6 +1,7 @@
 // Reverts every visit that is NOT sitting at its correct OptimoRoute slot back to ALL-DAY / anytime,
 // on its current day. Leaves correctly-placed OR route stops untouched.
 // Run:  node projects/briefs/technician-route-automation/revert-backlog.mjs
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs'; import path from 'node:path'; import { execFileSync } from 'node:child_process';
 function loadEnv(){let d=process.cwd();for(let i=0;i<6;i++){const p=path.join(d,'.env');if(fs.existsSync(p)){const e={};for(const l of fs.readFileSync(p,'utf8').split(/\r?\n/)){const m=l.match(/^([A-Z0-9_]+)=(.*)$/);if(m)e[m[1]]=m[2].trim();}return e;}const u=path.dirname(d);if(u===d)break;d=u;}return{};}
 const env=loadEnv(); const TZ='America/Los_Angeles';

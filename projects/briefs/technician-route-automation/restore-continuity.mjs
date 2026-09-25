@@ -15,6 +15,7 @@
 //
 // Usage: node restore-continuity.mjs dry|live --from=2026-08-10 --to=2026-08-14 [--history-days=45]
 
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

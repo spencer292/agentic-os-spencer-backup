@@ -18,6 +18,7 @@
 // Jobber tech where that tech is driving that day; verify nothing lost and no already-planned stop
 // changed tech before ANY Jobber write. Never deletes.
 
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -229,7 +230,11 @@ for (const v of visits) {
   });
 }
 console.log(`\n${newOrders.length} visit(s) with no OptimoRoute order:`);
-for (const n of newOrders) console.log(`  ${n.orderNo.padEnd(20)} ${(n.title || '').slice(0, 28).padEnd(29)} ${n.zip} ${n.isSet ? 'SET 20min' : 'chk 10min'}  tech ${n.tech || '(none)'}${n.serial ? '' : ' [no serial — optimizer will place]'}`);
+// Print the duration actually being pushed. This line used to hard-code "SET 20min"/"chk 10min"
+// from the flat-duration era while line ~218 pushed the real per-tech/cluster number — so the log
+// said 10 min while OptimoRoute was planning 15. A log that misreports the input is worse than no
+// log: it makes a wrong duration look reviewed.
+for (const n of newOrders) console.log(`  ${n.orderNo.padEnd(20)} ${(n.title || '').slice(0, 28).padEnd(29)} ${n.zip} ${(n.isSet ? 'SET' : 'chk').padEnd(3)} ${String(n.order.duration).padStart(2)}min  tech ${n.tech || '(none)'}${n.serial ? '' : ' [no serial — optimizer will place]'}`);
 if (unroutable.length) { console.log('\nCannot route:'); for (const u of unroutable) console.log(`  ${u.orderNo} ${u.title} — ${u.why}`); }
 
 // A day with nothing new is left completely alone — no lock, no re-plan, no writes.

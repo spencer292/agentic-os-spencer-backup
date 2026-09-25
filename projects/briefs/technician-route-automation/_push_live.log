@@ -1,0 +1,91 @@
+[write-gate] WRITES ENABLED until 2026-09-05T00:22:33.668Z (spenc@Got-Moles: Push Sep 8-11 short week to OptimoRoute and optimize (plan-only, no Jobber write-back). Requested by Spencer 2026-09-04.) — ceiling 600/run — run 91324401
+service time (check/set min, updated 2026-08-15): Alias 15/30  Robert 15/30  Cory 12/24  Luke 15/30  Spencer 15/30  Tavis 15/30  |  default 15/30
+cluster: Barbee Mill (Renton 98056) — 120 min across 11 job(s) = 11 min each
+JOBBER -> OPTIMOROUTE SYNC (LIVE)  2026-09-08 .. 2026-09-11
+now 2026-09-04 16:23:20 PT   (Jobber is truth for day + tech)
+
+Jobber active visits in window: 497
+OptimoRoute own stops seen (±3d): 0
+OR drivers: 
+
+=== PLAN ===
+  create missing OR order : 497
+  move to Jobber day      : 0
+  set to Jobber tech      : 497
+  TOTAL orders touched    : 497
+  already in sync         : 0
+  days to re-plan         : 2026-09-08, 2026-09-09, 2026-09-10, 2026-09-11
+
+  changes (first 40):
+    #7088  Seattle         tue  CREATE  none->Tavis
+    #7608  Seattle         tue  CREATE  none->Tavis
+    #7682  Olympia         tue  CREATE  none->Luke
+    #7803  Olympia         tue  CREATE  none->Luke
+    #7809  Olympia         tue  CREATE  none->Luke
+    #7891  Olympia         tue  CREATE  none->Luke
+    #7893  Olympia         tue  CREATE  none->Luke
+    #8328  Seattle         tue  CREATE  none->Tavis
+    #8327  Seattle         tue  CREATE  none->Tavis
+    #8332  Lacey           tue  CREATE  none->Luke
+    #8334  Seattle         tue  CREATE  none->Tavis
+    #8340  Seattle         tue  CREATE  none->Tavis
+    #8344  Unit A Seattle  tue  CREATE  none->Tavis
+    #8345  Seattle         tue  CREATE  none->Tavis
+    #8346  Seattle         tue  CREATE  none->Tavis
+    #6447  Seattle         tue  CREATE  none->Tavis
+    #8359  Seattle         tue  CREATE  none->Tavis
+    #8361  Burien          tue  CREATE  none->Tavis
+    #8370  Enumclaw        tue  CREATE  none->Robert
+    #8372  Seattle         tue  CREATE  none->Tavis
+    #8373  Seattle         tue  CREATE  none->Alias
+    #8374  Olympia         tue  CREATE  none->Luke
+    #8291  Kent            tue  CREATE  none->Cory
+    #5602  Covington       tue  CREATE  none->Cory
+    #7084  Covington       tue  CREATE  none->Cory
+    #8384  Kirkland        tue  CREATE  none->Alias
+    #8397  Seattle         tue  CREATE  none->Tavis
+    #8400  Seattle         tue  CREATE  none->Tavis
+    #8403  Covington       tue  CREATE  none->Cory
+    #8409  Seattle         tue  CREATE  none->Tavis
+    #8412  Olympia         tue  CREATE  none->Luke
+    #4492  Auburn          tue  CREATE  none->Cory
+    #8421  Seattle         tue  CREATE  none->Alias
+    #8426  Seattle         tue  CREATE  none->Tavis
+    #8428  Enumclaw        tue  CREATE  none->Robert
+    #8434  Lacey           tue  CREATE  none->Luke
+    #8437  Tumwater        tue  CREATE  none->Luke
+    #8440  Seattle         tue  CREATE  none->Tavis
+    #8235  Seattle         tue  CREATE  none->Tavis
+    #8441  Enumclaw        tue  CREATE  none->Robert
+    … +457 more
+
+=== APPLYING ===
+Writing 497 order updates to OptimoRoute…
+  all order updates accepted
+
+--- 2026-09-08 (tue) ---
+  pinning 0 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 138 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 138 ok, 0 failed
+
+--- 2026-09-09 (wed) ---
+  pinning 0 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 125 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 125 ok, 0 failed
+
+--- 2026-09-10 (thu) ---
+  pinning 0 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 114 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 114 ok, 0 failed
+
+--- 2026-09-11 (fri) ---
+  pinning 0 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 120 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 120 ok, 0 failed
+
+SYNC DONE: 497 orders synced, 0 Jobber time writes
+Report: C:\Agentic-os-got-moles\projects\briefs\technician-route-automation\drift-runs\j2o-sync-2026-09-04T23-23-31-450Z.json

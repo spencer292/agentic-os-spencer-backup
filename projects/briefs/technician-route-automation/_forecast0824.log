@@ -1,0 +1,64 @@
+ROUTE TIME FORECAST  2026-08-24 .. 2026-08-28
+
+Day length = first arrival to last departure. Commute = home to stop #1, shown separately.
+Tight = stops reached in <=2 min from the previous one (same street / same neighbourhood).
+
+=== Alias Franks ===
+  day  date        stops  tight   miles   commute    drive   on-site   DAY LENGTH   start  end
+  mon  2026-08-24     27      3     133      0h29     2h15      6h30         8h45   07:14  15:59
+  tue  2026-08-25     19      2     128      0h28     2h17      4h45         7h02   07:13  14:15
+  wed  2026-08-26     22      1     139      0h20     2h48      5h15         8h03   07:04  15:07
+  thu  2026-08-27     24      0     152      0h31     2h25      5h45         8h10   07:15  15:25
+  fri  2026-08-28     28      3     133      0h39     2h02      6h59         9h01   07:24  16:25 <-- over 9h
+  WEEK              120            685      2h27    11h47     29h14        41h01
+  41.0 h on the clock; 35% of it driving; 2.9 stops/hour
+
+=== Cory Ventura ===
+  day  date        stops  tight   miles   commute    drive   on-site   DAY LENGTH   start  end
+  mon  2026-08-24     31      5     175      0h27     2h13      6h12         8h25   07:26  15:51
+  tue  2026-08-25     23      3     125      0h06     2h39      4h24         7h03   07:06  14:09
+  wed  2026-08-26     21      3     118      0h21     1h28      4h00         5h28   07:21  12:49 <-- light
+  thu  2026-08-27     29      4     191      0h28     2h20      5h36         7h56   07:27  15:23
+  WEEK              104            609      1h22     8h39     20h13        28h52
+  28.9 h on the clock; 35% of it driving; 3.6 stops/hour
+
+=== Luke LaVergne ===
+  day  date        stops  tight   miles   commute    drive   on-site   DAY LENGTH   start  end
+  mon  2026-08-24     23      1     240      0h32     3h52      5h45         9h37   07:32  17:09 <-- over 9h
+  tue  2026-08-25     17      0     190      0h27     3h48      4h14         8h02   07:27  15:29
+  wed  2026-08-26     14      1     244      0h31     3h47      3h16         7h03   07:30  14:33
+  thu  2026-08-27     21      0     237      0h41     3h20      5h00         8h20   07:40  16:00
+  fri  2026-08-28     20      1      99      0h13     2h07      4h45         6h52   07:12  14:04
+  WEEK               95           1010      2h24    16h54     23h00        39h54
+  39.9 h on the clock; 48% of it driving; 2.4 stops/hour
+
+=== Robert Norton ===
+  day  date        stops  tight   miles   commute    drive   on-site   DAY LENGTH   start  end
+  mon  2026-08-24     24      2     131      0h34     2h00      5h46         7h46   07:33  15:19
+  tue  2026-08-25     28      5     116      0h15     2h27      6h45         9h12   07:15  16:27 <-- over 9h
+  wed  2026-08-26     25      3      75      0h09     1h41      5h60         7h41   07:09  14:50
+  thu  2026-08-27     23      1     135      0h29     2h13      5h44         7h57   07:29  15:26
+  fri  2026-08-28     20      4      63      0h11     1h25      4h45         6h10   07:10  13:20
+  WEEK              120            520      1h38     9h46     28h60        38h46
+  38.8 h on the clock; 29% of it driving; 3.1 stops/hour
+
+=== Tavis Alexander ===
+  day  date        stops  tight   miles   commute    drive   on-site   DAY LENGTH   start  end
+  mon  2026-08-24     27      4     127      0h28     2h05      6h30         8h35   07:27  16:02
+  tue  2026-08-25     28      1     174      0h34     3h09      7h30        10h39   07:33  18:12 <-- over 9h
+  wed  2026-08-26     32     11     126      0h35     2h00      7h13         9h13   07:35  16:48 <-- over 9h
+  thu  2026-08-27     26      2     161      0h37     2h20      6h15         8h35   07:37  16:12
+  fri  2026-08-28     30      2     219      0h40     3h13      7h15        10h28   07:40  18:08 <-- over 9h
+  WEEK              143            807      2h54    12h47     34h43        47h30
+  47.5 h on the clock; 33% of it driving; 3.0 stops/hour
+
+=== WEEK TOTALS ===
+tech               stops   miles   drive+commute   on-site   DAY LENGTH   over-9h days
+Alias Franks        120     685          14h14     29h14        41h01   1
+Cory Ventura        104     609          10h01     20h13        28h52   -
+Luke LaVergne        95    1010          19h18     23h00        39h54   1
+Robert Norton       120     520          11h24     28h60        38h46   1
+Tavis Alexander     143     807          15h41     34h43        47h30   3
+ALL                 582    3631          70h38    136h10       196h03
+
+Saved: C:\Agentic-os-got-moles\projects\briefs\technician-route-automation\route-forecast-2026-08-24_2026-08-28.json

@@ -4,6 +4,7 @@
 // enforcement cannot move; (b) visits with NO tech attached at all. Both leave the route sloppy.
 // Sets the visit ALL-DAY so push-week treats it as flexible and the optimizer can sequence it.
 // Usage: node fix-misplaced.mjs dry|live
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

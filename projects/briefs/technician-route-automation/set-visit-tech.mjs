@@ -16,6 +16,7 @@
 // Window defaults to the current Mon-Fri. Refuses to touch a completed visit. Reports the
 // OptimoRoute driver alongside, so a disagreement is visible before writing.
 
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

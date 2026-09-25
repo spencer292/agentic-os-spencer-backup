@@ -8,6 +8,7 @@
 // Spencer works TUESDAY PENINSULA ONLY. He is not overflow. Disabling him Mon/Wed/Thu/Fri is the
 // only thing that stops the optimizer handing him stops (balancing=ON_FORCE or ON both do it).
 // Usage: node set-driver-days.mjs dry|live [--grid=<file> --week=<monday>]
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

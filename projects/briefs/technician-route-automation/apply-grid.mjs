@@ -3,6 +3,7 @@
 // territory-grid.json. Sets + committed promises stay exactly as pinned. Overflow ZIPs
 // get their day with tech left to proximity. Unzoned ZIPs untouched.
 // Usage: node apply-grid.mjs dry|live   (then optimize-week.mjs plan --fresh)
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

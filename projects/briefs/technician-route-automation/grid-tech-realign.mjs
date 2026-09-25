@@ -23,6 +23,7 @@
 //   - Post-replan verification: every order must come back on its grid tech and be scheduled, or the
 //     day aborts with ZERO Jobber writes. Never deletes anything.
 
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

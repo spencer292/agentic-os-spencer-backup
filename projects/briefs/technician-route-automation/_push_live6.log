@@ -1,0 +1,44 @@
+[write-gate] WRITES ENABLED until 2026-09-07T18:59:00.576Z (spenc@Got-Moles: Sep 8-11 re-sync after further Jobber adjustments; plan-only. 2026-09-07.) — ceiling 700/run — run 0b169d0f
+service time (check/set min, updated 2026-08-15): Alias 15/30  Robert 15/30  Cory 12/24  Luke 15/30  Spencer 15/30  Tavis 15/30  |  default 15/30
+cluster: Barbee Mill (Renton 98056) — 120 min across 11 job(s) = 11 min each
+JOBBER -> OPTIMOROUTE SYNC (LIVE)  2026-09-08 .. 2026-09-11
+now 2026-09-07 11:19:03 PT   (Jobber is truth for day + tech)
+
+Jobber active visits in window: 457
+OptimoRoute own stops seen (±3d): 457
+OR drivers: alias franks, cory ventura, luke lavergne, robert norton, tavis alexander
+
+=== PLAN ===
+  create missing OR order : 0
+  move to Jobber day      : 3
+  set to Jobber tech      : 3
+  TOTAL orders touched    : 6
+  already in sync         : 451
+  days to re-plan         : 2026-09-09, 2026-09-11
+
+  changes (first 40):
+    #8230  Bonney Lake     wed  2026-09-11->2026-09-09
+    #6985  Buckley         wed  2026-09-11->2026-09-09
+    #4676  Buckley         wed  2026-09-11->2026-09-09
+    #8375  Puyallup        fri  Luke->Robert
+    #8479  Puyallup        fri  Luke->Robert
+    #8225  Puyallup        fri  Luke->Robert
+
+=== APPLYING ===
+Writing 6 order updates to OptimoRoute…
+  all order updates accepted
+
+--- 2026-09-09 (wed) ---
+  pinning 113 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 116 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 116 ok, 0 failed
+
+--- 2026-09-11 (fri) ---
+  pinning 114 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 114 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 114 ok, 0 failed
+
+SYNC DONE: 6 orders synced, 0 Jobber time writes
+Report: C:\Agentic-os-got-moles\projects\briefs\technician-route-automation\drift-runs\j2o-sync-2026-09-07T18-19-15-523Z.json

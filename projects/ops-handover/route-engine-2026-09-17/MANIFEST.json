@@ -1,0 +1,124 @@
+{
+ "built": "2026-09-17T18:40:48.314Z",
+ "source": "Got Moles Agentic OS",
+ "fileCount": 23,
+ "files": [
+  {
+   "group": "route engine — safety layer",
+   "path": "projects/briefs/route-engine/lib/write-gate.mjs",
+   "bytes": 10111
+  },
+  {
+   "group": "route engine — safety layer",
+   "path": "projects/briefs/route-engine/scripts/write-authority.mjs",
+   "bytes": 5022
+  },
+  {
+   "group": "route engine — safety layer",
+   "path": "projects/briefs/route-engine/scripts/check-write-gate.mjs",
+   "bytes": 5215
+  },
+  {
+   "group": "route engine — safety layer",
+   "path": "projects/briefs/route-engine/scripts/test-write-gate.mjs",
+   "bytes": 3353
+  },
+  {
+   "group": "route engine — safety layer",
+   "path": "projects/briefs/route-engine/scripts/snapshot.mjs",
+   "bytes": 8935
+  },
+  {
+   "group": "route engine — safety layer",
+   "path": "projects/briefs/route-engine/scripts/restore-from-snapshot.mjs",
+   "bytes": 28062
+  },
+  {
+   "group": "the weekly chain",
+   "path": "projects/briefs/technician-route-automation/assign-by-territory.mjs",
+   "bytes": 13785
+  },
+  {
+   "group": "the weekly chain",
+   "path": "projects/briefs/technician-route-automation/push-week.mjs",
+   "bytes": 19074
+  },
+  {
+   "group": "the weekly chain",
+   "path": "projects/briefs/technician-route-automation/rebalance-week.mjs",
+   "bytes": 33509
+  },
+  {
+   "group": "shared libraries the chain imports",
+   "path": "projects/briefs/technician-route-automation/service-time.mjs",
+   "bytes": 4423
+  },
+  {
+   "group": "shared libraries the chain imports",
+   "path": "projects/briefs/technician-route-automation/geo-side.mjs",
+   "bytes": 4588
+  },
+  {
+   "group": "shared libraries the chain imports",
+   "path": "projects/briefs/technician-route-automation/geo-cache-build.mjs",
+   "bytes": 5333
+  },
+  {
+   "group": "read-only measurement + diagnosis",
+   "path": "projects/briefs/technician-route-automation/overtime-relief.mjs",
+   "bytes": 5419
+  },
+  {
+   "group": "read-only measurement + diagnosis",
+   "path": "projects/briefs/technician-route-automation/fetch-window-visits.mjs",
+   "bytes": 3823
+  },
+  {
+   "group": "read-only measurement + diagnosis",
+   "path": "projects/briefs/technician-route-automation/_wd_week.mjs",
+   "bytes": 6446
+  },
+  {
+   "group": "read-only measurement + diagnosis",
+   "path": "projects/briefs/technician-route-automation/_wd0918.mjs",
+   "bytes": 4887
+  },
+  {
+   "group": "read-only measurement + diagnosis",
+   "path": "projects/briefs/technician-route-automation/_jobchk.mjs",
+   "bytes": 2263
+  },
+  {
+   "group": "read-only measurement + diagnosis",
+   "path": "projects/briefs/technician-route-automation/_mismatch0918.mjs",
+   "bytes": 1167
+  },
+  {
+   "group": "jobber api client (snapshot.mjs shells out to this)",
+   "path": ".claude/skills/tool-jobber/scripts/jobber-api.mjs",
+   "bytes": 6108
+  },
+  {
+   "group": "config",
+   "path": "projects/briefs/technician-route-automation/tech-service-times.json",
+   "bytes": 5204
+  },
+  {
+   "group": "config",
+   "path": "projects/briefs/technician-route-automation/territories.json",
+   "bytes": 45849
+  },
+  {
+   "group": "config",
+   "path": "projects/briefs/technician-route-automation/territory-grid.json",
+   "bytes": 46730,
+   "note": "62 client names stripped"
+  },
+  {
+   "group": "config",
+   "path": "projects/briefs/route-engine/write-authority.json",
+   "bytes": 0,
+   "note": "shipped with writes DISABLED"
+  }
+ ]
+}

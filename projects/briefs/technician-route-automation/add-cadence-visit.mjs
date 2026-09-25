@@ -4,6 +4,7 @@
 // Interim ADD (recurring schedule left intact) so no downstream gap is created.
 // Created all-day (00:00 PT) => push-week treats it as FLEXIBLE, optimizer places it.
 // Usage: node add-cadence-visit.mjs dry|live
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

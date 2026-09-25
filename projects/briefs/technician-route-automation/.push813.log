@@ -1,0 +1,27 @@
+service time (check/set min, updated 2026-08-11): Alias 15/30  Robert 15/30  Cory 13/26  Luke 13/26  Spencer 13/26  Tavis 13/26  |  default 13/26
+PUSH NEW VISITS + REPLAN (live) 2026-08-12 14:17:51 PT — 1 day(s): 2026-08-13
+
+======================================================================
+2026-08-13 (thu)
+OptimoRoute has 132 stops on 2026-08-13.
+Jobber has 134 visits on 2026-08-13.
+
+2 visit(s) with no OptimoRoute order:
+  8360-2286356494      Liz Silke (SET)               98040 SET 20min  tech Cory Ventura
+  8366-2287571365      Denise Froatz (SET)           98027 chk 10min  tech Cory Ventura
+FREEZE OVERRIDDEN by explicit user approval — arrival-window emails for this day already went out.
+  created 8360-2286356494
+  created 8366-2287571365
+Locked 132 existing stops to day+tech.
+Re-planning (balancing OFF)…
+New stop placed: 8360-2286356494 → Cory Ventura stop 15 at 10:34
+New stop placed: 8366-2287571365 → Cory Ventura stop 39 at 16:45
+
+Jobber time write-back: 26 ok, 0 failed (108 unchanged).
+Report saved: C:\Agentic-os-got-moles\projects\briefs\technician-route-automation\drift-runs\push-new-2026-08-13-2026-08-12T21-19-42-021Z.json
+
+======================================================================
+SUMMARY
+  2026-08-13   2 new order(s)   26 time write(s)  26 re-timed
+
+2 new order(s) pushed across 1 day(s).

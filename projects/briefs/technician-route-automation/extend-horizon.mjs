@@ -30,6 +30,7 @@
  *   node extend-horizon.mjs live --no-write   # plan in OR, skip the Jobber write-back
  */
 
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -42,7 +43,7 @@ const TZ = 'America/Los_Angeles';
 const args = process.argv.slice(2);
 const mode = args[0];
 if (!['dry', 'live'].includes(mode)) {
-  console.log('Usage: extend-horizon.mjs dry|live [--days=12] [--grid=territory-grid-v5.json] [--no-write]');
+  console.log('Usage: extend-horizon.mjs dry|live [--days=21] [--grid=<path>] [--no-write]');
   process.exit(1);
 }
 const flag = n => args.find(a => a.startsWith(`--${n}=`))?.split('=')[1];
@@ -50,8 +51,14 @@ const flag = n => args.find(a => a.startsWith(`--${n}=`))?.split('=')[1];
 // drift-check scans out to HORIZON_DAYS for new bookings missing from them. Planning FURTHER than
 // drift-check scans creates days that have routes but never receive new bookings. 19 days is two
 // full weeks beyond the current one from any weekday (Spencer 2026-08-04).
-const DAYS = Number(flag('days') || 19);
-const GRID = flag('grid') || 'territory-grid-v5.json';
+// 21 = three weeks (Spencer 2026-08-21). Was 19. He wants OptimoRoute planned three weeks out;
+// it currently sits at about one, which means most new bookings land past the last planned day and
+// are invisible to anything reconciling against the plan.
+const DAYS = Number(flag('days') || 21);
+// territory-grid-v5.json is a FROZEN four-tech map from 2026-08-01 listing a tech who left on 08-07
+// (route-engine spec v2, defect D1). The live grid is derived from real post-cut visit history and
+// rebuilt every morning by the service-day-sheet-refresh cron.
+const GRID = flag('grid') || '../callrail-faq/service-day-lookup/service-day-grid.json';
 const noWrite = args.includes('--no-write');
 
 const env = {};

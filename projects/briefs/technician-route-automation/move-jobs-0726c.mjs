@@ -4,6 +4,7 @@
 // Skipping the re-push lets the stale OptimoRoute plan overwrite the move on write-back
 // (that is what silently reverted #6418 to Friday earlier tonight).
 // Usage: node move-jobs-0726c.mjs dry|live
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

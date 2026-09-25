@@ -1,0 +1,44 @@
+service time (check/set min, updated 2026-08-15): Alias 15/30  Robert 15/30  Cory 12/24  Luke 15/30  Spencer 15/30  Tavis 15/30  |  default 15/30
+cluster: Barbee Mill (Renton 98056) — 120 min across 11 job(s) = 11 min each
+JOBBER -> OPTIMOROUTE SYNC (LIVE)  2026-08-17 .. 2026-08-21
+now 2026-08-15 23:35:55 PT   (Jobber is truth for day + tech)
+
+Jobber active visits in window: 565
+OptimoRoute own stops seen (±3d): 672
+OR drivers: robert norton, alias franks, cory ventura, luke lavergne, tavis alexander
+
+=== PLAN ===
+  create missing OR order : 0
+  move to Jobber day      : 10
+  set to Jobber tech      : 14
+  TOTAL orders touched    : 15
+  already in sync         : 550
+  days to re-plan         : 2026-08-19, 2026-08-20, 2026-08-21
+
+  changes (first 0):
+    … +15 more
+
+=== APPLYING ===
+Writing 15 order updates to OptimoRoute…
+  all order updates accepted
+
+--- 2026-08-19 (wed) ---
+  pinning 105 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 114 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 112 ok, 0 failed
+
+--- 2026-08-20 (thu) ---
+  pinning 102 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 103 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 103 ok, 0 failed
+
+--- 2026-08-21 (fri) ---
+  pinning 115 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 115 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 114 ok, 0 failed
+
+SYNC DONE: 15 orders synced, 0 Jobber time writes
+Report: C:\Agentic-os-got-moles\projects\briefs\technician-route-automation\drift-runs\j2o-sync-2026-08-16T06-36-07-588Z.json

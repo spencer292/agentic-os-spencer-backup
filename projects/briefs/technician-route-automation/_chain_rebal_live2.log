@@ -1,0 +1,93 @@
+[write-gate] WRITES ENABLED until 2026-09-17T20:04:37.966Z (spenc@Got-Moles: Spencer authorised the week-of-09-21 chain run, 2026-09-17. Re-running rebalance-week after fixing hard-coded balancing:OFF. Rollback point 9e167a470281.) — ceiling 2000/run — run eb7fbe50
+service time (check/set min, updated 2026-08-15): Alias 15/30  Robert 15/30  Cory 12/24  Luke 15/30  Spencer 15/30  Tavis 15/30  |  default 15/30
+day override: Robert Norton on 2026-09-15 planned at 12/24 min — Spencer 2026-09-13: Cory rides with Robert for retraining. Plan Robert at Cory's pace (12/24) on this day because that is the pace they are training on.
+cluster: Barbee Mill (Renton 98056) — 120 min across 11 job(s) = 11 min each
+REBALANCE WEEK (LIVE)  2026-09-21 .. 2026-09-25   balancing=ON  day ceiling 9h
+now 2026-09-17 11:34:41 PT   — tech LOCKED from Jobber, day FREE within the window
+day map: rhythmChanges (effective 2026-08-17)
+
+Jobber open visits in window: 480
+OR drivers resolved: Alias Franks, Robert Norton, Cory Ventura, Luke LaVergne, Tavis Alexander
+
+CURRENT day shape (visits):
+  tech                    mon    tue    wed    thu    fri    total
+  Alias Franks             29      4     31      3     16       83
+  Cory Ventura             17     18     18     24     18       95
+  Luke LaVergne            19      5     17     19     12       72
+  Robert Norton            19     37     17     16     19      108
+  Tavis Alexander          26     31     16     25     24      122
+
+
+PLANNED day shape (visits):
+  tech                    mon    tue    wed    thu    fri    total
+  Alias Franks             29      4     31      3     16       83
+  Cory Ventura             17     18     18     23     19       95
+  Luke LaVergne            19      5     17     19     12       72
+  Robert Norton            19     37     17     16     19      108
+  Tavis Alexander          26     31     16     24     25      122
+
+SETs pinned to their promised day: 3
+Free to move: 477
+
+=== APPLYING ===
+Writing 480 orders (tech locked, day free)…
+  all orders accepted
+
+Planning 2026-09-21..2026-09-25 (balancing=ON, clustering ON)…
+
+  NOTE: 9 did not fit and are unscheduled: 4469-2332184002, 6198-2332268601, 7765-2332392375, 5329-1702468686, 7704-2050067388, 5328-1702467448, 4997-2326934380, 8577-2326337248, 8405-2333099694
+  region/day check: every stop is on one of its own region days
+
+NEW day shape (visits):
+  tech                    mon    tue    wed    thu    fri    total
+  Alias Franks             29      4     31      3     16       83
+  Cory Ventura             17     18     18     23     19       95
+  Luke LaVergne            19      5     17     19     12       72
+  Robert Norton            19     37     17     16     19      108
+  Tavis Alexander          26     31     16     24     25      122
+
+  hours per tech-day:
+  tech                    mon    tue    wed    thu    fri
+  Alias Franks           11.9    4.1   11.9    2.5    7.0
+  Cory Ventura            7.7    8.2    5.2    6.9    6.3
+  Luke LaVergne           9.0    3.0    9.8    8.5    5.4
+  Robert Norton           7.6   10.3    7.0    6.4    7.7
+  Tavis Alexander        11.1   12.0    8.0   10.1   10.1
+  8 tech-day(s) over the 9h ceiling
+
+  what each day actually contains:
+   mon 2026-09-21
+      Alias    Woodinville(8) Redmond(7) Bellevue(5) Kirkland(3) Medina(3) Snohomish(2) Bothell(1)
+      Cory     Orting(5) Graham(5) Eatonville(3) Yelm(2) graham(1) Pierce County(1)
+      Luke     Olympia(15) Lacey(4)
+      Robert   Auburn(15) Kent(3) Maple Valley(1)
+      Tavis    Seattle(19) Shoreline(5) Kenmore(1) Lake Forest Park(1)
+   tue 2026-09-22
+      Alias    Duvall(1) Carnation(1) North Bend(1) Seattle(1)
+      Cory     Orting(6) Graham(6) Eatonville(4) Yelm(2)
+      Luke     Spanaway(3) DuPont(2)
+      Robert   Enumclaw(21) Black Diamond(7) Ravensdale(1) Auburn(1)
+      Tavis    Seattle(22) Burien(6) Normandy Park(3)
+   wed 2026-09-23
+      Alias    Redmond(9) Woodinville(6) Bellevue(4) Kirkland(4) Medina(3) Bothell(2) Snohomish(1)
+      Cory     Buckley(7) Bonney Lake(6) Lake Tapps(3) Sumner(1) Pierce County(1)
+      Luke     Gig Harbor(11) Bremerton(2) Olalla(1) Port Orchard(1) Vaughn(1) Longbranch(1)
+      Robert   Issaquah(6) Maple Valley(5) Kent(5) Covington(1)
+      Tavis    Bellevue(7) Mercer Island(6) Clyde Hill(2) Seattle(1)
+   thu 2026-09-24
+      Alias    Duvall(2) Carnation(1)
+      Cory     Puyallup(21) Milton(1) Edgewood(1)
+      Luke     Olympia(15) Tumwater(3) Lacey(1)
+      Robert   Federal Way(7) Maple Valley(5) Kent(4)
+      Tavis    Renton(19) North Bend(2) Newcastle(2) Fall City(1)
+   fri 2026-09-25
+      Alias    Sammamish(12) Issaquah(4)
+      Cory     Buckley(9) Bonney Lake(6) Lake Tapps(3) Renton(1)
+      Luke     Tacoma(10) University Place(2)
+      Robert   Auburn(13) Kent(5) Covington(1)
+      Tavis    Renton(13) Seattle(6) Tukwila(3) Burien(2) SeaTac(1)
+
+Writing new day + time to Jobber…
+
+REBALANCE DONE: 306 Jobber writes (106 changed day), 0 failed, 9 unscheduled.
+Report: C:\Agentic-os-got-moles\projects\briefs\technician-route-automation\drift-runs\rebalance-2026-09-17T18-34-55-772Z.json

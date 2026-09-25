@@ -12,6 +12,7 @@
 //          [--grid=<file>]        roster from the grid's `works` map (else the four 07-26 drivers)
 //          [--fallback=grid]      grid assigns the tech where Jobber has nobody who is driving
 //          [--tech-only]          write the tech but not the day — leaves days to push-week --grid
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -29,14 +30,27 @@ const manifest = new Set(fs.readFileSync(path.join(__dirname, 'last-push-manifes
 
 // Norton rides WITH a driver — crew, not a truck, and not an OptimoRoute driver.
 // Alias Franks was removed from this rule 2026-07-31: he runs his own truck from the week of 08-03.
-const RIDE_ALONG = /norton/i;
+// RETIRED 2026-09-13. This was /norton/i, written when a Norton rode along as crew. It now matches
+// ROBERT NORTON, who owns Territory 3 and runs his own truck — verified against OptimoRoute
+// get_routes for 2026-09-11, where he has his own route with 26 stops and the driver serial
+// "Robert Norton". Left as an empty matcher rather than deleted so the mechanism survives if a real
+// ride-along returns; add the person explicitly, never by surname.
+const RIDE_ALONG = { test: () => false };
 // Roster comes from the grid's `works` map when one is passed, so a roster change (tech added,
 // tech out of the field) is a grid edit rather than a code edit in three files.
 const gArg = process.argv.find(a => a.startsWith('--grid='));
 const G = gArg ? JSON.parse(fs.readFileSync(path.resolve(__dirname, gArg.split('=')[1]), 'utf8')) : null;
-const DRIVERS = G
-  ? Object.keys(G.works || {})
-  : ['Luke LaVergne', 'Cory Ventura', 'Cammeron Anderson', 'Spencer Hill'];
+// --drivers=A,B,C overrides the roster. The grid files still carry the 2026-07 roster
+// (Cammeron Anderson, who has left; no Alias/Robert/Tavis), so --grid is NOT a usable roster source
+// any more: on 2026-09-13 the stale default locked only 239 of 656 orders and handed the other 417
+// to the optimizer, free to move day AND tech. Default below is the live roster, verified against
+// OptimoRoute get_routes 2026-09-11 — all five have their own driver serial (the full name).
+const dArg = process.argv.find(a => a.startsWith('--drivers='));
+const DRIVERS = dArg
+  ? dArg.split('=')[1].split(',').map(x => x.trim()).filter(Boolean)
+  : G && Object.keys(G.works || {}).length && !process.argv.includes('--live-roster')
+    ? Object.keys(G.works || {})
+    : ['Alias Franks', 'Cory Ventura', 'Luke LaVergne', 'Robert Norton', 'Tavis Alexander'];
 console.log(`roster: ${DRIVERS.join(', ')}`);
 // --fallback=grid : Jobber stays authoritative wherever the office assigned a tech who is actually
 // driving; the grid only fills the gaps — unassigned visits and visits still pointing at someone off

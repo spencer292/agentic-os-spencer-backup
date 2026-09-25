@@ -1,5 +1,6 @@
 // APPLY fix: moves each OR-routed visit back to its correct OptimoRoute day+time (from fixplan.json).
 // Run yourself:  node projects/briefs/technician-route-automation/apply-fix.mjs
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs'; import path from 'node:path';
 function loadEnv(){let d=process.cwd();for(let i=0;i<6;i++){const p=path.join(d,'.env');if(fs.existsSync(p)){const e={};for(const l of fs.readFileSync(p,'utf8').split(/\r?\n/)){const m=l.match(/^([A-Z0-9_]+)=(.*)$/);if(m)e[m[1]]=m[2].trim();}return e;}const u=path.dirname(d);if(u===d)break;d=u;}return{};}
 const env=loadEnv(); const TZ='America/Los_Angeles';

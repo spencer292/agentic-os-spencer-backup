@@ -1,0 +1,39 @@
+[write-gate] WRITES ENABLED until 2026-09-17T19:13:43.703Z (spenc@Got-Moles: Spencer authorised the week-of-09-21 chain run, 2026-09-17. Rollback point 9e167a470281 + orders baseline captured.) — ceiling 700/run — run 299dc14c
+service time (check/set min, updated 2026-08-15): Alias 15/30  Robert 15/30  Cory 12/24  Luke 15/30  Spencer 15/30  Tavis 15/30  |  default 15/30
+day override: Robert Norton on 2026-09-15 planned at 12/24 min — Spencer 2026-09-13: Cory rides with Robert for retraining. Plan Robert at Cory's pace (12/24) on this day because that is the pace they are training on.
+cluster: Barbee Mill (Renton 98056) — 120 min across 11 job(s) = 11 min each
+REBALANCE WEEK (DRY)  2026-09-21 .. 2026-09-25   balancing=ON  day ceiling 9h
+now 2026-09-17 11:19:56 PT   — tech LOCKED from Jobber, day FREE within the window
+day map: rhythmChanges (effective 2026-08-17)
+
+Jobber open visits in window: 479
+OR drivers resolved: Tavis Alexander, Cory Ventura, Luke LaVergne, Robert Norton, Alias Franks
+
+CURRENT day shape (visits):
+  tech                    mon    tue    wed    thu    fri    total
+  Alias Franks             16      2     31     21     13       83
+  Cory Ventura             17     31     27      4     15       94
+  Luke LaVergne            32      2     18     14      6       72
+  Robert Norton            12     50     26     19      1      108
+  Tavis Alexander          31     56     15     16      4      122
+
+
+PLANNED day shape (visits):
+  tech                    mon    tue    wed    thu    fri    total
+  Alias Franks             29      4     31      3     16       83
+  Cory Ventura             17     18     18     23     18       94
+  Luke LaVergne            19      5     17     19     12       72
+  Robert Norton            19     37     17     16     19      108
+  Tavis Alexander          26     31     16     25     24      122
+
+SETs pinned to their promised day: 3
+Free to move: 476
+
+DRY RUN — nothing written. A live run would:
+  1. rewrite 479 OR orders: assignedTo = Jobber tech (hard lock),
+     allowedDates = 2026-09-21..2026-09-25 for the 476 non-SET visits, own day for the 3 SETs
+  2. start_planning across the whole window, balancing=ON, clustering ON
+  3. verify nobody changed tech and nothing came back unscheduled
+  4. write the chosen day + time back to Jobber
+
+Report: C:\Agentic-os-got-moles\projects\briefs\technician-route-automation\drift-runs\rebalance-2026-09-17T18-20-11-985Z.json

@@ -17,6 +17,7 @@
 //        [--min-date-guard=YYYY-MM-DD]            refuse to touch anything before this date
 //                                                 (defaults to tomorrow — today's routes are live)
 
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

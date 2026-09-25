@@ -1,0 +1,124 @@
+[write-gate] WRITES ENABLED until 2026-09-17T19:13:43.703Z (spenc@Got-Moles: Spencer authorised the week-of-09-21 chain run, 2026-09-17. Rollback point 9e167a470281 + orders baseline captured.) — ceiling 700/run — run de706158
+ASSIGN BY TERRITORY (LIVE)  2026-09-21 .. 2026-09-25   map v2026-08-12-v9-five-highway
+  open visits in window: 479
+
+=== PLAN ===
+  visits to reassign : 203
+  already correct    : 272
+
+  FROM (who has them now):
+       68  Cory Ventura
+       67  Robert Norton
+       25  Alias Franks
+       22  Luke LaVergne
+       18  Tavis Alexander
+        2  Spencer Hill
+        1  Courtney 
+
+  TO (territory owner):
+       85  Cory Ventura
+       57  Robert Norton
+       43  Tavis Alexander
+       13  Alias Franks
+        5  Luke LaVergne
+
+  by region:
+       32  Graham / Orting / Eatonville / Roy
+       31  Buckley / Bonney Lake / Lake Tapps / Sumner
+       23  North Seattle / Shoreline
+       22  Puyallup / Edgewood / Milton
+       20  North of SR-516 (Des Moines / Kent North / Maple Valley)
+       18  South of SR-516 (Auburn / Kent South / Pacific)
+       18  Renton / Newcastle
+       13  Enumclaw / Black Diamond / Ravensdale
+        8  Points / NE 8th / Kirkland
+        6  Issaquah South
+        5  Sammamish / Issaquah Highlands
+        4  Tacoma
+        2  Bellevue South / Mercer Island
+        1  Lakewood / UP / Spanaway / Steilacoom
+
+  RESULTING LOAD (visits in window, before -> after):
+    Alias Franks            95 ->    83
+    Cory Ventura            77 ->    94
+    Courtney                 1 ->     0
+    Luke LaVergne           89 ->    72
+    Robert Norton          118 ->   108
+    Spencer Hill             2 ->     0
+    Tavis Alexander         97 ->   122
+
+  geoSplit: 29 address(es) resolved from coordinates, 29 fell back to the zip default
+     #8475 727 Hilltop Avenue 98031 -> NORTH (fallback)
+     #8480 11707 Southeast 210th Place 98031 -> NORTH (fallback)
+     #4701 20330 Southeast 240th Street 98038 -> NORTH (fallback)
+     #7626 18403 Southeast 224th Street 98042 -> SOUTH (fallback)
+     #7684 21621 Southeast 259th Street 98038 -> NORTH (fallback)
+     #6181 6800 Meridian Road Southeast 98513 -> SOUTH (fallback)
+     #8451 9605 South 235th Place 98031 -> NORTH (fallback)
+     #8483 10317 46th Avenue Southeast 98513 -> SOUTH (fallback)
+     #8484 23800 Southeast 247th Place 98038 -> NORTH (fallback)
+     #8527 3236 Gravelly Beach Loop Northwest 98502 -> NORTH (fallback)
+     #6181 6800 Meridian Road Southeast 98513 -> SOUTH (fallback)
+     #8569 2034 94th Avenue Northeast 98004 -> SOUTH (fallback)
+     #8501 8435 Northeast 21st Place 98004 -> SOUTH (fallback)
+     #8507 22412 Southeast 323rd Street 98042 -> SOUTH (fallback)
+     #7084 26447 200th Avenue Southeast 98042 -> SOUTH (fallback)
+     ^ these have never been geocoded — run geo-cache-build.mjs --write after they are planned once
+
+  !! zip not in any territory (left alone — extend territories.json):
+        2  98119 Seattle
+        1  98272 Monroe
+        1  98012 Bothell
+
+  sample (first 40):
+    #7670  2026-09-21  Orting           Robert     -> Cory      Graham / Orting / Eatonville / Roy
+    #8432  2026-09-21  Graham           Robert     -> Cory      Graham / Orting / Eatonville / Roy
+    #8439  2026-09-21  Auburn           Cory       -> Robert    South of SR-516 (Auburn / Kent South / Pacific)
+    #6653  2026-09-21  Kent             Cory       -> Robert    South of SR-516 (Auburn / Kent South / Pacific)
+    #8453  2026-09-21  Renton           Cory       -> Tavis     Renton / Newcastle
+    #8475  2026-09-21  Kent             Cory       -> Robert    North of SR-516 (Des Moines / Kent North / Maple Valley)
+    #8478  2026-09-21  Renton           Cory       -> Tavis     Renton / Newcastle
+    #8480  2026-09-21  Kent             Cory       -> Robert    North of SR-516 (Des Moines / Kent North / Maple Valley)
+    #8318  2026-09-21  Graham           Robert     -> Cory      Graham / Orting / Eatonville / Roy
+    #4926  2026-09-21  Pierce County    Robert     -> Cory      Graham / Orting / Eatonville / Roy
+    #7853  2026-09-21  Orting           Robert     -> Cory      Graham / Orting / Eatonville / Roy
+    #7725  2026-09-21  Orting           Robert     -> Cory      Graham / Orting / Eatonville / Roy
+    #7320  2026-09-21  Puyallup         Robert     -> Cory      Puyallup / Edgewood / Milton
+    #7747  2026-09-21  Graham           Robert     -> Cory      Graham / Orting / Eatonville / Roy
+    #7496  2026-09-21  Orting           Robert     -> Cory      Graham / Orting / Eatonville / Roy
+    #4701  2026-09-21  Maple Valley     Cory       -> Robert    North of SR-516 (Des Moines / Kent North / Maple Valley)
+    #7626  2026-09-21  Kent             Cory       -> Robert    South of SR-516 (Auburn / Kent South / Pacific)
+    #5954  2026-09-21  Graham           Robert     -> Cory      Graham / Orting / Eatonville / Roy
+    #5413  2026-09-21  graham           Robert     -> Cory      Graham / Orting / Eatonville / Roy
+    #4711  2026-09-21  Covington        Cory       -> Robert    North of SR-516 (Des Moines / Kent North / Maple Valley)
+    #5727  2026-09-21  Graham           Robert     -> Cory      Graham / Orting / Eatonville / Roy
+    #7961  2026-09-21  Renton           Cory       -> Tavis     Renton / Newcastle
+    #7884  2026-09-21  Puyallup         Robert     -> Cory      Puyallup / Edgewood / Milton
+    #7987  2026-09-21  Renton           Cory       -> Tavis     Renton / Newcastle
+    #5024  2026-09-21  Puyallup         Robert     -> Cory      Puyallup / Edgewood / Milton
+    #7943  2026-09-21  Renton           Cory       -> Tavis     Renton / Newcastle
+    #8422  2026-09-21  Renton           Cory       -> Tavis     Renton / Newcastle
+    #7766  2026-09-21  Renton           Cory       -> Tavis     Renton / Newcastle
+    #6144  2026-09-21  Renton           Cory       -> Tavis     Renton / Newcastle
+    #4550  2026-09-21  Renton           Cory       -> Tavis     Renton / Newcastle
+    #8375  2026-09-21  Puyallup         Robert     -> Cory      Puyallup / Edgewood / Milton
+    #8270  2026-09-21  Renton           Cory       -> Tavis     Renton / Newcastle
+    #7684  2026-09-21  Maple Valley     Cory       -> Robert    North of SR-516 (Des Moines / Kent North / Maple Valley)
+    #6241  2026-09-21  Orting           Robert     -> Cory      Graham / Orting / Eatonville / Roy
+    #6840  2026-09-21  Milton           Robert     -> Cory      Puyallup / Edgewood / Milton
+    #8451  2026-09-21  Kent             Cory       -> Robert    North of SR-516 (Des Moines / Kent North / Maple Valley)
+    #8484  2026-09-21  Maple Valley     Cory       -> Robert    North of SR-516 (Des Moines / Kent North / Maple Valley)
+    #4425  2026-09-21  Spanaway         Robert     -> Luke      Lakewood / UP / Spanaway / Steilacoom
+    #8442  2026-09-21  Renton           Cory       -> Tavis     Renton / Newcastle
+    #8569  2026-09-21  Clyde Hill       Alias      -> Tavis     Bellevue South / Mercer Island
+    … +163 more
+
+=== WRITING ===
+  …50/203
+  …100/203
+  …150/203
+  …200/203
+
+DONE: 203 reassigned, 0 failed.
+Report: C:\Agentic-os-got-moles\projects\briefs\technician-route-automation\drift-runs\assign-territory-2026-09-17T18-13-55-131Z.json
+NEXT: node projects/briefs/technician-route-automation/jobber-to-optimo-sync.mjs live --from=2026-09-21 --to=2026-09-25

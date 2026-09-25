@@ -6,6 +6,7 @@
 // Assignment = territory grid tech, with over-ceiling techs shed to an under-ceiling tech working
 // the same day and the same cities. Only TUESDAY is locked; the rest of the week stays optimizer-led.
 // Usage: node lock-spencer-tuesday.mjs dry|live
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

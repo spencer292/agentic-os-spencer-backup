@@ -1,0 +1,22 @@
+{
+  "_comment": "STEP 1 of route-engine spec v2 Part 7 — contain write authority. This file is the single global kill switch for every script that can write to Jobber or OptimoRoute. It is enforced at the HTTP transport by lib/write-gate.mjs, not at the call-site, so a script cannot bypass it by adding a new mutation. Default is OFF and enabling is time-boxed: an enable that is never explicitly revoked expires on its own, so writes can never be left switched on by accident. Flip it with scripts/write-authority.mjs, never by hand-editing.",
+  "writesEnabled": false,
+  "enabledUntil": null,
+  "enabledBy": null,
+  "reason": "Revoked.",
+  "ceilingPerRun": 200,
+  "updatedAt": "2026-09-23T00:04:48.107Z",
+  "standingGrants": [
+    {
+      "script": "arrival-window-sweep.mjs",
+      "target": "jobber",
+      "ops": [
+        "jobEdit"
+      ],
+      "reason": "The one sanctioned standing writer. Sets the standard 3-hour arrival window so customer texts show a window instead of an exact route ETA. Mutation pre-approved by Spencer 2026-07-20; spec v2 says it stays running through every phase. Narrow by construction: jobEdit only, nothing else this script attempts will pass.",
+      "approvedBy": "Spencer 2026-07-20",
+      "ceilingPerRun": 200
+    }
+  ],
+  "_policy": "HUMAN-DRIVEN BY DECISION (Spencer 2026-08-21): no automation writes on a timer until the pipeline is proven. standingGrants is deliberately a list of ONE. Do not add to it during reconciliation, cleanup, or because a cron is failing — a cron being blocked by this gate is the gate working. Only Spencer adds a standing grant, and only against the promotion bar in route-engine/rules/scheduling-rules.json (writeRules.authorityModel)."
+}

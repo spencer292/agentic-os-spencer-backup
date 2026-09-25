@@ -1,0 +1,97 @@
+[write-gate] WRITES ENABLED until 2026-08-23T01:13:32.817Z (spenc@Got-Moles: Spencer approved 2026-08-22: push week 08-24..08-28 to OptimoRoute, Jobber day+tech preserved, plan-only (no Jobber writes)) — ceiling 800/run — run 50f3a944
+service time (check/set min, updated 2026-08-15): Alias 15/30  Robert 15/30  Cory 12/24  Luke 15/30  Spencer 15/30  Tavis 15/30  |  default 15/30
+cluster: Barbee Mill (Renton 98056) — 120 min across 11 job(s) = 11 min each
+JOBBER -> OPTIMOROUTE SYNC (LIVE)  2026-08-24 .. 2026-08-28
+now 2026-08-22 17:13:57 PT   (Jobber is truth for day + tech)
+
+Jobber active visits in window: 582
+OptimoRoute own stops seen (±3d): 119
+OR drivers: luke lavergne, alias franks, robert norton, tavis alexander, cory ventura
+
+=== PLAN ===
+  create missing OR order : 581
+  move to Jobber day      : 1
+  set to Jobber tech      : 581
+  TOTAL orders touched    : 582
+  already in sync         : 0
+  days to re-plan         : 2026-08-24, 2026-08-25, 2026-08-26, 2026-08-27, 2026-08-28
+
+  changes (first 40):
+    #8271  Lakewood        mon  CREATE  none->Luke
+    #8281  Bellevue        mon  CREATE  none->Alias
+    #8301  Burien          mon  CREATE  none->Tavis
+    #8267  Tacoma          mon  CREATE  none->Luke
+    #8305  Des Moines      mon  CREATE  none->Tavis
+    #8307  Redmond         mon  CREATE  none->Alias
+    #8310  Maple Valley    mon  CREATE  none->Cory
+    #8311  Redmond         mon  CREATE  none->Alias
+    #8316  Kent            mon  CREATE  none->Robert
+    #8328  Seattle         mon  CREATE  none->Tavis
+    #8335  Bellevue        mon  CREATE  none->Alias
+    #7527  Tumwater        mon  CREATE  none->Luke
+    #8346  Seattle         mon  CREATE  none->Tavis
+    #6653  Kent            mon  CREATE  none->Cory
+    #8297  Redmond         mon  CREATE  none->Alias
+    #7449  Ravensdale      mon  CREATE  none->Robert
+    #7358  Black Diamond   mon  CREATE  none->Robert
+    #8359  Seattle         mon  CREATE  none->Tavis
+    #8367  Bellevue        mon  CREATE  none->Alias
+    #8371  Kent            mon  CREATE  none->Cory
+    #5602  Covington       mon  CREATE  none->Cory
+    #8383  Bellevue        mon  CREATE  none->Alias
+    #8291  Kent            mon  CREATE  none->Robert
+    #6628  Maple Valley    mon  CREATE  none->Cory
+    #6953  Covington       mon  CREATE  none->Cory
+    #6083  Auburn          mon  CREATE  none->Robert
+    #7084  Covington       mon  CREATE  none->Cory
+    #8173  Covington       mon  CREATE  none->Cory
+    #8023  Auburn          mon  CREATE  none->Robert
+    #6392  Clyde Hill      mon  CREATE  none->Alias
+    #6567  Normandy Park   mon  CREATE  none->Tavis
+    #5801  Olympia         mon  CREATE  none->Luke
+    #8349  Kent            mon  CREATE  none->Cory
+    #7475  Normandy Park   mon  CREATE  none->Tavis
+    #6354  Kent            mon  CREATE  none->Cory
+    #7857  Auburn          mon  CREATE  none->Robert
+    #7626  Kent            mon  CREATE  none->Cory
+    #8270  Renton          mon  CREATE  none->Cory
+    #6545  Medina          mon  CREATE  none->Alias
+    #7962  Kent            mon  CREATE  none->Cory
+    … +542 more
+
+=== APPLYING ===
+Writing 582 order updates to OptimoRoute…
+  all order updates accepted
+
+--- 2026-08-24 (mon) ---
+  pinning 0 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 132 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 132 ok, 0 failed
+
+--- 2026-08-25 (tue) ---
+  pinning 0 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 115 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 115 ok, 0 failed
+
+--- 2026-08-26 (wed) ---
+  pinning 0 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 114 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 114 ok, 0 failed
+
+--- 2026-08-27 (thu) ---
+  pinning 0 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 123 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 123 ok, 0 failed
+
+--- 2026-08-28 (fri) ---
+  pinning 0 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 98 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 98 ok, 0 failed
+
+SYNC DONE: 582 orders synced, 0 Jobber time writes
+Report: C:\Agentic-os-got-moles\projects\briefs\technician-route-automation\drift-runs\j2o-sync-2026-08-23T00-14-10-216Z.json

@@ -3,6 +3,7 @@
 // Needed because `write --date X` only covers writes TARGETING X — it misses the visits currently
 // ON X that the plan moves away, leaving that day double-loaded (hit 2026-07-26: Monday showed 147
 // against a 99-stop plan). Usage: node write-subset.mjs <file.json> dry|live
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

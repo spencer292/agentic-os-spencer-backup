@@ -8,6 +8,7 @@
 // customer silently gets no service — that is the failure this guard exists to prevent.
 //
 // Usage: node delete-dup-visits-0803.mjs dry|live --visits=<snapshot.json>
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

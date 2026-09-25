@@ -1,0 +1,51 @@
+{
+  "ranAt": "2026-08-16T05:45:05.602Z",
+  "mode": "live",
+  "from": "2026-08-17",
+  "to": "2026-08-21",
+  "actions": [
+    {
+      "orderNo": "5371-2290167278",
+      "job": "5371",
+      "client": "Jeff Ostlund",
+      "city": "Renton",
+      "isSet": false,
+      "fromDay": "2026-08-19",
+      "toDay": "2026-08-21",
+      "fromTech": "Cory Ventura",
+      "toTech": "Cory Ventura",
+      "serial": "Cory Ventura",
+      "needCreate": false,
+      "needDay": true,
+      "needTech": false,
+      "address": "17535 Southeast 106th Street, Renton, Washington, 98059",
+      "title": "Jeff Ostlund"
+    }
+  ],
+  "noAddress": [],
+  "noTech": [],
+  "frozenSkip": [],
+  "replanDays": [
+    "2026-08-19",
+    "2026-08-21"
+  ],
+  "blockedDays": [],
+  "days": [
+    {
+      "day": "2026-08-19",
+      "replanned": true,
+      "writes": [],
+      "techWrites": [],
+      "failures": [],
+      "aborted": null
+    },
+    {
+      "day": "2026-08-21",
+      "replanned": true,
+      "writes": [],
+      "techWrites": [],
+      "failures": [],
+      "aborted": null
+    }
+  ]
+}

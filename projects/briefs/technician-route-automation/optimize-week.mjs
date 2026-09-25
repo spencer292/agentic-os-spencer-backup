@@ -13,6 +13,7 @@
 // delta guard (>5 committed/set day-moves aborts), userErrors checked per mutation.
 // Plan saved to optimize-plan.json for review between steps.
 
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

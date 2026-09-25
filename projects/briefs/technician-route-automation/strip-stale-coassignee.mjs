@@ -24,6 +24,7 @@
 // him under notWorking. When a tech is off the roster, a visit carrying him plus a driver is a
 // two-technician visit, not a crew pairing.
 
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

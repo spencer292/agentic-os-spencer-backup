@@ -12,6 +12,7 @@
 // Guards: email freeze (override only with the user's explicit in-session OK); never deletes;
 // aborts with zero Jobber writes on any verify failure.
 
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

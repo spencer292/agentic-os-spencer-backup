@@ -9,6 +9,7 @@
 // Usage: node delete-visits.mjs dry|live --visits=<snapshot.json> --ids='<num>:<reason>[;<num>:<reason>]'
 // Records are separated by ';' — reasons routinely contain commas, and a comma separator silently
 // turned one id into two on 2026-08-01 (the resolve guard caught it and aborted).
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

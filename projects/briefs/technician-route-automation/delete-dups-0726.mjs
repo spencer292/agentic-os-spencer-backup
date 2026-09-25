@@ -3,6 +3,7 @@
 // Keeper chosen by TERRITORY-GRID DAY (grid day for the zip wins), then:
 //   non-working tech (Tavis) loses > Spencer-on-non-peninsula loses > lowest visit id wins.
 // Usage: node delete-dups-0726.mjs dry|live
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

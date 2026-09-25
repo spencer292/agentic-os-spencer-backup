@@ -1,0 +1,16 @@
+REPLAN DAY 2026-08-17
+  Jobber board for this day: 124 visits
+  OptimoRoute has: 124 of our stops routed
+  pinning 124 stops to day + Jobber tech…
+  re-planning (balancing OFF, drivers pinned)…
+
+  Cory Ventura       32 stops  07:27-15:42  route 9.3h  drive 2.5h  165 mi   << over 9h
+  Alias Franks       27 stops  07:12-16:18  route 10.3h  drive 2.8h  134 mi   << over 9h
+  Tavis Alexander    25 stops  07:27-15:18  route 9.1h  drive 2.3h  125 mi   << over 9h
+  Luke LaVergne      21 stops  07:29-15:57  route 9.7h  drive 4.0h  227 mi   << over 9h
+  Robert Norton      19 stops  07:30-13:47  route 7.5h  drive 2.3h  124 mi
+
+  scheduled : 124 / 124
+  every visit is scheduled, and every one is on the tech Jobber names.
+
+Nothing was written to Jobber. To send these times: node write-times-from-plan.mjs live --date=2026-08-17

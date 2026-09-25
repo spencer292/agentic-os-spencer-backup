@@ -3,6 +3,7 @@
 // the true grid load so overfilled tech-days can be split across days (Spencer 2026-07-26).
 // Order field assignedTo:{serial} (verified 2026-07-26). Grid day already enforced via push-week --grid.
 // Usage: node lock-techs-to-grid.mjs dry|live
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

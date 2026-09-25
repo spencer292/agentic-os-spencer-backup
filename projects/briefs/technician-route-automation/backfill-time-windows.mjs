@@ -19,6 +19,7 @@
 // single refresh at start (rotation persisted back to .env), token reused, re-refreshed
 // after 50 min or on 401. Throttle + backoff on Jobber rate/cost limits.
 
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

@@ -11,6 +11,7 @@
 //
 // Usage: node move-order.mjs dry|live --order=8311-2277566634 --to-date=2026-08-06 [--tech="Alias Franks"]
 
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

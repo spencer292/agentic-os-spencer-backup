@@ -1,0 +1,65 @@
+[write-gate] WRITES ENABLED until 2026-09-07T18:39:35.195Z (spenc@Got-Moles: Sep 8-11 re-sync after Spencer's latest Jobber edits; plan-only. 2026-09-07.) — ceiling 700/run — run caae1e15
+service time (check/set min, updated 2026-08-15): Alias 15/30  Robert 15/30  Cory 12/24  Luke 15/30  Spencer 15/30  Tavis 15/30  |  default 15/30
+cluster: Barbee Mill (Renton 98056) — 120 min across 11 job(s) = 11 min each
+JOBBER -> OPTIMOROUTE SYNC (LIVE)  2026-09-08 .. 2026-09-11
+now 2026-09-07 10:54:57 PT   (Jobber is truth for day + tech)
+
+Jobber active visits in window: 458
+OptimoRoute own stops seen (±3d): 458
+OR drivers: alias franks, cory ventura, luke lavergne, robert norton, tavis alexander
+
+=== PLAN ===
+  create missing OR order : 0
+  move to Jobber day      : 14
+  set to Jobber tech      : 7
+  TOTAL orders touched    : 21
+  already in sync         : 437
+  days to re-plan         : 2026-09-08, 2026-09-09, 2026-09-10
+
+  changes (first 40):
+    #7010  Auburn          tue  2026-09-09->2026-09-08
+    #8439  Auburn          tue  2026-09-09->2026-09-08
+    #5016  Auburn          tue  Cory->Robert
+    #5503  Auburn          tue  Cory->Robert
+    #6334  Auburn          tue  2026-09-09->2026-09-08
+    #5025  Auburn          tue  2026-09-09->2026-09-08
+    #6555  Auburn          tue  Cory->Robert
+    #6568  Auburn          tue  Cory->Robert
+    #5511  Auburn          tue  Cory->Robert
+    #6083  Auburn          tue  Cory->Robert
+    #8023  Auburn          tue  Cory->Robert
+    #8514  Auburn          tue  2026-09-09->2026-09-08
+    #8384  Kirkland        wed  2026-09-08->2026-09-09
+    #4902  Kirkland        wed  2026-09-08->2026-09-09
+    #7593  Renton          wed  2026-09-10->2026-09-09
+    #7594  Renton          wed  2026-09-10->2026-09-09
+    #7711  Kirkland        wed  2026-09-08->2026-09-09
+    #7434  Woodinville     thu  2026-09-09->2026-09-10
+    #7758  Snohomish       thu  2026-09-08->2026-09-10
+    #8406  Snohomish       thu  2026-09-09->2026-09-10
+    #8405  Snohomish       thu  2026-09-08->2026-09-10
+
+=== APPLYING ===
+Writing 21 order updates to OptimoRoute…
+  all order updates accepted
+
+--- 2026-09-08 (tue) ---
+  pinning 115 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 120 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 120 ok, 0 failed
+
+--- 2026-09-09 (wed) ---
+  pinning 108 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 113 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 113 ok, 0 failed
+
+--- 2026-09-10 (thu) ---
+  pinning 103 stops to day+tech…
+  re-planning (balancing OFF, drivers pinned)…
+  verified: 107 visits scheduled, all on the tech Jobber names
+  Jobber time write-back: 107 ok, 0 failed
+
+SYNC DONE: 21 orders synced, 0 Jobber time writes
+Report: C:\Agentic-os-got-moles\projects\briefs\technician-route-automation\drift-runs\j2o-sync-2026-09-07T17-55-09-250Z.json

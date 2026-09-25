@@ -1,0 +1,398 @@
+{
+  "ranAt": "2026-08-18T23:07:43.293Z",
+  "kind": "push-new-visits-replan",
+  "day": "2026-08-20",
+  "created": [
+    {
+      "orderNo": "8387-2292793814",
+      "title": "Joydeep Kant",
+      "zip": "98019",
+      "tech": "Alias Franks",
+      "isSet": false,
+      "placed": {
+        "driver": "Alias Franks",
+        "hm": "14:40",
+        "scheduledAtDt": "2026-08-20 14:40:10",
+        "stopNumber": 21
+      }
+    },
+    {
+      "orderNo": "8393-2293210771",
+      "title": "Dan Haeck",
+      "zip": "98023",
+      "tech": "Robert Norton",
+      "isSet": true,
+      "placed": {
+        "driver": "Robert Norton",
+        "hm": "10:54",
+        "scheduledAtDt": "2026-08-20 10:54:18",
+        "stopNumber": 10
+      }
+    },
+    {
+      "orderNo": "8404-2294006016",
+      "title": "Simmons Mill HOA  (SET)",
+      "zip": "98512",
+      "tech": "Luke LaVergne",
+      "isSet": true,
+      "placed": {
+        "driver": "Luke LaVergne",
+        "hm": "12:33",
+        "scheduledAtDt": "2026-08-20 12:33:23",
+        "stopNumber": 12
+      }
+    },
+    {
+      "orderNo": "8408-2294440194",
+      "title": "Hyungon Ryu (SET)",
+      "zip": "98023",
+      "tech": "Robert Norton",
+      "isSet": false,
+      "placed": {
+        "driver": "Robert Norton",
+        "hm": "12:25",
+        "scheduledAtDt": "2026-08-20 12:25:47",
+        "stopNumber": 14
+      }
+    },
+    {
+      "orderNo": "8411-2294570805",
+      "title": "Alissa Williams (SET)",
+      "zip": "98391",
+      "tech": "Robert Norton",
+      "isSet": false,
+      "placed": {
+        "driver": "Robert Norton",
+        "hm": "07:20",
+        "scheduledAtDt": "2026-08-20 07:20:33",
+        "stopNumber": 1
+      }
+    },
+    {
+      "orderNo": "8395-2293212658",
+      "title": "Beverly Worthen",
+      "zip": "98001",
+      "tech": "Robert Norton",
+      "isSet": true,
+      "placed": {
+        "driver": "Robert Norton",
+        "hm": "09:28",
+        "scheduledAtDt": "2026-08-20 09:28:49",
+        "stopNumber": 7
+      }
+    },
+    {
+      "orderNo": "7637-2021592856",
+      "title": "Tommy Marshall - 1 Year Mole Control Service",
+      "zip": "98360",
+      "tech": "Cory Ventura",
+      "isSet": false,
+      "placed": {
+        "driver": "Cory Ventura",
+        "hm": "11:03",
+        "scheduledAtDt": "2026-08-20 11:03:35",
+        "stopNumber": 13
+      }
+    }
+  ],
+  "stopsBefore": 102,
+  "stopsAfter": 109,
+  "writes": [
+    {
+      "orderNo": "8404-2294006016",
+      "from": "2026-08-20 00:00",
+      "to": "2026-08-20 12:33",
+      "driver": "Luke LaVergne",
+      "isNew": true
+    },
+    {
+      "orderNo": "8076-2288873210",
+      "from": "2026-08-20 12:46",
+      "to": "2026-08-20 13:20",
+      "driver": "Luke LaVergne",
+      "isNew": false
+    },
+    {
+      "orderNo": "5015-1671989014",
+      "from": "2026-08-20 13:09",
+      "to": "2026-08-20 13:43",
+      "driver": "Luke LaVergne",
+      "isNew": false
+    },
+    {
+      "orderNo": "7832-2288900334",
+      "from": "2026-08-20 13:34",
+      "to": "2026-08-20 14:08",
+      "driver": "Luke LaVergne",
+      "isNew": false
+    },
+    {
+      "orderNo": "7488-2289109595",
+      "from": "2026-08-20 14:03",
+      "to": "2026-08-20 14:37",
+      "driver": "Luke LaVergne",
+      "isNew": false
+    },
+    {
+      "orderNo": "7478-2290525015",
+      "from": "2026-08-20 14:25",
+      "to": "2026-08-20 14:59",
+      "driver": "Luke LaVergne",
+      "isNew": false
+    },
+    {
+      "orderNo": "6181-2249184250",
+      "from": "2026-08-20 14:43",
+      "to": "2026-08-20 15:17",
+      "driver": "Luke LaVergne",
+      "isNew": false
+    },
+    {
+      "orderNo": "8191-2259479140",
+      "from": "2026-08-20 15:04",
+      "to": "2026-08-20 15:38",
+      "driver": "Luke LaVergne",
+      "isNew": false
+    },
+    {
+      "orderNo": "8232-2289334122",
+      "from": "2026-08-20 15:24",
+      "to": "2026-08-20 15:58",
+      "driver": "Luke LaVergne",
+      "isNew": false
+    },
+    {
+      "orderNo": "8374-2288697843",
+      "from": "2026-08-20 15:44",
+      "to": "2026-08-20 16:18",
+      "driver": "Luke LaVergne",
+      "isNew": false
+    },
+    {
+      "orderNo": "8387-2292793814",
+      "from": "2026-08-20 00:00",
+      "to": "2026-08-20 14:40",
+      "driver": "Alias Franks",
+      "isNew": true
+    },
+    {
+      "orderNo": "8411-2294570805",
+      "from": "2026-08-20 07:00",
+      "to": "2026-08-20 07:20",
+      "driver": "Robert Norton",
+      "isNew": true
+    },
+    {
+      "orderNo": "5227-2289962490",
+      "from": "2026-08-20 07:23",
+      "to": "2026-08-20 07:40",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "8303-2275997675",
+      "from": "2026-08-20 07:48",
+      "to": "2026-08-20 08:04",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "7840-2117242837",
+      "from": "2026-08-20 08:13",
+      "to": "2026-08-20 08:29",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "7820-2283977804",
+      "from": "2026-08-20 08:30",
+      "to": "2026-08-20 08:47",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "8047-2284015877",
+      "from": "2026-08-20 08:54",
+      "to": "2026-08-20 09:10",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "8395-2293212658",
+      "from": "2026-08-20 09:00",
+      "to": "2026-08-20 09:28",
+      "driver": "Robert Norton",
+      "isNew": true
+    },
+    {
+      "orderNo": "6382-2284152855",
+      "from": "2026-08-20 09:16",
+      "to": "2026-08-20 10:03",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "7842-2118400738",
+      "from": "2026-08-20 09:43",
+      "to": "2026-08-20 10:31",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "8393-2293210771",
+      "from": "2026-08-20 00:00",
+      "to": "2026-08-20 10:54",
+      "driver": "Robert Norton",
+      "isNew": true
+    },
+    {
+      "orderNo": "8093-2290185459",
+      "from": "2026-08-20 10:06",
+      "to": "2026-08-20 11:25",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "8056-2290525004",
+      "from": "2026-08-20 10:27",
+      "to": "2026-08-20 11:45",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "6569-1752437612",
+      "from": "2026-08-20 10:48",
+      "to": "2026-08-20 12:06",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "8408-2294440194",
+      "from": "2026-08-20 00:00",
+      "to": "2026-08-20 12:25",
+      "driver": "Robert Norton",
+      "isNew": true
+    },
+    {
+      "orderNo": "8341-2284332655",
+      "from": "2026-08-20 11:11",
+      "to": "2026-08-20 12:50",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "8242-2266814808",
+      "from": "2026-08-20 11:35",
+      "to": "2026-08-20 13:13",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "8159-2290270339",
+      "from": "2026-08-20 11:51",
+      "to": "2026-08-20 13:30",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "8177-2290304287",
+      "from": "2026-08-20 12:11",
+      "to": "2026-08-20 13:50",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "7629-2290350687",
+      "from": "2026-08-20 12:36",
+      "to": "2026-08-20 14:14",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "5782-1789450255",
+      "from": "2026-08-20 12:54",
+      "to": "2026-08-20 14:33",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "7951-2288612001",
+      "from": "2026-08-20 13:15",
+      "to": "2026-08-20 14:54",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "8211-2261152995",
+      "from": "2026-08-20 13:33",
+      "to": "2026-08-20 15:12",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "5369-2288459622",
+      "from": "2026-08-20 13:54",
+      "to": "2026-08-20 15:32",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "5438-2275137369",
+      "from": "2026-08-20 14:13",
+      "to": "2026-08-20 15:51",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "8218-2288482497",
+      "from": "2026-08-20 14:31",
+      "to": "2026-08-20 16:10",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "5424-2290061666",
+      "from": "2026-08-20 14:57",
+      "to": "2026-08-20 16:36",
+      "driver": "Robert Norton",
+      "isNew": false
+    },
+    {
+      "orderNo": "7637-2021592856",
+      "from": "2026-08-20 10:45",
+      "to": "2026-08-20 11:03",
+      "driver": "Cory Ventura",
+      "isNew": true
+    },
+    {
+      "orderNo": "8172-2286897137",
+      "from": "2026-08-20 11:05",
+      "to": "2026-08-20 11:25",
+      "driver": "Cory Ventura",
+      "isNew": false
+    },
+    {
+      "orderNo": "7462-1944751836",
+      "from": "2026-08-20 11:22",
+      "to": "2026-08-20 11:41",
+      "driver": "Cory Ventura",
+      "isNew": false
+    },
+    {
+      "orderNo": "8137-2287904679",
+      "from": "2026-08-20 11:40",
+      "to": "2026-08-20 11:59",
+      "driver": "Cory Ventura",
+      "isNew": false
+    },
+    {
+      "orderNo": "5047-2287921600",
+      "from": "2026-08-20 11:57",
+      "to": "2026-08-20 12:16",
+      "driver": "Cory Ventura",
+      "isNew": false
+    }
+  ],
+  "failed": 0,
+  "freezeOverridden": false
+}

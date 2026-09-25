@@ -3,6 +3,7 @@
 // Each job visited last week (7/13-7/17, completed) -> SAME weekday + SAME tech next week.
 // Jobs not on last week's board -> rough-draft grid (day+tech by ZIP). Sets/committed untouched.
 // Usage: node mirror-lastweek.mjs dry|live   (then optimize-week.mjs plan --fresh)
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

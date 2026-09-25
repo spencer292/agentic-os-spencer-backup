@@ -2,6 +2,7 @@
 // Got Moles never works weekends. Any Sat/Sun visit is a defect: move it to the territory-grid
 // weekday of the Mon-Sun week it falls in (earlier, so service is not delayed). Spencer 2026-07-26.
 // Usage: node fix-weekend-visits.mjs dry|live
+import '../route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
