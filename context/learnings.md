@@ -531,6 +531,44 @@
 
 ## mkt-linkedin-nurture
 
+- 2026-09-15 (session 3): **The LinkedIn inbox is ground truth; `pipeline.json` is always behind.**
+  Spencer messages prospects between sessions, so the file lags reality. The file said Ryan Gordon
+  was a pending invite; he had accepted two days earlier, been messaged by Spencer at 6:42 PM and
+  replied at 6:43 PM asking to set up a site visit — the hottest reply in the campaign, sitting
+  unanswered because the send was never logged. Session opening order is now sent-invitations page,
+  then inbox, then recent connections, THEN the file. Four state drifts were found this way in one
+  session.
+- 2026-09-15: **Searching Jobber for the prospect's street or neighbourhood before drafting is the
+  campaign's active ingredient.** It produced the Oien conversion (two homes on Sahalee Drive West)
+  and anchored all four golf notes on 09-15 — Sand Point CC sits on 55th Ave NE and Got Moles has
+  live clients on 56th and 58th. Where no street anchor exists, density substitutes (227 Puyallup
+  records) or Spencer's own locality does (he lives in Buckley, near Linden G&CC). Do it before
+  writing a word, not after.
+- 2026-09-15: **Never infer a prospect's status from silence — ask Spencer.** He had already spoken
+  with Patrick Oien by phone while the pipeline had him on a chase ladder due a nudge that day. Same
+  shape as the archived-Jobber-job rule from 09-09: phone and in-person contact are invisible to the
+  four-channel check, and a nudge premised on silence makes him look like he isn't tracking his own
+  conversations. The drafted nudge was killed before sending.
+- 2026-09-15: **One approach per firm, per club.** Applied five times in one session — Sarah Teriele
+  held (Trestle, same firm as live Samantha Oldham), Juliana Loken held (Associa-EMB, same as
+  Shannon Patterson), Mitchell Cook skipped (Overlake, where Cory Brown is pending), John Hicks
+  skipped (Canterwood, same club as Renee Geyer). In a market this regionally small, two live
+  pitches into one office reads as a mail-merge.
+- 2026-09-15: **Accepting a connection warms that prospect's whole segment.** Once Oien and Gordon
+  accepted, both appeared as mutual connections on most WA golf superintendents in search, turning
+  every future golf prospect from cold 3rd-degree into 2nd-degree-with-a-warm-route. Deliberately
+  not name-dropped in the notes: LinkedIn surfaces the mutual on the invite anyway, and neither man
+  has signed, so naming them borrows credibility not yet earned.
+- 2026-09-15: **Golf is outperforming HOA and the sourcing should follow it.** Golf: 2 of 7 cold
+  notes converted to live conversations inside six days, both replying in under a minute. HOA: 1
+  accept and 0 replies across four. On the mature cohort (invites 6+ days old) acceptance is 50%
+  against a 40% target and reply-after-accept is 80% against 20%. Weight toward golf, and toward
+  multi-course OPERATORS (Arcis, Oki, Troon) over single clubs — same portfolio logic as targeting
+  a management company instead of one HOA.
+- 2026-09-15: **Geo-filter the people search.** `geoUrn=["103977389"]` pins results to Washington and
+  removes the WA/D.C. confusion that cost half a search in session 2. Remaining noise is eastern WA,
+  filtered by reading the location line. Three pages cost one search.
+
 - 2026-08-31 (session 1): **The prior-contact check is the highest-value step in the skill, not
   admin.** It was expected to drop a name or two. It found that The Management Trust — the employer
   of two of the ten "cold prospects" — is a live Got Moles client whose board had signed an

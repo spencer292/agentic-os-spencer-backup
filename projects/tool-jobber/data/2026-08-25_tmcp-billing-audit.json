@@ -1,0 +1,1458 @@
+{
+  "runDate": "2026-08-25",
+  "liveJobsScanned": 871,
+  "tmcp": {
+    "jobs": 709,
+    "distinctClients": 687,
+    "extraJobsFromMultiClients": 22,
+    "mrrEquiv": 77642.18
+  },
+  "tagAudit": {
+    "clientsTaggedActive": 685,
+    "clientsTaggedChurned": 20,
+    "jobsMissingActiveTag": 3,
+    "clientsMissingActiveTag": 3,
+    "mrrBehindMissingTag": 400,
+    "jobsTaggedChurnedButLive": 0,
+    "clientsTaggedActiveNoLiveJob": 1
+  },
+  "billingAudit": {
+    "jobsWithAnyDefect": 37,
+    "jobsRaisingNoMonthlyCharge": 11,
+    "valueAtRiskNoMonthlyCharge": 300,
+    "handBilledJobs": 491,
+    "handBilledMonthly": 56317.18,
+    "autopayJobs": 218,
+    "autopayMonthly": 21325,
+    "defectCounts": {
+      "BILLS_YEARLY": 16,
+      "NO_INVOICE_SCHEDULE": 6,
+      "ZERO_PRICE": 8,
+      "NEVER_INVOICED": 7,
+      "BILLS_ON_CLOSE": 3,
+      "BILLS_QUARTERLY": 4,
+      "BELOW_FLOOR_NO_DISCOUNT": 7,
+      "PAST_END_DATE": 1
+    }
+  },
+  "cadenceBreakdown": {
+    "PERIODIC_MONTHLY": 680,
+    "PERIODIC_YEARLY": 16,
+    "NEVER": 6,
+    "ON_COMPLETION": 3,
+    "PERIODIC_QUARTERLY": 4
+  },
+  "missingTagDetail": [
+    {
+      "job": 8431,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Julie Woods",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAwMzk4MjY=",
+      "address": "16202 76th Avenue Court East, Puyallup, 98375",
+      "startAt": "2026-08-19T07:00:00Z",
+      "endAt": "2035-08-19T06:59:59Z",
+      "ageDays": 6,
+      "total": 100,
+      "tmcPrice": 100,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_MONTHLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Monthly on the last day of the month",
+      "monthly": 100,
+      "autopay": false,
+      "invoicedTotal": 0,
+      "uninvoicedTotal": 100,
+      "outstanding": 0,
+      "tags": [],
+      "hasActiveTag": false,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @100"
+      ],
+      "defects": []
+    },
+    {
+      "job": 8219,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Trent Bryan",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC83MjU1Njk3Nw==",
+      "address": "11000 164th Avenue Southeast, Renton, 98059",
+      "startAt": "2026-07-30T07:00:00Z",
+      "endAt": "2026-11-01T06:59:59Z",
+      "ageDays": 26,
+      "total": 200,
+      "tmcPrice": 200,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_MONTHLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Monthly on the last day of the month",
+      "monthly": 200,
+      "autopay": false,
+      "invoicedTotal": 200,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [],
+      "hasActiveTag": false,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @200"
+      ],
+      "defects": []
+    },
+    {
+      "job": 8069,
+      "title": null,
+      "status": "requires_invoicing",
+      "jobType": "RECURRING",
+      "client": "Anne Nguyen",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE1MDI1MTQ=",
+      "address": "6601 109th Place Southeast, Newcastle, 98056",
+      "startAt": "2026-06-26T07:00:00Z",
+      "endAt": "2026-08-27T06:59:59Z",
+      "ageDays": 60,
+      "total": 100,
+      "tmcPrice": 100,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_MONTHLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Monthly on the last day of the month",
+      "monthly": 100,
+      "autopay": false,
+      "invoicedTotal": 200,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "DO NOT SERVICE",
+        "noreview",
+        "Schedule requested",
+        "Voice Assist - Call Answered",
+        "Voice Assist - Message Taken"
+      ],
+      "hasActiveTag": false,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @100"
+      ],
+      "defects": []
+    }
+  ],
+  "churnedButLiveDetail": [],
+  "taggedNoJobDetail": [
+    {
+      "client": "Barbee Mill HOA",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC82OTk1MDQyNQ==",
+      "archived": false
+    }
+  ],
+  "billingDefectDetail": [
+    {
+      "job": 8056,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Madera West Condos",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM4NDU3MzU=",
+      "address": "31500 33rd Place Southwest, Federal Way, 98023",
+      "startAt": "2026-07-01T07:00:00Z",
+      "endAt": "2036-07-01T06:59:59Z",
+      "ageDays": 55,
+      "total": 3825,
+      "tmcPrice": 3825,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_QUARTERLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Every 3 months on the 1st day of the month",
+      "monthly": 1275,
+      "autopay": false,
+      "invoicedTotal": 7650,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @3825"
+      ],
+      "defects": [
+        "BILLS_QUARTERLY"
+      ]
+    },
+    {
+      "job": 7789,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Cruz Rodriguez",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC84MzgyOTc2OA==",
+      "address": "25802 74th Avenue South, Kent, 98032",
+      "startAt": "2026-03-18T07:00:00Z",
+      "endAt": "2036-03-18T06:59:59Z",
+      "ageDays": 160,
+      "total": 1800,
+      "tmcPrice": 1800,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_YEARLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Yearly",
+      "monthly": 150,
+      "autopay": false,
+      "invoicedTotal": 1800,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "Commercial Client",
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @1800"
+      ],
+      "defects": [
+        "BILLS_YEARLY"
+      ]
+    },
+    {
+      "job": 5201,
+      "title": "Job for Michelle  Mueller",
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Michelle  Mueller",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC82MDQ3NDY0MQ==",
+      "address": "45609 Southeast Edgewick Road, North Bend, 98045",
+      "startAt": "2024-10-31T07:00:00Z",
+      "endAt": "2026-10-31T06:59:59Z",
+      "ageDays": 663,
+      "total": 1200,
+      "tmcPrice": 1200,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_YEARLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Yearly",
+      "monthly": 100,
+      "autopay": false,
+      "invoicedTotal": 3820,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "paid in full",
+        "TMCP - Active",
+        "Voice Assist - Call Answered"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @1200"
+      ],
+      "defects": [
+        "BILLS_YEARLY"
+      ]
+    },
+    {
+      "job": 7511,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Sabra Bosewicht",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMjI4OTM5NzE=",
+      "address": "7437 South 129th Street, Seattle, 98178",
+      "startAt": "2025-12-16T08:00:00Z",
+      "endAt": "2035-12-16T07:59:59Z",
+      "ageDays": 252,
+      "total": 1200,
+      "tmcPrice": 1200,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_YEARLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Yearly",
+      "monthly": 100,
+      "autopay": false,
+      "invoicedTotal": 1200,
+      "uninvoicedTotal": 0,
+      "outstanding": 1200,
+      "tags": [
+        "paid in full",
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Package @1200"
+      ],
+      "defects": [
+        "BILLS_YEARLY"
+      ]
+    },
+    {
+      "job": 8331,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Belur Shivashankara",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDg0MDk1ODY=",
+      "address": "13247 Southeast 54th Place, Bellevue, 98006",
+      "startAt": "2026-08-06T07:00:00Z",
+      "endAt": "2036-08-06T06:59:59Z",
+      "ageDays": 19,
+      "total": 1050,
+      "tmcPrice": 1200,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_YEARLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Yearly",
+      "monthly": 87.5,
+      "autopay": false,
+      "invoicedTotal": 1050,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "Schedule requested",
+        "TMCP - Active",
+        "Voice Assist - Call Answered",
+        "Voice Assist - Message Taken"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @1200",
+        "tmcp deposit @-150"
+      ],
+      "defects": [
+        "BILLS_YEARLY"
+      ]
+    },
+    {
+      "job": 8053,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Vicky Dougan",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8yMTE3NDY5Nw==",
+      "address": "19028 250th Ave E, Orting, 98360",
+      "startAt": "2026-06-24T07:00:00Z",
+      "endAt": "2036-06-24T06:59:59Z",
+      "ageDays": 62,
+      "total": 1000,
+      "tmcPrice": 1000,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_YEARLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Yearly",
+      "monthly": 83.33,
+      "autopay": false,
+      "invoicedTotal": 1000,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @1000"
+      ],
+      "defects": [
+        "BILLS_YEARLY"
+      ]
+    },
+    {
+      "job": 8064,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Jinzhi Liu",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ2OTk1MDk=",
+      "address": "2521 238th Court Northeast, Sammamish, 98074",
+      "startAt": "2026-06-26T07:00:00Z",
+      "endAt": "2036-06-26T06:59:59Z",
+      "ageDays": 60,
+      "total": 1000,
+      "tmcPrice": 1000,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_YEARLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Yearly",
+      "monthly": 83.33,
+      "autopay": false,
+      "invoicedTotal": 1000,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @1000"
+      ],
+      "defects": [
+        "BILLS_YEARLY"
+      ]
+    },
+    {
+      "job": 6325,
+      "title": "Monte Villa Farms - Annual Service ",
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Cruz Rodriguez",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC84MzgyOTc2OA==",
+      "address": "3307 Monte Villa Parkway, Bothell, 98021",
+      "startAt": "2025-01-27T08:00:00Z",
+      "endAt": "2027-01-27T07:59:59Z",
+      "ageDays": 575,
+      "total": 849,
+      "tmcPrice": 849,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_QUARTERLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Every 90 days",
+      "monthly": 283,
+      "autopay": false,
+      "invoicedTotal": 6212.99,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "Commercial Client",
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @849"
+      ],
+      "defects": [
+        "BILLS_QUARTERLY"
+      ]
+    },
+    {
+      "job": 6323,
+      "title": "Monte Villa Quadrant - Annual service",
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Cruz Rodriguez",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC84MzgyOTc2OA==",
+      "address": "3755 Monte Villa Parkway, Bothell, 98021",
+      "startAt": "2025-01-27T08:00:00Z",
+      "endAt": "2027-01-27T07:59:59Z",
+      "ageDays": 575,
+      "total": 849,
+      "tmcPrice": 849,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_QUARTERLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Every 90 days",
+      "monthly": 283,
+      "autopay": false,
+      "invoicedTotal": 5947.99,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "Commercial Client",
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @849"
+      ],
+      "defects": [
+        "BILLS_QUARTERLY"
+      ]
+    },
+    {
+      "job": 8339,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Donald Kaplan",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDg3NTI3ODE=",
+      "address": "205 East Lake Sammamish Shore Lane Northeast, Sammamish, 98074",
+      "startAt": "2026-08-20T07:00:00Z",
+      "endAt": "2036-08-20T06:59:59Z",
+      "ageDays": 5,
+      "total": 100,
+      "tmcPrice": 100,
+      "hasDiscountItem": false,
+      "cadence": "ON_COMPLETION",
+      "billingFrequency": "ON_COMPLETION",
+      "sched": "When the job is marked closed",
+      "monthly": 0,
+      "autopay": false,
+      "invoicedTotal": 0,
+      "uninvoicedTotal": 100,
+      "outstanding": 0,
+      "tags": [
+        "Schedule requested",
+        "TMCP - Active",
+        "Voice Assist - Call Answered",
+        "Voice Assist - Message Taken"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @100"
+      ],
+      "defects": [
+        "BILLS_ON_CLOSE"
+      ]
+    },
+    {
+      "job": 6287,
+      "title": "ANNUAL CUSTOMER",
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Charles Hahn",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC85ODg3NDkwNg==",
+      "address": "25503 SE 192nd Street, Maple Valley, 98038",
+      "startAt": "2025-01-16T08:00:00Z",
+      "endAt": "2035-01-16T07:59:59Z",
+      "ageDays": 586,
+      "total": 100,
+      "tmcPrice": 100,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_YEARLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Yearly",
+      "monthly": 8.33,
+      "autopay": false,
+      "invoicedTotal": 1200,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @100"
+      ],
+      "defects": [
+        "BILLS_YEARLY"
+      ]
+    },
+    {
+      "job": 5007,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Karen Porter",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC82MTg0Mjg3Mw==",
+      "address": "9532 Carnation-Duvall Road Northeast, Carnation, 98014",
+      "startAt": "2024-02-29T08:00:00Z",
+      "endAt": "2034-02-28T07:59:59Z",
+      "ageDays": 908,
+      "total": 100,
+      "tmcPrice": 100,
+      "hasDiscountItem": false,
+      "cadence": "NEVER",
+      "billingFrequency": "NEVER",
+      "sched": "Don't remind me to invoice",
+      "monthly": 0,
+      "autopay": false,
+      "invoicedTotal": 0,
+      "uninvoicedTotal": 100,
+      "outstanding": 0,
+      "tags": [
+        "paid in full",
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @100"
+      ],
+      "defects": [
+        "NO_INVOICE_SCHEDULE",
+        "NEVER_INVOICED"
+      ]
+    },
+    {
+      "job": 8338,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Leena Shah",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC85NzMzNDYxMA==",
+      "address": "15433 Southeast 59th Street, Bellevue, 98006",
+      "startAt": "2026-08-13T07:00:00Z",
+      "endAt": "2036-08-13T06:59:59Z",
+      "ageDays": 12,
+      "total": 100,
+      "tmcPrice": 100,
+      "hasDiscountItem": false,
+      "cadence": "ON_COMPLETION",
+      "billingFrequency": "ON_COMPLETION",
+      "sched": "When the job is marked closed",
+      "monthly": 0,
+      "autopay": false,
+      "invoicedTotal": 0,
+      "uninvoicedTotal": 100,
+      "outstanding": 0,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @100"
+      ],
+      "defects": [
+        "BILLS_ON_CLOSE"
+      ]
+    },
+    {
+      "job": 7474,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Shari Butt",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTQ0MzM2MDA=",
+      "address": "6415 162nd Street East, Puyallup, 98375",
+      "startAt": "2025-11-11T08:00:00Z",
+      "endAt": "2035-11-11T07:59:59Z",
+      "ageDays": 287,
+      "total": 100,
+      "tmcPrice": 100,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_YEARLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Yearly",
+      "monthly": 8.33,
+      "autopay": false,
+      "invoicedTotal": 1200,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "paid in full",
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Package @100"
+      ],
+      "defects": [
+        "BILLS_YEARLY"
+      ]
+    },
+    {
+      "job": 6411,
+      "title": null,
+      "status": "action_required",
+      "jobType": "RECURRING",
+      "client": "John and Tessa Woodyard",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC80MDQ1NzAyMA==",
+      "address": "35525 SE 49th st, Fall City, 98024",
+      "startAt": "2025-03-05T08:00:00Z",
+      "endAt": "2026-08-15T06:59:59Z",
+      "ageDays": 538,
+      "total": 100,
+      "tmcPrice": 100,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_MONTHLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Monthly on the last day of the month",
+      "monthly": 100,
+      "autopay": true,
+      "invoicedTotal": 1700,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "Autopay",
+        "LARGE PROPERTY",
+        "TMCP - Active",
+        "Voice Assist - Call Answered"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @100"
+      ],
+      "defects": [
+        "PAST_END_DATE"
+      ]
+    },
+    {
+      "job": 7900,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Michael Shapiro",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMjY1Nzg3Mjk=",
+      "address": "1216 Northwest Norcross Way, Seattle, 98177",
+      "startAt": "2026-05-12T07:00:00Z",
+      "endAt": "2036-05-12T06:59:59Z",
+      "ageDays": 105,
+      "total": 95,
+      "tmcPrice": 95,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_YEARLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Yearly",
+      "monthly": 7.92,
+      "autopay": false,
+      "invoicedTotal": 1140,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "paid in full",
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @95"
+      ],
+      "defects": [
+        "BILLS_YEARLY"
+      ]
+    },
+    {
+      "job": 8030,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Briana Watson",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMDE4MTE3MDc=",
+      "address": "2654 South 135th Street, SeaTac, 98168",
+      "startAt": "2026-06-19T07:00:00Z",
+      "endAt": "2035-06-19T06:59:59Z",
+      "ageDays": 67,
+      "total": 85,
+      "tmcPrice": 85,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_YEARLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Yearly",
+      "monthly": 7.08,
+      "autopay": false,
+      "invoicedTotal": 1020,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @85"
+      ],
+      "defects": [
+        "BILLS_YEARLY"
+      ]
+    },
+    {
+      "job": 7489,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Cheryl Davis",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMjAyNjE3Mjk=",
+      "address": "22113 Southeast Sawyer Ridge, Black Diamond, 98010",
+      "startAt": "2025-11-18T08:00:00Z",
+      "endAt": "2035-11-18T07:59:59Z",
+      "ageDays": 280,
+      "total": 85,
+      "tmcPrice": 85,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_YEARLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Yearly",
+      "monthly": 7.08,
+      "autopay": false,
+      "invoicedTotal": 1020,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "paid in full",
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Package @85"
+      ],
+      "defects": [
+        "BILLS_YEARLY"
+      ]
+    },
+    {
+      "job": 5597,
+      "title": "Job for Jim McGowan",
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Jim McGowan",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC81MzI5ODIxOA==",
+      "address": "15207 106th Street East, Puyallup, 98374",
+      "startAt": "2024-07-24T07:00:00Z",
+      "endAt": "2034-07-24T06:59:59Z",
+      "ageDays": 762,
+      "total": 85,
+      "tmcPrice": 85,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_YEARLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Yearly",
+      "monthly": 7.08,
+      "autopay": false,
+      "invoicedTotal": 85,
+      "uninvoicedTotal": 0,
+      "outstanding": -935,
+      "tags": [
+        "paid in full",
+        "Schedule requested",
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Package @85"
+      ],
+      "defects": [
+        "BILLS_YEARLY"
+      ]
+    },
+    {
+      "job": 6420,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Vikrant Jain",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMDA5Njc3NDk=",
+      "address": "7302 58th Avenue Northeast, Seattle, 98115",
+      "startAt": "2025-03-04T08:00:00Z",
+      "endAt": "2035-03-04T07:59:59Z",
+      "ageDays": 539,
+      "total": 83.33,
+      "tmcPrice": 83.33,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_QUARTERLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Every 3 months on the last day of the month",
+      "monthly": 27.78,
+      "autopay": false,
+      "invoicedTotal": 83.33,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @83.33"
+      ],
+      "defects": [
+        "BILLS_QUARTERLY"
+      ]
+    },
+    {
+      "job": 7701,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Susan Mcdonald",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMzA4Nzc2Mjg=",
+      "address": "11210 45th Street East, Edgewood, 98372",
+      "startAt": "2026-02-25T08:00:00Z",
+      "endAt": "2027-02-25T07:59:59Z",
+      "ageDays": 181,
+      "total": 75,
+      "tmcPrice": 75,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_YEARLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Yearly",
+      "monthly": 6.25,
+      "autopay": false,
+      "invoicedTotal": 900,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @75"
+      ],
+      "defects": [
+        "BILLS_YEARLY"
+      ]
+    },
+    {
+      "job": 8157,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Charles",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDUxNjYwMDA=",
+      "address": "14417 5th Avenue East, Tacoma, 98445",
+      "startAt": "2026-07-15T07:00:00Z",
+      "endAt": "2027-05-15T06:59:59Z",
+      "ageDays": 41,
+      "total": 50,
+      "tmcPrice": 50,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_MONTHLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Monthly on the last day of the month",
+      "monthly": 50,
+      "autopay": false,
+      "invoicedTotal": 50,
+      "uninvoicedTotal": 0,
+      "outstanding": 50,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @50"
+      ],
+      "defects": [
+        "BELOW_FLOOR_NO_DISCOUNT"
+      ]
+    },
+    {
+      "job": 8159,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Jonae",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYwODEyNDg=",
+      "address": "1409 Southwest 349th Street, Federal Way, 98023",
+      "startAt": "2026-07-13T07:00:00Z",
+      "endAt": "2036-07-13T06:59:59Z",
+      "ageDays": 43,
+      "total": 50,
+      "tmcPrice": 50,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_MONTHLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Monthly on the last day of the month",
+      "monthly": 50,
+      "autopay": false,
+      "invoicedTotal": 50,
+      "uninvoicedTotal": 0,
+      "outstanding": 50,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @50"
+      ],
+      "defects": [
+        "BELOW_FLOOR_NO_DISCOUNT"
+      ]
+    },
+    {
+      "job": 7967,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Howard Goodman",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI0MjU5OTc=",
+      "address": "4101 Williams Avenue North, Renton, 98056",
+      "startAt": "2026-06-03T07:00:00Z",
+      "endAt": "2027-06-03T06:59:59Z",
+      "ageDays": 83,
+      "total": 50,
+      "tmcPrice": 100,
+      "hasDiscountItem": true,
+      "cadence": "PERIODIC_YEARLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Yearly",
+      "monthly": 4.17,
+      "autopay": false,
+      "invoicedTotal": 600,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @100",
+        "Barbee Mill HOA discount @-50"
+      ],
+      "defects": [
+        "BILLS_YEARLY"
+      ]
+    },
+    {
+      "job": 7425,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Ross Good",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTM0ODY1OTY=",
+      "address": "5006 35th Avenue Northeast, Seattle, 98105",
+      "startAt": "2025-10-29T07:00:00Z",
+      "endAt": "2035-10-29T06:59:59Z",
+      "ageDays": 300,
+      "total": 50,
+      "tmcPrice": 50,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_MONTHLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Monthly on the last day of the month",
+      "monthly": 50,
+      "autopay": true,
+      "invoicedTotal": 500,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Package @50"
+      ],
+      "defects": [
+        "BELOW_FLOOR_NO_DISCOUNT"
+      ]
+    },
+    {
+      "job": 7424,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Irene VandenBrink",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC82OTYzOTE3MQ==",
+      "address": "5002 35th Avenue Northeast, Seattle, 98105",
+      "startAt": "2025-10-29T07:00:00Z",
+      "endAt": "2035-10-29T06:59:59Z",
+      "ageDays": 300,
+      "total": 50,
+      "tmcPrice": 50,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_MONTHLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Monthly on the last day of the month",
+      "monthly": 50,
+      "autopay": false,
+      "invoicedTotal": 500,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Package @50"
+      ],
+      "defects": [
+        "BELOW_FLOOR_NO_DISCOUNT"
+      ]
+    },
+    {
+      "job": 7819,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Kirsten Taylor",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC81ODE3MTcxNQ==",
+      "address": "21711 Southeast 259th Street, Maple Valley, 98038",
+      "startAt": "2026-04-03T07:00:00Z",
+      "endAt": "2036-04-03T06:59:59Z",
+      "ageDays": 144,
+      "total": 50,
+      "tmcPrice": 50,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_MONTHLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Monthly on the last day of the month",
+      "monthly": 50,
+      "autopay": false,
+      "invoicedTotal": 200,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @50"
+      ],
+      "defects": [
+        "BELOW_FLOOR_NO_DISCOUNT"
+      ]
+    },
+    {
+      "job": 7685,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Mark Fisher",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC83MDI5ODY5Ng==",
+      "address": "21703 Southeast 259th Street, Maple Valley, 98038",
+      "startAt": "2026-02-11T08:00:00Z",
+      "endAt": "2036-02-11T07:59:59Z",
+      "ageDays": 195,
+      "total": 50,
+      "tmcPrice": 50,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_MONTHLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Monthly on the last day of the month",
+      "monthly": 50,
+      "autopay": false,
+      "invoicedTotal": 300,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @50"
+      ],
+      "defects": [
+        "BELOW_FLOOR_NO_DISCOUNT"
+      ]
+    },
+    {
+      "job": 7684,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Dennis Higashiyama",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC81NDk3NzY0Ng==",
+      "address": "21621 Southeast 259th Street, Maple Valley, 98038",
+      "startAt": "2026-02-18T08:00:00Z",
+      "endAt": "2036-02-18T07:59:59Z",
+      "ageDays": 188,
+      "total": 50,
+      "tmcPrice": 50,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_MONTHLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Monthly on the last day of the month",
+      "monthly": 50,
+      "autopay": false,
+      "invoicedTotal": 300,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @50"
+      ],
+      "defects": [
+        "BELOW_FLOOR_NO_DISCOUNT"
+      ]
+    },
+    {
+      "job": 7449,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Sally  Gasser",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMjE5MzI3MDg=",
+      "address": "30655 Kanaskat Kangley Road Southeast, Ravensdale, 98051",
+      "startAt": "2025-10-30T07:00:00Z",
+      "endAt": "2035-10-30T06:59:59Z",
+      "ageDays": 299,
+      "total": 0,
+      "tmcPrice": 0,
+      "hasDiscountItem": false,
+      "cadence": "NEVER",
+      "billingFrequency": "NEVER",
+      "sched": "Don't remind me to invoice",
+      "monthly": 0,
+      "autopay": false,
+      "invoicedTotal": 340,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "Schedule requested",
+        "TMCP - Active",
+        "Voice Assist - Call Answered",
+        "Voice Assist - Message Taken"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Package @0"
+      ],
+      "defects": [
+        "NO_INVOICE_SCHEDULE",
+        "ZERO_PRICE"
+      ]
+    },
+    {
+      "job": 4754,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Barry Heimbigner",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC83NjI0MDE1Mg==",
+      "address": "12570 465th Avenue Southeast, North Bend, 98045",
+      "startAt": "2023-11-30T08:00:00Z",
+      "endAt": "2026-12-30T07:59:59Z",
+      "ageDays": 999,
+      "total": 0,
+      "tmcPrice": 0,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_YEARLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Yearly",
+      "monthly": 0,
+      "autopay": false,
+      "invoicedTotal": 0,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @0"
+      ],
+      "defects": [
+        "BILLS_YEARLY",
+        "ZERO_PRICE",
+        "NEVER_INVOICED"
+      ]
+    },
+    {
+      "job": 6900,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Jeff Hunter",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC84OTM0MjE1Mw==",
+      "address": "22626 177th Avenue Southeast, Kent, 98042",
+      "startAt": "2025-07-24T07:00:00Z",
+      "endAt": "2034-07-24T06:59:59Z",
+      "ageDays": 397,
+      "total": 0,
+      "tmcPrice": 0,
+      "hasDiscountItem": false,
+      "cadence": "NEVER",
+      "billingFrequency": "NEVER",
+      "sched": "Don't remind me to invoice",
+      "monthly": 0,
+      "autopay": false,
+      "invoicedTotal": 0,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "paid in full",
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Package @0"
+      ],
+      "defects": [
+        "NO_INVOICE_SCHEDULE",
+        "ZERO_PRICE",
+        "NEVER_INVOICED"
+      ]
+    },
+    {
+      "job": 7767,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Jamie Randall",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMjk5OTI4NDg=",
+      "address": "20507 244th Avenue Southeast, Maple Valley, 98038",
+      "startAt": "2026-03-12T07:00:00Z",
+      "endAt": "2027-03-12T07:59:59Z",
+      "ageDays": 166,
+      "total": 0,
+      "tmcPrice": 0,
+      "hasDiscountItem": false,
+      "cadence": "NEVER",
+      "billingFrequency": "NEVER",
+      "sched": "Don't remind me to invoice",
+      "monthly": 0,
+      "autopay": false,
+      "invoicedTotal": 0,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @0"
+      ],
+      "defects": [
+        "NO_INVOICE_SCHEDULE",
+        "ZERO_PRICE",
+        "NEVER_INVOICED"
+      ]
+    },
+    {
+      "job": 5433,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Susan Newby",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC81NDU4NjU1OQ==",
+      "address": "8106 204th Avenue Court East, Bonney Lake, 98391",
+      "startAt": "2024-06-28T07:00:00Z",
+      "endAt": "2027-02-01T07:59:59Z",
+      "ageDays": 788,
+      "total": 0,
+      "tmcPrice": 0,
+      "hasDiscountItem": false,
+      "cadence": "NEVER",
+      "billingFrequency": "NEVER",
+      "sched": "Don't remind me to invoice",
+      "monthly": 0,
+      "autopay": false,
+      "invoicedTotal": 0,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "Cash",
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @0"
+      ],
+      "defects": [
+        "NO_INVOICE_SCHEDULE",
+        "ZERO_PRICE",
+        "NEVER_INVOICED"
+      ]
+    },
+    {
+      "job": 4979,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "ONE_OFF",
+      "client": "Marcus Andy",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC82MTM2NDU1Ng==",
+      "address": "23312 54th Street East, Buckley, 98321",
+      "startAt": "2024-03-06T08:00:00Z",
+      "endAt": "2026-09-02T06:59:59Z",
+      "ageDays": 902,
+      "total": 0,
+      "tmcPrice": 0,
+      "hasDiscountItem": false,
+      "cadence": "NEVER",
+      "billingFrequency": "NEVER",
+      "sched": "Don't remind me to invoice",
+      "monthly": 0,
+      "autopay": false,
+      "invoicedTotal": 0,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "Cash",
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @0"
+      ],
+      "defects": [
+        "NO_INVOICE_SCHEDULE",
+        "ZERO_PRICE",
+        "NEVER_INVOICED"
+      ]
+    },
+    {
+      "job": 4492,
+      "title": "!!! Annual Customer !!!",
+      "status": "requires_invoicing",
+      "jobType": "RECURRING",
+      "client": "Rich Porter",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC80MjUxMDk3OQ==",
+      "address": "32031 170th Place Southeast, Auburn, 98092",
+      "startAt": "2023-09-06T07:00:00Z",
+      "endAt": "2027-09-01T06:59:59Z",
+      "ageDays": 1084,
+      "total": 0,
+      "tmcPrice": 0,
+      "hasDiscountItem": false,
+      "cadence": "PERIODIC_YEARLY",
+      "billingFrequency": "PERIODIC",
+      "sched": "Yearly",
+      "monthly": 0,
+      "autopay": false,
+      "invoicedTotal": 0,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "paid in full",
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @0"
+      ],
+      "defects": [
+        "BILLS_YEARLY",
+        "ZERO_PRICE",
+        "NEVER_INVOICED"
+      ]
+    },
+    {
+      "job": 5440,
+      "title": null,
+      "status": "upcoming",
+      "jobType": "RECURRING",
+      "client": "Steve Hewitt",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8zMDc5NTc3OQ==",
+      "address": "37632 176th se, Auburn, 98092",
+      "startAt": "2024-07-01T07:00:00Z",
+      "endAt": "2027-02-01T07:59:59Z",
+      "ageDays": 785,
+      "total": 0,
+      "tmcPrice": 0,
+      "hasDiscountItem": false,
+      "cadence": "ON_COMPLETION",
+      "billingFrequency": "ON_COMPLETION",
+      "sched": "When the job is marked closed",
+      "monthly": 0,
+      "autopay": false,
+      "invoicedTotal": 160,
+      "uninvoicedTotal": 0,
+      "outstanding": 0,
+      "tags": [
+        "Cash",
+        "LARGE PROPERTY",
+        "TMCP - Active"
+      ],
+      "hasActiveTag": true,
+      "hasChurnedTag": false,
+      "lineItems": [
+        "Total Mole Control Program -- Year round protection @0"
+      ],
+      "defects": [
+        "BILLS_ON_CLOSE",
+        "ZERO_PRICE"
+      ]
+    }
+  ]
+}
