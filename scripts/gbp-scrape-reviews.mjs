@@ -283,7 +283,10 @@ async function main() {
 
   const outDir = path.join(process.cwd(), 'projects', 'str-gbp-optimization', 'reviews');
   fs.mkdirSync(outDir, { recursive: true });
-  const stamp = process.env.RUN_DATE || '2026-07-31';
+  // Default to TODAY (Pacific). This used to be hard-coded to '2026-07-31', which meant every
+  // run silently overwrote the July 31 verbatim archive no matter when it ran — and a degraded
+  // run destroyed a good one. Override deliberately with RUN_DATE=YYYY-MM-DD if backfilling.
+  const stamp = process.env.RUN_DATE || new Date().toLocaleDateString('en-CA', { timeZone: 'America/Los_Angeles' });
   const outFile = path.join(outDir, `${stamp}_google-reviews.json`);
   fs.writeFileSync(outFile, JSON.stringify({ scrapedAt: stamp, locations: results }, null, 2), 'utf8');
 
