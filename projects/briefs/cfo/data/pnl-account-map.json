@@ -1,0 +1,18 @@
+{
+  "_note": "Maps QuickBooks Online P&L account names to monthly-expenses.json categories. Keys are the target category (must match a key in cfo-private/monthly-expenses.json 'months' entries, or the special 'payroll_wages_and_taxes' pseudo-category which is reconciled against Gusto but never written into monthly-expenses.json). Values are lowercase substring keywords matched against the QBO account name. First category whose keyword list matches wins. Add a keyword here whenever model-cost-per-visit.mjs --pnl prints an UNMAPPED account.",
+  "payroll_wages_and_taxes": ["payroll", "wages", "salaries", "salary", "payroll tax", "payroll taxes", "employee benefits", "workers comp", "workers' comp", "l&i", "commissions"],
+  "vehicle_payments": ["truck payment", "vehicle loan", "vehicle lease", "auto loan", "truck lease", "vehicle financing"],
+  "fuel": ["fuel", "gas - vehicle", "gasoline"],
+  "vehicle_maintenance_repairs": ["vehicle repair", "vehicle maintenance", "auto repair", "truck repair", "tires", "car wash", "vehicle registration"],
+  "insurance_auto_gl": ["insurance", "general liability", "commercial auto", "umbrella policy"],
+  "materials_traps_supplies": ["traps", "supplies", "materials", "equipment - field", "tools"],
+  "software_subscriptions": ["software", "subscriptions", "jobber", "optimoroute", "callrail", "telnyx", "ninety.io", "google workspace", "saas", "dues & subscriptions"],
+  "phone_internet": ["phone", "telephone", "internet", "cell phone", "communications"],
+  "office_admin_contractors": ["office supplies", "contractors", "contract labor", "virtual assistant", "answering service", "admin"],
+  "bookkeeping_accounting": ["bookkeeping", "accounting", "cpa", "tax preparation"],
+  "marketing_ads": ["google ads", "advertising", "lsa", "local services ads", "ppc"],
+  "marketing_other": ["marketing", "digihammer", "agency", "seo", "print advertising", "reviews"],
+  "rent_facilities": ["rent", "lease - facility", "utilities", "storage unit", "shop"],
+  "owner_compensation": ["owner draw", "owner distribution", "shareholder distribution", "member draw"],
+  "other": []
+}

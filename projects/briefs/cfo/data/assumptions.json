@@ -1,0 +1,624 @@
+{
+ "_meta": {
+  "purpose": "Single source of financial assumptions for every acc-cfo decision model. Every value carries a confidence tag. Models MUST surface the tag of any assumption their answer depends on.",
+  "confidence_tags": {
+   "KNOWN": "Traced to live Jobber/CallRail data or an ingested bookkeeper statement. Has a source and a date.",
+   "ESTIMATE": "Industry benchmark or reasoned assumption. Directional only. Never present as fact.",
+   "UNKNOWN": "Not available. Blocks any model that depends on it. Do not substitute a plausible number."
+  },
+  "generated": "2026-08-26",
+  "scope": "Got Moles operations. Entity-level (Rainier Power Wash LLC) figures are inputs, not scope."
+ },
+ "revenue": {
+  "t12_revenue": {
+   "value": 857312,
+   "tag": "KNOWN",
+   "source": "baseline-model 2026-07-21, 8716 Jobber invoices",
+   "window": "2025-07..2026-06"
+  },
+  "t12_billed": {
+   "value": 839349,
+   "tag": "KNOWN",
+   "source": "cash-flow-projection 2026-07-06, monthly billing history",
+   "window": "2025-07..2026-06",
+   "note": "2.1% below t12_revenue over the same window. Different measurement basis (billed vs recognized). Reconcile at first monthly close."
+  },
+  "mean_monthly_billed": {
+   "value": 69946,
+   "tag": "KNOWN",
+   "source": "derived from t12 billing history 2026-08-26"
+  },
+  "prior_12mo_revenue": {
+   "value": 625000,
+   "tag": "ESTIMATE",
+   "source": "baseline-model 2026-07-21, approximate",
+   "window": "2024-08..2025-07"
+  },
+  "yoy_growth": {
+   "value": 0.37,
+   "tag": "KNOWN",
+   "source": "baseline-model 2026-07-21"
+  },
+  "best_month_ever": {
+   "value": 94999,
+   "tag": "KNOWN",
+   "source": "2025-09 billing"
+  },
+  "bad_debt_rate": {
+   "value": 0.001,
+   "tag": "KNOWN",
+   "source": "cash-flow-projection, 24mo history",
+   "note": "0.1% is exceptional for the sector."
+  }
+ },
+ "seasonality": {
+  "_note": "Index = month billed / mean monthly billed. Derived 2026-08-26 from 12 complete months of Jobber billing. SUPERSEDES the 'trough Nov-May' claim in got-moles-scale/brief.md, which the data does not support: Nov indexes 1.15 and Apr-Jun run 0.99-1.13. The real trough is Dec-Feb.",
+  "tag": "KNOWN",
+  "source": "cash-flow-projection monthly billing history 2025-07..2026-06",
+  "caveat": "Single year of history. Directional. Re-derive each year.",
+  "index_by_month": {
+   "10": 1.201,
+   "11": 1.145,
+   "12": 0.824,
+   "01": 0.777,
+   "02": 0.836,
+   "03": 0.922,
+   "04": 1.064,
+   "05": 0.99,
+   "06": 1.13,
+   "07": 0.667,
+   "08": 1.085,
+   "09": 1.358
+  },
+  "peak_window": {
+   "months": [
+    "08",
+    "09",
+    "10",
+    "11"
+   ],
+   "share_of_annual_revenue": 0.399
+  },
+  "trough_window": {
+   "months": [
+    "12",
+    "01",
+    "02"
+   ],
+   "mean_index": 0.812
+  }
+ },
+ "acquisition": {
+  "_note": "The single most seasonally concentrated thing in the business. 64.6% of all new customers arrive in a 4-month window. January produced SIX. Marketing dollars are not fungible across months.",
+  "new_customers_t12": {
+   "value": 379,
+   "tag": "KNOWN",
+   "source": "deposit-bearing invoices, cash-flow-projection 2025-07..2026-06"
+  },
+  "new_customers_by_month": {
+   "2025-07": 28,
+   "2025-08": 65,
+   "2025-09": 54,
+   "2025-10": 70,
+   "2025-11": 56,
+   "2025-12": 30,
+   "2026-01": 6,
+   "2026-02": 14,
+   "2026-03": 11,
+   "2026-04": 11,
+   "2026-05": 17,
+   "2026-06": 17,
+   "tag": "KNOWN"
+  },
+  "peak_window_share_of_acquisition": {
+   "value": 0.646,
+   "tag": "KNOWN",
+   "window": "Aug-Nov"
+  },
+  "avg_deposit_per_new_customer": {
+   "value": 154,
+   "tag": "KNOWN",
+   "source": "$58,900 deposits / 382 new-customer jobs"
+  },
+  "new_customer_share_of_revenue": {
+   "value": 0.179,
+   "tag": "KNOWN",
+   "source": "cash-flow-projection: $155,899 of $868,845 billed",
+   "note": "82% of revenue comes from EXISTING customers. Winter revenue is almost entirely the recurring base. This is the financial argument for TMCP."
+  }
+ },
+ "collections": {
+  "_note": "Dollar-weighted collection curve across $833,958 of collected history. Used by model-cash.mjs.",
+  "tag": "KNOWN",
+  "source": "cash-flow-projection 2026-07-06",
+  "curve_by_month_lag": {
+   "0": 0.701,
+   "1": 0.256,
+   "2": 0.028,
+   "3": 0.01,
+   "4": 0.003,
+   "5": 0.001
+  },
+  "open_ar": {
+   "value": 49386,
+   "tag": "KNOWN",
+   "as_of": "2026-07-06",
+   "note": "STALE. Re-pull before any cash decision."
+  },
+  "past_due": {
+   "value": 33966,
+   "tag": "KNOWN",
+   "as_of": "2026-07-06"
+  },
+  "dso_implied_days": {
+   "value": 14,
+   "tag": "ESTIMATE",
+   "source": "derived from curve; 95.7% collected within one month"
+  }
+ },
+ "funnel": {
+  "close_rate": {
+   "value": 0.69,
+   "tag": "KNOWN",
+   "source": "baseline-model: 785 of 1130 quotes, 12mo",
+   "note": "Elite. Sector norm 30-50%. Growth is lead-constrained, not conversion-constrained."
+  },
+  "avg_quote_value": {
+   "value": 925,
+   "tag": "KNOWN",
+   "source": "baseline-model 2026-07-21"
+  },
+  "gross_expected_value_per_lead": {
+   "value": 638,
+   "tag": "KNOWN",
+   "formula": "close_rate * avg_quote_value",
+   "note": "GROSS. This is revenue, not value. True per-lead worth requires contribution margin, which is UNKNOWN."
+  },
+  "monthly_calls": {
+   "value": 231,
+   "tag": "KNOWN",
+   "source": "CallRail May-Jul 2026: 193/286/213"
+  },
+  "leadsource_unknown_rate": {
+   "value": 0.85,
+   "tag": "KNOWN",
+   "source": "3591 of 4243 client records",
+   "note": "BLOCKS CAC-by-channel entirely. Fixing intake attribution is a prerequisite, not a nice-to-have."
+  }
+ },
+ "customers": {
+  "active_last_3mo": {
+   "value": 636,
+   "tag": "KNOWN",
+   "as_of": "2026-07-21"
+  },
+  "distinct_invoiced_24mo": {
+   "value": 1546,
+   "tag": "KNOWN"
+  },
+  "avg_revenue_per_client_24mo": {
+   "value": 944,
+   "tag": "KNOWN"
+  },
+  "median_revenue_per_client_24mo": {
+   "value": 475,
+   "tag": "KNOWN",
+   "note": "Mean is 2x median: top 10% of clients are 37% of revenue. Concentration risk worth watching."
+  },
+  "tmcp_active": {
+   "value": 597,
+   "tag": "KNOWN",
+   "as_of": "2026-07-21",
+   "source": "Jobber tag count",
+   "conflict": "context/MEMORY.md 2026-08-11 reports 674 jobs / 653 clients and MRR $74.2K. $74.2K x 12 = $890K > entire t12 revenue of $857K. UNRESOLVED — see open_conflicts."
+  },
+  "churn_rate": {
+   "value": null,
+   "tag": "UNKNOWN",
+   "blocker": "Only 20 TMCP-Churned tags exist against 597 active. Churn is not being tracked.",
+   "why_it_matters": "Churn drives LTV, and retention is a named driver of the valuation multiple. Sector benchmark 82-87% residential retention."
+  },
+  "ltv": {
+   "value": null,
+   "tag": "UNKNOWN",
+   "blocker": "Requires contribution margin (UNKNOWN) and churn (UNKNOWN)."
+  }
+ },
+ "capacity": {
+  "completed_visits_per_week": {
+   "value": 362,
+   "tag": "KNOWN",
+   "source": "baseline-model, last 12 weeks to 2026-07-21"
+  },
+  "revenue_per_visit": {
+   "value": 45,
+   "tag": "KNOWN",
+   "source": "baseline-model",
+   "note": "At this ticket size, profit is stops-per-mile. Route density IS the margin lever."
+  },
+  "planning_visit_minutes": {
+   "value": 15,
+   "tag": "ESTIMATE",
+   "note": "The planning assumption used in the baseline. Measured pace is higher — use measured."
+  },
+  "measured_median_minutes_per_stop": {
+   "all_techs": 17.8,
+   "tag": "KNOWN",
+   "source": "tech-pace.mjs, 2142 completed visits with completedAt stamps, 2026-07-13..08-09",
+   "by_tech": {
+    "Cory": 17.3,
+    "Robert": 17.7,
+    "Luke": 19.1,
+    "Alias": 21.3,
+    "Spencer": 22
+   },
+   "caveat": "Gap between consecutive completion stamps — blends drive time with on-site time. Dense ground flatters, spread ground penalizes. A 23% spread across techs."
+  },
+  "directed_service_times": {
+   "tag": "KNOWN",
+   "source": "tech-service-times.json, Spencer-directed 2026-08-15",
+   "note": "Cory 12min check / 24 set; all others 15/30. These are DIRECTED planning numbers, not measurements."
+  }
+ },
+ "pricing": {
+  "tag": "KNOWN",
+  "source": "CLAUDE.local.md, Spencer-confirmed 2026-07-20",
+  "quick_fix": {
+   "under_1_acre": 450,
+   "one_to_three_acre": 500,
+   "three_to_five_acre": 600,
+   "setup_fee": 150,
+   "note": "5-week weekly series. No-catch guarantee at all sizes."
+  },
+  "tmcp_monthly": {
+   "under_1_acre": 100,
+   "one_to_three_acre": 125,
+   "three_to_five_acre": 150
+  },
+  "no_catch_bill": {
+   "value": 150,
+   "tag": "KNOWN",
+   "note": "Existing customers billed $150 if no catch, full rate if caught."
+  },
+  "commercial_and_over_5_acre": {
+   "value": null,
+   "tag": "KNOWN",
+   "note": "Never quoted by phone. In-person bid, owned by Cory."
+  }
+ },
+ "costs": {
+  "_note": "THE BLOCKING GAP. Every value here is UNKNOWN. No margin, no unit economics, and no defensible hire/price/ad decision exists until these land. Source: bookkeeper statements into cfo-private/. Request list: 2026-08-26_bookkeeper-request.md",
+  "tech_base_hourly_wage": {
+   "value": "in cfo-private/tech-rates.json",
+   "tag": "KNOWN",
+   "source": "Spencer 2026-09-19",
+   "note": "Per-person figures never enter this file. Read at run time by model-tech-contribution.mjs."
+  },
+  "labor_burden_rate": {
+   "value": 0.115,
+   "tag": "KNOWN",
+   "source": "Gusto payroll-trends export 2025-10..2026-09 (private/gusto): employer cost / gross earnings = 1.113-1.117 Jul-Sep 2026. Employer contributions (benefits) = 0.",
+   "components": "L&I workers comp (WA monopolistic state fund, rate by risk class), PFML, WA Cares, FUTA, SUTA, employer FICA, any benefits",
+   "note": "Covers employer FICA, FUTA/SUTA, L&I, no benefits. Supersedes the 0.25 placeholder."
+  },
+  "vehicle_cost_per_tech_month": {
+   "value": null,
+   "tag": "UNKNOWN",
+   "components": "lease or depreciation, insurance, maintenance, registration"
+  },
+  "fuel_cost_per_tech_month": {
+   "value": null,
+   "tag": "UNKNOWN"
+  },
+  "materials_cost_per_visit": {
+   "value": null,
+   "tag": "UNKNOWN",
+   "components": "traps, flags, consumables, trap replacement/loss"
+  },
+  "insurance_annual": {
+   "value": null,
+   "tag": "UNKNOWN",
+   "components": "general liability, commercial auto, umbrella"
+  },
+  "software_stack_monthly": {
+   "value": null,
+   "tag": "UNKNOWN",
+   "components": "Jobber, OptimoRoute, CallRail, Telnyx, Ninety, Google Workspace, AI/API spend"
+  },
+  "office_admin_monthly": {
+   "value": null,
+   "tag": "UNKNOWN",
+   "components": "Muhammad/VA, answering, bookkeeping fee"
+  },
+  "ads_spend_monthly": {
+   "value": null,
+   "tag": "UNKNOWN",
+   "blocker": "Google Ads API creds absent on this install; snapshot JSONs are stale baseline only."
+  },
+  "rent_and_facilities_monthly": {
+   "value": null,
+   "tag": "UNKNOWN"
+  },
+  "owner_compensation_annual": {
+   "value": null,
+   "tag": "UNKNOWN"
+  },
+  "headcount_w2": {
+   "value": null,
+   "tag": "UNKNOWN",
+   "note": "Field techs known by name: Alias, Cory, Robert, Luke, plus Spencer. Cammeron departed. Tavis started 2026-08-17."
+  },
+  "company_loaded_cost_per_paid_hour": {
+   "value": 33.2,
+   "tag": "ESTIMATE",
+   "source": "Gusto payroll trends Aug 2026: employer cost 32,832.61 / (898.4 reg + 90.5 OT h). Jul 31.6, Sep-to-date 35.8.",
+   "caveat": "Numerator includes salaried and office pay; denominator is hourly-clocked hours only. Overstates a field tech rate. Replace with per-tech rates in cfo-private/tech-rates.json."
+  },
+  "monthly_payroll_employer_cost": {
+   "tag": "KNOWN",
+   "source": "Gusto payroll trends export, private/gusto",
+   "values": {
+    "2025-10": 27805,
+    "2025-11": 25996,
+    "2025-12": 21810,
+    "2026-01": 24455,
+    "2026-02": 21328,
+    "2026-03": 22983,
+    "2026-04": 25591,
+    "2026-05": 26038,
+    "2026-06": 20653,
+    "2026-07": 29161,
+    "2026-08": 32833,
+    "2026-09-to-18": 25534
+   },
+   "note": "Company-wide aggregate only, Gusto payroll-trends export 2025-10-01..2026-09-18. 2026-09 is partial (through the 18th).",
+   "ot_hours": {
+    "2025-10": 42.9,
+    "2025-11": 29.5,
+    "2025-12": 24.9,
+    "2026-01": 7.7,
+    "2026-02": 4.3,
+    "2026-03": 4.3,
+    "2026-04": 6.7,
+    "2026-05": 11.6,
+    "2026-06": 12.6,
+    "2026-07": 71,
+    "2026-08": 90.5,
+    "2026-09": 34.1
+   },
+   "regular_hours": {
+    "2025-10": 769,
+    "2025-11": 607.4,
+    "2025-12": 562,
+    "2026-01": 660.3,
+    "2026-02": 629.9,
+    "2026-03": 702.1,
+    "2026-04": 776.2,
+    "2026-05": 752.9,
+    "2026-06": 585.2,
+    "2026-07": 852.8,
+    "2026-08": 898.4,
+    "2026-09": 678.4
+   }
+  }
+ },
+ "derived_blocked": {
+  "_note": "Cannot be computed until costs land. Listed so no model quietly invents them.",
+  "gross_margin": {
+   "value": null,
+   "tag": "UNKNOWN",
+   "needs": [
+    "tech_base_hourly_wage",
+    "labor_burden_rate",
+    "vehicle_cost_per_tech_month",
+    "fuel_cost_per_tech_month",
+    "materials_cost_per_visit"
+   ]
+  },
+  "contribution_margin_per_visit": {
+   "value": null,
+   "tag": "UNKNOWN"
+  },
+  "ebitda": {
+   "value": null,
+   "tag": "UNKNOWN"
+  },
+  "ebitda_margin": {
+   "value": null,
+   "tag": "UNKNOWN",
+   "target": "30% per got-moles-scale brief. Currently unverifiable."
+  },
+  "true_ltv_per_customer": {
+   "value": null,
+   "tag": "UNKNOWN"
+  },
+  "cac_by_channel": {
+   "value": null,
+   "tag": "UNKNOWN",
+   "blocker": "85% leadSource unknown AND ads spend unavailable. Two independent blockers."
+  },
+  "enterprise_value": {
+   "value": null,
+   "tag": "UNKNOWN",
+   "needs": [
+    "ebitda",
+    "recurring_revenue_share"
+   ]
+  },
+  "tech_contribution": {
+   "tag": "PARTIAL",
+   "source": "model-tech-contribution.mjs 2026-09-19",
+   "note": "Revenue serviced per tech is KNOWN (Jobber contracts x visit share). Labor cost per tech is ESTIMATE until tech-rates.json exists. Vehicle/fuel/materials still UNKNOWN, so contribution is labor-only."
+  }
+ },
+ "entity": {
+  "_note": "Rainier Power Wash LLC. Inputs only — not the scope of this skill. Get from the CPA.",
+  "legal_entity": {
+   "value": "Rainier Power Wash LLC",
+   "tag": "KNOWN",
+   "note": "Got Moles is a DBA."
+  },
+  "tax_election": {
+   "value": null,
+   "tag": "UNKNOWN",
+   "note": "S-corp vs partnership vs disregarded changes owner comp strategy entirely."
+  },
+  "effective_tax_rate": {
+   "value": null,
+   "tag": "UNKNOWN"
+  },
+  "owner_draw_floor": {
+   "value": null,
+   "tag": "UNKNOWN",
+   "note": "THE HARD CONSTRAINT in the decision policy. Ask Spencer directly — what do you need to take out per year, minimum."
+  },
+  "cash_on_hand": {
+   "value": null,
+   "tag": "UNKNOWN"
+  },
+  "debt_outstanding": {
+   "value": null,
+   "tag": "UNKNOWN"
+  },
+  "credit_line_available": {
+   "value": null,
+   "tag": "UNKNOWN"
+  }
+ },
+ "labor_law_wa": {
+  "_note": "Cost-relevant WA figures. Full detail and sources in .claude/skills/ops-hr/references/wa-compliance.md",
+  "tag": "KNOWN",
+  "minimum_wage_2026": {
+   "value": 17.13,
+   "unit": "USD/hour",
+   "verify_by": "2026-12-15"
+  },
+  "exempt_salary_threshold_2026": {
+   "value": 80168.4,
+   "unit": "USD/year",
+   "verify_by": "2026-12-15",
+   "flag": "A salaried person paid below this is NON-EXEMPT and owed overtime regardless of title. Cory is salaried and runs a full route. CHECK THIS."
+  },
+  "overtime": {
+   "value": 1.5,
+   "note": "1.5x after 40 hours per workweek. WA has no daily overtime."
+  },
+  "workers_comp": {
+   "note": "WA is a monopolistic state fund (L&I). No private carrier. Rate set by risk classification; misclassification is assessed retroactively with penalties."
+  },
+  "salaried_field_role_exempt_check": {
+   "tag": "KNOWN",
+   "as_of": "2026-09-19",
+   "finding": "The one salaried field tech is paid BELOW the 2026 WA exempt salary threshold (80,168.40), so the role is NON-EXEMPT: hours must be tracked and overtime paid over 40 h/wk regardless of title. He does not clock in today. Fix: either raise salary above the threshold or put him on the time clock. Dollar figure in cfo-private only."
+  }
+ },
+ "industry_benchmarks": {
+  "_note": "ALL ESTIMATE. Comparison targets only — never substitute for Got Moles actuals.",
+  "tag": "ESTIMATE",
+  "gross_margin_average": {
+   "value": 0.58,
+   "source": "NPMA / PCO Bookkeepers 2025 Pest Control Industry Cost Study"
+  },
+  "gross_margin_healthy_range": {
+   "value": [
+    0.5,
+    0.55
+   ],
+   "concern_below": 0.45
+  },
+  "revenue_growth_average": {
+   "value": 0.095,
+   "note": "Got Moles at 0.37 is ~4x sector average."
+  },
+  "recurring_share_of_revenue": {
+   "value": 0.74,
+   "note": "Sector average. A target to measure against."
+  },
+  "cac_range": {
+   "value": [
+    200,
+    400
+   ]
+  },
+  "ltv_cac_target": {
+   "value": 3,
+   "note": "3:1 or better"
+  },
+  "residential_retention": {
+   "value": [
+    0.82,
+    0.87
+   ]
+  },
+  "callback_rate": {
+   "value": 0.03
+  }
+ },
+ "valuation": {
+  "_note": "Recurring mix moves the MULTIPLE, not just the profit. This is the largest single lever on enterprise value and it is why TMCP conversion is a capital allocation decision, not a marketing campaign.",
+  "tag": "ESTIMATE",
+  "source": "2026 pest control M&A multiple guides (Breakwater M&A, CT Acquisitions, PestPac)",
+  "multiple_bands_by_recurring_share": {
+   "under_40_pct_recurring": [
+    3.5,
+    4.5
+   ],
+   "60_pct_platform_threshold": [
+    5,
+    7
+   ],
+   "over_70_pct_recurring": [
+    7,
+    10
+   ]
+  },
+  "typical_range_500k_to_5m_ebitda": [
+   5,
+   8
+  ],
+  "owner_addback_uplift": [
+   0.05,
+   0.15
+  ],
+  "named_value_drivers": [
+   "recurring mix",
+   "customer retention",
+   "technician retention",
+   "customer concentration",
+   "tech stack",
+   "management depth"
+  ],
+  "got_moles_read": "Tech stack and growth rate are already strong. Recurring share, retention and management depth are the three that are either unmeasured or actively weak."
+ },
+ "open_conflicts": [
+  {
+   "id": "C1",
+   "title": "TMCP MRR exceeds total company revenue",
+   "a": "$857,312 trailing-12 revenue (baseline-model 2026-07-21, 8716 invoices)",
+   "b": "TMCP MRR $74,200/mo = ~$890K/yr (context/MEMORY.md 2026-08-11)",
+   "gap": "~$400K inside a $5M plan",
+   "status": "UNRESOLVED — resolve against live Jobber billing before any model depends on either.",
+   "hypotheses": [
+    "MRR is theoretical (all members billed every month) and actual billing is seasonal or partial",
+    "TMCP tag count includes non-billing or lapsed members",
+    "Revenue baseline is stale against 2026-08 growth"
+   ]
+  },
+  {
+   "id": "C2",
+   "title": "Seasonality claim contradicts billing data",
+   "a": "got-moles-scale/brief.md: 'trough Nov-May'",
+   "b": "Billing history: Nov indexes 1.145, Apr 1.064, Jun 1.130. Real trough is Dec-Feb at 0.812.",
+   "status": "RESOLVED in favor of the data 2026-08-26. Seasonality index above is authoritative.",
+   "consequence": "Hire timing and cash planning built on 'Nov-May trough' are wrong. The genuinely dangerous cash months are Dec, Jan, Feb only."
+  },
+  {
+   "id": "C3",
+   "title": "t12 billed vs t12 revenue",
+   "a": "$839,349 billed (cash-flow-projection)",
+   "b": "$857,312 revenue (baseline-model)",
+   "gap": "$17,963 (2.1%) over the same window",
+   "status": "OPEN — likely a billed-vs-recognized basis difference. Reconcile at first monthly close."
+  }
+ ]
+}

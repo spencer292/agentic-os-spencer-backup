@@ -1,0 +1,34 @@
+{
+  "_comment": "Thresholds for ops-timesheet-audit. Edit here, never in the script. Minutes/hours unless noted.",
+
+  "techNameMap": {
+    "Alexander, Tavis": "Tavis Alexander",
+    "Franks, Alias": "Alias Franks",
+    "LaVergne, Lukas": "Luke LaVergne",
+    "Norton, Robert": "Robert Norton",
+    "Ventura, Cory": "Cory Ventura",
+    "Hill, Spencer": "Spencer Hill"
+  },
+
+  "salariedNoClock": ["Cory Ventura"],
+
+  "thresholds": {
+    "missedClockOutMin": 45,
+    "lateClockInMin": 20,
+    "earlyClockInMin": 45,
+    "correctionMismatchMin": 10,
+    "correctionBeforeLastStampMin": 10,
+    "longDayHours": 11,
+    "spanMismatchHours": 0.6,
+    "afternoonStampHour": 17,
+    "eveningStampHour": 20,
+    "eveningStampGapMin": 90
+  },
+
+  "acceptedNoteReasons": ["meeting", "shop", "training", "no service", "no reception"],
+  "punchOutNoteRegex": "clock out|punch out",
+
+  "holidays": ["2026-09-07"],
+
+  "queryBufferDays": 1
+}

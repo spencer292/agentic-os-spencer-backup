@@ -1,0 +1,96 @@
+{
+  "_comment": "Current channel state for mkt-cmo. Every value carries a confidence tag: KNOWN | ESTIMATE | UNKNOWN. Never replace an UNKNOWN with a plausible number - go and measure it. Update the asOf date on any row you touch.",
+  "asOf": "2026-08-26",
+  "attribution": {
+    "leadSourceUnknownShare": { "value": 0.85, "tag": "KNOWN", "asOf": "2026-08-26", "source": "acc-cfo SKILL.md", "note": "Blocks per-channel CPBJ. Finding F-01." },
+    "quizCompletionTracked": { "value": false, "tag": "KNOWN", "asOf": "2026-05-31", "source": "marketing-os REALITY doc OI-02" },
+    "metaCapiLive": { "value": false, "tag": "KNOWN", "asOf": "2026-04-17", "source": "got-moles-marketing-plan brief" }
+  },
+  "channels": {
+    "google-search": {
+      "status": "live",
+      "ownedBy": "in-house",
+      "account": "1665761172",
+      "runVia": "ops-google-ads (API v24)",
+      "monthlySpend": { "value": null, "tag": "UNKNOWN", "note": "Historical: $6,780.69 in 2024 and $6,127.14 Jan-Nov 2025, full-period totals not monthly" },
+      "cpbj": { "value": null, "tag": "UNKNOWN", "note": "Blocked on F-01" },
+      "mandatory": ["Posture A - no mechanism language", "~120 medical-cluster negatives", "monthly Eligible-(limited) status sweep"]
+    },
+    "bing": {
+      "status": "unverified",
+      "ownedBy": "unknown",
+      "monthlySpend": { "value": null, "tag": "UNKNOWN", "note": "Historical: $1,978.60 in 2024, $3,159.22 Jan-Nov 2025" },
+      "cpbj": { "value": null, "tag": "UNKNOWN" }
+    },
+    "lsa": {
+      "status": "unverified",
+      "ownedBy": "unknown",
+      "cpbj": { "value": null, "tag": "UNKNOWN" },
+      "note": "Moles must be classed under rodent, not wildlife (Google removed Wildlife Removal from the Pest Control vertical June 2024). Finding F-11. Launch checklist at projects/briefs/got-moles-scale/2026-07-21_lsa-launch-checklist.md"
+    },
+    "meta": {
+      "status": "live",
+      "ownedBy": "DigiHammer",
+      "businessManagerOwner": { "value": null, "tag": "UNKNOWN", "note": "Finding F-03 - establish before any cancellation conversation" },
+      "pixelOwner": { "value": null, "tag": "UNKNOWN", "note": "Custom audiences do not transfer between business managers. Permanent loss risk." },
+      "monthlySpend": { "value": null, "tag": "UNKNOWN" },
+      "cpbj": { "value": null, "tag": "UNKNOWN" },
+      "qualityAssessment": "Poor and visibly AI-generated (Spencer, 2026-08-26). To be confirmed or corrected with numbers in Phase 1."
+    },
+    "email": {
+      "status": "live",
+      "ownedBy": "DigiHammer",
+      "platform": "HighLevel",
+      "subAccountOwner": { "value": null, "tag": "UNKNOWN" },
+      "sendingDomainDnsControl": { "value": null, "tag": "UNKNOWN", "note": "Sender reputation is attached to the domain and does not transfer" },
+      "listSize": { "value": null, "tag": "UNKNOWN" },
+      "unsubscribeRecordExportable": { "value": null, "tag": "UNKNOWN", "note": "Legally material - export before any exit conversation" },
+      "cadence": "monthly newsletter",
+      "bookedJobsAttributed": { "value": null, "tag": "UNKNOWN" }
+    },
+    "organic-gbp": {
+      "status": "live",
+      "ownedBy": "Roy (All The Power) - website lane, not this seat",
+      "gbpListings": { "value": 3, "tag": "KNOWN", "asOf": "2026-08-21" },
+      "reviewsTotal": { "value": 289, "tag": "KNOWN", "asOf": "2026-08-21", "source": "node scripts/gbp-scrape-reviews.mjs - trust scrapedAt, not the filename" },
+      "reviewsFiveStar": { "value": 283, "tag": "KNOWN", "asOf": "2026-08-21" },
+      "rating": { "value": 5.0, "tag": "KNOWN", "asOf": "2026-08-21", "note": "all three listings display 5.0" },
+      "reviewVelocityPerWeek": { "value": 7, "tag": "ESTIMATE", "asOf": "2026-08-21" }
+    },
+    "the-book": {
+      "status": "untouched",
+      "ownedBy": "in-house",
+      "note": "The cheapest channel in the business. Segments from the Jobber pull 2026-08-06, projects/briefs/tmcp-conversion/",
+      "segments": {
+        "activeProgram": { "value": 642, "tag": "KNOWN", "asOf": "2026-08-06" },
+        "repeatQuickFixNeverOnProgram": { "value": 700, "tag": "KNOWN", "asOf": "2026-08-06" },
+        "repeatQuickFixWithin24Months": { "value": 357, "tag": "KNOWN", "asOf": "2026-08-06" },
+        "exProgramWinback": { "value": 84, "tag": "KNOWN", "asOf": "2026-08-06" },
+        "singleJobOrNone": { "value": 1831, "tag": "KNOWN", "asOf": "2026-08-06" },
+        "totalClientRecords": { "value": 2907, "tag": "KNOWN", "asOf": "2026-08-06", "note": "Conflicts with the published 'nearly 5,000 clients' claim - finding F-02" }
+      }
+    }
+  },
+  "unitEconomics": {
+    "quoteCloseRate": { "value": 0.69, "tag": "KNOWN", "asOf": "2026-07-31" },
+    "averageQuote": { "value": 925, "tag": "KNOWN", "asOf": "2026-07-31" },
+    "grossExpectedValuePerLead": { "value": 640, "tag": "KNOWN", "asOf": "2026-07-31", "note": "GROSS, before any cost. Not LTV." },
+    "contributionMargin": { "value": null, "tag": "UNKNOWN", "note": "Ask acc-cfo - cost side is ingested from the bookkeeper into cfo-private/" },
+    "tmcpChurn": { "value": null, "tag": "UNKNOWN", "note": "Biggest hole in LTV" },
+    "ltv": { "value": null, "tag": "UNKNOWN" },
+    "industryCacBenchmark": { "low": 200, "high": 400, "tag": "ESTIMATE" },
+    "industryCplBenchmark": { "low": 40, "high": 120, "tag": "ESTIMATE", "note": "Got Moles' historical $10 CPL sits far below this - see finding F-08" },
+    "ltvCacTarget": { "value": 3.0, "tag": "ESTIMATE" }
+  },
+  "pricing": {
+    "_comment": "Publishable residential only. Commercial at any size and residential over 5 acres require an in-person bid, routed to Cory - never quoted.",
+    "quickFix": { "upTo1Acre": 450, "oneToThreeAcres": 500, "threeToFiveAcres": 600, "setupFee": 150 },
+    "tmcpMonthly": { "upTo1Acre": 100, "oneToThreeAcres": 125, "threeToFiveAcres": 150 }
+  },
+  "seasonality": {
+    "trough": "Nov-May",
+    "peak": "fall",
+    "tag": "KNOWN",
+    "note": "Flat monthly budgets are wrong by construction. Trough spend goes into the book; peak spend is capped by route capacity."
+  }
+}

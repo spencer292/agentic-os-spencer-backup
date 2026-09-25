@@ -1,0 +1,808 @@
+{
+  "generated_at": "2026-09-02T19:01:13.850Z",
+  "generated_at_pt": "Wednesday, September 2, 2026 at 12:01 PM",
+  "today": "2026-09-02",
+  "yesterday": "2026-09-01",
+  "week_start": "2026-08-30",
+  "month_start": "2026-09-01",
+  "metrics": {
+    "today": {
+      "calls_total": 12,
+      "calls_answered": 11,
+      "calls_missed": 1,
+      "answer_rate": 91.7,
+      "visits_completed": 71,
+      "visits_scheduled": 114,
+      "quotes_sent": 2,
+      "quotes_sent_value": 1650,
+      "quotes_converted": 4,
+      "quotes_converted_value": 4050,
+      "new_clients": 1,
+      "jobs_created": 4,
+      "revenue_invoiced": 1300
+    },
+    "yesterday": {
+      "calls_total": 32,
+      "calls_answered": 27,
+      "calls_missed": 5,
+      "answer_rate": 84.4,
+      "visits_completed": 131,
+      "visits_scheduled": 132,
+      "quotes_sent": 19,
+      "quotes_sent_value": 19320,
+      "quotes_converted": 13,
+      "quotes_converted_value": 10740,
+      "new_clients": 6,
+      "jobs_created": 14,
+      "revenue_invoiced": 26150
+    },
+    "wtd": {
+      "calls_total": 80,
+      "calls_answered": 70,
+      "calls_missed": 10,
+      "answer_rate": 87.5,
+      "visits_completed": 324,
+      "visits_scheduled": 368,
+      "quotes_sent": 40,
+      "quotes_sent_value": 38110,
+      "quotes_converted": 19,
+      "quotes_converted_value": 16440,
+      "new_clients": 18,
+      "jobs_created": 23,
+      "revenue_invoiced": 83811
+    },
+    "mtd": {
+      "calls_total": 44,
+      "calls_answered": 38,
+      "calls_missed": 6,
+      "answer_rate": 86.4,
+      "visits_completed": 202,
+      "visits_scheduled": 246,
+      "quotes_sent": 21,
+      "quotes_sent_value": 20970,
+      "quotes_converted": 17,
+      "quotes_converted_value": 14790,
+      "new_clients": 7,
+      "jobs_created": 18,
+      "revenue_invoiced": 27450
+    }
+  },
+  "tmcp": {
+    "active": 714,
+    "mrr": 70938,
+    "new_mtd": 7,
+    "ended_mtd": 0,
+    "new_wtd": 9,
+    "ended_wtd": 0,
+    "net_new_mtd": 7
+  },
+  "qf": {
+    "active": 137,
+    "overrun": [
+      {
+        "job": 7964,
+        "client": "Barbee Mill HOA",
+        "visits": 20,
+        "over": 15,
+        "status": "upcoming",
+        "started": "2026-06-03"
+      },
+      {
+        "job": 8118,
+        "client": "Patty  Ring",
+        "visits": 10,
+        "over": 5,
+        "status": "upcoming",
+        "started": "2026-07-07"
+      },
+      {
+        "job": 8142,
+        "client": "Kevin Shaver",
+        "visits": 9,
+        "over": 4,
+        "status": "upcoming",
+        "started": "2026-07-14"
+      },
+      {
+        "job": 8220,
+        "client": "Lily Tsai",
+        "visits": 8,
+        "over": 3,
+        "status": "upcoming",
+        "started": "2026-07-23"
+      },
+      {
+        "job": 8174,
+        "client": "Gina Beam",
+        "visits": 8,
+        "over": 3,
+        "status": "upcoming",
+        "started": "2026-07-16"
+      },
+      {
+        "job": 8284,
+        "client": "Susan Machen",
+        "visits": 7,
+        "over": 2,
+        "status": "upcoming",
+        "started": "2026-07-29"
+      },
+      {
+        "job": 8225,
+        "client": "Gavin Stanley",
+        "visits": 7,
+        "over": 2,
+        "status": "upcoming",
+        "started": "2026-07-22"
+      },
+      {
+        "job": 8245,
+        "client": "Tad Hutchison",
+        "visits": 7,
+        "over": 2,
+        "status": "upcoming",
+        "started": "2026-07-28"
+      },
+      {
+        "job": 8271,
+        "client": "Craig Nelson",
+        "visits": 7,
+        "over": 2,
+        "status": "upcoming",
+        "started": "2026-07-31"
+      },
+      {
+        "job": 8281,
+        "client": "James Paxton",
+        "visits": 7,
+        "over": 2,
+        "status": "upcoming",
+        "started": "2026-08-03"
+      },
+      {
+        "job": 8188,
+        "client": "Ravi Kumar Balachandran",
+        "visits": 7,
+        "over": 2,
+        "status": "upcoming",
+        "started": "2026-07-20"
+      },
+      {
+        "job": 8140,
+        "client": "Hugh Downer",
+        "visits": 7,
+        "over": 2,
+        "status": "requires_invoicing",
+        "started": "2026-07-10"
+      },
+      {
+        "job": 8309,
+        "client": "Daniel Gagen",
+        "visits": 6,
+        "over": 1,
+        "status": "upcoming",
+        "started": "2026-08-04"
+      },
+      {
+        "job": 8298,
+        "client": "Melinda Holland",
+        "visits": 6,
+        "over": 1,
+        "status": "upcoming",
+        "started": "2026-08-03"
+      },
+      {
+        "job": 8269,
+        "client": "Holly Quionez",
+        "visits": 6,
+        "over": 1,
+        "status": "upcoming",
+        "started": "2026-08-04"
+      },
+      {
+        "job": 8356,
+        "client": "Brian Honig",
+        "visits": 6,
+        "over": 1,
+        "status": "upcoming",
+        "started": "2026-08-11"
+      },
+      {
+        "job": 8316,
+        "client": "Mark Anderson",
+        "visits": 6,
+        "over": 1,
+        "status": "upcoming",
+        "started": "2026-08-06"
+      },
+      {
+        "job": 8234,
+        "client": "Shannon Supple",
+        "visits": 6,
+        "over": 1,
+        "status": "upcoming",
+        "started": "2026-07-30"
+      },
+      {
+        "job": 8241,
+        "client": "Tang,Zhaohui N/A",
+        "visits": 6,
+        "over": 1,
+        "status": "upcoming",
+        "started": "2026-07-30"
+      },
+      {
+        "job": 8226,
+        "client": "Cliff Weiss",
+        "visits": 6,
+        "over": 1,
+        "status": "late",
+        "started": "2026-07-23"
+      }
+    ]
+  },
+  "collections": {
+    "count": 255,
+    "total": 29890,
+    "top": [
+      {
+        "invoice": "15057",
+        "client": "Western Plaza",
+        "balance": 500,
+        "issued": "2026-07-31"
+      },
+      {
+        "invoice": "14450",
+        "client": "Western Plaza",
+        "balance": 500,
+        "issued": "2026-06-30"
+      },
+      {
+        "invoice": "15688",
+        "client": "Sharon Young",
+        "balance": 475,
+        "issued": "2026-08-31"
+      },
+      {
+        "invoice": "15514",
+        "client": "1st Baptist Church",
+        "balance": 450,
+        "issued": "2026-08-11"
+      },
+      {
+        "invoice": "16244",
+        "client": "Kirsten Mcclelland",
+        "balance": 375,
+        "issued": "2026-09-01"
+      },
+      {
+        "invoice": "15622",
+        "client": "Scott Jennings",
+        "balance": 375,
+        "issued": "2026-08-31"
+      },
+      {
+        "invoice": "15554",
+        "client": "Jody Sanders",
+        "balance": 375,
+        "issued": "2026-08-24"
+      },
+      {
+        "invoice": "15547",
+        "client": "Jay Poole",
+        "balance": 375,
+        "issued": "2026-08-20"
+      }
+    ]
+  },
+  "field": {
+    "scheduled": 114,
+    "complete": 71,
+    "techs": [
+      {
+        "tech": "Cory Ventura",
+        "scheduled": 28,
+        "complete": 19
+      },
+      {
+        "tech": "Tavis Alexander",
+        "scheduled": 24,
+        "complete": 17
+      },
+      {
+        "tech": "Alias Franks",
+        "scheduled": 22,
+        "complete": 11
+      },
+      {
+        "tech": "Robert Norton",
+        "scheduled": 22,
+        "complete": 15
+      },
+      {
+        "tech": "Luke LaVergne",
+        "scheduled": 18,
+        "complete": 9
+      }
+    ]
+  },
+  "close_rate": [
+    {
+      "who": "Muhammad Javed",
+      "sent": 133,
+      "converted": 93,
+      "value": 60090,
+      "rate": 69.9
+    },
+    {
+      "who": "Spencer Hill",
+      "sent": 61,
+      "converted": 42,
+      "value": 36435,
+      "rate": 68.9
+    },
+    {
+      "who": "Tavis Alexander",
+      "sent": 18,
+      "converted": 3,
+      "value": 3360,
+      "rate": 16.7
+    },
+    {
+      "who": "Cory Ventura",
+      "sent": 13,
+      "converted": 4,
+      "value": 4050,
+      "rate": 30.8
+    },
+    {
+      "who": "Alias Franks",
+      "sent": 10,
+      "converted": 6,
+      "value": 6780,
+      "rate": 60
+    },
+    {
+      "who": "Robert Norton",
+      "sent": 9,
+      "converted": 6,
+      "value": 7200,
+      "rate": 66.7
+    },
+    {
+      "who": "Luke LaVergne",
+      "sent": 2,
+      "converted": 1,
+      "value": 1080,
+      "rate": 50
+    }
+  ],
+  "series": [
+    {
+      "date": "2026-08-04",
+      "dow": 2,
+      "calls": 32,
+      "answered": 31,
+      "missed": 1,
+      "revenue": 450,
+      "visits": 113
+    },
+    {
+      "date": "2026-08-05",
+      "dow": 3,
+      "calls": 19,
+      "answered": 19,
+      "missed": 0,
+      "revenue": 2200,
+      "visits": 116
+    },
+    {
+      "date": "2026-08-06",
+      "dow": 4,
+      "calls": 27,
+      "answered": 26,
+      "missed": 1,
+      "revenue": 2400,
+      "visits": 117
+    },
+    {
+      "date": "2026-08-07",
+      "dow": 5,
+      "calls": 12,
+      "answered": 12,
+      "missed": 0,
+      "revenue": 450,
+      "visits": 106
+    },
+    {
+      "date": "2026-08-08",
+      "dow": 6,
+      "calls": 1,
+      "answered": 1,
+      "missed": 0,
+      "revenue": 0,
+      "visits": 0
+    },
+    {
+      "date": "2026-08-09",
+      "dow": 0,
+      "calls": 1,
+      "answered": 1,
+      "missed": 0,
+      "revenue": 0,
+      "visits": 0
+    },
+    {
+      "date": "2026-08-10",
+      "dow": 1,
+      "calls": 13,
+      "answered": 13,
+      "missed": 0,
+      "revenue": 3350,
+      "visits": 116
+    },
+    {
+      "date": "2026-08-11",
+      "dow": 2,
+      "calls": 29,
+      "answered": 27,
+      "missed": 2,
+      "revenue": 1875,
+      "visits": 127
+    },
+    {
+      "date": "2026-08-12",
+      "dow": 3,
+      "calls": 28,
+      "answered": 28,
+      "missed": 0,
+      "revenue": 1375,
+      "visits": 116
+    },
+    {
+      "date": "2026-08-13",
+      "dow": 4,
+      "calls": 28,
+      "answered": 27,
+      "missed": 1,
+      "revenue": 900,
+      "visits": 133
+    },
+    {
+      "date": "2026-08-14",
+      "dow": 5,
+      "calls": 6,
+      "answered": 5,
+      "missed": 1,
+      "revenue": 1275,
+      "visits": 117
+    },
+    {
+      "date": "2026-08-15",
+      "dow": 6,
+      "calls": 6,
+      "answered": 6,
+      "missed": 0,
+      "revenue": 0,
+      "visits": 0
+    },
+    {
+      "date": "2026-08-16",
+      "dow": 0,
+      "calls": 1,
+      "answered": 1,
+      "missed": 0,
+      "revenue": 0,
+      "visits": 0
+    },
+    {
+      "date": "2026-08-17",
+      "dow": 1,
+      "calls": 18,
+      "answered": 16,
+      "missed": 2,
+      "revenue": 3090,
+      "visits": 129
+    },
+    {
+      "date": "2026-08-18",
+      "dow": 2,
+      "calls": 21,
+      "answered": 20,
+      "missed": 1,
+      "revenue": 1225,
+      "visits": 113
+    },
+    {
+      "date": "2026-08-19",
+      "dow": 3,
+      "calls": 27,
+      "answered": 22,
+      "missed": 5,
+      "revenue": 1125,
+      "visits": 129
+    },
+    {
+      "date": "2026-08-20",
+      "dow": 4,
+      "calls": 28,
+      "answered": 28,
+      "missed": 0,
+      "revenue": 1375,
+      "visits": 114
+    },
+    {
+      "date": "2026-08-21",
+      "dow": 5,
+      "calls": 16,
+      "answered": 15,
+      "missed": 1,
+      "revenue": 900,
+      "visits": 125
+    },
+    {
+      "date": "2026-08-22",
+      "dow": 6,
+      "calls": 2,
+      "answered": 2,
+      "missed": 0,
+      "revenue": 0,
+      "visits": 0
+    },
+    {
+      "date": "2026-08-23",
+      "dow": 0,
+      "calls": 6,
+      "answered": 5,
+      "missed": 1,
+      "revenue": 0,
+      "visits": 0
+    },
+    {
+      "date": "2026-08-24",
+      "dow": 1,
+      "calls": 44,
+      "answered": 38,
+      "missed": 6,
+      "revenue": 1200,
+      "visits": 131
+    },
+    {
+      "date": "2026-08-25",
+      "dow": 2,
+      "calls": 20,
+      "answered": 20,
+      "missed": 0,
+      "revenue": 900,
+      "visits": 122
+    },
+    {
+      "date": "2026-08-26",
+      "dow": 3,
+      "calls": 21,
+      "answered": 16,
+      "missed": 5,
+      "revenue": 1050,
+      "visits": 119
+    },
+    {
+      "date": "2026-08-27",
+      "dow": 4,
+      "calls": 34,
+      "answered": 29,
+      "missed": 5,
+      "revenue": 1900,
+      "visits": 131
+    },
+    {
+      "date": "2026-08-28",
+      "dow": 5,
+      "calls": 21,
+      "answered": 18,
+      "missed": 3,
+      "revenue": 2505,
+      "visits": 102
+    },
+    {
+      "date": "2026-08-29",
+      "dow": 6,
+      "calls": 2,
+      "answered": 2,
+      "missed": 0,
+      "revenue": 0,
+      "visits": 0
+    },
+    {
+      "date": "2026-08-30",
+      "dow": 0,
+      "calls": 3,
+      "answered": 3,
+      "missed": 0,
+      "revenue": 0,
+      "visits": 0
+    },
+    {
+      "date": "2026-08-31",
+      "dow": 1,
+      "calls": 33,
+      "answered": 29,
+      "missed": 4,
+      "revenue": 56361,
+      "visits": 122
+    },
+    {
+      "date": "2026-09-01",
+      "dow": 2,
+      "calls": 32,
+      "answered": 27,
+      "missed": 5,
+      "revenue": 26150,
+      "visits": 131
+    },
+    {
+      "date": "2026-09-02",
+      "dow": 3,
+      "calls": 12,
+      "answered": 11,
+      "missed": 1,
+      "revenue": 1300,
+      "visits": 71
+    }
+  ],
+  "hours": [
+    {
+      "hour": 0,
+      "answered": 0,
+      "missed": 0
+    },
+    {
+      "hour": 1,
+      "answered": 0,
+      "missed": 0
+    },
+    {
+      "hour": 2,
+      "answered": 0,
+      "missed": 0
+    },
+    {
+      "hour": 3,
+      "answered": 0,
+      "missed": 0
+    },
+    {
+      "hour": 4,
+      "answered": 0,
+      "missed": 0
+    },
+    {
+      "hour": 5,
+      "answered": 0,
+      "missed": 0
+    },
+    {
+      "hour": 6,
+      "answered": 0,
+      "missed": 0
+    },
+    {
+      "hour": 7,
+      "answered": 0,
+      "missed": 0
+    },
+    {
+      "hour": 8,
+      "answered": 2,
+      "missed": 0
+    },
+    {
+      "hour": 9,
+      "answered": 3,
+      "missed": 0
+    },
+    {
+      "hour": 10,
+      "answered": 3,
+      "missed": 1
+    },
+    {
+      "hour": 11,
+      "answered": 3,
+      "missed": 0
+    },
+    {
+      "hour": 12,
+      "answered": 0,
+      "missed": 0
+    },
+    {
+      "hour": 13,
+      "answered": 0,
+      "missed": 0
+    },
+    {
+      "hour": 14,
+      "answered": 0,
+      "missed": 0
+    },
+    {
+      "hour": 15,
+      "answered": 0,
+      "missed": 0
+    },
+    {
+      "hour": 16,
+      "answered": 0,
+      "missed": 0
+    },
+    {
+      "hour": 17,
+      "answered": 0,
+      "missed": 0
+    },
+    {
+      "hour": 18,
+      "answered": 0,
+      "missed": 0
+    },
+    {
+      "hour": 19,
+      "answered": 0,
+      "missed": 0
+    },
+    {
+      "hour": 20,
+      "answered": 0,
+      "missed": 0
+    },
+    {
+      "hour": 21,
+      "answered": 0,
+      "missed": 0
+    },
+    {
+      "hour": 22,
+      "answered": 0,
+      "missed": 0
+    },
+    {
+      "hour": 23,
+      "answered": 0,
+      "missed": 0
+    }
+  ],
+  "projection": {
+    "days_in_month": 30,
+    "day_of_month": 2,
+    "days_remaining": 28,
+    "invoiced_mtd": 27450,
+    "recurring_to_bill": 52180,
+    "other_to_come": 18001,
+    "total": 97631,
+    "shape_frac": 26.4,
+    "days_frac": 6.7,
+    "avg_month": 95410,
+    "basis_months": 3
+  },
+  "reference": [
+    {
+      "month": "2026-06",
+      "total": 78279
+    },
+    {
+      "month": "2026-07",
+      "total": 98994
+    },
+    {
+      "month": "2026-08",
+      "total": 108956
+    }
+  ],
+  "counts": {
+    "invoices": 2510,
+    "quotes": 865,
+    "visits": 2763,
+    "jobs_active": 1014,
+    "calls": 749
+  }
+}

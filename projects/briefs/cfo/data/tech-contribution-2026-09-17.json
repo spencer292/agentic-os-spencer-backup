@@ -1,0 +1,107 @@
+{
+ "generatedAt": "2026-09-19T17:29:34.389Z",
+ "window": {
+  "from": "2026-08-17",
+  "to": "2026-09-17",
+  "days": 32,
+  "weeks": 4.57
+ },
+ "method": "contract value per job spread over the window, split by visit share; TMCP monthly x12/52 per week; Quick Fix total/5 per visit; hours from Gusto export",
+ "unattributed": {
+  "jobs": 0,
+  "visits": 0
+ },
+ "burden_rate": {
+  "value": 0.115,
+  "tag": "KNOWN",
+  "source": "Gusto payroll trends Jul-Sep 2026, employer cost / gross"
+ },
+ "avg_loaded_cost_per_paid_hour": {
+  "value": 33.2,
+  "tag": "ESTIMATE",
+  "source": "Gusto payroll trends Aug 2026, company-wide"
+ },
+ "techs": [
+  {
+   "tech": "Tavis Alexander",
+   "visits": 642,
+   "jobs": 276,
+   "jobs_tmcp": 194,
+   "jobs_qf": 75,
+   "revenue_window": 36415,
+   "revenue_per_week": 7966,
+   "revenue_per_visit": 56.72,
+   "revenue_tmcp": 18827,
+   "revenue_qf": 16955,
+   "paid_hours": 191.683,
+   "ot_hours": 7.7010000000000005,
+   "revenue_per_paid_hour": 189.98
+  },
+  {
+   "tech": "Alias Franks",
+   "visits": 579,
+   "jobs": 212,
+   "jobs_tmcp": 140,
+   "jobs_qf": 69,
+   "revenue_window": 31481,
+   "revenue_per_week": 6886,
+   "revenue_per_visit": 54.37,
+   "revenue_tmcp": 16101,
+   "revenue_qf": 14905,
+   "paid_hours": 230.68399999999994,
+   "ot_hours": 31.815999999999995,
+   "revenue_per_paid_hour": 136.47
+  },
+  {
+   "tech": "Cory Ventura",
+   "visits": 577,
+   "jobs": 285,
+   "jobs_tmcp": 223,
+   "jobs_qf": 52,
+   "revenue_window": 28226,
+   "revenue_per_week": 6174,
+   "revenue_per_visit": 48.92,
+   "revenue_tmcp": 18225,
+   "revenue_qf": 9684,
+   "paid_hours": null,
+   "ot_hours": null,
+   "revenue_per_paid_hour": null
+  },
+  {
+   "tech": "Robert Norton",
+   "visits": 548,
+   "jobs": 234,
+   "jobs_tmcp": 183,
+   "jobs_qf": 41,
+   "revenue_window": 26432,
+   "revenue_per_week": 5782,
+   "revenue_per_visit": 48.23,
+   "revenue_tmcp": 17546,
+   "revenue_qf": 8121,
+   "paid_hours": 185.63400000000001,
+   "ot_hours": 3.95,
+   "revenue_per_paid_hour": 142.39
+  },
+  {
+   "tech": "Luke LaVergne",
+   "visits": 448,
+   "jobs": 189,
+   "jobs_tmcp": 132,
+   "jobs_qf": 50,
+   "revenue_window": 22566,
+   "revenue_per_week": 4936,
+   "revenue_per_visit": 50.37,
+   "revenue_tmcp": 13228,
+   "revenue_qf": 9338,
+   "paid_hours": 186.999,
+   "ot_hours": 3.65,
+   "revenue_per_paid_hour": 120.68
+  }
+ ],
+ "totals": {
+  "visits": 2794,
+  "revenue": 145120,
+  "revenue_per_week": 31745,
+  "paid_hours_hourly_techs": 795
+ }
+}

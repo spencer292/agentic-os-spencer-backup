@@ -1,0 +1,128 @@
+{
+  "target": "2026-09",
+  "asOf": "2026-09-16",
+  "generatedAt": "2026-09-16T22:24:07.986Z",
+  "booked": {
+    "daily": 26620,
+    "batch": 0,
+    "total": 26620
+  },
+  "dailyRate": 2420,
+  "workedWeekdays": 11,
+  "remainingWeekdays": 9,
+  "dailyRest": {
+    "low": 11979.000000000002,
+    "base": 21126.6,
+    "high": 23958.000000000004
+  },
+  "prevBatchDay": "2026-08-31",
+  "prevBatchSum": 78021.3,
+  "newBillersOnBook": 53,
+  "projectedNew": 95,
+  "avgNew": 131.9404074749236,
+  "batch": {
+    "low": 79008.34516383277,
+    "base": 88605.10621011775,
+    "high": 93958.71530132668
+  },
+  "billings": {
+    "low": 117607.34516383277,
+    "base": 136351.70621011776,
+    "high": 144536.71530132668
+  },
+  "cash": {
+    "mtd": 44423.5,
+    "base": 125042.55286675796,
+    "sameDayRate": 0.5391220089898527
+  },
+  "mrr": {
+    "total": 83477.19333333334,
+    "arr": 1001726.3200000001,
+    "monthlyBillers": 723,
+    "byCadence": {
+      "TMCP / Monthly on the last day of the month": {
+        "n": 718,
+        "cycle": 78948,
+        "monthly": 78948
+      },
+      "TMCP / Yearly": {
+        "n": 14,
+        "cycle": 7925,
+        "monthly": 660.4166666666666
+      },
+      "QUICKFIX / Monthly on the last day of the month": {
+        "n": 3,
+        "cycle": 1825,
+        "monthly": 1825
+      },
+      "TMCP / Every 90 days": {
+        "n": 2,
+        "cycle": 1698,
+        "monthly": 566
+      },
+      "TMCP / Monthly on the 3rd Monday": {
+        "n": 1,
+        "cycle": 100,
+        "monthly": 100
+      },
+      "TMCP / Every 3 months on the 1st day of the month": {
+        "n": 1,
+        "cycle": 3825,
+        "monthly": 1275
+      },
+      "TMCP / Every 3 months on the last day of the month": {
+        "n": 1,
+        "cycle": 83.33,
+        "monthly": 27.776666666666667
+      },
+      "OTHER / Monthly on the last day of the month": {
+        "n": 1,
+        "cycle": 75,
+        "monthly": 75
+      }
+    }
+  },
+  "transitions": [
+    {
+      "from": "2025-08-31",
+      "to": "2025-09-30",
+      "prevSum": 34493.99,
+      "retention": 0.8980981904383923,
+      "newN": 32,
+      "newSum": 7320,
+      "newAvg": 228.75,
+      "toSum": 38298.99
+    },
+    {
+      "from": "2026-05-31",
+      "to": "2026-06-30",
+      "prevSum": 56394.54,
+      "retention": 0.9882392869948049,
+      "newN": 37,
+      "newSum": 5708.33,
+      "newAvg": 154.2791891891892,
+      "toSum": 61439.630000000005
+    },
+    {
+      "from": "2026-06-30",
+      "to": "2026-07-31",
+      "prevSum": 61439.630000000005,
+      "retention": 0.9680445666746366,
+      "newN": 66,
+      "newSum": 7305,
+      "newAvg": 110.68181818181819,
+      "toSum": 66781.3
+    },
+    {
+      "from": "2026-07-31",
+      "to": "2026-08-31",
+      "prevSum": 66781.3,
+      "retention": 0.9860739458501108,
+      "newN": 93,
+      "newSum": 12170,
+      "newAvg": 130.86021505376345,
+      "toSum": 78021.3
+    }
+  ],
+  "ttm": 971186.8362101179
+}

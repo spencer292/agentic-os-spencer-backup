@@ -1,0 +1,154 @@
+{
+  "_note": "Commission rules. Edit this file, re-run calc-commission.mjs — no code changes needed.",
+  "_source": "GotMoles_TechCompensation (4).docx, supplied by Spencer 2026-09-09, plus his verbal rules the same day.",
+  "_basis": "invoiced",
+  "_basisNote": "Commission pays on what was INVOICED in the month, not what was collected. The report still shows collected alongside so a chronic non-payer is visible.",
+  "_attributionNote": "Seller is resolved quote -> job -> invoice, then falls back to the earliest seller on the CLIENT's history. That last step is what makes 'life of the customer' payable on recurring TMCP invoices raised years after the sale, which carry no salesperson of their own.",
+  "_departureNote": "SEPARATION stops the 5%: no trailing residual on customers they sold, and the credit does not transfer to whoever takes the territory. Attribution is still tracked so the roll-off is visible. To offboard: role 'departed technician', eligible:false, tipsEligible:false. Never delete the person — that makes their invoices look unattributed and pollutes the fix list.",
+  "_tipsNote": "Tips are split EVENLY amongst whoever is IN THE FIELD — field work, not job title. Read from invoice.amounts.tipsTotal for invoices issued in the month.",
+  "_tipsDatingNote": "tipsEligible can be bounded by tipsEligibleFrom / tipsEligibleUntil (inclusive, YYYY-MM-DD), resolved against the MONTH BEING CALCULATED rather than today, so re-running an old month still pays who was actually in the field then. When someone comes out of the field set tipsEligibleUntil to their last field day — never flip tipsEligible to false, which retroactively rewrites months already paid.",
+  "tips": {
+    "split": "even"
+  },
+  "technicianPlan": {
+    "_applies": "The documented Technician Compensation & Incentive Program. Muhammad Javed and Cory Ventura do NOT participate (Spencer, 2026-09-09).",
+    "baseHourly": 25.0,
+    "overtimeHourly": 37.5,
+    "_payrollNote": "Base and overtime are payroll, not this tool. Recorded here only so the plan is complete in one place.",
+    "commission": {
+      "rate": 0.05,
+      "appliesTo": "TMCP",
+      "_note": "5% on the life of every TMCP customer the tech converts, paid on that customer's monthly billing for as long as they stay. Quick Fix and everything else earn NO commission."
+    },
+    "tmcpBonus": {
+      "_basis": "New TMCP conversions in the month, valued at CONTRACTED ANNUAL VALUE (monthly plan x 12 — $1,020 for an $85/mo plan, $1,200 for a $100/mo plan). Existing customers' recurring billing does not count.",
+      "_incrementRule": "Increments = floor(annual value / 1000). The band the total falls in sets the rate, and that rate applies RETROACTIVELY to every increment that month.",
+      "incrementSize": 1000,
+      "bands": [
+        {
+          "min": 0,
+          "max": 3599,
+          "perIncrement": 0
+        },
+        {
+          "min": 3600,
+          "max": 7199,
+          "perIncrement": 50
+        },
+        {
+          "min": 7200,
+          "max": 10799,
+          "perIncrement": 75
+        },
+        {
+          "min": 10800,
+          "max": null,
+          "perIncrement": 100
+        }
+      ],
+      "_unconditional": "No forfeiture conditions. The bonus is earned on new TMCP conversions, full stop."
+    },
+    "_retired": "RETIRED 2026-09-09 (Spencer): the compensation document's zero-tolerance forfeiture gates (traffic ticket / verified customer complaint / vehicle accident / fleet grade below B) are an OLD requirement and no longer exist — the TMCP bonus is unconditional. The $50 Google review bonus is also retired: Google's rules now prohibit incentivising reviews, so it is not paid at all. Do NOT re-add either from the .docx, which still carries both. If the doc is reissued, this note is the newer authority."
+  },
+  "defaults": {
+    "eligible": false,
+    "lifetimeRate": 0,
+    "commissionAppliesTo": "ALL",
+    "tipsEligible": false,
+    "technicianPlan": false
+  },
+  "people": {
+    "Tavis Alexander": {
+      "role": "technician",
+      "eligible": true,
+      "lifetimeRate": 0.05,
+      "commissionAppliesTo": "TMCP",
+      "technicianPlan": true,
+      "tipsEligible": true
+    },
+    "Robert Norton": {
+      "role": "technician",
+      "eligible": true,
+      "lifetimeRate": 0.05,
+      "commissionAppliesTo": "TMCP",
+      "technicianPlan": true,
+      "tipsEligible": true
+    },
+    "Luke LaVergne": {
+      "role": "technician",
+      "eligible": true,
+      "lifetimeRate": 0.05,
+      "commissionAppliesTo": "TMCP",
+      "technicianPlan": true,
+      "tipsEligible": true
+    },
+    "Alias Franks": {
+      "role": "technician",
+      "eligible": true,
+      "lifetimeRate": 0.05,
+      "commissionAppliesTo": "TMCP",
+      "technicianPlan": true,
+      "tipsEligible": true
+    },
+    "Muhammad Javed": {
+      "role": "inside sales",
+      "eligible": true,
+      "lifetimeRate": 0.02,
+      "commissionAppliesTo": "ALL",
+      "technicianPlan": false,
+      "tipsEligible": false,
+      "rateNote": "Flat 2% on everything invoiced with him as salesperson (Spencer, 2026-09-09). Does NOT participate in the technician plan — no TMCP bonus tiers, no review bonus, no tips."
+    },
+    "Cory Ventura": {
+      "role": "owner (equity)",
+      "eligible": false,
+      "lifetimeRate": 0,
+      "technicianPlan": false,
+      "tipsEligible": true,
+      "tipsEligibleUntil": null,
+      "tipsNote": "IN THE FIELD, so he takes a tip share. Temporary: once he comes out of the field he stops. Set tipsEligibleUntil to his last field day — do NOT flip tipsEligible to false, which would retroactively strip him from months already paid.",
+      "rateNote": "HAS OWNERSHIP — salaried, takes a percentage of PROFIT rather than sales commission, and does NOT participate in the technician plan (Spencer, 2026-09-09). His profit share comes off the P&L, which is the acc-cfo lane. Sales attribution still tracked here for performance measurement."
+    },
+    "Brayden Rich": {
+      "role": "departed technician",
+      "eligible": false,
+      "tipsEligible": false,
+      "lifetimeRate": 0,
+      "technicianPlan": false,
+      "rateNote": "No longer employed by Got Moles (Spencer, 2026-09-09), so his 5% has stopped. Trailing invoices tracked, paid to nobody, not transferred."
+    },
+    "Jeff Mitchell": {
+      "role": "departed technician",
+      "eligible": false,
+      "tipsEligible": false,
+      "lifetimeRate": 0,
+      "technicianPlan": false,
+      "rateNote": "No longer employed by Got Moles (Spencer, 2026-09-09), so his 5% has stopped. Trailing invoices tracked, paid to nobody, not transferred."
+    },
+    "Cammeron Anderson": {
+      "role": "departed technician",
+      "eligible": false,
+      "tipsEligible": false,
+      "lifetimeRate": 0,
+      "technicianPlan": false,
+      "rateNote": "No longer with the company, so his 5% has stopped. Trailing invoices tracked, paid to nobody, not transferred."
+    },
+    "Spencer Hill": {
+      "role": "owner",
+      "eligible": false,
+      "lifetimeRate": 0,
+      "technicianPlan": false,
+      "tipsEligible": false,
+      "rateNote": "Owner — takes no commission."
+    },
+    "Courtney": {
+      "role": "staging bucket",
+      "eligible": false,
+      "lifetimeRate": 0,
+      "technicianPlan": false,
+      "tipsEligible": false,
+      "rateNote": "NOT A SALESPERSON. Jobs are parked on this profile deliberately as mass-move staging, so any sales credit on it is an artifact. Never pay against it."
+    }
+  },
+  "_leaveNote": "ABSENCE IS NOT DEPARTURE. Paid medical leave, vacation, or any stretch running routes without selling does NOT stop commission — the book keeps paying throughout and employment is continuous. Confirmed case: Tavis Alexander has a clean two-month gap in his quote history (June-July 2026) that was paid medical leave, not a separation; his pre-gap book of ~47 recurring TMCP customers ($235.50 of his August commission) remains fully payable (Spencer, 2026-09-09). A gap in someone's quote history looks identical to a departure in Jobber, so ASK before treating one as a leaver — never infer it from the data."
+}

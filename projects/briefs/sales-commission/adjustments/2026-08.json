@@ -1,0 +1,42 @@
+{
+  "_note": "Monthly inputs Jobber cannot know. Fill this in at month end, then re-run calc-commission.mjs. Until every field is set, the TMCP bonus prints as *prov.* and is not confirmed payable.",
+  "_fields": {
+    "trafficTicket": "true/false \u2014 any ticket while operating a company vehicle this month. Forfeits the whole TMCP bonus.",
+    "customerComplaint": "true/false \u2014 any VERIFIED customer complaint this month. Forfeits the whole TMCP bonus.",
+    "vehicleAccident": "true/false \u2014 any accident in a company vehicle, regardless of fault. Forfeits the whole TMCP bonus.",
+    "fleetGrade": "A/B/C/D/F from the fleet tracking system at month end. C or below forfeits the whole TMCP bonus.",
+    "googleReviews": "count of 5-star Google reviews this month that mention this tech BY NAME. Pays $50 each, uncapped, and is not forfeitable."
+  },
+  "_reviewSource": "Reviews can be pulled with scripts/gbp-scrape-reviews.mjs and matched on tech name \u2014 check the scrapedAt field, not the filename, which carries a stale date.",
+  "month": "2026-08",
+  "people": {
+    "Tavis Alexander": {
+      "trafficTicket": null,
+      "customerComplaint": null,
+      "vehicleAccident": null,
+      "fleetGrade": null,
+      "googleReviews": null
+    },
+    "Robert Norton": {
+      "trafficTicket": null,
+      "customerComplaint": null,
+      "vehicleAccident": null,
+      "fleetGrade": null,
+      "googleReviews": null
+    },
+    "Luke LaVergne": {
+      "trafficTicket": null,
+      "customerComplaint": null,
+      "vehicleAccident": null,
+      "fleetGrade": null,
+      "googleReviews": null
+    },
+    "Alias Franks": {
+      "trafficTicket": null,
+      "customerComplaint": null,
+      "vehicleAccident": null,
+      "fleetGrade": null,
+      "googleReviews": null
+    }
+  }
+}

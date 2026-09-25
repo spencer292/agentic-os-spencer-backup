@@ -1,0 +1,1299 @@
+{
+ "generatedAt": "2026-09-19T17:58:27.269Z",
+ "window": {
+  "from": "2025-10",
+  "to": "2026-09"
+ },
+ "method": "labor: per-tech Gusto hours x tech-rates.json where paid-hours.json fully covers the month, else company-wide Gusto employer cost for the month. Non-labor: cfo-private/monthly-expenses.json (0 = UNFILLED). Revenue: invoice-history.json issuedDate, Pacific calendar month. Visits: live Jobber completed-visit pull, Pacific completion date.",
+ "burden_rate": {
+  "value": 0.115,
+  "tag": "KNOWN",
+  "source": "Gusto payroll-trends export 2025-10..2026-09 (private/gusto): employer cost / gross earnings = 1.113-1.117 Jul-Sep 2026. Employer contributions (benefits) = 0."
+ },
+ "months": [
+  {
+   "month": "2025-10",
+   "visits": 1697,
+   "revenue": {
+    "total": 86378.99,
+    "perVisit": 50.9,
+    "tag": "KNOWN",
+    "source": "invoice-history.json, issuedDate"
+   },
+   "labor": {
+    "total": 27805,
+    "perVisit": 16.38,
+    "tag": "KNOWN",
+    "basis": "company-wide Gusto employer cost, full month (paid-hours.json does not fully cover this month)",
+    "partial_month": false
+   },
+   "lines": {
+    "vehicles_fuel_maintenance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "vehicle_payments",
+      "fuel",
+      "vehicle_maintenance_repairs"
+     ]
+    },
+    "materials": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "materials_traps_supplies"
+     ]
+    },
+    "insurance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "insurance_auto_gl"
+     ]
+    },
+    "software_phone": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "software_subscriptions",
+      "phone_internet"
+     ]
+    },
+    "office_bookkeeping": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "office_admin_contractors",
+      "bookkeeping_accounting"
+     ]
+    },
+    "marketing": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "marketing_ads",
+      "marketing_other"
+     ]
+    },
+    "rent_other": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "rent_facilities",
+      "other"
+     ]
+    },
+    "owner_compensation": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "owner_compensation"
+     ]
+    }
+   },
+   "totals": {
+    "per_visit_before_owner_comp": 16.38,
+    "per_visit_incl_owner_comp": 16.38,
+    "excludes_unknown_lines": 8,
+    "includes_partial_lines": 0
+   },
+   "direct_vs_overhead": {
+    "direct_per_visit": 16.38,
+    "allocated_overhead_per_visit": 0
+   },
+   "margin": {
+    "per_visit": 34.52,
+    "pct": 67.8,
+    "tag": "INCOMPLETE (excludes 8 unknown lines — true cost is higher)"
+   },
+   "break_even_visits_per_month": 546.3,
+   "in_progress": false,
+   "expenses_month_complete": false
+  },
+  {
+   "month": "2025-11",
+   "visits": 1104,
+   "revenue": {
+    "total": 80971.49,
+    "perVisit": 73.34,
+    "tag": "KNOWN",
+    "source": "invoice-history.json, issuedDate"
+   },
+   "labor": {
+    "total": 25996,
+    "perVisit": 23.55,
+    "tag": "KNOWN",
+    "basis": "company-wide Gusto employer cost, full month (paid-hours.json does not fully cover this month)",
+    "partial_month": false
+   },
+   "lines": {
+    "vehicles_fuel_maintenance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "vehicle_payments",
+      "fuel",
+      "vehicle_maintenance_repairs"
+     ]
+    },
+    "materials": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "materials_traps_supplies"
+     ]
+    },
+    "insurance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "insurance_auto_gl"
+     ]
+    },
+    "software_phone": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "software_subscriptions",
+      "phone_internet"
+     ]
+    },
+    "office_bookkeeping": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "office_admin_contractors",
+      "bookkeeping_accounting"
+     ]
+    },
+    "marketing": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "marketing_ads",
+      "marketing_other"
+     ]
+    },
+    "rent_other": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "rent_facilities",
+      "other"
+     ]
+    },
+    "owner_compensation": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "owner_compensation"
+     ]
+    }
+   },
+   "totals": {
+    "per_visit_before_owner_comp": 23.55,
+    "per_visit_incl_owner_comp": 23.55,
+    "excludes_unknown_lines": 8,
+    "includes_partial_lines": 0
+   },
+   "direct_vs_overhead": {
+    "direct_per_visit": 23.55,
+    "allocated_overhead_per_visit": 0
+   },
+   "margin": {
+    "per_visit": 49.8,
+    "pct": 67.9,
+    "tag": "INCOMPLETE (excludes 8 unknown lines — true cost is higher)"
+   },
+   "break_even_visits_per_month": 354.4,
+   "in_progress": false,
+   "expenses_month_complete": false
+  },
+  {
+   "month": "2025-12",
+   "visits": 975,
+   "revenue": {
+    "total": 58254.99,
+    "perVisit": 59.75,
+    "tag": "KNOWN",
+    "source": "invoice-history.json, issuedDate"
+   },
+   "labor": {
+    "total": 21810,
+    "perVisit": 22.37,
+    "tag": "KNOWN",
+    "basis": "company-wide Gusto employer cost, full month (paid-hours.json does not fully cover this month)",
+    "partial_month": false
+   },
+   "lines": {
+    "vehicles_fuel_maintenance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "vehicle_payments",
+      "fuel",
+      "vehicle_maintenance_repairs"
+     ]
+    },
+    "materials": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "materials_traps_supplies"
+     ]
+    },
+    "insurance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "insurance_auto_gl"
+     ]
+    },
+    "software_phone": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "software_subscriptions",
+      "phone_internet"
+     ]
+    },
+    "office_bookkeeping": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "office_admin_contractors",
+      "bookkeeping_accounting"
+     ]
+    },
+    "marketing": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "marketing_ads",
+      "marketing_other"
+     ]
+    },
+    "rent_other": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "rent_facilities",
+      "other"
+     ]
+    },
+    "owner_compensation": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "owner_compensation"
+     ]
+    }
+   },
+   "totals": {
+    "per_visit_before_owner_comp": 22.37,
+    "per_visit_incl_owner_comp": 22.37,
+    "excludes_unknown_lines": 8,
+    "includes_partial_lines": 0
+   },
+   "direct_vs_overhead": {
+    "direct_per_visit": 22.37,
+    "allocated_overhead_per_visit": 0
+   },
+   "margin": {
+    "per_visit": 37.38,
+    "pct": 62.6,
+    "tag": "INCOMPLETE (excludes 8 unknown lines — true cost is higher)"
+   },
+   "break_even_visits_per_month": 365,
+   "in_progress": false,
+   "expenses_month_complete": false
+  },
+  {
+   "month": "2026-01",
+   "visits": 902,
+   "revenue": {
+    "total": 53356.27,
+    "perVisit": 59.15,
+    "tag": "KNOWN",
+    "source": "invoice-history.json, issuedDate"
+   },
+   "labor": {
+    "total": 24455,
+    "perVisit": 27.11,
+    "tag": "KNOWN",
+    "basis": "company-wide Gusto employer cost, full month (paid-hours.json does not fully cover this month)",
+    "partial_month": false
+   },
+   "lines": {
+    "vehicles_fuel_maintenance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "vehicle_payments",
+      "fuel",
+      "vehicle_maintenance_repairs"
+     ]
+    },
+    "materials": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "materials_traps_supplies"
+     ]
+    },
+    "insurance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "insurance_auto_gl"
+     ]
+    },
+    "software_phone": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "software_subscriptions",
+      "phone_internet"
+     ]
+    },
+    "office_bookkeeping": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "office_admin_contractors",
+      "bookkeeping_accounting"
+     ]
+    },
+    "marketing": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "marketing_ads",
+      "marketing_other"
+     ]
+    },
+    "rent_other": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "rent_facilities",
+      "other"
+     ]
+    },
+    "owner_compensation": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "owner_compensation"
+     ]
+    }
+   },
+   "totals": {
+    "per_visit_before_owner_comp": 27.11,
+    "per_visit_incl_owner_comp": 27.11,
+    "excludes_unknown_lines": 8,
+    "includes_partial_lines": 0
+   },
+   "direct_vs_overhead": {
+    "direct_per_visit": 27.11,
+    "allocated_overhead_per_visit": 0
+   },
+   "margin": {
+    "per_visit": 32.04,
+    "pct": 54.2,
+    "tag": "INCOMPLETE (excludes 8 unknown lines — true cost is higher)"
+   },
+   "break_even_visits_per_month": 413.4,
+   "in_progress": false,
+   "expenses_month_complete": false
+  },
+  {
+   "month": "2026-02",
+   "visits": 938,
+   "revenue": {
+    "total": 59516.29,
+    "perVisit": 63.45,
+    "tag": "KNOWN",
+    "source": "invoice-history.json, issuedDate"
+   },
+   "labor": {
+    "total": 21328,
+    "perVisit": 22.74,
+    "tag": "KNOWN",
+    "basis": "company-wide Gusto employer cost, full month (paid-hours.json does not fully cover this month)",
+    "partial_month": false
+   },
+   "lines": {
+    "vehicles_fuel_maintenance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "vehicle_payments",
+      "fuel",
+      "vehicle_maintenance_repairs"
+     ]
+    },
+    "materials": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "materials_traps_supplies"
+     ]
+    },
+    "insurance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "insurance_auto_gl"
+     ]
+    },
+    "software_phone": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "software_subscriptions",
+      "phone_internet"
+     ]
+    },
+    "office_bookkeeping": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "office_admin_contractors",
+      "bookkeeping_accounting"
+     ]
+    },
+    "marketing": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "marketing_ads",
+      "marketing_other"
+     ]
+    },
+    "rent_other": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "rent_facilities",
+      "other"
+     ]
+    },
+    "owner_compensation": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "owner_compensation"
+     ]
+    }
+   },
+   "totals": {
+    "per_visit_before_owner_comp": 22.74,
+    "per_visit_incl_owner_comp": 22.74,
+    "excludes_unknown_lines": 8,
+    "includes_partial_lines": 0
+   },
+   "direct_vs_overhead": {
+    "direct_per_visit": 22.74,
+    "allocated_overhead_per_visit": 0
+   },
+   "margin": {
+    "per_visit": 40.71,
+    "pct": 64.2,
+    "tag": "INCOMPLETE (excludes 8 unknown lines — true cost is higher)"
+   },
+   "break_even_visits_per_month": 336.1,
+   "in_progress": false,
+   "expenses_month_complete": false
+  },
+  {
+   "month": "2026-03",
+   "visits": 1001,
+   "revenue": {
+    "total": 64946.29,
+    "perVisit": 64.88,
+    "tag": "KNOWN",
+    "source": "invoice-history.json, issuedDate"
+   },
+   "labor": {
+    "total": 22983,
+    "perVisit": 22.96,
+    "tag": "KNOWN",
+    "basis": "company-wide Gusto employer cost, full month (paid-hours.json does not fully cover this month)",
+    "partial_month": false
+   },
+   "lines": {
+    "vehicles_fuel_maintenance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "vehicle_payments",
+      "fuel",
+      "vehicle_maintenance_repairs"
+     ]
+    },
+    "materials": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "materials_traps_supplies"
+     ]
+    },
+    "insurance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "insurance_auto_gl"
+     ]
+    },
+    "software_phone": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "software_subscriptions",
+      "phone_internet"
+     ]
+    },
+    "office_bookkeeping": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "office_admin_contractors",
+      "bookkeeping_accounting"
+     ]
+    },
+    "marketing": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "marketing_ads",
+      "marketing_other"
+     ]
+    },
+    "rent_other": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "rent_facilities",
+      "other"
+     ]
+    },
+    "owner_compensation": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "owner_compensation"
+     ]
+    }
+   },
+   "totals": {
+    "per_visit_before_owner_comp": 22.96,
+    "per_visit_incl_owner_comp": 22.96,
+    "excludes_unknown_lines": 8,
+    "includes_partial_lines": 0
+   },
+   "direct_vs_overhead": {
+    "direct_per_visit": 22.96,
+    "allocated_overhead_per_visit": 0
+   },
+   "margin": {
+    "per_visit": 41.92,
+    "pct": 64.6,
+    "tag": "INCOMPLETE (excludes 8 unknown lines — true cost is higher)"
+   },
+   "break_even_visits_per_month": 354.2,
+   "in_progress": false,
+   "expenses_month_complete": false
+  },
+  {
+   "month": "2026-04",
+   "visits": 1002,
+   "revenue": {
+    "total": 74821.79,
+    "perVisit": 74.67,
+    "tag": "KNOWN",
+    "source": "invoice-history.json, issuedDate"
+   },
+   "labor": {
+    "total": 25591,
+    "perVisit": 25.54,
+    "tag": "KNOWN",
+    "basis": "company-wide Gusto employer cost, full month (paid-hours.json does not fully cover this month)",
+    "partial_month": false
+   },
+   "lines": {
+    "vehicles_fuel_maintenance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "vehicle_payments",
+      "fuel",
+      "vehicle_maintenance_repairs"
+     ]
+    },
+    "materials": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "materials_traps_supplies"
+     ]
+    },
+    "insurance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "insurance_auto_gl"
+     ]
+    },
+    "software_phone": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "software_subscriptions",
+      "phone_internet"
+     ]
+    },
+    "office_bookkeeping": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "office_admin_contractors",
+      "bookkeeping_accounting"
+     ]
+    },
+    "marketing": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "marketing_ads",
+      "marketing_other"
+     ]
+    },
+    "rent_other": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "rent_facilities",
+      "other"
+     ]
+    },
+    "owner_compensation": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "owner_compensation"
+     ]
+    }
+   },
+   "totals": {
+    "per_visit_before_owner_comp": 25.54,
+    "per_visit_incl_owner_comp": 25.54,
+    "excludes_unknown_lines": 8,
+    "includes_partial_lines": 0
+   },
+   "direct_vs_overhead": {
+    "direct_per_visit": 25.54,
+    "allocated_overhead_per_visit": 0
+   },
+   "margin": {
+    "per_visit": 49.13,
+    "pct": 65.8,
+    "tag": "INCOMPLETE (excludes 8 unknown lines — true cost is higher)"
+   },
+   "break_even_visits_per_month": 342.7,
+   "in_progress": false,
+   "expenses_month_complete": false
+  },
+  {
+   "month": "2026-05",
+   "visits": 1111,
+   "revenue": {
+    "total": 69348.79,
+    "perVisit": 62.42,
+    "tag": "KNOWN",
+    "source": "invoice-history.json, issuedDate"
+   },
+   "labor": {
+    "total": 26038,
+    "perVisit": 23.44,
+    "tag": "KNOWN",
+    "basis": "company-wide Gusto employer cost, full month (paid-hours.json does not fully cover this month)",
+    "partial_month": false
+   },
+   "lines": {
+    "vehicles_fuel_maintenance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "vehicle_payments",
+      "fuel",
+      "vehicle_maintenance_repairs"
+     ]
+    },
+    "materials": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "materials_traps_supplies"
+     ]
+    },
+    "insurance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "insurance_auto_gl"
+     ]
+    },
+    "software_phone": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "software_subscriptions",
+      "phone_internet"
+     ]
+    },
+    "office_bookkeeping": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "office_admin_contractors",
+      "bookkeeping_accounting"
+     ]
+    },
+    "marketing": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "marketing_ads",
+      "marketing_other"
+     ]
+    },
+    "rent_other": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "rent_facilities",
+      "other"
+     ]
+    },
+    "owner_compensation": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "owner_compensation"
+     ]
+    }
+   },
+   "totals": {
+    "per_visit_before_owner_comp": 23.44,
+    "per_visit_incl_owner_comp": 23.44,
+    "excludes_unknown_lines": 8,
+    "includes_partial_lines": 0
+   },
+   "direct_vs_overhead": {
+    "direct_per_visit": 23.44,
+    "allocated_overhead_per_visit": 0
+   },
+   "margin": {
+    "per_visit": 38.98,
+    "pct": 62.5,
+    "tag": "INCOMPLETE (excludes 8 unknown lines — true cost is higher)"
+   },
+   "break_even_visits_per_month": 417.1,
+   "in_progress": false,
+   "expenses_month_complete": false
+  },
+  {
+   "month": "2026-06",
+   "visits": 1614,
+   "revenue": {
+    "total": 78134.63,
+    "perVisit": 48.41,
+    "tag": "KNOWN",
+    "source": "invoice-history.json, issuedDate"
+   },
+   "labor": {
+    "total": 20653,
+    "perVisit": 12.8,
+    "tag": "KNOWN",
+    "basis": "company-wide Gusto employer cost, full month (paid-hours.json does not fully cover this month)",
+    "partial_month": false
+   },
+   "lines": {
+    "vehicles_fuel_maintenance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "vehicle_payments",
+      "fuel",
+      "vehicle_maintenance_repairs"
+     ]
+    },
+    "materials": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "materials_traps_supplies"
+     ]
+    },
+    "insurance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "insurance_auto_gl"
+     ]
+    },
+    "software_phone": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "software_subscriptions",
+      "phone_internet"
+     ]
+    },
+    "office_bookkeeping": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "office_admin_contractors",
+      "bookkeeping_accounting"
+     ]
+    },
+    "marketing": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "marketing_ads",
+      "marketing_other"
+     ]
+    },
+    "rent_other": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "rent_facilities",
+      "other"
+     ]
+    },
+    "owner_compensation": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "owner_compensation"
+     ]
+    }
+   },
+   "totals": {
+    "per_visit_before_owner_comp": 12.8,
+    "per_visit_incl_owner_comp": 12.8,
+    "excludes_unknown_lines": 8,
+    "includes_partial_lines": 0
+   },
+   "direct_vs_overhead": {
+    "direct_per_visit": 12.8,
+    "allocated_overhead_per_visit": 0
+   },
+   "margin": {
+    "per_visit": 35.61,
+    "pct": 73.6,
+    "tag": "INCOMPLETE (excludes 8 unknown lines — true cost is higher)"
+   },
+   "break_even_visits_per_month": 426.6,
+   "in_progress": false,
+   "expenses_month_complete": false
+  },
+  {
+   "month": "2026-07",
+   "visits": 2366,
+   "revenue": {
+    "total": 99139.3,
+    "perVisit": 41.9,
+    "tag": "KNOWN",
+    "source": "invoice-history.json, issuedDate"
+   },
+   "labor": {
+    "total": 29161,
+    "perVisit": 12.33,
+    "tag": "KNOWN",
+    "basis": "company-wide Gusto employer cost, full month (paid-hours.json does not fully cover this month)",
+    "partial_month": false
+   },
+   "lines": {
+    "vehicles_fuel_maintenance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "vehicle_payments",
+      "fuel",
+      "vehicle_maintenance_repairs"
+     ]
+    },
+    "materials": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "materials_traps_supplies"
+     ]
+    },
+    "insurance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "insurance_auto_gl"
+     ]
+    },
+    "software_phone": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "software_subscriptions",
+      "phone_internet"
+     ]
+    },
+    "office_bookkeeping": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "office_admin_contractors",
+      "bookkeeping_accounting"
+     ]
+    },
+    "marketing": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "marketing_ads",
+      "marketing_other"
+     ]
+    },
+    "rent_other": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "rent_facilities",
+      "other"
+     ]
+    },
+    "owner_compensation": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "owner_compensation"
+     ]
+    }
+   },
+   "totals": {
+    "per_visit_before_owner_comp": 12.33,
+    "per_visit_incl_owner_comp": 12.33,
+    "excludes_unknown_lines": 8,
+    "includes_partial_lines": 0
+   },
+   "direct_vs_overhead": {
+    "direct_per_visit": 12.33,
+    "allocated_overhead_per_visit": 0
+   },
+   "margin": {
+    "per_visit": 29.58,
+    "pct": 70.6,
+    "tag": "INCOMPLETE (excludes 8 unknown lines — true cost is higher)"
+   },
+   "break_even_visits_per_month": 695.9,
+   "in_progress": false,
+   "expenses_month_complete": false
+  },
+  {
+   "month": "2026-08",
+   "visits": 2499,
+   "revenue": {
+    "total": 109966.3,
+    "perVisit": 44,
+    "tag": "KNOWN",
+    "source": "invoice-history.json, issuedDate"
+   },
+   "labor": {
+    "total": 32833,
+    "perVisit": 13.14,
+    "tag": "KNOWN",
+    "basis": "company-wide Gusto employer cost, full month (paid-hours.json does not fully cover this month)",
+    "partial_month": false
+   },
+   "lines": {
+    "vehicles_fuel_maintenance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "vehicle_payments",
+      "fuel",
+      "vehicle_maintenance_repairs"
+     ]
+    },
+    "materials": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "materials_traps_supplies"
+     ]
+    },
+    "insurance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "insurance_auto_gl"
+     ]
+    },
+    "software_phone": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "software_subscriptions",
+      "phone_internet"
+     ]
+    },
+    "office_bookkeeping": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "office_admin_contractors",
+      "bookkeeping_accounting"
+     ]
+    },
+    "marketing": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "marketing_ads",
+      "marketing_other"
+     ]
+    },
+    "rent_other": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "rent_facilities",
+      "other"
+     ]
+    },
+    "owner_compensation": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "owner_compensation"
+     ]
+    }
+   },
+   "totals": {
+    "per_visit_before_owner_comp": 13.14,
+    "per_visit_incl_owner_comp": 13.14,
+    "excludes_unknown_lines": 8,
+    "includes_partial_lines": 0
+   },
+   "direct_vs_overhead": {
+    "direct_per_visit": 13.14,
+    "allocated_overhead_per_visit": 0
+   },
+   "margin": {
+    "per_visit": 30.87,
+    "pct": 70.1,
+    "tag": "INCOMPLETE (excludes 8 unknown lines — true cost is higher)"
+   },
+   "break_even_visits_per_month": 746.1,
+   "in_progress": false,
+   "expenses_month_complete": false
+  },
+  {
+   "month": "2026-09",
+   "visits": 1585,
+   "revenue": {
+    "total": 26620,
+    "perVisit": 16.79,
+    "tag": "KNOWN",
+    "source": "invoice-history.json, issuedDate"
+   },
+   "labor": {
+    "total": 25534,
+    "perVisit": 16.11,
+    "tag": "KNOWN",
+    "basis": "company-wide Gusto employer cost, PARTIAL MONTH ONLY (2026-09-to-18) — month in progress, this total understates the full-month figure",
+    "partial_month": true
+   },
+   "lines": {
+    "vehicles_fuel_maintenance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "vehicle_payments",
+      "fuel",
+      "vehicle_maintenance_repairs"
+     ]
+    },
+    "materials": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "materials_traps_supplies"
+     ]
+    },
+    "insurance": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "insurance_auto_gl"
+     ]
+    },
+    "software_phone": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "software_subscriptions",
+      "phone_internet"
+     ]
+    },
+    "office_bookkeeping": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "office_admin_contractors",
+      "bookkeeping_accounting"
+     ]
+    },
+    "marketing": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "marketing_ads",
+      "marketing_other"
+     ]
+    },
+    "rent_other": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "rent_facilities",
+      "other"
+     ]
+    },
+    "owner_compensation": {
+     "total": 0,
+     "perVisit": null,
+     "tag": "UNKNOWN",
+     "missing": [
+      "owner_compensation"
+     ]
+    }
+   },
+   "totals": {
+    "per_visit_before_owner_comp": 16.11,
+    "per_visit_incl_owner_comp": 16.11,
+    "excludes_unknown_lines": 8,
+    "includes_partial_lines": 0
+   },
+   "direct_vs_overhead": {
+    "direct_per_visit": 16.11,
+    "allocated_overhead_per_visit": 0
+   },
+   "margin": {
+    "per_visit": 0.69,
+    "pct": 4.1,
+    "tag": "INCOMPLETE (excludes 8 unknown lines — true cost is higher)"
+   },
+   "break_even_visits_per_month": 1520.3,
+   "in_progress": true,
+   "expenses_month_complete": false
+  }
+ ]
+}
