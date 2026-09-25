@@ -1,0 +1,879 @@
+{
+  "id": "QEKz72NTP8YRZsUS",
+  "name": "Route v2 WF-2 — Optimize + write-back OR → Jobber",
+  "description": null,
+  "active": false,
+  "activeVersionId": null,
+  "createdAt": "2026-07-10T18:34:41.100Z",
+  "updatedAt": "2026-07-10T20:41:02.308Z",
+  "isArchived": false,
+  "versionId": "937cf319-bb16-4845-8040-d14abbf2c227",
+  "versionCounter": 4,
+  "sourceWorkflowId": null,
+  "triggerCount": 0,
+  "nodes": [
+    {
+      "id": "trig",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1220,
+        -80
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "ewt",
+      "name": "When called by parent",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1220,
+        120
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "cfg",
+      "name": "Config",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1000,
+        0
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1",
+              "name": "fromOffset",
+              "value": "={{ $json.fromOffset !== undefined ? $json.fromOffset : (($json.body && $json.body.fromOffset !== undefined) ? $json.body.fromOffset : -1) }}",
+              "type": "number"
+            },
+            {
+              "id": "a2",
+              "name": "days",
+              "value": "={{ $json.days !== undefined ? $json.days : (($json.body && $json.body.days !== undefined) ? $json.body.days : -1) }}",
+              "type": "number"
+            },
+            {
+              "id": "a3",
+              "name": "dryRun",
+              "value": "={{ $json.dryRun !== undefined ? $json.dryRun : (($json.body && $json.body.dryRun !== undefined) ? $json.body.dryRun : true) }}",
+              "type": "boolean"
+            },
+            {
+              "id": "a4",
+              "name": "maxWrites",
+              "value": "={{ $json.maxWrites !== undefined ? $json.maxWrites : (($json.body && $json.body.maxWrites !== undefined) ? $json.body.maxWrites : 0) }}",
+              "type": "number"
+            },
+            {
+              "id": "a5",
+              "name": "windowHours",
+              "value": 3,
+              "type": "number"
+            },
+            {
+              "id": "a6",
+              "name": "lateOverride",
+              "value": "={{ $json.lateOverride !== undefined ? $json.lateOverride : (($json.body && $json.body.lateOverride !== undefined) ? $json.body.lateOverride : false) }}",
+              "type": "boolean"
+            },
+            {
+              "id": "a7",
+              "name": "skipPlanning",
+              "value": "={{ $json.skipPlanning !== undefined ? $json.skipPlanning : (($json.body && $json.body.skipPlanning !== undefined) ? $json.body.skipPlanning : false) }}",
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "win",
+      "name": "Window",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -780,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const cfg = $('Config').first().json;\nconst TZ = 'America/Los_Angeles';\nconst now = DateTime.now().setZone(TZ);\n// EMAIL-FREEZE RULE: date D locks at 14:00 PT on D-1. Today is NEVER writable.\nconst minOffset = now.hour >= 14 ? 2 : 1;\nlet fromOffset = Number(cfg.fromOffset);\nif (fromOffset === -1) fromOffset = minOffset;\nif (fromOffset < 1) throw new Error('Never write today or the past (email-locked).');\nif (fromOffset < minOffset && !cfg.lateOverride) throw new Error('Email-freeze guard: earliest writable day is +' + minOffset + ' right now (' + now.toFormat('HH:mm') + ' PT).');\nconst from = now.plus({ days: fromOffset });\nlet to;\nconst days = Number(cfg.days);\nif (days === -1) {\n  to = (now.weekday >= 5 ? now.plus({ weeks: 1 }) : now).endOf('week');\n  if (to < from) to = from;\n} else {\n  if (isNaN(days) || days < 1) throw new Error('Bad days');\n  to = now.plus({ days: fromOffset + days - 1 });\n}\nconst fromDate = from.toFormat('yyyy-LL-dd');\nconst toDate = to.toFormat('yyyy-LL-dd');\nconst nDays = Math.round(DateTime.fromISO(toDate).diff(DateTime.fromISO(fromDate), 'days').days) + 1;\nif (nDays > 16) throw new Error('Window too large: ' + nDays);\nconst afterIso = DateTime.fromISO(fromDate + 'T00:00:00', { zone: TZ }).minus({ seconds: 1 }).toUTC().toISO({ suppressMilliseconds: true }); // -1s: Jobber 'after' is exclusive at the exact boundary (anytime visits sit at 00:00)\nconst beforeIso = DateTime.fromISO(toDate + 'T00:00:00', { zone: TZ }).plus({ days: 1 }).minus({ seconds: 1 }).toUTC().toISO({ suppressMilliseconds: true }); // -1s: Jobber 'before' is inclusive at the exact boundary (next-day anytime visits leaked in)\nreturn [{ json: { fromDate, toDate, afterIso, beforeIso, days: nDays, dryRun: cfg.dryRun, maxWrites: cfg.maxWrites, windowHours: cfg.windowHours } }];"
+      }
+    },
+    {
+      "id": "ifplan",
+      "name": "Skip planning?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -560,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "s1",
+              "leftValue": "={{ $('Config').first().json.skipPlanning }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "splan",
+      "name": "Start planning",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -340,
+        120
+      ],
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "cA1fagf9j84ZWxnu",
+          "name": "OptimoRoute API"
+        }
+      },
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.optimoroute.com/v1/start_planning",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ dateRange: { from: $('Window').first().json.fromDate, to: $('Window').first().json.toDate }, balancing: 'ON', balanceBy: 'WT', clustering: true, startWith: 'CURRENT', lockType: 'NONE' }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "pstat",
+      "name": "Planning status",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -120,
+        120
+      ],
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "cA1fagf9j84ZWxnu",
+          "name": "OptimoRoute API"
+        }
+      },
+      "parameters": {
+        "method": "GET",
+        "url": "=https://api.optimoroute.com/v1/get_planning_status?planningId={{ $('Start planning').first().json.planningId }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "options": {}
+      }
+    },
+    {
+      "id": "pguard",
+      "name": "Planning guard",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        100,
+        120
+      ],
+      "parameters": {
+        "jsCode": "// Runaway/failed-planning guard for the polling loop.\nconst j = $input.first().json;\nif ($runIndex > 40) throw new Error('Planning poll timeout (>10 min).');\nconst st = (j.status || '').toString().toUpperCase();\nif (st.startsWith('E')) throw new Error('OptimoRoute planning error: ' + JSON.stringify(j).slice(0, 300));\nreturn [{ json: j }];"
+      }
+    },
+    {
+      "id": "iffin",
+      "name": "Finished?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        320,
+        120
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "f1",
+              "leftValue": "={{ (($json.status || '') + '').toUpperCase().startsWith('F') }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "wait",
+      "name": "Wait 15s",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        320,
+        320
+      ],
+      "webhookId": "wf2-wait-planning",
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": 15,
+        "unit": "seconds"
+      }
+    },
+    {
+      "id": "dates",
+      "name": "Dates",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        540,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const cfg = $('Window').first().json;\nconst out = [];\nlet d = DateTime.fromISO(cfg.fromDate);\nconst end = DateTime.fromISO(cfg.toDate);\nwhile (d <= end) { out.push({ json: { date: d.toFormat('yyyy-LL-dd') } }); d = d.plus({ days: 1 }); }\nreturn out;"
+      }
+    },
+    {
+      "id": "groutes",
+      "name": "Get routes",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        760,
+        0
+      ],
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "cA1fagf9j84ZWxnu",
+          "name": "OptimoRoute API"
+        }
+      },
+      "parameters": {
+        "method": "GET",
+        "url": "=https://api.optimoroute.com/v1/get_routes?date={{ $json.date }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 3,
+              "batchInterval": 400
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "croutes",
+      "name": "Collect routes",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        980,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const stops = []; const errs = [];\nfor (const it of $input.all()) {\n  const j = it.json;\n  if (!j || j.success === false) { errs.push(JSON.stringify(j).slice(0, 200)); continue; }\n  for (const r of j.routes || []) for (const s of r.stops || []) stops.push({ orderNo: String(s.orderNo), driver: r.driverName, scheduledAtDt: s.scheduledAtDt });\n}\nif (errs.length) throw new Error('get_routes errors: ' + errs.join(' | '));\nreturn [{ json: { stops } }];"
+      }
+    },
+    {
+      "id": "fetch",
+      "name": "Fetch page",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1200,
+        0
+      ],
+      "credentials": {
+        "oAuth2Api": {
+          "id": "NitrghZSAjZamvqp",
+          "name": "Jobber OAuth2 (native)"
+        }
+      },
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.getjobber.com/api/graphql",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-JOBBER-GRAPHQL-VERSION",
+              "value": "2025-04-16"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query: 'query($after: String) { visits(first: 25, after: $after, filter: { startAt: { after: \\\"' + $('Window').first().json.afterIso + '\\\", before: \\\"' + $('Window').first().json.beforeIso + '\\\" } }) { nodes { id title startAt endAt isComplete assignedUsers(first: 1) { nodes { name { full } } } job { jobNumber startAt } } pageInfo { hasNextPage endCursor } } }', variables: { after: $json.cursor || null } }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "pstep",
+      "name": "Page step",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1340,
+        0
+      ],
+      "parameters": {
+        "jsCode": "// Cursor-loop pagination step: accumulate pages in node static data, retry throttles.\nconst sd = $getWorkflowStaticData('node');\nif ($runIndex === 0) { sd.acc = []; sd.cursor = null; sd.retries = 0; }\nconst r = $input.first().json;\nif (r.errors) {\n  if (JSON.stringify(r.errors).includes('THROTTLED')) {\n    sd.retries = (sd.retries || 0) + 1;\n    if (sd.retries > 10) throw new Error('Jobber throttled 10x — giving up.');\n    return [{ json: { done: false, retry: true, cursor: sd.cursor } }];\n  }\n  throw new Error('Jobber error: ' + JSON.stringify(r.errors).slice(0, 400));\n}\nsd.retries = 0;\nconst v = r.data && r.data.visits;\nif (!v) throw new Error('Unexpected Jobber response: ' + JSON.stringify(r).slice(0, 300));\nsd.acc.push(...(v.nodes || []));\nsd.cursor = v.pageInfo.endCursor;\nif (v.pageInfo.hasNextPage) {\n  if (sd.acc.length > 4000) throw new Error('Runaway pagination (>4000 visits)');\n  return [{ json: { done: false, retry: false, cursor: sd.cursor, sofar: sd.acc.length } }];\n}\nconst visits = sd.acc; sd.acc = []; sd.cursor = null;\nreturn [{ json: { done: true, visits } }];"
+      }
+    },
+    {
+      "id": "ifmore",
+      "name": "More pages?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1480,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "m1",
+              "leftValue": "={{ $json.done === true }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "pwait",
+      "name": "Wait page",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1340,
+        200
+      ],
+      "webhookId": "wf2-wait-page",
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": "={{ $json.retry ? 20 : 2 }}",
+        "unit": "seconds"
+      }
+    },
+    {
+      "id": "plan",
+      "name": "Build plan",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1620,
+        -160
+      ],
+      "parameters": {
+        "jsCode": "const cfg = $('Window').first().json;\nconst TZ = 'America/Los_Angeles';\nconst byId = {};\nfor (const n of ($input.first().json.visits || [])) byId[n.id] = n;\nconst visits = Object.values(byId);\nconst toPT = iso => DateTime.fromISO(iso, { zone: 'utc' }).setZone(TZ);\nconst byNum = {};\nfor (const v of visits) {\n  let num = null;\n  try { num = Buffer.from(v.id, 'base64').toString('utf8').split('/').pop(); } catch (e) {}\n  if (!num || !/^\\d+$/.test(num)) num = v.id.replace(/[^a-zA-Z0-9]/g, '').slice(-10);\n  byNum[num] = v;\n}\nconst routed = $('Collect routes').first().json.stops;\nconst writes = [], moves = [], committedMoves = [], techMismatch = [], orphans = [];\nconst matched = new Set();\nfor (const s of routed) {\n  const m = s.orderNo.match(/^(\\d+)-(\\w+)$/);\n  if (!m) { orphans.push(s.orderNo); continue; }\n  const vis = byNum[m[2]];\n  if (!vis) { orphans.push(s.orderNo); continue; }\n  matched.add(vis.id);\n  const planDt = DateTime.fromFormat(s.scheduledAtDt, 'yyyy-LL-dd HH:mm:ss', { zone: TZ });\n  if (!planDt.isValid) { orphans.push(s.orderNo + ' bad-dt'); continue; }\n  const planDate = planDt.toFormat('yyyy-LL-dd'), planTime = planDt.toFormat('HH:mm');\n  const curStart = toPT(vis.startAt);\n  const curDate = curStart.toFormat('yyyy-LL-dd'), curTime = curStart.toFormat('HH:mm');\n  const endPT = vis.endAt ? toPT(vis.endAt) : null;\n  const winH = endPT ? endPT.diff(curStart, 'hours').hours : 99;\n  const committed = curTime !== '00:00' && winH <= 6; // window-width sentinel, same as WF-1\n  const jn = vis.job && vis.job.jobNumber;\n  const isSet = vis.job && vis.job.startAt ? toPT(vis.job.startAt).toFormat('yyyy-LL-dd') === curDate : false;\n  const users = (vis.assignedUsers && vis.assignedUsers.nodes) || [];\n  const techName = users[0] && users[0].name && users[0].name.full;\n  if (techName && techName !== s.driver) techMismatch.push('job ' + jn + ': jobber=' + techName + ' vs route=' + s.driver);\n  const dayMove = planDate !== curDate;\n  const timeChange = dayMove || planTime !== curTime;\n  if (dayMove) {\n    const rec = { job: String(jn), from: curDate, to: planDate, tech: s.driver, isSet, committed };\n    moves.push(rec);\n    if (committed || isSet) committedMoves.push(rec);\n  }\n  if (timeChange) writes.push({ visitId: vis.id, job: String(jn), date: planDate, time: planDt.toFormat('HH:mm:ss'), driver: s.driver, dayMove, isSet });\n}\nconst unrouted = visits.filter(v => !matched.has(v.id)).map(v => {\n  const jn = v.job && v.job.jobNumber;\n  const d = toPT(v.startAt).toFormat('yyyy-LL-dd');\n  const isSet = v.job && v.job.startAt ? toPT(v.job.startAt).toFormat('yyyy-LL-dd') === d : false;\n  return { job: String(jn), date: d, isSet };\n});\nconst unroutedSets = unrouted.filter(u => u.isSet);\n// DELTA GUARD: committed/set visits must essentially never change days (allowedDates pins them\n// in OR; if any slip through, something is wrong upstream) -> abort before any write.\nif (committedMoves.length > 5) throw new Error('DELTA GUARD: ' + committedMoves.length + ' committed/set visits would change days — ABORTED, no writes. First: ' + JSON.stringify(committedMoves.slice(0, 5)));\nreturn [{ json: {\n  counts: { routedStops: routed.length, jobberVisits: visits.length, writes: writes.length, dayMoves: moves.length, committedMoves: committedMoves.length, unrouted: unrouted.length, unroutedSets: unroutedSets.length, orphans: orphans.length, techMismatch: techMismatch.length },\n  writes, moves, committedMoves, unrouted: unrouted.slice(0, 50), unroutedSets, techMismatch: techMismatch.slice(0, 20), orphans: orphans.slice(0, 20)\n} }];"
+      }
+    },
+    {
+      "id": "iflive",
+      "name": "Live?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1640,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "x1",
+              "leftValue": "={{ $('Window').first().json.dryRun }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "sumdry",
+      "name": "Summary dry",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1860,
+        -140
+      ],
+      "parameters": {
+        "jsCode": "function moveLines(plan) {\n  const L = [];\n  if (plan.moves.length) L.push('DAY MOVES (' + plan.moves.length + '): ' + plan.moves.slice(0, 30).map(m => 'job ' + m.job + ' ' + m.from + '->' + m.to + (m.isSet ? ' [SET!]' : '') + (m.committed ? ' [WAS-COMMITTED!]' : '')).join(' ; '));\n  if (plan.unroutedSets.length) L.push('SETS NOT ROUTED — DECIDE (' + plan.unroutedSets.length + '): ' + plan.unroutedSets.map(u => 'job ' + u.job + ' ' + u.date).join(', '));\n  if (plan.techMismatch.length) L.push('TECH MISMATCH (' + plan.techMismatch.length + '): ' + plan.techMismatch.join(' | '));\n  if (plan.counts.unrouted) L.push('Unrouted visits in window: ' + plan.counts.unrouted);\n  if (plan.counts.orphans) L.push('Orphan OR orders: ' + plan.counts.orphans);\n  return L;\n}\nconst cfg = $('Window').first().json;\nconst plan = $('Build plan').first().json;\nconst c = plan.counts;\nconst L = [];\nL.push('WF-2 ROUTE (dry) ' + cfg.fromDate + ' -> ' + cfg.toDate);\nL.push('Routed stops: ' + c.routedStops + ' | Jobber visits: ' + c.jobberVisits + ' | would write: ' + c.writes);\nL.push(...moveLines(plan));\nreturn [{ json: { title: 'WF-2 route ' + cfg.fromDate + '->' + cfg.toDate, mode: 'ROUTE-DRY', days: Number(cfg.days), scheduled: c.writes, timeFixed: 0, errors: 0, text: L.join('\\n') } }];"
+      }
+    },
+    {
+      "id": "emit",
+      "name": "Emit writes",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1860,
+        160
+      ],
+      "parameters": {
+        "jsCode": "const cfg = $('Window').first().json;\nconst max = Number(cfg.maxWrites || 0);\nconst wh = Number(cfg.windowHours || 3);\nconst plan = $('Build plan').first().json;\nconst TZ = 'America/Los_Angeles';\nfunction sched(visitId, date, time) {\n  const s = DateTime.fromISO(date + 'T' + time, { zone: TZ });\n  const e = s.plus({ hours: wh });\n  return 'mutation { visitEditSchedule(id: \"' + visitId + '\", input: { startAt: { date: \"' + s.toFormat('yyyy-LL-dd') + '\", time: \"' + s.toFormat('HH:mm:ss') + '\", timezone: \"' + TZ + '\" }, endAt: { date: \"' + e.toFormat('yyyy-LL-dd') + '\", time: \"' + e.toFormat('HH:mm:ss') + '\", timezone: \"' + TZ + '\" } }) { userErrors { message } } }';\n}\nconst items = plan.writes.map(w => ({ kind: 'schedule', visitId: w.visitId, job: w.job, dayMove: w.dayMove, isSet: w.isSet, mutation: sched(w.visitId, w.date, w.time) }));\nconst capped = items.slice(0, max);\nif (!capped.length) return [{ json: { noop: true, wouldWrite: items.length } }];\nreturn capped.map(i => ({ json: i }));"
+      }
+    },
+    {
+      "id": "mutate",
+      "name": "Jobber mutate",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        2080,
+        160
+      ],
+      "credentials": {
+        "oAuth2Api": {
+          "id": "NitrghZSAjZamvqp",
+          "name": "Jobber OAuth2 (native)"
+        }
+      },
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.getjobber.com/api/graphql",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-JOBBER-GRAPHQL-VERSION",
+              "value": "2025-04-16"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query: $json.noop ? 'query { __typename }' : $json.mutation }) }}",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 4,
+              "batchInterval": 500
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "sumlive",
+      "name": "Summary live",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2300,
+        160
+      ],
+      "parameters": {
+        "jsCode": "function moveLines(plan) {\n  const L = [];\n  if (plan.moves.length) L.push('DAY MOVES (' + plan.moves.length + '): ' + plan.moves.slice(0, 30).map(m => 'job ' + m.job + ' ' + m.from + '->' + m.to + (m.isSet ? ' [SET!]' : '') + (m.committed ? ' [WAS-COMMITTED!]' : '')).join(' ; '));\n  if (plan.unroutedSets.length) L.push('SETS NOT ROUTED — DECIDE (' + plan.unroutedSets.length + '): ' + plan.unroutedSets.map(u => 'job ' + u.job + ' ' + u.date).join(', '));\n  if (plan.techMismatch.length) L.push('TECH MISMATCH (' + plan.techMismatch.length + '): ' + plan.techMismatch.join(' | '));\n  if (plan.counts.unrouted) L.push('Unrouted visits in window: ' + plan.counts.unrouted);\n  if (plan.counts.orphans) L.push('Orphan OR orders: ' + plan.counts.orphans);\n  return L;\n}\nconst cfg = $('Window').first().json;\nconst plan = $('Build plan').first().json;\nconst emitted = $('Emit writes').all().map(i => i.json);\nlet results = [];\ntry { results = $('Jobber mutate').all().map(i => i.json); } catch (e) {}\nif (emitted.length === 1 && emitted[0].noop) {\n  return [{ json: { title: 'WF-2 route ' + cfg.fromDate + '->' + cfg.toDate, mode: 'ROUTE-LIVE', days: Number(cfg.days), scheduled: 0, timeFixed: 0, errors: 0, text: 'NOOP: maxWrites=0 or nothing to write. Would write ' + emitted[0].wouldWrite + '.' } }];\n}\nlet ok = 0, failed = 0; const errs = [];\nfor (let i = 0; i < emitted.length; i++) {\n  const j = results[i] || {}; const ue = [];\n  if (j.errors) ue.push(...j.errors.map(e => e.message));\n  const d = j.data || {};\n  for (const k of Object.keys(d)) if (d[k] && d[k].userErrors) ue.push(...d[k].userErrors.map(e => e.message));\n  if (ue.length) { failed++; errs.push('job ' + emitted[i].job + ': ' + ue.join('; ')); } else ok++;\n}\nconst L = [];\nL.push('WF-2 ROUTE LIVE ' + cfg.fromDate + ' -> ' + cfg.toDate);\nL.push('Writes: ' + emitted.length + ' attempted | ok ' + ok + ' | failed ' + failed);\nL.push(...moveLines(plan));\nif (errs.length) L.push('Errors: ' + errs.slice(0, 15).join(' | '));\nreturn [{ json: { title: 'WF-2 route ' + cfg.fromDate + '->' + cfg.toDate, mode: 'ROUTE-LIVE', days: Number(cfg.days), scheduled: ok, timeFixed: 0, errors: failed, text: L.join('\\n') } }];"
+      }
+    },
+    {
+      "id": "notion",
+      "name": "Notion log",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        2520,
+        0
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "3O7pd2vMtCIPXUqu",
+          "name": "Notion API"
+        }
+      },
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.notion.com/v1/pages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Notion-Version",
+              "value": "2022-06-28"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ parent: { database_id: '19265c126f534b8fa59b98856c42531d' }, properties: { Run: { title: [{ text: { content: $json.title } }] }, Mode: { select: { name: $json.mode } }, Days: { number: $json.days }, Scheduled: { number: $json.scheduled }, 'Time-fixed': { number: $json.timeFixed }, Errors: { number: $json.errors }, Summary: { rich_text: [{ text: { content: ($json.text || '').slice(0, 1900) } }] } } }) }}",
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When called by parent": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config": {
+      "main": [
+        [
+          {
+            "node": "Window",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window": {
+      "main": [
+        [
+          {
+            "node": "Skip planning?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Skip planning?": {
+      "main": [
+        [
+          {
+            "node": "Dates",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Start planning",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start planning": {
+      "main": [
+        [
+          {
+            "node": "Planning status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Planning status": {
+      "main": [
+        [
+          {
+            "node": "Planning guard",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Planning guard": {
+      "main": [
+        [
+          {
+            "node": "Finished?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Finished?": {
+      "main": [
+        [
+          {
+            "node": "Dates",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 15s",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 15s": {
+      "main": [
+        [
+          {
+            "node": "Planning status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dates": {
+      "main": [
+        [
+          {
+            "node": "Get routes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get routes": {
+      "main": [
+        [
+          {
+            "node": "Collect routes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Collect routes": {
+      "main": [
+        [
+          {
+            "node": "Fetch page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch page": {
+      "main": [
+        [
+          {
+            "node": "Page step",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Page step": {
+      "main": [
+        [
+          {
+            "node": "More pages?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "More pages?": {
+      "main": [
+        [
+          {
+            "node": "Build plan",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait page": {
+      "main": [
+        [
+          {
+            "node": "Fetch page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build plan": {
+      "main": [
+        [
+          {
+            "node": "Live?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Live?": {
+      "main": [
+        [
+          {
+            "node": "Summary dry",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Emit writes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summary dry": {
+      "main": [
+        [
+          {
+            "node": "Notion log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Emit writes": {
+      "main": [
+        [
+          {
+            "node": "Jobber mutate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Jobber mutate": {
+      "main": [
+        [
+          {
+            "node": "Summary live",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summary live": {
+      "main": [
+        [
+          {
+            "node": "Notion log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "nodeGroups": [],
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "pinData": null,
+  "meta": null,
+  "tags": [],
+  "shared": [
+    {
+      "role": "workflow:owner",
+      "workflowId": "QEKz72NTP8YRZsUS",
+      "projectId": "RK2DpgVpkPwdB2Sb",
+      "project": {
+        "id": "RK2DpgVpkPwdB2Sb",
+        "name": "Spencer Hill <spencer@got-moles.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "1a39722e-05fa-4653-9ddb-26abb0723f76",
+        "createdAt": "2026-03-06T15:28:09.526Z",
+        "updatedAt": "2026-03-06T15:28:15.078Z"
+      },
+      "createdAt": "2026-07-10T18:34:41.102Z",
+      "updatedAt": "2026-07-10T18:34:41.102Z"
+    }
+  ],
+  "activeVersion": null
+}

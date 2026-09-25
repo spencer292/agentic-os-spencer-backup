@@ -1,0 +1,615 @@
+{
+  "id": "YxKaiU1IAAmMkDLh",
+  "name": "Route v2 WF-1 — Push Jobber → OptimoRoute",
+  "description": null,
+  "active": false,
+  "activeVersionId": null,
+  "createdAt": "2026-07-10T18:00:02.225Z",
+  "updatedAt": "2026-07-10T22:47:51.936Z",
+  "isArchived": false,
+  "versionId": "863a6121-8382-4c27-a9d6-c7cd7ed5b1ac",
+  "versionCounter": 12,
+  "sourceWorkflowId": null,
+  "triggerCount": 0,
+  "nodes": [
+    {
+      "id": "trig",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1000,
+        -80
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "ewt",
+      "name": "When called by parent",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1000,
+        120
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "cfg",
+      "name": "Config",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -780,
+        0
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1",
+              "name": "fromOffset",
+              "value": "={{ $json.fromOffset !== undefined ? $json.fromOffset : (($json.body && $json.body.fromOffset !== undefined) ? $json.body.fromOffset : -1) }}",
+              "type": "number"
+            },
+            {
+              "id": "a2",
+              "name": "days",
+              "value": "={{ $json.days !== undefined ? $json.days : (($json.body && $json.body.days !== undefined) ? $json.body.days : -1) }}",
+              "type": "number"
+            },
+            {
+              "id": "a3",
+              "name": "dryRun",
+              "value": "={{ $json.dryRun !== undefined ? $json.dryRun : (($json.body && $json.body.dryRun !== undefined) ? $json.body.dryRun : false) }}",
+              "type": "boolean"
+            },
+            {
+              "id": "a4",
+              "name": "maxOrders",
+              "value": "={{ $json.maxOrders !== undefined ? $json.maxOrders : (($json.body && $json.body.maxOrders !== undefined) ? $json.body.maxOrders : 2000) }}",
+              "type": "number"
+            },
+            {
+              "id": "a5",
+              "name": "checkMin",
+              "value": 10,
+              "type": "number"
+            },
+            {
+              "id": "a6",
+              "name": "setMin",
+              "value": 20,
+              "type": "number"
+            },
+            {
+              "id": "a7",
+              "name": "lateOverride",
+              "value": "={{ $json.lateOverride !== undefined ? $json.lateOverride : (($json.body && $json.body.lateOverride !== undefined) ? $json.body.lateOverride : false) }}",
+              "type": "boolean"
+            },
+            {
+              "id": "a8",
+              "name": "lockTechs",
+              "value": "={{ $json.lockTechs !== undefined ? $json.lockTechs : (($json.body && $json.body.lockTechs !== undefined) ? $json.body.lockTechs : false) }}",
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "win",
+      "name": "Window",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -560,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const cfg = $('Config').first().json;\nconst TZ = 'America/Los_Angeles';\nconst now = DateTime.now().setZone(TZ);\n// EMAIL-FREEZE RULE: date D locks at 14:00 PT on D-1 (customer emails with arrival windows\n// go out day-before at ~2pm). Today is NEVER writable. After 14:00, tomorrow is locked too.\nconst minOffset = now.hour >= 14 ? 2 : 1;\nlet fromOffset = Number(cfg.fromOffset);\nif (fromOffset === -1) fromOffset = minOffset; // auto\nif (fromOffset < 1) throw new Error('Never write today or the past (today locked by yesterday 14:00 email).');\nif (fromOffset < minOffset && !cfg.lateOverride) throw new Error('Email-freeze guard: earliest writable day is +' + minOffset + ' right now (' + now.toFormat('HH:mm') + ' PT >= 14:00 means tomorrow\\'s emails are already sent).');\nconst from = now.plus({ days: fromOffset });\nlet to;\nconst days = Number(cfg.days);\nif (days === -1) {\n  // WEEK WINDOW: Mon-Thu runs cover the remainder of THIS week (through Sunday).\n  // Fri/Sat/Sun runs extend through the end of NEXT week -> Friday's run batch-optimizes\n  // the whole week ahead with full freedom (the weekly baseline, per Spencer).\n  to = (now.weekday >= 5 ? now.plus({ weeks: 1 }) : now).endOf('week'); // luxon weeks end Sunday\n  if (to < from) to = from;\n} else {\n  if (isNaN(days) || days < 1) throw new Error('Bad days');\n  to = now.plus({ days: fromOffset + days - 1 });\n}\nconst fromDate = from.toFormat('yyyy-LL-dd');\nconst toDate = to.toFormat('yyyy-LL-dd');\nconst nDays = Math.round(DateTime.fromISO(toDate).diff(DateTime.fromISO(fromDate), 'days').days) + 1;\nif (nDays > 16) throw new Error('Window too large: ' + nDays + ' days');\nconst afterIso = DateTime.fromISO(fromDate + 'T00:00:00', { zone: TZ }).minus({ seconds: 1 }).toUTC().toISO({ suppressMilliseconds: true }); // -1s: Jobber 'after' is exclusive at the exact boundary (anytime visits sit at 00:00)\nconst beforeIso = DateTime.fromISO(toDate + 'T00:00:00', { zone: TZ }).plus({ days: 1 }).minus({ seconds: 1 }).toUTC().toISO({ suppressMilliseconds: true }); // -1s: Jobber 'before' is inclusive at the exact boundary (next-day anytime visits leaked in)\nreturn [{ json: { fromDate, toDate, afterIso, beforeIso, days: nDays, dryRun: cfg.dryRun, maxOrders: cfg.maxOrders, checkMin: cfg.checkMin, setMin: cfg.setMin, lockTechs: cfg.lockTechs } }];"
+      }
+    },
+    {
+      "id": "fetch",
+      "name": "Fetch page",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -340,
+        0
+      ],
+      "credentials": {
+        "oAuth2Api": {
+          "id": "NitrghZSAjZamvqp",
+          "name": "Jobber OAuth2 (native)"
+        }
+      },
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.getjobber.com/api/graphql",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-JOBBER-GRAPHQL-VERSION",
+              "value": "2025-04-16"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query: 'query($after: String) { visits(first: 25, after: $after, filter: { startAt: { after: \\\"' + $('Window').first().json.afterIso + '\\\", before: \\\"' + $('Window').first().json.beforeIso + '\\\" } }) { nodes { id title startAt endAt isComplete assignedUsers(first: 1) { nodes { name { full } } } property { address { street city province postalCode } } job { jobNumber startAt } } pageInfo { hasNextPage endCursor } } }', variables: { after: $json.cursor || null } }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "pstep",
+      "name": "Page step",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -180,
+        0
+      ],
+      "parameters": {
+        "jsCode": "// Cursor-loop pagination step: accumulate pages in node static data, retry throttles.\nconst sd = $getWorkflowStaticData('node');\nif ($runIndex === 0) { sd.acc = []; sd.cursor = null; sd.retries = 0; }\nconst r = $input.first().json;\nif (r.errors) {\n  if (JSON.stringify(r.errors).includes('THROTTLED')) {\n    sd.retries = (sd.retries || 0) + 1;\n    if (sd.retries > 10) throw new Error('Jobber throttled 10x — giving up.');\n    return [{ json: { done: false, retry: true, cursor: sd.cursor } }];\n  }\n  throw new Error('Jobber error: ' + JSON.stringify(r.errors).slice(0, 400));\n}\nsd.retries = 0;\nconst v = r.data && r.data.visits;\nif (!v) throw new Error('Unexpected Jobber response: ' + JSON.stringify(r).slice(0, 300));\nsd.acc.push(...(v.nodes || []));\nsd.cursor = v.pageInfo.endCursor;\nif (v.pageInfo.hasNextPage) {\n  if (sd.acc.length > 4000) throw new Error('Runaway pagination (>4000 visits)');\n  return [{ json: { done: false, retry: false, cursor: sd.cursor, sofar: sd.acc.length } }];\n}\nconst visits = sd.acc; sd.acc = []; sd.cursor = null;\nreturn [{ json: { done: true, visits } }];"
+      }
+    },
+    {
+      "id": "ifmore",
+      "name": "More pages?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -20,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "m1",
+              "leftValue": "={{ $json.done === true }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "pwait",
+      "name": "Wait page",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -180,
+        200
+      ],
+      "webhookId": "wf1-wait-page",
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": "={{ $json.retry ? 20 : 2 }}",
+        "unit": "seconds"
+      }
+    },
+    {
+      "id": "build",
+      "name": "Build orders",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -120,
+        -200
+      ],
+      "parameters": {
+        "jsCode": "const cfg = $('Window').first().json;\nconst TZ = 'America/Los_Angeles';\nconst byId = {};\nfor (const n of ($input.first().json.visits || [])) byId[n.id] = n;\nconst visits = Object.values(byId);\nconst toPTDate = iso => DateTime.fromISO(iso, { zone: 'utc' }).setZone(TZ).toFormat('yyyy-LL-dd');\nconst out = [];\nfor (const vis of visits) {\n  if (vis.isComplete) continue;\n  const jn = vis.job && vis.job.jobNumber;\n  const visitDate = toPTDate(vis.startAt);\n  // Hard clamp: never build an order outside the window, whatever the API boundary does.\n  if (visitDate < cfg.fromDate || visitDate > cfg.toDate) { out.push({ json: { kind: 'skipped', reason: 'out-of-window', job: String(jn), visitDate } }); continue; }\n  if (jn == null) { out.push({ json: { kind: 'skipped', reason: 'no-job-number', visitId: vis.id, visitDate } }); continue; }\n  const users = (vis.assignedUsers && vis.assignedUsers.nodes) || [];\n  const tech = (users[0] && users[0].name && users[0].name.full) || null;\n  // NOTE: no-tech visits are NOT skipped — Jobber techs may be wrong/missing (Spencer 2026-07-10);\n  // the optimizer assigns everyone unless cfg.lockTechs is true.\n  const a = vis.property && vis.property.address;\n  if (!a || !a.street) { out.push({ json: { kind: 'skipped', reason: 'no-address', job: String(jn), visitDate, tech } }); continue; }\n  let visitNum = null;\n  try { visitNum = Buffer.from(vis.id, 'base64').toString('utf8').split('/').pop(); } catch (e) {}\n  if (!visitNum || !/^\\d+$/.test(visitNum)) visitNum = vis.id.replace(/[^a-zA-Z0-9]/g, '').slice(-10);\n  const isSet = vis.job.startAt ? toPTDate(vis.job.startAt) === visitDate : false;\n  // PIN RULE (window-width sentinel): committed visits have a TIGHT window (optimizer writes\n  // +3h; hand-slated similar). Placeholder windows are WIDE (07:00-19:00 backfill = 12h) and\n  // 'anytime' (00:00) visits have none -> both float across days. Sets are always pinned.\n  const startDt = DateTime.fromISO(vis.startAt, { zone: 'utc' }).setZone(TZ);\n  const endDt = vis.endAt ? DateTime.fromISO(vis.endAt, { zone: 'utc' }).setZone(TZ) : null;\n  const windowHrs = endDt ? endDt.diff(startDt, 'hours').hours : 99;\n  const pinned = isSet || (startDt.toFormat('HH:mm') !== '00:00' && windowHrs <= 6);\n  const order = {\n    operation: 'SYNC',\n    orderNo: jn + '-' + visitNum,\n    type: 'T',\n    date: visitDate,\n    duration: isSet ? Number(cfg.setMin) : Number(cfg.checkMin),\n    priority: isSet ? 'C' : 'M',\n    location: {\n      address: a.street + ', ' + a.city + ', ' + (a.province || 'WA') + ' ' + (a.postalCode || ''),\n      // Spencer sees this on the OR map/route list: customer name + job number, human-readable.\n      // (orderNo stays the machine ID <job>-<visitNum> for collision-proof matching.)\n      locationName: (((vis.title || 'Unknown') + '').trim().replace(/\\s+/g, ' ') + ' · #' + jn).slice(0, 60),\n      acceptPartialMatch: true,\n      acceptMultipleResults: true\n    },\n    allowedDates: pinned ? { from: visitDate, to: visitDate } : { from: cfg.fromDate, to: cfg.toDate },\n    // No weekend work (Spencer 2026-07-10): optimizer may only place orders Mon-Fri.\n    // A pinned order dated Sat/Sun becomes unschedulable -> flagged, Spencer re-promises a weekday.\n    allowedWeekdays: ['mon', 'tue', 'wed', 'thu', 'fri'],\n    notes: 'Jobber job ' + jn + (isSet ? ' (SET)' : pinned ? ' (committed)' : '')\n  };\n  if (cfg.lockTechs && tech) order.assignedTo = { serial: tech }; // territory lock only when Jobber techs are trusted\n  out.push({ json: { kind: 'order', job: String(jn), visitId: vis.id, visitDate, tech, locked: !!(cfg.lockTechs && tech), isSet, pinned, order } });\n}\nif (!out.length) out.push({ json: { kind: 'empty' } });\nreturn out;"
+      }
+    },
+    {
+      "id": "iflive",
+      "name": "Live?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        100,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "x1",
+              "leftValue": "={{ $('Window').first().json.dryRun }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "sumdry",
+      "name": "Summary dry",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        320,
+        -140
+      ],
+      "parameters": {
+        "jsCode": "const cfg = $('Window').first().json;\nconst items = $('Build orders').all().map(i => i.json);\nconst orders = items.filter(i => i.kind === 'order');\nconst skipped = items.filter(i => i.kind === 'skipped');\nconst sets = orders.filter(o => o.isSet);\nconst pinned = orders.filter(o => o.pinned);\nconst floating = orders.length - pinned.length;\nconst L = [];\nL.push('WF-1 PUSH (dry) ' + cfg.fromDate + ' -> ' + cfg.toDate);\nL.push('Would sync: ' + orders.length + ' orders — ' + pinned.length + ' day-pinned (' + sets.length + ' sets + ' + (pinned.length - sets.length) + ' committed), ' + floating + ' flexible across ' + cfg.fromDate + '..' + cfg.toDate);\nconst days = {};\nfor (const o of orders) days[o.visitDate] = (days[o.visitDate] || 0) + 1;\nL.push('Per day: ' + Object.keys(days).sort().map(d => d + ':' + days[d]).join('  '));\nconst wknd = orders.filter(o => DateTime.fromISO(o.visitDate).weekday >= 6);\nif (wknd.length) L.push('On Sat/Sun in Jobber: ' + wknd.length + ' (' + wknd.filter(w => w.pinned).length + ' pinned -> will flag unschedulable; the rest shift to Mon-Fri)');\nconst techs = {};\nfor (const o of orders) { const t = o.tech || '(unassigned)'; techs[t] = (techs[t] || 0) + 1; }\nL.push('Jobber tech (informational' + (orders[0] && orders[0].locked ? ', LOCKED' : ', NOT locked — optimizer assigns') + '): ' + Object.keys(techs).sort().map(t => t + ':' + techs[t]).join('  '));\nif (skipped.length) L.push('Skipped ' + skipped.length + ': ' + skipped.slice(0, 20).map(s => '[' + s.reason + ' job ' + (s.job || '?') + ' ' + s.visitDate + ']').join(' '));\nif (sets.length) L.push('Sets: ' + sets.map(s => 'job ' + s.job + ' ' + s.visitDate + ' (' + s.tech + ')').join(', '));\nreturn [{ json: { title: 'WF-1 push ' + cfg.fromDate + '->' + cfg.toDate, mode: 'PUSH-DRY', days: Number(cfg.days), scheduled: orders.length, timeFixed: 0, errors: 0, text: L.join('\\n') } }];"
+      }
+    },
+    {
+      "id": "emit",
+      "name": "Emit orders",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        320,
+        160
+      ],
+      "parameters": {
+        "jsCode": "const cfg = $('Window').first().json;\nconst max = Number(cfg.maxOrders || 0);\nconst orders = $('Build orders').all().map(i => i.json).filter(i => i.kind === 'order');\nconst capped = max > 0 ? orders.slice(0, max) : [];\nif (!capped.length) return [{ json: { noop: true, wouldCreate: orders.length } }];\nreturn capped.map(o => ({ json: o }));"
+      }
+    },
+    {
+      "id": "ifnoop",
+      "name": "Noop?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        540,
+        160
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "x2",
+              "leftValue": "={{ $json.noop === true }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "create",
+      "name": "Create order",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        760,
+        260
+      ],
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "cA1fagf9j84ZWxnu",
+          "name": "OptimoRoute API"
+        }
+      },
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.optimoroute.com/v1/create_order",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.order) }}",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 3,
+              "batchInterval": 700
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "sumlive",
+      "name": "Summary live",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        980,
+        160
+      ],
+      "parameters": {
+        "jsCode": "const cfg = $('Window').first().json;\nconst all = $('Build orders').all().map(i => i.json);\nconst skipped = all.filter(i => i.kind === 'skipped');\nconst emitted = $('Emit orders').all().map(i => i.json);\nlet results = [];\ntry { results = $('Create order').all().map(i => i.json); } catch (e) {}\nif (emitted.length === 1 && emitted[0].noop) {\n  return [{ json: { title: 'WF-1 push ' + cfg.fromDate + '->' + cfg.toDate, mode: 'PUSH-LIVE', days: Number(cfg.days), scheduled: 0, timeFixed: 0, errors: 0, text: 'NOOP: maxOrders=0 or no orders. Would sync ' + emitted[0].wouldCreate + '. Raise maxOrders for a real push.' } }];\n}\nlet ok = 0, failed = 0; const errs = [];\nfor (let i = 0; i < emitted.length; i++) {\n  const r = results[i] || {};\n  if (r.success) ok++;\n  else { failed++; errs.push('job ' + emitted[i].job + ': ' + (r.code || '') + ' ' + (r.message || JSON.stringify(r).slice(0, 120))); }\n}\nconst sets = emitted.filter(o => o.isSet).length;\nconst pinnedN = emitted.filter(o => o.pinned).length;\nconst L = [];\nL.push('WF-1 PUSH LIVE ' + cfg.fromDate + ' -> ' + cfg.toDate);\nL.push('Orders synced: ' + ok + ' ok, ' + failed + ' failed, of ' + emitted.length + ' emitted (' + pinnedN + ' day-pinned incl ' + sets + ' sets, ' + (emitted.length - pinnedN) + ' flexible)');\nif (skipped.length) L.push('Skipped ' + skipped.length + ': ' + skipped.slice(0, 20).map(s => '[' + s.reason + ' job ' + (s.job || '?') + ']').join(' '));\nif (errs.length) L.push('Errors: ' + errs.slice(0, 15).join(' | '));\nreturn [{ json: { title: 'WF-1 push ' + cfg.fromDate + '->' + cfg.toDate, mode: 'PUSH-LIVE', days: Number(cfg.days), scheduled: ok, timeFixed: 0, errors: failed, text: L.join('\\n') } }];"
+      }
+    },
+    {
+      "id": "notion",
+      "name": "Notion log",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1200,
+        0
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "3O7pd2vMtCIPXUqu",
+          "name": "Notion API"
+        }
+      },
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.notion.com/v1/pages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Notion-Version",
+              "value": "2022-06-28"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ parent: { database_id: '19265c126f534b8fa59b98856c42531d' }, properties: { Run: { title: [{ text: { content: $json.title } }] }, Mode: { select: { name: $json.mode } }, Days: { number: $json.days }, Scheduled: { number: $json.scheduled }, 'Time-fixed': { number: $json.timeFixed }, Errors: { number: $json.errors }, Summary: { rich_text: [{ text: { content: ($json.text || '').slice(0, 1900) } }] } } }) }}",
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When called by parent": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config": {
+      "main": [
+        [
+          {
+            "node": "Window",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window": {
+      "main": [
+        [
+          {
+            "node": "Fetch page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch page": {
+      "main": [
+        [
+          {
+            "node": "Page step",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Page step": {
+      "main": [
+        [
+          {
+            "node": "More pages?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "More pages?": {
+      "main": [
+        [
+          {
+            "node": "Build orders",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait page": {
+      "main": [
+        [
+          {
+            "node": "Fetch page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build orders": {
+      "main": [
+        [
+          {
+            "node": "Live?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Live?": {
+      "main": [
+        [
+          {
+            "node": "Summary dry",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Emit orders",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summary dry": {
+      "main": [
+        [
+          {
+            "node": "Notion log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Emit orders": {
+      "main": [
+        [
+          {
+            "node": "Noop?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Noop?": {
+      "main": [
+        [
+          {
+            "node": "Summary live",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create order",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create order": {
+      "main": [
+        [
+          {
+            "node": "Summary live",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summary live": {
+      "main": [
+        [
+          {
+            "node": "Notion log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "nodeGroups": [],
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "pinData": null,
+  "meta": null,
+  "tags": [],
+  "shared": [
+    {
+      "role": "workflow:owner",
+      "workflowId": "YxKaiU1IAAmMkDLh",
+      "projectId": "RK2DpgVpkPwdB2Sb",
+      "project": {
+        "id": "RK2DpgVpkPwdB2Sb",
+        "name": "Spencer Hill <spencer@got-moles.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "1a39722e-05fa-4653-9ddb-26abb0723f76",
+        "createdAt": "2026-03-06T15:28:09.526Z",
+        "updatedAt": "2026-03-06T15:28:15.078Z"
+      },
+      "createdAt": "2026-07-10T18:00:02.227Z",
+      "updatedAt": "2026-07-10T18:00:02.227Z"
+    }
+  ],
+  "activeVersion": null
+}

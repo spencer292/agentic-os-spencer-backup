@@ -1,0 +1,399 @@
+{
+  "id": "gAn73X31rEMQ2cpL",
+  "name": "OPTIMO ROUTE TO jOBBER PUSH",
+  "description": null,
+  "active": false,
+  "activeVersionId": null,
+  "createdAt": "2026-06-28T04:04:41.456Z",
+  "updatedAt": "2026-07-06T04:37:07.362Z",
+  "isArchived": false,
+  "versionId": "ef8d2aaa-cc6f-40b7-a8a1-9d6d18c745ba",
+  "versionCounter": 121,
+  "sourceWorkflowId": null,
+  "triggerCount": 0,
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -192,
+        0
+      ],
+      "id": "bb5137ac-3507-4b60-8442-a05e3f7b5a7f",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "14ba19ea-a8ac-4465-95df-9051a083cb02",
+              "name": "runDate",
+              "value": "={{ \"2026-07-06\" }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        32,
+        0
+      ],
+      "id": "67d5a27f-7506-402d-98a7-ec120421ff4f",
+      "name": "Compute Date"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.getjobber.com/api/graphql",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-JOBBER-GRAPHQL-VERSION",
+              "value": "2025-04-16"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query: `query($cursor: String) { visits(first: 100, after: $cursor, filter: { startAt: { after: \"${$('Compute Date').item.json.runDate}T07:00:00Z\", before: \"${DateTime.fromISO($('Compute Date').item.json.runDate).plus({days:1}).toFormat('yyyy-MM-dd')}T07:00:00Z\" } }) { nodes { id startAt job { jobNumber } } pageInfo { hasNextPage endCursor } } }`, variables: { cursor: null } }) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        480,
+        0
+      ],
+      "id": "f0e0ef16-d6cc-47fe-92da-7b4bc1f86695",
+      "name": "Jobber Visits loader",
+      "credentials": {
+        "oAuth2Api": {
+          "id": "MNPCi55yYggze27I",
+          "name": "Jobber OAuth2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// --- pull the two upstream payloads ---\nconst routes = $('OptimoRoute get_routes').first().json.routes || [];\nconst visits = [\n  ...($('Jobber Visits loader').first().json.data.visits.nodes || []),\n  ...($('Jobber Visits loader p2').first().json.data.visits.nodes || [])\n];\n\n// --- jobNumber -> visitId dictionary (String-cast BOTH sides) ---\nconst visitByJob = {};\nfor (const v of visits) {\n  const jn = v.job && v.job.jobNumber;\n  if (jn !== undefined && jn !== null) {\n    visitByJob[String(jn)] = v.id;\n  }\n}\n\n// --- tech name -> Jobber encoded user id (match on last name) ---\nfunction mapTech(name) {\n  if (!name) return null;\n  if (name.includes('Ventura'))   return 'Z2lkOi8vSm9iYmVyL1VzZXIvMTI5NDM3Mg==';\n  if (name.includes('Anderson'))  return 'Z2lkOi8vSm9iYmVyL1VzZXIvNDA2MDE5OQ==';\n  if (name.includes('LaVergne'))  return 'Z2lkOi8vSm9iYmVyL1VzZXIvMzc3NDU2OA==';\n  if (name.includes('Hill'))      return 'Z2lkOi8vSm9iYmVyL1VzZXIvMzgwNjE2';\n  if (name.includes('Alexander')) return 'Z2lkOi8vSm9iYmVyL1VzZXIvMzE0NDEwNQ==';\n  return null;\n}\n\nconst out = [];\nfor (const route of routes) {\n  const driverName = route.driverName || '';\n  const jobberUserId = mapTech(driverName);\n  for (const stop of (route.stops || [])) {\n    const visitId = visitByJob[String(stop.orderNo)] || null;\n    // scheduledAtDt looks like \"2026-06-26 07:15:24\" (local Pacific)\n    const dt = stop.scheduledAtDt;\n    let startDate = null, startTime = null, endDate = null, endTime = null;\n    if (dt) {\n      const parsed = DateTime.fromFormat(dt, 'yyyy-MM-dd HH:mm:ss');\n      const end = parsed.plus({ hours: 3 }); // 3-hour customer window\n      startDate = parsed.toFormat('yyyy-MM-dd');\n      startTime = parsed.toFormat('HH:mm:ss');\n      endDate   = end.toFormat('yyyy-MM-dd');\n      endTime   = end.toFormat('HH:mm:ss');\n    }\n    // build the two GraphQL mutation strings here (no escaping headaches downstream)\n    const scheduleMutation = visitId ? JSON.stringify(\n      `mutation { visitEditSchedule(id: \"${visitId}\", input: { ` +\n      `startAt: { date: \"${startDate}\", time: \"${startTime}\", timezone: \"America/Los_Angeles\" }, ` +\n      `endAt: { date: \"${endDate}\", time: \"${endTime}\", timezone: \"America/Los_Angeles\" } }) ` +\n      `{ visit { id startAt endAt } userErrors { message } } }`\n    ) : null;\n    const assignMutation = (visitId && jobberUserId) ? JSON.stringify(\n      `mutation { visitEditAssignedUsers(visitId: \"${visitId}\", input: { ` +\n      `assignedUserIds: [\"${jobberUserId}\"] }) ` +\n      `{ visit { id assignedUsers { nodes { name { full } } } } userErrors { message } } }`\n    ) : null;\n    out.push({\n      json: {\n        orderNo: stop.orderNo,\n        driverName,\n        jobberUserId,\n        visitId,\n        startDate, startTime, endDate, endTime,\n        scheduleMutation,\n        assignMutation\n      }\n    });\n  }\n}\nreturn out;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        928,
+        0
+      ],
+      "id": "a55d0cd7-5cd0-4528-9f30-f4f3d545950c",
+      "name": "Build Mutations"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.optimoroute.com/v1/get_routes?key=d3a3c39732b9858a7d0191156865af24axiM0Ol6oj0&date={{ $('Compute Date').item.json.runDate }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        256,
+        0
+      ],
+      "id": "a0571232-7f0d-4249-bfca-a88753a19857",
+      "name": "OptimoRoute get_routes"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "2cd66041-6d49-40ab-9b72-93e46d9c9709",
+              "leftValue": "={{ $json.visitId }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        1152,
+        0
+      ],
+      "id": "43900fc5-2d21-4962-b775-a20de6c2c6fe",
+      "name": "Has VisitId"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.getjobber.com/api/graphql",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-JOBBER-GRAPHQL-VERSION",
+              "value": "2025-04-16"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "=json",
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "jsonBody": "={ \"query\": {{ $json.scheduleMutation }} }",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1376,
+        0
+      ],
+      "id": "533e2db9-9d8f-485c-932b-bb879ef16a6d",
+      "name": "visitEditSchedule",
+      "credentials": {
+        "oAuth2Api": {
+          "id": "MNPCi55yYggze27I",
+          "name": "Jobber OAuth2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.getjobber.com/api/graphql",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-JOBBER-GRAPHQL-VERSION",
+              "value": "2025-04-16"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "=json",
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "jsonBody": "={ \"query\": {{ $json.assignMutation }} }",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1600,
+        0
+      ],
+      "id": "fe8ad63b-1641-4d73-aeed-a66328f64f0a",
+      "name": "visitEditAssignedUsers",
+      "credentials": {
+        "oAuth2Api": {
+          "id": "MNPCi55yYggze27I",
+          "name": "Jobber OAuth2"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.getjobber.com/api/graphql",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-JOBBER-GRAPHQL-VERSION",
+              "value": "2025-04-16"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  query: `query($cursor: String) { visits(first: 100, after: $cursor, filter: { startAt: { after: \"${$('Compute Date').item.json.runDate}T07:00:00Z\", before: \"${DateTime.fromISO($('Compute Date').item.json.runDate).plus({days:1}).toFormat('yyyy-MM-dd')}T07:00:00Z\" } }) { nodes { id startAt job { jobNumber } } pageInfo { hasNextPage endCursor } } }`,\n  variables: { cursor: $('Jobber Visits loader').item.json.data.visits.pageInfo.endCursor }\n}) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        704,
+        0
+      ],
+      "id": "47fd097a-83eb-4188-86b8-66e0ff22e259",
+      "name": "Jobber Visits loader p2",
+      "credentials": {
+        "oAuth2Api": {
+          "id": "MNPCi55yYggze27I",
+          "name": "Jobber OAuth2"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Compute Date",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compute Date": {
+      "main": [
+        [
+          {
+            "node": "OptimoRoute get_routes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Jobber Visits loader": {
+      "main": [
+        [
+          {
+            "node": "Jobber Visits loader p2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OptimoRoute get_routes": {
+      "main": [
+        [
+          {
+            "node": "Jobber Visits loader",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Mutations": {
+      "main": [
+        [
+          {
+            "node": "Has VisitId",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Has VisitId": {
+      "main": [
+        [
+          {
+            "node": "visitEditSchedule",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "visitEditSchedule": {
+      "main": [
+        [
+          {
+            "node": "visitEditAssignedUsers",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Jobber Visits loader p2": {
+      "main": [
+        [
+          {
+            "node": "Build Mutations",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "nodeGroups": [],
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "staticData": null,
+  "pinData": {},
+  "meta": null,
+  "tags": [],
+  "shared": [
+    {
+      "role": "workflow:owner",
+      "workflowId": "gAn73X31rEMQ2cpL",
+      "projectId": "RK2DpgVpkPwdB2Sb",
+      "project": {
+        "id": "RK2DpgVpkPwdB2Sb",
+        "name": "Spencer Hill <spencer@got-moles.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "1a39722e-05fa-4653-9ddb-26abb0723f76",
+        "createdAt": "2026-03-06T15:28:09.526Z",
+        "updatedAt": "2026-03-06T15:28:15.078Z"
+      },
+      "createdAt": "2026-06-28T04:04:41.458Z",
+      "updatedAt": "2026-06-28T04:04:41.458Z"
+    }
+  ],
+  "activeVersion": null
+}
