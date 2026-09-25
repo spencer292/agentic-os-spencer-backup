@@ -1,0 +1,6631 @@
+{
+  "generatedAt": "2026-09-01T20:10:23.878Z",
+  "byFix": {
+    "RENAME-unknown-thread": 6,
+    "NO-TEXT-TRAFFIC": 287,
+    "RENAME-holds-thread": 8,
+    "STRIP-PHONE-duplicate": 21
+  },
+  "archivedStillHoldingMessages": 0,
+  "totalMessagesOnJunkRecords": 146,
+  "rows": [
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDUxNjY1MzQ=",
+      "name": "Charles",
+      "url": "https://secure.getjobber.com/clients/145166534",
+      "class": "first-name-only",
+      "verdict": "REVIEW-has-address",
+      "isArchived": false,
+      "messages": 2,
+      "phones": [],
+      "realMatch": [],
+      "fix": "RENAME-unknown-thread"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDcwMzQ4MDk=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/147034809",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-has-address",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzOTg2ODMxNg==",
+          "number": "253-576-8807",
+          "smsAllowed": true,
+          "normalized": "2535768807",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc4NDgxMzI=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/147848132",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-has-address",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MDcwMzYwNA==",
+          "number": "503-510-7560",
+          "smsAllowed": true,
+          "normalized": "5035107560",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDg0Mjc5MjA=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/148427920",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-has-address",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MTI2MjQxOQ==",
+          "number": "252-220-0368",
+          "smsAllowed": true,
+          "normalized": "2522200368",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC81OTMyNDUyMg==",
+      "name": "Fumiyo",
+      "url": "https://secure.getjobber.com/clients/59324522",
+      "class": "first-name-only",
+      "verdict": "REVIEW-has-history",
+      "isArchived": false,
+      "messages": 1,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzU1NTUyNjUz",
+          "number": "(206) 940-8249",
+          "smsAllowed": true,
+          "normalized": "2069408249",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "RENAME-unknown-thread"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC85MjkyODM0NQ==",
+      "name": "Adam",
+      "url": "https://secure.getjobber.com/clients/92928345",
+      "class": "first-name-only",
+      "verdict": "REVIEW-has-history",
+      "isArchived": false,
+      "messages": 26,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzg3ODAwODAw",
+          "number": "5038405870",
+          "smsAllowed": true,
+          "normalized": "5038405870",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "RENAME-unknown-thread"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC85NTA3MTU2Mg==",
+      "name": "Stas",
+      "url": "https://secure.getjobber.com/clients/95071562",
+      "class": "first-name-only",
+      "verdict": "REVIEW-has-history",
+      "isArchived": false,
+      "messages": 27,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzg5ODYxNDc2",
+          "number": "2064033200",
+          "smsAllowed": true,
+          "normalized": "2064033200",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "RENAME-unknown-thread"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA0NDg1Mzk=",
+      "name": "Sauce",
+      "url": "https://secure.getjobber.com/clients/140448539",
+      "class": "first-name-only",
+      "verdict": "REVIEW-has-history",
+      "isArchived": false,
+      "messages": 32,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzM4MzUxOA==",
+          "number": "253‑736‑3313",
+          "smsAllowed": true,
+          "normalized": "2537363313",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA0MDIwODg=",
+              "name": "Tangi Siaosi"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Tangi Siaosi"
+      ],
+      "fix": "RENAME-holds-thread"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDUxNjYwMDA=",
+      "name": "Charles",
+      "url": "https://secure.getjobber.com/clients/145166000",
+      "class": "first-name-only",
+      "verdict": "REVIEW-has-history",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYwODEyNDg=",
+      "name": "Jonae",
+      "url": "https://secure.getjobber.com/clients/146081248",
+      "class": "first-name-only",
+      "verdict": "REVIEW-has-history",
+      "isArchived": false,
+      "messages": 18,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzODk2MjAzNg==",
+          "number": "2534315859",
+          "smsAllowed": true,
+          "normalized": "2534315859",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "RENAME-unknown-thread"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDcyMjIzNzI=",
+      "name": "Tang,Zhaohui N/A",
+      "url": "https://secure.getjobber.com/clients/147222372",
+      "class": "half-name",
+      "verdict": "REVIEW-has-history",
+      "isArchived": false,
+      "messages": 29,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MDA1MzQ3Mw==",
+          "number": "425-894-5138",
+          "smsAllowed": true,
+          "normalized": "4258945138",
+          "onRealClient": []
+        },
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MDA1NDg2NQ==",
+          "number": "4258945138",
+          "smsAllowed": true,
+          "normalized": "4258945138",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "RENAME-unknown-thread"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDAwMTE4MzQ=",
+      "name": "Spokane Wa",
+      "url": "https://secure.getjobber.com/clients/140011834",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMjk0ODY0OQ==",
+          "number": "509-232-0580",
+          "smsAllowed": false,
+          "normalized": "5092320580",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDAxODA2MTE=",
+      "name": "Lehigh Acres Fl",
+      "url": "https://secure.getjobber.com/clients/140180611",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzExMDM0Mg==",
+          "number": "239-504-1913",
+          "smsAllowed": false,
+          "normalized": "2395041913",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDAzNzg2NTU=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140378655",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzMwNzU3NQ==",
+          "number": "253-201-5444",
+          "smsAllowed": false,
+          "normalized": "2532015444",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDAzNzk4NjQ=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140379864",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzMwODgyMw==",
+          "number": "253-201-3347",
+          "smsAllowed": false,
+          "normalized": "2532013347",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDAzODg5NDM=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/140388943",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzMyMjEwMw==",
+          "number": "253-200-5133",
+          "smsAllowed": false,
+          "normalized": "2532005133",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDAzOTA5NDA=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/140390940",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzMyNDIyNA==",
+          "number": "253-200-3005",
+          "smsAllowed": false,
+          "normalized": "2532003005",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA0MDUwMzI=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/140405032",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzMzODQwOQ==",
+          "number": "253-200-2623",
+          "smsAllowed": false,
+          "normalized": "2532002623",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA0MDU4Nzg=",
+      "name": "Berne Ny",
+      "url": "https://secure.getjobber.com/clients/140405878",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzMzOTI3Ng==",
+          "number": "518-830-0051",
+          "smsAllowed": false,
+          "normalized": "5188300051",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA0MDYwNDg=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140406048",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzMzOTQ1MA==",
+          "number": "253-203-1869",
+          "smsAllowed": false,
+          "normalized": "2532031869",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA0MDk3OTE=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/140409791",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzM0MzMyNQ==",
+          "number": "253-205-2537",
+          "smsAllowed": false,
+          "normalized": "2532052537",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA0MTQ3MjU=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140414725",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzM0ODMxMg==",
+          "number": "253-203-0877",
+          "smsAllowed": false,
+          "normalized": "2532030877",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA0MTg3MTI=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/140418712",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzM1MjM5NQ==",
+          "number": "253-204-3785",
+          "smsAllowed": false,
+          "normalized": "2532043785",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA0MjA2ODQ=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140420684",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzM1NDI1MQ==",
+          "number": "253-201-4002",
+          "smsAllowed": false,
+          "normalized": "2532014002",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA0OTc1NTI=",
+      "name": "Graham Wa",
+      "url": "https://secure.getjobber.com/clients/140497552",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzQyOTg5Mg==",
+          "number": "253-210-0405",
+          "smsAllowed": false,
+          "normalized": "2532100405",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA1MDUyNDg=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140505248",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzQzNzk1MQ==",
+          "number": "253-203-1806",
+          "smsAllowed": false,
+          "normalized": "2532031806",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA1MzAxODk=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140530189",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzQ2NDg4Mw==",
+          "number": "253-201-6222",
+          "smsAllowed": false,
+          "normalized": "2532016222",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA1NjAzMjI=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140560322",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzQ5NTg0NA==",
+          "number": "253-201-6238",
+          "smsAllowed": false,
+          "normalized": "2532016238",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA1NjY1MDc=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/140566507",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzUwMTcyMw==",
+          "number": "253-204-3065",
+          "smsAllowed": false,
+          "normalized": "2532043065",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA2NDIwMjY=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140642026",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzU3NTUwNw==",
+          "number": "253-201-5895",
+          "smsAllowed": false,
+          "normalized": "2532015895",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA2NDgyODM=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140648283",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzU4MzI2Mg==",
+          "number": "253-203-0013",
+          "smsAllowed": false,
+          "normalized": "2532030013",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA2OTUzNTM=",
+      "name": "Gresham Or",
+      "url": "https://secure.getjobber.com/clients/140695353",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzYyODM3Mg==",
+          "number": "503-907-9743",
+          "smsAllowed": false,
+          "normalized": "5039079743",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM5MzAzODg=",
+      "name": "Longview Wa",
+      "url": "https://secure.getjobber.com/clients/143930388",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjgyMjkyMw==",
+          "number": "564-244-2320",
+          "smsAllowed": false,
+          "normalized": "5642442320",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ0Njg2ODA=",
+      "name": "Graham Wa",
+      "url": "https://secure.getjobber.com/clients/144468680",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNzM1Mzk3MQ==",
+          "number": "253-210-0367",
+          "smsAllowed": false,
+          "normalized": "2532100367",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ0OTQwNzI=",
+      "name": "Tacoma Waver Wa",
+      "url": "https://secure.getjobber.com/clients/144494072",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNzM3OTQ3Mw==",
+          "number": "253-883-2777",
+          "smsAllowed": false,
+          "normalized": "2538832777",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ0OTcxMDA=",
+      "name": "Tacoma Waver Wa",
+      "url": "https://secure.getjobber.com/clients/144497100",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNzM4MjU5OA==",
+          "number": "253-944-8310",
+          "smsAllowed": false,
+          "normalized": "2539448310",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ1MDY1MTM=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/144506513",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNzM5MjcyMg==",
+          "number": "253-876-1452",
+          "smsAllowed": false,
+          "normalized": "2538761452",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ2MTQzMzI=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/144614332",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNzQ5NjE1Ng==",
+          "number": "253-352-2152",
+          "smsAllowed": false,
+          "normalized": "2533522152",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU4MjU3NDU=",
+      "name": "Seattle Wa",
+      "url": "https://secure.getjobber.com/clients/145825745",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzODcxMjQ2NQ==",
+          "number": "206-415-3531",
+          "smsAllowed": false,
+          "normalized": "2064153531",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYxMjg3MDc=",
+      "name": "Graham Wa",
+      "url": "https://secure.getjobber.com/clients/146128707",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzOTAxMTgzMQ==",
+          "number": "253-210-1882",
+          "smsAllowed": true,
+          "normalized": "2532101882",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYyMTk5ODU=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/146219985",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzOTEwNjQxNw==",
+          "number": "253-201-2372",
+          "smsAllowed": false,
+          "normalized": "2532012372",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYyNTYxNzY=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/146256176",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzOTEzODMxMg==",
+          "number": "253-217-4332",
+          "smsAllowed": false,
+          "normalized": "2532174332",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc5OTgxMzY=",
+      "name": "Everett Wa",
+      "url": "https://secure.getjobber.com/clients/147998136",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MDg0OTU1NA==",
+          "number": "425-210-1757",
+          "smsAllowed": true,
+          "normalized": "4252101757",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAwMTU2NzM=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/150015673",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MjgyODI5OA==",
+          "number": "253-285-1554",
+          "smsAllowed": false,
+          "normalized": "2532851554",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAwNTQ1Njc=",
+      "name": "Seattle Wa",
+      "url": "https://secure.getjobber.com/clients/150054567",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0Mjg2NTE1Nw==",
+          "number": "206-419-9586",
+          "smsAllowed": true,
+          "normalized": "2064199586",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAyMTQ0MDE=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/150214401",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzAxMTEyMw==",
+          "number": "253-678-1916",
+          "smsAllowed": true,
+          "normalized": "2536781916",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAyMzE3NTA=",
+      "name": "Othello Wa",
+      "url": "https://secure.getjobber.com/clients/150231750",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzAyODYzNA==",
+          "number": "509-510-1950",
+          "smsAllowed": true,
+          "normalized": "5095101950",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAyNjY5NTU=",
+      "name": "Seattle Wa",
+      "url": "https://secure.getjobber.com/clients/150266955",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzA2MzAzNA==",
+          "number": "206-294-6796",
+          "smsAllowed": true,
+          "normalized": "2062946796",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAyODUyNzI=",
+      "name": "Seattle Wa",
+      "url": "https://secure.getjobber.com/clients/150285272",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 2,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzA3OTA0MA==",
+          "number": "206-661-3589",
+          "smsAllowed": true,
+          "normalized": "2066613589",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAyODcwOTg=",
+              "name": "George Elissaios"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "George Elissaios"
+      ],
+      "fix": "RENAME-holds-thread"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAzMDY2Njg=",
+      "name": "Seattle Wa",
+      "url": "https://secure.getjobber.com/clients/150306668",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzA5NTk1MA==",
+          "number": "206-849-3999",
+          "smsAllowed": true,
+          "normalized": "2068493999",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAzMTE2MDc=",
+              "name": "Shawna Mobley"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Shawna Mobley"
+      ],
+      "fix": "STRIP-PHONE-duplicate"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAzNTkxNTY=",
+      "name": "San Francsco Ca",
+      "url": "https://secure.getjobber.com/clients/150359156",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzE0NzEyMA==",
+          "number": "415-964-2965",
+          "smsAllowed": false,
+          "normalized": "4159642965",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA1NjI2NzE=",
+      "name": "Wenatchee Wa",
+      "url": "https://secure.getjobber.com/clients/150562671",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzMzNTU5NQ==",
+          "number": "509-726-6350",
+          "smsAllowed": false,
+          "normalized": "5097266350",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA3MzgwMDg=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/150738008",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzUxNDMwNw==",
+          "number": "253-369-9155",
+          "smsAllowed": false,
+          "normalized": "2533699155",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA3NDc5MjM=",
+      "name": "Maple Valley Wa",
+      "url": "https://secure.getjobber.com/clients/150747923",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzUyNDgzOQ==",
+          "number": "425-433-7110",
+          "smsAllowed": false,
+          "normalized": "4254337110",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA4NjQxOTI=",
+      "name": "Renton Wa",
+      "url": "https://secure.getjobber.com/clients/150864192",
+      "class": "city-stub",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzY1MjA5NQ==",
+          "number": "425-306-2968",
+          "smsAllowed": true,
+          "normalized": "4253062968",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA4NjUyNzM=",
+              "name": "Jeffrey Kenyon"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Jeffrey Kenyon"
+      ],
+      "fix": "STRIP-PHONE-duplicate"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMzg1ODY4NjE=",
+      "name": "Unavailable N/A",
+      "url": "https://secure.getjobber.com/clients/138586861",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMTcyMDM3NA==",
+          "number": "07932153281",
+          "smsAllowed": false,
+          "normalized": "7932153281",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA1NzkzMzc=",
+      "name": "Younger N/A",
+      "url": "https://secure.getjobber.com/clients/140579337",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzUxMzkzOQ==",
+          "number": "612-200-0296",
+          "smsAllowed": false,
+          "normalized": "6122000296",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU0NjI4ODc=",
+      "name": "Duckbill N/A",
+      "url": "https://secure.getjobber.com/clients/145462887",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzODMzNTk3MQ==",
+          "number": "617-644-4351",
+          "smsAllowed": false,
+          "normalized": "6176444351",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU2MTI0NDM=",
+      "name": "Stotland,Marc N/A",
+      "url": "https://secure.getjobber.com/clients/145612443",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzODUwMjM4OQ==",
+          "number": "970-309-7523",
+          "smsAllowed": true,
+          "normalized": "9703097523",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYwOTc4Njc=",
+      "name": "Geoengineers N/A",
+      "url": "https://secure.getjobber.com/clients/146097867",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzODk4MDQxNg==",
+          "number": "253-203-0040",
+          "smsAllowed": false,
+          "normalized": "2532030040",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYxNTI2NjM=",
+      "name": "Wilkerson,Tyqua N/A",
+      "url": "https://secure.getjobber.com/clients/146152663",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzOTAzNTU3NA==",
+          "number": "757-577-8882",
+          "smsAllowed": true,
+          "normalized": "7575778882",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYyODE0NDA=",
+      "name": "Jackson,Leonard N/A",
+      "url": "https://secure.getjobber.com/clients/146281440",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzOTE2MTU0Mg==",
+          "number": "206-607-7783",
+          "smsAllowed": true,
+          "normalized": "2066077783",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYzNjM5Njk=",
+      "name": "Dey,Sanjay N/A",
+      "url": "https://secure.getjobber.com/clients/146363969",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 1,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzOTIzMzc5Ng==",
+          "number": "214-385-8913",
+          "smsAllowed": true,
+          "normalized": "2143858913",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYzOTkzNjg=",
+              "name": "Sanjay Dey"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Sanjay Dey"
+      ],
+      "fix": "RENAME-holds-thread"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYzNzcwNjc=",
+      "name": "Politeo,Elizabe N/A",
+      "url": "https://secure.getjobber.com/clients/146377067",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 3,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzOTI0NDM4OQ==",
+          "number": "253-279-6772",
+          "smsAllowed": true,
+          "normalized": "2532796772",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY0NzcwMTA=",
+              "name": "Lisa Politeo"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Lisa Politeo"
+      ],
+      "fix": "RENAME-holds-thread"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY0NTcwNjU=",
+      "name": "Gandhi,Sunil N/A",
+      "url": "https://secure.getjobber.com/clients/146457065",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzOTMyODExNA==",
+          "number": "917-821-6571",
+          "smsAllowed": true,
+          "normalized": "9178216571",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY1Mzg2MDQ=",
+      "name": "Yi N/A",
+      "url": "https://secure.getjobber.com/clients/146538604",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzOTQwNjM3MA==",
+          "number": "253-326-2838",
+          "smsAllowed": true,
+          "normalized": "2533262838",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDcxNjk4MjY=",
+      "name": "Leontyuk,Dmitri N/A",
+      "url": "https://secure.getjobber.com/clients/147169826",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MDAwMDAyNg==",
+          "number": "503-462-5948",
+          "smsAllowed": true,
+          "normalized": "5034625948",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc1NzIzNTI=",
+      "name": "Dombroski,Terry N/A",
+      "url": "https://secure.getjobber.com/clients/147572352",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MDQyMTk1MA==",
+          "number": "925-808-9896",
+          "smsAllowed": true,
+          "normalized": "9258089896",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc1NzQ4Nzk=",
+              "name": "Terry Dombroski"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Terry Dombroski"
+      ],
+      "fix": "STRIP-PHONE-duplicate"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDgzMzk1NDk=",
+      "name": "Qrg N/A",
+      "url": "https://secure.getjobber.com/clients/148339549",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MTE3NzA3NA==",
+          "number": "386-378-3343",
+          "smsAllowed": false,
+          "normalized": "3863783343",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDg2OTM1Mjc=",
+      "name": "Rockwood,Barbar N/A",
+      "url": "https://secure.getjobber.com/clients/148693527",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MTUxODY5Mg==",
+          "number": "425-221-9939",
+          "smsAllowed": true,
+          "normalized": "4252219939",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDk2NDYwMjI=",
+      "name": "Jose,Nina N/A",
+      "url": "https://secure.getjobber.com/clients/149646022",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MjQ2MDM1Nw==",
+          "number": "206-422-2469",
+          "smsAllowed": true,
+          "normalized": "2064222469",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAxMDMyNDc=",
+      "name": "Hartmann,Eric N/A",
+      "url": "https://secure.getjobber.com/clients/150103247",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MjkxMzk1MQ==",
+          "number": "206-302-1124",
+          "smsAllowed": false,
+          "normalized": "2063021124",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAyMzUyNDk=",
+      "name": "Nguyen,Jade N/A",
+      "url": "https://secure.getjobber.com/clients/150235249",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzAzMTg5MA==",
+          "number": "206-886-7767",
+          "smsAllowed": true,
+          "normalized": "2068867767",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAyODM3MDg=",
+      "name": "Ceres,Jessica N/A",
+      "url": "https://secure.getjobber.com/clients/150283708",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 1,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzA3NzkyOA==",
+          "number": "206-455-1097",
+          "smsAllowed": true,
+          "normalized": "2064551097",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAyODY4NTk=",
+              "name": "Nate Ceres"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Nate Ceres"
+      ],
+      "fix": "RENAME-holds-thread"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAyODc2ODE=",
+      "name": "Private N/A",
+      "url": "https://secure.getjobber.com/clients/150287681",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzA4MTMyOQ==",
+          "number": "253-273-0258",
+          "smsAllowed": true,
+          "normalized": "2532730258",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAyOTMzNDQ=",
+              "name": "Holy Chea"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Holy Chea"
+      ],
+      "fix": "STRIP-PHONE-duplicate"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAzMDk0ODk=",
+      "name": "Corecentrix N/A",
+      "url": "https://secure.getjobber.com/clients/150309489",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzA5ODc4Nw==",
+          "number": "803-619-5093",
+          "smsAllowed": false,
+          "normalized": "8036195093",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA1NzQ2MzE=",
+      "name": "Karns,Linda N/A",
+      "url": "https://secure.getjobber.com/clients/150574631",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzM0NzYzNA==",
+          "number": "360-874-0669",
+          "smsAllowed": true,
+          "normalized": "3608740669",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA2NDQ3NjQ=",
+      "name": "Businesscstmr N/A",
+      "url": "https://secure.getjobber.com/clients/150644764",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzQxNzA0NA==",
+          "number": "360-732-5209",
+          "smsAllowed": false,
+          "normalized": "3607325209",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA2NTY5OTI=",
+      "name": "Businesscstmr N/A",
+      "url": "https://secure.getjobber.com/clients/150656992",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzQyODYzOA==",
+          "number": "509-753-9342",
+          "smsAllowed": false,
+          "normalized": "5097539342",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA3MzI3ODI=",
+      "name": "Borade,Dhiraj N/A",
+      "url": "https://secure.getjobber.com/clients/150732782",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzUwOTIwMA==",
+          "number": "352-870-7548",
+          "smsAllowed": true,
+          "normalized": "3528707548",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA3MzUzMTI=",
+      "name": "Harper,Michael N/A",
+      "url": "https://secure.getjobber.com/clients/150735312",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzUxMTgzNw==",
+          "number": "360-584-3493",
+          "smsAllowed": true,
+          "normalized": "3605843493",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA3Mzc1MDQ=",
+      "name": "Barbante,Phylli N/A",
+      "url": "https://secure.getjobber.com/clients/150737504",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzUxMzgzNQ==",
+          "number": "206-227-6707",
+          "smsAllowed": true,
+          "normalized": "2062276707",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA3Mzk2MjM=",
+              "name": "Phyllis Barbante"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Phyllis Barbante"
+      ],
+      "fix": "STRIP-PHONE-duplicate"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA3NTcyOTU=",
+      "name": "Devanathan,Moha N/A",
+      "url": "https://secure.getjobber.com/clients/150757295",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzUzNzUzOA==",
+          "number": "425-633-4552",
+          "smsAllowed": true,
+          "normalized": "4256334552",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA3NzQ5ODA=",
+      "name": "Merchantsupport N/A",
+      "url": "https://secure.getjobber.com/clients/150774980",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzU1NTY2MQ==",
+          "number": "202-350-3498",
+          "smsAllowed": false,
+          "normalized": "2023503498",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA3ODMxMDU=",
+      "name": "Unavailable N/A",
+      "url": "https://secure.getjobber.com/clients/150783105",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzU2MzY4Ng==",
+          "number": "206-847-4698",
+          "smsAllowed": true,
+          "normalized": "2068474698",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA3ODUwNTA=",
+      "name": "Private N/A",
+      "url": "https://secure.getjobber.com/clients/150785050",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzU2NTUyMg==",
+          "number": "240-788-2595",
+          "smsAllowed": false,
+          "normalized": "2407882595",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA4NDA1MDM=",
+      "name": "Businesscstmr N/A",
+      "url": "https://secure.getjobber.com/clients/150840503",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzYyNTUyMQ==",
+          "number": "564-224-9027",
+          "smsAllowed": false,
+          "normalized": "5642249027",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTExMDM0OTE=",
+      "name": "King,Shelby N/A",
+      "url": "https://secure.getjobber.com/clients/151103491",
+      "class": "half-name",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzkwNTk1OA==",
+          "number": "253-468-7507",
+          "smsAllowed": true,
+          "normalized": "2534687507",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTExMDc1NjU=",
+              "name": "Stephan Heller"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Stephan Heller"
+      ],
+      "fix": "STRIP-PHONE-duplicate"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA0MDU1ODc=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/140405587",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 2,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzMzODk3OA==",
+          "number": "650-436-9820",
+          "smsAllowed": false,
+          "normalized": "6504369820",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA0MDYwNzM=",
+              "name": "Louis Huang"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Louis Huang"
+      ],
+      "fix": "RENAME-holds-thread"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA5ODY5MjM=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/140986923",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 1,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzkxODkxOQ==",
+          "number": "206-495-1809",
+          "smsAllowed": false,
+          "normalized": "2064951809",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA5ODcyNTE=",
+              "name": "Theresa Feeley"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Theresa Feeley"
+      ],
+      "fix": "RENAME-holds-thread"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU4MjcyMjI=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/145827222",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzODcxMzk4Mg==",
+          "number": "206-243-5001",
+          "smsAllowed": true,
+          "normalized": "2062435001",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU4ODU3MzU=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/145885735",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzODc3MTY0MA==",
+          "number": "334-322-5430",
+          "smsAllowed": true,
+          "normalized": "3343225430",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYwODg2OTk=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/146088699",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzODk2OTY2Nw==",
+          "number": "206-383-8709",
+          "smsAllowed": true,
+          "normalized": "2063838709",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYxMzA5MDU=",
+              "name": "Patrick Kennedy"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Patrick Kennedy"
+      ],
+      "fix": "STRIP-PHONE-duplicate"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYwOTM0NjU=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/146093465",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzODk3NDU0Ng==",
+          "number": "253-737-7678",
+          "smsAllowed": true,
+          "normalized": "2537377678",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYxMzcxNjQ=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/146137164",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzOTAyMDQ4MQ==",
+          "number": "425-449-1332",
+          "smsAllowed": true,
+          "normalized": "4254491332",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYzODg0ODg=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/146388488",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzOTI1NjE0NQ==",
+          "number": "206-376-2435",
+          "smsAllowed": true,
+          "normalized": "2063762435",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY0Nzg1Mjk=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/146478529",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 1,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzOTM0ODI2Mg==",
+          "number": "425-503-4440",
+          "smsAllowed": true,
+          "normalized": "4255034440",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY0ODA4Njg=",
+              "name": "Carlie Stusser"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Carlie Stusser"
+      ],
+      "fix": "RENAME-holds-thread"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDgyOTE0NjA=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/148291460",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MTEyNzU0NA==",
+          "number": "360-852-4322",
+          "smsAllowed": true,
+          "normalized": "3608524322",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDgyOTk2OTA=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/148299690",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MTEzNjI4NQ==",
+          "number": "425-766-6225",
+          "smsAllowed": true,
+          "normalized": "4257666225",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDgyOTk4MTM=",
+              "name": "Dino P. Simone"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Dino P. Simone"
+      ],
+      "fix": "STRIP-PHONE-duplicate"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAwMTczODE=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/150017381",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MjgzMDAxOA==",
+          "number": "425-494-8859",
+          "smsAllowed": true,
+          "normalized": "4254948859",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAwMTg4Mzg=",
+              "name": "Kin Tsang"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Kin Tsang"
+      ],
+      "fix": "STRIP-PHONE-duplicate"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAwMTg0ODM=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/150018483",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MjgzMDk4MQ==",
+          "number": "770-595-2902",
+          "smsAllowed": true,
+          "normalized": "7705952902",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAwMTk4MTU=",
+              "name": "Stacey Boydell"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Stacey Boydell"
+      ],
+      "fix": "STRIP-PHONE-duplicate"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAxMjc3MjY=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/150127726",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MjkzNjczNw==",
+          "number": "425-979-1137",
+          "smsAllowed": true,
+          "normalized": "4259791137",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAxMzA4MjI=",
+              "name": "Ashok Shivani"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Ashok Shivani"
+      ],
+      "fix": "STRIP-PHONE-duplicate"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAxMjc3NDU=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/150127745",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MjkzNjc2MQ==",
+          "number": "425-979-1137",
+          "smsAllowed": true,
+          "normalized": "4259791137",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAxMzA4MjI=",
+              "name": "Ashok Shivani"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Ashok Shivani"
+      ],
+      "fix": "STRIP-PHONE-duplicate"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAxMzQwNzM=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/150134073",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0Mjk0Mjk5OA==",
+          "number": "925-984-1699",
+          "smsAllowed": true,
+          "normalized": "9259841699",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAxMzQ4NDA=",
+              "name": "Jonah Pickens"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Jonah Pickens"
+      ],
+      "fix": "STRIP-PHONE-duplicate"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAxODEzNTE=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/150181351",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0Mjk4MDM4Mg==",
+          "number": "425-894-8811",
+          "smsAllowed": true,
+          "normalized": "4258948811",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAyMzQ2NjM=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/150234663",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzAzMTMxOQ==",
+          "number": "425-545-0931",
+          "smsAllowed": true,
+          "normalized": "4255450931",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAyOTQxNDc=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/150294147",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzA4Nzk1Mg==",
+          "number": "253-651-7086",
+          "smsAllowed": true,
+          "normalized": "2536517086",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAzMzQ3MDc=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/150334707",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzEyMjI4OQ==",
+          "number": "203-394-8329",
+          "smsAllowed": true,
+          "normalized": "2033948329",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAzMzUyNzc=",
+              "name": "Nicole Calloway"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Nicole Calloway"
+      ],
+      "fix": "STRIP-PHONE-duplicate"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA0MjE4NzY=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/150421876",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzIwNTE2OQ==",
+          "number": "253-314-8659",
+          "smsAllowed": true,
+          "normalized": "2533148659",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA0MjMzMDA=",
+              "name": "Jason Kjellesvik"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Jason Kjellesvik"
+      ],
+      "fix": "STRIP-PHONE-duplicate"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA1NjIwMTc=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/150562017",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzMzNDkzNA==",
+          "number": "360-220-1620",
+          "smsAllowed": true,
+          "normalized": "3602201620",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA1NjM3NjM=",
+              "name": "Alice Collins"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Alice Collins"
+      ],
+      "fix": "STRIP-PHONE-duplicate"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA3Mzg2MjM=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/150738623",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzUxNDk1MQ==",
+          "number": "253-222-7146",
+          "smsAllowed": true,
+          "normalized": "2532227146",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA3OTk3OTE=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/150799791",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzU3OTExMg==",
+          "number": "559-371-4749",
+          "smsAllowed": true,
+          "normalized": "5593714749",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA4Mzc1NzY=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/150837576",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzYyMTA0MA==",
+          "number": "253-606-1586",
+          "smsAllowed": true,
+          "normalized": "2536061586",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA4NDkyNjc=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/150849267",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzYzNzIzMA==",
+          "number": "801-783-8641",
+          "smsAllowed": true,
+          "normalized": "8017838641",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA4NTQ1NTI=",
+              "name": "Jean Vanwagoner"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Jean Vanwagoner"
+      ],
+      "fix": "STRIP-PHONE-duplicate"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA4NTIyNjM=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/150852263",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzY0MDI0NA==",
+          "number": "425-836-3883",
+          "smsAllowed": true,
+          "normalized": "4258363883",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTEwMzc3MjI=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/151037722",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzgyODI1Mg==",
+          "number": "312-330-0285",
+          "smsAllowed": true,
+          "normalized": "3123300285",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTEwNzY4OTM=",
+              "name": "Todd Allen"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Todd Allen"
+      ],
+      "fix": "STRIP-PHONE-duplicate"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTEwMzg2OTQ=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/151038694",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzgyOTkwNw==",
+          "number": "360-572-8280",
+          "smsAllowed": true,
+          "normalized": "3605728280",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTExMzk2NzA=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/151139670",
+      "class": "wireless-caller",
+      "verdict": "REVIEW-request-only",
+      "isArchived": false,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzkzOTc0OQ==",
+          "number": "360-388-1011",
+          "smsAllowed": true,
+          "normalized": "3603881011",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA2NjcyNzA=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/140667270",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzYwMTU3MQ==",
+          "number": "253-200-9975",
+          "smsAllowed": false,
+          "normalized": "2532009975",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA2NzAyMzQ=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140670234",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzYwNDY1OA==",
+          "number": "253-201-9029",
+          "smsAllowed": false,
+          "normalized": "2532019029",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA2NzM2Mjc=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140673627",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzYwODIwNg==",
+          "number": "253-203-2455",
+          "smsAllowed": false,
+          "normalized": "2532032455",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA2NzY1ODA=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/140676580",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzYxMTQxNw==",
+          "number": "253-200-9554",
+          "smsAllowed": false,
+          "normalized": "2532009554",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA2ODkzNDU=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140689345",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzYyMjc4MA==",
+          "number": "253-203-9801",
+          "smsAllowed": false,
+          "normalized": "2532039801",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA3NTY1Mjc=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140756527",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzY4NzQ5Mw==",
+          "number": "253-201-3860",
+          "smsAllowed": false,
+          "normalized": "2532013860",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA3ODY3NTI=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140786752",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzcxOTM4OQ==",
+          "number": "253-201-2268",
+          "smsAllowed": false,
+          "normalized": "2532012268",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA3ODc3NDk=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140787749",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzcyMDQyNA==",
+          "number": "253-203-9230",
+          "smsAllowed": false,
+          "normalized": "2532039230",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA3ODkwNjQ=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140789064",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzcyMTgwMA==",
+          "number": "253-201-9615",
+          "smsAllowed": false,
+          "normalized": "2532019615",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA4MDI1NjA=",
+      "name": "Gig Harbor Wa",
+      "url": "https://secure.getjobber.com/clients/140802560",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzczMzE2Mg==",
+          "number": "253-303-7534",
+          "smsAllowed": false,
+          "normalized": "2533037534",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA4MTI1Mzg=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/140812538",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzc0Mzc1Ng==",
+          "number": "253-204-3366",
+          "smsAllowed": false,
+          "normalized": "2532043366",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA4MTUwMzg=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140815038",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzc0NjM4OA==",
+          "number": "253-203-9889",
+          "smsAllowed": false,
+          "normalized": "2532039889",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA4MTU4MTY=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140815816",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzc0NzE4OQ==",
+          "number": "253-201-8245",
+          "smsAllowed": false,
+          "normalized": "2532018245",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA4MTY5MTE=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140816911",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzc0ODI5MQ==",
+          "number": "253-203-7318",
+          "smsAllowed": false,
+          "normalized": "2532037318",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA4MTg3NzI=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140818772",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzc1MDA3OQ==",
+          "number": "253-203-1155",
+          "smsAllowed": false,
+          "normalized": "2532031155",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA4MjUxNTg=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140825158",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzc1NjU3MQ==",
+          "number": "253-201-5404",
+          "smsAllowed": false,
+          "normalized": "2532015404",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA4MzM5MzI=",
+      "name": "Graham Wa",
+      "url": "https://secure.getjobber.com/clients/140833932",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzc2NTU1Nw==",
+          "number": "253-210-2349",
+          "smsAllowed": false,
+          "normalized": "2532102349",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA4MzUzNzA=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140835370",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzc2Njk4Nw==",
+          "number": "253-201-8739",
+          "smsAllowed": false,
+          "normalized": "2532018739",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA4Mzc1MzA=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140837530",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzc2OTIzMg==",
+          "number": "253-203-6366",
+          "smsAllowed": false,
+          "normalized": "2532036366",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA5MzAzNTk=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/140930359",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzg2MDc0MA==",
+          "number": "253-200-9873",
+          "smsAllowed": false,
+          "normalized": "2532009873",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA5MzE5MzM=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/140931933",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzg2MjQ2Mw==",
+          "number": "253-205-8572",
+          "smsAllowed": false,
+          "normalized": "2532058572",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA5NTA3Mjg=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/140950728",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzg4MDk4Mw==",
+          "number": "253-204-2089",
+          "smsAllowed": false,
+          "normalized": "2532042089",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA5NTY3MTg=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/140956718",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzg4NzI4Nw==",
+          "number": "253-204-2785",
+          "smsAllowed": false,
+          "normalized": "2532042785",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA5NTY4Mjg=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/140956828",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzg4NzQwMg==",
+          "number": "253-204-3085",
+          "smsAllowed": false,
+          "normalized": "2532043085",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA5NjEzMDk=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/140961309",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzg5Mjk0MQ==",
+          "number": "253-200-0748",
+          "smsAllowed": false,
+          "normalized": "2532000748",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA5NjcyODM=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140967283",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzg5OTA5Mg==",
+          "number": "253-201-8257",
+          "smsAllowed": false,
+          "normalized": "2532018257",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA5Njc4OTU=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/140967895",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzg5OTc0NQ==",
+          "number": "253-204-7274",
+          "smsAllowed": false,
+          "normalized": "2532047274",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA5NzE1MTE=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140971511",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzkwMzMyNA==",
+          "number": "253-203-0893",
+          "smsAllowed": false,
+          "normalized": "2532030893",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA5NzQ4NTA=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/140974850",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzkwNjU4Mg==",
+          "number": "253-203-7117",
+          "smsAllowed": false,
+          "normalized": "2532037117",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDEyMTMwNTE=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/141213051",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDEzNjkxOQ==",
+          "number": "253-203-1659",
+          "smsAllowed": false,
+          "normalized": "2532031659",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDEyMTMwNzg=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/141213078",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDEzNjk0Nw==",
+          "number": "253-203-1659",
+          "smsAllowed": false,
+          "normalized": "2532031659",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDEyMTU4NDM=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/141215843",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDEzOTgwNA==",
+          "number": "253-203-1877",
+          "smsAllowed": false,
+          "normalized": "2532031877",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDEyMTc1NTU=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/141217555",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDE0MTU1NA==",
+          "number": "253-200-3407",
+          "smsAllowed": false,
+          "normalized": "2532003407",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDEyMjM0NzE=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/141223471",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDE0NzYxMw==",
+          "number": "253-203-6910",
+          "smsAllowed": false,
+          "normalized": "2532036910",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDEyMzc0OTQ=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/141237494",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDE2MTU0Mg==",
+          "number": "253-203-7607",
+          "smsAllowed": false,
+          "normalized": "2532037607",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDEyNTEyMTE=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/141251211",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDE3Mzg2MA==",
+          "number": "253-205-8729",
+          "smsAllowed": false,
+          "normalized": "2532058729",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDEyNjQxNzI=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/141264172",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDE4NjQ3NA==",
+          "number": "253-200-4715",
+          "smsAllowed": false,
+          "normalized": "2532004715",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDEyNjY0NTE=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/141266451",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDE4ODYwMg==",
+          "number": "253-201-9121",
+          "smsAllowed": false,
+          "normalized": "2532019121",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDEyNzg1MTg=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/141278518",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDIwMTc0Ng==",
+          "number": "253-204-7071",
+          "smsAllowed": false,
+          "normalized": "2532047071",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDEyODg1NzI=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/141288572",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDIxMTg0NA==",
+          "number": "253-203-7481",
+          "smsAllowed": false,
+          "normalized": "2532037481",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE0MDc0ODA=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/141407480",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDMyNzk5Mw==",
+          "number": "253-200-5438",
+          "smsAllowed": false,
+          "normalized": "2532005438",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE0MTIyNjU=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/141412265",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDMzMjcyMw==",
+          "number": "253-201-0938",
+          "smsAllowed": false,
+          "normalized": "2532010938",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE0MTYyNTg=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/141416258",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDMzNjg2Mw==",
+          "number": "253-201-8690",
+          "smsAllowed": false,
+          "normalized": "2532018690",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE0MTczODY=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/141417386",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDMzODAyNg==",
+          "number": "253-203-2850",
+          "smsAllowed": false,
+          "normalized": "2532032850",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE0MTc0NDM=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/141417443",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDMzODA4NA==",
+          "number": "253-203-2850",
+          "smsAllowed": false,
+          "normalized": "2532032850",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE0MTc1MDU=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/141417505",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDMzODE1MA==",
+          "number": "253-203-2850",
+          "smsAllowed": false,
+          "normalized": "2532032850",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE0MjY3MTA=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/141426710",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDM0NzczMg==",
+          "number": "253-201-6744",
+          "smsAllowed": false,
+          "normalized": "2532016744",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE0NDMyMTY=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/141443216",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDM2NDA5Mw==",
+          "number": "253-200-0359",
+          "smsAllowed": false,
+          "normalized": "2532000359",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE0NDY2NjY=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/141446666",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDM2NzQ5Ng==",
+          "number": "253-201-8559",
+          "smsAllowed": false,
+          "normalized": "2532018559",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE0NTg4ODQ=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/141458884",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDM3OTc4OQ==",
+          "number": "253-200-9744",
+          "smsAllowed": false,
+          "normalized": "2532009744",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE0NjQwMDI=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/141464002",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDM4NDY5Mg==",
+          "number": "253-203-6936",
+          "smsAllowed": false,
+          "normalized": "2532036936",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE0ODA1ODE=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/141480581",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDQwMTA3NA==",
+          "number": "253-204-3879",
+          "smsAllowed": false,
+          "normalized": "2532043879",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE2MDk2NzE=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/141609671",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDUyNTQwNw==",
+          "number": "253-203-6773",
+          "smsAllowed": false,
+          "normalized": "2532036773",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE2MTQyMDQ=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/141614204",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDUyOTg2Nw==",
+          "number": "253-204-7641",
+          "smsAllowed": false,
+          "normalized": "2532047641",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE2MTY4NzI=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/141616872",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDUzMjE1MA==",
+          "number": "253-308-2563",
+          "smsAllowed": false,
+          "normalized": "2533082563",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE2NTIwOTM=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/141652093",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDU2Nzk5Mg==",
+          "number": "253-200-6595",
+          "smsAllowed": false,
+          "normalized": "2532006595",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE2NTc3MDc=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/141657707",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDU3NDAwMg==",
+          "number": "253-204-2188",
+          "smsAllowed": false,
+          "normalized": "2532042188",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE2ODA5Mjk=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/141680929",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDU5NzIzNw==",
+          "number": "253-201-8376",
+          "smsAllowed": false,
+          "normalized": "2532018376",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE3Nzc2MTI=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/141777612",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDY5NjA0Mw==",
+          "number": "253-308-3906",
+          "smsAllowed": false,
+          "normalized": "2533083906",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE3ODI0OTA=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/141782490",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDcwMTMwNw==",
+          "number": "253-203-3947",
+          "smsAllowed": false,
+          "normalized": "2532033947",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE3ODQwNTI=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/141784052",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDcwMjkwMg==",
+          "number": "253-201-4117",
+          "smsAllowed": false,
+          "normalized": "2532014117",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE3OTc3MjA=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/141797720",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDcxNjkzMg==",
+          "number": "253-200-2575",
+          "smsAllowed": false,
+          "normalized": "2532002575",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE3OTkyMDI=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/141799202",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDcxODQ2MQ==",
+          "number": "253-201-5447",
+          "smsAllowed": false,
+          "normalized": "2532015447",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE4MTc2NTg=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/141817658",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDczNzM2Mw==",
+          "number": "253-201-3056",
+          "smsAllowed": false,
+          "normalized": "2532013056",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE4MjIyNTI=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/141822252",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDc0MjQzNg==",
+          "number": "253-200-2341",
+          "smsAllowed": false,
+          "normalized": "2532002341",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE4MzQ2NjI=",
+      "name": "Kent Wa",
+      "url": "https://secure.getjobber.com/clients/141834662",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDc1NTM2NQ==",
+          "number": "253-239-9123",
+          "smsAllowed": false,
+          "normalized": "2532399123",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDIwNzY5MDY=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/142076906",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDk5OTI0Mw==",
+          "number": "253-201-0704",
+          "smsAllowed": false,
+          "normalized": "2532010704",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDIwNzcxNDI=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/142077142",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDk5OTQ5NA==",
+          "number": "253-203-6959",
+          "smsAllowed": false,
+          "normalized": "2532036959",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDIwODM4MDU=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/142083805",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTAwNjM4Ng==",
+          "number": "253-205-0495",
+          "smsAllowed": false,
+          "normalized": "2532050495",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDIwODYzNDI=",
+      "name": "Boise Id",
+      "url": "https://secure.getjobber.com/clients/142086342",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTAwODk3Mg==",
+          "number": "208-947-5942",
+          "smsAllowed": false,
+          "normalized": "2089475942",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDIxMDA3NDY=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/142100746",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTAyNjQxNA==",
+          "number": "253-201-7285",
+          "smsAllowed": false,
+          "normalized": "2532017285",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDIxOTg3NzI=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/142198772",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTEzMDI1NA==",
+          "number": "253-203-6317",
+          "smsAllowed": false,
+          "normalized": "2532036317",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDIyNDUzMzY=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/142245336",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTE1NjEwOQ==",
+          "number": "253-200-9941",
+          "smsAllowed": false,
+          "normalized": "2532009941",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDIyNTE4Nzk=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/142251879",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTE2Mjc3Nw==",
+          "number": "253-312-0437",
+          "smsAllowed": false,
+          "normalized": "2533120437",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDIzNTU3MzQ=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/142355734",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTI3MzM2MQ==",
+          "number": "253-201-5682",
+          "smsAllowed": false,
+          "normalized": "2532015682",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDIzNzA0NDU=",
+      "name": "Kent Wa",
+      "url": "https://secure.getjobber.com/clients/142370445",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTI4ODcxMQ==",
+          "number": "253-239-9536",
+          "smsAllowed": false,
+          "normalized": "2532399536",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI0MTA1MjA=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/142410520",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTMzOTM3Ng==",
+          "number": "253-200-9357",
+          "smsAllowed": false,
+          "normalized": "2532009357",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI2MjU4MTg=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/142625818",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTUzOTA5Nw==",
+          "number": "253-201-2950",
+          "smsAllowed": false,
+          "normalized": "2532012950",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI2MzQxNjA=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/142634160",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTU0NzY5NQ==",
+          "number": "253-200-0483",
+          "smsAllowed": false,
+          "normalized": "2532000483",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI4MTc3OTc=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/142817797",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTczMDAyMA==",
+          "number": "253-205-0421",
+          "smsAllowed": false,
+          "normalized": "2532050421",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI4MjQxOTg=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/142824198",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTczNjY3MQ==",
+          "number": "253-200-6805",
+          "smsAllowed": false,
+          "normalized": "2532006805",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI4MzAwNDk=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/142830049",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTc0MzE4NQ==",
+          "number": "253-201-4567",
+          "smsAllowed": false,
+          "normalized": "2532014567",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI4Mzc0MDY=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/142837406",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTc1MDgyMA==",
+          "number": "253-201-5705",
+          "smsAllowed": false,
+          "normalized": "2532015705",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI4NjE0NTg=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/142861458",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTc3NjEyMw==",
+          "number": "253-205-0916",
+          "smsAllowed": false,
+          "normalized": "2532050916",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI4NjU0MDM=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/142865403",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTc4MDE0MQ==",
+          "number": "253-203-9040",
+          "smsAllowed": false,
+          "normalized": "2532039040",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI4NjY3NjQ=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/142866764",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTc4MTU3OQ==",
+          "number": "253-204-7773",
+          "smsAllowed": false,
+          "normalized": "2532047773",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI4Njk2NzA=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/142869670",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTc4NDU5Ng==",
+          "number": "253-200-5048",
+          "smsAllowed": false,
+          "normalized": "2532005048",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI4NzYyMjI=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/142876222",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTc5MTM0Mg==",
+          "number": "253-200-3992",
+          "smsAllowed": false,
+          "normalized": "2532003992",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI5NTQzNDQ=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/142954344",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTg4MDM0MQ==",
+          "number": "253-200-4746",
+          "smsAllowed": false,
+          "normalized": "2532004746",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI5NTcxMDg=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/142957108",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTg4MzQzNQ==",
+          "number": "253-201-4582",
+          "smsAllowed": false,
+          "normalized": "2532014582",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI5NjIyNjc=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/142962267",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTg4ODM3OA==",
+          "number": "253-201-4592",
+          "smsAllowed": false,
+          "normalized": "2532014592",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI5NzAzOTU=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/142970395",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTg5NzM3OA==",
+          "number": "253-204-7284",
+          "smsAllowed": false,
+          "normalized": "2532047284",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI5NzU0NTg=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/142975458",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTkwMjMzMw==",
+          "number": "253-204-2627",
+          "smsAllowed": false,
+          "normalized": "2532042627",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI5NzgzMjA=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/142978320",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTkwNTI3OQ==",
+          "number": "253-201-9472",
+          "smsAllowed": false,
+          "normalized": "2532019472",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI5NzkyODg=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/142979288",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTkwNjI4Ng==",
+          "number": "253-200-4948",
+          "smsAllowed": false,
+          "normalized": "2532004948",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI5ODQ0Njg=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/142984468",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTkxMTY4OQ==",
+          "number": "253-203-7365",
+          "smsAllowed": false,
+          "normalized": "2532037365",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI5ODU4Njk=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/142985869",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTkxMzE2NQ==",
+          "number": "253-204-2405",
+          "smsAllowed": false,
+          "normalized": "2532042405",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI5OTA3ODQ=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/142990784",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTkxODE2OA==",
+          "number": "253-203-0019",
+          "smsAllowed": false,
+          "normalized": "2532030019",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMxMDM5MTM=",
+      "name": "Graham Wa",
+      "url": "https://secure.getjobber.com/clients/143103913",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjAyNTg5NQ==",
+          "number": "253-210-3151",
+          "smsAllowed": false,
+          "normalized": "2532103151",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMxMDUxNTQ=",
+      "name": "Longview Wa",
+      "url": "https://secure.getjobber.com/clients/143105154",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjAyNzExOQ==",
+          "number": "564-244-1011",
+          "smsAllowed": false,
+          "normalized": "5642441011",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMxMDg0OTc=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143108497",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjAzMDUyMQ==",
+          "number": "253-203-1790",
+          "smsAllowed": false,
+          "normalized": "2532031790",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMxMDg5MTI=",
+      "name": "Sumner Wa",
+      "url": "https://secure.getjobber.com/clients/143108912",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjAzMDk0Mw==",
+          "number": "253-264-6180",
+          "smsAllowed": false,
+          "normalized": "2532646180",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMxMDkyNTU=",
+      "name": "Issaquah Wa",
+      "url": "https://secure.getjobber.com/clients/143109255",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjAzMTMwMQ==",
+          "number": "425-331-8993",
+          "smsAllowed": false,
+          "normalized": "4253318993",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMxMTYzNDA=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143116340",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjAzODI1Ng==",
+          "number": "253-203-9471",
+          "smsAllowed": false,
+          "normalized": "2532039471",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMxODE3MDg=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143181708",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjA5NzU2MQ==",
+          "number": "253-201-2704",
+          "smsAllowed": false,
+          "normalized": "2532012704",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMxODYxOTU=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143186195",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjEwMTM3MQ==",
+          "number": "253-203-9624",
+          "smsAllowed": false,
+          "normalized": "2532039624",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMxOTgyMjI=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/143198222",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjExMzAzNA==",
+          "number": "253-204-7595",
+          "smsAllowed": false,
+          "normalized": "2532047595",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMyMDAyMjU=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143200225",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjExNTAxMw==",
+          "number": "253-203-1560",
+          "smsAllowed": false,
+          "normalized": "2532031560",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMyMDA1MDU=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/143200505",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjExNTI5OQ==",
+          "number": "253-200-5368",
+          "smsAllowed": false,
+          "normalized": "2532005368",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMyMTMyNzk=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143213279",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjEyOTA2Ng==",
+          "number": "253-203-6079",
+          "smsAllowed": false,
+          "normalized": "2532036079",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMyMTY2NjQ=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/143216664",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjEzMjY5Ng==",
+          "number": "253-200-6587",
+          "smsAllowed": false,
+          "normalized": "2532006587",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMyMjIxNDQ=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143222144",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjEzODMwMg==",
+          "number": "253-201-6839",
+          "smsAllowed": false,
+          "normalized": "2532016839",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMyMjYyNDI=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143226242",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjE0MjQwNw==",
+          "number": "253-203-3479",
+          "smsAllowed": false,
+          "normalized": "2532033479",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMzMTA5NDU=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/143310945",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjIyNzEwNQ==",
+          "number": "253-204-7184",
+          "smsAllowed": false,
+          "normalized": "2532047184",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMzMTY0Nzk=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143316479",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjIzMjc0Nw==",
+          "number": "253-201-9592",
+          "smsAllowed": false,
+          "normalized": "2532019592",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMzMzAyNjg=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/143330268",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjI0NTEyNw==",
+          "number": "253-205-8515",
+          "smsAllowed": false,
+          "normalized": "2532058515",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMzMzM4MjA=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143333820",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjI0ODg1OQ==",
+          "number": "253-201-6764",
+          "smsAllowed": false,
+          "normalized": "2532016764",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMzMzg5MDc=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143338907",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjI1MzUxNA==",
+          "number": "253-203-2770",
+          "smsAllowed": false,
+          "normalized": "2532032770",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM0ODM4MTE=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143483811",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjM4NjEyNQ==",
+          "number": "253-203-2723",
+          "smsAllowed": false,
+          "normalized": "2532032723",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM0OTQ1ODU=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/143494585",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjM5NDA4Mg==",
+          "number": "253-200-6779",
+          "smsAllowed": false,
+          "normalized": "2532006779",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM0OTc4MzY=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/143497836",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjM5NzM3MA==",
+          "number": "253-200-2568",
+          "smsAllowed": false,
+          "normalized": "2532002568",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM1MDIwNTM=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/143502053",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjQwMTc4Ng==",
+          "number": "253-200-9437",
+          "smsAllowed": false,
+          "normalized": "2532009437",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM1MTIwNjI=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143512062",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjQxMjE3MA==",
+          "number": "253-201-0872",
+          "smsAllowed": false,
+          "normalized": "2532010872",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM1MjM2MTI=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143523612",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjQyMjYyMw==",
+          "number": "253-201-3005",
+          "smsAllowed": false,
+          "normalized": "2532013005",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM1Mjc4ODc=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/143527887",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjQyNzA2OQ==",
+          "number": "253-200-0277",
+          "smsAllowed": false,
+          "normalized": "2532000277",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM1MzM1MjY=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/143533526",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjQzMjgxMA==",
+          "number": "253-200-2918",
+          "smsAllowed": false,
+          "normalized": "2532002918",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM2NDM4MzI=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/143643832",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjU0MjQxMA==",
+          "number": "253-204-7212",
+          "smsAllowed": false,
+          "normalized": "2532047212",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM2NDU2NTM=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/143645653",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjU0NDMwMQ==",
+          "number": "253-205-0907",
+          "smsAllowed": false,
+          "normalized": "2532050907",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM2NDY0Mzk=",
+      "name": "Longview Wa",
+      "url": "https://secure.getjobber.com/clients/143646439",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjU0NTEyNQ==",
+          "number": "360-916-5235",
+          "smsAllowed": false,
+          "normalized": "3609165235",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM2NDk1NTQ=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143649554",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjU0ODMxMA==",
+          "number": "253-201-8048",
+          "smsAllowed": true,
+          "normalized": "2532018048",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM2NjgyMzk=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/143668239",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjU2ODQyNw==",
+          "number": "253-200-4785",
+          "smsAllowed": false,
+          "normalized": "2532004785",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM2NzcyNzM=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143677273",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjU3NzU0NQ==",
+          "number": "253-201-6472",
+          "smsAllowed": false,
+          "normalized": "2532016472",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM2OTcyMTQ=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/143697214",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjU5OTY0NQ==",
+          "number": "253-289-7006",
+          "smsAllowed": false,
+          "normalized": "2532897006",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM3Njc5NTI=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143767952",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjY2NDEyMg==",
+          "number": "253-201-4542",
+          "smsAllowed": false,
+          "normalized": "2532014542",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM3Nzg3MDU=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143778705",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjY3NDg0Ng==",
+          "number": "253-203-9075",
+          "smsAllowed": false,
+          "normalized": "2532039075",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM3OTg5NzE=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143798971",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjY5Mjc2NQ==",
+          "number": "253-201-1418",
+          "smsAllowed": false,
+          "normalized": "2532011418",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM4MDMzNjU=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/143803365",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjY5NjgyMw==",
+          "number": "253-200-0542",
+          "smsAllowed": false,
+          "normalized": "2532000542",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM4MDkxNDE=",
+      "name": "Issaquah Wa",
+      "url": "https://secure.getjobber.com/clients/143809141",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjcwMjk1NA==",
+          "number": "425-331-8689",
+          "smsAllowed": false,
+          "normalized": "4253318689",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM4MDk1Njg=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/143809568",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjcwMzQ5Mg==",
+          "number": "253-204-2478",
+          "smsAllowed": false,
+          "normalized": "2532042478",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM4OTAzMzg=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143890338",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjc4MTE1MA==",
+          "number": "253-203-6018",
+          "smsAllowed": false,
+          "normalized": "2532036018",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM4OTc4NjY=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143897866",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjc4OTA1Mg==",
+          "number": "253-201-9403",
+          "smsAllowed": false,
+          "normalized": "2532019403",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM5MzU1Mjc=",
+      "name": "Edwall Tyler Wa",
+      "url": "https://secure.getjobber.com/clients/143935527",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjgyNzg1Nw==",
+          "number": "509-236-5848",
+          "smsAllowed": false,
+          "normalized": "5092365848",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM5ODgwMTk=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/143988019",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjg4MDQyMQ==",
+          "number": "253-205-0901",
+          "smsAllowed": false,
+          "normalized": "2532050901",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM5OTA3NzY=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/143990776",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjg4MzMyMA==",
+          "number": "253-203-1266",
+          "smsAllowed": false,
+          "normalized": "2532031266",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM5OTM5NzE=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/143993971",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjg4NjUxNQ==",
+          "number": "253-204-7363",
+          "smsAllowed": false,
+          "normalized": "2532047363",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM5OTU4NzA=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/143995870",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjg4ODQ0Mw==",
+          "number": "253-200-1835",
+          "smsAllowed": false,
+          "normalized": "2532001835",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQwMDAwMjM=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/144000023",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjg5MjExNA==",
+          "number": "253-204-2201",
+          "smsAllowed": false,
+          "normalized": "2532042201",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQwMDczMDE=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/144007301",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjg5OTM2NQ==",
+          "number": "253-200-6916",
+          "smsAllowed": false,
+          "normalized": "2532006916",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ0NTkwODI=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/144459082",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNzM0NTA4MA==",
+          "number": "253-204-3465",
+          "smsAllowed": false,
+          "normalized": "2532043465",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ0NjI3MDk=",
+      "name": "Gig Harbor Wa",
+      "url": "https://secure.getjobber.com/clients/144462709",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNzM0ODY3Nw==",
+          "number": "253-525-1387",
+          "smsAllowed": false,
+          "normalized": "2535251387",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ0ODE1NzQ=",
+      "name": "Sumner Wa",
+      "url": "https://secure.getjobber.com/clients/144481574",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNzM2NjkyOA==",
+          "number": "253-470-2003",
+          "smsAllowed": false,
+          "normalized": "2534702003",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ0ODcwOTA=",
+      "name": "Graham Wa",
+      "url": "https://secure.getjobber.com/clients/144487090",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNzM3MjYxNg==",
+          "number": "253-262-4293",
+          "smsAllowed": false,
+          "normalized": "2532624293",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ1NzgwNTI=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/144578052",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNzQ2MDQxOQ==",
+          "number": "253-455-7307",
+          "smsAllowed": false,
+          "normalized": "2534557307",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ1OTM2NzA=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/144593670",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNzQ3NTc5NA==",
+          "number": "253-217-4397",
+          "smsAllowed": false,
+          "normalized": "2532174397",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ2MDkwNTM=",
+      "name": "Seattle Wa",
+      "url": "https://secure.getjobber.com/clients/144609053",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNzQ5MDc1Ng==",
+          "number": "206-884-0000",
+          "smsAllowed": false,
+          "normalized": "2068840000",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ2OTExMDQ=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/144691104",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNzU3NDgxNw==",
+          "number": "253-352-2127",
+          "smsAllowed": false,
+          "normalized": "2533522127",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDUyMzQ2OTU=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/145234695",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzODExMjI1NA==",
+          "number": "253-830-6913",
+          "smsAllowed": false,
+          "normalized": "2538306913",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDUyNDEzNjg=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/145241368",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzODExODc3MA==",
+          "number": "253-881-4288",
+          "smsAllowed": false,
+          "normalized": "2538814288",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDUyNDYwMjc=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/145246027",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzODEyMzYzNw==",
+          "number": "253-284-2470",
+          "smsAllowed": false,
+          "normalized": "2532842470",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDUyNTE1NTg=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/145251558",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzODEyOTE3MA==",
+          "number": "253-448-8239",
+          "smsAllowed": false,
+          "normalized": "2534488239",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDUyOTkzMDU=",
+      "name": "Tacomawvly Wa",
+      "url": "https://secure.getjobber.com/clients/145299305",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzODE3Njc1Ng==",
+          "number": "253-523-2086",
+          "smsAllowed": false,
+          "normalized": "2535232086",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU0NDg5NDA=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/145448940",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzODMyMTk4Mg==",
+          "number": "253-455-7566",
+          "smsAllowed": false,
+          "normalized": "2534557566",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU0NDk5MzM=",
+      "name": "Tacomawvly Wa",
+      "url": "https://secure.getjobber.com/clients/145449933",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzODMyMzAzNw==",
+          "number": "253-523-3981",
+          "smsAllowed": false,
+          "normalized": "2535233981",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU0NTM1NDQ=",
+      "name": "Tacomawvly Wa",
+      "url": "https://secure.getjobber.com/clients/145453544",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzODMyNjcwNA==",
+          "number": "253-361-2642",
+          "smsAllowed": false,
+          "normalized": "2533612642",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY4OTE4MDk=",
+      "name": "Kent Wa",
+      "url": "https://secure.getjobber.com/clients/146891809",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzOTczNTA3OA==",
+          "number": "253-216-4232",
+          "smsAllowed": false,
+          "normalized": "2532164232",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY5MDU3MTU=",
+      "name": "Kent Wa",
+      "url": "https://secure.getjobber.com/clients/146905715",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzOTc0OTAxNQ==",
+          "number": "253-216-7441",
+          "smsAllowed": false,
+          "normalized": "2532167441",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY5MDkyOTg=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/146909298",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzOTc1MjQ5Mg==",
+          "number": "253-217-4592",
+          "smsAllowed": false,
+          "normalized": "2532174592",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc0MjUxMzE=",
+      "name": "Kent Wa",
+      "url": "https://secure.getjobber.com/clients/147425131",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MDI1MzczMA==",
+          "number": "253-216-3019",
+          "smsAllowed": false,
+          "normalized": "2532163019",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc0NDMxNzE=",
+      "name": "Graham Wa",
+      "url": "https://secure.getjobber.com/clients/147443171",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MDI3MTExOQ==",
+          "number": "253-210-9996",
+          "smsAllowed": false,
+          "normalized": "2532109996",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDg0MzIyNTE=",
+      "name": "Kent Wa",
+      "url": "https://secure.getjobber.com/clients/148432251",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MTI2NjkwNg==",
+          "number": "253-216-3842",
+          "smsAllowed": false,
+          "normalized": "2532163842",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDkzODQzODM=",
+      "name": "Auburn Wa",
+      "url": "https://secure.getjobber.com/clients/149384383",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MjIwNDk5OA==",
+          "number": "253-249-2570",
+          "smsAllowed": false,
+          "normalized": "2532492570",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDk2MDQ5NDA=",
+      "name": "Federal Way Wa",
+      "url": "https://secure.getjobber.com/clients/149604940",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MjQxOTk0MA==",
+          "number": "253-883-4989",
+          "smsAllowed": false,
+          "normalized": "2538834989",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDk2MDU5NDc=",
+      "name": "Tacomawvly Wa",
+      "url": "https://secure.getjobber.com/clients/149605947",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MjQyMDkzOA==",
+          "number": "253-676-9821",
+          "smsAllowed": false,
+          "normalized": "2536769821",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDk4ODMyNzM=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/149883273",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MjY5MjQ4Ng==",
+          "number": "253-201-8160",
+          "smsAllowed": false,
+          "normalized": "2532018160",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDk4ODMyNzQ=",
+      "name": "Tacoma Wa",
+      "url": "https://secure.getjobber.com/clients/149883274",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MjY5MjQ4OA==",
+          "number": "253-201-8160",
+          "smsAllowed": false,
+          "normalized": "2532018160",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA0MzUxNDM=",
+      "name": "Puyallup Wa",
+      "url": "https://secure.getjobber.com/clients/150435143",
+      "class": "city-stub",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzIxOTc4MQ==",
+          "number": "253-200-6124",
+          "smsAllowed": false,
+          "normalized": "2532006124",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC82MTg4NjE5NQ==",
+      "name": "Alison",
+      "url": "https://secure.getjobber.com/clients/61886195",
+      "class": "first-name-only",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC82NzAxMTM0Nw==",
+      "name": "Justin",
+      "url": "https://secure.getjobber.com/clients/67011347",
+      "class": "first-name-only",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA2NjI1NjE=",
+      "name": "Catalyst N/A",
+      "url": "https://secure.getjobber.com/clients/140662561",
+      "class": "half-name",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzU5NzE5Mg==",
+          "number": "253-203-7242",
+          "smsAllowed": false,
+          "normalized": "2532037242",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA4MTgyOTE=",
+      "name": "Zones N/A",
+      "url": "https://secure.getjobber.com/clients/140818291",
+      "class": "half-name",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzc0OTU3NA==",
+          "number": "253-205-3542",
+          "smsAllowed": false,
+          "normalized": "2532053542",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA5Njk2NDk=",
+      "name": "Private N/A",
+      "url": "https://secure.getjobber.com/clients/140969649",
+      "class": "half-name",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzMzkwMTUzMA==",
+          "number": "253-201-1501",
+          "smsAllowed": false,
+          "normalized": "2532011501",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDEyMTMxNTQ=",
+      "name": "Zones N/A",
+      "url": "https://secure.getjobber.com/clients/141213154",
+      "class": "half-name",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDEzNzAyOQ==",
+          "number": "253-205-2891",
+          "smsAllowed": false,
+          "normalized": "2532052891",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE2Mzc3NzU=",
+      "name": "Zones N/A",
+      "url": "https://secure.getjobber.com/clients/141637775",
+      "class": "half-name",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDU1MzA3OA==",
+          "number": "253-205-3966",
+          "smsAllowed": false,
+          "normalized": "2532053966",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI2MTI4OTk=",
+      "name": "Zones N/A",
+      "url": "https://secure.getjobber.com/clients/142612899",
+      "class": "half-name",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTUyNTgzNQ==",
+          "number": "253-205-2444",
+          "smsAllowed": false,
+          "normalized": "2532052444",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI4NzI2Mjg=",
+      "name": "Franciscan N/A",
+      "url": "https://secure.getjobber.com/clients/142872628",
+      "class": "half-name",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTc4NzY3MA==",
+          "number": "253-552-1200",
+          "smsAllowed": false,
+          "normalized": "2535521200",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDI5NTY0MzA=",
+      "name": "Meridian N/A",
+      "url": "https://secure.getjobber.com/clients/142956430",
+      "class": "half-name",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTg4MjczMA==",
+          "number": "253-200-2519",
+          "smsAllowed": false,
+          "normalized": "2532002519",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMyMTA1MzI=",
+      "name": "Zones N/A",
+      "url": "https://secure.getjobber.com/clients/143210532",
+      "class": "half-name",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjEyNjIyMQ==",
+          "number": "253-205-3576",
+          "smsAllowed": false,
+          "normalized": "2532053576",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMzMDE0OTk=",
+      "name": "Zones N/A",
+      "url": "https://secure.getjobber.com/clients/143301499",
+      "class": "half-name",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjIxNzY1MA==",
+          "number": "253-205-3261",
+          "smsAllowed": false,
+          "normalized": "2532053261",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM1NTU0NzE=",
+      "name": "Rosedale N/A",
+      "url": "https://secure.getjobber.com/clients/143555471",
+      "class": "half-name",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjQ1NTAyNA==",
+          "number": "253-530-3334",
+          "smsAllowed": false,
+          "normalized": "2535303334",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM2ODczNjQ=",
+              "name": "Norpoint"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Norpoint"
+      ],
+      "fix": "STRIP-PHONE-duplicate"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM4MTQwOTU=",
+      "name": "Private N/A",
+      "url": "https://secure.getjobber.com/clients/143814095",
+      "class": "half-name",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjcwNzk5Nw==",
+          "number": "315-262-8939",
+          "smsAllowed": false,
+          "normalized": "3152628939",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ2MTA0NTI=",
+      "name": "Seattle N/A",
+      "url": "https://secure.getjobber.com/clients/144610452",
+      "class": "half-name",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNzQ5MjI1Mw==",
+          "number": "425-454-4644",
+          "smsAllowed": false,
+          "normalized": "4254544644",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ4NDc2Mzk=",
+      "name": "Comprehensive N/A",
+      "url": "https://secure.getjobber.com/clients/144847639",
+      "class": "half-name",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNzczMDI2Ng==",
+          "number": "425-823-8818",
+          "smsAllowed": false,
+          "normalized": "4258238818",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDU2NDEwNTA=",
+      "name": "P,Joydeep N/A",
+      "url": "https://secure.getjobber.com/clients/145641050",
+      "class": "half-name",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzODUyOTU4OQ==",
+          "number": "469-826-5614",
+          "smsAllowed": true,
+          "normalized": "4698265614",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY5NDkxMjA=",
+      "name": "Qrg N/A",
+      "url": "https://secure.getjobber.com/clients/146949120",
+      "class": "half-name",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzOTc5MDM4NQ==",
+          "number": "929-565-9161",
+          "smsAllowed": false,
+          "normalized": "9295659161",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDkwNzczMjU=",
+      "name": "Oakharborfreigh N/A",
+      "url": "https://secure.getjobber.com/clients/149077325",
+      "class": "half-name",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MTkwNDYwMg==",
+          "number": "253-204-2413",
+          "smsAllowed": false,
+          "normalized": "2532042413",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA3NTcyOTQ=",
+      "name": "Devanathan,Moha N/A",
+      "url": "https://secure.getjobber.com/clients/150757294",
+      "class": "half-name",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzUzNzUzNw==",
+          "number": "425-633-4552",
+          "smsAllowed": true,
+          "normalized": "4256334552",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTEyMjY0MDg=",
+      "name": "P,Jess N/A",
+      "url": "https://secure.getjobber.com/clients/151226408",
+      "class": "half-name",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0NDAyMzc3Mg==",
+          "number": "253-254-2327",
+          "smsAllowed": true,
+          "normalized": "2532542327",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE2NzQzNzI=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/141674372",
+      "class": "wireless-caller",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNDU5MDQ1Mw==",
+          "number": "206-661-4253",
+          "smsAllowed": false,
+          "normalized": "2066614253",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDMwNzM0MjE=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/143073421",
+      "class": "wireless-caller",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNTk5NjUwNw==",
+          "number": "253-204-3898",
+          "smsAllowed": false,
+          "normalized": "2532043898",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM1MzQwMzU=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/143534035",
+      "class": "wireless-caller",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjQzMzM1NQ==",
+          "number": "253-200-1336",
+          "smsAllowed": true,
+          "normalized": "2532001336",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDM3ODQ0NzM=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/143784473",
+      "class": "wireless-caller",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNjY4MDc0Mw==",
+          "number": "425-213-6071",
+          "smsAllowed": true,
+          "normalized": "4252136071",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ4ODYxNzQ=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/144886174",
+      "class": "wireless-caller",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzEzNzc3MDc3NA==",
+          "number": "240-543-8699",
+          "smsAllowed": true,
+          "normalized": "2405438699",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDQ4ODcxNzU=",
+              "name": "Katie Marvin"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Katie Marvin"
+      ],
+      "fix": "STRIP-PHONE-duplicate"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAxMjc3MjU=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/150127725",
+      "class": "wireless-caller",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MjkzNjczNg==",
+          "number": "425-979-1137",
+          "smsAllowed": true,
+          "normalized": "4259791137",
+          "onRealClient": [
+            {
+              "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAxMzA4MjI=",
+              "name": "Ashok Shivani"
+            }
+          ]
+        }
+      ],
+      "realMatch": [
+        "Ashok Shivani"
+      ],
+      "fix": "STRIP-PHONE-duplicate"
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAyMzQ2NjI=",
+      "name": "Wireless Caller",
+      "url": "https://secure.getjobber.com/clients/150234662",
+      "class": "wireless-caller",
+      "verdict": "SAFE-archive",
+      "isArchived": true,
+      "messages": 0,
+      "phones": [
+        {
+          "id": "Z2lkOi8vSm9iYmVyL0NsaWVudFBob25lTnVtYmVyLzE0MzAzMTMxOA==",
+          "number": "425-545-0931",
+          "smsAllowed": true,
+          "normalized": "4255450931",
+          "onRealClient": []
+        }
+      ],
+      "realMatch": [],
+      "fix": "NO-TEXT-TRAFFIC"
+    }
+  ]
+}

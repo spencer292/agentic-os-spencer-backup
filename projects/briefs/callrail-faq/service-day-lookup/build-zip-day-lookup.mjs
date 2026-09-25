@@ -62,8 +62,34 @@ function jobber(query, tries = 6) {
 
 const iso = (d) => d.toISOString();
 const now = new Date();
-const from = iso(new Date(now.getTime() - WEEKS_BACK * 7 * 86400000));
+
+// ---------- the cut floor ----------
+// A rolling lookback is WRONG across a territory re-cut, and this board re-cuts. The five-way cut
+// took effect 2026-08-17 and moved 26.8% of visits to a different weekday; a 4-week window run on
+// 08-21 was ~3.5 weeks of the old four-tech board, and it disagreed with the post-cut board on
+// 51 of 117 zips — Tavis showed 9 zips instead of 20, Cory 19 instead of 7. History from before a
+// cut is not weak evidence about the current board, it is evidence about a board that no longer
+// exists, so it is excluded outright rather than out-weighted.
+//
+// The floor is READ FROM territories.json (latest handover effective date), not hardcoded, so the
+// next re-cut moves it automatically. Override with --since YYYY-MM-DD.
+function cutFloor() {
+  const cli = val('--since', null);
+  if (cli) return cli;
+  try {
+    const t = JSON.parse(fs.readFileSync(path.join(ROOT, 'projects/briefs/technician-route-automation/territories.json'), 'utf8'));
+    const dates = (t.handovers || []).map(h => h.effective).filter(Boolean).sort();
+    if (dates.length) return dates[dates.length - 1];
+  } catch { /* fall through */ }
+  return null;
+}
+const SINCE = cutFloor();
+const backFrom = new Date(now.getTime() - WEEKS_BACK * 7 * 86400000);
+const floorDate = SINCE ? new Date(`${SINCE}T00:00:00-07:00`) : null;
+// Never pull less than the cut floor, and never pull more than asked for.
+const from = iso(floorDate && floorDate > backFrom ? floorDate : backFrom);
 const to = iso(new Date(now.getTime() + WEEKS_FWD * 7 * 86400000));
+if (SINCE) process.stderr.write(`Cut floor: ${SINCE} (latest handover in territories.json) — nothing before it counts\n`);
 
 let cursor = null, visits = [], cached = null;
 if (RENDER_ONLY) {
@@ -79,6 +105,7 @@ if (RENDER_ONLY) {
         totalCount
         nodes {
           startAt
+          isComplete
           assignedUsers(first: 2) { nodes { name { full } } }
           job { property { address { city postalCode } } }
         }
@@ -98,7 +125,44 @@ if (RENDER_ONLY) {
 // and getting that wrong shifts a whole zip by one day.
 const ptDay = (isoStr) => DOW[new Date(new Date(isoStr).toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })).getDay()];
 
-const agg = {};
+// ---------- roster ----------
+// Somebody who is no longer running a route still has weeks of history inside the lookback window,
+// and that history is actively misleading: the 2026-08-12 build named Cammeron Anderson, who left on
+// 08-07, and his old Monday runs also drag the DAY answer for zips somebody else now works on a
+// different day. So their visits are dropped from the aggregation entirely, not just from the label.
+//
+// "Off the board" is not the same as "left the company" — Spencer Hill trips this too (last field
+// visit 2026-07-31), and that is the correct outcome: the office should not be told Spencer covers a
+// zip when he is not running routes. The cron surfaces who was dropped so a surprise gets noticed.
+//
+// The roster is derived, not configured — a list in a file is one more thing that rots. Anyone with
+// no visit in the last ROSTER_DAYS (and none scheduled ahead) is off the roster.
+const ROSTER_DAYS = Number(val('--roster-days', '10'));
+const rosterCutoff = new Date(now.getTime() - ROSTER_DAYS * 86400000);
+const lastSeen = {};
+if (!RENDER_ONLY) {
+  for (const v of visits) {
+    const t = v.assignedUsers?.nodes?.[0]?.name?.full;
+    if (!t) continue;
+    const d = new Date(v.startAt);
+    if (!lastSeen[t] || d > lastSeen[t]) lastSeen[t] = d;
+  }
+}
+const departed = Object.entries(lastSeen).filter(([, d]) => d < rosterCutoff).map(([t]) => t);
+if (departed.length) {
+  process.stderr.write(`Roster: dropping ${departed.length} tech(s) with no visits in the last ${ROSTER_DAYS} days — ${departed.map(t => `${t} (last ${lastSeen[t].toISOString().slice(0, 10)})`).join(', ')}\n`);
+}
+const isActive = (t) => !departed.includes(t);
+
+// Two buckets, and they are NOT equivalent evidence.
+//   done      — visits actually completed since the cut. Where the truck really went.
+//   booked    — visits still scheduled ahead. A PLAN, and on this board the plan drifts: next week
+//               currently holds 542 visits of which 420 have no time at all, and the forward window
+//               surfaced a tech ("Courtney") with 8 booked visits and zero completed work.
+// A zip is answered from `done` whenever it has any, and only falls back to `booked` when it has
+// none — flagged provisional, never presented as if a truck had been there.
+const agg = {};        // completed
+const aggBooked = {};  // scheduled ahead
 if (!RENDER_ONLY) {
   for (const v of visits) {
     const zip = v.job?.property?.address?.postalCode?.slice(0, 5);
@@ -106,13 +170,17 @@ if (!RENDER_ONLY) {
     const day = ptDay(v.startAt);
     if (day === 'sat' || day === 'sun') continue; // weekend visits are a defect, never an answer
     const tech = v.assignedUsers?.nodes?.[0]?.name?.full || '(unassigned)';
+    if (tech !== '(unassigned)' && !isActive(tech)) continue; // see roster note above
     const city = v.job?.property?.address?.city || '';
-    const a = (agg[zip] ||= { days: {}, techs: {}, cities: {}, n: 0 });
+    const bucket = v.isComplete ? agg : aggBooked;
+    const a = (bucket[zip] ||= { days: {}, techs: {}, cities: {}, n: 0 });
     a.days[day] = (a.days[day] || 0) + 1;
     a.techs[tech] = (a.techs[tech] || 0) + 1;
     if (city) a.cities[city] = (a.cities[city] || 0) + 1;
     a.n++;
   }
+  // Zips nobody has actually been to since the cut fall back to what is booked.
+  for (const [zip, a] of Object.entries(aggBooked)) if (!agg[zip]) { agg[zip] = a; a.provisional = true; }
 }
 
 const records = RENDER_ONLY ? cached.records : Object.entries(agg).map(([zip, a]) => {
@@ -127,7 +195,10 @@ const records = RENDER_ONLY ? cached.records : Object.entries(agg).map(([zip, a]
   return {
     zip, cities, n: a.n,
     days: days.length ? days : [top[0]],
-    confidence: a.n >= 8 ? 'high' : a.n >= 4 ? 'medium' : 'low',
+    // A provisional zip is answered from a booking, not from a truck that went — it can never read
+    // better than low, whatever the count.
+    confidence: a.provisional ? 'provisional' : a.n >= 8 ? 'high' : a.n >= 4 ? 'medium' : 'low',
+    provisional: !!a.provisional,
     tech: tech[0], techShare: Math.round(100 * tech[1] / a.n),
   };
 }).sort((x, y) => x.zip.localeCompare(y.zip));
@@ -144,8 +215,38 @@ if (!RENDER_ONLY) {
   } catch { /* advisory only; the visit data stands on its own */ }
 }
 
-const out = { generated: new Date().toISOString(), window: { from, to }, visitsScanned: visits.length, records, splitZips };
+const out = { generated: new Date().toISOString(), window: { from, to }, visitsScanned: visits.length, records, splitZips, departed };
 fs.writeFileSync(path.join(HERE, 'zip-day-lookup.json'), JSON.stringify(out, null, 1));
+
+// ---------- grid emit (spec v2 defect D1) ----------
+// build-address-day-lookup.mjs needs a zip->day grid to answer for addresses with nothing scheduled.
+// It was pinned to territory-grid-v5.json — a four-tech map from 2026-08-01 that still lists
+// Cammeron Anderson and has no truck for Robert Norton — so the office quoted days off a dead map
+// every morning. Emitting the SAME reality this page is built from means both office pages agree
+// and neither can drift from what the trucks actually did.
+if (!RENDER_ONLY) {
+  const gridZips = {};
+  for (const r of records) {
+    gridZips[r.zip] = {
+      days: r.days,
+      tech: r.tech,
+      cities: r.cities.join('/'),
+      visits: r.n,
+      confidence: r.confidence,
+      note: `Derived from ${r.n} real visits in ${from.slice(0, 10)}..${to.slice(0, 10)}${splitZips[r.zip] ? ` — WARNING: ${splitZips[r.zip]} runs through this zip, so a zip-level answer is wrong here; use the address lookup` : ''}`,
+    };
+  }
+  const gridOut = {
+    _comment: 'GENERATED — do not hand-edit. Zip route days derived from real Jobber visit history by build-zip-day-lookup.mjs, replacing the hand-kept territory-grid-v*.json line (spec v2 defect D1). Scored against real visits the hand-kept grid was 90% and territories.json v8 was 73%; this is the board as it actually ran. Rebuilt every morning by the service-day-sheet-refresh cron.',
+    generated: out.generated,
+    basedOn: `${visits.length} real Jobber visits, ${from.slice(0, 10)}..${to.slice(0, 10)}`,
+    inactiveTechsExcluded: departed,
+    zips: gridZips,
+    jobOverrides: {},   // reserved: job-level exceptions still beat the zip rule downstream
+  };
+  fs.writeFileSync(path.join(HERE, 'service-day-grid.json'), JSON.stringify(gridOut, null, 1));
+  process.stderr.write(`Grid emitted: service-day-grid.json — ${Object.keys(gridZips).length} zips\n`);
+}
 if (JSON_ONLY) { console.log(`${records.length} zips from ${visits.length} visits`); process.exit(0); }
 
 // ---------- render ----------
@@ -228,7 +329,7 @@ const html = `<title>Got Moles Service Days</title>
 </style>
 <div class="wrap">
   <h1>What day are we in your area?</h1>
-  <div class="sub">Built from ${visits.length.toLocaleString()} real visits &middot; ${records.length} zips &middot; ${esc(genPT)} PT</div>
+  <div class="sub">Built from ${visits.length.toLocaleString()} real visits &middot; ${records.length} zips &middot; ${esc(genPT)} PT${SINCE ? `<br>Five-technician routes &mdash; counts only work done since the re-cut on ${esc(SINCE)}. Days will firm up as more weeks run.` : ''}</div>
   <input id="q" inputmode="numeric" autocomplete="off" placeholder="Type the zip&hellip;" aria-label="Zip code" autofocus>
   <div class="hint">Ask for the <b>zip</b>, never the city &mdash; Seattle alone spans 21 zips across 4 different days.</div>
   <div id="out" role="status" aria-live="polite"></div>
@@ -237,7 +338,8 @@ const html = `<title>Got Moles Service Days</title>
     <ol>
       <li>Zip not listed &rarr; <i>&ldquo;Let me confirm coverage for that address and call you right back today.&rdquo;</i> Never yes or no on the spot.</li>
       <li>Never promise a technician by name. Assignments move; the name here is internal only.</li>
-      <li>Low confidence means we have barely worked that zip lately &mdash; say the day as <i>&ldquo;usually&rdquo;</i>.</li>
+      <li>Low confidence means we have barely worked that zip since the re-cut &mdash; say the day as <i>&ldquo;usually&rdquo;</i>.</li>
+      <li>A red <b>&ldquo;no truck has been to this zip&rdquo;</b> flag means the day is a booking, not a fact. Confirm and call back &mdash; do not promise it.</li>
       <li>This page rebuilds from Jobber. If the date above is more than 2 days old, ask Spencer to re-run it.</li>
     </ol>
   </div>
@@ -266,7 +368,8 @@ function render(){
     var split=DATA.splitZips[r.zip];
     var flags='';
     if(split) flags+='<div class="flag critical"><b>This zip is split by a highway ('+split+').</b> The day depends which side of the line the address sits on. Get the full street address and confirm before promising a day.</div>';
-    if(r.confidence==='low') flags+='<div class="flag caution"><b>Low confidence</b> &mdash; only '+r.n+' visit'+(r.n===1?'':'s')+' here recently. Say &ldquo;usually&rdquo;, or offer to confirm.</div>';
+    if(r.provisional) flags+='<div class="flag critical"><b>No truck has been to this zip since the routes were re-cut.</b> This day comes from what is BOOKED ahead, not from a visit that happened &mdash; and booked days move. Do not promise it. Say you will confirm the day and call back today.</div>';
+    else if(r.confidence==='low') flags+='<div class="flag caution"><b>Low confidence</b> &mdash; only '+r.n+' visit'+(r.n===1?'':'s')+' here since the re-cut. Say &ldquo;usually&rdquo;, or offer to confirm.</div>';
     else if(r.days.length>1) flags+='<div class="flag caution">Two service days in this zip. Either is safe to say; <b>'+FULL[r.days[0]]+'</b> is the more common one.</div>';
     return '<div class="card">'+
       '<div class="zip">'+r.zip+'</div>'+
@@ -281,6 +384,19 @@ function render(){
 q.addEventListener('input',render);
 </script>`;
 
-fs.writeFileSync(path.join(HERE, 'zip-day-lookup.html'), html);
-try { fs.mkdirSync(PORTABLE, { recursive: true }); fs.writeFileSync(path.join(PORTABLE, 'zip-day-lookup.html'), html); } catch { /* portable copy is best-effort */ }
-console.log(`${records.length} zips from ${visits.length} visits -> zip-day-lookup.html (+ muhammad-portable copy)`);
+// Two shapes, one body — same split as build-address-day-lookup.mjs.
+//   standalone  — opened from disk, and carried offline in muhammad-portable. Needs its own doctype,
+//                 charset and viewport, or it renders as mojibake at desktop width on a phone.
+//   artifact    — the hosted page supplies the doctype/head/body skeleton itself, so emitting our own
+//                 would nest a second document inside theirs.
+const standaloneHtml = `<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+${html}`;
+
+fs.writeFileSync(path.join(HERE, 'zip-day-lookup.html'), standaloneHtml);
+// Source for the hosted copy. Kept beside the standalone one so the two can never drift to
+// different data — the failure that keeps the office reading a page nobody is updating.
+fs.writeFileSync(path.join(HERE, 'zip-day-lookup.artifact.html'), html);
+try { fs.mkdirSync(PORTABLE, { recursive: true }); fs.writeFileSync(path.join(PORTABLE, 'zip-day-lookup.html'), standaloneHtml); } catch { /* portable copy is best-effort */ }
+console.log(`${records.length} zips from ${visits.length} visits -> zip-day-lookup.html + .artifact.html (+ muhammad-portable copy)`);

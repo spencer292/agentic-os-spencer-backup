@@ -1,5 +1,12 @@
 # Muhammad's conversion rate — what the 38% actually means
 
+> **Superseded 2026-08-13** by `2026-08-13_muhammad-actual-close-rate.md`, which re-runs this on
+> live data with the multi-quote correction as the headline. Short version: he is at **64%
+> banked at opportunity level, projecting 71–83%**, with **zero quotes lost** — 14 converted,
+> 10 still awaiting a response. The two training-test quotes are no longer in his denominator and
+> #13961 has moved `approved` → `converted`. The follow-up finding below is unchanged and is
+> confirmed by the extra data.
+
 **Date:** 2026-08-12
 **Source:** Jobber GraphQL — all 368 quotes created since 2026-06-01, with salesperson attribution, send times, client-hub view timestamps, linked communication counts, and client records.
 

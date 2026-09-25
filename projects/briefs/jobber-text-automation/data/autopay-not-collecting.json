@@ -1,0 +1,481 @@
+{
+  "generatedAt": "2026-09-01T18:19:01.004Z",
+  "method": "per-client invoice walk (deduped)",
+  "note": "Jobber writes NO PaymentRecord for a declined charge (0 FAILED rows in 4,258 records since 2026-06-01), so a dead card is only visible as: autopay ON + invoice unpaid after the nightly SYSTEM_GENERATED run.",
+  "activeJobClients": 845,
+  "autopayOnClients": 212,
+  "failedThisCycle": {
+    "count": 5,
+    "balance": 482,
+    "clients": [
+      {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC83MTM4MjMzOQ==",
+        "name": "Nichole  Jacobson",
+        "archived": false,
+        "phone": "4255310140",
+        "email": "nichole@jacobsoninterior.com",
+        "autopay": true,
+        "product": "TMCP",
+        "jobs": [
+          5545
+        ],
+        "openInvoices": [
+          {
+            "number": "16131",
+            "status": "past_due",
+            "issued": "2026-09-01T04:07:02Z",
+            "due": "2026-08-31T07:00:00Z",
+            "balance": 112
+          }
+        ],
+        "balance": 112,
+        "daysPastDue": 1,
+        "cardsOnFile": 1
+      },
+      {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC82NTYzNDUxNQ==",
+        "name": "Kyle Peterson",
+        "archived": false,
+        "phone": "4252323145",
+        "email": "kyle.j.peterson88@gmail.com",
+        "autopay": true,
+        "product": "TMCP",
+        "jobs": [
+          5171
+        ],
+        "openInvoices": [
+          {
+            "number": "16130",
+            "status": "past_due",
+            "issued": "2026-09-01T04:51:43Z",
+            "due": "2026-08-31T07:00:00Z",
+            "balance": 100
+          }
+        ],
+        "balance": 100,
+        "daysPastDue": 1,
+        "cardsOnFile": 3
+      },
+      {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC80ODcwNzQzNw==",
+        "name": "Jacque Coffey",
+        "archived": false,
+        "phone": "2532088454",
+        "email": "nursejacque89@gmail.com",
+        "autopay": true,
+        "product": "TMCP",
+        "jobs": [
+          5439
+        ],
+        "openInvoices": [
+          {
+            "number": "16124",
+            "status": "past_due",
+            "issued": "2026-09-01T04:44:55Z",
+            "due": "2026-08-31T07:00:00Z",
+            "balance": 85
+          }
+        ],
+        "balance": 85,
+        "daysPastDue": 1,
+        "cardsOnFile": 1
+      },
+      {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTYwNzQ5NDc=",
+        "name": "Marius Ungureanu",
+        "archived": false,
+        "phone": "4257776589",
+        "email": "marius@wvrius.com",
+        "autopay": true,
+        "product": "TMCP",
+        "jobs": [
+          7776
+        ],
+        "openInvoices": [
+          {
+            "number": "16121",
+            "status": "past_due",
+            "issued": "2026-09-01T04:10:47Z",
+            "due": "2026-08-31T07:00:00Z",
+            "balance": 100
+          }
+        ],
+        "balance": 100,
+        "daysPastDue": 1,
+        "cardsOnFile": 1
+      },
+      {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMDY3MjQ0NTc=",
+        "name": "Tom Schlimme",
+        "archived": false,
+        "phone": "206-841-1867",
+        "email": "thomasschlimme@comcast.net",
+        "autopay": true,
+        "product": "TMCP",
+        "jobs": [
+          6890,
+          6720
+        ],
+        "openInvoices": [
+          {
+            "number": "15757",
+            "status": "past_due",
+            "issued": "2026-08-31T15:56:23Z",
+            "due": "2026-08-31T07:00:00Z",
+            "balance": 85
+          }
+        ],
+        "balance": 85,
+        "daysPastDue": 1,
+        "cardsOnFile": 3
+      }
+    ]
+  },
+  "legacyPaidWithResidualBalance": {
+    "count": 13,
+    "balance": 5505,
+    "clients": [
+      {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8yMTAwNzEzOQ==",
+        "name": "Tom Rebek",
+        "archived": false,
+        "phone": "206-353-9571",
+        "email": "rebektom@hotmail.com",
+        "autopay": true,
+        "product": "TMCP",
+        "jobs": [
+          5948
+        ],
+        "openInvoices": [
+          {
+            "number": "7",
+            "status": "paid",
+            "issued": "2019-02-27T04:47:56Z",
+            "due": "2019-02-26T08:00:00Z",
+            "balance": 200
+          },
+          {
+            "number": "328",
+            "status": "paid",
+            "issued": "2020-03-02T05:08:59Z",
+            "due": "2020-03-01T08:00:00Z",
+            "balance": 200
+          }
+        ],
+        "balance": 400,
+        "daysPastDue": 2744,
+        "cardsOnFile": 10
+      },
+      {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8yMTAwNzEwNQ==",
+        "name": "Ron Krebbs",
+        "archived": false,
+        "phone": "(253) 848-9433",
+        "email": null,
+        "autopay": true,
+        "product": "TMCP",
+        "jobs": [
+          4741
+        ],
+        "openInvoices": [
+          {
+            "number": "9",
+            "status": "paid",
+            "issued": "2019-02-27T04:50:11Z",
+            "due": "2019-02-26T08:00:00Z",
+            "balance": 200
+          }
+        ],
+        "balance": 200,
+        "daysPastDue": 2744,
+        "cardsOnFile": 3
+      },
+      {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8yMTg3NTYxOQ==",
+        "name": "Ron Houlihan",
+        "archived": false,
+        "phone": "253 217 3716",
+        "email": "ronaldhoulihan@aol.com",
+        "autopay": true,
+        "product": "TMCP",
+        "jobs": [
+          5413
+        ],
+        "openInvoices": [
+          {
+            "number": "69",
+            "status": "paid",
+            "issued": "2019-05-23T04:30:10Z",
+            "due": "2019-05-22T07:00:00Z",
+            "balance": 200
+          },
+          {
+            "number": "72",
+            "status": "paid",
+            "issued": "2019-07-03T04:05:13Z",
+            "due": "2019-07-02T07:00:00Z",
+            "balance": 200
+          },
+          {
+            "number": "94",
+            "status": "paid",
+            "issued": "2019-07-12T20:53:14Z",
+            "due": "2019-07-12T07:00:00Z",
+            "balance": 200
+          },
+          {
+            "number": "140",
+            "status": "paid",
+            "issued": "2019-08-09T23:55:34Z",
+            "due": "2019-08-09T07:00:00Z",
+            "balance": 200
+          }
+        ],
+        "balance": 800,
+        "daysPastDue": 2659,
+        "cardsOnFile": 3
+      },
+      {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8yODQ5NDIzOA==",
+        "name": "Gail Jones",
+        "archived": false,
+        "phone": "2532176773",
+        "email": "dgjones64@comcast.net",
+        "autopay": true,
+        "product": "TMCP",
+        "jobs": [
+          5184
+        ],
+        "openInvoices": [
+          {
+            "number": "349",
+            "status": "paid",
+            "issued": "2020-04-21T03:52:52Z",
+            "due": "2020-04-20T07:00:00Z",
+            "balance": 225
+          }
+        ],
+        "balance": 225,
+        "daysPastDue": 2325,
+        "cardsOnFile": 1
+      },
+      {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8yNjIxODg4Mg==",
+        "name": "Sandy Blackburn",
+        "archived": false,
+        "phone": "‭+1 (253) 376-5967‬",
+        "email": "SandraABlackburn@msn.com",
+        "autopay": true,
+        "product": "TMCP",
+        "jobs": [
+          5044
+        ],
+        "openInvoices": [
+          {
+            "number": "1325",
+            "status": "paid",
+            "issued": "2022-04-01T04:07:51Z",
+            "due": "2022-03-31T07:00:00Z",
+            "balance": 85
+          }
+        ],
+        "balance": 85,
+        "daysPastDue": 1615,
+        "cardsOnFile": 2
+      },
+      {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC82NTM3MzU2MA==",
+        "name": "Jon Foster",
+        "archived": false,
+        "phone": "2062613317",
+        "email": "jon.foster81@gmail.com",
+        "autopay": true,
+        "product": "TMCP",
+        "jobs": [
+          4874
+        ],
+        "openInvoices": [
+          {
+            "number": "3570",
+            "status": "paid",
+            "issued": "2023-08-24T22:23:41Z",
+            "due": "2023-08-24T07:00:00Z",
+            "balance": 350
+          }
+        ],
+        "balance": 350,
+        "daysPastDue": 1104,
+        "cardsOnFile": 1
+      },
+      {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC81Nzk4MzU4NA==",
+        "name": "Buff Nelson",
+        "archived": false,
+        "phone": "2066601934",
+        "email": "buffnelson@nelrem.com",
+        "autopay": true,
+        "product": "TMCP",
+        "jobs": [
+          5099
+        ],
+        "openInvoices": [
+          {
+            "number": "4571",
+            "status": "paid",
+            "issued": "2024-01-01T05:06:00Z",
+            "due": "2024-01-01T00:00:00Z",
+            "balance": 95
+          }
+        ],
+        "balance": 95,
+        "daysPastDue": 974,
+        "cardsOnFile": 1
+      },
+      {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC83NjMwMjA5NQ==",
+        "name": "Mike Rohan",
+        "archived": false,
+        "phone": "4252698401",
+        "email": "rohanexec@gmail.com",
+        "autopay": true,
+        "product": "TMCP",
+        "jobs": [
+          4760
+        ],
+        "openInvoices": [
+          {
+            "number": "4717",
+            "status": "paid",
+            "issued": "2024-02-01T05:03:00Z",
+            "due": "2024-01-31T08:00:00Z",
+            "balance": 350
+          }
+        ],
+        "balance": 350,
+        "daysPastDue": 944,
+        "cardsOnFile": 1
+      },
+      {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC83ODAxNjMwMw==",
+        "name": "Jim Benham",
+        "archived": false,
+        "phone": "2534864464",
+        "email": "jbenham@padholder.com",
+        "autopay": true,
+        "product": "TMCP",
+        "jobs": [
+          4882
+        ],
+        "openInvoices": [
+          {
+            "number": "4826",
+            "status": "paid",
+            "issued": "2024-02-26T08:00:00Z",
+            "due": "2024-02-26T08:00:00Z",
+            "balance": 350
+          }
+        ],
+        "balance": 350,
+        "daysPastDue": 918,
+        "cardsOnFile": 1
+      },
+      {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC83ODQyOTYwOA==",
+        "name": "Jane Moore",
+        "archived": false,
+        "phone": "2069494518",
+        "email": "moorehousing@gmail.com",
+        "autopay": true,
+        "product": "TMCP",
+        "jobs": [
+          4902
+        ],
+        "openInvoices": [
+          {
+            "number": "4838",
+            "status": "paid",
+            "issued": "2024-02-27T08:00:00Z",
+            "due": "2024-02-27T08:00:00Z",
+            "balance": 250
+          }
+        ],
+        "balance": 250,
+        "daysPastDue": 917,
+        "cardsOnFile": 1
+      },
+      {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC85Nzk1MTU4MQ==",
+        "name": "Mickey Boerner",
+        "archived": false,
+        "phone": "2536771254",
+        "email": "mickeyboerner@gmail.com",
+        "autopay": true,
+        "product": "TMCP",
+        "jobs": [
+          6241
+        ],
+        "openInvoices": [
+          {
+            "number": "7622",
+            "status": "paid",
+            "issued": "2025-01-07T00:52:29Z",
+            "due": "2025-01-06T08:00:00Z",
+            "balance": 250
+          }
+        ],
+        "balance": 250,
+        "daysPastDue": 603,
+        "cardsOnFile": 1
+      },
+      {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC84NTc5MTg3OQ==",
+        "name": "SLPPLLC",
+        "archived": false,
+        "phone": "2069197876",
+        "email": "saldevelopment1@gmail.com",
+        "autopay": true,
+        "product": "TMCP",
+        "jobs": [
+          6653,
+          5511
+        ],
+        "openInvoices": [
+          {
+            "number": "9220",
+            "status": "paid",
+            "issued": "2025-07-01T04:13:28Z",
+            "due": "2025-06-30T07:00:00Z",
+            "balance": 1150
+          }
+        ],
+        "balance": 1150,
+        "daysPastDue": 428,
+        "cardsOnFile": 3
+      },
+      {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTUzOTc5NjU=",
+        "name": "Nadia Reynolds",
+        "archived": false,
+        "phone": "4257536678",
+        "email": "nadia.d.reynolds@hotmail.com",
+        "autopay": true,
+        "product": "TMCP",
+        "jobs": [
+          7270
+        ],
+        "openInvoices": [
+          {
+            "number": "10951",
+            "status": "paid",
+            "issued": "2025-11-01T04:19:29Z",
+            "due": "2025-10-31T07:00:00Z",
+            "balance": 1000
+          }
+        ],
+        "balance": 1000,
+        "daysPastDue": 305,
+        "cardsOnFile": 1
+      }
+    ]
+  }
+}

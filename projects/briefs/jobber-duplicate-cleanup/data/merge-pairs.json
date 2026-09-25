@@ -1,0 +1,896 @@
+{
+  "generatedAt": "2026-09-01T22:09:31.365Z",
+  "byConfidence": {
+    "CONFLICT": 2,
+    "STRONG": 7,
+    "LIKELY": 14,
+    "REVIEW": 3
+  },
+  "keeperIsJunkCount": 1,
+  "rows": [
+    {
+      "number": "2537363313",
+      "confidence": "CONFLICT",
+      "why": "two different names on one number — do NOT merge without checking",
+      "keeperIsJunk": true,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA0NDg1Mzk=",
+        "name": "Sauce",
+        "url": "https://secure.getjobber.com/clients/140448539",
+        "jobs": 1,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 32,
+        "balance": 0,
+        "created": "2026-05-19",
+        "addresses": [
+          "10212 229th Avenue Court East 10212 229th Avenue Court East Buckley 98321"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA0MDIwODg=",
+        "name": "Tangi Siaosi",
+        "url": "https://secure.getjobber.com/clients/140402088",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 1,
+        "balance": 0,
+        "created": "2026-05-18",
+        "addresses": [
+          "Auburn"
+        ]
+      }
+    },
+    {
+      "number": "2066613589",
+      "confidence": "STRONG",
+      "why": "caller-ID stub, no name to contradict, same city",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAyODcwOTg=",
+        "name": "George Elissaios",
+        "url": "https://secure.getjobber.com/clients/150287098",
+        "jobs": 1,
+        "quotes": 2,
+        "invoices": 0,
+        "messages": 11,
+        "balance": -150,
+        "created": "2026-08-24",
+        "addresses": [
+          "1711 30th Avenue South 1711 30th Avenue South Seattle 98144"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAyODUyNzI=",
+        "name": "Seattle Wa",
+        "url": "https://secure.getjobber.com/clients/150285272",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 2,
+        "balance": 0,
+        "created": "2026-08-24",
+        "addresses": [
+          "Seattle"
+        ]
+      }
+    },
+    {
+      "number": "2068493999",
+      "confidence": "LIKELY",
+      "why": "caller-ID stub carries no name, so only the number links them",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAzMTE2MDc=",
+        "name": "Shawna Mobley",
+        "url": "https://secure.getjobber.com/clients/150311607",
+        "jobs": 1,
+        "quotes": 1,
+        "invoices": 0,
+        "messages": 13,
+        "balance": 0,
+        "created": "2026-08-24",
+        "addresses": [
+          "19216 Southeast 328th Place 19216 Southeast 328th Place Kent 98042"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAzMDY2Njg=",
+        "name": "Seattle Wa",
+        "url": "https://secure.getjobber.com/clients/150306668",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 0,
+        "balance": 0,
+        "created": "2026-08-24",
+        "addresses": [
+          "Seattle"
+        ]
+      }
+    },
+    {
+      "number": "4253062968",
+      "confidence": "STRONG",
+      "why": "caller-ID stub, no name to contradict, same city",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA4NjUyNzM=",
+        "name": "Jeffrey Kenyon",
+        "url": "https://secure.getjobber.com/clients/150865273",
+        "jobs": 1,
+        "quotes": 1,
+        "invoices": 0,
+        "messages": 6,
+        "balance": -150,
+        "created": "2026-08-28",
+        "addresses": [
+          "16508 162nd Avenue SE 16508 162nd Avenue SE Renton 98058"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA4NjQxOTI=",
+        "name": "Renton Wa",
+        "url": "https://secure.getjobber.com/clients/150864192",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 0,
+        "balance": 0,
+        "created": "2026-08-28",
+        "addresses": [
+          "Renton"
+        ]
+      }
+    },
+    {
+      "number": "2143858913",
+      "confidence": "STRONG",
+      "why": "full name matches",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYzOTkzNjg=",
+        "name": "Sanjay Dey",
+        "url": "https://secure.getjobber.com/clients/146399368",
+        "jobs": 1,
+        "quotes": 1,
+        "invoices": 1,
+        "messages": 22,
+        "balance": 0,
+        "created": "2026-07-15",
+        "addresses": [
+          "24707 Southeast 45th Place 24707 Southeast 45th Place Issaquah 98029"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYzNjM5Njk=",
+        "name": "Dey,Sanjay N/A",
+        "url": "https://secure.getjobber.com/clients/146363969",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 1,
+        "balance": 0,
+        "created": "2026-07-15",
+        "addresses": [
+          "McKinney"
+        ]
+      }
+    },
+    {
+      "number": "2532796772",
+      "confidence": "REVIEW",
+      "why": "only the surname matches (politeo) — could be a household member",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY0NzcwMTA=",
+        "name": "Lisa Politeo",
+        "url": "https://secure.getjobber.com/clients/146477010",
+        "jobs": 1,
+        "quotes": 1,
+        "invoices": 1,
+        "messages": 22,
+        "balance": 0,
+        "created": "2026-07-16",
+        "addresses": [
+          "3820 North Adams Street 3820 North Adams Street Tacoma 98407"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYzNzcwNjc=",
+        "name": "Politeo,Elizabe N/A",
+        "url": "https://secure.getjobber.com/clients/146377067",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 3,
+        "balance": 0,
+        "created": "2026-07-15",
+        "addresses": [
+          "Tacoma"
+        ]
+      }
+    },
+    {
+      "number": "9258089896",
+      "confidence": "STRONG",
+      "why": "full name matches",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc1NzQ4Nzk=",
+        "name": "Terry Dombroski",
+        "url": "https://secure.getjobber.com/clients/147574879",
+        "jobs": 0,
+        "quotes": 1,
+        "invoices": 0,
+        "messages": 6,
+        "balance": 0,
+        "created": "2026-07-28",
+        "addresses": [
+          "1920 163rd Street East 1920 163rd Street East Tacoma 98445"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDc1NzIzNTI=",
+        "name": "Dombroski,Terry N/A",
+        "url": "https://secure.getjobber.com/clients/147572352",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 0,
+        "balance": 0,
+        "created": "2026-07-28",
+        "addresses": [
+          "Concord"
+        ]
+      }
+    },
+    {
+      "number": "2064551097",
+      "confidence": "REVIEW",
+      "why": "only the surname matches (ceres) — could be a household member",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAyODY4NTk=",
+        "name": "Nate Ceres",
+        "url": "https://secure.getjobber.com/clients/150286859",
+        "jobs": 2,
+        "quotes": 2,
+        "invoices": 2,
+        "messages": 14,
+        "balance": 0,
+        "created": "2026-08-24",
+        "addresses": [
+          "2405 Northeast 133rd Street 2405 Northeast 133rd Street Seattle 98125"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAyODM3MDg=",
+        "name": "Ceres,Jessica N/A",
+        "url": "https://secure.getjobber.com/clients/150283708",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 1,
+        "balance": 0,
+        "created": "2026-08-24",
+        "addresses": [
+          "Seattle"
+        ]
+      }
+    },
+    {
+      "number": "2532730258",
+      "confidence": "LIKELY",
+      "why": "caller-ID stub carries no name, so only the number links them",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAyOTMzNDQ=",
+        "name": "Holy Chea",
+        "url": "https://secure.getjobber.com/clients/150293344",
+        "jobs": 1,
+        "quotes": 1,
+        "invoices": 0,
+        "messages": 10,
+        "balance": -150,
+        "created": "2026-08-24",
+        "addresses": [
+          "9605 South 235th Place 9605 South 235th Place Kent 98031"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAyODc2ODE=",
+        "name": "Private N/A",
+        "url": "https://secure.getjobber.com/clients/150287681",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 0,
+        "balance": 0,
+        "created": "2026-08-24",
+        "addresses": [
+          "Tacoma"
+        ]
+      }
+    },
+    {
+      "number": "2062276707",
+      "confidence": "REVIEW",
+      "why": "only the surname matches (barbante) — could be a household member",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA3Mzk2MjM=",
+        "name": "Phyllis Barbante",
+        "url": "https://secure.getjobber.com/clients/150739623",
+        "jobs": 1,
+        "quotes": 1,
+        "invoices": 0,
+        "messages": 9,
+        "balance": 0,
+        "created": "2026-08-27",
+        "addresses": [
+          "4746 51st Place Southwest 4746 51st Place Southwest Seattle 98116"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA3Mzc1MDQ=",
+        "name": "Barbante,Phylli N/A",
+        "url": "https://secure.getjobber.com/clients/150737504",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 0,
+        "balance": 0,
+        "created": "2026-08-27",
+        "addresses": [
+          "Seattle"
+        ]
+      }
+    },
+    {
+      "number": "2534687507",
+      "confidence": "CONFLICT",
+      "why": "two different names on one number — do NOT merge without checking",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTExMDc1NjU=",
+        "name": "Stephan Heller",
+        "url": "https://secure.getjobber.com/clients/151107565",
+        "jobs": 0,
+        "quotes": 2,
+        "invoices": 0,
+        "messages": 5,
+        "balance": 0,
+        "created": "2026-08-31",
+        "addresses": [
+          "4219 239th Street East 4219 239th Street East Spanaway 98387"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTExMDM0OTE=",
+        "name": "King,Shelby N/A",
+        "url": "https://secure.getjobber.com/clients/151103491",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 0,
+        "balance": 0,
+        "created": "2026-08-31",
+        "addresses": [
+          "Tacoma"
+        ]
+      }
+    },
+    {
+      "number": "6504369820",
+      "confidence": "LIKELY",
+      "why": "caller-ID stub carries no name, so only the number links them",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA0MDYwNzM=",
+        "name": "Louis Huang",
+        "url": "https://secure.getjobber.com/clients/140406073",
+        "jobs": 1,
+        "quotes": 1,
+        "invoices": 1,
+        "messages": 20,
+        "balance": 0,
+        "created": "2026-05-18",
+        "addresses": [
+          "7002 Northeast 134th Street 7002 Northeast 134th Street Kirkland 98034"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA0MDU1ODc=",
+        "name": "Wireless Caller",
+        "url": "https://secure.getjobber.com/clients/140405587",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 2,
+        "balance": 0,
+        "created": "2026-05-18",
+        "addresses": [
+          "San Mateo"
+        ]
+      }
+    },
+    {
+      "number": "2064951809",
+      "confidence": "LIKELY",
+      "why": "caller-ID stub carries no name, so only the number links them",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA5ODcyNTE=",
+        "name": "Theresa Feeley",
+        "url": "https://secure.getjobber.com/clients/140987251",
+        "jobs": 1,
+        "quotes": 1,
+        "invoices": 1,
+        "messages": 26,
+        "balance": 0,
+        "created": "2026-05-22",
+        "addresses": [
+          "19001 4th Avenue Southwest 19001 4th Avenue Southwest Normandy Park 98166"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDA5ODY5MjM=",
+        "name": "Wireless Caller",
+        "url": "https://secure.getjobber.com/clients/140986923",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 1,
+        "balance": 0,
+        "created": "2026-05-22",
+        "addresses": [
+          "Seattle"
+        ]
+      }
+    },
+    {
+      "number": "2063838709",
+      "confidence": "LIKELY",
+      "why": "caller-ID stub carries no name, so only the number links them",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYxMzA5MDU=",
+        "name": "Patrick Kennedy",
+        "url": "https://secure.getjobber.com/clients/146130905",
+        "jobs": 1,
+        "quotes": 1,
+        "invoices": 1,
+        "messages": 23,
+        "balance": 0,
+        "created": "2026-07-13",
+        "addresses": [
+          "8310 Southeast 59th Street 8310 Southeast 59th Street Mercer Island 98040"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDYwODg2OTk=",
+        "name": "Wireless Caller",
+        "url": "https://secure.getjobber.com/clients/146088699",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 0,
+        "balance": 0,
+        "created": "2026-07-13",
+        "addresses": [
+          "Seattle"
+        ]
+      }
+    },
+    {
+      "number": "4255034440",
+      "confidence": "LIKELY",
+      "why": "caller-ID stub carries no name, so only the number links them",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY0ODA4Njg=",
+        "name": "Carlie Stusser",
+        "url": "https://secure.getjobber.com/clients/146480868",
+        "jobs": 0,
+        "quotes": 1,
+        "invoices": 0,
+        "messages": 5,
+        "balance": 0,
+        "created": "2026-07-16",
+        "addresses": [
+          "14032 205th Avenue Northeast 14032 205th Avenue Northeast Woodinville 98077"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDY0Nzg1Mjk=",
+        "name": "Wireless Caller",
+        "url": "https://secure.getjobber.com/clients/146478529",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 1,
+        "balance": 0,
+        "created": "2026-07-16",
+        "addresses": [
+          "Bellevue"
+        ]
+      }
+    },
+    {
+      "number": "4257666225",
+      "confidence": "LIKELY",
+      "why": "caller-ID stub carries no name, so only the number links them",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDgyOTk4MTM=",
+        "name": "Dino P. Simone",
+        "url": "https://secure.getjobber.com/clients/148299813",
+        "jobs": 1,
+        "quotes": 1,
+        "invoices": 0,
+        "messages": 18,
+        "balance": -150,
+        "created": "2026-08-04",
+        "addresses": [
+          "911 259th Court Northeast 911 259th Court Northeast Sammamish 98074"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDgyOTk2OTA=",
+        "name": "Wireless Caller",
+        "url": "https://secure.getjobber.com/clients/148299690",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 0,
+        "balance": 0,
+        "created": "2026-08-04",
+        "addresses": [
+          "Bellevue"
+        ]
+      }
+    },
+    {
+      "number": "4254948859",
+      "confidence": "LIKELY",
+      "why": "caller-ID stub carries no name, so only the number links them",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAwMTg4Mzg=",
+        "name": "Kin Tsang",
+        "url": "https://secure.getjobber.com/clients/150018838",
+        "jobs": 1,
+        "quotes": 1,
+        "invoices": 0,
+        "messages": 19,
+        "balance": -150,
+        "created": "2026-08-20",
+        "addresses": [
+          "14500 Southeast 79th Drive 14500 Southeast 79th Drive Newcastle 98059"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAwMTczODE=",
+        "name": "Wireless Caller",
+        "url": "https://secure.getjobber.com/clients/150017381",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 0,
+        "balance": 0,
+        "created": "2026-08-20",
+        "addresses": [
+          "Issaquah"
+        ]
+      }
+    },
+    {
+      "number": "7705952902",
+      "confidence": "LIKELY",
+      "why": "caller-ID stub carries no name, so only the number links them",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAwMTk4MTU=",
+        "name": "Stacey Boydell",
+        "url": "https://secure.getjobber.com/clients/150019815",
+        "jobs": 1,
+        "quotes": 1,
+        "invoices": 0,
+        "messages": 13,
+        "balance": 0,
+        "created": "2026-08-20",
+        "addresses": [
+          "13906 199th Street Court East 13906 199th Street Court East Graham 98338"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAwMTg0ODM=",
+        "name": "Wireless Caller",
+        "url": "https://secure.getjobber.com/clients/150018483",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 0,
+        "balance": 0,
+        "created": "2026-08-20",
+        "addresses": [
+          "Atlanta NE"
+        ]
+      }
+    },
+    {
+      "number": "4259791137",
+      "confidence": "STRONG",
+      "why": "caller-ID stub, no name to contradict, same city",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAxMzA4MjI=",
+        "name": "Ashok Shivani",
+        "url": "https://secure.getjobber.com/clients/150130822",
+        "jobs": 1,
+        "quotes": 1,
+        "invoices": 0,
+        "messages": 8,
+        "balance": -150,
+        "created": "2026-08-21",
+        "addresses": [
+          "9110 114th Avenue Northeast 9110 114th Avenue Northeast Kirkland 98033"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAxMjc3MjY=",
+        "name": "Wireless Caller",
+        "url": "https://secure.getjobber.com/clients/150127726",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 0,
+        "balance": 0,
+        "created": "2026-08-21",
+        "addresses": [
+          "Kirkland"
+        ]
+      }
+    },
+    {
+      "number": "4259791137",
+      "confidence": "STRONG",
+      "why": "caller-ID stub, no name to contradict, same city",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAxMzA4MjI=",
+        "name": "Ashok Shivani",
+        "url": "https://secure.getjobber.com/clients/150130822",
+        "jobs": 1,
+        "quotes": 1,
+        "invoices": 0,
+        "messages": 8,
+        "balance": -150,
+        "created": "2026-08-21",
+        "addresses": [
+          "9110 114th Avenue Northeast 9110 114th Avenue Northeast Kirkland 98033"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAxMjc3NDU=",
+        "name": "Wireless Caller",
+        "url": "https://secure.getjobber.com/clients/150127745",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 0,
+        "balance": 0,
+        "created": "2026-08-21",
+        "addresses": [
+          "Kirkland"
+        ]
+      }
+    },
+    {
+      "number": "9259841699",
+      "confidence": "LIKELY",
+      "why": "caller-ID stub carries no name, so only the number links them",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAxMzQ4NDA=",
+        "name": "Jonah Pickens",
+        "url": "https://secure.getjobber.com/clients/150134840",
+        "jobs": 1,
+        "quotes": 1,
+        "invoices": 1,
+        "messages": 11,
+        "balance": 0,
+        "created": "2026-08-21",
+        "addresses": [
+          "608 North 9th Avenue Southwest 608 North 9th Avenue Southwest Tumwater 98512"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAxMzQwNzM=",
+        "name": "Wireless Caller",
+        "url": "https://secure.getjobber.com/clients/150134073",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 0,
+        "balance": 0,
+        "created": "2026-08-21",
+        "addresses": [
+          "Danville"
+        ]
+      }
+    },
+    {
+      "number": "2033948329",
+      "confidence": "LIKELY",
+      "why": "caller-ID stub carries no name, so only the number links them",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAzMzUyNzc=",
+        "name": "Nicole Calloway",
+        "url": "https://secure.getjobber.com/clients/150335277",
+        "jobs": 0,
+        "quotes": 1,
+        "invoices": 0,
+        "messages": 3,
+        "balance": 0,
+        "created": "2026-08-24",
+        "addresses": [
+          "1319 14th Avenue Southwest 1319 14th Avenue Southwest Olympia 98502"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTAzMzQ3MDc=",
+        "name": "Wireless Caller",
+        "url": "https://secure.getjobber.com/clients/150334707",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 0,
+        "balance": 0,
+        "created": "2026-08-24",
+        "addresses": [
+          "Bridgeport"
+        ]
+      }
+    },
+    {
+      "number": "2533148659",
+      "confidence": "STRONG",
+      "why": "caller-ID stub, no name to contradict, same city",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA0MjMzMDA=",
+        "name": "Jason Kjellesvik",
+        "url": "https://secure.getjobber.com/clients/150423300",
+        "jobs": 2,
+        "quotes": 2,
+        "invoices": 1,
+        "messages": 11,
+        "balance": 0,
+        "created": "2026-08-25",
+        "addresses": [
+          "1518 52nd Street Northeast 1518 52nd Street Northeast Tacoma 98422"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA0MjE4NzY=",
+        "name": "Wireless Caller",
+        "url": "https://secure.getjobber.com/clients/150421876",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 0,
+        "balance": 0,
+        "created": "2026-08-25",
+        "addresses": [
+          "Tacoma"
+        ]
+      }
+    },
+    {
+      "number": "3602201620",
+      "confidence": "LIKELY",
+      "why": "caller-ID stub carries no name, so only the number links them",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA1NjM3NjM=",
+        "name": "Alice Collins",
+        "url": "https://secure.getjobber.com/clients/150563763",
+        "jobs": 1,
+        "quotes": 1,
+        "invoices": 0,
+        "messages": 7,
+        "balance": -150,
+        "created": "2026-08-26",
+        "addresses": [
+          "10408 22nd Avenue Southwest 10408 22nd Avenue Southwest Seattle 98146"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA1NjIwMTc=",
+        "name": "Wireless Caller",
+        "url": "https://secure.getjobber.com/clients/150562017",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 0,
+        "balance": 0,
+        "created": "2026-08-26",
+        "addresses": [
+          "Bellingham"
+        ]
+      }
+    },
+    {
+      "number": "8017838641",
+      "confidence": "LIKELY",
+      "why": "caller-ID stub carries no name, so only the number links them",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA4NTQ1NTI=",
+        "name": "Jean Vanwagoner",
+        "url": "https://secure.getjobber.com/clients/150854552",
+        "jobs": 1,
+        "quotes": 1,
+        "invoices": 0,
+        "messages": 3,
+        "balance": 0,
+        "created": "2026-08-28",
+        "addresses": [
+          "5408 235th Avenue Southeast 5408 235th Avenue Southeast Issaquah 98029"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTA4NDkyNjc=",
+        "name": "Wireless Caller",
+        "url": "https://secure.getjobber.com/clients/150849267",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 0,
+        "balance": 0,
+        "created": "2026-08-28",
+        "addresses": [
+          "Salt Lake Main"
+        ]
+      }
+    },
+    {
+      "number": "3123300285",
+      "confidence": "LIKELY",
+      "why": "caller-ID stub carries no name, so only the number links them",
+      "keeperIsJunk": false,
+      "keep": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTEwNzY4OTM=",
+        "name": "Todd Allen",
+        "url": "https://secure.getjobber.com/clients/151076893",
+        "jobs": 1,
+        "quotes": 1,
+        "invoices": 0,
+        "messages": 3,
+        "balance": -150,
+        "created": "2026-08-31",
+        "addresses": [
+          "18615 145th Street East 18615 145th Street East Bonney Lake 98391"
+        ]
+      },
+      "absorb": {
+        "id": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNTEwMzc3MjI=",
+        "name": "Wireless Caller",
+        "url": "https://secure.getjobber.com/clients/151037722",
+        "jobs": 0,
+        "quotes": 0,
+        "invoices": 0,
+        "messages": 0,
+        "balance": 0,
+        "created": "2026-08-31",
+        "addresses": [
+          "Chicago (Wabash)"
+        ]
+      }
+    }
+  ]
+}

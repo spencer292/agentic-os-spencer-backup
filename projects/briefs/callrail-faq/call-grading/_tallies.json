@@ -1,75 +1,300 @@
 {
-  "_comment": "Running counters for Muhammad's phone coaching. One row per graded day, appended by the muhammad-call-grading cron. Never rewrite history — only append, and correct a past row only if it was factually wrong. 'sales_calls' counts calls where a sale was possible; letter-graded service calls are counted separately in service_calls.",
-  "rubric_version": "1.0",
-  "days": [
-    {
-      "date": "2026-08-04",
-      "mode": "roleplay",
-      "sales_calls": 2,
-      "service_calls": 0,
-      "scores": [63, 70],
-      "guarantee_said": 0,
-      "block_complete_before_price": 0,
-      "address_read_back": 0,
-      "service_day_correct_or_checked": 0,
-      "full_capture": 0,
-      "note": "First two calls ever. Self-corrected between reps unprompted."
-    },
-    {
-      "date": "2026-08-05",
-      "mode": "roleplay",
-      "sales_calls": 3,
-      "service_calls": 0,
-      "scores": [86, 72, 79],
-      "guarantee_said": 1,
-      "block_complete_before_price": 1,
-      "address_read_back": 0,
-      "service_day_correct_or_checked": 0,
-      "full_capture": 1,
-      "note": "First pass (86). The block landed volunteered before any number for the first time."
-    },
-    {
-      "date": "2026-08-06",
-      "mode": "roleplay",
-      "sales_calls": 2,
-      "service_calls": 0,
-      "scores": [76, 75],
-      "guarantee_said": 0,
-      "block_complete_before_price": 0,
-      "address_read_back": 0,
-      "service_day_correct_or_checked": 0,
-      "full_capture": 1,
-      "note": "Recovered the block after an interruption. Guarantee asked outright and missed. Capture collapsed in call 7 (no address)."
-    },
-    {
-      "date": "2026-08-10",
-      "mode": "live",
-      "sales_calls": 4,
-      "service_calls": 3,
-      "scores": [75, 77, 87, 88],
-      "guarantee_said": 0,
-      "block_complete_before_price": 0,
-      "address_read_back": 1,
-      "service_day_correct_or_checked": 1,
-      "full_capture": 1,
-      "quotes_promised": 3,
-      "quotes_sent_on_time": 3,
-      "note": "First graded live day. Service day right for the first time (98116 Tuesday). Full address read-back for the first time. Guarantee asked point-blank and answered with a promise we don't make."
-    },
-    {
-      "date": "2026-08-11",
-      "mode": "live",
-      "sales_calls": 6,
-      "service_calls": 4,
-      "scores": [65, 49, 60, 85, 48, 65],
-      "guarantee_said": 2,
-      "block_complete_before_price": 0,
-      "address_read_back": 2,
-      "service_day_correct_or_checked": 1,
-      "full_capture": 2,
-      "quotes_promised": 2,
-      "quotes_sent_on_time": 2,
-      "note": "FULL-DAY REGRADE — replaces the partial row written by an earlier run that saw only the first 3 calls (2 sales, avg 57). Calls 3 and 4 keep their original 65 and 49; calls 15, 16, 18, 23 added. Average 62 vs 82 on 08-10. FIRST TIME LIVE: the education block landed BEFORE the price (call 16 Honig, 3/5 beats, all four qualifiers first, service day 98328=Friday correct off the sheet, quote out in 2 min, converted — 85, held at the ceiling). Guarantee volunteered twice unprompted (calls 15, 16) — first day that has happened; lifetime 3/17. TWO LEADS LOST: 98444 Parkland refused as out-of-area when the sheet has it as Luke/Tuesday, plus a fused referral ('Kirk from Terry Cotton' = two different competitors) — 48; and a 7m26 Kirkland buyer with ~20 mounds who hung up with zero capture and no quote — 60. Call 23 (19m18, Hinkley) booked TMCP but acreage never asked and plan never confirmed; wrong tech named to a gated-community caller. Quotes 2 promised, 2 sent clean (plan/deposit/address correct on both). Needs Spencer: 5+ acre Johal quoted by phone twice; Walshe's revoke-cancellation question unanswered and her quote archived; Cory left Lohse's property unset and unreachable; southern Pierce boundary needs confirming."
-    }
-  ]
+ "_comment": "Running counters for Muhammad's phone coaching. One row per graded day, appended by the muhammad-call-grading cron. Never rewrite history — only append, and correct a past row only if it was factually wrong. 'sales_calls' counts calls where a sale was possible; letter-graded service calls are counted separately in service_calls.",
+ "rubric_version": "1.0",
+ "days": [
+  {
+   "date": "2026-08-04",
+   "mode": "roleplay",
+   "sales_calls": 2,
+   "service_calls": 0,
+   "scores": [
+    63,
+    70
+   ],
+   "guarantee_said": 0,
+   "block_complete_before_price": 0,
+   "address_read_back": 0,
+   "service_day_correct_or_checked": 0,
+   "full_capture": 0,
+   "note": "First two calls ever. Self-corrected between reps unprompted."
+  },
+  {
+   "date": "2026-08-05",
+   "mode": "roleplay",
+   "sales_calls": 3,
+   "service_calls": 0,
+   "scores": [
+    86,
+    72,
+    79
+   ],
+   "guarantee_said": 1,
+   "block_complete_before_price": 1,
+   "address_read_back": 0,
+   "service_day_correct_or_checked": 0,
+   "full_capture": 1,
+   "note": "First pass (86). The block landed volunteered before any number for the first time."
+  },
+  {
+   "date": "2026-08-06",
+   "mode": "roleplay",
+   "sales_calls": 2,
+   "service_calls": 0,
+   "scores": [
+    76,
+    75
+   ],
+   "guarantee_said": 0,
+   "block_complete_before_price": 0,
+   "address_read_back": 0,
+   "service_day_correct_or_checked": 0,
+   "full_capture": 1,
+   "note": "Recovered the block after an interruption. Guarantee asked outright and missed. Capture collapsed in call 7 (no address)."
+  },
+  {
+   "date": "2026-08-10",
+   "mode": "live",
+   "sales_calls": 4,
+   "service_calls": 3,
+   "scores": [
+    75,
+    77,
+    87,
+    88
+   ],
+   "guarantee_said": 0,
+   "block_complete_before_price": 0,
+   "address_read_back": 1,
+   "service_day_correct_or_checked": 1,
+   "full_capture": 1,
+   "quotes_promised": 3,
+   "quotes_sent_on_time": 3,
+   "note": "First graded live day. Service day right for the first time (98116 Tuesday). Full address read-back for the first time. Guarantee asked point-blank and answered with a promise we don't make."
+  },
+  {
+   "date": "2026-08-11",
+   "mode": "live",
+   "sales_calls": 6,
+   "service_calls": 4,
+   "scores": [
+    65,
+    49,
+    60,
+    85,
+    48,
+    65
+   ],
+   "guarantee_said": 2,
+   "block_complete_before_price": 0,
+   "address_read_back": 2,
+   "service_day_correct_or_checked": 1,
+   "full_capture": 2,
+   "quotes_promised": 2,
+   "quotes_sent_on_time": 2,
+   "note": "FULL-DAY REGRADE — replaces the partial row written by an earlier run that saw only the first 3 calls (2 sales, avg 57). Calls 3 and 4 keep their original 65 and 49; calls 15, 16, 18, 23 added. Average 62 vs 82 on 08-10. FIRST TIME LIVE: the education block landed BEFORE the price (call 16 Honig, 3/5 beats, all four qualifiers first, service day 98328=Friday correct off the sheet, quote out in 2 min, converted — 85, held at the ceiling). Guarantee volunteered twice unprompted (calls 15, 16) — first day that has happened; lifetime 3/17. TWO LEADS LOST: 98444 Parkland refused as out-of-area when the sheet has it as Luke/Tuesday, plus a fused referral ('Kirk from Terry Cotton' = two different competitors) — 48; and a 7m26 Kirkland buyer with ~20 mounds who hung up with zero capture and no quote — 60. Call 23 (19m18, Hinkley) booked TMCP but acreage never asked and plan never confirmed; wrong tech named to a gated-community caller. Quotes 2 promised, 2 sent clean (plan/deposit/address correct on both). Needs Spencer: 5+ acre Johal quoted by phone twice; Walshe's revoke-cancellation question unanswered and her quote archived; Cory left Lohse's property unset and unreachable; southern Pierce boundary needs confirming."
+  },
+  {
+   "date": "2026-08-12",
+   "mode": "live",
+   "sales_calls": 5,
+   "service_calls": 1,
+   "scores": [
+    84,
+    72,
+    85,
+    70,
+    82
+   ],
+   "guarantee_said": 5,
+   "block_complete_before_price": 0,
+   "address_read_back": 3,
+   "service_day_correct_or_checked": 0,
+   "full_capture": 3,
+   "quotes_promised": 4,
+   "quotes_sent_on_time": 4,
+   "note": "Average 78.6, recovering from 62. THE GUARANTEE IS FIXED — 5 of 5, every one volunteered, nine days after it was made priority 1; lifetime 8/22. Second long-standing failure closed: asked point-blank 'do you know any companies who do voles?' he said no instead of inventing a referral (Trapline 08-10, 'Kirk from Terry Cotton' 08-11). Monahan 11m14 = model call, 85 at the ceiling, 15/15 capture with every field read back and a customer correction re-confirmed, objections invited rather than awaited. REGRESSIONS: (1) the block collapsed — zero beats before the price on 3 of 5 calls, best was 2 (Monahan); yesterday's 3/5 Honig gain did not hold; beats 2 and 3 absent all day. (2) Service day 0 of 5 — first zero since it was fixed on 08-10; five zips on the sheet, none used, and Daniel Hill's visit landed exactly where the sheet said (98008=Thursday/Cory, booked for 08-13). (3) Fall City buyer said 'send it to my email' and Mo asked for name+phone+address in one breath — caller withdrew, zero capture, no quote; 4th consecutive live day a going-well call ends with nothing on file. (4) Daniel Hill converted at $450 but was never told TMCP exists — interrupted mid-sentence on 'the other option is' and never returned; friendly callers still pull him off script. Quotes 4 promised, 4 sent in ~1-2 min, plan/deposit/address correct on all four — cleanest quote day on record, no repeat of the 08-10 build defects. Needs Spencer: Travis Bruce paid $150 on 08-11, job #8364 still action_required with zero visits two days later; Betsy Monahan's quote approved but never converted to a job and the call-ahead note she was promised does not exist; duplicate client records auto-created on every inbound call (C Breiland/Chris Breiland) — same trap that made Mo tell Bruce his payment hadn't landed; 4th quote with no call behind it (#13970 Laidley); 'opening a fourth location soon' claim unverified; Cascade Pest and Eastside Exterminators both referred work today and nobody thanked them."
+  },
+  {
+   "date": "2026-08-13",
+   "mode": "live",
+   "sales_calls": 2,
+   "service_calls": 5,
+   "scores": [
+    74,
+    85
+   ],
+   "guarantee_said": 2,
+   "block_complete_before_price": 0,
+   "address_read_back": 2,
+   "service_day_correct_or_checked": 2,
+   "full_capture": 2,
+   "quotes_promised": 2,
+   "quotes_sent_on_time": 1,
+   "note": "FULL DAY. Two new sales leads only. SERVICE DAY RECOVERED, 2 of 2, and used as a closing line both times: 98422 -> 'most probably on Monday' (sheet: Monday/Cory) and 98513 -> 'today is our visiting day in your area' (sheet: Thursday/Luke, and today was Thursday) — one day after 0 of 5. Guarantee 2/2 volunteered, lifetime 10/24, six days running. Beat 3 (the dinner bell) appeared for the first time in days and was built live off the caller's own plan to kill grubs ('they are insectivores... when you water your lawn, you ring a dinner bell'). SAVED YESTERDAY'S EVANS SALE: outbound-called the husband unprompted, then when the wife rang found the blocker in one question (he doesn't use email), stayed on the line and walked her to it — quote #13967 converted, job #8375 on the board. SELF-CORRECTED (Spencer-confirmed): Beverly Ott closed on an 8-minute call ('I think that's what we want'), full capture with every field read back, quote promised twice — and no quote went out — but Mo then worked out on his own that she was an existing customer, called her back and BOOKED THE JOB without a quote, unprompted. Spencer confirms it is in Jobber under John Ott; via the API it is not visible as a job, quote, client or visit (his only job is still #1253 archived from 2021, and a scan of every visit 08-13 -> 09-15 shows nothing at 5719 Upland Terrace). The one object type this token cannot read is Requests ('An object of type Request was hidden due to permissions'), most likely where it sits. Operationally that matters: a Request is not a scheduled visit - no line items, no tech, no OptimoRoute - and she was told Monday. Note booking an existing customer without a quote is fine in itself — #8370 Tobius and #8374 Kaumans were both built today as $450 Quick Fix plus a -$75 Repeat Customer Discount line item = $375, which is the correct build and the same discipline that was a defect on 08-10. Same call, he told her she'd never been a customer: he searched the NAME 'Beverly Ott' when the file is under JOHN OTT — HER HUSBAND — since 2021, same address, same phone, and her own email already on it, so a name search could never have hit it — so she was quoted the standard price even though he demonstrably knows the $375 rate — he applied it correctly twice today on other jobs. He caught it himself afterwards, which means the gap is the search habit, not the knowledge: a name identifies a person, a number identifies a household (spouses, property managers, kids calling for parents). Ott re-scored 72 -> 74 once the husband relationship was confirmed: the statement was narrowly true of Beverly, so the rubric's -3 'mushy answer to a factual question he could have answered correctly' fits better than -5 for a confident wrong answer. That is the search-by-number rule failing two days running (Travis Bruce 08-12, Ott 08-13). Also refused Lynnwood 98037 in 51 seconds with no check and no capture, while handling Blaine 98230 correctly 46 min earlier (hesitated, took name + number, escalated to the team). Block still behind the price on both calls; Ott got no education at all and Mo never said $450 — the customer supplied the price herself off the website. Quotes 2 promised, 1 sent (#13975 Thompson, 3 min, correct plan/deposit/address). #13973 Yattaw shows the after-hours Voice Assist lane producing a real quote; #13974 Sharon Young is the fifth quote with no call behind it. CLEARED FROM YESTERDAY: Travis Bruce -> job #8372 (5 visits, first Mon 08-18, still no tech assigned on any) and Betsy Monahan -> job #8371 (5 visits, first Thu 08-21, Cory) were both scheduled today, and Evans job #8375 first visit is now COMPLETED. Needs Spencer: confirm the Ott booking is a job with visits and not just a Request (it does not route otherwise), built like #8370/#8374, and confirm whether the $150 setup fee was collected; does a 2021 job still earn the $375 rate and does it travel across a household (needs a rule, it will recur); is 98037 Lynnwood in area; Thomas Johnson (360-988-1588) still owed the Blaine callback; Evans job #8375 first visit showing LATE."
+  },
+  {
+   "date": "2026-08-17",
+   "mode": "live",
+   "sales_calls": 8,
+   "service_calls": 2,
+   "scores": [
+    59,
+    64,
+    80,
+    73,
+    79,
+    80,
+    82,
+    85
+   ],
+   "guarantee_said": 7,
+   "block_complete_before_price": 0,
+   "address_read_back": 7,
+   "service_day_correct_or_checked": 3,
+   "full_capture": 3,
+   "quotes_promised": 7,
+   "quotes_sent_on_time": 6,
+   "note": "Highest-volume day yet (8 sales calls) and his best structural call ever. BEST BLOCK ON RECORD: Kamat (98021) landed FOUR beats before the price - territorial, 70% body weight, THE NET, and new tunnels in the drying season - raw 91, held at the 85 ceiling. Beat 2 (the net) had not appeared on a live call in the entire coaching record; it was abandoned after an interruption on 08-06 and never seen since. ALSO NEW AND HIGH VALUE: on the Haeck call he built and sent the quote WHILE THE CUSTOMER WAS ON THE PHONE and confirmed receipt (\"are you able to check your email now?\" -> \"yes, I just saw the email\") - it converted. That is the direct fix for the close-rate finding that 6 of 8 week-1 opportunities were never opened (unopened quotes close at 17% vs 80% opened). Service day right 3 of 3 times he used it (98001 Mon/Wed, 98023 Federal Way Monday on a Monday, 98375 Tue/Fri) and the right tech named twice; unused on four other zips including 98422 on its own Monday. DIY teardown now expert and unprompted (sonic habituation, castor oil, poison-is-for-gophers, \"feels like it should work, but it doesn't\"). Guarantee 7/8, lifetime 17/32. Tone 15/15 on all eight, fifteen calls running. THE DAY'S DEFECT: Beverly Worthen, a senior on a fixed income, asked for a senior discount and was told $90/month TWICE - quote #13989 went out at 12 x $100 = $1,200 with discountAmount 0 and no discount line item, and she CONVERTED it; job #8395 now bills $100/mo. The 10% was his to give (documented in the FAQ) - it just never reached the paperwork. $120/yr. OTHER LEAKS: double-quoting continued on Howell and Kamat (4 quotes, 2 decisions) four days after the close-rate analysis flagged it - on Howell he asked \"quick fix, right?\", got a yes, then overrode it and sent both; Kamat asked for a TEXT and got two emails, the exact lever that fixes unopened quotes. Bhardwaj was priced verbally with zero qualifiers, the address was asked for and then let go (\"I'll send my address in the message\"), and NO quote exists. Jasmine Wai Yu lost: opened with \"I would like one year service\" and \"I did once but they just come back\" - the beat-5 setup of the week, ignored entirely; he held the flat rate and $3/day against a $50 competitor but took no email, no phone, no quote. Lynnwood refused for the second time in four working days (98087 after 98037), and this caller said the WEBSITE claims coverage - Mo improvised a coverage roadmap nobody gave him and took no details. Susan Eibey volunteered prior service 10 years ago and was never looked up (same shape as Ott on 08-13). Needs Spencer: fix Worthen's price before her first invoice; rule on Lynnwood (sheet vs website); Tavis quoted $95/mo off-sheet on #13987; Christina Long's trap buckets moved on an active property and nobody checked the visit history; Friday 08-14 was never graded; the 98042 sheet line still names Cammeron, who has left."
+  },
+  {
+   "date": "2026-08-24",
+   "mode": "live",
+   "sales_calls": 9,
+   "service_calls": 4,
+   "scores": [
+    81,
+    60,
+    68,
+    59,
+    78,
+    78,
+    85,
+    78,
+    83
+   ],
+   "guarantee_said": 5,
+   "block_complete_before_price": 0,
+   "address_read_back": 7,
+   "service_day_correct_or_checked": 5,
+   "full_capture": 6,
+   "quotes_promised": 8,
+   "quotes_sent_on_time": 8,
+   "note": "Highest-volume day yet (9 sales calls), average 74.4. SERVICE DAY 5 of 5 correct and used as a closing line (98168 Tue, 98042 Mon+Fri twice, 98126 Tue, 98029 Thu+Fri, 98335 Wed). Hoover = FOUR BEATS BEFORE THE PRICE (70%, the net, new tunnels, territorial + 'not if but when') - second-best structural call on record, held at the 85 ceiling. TWO GATES: Elissaios was told 'every time they breed they have at least six or seven babies' - invented number, raw 76 capped to 60, and it was otherwise the only call all day where all five beats landed; Kelly Wan was told 'I am not supposed to send you another quote because you are a returning customer' - invented policy, she had to push three times and threaten to escalate to Spencer before he sent one (#14048, correct $375 but built as a QUOTE-LEVEL discount, not a Repeat Customer Discount line item). JOYCE HINKLEY: promised '10% discount if you go for monthly' on the 11-minute call, quote #14050 went out at 12 x $100 = $1,200 with discountAmount 0 - THE BEVERLY WORTHEN DEFECT FROM 08-17, REPEATED, same customer profile, five working days later, still awaiting_response. He also told her Corey is her tech; Gig Harbor is Luke's ground. Binhong Chen (service) graded D - asked for six or seven traps in specific beds, Mo started asking for the name, abandoned it, logged nothing. Six dead-air calls answered from 509-510-1950 - block it."
+  },
+  {
+   "date": "2026-08-25",
+   "mode": "live",
+   "sales_calls": 4,
+   "service_calls": 5,
+   "scores": [
+    83,
+    85,
+    79,
+    78
+   ],
+   "guarantee_said": 3,
+   "block_complete_before_price": 0,
+   "address_read_back": 3,
+   "service_day_correct_or_checked": 4,
+   "full_capture": 3,
+   "quotes_promised": 4,
+   "quotes_sent_on_time": 3,
+   "note": "Best day of the week, average 81.3 on 4 sales calls. Kjellesvik: THREE beats before the price (70%, the net, new tunnels), every qualifier asked, service day right twice, 85 at the ceiling - but he opened by telling a suspicious caller who asked 'are you local or a call centre' that he was 'an answering service, a receptionist', and the caller asked to be transferred to 'somebody for Tacoma'. He also asked for the full name before he was ready to write it and the caller snapped ('you weren't paying attention'). Irwin: every qualifier asked before the price - best qualifier discipline of the week - plus the poison-is-for-gophers teardown delivered unprompted and correctly, and 98516 Monday right. Masuda: THE DINNER BELL used as a diagnostic ('have you watered your lawn recently?' -> 'oh my God, I am giving them a buffet'), and he correctly told her NOT to stop watering; then sent the wrong plan (TMCP) without confirming, caught it himself, voicemailed her, and she called back for the Quick Fix. KROONQUIST IS THE MISS: returning customer, just spent $7-8k on a new yard, said 'I just want to kill as many as we can as fast as we can', got the $375 rate and the three-calls-a-year ROI - and NO QUOTE EXISTS IN JOBBER. He did call back twice (14:05, 14:07). SALLY GASSER: no-show complaint, her third and fourth contacts, and his first move was to contradict her ('he was there earlier yesterday around 7am') with no verification and no apology; he logged notes and promised to text Spencer - NO OUTBOUND CALL TO HER NUMBER EXISTS ALL WEEK. Systems: Holly Chea paid a deposit and got no confirmation text; Melissa Osvaldik's last visit does not appear on her file at all."
+  },
+  {
+   "date": "2026-08-26",
+   "mode": "live",
+   "sales_calls": 7,
+   "service_calls": 3,
+   "scores": [
+    74,
+    83,
+    78,
+    69,
+    76,
+    81,
+    74
+   ],
+   "guarantee_said": 6,
+   "block_complete_before_price": 0,
+   "address_read_back": 6,
+   "service_day_correct_or_checked": 3,
+   "full_capture": 4,
+   "quotes_promised": 7,
+   "quotes_sent_on_time": 7,
+   "note": "Average 76.4 on 7 sales calls. BEST CLOSE MECHANIC ON RECORD: Sandy Goodkin said she had approved, he was on her file and could see she had not, asked her to check, and STAYED ON THE LINE for four minutes while she got to her computer - 'I just made the payment'. That is the direct fix for the unopened-quote finding (17% vs 80%). Also saved an angry existing customer: Rasheed Hammonds, fresh mound the day after trap removal with a $450 invoice due, asked for $50/month - Mo read the catch history off the file (3 caught), used Spencer's $3-a-day line, probed for a veteran discount, invented nothing, escalated - and Hammonds CONVERTED to the full $1,200 TMCP 27 minutes later (#14075). THE DAY'S DEFECT: Sandy Goodkin asked 'somebody told me traps are illegal, is that true?' and got 'no, because it is the only method endorsed by wildlife professionals' - an invented endorsement, in Washington, on the one question the FAQ says to answer in Spencer's framing and nothing beyond. -8, and the reason she scored 69. Alice Collins was told 'they don't eat grubs at all' - used to dismiss the caller's own correct hypothesis; moles do eat grubs. Ashley Daniel was told mid-close that 'the best advisor nowadays is AI, so you could reach out to the AI' - she corrected him ('I trust the expert'). Caley Jansen caught the mole herself and asked for her $150 back - handled warmly, escalated, promised nothing, and HE CALLED HER BACK SEVEN MINUTES LATER (quote archived). Damien Gallot reports the outbound number 253-368-0888 is being captured as SPAM on Android - that number places all 59 of Mo's connected outbound calls a week. Seven TMCP quotes at $1,200 went out Tuesday 12:35-15:44 with no call behind any of them (98199 x3, 98112, 98122, 98108, 98125) - all still awaiting_response, $8,400 unchased."
+  },
+  {
+   "date": "2026-08-27",
+   "mode": "live",
+   "sales_calls": 6,
+   "service_calls": 4,
+   "scores": [
+    79,
+    51,
+    82,
+    85,
+    84,
+    79
+   ],
+   "guarantee_said": 6,
+   "block_complete_before_price": 0,
+   "address_read_back": 5,
+   "service_day_correct_or_checked": 4,
+   "full_capture": 5,
+   "quotes_promised": 6,
+   "quotes_sent_on_time": 5,
+   "note": "Average 76.7 on 6 sales calls, and the widest spread of the week (51 to 85). TOM PAINE = the model call: every qualifier asked, THREE beats before the price, guarantee, the $150 bridge, service day right ('we are there today'), full capture with read-backs, and the customer said 'you have already told me more about moles than I have ever known in my entire life'. 85 at the ceiling. Alberding 84 with all qualifiers and the correct single plan (he said monthly, he got TMCP only - no double quote). THE WORST PRICING CALL ON RECORD: Sarah Fuccillo, Orting 98360, said 'we have three acres but living area is like around one acre' and Mo answered 'I will give you a price for one acre' and quoted $450/$100 - the sheet is $500/$125 for 1-3 acres. Off-sheet quote = gate. He also captured NOTHING - no name, no email, no address - and the line dropped. 51. NEEDS A RULE FROM SPENCER: is the price tier the property size or the serviced area? Tom Paine said the moles were 'getting close to our septic system' and no hazard note was made - rubric v1.0 has no line for this, proposed as an amendment. James Alberding: 'is there a Corey? Corey said he started a mole company, so I thought it was his company' - Mo answered 'Corey is our best technician' and moved on; needs Spencer. Kailey Lacy's website callback request sat a couple of days before she gave up and rang in - she converted anyway. Zero of 26 sales calls this week delivered all five beats before the price; best was four (Hoover, 08-24)."
+  },
+  {
+   "date": "2026-08-28",
+   "mode": "live",
+   "sales_calls": 5,
+   "service_calls": 0,
+   "scores": [
+    80,
+    70,
+    76,
+    72,
+    62
+   ],
+   "guarantee_said": 4,
+   "block_complete_before_price": 0,
+   "address_read_back": 4,
+   "service_day_correct_or_checked": 2,
+   "full_capture": 4,
+   "quotes_promised": 5,
+   "quotes_sent_on_time": 4,
+   "tmcp_sold": 1,
+   "note": "Graded late on 2026-09-01. Average 72.0, weakest day since 08-11. TANNER ADEN WAS NEVER TOLD TMCP EXISTS - two qualifiers, zero beats, one option presented, sale closed 40 seconds in. Jeffrey Kenyon said 'I don't think I need that' to the annual and got no answer at all. Guarantee 4/5, service day 2/2 and used to close both times (98115 Tue, 98058 Wed+Fri), full capture 4/5, tone 15/15 on all five. Quote build clean and fast (4 of 4 inside a minute) except #14089 Donald Ward $405 - bare quote-level discount, fourth instance. 'Tony' 206-753-9127 resumed service on the phone and has no quote and no job. Mo also called Jean Vanwagoner back off a Voice Assist message and sold TMCP #14091 $1,200 - no recording, ungraded, and still has no job four days later."
+  },
+  {
+   "date": "2026-08-31",
+   "mode": "live",
+   "sales_calls": 11,
+   "service_calls": 9,
+   "scores": [
+    77,
+    85,
+    85,
+    84,
+    83,
+    83,
+    77,
+    84,
+    85,
+    82,
+    77
+   ],
+   "guarantee_said": 9,
+   "block_complete_before_price": 0,
+   "address_read_back": 9,
+   "service_day_correct_or_checked": 5,
+   "full_capture": 9,
+   "quotes_promised": 11,
+   "quotes_sent_on_time": 9,
+   "tmcp_sold": 3,
+   "note": "Graded late on 2026-09-01. BEST DAY ON RECORD - average 82.0 on 11 sales calls, and THREE TMCPs sold (Zoe Wu, John McManus, Kitrick Wulf) against 19 in the whole book. Service day 5/5 all used to close, guarantee 9/10, capture 9/10, address read back 9/9, tone 15/15. Self-corrected an acreage misquote live and unprompted twice (Heller 450->500, Matsumoto 500/125 right first time) - the 08-27 Fuccillo defect fixed. Refused a social-engineering caller asking him to log into the Jobber merchant account. BUT: the score is flattering him - 9 of 11 calls put Quick Fix first and gave TMCP one sentence with no reason, and on 2 of the 3 TMCPs the customer supplied the reason. Stephen Heller said the monthly was in his budget and was sent both quotes instead of being closed. Robert Evans was promised free monthly visits forever on a $450 Quick Fix. Aaron Burke got a full close and no quote. Zoe Wu's $120 discount is a bare quote-level discount again. Heller's and Glorias House quotes are filed under Spencer, not Mo."
+  }
+ ]
 }

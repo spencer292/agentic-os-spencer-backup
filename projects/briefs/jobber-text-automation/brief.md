@@ -339,3 +339,82 @@ field; move the number to the Team custom field; confirm the On My Way callback 
 - `tool-jobber` OAuth (working on this install).
 - `jobber-text-routing/lib-resolve.mjs` for ownership.
 - `callrail-faq` answer bank for reply content.
+
+### Phase 1 — runs 2 and 3 (2026-08-13 and 2026-08-18)
+
+**08-13: 22 sent, $2,140.** Queue was 28 eligible; 1 held by the activity guard (Brant Bengston
+had just replied about opening his gate). The run was cut short when Spencer used the browser
+mid-send — the CDP target navigated away and killed it at 26/28.
+
+**08-18: 7 sent, $1,830.** 2 correctly held: Bonnee Terrio (thumbs-upped "1 mole caught today"
+15 min earlier — live service conversation) and Belur Shivashankara, $1,050, where a human had
+already hand-texted him about the same invoice at 5:30 PM. That second catch is the guard doing
+exactly the job it was built for.
+
+**`compose box did not clear` is TRANSIENT — retry, do not investigate.** It appeared on 2 of 27
+sends on 08-13 (Bonnee, Scott Barker) and 3 of 7 on 08-18 (Brant, Scott, Kalen Radford). Scott
+and Kalen failed on BOTH runs, which read as client-specific — a blocked number, a carrier
+opt-out, a landline. It is none of those. Probing the threads showed compose boxes fully editable
+(`disabled:false`, `readOnly:false`), and **a plain re-run sent all three on the first attempt.**
+The failure is Jobber's UI not emptying the box inside the sender's 10-second proof-of-send
+window. Because the script never writes state on a failure, re-running the sender is always the
+correct and safe response — no client can be double-texted.
+
+Related: one probe of Kalen's thread returned **zero rows for a number that demonstrably has a
+thread** — the panel-degradation signature again. Confirms the existing reset-and-retry rule:
+never read "no conversation" as truth on the first try.
+
+**Do not touch the browser while a send runs.** Spencer's click on 08-13 produced
+`Inspected target navigated or closed` and ended the run. Nothing was lost — the state file made
+the resume exact — but the run has to be restarted.
+
+**The Chrome profile's Jobber session expires between sessions.** It was logged out on both
+08-13 and 08-18. Check for the login page before any run; the scripts attach to the FIRST page
+target, so open Jobber and confirm it is signed in first.
+
+### The real finding — this is not a collections problem (2026-08-13)
+
+Measured across all 71 past-due invoices via `Invoice.linkedCommunications.totalCount` and
+`dateViewedInClientHub`:
+
+| Signal | Count | Balance |
+|---|---:|---:|
+| Zero communications ever sent | **0** | $0 |
+| **Never opened in the client hub** | **61 of 71** | **$12,094** |
+| Client has NO email address on file | 4 | $725 |
+
+Every invoice was sent. **85% of the past-due balance sits on invoices the customer has never
+opened.** This is not a delinquency pile or a payment-lag pile — it is an *unseen-invoice* pile,
+which is why a plain text with a pay link cleared 40% of the 08-11 batch in two days with no
+escalation. It is also the strongest argument for the autopay campaign in Lane 3: autopay removes
+the requirement that anyone see anything.
+
+The 4 clients with no email on file — 1st Baptist Church $450, Jonae $50, Kathy Wilson $125,
+Greg Anderson $100 — cannot receive an invoice email at all. Every send to them goes nowhere.
+Text or phone is the only working channel, not a supplement.
+
+### Effectiveness to date
+
+| Run | Texted | Chased | Cleared within 2 days |
+|---|---:|---:|---|
+| 08-11 | 43 | $5,914 | **17 of 43 (40%)** |
+| 08-13 | 22 | $2,140 | past due 81 -> 71 invoices same day |
+| 08-18 | 7 | $1,830 | pending |
+
+Past-due invoice count over the campaign: **133 (07-06) -> 81 (08-13) -> 64 (08-18)**.
+
+### Human override of the activity guard (added 2026-08-18)
+
+The guard is deliberately cautious and will sometimes hold someone the office wants texted
+anyway — on 08-18 it held Bonnee Terrio because she had thumbs-upped a "1 mole caught today"
+message, and Spencer's call was to send regardless. There was no way to express that, so
+`send-collection-texts.mjs` gained two flags:
+
+    node ... send-collection-texts.mjs --only "Bonnee Terrio" --override-hold --send
+
+- `--only "Name"` restricts the run to clients matching that name (all tokens must appear).
+- `--override-hold` bypasses the recent-activity hold **and nothing else**. The state-file
+  duplicate guard, the two-factor phone+name identity check and the 670-char cap all still
+  apply, and the run prints a `!! --override-hold` banner so it never happens quietly.
+
+Use `mark-contacted.mjs` for the opposite case — telling the robot to leave someone alone.
