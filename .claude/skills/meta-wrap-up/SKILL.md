@@ -264,6 +264,9 @@ After the session summary, tell the user to run `/usage` to check their plan usa
 
 ---
 
+- 2026-09-25: **Stage and commit one logical group at a time - never stage a wide batch and commit afterwards.** A PostToolUse hook auto-commits whatever is staged, so a broad `git add` hands it everything before the intended `git commit` runs. On 2026-09-25 the entire mkt-linkedin-nurture campaign (its first-ever commit), plus `context/learnings.md` and `context/MEMORY.md`, were swept into commit `48b1b04` labelled "TMCP audit 09-15" - and it reached `backup/main` before it could be corrected, so the mislabel is permanent. Use `git add <paths> && git commit -m ...` as one chained command per group, then confirm with `git log -1 -- <path>` that the work landed under the message you actually wrote.
+- 2026-09-25: **Check for work already staged before adding your own.** Six uncommitted TMCP audit runs were sitting staged from an earlier session; committing them under a LinkedIn message would have buried them. Run `git diff --cached --name-only` first and commit pre-existing staged work separately, under its own message.
+
 ## Self-Update
 
 If the user flags an issue with the wrap-up process — wrong commit scope, missed files, bad summary format — update the `## Rules` section in this SKILL.md immediately with the correction and today's date. Don't just log it to learnings; fix the skill so it doesn't repeat the mistake.
