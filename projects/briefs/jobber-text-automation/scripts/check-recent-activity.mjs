@@ -54,8 +54,11 @@ export const isToday = isRecent;
 
 async function connect() {
   const targets = await (await fetch(`http://localhost:${CDP_PORT}/json`)).json();
-  const page = targets.find(t => t.type === 'page' && t.webSocketDebuggerUrl);
+  // Prefer a Jobber tab — the first page target is whatever the user left open (2026-09-15).
+  const pages = targets.filter(t => t.type === 'page' && t.webSocketDebuggerUrl);
+  const page = pages.find(t => /getjobber\.com/.test(t.url || '')) || pages[0];
   if (!page) throw new Error('No page target — run: node browser/launch.mjs');
+  if (!/getjobber\.com/.test(page.url || '')) throw new Error(`No Jobber tab open (first tab is ${page.url}). Open Jobber and sign in first.`);
   return new Promise((resolve, reject) => {
     const ws = new WebSocket(page.webSocketDebuggerUrl);
     let id = 0; const pending = new Map();

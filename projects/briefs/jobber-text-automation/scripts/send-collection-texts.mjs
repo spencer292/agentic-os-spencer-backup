@@ -47,14 +47,26 @@ const LIVE = argv.includes('--send');
 const num = (k, d) => { const i = argv.indexOf(k); return i >= 0 && argv[i + 1] ? Number(argv[i + 1]) : d; };
 const LIMIT = num('--limit', Infinity);
 const DELAY_S = num('--delay', 60);
+const str = k => { const i = argv.indexOf(k); return i >= 0 && argv[i + 1] ? argv[i + 1] : null; };
+// --only "Name"     restrict the run to one client (substring match on the queued name).
+// --override-hold   send even though the activity guard saw a human touch the thread today.
+//                   For explicit human instruction only ("text them anyway"). It never bypasses
+//                   the state-file duplicate guard, the two-factor identity check, or the cap.
+const ONLY = str('--only');
+const OVERRIDE_HOLD = argv.includes('--override-hold');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const digits = s => String(s || '').replace(/\D/g, '').replace(/^1(?=\d{10}$)/, '');
 
 // ---------------- minimal CDP client (browser/cdp.mjs is a shipped CLI, not importable) ---------
 async function connect() {
   const targets = await (await fetch(`http://localhost:${CDP_PORT}/json`)).json();
-  const page = targets.find(t => t.type === 'page' && t.webSocketDebuggerUrl);
+  // Prefer a Jobber tab. Taking the FIRST page target blindly attaches to whatever the user
+  // happened to leave open — on 2026-09-15 that was LinkedIn Sales Navigator — and the whole
+  // run then drives the wrong site.
+  const pages = targets.filter(t => t.type === 'page' && t.webSocketDebuggerUrl);
+  const page = pages.find(t => /getjobber\.com/.test(t.url || '')) || pages[0];
   if (!page) throw new Error('No page target — run: node browser/launch.mjs');
+  if (!/getjobber\.com/.test(page.url || '')) throw new Error(`No Jobber tab open (first tab is ${page.url}). Open Jobber and sign in first.`);
   return new Promise((resolve, reject) => {
     const ws = new WebSocket(page.webSocketDebuggerUrl);
     let id = 0; const pending = new Map();
@@ -174,9 +186,19 @@ const state = fs.existsSync(STATE_FILE) ? JSON.parse(fs.readFileSync(STATE_FILE,
 const ageH = (Date.now() - new Date(queue.generatedAt)) / 3600e3;
 if (ageH > 6) { console.error(`Queue is ${ageH.toFixed(1)}h old — rebuild it, someone may have paid since.`); process.exit(1); }
 
-const todo = queue.send.filter(r => !state.sent[r.stateKey]).slice(0, LIMIT);
+const normName = x => String(x).toLowerCase().replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
+let pool = queue.send.filter(r => !state.sent[r.stateKey]);
+if (ONLY) {
+  const toks = normName(ONLY).split(' ').filter(t => t.length > 1);
+  pool = pool.filter(r => toks.every(t => normName(r.name).includes(t)));
+  if (!pool.length) { console.error(`--only "${ONLY}" matched nothing sendable in the queue.`); process.exit(1); }
+}
+const todo = pool.slice(0, LIMIT);
 console.log(`\n${LIVE ? '*** LIVE SEND — real texts to real customers ***' : 'DRY RUN — nothing will be sent'}`);
-console.log(`  queued ${queue.send.length} · processing ${todo.length} · pacing ${LIVE ? DELAY_S + 's' : 'fast'}\n`);
+console.log(`  queued ${queue.send.length} · processing ${todo.length} · pacing ${LIVE ? DELAY_S + 's' : 'fast'}`);
+if (ONLY) console.log(`  --only "${ONLY}" → ${todo.map(r => r.name).join(', ')}`);
+if (OVERRIDE_HOLD) console.log('  !! --override-hold: activity guard BYPASSED by explicit instruction');
+console.log('');
 
 cdp = await connect();
 await cdp.send('Runtime.enable');
@@ -195,21 +217,39 @@ for (const [i, row] of todo.entries()) {
     // A client can hold several SMS-allowed numbers and the thread may live on any of them
     // (Jobber's primary is the usual home). Try each before concluding there is no conversation.
     const candidates = (row.smsPhones && row.smsPhones.length ? row.smsPhones : [row.phone]).map(digits);
-    let picked = null, matchedOn = null;
-    for (const cand of candidates) {
-      const f = await ev(FOCUS_SEARCH);
-      if (f !== 'ok') throw new Error(`search box: ${f}`);
-      await pressDelete();
-      await sleep(250);
-      await type(cand);
-      await sleep(2200);
-      const r = await ev(inspectRow(cand));
-      if (r.ok) { picked = r; matchedOn = cand; break; }
-      picked = r; // keep the last failure reason
+    const sweep = async () => {
+      let picked = null, matchedOn = null;
+      for (const cand of candidates) {
+        const f = await ev(FOCUS_SEARCH);
+        if (f !== 'ok') throw new Error(`search box: ${f}`);
+        await pressDelete();
+        await sleep(250);
+        await type(cand);
+        await sleep(2200);
+        const r = await ev(inspectRow(cand));
+        if (r.ok) return { picked: r, matchedOn: cand };
+        picked = r; // keep the last failure reason
+      }
+      return { picked, matchedOn };
+    };
+    let { picked, matchedOn } = await sweep();
+
+    // A zero-row read is SUSPECT, never truth on the first try: the message-center list stops
+    // returning rows when the panel degrades, and that reads as "this customer has no thread".
+    // Reset the panel and sweep once more before believing it. Roy Restad read as "no
+    // conversation found" here on 2026-09-15 while find-thread.mjs found his thread instantly.
+    if (!picked?.ok && picked?.rows === 0) {
+      await ev(`location.href=${JSON.stringify(HOME)}`);
+      await sleep(3500);
+      if (await ev(OPEN_PANEL) === 'open') {
+        const again = await sweep();
+        if (again.picked?.ok) { picked = again.picked; matchedOn = again.matchedOn; }
+        else picked = again.picked || picked;
+      }
     }
     const want2 = matchedOn || want;
     if (!picked.ok) { result = { ok: false, ...picked }; }
-    else if (isToday(picked.ts) && !isAutomated(picked.body)) {
+    else if (!OVERRIDE_HOLD && isToday(picked.ts) && !isAutomated(picked.body)) {
       // Someone here texted them today, or the customer wrote in. Either way a payment demand
       // is the wrong next message — hand it to a human.
       result = { ok: false, reason: `human/inbound message today (${picked.ts}): "${String(picked.body).slice(0, 60)}"`, label: picked.label };

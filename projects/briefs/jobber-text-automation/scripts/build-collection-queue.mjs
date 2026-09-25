@@ -30,6 +30,15 @@ const GQL_URL = 'https://api.getjobber.com/api/graphql';
 const MIN_BALANCE = 1;        // never chase a balance under this
 const DAILY_CAP = 40;         // carrier-safety cap per run; the rest roll to the next run
 
+// Scope the run to an age band, e.g. --min-days=15 --max-days=30 to work the current billing
+// cycle without the 100-day chronic accounts eating the daily cap (the queue sorts oldest first).
+const argNum = (flag, dflt) => {
+  const a = process.argv.find(x => x.startsWith(`--${flag}=`));
+  return a ? Number(a.split('=')[1]) : dflt;
+};
+const MIN_DAYS = argNum('min-days', 7);
+const MAX_DAYS = argNum('max-days', Infinity);
+
 function findEnvPath() {
   let dir = process.cwd();
   for (let i = 0; i < 8; i++) {
@@ -101,7 +110,7 @@ query($n:Int!, $cursor:String) {
   invoices(first:$n, after:$cursor, filter:{status: past_due}, sort:{key: ISSUED_DATE, direction: DESCENDING}) {
     totalCount
     nodes {
-      id invoiceNumber dueDate clientHubUri dateViewedInClientHub
+      id invoiceNumber issuedDate dueDate clientHubUri dateViewedInClientHub
       amounts { invoiceBalance }
       client { id firstName lastName name isCompany companyName isArchived phones { number smsAllowed primary description } }
     }
@@ -141,7 +150,10 @@ for (const inv of invoices) {
   // SMS-allowed number so the sender can fall back through them.
   const smsPhones = (inv.client?.phones || []).filter(p => p.smsAllowed);
   const phone = smsPhones.find(p => p.primary) || smsPhones[0];
-  const why = days < 7 ? `only ${days}d past due (normal lag)`
+  // The age band is applied per CLIENT after collapsing, never here. Banding at invoice level
+  // splits a client's balance: Deborah Larry (107 days, $400) would have been queued for her
+  // newest $100 invoice alone and told she was "15 days past due" (found 2026-09-15).
+  const why = days < MIN_DAYS ? `only ${days}d past due (below --min-days=${MIN_DAYS})`
     : bal < MIN_BALANCE ? `balance ${bal}`
     : inv.client?.isArchived ? 'client archived'
     : !phone ? 'no SMS-allowed phone'
@@ -209,9 +221,30 @@ for (const [clientId, invs] of byClient) {
   const maxDays = invs[0].days;
   const stage = maxDays <= 10 ? 'day7' : 'day11';
 
-  // one message per client per stage, ever
-  const key = `${clientId}:${stage}`;
-  if (state.sent[key]) { heldByState.push({ client: c.name, stage, sentAt: state.sent[key] }); continue; }
+  // Age band, client level: the client's OLDEST open invoice decides whether they belong in
+  // this run, and the message then covers everything they owe.
+  if (maxDays > MAX_DAYS) {
+    skipped.push({ client: c.name, why: `oldest invoice ${maxDays}d past due (above --max-days=${MAX_DAYS})`, balance: total });
+    continue;
+  }
+
+  // One message per client per stage PER INVOICE — which is what the brief's acceptance
+  // criterion says ("no duplicate ever sent for the same invoice-stage"). The original key was
+  // `clientId:stage` with no invoice, which silently suppressed a client for life: 17 clients
+  // ($1,640) on the September batch had been texted about a now-PAID August invoice and would
+  // never have been chased again (found 2026-09-15).
+  const oldest = invs[0];
+  const key = `${clientId}:${stage}:${oldest.invoiceNumber}`;
+  if (state.sent[key]) { heldByState.push({ client: c.name, stage, invoice: oldest.invoiceNumber, sentAt: state.sent[key], via: 'invoice' }); continue; }
+
+  // Legacy keys (pre-2026-09-15) carry no invoice number, so they can only be honoured by date:
+  // a send is about this invoice only if it happened at or after the invoice was issued.
+  // An invoice issued after the last text is one the customer has demonstrably never been told about.
+  const legacy = state.sent[`${clientId}:${stage}`];
+  if (legacy && new Date(legacy) >= new Date(oldest.issuedDate)) {
+    heldByState.push({ client: c.name, stage, invoice: oldest.invoiceNumber, sentAt: legacy, via: 'legacy-key, sent after invoice issued' });
+    continue;
+  }
 
   const row = {
     clientId, stage, maxDays, total, count: invs.length,

@@ -12,8 +12,11 @@ const query = process.argv.slice(2).join(' ');
 if (!query) { console.error('Usage: find-thread.mjs <name or phone>'); process.exit(1); }
 
 const targets = await (await fetch(`http://localhost:${CDP_PORT}/json`)).json();
-const page = targets.find(t => t.type === 'page' && t.webSocketDebuggerUrl);
+// Prefer a Jobber tab — the first page target is whatever the user left open (2026-09-15).
+const pages = targets.filter(t => t.type === 'page' && t.webSocketDebuggerUrl);
+const page = pages.find(t => /getjobber\.com/.test(t.url || '')) || pages[0];
 if (!page) { console.error('No page target — run: node browser/launch.mjs'); process.exit(1); }
+if (!/getjobber\.com/.test(page.url || '')) { console.error(`No Jobber tab open (first tab is ${page.url}). Open Jobber and sign in first.`); process.exit(1); }
 
 const cdp = await new Promise((resolve, reject) => {
   const ws = new WebSocket(page.webSocketDebuggerUrl);
