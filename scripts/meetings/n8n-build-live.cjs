@@ -5,7 +5,7 @@
  * Idempotency lives in the Extractor (skips UUIDs already in Notion), so an
  * overlapping daily window is cheap.
  *
- * Triggers: a daily Schedule (06:00) for production + a Webhook for manual testing.
+ * Triggers: a Schedule (every 2h, 07:00-22:00 — idempotent, Extractor skips captured UUIDs) for production + a Webhook for manual testing.
  *
  * Run:
  *   node scripts/meetings/n8n-build-live.cjs            # create + activate
@@ -82,8 +82,8 @@ return items;
 
 function workflow() {
   const nodes = [
-    { id: 'sched', name: 'Daily 06:00', type: 'n8n-nodes-base.scheduleTrigger', typeVersion: 1.2, position: [0, -120],
-      parameters: { rule: { interval: [{ field: 'cronExpression', expression: '0 6 * * *' }] } } },
+    { id: 'sched', name: 'Every 2h 07-22', type: 'n8n-nodes-base.scheduleTrigger', typeVersion: 1.2, position: [0, -120],
+      parameters: { rule: { interval: [{ field: 'cronExpression', expression: '0 7-22/2 * * *' }] } } },
     { id: 'test', name: 'Test Webhook', type: 'n8n-nodes-base.webhook', typeVersion: 2, position: [0, 100],
       parameters: { httpMethod: 'POST', path: TEST_PATH, responseMode: 'lastNode', options: {} }, webhookId: TEST_PATH },
     { id: 'ztoken', name: 'Zoom Token', type: 'n8n-nodes-base.httpRequest', typeVersion: 4.2, position: [260, 0],
@@ -100,7 +100,7 @@ function workflow() {
         options: { timeout: 200000 } }, onError: 'continueRegularOutput' },
   ];
   const connections = {
-    'Daily 06:00': { main: [[{ node: 'Zoom Token', type: 'main', index: 0 }]] },
+    'Every 2h 07-22': { main: [[{ node: 'Zoom Token', type: 'main', index: 0 }]] },
     'Test Webhook': { main: [[{ node: 'Zoom Token', type: 'main', index: 0 }]] },
     'Zoom Token': { main: [[{ node: 'List & Fetch', type: 'main', index: 0 }]] },
     'List & Fetch': { main: [[{ node: 'Call Extractor', type: 'main', index: 0 }]] },

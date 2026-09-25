@@ -43,7 +43,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   { command: "/str-ai-seo", label: "AI SEO", description: "Optimize for AI search engines", category: "skill" },
   { command: "/str-trending-research", label: "Trending Research", description: "Research what's trending in the last 30 days", category: "skill" },
   { command: "/viz-stitch-design", label: "Stitch Design", description: "Design UI screens using Stitch", category: "skill" },
-  { command: "/viz-nano-banana", label: "Image Gen", description: "Generate images via Gemini", category: "skill" },
+  { command: "/viz-image-gen", label: "Image Gen", description: "Generate images via GPT Image or Gemini", category: "skill" },
   { command: "/viz-excalidraw-diagram", label: "Diagram", description: "Generate Excalidraw diagrams", category: "skill" },
   { command: "/ops-cron", label: "Schedule", description: "Schedule recurring tasks", category: "skill" },
 

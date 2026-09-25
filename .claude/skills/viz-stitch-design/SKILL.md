@@ -7,7 +7,7 @@ description: >
   "landing page design", "mobile screen", "web layout", "wireframe to UI",
   "design this page", "UI for", "screen design". Pairs with tool-stitch for
   fetching existing designs and frontend-design for implementation.
-  Does NOT trigger for generating images (use viz-nano-banana), diagrams
+  Does NOT trigger for generating images (use viz-image-gen), diagrams
   (use viz-excalidraw-diagram), or implementing code from designs.
 allowed_tools:
   - mcp__stitch__*

@@ -75,7 +75,11 @@ def search_x(
     payload = {
         "model": model,
         "tools": [
-            {"type": "x_search"}
+            # Dates belong in the tool spec, not only in the prompt: this is the
+            # API's native date filter. Asking for the window in prose alone
+            # leaves it to the model's discretion, which is how a "last 30 days"
+            # search quietly returns older posts.
+            {"type": "x_search", "from_date": from_date, "to_date": to_date}
         ],
         "input": [
             {

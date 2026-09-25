@@ -1,125 +1,63 @@
-# 2026 SEO/GEO/AEO Research Notes
+# Research Notes — pointer and retired-claims register
 
-Recency anchor for str-onpage-audit. Refresh quarterly.
+**Status: this file is no longer a research source.** It was the skill's recency anchor until 2026-09-02. Every landscape claim now lives in one place.
 
-> **Updated 2026-05-31.** The authoritative, fully-cited version of these standards now lives in `clients/got-moles/projects/briefs/mole-content-authority/.planning/research/METHOD.md` (~40 live 2026 sources). Read METHOD.md as the primary benchmark; this file is quick-reference. Key changes: (1) **off-page brand/entity presence is the #1 AI-visibility lever** (web mentions r=0.664, YouTube r=0.737) — bigger than on-page; top-10↔AI-Overview overlap collapsed ~76%→17–38%, so ranking is no longer the gate to citation. (2) **FAQ rich results removed 2026-05-07** — keep FAQPage for AI extraction only. (3) **Speakable downgraded** to optional BLUF-only. (4) **Schema field rigor > presence** (`sameAs`/`knowsAbout`/`dateModified`/`mainEntityOfPage`). (5) **Cited-statistic cadence** ≈ 1 per 150–200 words (Princeton +40%). (6) **Freshness is a primary citation signal** (~50% of AI citations <13 weeks; visible "Last updated" + dateModified). (7) **Depth beats breadth** on clusters. (8) Google March 2026 core update down-weights templated/scaled pages 30–60% unless genuinely specific. Pixelmojo Radar is now a *secondary* benchmark.
+> **The landscape authority is `.claude/skills/str-ai-seo/references/search-landscape-2026-09.md`** at the install root. It is sourced, dated and confidence-labeled, and it is shared by every skill in the chain. Read it instead of this file. Where anything here and that file disagree, that file wins.
 
-**Last refresh:** 2026-05-31 (METHOD.md research pass; supersedes 2026-05-08 Pixelmojo-only baseline)
-**Next refresh trigger:** new major Google/LLM citation pattern shift, METHOD.md re-run, or quarterly default.
+**Last refresh:** 2026-09-02 (rewritten as a pointer; supersedes the 2026-05-31 METHOD.md pass and the 2026-05-08 Pixelmojo-only baseline).
+**Next refresh trigger:** the landscape file's own quarterly cadence, or a named Google core or spam update.
 
----
-
-## 2026 AI search citation patterns (the recency benchmark)
-
-Source: Pixelmojo Radar 2026-05-08 + Phase 0 patches.
-
-### High-impact AEO patterns (Pixelmojo high-priority recommendations)
-
-1. **SpeakableSpecification with cssSelector array** — tells voice assistants + AI Overviews which DOM to read aloud and cite. Pattern: `cssSelector: ['h1', 'main h2']`. Article + WebPage schemas.
-
-2. **Article schema completeness** — datePublished + **dateModified** (separate fields, both required). Plus server `Last-Modified` HTTP header (separate signal from dateModified).
-
-3. **FAQPage aggregation rule** — multi-FAQ-block pages emit ONE combined FAQPage at page level, not one per block. Per-block emission silently drops 80%+ of questions from JSON-LD.
-
-4. **Data extractability patterns** — HTML tables for comparisons (extracted verbatim), ordered lists for steps, distinct StatBlock components for citable numbers.
-
-5. **Organization schema enrichment** — `knowsAbout` (topical authority signal), `hasOfferCatalog` with explicit pricing (hallucination-correction signal), complete `sameAs` array.
-
-6. **BreadcrumbList sitewide** — every non-root page.
-
-7. **Hallucination correction loop** — when AI providers state wrong facts, multi-surface correction (llms.txt + schema + verified-fact callouts + press placements + Wikidata) + 7-30 day re-test cycle.
-
-### Brand-mention 3× correlation (vs backlinks)
-
-2026 research: brand mentions correlate **0.664 with AI search visibility vs 0.218 for backlinks**. Implication: brand-mention strategy is the primary signal, backlinks are a footnote. Linkable assets > outreach (build the thing journalists/AI cite, then announce it).
-
-### AI Overview triggering rates (2026)
-
-- "near me" informational queries trigger AIO **76.9%** of the time
-- pure transactional Map Pack queries trigger AIO **only 7%**
-
-Implication: for local-service brands, the AI citation surface is informational, not transactional. Don't over-rotate to chase the 7% transactional AIO.
-
-### Bing weighted equal to ChatGPT
-
-Pixelmojo weights Bing/Copilot equal to ChatGPT for AI citation tracking. Bing Places + Apple Business Connect feed multiple surfaces (Bing/Yahoo/Microsoft Copilot/Windows Search; Apple Maps/Siri/Spotlight) — claim early.
+Confidence keys: **[P]** primary documentation, **[S]** named study with a stated sample, **[U]** unverified or unreachable primary.
 
 ---
 
-## 2026 Google Search Quality + Helpful Content
+## Why this file was gutted
 
-- **Helpful Content Update Dec 2025** — topical authority through hub-spoke clusters is now a meaningful ranking signal (not just a content-marketing concept)
-- **8 query intent categories** (Google quality rater guidelines 2026 evolution beyond classic 4): Informational, Navigational, Commercial, Transactional, Short fact, Comparison, Instruction, Consequence
-- **For local-service:** Local-pack sub-intent of Commercial matters; AIO triggers heavily on "near me" informational
+A September 2026 audit found this file carrying roughly twenty dated statistics, several of which contradicted each other, contradicted the root skill, or had no reachable primary source. The scoring rubric was rewarding at least one signal the skill's own rule had already deprecated. Rather than patch numbers in four places, the chain now keeps landscape facts in one file and skills keep only their own rules.
 
----
+## What this skill still acts on
 
-## 2026 Core Web Vitals (verify in CRO + page-build, not in this audit)
+Five numbers, all in the landscape file, all repeated in SKILL.md where they are used:
 
-For reference (str-cro-audit handles in Step 5):
-- **LCP** ≤ 2.5s (largest contentful paint)
-- **INP** ≤ 200ms (interaction to next paint — replaced FID March 2024)
-- **CLS** ≤ 0.1 (cumulative layout shift)
+| Fact | Tier | Where it bites |
+|---|---|---|
+| 73% of sites block AI crawlers somewhere (Otterly, 1M+ citations, Jan–Feb 2026) | [S] | Pillar 1 exists and runs first |
+| Schema shows no citation uplift: Ahrefs difference-in-differences, 1,885 treated vs 4,000 control, 2026-05-11, −4.6% / +2.4% / +2.2% | [S] | Pillar 6 demoted to correctness and entity binding |
+| Word count vs AI Overview citation correlation 0.04 (Ahrefs, 174,048 pages) | [S] | No word-count targets anywhere |
+| FAQ rich results removed: notice 2026-05-07, features gone June 2026, API data gone August 2026 | [P] | FAQPage not scored, not a deliverable |
+| AI-cited content is 25.7% fresher on average (Ahrefs); 65% of AI bot hits target past-year content (Seer, Oct 2025) | [S] | Pillar 7 requires a substantive change, not a timestamp bump |
 
----
-
-## 2026 Anchor distribution + internal-linking research
-
-Per `str-internal-links` skill methodology:
-- **Anchor distribution target:** 40% branded / 30% keyword (15-25% exact-match) / 30% generic-LSI
-- **Page depth:** strategic pages within 2 clicks; all important pages within 3
-- **Cross-link nearby cities (local-service):** +7% organic traffic (SearchPilot split test)
-- **Pages with at least one exact-match anchor:** receive 5× more traffic (Zyppy 23M-link study)
-- **Internal-link density sweet spot:** 40-50 total per page; 2-5 contextual per 1,000 words
-- **Orphan page recovery:** 76.6% of previously orphan pages improve when internal links added (Niche Pursuits 108-link case study)
+Everything else — surface prevalence, local ranking weights, engine-by-engine behavior, measurement limits — is read from the landscape file at run time.
 
 ---
 
-## 2026 Local SEO ranking weights
+## Retired claims register
 
-- **Proximity** ~55% (uncontrollable — searcher distance from GBP centroid)
-- **GBP signals** 32%
-- **Reviews** 16-20%
-- **On-page** 19%
-- **Primary GBP category** = single highest controllable factor
-- **Pro photos** = +35% CTR (Semrush 2026)
+These were asserted in this file before 2026-09-02 and are now wrong, unsourced, or owned elsewhere. Listed so that a future reader who finds them quoted in an old audit knows why they disappeared.
 
----
-
-## Trust signal optimal range (CRO-adjacent)
-
-Per `str-cro-audit`:
-- 1-3 trust signal types optimal
-- 7+ types hurts credibility by ~8%
-
----
-
-## What changed in 2026
-
-- INP replaced FID (March 2024)
-- AI Overview rollout broadly (2025 → 2026)
-- llms.txt becoming standard (2025 → 2026)
-- BreadcrumbList sitewide became table-stakes
-- Speakable schema rewards measurably (Pixelmojo high-impact)
-- Brand mentions overtook backlinks for AI visibility correlation
-- Pixelmojo Radar (and equivalent) became recurring 3rd-party AEO benchmark
-- INP-passing requires careful JS bundle + 3rd-party tag management
+| Retired claim | Verdict | Replacement |
+|---|---|---|
+| "Top-10 to AI-Overview overlap collapsed ~76% → 17–38%, so ranking is no longer the gate to citation" | **Retired.** Single-source, and it conflicts with a larger-sample finding | **[S]** seoClarity, 432,000 keywords: 97% of AI Overviews cite a top-20 source. Resolution: **AI Overviews are organic-rank coupled, AI Mode is fan-out coupled** |
+| "~50% of AI citations are under 13 weeks old" | **Retired.** No traceable methodology | **[S]** AI-cited content 25.7% fresher on average, ~368-day gap (Ahrefs); 65% of AI bot hits target past-year content (Seer) |
+| "Cited-statistic cadence of one per 150–200 words; Princeton +40% generative visibility" | **Retired as a scored rule.** The principle survives, the cadence and the figure do not | Pillar 2.3 scores "at least one specific, attributable, quotable claim per major section" |
+| "Pure transactional Map Pack queries trigger AI Overviews only 7%" | **Retired.** Not reproduced anywhere reachable | **[S]** Whitespark 540-query study: transactional local fires the Local Pack ~93%; informational local fires AI Overviews ~92%; hybrid ~97% |
+| "Helpful Content Update Dec 2025 made hub-spoke topical authority a ranking signal" | **Retired.** No such named update | **[S]** The helpful content system was folded into core ranking; the cadence is now near-continuous rather than named updates |
+| "Eight query intent categories per a 2026 quality rater guidelines evolution" | **Retired.** No 2026 revision found | **[P]** The September 2025 Quality Rater Guidelines edition is current |
+| "Google March 2026 core update down-weights templated/scaled pages 30–60%" | **Retired.** Google publishes no winners-and-losers data and the third-party volatility figures are unverified | **[P]** Doorway and scaled-content policies still apply, enforcement is unchanged, and **[U, practitioner consensus]** the common 2026 outcome for thin location pages is silent suppression rather than a manual action. This is now the blocking doorway gate |
+| "llms.txt is becoming standard" | **Debunked** | **[P]** Google, 2026-06-15: not required for Search visibility or rankings. No engine documents consuming it. Do not build one; if one exists, leave it |
+| "Speakable schema rewards measurably" | **Retired** | Optional, never scored. See `aeo-patterns-2026.md` |
+| "Brand mentions correlate 0.664 with AI visibility versus 0.218 for backlinks" | **Kept, re-sourced and relabeled** | **[S]** Ahrefs, 75,000 brands, published 2025-12-12: YouTube mentions 0.737, branded web mentions 0.664, branded anchors 0.511–0.628, backlinks and referring domains ~0.218–0.27. Ahrefs' own caveat: "correlation isn't causation." **This drives `str-authority-strategy`, not this skill.** On-page work does not move it |
+| "'Near me' informational queries trigger AI Overviews 76.9%" | **Kept, re-sourced** | **[S]** Search Engine Land zero-click study. Still true, now read from the landscape file |
+| Anchor distribution 40% branded / 30% keyword / 30% generic; exact-match anchors get 5x traffic; 76.6% of orphan pages improve; cross-linking nearby cities gives +7% | **Moved out of this skill** | Owned by `str-internal-links`. Two of them conflicted with each other in that skill's own references, and the city cross-linking figure now conflicts with the city-page linking cap. Do not quote any of them from here |
+| Local ranking weights: proximity ~55%, GBP 32%, reviews 16–20%, on-page 19% | **Retired.** They summed to 122% | **[S]** Whitespark 2026 weights, owned by `str-ai-seo-local`: GBP ~32%, reviews ~20%, on-page ~15%, behavioral ~9%, links ~8%, citations ~6%, social ~5% |
+| "Professional photos give +35% click-through rate" | **Retired.** Unverified | Nothing. Do not quote it |
+| "1–3 trust signal types optimal; 7+ hurts credibility by ~8%" | **Moved out** | Conversion territory. Owned by `str-cro-audit` |
+| "Pixelmojo Radar is the recurring third-party AEO benchmark" | **Retired as the primary** | DataForSEO AI Optimization (`llm_mentions`, `llm_responses`) is the primary recency benchmark. Pixelmojo is optional and its absence is not a finding |
 
 ---
 
-## Refresh notes
+## Still true, still used
 
-**Next refresh items to research live:**
-- New Pixelmojo report deltas
-- Google AI Overview rollout updates
-- Any LLM citation pattern shift (e.g. Anthropic / OpenAI changing citation behaviour)
-- New schema types or required fields introduced by schema.org
-- Bing Webmaster Tools "AI Performance" report changes (launched Feb 2026)
-
-**Sources to check on quarterly refresh:**
-- Pixelmojo blog + methodology docs
-- Google quality rater guidelines (latest)
-- Bing Webmaster Tools AI Performance documentation
-- Anthropic / OpenAI citation behaviour documentation
-- schema.org changelog
-- Major SEO research outlets (Semrush, Ahrefs, Search Engine Journal, Search Engine Land — for 2026 study aggregations)
+- **[P] Core Web Vitals are unchanged: LCP, INP, CLS.** LCP under 2.5s, INP under 200ms, CLS under 0.1. INP replaced FID in March 2024. **[S]** INP is the most commonly failed metric at around 43% of sites over threshold, so it carries the most weight in Pillar 9. Numbers now come from the Lighthouse endpoint rather than being deferred to `str-cro-audit`.
+- **[P] Bing Webmaster Tools AI Performance** shipped as a public preview on 2026-02-10, including Grounding Queries — the phrasing AI used to retrieve a page. UI only, no API. Accept it as a manual paste.
+- **[P] Googlebot fetches the first 2MB of HTML**, clarified February 2026. This is the JavaScript payload check in Pillars 1 and 9.

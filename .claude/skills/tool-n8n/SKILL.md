@@ -26,6 +26,11 @@ something specific.
 - **Always give the editor link after creating/updating:** `{N8N_BASE_URL}/workflow/{id}`.
 - **Update = read-modify-write.** Fetch the current workflow JSON, change only what is needed, PUT it back.
 - **Never delete a workflow without explicit confirmation naming it.**
+- **If you ever create a throwaway workflow, you must tear it down properly.** n8n refuses to
+  delete a live workflow (`409 Cannot delete a published workflow`) and unpublishing is async,
+  so `delete` runs deactivate → archive → delete with a retry. **Always check that it succeeded.**
+  A fire-and-forget DELETE is what left 4,652 orphaned active workflows on the ATP instance in
+  Aug 2026. Canonical implementation: `scripts/lib/n8n-temp-workflow.cjs` in the root install.
 
 ## Script usage
 
@@ -37,6 +42,8 @@ node .claude/skills/tool-n8n/scripts/n8n-api.mjs create <file.json>       # crea
 node .claude/skills/tool-n8n/scripts/n8n-api.mjs update <id> <file.json>  # replace nodes/connections/settings
 node .claude/skills/tool-n8n/scripts/n8n-api.mjs activate <id>            # only on explicit user ask
 node .claude/skills/tool-n8n/scripts/n8n-api.mjs deactivate <id>
+node .claude/skills/tool-n8n/scripts/n8n-api.mjs archive <id>             # soft-delete
+node .claude/skills/tool-n8n/scripts/n8n-api.mjs delete <id>              # deactivate -> archive -> delete
 node .claude/skills/tool-n8n/scripts/n8n-api.mjs executions [workflowId]  # recent runs + status
 ```
 

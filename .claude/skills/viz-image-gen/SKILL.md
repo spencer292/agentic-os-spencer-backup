@@ -1,6 +1,6 @@
 ---
 name: viz-image-gen
-version: 2.0.0
+version: 2.1.6
 description: >
   Interactive visual direction and image generation via GPT Image or Gemini.
   Uses the 6-Element Framework (Subject, Framing, Lighting, Mood, Medium, Style)
@@ -25,6 +25,8 @@ Generate images using GPT Image 2 or Gemini 3 Pro Image. The skill's value is in
 
 Read `skill-pack/config/sys-config.md` → `## Paths` section before any path-dependent step. It resolves `{decoupled_base}`, `{env_file}`, `{brand_context}`, and `{projects_base}` to absolute paths set by the installer. Substitute these placeholders wherever they appear below.
 
+If `skill-pack/config/sys-config.md` does not exist (e.g. when this skill runs inside a host that doesn't use the skill-systems installer), resolve the placeholders relative to the project root instead: `{env_file}` → `.env`, `{brand_context}` → `brand_context/`, `{projects_base}` → `projects/`, and `{decoupled_base}` → the project root itself.
+
 ## Context Needs
 
 | File | Load level | Purpose |
@@ -34,9 +36,9 @@ Read `skill-pack/config/sys-config.md` → `## Paths` section before any path-de
 
 No brand_context files needed. This skill produces visuals, not branded copy.
 
-## Icon resolution — STOP trying to draw icons inline
+## Icon resolution — resolve by name before drawing
 
-When a composition references an icon by name (e.g., `{ type: vector, subtype: svg-icon, name: "flame" }`), **DO NOT** draw it with `<svg><circle/path/>` inline. Use the resolver script:
+When a composition references an icon by name (e.g., `{ type: vector, subtype: svg-icon, name: "flame" }`), run the resolver instead of hand-drawing `<svg><circle/path/>` inline; it returns exact, cached, on-brand vectors, and inline drawing signals the resolver was skipped. Use the resolver script:
 
 ```bash
 uv run .claude/skills/viz-image-gen/scripts/fetch_icon.py \
@@ -60,7 +62,7 @@ CDN-fetched SVGs are CACHED to `brand_context/visual-identity/icons/{name}.svg` 
 **If the resolver returns "not found in any source" (exit 2):**
 
 1. **Don't trust your first name guess.** The resolver requires an EXACT filename match (no fuzzy matching). Before escalating, `ls` the local commons (`.claude/skills/viz-image-gen/references/icons/commons/`) to see what's actually there, and try 3–5 alternative names that match what's on disk (e.g., "sunburst-8pt" exists but "sunburst" does not; "pen-01" exists but "pen" does not).
-2. **Triage by shape type, not just name.** The CDNs (Simple Icons, Lobehub, Devicon) are **brand-logo-focused** — they will NEVER return generic geometric shapes (scalloped badges, sunbursts, callout frames, ribbons, abstract decorations). For those, skip the CDN round entirely and decide between:
+2. **Triage by shape type, not just name.** The CDNs (Simple Icons, Lobehub, Devicon) are **brand-logo-focused** — they will never return generic geometric shapes (scalloped badges, sunbursts, callout frames, ribbons, abstract decorations). For those, skip the CDN round entirely and decide between:
    - **Inline SVG** — preferred for primitive geometric shapes (badges, bursts, frames, decorative borders). Deterministic, vector-perfect, scales infinitely, mathematically symmetric. Write the `<path>` directly.
    - **AI generation** — only when the shape carries texture, illustration, or organic/painterly qualities that SVG can't express.
 3. **Only escalate to `subtype: ai-illustration` after both steps above.** Drawing branded/known icons inline as `<svg><circle/>` is a bug — it signals you skipped the resolver. But drawing a primitive geometric shape inline as SVG is the *correct* answer when the resolver legitimately has nothing.

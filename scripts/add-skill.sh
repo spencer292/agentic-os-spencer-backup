@@ -3,6 +3,26 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 case "$(uname -s)" in MINGW*|MSYS*|CYGWIN*) REPO_ROOT="$(cygpath -m "$REPO_ROOT")" ;; esac
+
+# Installing a shared skill is a root operation. Clients inherit the root skill
+# pack, so installing here would create a client-local fork that never receives
+# root updates rather than adding a skill.
+if [[ "$(basename "$(dirname "$REPO_ROOT")")" == "clients" ]]; then
+  CLIENT_SLUG="$(basename "$REPO_ROOT")"
+  SKILL_ARG="${1:-<skill-name>}"
+  echo "Error: this is the client workspace ${CLIENT_SLUG}, not the Agentic OS root." >&2
+  echo "" >&2
+  echo "Clients inherit every shared skill from the root, so skills are installed there." >&2
+  echo "Run this from the root instead:" >&2
+  echo "  bash scripts/add-skill.sh ${SKILL_ARG}" >&2
+  echo "" >&2
+  echo "It becomes available in this client automatically, with no copy and no sync." >&2
+  echo "" >&2
+  echo "To write a skill that only ${CLIENT_SLUG} should have, create it directly at" >&2
+  echo "  clients/${CLIENT_SLUG}/.claude/skills/<name>/SKILL.md" >&2
+  exit 1
+fi
+
 source "$REPO_ROOT/scripts/lib/python.sh"
 CATALOG="$REPO_ROOT/.claude/skills/_catalog/catalog.json"
 INSTALLED_JSON="$REPO_ROOT/.claude/skills/_catalog/installed.json"

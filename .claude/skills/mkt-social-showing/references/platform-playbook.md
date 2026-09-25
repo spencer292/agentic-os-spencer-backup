@@ -36,8 +36,9 @@ TikTok/Shorts/Reels; this is the showing-level summary + the things that change 
 - **Facebook:** slightly longer, warmer framing; good for an older owner-manager audience.
 
 ## The CTA link (canonical — don't placeholder it)
-The primary lead-gen CTA is the **Freedom Score Quiz → https://scoreapp.atpbos.com/freedom**
-(hosted on ScoreApp; "The 5-Minute Assessment That Reveals Your Biggest Bottlenecks"). Goes in the
+The primary lead-gen CTA is the **Freedom Score Quiz → https://allthepower.co.uk/quiz**
+(native on the ATP site since 2026-08-12; "The 5-Minute Assessment That Reveals Your Biggest
+Bottlenecks"). The old ScoreApp URL is retired — never use it. Goes in the
 **LinkedIn first comment** (never the post body) and in YouTube descriptions / IG link-in-bio prompts.
 Source of truth: `brand_context/assets.md`. Other entry points: podcast, the book, the newsletter,
 community. Check `brand_context/` before ever writing "{confirm URL}".

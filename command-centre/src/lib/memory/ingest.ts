@@ -27,7 +27,12 @@ import type { MemoryStore } from "./store";
 import type { Embedder } from "./embedder";
 import { assertValidScope } from "./scope";
 import { parseVectorLiteral } from "./embedding";
-import { chunkMarkdown, type Chunk } from "./chunker";
+import {
+  chunkMarkdown,
+  parseCaptureBlocks,
+  captureMetadataForChunk,
+  type Chunk,
+} from "./chunker";
 import type { IndexJobReason, Scope, SourceType } from "./types";
 
 export interface IngestContentOptions {
@@ -177,6 +182,9 @@ export async function ingestContent(
         embeddingModel: embedder.model,
       }),
     }));
+    // Capture-block provenance (turn id + transcript path) for the transcript
+    // recall rung. Empty for non-capture sources, so this is a no-op there.
+    const captureBlocks = parseCaptureBlocks(content);
     const embeddingsByKey = force
       ? new Map<string, number[]>()
       : await findReusableChunkEmbeddings(
@@ -207,6 +215,8 @@ export async function ingestContent(
       if (!embedding) {
         throw new Error(`Missing embedding for chunk key ${chunk.chunkKey}`);
       }
+      const captureMeta =
+        captureBlocks.length > 0 ? captureMetadataForChunk(chunk, captureBlocks) : null;
       await store.insertChunk({
         sourceId: src.id,
         sourceScope: scope,
@@ -227,6 +237,7 @@ export async function ingestContent(
         embedding,
         embeddingModel: embedder.model,
         embeddingDim: embedder.dim,
+        metadata: captureMeta ?? undefined,
       });
       chunksInserted += 1;
     }
@@ -245,6 +256,63 @@ export async function ingestContent(
     if (jobId) {
       const message = error instanceof Error ? error.message : String(error);
       await recordJobFinish(store, jobId, "failed", existing?.id ?? null, message);
+    }
+    throw error;
+  }
+}
+
+export interface DeleteSourceOptions {
+  /** Why this delete ran — tagged on the index_jobs row. Default 'file_change'. */
+  reason?: IndexJobReason;
+  /** Record an index_jobs audit row. Default true. */
+  trackJobs?: boolean;
+}
+
+export interface DeleteSourceResult {
+  /** False when no source matched scope + sourcePath (a no-op, not an error). */
+  deleted: boolean;
+  /** The deleted source's id, or null when nothing matched. */
+  sourceId: string | null;
+}
+
+/**
+ * Delete a source (and its chunks, via ON DELETE CASCADE) when its file is gone
+ * from disk. The indexer is pull-based and never notices a file's absence, so
+ * callers that do (e.g. a watcher's unlink event) call this directly. A no-op
+ * (`deleted: false`) when nothing matches scope + sourcePath.
+ */
+export async function deleteSource(
+  store: MemoryStore,
+  scope: Scope,
+  sourcePath: string,
+  opts: DeleteSourceOptions = {},
+): Promise<DeleteSourceResult> {
+  assertValidScope(scope);
+  const { reason = "file_change", trackJobs = true } = opts;
+
+  const jobId = trackJobs ? await recordJobStart(store, scope, sourcePath, reason) : null;
+
+  try {
+    const { rows } = await store.client.query<{ id: string }>(
+      `DELETE FROM memory_sources
+        WHERE source_path = $1 AND visibility = $2
+          AND COALESCE(team_id, '')   = COALESCE($3, '')
+          AND COALESCE(client_id, '') = COALESCE($4, '')
+          AND COALESCE(user_id, '')   = COALESCE($5, '')
+        RETURNING id`,
+      [sourcePath, scope.visibility, scope.teamId, scope.clientId, scope.userId],
+    );
+    const sourceId = rows[0]?.id ?? null;
+
+    // sourceId is already gone by now — index_jobs.source_id is ON DELETE SET
+    // NULL, not a dangling reference, so the finish row must point at null too.
+    if (jobId) await recordJobFinish(store, jobId, "succeeded", null, null);
+
+    return { deleted: sourceId !== null, sourceId };
+  } catch (error) {
+    if (jobId) {
+      const message = error instanceof Error ? error.message : String(error);
+      await recordJobFinish(store, jobId, "failed", null, message);
     }
     throw error;
   }

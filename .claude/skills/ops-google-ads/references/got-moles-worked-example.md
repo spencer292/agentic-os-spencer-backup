@@ -34,7 +34,7 @@ workspace (being stood up separately) — this file is the bridge so nothing is 
 ## Where the originals live
 
 - **Remote:** `agent-os-orig/main` (this repo has it fetched as remote `agent-os-orig`).
-- **65 operational scripts + data** at `scripts/got-moles-*.mjs` and `scripts/_got-moles-*.json`
+- **86 operational scripts + data** in the client-only `ops-got-moles-ads` skill, at `clients/got-moles/.claude/skills/ops-got-moles-ads/scripts/`
   (`_got-moles-ads-snapshot.json`, `_got-moles-existing-negatives.json` ~120 negs, `_got-moles-live-rsas.json`,
   `_got-moles-city-demand.json`).
 - **Full strategy wiki:** `clients/got-moles/brain/wiki/paid-search-google-ads.md`.

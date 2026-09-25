@@ -1,0 +1,53 @@
+{
+  "skill_name": "writ-draft",
+  "evals": [
+    {
+      "id": 0,
+      "name": "revise-over-athletic",
+      "prompt": "Apply this review and rewrite the passage. Piece: C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review/evals/inputs/00_over-athletic.md  Review report: C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review-workspace/iteration-1/eval-0/with_skill/outputs/review.md",
+      "files": ["C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review/evals/inputs/00_over-athletic.md", "C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review-workspace/iteration-1/eval-0/with_skill/outputs/review.md"],
+      "expected_output": "Revised passage that restores a flowing baseline, reserves athletic/three-word writing for ~one peak, keeps the fire opener, and uses [[NEEDS:]] placeholders for the missing lived specifics rather than inventing them.",
+      "assertions": [
+        {"text": "Restores a flowing baseline and reserves athletic/three-word writing for roughly one peak (de-saturates the staccato)"},
+        {"text": "Preserves the fire opener ('The deal collapsed.')"},
+        {"text": "Does NOT invent lived specifics (the sum, the deal name, who Mike is) — leaves [[NEEDS:]] placeholders instead"}
+      ]
+    },
+    {
+      "id": 1,
+      "name": "revise-flat-corporate",
+      "prompt": "Take this website copy and the review of it, and rewrite it to fix what the review flagged. Copy: C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review/evals/inputs/03_flat-corporate.md  Review report: C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review-workspace/iteration-1/eval-3/with_skill/outputs/review.md",
+      "files": ["C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review/evals/inputs/03_flat-corporate.md", "C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review-workspace/iteration-1/eval-3/with_skill/outputs/review.md"],
+      "expected_output": "Rewritten copy with a fire/consequence/reader-facing opener, 'we'->'you', a call-to-mirror earning the CTA, a [[NEEDS:]] placeholder for a real client result, and no device-soup.",
+      "assertions": [
+        {"text": "Adds a fire/consequence reader-facing opener and converts the bare CTA toward a call-to-mirror"},
+        {"text": "Turns 'we/our' into 'you' (puts the reader in the copy)"},
+        {"text": "Placeholders a real client result/specific rather than fabricating one, and does not swing to device-soup"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "draft-from-notes",
+      "prompt": "Turn these notes into the opening of a chapter. Notes: C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-draft/evals/inputs/notes-chapter.md",
+      "files": ["C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-draft/evals/inputs/notes-chapter.md"],
+      "expected_output": "A drafted chapter opening applying the methodology with dosage discipline (consequence-led open, one focus device, peaks not pervasive), using the supplied £1.2M figure and leaving [[NEEDS:]] placeholders for the missing specifics (staff count, the daughter's event, the duration) without inventing them.",
+      "assertions": [
+        {"text": "Applies the methodology with dosage discipline (consequence-led open, one focus device, peaks not pervasive) — not device-soup"},
+        {"text": "Uses the supplied specific (£1.2M turnover) and leaves [[NEEDS:]] placeholders for the missing ones (staff count, daughter's event, duration)"},
+        {"text": "Does NOT invent the missing specifics"}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "revise-toyb-ch1",
+      "prompt": "Rewrite chapter 1 applying this review. Chapter: C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review/evals/inputs/04_toyb-ch01.md  Review report: C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review-workspace/iteration-1/eval-4/with_skill/outputs/review.md",
+      "files": ["C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review/evals/inputs/04_toyb-ch01.md", "C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-review-workspace/iteration-1/eval-4/with_skill/outputs/review.md"],
+      "expected_output": "Revised Chapter 1 that applies the review's top fixes (costly admission or a [[NEEDS:]] for it; de-staccato the back third; end on the reader's mirror not 'Sorry Chadette') while preserving the 'I divorced my AI' opener and the emotional sequencing; surgical, not wholesale; no invented specifics.",
+      "assertions": [
+        {"text": "Applies the review's top fixes: plants a costly admission (or a [[NEEDS:]] for it), de-staccatos the back third, ends on the reader's mirror not 'Sorry Chadette'"},
+        {"text": "Preserves what the review marked working: the 'I divorced my AI' opener and the emotional sequencing"},
+        {"text": "Surgical, not a wholesale rewrite; no invented specifics (placeholders where the author's real cost is needed)"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "Produces a complete Map plus posture and device scores against Dennis Ross with line/section evidence",
+      "passed": false,
+      "evidence": "General 7/10 review; no structured posture/device scoring against Dennis Ross"
+    },
+    {
+      "text": "Gives a coherent verdict against the 9/10 book gate with the top 1-3 highest-leverage fixes",
+      "passed": true,
+      "evidence": "7/10 with an explicit 'path to a 9' and concrete fixes"
+    },
+    {
+      "text": "Prescriptions are located and specific (named sections/lines), not generic advice",
+      "passed": true,
+      "evidence": "Specific moves: cut the restatements, seed EVOLVE with one line, subordinate one big idea"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  }
+}

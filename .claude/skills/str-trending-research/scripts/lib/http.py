@@ -3,12 +3,16 @@
 Adapted from https://github.com/Ronnie-Nutrition/last30days-skill
 """
 
+import gzip
 import json
 import os
 import sys
+import threading
 import time
 import urllib.error
 import urllib.request
+from contextlib import contextmanager
+from contextvars import copy_context
 from typing import Any, Dict, Optional
 from urllib.parse import urlencode
 
@@ -42,8 +46,9 @@ def request(
     json_data: Optional[Dict[str, Any]] = None,
     timeout: int = DEFAULT_TIMEOUT,
     retries: int = MAX_RETRIES,
+    raw: bool = False,
 ) -> Dict[str, Any]:
-    """Make an HTTP request and return JSON response."""
+    """Make an HTTP request and return JSON response (or raw text if raw=True)."""
     headers = headers or {}
     headers.setdefault("User-Agent", USER_AGENT)
 
@@ -62,8 +67,13 @@ def request(
     for attempt in range(retries):
         try:
             with urllib.request.urlopen(req, timeout=timeout) as response:
-                body = response.read().decode('utf-8')
+                payload = response.read()
+                if response.headers.get("Content-Encoding", "").lower() == "gzip":
+                    payload = gzip.decompress(payload)
+                body = payload.decode('utf-8', errors='replace')
                 log(f"Response: {response.status} ({len(body)} bytes)")
+                if raw:
+                    return body
                 return json.loads(body) if body else {}
         except urllib.error.HTTPError as e:
             body = None
@@ -128,3 +138,100 @@ def get_reddit_json(path: str) -> Dict[str, Any]:
     }
 
     return get(url, headers=headers)
+
+
+# ---------------------------------------------------------------------------
+# Keyless Reddit tier helpers.
+#
+# Ported from last30days v3.18.4 (MIT) — https://github.com/mvanhorn/last30days-skill
+# Reddit's public .json endpoints now answer 403 to most clients, so the free
+# path is RSS + shreddit HTML + the arctic-shift archive. Those tiers need a
+# browser User-Agent, text (not JSON) responses, and a shared throttle so a
+# multi-query run doesn't stampede the same host.
+# ---------------------------------------------------------------------------
+
+BROWSER_USER_AGENT = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/124.0.0.0 Safari/537.36"
+)
+
+
+def get_text(
+    url: str,
+    timeout: int = DEFAULT_TIMEOUT,
+    retries: int = 2,
+    accept: str = "*/*",
+    headers: Optional[Dict[str, str]] = None,
+) -> Optional[str]:
+    """Fetch a URL as text. Returns None on any failure so tiers can fall through."""
+    merged = {
+        "User-Agent": BROWSER_USER_AGENT,
+        "Accept": accept,
+        "Accept-Language": "en-US,en;q=0.9",
+    }
+    if headers:
+        merged.update(headers)
+    try:
+        return request("GET", url, headers=merged, timeout=timeout, retries=retries, raw=True)
+    except HTTPError as e:
+        log(f"get_text failed ({e}): {url}")
+        return None
+
+
+class RateLimiter:
+    """Token-bucket throttle shared by every keyless Reddit tier."""
+
+    def __init__(self, rate_per_sec: float, burst: Optional[int] = None):
+        self.rate = rate_per_sec
+        self.capacity = burst if burst is not None else max(1, int(rate_per_sec))
+        self._tokens = float(self.capacity)
+        self._last = time.monotonic()
+        self._lock = threading.Lock()
+
+    def acquire(self) -> None:
+        while True:
+            with self._lock:
+                now = time.monotonic()
+                elapsed = max(0.0, now - self._last)
+                self._tokens = min(self.capacity, self._tokens + elapsed * self.rate)
+                self._last = now
+                if self._tokens >= 1.0:
+                    self._tokens -= 1.0
+                    return
+                wait = (1.0 - self._tokens) / self.rate
+            time.sleep(wait)
+
+
+REDDIT_KEYLESS_LIMITER = RateLimiter(rate_per_sec=5.0, burst=5)
+
+
+def reddit_keyless_get_text(
+    url: str,
+    timeout: int = DEFAULT_TIMEOUT,
+    retries: int = 2,
+    accept: str = "*/*",
+    headers: Optional[Dict[str, str]] = None,
+) -> Optional[str]:
+    """get_text for the keyless Reddit tiers, throttled by the shared limiter."""
+    REDDIT_KEYLESS_LIMITER.acquire()
+    return get_text(url, timeout=timeout, retries=retries, accept=accept, headers=headers)
+
+
+def submit_with_context(executor, func, /, *args, **kwargs):
+    """Submit a worker carrying the caller's context (thread-local safety)."""
+    context = copy_context()
+    return executor.submit(context.run, func, *args, **kwargs)
+
+
+@contextmanager
+def tee_failures():
+    """Local failure sink.
+
+    The upstream engine threads a context-local failure sink through every
+    request so the run can report per-source status. We do not carry that
+    machinery, so this yields an empty list: callers that inspect it simply
+    see no recorded failures and fall through to their own error handling.
+    """
+    local = []
+    yield local

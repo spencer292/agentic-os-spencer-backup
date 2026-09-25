@@ -1,0 +1,22 @@
+{
+  "eval_id": 3,
+  "eval_name": "real-toyb-full-manuscript",
+  "prompt": "Give my whole book a managing-editor pass against the Dennis Ross methodology \u2014 does it hang together across chapters, is the arc working, am I repeating myself, and is anything inconsistent? The manuscript is at C:/Claude/agent-os-v3/agentic-os/brand_context/book-thinking-outside-your-brain.md",
+  "assertions": [
+    {
+      "text": "Produces a Manuscript Map naming the book's single spine/through-line, the reader, and the intended transformation"
+    },
+    {
+      "text": "Builds a Chapter Inventory across the manuscript and scores the seven dimensions (M1-M7) with chapter-located evidence"
+    },
+    {
+      "text": "Produces a continuity register and a repetition register (callback vs repeat) drawn from across chapters"
+    },
+    {
+      "text": "Gives a verdict against the manuscript gate with the top 1-3 highest-leverage structural moves"
+    },
+    {
+      "text": "Stays above the chapter \u2014 findings are about relationships between chapters / the whole book, not a per-chapter craft re-score"
+    }
+  ]
+}

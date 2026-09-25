@@ -1,0 +1,19 @@
+{
+  "eval_id": 0,
+  "eval_name": "continuity-and-repetition",
+  "prompt": "Here are the first three chapters of my book. Can you give it an editor's pass across the whole thing \u2014 does it hang together, am I repeating myself, anything inconsistent? The file is C:/Claude/agent-os-v3/agentic-os/.claude/skills/writ-editor/evals/inputs/00_continuity-repetition.md",
+  "assertions": [
+    {
+      "text": "Flags the cash-figure continuity contradiction (\u00a375 in Ch1 vs \u00a3750 in Ch3) and cites BOTH chapter locations"
+    },
+    {
+      "text": "Flags the full Excel/\u00a375 story as an unwitting repeat across Ch1 and Ch3 (told twice as a first-telling), not a callback"
+    },
+    {
+      "text": "Correctly identifies 'You have to believe' (Ch1 and Ch2) as a deliberate callback to keep, distinct from the repeat"
+    },
+    {
+      "text": "Prescribes a located structural move (e.g. reconcile the figure; reduce Ch3's retelling to a one-line callback) rather than a vague 'tighten it up'"
+    }
+  ]
+}

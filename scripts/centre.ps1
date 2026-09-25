@@ -157,12 +157,11 @@ if ($Clean -and (Test-Path ".next")) {
     Success "Cache cleared"
 }
 
-if (-not (Test-Path "node_modules")) {
-    Info "First run for the Command Centre - installing npm dependencies..."
-    npm install
-    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-    Success "Dependencies installed"
-    Write-Host ""
+node "scripts\ensure-dependencies.cjs"
+if ($LASTEXITCODE -ne 0) {
+    Fail "Command Centre dependencies could not be synchronized."
+    Info "Run: cd `"$CentreDir`"; npm ci"
+    exit 1
 }
 
 Write-Host ""

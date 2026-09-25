@@ -26,6 +26,7 @@ const os = require('os');
 const path = require('node:path');
 const { pipeline } = require('node:stream/promises');
 const { Readable } = require('node:stream');
+const { runTempWorkflow, hookNode, httpNode, reportLeaks } = require('../lib/n8n-temp-workflow.cjs');
 
 const ROOT = path.resolve(__dirname, '..', '..');
 const env = { ...process.env };                 // CI (GitHub Actions) injects the secrets as env vars
@@ -39,10 +40,8 @@ const ZACCT = env.ZOOM_ACCOUNT_ID, ZID = env.ZOOM_CLIENT_ID, ZSECRET = env.ZOOM_
 const NOTION = env.NOTION_API_TOKEN || env.NOTION_TOKEN;
 const NKEY = env.N8N_API_KEY;
 
-const N8N = 'https://allthepower.app.n8n.cloud/api/v1';
-const WEBHOOK_BASE = 'https://allthepower.app.n8n.cloud/webhook';
-const N8N_PROJECT = 'Dmp86aYd0evZH0Dr';
-const DOCS_CRED = { googleDocsOAuth2Api: { id: 'MP5lsnBo4QJCHbdZ', name: 'Google Docs account 4' } };
+// n8n base URL, webhook base, target project and the Drive-scoped credential now
+// live in scripts/lib/n8n-temp-workflow.cjs — the single owner of the temp-workflow flow.
 const ELEVATE_DRIVE = '0AKfRjuIGt6z3Uk9PVA';
 const ROOT_FOLDER = '1kCXNW2rDhQy_EPYjZ5Jvcfh8qL-4K36v'; // "Meeting Recordings" on Elevate 360
 const DATA_SOURCE_ID = 'be8400c3-cbbe-43f8-bfd9-32f18730b153';
@@ -111,41 +110,16 @@ function pickFiles(meeting) {
 }
 
 // ── n8n-credentialed Drive call (throwaway workflow) ──────────────────────────
+// Lifecycle AND teardown live in scripts/lib/n8n-temp-workflow.cjs. Do not re-inline
+// this — an un-checked DELETE here leaked 4,652 active workflows in Aug 2026.
 async function n8nHttp({ method, url, jsonBody, headers, fullResponse }) {
-  const hookPath = `zz-mva-${process.pid}-${Date.now().toString(36)}`;
-  const httpParams = {
-    method, url,
-    authentication: 'predefinedCredentialType', nodeCredentialType: 'googleDocsOAuth2Api',
-    options: fullResponse ? { response: { response: { fullResponse: true, neverError: true } } } : {},
-  };
-  if (headers) { httpParams.sendHeaders = true; httpParams.headerParameters = { parameters: headers }; }
-  if (jsonBody !== undefined) { httpParams.sendBody = true; httpParams.specifyBody = 'json'; httpParams.jsonBody = typeof jsonBody === 'string' ? jsonBody : JSON.stringify(jsonBody); }
-  const wf = {
-    name: `ZZ TEMP - MVA ${hookPath}`, settings: { executionOrder: 'v1' },
-    nodes: [
-      { id: 'wh', name: 'Hook', type: 'n8n-nodes-base.webhook', typeVersion: 2, position: [0, 0], parameters: { httpMethod: 'GET', path: hookPath, responseMode: 'lastNode' } },
-      { id: 'call', name: 'Call', type: 'n8n-nodes-base.httpRequest', typeVersion: 4.2, position: [220, 0], parameters: httpParams, credentials: DOCS_CRED },
-    ],
+  const out = await runTempWorkflow({
+    apiKey: NKEY,
+    tag: 'mva',
+    buildNodes: (hookPath) => [hookNode(hookPath), httpNode({ method, url, jsonBody, headers, fullResponse })],
     connections: { Hook: { main: [[{ node: 'Call', type: 'main', index: 0 }]] } },
-  };
-  const HJ = { 'X-N8N-API-KEY': NKEY, 'Content-Type': 'application/json' };
-  let id;
-  try {
-    const cr = await fetch(`${N8N}/workflows`, { method: 'POST', headers: HJ, body: JSON.stringify(wf) });
-    const cj = await cr.json();
-    if (!cr.ok) throw new Error(`n8n create ${cr.status}: ${JSON.stringify(cj).slice(0, 200)}`);
-    id = cj.id;
-    await fetch(`${N8N}/workflows/${id}/transfer`, { method: 'PUT', headers: HJ, body: JSON.stringify({ destinationProjectId: N8N_PROJECT }) });
-    await fetch(`${N8N}/workflows/${id}/activate`, { method: 'POST', headers: HJ });
-    let out = '';
-    for (let i = 0; i < 20; i++) {
-      await sleep(1500);
-      try { const run = await fetch(`${WEBHOOK_BASE}/${hookPath}`); out = await run.text(); if (run.ok && out) break; } catch {}
-    }
-    try { return JSON.parse(out); } catch { return out; }
-  } finally {
-    if (id) await fetch(`${N8N}/workflows/${id}`, { method: 'DELETE', headers: HJ });
-  }
+  });
+  try { return JSON.parse(out); } catch { return out; }
 }
 
 async function findOrCreateMonthFolder(yyyymm) {
@@ -304,4 +278,6 @@ async function sweep(token, days, batch) {
   else if (val('--query')) meeting = await findByQuery(token, val('--query'), months);
   else die('pass --uuid "<zoomUuid>", --query "<terms>", --sweep, or --init-notion.');
   await archiveOne(token, meeting);
-})().catch(e => die(e.stack || e.message));
+})()
+  .then(() => reportLeaks())
+  .catch(e => { reportLeaks(); die(e.stack || e.message); });

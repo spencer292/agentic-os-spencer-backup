@@ -10,9 +10,13 @@
 //                                              bulk move: tag a whole query into one area (+archive into the folder)
 const fs = require("fs");
 const path = require("path");
-const { getAccessToken, gapi, getLabelMap, ensureLabel } = require("./_lib.cjs");
+const { getAccessToken, gapi, getLabelMap, ensureLabel, accountFileSuffix } = require("./_lib.cjs");
 
-const RULES = JSON.parse(fs.readFileSync(path.join(__dirname, "area-rules.json"), "utf8"));
+// Per-account rules: area-rules.allthepower.json when GMAIL_ACCOUNT=allthepower,
+// falling back to the default area-rules.json (legacy atpbos mailbox).
+const rulesCandidate = path.join(__dirname, `area-rules${accountFileSuffix()}.json`);
+const RULES_PATH = fs.existsSync(rulesCandidate) ? rulesCandidate : path.join(__dirname, "area-rules.json");
+const RULES = JSON.parse(fs.readFileSync(RULES_PATH, "utf8"));
 const args = process.argv.slice(2);
 const opt = (n, d) => { const i = args.indexOf("--" + n); return i >= 0 ? (args[i + 1] && !args[i + 1].startsWith("--") ? args[i + 1] : true) : d; };
 const dryRun = !!opt("dry-run", false);

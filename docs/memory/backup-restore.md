@@ -40,15 +40,34 @@ This split gives you **two recovery paths** — pick by what you lost:
 1. **Regenerable memory (fastest for source-backed memory).** The memory corpus
    (daily logs, `.aos.md` summarized captures, and learnings) is
    derived from files in private git. If that is all you need, you do not even need
-   a database backup: reprovision, `npm run memory:migrate`, then
-   `npm run memory:reindex` rebuilds it from disk.
+   a database backup: reprovision, `npm run memory:migrate`, then run
+   `npm run memory:reindex -- --allow-local` for a private Solo rebuild or
+   `npm run memory:reindex -- --visibility system` for an intentional hosted
+   shared baseline.
 2. **Full / non-regenerable recovery.** The `search_events` audit history and any
    database rows created from sources that are not in git cannot be rebuilt by
    re-indexing — they only come back from a database backup. Restore with
    `memory:restore`.
 
-> When in doubt, take database backups. Path 1 is a convenience for the shared
-> corpus; path 2 is the real safety net.
+### Repair a local derived index
+
+If a local index contains duplicate legacy scopes or an incomplete schema,
+rebuild only the derived index:
+
+```bash
+cd command-centre
+npm run memory:backup
+npm run memory:reset -- --yes
+npm run memory:reindex -- --allow-local --force
+```
+
+`memory:reset` preserves the Markdown sources and the stable local user
+identity, recreates the current schema, and removes the bootstrap sentinel. It
+refuses hosted Postgres because shared TeamOS data may not be reconstructible
+from one machine. Normal updates never run this reset automatically.
+
+> When in doubt, take database backups. Path 1 is a convenience for the
+> source-backed corpus; path 2 is the real safety net.
 
 ## Prerequisites
 
@@ -164,15 +183,35 @@ the `vector` extension. Restoring onto plain Postgres fails with
 ## Local PGLite
 
 With no `MEMORY_DATABASE_URL` set, the store is local PGLite at
-`.command-centre/memory`. `memory:backup` gzip-tars that directory and
-`memory:restore` puts it back (moving the current one aside to
-`.command-centre/memory.bak-<ts>` first):
+`.command-centre/memory`. `memory:backup` packages the store together with
+`.command-centre/local-memory-user.json` and a versioned manifest. Restore
+opens the staged PGLite database, validates its memory schema and identity, then
+installs the store and its private owner together.
+The previous store and identity remain together under
+`.command-centre/memory-restore-backup-<ts>-<pid>/` for rollback.
 
 ```bash
 cd command-centre
 npm run memory:backup                                            # → pglite_memory_<ts>.tar.gz
 npm run memory:restore -- backups/memory/pglite_memory_<ts>.tar.gz --yes
 npm run memory:status                                            # counts match the backup
+```
+
+If the workspace identity is missing during backup, the command uses the only
+private `user_id` proven by the database without writing a new identity into the
+live workspace. Missing or ambiguous ownership stops the backup; after verifying
+the intended owner, retry with `memory:backup -- --local-user-id <id>`.
+
+Backups made before the manifest existed are still accepted. If the legacy
+archive contains `memory/local-user.json`, that identity is promoted to the
+current location. Otherwise restore uses the only private `user_id` present in
+the database. If there is no provable owner, or several private owners exist,
+restore stops without changing the live set; select the intended owner
+explicitly:
+
+```bash
+npm run memory:restore -- backups/memory/old-pglite.tar.gz \
+  --local-user-id local-<expected-id> --yes
 ```
 
 ## Troubleshooting
@@ -186,6 +225,7 @@ npm run memory:status                                            # counts match 
 | `server version mismatch` from `pg_dump` | Your client tools are older than the server. Install a `pg_dump` matching the server's major version. |
 | SSL errors (`no encryption` / `does not support SSL`) | Set `PGSSLMODE` — `require`/`no-verify` for TLS, `disable` for a Railway private URL. |
 | `Embedding dimension mismatch` after restore | The dump was built at a different dimension. Current memory uses BGE-M3 at 1024 dimensions; rebuild and reindex with `scripts/setup-memory.sh` or `scripts/setup-memory.ps1`. |
+| Legacy PGLite restore reports ambiguous/missing ownership | Verify the intended private owner, then pass it with `--local-user-id`. The live store is not changed on this error. |
 
 ## Related
 

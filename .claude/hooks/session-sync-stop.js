@@ -33,7 +33,7 @@ process.stdin.on("end", () => {
     return;
   }
 
-  const { taskId, port, syncMode = "managed", claudePid = null } = mapping;
+  const { taskId, port, syncMode = "managed", claudePid = null, profileKey = "solo" } = mapping;
   if (!taskId) return;
 
   const safePort = JSON.stringify(String(port || "3000"));
@@ -76,7 +76,7 @@ process.stdin.on("end", () => {
           port: ${safePort},
           path: urlPath,
           method,
-          headers: { "Content-Type": "application/json", "Content-Length": Buffer.byteLength(payload) },
+          headers: { "Content-Type": "application/json", "Content-Length": Buffer.byteLength(payload), "x-agentic-os-profile-key": ${JSON.stringify(profileKey)}, "x-agentic-os-profile-source": "hook" },
           timeout: 5000,
         }, (res) => {
           let data = "";

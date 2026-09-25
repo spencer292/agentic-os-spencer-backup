@@ -120,9 +120,9 @@ never duplicates chunks (a changed source replaces its chunks in place).
 cd command-centre
 export MEMORY_DATABASE_URL='postgres://USER:PASSWORD@HOST:PORT/agentic_memory'
 
-npm run memory:reindex -- --dry-run     # preview: sources + chunk counts, no writes
-npm run memory:reindex                   # backfill into hosted Postgres (scope: system)
-npm run memory:reindex                   # run again → all skipped, 0 chunks inserted
+npm run memory:reindex -- --visibility system --dry-run # preview only
+npm run memory:reindex -- --visibility system           # intentional shared baseline
+npm run memory:reindex -- --visibility system           # run again → all skipped
 ```
 
 Expected summary on the first run, then the idempotent second run:
@@ -143,14 +143,17 @@ curated memory), identical for everyone and safe to seed once.
 Sources under `clients/{slug}/` auto-scope to that client. **Run it once from the
 canonical workspace** — it is a backfill of shared memory, not a per-person
 push: do not have every team member seed their personal session captures into
-the shared `system` scope (per-user private memory belongs with the
-identity/grants work, which is a planned enhancement, not yet implemented).
+the shared `system` scope. Normal TeamOS session capture now goes to
+`memory_capture_events` staging first, and local solo AgenticOS capture uses a
+stable private local user id.
 
 **Guard rail.** Because the point is to seed *hosted* Postgres, the command
 **refuses to write the local PGLite store** when no `MEMORY_DATABASE_URL` is set
 — it exits rather than silently backfilling nowhere useful. Pass `--allow-local`
-to deliberately re-index the local store instead. Use `--force` for a full
-re-embed (for example after an embedding model upgrade).
+to rebuild a Solo installation; that local path defaults to the stable private
+user. Hosted Postgres has no default visibility: pass `--visibility system`,
+`team`, `client`, or `private` deliberately. Use `--force` for a full re-embed
+(for example after an embedding model upgrade).
 
 ---
 

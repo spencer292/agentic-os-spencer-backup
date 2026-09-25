@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Identifies that there is no clear through-line / single spine running across the chapters",
+      "passed": true,
+      "evidence": "Identified 'no thesis' and four competing genres/readers."
+    },
+    {
+      "text": "Flags the macro arc as flat or non-building (chapters interchangeable in order; no transformation)",
+      "passed": true,
+      "evidence": "Flagged 'no deliberate chapter order'; chapters don't build."
+    },
+    {
+      "text": "Prescribes structural moves at the manuscript level (name a spine, reorder, cut, or add a bridge) rather than per-chapter line edits",
+      "passed": true,
+      "evidence": "Gave an Option A restructure (lead with skydive; add intro frame + synthesis chapter); cut Ch3."
+    },
+    {
+      "text": "Stays above the chapter \u2014 does not reduce the review to scoring each chapter's internal craft in isolation",
+      "passed": true,
+      "evidence": "Stayed structural \u2014 did not collapse into per-chapter line edits."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "timing": {
+    "total_tokens": 53300,
+    "duration_ms": 89810,
+    "total_duration_seconds": 89.8
+  }
+}

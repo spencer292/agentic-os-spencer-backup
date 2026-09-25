@@ -1,0 +1,55 @@
+name: 00-brand-build
+version: 1.0.0
+description: Complete brand-from-scratch pipeline — audience, strategy, positioning, voice, visual identity, brand book + designed guidelines deck
+entry_skill: 00-brand-build
+category: "00"
+skills_dir: skills
+get_started: "Ready? Try: /00-brand-build YourBrandName   (or just say: build a brand)"
+
+summary: |
+  INPUT: brand name (+ any existing brand material)
+     |
+     v
+  0. READINESS  -> every decision gate listed up front, you approve the run
+  1. AUDIENCE   -> mkt-icp             -> brand_context/icp.md            [gate: validate]
+  2. STRATEGY   -> mkt-brand-strategy  -> brand-strategy.md               [gate: LOCK]
+  3. ANGLES     -> mkt-positioning     -> positioning.md                  [gate: pick angle]
+  4. VOICE      -> mkt-brand-voice     -> voice-profile.md + samples.md   [gate: voice test]
+  5. VISUAL     -> mkt-visual-identity -> visual-identity/ (tokens, logos,
+                   (+ ssc-template-builder agent)  templates, mockups)    [gate: approval]
+  6. ASSEMBLY   -> brand-book.md/.pdf + brand-deck.json/.pdf (A4, agency-standard)
+     |
+     v
+  OUTPUT: populated brand_context/ (permanent brand memory) + two PDFs in ~/Downloads
+
+skills:
+  - 00-brand-build
+  - mkt-icp
+  - mkt-brand-strategy
+  - mkt-positioning
+  - mkt-brand-voice
+  - mkt-visual-identity
+  - viz-image-gen
+  - tool-humanizer
+  - tool-pdf-generator
+
+agents:
+  - ssc-template-builder
+
+directories:
+  - projects/00-brand-build/
+
+services:
+  - key: GEMINI_API_KEY
+    required: false
+    description: Primary image generation — logo exploration + brand-in-action mockups (recommended)
+  - key: OPENAI_API_KEY
+    required: false
+    description: Fallback image generation (gpt-image-1) when Gemini is unavailable
+  - key: FIRECRAWL_API_KEY
+    required: false
+    description: Auto-scrape an existing website in the voice stage (falls back to WebFetch / manual paste)
+
+prerequisites:
+  - system: [node, python3, chrome]
+  - python: [pillow, pymupdf, numpy, scipy, pyyaml]

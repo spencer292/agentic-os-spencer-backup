@@ -137,9 +137,9 @@ If the dedup check caused a skip, reply: `Already saved — no change needed.`
 *Updated automatically when the user flags issues. Read before every run.*
 
 - Never exceed 2,500 characters in `context/MEMORY.md`. Consolidate first; if that fails, ask the user what to drop.
-- Always check for duplicates before adding. Substring match across the whole file.
+- Always check for duplicates before adding, because the file is capped and repeats waste the budget. Substring match across the whole file.
 - Prefer **replace** over **add** when updating an existing fact.
-- Never quote secret values in MEMORY.md — reference env var names only.
+- Never quote secret values in MEMORY.md, because this file is committed and read into context every session; reference env var names only.
 - Always confirm with the user before **remove** — show the exact line being deleted.
 - Mid-session writes persist to disk but only take effect on the next session. Tell the user this in the confirmation message so they understand why.
 - Do not create new sections beyond Active Threads / Environment Notes / Pending Decisions. If a fact doesn't fit, ask the user where it belongs.

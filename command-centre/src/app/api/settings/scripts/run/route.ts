@@ -100,8 +100,8 @@ function buildAllowedEnv(
   scriptId: string,
   env?: Record<string, string>,
   memoryDatabaseUrl?: string,
-): NodeJS.ProcessEnv {
-  const allowedEnv: NodeJS.ProcessEnv = {};
+): Partial<NodeJS.ProcessEnv> {
+  const allowedEnv: Partial<NodeJS.ProcessEnv> = {};
 
   if (scriptId === "update") {
     const rawToken = env?.[UPDATE_TOKEN_ENV];

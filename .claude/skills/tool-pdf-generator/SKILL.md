@@ -81,6 +81,7 @@ pandoc "{input_md}" -o "{output_pdf}" -V geometry:margin=1in -V fontsize=11pt
 
 When weasyprint, python-markdown, and pandoc are all unavailable (common on Windows; installs often denied), render with Chrome:
 
+0. A ready-made converter ships with this skill: `scripts/md2html.js` (`node scripts/md2html.js in.md out.html`). It implements everything in step 1 below — headings, pipe tables, fenced code, nested lists, blockquotes, frontmatter stripping, code-first escaping — plus a clean A4 serif stylesheet with a gold-accent h1. Use it as-is or copy and restyle the CSS block; only hand-write a new converter if the doc needs markdown features it lacks. Validated 2026-07-24 on a 9-document reference library.
 1. Convert markdown → styled HTML with a small dependency-free Node script. Handle: headings, GitHub pipe tables, fenced code, blockquotes, lists, bold/italic/inline-code; strip YAML frontmatter; escape `& < >` *inside* code blocks first so ASCII/box-drawing diagrams aren't parsed as tables. Embed CSS with `@page { size: A4; margin: 18mm 16mm; }`, a serif body, and `table, pre, blockquote { page-break-inside: avoid; }`.
 2. Print to PDF with Chrome (or Edge):
    ```bash
@@ -90,7 +91,31 @@ When weasyprint, python-markdown, and pandoc are all unavailable (common on Wind
    The `file://` URL needs forward slashes and the full absolute path.
 3. There's usually no `pdftoppm` to rasterize for a visual check — verify STRUCTURALLY instead: grep the generated HTML for expected `<table>`/`<h2>`/`<h3>` counts, and confirm no frontmatter or unconverted `**` leaked through.
 
-## Step 4: Deliver
+## Step 4: Review Every Page (mandatory)
+
+A PDF is not done when it renders; it is done when every page has been LOOKED AT and
+passes. This step exists because spot-checking failed in practice: a footer overlap
+shipped to the user on 2026-07-02 after only the "dense" pages were reviewed, and a
+thumbnail-scale glance missed a box running through a footer.
+
+After the FINAL render (any edit after review invalidates the review — re-render and
+re-review):
+
+1. Screenshot the rendered HTML at full page scale: Chrome headless `--screenshot`
+   with `--window-size=794,{page_count*1123}` (A4 at 96dpi).
+2. Crop into individual pages with PIL at 1123px steps.
+3. View EVERY page image at full size — never judge from the tall strip thumbnail;
+   at that scale overlaps are invisible.
+4. Check each page for: content colliding with the running header or footer; boxes or
+   text clipped at the page edge; absolutely-positioned elements overlapping text
+   (e.g. a centred footer icon vs a long footer line); `nowrap` lines clipping at a
+   container edge; em dashes or other brand-rule violations in client-facing text.
+5. Fix, re-render, and re-review every page whose layout inputs changed (a shared CSS
+   edit means all pages using that class).
+
+Only deliver when every page has passed on the final render.
+
+## Step 5: Deliver
 
 - Save PDF to the appropriate output directory
 - Copy to `~/Downloads/` for easy access
@@ -98,7 +123,7 @@ When weasyprint, python-markdown, and pandoc are all unavailable (common on Wind
 
 Always save output to disk. This is not optional.
 
-## Step 5: Collect Feedback
+## Step 6: Collect Feedback
 
 Ask: "How does the PDF look? Any adjustments to formatting or layout?"
 
@@ -114,6 +139,12 @@ Log feedback to `context/learnings.md` under `## tool-pdf-generator` with date a
 - No headers/footers unless explicitly requested
 - No cover page unless explicitly requested
 - 2026-06-26: On Windows / locked-down machines the fallback is Chrome headless + a Node md→HTML step (Step 3) — weasyprint/pandoc are not installed and installs are blocked. Don't claim PDF generation is impossible; reach for Chrome.
+- 2026-07-02: Visual verification without pdftoppm: Chrome headless `--screenshot` with `--window-size=794,{pages*1123}` captures the whole fixed-page document as one tall PNG; crop per page with PIL (installed) at 1123px steps and Read the crops. Caught a page-overflow that a structural grep could not. Note: Chrome cannot write to the 8.3-short-form scratchpad path (Access denied); use the long-form C:/Users/roy.castleman/... path.
+- 2026-07-02: ATP branded docs: source logos ONLY from the official pack at `brand_context/Branding/ALL THE POWER LOGO/PNG/` — horizontal wordmark #01-08 (01 musk, 06 sky, 07 black, 08 white), icon+wordmark lockup #09-16, icon-only #17-24 (17 musk, 18 gold, 24 white outline). Firefly assets now carry official art (logo-musk=#01, logo-sky=#06, icon-musk=#17, icon-gold=#18, icon-white=#24).
+- 2026-07-02: ROOT CAUSE of the "squashed logo" Roy caught (initially misdiagnosed as a bad asset): an `<img>` that is a DIRECT child of a column flex container gets cross-axis stretched to full width by the default `align-items:stretch`, distorting its aspect ratio — even with `height:Xmm;width:auto`. Fix: give the img `align-self:flex-start` or wrap it in a row-flex div. Check every logo/img inside `display:flex;flex-direction:column` containers; verify the rendered aspect ratio matches the source file's.
+- 2026-07-04: Never size the review screenshot from `grep -c 'class="page"'` — compound classes (e.g. `class="page cover"`) make it undercount; the 9-page Firefly proposal counted as 6 and three pages went unreviewed until re-measured. Grep `'class="page'` (no closing quote), or better: screenshot tall, derive pages = image height ÷ 1123, and review them ALL. Also: Chrome `--screenshot` needs an ABSOLUTE output path (a relative path fails "Access is denied" even after cd; an absolute 8.3 short-form path works). And fixed-height A4 sections CLIP overflow silently (no reflow) — overflow eats the footer first, so check every page's footer is present at its normal height.
+
+- 2026-08-13: Flowing (non-fixed-height) branded docs need `break-inside:avoid` on EVERY callout box (`.ask`, `.flag`, `.mark`, `.okn`, `.callsheet`, `.legend`) plus `break-after:avoid` on headings. Without it a dark recommendation panel split across a page boundary, and because an explicit `.pgbrk` followed it, page 3 rendered almost entirely blank. Rule of thumb: **never combine a manual page break with content that is allowed to split** — set the avoid rules and let the flow paginate itself. Caught by the mandatory page review on the Bob's Business audit; 7 pages became a clean 6.
 
 ## Self-Update
 

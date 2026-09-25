@@ -1,6 +1,6 @@
 # Building New Skills
 
-Always ask for reference skills first. Never guess at methodology.
+Ask for reference skills before writing one, and never guess at methodology, so the new skill matches an established pattern instead of an invented one.
 
 ---
 
@@ -61,3 +61,60 @@ Declare dependencies in a `## Dependencies` section in `SKILL.md`.
 
 - Format: `{category}-{skill-name}` in kebab-case
 - Cannot contain "claude" or "anthropic"
+
+Category prefixes: `mkt` (marketing) · `str` (strategy) · `ops` (operations) ·
+`viz` (visual) · `fin` (finance) · `meta` (system) · `tool` (utility). The YAML
+`name` field matches the folder name exactly, and output folders reuse the same
+prefix (`projects/{category}-{output-type}/`). Add a new category only when the
+first skill in a new domain is built.
+
+## Three-layer architecture
+
+| Layer | Files | Purpose |
+|-------|-------|---------|
+| Agent Identity | `AGENTS.md`, `CLAUDE.md`, `context/SOUL.md`, `context/USER.md` | Operating rules + Claude runtime |
+| Skills Pack | `.claude/skills/{category}-{skill-name}/` | Capabilities that grow over time |
+| Brand Context | `brand_context/` | Client brand data |
+
+## Skill & MCP Reconciliation
+
+Compare what is on disk against what is registered. Fix additions silently; confirm removals with the user.
+
+This section covers **shared root skills only**, meaning skills under the Agentic OS root `.claude/skills/`. A skill under `clients/{slug}/.claude/skills/` exists for that client alone and must not be added to the root registry, context matrix, learnings, or README. Document it inside the client instead. See "Client-only skills" below.
+
+- **New skill on disk, not registered?** Read its frontmatter + `SKILL.md`, add it to the Skill Registry (`docs/skill-registry.md`) and Context Matrix (`docs/context-matrix.md`), add a section to `context/learnings.md`, scan for external-service dependencies, and update `README.md`. Tell the user what was registered.
+- **Skill registered but its folder is missing?** Ask before removing it from the registry, `README.md`, and `context/learnings.md`.
+- **New MCP in `.claude/settings.json`, not in the README?** Add it under a Connected Tools section and tell the user.
+- **Documented MCP removed from `settings.json`?** Ask before removing it from the README.
+- **New external service detected?** Add it to `.env.example` and the README, and tell the user the fallback.
+
+## Skill Local Overrides
+
+Every skill can have a `SKILL.local.md` beside its `SKILL.md`:
+
+- `SKILL.md` — the base definition, shipped by upstream, never modified by the user.
+- `SKILL.local.md` — user-owned additions: extra `## Rules` entries, section overrides, context notes. Never overwritten by updates.
+
+When invoking any skill, check for `SKILL.local.md` and, if present, read it alongside `SKILL.md`; local rules take precedence. Format mirrors `SKILL.md` — at minimum a `## Rules` section with dated entries:
+
+```
+## Rules
+- 2026-05-03: always do X when Y
+```
+
+## Client-only skills
+
+Shared skills live only at the Agentic OS root and are never copied into `clients/`. A session started in a client folder inherits the whole root pack through Claude Code's project-root skill discovery. A client's `.claude/skills/` holds only client-owned material.
+
+To build a skill for one client, create it at `clients/{slug}/.claude/skills/{skill-name}/SKILL.md`. Everything above about frontmatter, folder naming, and quality still applies. What does not apply is registration: a client-only skill is not part of the shared catalog, so leave `docs/skill-registry.md`, `docs/context-matrix.md`, `context/learnings.md`, and `README.md` alone. Reconciliation of those files is about root skills.
+
+Two things to watch:
+
+- **Do not reuse a root skill's folder name.** A client skill with the same name shadows the root one inside that client and stops receiving root updates, freezing it at the version you wrote. To extend a root skill for one client, add `SKILL.local.md` beside the root skill's entry in the client folder instead.
+- **To hide a root skill from one client**, do not delete or copy anything. Add it to `skillOverrides` in that client's `.claude/settings.local.json`, merging into the existing JSON:
+
+```json
+{ "skillOverrides": { "skill-name": "off" } }
+```
+
+That file is user-owned and no update ever overwrites it. The setting is per client, so the root and every other client keep the skill. A client created later starts with the exclusions shared by every client that has overrides (`add-client.sh` seeds them and reports it); clients with no overrides abstain, and an exclusion made in only some of them is not inherited. Use `remove-skill.sh` at the root only when the skill should be gone everywhere.

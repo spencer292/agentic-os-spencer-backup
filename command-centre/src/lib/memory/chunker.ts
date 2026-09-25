@@ -1,16 +1,10 @@
 /**
- * AIOS Memory Schema — markdown-aware chunking.
+ * Memory — markdown-aware chunking.
  *
- * Splits a source document into the chunk rows the store embeds and persists.
- * The legacy memsearch CLI chunked internally; the new pipeline owns chunking
- * explicitly so the boundaries, headings, and token estimates are reproducible
- * and testable.
- *
- * Strategy: walk the document tracking the nearest markdown heading, accumulate
- * text under that heading, and flush a chunk when a new heading starts or the
- * accumulated size reaches the target. A single oversized section is hard-split
- * into overlapping windows so no chunk exceeds the hard cap. Output is pure and
- * deterministic — same input, same chunks.
+ * Splits a source document into chunk rows for the store to embed and persist.
+ * Walks the document by markdown heading, flushing a chunk when a new heading
+ * starts or the accumulated size hits the target; oversized sections are
+ * hard-split into overlapping windows under the cap. Pure and deterministic.
  */
 
 import crypto from "node:crypto";
@@ -229,4 +223,101 @@ function lineForOffset(spans: LineSpan[], offset: number): number {
     if (offset >= span.start && offset <= span.end) return span.lineNumber;
   }
   return spans[spans.length - 1].lineNumber;
+}
+
+// ---------------------------------------------------------------------------
+// Capture-block provenance — transcript-rung mapping (turn id + path).
+//
+// `.aos.md` sources write each turn's `turn:` marker on the line above its
+// heading, so chunking-by-heading orphans the marker into the previous block's
+// chunk. ingest resolves blocks once (parseCaptureBlocks) and stamps the turn id
+// + transcript path onto each chunk by line overlap (captureMetadataForChunk),
+// so the transcript rung reads that metadata instead of re-scraping content.
+// Lives here, next to chunkMarkdown, to keep ingest.ts's imports acyclic.
+// ---------------------------------------------------------------------------
+
+export interface CaptureBlock {
+  /** 1-based line of the opening `<!-- aos-capture … -->` marker. */
+  startLine: number;
+  /** 1-based line of the closing `<!-- /aos-capture -->` marker (or last line). */
+  endLine: number;
+  /** The turn id from the opening marker. */
+  turnId: string;
+  /** Repo-relative transcript path from the block's `Raw transcript:` line, or null. */
+  transcriptPath: string | null;
+}
+
+/**
+ * Metadata stamped onto a chunk so the transcript rung needs no content scrape.
+ * A `type` (not `interface`) to keep it assignable to the store's
+ * `metadata?: Record<string, unknown>` field.
+ */
+export type ChunkCaptureMetadata = {
+  turnId: string;
+  transcriptPath?: string;
+};
+
+const CAPTURE_OPEN_RE = /aos-capture\b[^>]*\bturn:(\S+?)\s*-->/;
+const CAPTURE_CLOSE_RE = /<!--\s*\/aos-capture\s*-->/;
+const CAPTURE_RAW_RE = /Raw transcript:\s*`([^`]+)`/;
+
+/**
+ * Parse every `aos-capture` block out of a source, with 1-based line ranges
+ * matching this module's `startLine`/`endLine` provenance. Returns [] when no
+ * capture markers are present (every non-`.aos.md` source).
+ */
+export function parseCaptureBlocks(text: string): CaptureBlock[] {
+  const lines = text.split(/\r?\n/);
+  const blocks: CaptureBlock[] = [];
+  let open: { startLine: number; turnId: string; transcriptPath: string | null } | null = null;
+
+  const flush = (endLine: number) => {
+    if (open) {
+      blocks.push({ startLine: open.startLine, endLine, turnId: open.turnId, transcriptPath: open.transcriptPath });
+      open = null;
+    }
+  };
+
+  for (let i = 0; i < lines.length; i += 1) {
+    const line = lines[i];
+    const openMatch = CAPTURE_OPEN_RE.exec(line);
+    if (openMatch) {
+      // A new marker defensively closes any unterminated previous block.
+      flush(i);
+      open = { startLine: i + 1, turnId: openMatch[1], transcriptPath: null };
+      continue;
+    }
+    if (open) {
+      const rawMatch = CAPTURE_RAW_RE.exec(line);
+      if (rawMatch && open.transcriptPath === null) open.transcriptPath = rawMatch[1].trim();
+      if (CAPTURE_CLOSE_RE.test(line)) flush(i + 1);
+    }
+  }
+  flush(lines.length);
+  return blocks;
+}
+
+/**
+ * Pick the capture block a chunk belongs to by maximum line-range overlap, and
+ * return its turn id + transcript path. Max-overlap (not first-marker) stays
+ * robust to the marker-before-heading layout. Returns null when nothing overlaps.
+ */
+export function captureMetadataForChunk(
+  chunk: { startLine: number; endLine: number },
+  blocks: CaptureBlock[],
+): ChunkCaptureMetadata | null {
+  let best: CaptureBlock | null = null;
+  let bestOverlap = 0;
+  for (const block of blocks) {
+    const overlap =
+      Math.min(chunk.endLine, block.endLine) - Math.max(chunk.startLine, block.startLine) + 1;
+    if (overlap > bestOverlap) {
+      bestOverlap = overlap;
+      best = block;
+    }
+  }
+  if (!best || bestOverlap <= 0) return null;
+  return best.transcriptPath
+    ? { turnId: best.turnId, transcriptPath: best.transcriptPath }
+    : { turnId: best.turnId };
 }

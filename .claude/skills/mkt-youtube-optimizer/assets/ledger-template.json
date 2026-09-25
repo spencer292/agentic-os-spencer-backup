@@ -1,0 +1,16 @@
+{
+  "_doc": "Prediction ledger — one entry per scored video. Fill `actual` + `verdict` at the 28-day review. Two same-direction misses on the same video type => add a dated calibration rule to SKILL.md ## Rules.",
+  "entries": [
+    {
+      "videoId": "KS2yc2di9PA",
+      "title": "How to Find Your Company's Core Values (20-Minute Exercise)",
+      "scored": "2026-07-04",
+      "score": null,
+      "videoType": "search-play lesson (AI two-host)",
+      "predicted": { "views28d": [100, 400], "ctr": [3, 6], "avdPct": 40 },
+      "predictionNotes": "104-sub channel; organic search only; campaign traffic would change this materially",
+      "actual": { "views28d": null, "checkedAt": null },
+      "verdict": null
+    }
+  ]
+}

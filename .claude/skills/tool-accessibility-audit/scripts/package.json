@@ -1,0 +1,14 @@
+{
+  "name": "tool-accessibility-audit-scripts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dependency island for the tool-accessibility-audit skill. Installed by setup.sh into this folder, never into the repo root.",
+  "scripts": {
+    "setup": "bash ./setup.sh",
+    "audit": "node ./a11y-audit.mjs"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "playwright": "^1.62.1"
+  }
+}

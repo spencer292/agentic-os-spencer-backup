@@ -64,7 +64,10 @@
       "Read(**/secrets/*)",
       "Read(**/*credential*)",
       "Read(**/*.pem)",
-      "Read(**/*.key)"
+      "Read(**/*.key)",
+      "Read(**/node_modules/**)",
+      "Read(**/dist/**)",
+      "Read(**/package-lock.json)"
     ]
   },
   "hooks": {
@@ -115,11 +118,27 @@
           },
           {
             "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/team-context-snapshot.js\""
+          },
+          {
+            "type": "command",
             "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/load-memory-snapshot.js\""
           },
           {
             "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/detect-first-run.js\""
+          },
+          {
+            "type": "command",
             "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/memory-bootstrap-index.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/memory-watch-start.js\""
+          },
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/memory-consolidation-tick.js\""
           }
         ]
       }
@@ -159,7 +178,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node .claude/hooks/secret-guard.js",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/secret-guard.js\"",
             "timeout": 5
           }
         ]
@@ -191,6 +210,7 @@
     "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/gsd-statusline.js\""
   },
   "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "DISABLE_NON_ESSENTIAL_MODEL_CALLS": "1"
   }
 }

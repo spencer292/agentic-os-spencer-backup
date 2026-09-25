@@ -1,38 +1,28 @@
 ---
 name: tool-youtube
-version: 1.0.1
 description: >
-  Fetch latest videos from YouTube channels, extract full transcripts, and
-  pull video metadata/thumbnails. Three modes: channel mode (list recent
-  uploads, needs YOUTUBE_API_KEY), transcript mode (get full timestamped
-  transcript from a URL, free via yt-dlp), and metadata mode (get title,
-  duration, stats, thumbnail via yt-dlp).
+  Fetch latest videos from YouTube channels and extract full transcripts.
+  Two modes: channel mode (list recent uploads, needs YOUTUBE_API_KEY) and
+  transcript mode (get full timestamped transcript from a URL, free via yt-dlp).
+  Chain both to get the latest video's full transcript from any channel.
   Triggers on: "latest youtube video", "get transcript", "youtube transcript",
-  "what did they post", "fetch from youtube", "channel updates",
-  "video metadata", "get video info", "youtube thumbnail", "video details",
-  "video stats".
-  Used by other skills as a content source.
+  "what did they post", "fetch from youtube", "channel updates".
+  Used by other skills (mkt-content-repurposing) as a content source.
   Does NOT trigger for content creation, repurposing, or video editing.
 ---
 
 # YouTube Tool
 
-Utility skill for getting content out of YouTube. Three scripts, three jobs:
-
-
-## Paths
-
-Read `skill-pack/config/sys-config.md` → `## Paths` section before any path-dependent step. It resolves `{decoupled_base}`, `{env_file}`, `{brand_context}`, and `{projects_base}` to absolute paths set by the installer. Substitute these placeholders wherever they appear below.
+Utility skill for getting content out of YouTube. Two scripts, two jobs:
 
 - **Channel mode** — find out what someone posted recently, list their latest videos
 - **Transcript mode** — pull the full text from a specific video
-- **Metadata mode** — get video info (title, duration, stats, tags) and/or download the thumbnail
 
 Chain them together: find the latest video from a channel, then pull its transcript. Other skills (like `mkt-content-repurposing`) use this as a content source.
 
 ## Outcome
 
-YouTube video metadata and/or full transcripts saved to `{projects_base}/tool-youtube/{YYYY-MM-DD}/{video-title-slug}.md`. Always save output to disk. This is not optional.
+YouTube video metadata and/or full transcripts saved to `projects/tool-youtube/{YYYY-MM-DD}_{video-title-slug}.md`. Save output to disk, because the file is the deliverable.
 
 ## Context Needs
 
@@ -67,10 +57,8 @@ This installs `uv` (for digest.py's inline dependencies) and `yt-dlp` (for trans
 | Request | What to do |
 |---------|------------|
 | "Latest videos from [channel]" | Channel mode — use digest script (Step 2) |
-| "Metadata for [URL]", "video info", "video stats" | Metadata mode — use metadata script (Step 3) |
-| "Thumbnail from [URL]", "youtube thumbnail" | Metadata mode with `--thumbnail` (Step 3) |
-| "Transcript of [URL]" | Transcript mode — use transcript script (Step 4) |
-| "Latest video transcript from [channel]" | Chain: Step 2 then Step 4 |
+| "Transcript of [URL]" | Transcript mode — use transcript script (Step 3) |
+| "Latest video transcript from [channel]" | Chain both — Step 2 then Step 3 |
 | Another skill needs content | Provide the appropriate script output |
 
 ## Step 2: Channel Mode
@@ -83,7 +71,7 @@ uv run .claude/skills/tool-youtube/scripts/digest.py --channels "@handle" --hour
 
 This lists recent uploads with titles, dates, and URLs. Add `--transcript` to get a basic summary of each.
 
-**Needs:** `YOUTUBE_API_KEY` in `{env_file}`. If missing, tell the user what it does and how to get one. Don't block — ask them to provide a video URL directly as the fallback.
+**Needs:** `YOUTUBE_API_KEY` in `.env`. If missing, tell the user what it does and how to get one. Don't block — ask them to provide a video URL directly as the fallback.
 
 **Script options:**
 
@@ -98,48 +86,7 @@ This lists recent uploads with titles, dates, and URLs. Add `--transcript` to ge
 | `--seen-file` | — | Track already-processed videos |
 | `--api-key` | env var | Override YOUTUBE_API_KEY |
 
-### Channel sources file (skip `--channels` when set)
-
-When the user wants to track the same set of channels every time, populate `tool-youtube/config/sources.md` once instead of passing `--channels` on every run. The script reads that file automatically when `--channels` is not provided.
-
-Format (see `tool-youtube/config/README.md` for the full spec):
-
-```markdown
-# Inspiration Sources
-
-## YouTube Channels
-
-- @fireship
-- @lexfridman
-- UCxxxxxxxxxxxxxxxxxxxxxxxx
-```
-
-One handle per line, prefixed with `- @`. Channel IDs (24-char `UC...`) work too. If the user mentions following a channel during the conversation, offer to add it to `sources.md` so they don't have to re-pass it later.
-
-## Step 3: Metadata Mode
-
-Use the metadata script to fetch video info and/or download the thumbnail.
-
-```bash
-python .claude/skills/tool-youtube/scripts/metadata.py "https://youtube.com/watch?v=VIDEO_ID" --output-dir /tmp
-```
-
-Add `--thumbnail` to also download the thumbnail as PNG. Use `--thumbnail --no-metadata` for thumbnail-only.
-
-**Script options:**
-
-| Option | Default | What it does |
-|--------|---------|-------------|
-| `--output-dir` | `.` | Where to save files |
-| `--thumbnail` | off | Also download thumbnail PNG |
-| `--no-metadata` | off | Skip metadata JSON (thumbnail-only mode) |
-| `--check-setup` | — | Verify yt-dlp is installed |
-
-**Output:** `metadata.json` with title, channel, duration, stats, tags, resolution, and more. `thumbnail.png` when `--thumbnail` is used.
-
-No API key needed — yt-dlp handles it.
-
-## Step 4: Transcript Mode
+## Step 3: Transcript Mode
 
 Use the transcript script for full text with timestamps.
 
@@ -160,9 +107,9 @@ Then read the output file. No API key needed — yt-dlp handles it.
 | `--list` | — | List available subtitle tracks |
 | `--check-setup` | — | Verify yt-dlp is installed |
 
-## Step 5: Save Output
+## Step 4: Save Output
 
-**Always save the transcript to the projects folder.** After extracting, create a clean version at `{projects_base}/tool-youtube/{YYYY-MM-DD}/{video-title-slug}.md`. The saved file format:
+**Always save the transcript to the projects folder.** After extracting, create a clean version at `projects/tool-youtube/{YYYY-MM-DD}_{video-title-slug}.md`. The saved file format:
 
 ```
 # {Video Title}
@@ -182,7 +129,7 @@ Date extracted: {YYYY-MM-DD}
 
 Strip all `**[HH:MM:SS]**` timestamps from the raw transcript before saving. The saved file should read like a document, not a subtitle track. Create the folder if it doesn't exist.
 
-## Step 6: Collect Feedback
+## Step 5: Collect Feedback
 
 If used standalone, ask: "Got the transcript. Anything else you need from this video or channel?"
 

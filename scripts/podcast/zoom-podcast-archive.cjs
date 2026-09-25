@@ -8,7 +8,7 @@ const env = {};
 for (const l of fs.readFileSync('C:/Claude/agent-os-v3/agentic-os/.env', 'utf8').split(/\r?\n/)) {
   const m = l.match(/^([A-Z0-9_]+)\s*=\s*(.*)$/); if (m) env[m[1]] = m[2].replace(/^["']|["']$/g, '');
 }
-const USER = 'roy@prosyn.net';
+const USER = 'roy@allthepower.co.uk'; // Zoom user renamed from roy@prosyn.net at 2026-08 account takeover
 const MONTHS = Number(process.argv[2] || 15);
 const RX = /power mo/i; // "Power Movers" / "Power Moves"
 

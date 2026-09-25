@@ -15,6 +15,26 @@ RED='\033[0;31m'
 CYAN='\033[0;36m'
 NC='\033[0m'
 
+# Shared skills live only at the root. Inside a client workspace there is
+# nothing local to remove, and removing from the root would silently affect
+# every other client. Refuse and point at the per-client opt-out instead.
+if [[ "$(basename "$(dirname "$REPO_ROOT")")" == "clients" ]]; then
+  CLIENT_SLUG="$(basename "$REPO_ROOT")"
+  SKILL_ARG="${1:-<skill-name>}"
+  echo -e "${RED}Error:${NC} this is the client workspace ${BOLD:-}${CLIENT_SLUG}${NC}, not the Agentic OS root." >&2
+  echo "" >&2
+  echo "Shared skills are inherited from the root, so there is no local copy to remove here." >&2
+  echo "" >&2
+  echo "To stop THIS client from seeing the skill, add it to" >&2
+  echo "  clients/${CLIENT_SLUG}/.claude/settings.local.json" >&2
+  echo '  { "skillOverrides": { "'"${SKILL_ARG}"'": "off" } }' >&2
+  echo "  That file is never touched by updates. Or just ask Claude to do it." >&2
+  echo "" >&2
+  echo "To uninstall the skill for EVERY client and for yourself, run this from the root:" >&2
+  echo "  bash scripts/remove-skill.sh ${SKILL_ARG}" >&2
+  exit 1
+fi
+
 if [[ ! -f "$CATALOG" ]]; then
   echo -e "${RED}Error:${NC} catalog.json not found at $CATALOG" >&2
   exit 1

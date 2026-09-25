@@ -31,10 +31,76 @@ Exit codes:
   2 — validation failed (HARD gate)
   3 — warnings present and --strict was set"""
 import argparse
+import re
 import shutil
 import subprocess
 import sys
 from pathlib import Path
+
+
+# Image / chrome slots are not text content — they are not required in the instructions
+# ## Slots enumeration the same way text zones are (image binding lives in the ai-image-zone
+# block; chrome is injected from tokens.json). The completeness check (D2) governs CONTENT
+# text slots: every text-bearing data-slot the template.html declares must be enumerated in
+# instructions.md ## Slots — no gaps (the highlight-stack LINE_3 skip).
+_NON_TEXT_SLOT_HINTS = ("logo", "badge", "icon", "photo", "image", "bg", "background",
+                        "mark", "wordmark", "brand", "masthead", "dots", "pagination",
+                        "_path", "src")
+
+
+def template_text_slots(html: str) -> list[str]:
+    """CONTENT-text data-slot names declared in template.html (chrome/image slots excluded)."""
+    out: list[str] = []
+    for s in re.findall(r'data-slot\s*=\s*["\']([^"\']+)["\']', html, re.IGNORECASE):
+        sl = s.lower()
+        if any(h in sl for h in _NON_TEXT_SLOT_HINTS):
+            continue
+        if s not in out:
+            out.append(s)
+    return out
+
+
+def instructions_enumerated_slots(text: str) -> list[str]:
+    """Slot names enumerated under the ## Slots section of instructions.md (document order)."""
+    slot_re = re.compile(r"^[-*]\s+\*?\*?([A-Z][A-Z0-9_]+)\*?\*?\s*[—\-]")
+    out: list[str] = []
+    in_slots = False
+    for line in text.splitlines():
+        stripped = line.strip()
+        if re.match(r"^#{1,3}\s+Slots\s*$", stripped, re.IGNORECASE):
+            in_slots = True
+            continue
+        if in_slots and re.match(r"^#{1,3}\s+\S", stripped):
+            in_slots = False
+            continue
+        if not in_slots:
+            continue
+        m = slot_re.match(stripped)
+        if m and m.group(1) not in out:
+            out.append(m.group(1))
+    return out
+
+
+def check_instructions_slot_completeness(template_html: str, instructions_text: str) -> list[str]:
+    """D2 — every CONTENT text data-slot in template.html must be enumerated in
+    instructions.md ## Slots (no gaps). Returns a list of issue strings (empty = pass).
+
+    Catches the highlight-stack-cover defect: the template declares LINE_1/LINE_2/LINE_4 +
+    CONNECTOR but instructions.md's ## Slots block omits one — the Template Card no longer
+    enumerates every slot the template renders. Case-agnostic: the contract is one ## Slots
+    entry per text data-slot the HTML declares."""
+    declared = template_text_slots(template_html)
+    enumerated = set(instructions_enumerated_slots(instructions_text))
+    missing = [s for s in declared if s not in enumerated]
+    if not missing:
+        return []
+    return [
+        f"instructions.md ## Slots omits text slot(s) the template.html declares: "
+        f"{', '.join(missing)}. Every text data-slot the template renders must be enumerated "
+        f"in the Template Card's ## Slots block (no gaps) — an un-enumerated slot is an "
+        f"authoring contract hole (the user opens instructions.md and a rendered zone is "
+        f"undocumented)."
+    ]
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -163,6 +229,23 @@ def main() -> int:
         if out: print(out.strip())
     else:
         print("[skip] missing ref or preview")
+
+    # ── Step 4b: instructions ↔ slots completeness (D2) ───────────────
+    section("STEP 4b — instructions.md ↔ template slots completeness")
+    instructions = tdir / "instructions.md"
+    if instructions.exists():
+        slot_issues = check_instructions_slot_completeness(
+            template_html.read_text(encoding="utf-8", errors="ignore"),
+            instructions.read_text(encoding="utf-8", errors="ignore"),
+        )
+        if slot_issues:
+            for issue in slot_issues:
+                print(f"[fail] {issue}", file=sys.stderr)
+            issues_count += 1
+        else:
+            print("[ok] every template text slot is enumerated in instructions.md ## Slots")
+    else:
+        print(f"[skip] no instructions.md at {instructions}")
 
     # ── Step 5: Cleanup old iteration files ───────────────────────────
     section("STEP 5 — Cleanup old iterations")

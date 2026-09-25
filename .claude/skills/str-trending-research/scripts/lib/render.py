@@ -33,6 +33,52 @@ def _assess_data_freshness(report: schema.Report) -> dict:
     }
 
 
+def _render_feed_section(label, items, error, limit):
+    """Render a Hacker News / YouTube block. Silent when the source was idle."""
+    lines = []
+    if error:
+        lines.append(f"### {label}")
+        lines.append(f"**ERROR:** {error}")
+        lines.append("")
+        return lines
+    if not items:
+        return lines
+
+    lines.append(f"### {label}")
+    lines.append("")
+    for item in items[:limit]:
+        eng = item.engagement or {}
+        parts = []
+        if eng.get("points") is not None:
+            parts.append(f"{eng['points']}pts")
+        if eng.get("comments") is not None:
+            parts.append(f"{eng['comments']}cmt")
+        if eng.get("views") is not None:
+            parts.append(f"{eng['views']:,} views")
+        eng_str = f" [{', '.join(parts)}]" if parts else ""
+        date_str = f" ({item.date})" if item.date else ""
+        byline = f" by {item.author}" if item.author else ""
+        lines.append(f"**{item.id}**{byline}{date_str}{eng_str}")
+        lines.append(f"  {item.title}")
+        lines.append(f"  {item.url}")
+        # Fall back to the item's own blurb when there is no richer evidence.
+        if item.excerpt and not item.top_comments and not item.transcript:
+            lines.append(f"  {item.excerpt[:200]}")
+        if item.top_comments:
+            lines.append("  Top comments:")
+            for c in item.top_comments[:3]:
+                who = c.author or "[unknown]"
+                # Hacker News does not publish per-comment points, so show the
+                # handle alone rather than a misleading "0 pts".
+                prefix = f"[{c.score} pts] " if c.score else ""
+                lines.append(f"    - {prefix}{who}: {c.excerpt}")
+        if item.transcript:
+            lines.append(f"  Transcript ({len(item.transcript)} chars):")
+            lines.append(f"    {item.transcript}")
+        lines.append("")
+    return lines
+
+
 def render_compact(report: schema.Report, limit: int = 15, missing_keys: str = "none") -> str:
     lines = []
     lines.append(f"## Research Results: {report.topic}")
@@ -76,11 +122,21 @@ def render_compact(report: schema.Report, limit: int = 15, missing_keys: str = "
             lines.append(f"  {item.title}")
             lines.append(f"  {item.url}")
             lines.append(f"  *{item.why_relevant}*")
-            if item.comment_insights:
-                lines.append(f"  Insights:")
+            # The vote-ranked community reply, with who said it and how many
+            # people upvoted it. This is the evidence a synthesis can quote.
+            if item.top_comments:
+                lines.append("  Top comments:")
+                for c in item.top_comments[:3]:
+                    author = f"u/{c.author}" if c.author else "u/[deleted]"
+                    lines.append(f"    - [{c.score} upvotes] {author}: {c.excerpt}")
+            elif item.comment_insights:
+                lines.append("  Insights:")
                 for insight in item.comment_insights[:3]:
                     lines.append(f"    - {insight}")
             lines.append("")
+
+    lines.extend(_render_feed_section("Hacker News", report.hn, report.hn_error, limit))
+    lines.extend(_render_feed_section("YouTube", report.youtube, report.youtube_error, limit))
 
     if report.x_error:
         lines.append("### X Posts")
@@ -194,20 +250,20 @@ def write_outputs(
     raw_xai: Optional[dict] = None, raw_reddit_enriched: Optional[list] = None,
 ):
     ensure_output_dir()
-    with open(OUTPUT_DIR / "report.json", 'w') as f:
+    with open(OUTPUT_DIR / "report.json", 'w', encoding='utf-8') as f:
         json.dump(report.to_dict(), f, indent=2)
-    with open(OUTPUT_DIR / "report.md", 'w') as f:
+    with open(OUTPUT_DIR / "report.md", 'w', encoding='utf-8') as f:
         f.write(render_full_report(report))
-    with open(OUTPUT_DIR / "last30days.context.md", 'w') as f:
+    with open(OUTPUT_DIR / "last30days.context.md", 'w', encoding='utf-8') as f:
         f.write(render_context_snippet(report))
     if raw_openai:
-        with open(OUTPUT_DIR / "raw_openai.json", 'w') as f:
+        with open(OUTPUT_DIR / "raw_openai.json", 'w', encoding='utf-8') as f:
             json.dump(raw_openai, f, indent=2)
     if raw_xai:
-        with open(OUTPUT_DIR / "raw_xai.json", 'w') as f:
+        with open(OUTPUT_DIR / "raw_xai.json", 'w', encoding='utf-8') as f:
             json.dump(raw_xai, f, indent=2)
     if raw_reddit_enriched:
-        with open(OUTPUT_DIR / "raw_reddit_threads_enriched.json", 'w') as f:
+        with open(OUTPUT_DIR / "raw_reddit_threads_enriched.json", 'w', encoding='utf-8') as f:
             json.dump(raw_reddit_enriched, f, indent=2)
 
 

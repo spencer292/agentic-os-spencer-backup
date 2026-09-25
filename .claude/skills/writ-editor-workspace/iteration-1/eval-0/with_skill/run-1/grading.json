@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Flags the cash-figure continuity contradiction (\u00a375 in Ch1 vs \u00a3750 in Ch3) and cites BOTH chapter locations",
+      "passed": true,
+      "evidence": "Continuity Register row 1: '\u00a375 (Ch1) vs \u00a3750 (Ch3)' for the same event, both locations cited; flagged BLOCKING."
+    },
+    {
+      "text": "Flags the full Excel/\u00a375 story as an unwitting repeat across Ch1 and Ch3 (told twice as a first-telling), not a callback",
+      "passed": true,
+      "evidence": "Repetition Register row 1: BBC/Excel/20-min story 'Repeat' across Ch1+Ch3 (both full first-tellings); fix = reduce Ch3 to a callback."
+    },
+    {
+      "text": "Correctly identifies 'You have to believe' (Ch1 and Ch2) as a deliberate callback to keep, distinct from the repeat",
+      "passed": true,
+      "evidence": "Repetition Register row 2: 'You have to believe' (Ch1,Ch2) verdicted 'Callback \u2014 keep' and protected, distinct from the repeat."
+    },
+    {
+      "text": "Prescribes a located structural move (e.g. reconcile the figure; reduce Ch3's retelling to a one-line callback) rather than a vague 'tighten it up'",
+      "passed": true,
+      "evidence": "Moves: 'Reconcile the figure \u2014 \u00a375 vs \u00a3750 (Ch1 vs Ch3)'; 'De-duplicate Ch1 and Ch3' \u2014 located structural moves, not vague."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "timing": {
+    "total_tokens": 87367,
+    "duration_ms": 174773,
+    "total_duration_seconds": 174.8
+  }
+}

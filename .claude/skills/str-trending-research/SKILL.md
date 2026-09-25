@@ -1,6 +1,6 @@
 ---
 name: str-trending-research
-version: 1.0.1
+version: 1.1.0
 description: >
   Research what's trending in the last 30 days across Reddit, X, and the web.
   Surface real discussions, recommendations, and patterns people are talking
@@ -19,14 +19,9 @@ description: >
 > Original skill focused on research + prompt generation. This version strips the prompt layer
 > and focuses purely on research synthesis — designed as a backend that other skills consume.
 
-
-## Paths
-
-Read `skill-pack/config/sys-config.md` → `## Paths` section before any path-dependent step. It resolves `{decoupled_base}`, `{env_file}`, `{brand_context}`, and `{projects_base}` to absolute paths set by the installer. Substitute these placeholders wherever they appear below.
-
 ## Outcome
 
-A research brief saved to `{projects_base}/str-trending-research/{YYYY-MM-DD}/{topic}.md` containing:
+A research brief saved to `projects/str-trending-research/{YYYY-MM-DD}_{topic}.md` containing:
 - What people are actually discussing, recommending, and debating right now
 - Engagement-weighted insights (upvotes, likes, comments signal what resonates)
 - Patterns across platforms (strongest signals appear everywhere)
@@ -38,7 +33,7 @@ Other skills (mkt-content-atomizer, email-sequences, etc.) can read the latest r
 
 | File | Load level | How it shapes this skill |
 |------|-----------|--------------------------|
-| `{brand_context}/icp.md` | Language section | Helps frame research through the audience's lens |
+| `brand_context/icp.md` | Language section | Helps frame research through the audience's lens |
 | `context/learnings.md` | `## str-trending-research` section | Apply previous feedback |
 
 Load if they exist. Proceed without them if not.
@@ -47,15 +42,13 @@ Load if they exist. Proceed without them if not.
 
 ## Before You Start
 
-1. Check `{projects_base}/str-trending-research/` for recent research on the same topic. If a brief exists from the last 7 days, show the user: "I researched [topic] on [date]. Want to use that, refresh it, or research something new?"
+1. Check `projects/str-trending-research/` for recent research on the same topic. If a brief exists from the last 7 days, show the user: "I researched [topic] on [date]. Want to use that, refresh it, or research something new?"
 
-2. **Check API keys.** Read `{env_file}` for `OPENAI_API_KEY` and `XAI_API_KEY`. If either is missing, tell the user once before starting:
-   - **Both missing:** "I'll use web search for this research. For much richer results with real engagement data (upvotes, likes, comments), add `OPENAI_API_KEY` (for Reddit — get one at platform.openai.com) and `XAI_API_KEY` (for X — get one at console.x.ai) to your `{env_file}` file."
-   - **Only OpenAI missing:** "I have X data but not Reddit. Add `OPENAI_API_KEY` to `{env_file}` for Reddit threads with real upvotes and comments."
-   - **Only xAI missing:** "I have Reddit data but not X. Add `XAI_API_KEY` to `{env_file}` for X posts with real likes and reposts."
-   - **Both present:** Skip this — say nothing, just proceed.
+2. **Check API keys.** Reddit needs no key: the script talks to Reddit directly and returns real upvotes, comment counts, and top comments for free. Read `.env` for `XAI_API_KEY`, which only affects X:
+   - **Missing:** "I have Reddit but not X. Add `XAI_API_KEY` to `.env` (get one at console.x.ai) for X posts with real likes and reposts."
+   - **Present:** Skip this — say nothing, just proceed.
 
-   This is informational only. Never block work because keys are missing.
+   This is informational only. Never block work because keys are missing, and never skip the script because a key is missing.
 
 ---
 
@@ -79,36 +72,37 @@ If the topic is vague, ask one clarifying question. Don't over-ask — get movin
 
 Read `references/research-methodology.md` for the full search strategy.
 
-### Primary: Python Script (requires API keys)
+### Always run the script first
 
-The `scripts/last30days.py` script uses external APIs to search Reddit and X with real engagement data:
+`scripts/last30days.py` is the evidence layer. **Run it on every research request, with or without keys.** WebSearch cannot reach Reddit, so skipping the script means losing community signal entirely.
 
 ```bash
 python3 .claude/skills/str-trending-research/scripts/last30days.py "{topic}" --emit=compact
 ```
 
-- **Reddit** via OpenAI Responses API (`web_search` tool, domain-locked to reddit.com) — returns threads with real upvotes, comments, and top comment insights
-- **X / Twitter** via xAI API (`x_search` tool) — returns posts with real likes, reposts, and reply counts
+- **Reddit, no key required** — talks to Reddit directly (RSS discovery, arctic-shift for vote counts, shreddit for comments) and returns threads with real upvotes, real comment counts, and the vote-ranked top comments with the author of each
+- **Hacker News, no key required** — stories with points and comment counts, plus the top comments on the biggest threads. Always runs, and it is what keeps the run useful when Reddit hits a rate limit
+- **YouTube, no key required** — videos published this month with view counts, and the spoken transcript of the most-watched ones. This is the only source that carries what was *said* rather than written
+- **X / Twitter** via xAI API (`x_search` tool) — returns posts with real likes, reposts, and reply counts. Needs `XAI_API_KEY`; without it the run says so instead of pretending X was covered
 - Supports `--quick` (fewer sources) and `--deep` (comprehensive) flags
 - Supports `--sources=reddit|x|both|auto` to control which platforms to search
 - Supports `--include-web` to add general web search alongside Reddit/X
 
-**Requires:** `OPENAI_API_KEY` (for Reddit) and/or `XAI_API_KEY` (for X) in `{env_file}`. Script auto-detects available keys and adapts.
+### Then supplement with WebSearch
 
-### Fallback: WebSearch (no API keys needed)
-
-If neither API key is configured, use Claude's built-in WebSearch:
-
-#### Reddit (community discussions)
-Search for: `{topic} site:reddit.com` and related queries.
-
-#### X / Twitter (real-time pulse)
-Search for: `{topic} site:x.com OR site:twitter.com` and related queries.
+The script covers the community. Use WebSearch on top of it for blogs, docs and news, never as a replacement for it:
 
 #### Web (blogs, docs, news)
-Search for: `{topic}` with time-filtered queries. Exclude reddit.com and x.com.
+Search for: `{topic}` with time-filtered queries. Exclude reddit.com.
 
-WebSearch works but lacks real engagement metrics (upvotes, likes). The script provides much richer data.
+#### X / Twitter (only when `XAI_API_KEY` is absent)
+Search for: `{topic} site:x.com OR site:twitter.com`. Expect no engagement numbers.
+
+**Do not** search `site:reddit.com`. WebSearch cannot crawl Reddit, so it returns nothing and wastes a search. Reddit comes from the script.
+
+### Report the coverage honestly
+
+After the run, state per source what happened: how many items came back, and for anything that returned nothing, whether it was not configured, rate limited, or genuinely empty. Never explain a gap with a guess. If Reddit returns zero, say the run got zero and why the script reported it, not that "Reddit is blocked".
 
 ---
 
@@ -163,7 +157,7 @@ Display the synthesis in this format:
 
 ## Step 5: Save the Brief
 
-Save to `{projects_base}/str-trending-research/{YYYY-MM-DD}/{topic-slug}.md`.
+Save to `projects/str-trending-research/{YYYY-MM-DD}_{topic-slug}.md`.
 
 The brief format is defined in `references/brief-template.md`. Include:
 - Research metadata (topic, date, query type, sources scanned)
@@ -202,5 +196,6 @@ If the user flags an issue — bad sources, irrelevant results, wrong synthesis 
 **Too few results:** Broaden the search terms. Strip modifiers and search for the core noun. Try `--deep` flag.
 **Results feel outdated:** Add year to search queries. Use "2026" or "this month" qualifiers.
 **Platform-specific content missing:** Some topics are discussed more on Reddit vs X. Use `--sources=reddit` or `--sources=x` to focus.
-**User wants real engagement metrics:** Use the Python script with API keys. WebSearch fallback lacks exact counts.
-**Script errors:** Check `{env_file}` has valid `OPENAI_API_KEY` and/or `XAI_API_KEY`. Fall back to WebSearch if scripts fail.
+**Reddit returned 0 threads:** almost always a temporary rate limit from running several searches back to back. Wait a minute and re-run. Do not conclude that Reddit is unreachable, and do not tell the user it is blocked.
+**User wants real engagement metrics:** they come from the script. WebSearch has none.
+**Script errors:** the script never needs a key for Reddit. If X is missing, check `XAI_API_KEY` in `.env`.

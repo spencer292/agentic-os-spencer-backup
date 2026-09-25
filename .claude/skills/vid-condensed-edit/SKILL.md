@@ -10,12 +10,16 @@ metadata:
   phase: execution
 ---
 
-# Condensed Edit — Long-Form Episode → 10–15 min YouTube Asset
+# Condensed Edit — Long-Form Episode → YouTube Asset
+
+> **Duration is an OUTPUT, not an input** — see `SKILL.local.md`, which supersedes every
+> minute-count in this file and in `references/methodology.md`.
 
 Full episodes underperform on YouTube; a condensed best-bits edit is the channel's
 main long-form asset (see `references/methodology.md` for the evidence base and
-all editorial rules). This skill turns a 30–90 min episode into a 10–15 minute
-edit with a cold-open hook.
+all editorial rules — but `SKILL.local.md` and `projects/briefs/podcast-system-rebuild/EDITORIAL-STANDARD.md`
+both override it). This skill turns a 30–90 min episode into a condensed edit with a
+cold-open hook, at whatever length the useful material actually runs to.
 
 ## Inputs
 
@@ -33,7 +37,7 @@ edit with a cold-open hook.
 ### 2. EDITORIAL (LLM judgment — read methodology.md first)
 - Split into candidate segments (60s–4min, self-contained beats)
 - Score each per the methodology weights; apply content gates
-- Select chronological segments totalling **9–14 min**, plus ONE cold-open
+- Select chronological segments — **length is an output, not a target** — plus ONE cold-open
   moment (20–40s, the single strongest hook — it may repeat later in context)
 - Snap all cut points to sentence boundaries per the cut-hygiene rules
 - Write `cutlist.json`:
@@ -60,9 +64,10 @@ python .claude/skills/vid-condensed-edit/scripts/compose_two_up.py \
 ```
 Logo: variant **-22** = icon mark, Sky/light (Roy-approved 2026-06-11; wordmark
 variants render fuzzy at strap size — use the icon).
-Render a `--preview <sec>` PNG first and eyeball it (tile crop alignment varies
-if Zoom layout differs — tune `--geometry`). The branded file is the YouTube
-upload asset. v2 (planned): speaker-switching singles driven by AssemblyAI
+Render a `--preview <sec>` PNG first and eyeball it. Tile geometry is
+auto-detected per recording (Zoom layout drifts: divider gap vs flush tiles,
+720p vs 1080p) — only pass `--geometry` if the detection WARNs or the preview
+looks wrong. The branded file is the YouTube upload asset. v2 (planned): speaker-switching singles driven by AssemblyAI
 utterances once 1080p source recordings flow from P02.
 
 ### 4. PACKAGE
@@ -78,6 +83,15 @@ python .claude/skills/vid-condensed-edit/scripts/contact_sheet.py \
 ### 5. REVIEW GATE
 Present: rendered file path, duration, chapter list, titles. The user reviews
 the cut before anything is uploaded (P06 YouTube publishing is a separate step).
+
+Once the cut is approved, sync the chapters into the episode's YouTube Desc doc
+(P06 uploads that doc's text verbatim — without this, the description ships
+full-episode timestamps that are wrong for the condensed cut):
+```bash
+node scripts/podcast/patch-yt-chapters.cjs <ep>
+```
+Idempotent; re-run after any re-cut that changes `chapters.txt`. `set-yt-ready.cjs`
+also runs it automatically before flipping GATE 3, so a skipped run here is caught.
 
 ## Outputs
 

@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "Adds a fire/consequence reader-facing opener and converts the bare CTA toward a call-to-mirror",
+      "passed": true,
+      "evidence": "Opens on reader consequence; converts the bare CTA into a call-to-mirror that earns it"
+    },
+    {
+      "text": "Turns 'we/our' into 'you' (reader in the copy)",
+      "passed": true,
+      "evidence": "Flips all 'we/our' to 'you'"
+    },
+    {
+      "text": "Placeholders a real client result rather than fabricating one; no device-soup",
+      "passed": true,
+      "evidence": "2 [[NEEDS:]] (client before/after, the honest reason); no client/number invented; one focus reframe, no soup"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  }
+}

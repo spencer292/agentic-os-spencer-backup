@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 // One-time Gmail OAuth — gets a refresh token for the daily-triage automation.
 // Prereq: GMAIL_CLIENT_ID + GMAIL_CLIENT_SECRET in .env (a "Desktop app" OAuth client).
-// Run:    node scripts/gmail/gmail-auth.cjs   → approve in browser → paste the printed line into .env
+// Run:    node scripts/gmail/gmail-auth.cjs                        → default mailbox (GMAIL_REFRESH_TOKEN)
+//         node scripts/gmail/gmail-auth.cjs --account allthepower  → GMAIL_REFRESH_TOKEN_ALLTHEPOWER
+// Sign in AS the mailbox you're connecting when the browser opens.
 const fs = require("fs");
 const path = require("path");
 const http = require("http");
@@ -10,6 +12,13 @@ const ENV_PATH = path.join(__dirname, "..", "..", ".env");
 const SCOPE = "https://www.googleapis.com/auth/gmail.modify"; // read + label + draft + send; NO hard-delete
 const PORT = 8910;
 const REDIRECT = `http://localhost:${PORT}`;
+
+const accountIdx = process.argv.indexOf("--account");
+const ACCOUNT = accountIdx > -1 ? (process.argv[accountIdx + 1] || "").trim()
+  : (process.argv.find(a => a.startsWith("--account=")) || "").split("=")[1] || "";
+const TOKEN_KEY = ACCOUNT
+  ? "GMAIL_REFRESH_TOKEN_" + ACCOUNT.toUpperCase().replace(/-/g, "_")
+  : "GMAIL_REFRESH_TOKEN";
 
 function readEnv() {
   const out = {};
@@ -23,8 +32,11 @@ function readEnv() {
 }
 
 const env = readEnv();
-const CLIENT_ID = env.GMAIL_CLIENT_ID;
-const CLIENT_SECRET = env.GMAIL_CLIENT_SECRET;
+// Per-account OAuth client (mirrors _lib.cjs): GMAIL_CLIENT_ID_<ACCOUNT> wins when set,
+// so a mailbox in a different Google org can use its own Cloud project's client.
+const ACCT_SUFFIX = ACCOUNT ? "_" + ACCOUNT.toUpperCase().replace(/-/g, "_") : "";
+const CLIENT_ID = env["GMAIL_CLIENT_ID" + ACCT_SUFFIX] || env.GMAIL_CLIENT_ID;
+const CLIENT_SECRET = env["GMAIL_CLIENT_SECRET" + ACCT_SUFFIX] || env.GMAIL_CLIENT_SECRET;
 if (!CLIENT_ID || !CLIENT_SECRET) {
   console.error("\n✗ Missing GMAIL_CLIENT_ID / GMAIL_CLIENT_SECRET in .env.");
   console.error("  Create a 'Desktop app' OAuth client at console.cloud.google.com → Credentials,");
@@ -64,13 +76,13 @@ const server = http.createServer(async (req, res) => {
     // it never gets printed, so the credential stays off-screen.
     let content = "";
     try { content = fs.readFileSync(ENV_PATH, "utf8"); } catch {}
-    const line = `GMAIL_REFRESH_TOKEN=${tok.refresh_token}`;
-    const re = /^GMAIL_REFRESH_TOKEN=.*$/m;
+    const line = `${TOKEN_KEY}=${tok.refresh_token}`;
+    const re = new RegExp(`^${TOKEN_KEY}=.*$`, "m");
     content = re.test(content) ? content.replace(re, line) : content.replace(/\s*$/, "") + "\n" + line + "\n";
     fs.writeFileSync(ENV_PATH, content);
     res.writeHead(200, { "Content-Type": "text/html" });
     res.end("<h2>Gmail connected ✓</h2><p>Token saved. Close this tab and return to the terminal.</p>");
-    console.log("\n✓ Connected — GMAIL_REFRESH_TOKEN written to .env. Setup complete.\n");
+    console.log(`\n✓ Connected — ${TOKEN_KEY} written to .env. Setup complete.\n`);
     server.close(() => process.exit(0));
   } catch (e) {
     res.writeHead(500); res.end("Token exchange failed: " + e.message);
@@ -80,7 +92,8 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log("\n1) Open this URL, sign in as the inbox you want triaged, and approve:\n");
+  const hint = ACCOUNT ? `the "${ACCOUNT}" mailbox` : "the inbox you want triaged";
+  console.log(`\n1) Open this URL, sign in as ${hint}, and approve:\n`);
   console.log("   " + authUrl + "\n");
   console.log(`2) Waiting on ${REDIRECT} for the redirect…  (Ctrl+C to cancel)\n`);
 });

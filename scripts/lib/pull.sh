@@ -10,21 +10,6 @@ echo ""
 MERGE_FAILED=false
 PULL_OUTPUT=$(git pull "$UPDATE_REMOTE" "$UPSTREAM_BRANCH" 2>&1) || MERGE_FAILED=true
 
-restore_update_backups() {
-    restore_upstream_protected_backups
-    if $STASHED; then
-        restore_protected_stash
-    fi
-    for skill_name in "${MODIFIED_SKILLS[@]:-}"; do
-        [[ -z "$skill_name" ]] && continue
-        cp -r "$SKILL_BACKUP_DIR/$skill_name"/* "$REPO_ROOT/.claude/skills/$skill_name/" 2>/dev/null || true
-    done
-    for file in "${OTHER_MODIFIED_FILES[@]:-}"; do
-        [[ -z "$file" ]] && continue
-        cp "$OTHER_BACKUP_DIR/$file" "$REPO_ROOT/$file" 2>/dev/null || true
-    done
-}
-
 # --- Fallback: never move a branch away from local commits silently ---
 if $MERGE_FAILED; then
     # Check for auth failures first — those can't be fixed by force-reset

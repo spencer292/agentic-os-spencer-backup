@@ -146,7 +146,33 @@ if ((ex.actions_others || []).length) { L.push('THEIR ACTIONS:'); (ex.actions_ot
 if ((co.watch_for || []).length) { L.push('WATCH FOR:'); (co.watch_for || []).forEach(w => L.push('  • ' + w)); L.push(''); }
 if ((ex.marketing_snippets || []).length) { L.push('MARKETING SNIPPETS:'); (ex.marketing_snippets || []).slice(0, 4).forEach(s => L.push('  • ' + fmtSnip(s))); L.push(''); }
 if ((ex.lessons || []).length) { L.push('LESSONS:'); (ex.lessons || []).slice(0, 4).forEach(l => L.push('  • ' + fmtLes(l))); }
-return [{ json: { pageBody: { parent: { type: 'data_source_id', data_source_id: DS }, properties: props, children: children }, emailSubject: 'Meeting — ' + (ex.title || input.title) + ' (' + (ex.date || input.date) + ')', emailText: L.join(NL) } }];
+// ── Client-facing email (best-effort; wrapped so it can NEVER break the core path) ──
+// Produces a professional, client-safe HTML body — recap + their next steps + Roy's
+// commitments + what was agreed. Deliberately excludes marketing snippets, lessons,
+// coaching watch-fors and internal notes. Gated to client-facing meeting types; the
+// downstream node creates it as a Gmail DRAFT only (never sends).
+let clientEligible = false, clientSubject = '', clientHtml = '';
+try {
+  const clead = part.filter(p => p.is_lead)[0] || part[0] || null;
+  const cfirst = clead && clead.name ? clead.name.split(' ')[0] : 'there';
+  clientEligible = ['coaching', 'discovery'].indexOf(String(ex.meeting_type || '').toLowerCase()) !== -1;
+  const cesc = s => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const cothers = (ex.actions_others || []).map(a => cesc(a.action) + (a.due ? ' <em>(by ' + cesc(a.due) + ')</em>' : ''));
+  const croy = (ex.actions_roy || []).map(a => cesc(a.action));
+  const cdec = (ex.decisions || []).map(d => cesc(d));
+  let ch = '';
+  ch += '<p>Hi ' + cesc(cfirst) + ',</p>';
+  ch += '<p>Thanks for today. Here is what is next on your side, and what I am picking up on mine.</p>';
+  if (ex.client_recap) ch += '<p><strong>What we covered</strong></p><p>' + cesc(ex.client_recap) + '</p>';
+  if (cothers.length) ch += '<p><strong>Your next steps</strong></p><ol>' + cothers.map(x => '<li>' + x + '</li>').join('') + '</ol>';
+  if (croy.length) ch += '<p><strong>What I am doing on my side</strong></p><ul>' + croy.map(x => '<li>' + x + '</li>').join('') + '</ul>';
+  if (cdec.length) ch += '<p><strong>What we agreed</strong></p><ul>' + cdec.map(x => '<li>' + x + '</li>').join('') + '</ul>';
+  ch += '<p>Reply if anything looks off, otherwise I will crack on with my side.</p>';
+  ch += '<p>Talk soon,<br>Roy</p>';
+  clientSubject = 'Follow-up and next steps — ' + (ex.title || input.title);
+  clientHtml = ch;
+} catch (e) { clientEligible = false; }
+return [{ json: { pageBody: { parent: { type: 'data_source_id', data_source_id: DS }, properties: props, children: children }, emailSubject: 'Meeting — ' + (ex.title || input.title) + ' (' + (ex.date || input.date) + ')', emailText: L.join(NL), clientEligible: clientEligible, clientSubject: clientSubject, clientHtml: clientHtml } }];
 `.trim();
 
 const AGENT_TEXT = `=${EXTRACT_SYSTEM}\n\nMeeting metadata:\n- Title: {{ $('Input').first().json.title }}\n- Date: {{ $('Input').first().json.date }}\n- Host: {{ $('Input').first().json.host }}\n\nTranscript (speaker-labelled, cleaned):\n\n{{ $('Input').first().json.transcript }}\n\nReturn ONLY the JSON object described in the schema — start with { and end with }.`;
@@ -196,6 +222,14 @@ function workflow() {
             subject: "={{ $('Build Page').first().json.emailSubject }}",
             emailType: 'text', message: "={{ $('Build Page').first().json.emailText }}",
             options: { appendAttribution: false } }, credentials: CRED.gmail }),
+    { id: 'ifclient', name: 'Client Email?', type: 'n8n-nodes-base.if', typeVersion: 2.2, position: [2000, 60],
+      parameters: { conditions: { options: { caseSensitive: true, typeValidation: 'loose', version: 2 }, combinator: 'and',
+        conditions: [{ leftValue: "={{ $('Build Page').first().json.clientEligible }}", rightValue: true, operator: { type: 'boolean', operation: 'true', singleValue: true } }] } } },
+    { id: 'cdraft', name: 'Client Draft', type: 'n8n-nodes-base.gmail', typeVersion: 2.2, position: [2220, 60],
+      parameters: { resource: 'draft', operation: 'create',
+        subject: "={{ $('Build Page').first().json.clientSubject }}",
+        emailType: 'html', message: "={{ $('Build Page').first().json.clientHtml }}",
+        options: { sendTo: '' } }, credentials: CRED.gmail },
     { id: 'skip', name: 'Skipped', type: 'n8n-nodes-base.code', typeVersion: 2, position: [1340, 140],
       parameters: { jsCode: "return [{ json: { status: 'skipped — already in Notion', uuid: $('Input').first().json.uuid } }];" } },
   ];
@@ -210,7 +244,8 @@ function workflow() {
     'Parse Extraction': { main: [[{ node: 'Build Page', type: 'main', index: 0 }]] },
     'Build Page': { main: [[{ node: 'Notion Create', type: 'main', index: 0 }]] },
     'Notion Create': { main: [[{ node: 'Is Live?', type: 'main', index: 0 }]] },
-    'Is Live?': { main: [[{ node: EMAIL_NODE_NAME, type: 'main', index: 0 }], []] },
+    'Is Live?': { main: [[{ node: EMAIL_NODE_NAME, type: 'main', index: 0 }, { node: 'Client Email?', type: 'main', index: 0 }], []] },
+    'Client Email?': { main: [[{ node: 'Client Draft', type: 'main', index: 0 }], []] },
   };
 
   return { name: 'Meetings - Extractor', nodes, connections, settings: { executionOrder: 'v1' } };

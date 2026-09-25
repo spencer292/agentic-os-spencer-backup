@@ -20,17 +20,27 @@ const VALUE_FLAGS = ["--team", "--client", "--user", "--include", "--embedder", 
 const USAGE = `memory-recall - primary recall (PGLite/pgvector backend)
 
 Usage:
-  node scripts/memory-recall.cjs "<query>" <scope> [options]
+  node scripts/memory-recall.cjs "<query>" <scope> [options]            # rung: search (default)
+  node scripts/memory-recall.cjs --expand <chunk-id> <scope> [options]      # rung: expand
+  node scripts/memory-recall.cjs --transcript <chunk-id> <scope> [options]  # rung: transcript
 
-Scope (forwarded to memory-search.cjs; at least one required):
+The recall ladder: search for a chunk_id, expand it for surrounding source
+context if the hit is too small, or drill into its transcript window if exact
+wording is needed. Use the same scope flags across all three rungs.
+
+Scope (forwarded to the rung's script; at least one required):
   --system               search the local system baseline
   --team <id>            search as this team (adds system + team)
   --client <slug>        search as this client (adds system + client)
   --user <id>            include this user's private rows (adds system + private)
   --include <list>       set visibility layers explicitly (system,team,client,private)
 
+Rung selection (mutually exclusive; default is search):
+  --expand <chunk-id>    expand this chunk to its surrounding source context
+  --transcript <chunk-id>   drill into this chunk's original transcript window
+
 Options:
-  --top-k <n>            results to return (default 10)
+  --top-k <n>            results to return (search rung; default 10)
   --embedder <bge-m3|hash>   default: bge-m3 (or $MEMORY_EMBEDDER); hash is explicit offline mode
   --json                 emit results as JSON (machine output)
   --store-query-text     persist the query text on the audit row (off by default)
@@ -41,8 +51,9 @@ Options:
 Run scripts/setup-memory.sh to migrate old .memsearch data into the new store.`;
 
 /**
- * Split argv into the chosen backend and passthrough argv handed verbatim to
- * memory-search.cjs. `--backend` is consumed here and not forwarded.
+ * Split argv into the chosen backend/rung and passthrough argv handed
+ * verbatim to the rung's script. `--backend`, `--expand`, and `--transcript`
+ * are consumed here and not forwarded.
  */
 function parseArgs(argv) {
   const passthrough = [];
@@ -51,11 +62,21 @@ function parseArgs(argv) {
   let topK;
   let json = false;
   let help = false;
+  let expandChunkId;
+  let transcriptChunkId;
 
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
     if (arg === "--backend") {
       backend = argv[(i += 1)];
+      continue;
+    }
+    if (arg === "--expand") {
+      expandChunkId = argv[(i += 1)];
+      continue;
+    }
+    if (arg === "--transcript") {
+      transcriptChunkId = argv[(i += 1)];
       continue;
     }
     if (arg === "--top-k") {
@@ -77,14 +98,28 @@ function parseArgs(argv) {
       continue;
     }
     if (arg.startsWith("--")) {
-      passthrough.push(arg); // bare flags + unknowns: let memory-search.cjs judge
+      passthrough.push(arg); // bare flags + unknowns: let the rung's script judge
       continue;
     }
     positional.push(arg);
     passthrough.push(arg);
   }
 
-  return { backend, topK, json, help, query: positional.join(" ").trim(), passthrough };
+  const bothGiven = expandChunkId !== undefined && transcriptChunkId !== undefined;
+  const rung = expandChunkId !== undefined ? "expand" : transcriptChunkId !== undefined ? "transcript" : "search";
+  const rungChunkId = expandChunkId ?? transcriptChunkId;
+
+  return {
+    backend,
+    topK,
+    json,
+    help,
+    rung,
+    rungChunkId,
+    bothGiven,
+    query: positional.join(" ").trim(),
+    passthrough,
+  };
 }
 
 /**
@@ -95,6 +130,11 @@ function parseArgs(argv) {
 function decideAndRun({ flags, env, runPrimary, out, err }) {
   const write = out ?? ((s) => process.stdout.write(s));
   const warn = err ?? ((s) => process.stderr.write(s.endsWith("\n") ? s : `${s}\n`));
+
+  if (flags.bothGiven) {
+    warn("memory-recall: --expand and --transcript are mutually exclusive.");
+    return 1;
+  }
 
   const backend = (flags.backend ?? env.MEMORY_BACKEND ?? "pglite").toLowerCase();
   if (backend === "memsearch") {
@@ -112,7 +152,10 @@ function decideAndRun({ flags, env, runPrimary, out, err }) {
     return 1;
   }
 
-  const primary = runPrimary(flags.passthrough);
+  const rung = flags.rung ?? "search";
+  const args = rung === "search" ? flags.passthrough : [flags.rungChunkId, ...flags.passthrough];
+
+  const primary = runPrimary(args, rung);
   if (primary.code === 0) {
     write(primary.stdout ?? "");
     return 0;
@@ -125,14 +168,15 @@ function decideAndRun({ flags, env, runPrimary, out, err }) {
   return primary.code;
 }
 
-/** Spawn the new-backend CLI and capture its result. */
-function runPrimary(passthrough, { searchScript }) {
-  const res = spawnSync(process.execPath, [searchScript, ...passthrough], { encoding: "utf8" });
+/** Spawn the rung's CLI and capture its result. */
+function runPrimary(args, rung, { searchScript, expandScript, transcriptScript }) {
+  const script = rung === "expand" ? expandScript : rung === "transcript" ? transcriptScript : searchScript;
+  const res = spawnSync(process.execPath, [script, ...args], { encoding: "utf8" });
   if (res.error) {
     return {
       code: 1,
       stdout: "",
-      stderr: `memory-recall: failed to run memory-search.cjs: ${res.error.message}\n`,
+      stderr: `memory-recall: failed to run ${path.basename(script)}: ${res.error.message}\n`,
     };
   }
   return { code: res.status ?? 1, stdout: res.stdout ?? "", stderr: res.stderr ?? "" };
@@ -145,12 +189,16 @@ function main() {
     return 0;
   }
 
-  const searchScript = path.join(__dirname, "memory-search.cjs");
+  const scripts = {
+    searchScript: path.join(__dirname, "memory-search.cjs"),
+    expandScript: path.join(__dirname, "memory-expand.cjs"),
+    transcriptScript: path.join(__dirname, "memory-transcript.cjs"),
+  };
 
   return decideAndRun({
     flags,
     env: process.env,
-    runPrimary: (passthrough) => runPrimary(passthrough, { searchScript }),
+    runPrimary: (args, rung) => runPrimary(args, rung, scripts),
   });
 }
 
@@ -158,4 +206,4 @@ if (require.main === module) {
   process.exit(main());
 }
 
-module.exports = { parseArgs, decideAndRun };
+module.exports = { parseArgs, decideAndRun, runPrimary };

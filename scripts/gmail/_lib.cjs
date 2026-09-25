@@ -24,16 +24,45 @@ function requireKeys(env, keys) {
   }
 }
 
+// Which mailbox to use. GMAIL_ACCOUNT=allthepower -> GMAIL_REFRESH_TOKEN_ALLTHEPOWER;
+// unset -> legacy GMAIL_REFRESH_TOKEN, so every existing script/cron keeps working unchanged.
+function accountSuffix() {
+  const account = (process.env.GMAIL_ACCOUNT || "").trim();
+  return account ? "_" + account.toUpperCase().replace(/-/g, "_") : "";
+}
+function tokenKey() { return "GMAIL_REFRESH_TOKEN" + accountSuffix(); }
+
+// File-name suffix for per-account state/rules files: "" for the legacy default
+// mailbox, ".allthepower" for GMAIL_ACCOUNT=allthepower — keeps the two mailboxes'
+// last-run markers and area rules from clobbering each other.
+function accountFileSuffix() {
+  const account = (process.env.GMAIL_ACCOUNT || "").trim();
+  return account ? "." + account.toLowerCase() : "";
+}
+
+// Refresh tokens are bound to the OAuth client that minted them. When an account's
+// token came from a different Cloud project, GMAIL_CLIENT_ID_<ACCOUNT> /
+// GMAIL_CLIENT_SECRET_<ACCOUNT> pair it correctly; otherwise the shared keys apply.
+function oauthClient(e) {
+  const s = accountSuffix();
+  return {
+    idKey: e["GMAIL_CLIENT_ID" + s] ? "GMAIL_CLIENT_ID" + s : "GMAIL_CLIENT_ID",
+    secretKey: e["GMAIL_CLIENT_SECRET" + s] ? "GMAIL_CLIENT_SECRET" + s : "GMAIL_CLIENT_SECRET",
+  };
+}
+
 // refresh-token -> short-lived access token
 async function getAccessToken() {
   const e = readEnv();
-  requireKeys(e, ["GMAIL_CLIENT_ID", "GMAIL_CLIENT_SECRET", "GMAIL_REFRESH_TOKEN"]);
+  const key = tokenKey();
+  const { idKey, secretKey } = oauthClient(e);
+  requireKeys(e, [idKey, secretKey, key]);
   const r = await fetch("https://oauth2.googleapis.com/token", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({
-      client_id: e.GMAIL_CLIENT_ID, client_secret: e.GMAIL_CLIENT_SECRET,
-      refresh_token: e.GMAIL_REFRESH_TOKEN, grant_type: "refresh_token",
+      client_id: e[idKey], client_secret: e[secretKey],
+      refresh_token: e[key], grant_type: "refresh_token",
     }),
   });
   const t = await r.json();
@@ -100,6 +129,6 @@ async function ensureLabel(token, name, map) {
 const TRIAGE_LABELS = ["Triage/Junk", "Triage/Needs-You", "Triage/Drafted", "Triage/FYI"];
 
 module.exports = {
-  ENV_PATH, readEnv, requireKeys, getAccessToken, gapi, b64url,
+  ENV_PATH, readEnv, requireKeys, tokenKey, accountFileSuffix, getAccessToken, gapi, b64url,
   getLabelMap, ensureLabel, TRIAGE_LABELS,
 };

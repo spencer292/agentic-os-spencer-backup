@@ -3,6 +3,20 @@
 All notable changes to this skill are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [2.0.1] — 2026-07-15
+
+### Changed
+- Condensed the SKILL.md frontmatter description to fit the repository's 1024-character cap for skill frontmatter. Triggers, modes, output contract, and behaviour are unchanged; this is a metadata-only edit that keeps CI green.
+
+## [2.0.0] — 2026-06-16
+
+The visual-identity engine is now a focused brand-identity skill, applied consistently across every system that uses your brand look.
+
+### Improved
+- **Brand book regenerates only when your identity actually changes** — no more duplicate PDF backups piling up on every run.
+- More reliable brand colour, token, and font handling when building templates.
+- Cleaner text-measurement and layout checks for better-looking results.
+
 ## [1.1.0] — 2026-05-26
 
 ### Added

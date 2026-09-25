@@ -38,16 +38,17 @@ On first run, tell the assistant who you are — for example: **"I'm Spencer —
 
 ## Staying up to date
 
-Whenever Roy publishes updates (new skills, brand documents, methodology improvements):
+Whenever Roy publishes updates (new skills, brand documents, methodology improvements), open a terminal in your install folder and run:
 
 ```
-cd C:\agentic-os-got-moles
-git pull
+bash scripts/gm-update.sh
 ```
 
-That's it. Your `.env`, your memory, and your local notes are never touched by an update — they live in files the repository deliberately doesn't manage.
+Or just tell Claude: **"update the Got Moles OS"**. The script fetches the shared repo, shows you anything that could clash with your own changes, merges the update on top of your commits, and refreshes dependencies. Want a preview first? `bash scripts/gm-update.sh --check` changes nothing.
 
-**If `git pull` ever complains about local changes:** you (or Claude) edited a shared file directly. Ask Claude to "stash my local changes and pull the update" — or message Roy. The rule of thumb: put personal rules in `CLAUDE.local.md` (or a skill's `SKILL.local.md`), never edit the shared files, and pulls will always be clean.
+Your `.env`, your memory, your daily logs, your own projects and cron jobs are never part of an update — they live in files the shared repository does not carry — so they are never overwritten.
+
+**Why not plain `git pull`?** Your install has its own history of commits (every wrap-up is one), so modern git refuses a bare pull on a diverged branch. The script does the safe fetch-then-merge for you. If it ever stops on a conflict, nothing is lost: `git merge --abort` puts you back exactly where you were, and Claude can resolve it ("take origin for shared OS files, keep mine for my own files").
 
 ## Personal backup (one-time, per team member)
 
@@ -68,7 +69,7 @@ What this does: pulls still come FROM the company repo; pushes now go TO your ba
 
 ## The rules of the road
 
-- **Pull, don't push.** This repository is read-only for the team — updates flow from Roy. Your day-to-day work (content drafts, reports, session memory) lives on your machine.
+- **Pull, don't push.** This repository is read-only for the team — updates flow from Roy via `scripts/gm-update.sh`. Your day-to-day work (content drafts, reports, session memory) lives on your machine and in your personal backup.
 - **Secrets stay in `.env`.** Never paste API keys into documents or skills.
 - **The live website is managed separately.** The assistant knows not to deploy — website changes go live through Roy.
 

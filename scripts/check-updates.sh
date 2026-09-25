@@ -39,14 +39,9 @@ trim_update_value() {
 
 read_update_env_value() {
     local key="$1"
-    local value="${!key:-}"
 
-    value="$(trim_update_value "$value")"
-    if [[ -n "$value" ]]; then
-        printf '%s\n' "$value"
-        return 0
-    fi
-
+    # Update source settings intentionally come only from the root .env.
+    # Long-lived shells and the Command Centre may inherit stale values.
     if [[ -f "$REPO_ROOT/.env" ]]; then
         awk -v key="$key" '
             /^[[:space:]]*#/ { next }

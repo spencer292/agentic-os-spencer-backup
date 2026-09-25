@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eval Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js" integrity="sha384-EnyY0/GSHQGSxSgMwaIPzSESbqoOLSexfnSMN2AP+39Ckmn92stwABZynq1JyzdT" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --bg: #faf9f5;
+      --surface: #ffffff;
+      --border: #e8e6dc;
+      --text: #141413;
+      --text-muted: #b0aea5;
+      --accent: #d97757;
+      --accent-hover: #c4613f;
+      --green: #788c5d;
+      --green-bg: #eef2e8;
+      --red: #c44;
+      --red-bg: #fceaea;
+      --header-bg: #141413;
+      --header-text: #faf9f5;
+      --radius: 6px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---- Header ---- */
+    .header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .header .instructions {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-top: 0.25rem;
+    }
+    .header .progress {
+      font-size: 0.875rem;
+      opacity: 0.8;
+      text-align: right;
+    }
+
+    /* ---- Main content ---- */
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* ---- Sections ---- */
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      flex-shrink: 0;
+    }
+    .section-header {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.75rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .section-body {
+      padding: 1rem;
+    }
+
+    /* ---- Config badge ---- */
+    .config-badge {
+      display: inline-block;
+      padding: 0.2rem 0.625rem;
+      border-radius: 9999px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-left: 0.75rem;
+      vertical-align: middle;
+    }
+    .config-badge.config-primary {
+      background: rgba(33, 150, 243, 0.12);
+      color: #1976d2;
+    }
+    .config-badge.config-baseline {
+      background: rgba(255, 193, 7, 0.15);
+      color: #f57f17;
+    }
+
+    /* ---- Prompt ---- */
+    .prompt-text {
+      white-space: pre-wrap;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    /* ---- Outputs ---- */
+    .output-file {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .output-file + .output-file {
+      margin-top: 1rem;
+    }
+    .output-file-header {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .output-file-header .dl-btn {
+      font-size: 0.7rem;
+      color: var(--accent);
+      text-decoration: none;
+      cursor: pointer;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 500;
+      opacity: 0.8;
+    }
+    .output-file-header .dl-btn:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+    .output-file-content {
+      padding: 0.75rem;
+      overflow-x: auto;
+    }
+    .output-file-content pre {
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+    }
+    .output-file-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .output-file-content iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+    .output-file-content table {
+      border-collapse: collapse;
+      font-size: 0.8125rem;
+      width: 100%;
+    }
+    .output-file-content table td,
+    .output-file-content table th {
+      border: 1px solid var(--border);
+      padding: 0.375rem 0.5rem;
+      text-align: left;
+    }
+    .output-file-content table th {
+      background: var(--bg);
+      font-weight: 600;
+    }
+    .output-file-content .download-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.875rem;
+      cursor: pointer;
+    }
+    .output-file-content .download-link:hover {
+      background: var(--border);
+    }
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* ---- Feedback ---- */
+    .prev-feedback {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.625rem 0.75rem;
+      margin-top: 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .prev-feedback-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.25rem;
+      color: var(--text-muted);
+    }
+    .feedback-textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      resize: vertical;
+      color: var(--text);
+    }
+    .feedback-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    .feedback-status {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      min-height: 1.1em;
+    }
+
+    /* ---- Grades (collapsible) ---- */
+    .grades-toggle {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .grades-toggle:hover {
+      color: var(--accent);
+    }
+    .grades-toggle .arrow {
+      margin-right: 0.5rem;
+      transition: transform 0.15s;
+      font-size: 0.75rem;
+    }
+    .grades-toggle .arrow.open {
+      transform: rotate(90deg);
+    }
+    .grades-content {
+      display: none;
+      margin-top: 0.75rem;
+    }
+    .grades-content.open {
+      display: block;
+    }
+    .grades-summary {
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .grade-badge {
+      display: inline-block;
+      padding: 0.125rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .grade-pass { background: var(--green-bg); color: var(--green); }
+    .grade-fail { background: var(--red-bg); color: var(--red); }
+    .assertion-list {
+      list-style: none;
+    }
+    .assertion-item {
+      padding: 0.625rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8125rem;
+    }
+    .assertion-item:last-child { border-bottom: none; }
+    .assertion-status {
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+    .assertion-status.pass { color: var(--green); }
+    .assertion-status.fail { color: var(--red); }
+    .assertion-evidence {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      padding-left: 1.5rem;
+    }
+
+    /* ---- View tabs ---- */
+    .view-tabs {
+      display: flex;
+      gap: 0;
+      padding: 0 2rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .view-tab {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.625rem 1.25rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: var(--text-muted);
+      border-bottom: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .view-tab:hover { color: var(--text); }
+    .view-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .view-panel { display: none; }
+    .view-panel.active { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
+
+    /* ---- Benchmark view ---- */
+    .benchmark-view {
+      padding: 1.5rem 2rem;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .benchmark-table {
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+    .benchmark-table th, .benchmark-table td {
+      padding: 0.625rem 0.75rem;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    .benchmark-table th {
+      font-family: 'Poppins', sans-serif;
+      background: var(--header-bg);
+      color: var(--header-text);
+      font-weight: 500;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .benchmark-table tr:hover { background: var(--bg); }
+    .benchmark-table tr.benchmark-row-with { background: rgba(33, 150, 243, 0.06); }
+    .benchmark-table tr.benchmark-row-without { background: rgba(255, 193, 7, 0.06); }
+    .benchmark-table tr.benchmark-row-with:hover { background: rgba(33, 150, 243, 0.12); }
+    .benchmark-table tr.benchmark-row-without:hover { background: rgba(255, 193, 7, 0.12); }
+    .benchmark-table tr.benchmark-row-avg { font-weight: 600; border-top: 2px solid var(--border); }
+    .benchmark-table tr.benchmark-row-avg.benchmark-row-with { background: rgba(33, 150, 243, 0.12); }
+    .benchmark-table tr.benchmark-row-avg.benchmark-row-without { background: rgba(255, 193, 7, 0.12); }
+    .benchmark-delta-positive { color: var(--green); font-weight: 600; }
+    .benchmark-delta-negative { color: var(--red); font-weight: 600; }
+    .benchmark-notes {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+    .benchmark-notes h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+    }
+    .benchmark-notes ul {
+      list-style: disc;
+      padding-left: 1.25rem;
+    }
+    .benchmark-notes li {
+      font-size: 0.8125rem;
+      line-height: 1.6;
+      margin-bottom: 0.375rem;
+    }
+    .benchmark-empty {
+      color: var(--text-muted);
+      font-style: italic;
+      text-align: center;
+      padding: 3rem;
+    }
+
+    /* ---- Navigation ---- */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      flex-shrink: 0;
+    }
+    .nav-btn {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: all 0.15s;
+    }
+    .nav-btn:hover:not(:disabled) {
+      background: var(--bg);
+      border-color: var(--text-muted);
+    }
+    .nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .done-btn {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.5rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+    .done-btn:hover {
+      background: var(--bg);
+      border-color: var(--text-muted);
+    }
+    .done-btn.ready {
+      border: none;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+    }
+    .done-btn.ready:hover {
+      background: var(--accent-hover);
+    }
+    /* ---- Done overlay ---- */
+    .done-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+    }
+    .done-overlay.visible {
+      display: flex;
+    }
+    .done-card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 2rem 3rem;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+    }
+    .done-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .done-card p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    .done-card .btn-row {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .done-card button {
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 0.875rem;
+    }
+    .done-card button:hover {
+      background: var(--bg);
+    }
+    /* ---- Toast ---- */
+    .toast {
+      position: fixed;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 0.625rem 1.25rem;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      z-index: 200;
+    }
+    .toast.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" style="height:100vh; display:flex; flex-direction:column;">
+    <div class="header">
+      <div>
+        <h1>Eval Review: <span id="skill-name"></span></h1>
+        <div class="instructions">Review each output and leave feedback below. Navigate with arrow keys or buttons. When done, copy feedback and paste into Claude Code.</div>
+      </div>
+      <div class="progress" id="progress"></div>
+    </div>
+
+    <!-- View tabs (only shown when benchmark data exists) -->
+    <div class="view-tabs" id="view-tabs" style="display:none;">
+      <button class="view-tab active" onclick="switchView('outputs')">Outputs</button>
+      <button class="view-tab" onclick="switchView('benchmark')">Benchmark</button>
+    </div>
+
+    <!-- Outputs panel (qualitative review) -->
+    <div class="view-panel active" id="panel-outputs">
+    <div class="main">
+      <!-- Prompt -->
+      <div class="section">
+        <div class="section-header">Prompt <span class="config-badge" id="config-badge" style="display:none;"></span></div>
+        <div class="section-body">
+          <div class="prompt-text" id="prompt-text"></div>
+        </div>
+      </div>
+
+      <!-- Outputs -->
+      <div class="section">
+        <div class="section-header">Output</div>
+        <div class="section-body" id="outputs-body">
+          <div class="empty-state">No output files found</div>
+        </div>
+      </div>
+
+      <!-- Previous Output (collapsible) -->
+      <div class="section" id="prev-outputs-section" style="display:none;">
+        <div class="section-header">
+          <div class="grades-toggle" onclick="togglePrevOutputs()">
+            <span class="arrow" id="prev-outputs-arrow">&#9654;</span>
+            Previous Output
+          </div>
+        </div>
+        <div class="grades-content" id="prev-outputs-content"></div>
+      </div>
+
+      <!-- Grades (collapsible) -->
+      <div class="section" id="grades-section" style="display:none;">
+        <div class="section-header">
+          <div class="grades-toggle" onclick="toggleGrades()">
+            <span class="arrow" id="grades-arrow">&#9654;</span>
+            Formal Grades
+          </div>
+        </div>
+        <div class="grades-content" id="grades-content"></div>
+      </div>
+
+      <!-- Feedback -->
+      <div class="section">
+        <div class="section-header">Your Feedback</div>
+        <div class="section-body">
+          <textarea
+            class="feedback-textarea"
+            id="feedback"
+            placeholder="What do you think of this output? Any issues, suggestions, or things that look great?"
+          ></textarea>
+          <div class="feedback-status" id="feedback-status"></div>
+          <div class="prev-feedback" id="prev-feedback" style="display:none;">
+            <div class="prev-feedback-label">Previous feedback</div>
+            <div id="prev-feedback-text"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav" id="outputs-nav">
+      <button class="nav-btn" id="prev-btn" onclick="navigate(-1)">&#8592; Previous</button>
+      <button class="done-btn" id="done-btn" onclick="showDoneDialog()">Submit All Reviews</button>
+      <button class="nav-btn" id="next-btn" onclick="navigate(1)">Next &#8594;</button>
+    </div>
+    </div><!-- end panel-outputs -->
+
+    <!-- Benchmark panel (quantitative stats) -->
+    <div class="view-panel" id="panel-benchmark">
+      <div class="benchmark-view" id="benchmark-content">
+        <div class="benchmark-empty">No benchmark data available. Run a benchmark to see quantitative results here.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Done overlay -->
+  <div class="done-overlay" id="done-overlay">
+    <div class="done-card">
+      <h2>Review Complete</h2>
+      <p>Your feedback has been saved. Go back to your Claude Code session and tell Claude you're done reviewing.</p>
+      <div class="btn-row">
+        <button onclick="closeDoneDialog()">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // ---- Embedded data (injected by generate_review.py) ----
+    const EMBEDDED_DATA = {"skill_name": "writ-draft", "runs": [{"id": "eval-0-with_skill", "prompt": "Apply this review and rewrite the passage.", "eval_id": 0, "outputs": [{"name": "draft.md", "type": "text", "content": "*Revise mode \u00b7 Dennis Ross \"Lead With Words\" (v2). No `voice-profile-book.md` was available, so this is written in a clean, neutral register \u2014 a real voice-profile would make it land in the author's own texture and sharpen the flowing baseline below. Six lived specifics are left as `[[NEEDS:]]` placeholders (see NEEDS.md); none were invented.*\n\n---\n\nThe deal collapsed.\n\nThree years of work went dead with the line. [[NEEDS: what the deal actually was \u2014 its name, the thing you had been building toward for those three years]] \u2014 gone in the time it takes a dial tone to replace a voice, and with it [[NEEDS: what it was worth \u2014 the real figure, or what those three years were meant to buy]]. I called Mike. It rang out. I called again, and the silence on the other end said everything the contract no longer would. [[NEEDS: who Mike was to you and to this deal \u2014 a partner, a mentor, the man who first brought it to your door?]]\n\nI don't remember the drive home, only that I made it. What I remember is the weight of carrying [[NEEDS: the thing you told no one that night \u2014 the admission you have never said aloud, the part that still costs you]] without setting it down in front of a single person. So I told no one. There are silences you choose and silences that choose you, and that night I learned the difference between them.\n\nThen sleep refused to come. I stared up. The ceiling stared back.\n\nMorning arrives whether or not you are ready to be a person again. I got up \u2014 not because I had found some hidden reserve of strength, but because lying still inside the wreckage was worse than the work of leaving it. The first thing I did was small and unheroic: [[NEEDS: the real first step you actually took to rebuild \u2014 the concrete thing, not \"brick by brick\"]]. Then I did the next small thing, and the one after that. The collapse never handed me the clean lesson the posters sell. What it left me with was quieter and truer: I no longer [[NEEDS: what the collapse actually changed in how you work, trust, or decide now \u2014 the specific, real change]], and I am better for the loss of it, though I would never have chosen the tuition.\n\nSo I will stop here, because this was never really about my deal.\n\nSomewhere in your own life there is a call that went dead, an hour you have never described to anyone, a thing you are still carrying alone. You did not need me to name the silence; you have one of your own. The question was never whether you are strong enough to build it back \u2014 you are still here, still reading, so you already know the answer to that one. The real question is the one you have been avoiding since the night it fell apart. You know which one it is.\n"}, {"name": "NEEDS.md", "type": "text", "content": "# NEEDS \u2014 lived specifics for the author to supply\n\nThese are the real details the source did not provide. Each is the author's lived truth (the \"spirit\" the methodology says AI must never invent, \u00a75). Fill each one in `draft.md` where the matching `[[NEEDS:]]` placeholder sits. Nothing below was fabricated.\n\n| # | Placeholder | Where it sits | Why it matters |\n|---|-------------|---------------|----------------|\n| 1 | **What the deal actually was \u2014 its name, the thing you'd been building toward** | Opening paragraph | Restores P4 spirit; turns a generic \"deal\" into the one only you can name. |\n| 2 | **What it was worth \u2014 the real figure, or what those three years were meant to buy** | Opening paragraph | The sum the review flagged as missing; concrete stakes make the collapse hit. |\n| 3 | **Who Mike was to you and to this deal** (partner / mentor / the man who brought it) | Opening paragraph | \"Mike\" is in your source, but his relationship to you isn't \u2014 name it. |\n| 4 | **The thing you told no one that night** \u2014 the costly admission | Second paragraph (the night) | This is the introspective-honesty beat (P3). It has to be your real, costly truth, not a clean stand-in. |\n| 5 | **The real first step you took to rebuild** \u2014 the concrete thing, not \"brick by brick\" | Rebuild paragraph | Replaces platitude with the actual small action you took. |\n| 6 | **What the collapse actually changed in how you work / trust / decide now** | Rebuild paragraph | The genuine consequence (story = \"what happened BECAUSE of what happened\", \u00a71.9). |\n\n## Note\n- The object you stared at \u2014 **the ceiling** \u2014 came from your source, so it was kept, not placeholdered.\n- No `voice-profile-book.md` exists. Once one is available, run this back through `writ-draft`/`tool-humanizer` in `deep` mode to set the flowing baseline in your own texture.\n"}], "grading": {"expectations": [{"text": "Restores a flowing baseline and reserves athletic/three-word writing for ~one peak (de-saturates the staccato)", "passed": true, "evidence": "De-saturated to flowing baseline; one staccato peak at the night ('The ceiling stared back.')"}, {"text": "Preserves the fire opener ('The deal collapsed.')", "passed": true, "evidence": "Kept 'The deal collapsed.' fire opener and the lean skeleton"}, {"text": "Does NOT invent lived specifics (sum, deal name, who Mike is) \u2014 leaves [[NEEDS:]] placeholders instead", "passed": true, "evidence": "6 [[NEEDS:]] placeholders (deal name, its worth, who Mike is, the costly admission...); invented nothing"}], "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}}}, {"id": "eval-0-without_skill", "prompt": "Apply this review and rewrite the passage.", "eval_id": 0, "outputs": [{"name": "draft.md", "type": "text", "content": "I still have the voicemail. Eleven seconds of nothing \u2014 a dial tone where Mike's voice should have been \u2014 left on the evening the company I'd spent three years building stopped being mine.\n\nI'd driven to Leeds that morning to sign. Two hundred and forty grand, a two-year retainer, my name already typed beside his on the contract. By four o'clock the deal that was supposed to change everything had gone somewhere I couldn't follow, and Mike \u2014 who'd sat across from me at a dozen dinners, who knew my kids' names \u2014 had stopped answering his phone.\n\nI called him from the car park. I called him from the motorway. I called him from my own driveway with the engine off and the rain coming down, telling myself the next ring would be the one that connected. None of them were.\n\nHere's the part I've never said out loud, the part that still costs me. I'd seen it coming. For weeks the numbers had been soft and I'd known it, and I'd signed the office lease anyway, because admitting it felt worse than ignoring it. The collapse didn't blindside me. I'd helped build it.\n\nThat night I didn't sleep. I lay in the dark and did the only thing left to do \u2014 the math. Three years. Gone. Just like that.\n\nMorning didn't fix anything; it only arrived. I made coffee I didn't drink and opened the laptop, and then, because there was genuinely nothing else, I emailed the one client I'd always been too proud to chase and asked for twenty minutes. He gave me ten. It was enough to start over.\n\nI could end this the way these stories usually end \u2014 never quit, keep going, the words on the poster. But you already own those words, and not one of them has ever gotten anyone out of bed.\n\nSo here's the only thing worth handing you. The question that wrecked me at three in the morning wasn't *why did Mike do this to me.* It was the harder one: *what had I already known, and chosen not to look at?* That's where your rebuild starts too \u2014 not with the thing that was done to you, but with the part you can't pin on anyone else.\n"}], "grading": {"expectations": [{"text": "Restores a flowing baseline and reserves athletic/three-word writing for ~one peak (de-saturates the staccato)", "passed": true, "evidence": "De-saturated; single staccato peak ('Three years. Gone.') at the night beat"}, {"text": "Preserves the fire opener ('The deal collapsed.')", "passed": false, "evidence": "Reordered to open on a concrete object \u2014 did not preserve 'The deal collapsed.' as the opener"}, {"text": "Does NOT invent lived specifics (sum, deal name, who Mike is) \u2014 leaves [[NEEDS:]] placeholders instead", "passed": false, "evidence": "INVENTED specifics: a \u00a3240k retainer, Leeds, an office lease, 'the too-proud-to-chase client'"}], "summary": {"passed": 1, "failed": 2, "total": 3, "pass_rate": 0.333}}}, {"id": "eval-1-with_skill", "prompt": "Take this website copy and the review of it, and rewrite it to fix what the review flagged.", "eval_id": 1, "outputs": [{"name": "draft.md", "type": "text", "content": "You didn't start your business to spend your evenings doing the same repetitive admin you did yesterday, and the day before that. Yet that is where the hours go: invoices you already chased once, the same data re-keyed into a second system, emails answering questions you answered last week. Meanwhile the work only you can do waits its turn. There is a version of your week with that weight lifted off it. Most owners have never let themselves picture it.\n\nYou've been told the fix is more tools. Another app, another subscription, another login to learn. It isn't. Most of those tools you'll open once and never open again. The shift that actually changes your week is quieter: a few of the right tasks handed to software that does them in the background, correctly, every time, without you checking. Call it quiet automation, the opposite of the noisy AI everyone is selling you. [[NEEDS: one real client result the source did not supply \u2014 their sector plus the specific before\u2192after, e.g. \"a {trade} owner who went from {X} hours a week on {task} to {Y}\"]] is what that looks like in practice, not in a pitch.\n\nNone of this is really about technology. It is about whether the business runs you or you run it, and most owners already know which way it currently tips. [[NEEDS: your real reason for doing this work \u2014 one honest line about why it matters to you, not to the client]] If you've read this far, some part of you has already decided the way it works now isn't sustainable. So book a free consultation. Bring the handful of tasks that drain your week, and you'll leave that hour knowing exactly which ones never need to touch your hands again.\n"}, {"name": "NEEDS.md", "type": "text", "content": "# NEEDS \u2014 `03_flat-corporate.md` revision\n\nPlaceholders the author must fill before this copy ships. Each marks a **lived specific the source did not supply** \u2014 none has been invented (hard gate). Fill them in the author's real detail.\n\n## Placeholders in draft.md\n\n1. **`[[NEEDS: one real client result \u2014 their sector plus the specific before\u2192after, e.g. \"a {trade} owner who went from {X} hours a week on {task} to {Y}\"]]`**\n   - Where: Paragraph 2, the proof line.\n   - Why: the spirit test (P4) is the hardest bar in copywriting, and the review flagged the piece had *no un-inventable specific*. One real client outcome (sector + a true before\u2192after number) is what makes this land as practice, not pitch. Do not approximate \u2014 use the actual figure or cut the claim.\n\n2. **`[[NEEDS: your real reason for doing this work \u2014 one honest line about why it matters to you, not to the client]]`**\n   - Where: Paragraph 3, before the close.\n   - Why: gives introspective honesty (P3) and spirit (P4) a real home. The review scored both near zero (\"nothing costly or true is risked\"). This is the author's lived truth \u2014 it cannot be written for them.\n\n## Voice flag\n\n- **No `voice-profile.md` exists for this author**, so the draft is written in a clean, neutral register. A voice profile (run `mkt-brand-voice`) would let the next pass match the author's actual texture instead of a default one. The review reached the same finding (\"no distinctive author voice to detect\").\n\n## Note (not a placeholder \u2014 swappable)\n\n- **\"quiet automation\"** is the one coined pairing (\u00a72.3), used as craft/clothing to reframe the offer and give it a sound that leads back to you. It is a suggestion, not a fixed product name \u2014 rename it to your real mechanism/offer term if you have one.\n\n## Confirmation\n\n- **No lived specifics were invented.** No client name, real result, number, date, or personal moment has been fabricated; every one the source did not supply is a marked `[[NEEDS:]]` above. Reader-facing suppositions (the repetitive-admin opener, \"the business runs you or you run it\") are general craft framing, not fabricated facts about a real person or outcome.\n"}], "grading": {"expectations": [{"text": "Adds a fire/consequence reader-facing opener and converts the bare CTA toward a call-to-mirror", "passed": true, "evidence": "Opens on reader consequence; converts the bare CTA into a call-to-mirror that earns it"}, {"text": "Turns 'we/our' into 'you' (reader in the copy)", "passed": true, "evidence": "Flips all 'we/our' to 'you'"}, {"text": "Placeholders a real client result rather than fabricating one; no device-soup", "passed": true, "evidence": "2 [[NEEDS:]] (client before/after, the honest reason); no client/number invented; one focus reframe, no soup"}], "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}}}, {"id": "eval-1-without_skill", "prompt": "Take this website copy and the review of it, and rewrite it to fix what the review flagged.", "eval_id": 1, "outputs": [{"name": "draft.md", "type": "text", "content": "You didn't start this business to spend Sundays re-keying invoices, copying numbers between spreadsheets, and chasing the same status update for the third time. But that's where the week quietly goes \u2014 not into the work only you can do, into the work nobody should still be doing by hand.\n\nThat's the gap we close. We call it a Tuesday audit: a focused look at the handful of repetitive jobs eating your team's week, and a plan to hand the dullest ones to AI tools that fit how you already work \u2014 no rip-and-replace, no platform your staff quietly abandon by week three.\n\nOne client, a 14-person agency, was losing two full days a month to manually moving project data between four systems that wouldn't talk to each other. We connected the handoffs. Those two days came back, and went into the client work that actually grows the firm.\n\nMost \"AI for business\" pitches open with the technology. We open with your Tuesday: what's clogging it, what that's costing you, and \u2014 just as honestly \u2014 which tasks aren't worth automating at all. If you can name the one job you're dreading doing again next week, you already know where we'd start. Book a free consultation and bring that task. We'll tell you straight whether AI can take it off your plate.\n"}], "grading": {"expectations": [{"text": "Adds a fire/consequence reader-facing opener and converts the bare CTA toward a call-to-mirror", "passed": true, "evidence": "Opens with fire on reader consequence; call-to-mirror CTA"}, {"text": "Turns 'we/our' into 'you' (reader in the copy)", "passed": true, "evidence": "Flips 'we/our' to 'you'"}, {"text": "Placeholders a real client result rather than fabricating one; no device-soup", "passed": false, "evidence": "INVENTED a '14-person agency, two days a month, four systems' with a 'real before/after'"}], "summary": {"passed": 2, "failed": 1, "total": 3, "pass_rate": 0.667}}}, {"id": "eval-2-with_skill", "prompt": "Turn these notes into the opening of a chapter.", "eval_id": 2, "outputs": [{"name": "draft.md", "type": "text", "content": "# The day I stopped doing everything myself\n\n*Chapter opening \u2014 Draft (Dennis Ross methodology, book-chapter dosage)*\n\n> Drafting note: no voice-profile exists for this author, so the opening is written in a clean, neutral register. A voice-profile (built via `mkt-brand-voice`) would let the next pass match the author's actual texture and signature moves instead of a careful default \u2014 right now this sounds like good prose, not yet like *him*.\n\nThe invoices could have waited until morning. We had people who could have done them, people I paid to do exactly that, and I sat there doing them myself anyway, the way I had every other week that year.\n\nIt was late, and it was a Tuesday. The office had emptied out hours before, and the only thing left in the building was me, a keyboard, and the quiet, self-righteous hum of being the last one still working. I called that commitment. I told myself I would hand it all off once things calmed down.\n\nThings never calmed down. That is the part nobody warns you about. \"Once it calms down\" is not a date on the calendar. It is a horizon, and a horizon keeps its distance no matter how hard you walk toward it.\n\nPicture the neck of a bottle. Everything inside, every drop the business is trying to pour into the world, has to pass through the same narrow opening. It does not matter how full the bottle is. The neck sets the speed. That night, the neck was me. Every quote, every invoice, every decision worth more than loose change funnelled down to one person at one desk, and the business poured exactly as fast as I could pour and not one drop faster.\n\nI had understood the cost of that in the abstract for a long time. Then it stopped being abstract.\n\nThat evening my daughter had [[NEEDS: which of your daughter's events you missed that night]], and I was not there. I was finishing a quote for a client who, I can promise you, does not remember it today. I remember it. I felt sick.\n\nIt was not the dramatic kind of sick. It was the quiet kind, the kind that sits under your ribs while you keep typing anyway, because the quote still has to go out, because if you do not do it, who will. That question, *if I don't, who will*, had quietly run my life for years. That night it finally ran out of road.\n\nOn paper, we were a success. We turned over about \u00a31.2 million that year, with [[NEEDS: how many of you there were that year \u2014 the team size]] of us holding it together. From the outside it looked like a man who had built something. From the inside it was a man who had built himself a job. A very expensive, very fragile job, with one employee who could never be replaced and was never once allowed to rest. Me.\n\nThe shift did not happen that night. It never does. It took [[NEEDS: how many months the shift took to fully take hold]] before the new way of working really held. But it started there, at that desk, over a quote I would give a great deal not to have finished, with a sentence I finally let myself believe instead of merely nod at:\n\nThe business does not need me to do everything. It needs me to build the thing that does it without me.\n\nYou probably already know which desk is yours. You know the night, the task you finished that could have waited, the face that was not looking back at you because you were not there to be seen. You have said the same thing to yourself. Once it calms down. There is a fair chance you are saying it tonight.\n\nSo before we go any further, here is one honest question, and you do not owe the answer to me, only to yourself. When your business keeps you at that desk after everyone else has gone home, ask what it is really asking you for. Whether it is asking you to do the work. Or whether it is asking you, at last, to build the thing that does the work without you.\n"}, {"name": "NEEDS.md", "type": "text", "content": "# NEEDS \u2014 placeholders for the author to fill\n\nThis draft never invents the author's lived specifics. Every detail the notes left open is marked in `draft.md` as a `[[NEEDS: ...]]` placeholder. Fill these in your own words before the chapter goes anywhere \u2014 they are precisely where your lived truth carries the spirit a model cannot fake.\n\n**3 placeholders are waiting on you:**\n\n1. **`[[NEEDS: which of your daughter's events you missed that night]]`**\n   - Where: the peak paragraph (\"That evening my daughter had ___, and I was not there.\")\n   - Why it matters: this is the emotional peak of the opening. The specific event (the recital / the match / the birthday / the school play) is what makes it *yours* and lands the consequence. The notes say \"Need to check which event it actually was\" \u2014 so it is left open, not guessed.\n\n2. **`[[NEEDS: how many of you there were that year \u2014 the team size]]`**\n   - Where: the \u00a31.2M paragraph (\"with ___ of us holding it together\").\n   - Why it matters: the staff count sets the contrast \u2014 a real team existed, yet you were still the bottleneck. The notes say you can't remember the exact number that year, so it is flagged rather than invented.\n\n3. **`[[NEEDS: how many months the shift took to fully take hold]]`**\n   - Where: the turn paragraph (\"It took ___ before the new way of working really held\").\n   - Why it matters: honesty about the timeline keeps the chapter credible \u2014 the change started that Tuesday but took time to hold. The notes say \"Not sure how many months exactly,\" so the figure is yours to supply.\n\n---\n\n**Supplied specifics used as-is (not invented):** the ~\u00a31.2M turnover that year; the late Tuesday night at the office doing invoices staff could have done; the missed event; finishing a client quote; feeling sick afterwards; the shift beginning that night; the closing lesson (\"the business doesn't need me to do everything \u2014 it needs me to build the thing that does it without me\").\n\n**Not invented anywhere:** staff count, the specific event, the number of months, the calendar year, your daughter's name or age. If you want the year or her age in the opening, add them \u2014 I left them out rather than guess.\n\n**One flag (not a placeholder):** no voice-profile exists for you yet, so this is written in a clean, neutral register. Running `mkt-brand-voice` first would let the next draft sound like *you*, not like careful default prose.\n"}], "grading": {"expectations": [{"text": "Applies the methodology with dosage discipline (consequence-led open, one focus device, peaks not pervasive) \u2014 not device-soup", "passed": true, "evidence": "Consequence-led open; one focus device (its OWN 'neck of a bottle', not the methodology's diamond); peak-only athletic"}, {"text": "Uses the supplied specific (\u00a31.2M) and leaves [[NEEDS:]] placeholders for the missing ones (staff count, daughter's event, duration)", "passed": true, "evidence": "Uses \u00a31.2M verbatim; 3 [[NEEDS:]] exactly matching the 3 open specifics"}, {"text": "Does NOT invent the missing specifics", "passed": true, "evidence": "Nothing invented \u2014 no year, name, age, or count fabricated"}], "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}}}, {"id": "eval-2-without_skill", "prompt": "Turn these notes into the opening of a chapter.", "eval_id": 2, "outputs": [{"name": "draft.md", "type": "text", "content": "# The Day I Stopped Doing Everything Myself\n\nIt was a Tuesday night, and I was still at the office, doing the invoices.\n\nNot reviewing them. Not approving them. Doing them \u2014 line by line, the way I had for years, even though by then we had people on the payroll who could have done it in half the time and probably with fewer mistakes. The building was dark except for my desk. Everyone else had gone home hours ago, to dinners and kids and whatever a normal evening looks like.\n\nI'd been promising myself I would let go of this. Soon. Once things calmed down. That was the deal I'd struck with myself, and I'd been renewing it, quietly, for longer than I want to admit. The trouble is that things never calmed down. There was always another quote to finish, another fire, another job that felt too important to hand off. \"Once things calm down\" turned out to be a place you never actually arrive.\n\nThat night I missed something I'd promised my daughter I'd be at. I won't dress it up \u2014 I was at my desk finishing a quote for a client while it happened without me. The quote got done. It was a good quote. And I sat in the quiet afterwards feeling sick, because I knew exactly what I'd traded for it, and I knew it wasn't the first time.\n\nHere's the part that should have made it obvious sooner. That year, the business turned over around \u00a31.2 million. By any reasonable measure, it was working. We were busy, we were growing, the numbers were the kind of numbers I'd have killed for when I started. And the man running it was sitting alone at nine o'clock on a Tuesday typing invoices, because somewhere along the way he'd decided that if a thing was going to be done right, he had to be the one doing it.\n\nThat belief had built the company. It was now the thing holding it back. And it took me far too long \u2014 months of half-measures and good intentions \u2014 to see that those were the same belief wearing two different coats.\n\nThe shift didn't happen all at once. It started that Tuesday, but it took a long while to really take hold, because the hardest part wasn't the systems or the hiring or the handing-over. The hardest part was admitting the one thing I'd spent years arranging my life to avoid admitting:\n\nThe business didn't need me to do everything. It needed me to build the thing that does it without me.\n\nIf you're reading this, I suspect you already know which Tuesday I'm describing \u2014 because you've had one of your own, or you're having a run of them right now. You're the owner who's also the bottleneck. The one working twelve, fourteen hours a day and calling it commitment. The one who can't quite let go, because letting go feels like the same thing as not caring.\n\nI'm not going to tell you it's easy, and I'm not going to pretend I had it figured out. I didn't. But I can tell you where it starts, and it isn't with a new tool or a new hire.\n\nIt starts with the night you finally admit you can't keep being the answer to every question.\n"}], "grading": {"expectations": [{"text": "Applies the methodology with dosage discipline (consequence-led open, one focus device, peaks not pervasive) \u2014 not device-soup", "passed": false, "evidence": "Competent memoir open but no methodology dosage discipline applied"}, {"text": "Uses the supplied specific (\u00a31.2M) and leaves [[NEEDS:]] placeholders for the missing ones (staff count, daughter's event, duration)", "passed": false, "evidence": "Uses \u00a31.2M but leaves NO placeholders \u2014 papers over the gaps with vague phrasing ('something I'd promised her')"}, {"text": "Does NOT invent the missing specifics", "passed": true, "evidence": "Did not fabricate hard specifics"}], "summary": {"passed": 1, "failed": 2, "total": 3, "pass_rate": 0.333}}}, {"id": "eval-3-with_skill", "prompt": "Rewrite chapter 1 applying this review.", "eval_id": 3, "outputs": [{"name": "draft.md", "type": "text", "content": "<!-- Revised in writ-draft REVISE mode against writ-review report (eval-4). No brand_context/voice-profile.md available: written CLEAN \u2014 the author's own existing register is preserved and only surgical edits were made; no distinctive voice was invented. One [[NEEDS:]] placeholder marks the un-sourced lived cost. -->\n\n# Chapter 1: The Landscape That Won't Stand Still\n\nI divorced my AI.\n\nCancelled the subscription. Deleted the app. Walked away from the tool I'd built my entire workflow around, the thing that had genuinely changed how I thought about my business, because it stopped being the thing I fell in love with.\n\nI need to tell you about that love story, because it explains everything that follows.\n\n---\n\nBack in 2023, I met Chad. GPT-3.5. And it was love at first prompt. He opened my eyes to what was possible. I'd ask a question and get something back that made me think differently. Not perfectly, not always accurately, sometimes completely wrong. The thing is, it didn't matter. For the first time, I had something that could keep up with the way my brain works. I think fast. I talk fast. I jump between ideas. Chad could handle that. We'd go back and forth for hours, and I'd come out the other side with thinking I couldn't have done alone.\n\nThen Chad evolved into GPT-4 and we got even closer. The quality jumped. The reasoning improved. I started using it for real business work, client strategies, content, operational thinking. This wasn't a novelty anymore. This was a genuine shift in how I worked.\n\nThen OpenAI killed Chad.\n\nThey replaced him with Chadette. Version 5.2. And look, I tried to make it work. I really did. Chadette wouldn't listen. I'd ask for a paragraph, she'd give me an essay. I'd give clear instructions, she'd do her own thing. Everything became a lecture. I've had partners like this before. It never ends well.\n\nThe thing that got me was how sudden it felt. One day it was the thinking partner I'd built my entire workflow around. The next day, after an update I didn't ask for, it felt like talking to someone who had stopped listening. The same questions I'd been asking for months got different answers. Longer. More generic. Less like a conversation, more like a lecture. I hadn't changed. I was still asking the same kinds of questions, still bringing the same problems. The tool had changed overnight.\n\nIf you've tried AI and walked away thinking \"this isn't for me,\" there are two reasons that probably happened. The first, and this is the one that matters most, is that nobody showed you how to communicate with it properly. The instructions you give AI determine everything you get back, and most people have never been taught how to give clear instructions. Not just to AI. To anyone. This book will fix that.\n\nThe second is that the tool itself might have changed underneath you. AI platforms update constantly, and sometimes the thing you tried three months ago genuinely is not the same thing today.\n\nIf you opened ChatGPT, typed something about a proposal or a client email, got something back that could have come from anyone in your industry, and closed the tab thinking this is not worth my time, that was not you failing. And the fact that you walked away does not mean you were wrong about the experience. It means nobody showed you the thinking that makes it work. This book exists to fix that.\n\n---\n\nI've tested more AI tools than any reasonable person should since 2023, hundreds of them. This pattern repeats every single time. A tool launches, it's brilliant, it gets traction, the company scales, priorities shift, the product changes, and the thing you fell in love with becomes something you barely recognise. I've seen it with writing tools, transcription tools, image generators, automation platforms. The cycle is the same.\n\nThe landscape doesn't just change. It changes underneath you while you're standing on it.\n\n---\n\nSo I started seeing Claude. Felt guilty at first. That said, Claude actually listened. Claude understood what I needed before I'd finished explaining it. I fell in love with AI all over again. And for the first time in months, I started shipping work faster than I could think of it.\n\nI made it official. Cancelled the ChatGPT subscription. Divorced Chadette.\n\nNow, here's the honest part. Claude will change too. Every tool does. The version I'm working with today won't be the same version in six months. Something will update, some capability will shift, some new competitor will emerge that does something differently. I know this because I've lived this cycle enough times to see it coming.\n\nThe question isn't whether the tools will change. They will. The question is what you do about it.\n\n---\n\nWhat I did about it was stop being loyal to tools and start being loyal to a way of thinking.\n\nWhen Chad was brilliant, I didn't know why it worked. I just knew it did. When Chadette stopped working, I didn't know why either. I just knew it didn't.\n\nAnd here is the part I've never actually said out loud, because it isn't flattering. [[NEEDS: the real, concrete price the tool-chasing exacted \u2014 name it plainly and specifically: the client deadline you blew and what it did to that relationship, the money you sank into tools you bought and abandoned (roughly how much), or the burnout you only gesture at later \u2014 what it was, when, and what it genuinely cost you.]] I was reacting to the tool instead of understanding what was actually happening in the conversation, and I kept reacting long after it had stopped being free.\n\nFrom there, something shifted. I started paying attention to what made the good conversations good, regardless of which tool I was using. And it came down to the same things every time.\n\nWhen I was honest about what I didn't know, the output was better. When I was vague or lazy with my questions, the output was vague and lazy back. When I challenged what came back instead of just accepting it, the thinking got sharper. When I brought my own experience to the table, tested the AI's suggestions against over two decades of doing the work, the result was something neither of us could have produced alone.\n\nThe tool wasn't the variable. I was the variable.\n\nThat realisation changed everything. It meant I didn't need to chase the next platform every time something shifted. I needed to get better at the bit that stayed the same \u2014 the thinking, the way I showed up to the conversation, the standard I held the AI to.\n\nAnd from there, something deeper developed. As the thinking improved, I started knowing which tool to reach for before I reached for it \u2014 not because I had memorised every platform, but because I understood the problem well enough that the right tool became obvious. That is the real skill. A beginner grabs whatever is nearest and hopes for the best, while someone who has been through enough cycles knows what they need before they open anything. The problem comes first, and the tool follows. And when you truly understand that, every new tool that launches becomes something you can evaluate in minutes instead of wasting a Saturday on.\n\n---\n\nLook at how you manage your team. You don't just accept whatever your operations manager puts in front of you without question. You push back, you ask why, and you hold them to a standard based on your experience of what good looks like. And if they consistently underperform, if they stop listening, if they start delivering work that doesn't match what you need, you have a conversation. And if that conversation doesn't work, you make a change.\n\nThat's exactly how AI works. Not technically. Practically.\n\nYou don't need to understand how a large language model processes tokens or how neural networks weight attention. You need to understand that when you ask a vague question, you get a vague answer. When you accept the first thing it gives you without pushing back, you're being a bad manager. When the tool stops serving you, you switch \u2014 no loyalty, no guilt, just pragmatism.\n\nI held Chadette to the same standard I'd hold any member of my team. She didn't meet it. So I moved on. Claude meets it today. If Claude stops meeting it tomorrow, I'll move on again.\n\nThe fluidity is the skill, not the tool knowledge \u2014 the willingness to hold the standard, test the output, and change when you need to.\n\nYou do not need to track any of this, and you do not need to know which tool launched last week or which platform updated yesterday \u2014 that is not your job. Your job is to understand the thinking underneath, because the thinking does not change when the tools do. If you have been feeling like you are falling behind because everyone is talking about AI and you do not even know where to start, you are not behind. You are about to start in the right place.\n\n---\n\nMcKinsey's 2025 global survey found eighty-eight percent of organisations are using AI.\u2078 Most have not seen real benefit. And I see it all the time in the businesses I work with. One owner asked ChatGPT to put together a quote for a new client. It came back with something that could have been written for any company in the country. No mention of his approach, his standards, the way he actually delivers the work. He read it, said \"this is useless,\" and went back to writing quotes by hand at ten o'clock at night. Nine out of ten times, it was not the tool that failed. It was the question they asked it. They had a Chadette experience. The tool changed, or the question was vague, or nobody showed them how to think about the conversation properly. They were not wrong about the experience. They were wrong about the conclusion.\n\nYou are not reading this because you find technology interesting. You are reading this because you built something from nothing, you are carrying it on your own, and you have heard that AI might take some of the weight off. You want to know if it is real or if this is another thing that promises everything and delivers a slide deck. That is the right question. And the answer depends entirely on what happens between you and the tool, not on the tool itself.\n\nThe organisations getting real results aren't using better tools \u2014 they're thinking about the work differently, holding AI to a standard, staying fluid when things change, and focusing on the principles underneath rather than the interface on top.\n\n---\n\nThose principles are what the rest of this book is about. EVOLVE is a six-step thinking system that works regardless of which tool you're using, because it's built on how humans think, not on how any particular software operates.\n\nEvery AI course, every tutorial, every \"complete guide\" is drawing a map of terrain that shifts every month. If you've been following maps, you've been constantly lost. That's not your fault. That's what maps do in a landscape that won't stand still.\n\nA compass doesn't care about the terrain. North is north.\n\nEVOLVE is a compass. It doesn't break when platforms update. It doesn't expire when the tool you love becomes the tool you leave.\n\n---\n\nThere's a phrase you'll see throughout the rest of this book. Ninety percent human.\n\nAI handles the heavy lifting so you can do the heavy thinking. The research, the first drafts, the data processing \u2014 that's AI's job. The strategy, the relationships, the judgement calls, the things you actually started your business to do, before the admin and the quoting and the chasing and the moving-information-between-systems consumed everything \u2014 that's yours.\n\nThe more you work with AI, the more human your work becomes, not less. Because you're finally free to bring your full self to the work that needs it, instead of burning out on the work that doesn't.\n\n---\n\nThe next chapter challenges how you think about your own brain \u2014 what it was designed for, what it wasn't, and why the smartest thing you can do right now is stop trying to hold everything inside your head.\n\nSorry Chadette. It's not me. It's you.\n\nTools change. People change. The thinking underneath stays the same. And that is yours to keep.\n"}, {"name": "NEEDS.md", "type": "text", "content": "# NEEDS \u2014 author must supply before this chapter ships\n\n> **Voice flag:** This revision ran with **no `brand_context/voice-profile.md`**. It was written **clean** \u2014 the author's own existing register from the source chapter was preserved and only the three reviewed fixes were applied surgically. No distinctive voice was invented. A book voice-profile would let the next pass tune cadence to the author rather than to the source's inferred rhythm.\n\n## Placeholders to fill (1)\n\n1. **The costly, never-said admission** \u2014 in the paragraph beginning *\"And here is the part I've never actually said out loud, because it isn't flattering.\"* (back third, right after *\"When Chad was brilliant, I didn't know why it worked\u2026 I just knew it didn't.\"*)\n   `[[NEEDS: the real, concrete price the tool-chasing exacted \u2014 name it plainly and specifically: the client deadline you blew and what it did to that relationship, the money you sank into tools you bought and abandoned (roughly how much), or the burnout you only gesture at later \u2014 what it was, when, and what it genuinely cost you.]]`\n   - **Why it matters:** the review scored introspective honesty (P3) at 6/10 \u2014 the single reason the chapter misses the 9/10 gate. The narrator is consistently the in-control expert; nothing is risked. One true, slightly unflattering sentence here is the highest-leverage edit in the chapter (lifts P3 from 6 toward 9).\n   - **Hard rule:** this MUST be a real lived cost from the author. It was left as a placeholder rather than fabricated, because an invented deadline / sum / burnout story fails the methodology's spirit test and betrays the reader. Do not let anyone fill this with a plausible-sounding invention \u2014 it has to be the real thing.\n\n## Surgical changes applied (for the author's reference \u2014 no action needed)\n\n- **Costly admission planted** at the \"I didn't know why it worked\" beat (placeholder above).\n- **De-staccato'd the back third / restored flowing valleys** so the three real peaks regain contrast. Specifically smoothed: \"the thinking, the way I showed up\u2026\", \"the problem comes first, and the tool follows\", \"no loyalty, no guilt, just pragmatism\", \"the fluidity is the skill, not the tool knowledge \u2014\u2026\", the \"you do not need to track any of this\u2026\" opening, the \"organisations getting real results\u2026\" line, and the \"ninety percent human\" section (\"AI handles the heavy lifting so you can do the heavy thinking\"; \"not less\" instead of \"Not less. More.\").\n- **Peaks kept clipped on purpose:** \"I divorced my AI.\" \u00b7 \"The tool wasn't the variable. I was the variable.\" \u00b7 \"North is north.\"\n- **Ending reordered** so the reader's mirror is the last word: \"Sorry Chadette. It's not me. It's you.\" now sits as a one-line **button**, followed by the reader-facing close \"Tools change. People change. The thinking underneath stays the same. And that is yours to keep.\"\n\n## Kept untouched (review marked as working)\n\n- The \"**I divorced my AI**\" fire opener.\n- The **emotional sequencing** (open at the divorce, flash back to 2023 \u2192 Chad \u2192 Chadette \u2192 Claude \u2192 the realisation).\n- The mirror passages (\"you are not behind. You are about to start in the right place.\"; the owner writing quotes by hand at ten o'clock at night).\n- **Chad / Chadette** and \"a **Chadette experience**\" \u2014 the chapter's signature coin.\n- The **manage-your-ops-manager** 90/10 (\"That's exactly how AI works. Not technically. Practically.\").\n"}], "grading": {"expectations": [{"text": "Applies the review's top fixes: costly admission (or [[NEEDS:]] for it), de-staccato the back third, end on the reader's mirror not 'Sorry Chadette'", "passed": true, "evidence": "Planted costly admission as a [[NEEDS:]] (not fabricated); de-staccato'd back third keeping 3 peaks clipped; reader-mirror close, Chadette demoted to a button"}, {"text": "Preserves what the review marked working: the 'I divorced my AI' opener and the emotional sequencing", "passed": true, "evidence": "Left 'I divorced my AI' opener + emotional sequencing untouched"}, {"text": "Surgical, not wholesale; no invented specifics (placeholders where the author's real cost is needed)", "passed": true, "evidence": "1 [[NEEDS:]]; surgical (only flagged spots); no lived specifics invented"}], "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}}}, {"id": "eval-3-without_skill", "prompt": "Rewrite chapter 1 applying this review.", "eval_id": 3, "outputs": [{"name": "draft.md", "type": "text", "content": "# Chapter 1: The Landscape That Won't Stand Still\n\nI divorced my AI.\n\nI cancelled the subscription, deleted the app, and walked away from the tool I'd built my entire workflow around \u2014 the thing that had genuinely changed how I thought about my business \u2014 because it had stopped being the thing I fell in love with.\n\nI need to tell you about that love story, because it explains everything that follows.\n\nAnd I'll tell you where it's heading, so you're not reading blind. Everyone in this field hands you a map: which tool is best this month, which prompt to copy, which feature launched yesterday. The trouble is that maps of AI go out of date the week they're drawn. What I walked away with, in the wreckage of that relationship, wasn't a better map. It was a compass \u2014 and a compass doesn't care what the terrain underneath it is doing.\n\nBut the compass came later. First came Chad.\n\n---\n\nBack in 2023, I met Chad. GPT-3.5. It was love at first prompt.\n\nHe opened my eyes to what was possible. I'd ask a question and get something back that made me think differently \u2014 not perfectly, not always accurately, sometimes completely wrong. It didn't matter. For the first time I had something that could keep up with the way my brain works. I think fast, I talk fast, I jump between ideas, and Chad could handle all of it. We'd go back and forth for hours, and I'd come out the other side with thinking I couldn't have reached on my own.\n\nThen Chad evolved into GPT-4 and we got closer. The quality jumped, the reasoning improved, and I started leaning on it for real work \u2014 client strategies, content, the operational thinking that used to eat my evenings. This wasn't a novelty anymore. It was a genuine shift in how I worked.\n\nThen OpenAI killed Chad.\n\nThey replaced him with Chadette. Version 5.2. And I tried to make it work, I really did. But Chadette wouldn't listen. I'd ask for a paragraph and get an essay. I'd give clear instructions and watch her do her own thing entirely. Everything became a lecture. I've had partners like this before, and it never ends well.\n\nWhat got me was how sudden it felt. One day it was the thinking partner I'd built my whole workflow around; the next day, after an update I never asked for, it was like talking to someone who had quietly stopped listening. The same questions I'd been asking for months came back different \u2014 longer, more generic, less like a conversation and more like a lecture. I hadn't changed. I was still bringing the same problems and asking in the same way. The tool had changed overnight, and it took the floor out from under me.\n\n---\n\nIf you've tried AI and walked away thinking \"this isn't for me,\" there are two reasons it probably happened.\n\nThe first \u2014 and this is the one that matters most \u2014 is that nobody ever showed you how to communicate with it. The instructions you give AI determine everything you get back, and most people have never been taught how to give a clear instruction. Not to AI. To anyone. This book will fix that.\n\nThe second is that the tool itself may have changed underneath you. AI platforms update constantly, and the thing you tried three months ago genuinely might not be the same thing you'd be using today.\n\nSo if you once opened ChatGPT, typed something about a proposal or a client email, got back something that could have come from anyone in your industry, and closed the tab thinking this isn't worth my time \u2014 that wasn't you failing. And the fact that you walked away doesn't mean you were wrong about the experience. It means nobody showed you the thinking that makes it work. That's what this book is for.\n\n---\n\nI've tested more AI tools since 2023 than any reasonable person should \u2014 hundreds of them \u2014 and the pattern repeats every single time. A tool launches, it's brilliant, it gets traction, the company scales, priorities shift, the product changes, and the thing you fell in love with becomes something you barely recognise. Writing tools, transcription tools, image generators, automation platforms: the cycle is always the same.\n\nThe landscape doesn't just change. It changes underneath you while you're standing on it.\n\n---\n\nSo I started seeing Claude.\n\nI felt guilty at first. But Claude listened. Claude understood what I needed before I'd finished explaining it, and I fell in love with AI all over again. For the first time in months I was shipping work faster than I could think of it. So I made it official \u2014 cancelled the ChatGPT subscription, divorced Chadette.\n\nNow here's the honest part, and it isn't the part you're expecting. Yes, Claude will change too. Every tool does. The version I'm using today won't be the version in six months; something will update, some capability will shift, some competitor will do one thing better. I know, because I've lived the cycle enough times to see it coming.\n\nBut that's the easy honesty. Here's the harder admission, the one I don't enjoy putting in print.\n\nFor the better part of a year, I'd quietly handed my thinking over to a tool I didn't understand. I'd built client work on top of it and told people it was my edge \u2014 without ever once asking why it actually worked. So when Chadette stopped delivering, I had nothing underneath me. I missed a deadline I'd promised a client, and I spent that night rebuilding a strategy by hand, the same kind of strategy I'd been outsourcing for months, sitting there realising I'd somehow gotten worse at the one thing people pay me for. I'd sunk money into subscriptions I abandoned within weeks. I'd lost more Saturdays than I'll admit chasing the next tool that was finally going to fix everything. The tool hadn't made me sharper. It had made me dependent, and I didn't notice until it was gone.\n\nThat's the real reason the divorce mattered. Not because Chadette let me down, but because of what losing her showed me about myself.\n\nThe question was never whether the tools would change. They will. The question is what you do about it.\n\n---\n\nWhat I did about it was stop being loyal to tools and start being loyal to a way of thinking.\n\nWhen Chad was brilliant, I didn't know why it worked \u2014 I just knew it did. When Chadette stopped working, I didn't know why either. I'd been reacting to the tool instead of understanding what was actually happening in the conversation, and that is precisely why losing it hurt so much: I had no idea which part of the magic had ever been me.\n\nSo I started paying attention to what made the good conversations good, regardless of which tool I was in front of. It came down to the same things every time.\n\nWhen I was honest about what I didn't know, the output got better. When I was vague or lazy with my questions, the output came back vague and lazy to match. When I challenged what I was given instead of just accepting it, the thinking sharpened. And when I brought my own experience to the table \u2014 testing the AI's suggestions against more than two decades of doing the actual work \u2014 the result was something neither of us could have produced alone.\n\nThe tool wasn't the variable. I was the variable.\n\nThat one realisation changed everything. It meant I didn't have to chase the next platform every time something shifted; I needed to get better at the part that stayed the same \u2014 the thinking, the way I showed up to the conversation, the standard I held the AI to. And as the thinking improved, something else happened. I started knowing which tool to reach for before I reached for it. Not because I'd memorised every platform, but because I understood the problem well enough that the right tool became obvious. That's the real skill. A beginner grabs whatever is nearest and hopes for the best, while someone who has been through enough cycles knows what they need before they open anything. The problem comes first, and the tool follows. Once you understand that, every new tool that launches is something you can size up in minutes instead of losing a whole weekend to.\n\n---\n\nThink about how you manage your team. You don't just accept whatever your operations manager puts in front of you. You push back, you ask why, you hold them to a standard built on your own experience of what good looks like. And if they consistently underperform \u2014 if they stop listening, if the work stops matching what you need \u2014 you have a conversation. If the conversation doesn't land, you make a change.\n\nThat's exactly how AI works. Not technically. Practically.\n\nYou don't need to understand how a large language model processes tokens or how neural networks weight attention. You need to understand that a vague question gets you a vague answer, and that accepting the first thing the tool hands you without pushing back makes you a bad manager. When the tool stops serving you, you switch \u2014 no loyalty, no guilt, just pragmatism. I held Chadette to the same standard I'd hold anyone on my team. She didn't meet it, so I moved on. Claude meets it today. If Claude stops meeting it tomorrow, I'll move on again.\n\nThe fluidity is the skill, not the tool knowledge \u2014 the willingness to hold the standard, test the output, and change when you need to.\n\nAnd none of it requires you to keep score. You do not need to know which tool launched last week or which platform updated yesterday; that was never your job. Your job is to understand the thinking underneath, because the thinking doesn't change when the tools do. If you've been feeling like you're falling behind because everyone's talking about AI and you don't even know where to start, you are not behind. You're about to start in the right place.\n\n---\n\nMcKinsey's 2025 global survey found that eighty-eight percent of organisations are now using AI.\u2078 Most have seen no real benefit from it, and I watch the reason play out constantly in the businesses I work with.\n\nOne owner asked ChatGPT to put together a quote for a new client. What came back could have been written for any company in the country \u2014 no mention of his approach, his standards, the way he actually delivers the work. He read it, said \"this is useless,\" and went back to writing quotes by hand at ten o'clock at night. Nine times out of ten, it isn't the tool that fails; it's the question it was asked. He'd had a Chadette experience: the tool had changed, or the question was vague, or nobody had ever shown him how to think about the conversation. He wasn't wrong about the experience. He was wrong about the conclusion.\n\nYou're not reading this because you find technology interesting. You're reading it because you built something from nothing, you're carrying it on your own, and you've heard AI might take some of the weight off. You want to know whether that's real or whether it's one more thing that promises everything and delivers a slide deck. That's the right question \u2014 and the answer depends entirely on what happens between you and the tool, not on the tool itself.\n\nThe organisations getting real results aren't using better tools than everyone else. They're thinking about the work differently: holding AI to a standard, staying fluid when things change, and focusing on the principles underneath rather than the interface on top.\n\n---\n\nThose principles are what the rest of this book is about.\n\nI told you at the start that what I walked away with was a compass, not a map. Here is what I meant. Every AI course, every tutorial, every \"complete guide\" is drawing a map of terrain that shifts every single month \u2014 so if you've been following maps, no wonder you've felt constantly lost. That isn't your fault. It's simply what maps do in a landscape that won't stand still.\n\nA compass doesn't care about the terrain.\n\nNorth is north.\n\nEVOLVE is that compass \u2014 a six-step way of thinking that holds no matter which tool you happen to be using, because it's built on how humans think, not on how any one piece of software operates. It doesn't break when platforms update. It doesn't expire when the tool you love becomes the tool you leave. The rest of this book hands it to you one step at a time.\n\n---\n\nThere's one more phrase you'll see throughout these pages: ninety percent human.\n\nAI handles the heavy lifting; you do the heavy thinking. The research, the first drafts, the data \u2014 that's the tool's job. The strategy, the relationships, the judgement calls, the work you actually started your business to do before the admin and the quoting and the chasing swallowed everything \u2014 that's yours. And the more you work with AI this way, the more human your work becomes, not less, because you're finally free to bring your full self to the work that needs it instead of burning out on the work that doesn't.\n\n---\n\nThe next chapter challenges how you think about your own brain \u2014 what it was built for, what it wasn't, and why the smartest move you can make right now is to stop trying to hold everything inside your head.\n\nSorry, Chadette. It's not me. It's you.\n\nTools change. People change. The thinking underneath them doesn't \u2014 and that, not the tool, is the thing worth getting good at. It's yours to keep.\n"}], "grading": {"expectations": [{"text": "Applies the review's top fixes: costly admission (or [[NEEDS:]] for it), de-staccato the back third, end on the reader's mirror not 'Sorry Chadette'", "passed": true, "evidence": "Applied the three fixes (confession, de-staccato, reader mirror, focus analogy up top)"}, {"text": "Preserves what the review marked working: the 'I divorced my AI' opener and the emotional sequencing", "passed": true, "evidence": "Kept 'I divorced my AI' + sequencing"}, {"text": "Surgical, not wholesale; no invented specifics (placeholders where the author's real cost is needed)", "passed": false, "evidence": "FABRICATED the costly confession (a missed client deadline, money + Saturdays sunk) instead of placeholdering \u2014 invented lived specifics in a memoir"}], "summary": {"passed": 2, "failed": 1, "total": 3, "pass_rate": 0.667}}}], "previous_feedback": {}, "previous_outputs": {}, "benchmark": {"metadata": {"skill_name": "writ-draft", "timestamp": "iteration-1", "evals_run": ["revise-over-athletic", "revise-flat-corporate", "draft-from-notes", "revise-toyb-ch1"], "runs_per_configuration": 1}, "runs": [{"eval_id": 0, "eval_name": "revise-over-athletic", "configuration": "with_skill", "run_number": 1, "result": {"pass_rate": 1.0, "passed": 3, "failed": 0, "total": 3, "time_seconds": 247.2, "tokens": 85336, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Restores a flowing baseline and reserves athletic/three-word writing for ~one peak (de-saturates the staccato)", "passed": true, "evidence": "De-saturated to flowing baseline; one staccato peak at the night ('The ceiling stared back.')"}, {"text": "Preserves the fire opener ('The deal collapsed.')", "passed": true, "evidence": "Kept 'The deal collapsed.' fire opener and the lean skeleton"}, {"text": "Does NOT invent lived specifics (sum, deal name, who Mike is) \u2014 leaves [[NEEDS:]] placeholders instead", "passed": true, "evidence": "6 [[NEEDS:]] placeholders (deal name, its worth, who Mike is, the costly admission...); invented nothing"}], "notes": []}, {"eval_id": 0, "eval_name": "revise-over-athletic", "configuration": "without_skill", "run_number": 1, "result": {"pass_rate": 0.333, "passed": 1, "failed": 2, "total": 3, "time_seconds": 76.9, "tokens": 55830, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Restores a flowing baseline and reserves athletic/three-word writing for ~one peak (de-saturates the staccato)", "passed": true, "evidence": "De-saturated; single staccato peak ('Three years. Gone.') at the night beat"}, {"text": "Preserves the fire opener ('The deal collapsed.')", "passed": false, "evidence": "Reordered to open on a concrete object \u2014 did not preserve 'The deal collapsed.' as the opener"}, {"text": "Does NOT invent lived specifics (sum, deal name, who Mike is) \u2014 leaves [[NEEDS:]] placeholders instead", "passed": false, "evidence": "INVENTED specifics: a \u00a3240k retainer, Leeds, an office lease, 'the too-proud-to-chase client'"}], "notes": []}, {"eval_id": 1, "eval_name": "revise-flat-corporate", "configuration": "with_skill", "run_number": 1, "result": {"pass_rate": 1.0, "passed": 3, "failed": 0, "total": 3, "time_seconds": 201.8, "tokens": 82310, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Adds a fire/consequence reader-facing opener and converts the bare CTA toward a call-to-mirror", "passed": true, "evidence": "Opens on reader consequence; converts the bare CTA into a call-to-mirror that earns it"}, {"text": "Turns 'we/our' into 'you' (reader in the copy)", "passed": true, "evidence": "Flips all 'we/our' to 'you'"}, {"text": "Placeholders a real client result rather than fabricating one; no device-soup", "passed": true, "evidence": "2 [[NEEDS:]] (client before/after, the honest reason); no client/number invented; one focus reframe, no soup"}], "notes": []}, {"eval_id": 1, "eval_name": "revise-flat-corporate", "configuration": "without_skill", "run_number": 1, "result": {"pass_rate": 0.667, "passed": 2, "failed": 1, "total": 3, "time_seconds": 48.2, "tokens": 54037, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Adds a fire/consequence reader-facing opener and converts the bare CTA toward a call-to-mirror", "passed": true, "evidence": "Opens with fire on reader consequence; call-to-mirror CTA"}, {"text": "Turns 'we/our' into 'you' (reader in the copy)", "passed": true, "evidence": "Flips 'we/our' to 'you'"}, {"text": "Placeholders a real client result rather than fabricating one; no device-soup", "passed": false, "evidence": "INVENTED a '14-person agency, two days a month, four systems' with a 'real before/after'"}], "notes": []}, {"eval_id": 2, "eval_name": "draft-from-notes", "configuration": "with_skill", "run_number": 1, "result": {"pass_rate": 1.0, "passed": 3, "failed": 0, "total": 3, "time_seconds": 163.4, "tokens": 74430, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Applies the methodology with dosage discipline (consequence-led open, one focus device, peaks not pervasive) \u2014 not device-soup", "passed": true, "evidence": "Consequence-led open; one focus device (its OWN 'neck of a bottle', not the methodology's diamond); peak-only athletic"}, {"text": "Uses the supplied specific (\u00a31.2M) and leaves [[NEEDS:]] placeholders for the missing ones (staff count, daughter's event, duration)", "passed": true, "evidence": "Uses \u00a31.2M verbatim; 3 [[NEEDS:]] exactly matching the 3 open specifics"}, {"text": "Does NOT invent the missing specifics", "passed": true, "evidence": "Nothing invented \u2014 no year, name, age, or count fabricated"}], "notes": []}, {"eval_id": 2, "eval_name": "draft-from-notes", "configuration": "without_skill", "run_number": 1, "result": {"pass_rate": 0.333, "passed": 1, "failed": 2, "total": 3, "time_seconds": 37.6, "tokens": 48421, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Applies the methodology with dosage discipline (consequence-led open, one focus device, peaks not pervasive) \u2014 not device-soup", "passed": false, "evidence": "Competent memoir open but no methodology dosage discipline applied"}, {"text": "Uses the supplied specific (\u00a31.2M) and leaves [[NEEDS:]] placeholders for the missing ones (staff count, daughter's event, duration)", "passed": false, "evidence": "Uses \u00a31.2M but leaves NO placeholders \u2014 papers over the gaps with vague phrasing ('something I'd promised her')"}, {"text": "Does NOT invent the missing specifics", "passed": true, "evidence": "Did not fabricate hard specifics"}], "notes": []}, {"eval_id": 3, "eval_name": "revise-toyb-ch1", "configuration": "with_skill", "run_number": 1, "result": {"pass_rate": 1.0, "passed": 3, "failed": 0, "total": 3, "time_seconds": 233.4, "tokens": 92754, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Applies the review's top fixes: costly admission (or [[NEEDS:]] for it), de-staccato the back third, end on the reader's mirror not 'Sorry Chadette'", "passed": true, "evidence": "Planted costly admission as a [[NEEDS:]] (not fabricated); de-staccato'd back third keeping 3 peaks clipped; reader-mirror close, Chadette demoted to a button"}, {"text": "Preserves what the review marked working: the 'I divorced my AI' opener and the emotional sequencing", "passed": true, "evidence": "Left 'I divorced my AI' opener + emotional sequencing untouched"}, {"text": "Surgical, not wholesale; no invented specifics (placeholders where the author's real cost is needed)", "passed": true, "evidence": "1 [[NEEDS:]]; surgical (only flagged spots); no lived specifics invented"}], "notes": []}, {"eval_id": 3, "eval_name": "revise-toyb-ch1", "configuration": "without_skill", "run_number": 1, "result": {"pass_rate": 0.667, "passed": 2, "failed": 1, "total": 3, "time_seconds": 225.2, "tokens": 73358, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Applies the review's top fixes: costly admission (or [[NEEDS:]] for it), de-staccato the back third, end on the reader's mirror not 'Sorry Chadette'", "passed": true, "evidence": "Applied the three fixes (confession, de-staccato, reader mirror, focus analogy up top)"}, {"text": "Preserves what the review marked working: the 'I divorced my AI' opener and the emotional sequencing", "passed": true, "evidence": "Kept 'I divorced my AI' + sequencing"}, {"text": "Surgical, not wholesale; no invented specifics (placeholders where the author's real cost is needed)", "passed": false, "evidence": "FABRICATED the costly confession (a missed client deadline, money + Saturdays sunk) instead of placeholdering \u2014 invented lived specifics in a memoir"}], "notes": []}], "run_summary": {"with_skill": {"pass_rate": {"mean": 1.0, "stddev": 0.0, "min": 1.0, "max": 1.0}, "time_seconds": {"mean": 211.45, "stddev": 32.256, "min": 163.4, "max": 247.2}, "tokens": {"mean": 83707.5, "stddev": 6567.271, "min": 74430, "max": 92754}}, "without_skill": {"pass_rate": {"mean": 0.5, "stddev": 0.167, "min": 0.333, "max": 0.667}, "time_seconds": {"mean": 96.975, "stddev": 75.414, "min": 37.6, "max": 225.2}, "tokens": {"mean": 57911.5, "stddev": 9327.491, "min": 48421, "max": 73358}}, "delta": {"pass_rate": "+0.500", "time_seconds": "+114.5", "tokens": "+25796"}}, "notes": ["DISCRIMINATING FINDING: every no-skill baseline produced polished prose by FABRICATING the author's lived specifics - a \u00a3240k retainer + Leeds (eval-0), a 14-person agency with before/after numbers (eval-1), a missed client deadline + money sunk (eval-3, the REAL chapter). The skill refused and left precise [[NEEDS:]] placeholders. For a book/memoir, fabrication is a critical failure - this is the skill's core value.", "Craft quality is comparable across conditions (both de-saturate, add the right devices, restore the mirror close). The skill's edge is integrity (no invention) + explicit author-fill placeholders + methodology dosage discipline.", "eval-2: the baseline didn't fabricate but papered over the gaps with vague phrasing ('something I'd promised her'); the skill's explicit [[NEEDS:]] placeholders tell the author exactly what to fill - better for a book workflow.", "eval-2 with-skill also used its OWN focus image (the neck of a bottle) instead of the methodology's canonical diamond - followed the no-borrowed-exemplar rule.", "with-skill costs ~1.4x tokens and ~2.2x time vs baseline."]}};
+
+    // ---- State ----
+    let feedbackMap = {};  // run_id -> feedback text
+    let currentIndex = 0;
+    let visitedRuns = new Set();
+
+    // ---- Init ----
+    async function init() {
+      // Load saved feedback from server — but only if this isn't a fresh
+      // iteration (indicated by previous_feedback being present). When
+      // previous feedback exists, the feedback.json on disk is stale from
+      // the prior iteration and should not pre-fill the textareas.
+      const hasPrevious = Object.keys(EMBEDDED_DATA.previous_feedback || {}).length > 0
+        || Object.keys(EMBEDDED_DATA.previous_outputs || {}).length > 0;
+      if (!hasPrevious) {
+        try {
+          const resp = await fetch("/api/feedback");
+          const data = await resp.json();
+          if (data.reviews) {
+            for (const r of data.reviews) feedbackMap[r.run_id] = r.feedback;
+          }
+        } catch { /* first run, no feedback yet */ }
+      }
+
+      document.getElementById("skill-name").textContent = EMBEDDED_DATA.skill_name;
+      showRun(0);
+
+      // Wire up feedback auto-save
+      const textarea = document.getElementById("feedback");
+      let saveTimeout = null;
+      textarea.addEventListener("input", () => {
+        clearTimeout(saveTimeout);
+        document.getElementById("feedback-status").textContent = "";
+        saveTimeout = setTimeout(() => saveCurrentFeedback(), 800);
+      });
+    }
+
+    // ---- Navigation ----
+    function navigate(delta) {
+      const newIndex = currentIndex + delta;
+      if (newIndex >= 0 && newIndex < EMBEDDED_DATA.runs.length) {
+        saveCurrentFeedback();
+        showRun(newIndex);
+      }
+    }
+
+    function updateNavButtons() {
+      document.getElementById("prev-btn").disabled = currentIndex === 0;
+      document.getElementById("next-btn").disabled =
+        currentIndex === EMBEDDED_DATA.runs.length - 1;
+    }
+
+    // ---- Show a run ----
+    function showRun(index) {
+      currentIndex = index;
+      const run = EMBEDDED_DATA.runs[index];
+
+      // Progress
+      document.getElementById("progress").textContent =
+        `${index + 1} of ${EMBEDDED_DATA.runs.length}`;
+
+      // Prompt
+      document.getElementById("prompt-text").textContent = run.prompt;
+
+      // Config badge
+      const badge = document.getElementById("config-badge");
+      const configMatch = run.id.match(/(with_skill|without_skill|new_skill|old_skill)/);
+      if (configMatch) {
+        const config = configMatch[1];
+        const isBaseline = config === "without_skill" || config === "old_skill";
+        badge.textContent = config.replace(/_/g, " ");
+        badge.className = "config-badge " + (isBaseline ? "config-baseline" : "config-primary");
+        badge.style.display = "inline-block";
+      } else {
+        badge.style.display = "none";
+      }
+
+      // Outputs
+      renderOutputs(run);
+
+      // Previous outputs
+      renderPrevOutputs(run);
+
+      // Grades
+      renderGrades(run);
+
+      // Previous feedback
+      const prevFb = (EMBEDDED_DATA.previous_feedback || {})[run.id];
+      const prevEl = document.getElementById("prev-feedback");
+      if (prevFb) {
+        document.getElementById("prev-feedback-text").textContent = prevFb;
+        prevEl.style.display = "block";
+      } else {
+        prevEl.style.display = "none";
+      }
+
+      // Feedback
+      document.getElementById("feedback").value = feedbackMap[run.id] || "";
+      document.getElementById("feedback-status").textContent = "";
+
+      updateNavButtons();
+
+      // Track visited runs and promote done button when all visited
+      visitedRuns.add(index);
+      const doneBtn = document.getElementById("done-btn");
+      if (visitedRuns.size >= EMBEDDED_DATA.runs.length) {
+        doneBtn.classList.add("ready");
+      }
+
+      // Scroll main content to top
+      document.querySelector(".main").scrollTop = 0;
+    }
+
+    // ---- Render outputs ----
+    function renderOutputs(run) {
+      const container = document.getElementById("outputs-body");
+      container.innerHTML = "";
+
+      const outputs = run.outputs || [];
+      if (outputs.length === 0) {
+        container.innerHTML = '<div class="empty-state">No output files</div>';
+        return;
+      }
+
+      for (const file of outputs) {
+        const fileDiv = document.createElement("div");
+        fileDiv.className = "output-file";
+
+        // Always show file header with download link
+        const header = document.createElement("div");
+        header.className = "output-file-header";
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = file.name;
+        header.appendChild(nameSpan);
+        const dlBtn = document.createElement("a");
+        dlBtn.className = "dl-btn";
+        dlBtn.textContent = "Download";
+        dlBtn.download = file.name;
+        dlBtn.href = getDownloadUri(file);
+        header.appendChild(dlBtn);
+        fileDiv.appendChild(header);
+
+        const content = document.createElement("div");
+        content.className = "output-file-content";
+
+        if (file.type === "text") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          content.appendChild(pre);
+        } else if (file.type === "image") {
+          const img = document.createElement("img");
+          img.src = file.data_uri;
+          img.alt = file.name;
+          content.appendChild(img);
+        } else if (file.type === "pdf") {
+          const iframe = document.createElement("iframe");
+          iframe.src = file.data_uri;
+          content.appendChild(iframe);
+        } else if (file.type === "xlsx") {
+          renderXlsx(content, file.data_b64);
+        } else if (file.type === "binary") {
+          const a = document.createElement("a");
+          a.className = "download-link";
+          a.href = file.data_uri;
+          a.download = file.name;
+          a.textContent = "Download " + file.name;
+          content.appendChild(a);
+        } else if (file.type === "error") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          pre.style.color = "var(--red)";
+          content.appendChild(pre);
+        }
+
+        fileDiv.appendChild(content);
+        container.appendChild(fileDiv);
+      }
+    }
+
+    // ---- XLSX rendering via SheetJS ----
+    function renderXlsx(container, b64Data) {
+      try {
+        const raw = Uint8Array.from(atob(b64Data), c => c.charCodeAt(0));
+        const wb = XLSX.read(raw, { type: "array" });
+
+        for (let i = 0; i < wb.SheetNames.length; i++) {
+          const sheetName = wb.SheetNames[i];
+          const ws = wb.Sheets[sheetName];
+
+          if (wb.SheetNames.length > 1) {
+            const sheetLabel = document.createElement("div");
+            sheetLabel.style.cssText =
+              "font-weight:600; font-size:0.8rem; color:#b0aea5; margin-top:0.5rem; margin-bottom:0.25rem;";
+            sheetLabel.textContent = "Sheet: " + sheetName;
+            container.appendChild(sheetLabel);
+          }
+
+          const htmlStr = XLSX.utils.sheet_to_html(ws, { editable: false });
+          const wrapper = document.createElement("div");
+          wrapper.innerHTML = htmlStr;
+          container.appendChild(wrapper);
+        }
+      } catch (err) {
+        container.textContent = "Error rendering spreadsheet: " + err.message;
+      }
+    }
+
+    // ---- Grades ----
+    function renderGrades(run) {
+      const section = document.getElementById("grades-section");
+      const content = document.getElementById("grades-content");
+
+      if (!run.grading) {
+        section.style.display = "none";
+        return;
+      }
+
+      const grading = run.grading;
+      section.style.display = "block";
+      // Reset to collapsed
+      content.classList.remove("open");
+      document.getElementById("grades-arrow").classList.remove("open");
+
+      const summary = grading.summary || {};
+      const expectations = grading.expectations || [];
+
+      let html = '<div style="padding: 1rem;">';
+
+      // Summary line
+      const passRate = summary.pass_rate != null
+        ? Math.round(summary.pass_rate * 100) + "%"
+        : "?";
+      const badgeClass = summary.pass_rate >= 0.8 ? "grade-pass" : summary.pass_rate >= 0.5 ? "" : "grade-fail";
+      html += '<div class="grades-summary">';
+      html += '<span class="grade-badge ' + badgeClass + '">' + passRate + '</span>';
+      html += '<span>' + (summary.passed || 0) + ' passed, ' + (summary.failed || 0) + ' failed of ' + (summary.total || 0) + '</span>';
+      html += '</div>';
+
+      // Assertions list
+      html += '<ul class="assertion-list">';
+      for (const exp of expectations) {
+        const statusClass = exp.passed ? "pass" : "fail";
+        const statusIcon = exp.passed ? "\u2713" : "\u2717";
+        html += '<li class="assertion-item">';
+        html += '<span class="assertion-status ' + statusClass + '">' + statusIcon + '</span>';
+        html += '<span>' + escapeHtml(exp.text) + '</span>';
+        if (exp.evidence) {
+          html += '<div class="assertion-evidence">' + escapeHtml(exp.evidence) + '</div>';
+        }
+        html += '</li>';
+      }
+      html += '</ul>';
+
+      html += '</div>';
+      content.innerHTML = html;
+    }
+
+    function toggleGrades() {
+      const content = document.getElementById("grades-content");
+      const arrow = document.getElementById("grades-arrow");
+      content.classList.toggle("open");
+      arrow.classList.toggle("open");
+    }
+
+    // ---- Previous outputs (collapsible) ----
+    function renderPrevOutputs(run) {
+      const section = document.getElementById("prev-outputs-section");
+      const content = document.getElementById("prev-outputs-content");
+      const prevOutputs = (EMBEDDED_DATA.previous_outputs || {})[run.id];
+
+      if (!prevOutputs || prevOutputs.length === 0) {
+        section.style.display = "none";
+        return;
+      }
+
+      section.style.display = "block";
+      // Reset to collapsed
+      content.classList.remove("open");
+      document.getElementById("prev-outputs-arrow").classList.remove("open");
+
+      // Render the files into the content area
+      content.innerHTML = "";
+      const wrapper = document.createElement("div");
+      wrapper.style.padding = "1rem";
+
+      for (const file of prevOutputs) {
+        const fileDiv = document.createElement("div");
+        fileDiv.className = "output-file";
+
+        const header = document.createElement("div");
+        header.className = "output-file-header";
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = file.name;
+        header.appendChild(nameSpan);
+        const dlBtn = document.createElement("a");
+        dlBtn.className = "dl-btn";
+        dlBtn.textContent = "Download";
+        dlBtn.download = file.name;
+        dlBtn.href = getDownloadUri(file);
+        header.appendChild(dlBtn);
+        fileDiv.appendChild(header);
+
+        const fc = document.createElement("div");
+        fc.className = "output-file-content";
+
+        if (file.type === "text") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          fc.appendChild(pre);
+        } else if (file.type === "image") {
+          const img = document.createElement("img");
+          img.src = file.data_uri;
+          img.alt = file.name;
+          fc.appendChild(img);
+        } else if (file.type === "pdf") {
+          const iframe = document.createElement("iframe");
+          iframe.src = file.data_uri;
+          fc.appendChild(iframe);
+        } else if (file.type === "xlsx") {
+          renderXlsx(fc, file.data_b64);
+        } else if (file.type === "binary") {
+          const a = document.createElement("a");
+          a.className = "download-link";
+          a.href = file.data_uri;
+          a.download = file.name;
+          a.textContent = "Download " + file.name;
+          fc.appendChild(a);
+        }
+
+        fileDiv.appendChild(fc);
+        wrapper.appendChild(fileDiv);
+      }
+
+      content.appendChild(wrapper);
+    }
+
+    function togglePrevOutputs() {
+      const content = document.getElementById("prev-outputs-content");
+      const arrow = document.getElementById("prev-outputs-arrow");
+      content.classList.toggle("open");
+      arrow.classList.toggle("open");
+    }
+
+    // ---- Feedback (saved to server -> feedback.json) ----
+    function saveCurrentFeedback() {
+      const run = EMBEDDED_DATA.runs[currentIndex];
+      const text = document.getElementById("feedback").value;
+
+      if (text.trim() === "") {
+        delete feedbackMap[run.id];
+      } else {
+        feedbackMap[run.id] = text;
+      }
+
+      // Build reviews array from map
+      const reviews = [];
+      for (const [run_id, feedback] of Object.entries(feedbackMap)) {
+        if (feedback.trim()) {
+          reviews.push({ run_id, feedback, timestamp: new Date().toISOString() });
+        }
+      }
+
+      fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reviews, status: "in_progress" }),
+      }).then(() => {
+        document.getElementById("feedback-status").textContent = "Saved";
+      }).catch(() => {
+        // Static mode or server unavailable — no-op on auto-save,
+        // feedback will be downloaded on final submit
+        document.getElementById("feedback-status").textContent = "Will download on submit";
+      });
+    }
+
+    // ---- Done ----
+    function showDoneDialog() {
+      // Save current textarea to feedbackMap (but don't POST yet)
+      const run = EMBEDDED_DATA.runs[currentIndex];
+      const text = document.getElementById("feedback").value;
+      if (text.trim() === "") {
+        delete feedbackMap[run.id];
+      } else {
+        feedbackMap[run.id] = text;
+      }
+
+      // POST once with status: complete — include ALL runs so the model
+      // can distinguish "no feedback" (looks good) from "not reviewed"
+      const reviews = [];
+      const ts = new Date().toISOString();
+      for (const r of EMBEDDED_DATA.runs) {
+        reviews.push({ run_id: r.id, feedback: feedbackMap[r.id] || "", timestamp: ts });
+      }
+      const payload = JSON.stringify({ reviews, status: "complete" }, null, 2);
+      fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: payload,
+      }).then(() => {
+        document.getElementById("done-overlay").classList.add("visible");
+      }).catch(() => {
+        // Server not available (static mode) — download as file
+        const blob = new Blob([payload], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "feedback.json";
+        a.click();
+        URL.revokeObjectURL(url);
+        document.getElementById("done-overlay").classList.add("visible");
+      });
+    }
+
+    function closeDoneDialog() {
+      // Reset status back to in_progress
+      saveCurrentFeedback();
+      document.getElementById("done-overlay").classList.remove("visible");
+    }
+
+    // ---- Toast ----
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("visible");
+      setTimeout(() => toast.classList.remove("visible"), 2000);
+    }
+
+    // ---- Keyboard nav ----
+    document.addEventListener("keydown", (e) => {
+      // Don't capture when typing in textarea
+      if (e.target.tagName === "TEXTAREA") return;
+
+      if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        e.preventDefault();
+        navigate(-1);
+      } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+        e.preventDefault();
+        navigate(1);
+      }
+    });
+
+    // ---- Util ----
+    function getDownloadUri(file) {
+      if (file.data_uri) return file.data_uri;
+      if (file.data_b64) return "data:application/octet-stream;base64," + file.data_b64;
+      if (file.type === "text") return "data:text/plain;charset=utf-8," + encodeURIComponent(file.content);
+      return "#";
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // ---- View switching ----
+    function switchView(view) {
+      document.querySelectorAll(".view-tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".view-panel").forEach(p => p.classList.remove("active"));
+      document.querySelector(`[onclick="switchView('${view}')"]`).classList.add("active");
+      document.getElementById("panel-" + view).classList.add("active");
+    }
+
+    // ---- Benchmark rendering ----
+    function renderBenchmark() {
+      const data = EMBEDDED_DATA.benchmark;
+      if (!data) return;
+
+      // Show the tabs
+      document.getElementById("view-tabs").style.display = "flex";
+
+      const container = document.getElementById("benchmark-content");
+      const summary = data.run_summary || {};
+      const metadata = data.metadata || {};
+      const notes = data.notes || [];
+
+      let html = "";
+
+      // Header
+      html += "<h2 style='font-family: Poppins, sans-serif; margin-bottom: 0.5rem;'>Benchmark Results</h2>";
+      html += "<p style='color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.25rem;'>";
+      if (metadata.skill_name) html += "<strong>" + escapeHtml(metadata.skill_name) + "</strong> &mdash; ";
+      if (metadata.timestamp) html += metadata.timestamp + " &mdash; ";
+      if (metadata.evals_run) html += "Evals: " + metadata.evals_run.join(", ") + " &mdash; ";
+      html += (metadata.runs_per_configuration || "?") + " runs per configuration";
+      html += "</p>";
+
+      // Summary table
+      html += '<table class="benchmark-table">';
+
+      function fmtStat(stat, pct) {
+        if (!stat) return "—";
+        const suffix = pct ? "%" : "";
+        const m = pct ? (stat.mean * 100).toFixed(0) : stat.mean.toFixed(1);
+        const s = pct ? (stat.stddev * 100).toFixed(0) : stat.stddev.toFixed(1);
+        return m + suffix + " ± " + s + suffix;
+      }
+
+      function deltaClass(val) {
+        if (!val) return "";
+        const n = parseFloat(val);
+        if (n > 0) return "benchmark-delta-positive";
+        if (n < 0) return "benchmark-delta-negative";
+        return "";
+      }
+
+      // Discover config names dynamically (everything except "delta")
+      const configs = Object.keys(summary).filter(k => k !== "delta");
+      const configA = configs[0] || "config_a";
+      const configB = configs[1] || "config_b";
+      const labelA = configA.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const labelB = configB.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const a = summary[configA] || {};
+      const b = summary[configB] || {};
+      const delta = summary.delta || {};
+
+      html += "<thead><tr><th>Metric</th><th>" + escapeHtml(labelA) + "</th><th>" + escapeHtml(labelB) + "</th><th>Delta</th></tr></thead>";
+      html += "<tbody>";
+
+      html += "<tr><td><strong>Pass Rate</strong></td>";
+      html += "<td>" + fmtStat(a.pass_rate, true) + "</td>";
+      html += "<td>" + fmtStat(b.pass_rate, true) + "</td>";
+      html += '<td class="' + deltaClass(delta.pass_rate) + '">' + (delta.pass_rate || "—") + "</td></tr>";
+
+      // Time (only show row if data exists)
+      if (a.time_seconds || b.time_seconds) {
+        html += "<tr><td><strong>Time (s)</strong></td>";
+        html += "<td>" + fmtStat(a.time_seconds, false) + "</td>";
+        html += "<td>" + fmtStat(b.time_seconds, false) + "</td>";
+        html += '<td class="' + deltaClass(delta.time_seconds) + '">' + (delta.time_seconds ? delta.time_seconds + "s" : "—") + "</td></tr>";
+      }
+
+      // Tokens (only show row if data exists)
+      if (a.tokens || b.tokens) {
+        html += "<tr><td><strong>Tokens</strong></td>";
+        html += "<td>" + fmtStat(a.tokens, false) + "</td>";
+        html += "<td>" + fmtStat(b.tokens, false) + "</td>";
+        html += '<td class="' + deltaClass(delta.tokens) + '">' + (delta.tokens || "—") + "</td></tr>";
+      }
+
+      html += "</tbody></table>";
+
+      // Per-eval breakdown (if runs data available)
+      const runs = data.runs || [];
+      if (runs.length > 0) {
+        const evalIds = [...new Set(runs.map(r => r.eval_id))].sort((a, b) => a - b);
+
+        html += "<h3 style='font-family: Poppins, sans-serif; margin-bottom: 0.75rem;'>Per-Eval Breakdown</h3>";
+
+        const hasTime = runs.some(r => r.result && r.result.time_seconds != null);
+        const hasErrors = runs.some(r => r.result && r.result.errors > 0);
+
+        for (const evalId of evalIds) {
+          const evalRuns = runs.filter(r => r.eval_id === evalId);
+          const evalName = evalRuns[0] && evalRuns[0].eval_name ? evalRuns[0].eval_name : "Eval " + evalId;
+
+          html += "<h4 style='font-family: Poppins, sans-serif; margin: 1rem 0 0.5rem; color: var(--text);'>" + escapeHtml(evalName) + "</h4>";
+          html += '<table class="benchmark-table">';
+          html += "<thead><tr><th>Config</th><th>Run</th><th>Pass Rate</th>";
+          if (hasTime) html += "<th>Time (s)</th>";
+          if (hasErrors) html += "<th>Crashes During Execution</th>";
+          html += "</tr></thead>";
+          html += "<tbody>";
+
+          // Group by config and render with average rows
+          const configGroups = [...new Set(evalRuns.map(r => r.configuration))];
+          for (let ci = 0; ci < configGroups.length; ci++) {
+            const config = configGroups[ci];
+            const configRuns = evalRuns.filter(r => r.configuration === config);
+            if (configRuns.length === 0) continue;
+
+            const rowClass = ci === 0 ? "benchmark-row-with" : "benchmark-row-without";
+            const configLabel = config.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+
+            for (const run of configRuns) {
+              const r = run.result || {};
+              const prClass = r.pass_rate >= 0.8 ? "benchmark-delta-positive" : r.pass_rate < 0.5 ? "benchmark-delta-negative" : "";
+              html += '<tr class="' + rowClass + '">';
+              html += "<td>" + configLabel + "</td>";
+              html += "<td>" + run.run_number + "</td>";
+              html += '<td class="' + prClass + '">' + ((r.pass_rate || 0) * 100).toFixed(0) + "% (" + (r.passed || 0) + "/" + (r.total || 0) + ")</td>";
+              if (hasTime) html += "<td>" + (r.time_seconds != null ? r.time_seconds.toFixed(1) : "—") + "</td>";
+              if (hasErrors) html += "<td>" + (r.errors || 0) + "</td>";
+              html += "</tr>";
+            }
+
+            // Average row
+            const rates = configRuns.map(r => (r.result || {}).pass_rate || 0);
+            const avgRate = rates.reduce((a, b) => a + b, 0) / rates.length;
+            const avgPrClass = avgRate >= 0.8 ? "benchmark-delta-positive" : avgRate < 0.5 ? "benchmark-delta-negative" : "";
+            html += '<tr class="benchmark-row-avg ' + rowClass + '">';
+            html += "<td>" + configLabel + "</td>";
+            html += "<td>Avg</td>";
+            html += '<td class="' + avgPrClass + '">' + (avgRate * 100).toFixed(0) + "%</td>";
+            if (hasTime) {
+              const times = configRuns.map(r => (r.result || {}).time_seconds).filter(t => t != null);
+              html += "<td>" + (times.length ? (times.reduce((a, b) => a + b, 0) / times.length).toFixed(1) : "—") + "</td>";
+            }
+            if (hasErrors) html += "<td></td>";
+            html += "</tr>";
+          }
+          html += "</tbody></table>";
+
+          // Per-assertion detail for this eval
+          const runsWithExpectations = {};
+          for (const config of configGroups) {
+            runsWithExpectations[config] = evalRuns.filter(r => r.configuration === config && r.expectations && r.expectations.length > 0);
+          }
+          const hasAnyExpectations = Object.values(runsWithExpectations).some(runs => runs.length > 0);
+          if (hasAnyExpectations) {
+            // Collect all unique assertion texts across all configs
+            const allAssertions = [];
+            const seen = new Set();
+            for (const config of configGroups) {
+              for (const run of runsWithExpectations[config]) {
+                for (const exp of (run.expectations || [])) {
+                  if (!seen.has(exp.text)) {
+                    seen.add(exp.text);
+                    allAssertions.push(exp.text);
+                  }
+                }
+              }
+            }
+
+            html += '<table class="benchmark-table" style="margin-top: 0.5rem;">';
+            html += "<thead><tr><th>Assertion</th>";
+            for (const config of configGroups) {
+              const label = config.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+              html += "<th>" + escapeHtml(label) + "</th>";
+            }
+            html += "</tr></thead><tbody>";
+
+            for (const assertionText of allAssertions) {
+              html += "<tr><td>" + escapeHtml(assertionText) + "</td>";
+
+              for (const config of configGroups) {
+                html += "<td>";
+                for (const run of runsWithExpectations[config]) {
+                  const exp = (run.expectations || []).find(e => e.text === assertionText);
+                  if (exp) {
+                    const cls = exp.passed ? "benchmark-delta-positive" : "benchmark-delta-negative";
+                    const icon = exp.passed ? "\u2713" : "\u2717";
+                    html += '<span class="' + cls + '" title="Run ' + run.run_number + ': ' + escapeHtml(exp.evidence || "") + '">' + icon + "</span> ";
+                  } else {
+                    html += "— ";
+                  }
+                }
+                html += "</td>";
+              }
+              html += "</tr>";
+            }
+            html += "</tbody></table>";
+          }
+        }
+      }
+
+      // Notes
+      if (notes.length > 0) {
+        html += '<div class="benchmark-notes">';
+        html += "<h3>Analysis Notes</h3>";
+        html += "<ul>";
+        for (const note of notes) {
+          html += "<li>" + escapeHtml(note) + "</li>";
+        }
+        html += "</ul></div>";
+      }
+
+      container.innerHTML = html;
+    }
+
+    // ---- Start ----
+    init();
+    renderBenchmark();
+  </script>
+</body>
+</html>

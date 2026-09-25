@@ -141,11 +141,10 @@ if [[ "$CLEAN" -eq 1 ]] && [[ -d ".next" ]]; then
     success "Cache cleared"
 fi
 
-if [[ ! -d "node_modules" ]]; then
-    info "First run for the Command Centre - installing npm dependencies..."
-    npm install
-    success "Dependencies installed"
-    echo ""
+if ! node scripts/ensure-dependencies.cjs; then
+    fail "Command Centre dependencies could not be synchronized."
+    info "Run: cd \"$CENTRE_DIR\" && npm ci"
+    exit 1
 fi
 
 printf "${CYAN}${BOLD}"

@@ -84,7 +84,7 @@ test("openMemoryStore runs migrations and registers pgvector", async () => {
       "SELECT version, embed_dim FROM schema_migrations ORDER BY version",
     );
     assert.equal(Number(led.rows[0].version), 1);
-    assert.equal(Number(led.rows.at(-1).version), 2);
+    assert.equal(Number(led.rows.at(-1).version), 4);
     assert.equal(Number(led.rows[0].embed_dim), EMBED_DIM);
   } finally {
     await s.close();

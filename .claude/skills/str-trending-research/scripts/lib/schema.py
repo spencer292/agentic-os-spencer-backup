@@ -108,6 +108,47 @@ class RedditItem:
 
 
 @dataclass
+class FeedItem:
+    """A normalized item from a keyless feed source (Hacker News, YouTube).
+
+    One shape for both so the report, the renderer and downstream consumers do
+    not need a new type per source. `source` says where it came from and
+    `engagement` carries whatever that platform actually measures (points and
+    comments on HN, views on YouTube).
+    """
+    id: str
+    source: str
+    title: str
+    url: str
+    author: str = ""
+    date: Optional[str] = None
+    excerpt: str = ""
+    transcript: str = ""
+    engagement: Dict[str, Any] = field(default_factory=dict)
+    top_comments: List[Comment] = field(default_factory=list)
+    comment_insights: List[str] = field(default_factory=list)
+    relevance: float = 0.5
+    why_relevant: str = ""
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            'id': self.id,
+            'source': self.source,
+            'title': self.title,
+            'url': self.url,
+            'author': self.author,
+            'date': self.date,
+            'excerpt': self.excerpt,
+            'transcript': self.transcript,
+            'engagement': self.engagement or None,
+            'top_comments': [c.to_dict() for c in self.top_comments],
+            'comment_insights': self.comment_insights,
+            'relevance': self.relevance,
+            'why_relevant': self.why_relevant,
+        }
+
+
+@dataclass
 class XItem:
     """Normalized X item."""
     id: str
@@ -182,12 +223,16 @@ class Report:
     reddit: List[RedditItem] = field(default_factory=list)
     x: List[XItem] = field(default_factory=list)
     web: List[WebSearchItem] = field(default_factory=list)
+    hn: List[FeedItem] = field(default_factory=list)
+    youtube: List[FeedItem] = field(default_factory=list)
     best_practices: List[str] = field(default_factory=list)
     prompt_pack: List[str] = field(default_factory=list)
     context_snippet_md: str = ""
     reddit_error: Optional[str] = None
     x_error: Optional[str] = None
     web_error: Optional[str] = None
+    hn_error: Optional[str] = None
+    youtube_error: Optional[str] = None
     from_cache: bool = False
     cache_age_hours: Optional[float] = None
 
@@ -205,6 +250,8 @@ class Report:
             'reddit': [r.to_dict() for r in self.reddit],
             'x': [x.to_dict() for x in self.x],
             'web': [w.to_dict() for w in self.web],
+            'hn': [h.to_dict() for h in self.hn],
+            'youtube': [y.to_dict() for y in self.youtube],
             'best_practices': self.best_practices,
             'prompt_pack': self.prompt_pack,
             'context_snippet_md': self.context_snippet_md,
@@ -215,6 +262,10 @@ class Report:
             d['x_error'] = self.x_error
         if self.web_error:
             d['web_error'] = self.web_error
+        if self.hn_error:
+            d['hn_error'] = self.hn_error
+        if self.youtube_error:
+            d['youtube_error'] = self.youtube_error
         if self.from_cache:
             d['from_cache'] = self.from_cache
         if self.cache_age_hours is not None:

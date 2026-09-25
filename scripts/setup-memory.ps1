@@ -428,7 +428,7 @@ function Test-CommandCentreDepsNeedInstall {
     if (-not (Test-Path -LiteralPath $nodeModules)) { return $true }
     if (-not (Test-Path -LiteralPath $npmMarker)) { return $true }
     if ((Test-Path -LiteralPath $lockFile) -and
-        ((Get-Item -LiteralPath $lockFile).LastWriteTime -gt (Get-Item -LiteralPath $npmMarker).LastWriteTime)) {
+        ((Get-Item -LiteralPath $lockFile).LastWriteTime -gt (Get-Item -Force -LiteralPath $npmMarker).LastWriteTime)) {
         return $true
     }
 
@@ -614,12 +614,31 @@ function Invoke-ModelWarmup {
     return Invoke-NpmScript -ScriptName "memory:warmup"
 }
 
+function Initialize-LocalMemoryIdentity {
+    $helper = Join-Path $CommandCentreDir "scripts\local-memory-identity.cjs"
+    if (-not (Test-Path -LiteralPath $helper)) {
+        Fail "Local memory identity helper was not found."
+        return $false
+    }
+    & node $helper --ensure --root $RepoRoot *> $null
+    if ($LASTEXITCODE -ne 0) {
+        Fail "Could not preserve the local memory owner before rebuilding the store."
+        return $false
+    }
+    return $true
+}
+
 function Prepare-LocalStoreForRebuild {
     $script:LocalMemoryRebuilt = $false
     $script:LegacyLocalMemoryDir = ""
 
     if ($Backend -ne "local") { return $true }
     if (-not (Test-Path -LiteralPath $LocalMemoryDir)) { return $true }
+
+    # The compatibility probe can open PGLite and quarantine a corrupt index.
+    # Promote/validate the legacy owner before that first open.
+    if (-not (Initialize-LocalMemoryIdentity)) { return $false }
+
     if (Test-MemoryStoreCompatible) { return $true }
 
     Warn "Your memory index was built with an older embedding model. Agentic OS will rebuild and reindex it."
@@ -664,6 +683,42 @@ function Finalize-LegacyLocalStore {
     return $true
 }
 
+function Invoke-ClientWorkspaceReindex {
+    $clientsDir = Join-Path $RepoRoot "clients"
+    if (-not (Test-Path -LiteralPath $clientsDir)) { return $true }
+
+    $failed = New-Object System.Collections.Generic.List[string]
+    $clients = @(Get-ChildItem -LiteralPath $clientsDir -Directory -ErrorAction SilentlyContinue | Sort-Object Name)
+    foreach ($client in $clients) {
+        $clientDir = $client.FullName
+        $slug = $client.Name
+        if (-not (Test-Path -LiteralPath (Join-Path $clientDir ".claude"))) { continue }
+        $hasMemory = Test-Path -LiteralPath (Join-Path $clientDir "context\memory")
+        $hasLearnings = Test-Path -LiteralPath (Join-Path $clientDir "context\learnings.md")
+        if (-not ($hasMemory -or $hasLearnings)) { continue }
+
+        Info "Re-indexing client '$slug' memory..."
+        $ok = Invoke-NpmScript -ScriptName "memory:capture" -ScriptArgs @(
+            "--reason", "refresh",
+            "--force",
+            "--cwd", $clientDir,
+            "--workspace", $clientDir,
+            "--visibility", "client",
+            "--client", $slug
+        )
+        if (-not $ok) {
+            Warn "Client '$slug' memory reindex failed."
+            $failed.Add($slug) | Out-Null
+        }
+    }
+
+    if ($failed.Count -gt 0) {
+        Warn "Client memory reindex failed for: $($failed -join ', '). Re-run memory:capture for those clients after setup."
+        return $false
+    }
+    return $true
+}
+
 function Invoke-MemoryReindex {
     $args = Get-ReindexArgs
 
@@ -679,7 +734,9 @@ function Invoke-MemoryReindex {
             if (-not (Invoke-NpmScript -ScriptName "memory:migrate" -ScriptArgs @("--check"))) { return $false }
         }
         Info "Re-indexing memory into hosted Postgres..."
-        return Invoke-NpmScript -ScriptName "memory:reindex" -ScriptArgs (@("--force") + $args)
+        if (-not (Invoke-NpmScript -ScriptName "memory:reindex" -ScriptArgs (@("--visibility", "system", "--force") + $args))) { return $false }
+        if (-not (Invoke-ClientWorkspaceReindex)) { return $false }
+        return $true
     }
 
     [Environment]::SetEnvironmentVariable("MEMORY_STORE_BACKEND", "pglite", "Process")
@@ -693,6 +750,7 @@ function Invoke-MemoryReindex {
         Restore-LegacyLocalStore
         return $false
     }
+    if (-not (Invoke-ClientWorkspaceReindex)) { return $false }
     return $true
 }
 
@@ -903,12 +961,45 @@ if (-not $Yes -and -not [Console]::IsInputRedirected) {
     }
 }
 
+# Offer to import prior Claude Code sessions into memory. Opt-in and never
+# silent: detection is read-only, and the import only runs if the user says yes
+# in an interactive terminal. In non-interactive runs we just print a hint.
+function Invoke-SessionImportOffer {
+    if (-not (Test-Path (Join-Path $CommandCentreDir "package.json"))) { return }
+    if (-not (Get-Command npm -ErrorAction SilentlyContinue)) { return }
+
+    if ([Console]::IsInputRedirected) {
+        Info "Tip: import prior Claude Code sessions anytime with: npm --prefix command-centre run memory:import-sessions"
+        return
+    }
+
+    # Read-only detection. Any non-zero "N available" means there is something to offer.
+    $detection = & npm --silent --prefix $CommandCentreDir run memory:import-sessions -- --dry-run 2>$null | Out-String
+    if ($detection -notmatch '[1-9][0-9]* available') { return }
+
+    Write-Host ""
+    Info "Found prior Claude Code sessions that can be imported into memory."
+    Warn "Importing older conversations can take a while and may use Claude subscription usage."
+    Info "You can import a few now and more later; nothing is lost, and re-running never duplicates."
+    $reply = Read-Host "  Import prior sessions now? [y/N]"
+    if ($reply -match '^(y|yes)$') {
+        if (-not (Invoke-NpmScript -ScriptName "memory:import-sessions" -ScriptArgs @("--interactive"))) {
+            Warn "Session import did not finish; run 'npm --prefix command-centre run memory:import-sessions' anytime."
+        }
+    }
+    else {
+        Info "Skipped. Run npm --prefix command-centre run memory:import-sessions whenever you like."
+    }
+}
+
 $errors = 0
 
 if (-not (Ensure-CommandCentreReady)) { $errors++ }
 if ($errors -eq 0 -and -not (Invoke-MemoryReindex)) { $errors++ }
 if ($errors -eq 0 -and -not (Archive-MemSearchDirs)) { $errors++ }
 if ($errors -eq 0 -and -not (Uninstall-LegacyMemSearch)) { $errors++ }
+
+if ($errors -eq 0) { Invoke-SessionImportOffer }
 
 Write-Host ""
 if ($errors -eq 0) {

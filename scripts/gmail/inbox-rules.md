@@ -3,7 +3,9 @@
 > **Single source of truth.** Read this file *in full* BEFORE reading, drafting, or filing any email —
 > both in an interactive session and at the top of every `gmail-daily-triage` cron run.
 > **To add a rule:** append one dated bullet to the right section. It applies from that moment on.
-> Last updated: 2026-06-21.
+> Covers BOTH mailboxes: `roy@atpbos.com` (default) and `roy@allthepower.co.uk` (`GMAIL_ACCOUNT=allthepower`).
+> §§0–5 apply everywhere; §6 holds allthepower-only rules.
+> Last updated: 2026-08-25.
 
 ---
 
@@ -142,8 +144,35 @@ A real ask can arrive from an automated-looking address (e.g. a forward from Roy
 
 ---
 
+## 6. Per-account: roy@allthepower.co.uk (`GMAIL_ACCOUNT=allthepower`)
+
+Roy's long-lived personal/public address — the front door for the TOYB book campaign, LinkedIn, personal
+life admin, and legacy contacts. Traffic is mostly automated (~76%); real humans here skew personal or
+book/PR, not client work. Area rules live in `area-rules.allthepower.json`.
+
+- **TOYB labels are owned by the `toyb-reply-watch` cron** — `TOYB/Placement` and `TOYB/Reply` messages:
+  never re-triage, never archive over them. HARO digests / PodMatch notifications → `TOYB` area, archive as FYI.
+  A REAL journalist, editor, or podcast host writing in → `Needs-You` (Bob Zinga-class contacts matter). *(2026-08-25)*
+- **Book/PR inbounds** (readers of Take Ownership of Your Brain, podcast invitations, article/interview requests)
+  → `Leads` + `Needs-You`; draft only when the reply is a clear yes/no Roy has already signalled. *(2026-08-25)*
+- **Health/wellness newsletters** (Human Garage, Biofield Tuning, Heart & Soil, Breath Mastery, Substacks)
+  → `Newsletters`, archive as FYI — Roy reads these by choice; never call them junk in the report. *(2026-08-25)*
+- **Personal life admin** (Icelandair, Purple Parking, Uber, Amazon, Royal Mail, Peptides Lab UK) → `Personal`;
+  archive as FYI **except** anything time-sensitive Roy must act on (flight changes, delivery failures,
+  payment problems) → `Needs-You`. *(2026-08-25)*
+- **LinkedIn:** messaging digests / "you appeared in searches" vanity → `Social`, archive as FYI.
+  Connection invites from relevant people and real recruiter/partnership DMs → `Needs-You`.
+  Never draft LinkedIn replies from email — Roy responds on-platform. *(2026-08-25)*
+- **Cross-mail from `roy@atpbos.com`** (his own other mailbox — forwards, n8n notifications, test sends)
+  → `Notification`, archive as FYI; the atpbos triage already handles the originals. *(2026-08-25)*
+- **Family/personal humans** (Ian, Lorraine, Laura V, `getsethappy@gmail.com`, other gmail.com humans)
+  → always read → `Needs-You`; never draft personal replies unless Roy asks. *(2026-08-25)*
+- **`backup.pst/*` labels are a frozen PST import** — never file into them, never touch their contents. *(2026-08-25)*
+
 ## Change log
 - **2026-06-19** — File created. Rule 0: never assume calendar times. People: Catheryne Shuman added.
 - **2026-06-21** — Backlog read-with-judgement pass began. Added §5 sender rules (marketing→Junk; Wise/Dropbox/Zernio
   split senders; Finance renewals; Got-Moles reviews; expired links). Catheryne/BOS UP academy mail → `Clients/Normal`.
   Cron model bumped sonnet→opus; `gmail-fetch.cjs` now reads full bodies (`--full`).
+- **2026-08-25** — Second mailbox onboarded: `roy@allthepower.co.uk` (§6 + `area-rules.allthepower.json` +
+  account-scoped `.last-run` markers). New cron `gmail-daily-triage-atp` at 08:00.

@@ -40,6 +40,7 @@ process.stdin.on('end', () => {
           const bridgePath = path.join(os.tmpdir(), `claude-ctx-${session}.json`);
           const bridgeData = JSON.stringify({
             session_id: session,
+            profileKey: process.env.AGENTIC_OS_PROFILE_KEY || "solo",
             remaining_percentage: remaining,
             used_pct: used,
             timestamp: Math.floor(Date.now() / 1000)

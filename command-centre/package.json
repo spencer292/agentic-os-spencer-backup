@@ -1,6 +1,6 @@
 {
   "name": "agentic-os",
-  "version": "1.0.0",
+  "version": "0.4.0",
   "description": "Turn Claude Code into your Agentic Operating System.",
   "private": true,
   "scripts": {
@@ -12,10 +12,13 @@
     "memory:index": "node scripts/memory-index.cjs",
     "memory:search": "node scripts/memory-search.cjs",
     "memory:recall": "node scripts/memory-recall.cjs",
+    "memory:expand": "node scripts/memory-expand.cjs",
+    "memory:transcript": "node scripts/memory-transcript.cjs",
     "memory:capture": "node scripts/memory-capture.cjs",
     "memory:status": "node scripts/memory-status.cjs",
     "memory:migrate": "node scripts/memory-migrate.cjs",
     "memory:reindex": "node scripts/memory-reindex.cjs",
+    "memory:import-sessions": "node scripts/memory-import-sessions.cjs",
     "memory:bootstrap": "node scripts/memory-bootstrap.cjs",
     "memory:backup": "node scripts/memory-backup.cjs",
     "memory:restore": "node scripts/memory-restore.cjs",
@@ -23,10 +26,18 @@
     "memory:upgrade-embeddings": "node scripts/memory-upgrade-embeddings.cjs",
     "memory:warmup": "node scripts/memory-warmup.cjs",
     "memory:api": "node scripts/memory-api.cjs",
+    "memory:watch": "node scripts/memory-watch.cjs",
+    "memory:watch:stop": "node scripts/memory-watch-stop.cjs",
+    "memory:eval": "node scripts/memory-eval.cjs",
+    "team:create": "node scripts/team-create.cjs",
+    "team:invite": "node scripts/team-invite.cjs",
+    "team:join": "node scripts/team-join.cjs",
+    "team:members": "node scripts/team-members.cjs",
     "test:theme": "node --no-deprecation --test src/design-system/theme-preference.test.cjs",
     "test:cron": "node --no-deprecation --test src/lib/cron-runtime.test.cjs src/lib/claude-parser.test.cjs src/lib/planned-project-naming.test.cjs src/lib/run-claude-text-prompt.test.cjs src/lib/process-manager.test.cjs src/lib/queue-watcher.test.cjs src/lib/plan-review-flows.test.cjs src/lib/permission-prompt-mcp.test.cjs src/lib/task-chat.test.cjs",
-    "test:memory": "node --no-deprecation --test src/lib/memory/scope.test.cjs src/lib/memory/backend.test.cjs src/lib/memory/embedder.test.cjs src/lib/memory/pglite-adapter.test.cjs src/lib/memory/store.test.cjs src/lib/memory/indexer.test.cjs src/lib/memory/ingest.test.cjs src/lib/memory/search.test.cjs src/lib/memory/api.test.cjs src/lib/memory/server.test.cjs src/lib/memory/no-leak.test.cjs src/lib/memory/reindex.test.cjs src/lib/memory/memory-recall.test.cjs src/lib/memory/capture.test.cjs src/lib/memory/postgres-adapter.test.cjs src/lib/memory/backup.test.cjs src/lib/memory/bootstrap.test.cjs",
-    "test:memory:pg": "node --no-deprecation --test --test-concurrency=1 src/lib/memory/postgres-adapter.test.cjs src/lib/memory/reindex.test.cjs src/lib/memory/backup.test.cjs"
+    "test:memory": "node --no-deprecation --test src/lib/memory/scope.test.cjs src/lib/memory/backend.test.cjs src/lib/memory/embedder.test.cjs src/lib/memory/pglite-adapter.test.cjs src/lib/memory/store.test.cjs src/lib/memory/indexer.test.cjs src/lib/memory/ingest.test.cjs src/lib/memory/search.test.cjs src/lib/memory/api.test.cjs src/lib/memory/server.test.cjs src/lib/memory/no-leak.test.cjs src/lib/memory/scoped-access.test.cjs src/lib/memory/expand.test.cjs src/lib/memory/transcript.test.cjs src/lib/memory/reindex.test.cjs src/lib/memory/memory-recall.test.cjs src/lib/memory/capture.test.cjs src/lib/memory/memory-capture-hook.test.cjs src/lib/memory/session-import.test.cjs src/lib/memory/watcher.test.cjs src/lib/memory/postgres-adapter.test.cjs src/lib/memory/backup.test.cjs src/lib/memory/bootstrap.test.cjs src/lib/memory/eval.test.cjs",
+    "test:memory:pg": "node --no-deprecation --test --test-concurrency=1 src/lib/memory/postgres-adapter.test.cjs src/lib/memory/reindex.test.cjs src/lib/memory/backup.test.cjs",
+    "test:identity": "node --no-deprecation --test src/lib/identity/store.test.cjs src/lib/identity/permissions.test.cjs src/lib/identity/invites.test.cjs"
   },
   "repository": {
     "type": "git",

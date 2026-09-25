@@ -40,6 +40,7 @@ process.stdin.on("end", () => {
     windowsHide: true,
     detached: true,
   });
+  child.on("error", () => {});
   child.unref();
 
   // The detached child is on its own now — exit immediately so the SessionStart

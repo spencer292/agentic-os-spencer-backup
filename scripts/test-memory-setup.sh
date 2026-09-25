@@ -56,8 +56,14 @@ make_repo() {
     local name="$1"
     local repo="$TEST_ROOT/$name"
 
-    mkdir -p "$repo/scripts" "$repo/command-centre/node_modules" "$repo/context/memory" "$repo/brand_context"
+    mkdir -p "$repo/scripts" "$repo/command-centre/scripts" \
+        "$repo/command-centre/src/lib/memory" "$repo/command-centre/node_modules" \
+        "$repo/context/memory" "$repo/brand_context"
     cp "$REAL_REPO/scripts/setup-memory.sh" "$repo/scripts/setup-memory.sh"
+    cp "$REAL_REPO/command-centre/scripts/local-memory-identity.cjs" \
+        "$repo/command-centre/scripts/local-memory-identity.cjs"
+    cp "$REAL_REPO/command-centre/src/lib/memory/local-identity.cjs" \
+        "$repo/command-centre/src/lib/memory/local-identity.cjs"
     cat > "$repo/scripts/stop-memsearch-watchers.ps1" <<'EOF'
 Write-Host "fake stop"
 EOF
@@ -132,7 +138,14 @@ if [[ "$*" == *" ci"* ]]; then
   fi
 fi
 if [[ "$*" == *"memory:status"* ]]; then
-  if [[ "${FAKE_MEMORY_COMPATIBLE:-1}" == "1" ]]; then
+  if [[ -n "${FAKE_EXPECT_OWNER_BEFORE_STATUS:-}" ]]; then
+    identity_file="${REPO_UNDER_TEST}/.command-centre/local-memory-user.json"
+    node -e 'const fs=require("node:fs");process.exit(fs.existsSync(process.argv[1])&&fs.readFileSync(process.argv[1],"utf8").includes(process.argv[2])?0:91)' \
+      "$identity_file" "$FAKE_EXPECT_OWNER_BEFORE_STATUS" || exit 91
+  fi
+  if [[ "${FAKE_MEMORY_COMPATIBLE:-1}" == "1" ]] \
+      || [[ "${FAKE_MEMORY_COMPATIBLE_AFTER_REINDEX:-0}" == "1" \
+          && -f "${REPO_UNDER_TEST:-}/.fake-memory-reindexed" ]]; then
     printf '{"storeReady":true,"embedDim":1024,"expectedEmbeddingModel":"bge-m3","expectedEmbeddingDim":1024,"embeddingCompatible":true,"embeddingModels":[{"model":"bge-m3","dim":1024,"chunks":1}]}\n'
   else
     printf '{"storeReady":true,"embedDim":384,"expectedEmbeddingModel":"bge-m3","expectedEmbeddingDim":1024,"embeddingCompatible":false,"embeddingModels":[{"model":"hash-v1-384","dim":384,"chunks":1}]}\n'
@@ -145,6 +158,25 @@ fi
 if [[ "$*" == *"memory:migrate"* && "${FAKE_MEMORY_MIGRATE_FAIL_ONCE:-0}" == "1" && -n "$prefix" && ! -f "$prefix/.fake-migrate-failed" ]]; then
   touch "$prefix/.fake-migrate-failed"
   exit 1
+fi
+if [[ "$*" == *"memory:reindex"* && "${FAKE_MEMORY_REINDEX_FAIL:-0}" == "1" ]]; then
+  exit 1
+fi
+if [[ "$*" == *"memory:reindex"* && "${FAKE_MEMORY_COMPATIBLE_AFTER_REINDEX:-0}" == "1" ]]; then
+  mkdir -p "$REPO_UNDER_TEST/.command-centre/memory"
+  touch "$REPO_UNDER_TEST/.fake-memory-reindexed"
+fi
+if [[ "$*" == *"memory:capture"* && -n "${FAKE_MEMORY_CAPTURE_FAIL_CLIENTS:-}" ]]; then
+  client=""
+  for ((i = 0; i < ${#args[@]}; i++)); do
+    if [[ "${args[$i]}" == "--client" && $((i + 1)) -lt ${#args[@]} ]]; then
+      client="${args[$((i + 1))]}"
+      break
+    fi
+  done
+  if [[ " ${FAKE_MEMORY_CAPTURE_FAIL_CLIENTS} " == *" ${client} "* ]]; then
+    exit 1
+  fi
 fi
 if [[ "$*" == *"memory:reindex"* && -n "${REPO_UNDER_TEST:-}" ]]; then
   if [[ -f "$REPO_UNDER_TEST/.memsearch/memory/root.md" ]]; then
@@ -281,6 +313,73 @@ test_existing_local_pglite_is_ready_and_reused() {
     assert_not_contains "$log" "memory:migrate"
 }
 
+test_local_rebuild_preserves_legacy_private_owner() {
+    local repo home fake_bin log identity
+    repo="$(make_repo local-owner-success)"
+    home="$(make_home local-owner-success)"
+    fake_bin="$(make_fake_bin local-owner-success)"
+    log="$TEST_ROOT/local-owner-success.log"
+    identity="local-setup-owner-success"
+
+    rm -rf "$home/.codex/hooks.json"
+    mkdir -p "$repo/.command-centre/memory"
+    printf '{"version":1,"userId":"%s"}\n' "$identity" \
+        > "$repo/.command-centre/memory/local-user.json"
+
+    (
+        cd "$repo"
+        export HOME="$home"
+        export ACTION_LOG="$log"
+        export REPO_UNDER_TEST="$repo"
+        export FAKE_MEMSEARCH_LEGACY=0
+        export FAKE_MEMORY_COMPATIBLE=0
+        export FAKE_MEMORY_COMPATIBLE_AFTER_REINDEX=1
+        export FAKE_EXPECT_OWNER_BEFORE_STATUS="$identity"
+        export PATH="$fake_bin${NODE_DIR:+:$NODE_DIR}:/usr/bin:/bin"
+        bash scripts/setup-memory.sh --yes >/dev/null
+    )
+
+    assert_contains "$repo/.command-centre/local-memory-user.json" "$identity"
+    [[ -d "$repo/.command-centre/memory" ]] || fail "Rebuilt local memory store is missing"
+    [[ -z "$(find "$repo/.command-centre" -maxdepth 1 -type d -name 'memory-legacy-384-*' -print -quit)" ]] \
+        || fail "Successful rebuild should remove the old 384-dim store"
+}
+
+test_local_rebuild_failure_restores_store_without_changing_owner() {
+    local repo home fake_bin log identity rc
+    repo="$(make_repo local-owner-failure)"
+    home="$(make_home local-owner-failure)"
+    fake_bin="$(make_fake_bin local-owner-failure)"
+    log="$TEST_ROOT/local-owner-failure.log"
+    identity="local-setup-owner-failure"
+
+    rm -rf "$home/.codex/hooks.json"
+    mkdir -p "$repo/.command-centre/memory"
+    printf '{"version":1,"userId":"%s"}\n' "$identity" \
+        > "$repo/.command-centre/memory/local-user.json"
+
+    set +e
+    (
+        cd "$repo"
+        export HOME="$home"
+        export ACTION_LOG="$log"
+        export REPO_UNDER_TEST="$repo"
+        export FAKE_MEMSEARCH_LEGACY=0
+        export FAKE_MEMORY_COMPATIBLE=0
+        export FAKE_MEMORY_REINDEX_FAIL=1
+        export PATH="$fake_bin${NODE_DIR:+:$NODE_DIR}:/usr/bin:/bin"
+        bash scripts/setup-memory.sh --yes >/dev/null
+    )
+    rc=$?
+    set -e
+
+    [[ $rc -eq 1 ]] || fail "Failed local rebuild should exit 1"
+    assert_contains "$repo/.command-centre/local-memory-user.json" "$identity"
+    assert_contains "$repo/.command-centre/memory/local-user.json" "$identity"
+    [[ -z "$(find "$repo/.command-centre" -maxdepth 1 -type d -name 'memory-legacy-384-*' -print -quit)" ]] \
+        || fail "Failed rebuild should restore the old store from quarantine"
+}
+
 test_hosted_postgres_runs_migrate_and_reindex() {
     local repo home fake_bin log
     repo="$(make_repo hosted)"
@@ -303,6 +402,7 @@ test_hosted_postgres_runs_migrate_and_reindex() {
     assert_contains "$log" "npm MEMORY_STORE_BACKEND=postgres"
     assert_contains "$log" "run memory:migrate"
     assert_contains "$log" "run memory:reindex"
+    assert_contains "$log" "memory:reindex -- --visibility system"
     assert_default_reindex_roots "$log"
     assert_not_contains "$log" "--allow-local"
 }
@@ -331,6 +431,7 @@ test_hosted_old_dimension_uses_preserving_upgrade() {
     assert_contains "$log" "run memory:upgrade-embeddings -- --yes"
     assert_contains "$log" "run memory:migrate -- --check"
     assert_contains "$log" "run memory:reindex"
+    assert_contains "$log" "memory:reindex -- --visibility system"
     assert_default_reindex_roots "$log"
     assert_not_contains "$log" "run memory:reset"
     assert_not_contains "$log" "--allow-local"
@@ -359,6 +460,137 @@ test_no_backend_defaults_to_local_noninteractive() {
     assert_default_reindex_roots "$log"
 }
 
+test_client_workspace_memory_reindexed_after_root_reindex() {
+    local repo home fake_bin log capture_line cwd_arg workspace_arg
+    repo="$(make_repo client-reindex)"
+    home="$(make_home client-reindex)"
+    fake_bin="$(make_fake_bin client-reindex)"
+    log="$TEST_ROOT/client-reindex.log"
+
+    rm -rf "$home/.codex/hooks.json"
+    mkdir -p "$repo/clients/acme/.claude" "$repo/clients/acme/context/memory"
+    mkdir -p "$repo/clients/made-up/context/memory"
+    printf "# Acme memory\n\nClient note.\n" > "$repo/clients/acme/context/memory/2026-06-15.md"
+    printf "# Acme learnings\n\nClient learning.\n" > "$repo/clients/acme/context/learnings.md"
+    printf "# Stray memory\n\nShould not be scoped.\n" > "$repo/clients/made-up/context/memory/2026-06-15.md"
+
+    (
+        cd "$repo"
+        export HOME="$home"
+        export ACTION_LOG="$log"
+        export FAKE_MEMSEARCH_LEGACY=0
+        export PATH="$fake_bin${NODE_DIR:+:$NODE_DIR}:/usr/bin:/bin"
+        bash scripts/setup-memory.sh --yes >/dev/null
+    )
+
+    assert_contains "$log" "memory:reindex -- --allow-local"
+    assert_contains "$log" "run memory:capture -- --reason refresh --force --cwd"
+    assert_contains "$log" "--visibility client --client acme"
+    assert_not_contains "$log" "--client made-up"
+    capture_line="$(grep -F "run memory:capture -- --reason refresh --force" "$log")"
+    cwd_arg="$(printf '%s\n' "$capture_line" | sed -E 's/.*--cwd ([^ ]+).*/\1/')"
+    workspace_arg="$(printf '%s\n' "$capture_line" | sed -E 's/.*--workspace ([^ ]+).*/\1/')"
+    [[ "$cwd_arg" == "$workspace_arg" ]] || fail "client --cwd and --workspace should be identical"
+    [[ "$cwd_arg" == */clients/acme/ ]] || fail "client setup should target the acme workspace"
+}
+
+test_client_workspace_failures_are_accumulated_and_fail_setup() {
+    local repo home fake_bin log out rc slug
+    repo="$(make_repo client-reindex-failures)"
+    home="$(make_home client-reindex-failures)"
+    fake_bin="$(make_fake_bin client-reindex-failures)"
+    log="$TEST_ROOT/client-reindex-failures.log"
+    out="$TEST_ROOT/client-reindex-failures.out"
+
+    rm -rf "$home/.codex/hooks.json"
+    for slug in acme beta charlie; do
+        mkdir -p "$repo/clients/$slug/.claude" "$repo/clients/$slug/context/memory"
+        printf "# %s memory\n\nClient note.\n" "$slug" > "$repo/clients/$slug/context/memory/2026-06-15.md"
+    done
+
+    set +e
+    (
+        cd "$repo"
+        export HOME="$home"
+        export ACTION_LOG="$log"
+        export FAKE_MEMSEARCH_LEGACY=0
+        export FAKE_MEMORY_CAPTURE_FAIL_CLIENTS="acme beta"
+        export PATH="$fake_bin${NODE_DIR:+:$NODE_DIR}:/usr/bin:/bin"
+        bash scripts/setup-memory.sh --yes >"$out" 2>&1
+    )
+    rc=$?
+    set -e
+
+    [[ $rc -eq 1 ]] || fail "client reindex failures should make setup exit 1"
+    assert_contains "$log" "--client acme"
+    assert_contains "$log" "--client beta"
+    assert_contains "$log" "--client charlie"
+    assert_contains "$out" "Client memory reindex failed for: acme beta"
+    assert_contains "$out" "searchable memory setup step(s) need attention"
+    assert_not_contains "$out" "Searchable memory setup complete"
+}
+
+test_hosted_root_reindex_failure_fails_setup_before_clients() {
+    local repo home fake_bin log out rc
+    repo="$(make_repo hosted-root-reindex-failure)"
+    home="$(make_home hosted-root-reindex-failure)"
+    fake_bin="$(make_fake_bin hosted-root-reindex-failure)"
+    log="$TEST_ROOT/hosted-root-reindex-failure.log"
+    out="$TEST_ROOT/hosted-root-reindex-failure.out"
+
+    rm -rf "$home/.codex/hooks.json"
+    printf "MEMORY_DATABASE_URL=postgres://user:pass@example.test:5432/memory\n" > "$repo/.env"
+    mkdir -p "$repo/clients/acme/.claude" "$repo/clients/acme/context/memory"
+    printf "# Acme memory\n" > "$repo/clients/acme/context/memory/2026-06-15.md"
+
+    set +e
+    (
+        cd "$repo"
+        export HOME="$home"
+        export ACTION_LOG="$log"
+        export FAKE_MEMSEARCH_LEGACY=0
+        export FAKE_MEMORY_REINDEX_FAIL=1
+        export PATH="$fake_bin${NODE_DIR:+:$NODE_DIR}:/usr/bin:/bin"
+        bash scripts/setup-memory.sh --yes >"$out" 2>&1
+    )
+    rc=$?
+    set -e
+
+    [[ $rc -eq 1 ]] || fail "hosted root reindex failure should make setup exit 1"
+    assert_contains "$log" "memory:reindex -- --visibility system"
+    assert_not_contains "$log" "memory:capture"
+    assert_contains "$out" "searchable memory setup step(s) need attention"
+    assert_not_contains "$out" "Searchable memory setup complete"
+}
+
+test_powershell_client_reindex_contract_matches_bash() {
+    local script="$REAL_REPO/scripts/setup-memory.ps1" propagated_count
+    assert_contains "$script" '"--cwd", $clientDir'
+    assert_contains "$script" '"--workspace", $clientDir'
+    assert_contains "$script" '"--visibility", "client"'
+    assert_contains "$script" '"--client", $slug'
+    assert_not_contains "$script" "[void](Invoke-ClientWorkspaceReindex)"
+    propagated_count="$(grep -Fc 'if (-not (Invoke-ClientWorkspaceReindex)) { return $false }' "$script" || true)"
+    [[ "$propagated_count" == "2" ]] || fail "PowerShell should propagate hosted and local client reindex failures"
+}
+
+test_powershell_client_reindex_runtime() {
+    local powershell_bin=""
+    if command -v pwsh >/dev/null 2>&1; then
+        powershell_bin="pwsh"
+    elif command -v powershell.exe >/dev/null 2>&1; then
+        powershell_bin="powershell.exe"
+    elif command -v powershell >/dev/null 2>&1; then
+        powershell_bin="powershell"
+    else
+        echo "[SKIP] PowerShell memory setup runtime tests (PowerShell not installed)"
+        return 0
+    fi
+
+    "$powershell_bin" -NoProfile -NonInteractive -ExecutionPolicy Bypass \
+        -File "$REAL_REPO/scripts/test-memory-setup.ps1"
+}
+
 test_warmup_failure_clears_bge_m3_cache_and_retries() {
     local repo home fake_bin log out warmup_count
     repo="$(make_repo warmup-retry)"
@@ -384,7 +616,10 @@ test_warmup_failure_clears_bge_m3_cache_and_retries() {
 
     assert_contains "$out" "BGE-M3 model warmup failed. Repairing the model cache and trying once more."
     assert_contains "$out" "Cleared BGE-M3 model cache"
-    [[ ! -e "$repo/.command-centre/models/Xenova/bge-m3" ]] || fail "BGE-M3 model cache should be cleared before retry"
+    if [[ -f "$repo/.command-centre/models/Xenova/bge-m3/onnx/model_quantized.onnx" ]] \
+        && grep -Fq "partial onnx" "$repo/.command-centre/models/Xenova/bge-m3/onnx/model_quantized.onnx"; then
+        fail "Corrupt BGE-M3 ONNX file should be cleared before retry"
+    fi
     assert_contains "$repo/.command-centre/models/Other/model.bin" "keep"
     warmup_count="$(grep -Fc "run memory:warmup" "$log" || true)"
     [[ "$warmup_count" == "2" ]] || fail "memory:warmup should run twice after one failure, saw $warmup_count"
@@ -648,9 +883,16 @@ test_setup_memory_uses_bash3_compatible_reads() {
 
 test_check_mode_does_not_mutate
 test_existing_local_pglite_is_ready_and_reused
+test_local_rebuild_preserves_legacy_private_owner
+test_local_rebuild_failure_restores_store_without_changing_owner
 test_hosted_postgres_runs_migrate_and_reindex
 test_hosted_old_dimension_uses_preserving_upgrade
 test_no_backend_defaults_to_local_noninteractive
+test_client_workspace_memory_reindexed_after_root_reindex
+test_client_workspace_failures_are_accumulated_and_fail_setup
+test_hosted_root_reindex_failure_fails_setup_before_clients
+test_powershell_client_reindex_contract_matches_bash
+test_powershell_client_reindex_runtime
 test_warmup_failure_clears_bge_m3_cache_and_retries
 test_stale_node_modules_runs_npm_ci_before_reindex
 test_missing_dependency_is_repaired_by_npm_ci

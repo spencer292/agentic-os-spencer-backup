@@ -322,6 +322,15 @@ function matchesTime(date, schedule) {
   return normalizeTimeTokens(trimmed).includes(currentTime);
 }
 
+// Single canonical gate for the live tick: a scheduled job should dispatch at
+// `now` only when BOTH the time-of-day and the day-of-week match. Pure: the
+// caller supplies `now` (no `new Date()` here, no side effects), so both live
+// schedulers (in-process + daemon) share one decision and cannot drift apart.
+// Manual "run now" and catch-up paths intentionally do NOT route through here.
+function shouldDispatchNow(now, job) {
+  return matchesTime(now, job.time) && matchesDays(now, job.days);
+}
+
 function isFixedTimeSchedule(schedule) {
   return !INTERVAL_TIME_RE.test(String(schedule || "").trim());
 }
@@ -563,11 +572,23 @@ function getCronStats(agenticOsDir, slug, clientId) {
   };
 }
 
+// Optional host allowlist: AGENTIC_OS_CRON_JOBS="slug-a,slug-b" limits which jobs this runtime
+// treats as active (a server that must run only a subset of the shared jobs). Unset = every job
+// keeps its own `active` flag, so existing installs behave exactly as before.
+function cronJobAllowlist() {
+  return String(process.env.AGENTIC_OS_CRON_JOBS || "")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
 function parseJobFile(agenticOsDir, workspace, filePath) {
   const slug = path.basename(filePath, ".md");
   const raw = fs.readFileSync(filePath, "utf-8");
   const parsed = matter(raw);
-  const active = String(parsed.data.active ?? "true").toLowerCase() === "true";
+  const allowlist = cronJobAllowlist();
+  const allowedOnHost = allowlist.length === 0 || allowlist.includes(slug);
+  const active = allowedOnHost && String(parsed.data.active ?? "true").toLowerCase() === "true";
   const retry = Number.parseInt(String(parsed.data.retry ?? "0"), 10);
   const time = String(parsed.data.time ?? "00:00");
   const days = String(parsed.data.days ?? "daily");
@@ -1801,10 +1822,34 @@ function collectOutsideWorkspaceMutations(agenticOsDir, workspaceDir, beforeSnap
   });
 }
 
+// Rules every scheduled job inherits, root workspace included.
+//
+// Added 2026-08-23 after backup-coverage launched `node scripts/backup-sync.cjs`
+// as a BACKGROUND task, announced that it would be notified on completion, ended
+// its turn -- which killed rclone at 21% of an 822 MiB transfer -- and then logged
+// SUCCESS (233s). cron/state/backup-sync.json stayed frozen at 2026-08-19 and,
+// because that job is notify: on_failure, nobody was told. The Drive backup was
+// dead for four days while every check reported healthy.
+//
+// The guard has to live HERE rather than in each job file: before this change the
+// preamble was client-workspace only, so root jobs like backup-coverage received
+// no instructions at all, and a rule pasted into 23 markdown files is one that the
+// 24th job silently misses.
+const UNATTENDED_EXECUTION_RULES = [
+  "UNATTENDED EXECUTION — nobody is watching this run.",
+  "- Run commands in the FOREGROUND and block until they return. Never move work to the background, and never end your turn while a command is still running: ending the turn kills the child process mid-flight.",
+  "- Long work is expected to take long. A job that should take an hour and 'finishes' in seconds has been cut short — treat that as a failure, not a success.",
+  "- Before reporting success, verify the WORK LANDED: read the state file, output file, or record the job produces and confirm it actually advanced. Never infer success from the fact that a command was launched.",
+  "- Never end on a question or an offer. State the position and stop.",
+  // Ported from upstream v1.1.4 (cron-runtime autonomy assertion): the autonomous
+  // counterpart to the interactive answer-vs-action boundary in AGENTS.md.
+  "- You are operating autonomously as a scheduled job. The user is not watching in real time and cannot answer questions mid-task, so asking 'Want me to...?' or 'Shall I...?' will block the work. For reversible actions that follow from this job's task, proceed without asking. Stop only for destructive actions or genuine scope changes the user must decide.",
+].join("\n");
+
 function buildCronExecutionPrompt(job, workspace) {
   const basePrompt = String(job.prompt || "").trim();
   if (!workspace.clientId) {
-    return basePrompt;
+    return [UNATTENDED_EXECUTION_RULES, basePrompt].filter(Boolean).join("\n\n");
   }
 
   return [
@@ -1813,6 +1858,7 @@ function buildCronExecutionPrompt(job, workspace) {
     "Stay inside this workspace for all reads and writes.",
     'When creating output files, use explicit client-local paths such as "projects/..." inside the current workspace.',
     "Do not create or update files in the root workspace or in another client workspace.",
+    UNATTENDED_EXECUTION_RULES,
     basePrompt,
   ]
     .filter(Boolean)
@@ -2791,6 +2837,8 @@ module.exports = {
   DEFAULT_TIMEOUT,
   RUNTIME_LOG_FILE,
   RUNTIME_STALE_MS,
+  UNATTENDED_EXECUTION_RULES,
+  buildCronExecutionPrompt,
   resolveAgenticOsRoot,
   normalizeClientId,
   workspaceKeyFor,
@@ -2802,6 +2850,7 @@ module.exports = {
   getCronScheduleValidationError,
   matchesDays,
   matchesTime,
+  shouldDispatchNow,
   isFixedTimeSchedule,
   getNextRunForSchedule,
   getMissedFixedRuns,

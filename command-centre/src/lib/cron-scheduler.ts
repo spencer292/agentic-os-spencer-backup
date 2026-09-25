@@ -6,7 +6,7 @@ import {
   getMissedFixedRuns,
   hasActiveCronJobs,
   listAllCronJobs,
-  matchesCronTime,
+  shouldDispatchNow,
   refreshCronHeartbeat,
   releaseCronLeadership,
   toCronMinuteIso,
@@ -114,7 +114,7 @@ function tickScheduler(): void {
     }
 
     for (const job of activeJobs) {
-      if (!matchesCronTime(now, job.time)) {
+      if (!shouldDispatchNow(now, job)) {
         continue;
       }
 

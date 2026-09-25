@@ -939,9 +939,14 @@ run_guided_mode() {
     echo ""
     printf "  ${BOLD}NEXT${NC} ${DIM}────────────────────────────────────────────────────────────────${NC}\n"
     echo ""
-    printf "  ${CYAN}01${NC}  ${BOLD}bash scripts/centre.sh${NC}      Open the Command Centre\n"
-    printf "  ${CYAN}02${NC}  ${BOLD}claude${NC}                       Start working in the terminal\n"
-    printf "  ${CYAN}03${NC}  ${BOLD}/start-here${NC}                  Set up your brand on first session\n"
+    printf "  ${DIM}The OS installed into the folder below. When setup finishes your\n"
+    printf "  terminal is one level up — move into it first, or ${NC}${BOLD}/start-here${NC}${DIM} won't\n"
+    printf "  be available:${NC}\n"
+    echo ""
+    printf "  ${CYAN}01${NC}  ${BOLD}cd \"%s\"${NC}\n" "$REPO_ROOT"
+    printf "  ${CYAN}02${NC}  ${BOLD}bash scripts/centre.sh${NC}      Open the Command Centre\n"
+    printf "  ${CYAN}03${NC}  ${BOLD}claude${NC}                       Start working in the terminal\n"
+    printf "  ${CYAN}04${NC}  ${BOLD}/start-here${NC}                  Set up your brand on first session\n"
     echo ""
 }
 

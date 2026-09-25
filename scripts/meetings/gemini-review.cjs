@@ -23,9 +23,9 @@ const val = (k) => { const i = args.indexOf(k); return i !== -1 ? args[i + 1] : 
 const die = (m) => { console.error("FAILED:", m); process.exit(1); };
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const BASE = "https://generativelanguage.googleapis.com";
-const MODEL = val("--model") || "gemini-2.5-flash";
+const MODEL = val("--model") || "gemini-3.6-flash"; // bumped 2026-08-11 from 2.5-flash (a generation behind); --model overrides if unavailable
 
-const DEFAULT_PROMPT = `You are a critical video-quality reviewer for short-form social clips (9:16, for YouTube Shorts / Reels / TikTok).
+const SHORTS_PROMPT = `You are a critical video-quality reviewer for short-form social clips (9:16, for YouTube Shorts / Reels / TikTok).
 Watch this clip and assess, specifically and honestly:
 1. Compression / encoding: blockiness, macroblocking, banding, softness, upscaling artifacts. Does it look low-resolution or over-compressed?
 2. Sharpness & resolution: is the speaker's face crisp or soft/blurry?
@@ -34,7 +34,41 @@ Watch this clip and assess, specifically and honestly:
 5. Overall: is this postable as-is? If not, what is the SINGLE biggest quality problem and the concrete fix?
 Give a short verdict (postable / needs work / reject) then bullet points. Be concrete about whether the problem is the source footage vs the processing.`;
 
+const LONGFORM_PROMPT = `You are a critical video-quality reviewer for a LANDSCAPE 16:9 long-form YouTube asset - a condensed podcast episode, typically 10-15 minutes, built from a two-person Zoom/webcam recording composed onto a branded 1080p canvas.
+This is NOT a vertical short. Do NOT critique it for aspect ratio, for lacking a 9:16 crop, or for missing burned-in captions - none of those apply to this format, and raising them is a review error.
+Watch it and assess, specifically and honestly:
+1. Encoding: blockiness, macroblocking, banding, upscaling artifacts. Separate genuine encode faults from the webcam source's own limits.
+2. Sharpness: are both speakers' faces acceptably clear for a 1080p web upload, given webcam origin?
+3. Composition: are the speaker tiles balanced and correctly aligned on the canvas? Any black bars, frame bleed, divider slivers, stretched or squashed tiles, or dead space?
+4. On-screen text: is the title card, logo and each name strap fully rendered, correctly spelled, unclipped and legible? Read them back verbatim so spelling can be checked.
+5. Audio: is speech clear, intelligible and consistent in level? Any clipping, dropouts, hum or abrupt level jumps at cut points?
+6. Edit quality: do segment transitions land on natural speech pauses, or are there mid-word chops, hard jumps, repeated content or audio/video desync?
+Give a short verdict on the FIRST line - exactly one of SEND-QUALITY, NEEDS WORK, or REJECT - then bullet points. Be concrete about whether a problem originates in the source footage or in the processing.`;
+
+// The gate defaults by asset shape, not by hope. Running the bare command on a
+// landscape long-form asset used to apply the 9:16 Shorts rubric, which fails it
+// for having no vertical crop and no burned-in captions - criteria a YouTube
+// long-form asset can never meet. A meaningless "needs work" is worse than no
+// gate at all, because it teaches everyone to wave the gate through.
+const PROFILES = { shorts: SHORTS_PROMPT, longform: LONGFORM_PROMPT };
+const profileArg = (val("--profile") || "").toLowerCase();
+if (profileArg && !PROFILES[profileArg]) die(`unknown --profile "${profileArg}" (expected: shorts | longform)`);
+
 async function fileSize(p) { return fs.statSync(p).size; }
+
+/** Landscape -> longform, portrait -> shorts. Falls back to shorts (the historic
+ *  default) if ffprobe is unavailable, so this can never harden into a blocker. */
+function detectProfile(p) {
+  try {
+    const out = require("node:child_process").execFileSync("ffprobe", [
+      "-v", "error", "-select_streams", "v:0",
+      "-show_entries", "stream=width,height", "-of", "csv=p=0:s=x", p,
+    ], { encoding: "utf8" }).trim();
+    const [w, h] = out.split("x").map(Number);
+    if (w && h) return w / h >= 1.2 ? "longform" : "shorts";
+  } catch {}
+  return "shorts";
+}
 
 async function uploadFile(p) {
   const size = await fileSize(p);
@@ -71,7 +105,12 @@ async function uploadFile(p) {
   const file = val("--file");
   if (!file) die("usage: --file <video.mp4>");
   if (!KEY) die("GEMINI_API_KEY missing in .env");
-  const prompt = val("--prompt") || DEFAULT_PROMPT;
+  // Pick the rubric from the asset's actual shape unless told otherwise, so the
+  // bare command is correct by default rather than correct only if you remember
+  // to pass a profile. Explicit --prompt still wins over everything.
+  const profile = profileArg || detectProfile(file);
+  const prompt = val("--prompt") || PROFILES[profile];
+  if (!val("--prompt")) console.error(`(rubric: ${profile}${profileArg ? "" : " - auto-detected from frame size"})`);
   const size = await fileSize(file);
 
   let part;

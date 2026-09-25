@@ -26,7 +26,7 @@ process.stdin.on("end", () => {
 
   const normalized = filePath.replace(/\\/g, "/");
 
-  let skillFile, commitMsg;
+  let commitMsg;
   const skillMatch = normalized.match(/\.claude\/skills\/([^/]+)\/SKILL\.local\.md$/);
   const claudeMatch = normalized.match(/(?:^|\/)CLAUDE\.local\.md$/);
 
@@ -35,16 +35,27 @@ process.stdin.on("end", () => {
     if (skillName === "_catalog") return;
     const today = new Date().toISOString().slice(0, 10);
     commitMsg = `chore: update local skill rules -- ${skillName} [${today}]`;
-    skillFile = `.claude/skills/${skillName}/SKILL.local.md`;
   } else if (claudeMatch) {
     const today = new Date().toISOString().slice(0, 10);
     commitMsg = `chore: update CLAUDE.local.md [${today}]`;
-    skillFile = `CLAUDE.local.md`;
   } else {
     return;
   }
 
   const repoRoot = process.env.CLAUDE_PROJECT_DIR || path.resolve(__dirname, "../..");
+
+  // Derive the path from the file that was ACTUALLY edited, expressed relative to
+  // repoRoot. Rebuilding it from the captured skill name drops any prefix (e.g.
+  // `clients/<slug>/`) and would commit a different file at the repo root.
+  let skillFile;
+  if (path.isAbsolute(filePath)) {
+    const rel = path.relative(repoRoot, filePath).replace(/\\/g, "/");
+    // Outside repoRoot: hand git the absolute path and let it decide.
+    skillFile = rel && !rel.startsWith("../") ? rel : normalized;
+  } else {
+    skillFile = normalized.replace(/^\.\//, "");
+  }
+  if (!skillFile) return;
   const workerPath = path.join(__dirname, "skill-auto-commit-worker.js");
 
   const child = spawn(process.execPath, [workerPath, repoRoot, skillFile, commitMsg], {
@@ -52,6 +63,8 @@ process.stdin.on("end", () => {
     windowsHide: true,
     detached: true,
   });
+
+  child.on("error", () => {});
 
   child.unref();
 });

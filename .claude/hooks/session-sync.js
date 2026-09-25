@@ -68,6 +68,7 @@ process.stdin.on("end", () => {
   }
 
   const port = discoverPort();
+  const profileKey = process.env.AGENTIC_OS_PROFILE_KEY || "solo";
 
   // Get Claude's actual PID: hooks run as shell → node, so process.ppid is the
   // shell. We query that shell's parent to get the Claude CLI process.
@@ -120,6 +121,8 @@ process.stdin.on("end", () => {
         headers: {
           "Content-Type": "application/json",
           "Content-Length": Buffer.byteLength(payload),
+          "x-agentic-os-profile-key": ${JSON.stringify(profileKey)},
+          "x-agentic-os-profile-source": "hook",
         },
         timeout: 5000,
       },
@@ -136,6 +139,7 @@ process.stdin.on("end", () => {
                 port: ${JSON.stringify(port)},
                 syncMode: result.syncMode || (result.isNew ? "hook-owned" : "managed"),
                 claudePid: ${claudePid || "null"},
+                profileKey: ${JSON.stringify(profileKey)},
               }));
             }
           } catch {}
@@ -154,6 +158,8 @@ process.stdin.on("end", () => {
       detached: true,
     }
   );
+
+  child.on("error", () => {});
 
   child.unref();
 });

@@ -32,7 +32,7 @@ def load_env_file(path: Path) -> Dict[str, str]:
     if not path.exists():
         return env
 
-    with open(path, 'r') as f:
+    with open(path, 'r', encoding='utf-8') as f:
         for line in f:
             line = line.strip()
             if not line or line.startswith('#'):
@@ -70,33 +70,22 @@ def config_exists() -> bool:
 
 
 def get_available_sources(config: Dict[str, Any]) -> str:
-    """Determine which sources are available based on API keys."""
-    has_openai = bool(config.get('OPENAI_API_KEY'))
-    has_xai = bool(config.get('XAI_API_KEY'))
+    """Determine which sources are available.
 
-    if has_openai and has_xai:
-        return 'both'
-    elif has_openai:
-        return 'reddit'
-    elif has_xai:
-        return 'x'
-    else:
-        return 'web'
+    Reddit no longer depends on an API key: the keyless tiers (RSS discovery,
+    arctic-shift score backfill, shreddit comments) always run. Only X still
+    needs a key, so the question is just whether X joins Reddit or not.
+    """
+    has_xai = bool(config.get('XAI_API_KEY'))
+    return 'both' if has_xai else 'reddit'
 
 
 def get_missing_keys(config: Dict[str, Any]) -> str:
     """Determine which API keys are missing."""
-    has_openai = bool(config.get('OPENAI_API_KEY'))
     has_xai = bool(config.get('XAI_API_KEY'))
 
-    if has_openai and has_xai:
-        return 'none'
-    elif has_openai:
-        return 'x'
-    elif has_xai:
-        return 'reddit'
-    else:
-        return 'both'
+    # Reddit runs keyless now, so a missing OpenAI key is no longer a gap.
+    return 'none' if has_xai else 'x'
 
 
 def validate_sources(requested: str, available: str, include_web: bool = False) -> tuple:

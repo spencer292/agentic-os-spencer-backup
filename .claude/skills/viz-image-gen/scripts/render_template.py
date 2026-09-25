@@ -189,17 +189,29 @@ def build_brand_tokens_css(brand_kit: dict, target_canvas: dict | None = None) -
         quoted = f'"{fam}"'
         return f"{quoted}, {fallback_quoted}" if fallback_quoted else quoted
 
-    display_fam = _font_family_for("display", "headline_family", '"Fraunces", "Playfair Display", Georgia, serif')
+    # Fallback tail is SANS, not serif. The display family is brand-driven; if it
+    # fails to load (e.g. the @font-face never resolved) the tail must degrade to a
+    # neutral sans — a serif tail ('Fraunces', Georgia, serif) silently rendered
+    # serif on nested-flex display zones in the AIOS-190 gate run. A brand that
+    # genuinely wants a serif display ships it as fonts.display.family; the tail is
+    # only the safety net, and the safe default for a display headline is sans.
+    display_fam = _font_family_for("display", "headline_family", "'Inter Tight', 'Inter', system-ui, sans-serif")
     body_fam    = _font_family_for("body",    "body_family",     '"Inter", system-ui, sans-serif')
     micro_fam   = _font_family_for("micro",   None,              '"Inter", system-ui, sans-serif')
 
     if display_fam:
-        # Multiple var names so different element classes can pick the right one
+        # Multiple var names so different element classes can pick the right one.
+        # `--brand-display`/`--brand-body` are the aliases the pool templates' inline
+        # styles actually read (`var(--brand-display, 'Anton'…)`); without emitting
+        # them the brand-override font path was dead and only the literal 'Anton'
+        # fallback rendered (SPEC-C C2). Keep the literal fallback in the chain.
         pairs.append(f"--type-display-family: {display_fam};")
         pairs.append(f"--font-display: {display_fam};")
+        pairs.append(f"--brand-display: {display_fam};")
     if body_fam:
         pairs.append(f"--type-body-family: {body_fam};")
         pairs.append(f"--font-body: {body_fam};")
+        pairs.append(f"--brand-body: {body_fam};")
     if micro_fam:
         pairs.append(f"--type-micro-family: {micro_fam};")
 
@@ -335,7 +347,7 @@ def _html_escape(s: str) -> str:
     )
 
 
-def substitute(html: str, data: dict) -> str:
+def substitute(html: str, data: dict, raw_keys: set | None = None) -> str:
     """Mustache substitution after sections are processed.
 
     Triple-brace {{{NAME}}} renders the value raw (HTML pass-through — used by
@@ -346,13 +358,24 @@ def substitute(html: str, data: dict) -> str:
     (otherwise the inner `{{NAME}}` matches first and the outer braces leak
     into the rendered output — the exact bug that produced visible `{...}`
     in editorial-news slides post-Fase 6).
+
+    ``raw_keys``: slot names whose value must render RAW even through a
+    double-brace ``{{NAME}}`` placeholder. These are user TEXT tweaks: the editor
+    applies them with ``el.innerHTML = value`` (trusting its own input), so the
+    bake must NOT re-escape or a ``<mark>``/``<br>`` would become literal in the
+    PNG → live ≠ bake (AIOS template-studio audit #2). Untweaked/non-text values
+    stay escaped.
     """
+    raw_keys = raw_keys or set()
+
     def repl_raw(match: re.Match) -> str:
         key = match.group(1).strip()
         return str(data.get(key, ""))
 
     def repl_escaped(match: re.Match) -> str:
         key = match.group(1).strip()
+        if key in raw_keys:
+            return str(data.get(key, ""))  # user text tweak → trust editor innerHTML
         return _html_escape(str(data.get(key, "")))
 
     # Triple-brace first.
@@ -362,12 +385,64 @@ def substitute(html: str, data: dict) -> str:
     return html
 
 
-def fill(html: str, data: dict) -> str:
+def fill(html: str, data: dict, raw_keys: set | None = None) -> str:
     """Full pipeline: sections → inverted → placeholders."""
-    return substitute(render_sections(html, data), data)
+    return substitute(render_sections(html, data), data, raw_keys)
 
 
 # ─── Pool resolver ───────────────────────────────────────────────────────
+
+# ─── THE MANIFEST ALIAS CONTRACT ──────────────────────────────────────────
+# The canonical manifest schema is ``{"id": ..., "file": "<pool-relative html>"}``
+# (build_manifest.py / Phase 4.5 / Phase 5). The AI-first ``ssc-template-builder``
+# instead hand-writes ``{"slug": ..., "template_html": <abs/rooted>, "template_dir":
+# <abs/rooted>}`` (see ssc-template-builder.md Step 7) and never calls build_manifest.py.
+# These two helpers normalize either shape to the canonical id/file at the READ
+# boundary so the renderer resolves the right template instead of KeyError-ing on
+# the missing ``file`` key / failing the id match.
+#
+# An IDENTICAL pair lives in 00-social-content/scripts/content-studio/content_studio.py.
+# The two readers sit in different skills with no shared import path, so the rule is
+# duplicated verbatim — KEEP THE TWO COPIES IN SYNC.
+def _manifest_entry_id(entry: dict) -> str:
+    """Canonical id for a manifest entry, tolerant of the builder's native schema.
+
+    Order: ``id`` (canonical) → ``slug`` (builder) → ``name`` → basename of
+    ``template_dir``. Idempotent: a canonical entry returns its own ``id``.
+    """
+    explicit = entry.get("id") or entry.get("slug") or entry.get("name")
+    if explicit:
+        return explicit
+    template_dir = entry.get("template_dir") or ""
+    return Path(str(template_dir).replace("\\", "/")).name
+
+
+def _manifest_entry_file(entry: dict, pool_name: str) -> str:
+    """Pool-relative path to the entry's template HTML, tolerant of both schemas.
+
+    Order: ``file`` (canonical, already pool-relative) → ``template_html`` →
+    ``template_dir`` + ``/template.html`` → ``<id>/template.html``. Every candidate
+    is made pool-relative by stripping everything up to and including
+    ``templates/<pool>/``. Idempotent: a canonical ``file`` passes through.
+    """
+    def _pool_relative(raw: str) -> str:
+        p = str(raw).replace("\\", "/")
+        marker = f"templates/{pool_name}/"
+        idx = p.rfind(marker)
+        return p[idx + len(marker):] if idx != -1 else p
+
+    file_field = entry.get("file")
+    if file_field:
+        return _pool_relative(file_field)
+    template_html = entry.get("template_html")
+    if template_html:
+        return _pool_relative(template_html)
+    template_dir = entry.get("template_dir")
+    if template_dir:
+        rel_dir = _pool_relative(template_dir).rstrip("/")
+        return f"{rel_dir}/template.html"
+    return f"{_manifest_entry_id(entry)}/template.html"
+
 
 def resolve_pool_template(pool: str, template_id: str, brand_context: Path | None = None, allow_draft: bool = False) -> tuple[dict, Path | None, Path | None, Path]:
     """Resolve a pool template_id. Returns (entry, html_path, prompt_path, shared_css).
@@ -395,12 +470,14 @@ def resolve_pool_template(pool: str, template_id: str, brand_context: Path | Non
     entries = manifest.get("templates") or manifest.get("variations") or []
     if isinstance(entries, dict):
         entries = [{**v, "id": v.get("id", k)} for k, v in entries.items() if isinstance(v, dict)]
-    entry = next((t for t in entries if t.get("id") == template_id), None)
+    # Match on the canonical id alias (id → slug → name → dir basename) so a
+    # builder-native entry (slug, no id) resolves — see THE MANIFEST ALIAS CONTRACT.
+    entry = next((t for t in entries if _manifest_entry_id(t) == template_id), None)
     if entry is None:
-        ids = ", ".join(t["id"] for t in entries)
+        ids = ", ".join(_manifest_entry_id(t) for t in entries)
         raise SystemExit(f"ERROR: template_id '{template_id}' not in pool '{pool}'. Available: {ids}")
     status = entry.get("status")
-    allowed_statuses = {"ready"} if not allow_draft else {"ready", "draft", "TODO"}
+    allowed_statuses = {"ready", "approved"} if not allow_draft else {"ready", "approved", "draft", "TODO"}
     if status not in allowed_statuses:
         raise SystemExit(f"ERROR: template '{template_id}' has status '{status}', not in {sorted(allowed_statuses)}.")
 
@@ -414,7 +491,9 @@ def resolve_pool_template(pool: str, template_id: str, brand_context: Path | Non
     # (rooted at brand_context), while Phase 4.5 primitive_to_template writes 'file: body/X.html'
     # (rooted at pool_dir). Accept both — strip the redundant 'templates/{pool}/' prefix
     # if present to dedupe the path.
-    file_field = entry["file"]
+    # Tolerant of the builder's native schema (template_html/template_dir, no
+    # 'file') — see THE MANIFEST ALIAS CONTRACT. No hard KeyError on entry['file'].
+    file_field = _manifest_entry_file(entry, pool)
     redundant_prefix = f"templates/{pool}/"
     if file_field.startswith(redundant_prefix):
         file_field = file_field[len(redundant_prefix):]
@@ -714,14 +793,14 @@ def auto_resolve_text_color_tokens(data: dict, brand_kit: dict | None, bg_path_k
         # Bg is light — text marked "on dark" should actually use the on-light color
         out["BRAND_TEXT_ON_DARK"] = text_on_light
         out["BRAND_TEXT_ON_LIGHT"] = text_on_light
-        print(f"[render_template] auto-luminance: bg lum={bg_lum:.2f} (light) → text=on-light ({text_on_light})", file=sys.stderr)
+        print(f"[render_template] auto-luminance: bg lum={bg_lum:.2f} (light) -> text=on-light ({text_on_light})", file=sys.stderr)
     elif bg_lum < 0.35:
         # Bg is dark — text marked "on light" should actually use the on-dark color
         out["BRAND_TEXT_ON_LIGHT"] = text_on_dark
         out["BRAND_TEXT_ON_DARK"] = text_on_dark
-        print(f"[render_template] auto-luminance: bg lum={bg_lum:.2f} (dark) → text=on-dark ({text_on_dark})", file=sys.stderr)
+        print(f"[render_template] auto-luminance: bg lum={bg_lum:.2f} (dark) -> text=on-dark ({text_on_dark})", file=sys.stderr)
     else:
-        print(f"[render_template] auto-luminance: bg lum={bg_lum:.2f} (mid) → keeping brand defaults", file=sys.stderr)
+        print(f"[render_template] auto-luminance: bg lum={bg_lum:.2f} (mid) -> keeping brand defaults", file=sys.stderr)
     return out
 
 
@@ -795,6 +874,67 @@ def resolve_brand_logo_path(brand_kit: dict | None, brand_context: Path | None) 
     return None
 
 
+# Decorative elements templates ship without a data-slot (background rects, the
+# dot-grid svg, the logo stamp, frame cards). The editor auto-tags these so they
+# become editable layers; the bake MUST tag them identically (same deterministic
+# rule) so tweaks keyed by the synthetic handle apply on rebake (RNDR-04 parity).
+_DECOR_RULES = [
+    ("div", r"\bbg\b", "BACKGROUND"),
+    ("div", r"frame", "FRAME"),
+    ("img", r"logo", "LOGO"),
+]
+
+
+def _inject_first_slot(html_text: str, tag: str, kw: str, handle: str) -> str:
+    pat = re.compile(
+        r'(<' + tag + r'\b(?![^>]*\bdata-slot=)[^>]*?\bclass="[^"]*' + kw + r'[^"]*"[^>]*?)(>)',
+        re.IGNORECASE,
+    )
+    return pat.sub(lambda m: f'{m.group(1)} data-slot="{handle}"{m.group(2)}', html_text, count=1)
+
+
+_BG_LAYER_DIV = (
+    '<div data-slot="BACKGROUND" '
+    'style="position:absolute;inset:0;background:inherit;z-index:0"></div>'
+)
+
+
+def _tag_root_bg(html_text: str) -> str:
+    """Root-background fallback: make the slide backdrop a REAL **stackable** BACKGROUND
+    layer (FASE 6 fix #1). A container can't be z-indexed above its own children, so
+    instead of tagging the root ``.slide`` we inject a dedicated inset:0 child
+    (``background:inherit`` → same backdrop, ``z-index:0`` → behind content by default).
+    Reordering then applies a real z-index that bakes identically to the live preview
+    (RNDR-04). MUST match preview_editor._tag_root_bg byte-for-byte. No-op when a
+    BACKGROUND already exists (real div.bg or the full-AI layer-canvas <img>)."""
+    if 'data-slot="BACKGROUND"' in html_text:
+        return html_text
+    slide_pat = re.compile(
+        r'(<div\b[^>]*\bclass="[^"]*\bslide\b[^"]*"[^>]*>)', re.IGNORECASE)
+    out, n = slide_pat.subn(lambda m: m.group(1) + _BG_LAYER_DIV, html_text, count=1)
+    if n:
+        return out
+    out, n = re.subn(
+        r'(<body\b[^>]*>)', lambda m: m.group(1) + _BG_LAYER_DIV,
+        html_text, count=1, flags=re.IGNORECASE)
+    return out if n else html_text
+
+
+def _tag_decor(html_text: str) -> str:
+    """Auto-tag untagged decorative elements with synthetic data-slot handles —
+    mirror of preview_editor._tag_decor so preview and bake see the same layers."""
+    out = html_text
+    for tag, kw, handle in _DECOR_RULES:
+        out = _inject_first_slot(out, tag, kw, handle)
+    n = [0]
+    def _svg(m):
+        n[0] += 1
+        h = "GRAPHIC" if n[0] == 1 else f"GRAPHIC{n[0]}"
+        return f'{m.group(1)} data-slot="{h}"{m.group(2)}'
+    out = re.sub(r'(<svg\b(?![^>]*\bdata-slot=)[^>]*?)(>)', _svg, out, flags=re.IGNORECASE)
+    return _tag_root_bg(out)
+
+
 def render(
     output: Path,
     data: dict,
@@ -808,6 +948,9 @@ def render(
     target_canvas: dict | None = None,
     allow_draft: bool = False,
     allow_ai_gen: bool = True,
+    tweaks: dict | None = None,
+    tweaks_slide: str | None = None,
+    require_font: bool = False,
 ) -> Path:
     """Render an HTML template to PNG. Three call modes:
 
@@ -958,6 +1101,16 @@ def render(
             bg_keys.append("ENTRY_BG_PATH")
         data = auto_resolve_text_color_tokens(data, brand_kit, bg_keys)
 
+    # --tweaks: EARLY global patch — MUST happen before build_brand_tokens_css so that
+    # the emitted token CSS already contains the patched accent/fonts.  (Pitfall 4 guard.)
+    # Derive slide_id from tweaks_slide arg; fallback to output stem (e.g. "slide-01").
+    if tweaks:
+        _global_tweaks = tweaks.get("global") or {}
+        if _global_tweaks:
+            brand_kit = apply_global_tweaks(brand_kit or {}, _global_tweaks)
+    _slide_id = tweaks_slide or output.stem
+    _slide_tweaks: dict = (tweaks or {}).get(_slide_id, {}) if tweaks else {}
+
     # Canvas: a target format canvas (CLI --canvas) overrides the brand grid.
     # Resolved here so it drives BOTH the brand-token scaling and the viewport below.
     _grid = (brand_kit or {}).get("tokens", {}).get("grid", {}) or {}
@@ -1038,6 +1191,9 @@ def render(
     processed = embed_paths_as_data_uris(processed, brand_context, html_path.parent.resolve())
 
     raw_html = html_path.read_text(encoding="utf-8")
+    # Auto-tag decoration so tweaks on synthetic handles (BACKGROUND/GRAPHIC/…)
+    # apply on rebake exactly as in the editor preview (RNDR-04 parity).
+    raw_html = _tag_decor(raw_html)
 
     # Phase 1 — pop parameterization control keys (they shouldn't reach Mustache)
     bg_override = (processed.pop("_BG_OVERRIDE", None) or "").strip()
@@ -1086,7 +1242,43 @@ def render(
         else:
             raw_html = hide_css + raw_html
 
-    filled = fill(raw_html, {**processed, "BRAND_TOKENS_CSS": tokens})
+    # FASE 2 — materialize decomposed layer <img> elements before CSS injection.
+    # _materialize_layers is a no-op when _slide_tweaks has no layer entries
+    # (no "img" key present), so RNDR-05 byte-identical guarantee is preserved.
+    if tweaks and _slide_tweaks:
+        raw_html = _materialize_layers(raw_html, _slide_tweaks)
+        # Post-production texture overlay (Addendum 5): injected AFTER the layers so it
+        # composites over everything on the slide. No-op without a __texture entry.
+        raw_html = _materialize_texture(raw_html, _slide_tweaks.get("__texture"))
+
+    # --tweaks: apply per-zone text overrides and inject CSS overrides.
+    # RNDR-05 no-op guarantee: when tweaks is None or _slide_tweaks is {},
+    # neither branch mutates processed nor injects any <style> — output is
+    # byte-identical to the no-tweaks path.
+    _raw_text_keys: set = set()
+    if tweaks and _slide_tweaks:
+        apply_tweaks(processed, _slide_tweaks)
+        # Slots the user retyped are inserted RAW at fill() so a <mark>/<br> they
+        # kept renders identically to the editor's innerHTML (audit #2). Untweaked
+        # double-brace slots stay escaped.
+        _raw_text_keys = text_tweak_keys(_slide_tweaks)
+        _tweaks_css = _build_tweaks_css(_slide_tweaks)
+        # Inject the curated Google Fonts <link> ONLY when a fontFamily override is
+        # present, so the no-tweaks path stays byte-identical (RNDR-05). The link is
+        # the SAME builder the editor uses → preview font == rebaked PNG font.
+        _needs_fonts = any(
+            isinstance(z, dict) and z.get("fontFamily") for z in _slide_tweaks.values()
+        )
+        _inject = (build_google_fonts_link() if _needs_fonts else "")
+        if _tweaks_css:
+            _inject += f"<style>{_tweaks_css}</style>"
+        if _inject:
+            if "</head>" in raw_html:
+                raw_html = raw_html.replace("</head>", _inject + "</head>", 1)
+            else:
+                raw_html = _inject + raw_html
+
+    filled = fill(raw_html, {**processed, "BRAND_TOKENS_CSS": tokens}, _raw_text_keys)
 
     output = output.resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -1103,10 +1295,17 @@ def render(
             # pool's _shared/styles.css; for legacy it's family/styles.css.
             # Pool-level shared sheet first (brand @font-face + base classes), then the
             # per-template override (if any) so it wins the cascade.
+            #
+            # SPEC-C C1: inject the sheet TEXT with its `@font-face` `url(...)` refs
+            # inlined to base64 — NOT via `add_style_tag(path=…)`. set_content() has no
+            # base URL (about:blank), so the sheet's RELATIVE font URLs
+            # (`url('../../../visual-identity/fonts/anton-400.woff2')`) resolved against
+            # about:blank and failed silently → every HTML headline fell back to system
+            # sans. Inlining relative to the CSS file's OWN parent dir fixes the load.
             if pool_shared_css and Path(pool_shared_css).is_file():
-                page.add_style_tag(path=str(pool_shared_css))
+                page.add_style_tag(content=_read_css_with_inlined_urls(Path(pool_shared_css)))
             if shared_css_path and shared_css_path.is_file():
-                page.add_style_tag(path=str(shared_css_path))
+                page.add_style_tag(content=_read_css_with_inlined_urls(shared_css_path))
             if tokens:
                 # Inject AFTER the shared sheet so brand_kit wins the cascade.
                 page.add_style_tag(content=f":root {{ {tokens} }}")
@@ -1114,6 +1313,36 @@ def render(
             # Explicitly wait for fonts (Google Fonts @import) — networkidle alone
             # sometimes screenshots before font swap completes, yielding Arial fallback.
             page.evaluate("() => document.fonts.ready")
+            # SPEC-C C3 — font-resolved gate: assert the brand display family actually
+            # loaded. Guards C1 from silently regressing (a relative @font-face that fails
+            # to resolve falls back to system sans, which looks "fine" to a PNG diff but is
+            # the decisive type bug). The family name is parsed from the brand --brand-display
+            # token; on fallback we warn (always) and, with require_font, hard-fail the bake.
+            _brand_fam = _brand_display_family(tokens)
+            if _brand_fam:
+                _resolved = bool(page.evaluate(
+                    "(fam) => document.fonts.check(`400 100px \"${fam}\"`)", _brand_fam
+                ))
+                _fc_path = output.with_suffix(output.suffix + ".fontcheck.json")
+                try:
+                    _fc_path.write_text(
+                        json.dumps({"family": _brand_fam, "resolved": _resolved}),
+                        encoding="utf-8",
+                    )
+                except OSError:
+                    pass
+                if _resolved:
+                    print(f"[font-check] ok: brand display \"{_brand_fam}\" resolved", file=sys.stderr)
+                else:
+                    print(
+                        f"[font-check] FALLBACK: brand display \"{_brand_fam}\" did NOT load — "
+                        f"HTML headlines render in system sans. Check the @font-face inlining "
+                        f"in render_template (SPEC-C C1).",
+                        file=sys.stderr,
+                    )
+                    if require_font:
+                        browser.close()
+                        raise SystemExit(f"[font-check] FAIL: brand display font \"{_brand_fam}\" unresolved")
             page.screenshot(path=str(output), omit_background=False, full_page=False, clip={"x": 0, "y": 0, "width": canvas_w, "height": canvas_h})
         finally:
             browser.close()
@@ -1171,6 +1400,39 @@ def _inline_relative_urls(html_text: str, base_dir: Path) -> str:
     return html_text
 
 
+_BRAND_DISPLAY_RE = re.compile(r"--brand-display\s*:\s*([^;]+);")
+
+
+def _brand_display_family(tokens_css: str) -> str | None:
+    """Extract the FIRST (brand) display family name from a `--brand-display` token
+    declaration, stripped of quotes. Returns None when no brand display token is set
+    (e.g. a brand with no custom display face) so the font-check is skipped rather
+    than asserting a generic fallback. Example value:
+    `"Anton", 'Inter Tight', system-ui` → `Anton`."""
+    if not tokens_css:
+        return None
+    m = _BRAND_DISPLAY_RE.search(tokens_css)
+    if not m:
+        return None
+    first = m.group(1).split(",", 1)[0].strip()
+    return first.strip("\"'").strip() or None
+
+
+def _read_css_with_inlined_urls(css_path: Path) -> str:
+    """Read a stylesheet and inline its relative `url(...)` references (notably
+    `@font-face` font files) to base64 data URIs, resolved against the CSS file's
+    OWN parent directory.
+
+    Required for the shared sheets injected at bake time: Playwright's set_content()
+    runs against `about:blank` (no base URL), so a sheet injected via
+    add_style_tag(path=…) keeps its relative `url(...)` refs unresolved and the brand
+    @font-face silently fails to load. Inlining here lets add_style_tag(content=…)
+    carry the fonts in-band. The `<img>` pass in _inline_relative_urls is a harmless
+    no-op on CSS text (no <img> tags)."""
+    css_text = css_path.read_text(encoding="utf-8")
+    return _inline_relative_urls(css_text, css_path.parent.resolve())
+
+
 def load_data_arg(value: str | None) -> dict:
     if not value:
         return {}
@@ -1199,6 +1461,37 @@ def main() -> None:
     parser.add_argument("--slots-omitted", dest="slots_omitted", default="", help="Comma-separated list of slot/element ids to OMIT from the render (the corresponding HTML element is hidden via display:none). Used per-post to skip optional slots.")
     parser.add_argument("--bg-override", dest="bg_override", help="Path to a PNG that replaces the template's default bg.png reference (the template's `url('bg.png')` is rewritten to point here). Used per-post for brand-substituted bgs.")
     parser.add_argument("--content-data", dest="content_data", help="JSON file path with per-slot content overrides (equivalent to --data; merged on top of sample text). Convenience flag for clarity in per-post pipelines.")
+    # Plan 01-03 — tweaks.json override layer (per-zone text + CSS + global brand patch)
+    parser.add_argument(
+        "--tweaks", dest="tweaks", default=None,
+        help="Path to tweaks.json: per-zone text/style overrides keyed by data-slot handle. "
+             "Layered on top of base data before Mustache fill and before Playwright bake. "
+             "Use --tweaks-slide to select the slide-level sub-dict. "
+             "Absent or empty slide entry renders byte-identically to current output (RNDR-05).",
+    )
+    parser.add_argument(
+        "--tweaks-slide", dest="tweaks_slide", default=None,
+        help="Slide key in tweaks.json to apply (e.g. 'slide-01'). "
+             "If omitted, derived from the output filename stem (e.g. --output slide-01.png gives 'slide-01').",
+    )
+    # AIOS-139 Addendum 8 #1 — emit a self-contained per-slide editing dir alongside
+    # the baked PNG so Content Studio's introspected text/layout controls fire on a
+    # real run (whose folder otherwise holds only slide-*.png). Documented exception
+    # to the clean-output policy.
+    parser.add_argument(
+        "--emit-edit-slide", dest="emit_edit_slide", action="store_true",
+        help="After baking a templated slide, write <output_dir>/_slides/<slide-id>/ "
+             "(template.html + instructions.md + metadata.json carrying the real --data) "
+             "and a shared <output_dir>/_slides/_shared/, so Content Studio can re-edit "
+             "and rebake the slide self-containedly. No-op for full-AI (no template).",
+    )
+    parser.add_argument(
+        "--require-font", dest="require_font", action="store_true",
+        help="Hard-fail the bake (non-zero exit) if the brand display @font-face does not "
+             "resolve in the page (document.fonts.check). Use in the quality gate to guard "
+             "against the relative-@font-face load regression (SPEC-C C3). Without it, an "
+             "unresolved font only prints a [font-check] FALLBACK warning.",
+    )
     args = parser.parse_args()
 
     if not args.template and not (args.template_pool and args.template_id) and not args.template_dir:
@@ -1252,6 +1545,11 @@ def main() -> None:
                 if k not in data:
                     data[k] = v
 
+    # Masthead chrome: TOKEN > SAMPLE (precedence INVERSION). See
+    # apply_masthead_tokens() — must run AFTER the sample merge above so the token
+    # overrides the (possibly stale) per-template sample, not the other way round.
+    apply_masthead_tokens(data, brand_kit)
+
     # --content-data: merge per-slot overrides (alias-style flag for clarity in per-post pipelines)
     if args.content_data:
         content_overrides = load_data_arg(args.content_data)
@@ -1270,6 +1568,13 @@ def main() -> None:
         except ValueError:
             print(f"[render_template] --canvas must be WxH (e.g. 1920x1080); got {args.canvas!r}", file=sys.stderr)
             sys.exit(2)
+    # --tweaks: load overrides file (JSON) if provided; auto-load canonical base
+    output_stem = args.output.stem
+    tweaks_slide_id: str | None = getattr(args, "tweaks_slide", None)
+    canonical = _load_canonical_tweaks(args, tweaks_slide_id, output_stem)
+    caller_tweaks = load_data_arg(args.tweaks) if getattr(args, "tweaks", None) else None
+    tweaks_data = _merge_tweaks(canonical, caller_tweaks)  # caller wins; None-safe
+
     result = render(
         args.output, data, brand_kit,
         template=args.template,
@@ -1280,8 +1585,288 @@ def main() -> None:
         brand_context=Path(args.brand_context).resolve() if args.brand_context else None,
         allow_draft=getattr(args, "allow_draft", False),
         allow_ai_gen=not getattr(args, "no_ai_bg", False),
+        tweaks=tweaks_data,
+        tweaks_slide=tweaks_slide_id,
+        require_font=getattr(args, "require_font", False),
     )
     print(f"Rendered -> {result}")
+
+    # AIOS-139 Addendum 8 #1 — persist a self-contained editing dir for this slide.
+    if getattr(args, "emit_edit_slide", False):
+        try:
+            tmpl_html, instr_path, shared_dir = _resolve_template_assets(args, brand_kit)
+            if tmpl_html is not None:
+                sid = tweaks_slide_id or args.output.stem
+                # The editor enumerator (_find_slides_info) only recognizes slide
+                # dirs named `slide-<N>`. A template-author bake outputs preview.png
+                # → stem "preview", which the enumerator would skip, dropping the
+                # authored data (text + PHOTO_MAIN_PATH) → the editor opens without
+                # the hero photo. Normalize any non-`slide-N` id to the canonical
+                # single-slide id so the emitted dir is always picked up.
+                if not re.match(r"slide-\d+$", sid):
+                    sid = "slide-01"
+                emit_edit_slide(
+                    out_png=args.output, slide_id=sid,
+                    template_html=tmpl_html, instructions=instr_path,
+                    shared_dir=shared_dir, data=data,
+                    template_id=args.template_id, template_pool=args.template_pool,
+                )
+        except Exception as exc:  # never fail the bake over the editing-dir copy
+            print(f"[render_template] --emit-edit-slide skipped: {exc}", file=sys.stderr)
+
+
+def _load_canonical_tweaks(args, tweaks_slide_id: str | None, output_stem: str) -> dict | None:
+    """Load and re-key a per-template canonical tweaks file for auto-base injection.
+
+    Looks for ``<template_dir>/tweaks.json`` (written by the Template Studio
+    /approve endpoint).  If the file contains the sentinel key ``"__canonical__"``
+    the sub-dict is re-keyed to *tweaks_slide_id* or *output_stem* so the result
+    is slide-keyed and can be passed straight to :func:`render`.
+
+    Returns ``None`` when no canonical file is found or any error occurs — callers
+    must treat ``None`` as "no canonical tweaks" and continue normally.
+    """
+    try:
+        # Resolve the template folder
+        folder: Path | None = None
+        if getattr(args, "template_dir", None):
+            folder = Path(args.template_dir).resolve()
+        elif getattr(args, "template_pool", None) and getattr(args, "template_id", None):
+            bc = Path(args.brand_context).resolve() if getattr(args, "brand_context", None) else None
+            _entry, html_path, _prompt_path, _shared_css = resolve_pool_template(
+                args.template_pool, args.template_id,
+                brand_context=bc,
+                allow_draft=getattr(args, "allow_draft", False),
+            )
+            if html_path is not None:
+                folder = Path(html_path).parent
+        if folder is None:
+            return None
+
+        cf = folder / "tweaks.json"
+        if not cf.is_file():
+            return None
+
+        loaded: dict = json.loads(cf.read_text(encoding="utf-8"))
+        if not isinstance(loaded, dict):
+            return None
+
+        if "__canonical__" in loaded:
+            slide_key = tweaks_slide_id or output_stem
+            return {slide_key: loaded["__canonical__"]}
+        # Already slide-keyed (e.g. hand-written file) — return as-is
+        return loaded
+    except Exception as exc:  # never fail the bake over a malformed canonical file
+        print(f"[render_template] _load_canonical_tweaks: {exc}", file=sys.stderr)
+        return None
+
+
+def _merge_tweaks(base: dict | None, over: dict | None) -> dict | None:
+    """Deep-merge two slide-keyed tweaks dicts; *over* wins key-by-key.
+
+    Both arguments are slide-keyed dicts (``{slide_id: {zones: {…}, text: {…}, …}}``).
+    The merge is per-slide-key, then per sub-dict key (zones, text, global), so a
+    run-level override for one zone does not erase canonical data for other zones.
+
+    Returns ``None`` when both arguments are ``None`` (preserves byte-identical
+    behaviour for callers that provide neither canonical nor ``--tweaks``).
+    """
+    if base is None and over is None:
+        return None
+    if base is None:
+        return over
+    if over is None:
+        return base
+
+    import copy
+    merged: dict = copy.deepcopy(base)
+    for slide_key, over_slide in over.items():
+        if slide_key not in merged:
+            merged[slide_key] = copy.deepcopy(over_slide)
+        else:
+            base_slide = merged[slide_key]
+            for sub_key, over_sub in over_slide.items():
+                if sub_key not in base_slide:
+                    base_slide[sub_key] = copy.deepcopy(over_sub)
+                elif isinstance(base_slide[sub_key], dict) and isinstance(over_sub, dict):
+                    # Key-by-key merge within zones/text/global
+                    base_slide[sub_key] = {**base_slide[sub_key], **over_sub}
+                else:
+                    base_slide[sub_key] = copy.deepcopy(over_sub)
+    return merged
+
+
+def _resolve_template_assets(args, brand_kit) -> tuple[Path | None, Path | None, Path | None]:
+    """Resolve (template.html, instructions.md, _shared dir) for the rendered slide,
+    in both --template-dir and --template-pool/--template-id modes. Returns
+    (None, …) for full-AI (.prompt.md) templates that have no HTML to edit.
+    """
+    if args.template_dir:
+        tdir = Path(args.template_dir).resolve()
+        html = tdir / "template.html"
+        instr = tdir / "instructions.md"
+        shared = tdir.parent / "_shared"
+        return (html if html.is_file() else None,
+                instr if instr.is_file() else None,
+                shared if shared.is_dir() else None)
+    if args.template_pool and args.template_id:
+        bc = Path(args.brand_context).resolve() if args.brand_context else None
+        _entry, html_path, _prompt_path, _shared_css = resolve_pool_template(
+            args.template_pool, args.template_id, brand_context=bc,
+            allow_draft=getattr(args, "allow_draft", False),
+        )
+        if html_path is None:
+            return (None, None, None)  # full-AI prompt template — nothing to edit
+        html_path = Path(html_path)
+        instr = html_path.parent / "instructions.md"
+        shared = html_path.parent.parent / "_shared"
+        return (html_path,
+                instr if instr.is_file() else None,
+                shared if shared.is_dir() else None)
+    return (None, None, None)
+
+
+# Keys that are render-internal (not real slot values) — kept out of the persisted
+# metadata.data so a rebake/edit sees exactly the post's content.
+_NON_SLOT_KEYS = frozenset({
+    "_OMITTED_IDS", "_BG_OVERRIDE", "BRAND_TOKENS_CSS", "IMAGE_SRC",
+})
+
+
+def emit_edit_slide(
+    out_png: Path, slide_id: str,
+    template_html: Path, instructions: Path | None,
+    shared_dir: Path | None, data: dict,
+    template_id: str | None = None, template_pool: str | None = None,
+) -> Path:
+    """Write a self-contained ``<run>/_slides/<slide_id>/`` editing dir next to the
+    baked PNG (AIOS-139 Addendum 8 #1) and a once-copied ``<run>/_slides/_shared/``.
+
+    The dir holds ``template.html`` + ``instructions.md`` (slot introspection) +
+    ``metadata.json`` carrying the post's REAL ``data`` so Content Studio renders and
+    rebakes the actual copy (not sample text). Returns the slide dir path.
+    """
+    import shutil
+    run = out_png.resolve().parent
+    slides_root = run / "_slides"
+    sdir = slides_root / slide_id
+    sdir.mkdir(parents=True, exist_ok=True)
+
+    # Ensure the persisted template carries stable data-slot handles on its TEXT zones
+    # so Content Studio can introspect them as editable layers and the rebake can apply
+    # per-zone tweaks. Old/unmigrated pool templates only have {{MUSTACHE}} placeholders
+    # (no data-slot), which would surface only the auto-tagged decor (LOGO/GRAPHIC/BG).
+    # migrate_data_slots.migrate() is idempotent + stdlib-only; degrade to a verbatim
+    # copy if it can't be imported.
+    tmpl_text = template_html.read_text(encoding="utf-8", errors="ignore")
+    try:
+        _mvi = SCRIPT_DIR.parent.parent / "mkt-visual-identity" / "scripts"
+        if str(_mvi) not in sys.path:
+            sys.path.insert(0, str(_mvi))
+        from migrate_data_slots import migrate as _migrate_slots  # type: ignore[import]
+        tmpl_text, _ = _migrate_slots(tmpl_text)
+    except Exception as exc:
+        print(f"[render_template] emit_edit_slide: data-slot migration skipped: {exc}",
+              file=sys.stderr)
+    (sdir / "template.html").write_text(tmpl_text, encoding="utf-8")
+    if instructions and instructions.is_file():
+        shutil.copyfile(instructions, sdir / "instructions.md")
+
+    # Copy the template's OWN assets/ (logo stamps, graphics, bg.png that the HTML
+    # references via src="assets/…" / url(assets/…)) so the editor inlines them and
+    # the rebake composites them — without this LOGO/GRAPHIC zones render broken and
+    # the run isn't self-contained. Per-template, next to its template.html.
+    src_tdir = template_html.resolve().parent
+    src_assets = src_tdir / "assets"
+    if src_assets.is_dir():
+        shutil.copytree(src_assets, sdir / "assets", dirs_exist_ok=True)
+
+    # Copy the template's OWN _ai_bg/ (the authored hero/bg samples that *_PATH data
+    # slots reference — e.g. PHOTO_MAIN_PATH → _ai_bg/photo_main.png). Without this
+    # the slide is NOT self-contained: at rebake the editor passes the slide dir as
+    # --template-dir, and a relative _PATH that can't be found there renders with no
+    # photo. Copying it (like assets/) + rewriting the data paths below to be
+    # slide-relative makes the slide render the hero whether in place or relocated.
+    src_ai_bg = src_tdir / "_ai_bg"
+    if src_ai_bg.is_dir():
+        shutil.copytree(src_ai_bg, sdir / "_ai_bg", dirs_exist_ok=True)
+
+    # Copy the pool's _shared/ (styles.css + brand @font-face files) ONCE, so the
+    # editor resolves template_dir.parent/_shared/ locally and the run survives the
+    # brand_context moving. Skip if already populated.
+    if shared_dir and shared_dir.is_dir():
+        dest_shared = slides_root / "_shared"
+        if not (dest_shared / "styles.css").is_file():
+            shutil.copytree(shared_dir, dest_shared, dirs_exist_ok=True)
+
+    clean_data = {k: v for k, v in data.items() if k not in _NON_SLOT_KEYS}
+    # Rewrite image-slot paths (keys ending in _PATH) that point into the template's
+    # own _ai_bg/ or assets/ to be slide-relative, so they resolve against the slide
+    # dir we just made self-contained — independent of the absolute/base-relative
+    # form the caller passed and of where the slide dir later moves.
+    for _k, _v in list(clean_data.items()):
+        if not _k.endswith("_PATH") or not isinstance(_v, str) or not _v:
+            continue
+        if _v.startswith(("data:", "http://", "https://")):
+            continue
+        _norm = _v.replace("\\", "/")
+        for _marker in ("_ai_bg/", "assets/"):
+            _i = _norm.rfind(_marker)
+            if _i != -1 and (sdir / _norm[_i:]).is_file():
+                clean_data[_k] = _norm[_i:]
+                break
+    meta = {
+        "slide_id": slide_id,
+        "template_id": template_id,
+        "template_pool": template_pool,
+        # Absolute pointer back to the source template dir — a fallback for asset
+        # resolution; the local template.html/instructions.md are authoritative.
+        "source_template_dir": str(template_html.resolve().parent),
+        "data": clean_data,
+    }
+    (sdir / "metadata.json").write_text(
+        json.dumps(meta, indent=2, ensure_ascii=False), encoding="utf-8")
+    return sdir
+
+
+def _clean_sample_value(raw: str) -> str:
+    """Normalise a raw `sample:` value: trim, drop a trailing inline-list separator,
+    then strip ONE layer of surrounding quotes or backticks.
+
+    Tolerant of the two quirks that silently dropped sample slots in the AIOS-190
+    gate run:
+      - a value wrapped in backticks (``sample: `Learn More` ``) kept the literal
+        backticks → they rendered as stray glyphs. Strip surrounding ` `.
+      - a value carried inline after other fields on a combined line
+        (``bbox: … · style: … · sample: "X"``) — the caller extracts the tail after
+        `sample:`; here we also drop a dangling ` · `/` | ` separator if one trails.
+    """
+    raw = raw.strip()
+    # A combined one-liner may leave a trailing list separator after the value when
+    # `sample:` was NOT the last field; defensively trim a dangling separator+remainder
+    # is handled by the caller's regex, so here we only trim a bare trailing sep.
+    raw = re.sub(r"\s*[·|]\s*$", "", raw).strip()
+    # Strip ONE layer of matching surrounding quotes or backticks.
+    for pair in ('""', "''", "``"):
+        if len(raw) >= 2 and raw[0] == pair[0] and raw[-1] == pair[1]:
+            raw = raw[1:-1].strip()
+            break
+    return raw
+
+
+# Matches `sample:` whether it starts the line (own-line bullet) OR appears inline
+# after other fields in a combined `bbox · style · sample` one-liner. The value is
+# everything after `sample:` up to the next ` · `/` | ` field separator (so a combined
+# line that continues with more fields doesn't swallow them) — or end-of-line.
+_SAMPLE_INLINE_RE = re.compile(
+    r"sample\s*:\s*("
+    r"`[^`]*`"          # backtick-wrapped (may itself contain separators)
+    r'|"[^"]*"'         # double-quoted
+    r"|'[^']*'"         # single-quoted
+    r"|[^·|]*"          # bare value, up to the next list separator
+    r")",
+    re.IGNORECASE,
+)
 
 
 def parse_sample_text_from_instructions(path: Path) -> dict:
@@ -1296,11 +1881,15 @@ def parse_sample_text_from_instructions(path: Path) -> dict:
         - sample: "I never write"
     Where the sample line is an indented bullet (after stripping it becomes
     "- sample: \"I never write\"").
+
+    Tolerant of two AIOS-190 quirks:
+      - the value may be wrapped in backticks → stripped (no stray glyphs).
+      - `sample:` may appear INLINE in a combined `bbox · style · sample` one-liner
+        rather than on its own line → still parsed (was silently dropped before).
     """
     text = path.read_text(encoding="utf-8", errors="ignore")
     samples = {}
     current_slot = None
-    sample_re = re.compile(r"^[-*]?\s*sample\s*:\s*(.*)$", re.IGNORECASE)
     slot_re = re.compile(r"^[-*]\s+\*?\*?([A-Z][A-Z0-9_]+)\*?\*?\s*[—\-]")
 
     for line in text.splitlines():
@@ -1308,18 +1897,590 @@ def parse_sample_text_from_instructions(path: Path) -> dict:
         m_slot = slot_re.match(stripped)
         if m_slot:
             current_slot = m_slot.group(1)
+            # A combined one-liner can carry the sample on the SAME line as the slot
+            # header (e.g. "- **CTA** — label · sample: `Go`"). Look for it here too.
+            m_inline = _SAMPLE_INLINE_RE.search(stripped)
+            if m_inline:
+                val = _clean_sample_value(m_inline.group(1))
+                if val:
+                    samples[current_slot] = val
+                    current_slot = None
             continue
         if current_slot:
-            m_sample = sample_re.match(stripped)
+            m_sample = _SAMPLE_INLINE_RE.search(stripped)
             if m_sample:
-                raw = m_sample.group(1).strip()
-                # Strip surrounding quotes if present
-                if (raw.startswith('"') and raw.endswith('"')) or (raw.startswith("'") and raw.endswith("'")):
-                    raw = raw[1:-1]
-                if raw:
-                    samples[current_slot] = raw
+                val = _clean_sample_value(m_sample.group(1))
+                if val:
+                    samples[current_slot] = val
                 current_slot = None  # consume one sample per slot block
     return samples
+
+
+# Masthead slots, in label order: labels[0]=LEFT, labels[1]=CENTER, labels[2]=RIGHT.
+_MASTHEAD_SLOTS = ("MASTHEAD_LEFT", "MASTHEAD_CENTER", "MASTHEAD_RIGHT")
+
+
+def apply_masthead_tokens(data: dict, brand_kit: dict | None) -> dict:
+    """Override MASTHEAD_LEFT/CENTER/RIGHT in `data` from the brand's
+    chrome.masthead.labels — TOKEN WINS over the per-template `sample:` value.
+
+    This INVERTS the usual precedence. Everywhere else (inject_brand_tokens_into_data,
+    --use-sample-text) the rule is "caller/sample already in `data` wins, only fill what's
+    missing". The masthead is the exception: the brand's masthead identity lives in
+    tokens.json > chrome.masthead.labels and must sign EVERY template identically. The
+    per-template `sample:` values (merged into `data` earlier by --use-sample-text) are
+    template-authoring artifacts that drift per template — pre-rebrand ones still read
+    "@agentic_academy". So when the token carries labels, it OVERRIDES the sample
+    UNCONDITIONALLY (plain assignment, NOT setdefault). Must be called AFTER the sample
+    merge in main(); calling it before, or using "fill what's missing" semantics, lets the
+    stale sample win and the bug returns.
+
+    Rules:
+      - chrome.masthead.enabled == False  -> no-op (respect brand opt-out).
+      - labels[1] == ""  -> intentional empty center; the empty string is written through
+        (not skipped, so it can't fall back to a stale sample).
+      - a label of None (absent slot) is skipped, leaving any existing sample in place.
+
+    Mutates and returns `data`.
+    """
+    if not isinstance(brand_kit, dict):
+        return data
+    chrome = brand_kit.get("chrome")
+    masthead = chrome.get("masthead") if isinstance(chrome, dict) else None
+    if not isinstance(masthead, dict):
+        return data
+    if not masthead.get("enabled", True):
+        return data
+    labels = masthead.get("labels")
+    if not isinstance(labels, list) or not labels:
+        return data
+    for idx, slot in enumerate(_MASTHEAD_SLOTS):
+        if idx < len(labels) and labels[idx] is not None:
+            data[slot] = labels[idx]  # unconditional: token wins over sample
+    return data
+
+
+def parse_slots_from_instructions(path: Path) -> list[dict]:
+    """Parse the ``## Slots`` block in *instructions.md* and return the full
+    schema for every slot — name, bbox, style, sample, max_chars, and an
+    inferred zone type.
+
+    Returns a list of dicts, one per slot, in document order::
+
+        [
+          {
+            "name":      "HERO",
+            "bbox":      {"x": 4.0, "y": 22.0, "w": 92.0, "h": 7.0},
+            "style":     "display-italic, 8cqw, white on coral, left-align",
+            "sample":    "I never write",
+            "max_chars": 60,
+            "type":      "text",   # "text" | "pill" | "image" | "chrome"
+          },
+          ...
+        ]
+
+    Missing optional fields (bbox, sample, max_chars) are ``None`` — the
+    function never raises on a malformed instructions.md.
+
+    ``type`` is inferred from the *style* field (case-insensitive):
+    - keywords ``photo``, ``ai-image``, ``image``        → ``"image"``
+    - keyword  ``pill``                                  → ``"pill"``
+    - keywords ``masthead``, ``dots``, ``chrome``        → ``"chrome"``
+    - anything else (or no style)                        → ``"text"``
+
+    The existing ``parse_sample_text_from_instructions`` is left UNCHANGED;
+    this function is a sibling that returns richer data.
+    """
+    slot_re  = re.compile(r"^[-*]\s+\*?\*?([A-Z][A-Z0-9_]+)\*?\*?\s*[—\-]")
+    bbox_re  = re.compile(
+        r"bbox\s*:\s*([\d.]+)%\s+([\d.]+)%\s+([\d.]+)%\s+([\d.]+)%",
+        re.IGNORECASE,
+    )
+    # `style:` value runs up to the next field separator (· or |) so a combined
+    # `style: … · sample: …` one-liner doesn't swallow the sample tail.
+    style_re = re.compile(r"style\s*:\s*([^·|]+)", re.IGNORECASE)
+    maxch_re = re.compile(r"max_chars\s*:\s*(\d+)", re.IGNORECASE)
+
+    text = path.read_text(encoding="utf-8", errors="ignore")
+
+    def _infer_type(style: str | None) -> str:
+        if not style:
+            return "text"
+        sl = style.lower()
+        if any(kw in sl for kw in ("photo", "ai-image", "image")):
+            return "image"
+        if "pill" in sl:
+            return "pill"
+        if any(kw in sl for kw in ("masthead", "dots", "chrome")):
+            return "chrome"
+        return "text"
+
+    def _flush(slot: dict | None, results: list) -> None:
+        """Finalise a slot dict and append to results."""
+        if slot is None:
+            return
+        slot["type"] = _infer_type(slot.get("style"))
+        results.append(slot)
+
+    results: list[dict] = []
+    current_slot: dict | None = None
+    in_slots_section = False
+
+    for line in text.splitlines():
+        stripped = line.strip()
+
+        # Detect ## Slots heading (enter slots section)
+        if re.match(r"^#{1,3}\s+Slots\s*$", stripped, re.IGNORECASE):
+            in_slots_section = True
+            continue
+
+        # Any other top-level heading ends the slots section
+        if in_slots_section and re.match(r"^#{1,3}\s+\S", stripped):
+            in_slots_section = False
+            _flush(current_slot, results)
+            current_slot = None
+            continue
+
+        if not in_slots_section:
+            continue
+
+        # New slot line?
+        m_slot = slot_re.match(stripped)
+        if m_slot:
+            _flush(current_slot, results)
+            current_slot = {
+                "name":      m_slot.group(1),
+                "bbox":      None,
+                "style":     None,
+                "sample":    None,
+                "max_chars": None,
+                "type":      "text",  # placeholder; set on flush
+            }
+            continue
+
+        if current_slot is None:
+            continue
+
+        # Fields are parsed NON-exclusively so a combined `bbox · style · sample`
+        # one-liner fills every field on the line (the gate's ref-03 lost 3 slots
+        # because only the first field on a combined line was read).
+        m_bbox = bbox_re.search(stripped)
+        if m_bbox:
+            current_slot["bbox"] = {
+                "x": float(m_bbox.group(1)),
+                "y": float(m_bbox.group(2)),
+                "w": float(m_bbox.group(3)),
+                "h": float(m_bbox.group(4)),
+            }
+
+        m_style = style_re.search(stripped)
+        if m_style:
+            current_slot["style"] = m_style.group(1).strip()
+
+        # sample (own-line bullet OR inline in a combined line; backtick-tolerant)
+        m_sample = _SAMPLE_INLINE_RE.search(stripped)
+        if m_sample:
+            raw = _clean_sample_value(m_sample.group(1))
+            if raw:
+                current_slot["sample"] = raw
+
+        m_maxch = maxch_re.search(stripped)
+        if m_maxch:
+            current_slot["max_chars"] = int(m_maxch.group(1))
+
+    # Flush the last slot (EOF)
+    _flush(current_slot, results)
+
+    return results
+
+
+# ---------------------------------------------------------------------------
+# Layer-bake helper — FASE 2 (RNDR-04): materialize decomposed layers into HTML
+# ---------------------------------------------------------------------------
+
+
+def _materialize_layers(raw_html: str, slide_tweaks: dict) -> str:
+    """Inject ``<img data-slot="LAYER_NN">`` elements for decomposed layers.
+
+    A decomposed layer is represented in *slide_tweaks* as a slot whose name
+    matches ``LAYER_\\d+`` (e.g. ``LAYER_00``, ``LAYER_01``) and whose dict
+    contains an ``"img"`` key (a data URI or URL for the layer PNG).
+
+    The element is injected as an absolutely-positioned ``<img>`` inside the
+    slide root ``<div class="slide">`` (or ``<body>`` as fallback), carrying
+    ``data-slot="LAYER_NN"`` and ``position:absolute`` so the existing
+    ``_build_tweaks_css`` rules (x → left%, y → top%, w → width%, tilt →
+    transform:rotate) land on it immediately — no new tweaks schema needed.
+
+    Non-layer tweaks entries (no ``"img"`` key) are untouched — this function
+    is purely additive and must be a no-op when *slide_tweaks* is empty or
+    contains no layer entries (RNDR-05 parity guarantee).
+
+    Called from ``render()`` BEFORE tweaks CSS injection so the injected
+    element is already present when the CSS rule ``[data-slot="LAYER_NN"]``
+    is applied.  The editor replicates the same injection client-side, so
+    preview HTML == bake HTML (RNDR-04).
+    """
+    import re as _re
+
+    # Collect layer entries in slot-name order so layers are injected
+    # deterministically (sorted LAYER_00 < LAYER_01 < …).
+    layer_slots = sorted(
+        (name, t)
+        for name, t in (slide_tweaks or {}).items()
+        if _re.fullmatch(r"LAYER_\d+", name)
+        and isinstance(t, dict)
+        and t.get("img")
+    )
+
+    if not layer_slots:
+        return raw_html  # no-op — RNDR-05 preserved
+
+    # Build the injection block: one <img> per layer in order.
+    imgs = []
+    for name, t in layer_slots:
+        src = t["img"]
+        # The element is absolutely positioned; CSS rules will override the
+        # inline style — we still set position:absolute as a safe baseline
+        # so the element is in the flow of positioned children even if the
+        # CSS injection is later stripped.
+        imgs.append(
+            f'<img data-slot="{name}" src="{src}" '
+            f'style="position:absolute;max-width:none;" />'
+        )
+
+    injection = "\n".join(imgs)
+
+    # Inject just before </div> of the first .slide container (or before </body>).
+    # Using a simple heuristic: find `</div>` at the end of the outermost .slide.
+    # For robustness, inject before </body> if the slide pattern is not found.
+    _slide_end = _re.search(r'(<div[^>]+class="[^"]*\bslide\b[^"]*"[^>]*>)(.*?)(</div>)',
+                            raw_html, _re.DOTALL)
+    if _slide_end:
+        # Append after the slide's last child but before its closing </div>.
+        insert_at = _slide_end.end(2)  # position just before the closing </div>
+        return raw_html[:insert_at] + "\n" + injection + "\n" + raw_html[insert_at:]
+
+    # Fallback: inject before </body>
+    pos = raw_html.lower().rfind("</body>")
+    if pos != -1:
+        return raw_html[:pos] + injection + "\n" + raw_html[pos:]
+    return raw_html + "\n" + injection
+
+
+# Allowlisted CSS blend modes for the post-production texture overlay (AIOS-139
+# Addendum 5). Restricting the set keeps the value safe to interpolate into CSS and
+# matches the editor's blend picker. "normal" = plain opacity overlay.
+_TEXTURE_BLENDS = {
+    "multiply", "overlay", "screen", "soft-light", "hard-light",
+    "darken", "lighten", "normal",
+}
+
+
+def _materialize_texture(raw_html: str, texture: dict | None) -> str:
+    r"""Inject a full-slide post-production texture overlay into ``.slide``.
+
+    *texture* is the per-slide tweaks' reserved ``__texture`` entry:
+    ``{"tex": <data-uri>, "blend": <css-blend>, "intensity": <0..1>}``. The overlay
+    is a single absolutely-positioned, ``pointer-events:none`` ``<div>`` tiled with
+    the texture image and composited with ``mix-blend-mode`` over everything on the
+    slide (z-index above the injected layers). The editor injects the BYTE-IDENTICAL
+    element client-side from the same data URI / blend / intensity, so the live
+    preview equals the baked PNG (RNDR-04).
+
+    No-op (returns *raw_html* unchanged) when *texture* is missing or has no ``tex`` —
+    preserving the RNDR-05 byte-identical guarantee for the no-texture path.
+    """
+    import re as _re
+
+    if not isinstance(texture, dict):
+        return raw_html
+    uri = texture.get("tex")
+    if not uri:
+        return raw_html
+    blend = str(texture.get("blend", "multiply")).lower()
+    if blend not in _TEXTURE_BLENDS:
+        blend = "multiply"
+    try:
+        intensity = float(texture.get("intensity", 1))
+    except (TypeError, ValueError):
+        intensity = 1.0
+    intensity = max(0.0, min(1.0, intensity))
+
+    overlay = (
+        '<div data-texture="1" style="position:absolute;inset:0;'
+        f'background-image:url(&quot;{uri}&quot;);background-repeat:repeat;'
+        f'mix-blend-mode:{blend};opacity:{intensity};pointer-events:none;z-index:99999">'
+        "</div>"
+    )
+
+    # Inject as the LAST child of the first .slide container (so it sits above the
+    # template zones + any materialized layers), else before </body> (same heuristic
+    # as _materialize_layers, kept consistent).
+    _slide_end = _re.search(
+        r'(<div[^>]+class="[^"]*\bslide\b[^"]*"[^>]*>)(.*?)(</div>)',
+        raw_html, _re.DOTALL,
+    )
+    if _slide_end:
+        insert_at = _slide_end.end(2)
+        return raw_html[:insert_at] + "\n" + overlay + "\n" + raw_html[insert_at:]
+    pos = raw_html.lower().rfind("</body>")
+    if pos != -1:
+        return raw_html[:pos] + overlay + "\n" + raw_html[pos:]
+    return raw_html + "\n" + overlay
+
+
+# ---------------------------------------------------------------------------
+# Tweaks helpers — Plan 01-03 (apply_tweaks, _build_tweaks_css, apply_global_tweaks)
+# ---------------------------------------------------------------------------
+
+_SCALE_TO_OBJECT_FIT: dict[str, str] = {
+    "cover":  "cover",
+    # crop = "show the image at native size, clipped to the zone" — the editor sets
+    # objectFit:none (preview_editor.py applyToSlide 'scale'), so the bake must too.
+    "crop":   "none",
+    # square = 1:1 zone, still cover-filled — the editor sets objectFit:cover +
+    # aspect-ratio:1/1. The aspect-ratio is emitted separately in _build_tweaks_css.
+    "square": "cover",
+    "contain": "contain",
+    "fit":    "contain",
+}
+
+# Per-scale extra CSS props that must match the live editor (preview_editor.py
+# applyToSlide 'scale': square → aspect-ratio 1/1; crop/cover → no aspect-ratio).
+_SCALE_EXTRA_CSS: dict[str, list[str]] = {
+    "square": ["aspect-ratio: 1 / 1"],
+}
+
+
+# ---------------------------------------------------------------------------
+# Curated web-font set (AIOS-139 Stage A) — shared SOURCE OF TRUTH for the
+# editor preview AND the bake so a per-layer fontFamily override looks identical
+# in both (parity). Delivered via a Google Fonts <link>; headless Chromium fetches
+# the CDN at bake time (`document.fonts.ready` already awaited in render()).
+# Trade-off (accepted in the PRD): non-brand fonts now require network — brand /
+# bundled @font-face fonts still render offline.
+# ---------------------------------------------------------------------------
+CURATED_FONTS: list[tuple[str, str]] = [
+    ("Inter", "sans-serif"),
+    ("Geist", "sans-serif"),
+    ("Manrope", "sans-serif"),
+    ("DM Sans", "sans-serif"),
+    ("Space Grotesk", "sans-serif"),
+    ("Sora", "sans-serif"),
+    ("Hanken Grotesk", "sans-serif"),
+    ("Fraunces", "serif"),
+    ("Playfair Display", "serif"),
+    ("Archivo", "sans-serif"),
+    ("JetBrains Mono", "monospace"),
+]
+_FONT_GENERIC: dict[str, str] = {name: generic for name, generic in CURATED_FONTS}
+
+
+def css_font_value(family: str) -> str:
+    """A CSS ``font-family`` value for *family*: the quoted family + a sensible
+    generic fallback (so a multi-word name like ``Playfair Display`` is valid and a
+    failed CDN load still degrades to the right generic). Shared by editor + bake."""
+    fam = (family or "").strip().strip('"').strip("'")
+    if not fam:
+        return ""
+    generic = _FONT_GENERIC.get(fam, "sans-serif")
+    return f'"{fam}", {generic}'
+
+
+def build_google_fonts_link(extra_families: list[str] | None = None) -> str:
+    """The Google Fonts ``<link>`` (with preconnect) requesting the curated set
+    (+ any *extra_families*, e.g. brand fonts that happen to be Google fonts). Same
+    string injected into the editor's slide ``<head>`` and the bake's slide HTML, so
+    a fontFamily override renders identically in preview and PNG."""
+    names = [n for n, _ in CURATED_FONTS]
+    for fam in (extra_families or []):
+        if fam and fam not in names:
+            names.append(fam)
+    specs = []
+    for n in names:
+        fam_param = n.replace(" ", "+")
+        wght = "wght@400;500" if n == "JetBrains Mono" else "wght@400;500;600;700"
+        specs.append(f"family={fam_param}:{wght}")
+    href = "https://fonts.googleapis.com/css2?" + "&".join(specs) + "&display=swap"
+    return (
+        '<link rel="preconnect" href="https://fonts.googleapis.com">'
+        '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+        f'<link rel="stylesheet" href="{href}">'
+    )
+
+
+def _build_tweaks_css(slide_tweaks: dict) -> str:
+    """Build a CSS string of ``[data-slot="NAME"] { ... }`` rules from *slide_tweaks*.
+
+    Only numeric/string CSS properties are emitted.  Text overrides and
+    non-CSS keys (``text``, ``layers``) are silently ignored.
+    ``scale`` maps to ``object-fit`` on the slot element and its inner ``img``.
+    The ``global`` key is always skipped (it is a brand-kit patch, not a slot).
+
+    Returns an empty string when *slide_tweaks* is empty or contains no CSS props.
+    """
+    rules: list[str] = []
+    for slot_name, t in slide_tweaks.items():
+        if slot_name == "global":
+            continue
+        if slot_name.startswith("__"):
+            continue  # reserved non-slot metadata (e.g. __texture) — not a zone
+        if not isinstance(t, dict):
+            continue
+
+        # Remove asset (§4): a zone flagged removed:true (a real template zone the
+        # user deleted) OR an eye-hidden zone (visible:false) must NOT render in the
+        # baked PNG. Emit display:none and skip the rest — this is the round-trip the
+        # bake was missing (a hidden/removed zone used to reappear in the PNG).
+        if t.get("removed") is True:
+            rules.append(f'[data-slot="{slot_name}"] {{ display: none !important; }}')
+            continue
+
+        props: list[str] = []
+        if t.get("visible") is False:
+            props.append("display: none")
+        # Position is a translate DELTA (slide %) applied via the CSS `translate`
+        # property — containing-block-agnostic, so a `relative` zone nested in an
+        # auto-height card moves on BOTH axes (top:% used to compute to 0 there). It
+        # composes with the `transform: rotate()` tilt below (individual transform
+        # properties apply before `transform`). Matches the editor's `el.style.translate`
+        # exactly → preview == PNG. 1080x1350 = the brand carousel canvas.
+        if "x" in t or "y" in t:
+            _dx = float(t.get("x", 0)) / 100 * 1080
+            _dy = float(t.get("y", 0)) / 100 * 1350
+            props.append(f"translate: {_dx:g}px {_dy:g}px")
+        if "w" in t:
+            props.append(f"width: {t['w']}%")
+        if "h" in t:
+            props.append(f"height: {t['h']}%")
+        if "fontSize" in t:
+            props.append(f"font-size: {t['fontSize']}cqw")
+        if t.get("fontFamily"):
+            props.append(f"font-family: {css_font_value(t['fontFamily'])}")
+        if "opacity" in t:
+            props.append(f"opacity: {t['opacity']}")
+        if "tilt" in t:
+            props.append(f"transform: rotate({t['tilt']}deg)")
+        if "color" in t and t["color"]:
+            props.append(f"color: {t['color']}")
+        if "bgColor" in t and t["bgColor"]:
+            props.append(f"background: {t['bgColor']} !important")
+        # stroke = border (needs a width to render); colour defaults to black
+        _sw = t.get("strokeW")
+        if _sw is not None:
+            try:
+                _swf = float(_sw)
+            except (TypeError, ValueError):
+                _swf = 0.0
+            if _swf > 0:
+                props.append("box-sizing: border-box")
+                props.append(f"border: {_sw}px solid {t.get('strokeColor') or '#000000'}")
+        if "radius" in t:
+            props.append(f"border-radius: {t['radius']}px")
+            props.append("overflow: hidden")
+        if "z" in t:
+            props.append("position: relative")
+            props.append(f"z-index: {t['z']}")
+
+        # colour also recolours an inline-SVG overlay's shapes (parity with editor)
+        if t.get("color"):
+            c = t["color"]
+            rules.append(f'[data-slot="{slot_name}"] svg [stroke]:not([stroke="none"]) {{ stroke: {c}; }}')
+            rules.append(f'[data-slot="{slot_name}"] svg [fill]:not([fill="none"]) {{ fill: {c}; }}')
+
+        # scale → object-fit on the slot element; also emit a child-img rule
+        scale_raw = t.get("scale")
+        if scale_raw is not None:
+            _sk = str(scale_raw).lower()
+            fit = _SCALE_TO_OBJECT_FIT.get(_sk, "cover")
+            _extra = _SCALE_EXTRA_CSS.get(_sk, [])
+            props.append(f"object-fit: {fit}")
+            props.extend(_extra)
+            # For image zones the actual <img> is a child — add a separate rule.
+            # Mirror the editor, which sets objectFit + aspectRatio on BOTH the zone
+            # and the inner <img> (preview_editor.py applyToSlide 'scale').
+            img_sel = f'[data-slot="{slot_name}"] img'
+            _img_props = "; ".join([f"object-fit: {fit}", *_extra])
+            rules.append(f'{img_sel} {{ {_img_props}; }}')
+
+        if props:
+            sel = f'[data-slot="{slot_name}"]'
+            rules.append(f"{sel} {{ {'; '.join(props)}; }}")
+
+    return "\n".join(rules)
+
+
+def apply_tweaks(processed: dict, slide_tweaks: dict) -> dict:
+    """Merge text overrides from *slide_tweaks* into *processed* in-place.
+
+    Only entries that have a ``"text"`` key are applied; CSS-only entries are
+    left to :func:`_build_tweaks_css`.  The ``global`` key is skipped.
+
+    Returns *processed* (mutated in place for efficiency; caller may ignore
+    the return value). See :func:`text_tweak_keys` for the set of slots that
+    received a text override — those must render RAW (the editor applied them
+    as ``innerHTML``), passed to :func:`fill` as ``raw_keys``.
+    """
+    for slot_name, t in slide_tweaks.items():
+        if slot_name == "global":
+            continue
+        if slot_name.startswith("__"):
+            continue  # reserved non-slot metadata (e.g. __texture)
+        if not isinstance(t, dict):
+            continue
+        if "text" in t:
+            processed[slot_name] = t["text"]
+    return processed
+
+
+def text_tweak_keys(slide_tweaks: dict) -> set:
+    """Slot names that carry a user ``text`` override in *slide_tweaks*.
+
+    These are the keys the editor set via ``el.innerHTML = value``; the bake
+    must render them RAW (not HTML-escaped) so ``<mark>``/``<br>`` match the live
+    preview exactly. Skips ``global`` and ``__``-prefixed metadata keys."""
+    keys: set = set()
+    for slot_name, t in slide_tweaks.items():
+        if slot_name == "global" or slot_name.startswith("__"):
+            continue
+        if isinstance(t, dict) and "text" in t:
+            keys.add(slot_name)
+    return keys
+
+
+def apply_global_tweaks(brand_kit: dict, global_tweaks: dict) -> dict:
+    """Return a shallow-patched *copy* of *brand_kit* with global tweaks applied.
+
+    Recognised keys in *global_tweaks*:
+    - ``"accent"``       → ``brand_kit["colors"]["accent"]``
+    - ``"fontDisplay"``  → ``brand_kit["fonts"]["display"]["family"]``
+    - ``"fontBody"``     → ``brand_kit["fonts"]["body"]["family"]``
+    - ``"masthead"``     → ``brand_kit["masthead"]`` (data key, not CSS var)
+
+    All other keys are silently ignored (forward-compat).
+    The original *brand_kit* is **never mutated** (Pitfall 4 guard).
+    """
+    import copy as _copy
+    kit = _copy.deepcopy(brand_kit)
+
+    accent = global_tweaks.get("accent")
+    if accent is not None:
+        kit.setdefault("colors", {})["accent"] = accent
+
+    font_display = global_tweaks.get("fontDisplay")
+    if font_display is not None:
+        kit.setdefault("fonts", {}).setdefault("display", {})["family"] = font_display
+
+    font_body = global_tweaks.get("fontBody")
+    if font_body is not None:
+        kit.setdefault("fonts", {}).setdefault("body", {})["family"] = font_body
+
+    masthead = global_tweaks.get("masthead")
+    if masthead is not None:
+        kit["masthead"] = masthead
+
+    return kit
 
 
 if __name__ == "__main__":

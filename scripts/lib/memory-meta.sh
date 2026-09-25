@@ -12,7 +12,7 @@ MEMORY_FILE="$ROOT/context/MEMORY.md"
 SESSION_DIR="$ROOT/context/memory"
 AUTO_DIR="$ROOT/.memsearch/memory"
 INCLUDE_LEGACY=0
-TOPIC_PARTS=()
+TOPIC=""
 
 for arg in "$@"; do
   case "$arg" in
@@ -24,12 +24,14 @@ for arg in "$@"; do
       exit 0
       ;;
     *)
-      TOPIC_PARTS+=("$arg")
+      if [ -z "$TOPIC" ]; then
+        TOPIC="$arg"
+      else
+        TOPIC="$TOPIC $arg"
+      fi
       ;;
   esac
 done
-
-TOPIC="${TOPIC_PARTS[*]}"
 
 # --- MEMORY.md stats ---
 echo "=== Memory Coverage Report ==="
@@ -63,17 +65,26 @@ collect_dates() {
 }
 
 # --- Session logs (context/memory/) ---
-SESSION_DATES=( $(collect_dates "$SESSION_DIR") )
+SESSION_DATES=()
+SESSION_COUNT=0
+while IFS= read -r session_date; do
+  [ -n "$session_date" ] || continue
+  SESSION_DATES[$SESSION_COUNT]="$session_date"
+  SESSION_COUNT=$((SESSION_COUNT + 1))
+done < <(collect_dates "$SESSION_DIR")
+
 echo "=== Session Logs (context/memory/) ==="
-if [ ${#SESSION_DATES[@]} -eq 0 ]; then
+if [ "$SESSION_COUNT" -eq 0 ]; then
   echo "No session logs found."
 else
-  echo "Range: ${SESSION_DATES[0]} → ${SESSION_DATES[-1]}"
-  echo "Count: ${#SESSION_DATES[@]} day(s)"
+  SESSION_LAST_INDEX=$((SESSION_COUNT - 1))
+  echo "Range: ${SESSION_DATES[0]} → ${SESSION_DATES[$SESSION_LAST_INDEX]}"
+  echo "Count: ${SESSION_COUNT} day(s)"
 
   # Detect gaps > 2 days
   GAPS=()
-  for (( i=1; i<${#SESSION_DATES[@]}; i++ )); do
+  GAP_COUNT=0
+  for (( i=1; i<SESSION_COUNT; i++ )); do
     PREV="${SESSION_DATES[$((i-1))]}"
     CURR="${SESSION_DATES[$i]}"
     # Convert to epoch — try date -d (Linux/Git Bash) then date -j (macOS)
@@ -85,16 +96,17 @@ else
     fi
     DIFF_DAYS=$(( (CURR_EPOCH - PREV_EPOCH) / 86400 ))
     if [ "$DIFF_DAYS" -gt 2 ]; then
-      GAPS+=("${PREV} → ${CURR} (${DIFF_DAYS} days)")
+      GAPS[$GAP_COUNT]="${PREV} → ${CURR} (${DIFF_DAYS} days)"
+      GAP_COUNT=$((GAP_COUNT + 1))
     fi
   done
 
-  if [ ${#GAPS[@]} -eq 0 ]; then
+  if [ "$GAP_COUNT" -eq 0 ]; then
     echo "Gaps: none"
   else
     echo "Gaps (>2 days):"
-    for g in "${GAPS[@]}"; do
-      echo "  - $g"
+    for (( i=0; i<GAP_COUNT; i++ )); do
+      echo "  - ${GAPS[$i]}"
     done
   fi
 fi
@@ -103,13 +115,21 @@ echo ""
 
 if [ "$INCLUDE_LEGACY" -eq 1 ]; then
   # --- Legacy auto-captured logs (.memsearch/memory/) ---
-  AUTO_DATES=( $(collect_dates "$AUTO_DIR") )
+  AUTO_DATES=()
+  AUTO_COUNT=0
+  while IFS= read -r auto_date; do
+    [ -n "$auto_date" ] || continue
+    AUTO_DATES[$AUTO_COUNT]="$auto_date"
+    AUTO_COUNT=$((AUTO_COUNT + 1))
+  done < <(collect_dates "$AUTO_DIR")
+
   echo "=== Legacy Auto-Captures (.memsearch/memory/) ==="
-  if [ ${#AUTO_DATES[@]} -eq 0 ]; then
+  if [ "$AUTO_COUNT" -eq 0 ]; then
     echo "No legacy auto-captured logs found."
   else
-    echo "Range: ${AUTO_DATES[0]} → ${AUTO_DATES[-1]}"
-    echo "Count: ${#AUTO_DATES[@]} day(s)"
+    AUTO_LAST_INDEX=$((AUTO_COUNT - 1))
+    echo "Range: ${AUTO_DATES[0]} → ${AUTO_DATES[$AUTO_LAST_INDEX]}"
+    echo "Count: ${AUTO_COUNT} day(s)"
   fi
   echo ""
 fi
@@ -119,11 +139,14 @@ if [ -n "$TOPIC" ]; then
   echo "=== Topic: \"${TOPIC}\" ==="
   FOUND=0
   SEARCH_DIRS=("$SESSION_DIR")
+  SEARCH_DIR_COUNT=1
   if [ "$INCLUDE_LEGACY" -eq 1 ]; then
-    SEARCH_DIRS+=("$AUTO_DIR")
+    SEARCH_DIRS[$SEARCH_DIR_COUNT]="$AUTO_DIR"
+    SEARCH_DIR_COUNT=$((SEARCH_DIR_COUNT + 1))
   fi
 
-  for dir in "${SEARCH_DIRS[@]}"; do
+  for (( i=0; i<SEARCH_DIR_COUNT; i++ )); do
+    dir="${SEARCH_DIRS[$i]}"
     [ -d "$dir" ] || continue
     while IFS= read -r file; do
       BASENAME=$(basename "$file")

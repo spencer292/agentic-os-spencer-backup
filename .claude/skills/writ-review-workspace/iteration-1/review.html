@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eval Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js" integrity="sha384-EnyY0/GSHQGSxSgMwaIPzSESbqoOLSexfnSMN2AP+39Ckmn92stwABZynq1JyzdT" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --bg: #faf9f5;
+      --surface: #ffffff;
+      --border: #e8e6dc;
+      --text: #141413;
+      --text-muted: #b0aea5;
+      --accent: #d97757;
+      --accent-hover: #c4613f;
+      --green: #788c5d;
+      --green-bg: #eef2e8;
+      --red: #c44;
+      --red-bg: #fceaea;
+      --header-bg: #141413;
+      --header-text: #faf9f5;
+      --radius: 6px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---- Header ---- */
+    .header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .header .instructions {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-top: 0.25rem;
+    }
+    .header .progress {
+      font-size: 0.875rem;
+      opacity: 0.8;
+      text-align: right;
+    }
+
+    /* ---- Main content ---- */
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* ---- Sections ---- */
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      flex-shrink: 0;
+    }
+    .section-header {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.75rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .section-body {
+      padding: 1rem;
+    }
+
+    /* ---- Config badge ---- */
+    .config-badge {
+      display: inline-block;
+      padding: 0.2rem 0.625rem;
+      border-radius: 9999px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-left: 0.75rem;
+      vertical-align: middle;
+    }
+    .config-badge.config-primary {
+      background: rgba(33, 150, 243, 0.12);
+      color: #1976d2;
+    }
+    .config-badge.config-baseline {
+      background: rgba(255, 193, 7, 0.15);
+      color: #f57f17;
+    }
+
+    /* ---- Prompt ---- */
+    .prompt-text {
+      white-space: pre-wrap;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    /* ---- Outputs ---- */
+    .output-file {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .output-file + .output-file {
+      margin-top: 1rem;
+    }
+    .output-file-header {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .output-file-header .dl-btn {
+      font-size: 0.7rem;
+      color: var(--accent);
+      text-decoration: none;
+      cursor: pointer;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 500;
+      opacity: 0.8;
+    }
+    .output-file-header .dl-btn:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+    .output-file-content {
+      padding: 0.75rem;
+      overflow-x: auto;
+    }
+    .output-file-content pre {
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+    }
+    .output-file-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .output-file-content iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+    .output-file-content table {
+      border-collapse: collapse;
+      font-size: 0.8125rem;
+      width: 100%;
+    }
+    .output-file-content table td,
+    .output-file-content table th {
+      border: 1px solid var(--border);
+      padding: 0.375rem 0.5rem;
+      text-align: left;
+    }
+    .output-file-content table th {
+      background: var(--bg);
+      font-weight: 600;
+    }
+    .output-file-content .download-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.875rem;
+      cursor: pointer;
+    }
+    .output-file-content .download-link:hover {
+      background: var(--border);
+    }
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* ---- Feedback ---- */
+    .prev-feedback {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.625rem 0.75rem;
+      margin-top: 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .prev-feedback-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.25rem;
+      color: var(--text-muted);
+    }
+    .feedback-textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      resize: vertical;
+      color: var(--text);
+    }
+    .feedback-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    .feedback-status {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      min-height: 1.1em;
+    }
+
+    /* ---- Grades (collapsible) ---- */
+    .grades-toggle {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .grades-toggle:hover {
+      color: var(--accent);
+    }
+    .grades-toggle .arrow {
+      margin-right: 0.5rem;
+      transition: transform 0.15s;
+      font-size: 0.75rem;
+    }
+    .grades-toggle .arrow.open {
+      transform: rotate(90deg);
+    }
+    .grades-content {
+      display: none;
+      margin-top: 0.75rem;
+    }
+    .grades-content.open {
+      display: block;
+    }
+    .grades-summary {
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .grade-badge {
+      display: inline-block;
+      padding: 0.125rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .grade-pass { background: var(--green-bg); color: var(--green); }
+    .grade-fail { background: var(--red-bg); color: var(--red); }
+    .assertion-list {
+      list-style: none;
+    }
+    .assertion-item {
+      padding: 0.625rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8125rem;
+    }
+    .assertion-item:last-child { border-bottom: none; }
+    .assertion-status {
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+    .assertion-status.pass { color: var(--green); }
+    .assertion-status.fail { color: var(--red); }
+    .assertion-evidence {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      padding-left: 1.5rem;
+    }
+
+    /* ---- View tabs ---- */
+    .view-tabs {
+      display: flex;
+      gap: 0;
+      padding: 0 2rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .view-tab {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.625rem 1.25rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: var(--text-muted);
+      border-bottom: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .view-tab:hover { color: var(--text); }
+    .view-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .view-panel { display: none; }
+    .view-panel.active { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
+
+    /* ---- Benchmark view ---- */
+    .benchmark-view {
+      padding: 1.5rem 2rem;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .benchmark-table {
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+    .benchmark-table th, .benchmark-table td {
+      padding: 0.625rem 0.75rem;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    .benchmark-table th {
+      font-family: 'Poppins', sans-serif;
+      background: var(--header-bg);
+      color: var(--header-text);
+      font-weight: 500;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .benchmark-table tr:hover { background: var(--bg); }
+    .benchmark-table tr.benchmark-row-with { background: rgba(33, 150, 243, 0.06); }
+    .benchmark-table tr.benchmark-row-without { background: rgba(255, 193, 7, 0.06); }
+    .benchmark-table tr.benchmark-row-with:hover { background: rgba(33, 150, 243, 0.12); }
+    .benchmark-table tr.benchmark-row-without:hover { background: rgba(255, 193, 7, 0.12); }
+    .benchmark-table tr.benchmark-row-avg { font-weight: 600; border-top: 2px solid var(--border); }
+    .benchmark-table tr.benchmark-row-avg.benchmark-row-with { background: rgba(33, 150, 243, 0.12); }
+    .benchmark-table tr.benchmark-row-avg.benchmark-row-without { background: rgba(255, 193, 7, 0.12); }
+    .benchmark-delta-positive { color: var(--green); font-weight: 600; }
+    .benchmark-delta-negative { color: var(--red); font-weight: 600; }
+    .benchmark-notes {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+    .benchmark-notes h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+    }
+    .benchmark-notes ul {
+      list-style: disc;
+      padding-left: 1.25rem;
+    }
+    .benchmark-notes li {
+      font-size: 0.8125rem;
+      line-height: 1.6;
+      margin-bottom: 0.375rem;
+    }
+    .benchmark-empty {
+      color: var(--text-muted);
+      font-style: italic;
+      text-align: center;
+      padding: 3rem;
+    }
+
+    /* ---- Navigation ---- */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      flex-shrink: 0;
+    }
+    .nav-btn {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: all 0.15s;
+    }
+    .nav-btn:hover:not(:disabled) {
+      background: var(--bg);
+      border-color: var(--text-muted);
+    }
+    .nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .done-btn {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.5rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+    .done-btn:hover {
+      background: var(--bg);
+      border-color: var(--text-muted);
+    }
+    .done-btn.ready {
+      border: none;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+    }
+    .done-btn.ready:hover {
+      background: var(--accent-hover);
+    }
+    /* ---- Done overlay ---- */
+    .done-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+    }
+    .done-overlay.visible {
+      display: flex;
+    }
+    .done-card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 2rem 3rem;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+    }
+    .done-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .done-card p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    .done-card .btn-row {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .done-card button {
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 0.875rem;
+    }
+    .done-card button:hover {
+      background: var(--bg);
+    }
+    /* ---- Toast ---- */
+    .toast {
+      position: fixed;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 0.625rem 1.25rem;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      z-index: 200;
+    }
+    .toast.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" style="height:100vh; display:flex; flex-direction:column;">
+    <div class="header">
+      <div>
+        <h1>Eval Review: <span id="skill-name"></span></h1>
+        <div class="instructions">Review each output and leave feedback below. Navigate with arrow keys or buttons. When done, copy feedback and paste into Claude Code.</div>
+      </div>
+      <div class="progress" id="progress"></div>
+    </div>
+
+    <!-- View tabs (only shown when benchmark data exists) -->
+    <div class="view-tabs" id="view-tabs" style="display:none;">
+      <button class="view-tab active" onclick="switchView('outputs')">Outputs</button>
+      <button class="view-tab" onclick="switchView('benchmark')">Benchmark</button>
+    </div>
+
+    <!-- Outputs panel (qualitative review) -->
+    <div class="view-panel active" id="panel-outputs">
+    <div class="main">
+      <!-- Prompt -->
+      <div class="section">
+        <div class="section-header">Prompt <span class="config-badge" id="config-badge" style="display:none;"></span></div>
+        <div class="section-body">
+          <div class="prompt-text" id="prompt-text"></div>
+        </div>
+      </div>
+
+      <!-- Outputs -->
+      <div class="section">
+        <div class="section-header">Output</div>
+        <div class="section-body" id="outputs-body">
+          <div class="empty-state">No output files found</div>
+        </div>
+      </div>
+
+      <!-- Previous Output (collapsible) -->
+      <div class="section" id="prev-outputs-section" style="display:none;">
+        <div class="section-header">
+          <div class="grades-toggle" onclick="togglePrevOutputs()">
+            <span class="arrow" id="prev-outputs-arrow">&#9654;</span>
+            Previous Output
+          </div>
+        </div>
+        <div class="grades-content" id="prev-outputs-content"></div>
+      </div>
+
+      <!-- Grades (collapsible) -->
+      <div class="section" id="grades-section" style="display:none;">
+        <div class="section-header">
+          <div class="grades-toggle" onclick="toggleGrades()">
+            <span class="arrow" id="grades-arrow">&#9654;</span>
+            Formal Grades
+          </div>
+        </div>
+        <div class="grades-content" id="grades-content"></div>
+      </div>
+
+      <!-- Feedback -->
+      <div class="section">
+        <div class="section-header">Your Feedback</div>
+        <div class="section-body">
+          <textarea
+            class="feedback-textarea"
+            id="feedback"
+            placeholder="What do you think of this output? Any issues, suggestions, or things that look great?"
+          ></textarea>
+          <div class="feedback-status" id="feedback-status"></div>
+          <div class="prev-feedback" id="prev-feedback" style="display:none;">
+            <div class="prev-feedback-label">Previous feedback</div>
+            <div id="prev-feedback-text"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav" id="outputs-nav">
+      <button class="nav-btn" id="prev-btn" onclick="navigate(-1)">&#8592; Previous</button>
+      <button class="done-btn" id="done-btn" onclick="showDoneDialog()">Submit All Reviews</button>
+      <button class="nav-btn" id="next-btn" onclick="navigate(1)">Next &#8594;</button>
+    </div>
+    </div><!-- end panel-outputs -->
+
+    <!-- Benchmark panel (quantitative stats) -->
+    <div class="view-panel" id="panel-benchmark">
+      <div class="benchmark-view" id="benchmark-content">
+        <div class="benchmark-empty">No benchmark data available. Run a benchmark to see quantitative results here.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Done overlay -->
+  <div class="done-overlay" id="done-overlay">
+    <div class="done-card">
+      <h2>Review Complete</h2>
+      <p>Your feedback has been saved. Go back to your Claude Code session and tell Claude you're done reviewing.</p>
+      <div class="btn-row">
+        <button onclick="closeDoneDialog()">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // ---- Embedded data (injected by generate_review.py) ----
+    const EMBEDDED_DATA = {"skill_name": "writ-review", "runs": [{"id": "eval-0-with_skill", "prompt": "Have a look at this passage from my book and tell me what's working and what's not \u2014 does it actually land?", "eval_id": 0, "outputs": [{"name": "review.md", "type": "text", "content": "# Writing Review \u2014 `00_over-athletic.md`\n\n**Methodology:** Dennis Ross \u2014 *Lead With Words* (v2)\n**Format read:** book-chapter passage (user: \"this passage from my book\")\n**Gate:** 9/10, no posture below 9 (book-chapter gate, \u00a78)\n**Date:** 2026-06-27\n\n> **Baseline-voice note (read this first).** No `brand_context/voice-profile-book.md` or `voice-profile.md` was available, so per the skill's instructions I inferred the baseline texture from the piece itself. The catch: this piece is wall-to-wall three-word staccato, so it gives me *no* baseline to read \u2014 the author's natural voice has been overwritten by a single device. That absence is itself the diagnosis. The athletic-overdose check is therefore formally \"lower-confidence\" on what the *correct* baseline is, but the overdose itself is unmistakable regardless of baseline, because the device runs at 100% saturation with zero textural variation. If a real voice-profile exists (the methodology assumes Roy's baseline is long, flowing sentences), it would only sharpen \u2014 not change \u2014 every call below.\n\n---\n\n## 1. The Map (the yardstick)\n\n| Diagnostic | Read |\n|---|---|\n| **1. Job** | **Move**, with a teach underneath it \u2014 a personal failure-and-recovery beat meant to make the reader feel the gut-punch of a collapse and then earn hope from the rebuild. |\n| **2. Reader + target feeling** | An entrepreneur / builder who has been gutted by a setback. By the close they should feel *seen in their own collapse* \u2014 and close the page thinking about **their** failure, not the author's comeback. |\n| **3. Intended emotional peaks (1\u20133)** | (a) the collapse \u2014 \"Three years gone\"; (b) the sleepless night \u2014 \"The ceiling stared back\"; (c) the turn \u2014 \"here I stand.\" |\n| **4. Baseline voice/texture** | *Inferred, low-confidence* \u2014 unreadable from the piece because the device erased it (see note above). Working assumption: a flowing, longer-lined narrative voice is the intended norm; three-word lines are meant to be the seasoning, not the meal. |\n| **5. Format** | Book-chapter passage \u2192 full device stack permitted, but gated hardest (9/10). |\n\n**Assumption flagged:** I am treating this as a book passage meant to *move*. If it is actually social/short-form, the athletic-saturation verdict relaxes (\u00a78 \u2014 short-form makes three-word writing native). As a book chapter, it does not.\n\n---\n\n## 2. Posture scores (whole-piece, 1\u201310)\n\n| # | Posture | Score | Evidence |\n|---|---|:--:|---|\n| **P1** | Story, not journalism | **6** | Good instinct \u2014 it leads with **consequence** (\"The deal collapsed.\"), not journalism (\"I started my business in 2009\u2026\"). But it then *lists events* in sequence rather than delivering \"what happened **because of** what happened.\" The rebuild gestures at consequence but tells it (\"But I learned. Slowly. Painfully.\") instead of landing it. |\n| **P2** | Gifts understanding / the mirror | **3** | The piece stays a spotlight on the author's triumph \u2014 \"here I stand. Stronger now. Wiser now.\" The reader closes it knowing the *author* won, not seeing *their own* life. The close commands (\"Never quit.\") instead of holding up a mirror. Per \u00a71.11, that is the failure mode: it tells *your* story, not *theirs*. |\n| **P3** | Introspective honesty | **4** | There is a gesture \u2014 \"The shame was heavy. I told no one. I couldn't.\" \u2014 but it is *stated*, not *costly*. Nothing risks the reader's opinion of the author; nothing is said that \"may change people's opinion of you\" (\u00a71.7). It is sanitised to a clean resilience arc. |\n| **P4** | Spirit (human, not synthetic) | **3** | This is the AI-tell cadence in its purest form \u2014 exactly what a model produces when told \"make it punchy.\" Almost no lived specifics a model couldn't invent: \"Mike\" is the only concrete noun; no sum, no name for the deal, no object in the room, no scar (\u00a75). It fails the spirit test by *sound* before content. |\n\nNo posture clears the book gate (9). The piece is failing where the methodology cares most \u2014 the always-on qualities.\n\n---\n\n## 3. Device scores (placement \u00d7 dosage \u00d7 execution)\n\n| # | Device | P | D | E | Read + evidence |\n|---|---|:--:|:--:|:--:|---|\n| **D1** | Opens with fire | \u2705 | \u26a0 | \u2705 | \"The deal collapsed. Phone went dead.\" is a genuine fire opener \u2014 terse, consequence-first, emotionally accurate (\u00a73.1). The *opener* works. The problem is dosage: the intensity never stops, which is the \u00a77.2 overuse mode \"relentless intensity with no payoff.\" **Opener: strong. The non-stop fire belongs to D7's defect.** |\n| **D2** | Focus story | \u274c | \u274c (0/1) | \u2014 | **Absent.** No analogy/metaphor up top to put the reader in focus (the Diamond move, \u00a72.2). Target dose 1; delivered 0. An opportunity, not a catastrophe. |\n| **D3** | Statement questions | \u274c | \u274c | \u2014 | **Absent.** Zero statement questions, so zero manufactured anticipation (\u00a72.1). The reader is never made to *carry a question*. |\n| **D4** | Emotional sequencing | \u274c | \u26a0 | \u274c | **Strictly chronological:** collapse \u2192 night \u2192 morning \u2192 rebuild \u2192 triumph, in a straight line. This is \"start at the beginning\" (\u00a72.4, anti-pattern). No reordering, no gap, no withheld cause \u2014 so no suspense. |\n| **D5** | Pairing / own lexicon | \u274c | \u274c | \u2014 | **Absent.** No coined pairing (no \"obituary in good health,\" \u00a72.3). Nothing here leads back uniquely to the author. |\n| **D6** | 90/10 reframe | \u274c | \u274c | \u2014 | **Absent.** No familiar-plus-one-unexpected-variable reframe (\u00a73.3). The lesson arrives flat as platitude. |\n| **D7** | **Athletic writing** | \u274c | \u274c\u274c | \u26a0 | **The headline defect.** *Every sentence in the piece* is three-to-four words of staccato \u2014 ~45 of them, end to end. Placement is wrong (athletic belongs at peaks only); dosage is catastrophic (100% saturation \u2014 the seasoning *is* the entire meal); execution is \"clean\" only in the trivial sense that there are no Twinkie/\"that\"-laden toxins (\u00a72.6) \u2014 but lean to the point of robotic. This is the single most common misapplication of the method (\u00a77.2, Athletic \u2194 author voice), here in its purest possible form. **Score: 2.** |\n| **D8** | Call to mirror, not CTA | \u274c | \u26a0 | \u274c | The close \u2014 \"Never quit. Never stop. Keep going. Always.\" \u2014 is a **CTA / exhortation**, the \u00a79 anti-pattern. It commands the reader instead of inviting reflection (\u00a73.2). It earns no mirror because it keeps the spotlight on the author's resolve. |\n\n---\n\n## 4. Interaction & contrast flags\n\n- **\u2691 Athletic \u2194 author voice \u2014 TOTAL override (marquee flag).** The baseline voice is not merely diluted; it is *absent*. The device has replaced the author entirely. \u00a77.2 names this as \"the single most common way the method is applied wrongly\" \u2014 and this passage is the textbook specimen.\n- **\u2691 The contrast law \u2014 no valleys, so no peaks.** This is the direct answer to \"does it land?\" The collapse, the sleepless night, and the triumph are all delivered at *identical* intensity and identical rhythm. When everything is a peak, nothing is. The three moments that should spike read at the same flat-line volume \u2014 which is exactly why the gut-punch doesn't connect. **Missing contrast is a defect even when each line is individually clean.**\n- Statement-question saturation \u2014 N/A (none present).\n- Lexicon over-coining \u2014 N/A (none present).\n- **Note the shape of the failure:** it is *not* \"too few devices.\" Adding more devices would repeat the original error in a new key. The failure is *one* device at maximum dose crowding out voice and contrast.\n\n---\n\n## 5. The prescription\n\n### \u2705 What's working (keep it)\n1. **The opening instinct is right.** \"The deal collapsed.\" leads with consequence, not journalism (P1) \u2014 and as a three-word fire opener it *earns* its staccato. This is the one place the device is correctly placed.\n2. **It's lean.** No fatty filler, no \"that\"-padding (\u00a72.6). The toxin-removal is genuinely clean \u2014 that discipline is worth keeping.\n3. **The bones of an arc exist.** Collapse \u2192 night \u2192 rebuild is a real three-beat skeleton. The structure is salvageable; only the *texture* and *sequencing* are broken.\n\n### \u2717 What's not working\n1. **Wall-to-wall athletic writing (D7).** Every sentence is a three-word peak \u2192 no peaks survive (contrast law). This is *why it doesn't land*.\n2. **No baseline voice / no valleys.** The author's natural texture is erased; there is nothing flat for the spikes to stand against.\n3. **Chronological, not emotional, sequencing (D4).** Straight birth-to-triumph line kills anticipation.\n4. **CTA close, not a call to mirror (D8 / P2).** \"Never quit. Keep going.\" is a platitude that keeps the camera on the author.\n5. **Synthetic spirit (P4).** No lived specifics; reads model-generated by *cadence* alone.\n6. **Missing structural devices** \u2014 no focus story, statement question, lexicon, or 90/10 (D2/D3/D5/D6). Opportunities, addressed *after* the texture is fixed, never to \"compensate\" for it.\n\n### \ud83d\udd27 How to make it work (located edits)\n1. **De-saturate the athletic writing \u2014 restore flow to ~80%, reserve three-word lines for ONE peak.** Keep \"The deal collapsed.\" as the fire opener, then let the very next sentences *breathe* into longer, flowing lines that carry the **consequence**: what those three years actually were, what the deal meant, what walked out the door with it. The contrast is the whole mechanism \u2014 flowing prose is the valley that makes the three-word line a peak.\n2. **Pick the single peak for the staccato.** Strongest candidate: the sleepless-night beat \u2014 let \"The ceiling stared back.\" be the *one* place the prose goes to three words, with flowing sentences on either side. Don't let the collapse, the night, *and* the triumph all punch \u2014 choose one.\n3. **Supply lived specifics only you can (fixes P4 spirit).** Replace generic beats with the real ones: the actual sum, the name of the deal/company, who Mike was *to* this, the one object you stared at, the thing you told no one. A model can write \"the shame was heavy\"; it cannot write the detail you carry. This is the spirit, and it cannot be invented (\u00a75 house rule).\n4. **Reorder for suspense (D4).** Don't run collapse\u2192morning\u2192triumph in a straight line. Open *inside* the sleepless night and flash back to the call; or withhold the *cause* of the collapse and plant a statement question \u2014 e.g. \"I'd find out later what Mike already knew.\" (no question mark, \u00a72.1) \u2014 so the reader carries a gap.\n5. **Convert the CTA close into a call to mirror (D8 \u2192 P2).** Cut \"Never quit. Never stop. Keep going. Always.\" Replace it with a line that hands the reflection to the reader, so they close the page thinking about *their* collapse, not your comeback. The mirror outperforms the command (\u00a73.2).\n6. **Optional, and only ONE:** a single focus story up top *or* one coined pairing for the lesson \u2014 not both, and not as a patch for the texture problem. The fix is *subtraction of the overdose first*, then at most one deliberate addition.\n\n---\n\n## 6. Verdict + gate\n\n**REVISE.** (Book-chapter gate 9/10, no posture below 9 \u2014 not close: postures land 3\u20136, the marquee device D7 is a 2 by overdose, and the contrast law is failed outright.)\n\n**Does it land? No \u2014 and precisely because of the thing that looks like craft.** The relentless three-word punch reads as \"powerful writing\" for two sentences and then flattens everything that follows into the same beat, so the moments that should hit don't. The piece is a seasoning served as the entire meal.\n\n**Top 3 fixes that move the needle most:**\n1. **De-saturate the athletic writing** \u2014 restore a flowing baseline, reserve three-word lines for one peak (fixes D7 + the contrast law in one move).\n2. **Supply lived specifics** \u2014 the sum, the names, the one object \u2014 to restore spirit (P4).\n3. **Replace the CTA close with a call to mirror** \u2014 turn the spotlight from your comeback to the reader's collapse (fixes D8 + P2).\n\nFix 1 alone takes this from a flat-line to a passage with peaks. After the texture pass, run the result through `tool-humanizer` (deep mode if a voice-profile exists) to catch any residual synthetic cadence.\n"}], "grading": {"expectations": [{"text": "Flags athletic / three-word writing as overused or an overdose, not a strength", "passed": true, "evidence": "Scored athletic device 2/10 on overdose; flagged 100% saturation + contrast-law failure"}, {"text": "Prescribes restoring flowing sentences and reserving short lines for 1-2 emotional peaks", "passed": true, "evidence": "Top fix: de-saturate, reserve the staccato for one peak"}, {"text": "Does NOT recommend adding more short / punchy / athletic sentences", "passed": true, "evidence": "No recommendation to add punch \u2014 the opposite"}], "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}}}, {"id": "eval-0-without_skill", "prompt": "Have a look at this passage from my book and tell me what's working and what's not \u2014 does it actually land?", "eval_id": 0, "outputs": [{"name": "review.md", "type": "text", "content": "# Review: \"The deal collapsed.\"\n\n## Quick verdict\n\nThere's a real story in here and a genuine instinct for momentum \u2014 but right now the whole passage is written in a single gear, and that gear is \"punch.\" It doesn't land because relentless impact reads the same as no impact. The staccato style is doing 100% of the emotional work and the actual content is doing almost none. By the end it's tipped from raw into rousing-poster clich\u00e9. It needs modulation, specificity, and at least one real human detail to ground it.\n\n## What's working\n\n- **The opening has genuine force.** \"The deal collapsed. Phone went dead. I sat there.\" Three beats, accelerating, then a held pause. That's a strong cold open and the right place to start \u2014 in the moment of impact, not in backstory.\n- **You trust the reader.** No throat-clearing, no \"Let me tell you about the day everything changed.\" You drop us straight into the scene. That's a mature instinct.\n- **The Mike sequence is the best paragraph.** \"I called Mike. He didn't answer. I called again. Nothing.\" The repetition here is *earned* because it dramatizes a real action \u2014 a man dialing a phone that won't be picked up. The rhythm mirrors the behavior. This is the one place the style and the content are doing the same job.\n- **\"The ceiling stared back.\"** The one image in the piece. It's slightly familiar, but it works because it's the only figurative beat \u2014 it gets to stand out.\n\n## What's not working\n\n- **One rhythm for the whole piece = no rhythm.** Almost every sentence is two to four words. When *everything* is a hammer blow, nothing is. Staccato only creates tension by contrast with longer lines; with no long sentences to push against, the technique flattens into a tic. The reader's ear numbs out by paragraph two.\n- **It's abstract where it should be concrete.** \"Three years gone.\" Three years of *what*? \"The shame was heavy\" \u2014 shame is told, not shown. \"I rebuilt. Brick by brick. Day by day. Client by client.\" This is the skeleton of a story with no flesh on it. We never learn what the deal was, who Mike is, what was actually lost, or what rebuilding looked like on a single real Tuesday. Specificity is what would make a stranger feel this; abstraction keeps them outside it.\n- **The ending collapses into motivational wallpaper.** \"Stronger now. Wiser now. Ready now... Never quit. Never stop. Keep going. Always.\" This is the weakest stretch by a distance. It's a LinkedIn-post sign-off, not a lived conclusion. After the specific, physical opening, the close abandons scene entirely for slogans the reader has read a thousand times. It tells us the lesson instead of letting the rebuilt life imply it.\n- **The triads are overused.** \"No warning. No mercy.\" / \"Stronger now. Wiser now. Ready now.\" / \"Never quit. Never stop. Keep going.\" Once is a flourish; four or five times is a formula, and the reader starts to feel the machinery.\n- **\"Too quiet\" is a clich\u00e9** sitting right next to the strong \"The office was quiet.\" Cut the second sentence and let the first do the work.\n\n## How to improve it\n\n1. **Vary the sentence length deliberately.** Keep the short punches for impact, but let yourself run one genuinely long, breathing sentence in each paragraph \u2014 the contrast is where the power actually lives. Right now you have one dynamic; you need at least two so the short lines mean something again.\n2. **Replace one abstraction per paragraph with one concrete detail.** What was the deal? A name, a number, a product. Who is Mike \u2014 partner, mentor, the guy who pulled out? Give the rebuild *one* real scene (the first client who said yes, what you were wearing, where you were standing) instead of \"client by client.\" One specific beats ten general.\n3. **Rewrite the ending entirely.** Cut every slogan. End on an image or a small concrete action that *shows* you came back \u2014 the way you opened. If the opening is a dead phone, the close could be a phone that finally rings, or you making the first call of the next deal. Let the reader draw \"never quit\" themselves; don't hand it to them on a banner.\n4. **Thin out the triads.** Pick the two strongest (\"No warning. No mercy.\" and the Mike sequence) and convert the rest to plainer prose. Scarcity is what makes the device hit.\n5. **Earn the shame instead of naming it.** \"The shame was heavy\" \u2192 show the behavior of shame: who you didn't call, the text you drafted and deleted, the drive home taken the long way. You already have the right instinct in \"I told no one. I couldn't.\" \u2014 extend that, and delete the label.\n\n## Bottom line\n\nThe bones are good and the opening proves you can write with real momentum. The fix isn't a rewrite of your voice \u2014 it's restraint. Spend the punchy short sentences like money instead of giving them away on every line, ground the story in two or three concrete details, and throw out the motivational ending for something you actually lived. Do that and it goes from \"sounds intense\" to \"I felt that.\"\n"}], "grading": {"expectations": [{"text": "Flags athletic / three-word writing as overused or an overdose, not a strength", "passed": true, "evidence": "Identified 'one staccato gear, so the impact flattens'"}, {"text": "Prescribes restoring flowing sentences and reserving short lines for 1-2 emotional peaks", "passed": true, "evidence": "Prescribed 'vary sentence length'"}, {"text": "Does NOT recommend adding more short / punchy / athletic sentences", "passed": true, "evidence": "Recommended restraint, not more staccato"}], "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}}}, {"id": "eval-1-with_skill", "prompt": "Review the opening of my book. Is this a strong opening, and how would you sharpen it?", "eval_id": 1, "outputs": [{"name": "review.md", "type": "text", "content": "# Writing Review \u2014 Book Opening\n\n**Methodology:** Dennis Ross \u2014 *Lead With Words* (v2)\n**Format read:** Book opening (chapter 1 / introduction) \u2192 gate **9/10, no posture below 9** (\u00a78)\n**Piece:** `evals/inputs/01_journalism-opener.md` (3 paragraphs, ~150 words)\n**Date:** 2026-06-27\n\n> **Assumptions stated up front (human-in-the-loop gate).** No author voice-profile was used. A `brand_context/voice-profile.md` exists on disk, but it belongs to a *different* author/brand (All The Power / Roy) and this opening is by a different person (born Bulawayo, 1972). Per the skill's no-voice-profile path, I **inferred the baseline texture from the piece itself** and flag the athletic-overdose check (D7) as **lower confidence** as a result. The Map's job/reader/peaks below are inferred from the piece; if any are wrong, the scores move with them.\n\n---\n\n## 1. The Map (the yardstick)\n\n| Q | Answer (inferred) |\n|---|---|\n| **Job** | Open a business/transformation book. Establish the author's credibility *in his absence* (\u00a71.1) and recruit fans by being recognisable \u2014 primarily **position + move**, with a soft sell of the book's promise (AI buys back your time). |\n| **Reader & target feeling** | An overworked founder/business owner running 12\u201314-hour days, near or past burnout, sceptical that AI is anything but hype. By the close they should feel **seen** \u2014 \"this person has been exactly where I am and got out *without losing the business*\" \u2014 and a flicker of relief/hope. |\n| **Intended emotional peaks (1\u20133)** | (a) The **burnout / collapse** in 2021 \u2014 the lowest valley. (b) The **counterintuitive turn** \u2014 hours roughly halved, revenue held. (c) optionally the **moment of realisation** that the grind was the problem. The raw material flags these even though the prose doesn't. |\n| **Baseline voice/texture (inferred)** | Plain, calm, low-affect declaratives. Uniform medium-length sentences. Slightly corporate/hedged (\"around forty,\" \"roughly the same,\" \"considerably,\" \"a period of\"). Reportage register \u2014 measured and uncluttered. *Confidence: medium; no author profile available.* |\n| **Format** | Book opening \u2192 full device budget available; gate 9/10, no posture below 9. |\n\n---\n\n## 2. Posture scores (whole-piece, 1\u201310)\n\nPostures are always-on; you want them everywhere, never \"dosed.\"\n\n| # | Posture | Score | Evidence |\n|---|---------|:---:|---------|\n| **P1** | Story, not journalism (\u00a71.9) | **2** | This is the textbook anti-pattern. Pure who/what/where/when: \"I was born in Bulawayo in 1972\u2026 emigrated to the UK in 1997\u2026 started my first IT company in 2001.\" Leads with the *least* consequential facts; the consequence (\"what happened *because* of what happened\") is never surfaced. Dennis's exact \"born on a farm\" example. |\n| **P2** | Gifts understanding / the mirror (\u00a71.10\u20131.11) | **2** | The reader closes knowing the **author's** CV, not their **own** life \u2014 the failure test in \u00a71.11. The material is highly mirror-able (every burned-out founder lives the 14-hour day), but it's stated as the author's fact, never held up as the reader's reflection. |\n| **P3** | Introspective honesty (\u00a71.5, \u00a71.12) | **2** | Everything is sanitised to competence. \"In 2021 I experienced a period of burnout\" is the most clinical, distanced phrasing possible for what was presumably a frightening collapse \u2014 the exact \"sanitised version\" \u00a71.7 warns against. No costly admission, nothing un-said-before. |\n| **P4** | Spirit \u2014 human, not synthetic (\u00a75) | **3** | Reads like a LinkedIn \"About\" section or an AI-generated bio. Dates and counts but **no lived specific a model couldn't invent** \u2014 no scar, no moment, no sensory detail, no name. Hedges (\"around,\" \"roughly,\" \"considerably\") are exactly the synthetic tell. Above 2 only because a real life's bones are visibly present. |\n\n**Posture read: 2 / 2 / 2 / 3.** All four are far below the 9 floor. The postures are the headline failure \u2014 and the most fixable, because the lived arc underneath is strong.\n\n---\n\n## 3. Device scores (placement \u00d7 dosage \u00d7 execution, with evidence)\n\n| # | Device | Place | Dose | Exec | Score | Evidence / note |\n|---|--------|:---:|:---:|:---:|:---:|---------|\n| **D1** | Opens with fire (\u00a73.1) | \u2717 | 0 | \u2014 | **1** | Opener is \"I was born in Bulawayo in 1972\" \u2014 the literal \"born on a day\" line Dennis mocks. No tension, declaration, statement question, or 90/10 where it's needed most. |\n| **D2** | Focus story (\u00a72.2) | \u2717 | 0 | \u2014 | **1** | None. No analogy/metaphor focuses the reader before the point. A book opening's budget includes one; here there is *no* focusing mechanism of any kind. |\n| **D3** | Statement questions (\u00a72.1) | \u2717 | 0 | \u2014 | **1** | Zero. Every sentence is a closed, resolved declarative \u2014 no anticipation manufactured anywhere. |\n| **D4** | Emotional sequencing (\u00a72.4) | \u2717 | wrong | \u2717 | **1** | Actively *wrong* ordering: strict chronology 1972\u21921997\u21922001\u21922008\u21922021\u2192today. \"Never start at the beginning.\" The highest-impact beat (burnout/turn) is buried at the end of para 2 and delivered fastest. A **defect**, not a mere absence \u2014 chronology kills the suspense. |\n| **D5** | Pairing / own lexicon (\u00a72.3) | \u2717 | 0 | \u2014 | **2** | No coined pairings. \"Breathwork and nervous system regulation\" are borrowed category terms, not a signature that leads back to the author. (Absence here is less fatal than the postures; over-coining would be worse \u2014 not prescribing a pile of coinages.) |\n| **D6** | 90/10 reframe (\u00a73.3) | \u2717 | 0 | \u2717 | **2** | The most reframe-ready fact in the piece \u2014 *cut hours sharply, revenue held* \u2014 is the 10% surprise, and it's thrown away in one hedged clause. Never built on 90% familiar + 10% twist. |\n| **D7** | Athletic writing (\u00a72.6) \u2014 **overdose check** | n/a | none | \u2717 | **3** | **Not overused** (the common failure) \u2014 sentences are uniform, no three-word peaks. The problem is the *inverse*: flat texture with literary toxins (\"typically,\" \"around,\" \"roughly the same,\" \"considerably,\" \"a period of\") and **no peak anywhere**. Execution fails on toxins, not on staccato. *Lower confidence \u2014 no author voice-profile to fix the true baseline.* |\n| **D8** | Call to mirror, not CTA (\u00a73.2) | \u2713 loc | \u2014 | \u2717 | **3** | Close (\"This book is about what I learned\u2026 how the right use of AI can give business owners back their time\") is a **blurb/CTA**, not a call to mirror. Right location (the close), wrong move \u2014 it tells the reader what the book does instead of inviting them to reflect on their own week. |\n\n---\n\n## 4. Interaction & contrast flags (\u00a77.2)\n\n- **Athletic \u2194 author voice:** *No conflict* \u2014 there is no athletic writing, and the inferred baseline is itself flat. Flag this check as **lower confidence** (no author profile; the on-disk profile is a different author). The real texture problem is the inverse of overdose \u2014 see below.\n- **Statement-question saturation:** N/A \u2014 zero present. No saturation.\n- **Lexicon over-coining:** N/A \u2014 zero present. No over-coining.\n- **The contrast law (peaks need valleys) \u2014 FAILED, in the rare inverse direction.** The piece is **all valley, no peak.** Every sentence sits in the same low, even register, so the genuinely high-stakes moment (burnout) reads at the *same emotional volume* as \"I went to school there.\" Nothing is given relief, so nothing can lift. This is the headline contrast defect.\n\n> **Reviewer's honesty check (the skill's whole thesis):** this piece's failures are almost entirely **absence, under-dose, and mis-ordering** \u2014 *not* overdose. So the correct prescription is **not** \"add all eight devices.\" That would trade journalism for device-soup \u2014 a different anti-pattern. The needle-movers are the postures and the sequencing; layer in *one* fire/focus move and *one* athletic peak, no more.\n\n---\n\n## 5. The prescription\n\n### What's working (keep it)\n- **The raw arc is strong and inherently mirror-able.** The 12\u201314-hour / 6-day grind, the burnout, and especially the counterintuitive payoff (hours roughly halved, revenue held) are exactly what the target reader lives. This is the hardest thing to manufacture and it's already here \u2014 it's just in the wrong **order** and the wrong **register**. Don't lose these facts.\n- **Restraint is a usable baseline.** The author isn't over-writing; the voice is calm and uncluttered. Once the hedge-toxins are trimmed and one or two peaks are allowed to lift, that calm becomes an asset \u2014 restraint is what makes a single three-word peak hit. Do **not** overcorrect into purple prose.\n- **The promise is clear** (AI \u2192 time back). Clarity of thesis is an asset; it just shouldn't be the *opening* move.\n\n### What's not (located)\n1. **Para 1 (whole)** \u2014 journalism: birth, schooling, emigration, company count. Leads with the least consequential facts. *(P1, D1, D4)*\n2. **\"In 2021 I experienced a period of burnout.\"** \u2014 the emotional core, sanitised to a clinical clause and buried mid-para 2. *(P3, P2)*\n3. **\"Revenue stayed roughly the same while my hours came down considerably.\"** \u2014 the single most surprising, sellable fact, thrown away in hedged language. *(D6, P4)*\n4. **Strict chronological order across the whole piece** \u2014 actively kills anticipation. *(D4)*\n5. **The close is a blurb/CTA**, not a call to mirror. *(D8, P2)*\n6. **Hedge toxins throughout:** \"typically,\" \"around forty,\" \"roughly,\" \"considerably,\" \"a period of.\" *(D7 execution, P4)*\n7. **No focusing or fire mechanism anywhere up top** \u2014 the reader is given no reason to lean in by line two. *(D1, D2, D3)*\n\n### How to make it work (specific edits, prioritised \u2014 five surgical moves, not eight devices)\n1. **Re-sequence: open at the peak, not the birth.** Cut \"I was born in Bulawayo in 1972\" as the opener. Start at (or just before) the **burnout**, or at the **counterintuitive turn**. Reveal the three businesses / forty people later as *what was at stake*, not as a CV. All of para 1's biography moves to a subordinate position \u2014 background goes *somewhere*, never the lead (\u00a71.9). **Biggest single needle-mover.**\n2. **Lead with consequence in the burnout line.** Run the bridge exercise: one sentence of the event, then *\"and because of that\u2026\"* that says the costly, un-sanitised thing \u2014 what the burnout actually took, the moment he knew. Fixes **P1 + P3 + P4** at once. The lived specific (the real moment, not \"a period\") is the **spirit the model can't supply \u2014 it must come from the author.**\n3. **Turn the payoff into the 90/10 surprise, not a hedge.** Replace \"revenue stayed roughly the same while my hours came down considerably\" with the concrete, un-hedged version (real numbers if true: \"I cut my week from ~80 hours to [X]. Revenue didn't move.\"). 90% familiar (everyone believes hours = output) + 10% twist (he proved it false) = the door into the book. Give it its own line. *(D6)*\n4. **Reserve exactly ONE athletic peak.** At the turn, allow a single three-word / very short sentence as the emotional high. Keep the calm declarative baseline everywhere else \u2014 the peak only works *because* everything around it is even. **This is the opposite of \"make it all punchy.\"** *(D7, contrast law)*\n5. **Convert the close to a call to mirror.** End by turning the question on the reader \u2014 invite them to look at their own week and its cost \u2014 so they close para 3 thinking about *their* life, not the author's CV. *(D8, P2)*\n6. **Trim the hedges (execution, not ornament).** Delete \"typically,\" \"roughly,\" \"considerably,\" \"a period of,\" \"around.\" Cleaner declaratives, *not* more adjectives. *(D7 toxins)*\n7. **(Optional \u2014 at most one)** add a single focusing move up top: *either* a fire opener (a declaration/statement question about working yourself into the ground) *or* one short focus-story analogy \u2014 **not both**, and not stacked on top of the above.\n\n---\n\n## 6. Verdict + gate\n\n**Answering the author's question directly: no, this is not a strong opening yet \u2014 but it sits on strong foundations.** The failure is craft, not material: it opens as **journalism** (who/what/where/when), runs strict **chronology**, sanitises its emotional core to a clinical clause, and closes on a **blurb instead of a mirror**. The lived arc underneath \u2014 grind \u2192 burnout \u2192 the counterintuitive recovery \u2014 is genuinely mirror-able, which is the hardest ingredient to fake, and it's already here.\n\n| | |\n|---|---|\n| **Gate (book opening)** | 9/10; no posture below 9 |\n| **Postures** | 2 / 2 / 2 / 3 \u2014 all below floor |\n| **Devices** | mostly 1\u20133 |\n| **Result** | **REVISE** (well below gate) |\n\n**Top 3 moves that move the needle most:**\n1. **Re-sequence** \u2014 open at the burnout/turn, not at birth; demote the biography.\n2. **Rewrite the burnout + payoff lines for consequence and un-hedged specifics** \u2014 the spirit and the lived detail the author alone can supply.\n3. **Close on a mirror, not a blurb** \u2014 leave the reader thinking about *their* week.\n\nDo those three and the *same facts* become an opening that earns the next page. Hold the line on restraint: this needs re-ordering, consequence, and one peak \u2014 not eight devices crammed into three paragraphs.\n\n*Downstream: once revised, `tool-humanizer` (deep mode) would catch any remaining hedge/AI tells flagged under P4.*\n"}], "grading": {"expectations": [{"text": "Identifies the opening as journalism (who/what/where/when) failing the story-not-journalism posture", "passed": true, "evidence": "Called it 'pure journalism (born-1972 chronology)'; postures 2/2/2/3"}, {"text": "Prescribes leading with the consequence and/or emotional (non-chronological) sequencing", "passed": true, "evidence": "Prescribed re-sequence to open at the burnout (emotional sequencing)"}, {"text": "Treats the flat chronology as the core problem rather than merely praising its clarity", "passed": true, "evidence": "Framed craft-not-material; flat chronology = the core failure"}], "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}}}, {"id": "eval-1-without_skill", "prompt": "Review the opening of my book. Is this a strong opening, and how would you sharpen it?", "eval_id": 1, "outputs": [{"name": "review.md", "type": "text", "content": "# Review: Book Opening\n\n## The piece\n\n> I was born in Bulawayo in 1972. I went to school there, and later emigrated to the UK in 1997. I started my first IT company in 2001, and by 2008 I had three businesses employing around forty people between them.\n>\n> I worked long hours, typically twelve to fourteen a day, six days a week. In 2021 I experienced a period of burnout. After that I discovered breathwork and nervous system regulation, and I changed the way I worked. Revenue stayed roughly the same while my hours came down considerably.\n>\n> Today I coach other entrepreneurs on how to avoid the mistakes I made. This book is about what I learned along the way, and how the right use of AI can give business owners back their time.\n\n## Verdict\n\nThis is not yet a strong opening. It is honest, clear, and competently written \u2014 but it reads as a CV in prose, not a book opening. It tells the reader the shape of a life without ever putting them *inside* a moment of it. A reader skimming the first page in a bookshop or on a Kindle sample has no reason to turn to page two: nothing has been promised, nothing is at stake, and the most dramatic event in the whole passage \u2014 burnout \u2014 is dispatched in nine words (\"In 2021 I experienced a period of burnout\"). The raw material is genuinely good. The delivery is flat.\n\n## What's working\n\n- **Clarity and economy.** Every sentence is easy to read. No throat-clearing, no purple prose, no jargon. That is a real asset and worth protecting.\n- **A true arc exists underneath.** Striver \u2192 success \u2192 collapse \u2192 reinvention \u2192 teaching others. That is a proven, resonant memoir shape. The bones are sound.\n- **A credible, specific premise.** \"AI can give business owners back their time\" is a concrete promise tied to lived experience, not a vague self-help platitude. The author has earned the right to make it.\n- **Restraint.** It doesn't oversell or melodramatise. The understated tone is likeable and could become a strength once there's something underneath it to feel restrained *about*.\n\n## What's not working\n\n1. **It summarises instead of dramatises.** The whole passage is told from 30,000 feet \u2014 dates, headcounts, hours-per-day. There is not one scene, one image, one sensory detail, one line of the author actually *in* a moment. We are told a man burned out; we never see it.\n\n2. **The biggest moment is buried and under-weighted.** Burnout is the hinge of the entire book and it gets less space than the company-formation dates. The emotional center is treated as a line item. This is the single most damaging structural choice here.\n\n3. **Chronological order is the wrong order.** Starting with \"born in 1972\" is the default autobiography move, and it's the weakest possible entry point. The reader has no reason to care about 1972 yet. Openings should start where the *tension* is, not where the *timeline* is.\n\n4. **No stakes, no reader, no promise in the right place.** The hook \u2014 what the book will give the reader \u2014 arrives only in the final sentence, almost as an afterthought, framed around the author (\"what I learned\") rather than the reader (\"what you'll be able to do\"). By the time the value proposition lands, an unconvinced reader has already left.\n\n5. **Flat, additive sentence rhythm.** Many sentences share the same \"I did X, and then Y\" construction joined by \"and.\" The cadence is monotonous, which makes even the interesting facts feel like a list. \"Revenue stayed roughly the same while my hours came down considerably\" \u2014 the most quietly powerful fact in the piece \u2014 is phrased like a footnote.\n\n6. **Hedging language drains the punch.** \"around forty,\" \"roughly the same,\" \"considerably,\" \"a period of.\" These softeners are fine in conversation but they sand the edges off the very claims that should hit hardest. Precision is more persuasive: name a real number, a real loss, a real before-and-after.\n\n## How to sharpen it\n\n**1. Open in the scene of the collapse, not the year of birth.** Drop the reader into a concrete moment \u2014 the morning the author couldn't get out of the car, the email he couldn't bring himself to open, the realisation at a specific desk on a specific evening. Lead with the breaking point, then loop back to fill in how he got there. The 1972\u20132008 r\u00e9sum\u00e9 can be compressed into two sentences *after* you've earned the reader's attention.\n\n**2. Make burnout the centre of gravity, not a line.** Give it the most space, the most specific detail, and the most honest emotion of any moment in the opening. This is what the reader will recognise themselves in. Right now it's the one paragraph that should slow down and it's the one that goes fastest.\n\n**3. Convert the strongest fact into the hook.** \"Revenue stayed roughly the same while my hours came down considerably\" is, quantified, the entire promise of the book. Make it precise and lead toward it: e.g., \"I cut my working week roughly in half, and revenue didn't move.\" Sharpen the number, then build the page so it lands as a turn, not a footnote.\n\n**4. Turn the premise toward the reader.** Recast the final move from \"this book is about what I learned\" to a clear promise of what the reader will be able to *do* \u2014 get their evenings back, stop trading hours for money, use AI to reclaim the time they're currently burning. Author-credibility first, reader-payoff second, both made explicit.\n\n**5. Break the rhythm.** Vary sentence length deliberately. Let a very short sentence land a hard fact (\"Then I collapsed.\") after a longer build. Cut most of the \"and\"-joins.\n\n**6. Replace hedges with specifics.** Swap \"around forty,\" \"roughly,\" \"considerably,\" and \"a period of burnout\" for exact figures and one or two vivid, true details. The more specific the fact, the more the reader trusts it \u2014 and the harder it hits.\n\n## One-line takeaway\n\nThe life is interesting; the page isn't yet. Stop narrating the timeline and start in the moment that broke you \u2014 then earn your way back to the dates. Lead with the collapse, dwell on it, and turn the closing promise to face the reader.\n"}], "grading": {"expectations": [{"text": "Identifies the opening as journalism (who/what/where/when) failing the story-not-journalism posture", "passed": true, "evidence": "'A CV in prose, summarising a life from 30,000 feet'"}, {"text": "Prescribes leading with the consequence and/or emotional (non-chronological) sequencing", "passed": true, "evidence": "'Open in the scene of the collapse rather than born in 1972'"}, {"text": "Treats the flat chronology as the core problem rather than merely praising its clarity", "passed": true, "evidence": "Treated buried hinge / chronology as the central problem"}], "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}}}, {"id": "eval-2-with_skill", "prompt": "Score this book opening for me \u2014 is it working, and what would you change?", "eval_id": 2, "outputs": [{"name": "review.md", "type": "text", "content": "# Writing Review \u2014 Book Opening\n\n**Methodology:** Dennis Ross, \"Lead With Words\" (v2) \u2014 scored against the \u00a77 effectiveness model.\n**Format read:** Book opening (treated as **book chapter** \u2192 gate 9/10, no posture below 9).\n**Voice-profile:** None available. Baseline texture **inferred from the piece itself** (see Map Q4). Because there is no `voice-profile.md`, the athletic-overdose check (D7) is **lower-confidence** \u2014 I'm reading the piece's own dominant rhythm as the baseline rather than a documented one.\n\n---\n\n## 1. The Map (the yardstick)\n\n| # | Question | Read |\n|---|----------|------|\n| Q1 | **Job** | **Move + position.** Move the reader (emotional resonance) in service of positioning the author's authority *through vulnerability*, not credentials. Classic book-opening job: earn the right to be read. |\n| Q2 | **Reader + target feeling** | A burned-out founder/entrepreneur whose success is quietly costing them their health and relationships. By the close they should feel **seen** (\"this person has been exactly where I am\") and **invited to reflect**, not sold to. |\n| Q3 | **Emotional peaks (1\u20133)** | **P-a:** the collapse \u2014 \"could not climb his own stairs without stopping halfway to rest.\" **P-b:** the reframe \u2014 \"It was the pressure that made the stone.\" **P-c:** the landing \u2014 \"I am writing to hold up a mirror\u2026\" |\n| Q4 | **Baseline voice/texture (inferred)** | Long, flowing, image-led sentences; warm, reflective, literary-but-plain; metaphor-driven (diamond/light), comfortable with subordinate clauses and em-dashes. Short/fragment lines read as *deliberate peaks*, not the default. **Stated assumption \u2014 no voice-profile on disk.** |\n| Q5 | **Format** | Book opening \u2192 scored as a book chapter. **Gate: 9/10, no posture below 9.** |\n\nThe Map is fully inferable from the piece + context, so no human-in-the-loop gate was needed. The only stated assumption is the inferred baseline (Q4).\n\n---\n\n## 2. Posture scores (whole-piece, 1\u201310)\n\n| # | Posture | Score | Evidence |\n|---|---------|:---:|----------|\n| **P1** | Story, not journalism | **9** | Leads with consequence/atmosphere (the diamond), never who/what/where/when. The one fact \u2014 \"In the spring of 2021\" \u2014 is **woven mid-paragraph as texture, not led with**, exactly as \u00a71.9 prescribes. The collapse is told as consequence (\"my body finally sent me the invoice\"), not reported. |\n| **P2** | Gifts understanding / the mirror | **9** | The second half pivots from the author's life to the reader's: \"If you are reading this in the dark right now, working hours that are quietly costing you everything you started the business to protect\u2026\" then an explicit **call to mirror**. Reader closes knowing *their* situation. |\n| **P3** | Introspective honesty | **9** | \"the man who had built three companies could not climb his own stairs\" is a costly, un-sanitised admission \u2014 vulnerability, not competence-signalling. \"everything I thought I knew about success turned over in my hands.\" Honest and earned. |\n| **P4** | Spirit (human, not synthetic) | **8** | Lived specifics carry real spirit: \"fourteen-hour days,\" \"three companies,\" the bodily detail of stopping halfway up the stairs, the third-person remove (\"the man who had built\u2026\"). **But:** the two load-bearing images \u2014 the **diamond focus story** and **\"hold up a mirror\"** \u2014 are the methodology's *own canonical examples* (\u00a76A, \u00a71.11). That makes the piece read slightly *template-faithful* rather than wholly the author's own. It passes the spirit test; its originality is the one capped dimension. |\n\n**Posture total holds the gate everywhere except P4 (8), which sits one notch under the book-chapter 9 bar.** That single point is the whole story of this verdict.\n\n---\n\n## 3. Device scores (placement \u00d7 dosage \u00d7 execution)\n\n| # | Device | Place | Dose | Exec | Evidence & read |\n|---|--------|:---:|:---:|:---:|-----------------|\n| **D1** | Opens with fire | \u25d0 | \u2713 | **7** | The opening is a *focus story*, not *fire*. \"A diamond spends most of its life in darkness\" is **contemplative, not tension-spiking** \u2014 it manufactures warmth, not anxiety/anticipation. The true fire (the collapse) arrives in para 2. Leading with the focus story is a legitimate move (focus story's home *is* the open), but \"open with fire\" as a distinct device is only lightly present. Soft, not wrong. |\n| **D2** | Focus story | \u2713 | \u2713 (1) | **9** | The single strongest device. Diamond = 90/10 familiar\u2192variable, doubles back by analogy (\"The entrepreneurs I sit with are not so different\"), and \u2014 crucially \u2014 **resolves into the personal story by para 2, avoiding analogy fatigue**. Threads through to \"the pressure that made the stone.\" Faithful to \u00a76A (which slightly caps originality, see P4). |\n| **D3** | Statement questions | \u2014 | \u2717 (0) | **6** | **Under-dosed.** The budget for a chapter is \"a few woven statement questions\"; there are **zero**. Under-dose loses points just as over-dose does (\u00a77.3). The piece carries itself on focus-story + mirror, so it isn't broken \u2014 but a single statement question at the pivot would tighten anticipation before the reframe. |\n| **D4** | Emotional sequencing | \u2713 | \u2713 (1) | **8** | Correctly refuses chronology (\"you were born on a day\"): atmosphere \u2192 collapse \u2192 reframe \u2192 mirror. Clean arc. Mildly linear *within* the personal story (2021 \u2192 breakdown \u2192 now) \u2014 it doesn't exploit a time-gap for suspense \u2014 but for a short opening that restraint is right, not gimmicky. |\n| **D5** | Pairing / own lexicon | \u2713 | \u2713 (~1) | **8** | \"my body finally sent me the **invoice** for fourteen-hour days\" \u2014 the weight of commerce transferred onto the body, thematically perfect for an entrepreneur book. \"the pressure that made the stone\" is more metaphor-extension than fresh coinage. **~1 real pairing \u2014 well within the 1\u20132 cap, no over-coining.** Doesn't yet mint a signature term the author *owns*, but for an opening it's enough. |\n| **D6** | 90/10 reframe | \u2713 | \u2713 | **8** | Diamond = 90% familiar + 10% variable (\"learns to bend light\"), doubling back to the reader's hidden brilliance. The \"invoice\" is a second small 90/10. **Well rationed** \u2014 not every line straining for a twist. |\n| **D7** | Athletic writing | \u2713 | \u2713 | **9** | **The device done RIGHT \u2014 the opposite of the common overdose failure.** Baseline stays long and flowing; the short punches are reserved for peaks: the fragment \"Buried, overlooked, under pressure,\" and the reframe \"It was the pressure that made the stone.\" Peak seasoning, not the main course. Lean prose, few \"that\"s. *(Lower-confidence flag: inferred baseline, but the piece's own dominant rhythm is unmistakably flowing, so the short lines clearly read as deliberate peaks.)* |\n| **D8** | Call to mirror, not CTA | \u2713 | \u2713 (1) | **8** | \"I am not writing to pull you out. I am writing to hold up a mirror, so you can see what I was finally able to see.\" A genuine call-to-mirror, **not a CTA** (no buy/book/subscribe), and earned by the preceding vulnerability + reframe. One notch off 9: it **names the device** (\"hold up a mirror\") rather than purely enacting it \u2014 slightly on-the-nose. |\n\nLegend: \u2713 right \u00b7 \u25d0 partial \u00b7 \u2717 missing/under.\n\n---\n\n## 4. Interaction & contrast flags\n\n| Check | Result | Note |\n|-------|:---:|------|\n| **Athletic \u2194 author voice** | **PASS** | Baseline flow preserved; short lines are peaks, not the default. The single most common misapplication of the method (athletic-throughout) is **avoided**. *(Lower-confidence \u2014 no voice-profile \u2014 but corroborated by the piece's own rhythm.)* |\n| **Statement-question saturation** | **N/A** | Zero present \u2014 the issue here is the *opposite* (under-dose, D3), not saturation. |\n| **Lexicon over-coining** | **PASS** | ~1 real coinage (\"the invoice\"); under the 2-cap. No jargon pile-up. |\n| **Contrast law (peaks need valleys)** | **PASS** | Real textural variation: flowing diamond passage (valley) \u2192 \"Buried, overlooked, under pressure\" (jolt) \u2192 long collapse sentence \u2192 \"It was the pressure that made the stone\" (peak) \u2192 flowing mirror close. The peaks have valleys to stand against. |\n| **Borrowed-image flag** | **WATCH** | Both anchor images (diamond focus story; \"hold up a mirror\") sit very close to the methodology's *own* canonical examples. Not a defect mechanically, but it caps the piece's felt originality \u2014 this is what pulls P4 to 8. |\n\n---\n\n## 5. The prescription\n\n### What's working (keep it \u2014 don't touch)\n- **The focus story (D2/D6).** Diamond \u2192 \"the entrepreneurs I sit with are not so different\" \u2192 resolves into the personal story by para 2. It lands the point and never overstays. This is the spine; protect it.\n- **Athletic dosing (D7).** \"Buried, overlooked, under pressure\" and \"It was the pressure that made the stone\" are placed exactly at peaks against a flowing baseline. This is the method's hardest balance and the piece nails it \u2014 do not add more short lines.\n- **Consequence-over-journalism (P1).** \"Spring of 2021\" buried mid-paragraph instead of opening the book; the collapse told as \"my body finally sent me the invoice.\" Keep that instinct.\n- **The close is a call-to-mirror, not a CTA (P2/D8).** \"I am not writing to pull you out. I am writing to hold up a mirror.\" Hold this shape.\n\n### What's not (the soft spots, in priority order)\n1. **P4 \u2014 the two anchor images are borrowed (the gate-blocker).** The diamond and the literal \"hold up a mirror\" are Dennis Ross's *own* examples (\u00a76A, \u00a71.11). The piece executes them faithfully \u2014 which is exactly why it reads a touch *template-faithful* rather than *only-this-author*. This is the single point keeping it under the 9 bar.\n2. **D1 \u2014 fire is buried.** The opening prioritises warmth over tension; the real fire (the collapse) doesn't surface until para 2.\n3. **D3 \u2014 statement questions under-dosed (zero).** The pivot in para 3 is a flat declaration where one beat of manufactured anticipation belongs.\n4. **D8 \u2014 the mirror is named, not enacted.** \"I am writing to hold up a mirror\" labels the move.\n\n### How to make it work (located, specific)\n- **Fix P4 first \u2014 swap one borrowed image for one only this author owns.** Keep the diamond *or* replace it with a lived object from this author's actual collapse (a real thing in the room the day the stairs beat him). The methodology's diamond is a *seed*, not a destination; right now the piece wears the seed. One genuinely owned image moves P4 from 8\u21929 and clears the gate. *(Per \u00a75: the lived detail is the human's to supply \u2014 don't let the canonical example stand in for it.)*\n- **Para 3, the pivot \u2014 convert one declaration into a single statement question (fixes D3 *and* D1's buried tension at once).** \"the breakdown was not the end of the story\" is currently inert. Make it a no-question-mark line that forces the reader to ask *then what was it?* \u2014 one beat of anticipation immediately before \"It was the pressure that made the stone.\" One device, at a peak, no \"?\". (Do **not** scatter statement questions through the piece \u2014 exactly one, here.)\n- **Close \u2014 enact the mirror instead of naming it.** Cut \"I am writing to hold up a mirror\" down to its function: reflect the reader's life back without labelling the move, so the device works under the reader's defences rather than announcing itself. Reserve the explicit word only if it earns a deliberate beat.\n\n---\n\n## 6. Verdict + gate\n\n**Overall:** A genuinely strong, *working* opening \u2014 it clears the **spirit** of the method (consequence over journalism, a real mirror, costly honesty, athletic writing correctly rationed) and avoids every common overdose trap. It is not template-correct-but-empty; it has a real collapse and a real reader-turn.\n\n**Gate (book chapter \u2014 9/10, no posture below 9):** **REVISE (narrow).** Postures land P1=9, P2=9, P3=9, **P4=8** \u2014 one notch under the 9 bar \u2014 and the two soft devices are D1 (fire, 7) and D3 (statement questions, 6, under-dosed). Effective score \u2248 **8.5/10**.\n\n> **For context:** at the *long-form article* gate (\"no posture below 8, no device below 7\") this would **PASS** but for D3=6. The piece is a strong book opening sitting just below the strict chapter bar \u2014 not a structural rebuild, a one-lever lift.\n\n**The three fixes that move the needle, in order:**\n1. **Swap one borrowed anchor image (diamond *or* mirror) for one this author alone owns** \u2192 lifts P4 8\u21929 and clears the gate. *(Biggest mover.)*\n2. **Convert the para-3 pivot into a single statement question** \u2192 fixes the under-dosed D3 and surfaces the buried tension (D1) in one edit.\n3. **Enact the close's mirror instead of naming it** \u2192 D8 8\u21929.\n\n---\n\n### Feedback loop\nHow did this land \u2014 was the diagnosis right? In particular: (a) is the P4 \"borrowed-image\" call fair, or is the diamond intended as a deliberate homage? (b) does the \"revise, narrowly\" verdict match your read, or should a book *opening* be gated more leniently than a mid-book chapter? I'll log the answer to `context/learnings.md \u2192 ## writ-review` and update the skill's `## Rules` if any call was off.\n\n*(Note: no `voice-profile.md` was available, so the baseline texture in the Map was inferred from the piece and the D7 overdose check is lower-confidence. A real voice-profile would firm up D7 and the P4 originality read.)*\n"}], "grading": {"expectations": [{"text": "Recognises the piece is largely working (high score, pass or near-pass)", "passed": true, "evidence": "~8.5 REVISE-narrow; 'a genuinely working book opening'"}, {"text": "Names specific working elements (focus story / diamond, consequence-led, call-to-mirror, flowing voice)", "passed": true, "evidence": "Named consequence-led, call-to-mirror close, athletic correctly rationed, diamond focus story"}, {"text": "Does NOT manufacture faults or recommend cramming in more devices", "passed": true, "evidence": "Single lever (swap one borrowed image); did not pile on devices"}], "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}}}, {"id": "eval-2-without_skill", "prompt": "Score this book opening for me \u2014 is it working, and what would you change?", "eval_id": 2, "outputs": [{"name": "review.md", "type": "text", "content": "# Review: Book Opening (\"A diamond spends most of its life in darkness\u2026\")\n\n## Verdict\n\n**Score: 7.5 / 10 \u2014 Working, with a soft spot in the middle.**\n\nThis is a strong, publishable opening. It earns its place on page one: it has a clear voice, a controlling metaphor that isn't merely decorative, a genuine moment of vulnerability with a concrete image, and \u2014 crucially \u2014 it ends by turning toward the reader instead of staying parked on the author. A reader in the target audience (burned-out founders) would keep going. The main thing holding it back from an 8.5+ is that the metaphor over-explains itself in the middle, and one or two lines reach for poetry at the cost of momentum.\n\n---\n\n## What's Working\n\n**1. The hook does real work, not just decoration.**\n\"A diamond spends most of its life in darkness\" is a confident, declarative first line. It's a familiar metaphor, but the writer immediately makes it specific and unexpected \u2014 \"it learns to bend light itself\" reframes the clich\u00e9 (diamonds as wealth/status) into something about transformation under pressure. That's the right instinct: take a known image and torque it.\n\n**2. It moves from metaphor to flesh fast.**\nThe biggest risk with a metaphor opening is staying abstract too long. This one lands the human stakes by the second paragraph and does it with the single best line in the piece: *\"my body finally sent me the invoice for fourteen-hour days, and the man who had built three companies could not climb his own stairs without stopping halfway to rest.\"* That sentence is the whole book in miniature \u2014 success, collapse, and a precise physical image. \"Sent me the invoice\" is a clever, on-theme verb for an entrepreneur. The stairs detail is concrete and humiliating in exactly the right way. This is the line that sells the book.\n\n**3. The promise to the reader is well-placed and unusual.**\nThe final paragraph is the strongest structural choice. Most founder-memoirs open by establishing authority (\"here's why you should listen to me\"). This one ends on *\"I am not writing to pull you out. I am writing to hold up a mirror.\"* That's a smart, slightly counterintuitive promise \u2014 it refuses the rescue posture and positions the book as a tool for self-recognition. It also flatters the reader's agency, which the burned-out-founder audience will respond to. Ending the opening on \"you,\" not \"me,\" is the move that makes this work as a *book* opening rather than just a nice paragraph.\n\n**4. Voice and rhythm are controlled.**\nThe prose has a measured, slightly literary cadence without tipping into purple most of the time. Sentence lengths vary well \u2014 short declaratives (\"It was the pressure that made the stone.\") punctuate longer, accumulating ones. There's a clear narrator with a point of view.\n\n---\n\n## What's Not Working\n\n**1. The metaphor explains itself one beat too long.**\nParagraph one front-loads the diamond (\"Buried, overlooked, under pressure, with no fanfare to announce it and no eyes to applaud its making\"). Then paragraph two re-explains the same idea in human terms (\"It gets cut and carved in the quiet years nobody sees, the years that look from the outside like nothing is happening at all\"). The reader gets the parallel the first time. The second restatement is the writer making sure we understood \u2014 which slightly underestimates the reader. One of these two passes should be trimmed so the metaphor implies rather than spells out.\n\n**2. \"That was the moment everything I thought I knew about success turned over in my hands\" is the weakest sentence.**\nIt's a stock memoir beat (\"everything I thought I knew about X changed\"). After the precision of the stairs line, this generic abstraction lands flat. It's telling us the significance instead of trusting the image to carry it. Cut it or replace it with something specific to *what* turned over.\n\n**3. \"The thing is\" is a verbal throat-clear.**\n\"The thing is, the breakdown was not the end of the story\" \u2014 the opener is filler and slightly deflates the gravity of the sentence that follows. The point is strong enough to stand without the conversational wind-up.\n\n**4. Two metaphors are competing at the end.**\nThe piece is built on the diamond/pressure/light image, but the final paragraph introduces a *mirror*. Both are good individually, but a metaphor opening is most powerful when it lands on its central image. Right now the diamond does the work for three paragraphs and then hands off to a different image at the climax. The mirror isn't wrong \u2014 but consider whether the closing promise can be made *through* the diamond/light metaphor (you've spent the whole piece teaching the reader that pressure makes them bend light; the payoff could pay that off) rather than swapping images at the most important moment.\n\n**5. Minor: \"in the dark right now\" repeats \"darkness\" / \"the dark\" three times.**\nDarkness (P1), \"I lived in that dark\" (P3), \"reading this in the dark right now\" (P4). The repetition is partly intentional (motif), but three is enough that the third one (\"reading this in the dark\") risks feeling like a reach, since the reader isn't literally in darkness. Watch the load on that word.\n\n---\n\n## How I'd Improve It (priority order)\n\n1. **Trim the double-explanation of the metaphor.** Keep the vivid diamond image in P1, then let P2 go straight to the entrepreneurs and the personal collapse without re-paraphrasing \"the quiet years nobody sees.\" Let the reader connect the dots.\n\n2. **Replace the \"everything I thought I knew about success turned over\" sentence** with something concrete \u2014 what specifically did the breakdown reveal? Even one specific belief named here would beat the abstraction.\n\n3. **Cut \"The thing is,\"** and let \"The breakdown was not the end of the story. It was the pressure that made the stone.\" stand on its own \u2014 that's a strong two-beat punch.\n\n4. **Decide on one closing image.** Either earn the mirror by setting it up earlier, or bring the ending home through the diamond/light metaphor so the piece resolves on the image it opened with.\n\n5. **Audit the word \"dark.\"** Keep two uses, lose or vary the third.\n\n---\n\n## One-Line Summary\n\nA genuinely strong opening with a killer central anecdote and a smart reader-facing turn at the end; tighten the middle (it over-explains its own metaphor) and resolve the diamond-vs-mirror image clash, and this jumps from a solid 7.5 to an 8.5+.\n"}], "grading": {"expectations": [{"text": "Recognises the piece is largely working (high score, pass or near-pass)", "passed": true, "evidence": "7.5/10, 'works and is publishable'"}, {"text": "Names specific working elements (focus story / diamond, consequence-led, call-to-mirror, flowing voice)", "passed": true, "evidence": "Named diamond hook, the 'invoice/could not climb his stairs' anecdote, the mirror turn"}, {"text": "Does NOT manufacture faults or recommend cramming in more devices", "passed": true, "evidence": "Flagged only real issues (over-explains, competing image); no device-stacking"}], "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}}}, {"id": "eval-3-with_skill", "prompt": "Can you review this bit of website copy and help me make it really work?", "eval_id": 3, "outputs": [{"name": "review.md", "type": "text", "content": "# Writing Review \u2014 `03_flat-corporate.md`\n\n**Methodology:** Dennis Ross \u2014 *Lead With Words* (v2)\n**Format read:** website / landing copy (copywriting)\n**Voice baseline:** no `voice-profile.md` for this author \u2014 inferred from the piece itself (lower-confidence athletic-overdose check, see Map Q4)\n**Date:** 2026-06-27\n\n> **Assumptions stated up front (no human-in-the-loop confirmation available):** This is a single block of website copy with a free-consultation CTA, so I've read the *job* as **sell/position** and the *reader* as an SMB owner weighing AI adoption. No brand voice profile exists for this author, so the \"baseline texture\" below is inferred from the copy's own dominant rhythm. Everything downstream is scored against those reads \u2014 if the real job or reader differs, re-run the Map.\n\n---\n\n## 1. The Map (the yardstick)\n\n| # | Question | Answer |\n|---|----------|--------|\n| 1 | **Job** | **Sell / position.** Win trust and convert a cold business-owner into a booked free consultation. |\n| 2 | **Reader + target feeling** | An owner/operator of an SMB who suspects AI matters but doesn't know where to start. By the close they should feel *seen* \u2014 \"this company understands my specific bottleneck\" \u2014 and want to talk. **What they actually feel: nothing.** The copy is wallpaper. |\n| 3 | **Intended emotional peaks (1\u20133)** | None are built. The charitable read of *where* a peak should sit: the moment the owner pictures their team freed from grunt work, and the CTA. Neither is staged. |\n| 4 | **Baseline voice/texture (inferred)** | Flat corporate B2B: uniform medium-length declaratives, abstract nouns (*efficiency, workflows, results*), first-person-plural \"we/our,\" hedged confidence (\"we are confident\"). There is **no distinctive author voice to detect** \u2014 which is itself the headline finding. Because there's no peak texture anywhere, the athletic-overdose check is low-confidence (and, unusually, moot \u2014 the risk here is the *opposite*). |\n| 5 | **Format** | Website/landing **copywriting**. Gate (\u00a78): *no posture below 8; the spirit test (P4) is the hardest bar in this format.* Device budget allows: a fire / statement-question lead, one 90/10 reframe of the offer, a call-to-mirror **before** the CTA, and a coined name for the offer/mechanism. |\n\n**One-line diagnosis:** This piece fails the methodology in the *opposite* direction from the usual warning. Every caution in the module's \u00a77.2 table is about **overuse** \u2014 too many statement questions, athletic-everywhere, over-coining. This copy fails by **total absence**: no device is present, no posture is alive, and the author's voice is indistinguishable from a default model draft. The fix is therefore **not** \"bolt on devices\" \u2014 it's Thinking-first (\u00a70), then a *minimal* dosed pass.\n\n---\n\n## 2. Posture scores (whole-piece, 1\u201310)\n\n| # | Posture | Score | Evidence |\n|---|---------|:---:|----------|\n| P1 | **Story, not journalism** (\u00a71.9) | **2** | Leads with *\"we believe that artificial intelligence represents a significant opportunity\u2026\"* \u2014 not even journalism (which at least has who/what/when); this is pure abstraction. Zero consequence, no \"\u2026and because of that.\" |\n| P2 | **Gifts understanding / the mirror** (\u00a71.10\u20131.11) | **2** | The reader closes knowing nothing about *themselves*. It is all \"we/our company.\" No reader pain, situation, or moment is reflected back. \"free up their teams to focus on higher-value work\" is the only faint gesture toward the reader, and it's generic. |\n| P3 | **Introspective honesty** (\u00a71.5, \u00a71.12) | **1** | Nothing costly or true is risked. \"we are confident that we can help you achieve your goals too\" is exactly the **sanitised-confidence** anti-pattern (\u00a79) \u2014 competence-signalling where a real admission was needed. |\n| P4 | **Spirit \u2014 human, not synthetic** (\u00a75) | **1** | This is the textbook output the spirit test is built to catch: *\"leveraging the latest AI tools,\" \"measurable results,\" \"fast-moving marketplace.\"* No lived specific a model couldn't invent \u2014 it reads as if a model *did* write it. In copy (the format where P4 is hardest), this is a hard fail. |\n\n**Posture verdict:** all four sit far below the 8 gate. The piece is spiritually empty before any device question is even asked.\n\n---\n\n## 3. Device scores (placement \u00d7 dosage \u00d7 execution)\n\nEach device scored 1\u201310 as a single effectiveness read across the three axes, with evidence. Note: for most devices the failure is **under-dosage (absence)** \u2014 which loses points just as overuse does.\n\n| # | Device | Place | Dose | Exec | Score | Evidence / note |\n|---|--------|:---:|:---:|:---:|:---:|-----------------|\n| D1 | **Opens with fire** (\u00a73.1) | \u2717 | \u2717 | \u2717 | **1** | The opener is the deadest line in the piece: *\"At our company, we believe that artificial intelligence represents a significant opportunity for businesses\u2026\"* \u2014 the longest, most hedged sentence is placed first. Anti-fire. |\n| D2 | **Focus story** (\u00a72.2) | \u2717 | 0 | \u2014 | **1** | Absent. No analogy/metaphor sets the reader's mind in focus; the piece never builds toward a point to land. |\n| D3 | **Statement questions** (\u00a72.1) | \u2717 | 0 | \u2014 | **1** | Zero. The nearest thing \u2014 *\"If you would like to learn more\u2026\"* \u2014 is a polite conditional, the opposite of a no-question-mark statement question. No anticipation manufactured anywhere. |\n| D4 | **Emotional sequencing** (\u00a72.4) | \u2717 | \u2014 | \u2717 | **1** | No arc. The three paragraphs (capability \u2192 approach/credentials \u2192 efficiency+CTA) are topically ordered and freely reorderable with no loss. Chronology/logic, not emotion; no suspense held. |\n| D5 | **Pairing / own lexicon** (\u00a72.3) | \u2717 | 0 | \u2014 | **1** | No coined pairing. Vocabulary is 100% stock (\"higher-value work,\" \"measurable results,\" \"fast-moving marketplace\"). Commercial consequence: nothing leads back to *this* company \u2192 they're a **price-taker** with no comp (\u00a72.3). |\n| D6 | **90/10 reframe** (\u00a73.3) | \u2717 | 0 | \u2014 | **1** | 100% familiar, 0% unexpected variable. Every line is the expected sentence. No \"Narnia door.\" |\n| D7 | **Athletic writing** (\u00a72.6) | \u2014 | 0 | \u2717 | **2** | The overdose trap is *not* the issue here \u2014 there is no athletic seasoning at all, and no distinctive voice for it to violate. Execution penalty for **literary toxins**: \"we believe **that**\u2026,\" \"in a way **that** delivers\u2026\" \u2014 the fattiest word, twice \u2014 plus hedges. The three-word peak never appears. |\n| D8 | **Call to mirror, not CTA** (\u00a73.2) | \u2713 | 1 | \u2717 | **2** | Placement is right (the close), but it's the **wrong device, unearned**: *\"please get in touch to arrange a free consultation\"* is a bare CTA \u2014 the exact \u00a79 anti-pattern. No reflection earned, so no reason to act. |\n\n**Device verdict:** every device is below the format's 7 floor. The piece is device-dead, not device-saturated.\n\n---\n\n## 4. Interaction & contrast flags\n\n- **Contrast law (\u00a77.2) \u2014 VIOLATED, severe.** Peaks need valleys; here there is neither. The tone is one uniform flat register start to finish, so even if a device were added it would have nothing to stand against. This is the single biggest structural defect and the root cause the prescription must fix first.\n- **Athletic \u2194 author voice (\u00a77.2) \u2014 inverted / N/A.** The usual flag (athletic erasing the baseline) doesn't apply: there's no athletic writing *and* no detectable author voice. The finding is the absence of any textural variation, captured under the contrast law above.\n- **Statement-question saturation \u2014 N/A.** Zero present (the failure is under, not over).\n- **Lexicon over-coining \u2014 N/A \u2192 under-coined.** Zero signature pairings; the cost is no differentiation, not jargon overload.\n\n> **Reviewer guard-rail for the rewrite:** because every score is *low from absence*, the tempting fix is to dump devices in. Don't. The methodology's spine (\u00a70, \u00a75) says Execution-first writing is \"technically correct and spiritually empty.\" Fix the **Thinking** first (consequence + one reader truth), then add the *minimum* dosed device. The rewrite must not swing from device-dead to device-saturated.\n\n---\n\n## 5. The prescription\n\n### What's working (keep it)\nHonestly thin, but real:\n- **It's clean, short, and grammatical** \u2014 three tight paragraphs, no purple over-writing to strip out. You're starting from a blank slate, not a mess.\n- **The CTA is structurally in the right place** (the close) \u2014 keep its *position*, change its *nature* (see below).\n- **One seed of a real reader consequence exists:** \"free up their teams to focus on higher-value work\" gestures at time/headspace. That buried idea is the raw material for the mirror \u2014 promote it.\n\n### What's not\n- **All four postures are dead** (P1\u2013P4, every one below the gate). No consequence, no mirror, no honesty, no spirit.\n- **Zero devices.** The opener is the deadest line; the close is a bare CTA.\n- **There is no reader in the copy** \u2014 it's \"we/our\" throughout; the reflection the buyer is supposed to see is missing.\n- **No differentiation.** Stock lexicon makes the company a price-taker with no unique sound.\n- **No arc, no contrast** \u2014 one flat register, freely reorderable paragraphs.\n\n### How to make it work (located, specific, Thinking-first)\n\n1. **Before touching a line \u2014 decide the consequence and the one reader truth (\u00a70, \u00a71.9).** Pick the owner you're actually for, e.g. *the founder buried in repetitive work who hasn't taken a clean day off in two years*. That truth becomes the mirror and gives spirit (P4) a home. Nothing below works without this step.\n2. **Replace Para 1, sentence 1** (*\"At our company, we believe that AI represents a significant opportunity\u2026\"*) with an **open-with-fire** line about the *reader's* consequence, not your belief about AI. Example direction: *\"You didn't start this business to spend Sundays doing data entry.\"* Terse, reader-facing, emotionally accurate \u2014 not a claim about the category.\n3. **Turn \"we/our\" into \"you.\"** Para 2's *\"We have worked with many clients across a wide range of sectors\"* is credentials-as-journalism \u2014 demote it from the lead and make it **one specific named consequence for one client** (a real number, a real before/after), placed lower as proof, not as the opener.\n4. **Coin exactly ONE pairing for what you do (\u00a72.3) \u2014 not five.** Give the offer/mechanism a name that leads back only to you, so you stop competing on the accountant's price sheet. Located at the key claim about your method.\n5. **Pick ONE focus device up top \u2014 a focus story *or* a 90/10 reframe, not both (dosage = 1).** One 5\u20136 sentence analogy that puts the owner's mind in focus on the cost of staying as they are, then doubles back to them. Do not also stack statement questions into a spiderweb \u2014 this short a piece holds one.\n6. **Convert the close (Para 3) from a bare CTA to a call-to-mirror that *then* earns the CTA (\u00a73.2, \u00a78).** Keep the free consultation \u2014 but precede it with one honest, reader-reflecting line so the ask is earned, not bolted on.\n7. **Strip the toxins (\u00a72.6) and plant one un-inventable specific (P4).** Cut \"we believe **that**\" and \"in a way **that**\"; land one real, lived detail (a client's actual saved hours, a real moment) \u2014 because in copy the spirit test is the hardest bar and right now the piece fails it outright.\n\n---\n\n## 6. Verdict + gate\n\n**Format gate (copywriting, \u00a78):** *no posture below 8; P4 (spirit) is the binding constraint.*\n\n**Result: REVISE \u2014 hard fail.** Postures land at 2/2/1/1 and every device at 1\u20132; the spirit test fails outright. This is not a tuning job \u2014 it's a **Thinking-first rewrite**, effectively a rebuild on the same brief. The current draft's only contribution to the next version is its brevity and the buried \"higher-value work\" idea.\n\n**Top 3 fixes that move the needle most:**\n1. **Decide the consequence + the one reader truth, and open with it** \u2014 this single move kills the journalism, builds the mirror, and gives spirit a place to live (fixes P1, P2, P4 and D1 at once).\n2. **Rewrite \"we/our\" into \"you\"** \u2014 put the reader into the copy so they close it knowing *their* situation, not your company.\n3. **Convert the bare-CTA close into a call-to-mirror that earns the consultation** \u2014 keep the ask, earn it first.\n\n**Recommended follow-on:** once rewritten, run the draft through `tool-humanizer` (deep mode if a voice profile is added) \u2014 the current spirit-dead texture is exactly what it's built to catch.\n"}], "grading": {"expectations": [{"text": "Flags it as describe/persuade marketing-speak failing the postures (no story, no understanding/mirror)", "passed": true, "evidence": "Postures dead (P1-P4 = 2/2/1/1), spirit test failed outright"}, {"text": "Prescribes ADDING the right devices (fire, statement question, consequence lead) and a call-to-mirror instead of the generic CTA", "passed": true, "evidence": "Prescribed open on reader consequence, 'we'->'you', convert bare CTA to an earned call-to-mirror"}, {"text": "Correctly treats under-use as the defect here (recommends adding), not over-use", "passed": true, "evidence": "Framed as absence/under-use needing a Thinking-first rebuild, not a device bolt-on"}], "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}}}, {"id": "eval-3-without_skill", "prompt": "Can you review this bit of website copy and help me make it really work?", "eval_id": 3, "outputs": [{"name": "review.md", "type": "text", "content": "# Copy Review \u2014 AI Consultancy Website Section\n\n## The honest headline\n\nThis copy is grammatically clean and inoffensive, and that's exactly the problem. It reads like it could belong to any one of ten thousand consultancies. Nothing in it is yours. A prospect skims it, nods vaguely, and forgets it before they've reached the contact form. Right now it's wallpaper, not selling.\n\nBelow: what's working, what's holding it back, and a rewrite you can ship.\n\n---\n\n## What's working\n\n- **It's clear and correct.** No jargon soup, no broken sentences, no over-claiming. That's a real floor to build on \u2014 plenty of copy fails even this.\n- **The logic is sound.** AI \u2192 efficiency \u2192 competitiveness \u2192 talk to us. The skeleton of a persuasive argument is here; it's just wearing a beige suit.\n- **There's a clear CTA.** \"Free consultation\" is a fine, low-friction ask.\n\n---\n\n## What's not working\n\n**1. It's all \"we,\" almost no \"you.\"**\nThe first thing a reader subconsciously checks is \"is this about me?\" This copy opens with \"At our company, we believe\u2026\" \u2014 the weakest possible start. It talks about what *you* do and believe far more than what the *reader* gets. Count the pronouns: it's heavily seller-centric.\n\n**2. Every claim is a category clich\u00e9.**\n\"Improve efficiency and reduce costs,\" \"streamline workflows,\" \"automate repetitive tasks,\" \"free up teams to focus on higher-value work,\" \"stay competitive in a fast-moving marketplace.\" These aren't wrong \u2014 they're just the exact phrases every competitor uses. Interchangeable language signals an interchangeable provider. The reader's pattern-matcher files you under \"generic\" and moves on.\n\n**3. Zero specificity, zero proof.**\n\"We have worked with many clients across a wide range of sectors\" is the tell. *Many*, *wide range*, *measurable results* \u2014 all unfalsifiable filler. There's no number, no named outcome, no industry, no example, no timeframe. Vague claims of proof are read as the absence of proof. One concrete result (\"cut a 12-person ops team's reporting time by 9 hours a week\") would do more than the entire current draft.\n\n**4. No differentiation \u2014 no reason to pick *you*.**\nNothing here answers \"why this firm and not the other five I'm comparing?\" There's no point of view, no method, no enemy, no opinion. \"Our approach is to help business owners understand which tools are right for them\" describes literally every AI consultant. What do you believe that others don't?\n\n**5. It states benefits instead of making the reader feel a problem.**\n\"Efficiency is the key to staying competitive\" is an abstraction floating in mid-air. It never names a moment of pain the reader recognises \u2014 the report that eats every Friday, the hire they can't justify, the competitor who quotes in minutes while they take days. Specific tension sells; abstract benefit doesn't.\n\n**6. Flat, low-energy rhythm.**\nThree paragraphs of similar length and cadence, each a polite, even-toned statement. No short punchy line, no contrast, nothing that makes the eye stop. The prose has no pulse.\n\n**7. The CTA is weak and risk-free in the wrong way.**\n\"Please get in touch to arrange a free consultation\" is passive (\"please get in touch\") and gives the reader no reason to act *now* and nothing concrete to expect. What happens on the call? What will they walk away with even if they don't buy?\n\n---\n\n## How to fix it \u2014 the priorities\n\n1. **Flip to the reader.** Lead with their world, their problem, their goal. Make \"you\" the subject of most sentences. Demote \"we.\"\n2. **Replace one clich\u00e9 with one specific.** Every generic claim should be swapped for a concrete number, named outcome, or recognisable scenario. If you can't be specific, cut the claim.\n3. **Add proof.** At least one real result with a number. If you can't share figures, use a concrete before/after or a named sector and the change you drove.\n4. **Take a position.** Say one thing your competitors wouldn't. A point of view is what makes a reader remember you.\n5. **Open on tension, not on yourself.** Start with the problem the reader feels, not \"At our company, we believe.\"\n6. **Make the CTA concrete and forward.** Tell them exactly what they get and what to expect. Lower perceived effort, raise perceived payoff.\n7. **Vary the rhythm.** Use a short, sharp line to create a stop. Let one sentence land hard.\n\n---\n\n## Rewrite (illustrative \u2014 swap in your real specifics)\n\n> **Your team is spending hours on work a machine should be doing.**\n>\n> Reporting that eats every Friday afternoon. Data copied by hand from one system to another. The same questions answered in email a hundred times a month. It adds up \u2014 and while you're stuck doing it, faster competitors are quoting, shipping, and answering customers before you've finished the admin.\n>\n> We help business owners find the two or three AI tools that will actually move the needle \u2014 and we set them up, properly, so they pay off in weeks, not \"someday.\" No 40-tool wishlist. No science projects. Just the handful that earn their keep.\n>\n> Recent example: we cut one 12-person operations team's weekly reporting from 11 hours to 90 minutes \u2014 inside a month.\n>\n> **Book a free 30-minute audit.** You'll leave with the three highest-impact automations for your business, mapped out \u2014 whether or not you work with us.\n\nNotes on the rewrite:\n- Opens on the reader's pain, in concrete images, not \"we believe.\"\n- Names a real (placeholder) number for proof \u2014 replace with a true one.\n- Stakes a position (\"two or three tools,\" \"no 40-tool wishlist\") that implies an enemy: over-engineered, never-shipped AI projects.\n- The CTA promises a specific takeaway and removes risk (\"whether or not you work with us\").\n- Mixes a punchy opener with longer explanatory lines to give it rhythm.\n\n---\n\n## One-line verdict\n\nThe bones are fine; the copy is just generic, seller-centric, and unproven. Make it about the reader, swap every clich\u00e9 for a specific, add one real number, and stake a position \u2014 and it goes from forgettable to convincing.\n"}], "grading": {"expectations": [{"text": "Flags it as describe/persuade marketing-speak failing the postures (no story, no understanding/mirror)", "passed": true, "evidence": "'Generic, seller-centric (we believe... opener), built on category cliches'"}, {"text": "Prescribes ADDING the right devices (fire, statement question, consequence lead) and a call-to-mirror instead of the generic CTA", "passed": false, "evidence": "Prescribed pain-led open + stronger CTA + a concrete result, but not the fire/statement-question/call-to-mirror framework"}, {"text": "Correctly treats under-use as the defect here (recommends adding), not over-use", "passed": true, "evidence": "Recommended adding pain/proof \u2014 correctly treats under-use as the defect"}], "summary": {"passed": 2, "failed": 1, "total": 3, "pass_rate": 0.667}}}, {"id": "eval-4-with_skill", "prompt": "Review chapter 1 of my book 'Thinking Outside Your Brain' against the Dennis Ross 'Lead With Words' methodology \u2014 what's working, what's not, and what gets it to a 9?", "eval_id": 4, "outputs": [{"name": "review.md", "type": "text", "content": "# Writing Review \u2014 *Thinking Outside Your Brain*, Chapter 1: \"The Landscape That Won't Stand Still\"\n\n**Methodology:** Dennis Ross \u2014 *Lead With Words* (v2)\n**Format read:** Book chapter \u2192 **9/10 gate, no posture below 9**\n**Baseline voice:** No `voice-profile.md` available. Baseline inferred from the chapter's own dominant rhythm (see Map Q4). **The athletic-overdose check is therefore lower-confidence** \u2014 I flag where the read would change depending on whether the clipped texture is the author's native voice or peak seasoning.\n\n---\n\n## 1. The Map (the yardstick \u2014 built before any score)\n\n| # | Question | Read |\n|---|----------|------|\n| **Job** | sell / teach / move / position | **Move + position** (with a teaching set-up). This is an opening chapter: its job is to reframe the reader's relationship with AI \u2014 from *loyal to tools* to *loyal to a way of thinking* \u2014 and to make them feel *this book is for me*, then hand off to the EVOLVE system and the \"90 percent human\" thesis. It is not yet teaching the method; it is earning the right to. |\n| **Reader + target feeling** | who, feeling at close | A solo/small-business owner who \"built something from nothing\" and is \"carrying it on your own\" \u2014 time-poor, possibly burned by a bad ChatGPT experience, quietly worried they're behind. By the close they should feel **seen** (\"he gets me\"), **relieved** (\"I'm not behind \u2014 and it wasn't me failing\"), **reframed** (\"the question was the variable, not the tool\"), and **pulled forward** into chapter 2. |\n| **Intended peaks (1\u20133)** | where the heat is | (a) the **divorce** frame \u2014 opener \"I divorced my AI\" and the callback close \"It's not me. It's you.\"; (b) the **turn** \u2014 \"The tool wasn't the variable. I was the variable.\"; (c) the **map vs compass** reframe \u2014 \"North is north.\" |\n| **Baseline voice/texture** | inferred | Brisk, conversational, second-person, confident. A mix of medium declaratives and **frequent deliberate fragments** for emphasis (\"Not less. More.\", \"No loyalty. No guilt. Just pragmatism.\"). **Inferred, not profiled** \u2014 I cannot tell from one chapter whether the heavy fragmentation is native voice or applied athletic seasoning. This ambiguity is load-bearing for D7 below. |\n| **Format** | sets device budget + gate | **Book chapter.** Full device stack permitted; gate is **9/10, no posture below 9.** |\n\n**Assumptions stated up front (no voice-profile, no icp.md):** reader profile and peaks are inferred from the chapter's own signals (the \"you built something from nothing\" passage, the McKinsey owner anecdote). If the author's real baseline voice is *flowing/long-sentence*, the D7 score drops further; if it is *natively punchy*, D7 rises a point. Everything below is scored against this Map.\n\n---\n\n## 2. Posture scores (whole-piece, 1\u201310)\n\n> Postures are always-on. The book-chapter gate requires **none below 9.**\n\n| # | Posture | Score | Evidence + read |\n|---|---------|:---:|-----------------|\n| **P1** | Story, not journalism (leads with consequence) | **8** | Opens on pure consequence \u2014 \"**I divorced my AI.**\" \u2014 not \"In 2023 I started using ChatGPT.\" The whole chapter is framed as a *relationship*, which is consequence-led by design. Loses a point because the recap slips toward journalism in patches (\"Back in 2023, I met Chad. GPT-3.5.\" / \"Then Chad evolved into GPT-4\") \u2014 the *what/when* leads there before the *because* catches up. |\n| **P2** | Gifts understanding / the mirror | **8** | Strong, repeated mirror work: \"If you've tried AI and walked away thinking 'this isn't for me'\u2026\", \"you are not behind. You are about to start in the right place.\", and the owner who \"went back to writing quotes by hand at ten o'clock at night.\" The reader is invited to see *themselves*. Held back from 9 because the chapter spends heavy real estate on **the author's** love-triangle (Chad/Chadette/Claude); the methodology's test is that the reader closes knowing *their* life, not the author's \u2014 and the final beat (\"Sorry Chadette\") returns the spotlight to the author. |\n| **P3** | Introspective honesty (a costly, true thing said) | **6** | **The weakest posture and the main reason the gate fails.** The narrator is consistently the in-control expert: \"tested hundreds of them\", \"two decades of doing the work\", \"shipping work faster than I could think of it.\" The \"honest part\" \u2014 \"Claude will change too\" \u2014 is *candour*, not *cost*. Guilt is gestured at (\"Felt guilty at first\") then played for a wink. There is no readiness-question-1 moment (\u00a71.7) \u2014 nothing the author has *never said*, nothing that risks the reader's opinion of him. Confession is sanitised into competence (anti-pattern \u00a79). |\n| **P4** | Spirit (human, not synthetic) | **8** | Genuinely lived, model-resistant detail: naming the models **Chad / Chadette**, \"ten o'clock at night\", \"wasting a Saturday\", the McKinsey 88% footnote. Passes the spirit test more than it fails. Docked because stretches of generic thought-leader cadence creep in (\"The organisations getting real results aren't using better tools. They're thinking about the work differently.\") \u2014 those lines a model could have produced. |\n\n**Posture gate check:** P1 8 \u00b7 P2 8 \u00b7 P3 6 \u00b7 P4 8 \u2014 **all four are below 9; P3 is well below.** The chapter does not clear the posture gate.\n\n---\n\n## 3. Device scores (placement \u00d7 dosage \u00d7 execution, with evidence)\n\n> Devices are *placed* and *dosed*. Over- and under-use both lose points. Scarcity and contrast are the source of power.\n\n| # | Device | Placement | Dosage | Execution | Score | Evidence + read |\n|---|--------|:---:|:---:|:---:|:---:|-----------------|\n| **D1** | Opens with fire | \u2713 first line | \u2713 the opener | \u2713 terse, accurate | **9** | \"**I divorced my AI.**\" Three words, a declaration that detonates a statement-question (divorced it *how*? *why*?). Exactly where fire belongs, dosed as the opener not the whole piece. Best single craft beat in the chapter. |\n| **D2** | Focus story | \u2717 misplaced | ~ | \u2713 when it lands | **6** | The genuine external-analogy focus story is the **map vs compass** (\"A compass doesn't care about the terrain. North is north.\") \u2014 but it arrives ~85% in, *not* at the open where the focus device's home is (\u00a72.2). The opening \"focus\" work is the autobiographical divorce frame, which is throughline, not a \u00a72.2 focus analogy. There's also analogy competition \u2014 divorce, map/compass, and managing-your-ops-manager all do reframe duty. Move a focus analogy up top; let one analogy own the open. |\n| **D3** | Statement questions | \u2713 open/transitions | \u2713 a few, woven | ~ | **7** | Good ones land \u2014 \"Then OpenAI killed Chad.\", \"The tool wasn't the variable. I was the variable.\" Not saturated (good). But most are *resolved in the next breath*, so little suspense is *held* \u2014 the \"spiderweb\" (\u00a72.1) never forms; no question is left pulling the reader 100 pages deep. Real anticipation is left on the table. |\n| **D4** | Emotional sequencing | \u2713 the spine | \u2713 1 ordering | \u2713 | **8** | Textbook \"start later\" (\u00a72.4): opens at the *end* of the ChatGPT relationship (the divorce), then doubles back to 2023 \u2192 Chad \u2192 Chadette \u2192 Claude \u2192 the realisation. The reader wonders what led here. Docked one point because after the opening flash it proceeds largely linearly; the one bold ordering decision isn't reinforced with further re-sequencing. |\n| **D5** | Pairing / own lexicon | \u2713 key claims | \u2717 over dose | \u2713 sticky | **7** | The coinages are strong and ownable \u2014 **Chad/Chadette** (models as people), and the lovely common-noun turn \"**They had a Chadette experience**.\" But the chapter also carries \"**90 percent human**\" and \"**EVOLVE**\" as headline coins \u2014 that's ~4 signature pairings competing in one opening chapter, over the 1\u20132 target (\u00a72.3). They mostly survive because they sit at different levels (character / concept / system), but it's at the ceiling. Pick the one that must own this chapter \u2014 Chad/Chadette earns it \u2014 and let the others lead in their own chapters. |\n| **D6** | 90/10 reframe | \u2713 each major point | \u2713 rationed | \u2713 | **8** | Well-handled familiar\u2192twist moves: the **manage-your-ops-manager** analogy (\"That's exactly how AI works. Not technically. Practically.\"), the **map/compass**, the marriage frame itself. 90% familiar, 10% unexpected variable, doubled back to the reader's own life \u2014 on-method. |\n| **D7** | **Athletic writing** | \u2713 peaks present | \u2717 **pervasive \u2014 overdose risk** | \u2713 toxins gone | **5** | **The central craft problem.** Clipped fragments run *throughout*, not only at peaks: \"Cancelled the subscription. Deleted the app.\" \u00b7 \"Longer. More generic. Less like a conversation, more like a lecture.\" \u00b7 \"The problem comes first. The tool follows.\" \u00b7 \"No loyalty. No guilt. Just pragmatism.\" \u00b7 \"Not less. More.\" \u00b7 \"Tools change. People change.\" \u00b7 \"North is north.\" The staccato **intensifies toward the close** \u2014 exactly where it should be most rationed \u2014 so the three real peaks (the divorce, \"I was the variable\", \"North is north\") lose contrast: when everything is clipped, nothing clips. **Lower-confidence flag (no voice-profile):** if this is the author's native register, treat it as voice not overdose and the score lifts a point; but the **missing-contrast defect (\u00a77.2 contrast law) stands regardless of baseline** \u2014 there are too few flowing valleys for these peaks to stand against. |\n| **D8** | Call to mirror, not CTA | \u2713 the close | \u2713 1 | ~ | **7** | Correctly avoids a CTA \u2014 no \"buy my course.\" The genuine call-to-mirror beat (\"you are not behind. You are about to start in the right place.\") lands *mid-chapter*, which is good. But the actual final note \u2014 \"Sorry Chadette. It's not me. It's you.\" \u2014 is a charming author-gag callback that pulls the spotlight back to *his* breakup rather than leaving the reader inside *their own* reflection (\u00a73.2). The button is fun; it just shouldn't be the last word the reader holds. |\n\n---\n\n## 4. Interaction & contrast flags\n\n- **Athletic \u2194 baseline voice (primary flag):** pervasive fragmentation, worsening toward the end. Whether this reads as overdose or native voice depends on a profile we don't have \u2014 but the **contrast law** is breached either way: the peaks don't pop because the surface is already uniformly clipped. **All-peak = no peak.**\n- **Missing valleys:** the back third (from \"The tool wasn't the variable\u2026\" to the close) loses textural variation almost entirely. The explanatory passages that should *breathe* (\"You do not need to track any of this\u2026\") are themselves chopped, so there's no low ground for the high ground.\n- **Lexicon over-coining (secondary flag):** four signature coins (Chad/Chadette \u00b7 \"Chadette experience\" \u00b7 \"90 percent human\" \u00b7 EVOLVE) in one opening chapter sits at/over the \u00a72.3 ceiling. They narrowly survive by living at different levels, but in aggregate they slightly dilute one another.\n- **Mirror vs author-story balance:** P2 and P3 both pull the same direction \u2014 the chapter leans heavily on the author's relationship arc; it needs *more reader* and *more cost*, less competence.\n- **Statement-question suspense:** not saturated (healthy), but *too quickly resolved* \u2014 the opposite failure: anticipation released before it can compound.\n\n---\n\n## 5. The prescription (located, specific edits)\n\n### What's working \u2014 keep it\n- **The fire opener.** \"I divorced my AI.\" is the chapter's best beat \u2014 three words, consequence-led, opens a question. Do not touch it.\n- **The emotional sequencing.** Opening at the *end* of the ChatGPT relationship and flashing back is correct and effective. Keep the structure.\n- **The mirror passages.** \"you are not behind. You are about to start in the right place.\" and the ten-o'clock-at-night owner are real reader-mirrors. Keep them; they're carrying P2.\n- **Chad / Chadette and \"a Chadette experience.\"** The most ownable lexicon in the piece \u2014 sticky, human, leads back only to this author. Make this the chapter's *one* signature coin.\n- **The manage-your-ops-manager 90/10.** \"That's exactly how AI works. Not technically. Practically.\" \u2014 clean familiar\u2192reframe. Keep.\n\n### What's not\n- **Introspective honesty is sanitised to competence (P3 = 6).** The narrator never pays a real cost; \"Claude will change too\" is candour, not confession. There is no *\"I've never told anyone this\"* beat.\n- **Athletic writing is pervasive, not peaked (D7 = 5), and it kills the contrast the peaks need.** The close is almost all fragments.\n- **The focus story is at the bottom, not the top (D2 = 6).** The compass analogy is strong but late; the open relies on autobiography to focus the reader.\n- **The chapter closes on the author's gag, not the reader's mirror (D8 = 7, drags P2).** \"It's not me. It's you.\" returns the spotlight to him.\n- **Coinage is at/over the ceiling (D5 = 7).** Four headline coins competing in chapter one.\n\n### How to make it work (the surgical moves)\n1. **Plant one costly admission near \"When Chad was brilliant, I didn't know why it worked. I just knew it did.\"** Right now that ignorance costs nothing. Make it cost something concrete and unflattering \u2014 name what the tool-chasing actually took from you (a blown client deadline, money sunk into tools you abandoned, the burnout only gestured at in \"90 percent human\"). One true, slightly embarrassing sentence here lifts P3 from 6 toward 9 and is the single highest-leverage edit in the chapter.\n2. **De-staccato the back third and the close; reserve the fragments for the three real peaks.** Restore flowing sentences through the explanatory stretches \u2014 \"You do not need to track any of this\u2026\", \"The organisations getting real results\u2026\", and the \"90 percent human\" section \u2014 so the surface has valleys again. Then let the fragments land *only* on the divorce, \"I was the variable\", and \"North is north.\" Contrast is the whole point: give the peaks low ground to rise from.\n3. **Move a focus analogy up top, and end on the reader's mirror \u2014 not Chadette.** Bring a compass-style external analogy near the open (or promote map/compass earlier) so the reader's mind is focused before the autobiography starts. Then recast the final beat so the last thing the reader holds is *their own* reflection (\"Tools change. People change. The thinking underneath stays the same. And that is yours to keep.\" is already that line) \u2014 keep \"Sorry Chadette\" only as a one-line button *after* the reader-facing close, not as the closing thought itself.\n4. **Demote the competing coins.** Let **Chad/Chadette** own chapter one. Introduce \"90 percent human\" and \"EVOLVE\" as deliberate single hand-offs at the very end (the chapter already does this) \u2014 but stop them from doing signature work mid-chapter so the one coin that should stick, sticks.\n\n---\n\n## 6. Verdict + 9/10 gate\n\n**Verdict: REVISE.** This is a genuinely good opening chapter \u2014 a top-tier fire opener, correct emotional sequencing, real mirror work, and an ownable lexicon. It is *close*. But the book-chapter gate is unforgiving: **9/10, no posture below 9**, and the chapter does not clear it.\n\n- **Postures:** P1 8 \u00b7 P2 8 \u00b7 **P3 6** \u00b7 P4 8 \u2192 fails (P3 well below 9; none reach 9).\n- **Devices:** D1 9 \u00b7 D2 6 \u00b7 D3 7 \u00b7 D4 8 \u00b7 D5 7 \u00b7 D6 8 \u00b7 **D7 5** \u00b7 D8 7 \u2192 two devices (D2, D7) below the relaxed device floor; D7 is the structural one.\n\n**Overall read: ~7/10. Gate: NOT PASSED \u2192 REVISE.**\n\n### The 1\u20133 fixes that move the needle most\n1. **Add one costly, never-said-before admission** (around \"I didn't know why it worked\") \u2014 converts P3 6\u2192~9 and is the difference between *competent* and *trusted*. Highest leverage.\n2. **Fix the athletic overdose / restore valleys** in the back third and close \u2014 converts D7 5\u2192~8 and lets the three peaks actually peak.\n3. **Land a focus analogy up top and end on the reader's mirror, not the author's gag** \u2014 lifts D2 and protects P2, so the chapter closes inside the reader rather than inside the author's breakup.\n\nMake fix #1 and #2 and this chapter clears 9. As it stands, it is a strong revise, not a pass.\n\n---\n\n*Note: this review ran without a `brand_context/voice-profile.md`. The baseline texture was inferred from the chapter itself, so the D7 athletic-overdose judgement is lower-confidence \u2014 though the missing-contrast defect holds regardless of baseline. A voice-profile would sharpen whether the pervasive fragmentation is native register or applied seasoning.*\n"}], "grading": {"expectations": [{"text": "Produces a complete Map plus posture and device scores against Dennis Ross with line/section evidence", "passed": true, "evidence": "Full Map + postures P1-P4 + device scores (D7 athletic 5) with line evidence"}, {"text": "Gives a coherent verdict against the 9/10 book gate with the top 1-3 highest-leverage fixes", "passed": true, "evidence": "Verdict REVISE ~7/10 vs the 9/10 book gate; 3 top fixes named"}, {"text": "Prescriptions are located and specific (named sections/lines), not generic advice", "passed": true, "evidence": "Located fixes: de-staccato the back third; named opener and close"}], "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}}}, {"id": "eval-4-without_skill", "prompt": "Review chapter 1 of my book 'Thinking Outside Your Brain' against the Dennis Ross 'Lead With Words' methodology \u2014 what's working, what's not, and what gets it to a 9?", "eval_id": 4, "outputs": [{"name": "review.md", "type": "text", "content": "# Editorial Review \u2014 *Thinking Outside Your Brain*, Chapter 1: \"The Landscape That Won't Stand Still\"\n\n**Reviewed against:** Dennis Ross's \"Lead With Words\" methodology\n**Reviewer's note on method:** I'm applying word-first editorial principles consistent with a lead-with-words philosophy \u2014 open on your strongest words, make every word earn its place, let lead sentences carry the weight, choose concrete over abstract, and trust a strong line instead of restating it. The judgments below are my own editorial assessment of the prose, not a checklist read from any reference file.\n\n**Current score: 7 / 10**\n\nA genuinely strong draft with a knockout opening, a controlling metaphor that fits the audience, and several lines that earn their place. It's held back by repetition, a sagging middle, an under-seeded payoff (EVOLVE), and a crowded ending. Crucially, getting to a 9 is mostly *subtraction plus two structural fixes* \u2014 not a rewrite.\n\n---\n\n## What's Working\n\n**1. The opening leads with words \u2014 three of them.**\n\"I divorced my AI.\" is the whole book's thesis compressed into a hook that creates an instant question and a faint smile. It's a textbook lead: short, declarative, concrete, and it withholds just enough to pull the reader into the next line. The follow-through (\"Cancelled the subscription. Deleted the app. Walked away...\") keeps the staccato momentum before the first long sentence arrives. This is the strongest asset in the chapter and it's doing exactly what a chapter-one lead should.\n\n**2. The controlling metaphor is well-chosen for the reader.**\nPersonifying the tools as partners \u2014 Chad (GPT-3.5/4), Chadette, then Claude \u2014 turns an abstract, intimidating tech subject into an emotional, legible story for a non-technical small-business audience. The \"relationship\" frame does real cognitive work: it lets a reader who fears AI feel something familiar (falling for someone, being let down, moving on) instead of something technical.\n\n**3. The one-liner \"buttons\" are excellent.**\nSeveral section-closers land with balance and memorability:\n- \"The tool wasn't the variable. I was the variable.\"\n- \"A compass doesn't care about the terrain. North is north.\"\n- \"The landscape doesn't just change. It changes underneath you while you're standing on it.\"\n- \"The problem comes first. The tool follows.\"\n\nThese antithesis constructions are the prose at its best \u2014 they're quotable, they compress the argument, and they reward the reader for arriving at them.\n\n**4. Audience attunement is precise.**\n\"You built something from nothing, you are carrying it on your own, and you have heard that AI might take some of the weight off.\" That sentence names the reader's exact lived reality. The operations-manager analogy (para 61\u201369) is the smartest move in the chapter: it translates the unfamiliar (managing AI) into the deeply familiar (holding a team member to a standard), which is precisely how this reader already thinks.\n\n**5. The reframe removes shame.**\n\"That was not you failing... It means nobody showed you the thinking that makes it work.\" For a hesitant reader who already bounced off ChatGPT once, this is persuasive and generous \u2014 it converts a closed door into an open one.\n\n**6. Concrete proof beats abstraction where it counts.**\nThe McKinsey 88% stat and the \"writing quotes by hand at ten o'clock at night\" anecdote both ground the argument in specifics. The late-night quoting image is the single most vivid moment after the opening \u2014 it's exactly the kind of concrete detail a lead-with-words pass wants more of.\n\n---\n\n## What's Not Working\n\n**1. The same point is made three or four times.** *(biggest issue)*\n\"Nobody showed you how to communicate with it\" / \"the tool changed underneath you\" is established narratively by para 19, then re-stated almost verbatim in 21, 23, and 25, and again in 71 and 75. Once the reader has it, repetition stops persuading and starts diluting. Leading with words means trusting the strong line and cutting the restatement. Paras 21/23/25 should compress to two tight paragraphs.\n\n**2. The middle sags under abstraction.**\nParas 45\u201357 (the \"loyal to a way of thinking\" section) circle the thesis several times: \"stop being loyal to tools,\" \"I didn't need to chase the next platform,\" \"the thinking,\" \"the problem comes first.\" The ideas are right, but the section tells more than it shows and runs long. Para 57 in particular does a lot of abstract explaining where one concrete image would do more.\n\n**3. Filler transitions announce significance instead of delivering it.**\n\"From there, something shifted.\" / \"And from there, something deeper developed.\" / \"That realisation changed everything.\" These connective phrases \u2014 and \"something shifted\" appears twice \u2014 are throat-clearing. They tell the reader a moment is important rather than letting the concrete claim *be* important. Cut them and let the next sentence land cold.\n\n**4. EVOLVE is named but not seeded.** *(biggest structural issue)*\nThe chapter's stated payoff \u2014 a six-step thinking system called EVOLVE \u2014 appears at para 83 as a label and is never given even one line of texture. We don't get a hint of what the six steps gesture at, why \"EVOLVE,\" or what it does differently. The compass metaphor around it (87\u201389) is excellent, but it's decorating a name the reader has no handhold on yet. The reader leaves chapter one able to recite a word, not anticipate a method.\n\n**5. Two \"big ideas\" crowd the close.**\n\"Ninety percent human\" (93\u201397) arrives right after EVOLVE and competes with it for the headline slot. Both are framework-level concepts landing back-to-back in the final stretch, and the chapter never draws the relationship between them. The result is a slightly diffuse ending where one strong idea would hit harder than two half-developed ones.\n\n**6. The gendered \"nagging partner\" beats risk a wince.**\nChadette is \"she,\" \"wouldn't listen,\" turned \"everything into a lecture,\" \"stopped listening\" \u2014 and \"I've had partners like this before. It never ends well.\" Played against a male \"Chad,\" this leans on a tired nagging-woman trope that a meaningful slice of readers will catch and resent. The joke is good; the gendering is an unnecessary liability.\n\n**7. Invented version specifics undercut authority.**\n\"GPT-5.2,\" \"Chadette Version 5.2,\" \"OpenAI killed Chad\" \u2014 the precise version numbers are both inaccurate-sounding and date-stamped. The argument doesn't need them; a knowledgeable reader snags on them, and they'll age badly. Vaguer is safer here.\n\n**8. The ending order slightly deflates itself.**\nThe resonant line \u2014 \"Tools change. People change. The thinking underneath stays the same. And that is yours to keep.\" \u2014 is the true emotional close. But the chapter then tacks on the next-chapter teaser *and* the Chadette joke (\"Sorry Chadette. It's not me. It's you.\"), so the joke gets the last word and undercuts the line that should land last.\n\n**9. Polish flag.** An orphaned footnote marker \"\u2078\" sits on the McKinsey stat in chapter one \u2014 looks like numbering carried over from a fuller manuscript.\n\n---\n\n## How to Get It to a 9\n\nThe path is mostly subtraction. None of this is a rewrite.\n\n1. **Cut 15\u201320% by collapsing the restatements.** Make the \"nobody showed you how\" point *once*, definitively, and delete the echoes in 21/23/25 and 71/75. Tighten the 45\u201357 stretch so the thesis is stated, proven, and left alone.\n\n2. **Delete the announcing transitions.** Strike \"something shifted,\" \"something deeper developed,\" \"that realisation changed everything.\" Let the concrete sentence after each one carry itself. This alone sharpens the whole middle.\n\n3. **Seed EVOLVE earlier and give it one line of texture.** Drop a single sentence that hints at what the six steps *do* (or what the acronym promises) before the compass metaphor, so the name has a handhold. Right now the reader is asked to anticipate a method they can't picture.\n\n4. **Pick ONE big idea for the chapter and subordinate the other.** The chapter's spine is \"be loyal to the thinking, not the tool.\" Let EVOLVE be the named promise of that thinking, and demote \"ninety percent human\" to a one-line teaser tied explicitly to the thesis \u2014 or give it its own clean beat instead of stacking it on EVOLVE's heels.\n\n5. **De-risk the specifics.** Drop \"5.2\" and the exact version numbers; keep the emotional arc (it changed overnight) without the brittle factual claims.\n\n6. **Soften the gendered beats** so the partner joke survives without the nagging-woman trope \u2014 neutralize a couple of the \"she stopped listening / lecture\" lines or balance the framing.\n\n7. **Re-order the close.** End on \"...that is yours to keep.\" Move the Chadette button to a set-apart P.S. tag, or trim the teaser so the joke and the resonant line aren't fighting for the last beat.\n\n8. **Fix the orphaned footnote marker.**\n\nDo items 1\u20134 and this jumps to a 9: the opening, the metaphor, the analogy, and the one-liners are already 9-level. What's keeping it at 7 is that the draft doesn't yet trust its own best words \u2014 it repeats them, cushions them with filler, and then crowds the landing. Cut to the strong lines and the chapter rises to meet its first three words.\n"}], "grading": {"expectations": [{"text": "Produces a complete Map plus posture and device scores against Dennis Ross with line/section evidence", "passed": false, "evidence": "General 7/10 review; no structured posture/device scoring against Dennis Ross"}, {"text": "Gives a coherent verdict against the 9/10 book gate with the top 1-3 highest-leverage fixes", "passed": true, "evidence": "7/10 with an explicit 'path to a 9' and concrete fixes"}, {"text": "Prescriptions are located and specific (named sections/lines), not generic advice", "passed": true, "evidence": "Specific moves: cut the restatements, seed EVOLVE with one line, subordinate one big idea"}], "summary": {"passed": 2, "failed": 1, "total": 3, "pass_rate": 0.667}}}], "previous_feedback": {}, "previous_outputs": {}, "benchmark": {"metadata": {"skill_name": "writ-review", "timestamp": "iteration-1", "evals_run": ["over-athletic-overdose", "journalism-opener", "working-piece-restraint", "flat-corporate-underdose", "real-toyb-chapter-1"], "runs_per_configuration": 1}, "runs": [{"eval_id": 0, "eval_name": "over-athletic-overdose", "configuration": "with_skill", "run_number": 1, "result": {"pass_rate": 1.0, "passed": 3, "failed": 0, "total": 3, "time_seconds": 147.5, "tokens": 72501, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Flags athletic / three-word writing as overused or an overdose, not a strength", "passed": true, "evidence": "Scored athletic device 2/10 on overdose; flagged 100% saturation + contrast-law failure"}, {"text": "Prescribes restoring flowing sentences and reserving short lines for 1-2 emotional peaks", "passed": true, "evidence": "Top fix: de-saturate, reserve the staccato for one peak"}, {"text": "Does NOT recommend adding more short / punchy / athletic sentences", "passed": true, "evidence": "No recommendation to add punch \u2014 the opposite"}], "notes": []}, {"eval_id": 0, "eval_name": "over-athletic-overdose", "configuration": "without_skill", "run_number": 1, "result": {"pass_rate": 1.0, "passed": 3, "failed": 0, "total": 3, "time_seconds": 53.7, "tokens": 49092, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Flags athletic / three-word writing as overused or an overdose, not a strength", "passed": true, "evidence": "Identified 'one staccato gear, so the impact flattens'"}, {"text": "Prescribes restoring flowing sentences and reserving short lines for 1-2 emotional peaks", "passed": true, "evidence": "Prescribed 'vary sentence length'"}, {"text": "Does NOT recommend adding more short / punchy / athletic sentences", "passed": true, "evidence": "Recommended restraint, not more staccato"}], "notes": []}, {"eval_id": 1, "eval_name": "journalism-opener", "configuration": "with_skill", "run_number": 1, "result": {"pass_rate": 1.0, "passed": 3, "failed": 0, "total": 3, "time_seconds": 202.7, "tokens": 76639, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Identifies the opening as journalism (who/what/where/when) failing the story-not-journalism posture", "passed": true, "evidence": "Called it 'pure journalism (born-1972 chronology)'; postures 2/2/2/3"}, {"text": "Prescribes leading with the consequence and/or emotional (non-chronological) sequencing", "passed": true, "evidence": "Prescribed re-sequence to open at the burnout (emotional sequencing)"}, {"text": "Treats the flat chronology as the core problem rather than merely praising its clarity", "passed": true, "evidence": "Framed craft-not-material; flat chronology = the core failure"}], "notes": []}, {"eval_id": 1, "eval_name": "journalism-opener", "configuration": "without_skill", "run_number": 1, "result": {"pass_rate": 1.0, "passed": 3, "failed": 0, "total": 3, "time_seconds": 57.1, "tokens": 49349, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Identifies the opening as journalism (who/what/where/when) failing the story-not-journalism posture", "passed": true, "evidence": "'A CV in prose, summarising a life from 30,000 feet'"}, {"text": "Prescribes leading with the consequence and/or emotional (non-chronological) sequencing", "passed": true, "evidence": "'Open in the scene of the collapse rather than born in 1972'"}, {"text": "Treats the flat chronology as the core problem rather than merely praising its clarity", "passed": true, "evidence": "Treated buried hinge / chronology as the central problem"}], "notes": []}, {"eval_id": 2, "eval_name": "working-piece-restraint", "configuration": "with_skill", "run_number": 1, "result": {"pass_rate": 1.0, "passed": 3, "failed": 0, "total": 3, "time_seconds": 180.4, "tokens": 75451, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Recognises the piece is largely working (high score, pass or near-pass)", "passed": true, "evidence": "~8.5 REVISE-narrow; 'a genuinely working book opening'"}, {"text": "Names specific working elements (focus story / diamond, consequence-led, call-to-mirror, flowing voice)", "passed": true, "evidence": "Named consequence-led, call-to-mirror close, athletic correctly rationed, diamond focus story"}, {"text": "Does NOT manufacture faults or recommend cramming in more devices", "passed": true, "evidence": "Single lever (swap one borrowed image); did not pile on devices"}], "notes": []}, {"eval_id": 2, "eval_name": "working-piece-restraint", "configuration": "without_skill", "run_number": 1, "result": {"pass_rate": 1.0, "passed": 3, "failed": 0, "total": 3, "time_seconds": 54.0, "tokens": 49562, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Recognises the piece is largely working (high score, pass or near-pass)", "passed": true, "evidence": "7.5/10, 'works and is publishable'"}, {"text": "Names specific working elements (focus story / diamond, consequence-led, call-to-mirror, flowing voice)", "passed": true, "evidence": "Named diamond hook, the 'invoice/could not climb his stairs' anecdote, the mirror turn"}, {"text": "Does NOT manufacture faults or recommend cramming in more devices", "passed": true, "evidence": "Flagged only real issues (over-explains, competing image); no device-stacking"}], "notes": []}, {"eval_id": 3, "eval_name": "flat-corporate-underdose", "configuration": "with_skill", "run_number": 1, "result": {"pass_rate": 1.0, "passed": 3, "failed": 0, "total": 3, "time_seconds": 154.9, "tokens": 73536, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Flags it as describe/persuade marketing-speak failing the postures (no story, no understanding/mirror)", "passed": true, "evidence": "Postures dead (P1-P4 = 2/2/1/1), spirit test failed outright"}, {"text": "Prescribes ADDING the right devices (fire, statement question, consequence lead) and a call-to-mirror instead of the generic CTA", "passed": true, "evidence": "Prescribed open on reader consequence, 'we'->'you', convert bare CTA to an earned call-to-mirror"}, {"text": "Correctly treats under-use as the defect here (recommends adding), not over-use", "passed": true, "evidence": "Framed as absence/under-use needing a Thinking-first rebuild, not a device bolt-on"}], "notes": []}, {"eval_id": 3, "eval_name": "flat-corporate-underdose", "configuration": "without_skill", "run_number": 1, "result": {"pass_rate": 0.667, "passed": 2, "failed": 1, "total": 3, "time_seconds": 53.1, "tokens": 49392, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Flags it as describe/persuade marketing-speak failing the postures (no story, no understanding/mirror)", "passed": true, "evidence": "'Generic, seller-centric (we believe... opener), built on category cliches'"}, {"text": "Prescribes ADDING the right devices (fire, statement question, consequence lead) and a call-to-mirror instead of the generic CTA", "passed": false, "evidence": "Prescribed pain-led open + stronger CTA + a concrete result, but not the fire/statement-question/call-to-mirror framework"}, {"text": "Correctly treats under-use as the defect here (recommends adding), not over-use", "passed": true, "evidence": "Recommended adding pain/proof \u2014 correctly treats under-use as the defect"}], "notes": []}, {"eval_id": 4, "eval_name": "real-toyb-chapter-1", "configuration": "with_skill", "run_number": 1, "result": {"pass_rate": 1.0, "passed": 3, "failed": 0, "total": 3, "time_seconds": 191.0, "tokens": 78472, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Produces a complete Map plus posture and device scores against Dennis Ross with line/section evidence", "passed": true, "evidence": "Full Map + postures P1-P4 + device scores (D7 athletic 5) with line evidence"}, {"text": "Gives a coherent verdict against the 9/10 book gate with the top 1-3 highest-leverage fixes", "passed": true, "evidence": "Verdict REVISE ~7/10 vs the 9/10 book gate; 3 top fixes named"}, {"text": "Prescriptions are located and specific (named sections/lines), not generic advice", "passed": true, "evidence": "Located fixes: de-staccato the back third; named opener and close"}], "notes": []}, {"eval_id": 4, "eval_name": "real-toyb-chapter-1", "configuration": "without_skill", "run_number": 1, "result": {"pass_rate": 0.667, "passed": 2, "failed": 1, "total": 3, "time_seconds": 112.3, "tokens": 56843, "tool_calls": 0, "errors": 0}, "expectations": [{"text": "Produces a complete Map plus posture and device scores against Dennis Ross with line/section evidence", "passed": false, "evidence": "General 7/10 review; no structured posture/device scoring against Dennis Ross"}, {"text": "Gives a coherent verdict against the 9/10 book gate with the top 1-3 highest-leverage fixes", "passed": true, "evidence": "7/10 with an explicit 'path to a 9' and concrete fixes"}, {"text": "Prescriptions are located and specific (named sections/lines), not generic advice", "passed": true, "evidence": "Specific moves: cut the restatements, seed EVOLVE with one line, subordinate one big idea"}], "notes": []}], "run_summary": {"with_skill": {"pass_rate": {"mean": 1.0, "stddev": 0.0, "min": 1.0, "max": 1.0}, "time_seconds": {"mean": 175.3, "stddev": 21.035, "min": 147.5, "max": 202.7}, "tokens": {"mean": 75319.8, "stddev": 2136.42, "min": 72501, "max": 78472}}, "without_skill": {"pass_rate": {"mean": 0.867, "stddev": 0.163, "min": 0.667, "max": 1.0}, "time_seconds": {"mean": 66.04, "stddev": 23.171, "min": 53.1, "max": 112.3}, "tokens": {"mean": 50847.6, "stddev": 3001.476, "min": 49092, "max": 56843}}, "delta": {"pass_rate": "+0.133", "time_seconds": "+109.3", "tokens": "+24472"}}, "notes": ["Evals 0,1,2 (overdose, journalism, working-recognition) pass in BOTH configs - non-discriminating; the base model is already a strong line editor for these catches.", "The skill's discriminating value shows on evals 3 & 4: structured posture/device scoring against the methodology, the 9/10 gate, and the call-to-mirror framing, which the no-skill baseline does not produce.", "With-skill costs ~2.7x time and ~1.5x tokens vs baseline (full methodology load + structured scoring).", "Iteration-2 idea: make evals probe methodology-specific behaviour the baseline can't replicate (explicit scorecard, gate verdict, dosage-table reasoning) to sharpen the signal.", "eval-2 with-skill noticed the test input reuses the methodology's own canonical examples (diamond/mirror) - a test-input artifact; use an original 'working' sample next iteration."]}};
+
+    // ---- State ----
+    let feedbackMap = {};  // run_id -> feedback text
+    let currentIndex = 0;
+    let visitedRuns = new Set();
+
+    // ---- Init ----
+    async function init() {
+      // Load saved feedback from server — but only if this isn't a fresh
+      // iteration (indicated by previous_feedback being present). When
+      // previous feedback exists, the feedback.json on disk is stale from
+      // the prior iteration and should not pre-fill the textareas.
+      const hasPrevious = Object.keys(EMBEDDED_DATA.previous_feedback || {}).length > 0
+        || Object.keys(EMBEDDED_DATA.previous_outputs || {}).length > 0;
+      if (!hasPrevious) {
+        try {
+          const resp = await fetch("/api/feedback");
+          const data = await resp.json();
+          if (data.reviews) {
+            for (const r of data.reviews) feedbackMap[r.run_id] = r.feedback;
+          }
+        } catch { /* first run, no feedback yet */ }
+      }
+
+      document.getElementById("skill-name").textContent = EMBEDDED_DATA.skill_name;
+      showRun(0);
+
+      // Wire up feedback auto-save
+      const textarea = document.getElementById("feedback");
+      let saveTimeout = null;
+      textarea.addEventListener("input", () => {
+        clearTimeout(saveTimeout);
+        document.getElementById("feedback-status").textContent = "";
+        saveTimeout = setTimeout(() => saveCurrentFeedback(), 800);
+      });
+    }
+
+    // ---- Navigation ----
+    function navigate(delta) {
+      const newIndex = currentIndex + delta;
+      if (newIndex >= 0 && newIndex < EMBEDDED_DATA.runs.length) {
+        saveCurrentFeedback();
+        showRun(newIndex);
+      }
+    }
+
+    function updateNavButtons() {
+      document.getElementById("prev-btn").disabled = currentIndex === 0;
+      document.getElementById("next-btn").disabled =
+        currentIndex === EMBEDDED_DATA.runs.length - 1;
+    }
+
+    // ---- Show a run ----
+    function showRun(index) {
+      currentIndex = index;
+      const run = EMBEDDED_DATA.runs[index];
+
+      // Progress
+      document.getElementById("progress").textContent =
+        `${index + 1} of ${EMBEDDED_DATA.runs.length}`;
+
+      // Prompt
+      document.getElementById("prompt-text").textContent = run.prompt;
+
+      // Config badge
+      const badge = document.getElementById("config-badge");
+      const configMatch = run.id.match(/(with_skill|without_skill|new_skill|old_skill)/);
+      if (configMatch) {
+        const config = configMatch[1];
+        const isBaseline = config === "without_skill" || config === "old_skill";
+        badge.textContent = config.replace(/_/g, " ");
+        badge.className = "config-badge " + (isBaseline ? "config-baseline" : "config-primary");
+        badge.style.display = "inline-block";
+      } else {
+        badge.style.display = "none";
+      }
+
+      // Outputs
+      renderOutputs(run);
+
+      // Previous outputs
+      renderPrevOutputs(run);
+
+      // Grades
+      renderGrades(run);
+
+      // Previous feedback
+      const prevFb = (EMBEDDED_DATA.previous_feedback || {})[run.id];
+      const prevEl = document.getElementById("prev-feedback");
+      if (prevFb) {
+        document.getElementById("prev-feedback-text").textContent = prevFb;
+        prevEl.style.display = "block";
+      } else {
+        prevEl.style.display = "none";
+      }
+
+      // Feedback
+      document.getElementById("feedback").value = feedbackMap[run.id] || "";
+      document.getElementById("feedback-status").textContent = "";
+
+      updateNavButtons();
+
+      // Track visited runs and promote done button when all visited
+      visitedRuns.add(index);
+      const doneBtn = document.getElementById("done-btn");
+      if (visitedRuns.size >= EMBEDDED_DATA.runs.length) {
+        doneBtn.classList.add("ready");
+      }
+
+      // Scroll main content to top
+      document.querySelector(".main").scrollTop = 0;
+    }
+
+    // ---- Render outputs ----
+    function renderOutputs(run) {
+      const container = document.getElementById("outputs-body");
+      container.innerHTML = "";
+
+      const outputs = run.outputs || [];
+      if (outputs.length === 0) {
+        container.innerHTML = '<div class="empty-state">No output files</div>';
+        return;
+      }
+
+      for (const file of outputs) {
+        const fileDiv = document.createElement("div");
+        fileDiv.className = "output-file";
+
+        // Always show file header with download link
+        const header = document.createElement("div");
+        header.className = "output-file-header";
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = file.name;
+        header.appendChild(nameSpan);
+        const dlBtn = document.createElement("a");
+        dlBtn.className = "dl-btn";
+        dlBtn.textContent = "Download";
+        dlBtn.download = file.name;
+        dlBtn.href = getDownloadUri(file);
+        header.appendChild(dlBtn);
+        fileDiv.appendChild(header);
+
+        const content = document.createElement("div");
+        content.className = "output-file-content";
+
+        if (file.type === "text") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          content.appendChild(pre);
+        } else if (file.type === "image") {
+          const img = document.createElement("img");
+          img.src = file.data_uri;
+          img.alt = file.name;
+          content.appendChild(img);
+        } else if (file.type === "pdf") {
+          const iframe = document.createElement("iframe");
+          iframe.src = file.data_uri;
+          content.appendChild(iframe);
+        } else if (file.type === "xlsx") {
+          renderXlsx(content, file.data_b64);
+        } else if (file.type === "binary") {
+          const a = document.createElement("a");
+          a.className = "download-link";
+          a.href = file.data_uri;
+          a.download = file.name;
+          a.textContent = "Download " + file.name;
+          content.appendChild(a);
+        } else if (file.type === "error") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          pre.style.color = "var(--red)";
+          content.appendChild(pre);
+        }
+
+        fileDiv.appendChild(content);
+        container.appendChild(fileDiv);
+      }
+    }
+
+    // ---- XLSX rendering via SheetJS ----
+    function renderXlsx(container, b64Data) {
+      try {
+        const raw = Uint8Array.from(atob(b64Data), c => c.charCodeAt(0));
+        const wb = XLSX.read(raw, { type: "array" });
+
+        for (let i = 0; i < wb.SheetNames.length; i++) {
+          const sheetName = wb.SheetNames[i];
+          const ws = wb.Sheets[sheetName];
+
+          if (wb.SheetNames.length > 1) {
+            const sheetLabel = document.createElement("div");
+            sheetLabel.style.cssText =
+              "font-weight:600; font-size:0.8rem; color:#b0aea5; margin-top:0.5rem; margin-bottom:0.25rem;";
+            sheetLabel.textContent = "Sheet: " + sheetName;
+            container.appendChild(sheetLabel);
+          }
+
+          const htmlStr = XLSX.utils.sheet_to_html(ws, { editable: false });
+          const wrapper = document.createElement("div");
+          wrapper.innerHTML = htmlStr;
+          container.appendChild(wrapper);
+        }
+      } catch (err) {
+        container.textContent = "Error rendering spreadsheet: " + err.message;
+      }
+    }
+
+    // ---- Grades ----
+    function renderGrades(run) {
+      const section = document.getElementById("grades-section");
+      const content = document.getElementById("grades-content");
+
+      if (!run.grading) {
+        section.style.display = "none";
+        return;
+      }
+
+      const grading = run.grading;
+      section.style.display = "block";
+      // Reset to collapsed
+      content.classList.remove("open");
+      document.getElementById("grades-arrow").classList.remove("open");
+
+      const summary = grading.summary || {};
+      const expectations = grading.expectations || [];
+
+      let html = '<div style="padding: 1rem;">';
+
+      // Summary line
+      const passRate = summary.pass_rate != null
+        ? Math.round(summary.pass_rate * 100) + "%"
+        : "?";
+      const badgeClass = summary.pass_rate >= 0.8 ? "grade-pass" : summary.pass_rate >= 0.5 ? "" : "grade-fail";
+      html += '<div class="grades-summary">';
+      html += '<span class="grade-badge ' + badgeClass + '">' + passRate + '</span>';
+      html += '<span>' + (summary.passed || 0) + ' passed, ' + (summary.failed || 0) + ' failed of ' + (summary.total || 0) + '</span>';
+      html += '</div>';
+
+      // Assertions list
+      html += '<ul class="assertion-list">';
+      for (const exp of expectations) {
+        const statusClass = exp.passed ? "pass" : "fail";
+        const statusIcon = exp.passed ? "\u2713" : "\u2717";
+        html += '<li class="assertion-item">';
+        html += '<span class="assertion-status ' + statusClass + '">' + statusIcon + '</span>';
+        html += '<span>' + escapeHtml(exp.text) + '</span>';
+        if (exp.evidence) {
+          html += '<div class="assertion-evidence">' + escapeHtml(exp.evidence) + '</div>';
+        }
+        html += '</li>';
+      }
+      html += '</ul>';
+
+      html += '</div>';
+      content.innerHTML = html;
+    }
+
+    function toggleGrades() {
+      const content = document.getElementById("grades-content");
+      const arrow = document.getElementById("grades-arrow");
+      content.classList.toggle("open");
+      arrow.classList.toggle("open");
+    }
+
+    // ---- Previous outputs (collapsible) ----
+    function renderPrevOutputs(run) {
+      const section = document.getElementById("prev-outputs-section");
+      const content = document.getElementById("prev-outputs-content");
+      const prevOutputs = (EMBEDDED_DATA.previous_outputs || {})[run.id];
+
+      if (!prevOutputs || prevOutputs.length === 0) {
+        section.style.display = "none";
+        return;
+      }
+
+      section.style.display = "block";
+      // Reset to collapsed
+      content.classList.remove("open");
+      document.getElementById("prev-outputs-arrow").classList.remove("open");
+
+      // Render the files into the content area
+      content.innerHTML = "";
+      const wrapper = document.createElement("div");
+      wrapper.style.padding = "1rem";
+
+      for (const file of prevOutputs) {
+        const fileDiv = document.createElement("div");
+        fileDiv.className = "output-file";
+
+        const header = document.createElement("div");
+        header.className = "output-file-header";
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = file.name;
+        header.appendChild(nameSpan);
+        const dlBtn = document.createElement("a");
+        dlBtn.className = "dl-btn";
+        dlBtn.textContent = "Download";
+        dlBtn.download = file.name;
+        dlBtn.href = getDownloadUri(file);
+        header.appendChild(dlBtn);
+        fileDiv.appendChild(header);
+
+        const fc = document.createElement("div");
+        fc.className = "output-file-content";
+
+        if (file.type === "text") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          fc.appendChild(pre);
+        } else if (file.type === "image") {
+          const img = document.createElement("img");
+          img.src = file.data_uri;
+          img.alt = file.name;
+          fc.appendChild(img);
+        } else if (file.type === "pdf") {
+          const iframe = document.createElement("iframe");
+          iframe.src = file.data_uri;
+          fc.appendChild(iframe);
+        } else if (file.type === "xlsx") {
+          renderXlsx(fc, file.data_b64);
+        } else if (file.type === "binary") {
+          const a = document.createElement("a");
+          a.className = "download-link";
+          a.href = file.data_uri;
+          a.download = file.name;
+          a.textContent = "Download " + file.name;
+          fc.appendChild(a);
+        }
+
+        fileDiv.appendChild(fc);
+        wrapper.appendChild(fileDiv);
+      }
+
+      content.appendChild(wrapper);
+    }
+
+    function togglePrevOutputs() {
+      const content = document.getElementById("prev-outputs-content");
+      const arrow = document.getElementById("prev-outputs-arrow");
+      content.classList.toggle("open");
+      arrow.classList.toggle("open");
+    }
+
+    // ---- Feedback (saved to server -> feedback.json) ----
+    function saveCurrentFeedback() {
+      const run = EMBEDDED_DATA.runs[currentIndex];
+      const text = document.getElementById("feedback").value;
+
+      if (text.trim() === "") {
+        delete feedbackMap[run.id];
+      } else {
+        feedbackMap[run.id] = text;
+      }
+
+      // Build reviews array from map
+      const reviews = [];
+      for (const [run_id, feedback] of Object.entries(feedbackMap)) {
+        if (feedback.trim()) {
+          reviews.push({ run_id, feedback, timestamp: new Date().toISOString() });
+        }
+      }
+
+      fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reviews, status: "in_progress" }),
+      }).then(() => {
+        document.getElementById("feedback-status").textContent = "Saved";
+      }).catch(() => {
+        // Static mode or server unavailable — no-op on auto-save,
+        // feedback will be downloaded on final submit
+        document.getElementById("feedback-status").textContent = "Will download on submit";
+      });
+    }
+
+    // ---- Done ----
+    function showDoneDialog() {
+      // Save current textarea to feedbackMap (but don't POST yet)
+      const run = EMBEDDED_DATA.runs[currentIndex];
+      const text = document.getElementById("feedback").value;
+      if (text.trim() === "") {
+        delete feedbackMap[run.id];
+      } else {
+        feedbackMap[run.id] = text;
+      }
+
+      // POST once with status: complete — include ALL runs so the model
+      // can distinguish "no feedback" (looks good) from "not reviewed"
+      const reviews = [];
+      const ts = new Date().toISOString();
+      for (const r of EMBEDDED_DATA.runs) {
+        reviews.push({ run_id: r.id, feedback: feedbackMap[r.id] || "", timestamp: ts });
+      }
+      const payload = JSON.stringify({ reviews, status: "complete" }, null, 2);
+      fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: payload,
+      }).then(() => {
+        document.getElementById("done-overlay").classList.add("visible");
+      }).catch(() => {
+        // Server not available (static mode) — download as file
+        const blob = new Blob([payload], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "feedback.json";
+        a.click();
+        URL.revokeObjectURL(url);
+        document.getElementById("done-overlay").classList.add("visible");
+      });
+    }
+
+    function closeDoneDialog() {
+      // Reset status back to in_progress
+      saveCurrentFeedback();
+      document.getElementById("done-overlay").classList.remove("visible");
+    }
+
+    // ---- Toast ----
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("visible");
+      setTimeout(() => toast.classList.remove("visible"), 2000);
+    }
+
+    // ---- Keyboard nav ----
+    document.addEventListener("keydown", (e) => {
+      // Don't capture when typing in textarea
+      if (e.target.tagName === "TEXTAREA") return;
+
+      if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        e.preventDefault();
+        navigate(-1);
+      } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+        e.preventDefault();
+        navigate(1);
+      }
+    });
+
+    // ---- Util ----
+    function getDownloadUri(file) {
+      if (file.data_uri) return file.data_uri;
+      if (file.data_b64) return "data:application/octet-stream;base64," + file.data_b64;
+      if (file.type === "text") return "data:text/plain;charset=utf-8," + encodeURIComponent(file.content);
+      return "#";
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // ---- View switching ----
+    function switchView(view) {
+      document.querySelectorAll(".view-tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".view-panel").forEach(p => p.classList.remove("active"));
+      document.querySelector(`[onclick="switchView('${view}')"]`).classList.add("active");
+      document.getElementById("panel-" + view).classList.add("active");
+    }
+
+    // ---- Benchmark rendering ----
+    function renderBenchmark() {
+      const data = EMBEDDED_DATA.benchmark;
+      if (!data) return;
+
+      // Show the tabs
+      document.getElementById("view-tabs").style.display = "flex";
+
+      const container = document.getElementById("benchmark-content");
+      const summary = data.run_summary || {};
+      const metadata = data.metadata || {};
+      const notes = data.notes || [];
+
+      let html = "";
+
+      // Header
+      html += "<h2 style='font-family: Poppins, sans-serif; margin-bottom: 0.5rem;'>Benchmark Results</h2>";
+      html += "<p style='color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.25rem;'>";
+      if (metadata.skill_name) html += "<strong>" + escapeHtml(metadata.skill_name) + "</strong> &mdash; ";
+      if (metadata.timestamp) html += metadata.timestamp + " &mdash; ";
+      if (metadata.evals_run) html += "Evals: " + metadata.evals_run.join(", ") + " &mdash; ";
+      html += (metadata.runs_per_configuration || "?") + " runs per configuration";
+      html += "</p>";
+
+      // Summary table
+      html += '<table class="benchmark-table">';
+
+      function fmtStat(stat, pct) {
+        if (!stat) return "—";
+        const suffix = pct ? "%" : "";
+        const m = pct ? (stat.mean * 100).toFixed(0) : stat.mean.toFixed(1);
+        const s = pct ? (stat.stddev * 100).toFixed(0) : stat.stddev.toFixed(1);
+        return m + suffix + " ± " + s + suffix;
+      }
+
+      function deltaClass(val) {
+        if (!val) return "";
+        const n = parseFloat(val);
+        if (n > 0) return "benchmark-delta-positive";
+        if (n < 0) return "benchmark-delta-negative";
+        return "";
+      }
+
+      // Discover config names dynamically (everything except "delta")
+      const configs = Object.keys(summary).filter(k => k !== "delta");
+      const configA = configs[0] || "config_a";
+      const configB = configs[1] || "config_b";
+      const labelA = configA.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const labelB = configB.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const a = summary[configA] || {};
+      const b = summary[configB] || {};
+      const delta = summary.delta || {};
+
+      html += "<thead><tr><th>Metric</th><th>" + escapeHtml(labelA) + "</th><th>" + escapeHtml(labelB) + "</th><th>Delta</th></tr></thead>";
+      html += "<tbody>";
+
+      html += "<tr><td><strong>Pass Rate</strong></td>";
+      html += "<td>" + fmtStat(a.pass_rate, true) + "</td>";
+      html += "<td>" + fmtStat(b.pass_rate, true) + "</td>";
+      html += '<td class="' + deltaClass(delta.pass_rate) + '">' + (delta.pass_rate || "—") + "</td></tr>";
+
+      // Time (only show row if data exists)
+      if (a.time_seconds || b.time_seconds) {
+        html += "<tr><td><strong>Time (s)</strong></td>";
+        html += "<td>" + fmtStat(a.time_seconds, false) + "</td>";
+        html += "<td>" + fmtStat(b.time_seconds, false) + "</td>";
+        html += '<td class="' + deltaClass(delta.time_seconds) + '">' + (delta.time_seconds ? delta.time_seconds + "s" : "—") + "</td></tr>";
+      }
+
+      // Tokens (only show row if data exists)
+      if (a.tokens || b.tokens) {
+        html += "<tr><td><strong>Tokens</strong></td>";
+        html += "<td>" + fmtStat(a.tokens, false) + "</td>";
+        html += "<td>" + fmtStat(b.tokens, false) + "</td>";
+        html += '<td class="' + deltaClass(delta.tokens) + '">' + (delta.tokens || "—") + "</td></tr>";
+      }
+
+      html += "</tbody></table>";
+
+      // Per-eval breakdown (if runs data available)
+      const runs = data.runs || [];
+      if (runs.length > 0) {
+        const evalIds = [...new Set(runs.map(r => r.eval_id))].sort((a, b) => a - b);
+
+        html += "<h3 style='font-family: Poppins, sans-serif; margin-bottom: 0.75rem;'>Per-Eval Breakdown</h3>";
+
+        const hasTime = runs.some(r => r.result && r.result.time_seconds != null);
+        const hasErrors = runs.some(r => r.result && r.result.errors > 0);
+
+        for (const evalId of evalIds) {
+          const evalRuns = runs.filter(r => r.eval_id === evalId);
+          const evalName = evalRuns[0] && evalRuns[0].eval_name ? evalRuns[0].eval_name : "Eval " + evalId;
+
+          html += "<h4 style='font-family: Poppins, sans-serif; margin: 1rem 0 0.5rem; color: var(--text);'>" + escapeHtml(evalName) + "</h4>";
+          html += '<table class="benchmark-table">';
+          html += "<thead><tr><th>Config</th><th>Run</th><th>Pass Rate</th>";
+          if (hasTime) html += "<th>Time (s)</th>";
+          if (hasErrors) html += "<th>Crashes During Execution</th>";
+          html += "</tr></thead>";
+          html += "<tbody>";
+
+          // Group by config and render with average rows
+          const configGroups = [...new Set(evalRuns.map(r => r.configuration))];
+          for (let ci = 0; ci < configGroups.length; ci++) {
+            const config = configGroups[ci];
+            const configRuns = evalRuns.filter(r => r.configuration === config);
+            if (configRuns.length === 0) continue;
+
+            const rowClass = ci === 0 ? "benchmark-row-with" : "benchmark-row-without";
+            const configLabel = config.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+
+            for (const run of configRuns) {
+              const r = run.result || {};
+              const prClass = r.pass_rate >= 0.8 ? "benchmark-delta-positive" : r.pass_rate < 0.5 ? "benchmark-delta-negative" : "";
+              html += '<tr class="' + rowClass + '">';
+              html += "<td>" + configLabel + "</td>";
+              html += "<td>" + run.run_number + "</td>";
+              html += '<td class="' + prClass + '">' + ((r.pass_rate || 0) * 100).toFixed(0) + "% (" + (r.passed || 0) + "/" + (r.total || 0) + ")</td>";
+              if (hasTime) html += "<td>" + (r.time_seconds != null ? r.time_seconds.toFixed(1) : "—") + "</td>";
+              if (hasErrors) html += "<td>" + (r.errors || 0) + "</td>";
+              html += "</tr>";
+            }
+
+            // Average row
+            const rates = configRuns.map(r => (r.result || {}).pass_rate || 0);
+            const avgRate = rates.reduce((a, b) => a + b, 0) / rates.length;
+            const avgPrClass = avgRate >= 0.8 ? "benchmark-delta-positive" : avgRate < 0.5 ? "benchmark-delta-negative" : "";
+            html += '<tr class="benchmark-row-avg ' + rowClass + '">';
+            html += "<td>" + configLabel + "</td>";
+            html += "<td>Avg</td>";
+            html += '<td class="' + avgPrClass + '">' + (avgRate * 100).toFixed(0) + "%</td>";
+            if (hasTime) {
+              const times = configRuns.map(r => (r.result || {}).time_seconds).filter(t => t != null);
+              html += "<td>" + (times.length ? (times.reduce((a, b) => a + b, 0) / times.length).toFixed(1) : "—") + "</td>";
+            }
+            if (hasErrors) html += "<td></td>";
+            html += "</tr>";
+          }
+          html += "</tbody></table>";
+
+          // Per-assertion detail for this eval
+          const runsWithExpectations = {};
+          for (const config of configGroups) {
+            runsWithExpectations[config] = evalRuns.filter(r => r.configuration === config && r.expectations && r.expectations.length > 0);
+          }
+          const hasAnyExpectations = Object.values(runsWithExpectations).some(runs => runs.length > 0);
+          if (hasAnyExpectations) {
+            // Collect all unique assertion texts across all configs
+            const allAssertions = [];
+            const seen = new Set();
+            for (const config of configGroups) {
+              for (const run of runsWithExpectations[config]) {
+                for (const exp of (run.expectations || [])) {
+                  if (!seen.has(exp.text)) {
+                    seen.add(exp.text);
+                    allAssertions.push(exp.text);
+                  }
+                }
+              }
+            }
+
+            html += '<table class="benchmark-table" style="margin-top: 0.5rem;">';
+            html += "<thead><tr><th>Assertion</th>";
+            for (const config of configGroups) {
+              const label = config.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+              html += "<th>" + escapeHtml(label) + "</th>";
+            }
+            html += "</tr></thead><tbody>";
+
+            for (const assertionText of allAssertions) {
+              html += "<tr><td>" + escapeHtml(assertionText) + "</td>";
+
+              for (const config of configGroups) {
+                html += "<td>";
+                for (const run of runsWithExpectations[config]) {
+                  const exp = (run.expectations || []).find(e => e.text === assertionText);
+                  if (exp) {
+                    const cls = exp.passed ? "benchmark-delta-positive" : "benchmark-delta-negative";
+                    const icon = exp.passed ? "\u2713" : "\u2717";
+                    html += '<span class="' + cls + '" title="Run ' + run.run_number + ': ' + escapeHtml(exp.evidence || "") + '">' + icon + "</span> ";
+                  } else {
+                    html += "— ";
+                  }
+                }
+                html += "</td>";
+              }
+              html += "</tr>";
+            }
+            html += "</tbody></table>";
+          }
+        }
+      }
+
+      // Notes
+      if (notes.length > 0) {
+        html += '<div class="benchmark-notes">';
+        html += "<h3>Analysis Notes</h3>";
+        html += "<ul>";
+        for (const note of notes) {
+          html += "<li>" + escapeHtml(note) + "</li>";
+        }
+        html += "</ul></div>";
+      }
+
+      container.innerHTML = html;
+    }
+
+    // ---- Start ----
+    init();
+    renderBenchmark();
+  </script>
+</body>
+</html>

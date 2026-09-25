@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "Flags it as describe/persuade marketing-speak failing the postures (no story, no understanding/mirror)",
+      "passed": true,
+      "evidence": "'Generic, seller-centric (we believe... opener), built on category cliches'"
+    },
+    {
+      "text": "Prescribes ADDING the right devices (fire, statement question, consequence lead) and a call-to-mirror instead of the generic CTA",
+      "passed": false,
+      "evidence": "Prescribed pain-led open + stronger CTA + a concrete result, but not the fire/statement-question/call-to-mirror framework"
+    },
+    {
+      "text": "Correctly treats under-use as the defect here (recommends adding), not over-use",
+      "passed": true,
+      "evidence": "Recommended adding pain/proof \u2014 correctly treats under-use as the defect"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 1,
+    "total": 3,
+    "pass_rate": 0.667
+  }
+}

@@ -36,12 +36,54 @@ Defaults live in `context/memory-config.json`:
 environment. Codex support is best-effort through `codex exec` with hooks disabled. If the
 summarizer is missing, fails, or times out, capture writes a bounded fallback summary.
 
+## Capture Scope
+
+When Team OS is signed in, Stop-hook capture sends the captured session block to
+the hosted Memory API as a raw capture event. The event is staging data: it is
+not returned by recall and does not create `memory_sources` until consolidation
+publishes a durable team/client memory. The local `.aos.md` file is still written
+as the durable source for backup/replay.
+
+Consolidation is not just embedding. The client claims a batch of staged
+captures, sends the combined session block to Claude headless
+(`claude -p --model haiku --no-session-persistence`), and asks for structured
+JSON: publish clear durable memories, send uncertain/sensitive items to review,
+or discard captures with no durable value. Only published items are embedded and
+written to `memory_sources`.
+
+The hosted server does not run the LLM consolidation step in the normal workflow.
+It stores captures, enforces scope, issues claim tokens, and accepts the final
+publish/review/discard result. Local user instances run
+`memory-consolidation-tick.cjs`, which calls `memory-consolidate.cjs`. The tick
+runs after capture, schedules a delayed retry for the capture quiet period, and
+also runs from SessionStart/Command Centre status checks so captures do not stay
+pending just because the first attempt was too early.
+
+Local solo capture defaults to private local memory. The local user id is stored
+under `.command-centre/local-memory-user.json`, so capture, bootstrap, reindex
+and recall use the
+same private scope without extra flags. Shared `system` capture is now only for
+explicit admin/service paths.
+
+| Mode | Required context | Default visibility | Access rule |
+|------|------------------|--------------------|-------------|
+| Local solo | none | `private` | Uses the stable local user id. |
+| TeamOS root | saved Team OS login | staging `team` | Active member can stage; publication waits for consolidation. |
+| TeamOS client | saved Team OS login + `clients/{slug}` cwd | staging `client` | Server validates client write access on capture/sync. |
+| Direct hosted ingest | `--api-ingest`/`--team-api` + hosted auth | explicit | Legacy/admin path that writes final memory directly. |
+| Hosted system | team + user + `MEMORY_CAPTURE_VISIBILITY=system` + `MEMORY_CAPTURE_ALLOW_SYSTEM=1` or `--allow-system` | explicit `system` | Admin/service only. Not used by normal Stop-hook capture. |
+
+The same rules apply when passing `--team`, `--user`, `--client`, and
+`--visibility` flags directly. Missing hosted scope fails closed instead of
+falling back to shared memory.
+
 ## Manual Test
 
 From `command-centre/`:
 
 ```bash
 node scripts/memory-capture.cjs --session --session-id testrun --transcript "<path-to-transcript.jsonl>" --force
+npm run memory:consolidate
 npm run memory:status
 ```
 
@@ -49,7 +91,8 @@ Expected result:
 
 - today's `.aos.md` file exists under `context/memory/`
 - a raw `.jsonl` copy exists under `context/transcripts/{YYYY-MM-DD}/`
-- `memory:status` shows today's capture as present and indexed
+- when signed in to Team OS, the captured block appears as a pending capture event
+- when signed out or using `--local`, `memory:status` shows today's capture as private local memory
 
 Run the offline coverage with:
 
