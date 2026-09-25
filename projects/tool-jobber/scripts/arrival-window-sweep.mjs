@@ -5,6 +5,7 @@
 // by Spencer 2026-07-20 (3-hour standard).
 // Run from the repo root: node projects/tool-jobber/scripts/arrival-window-sweep.mjs
 
+import '../../briefs/route-engine/lib/write-gate.mjs';  // route-engine write gate — MUST be the first import (spec v2 Part 7 Step 1)
 import { execSync } from 'child_process';
 import fs from 'fs';
 import os from 'os';

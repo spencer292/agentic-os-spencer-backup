@@ -155,6 +155,18 @@ const report = {
   })).sort((a, b) => b.jobCount - a.jobCount || a.client.localeCompare(b.client)),
 };
 
+// Full TMCP job dump — every live TMCP job, one JSON per line. Lets any later cut (MRR by
+// schedule, price bands, autopay, churn diffs) run off a file instead of re-sweeping the API.
+const dump = path.join(dataDir, `${RUN}_tmcp-jobs.jsonl`);
+fs.writeFileSync(dump, tmc.map((j) => JSON.stringify({
+  job: j.jobNumber, title: j.title, jobType: j.jobType, status: j.jobStatus,
+  startAt: j.startAt, endAt: j.endAt, total: j.total, billingType: j.billingType,
+  billingFrequency: j.invoiceSchedule?.billingFrequency,
+  sched: j.invoiceSchedule?.scheduleSummary, monthly: +monthly(j).toFixed(2),
+  clientId: j.client.id, client: j.client.name, tags: labels(j),
+  lineItems: (j.lineItems?.nodes || []).map((n) => n.name),
+})).map((s) => s + '\n').join(''));
+
 const out = path.join(dataDir, `${RUN}_tmcp-tag-audit.json`);
 fs.writeFileSync(out, JSON.stringify(report, null, 2));
 console.log('\n' + JSON.stringify({ ...report, missingTagDetail: undefined, taggedNoJobDetail: undefined, multiJobDetail: undefined }, null, 2));
