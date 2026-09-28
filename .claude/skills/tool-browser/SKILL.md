@@ -51,6 +51,7 @@ node browser/cdp.mjs text [css-selector]   # visible innerText (default: body)
 node browser/cdp.mjs html [css-selector]   # outerHTML (default: whole document)
 node browser/cdp.mjs eval "<js expr>"      # run JS in the page, returns JSON value
 node browser/cdp.mjs click <css-selector>  # scroll into view + click
+node browser/cdp.mjs clickxy <x> <y>       # real mouse click at page coords (ExtJS/canvas apps like OptimoRoute ignore element.click())
 node browser/cdp.mjs type <css-selector> <text>   # focus + set value + fire input/change
 node browser/cdp.mjs press <key>           # e.g. Enter, Tab
 node browser/cdp.mjs url                   # current page title + URL

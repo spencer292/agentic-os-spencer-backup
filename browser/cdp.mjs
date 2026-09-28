@@ -152,6 +152,14 @@ async function main() {
         console.log(ok ? `Clicked ${rest[0]}` : `NOT FOUND: ${rest[0]}`);
         break;
       }
+      case 'clickxy': {
+        // Real mouse click at page coordinates — for canvas/ExtJS grids that ignore element.click().
+        const x = Number(rest[0]), y = Number(rest[1]), clickCount = Number(rest[2] || 1);
+        for (const type of ['mouseMoved', 'mousePressed', 'mouseReleased'])
+          await cdp.send('Input.dispatchMouseEvent', { type, x, y, button: type === 'mouseMoved' ? 'none' : 'left', clickCount });
+        console.log(`Clicked at ${x},${y}`);
+        break;
+      }
       case 'type': {
         const sel = q(rest[0]);
         const val = q(rest.slice(1).join(' '));
