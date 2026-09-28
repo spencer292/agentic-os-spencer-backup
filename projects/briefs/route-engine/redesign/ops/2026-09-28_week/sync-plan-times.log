@@ -1,0 +1,455 @@
+=== SYNC + PLAN + TIMES 2026-09-27 10:16:11 PT ===
+mode: LIVE (--execute)   window: 2026-09-28..2026-10-02
+live Jobber: 528 visits, 528 not complete, 528 on a routed driver, 0 skipped (no tech / not a driver)
+  2026-09-28  Cory 27  Alias 18  Robert 22  Tavis 22  Luke 26
+  2026-09-29  Cory 23  Alias 17  Robert 20  Luke 15  Tavis 24
+  2026-09-30  Cory 21  Alias 21  Tavis 22  Luke 14  Robert 26
+  2026-10-01  Cory 30  Alias 21  Robert 26  Tavis 27  Luke 24
+  2026-10-02  Luke 17  Robert 18  Alias 24  Tavis 23
+
+OptimoRoute: 528 orders in the window
+  CREATE 0   UPDATE 0   DELETE 0   unchanged 528
+
+driver availability: 09-28: Alias/Cory/Luke/Robert/Tavis   09-29: Alias/Cory/Luke/Robert/Tavis   09-30: Alias/Cory/Luke/Robert/Tavis   10-01: Alias/Cory/Luke/Robert/Tavis   10-02: Alias/Luke/Robert/Tavis
+
+=== OPTIMOROUTE: 0 CREATE ===
+=== OPTIMOROUTE: 0 UPDATE ===
+=== OPTIMOROUTE: 0 DELETE ===
+
+--from-saved: 528 planned stops loaded from routes-*.json
+
+=== JOBBER: write planned times (startAt = arrival, endAt = +3 h) ===
+  to write 427   already correct 101   not on a route 0
+  [  1/427] 2026-09-28 07:18 #7853 Cory     Jim Vaughn                   was 09-28 06:18  ok
+  [  2/427] 2026-09-28 07:34 #8593 Cory     Kevin Milliren               was 09-28 06:34  ok
+  [  3/427] 2026-09-28 07:12 #8491 Alias    Scott Owens                  was 09-28 06:42  ok
+  [  4/427] 2026-09-28 07:12 #8627 Robert   Michelle Johnson             was 09-28 06:52  ok
+  [  5/427] 2026-09-28 07:53 #4480 Cory     Amanda Willard               was 09-28 06:53  ok
+  [  6/427] 2026-09-28 07:10 #7715 Tavis    Elizabeth Duroe              was 09-28 06:55  ok
+  [  7/427] 2026-09-28 07:34 #8634 Alias    Colleen Rasmussen            was 09-28 07:04  ok
+  [  8/427] 2026-09-28 08:09 #5780 Cory     Susy Bevans                  was 09-28 07:09  ok
+  [  9/427] 2026-09-28 07:33 #7697 Robert   Jennifer Cramer              was 09-28 07:13  ok
+  [ 10/427] 2026-09-28 07:30 #8409 Tavis    Chris Higgs                  was 09-28 07:15  ok
+  [ 11/427] 2026-09-28 08:28 #4941 Cory     Daniel Hoffman               was 09-28 07:28  ok
+  [ 12/427] 2026-09-28 07:55 #7797 Robert   Gary Fredericks              was 09-28 07:35  ok
+  [ 13/427] 2026-09-28 08:09 #8562 Alias    Sri Velamoor                 was 09-28 07:39  ok
+  [ 14/427] 2026-09-28 08:00 #4502 Tavis    Doreen Rigos                 was 09-28 07:45  ok
+  [ 15/427] 2026-09-28 08:46 #4549 Cory     Carrie Williamson            was 09-28 07:46  ok
+  [ 16/427] 2026-09-28 08:12 #4930 Robert   Plemmons Industries          was 09-28 07:52  ok
+  [ 17/427] 2026-09-28 08:30 #8506 Alias    Xin Liu                      was 09-28 08:00  ok
+  [ 18/427] 2026-09-28 09:02 #4644 Cory     Eric Fraumeni                was 09-28 08:02  ok
+  [ 19/427] 2026-09-28 08:48 #6334 Robert   Alexandra Daley              was 09-28 08:13  ok
+  [ 20/427] 2026-09-28 08:47 #8572 Alias    Ramit Malhotra               was 09-28 08:17  ok
+  [ 21/427] 2026-09-28 09:19 #6986 Cory     Ashley Wollam                was 09-28 08:19  ok
+  [ 22/427] 2026-09-28 08:37 #8574 Tavis    Saber Mirzaei                was 09-28 08:22  ok
+  [ 23/427] 2026-09-28 08:33 #6334 Robert   Alexandra Daley              was 09-28 08:28  ok
+  [ 24/427] 2026-09-28 09:34 #8479 Cory     Tanner Aden                  was 09-28 08:34  ok
+  [ 25/427] 2026-09-28 09:05 #6735 Alias    Joe Gross                    was 09-28 08:35  ok
+  [ 26/427] 2026-09-28 08:55 #8558 Tavis    John Obrien                  was 09-28 08:40  ok
+  [ 27/427] 2026-09-28 09:07 #4777 Robert   Al Chappell                  was 09-28 08:47  ok
+  [ 28/427] 2026-09-28 09:49 #8375 Cory     Johnny Evans                 was 09-28 08:49  ok
+  [ 29/427] 2026-09-28 09:20 #7471 Alias    Michelle  Bates              was 09-28 08:50  ok
+  [ 30/427] 2026-09-28 09:16 #8494 Tavis    Aaron Burke                  was 09-28 09:01  ok
+  [ 31/427] 2026-09-28 09:24 #8579 Robert   Gurwinder Sandhu             was 09-28 09:04  ok
+  [ 32/427] 2026-09-28 10:05 #8610 Cory     Chris Gregg                  was 09-28 09:05  ok
+  [ 33/427] 2026-09-28 09:39 #5355 Alias    Debra Chrapaty               was 09-28 09:09  ok
+  [ 34/427] 2026-09-28 10:21 #7764 Cory     Michallea Schuelke           was 09-28 09:21  ok
+  [ 35/427] 2026-09-28 09:40 #8485 Tavis    Kailey L Lacy                was 09-28 09:25  ok
+  [ 36/427] 2026-09-28 09:58 #7834 Alias    Ganesh   Thirumalai          was 09-28 09:28  ok
+  [ 37/427] 2026-09-28 09:50 #5025 Robert   Bye The Green Condominiums   was 09-28 09:30  ok
+  [ 38/427] 2026-09-28 10:36 #8619 Cory     Amy Crenshaw-Burns           was 09-28 09:36  ok
+  [ 39/427] 2026-09-28 10:15 #4581 Alias    Al Nettles                   was 09-28 09:45  ok
+  [ 40/427] 2026-09-28 10:53 #8133 Cory     Shane Taylor                 was 09-28 09:53  ok
+  [ 41/427] 2026-09-28 10:14 #8475 Robert   Constance Pivonka            was 09-28 09:54  ok
+  [ 42/427] 2026-09-28 10:13 #8525 Tavis    Joseph Trump                 was 09-28 09:58  ok
+  [ 43/427] 2026-09-28 10:34 #7404 Alias    Wendi Wang                   was 09-28 10:04  ok
+  [ 44/427] 2026-09-28 11:08 #8560 Cory     Patty  Ring                  was 09-28 10:08  ok
+  [ 45/427] 2026-09-28 10:36 #8072 Robert   Prologis                     was 09-28 10:16  ok
+  [ 46/427] 2026-09-28 10:32 #8340 Tavis    Ken Lohse                    was 09-28 10:17  ok
+  [ 47/427] 2026-09-28 10:51 #6926 Alias    Chris Mckenzie               was 09-28 10:21  ok
+  [ 48/427] 2026-09-28 11:24 #5024 Cory     Brienna Dyberg               was 09-28 10:24  ok
+  [ 49/427] 2026-09-28 10:52 #6297 Tavis    Lauren Tomala                was 09-28 10:37  ok
+  [ 50/427] 2026-09-28 10:57 #8202 Robert   Amy  Collins                 was 09-28 10:37  ok
+  [ 51/427] 2026-09-28 11:08 #8523 Alias    Bill Hewitt                  was 09-28 10:38  ok
+  [ 52/427] 2026-09-28 11:38 #7884 Cory     Matt Arnold                  was 09-28 10:38  ok
+  [ 53/427] 2026-09-28 11:52 #8431 Cory     Julie Woods                  was 09-28 10:52  ok
+  [ 54/427] 2026-09-28 11:09 #8607 Tavis    Ben Mathes                   was 09-28 10:54  ok
+  [ 55/427] 2026-09-28 11:17 #5324 Robert   Scott  Moser                 was 09-28 10:57  ok
+  [ 56/427] 2026-09-28 11:30 #4703 Alias    Joel Glass                   was 09-28 11:00  ok
+  [ 57/427] 2026-09-28 12:14 #4998 Cory     Bill Langley                 was 09-28 11:14  ok
+  [ 58/427] 2026-09-28 11:30 #8600 Tavis    Sam Leonard                  was 09-28 11:15  ok
+  [ 59/427] 2026-09-28 11:37 #8480 Robert   Munene Peter                 was 09-28 11:17  ok
+  [ 60/427] 2026-09-28 11:50 #8296 Alias    Prasad Thiruveedu            was 09-28 11:20  ok
+  [ 61/427] 2026-09-28 11:47 #8623 Tavis    James Willis                 was 09-28 11:32  ok
+  [ 62/427] 2026-09-28 12:32 #5413 Cory     Ron Houlihan                 was 09-28 11:32  ok
+  [ 63/427] 2026-09-28 11:53 #7753 Robert   Galilee Baptist Church       was 09-28 11:33  ok
+  [ 64/427] 2026-09-28 12:13 #8592 Alias    George Tsantilas             was 09-28 11:43  ok
+  [ 65/427] 2026-09-28 12:46 #5954 Cory     Loren Vail                   was 09-28 11:46  ok
+  [ 66/427] 2026-09-28 12:08 #8359 Tavis    Mary Suhadolnik              was 09-28 11:53  ok
+  [ 67/427] 2026-09-28 12:14 #8122 Robert   Bob Roggenbach               was 09-28 11:54  ok
+  [ 68/427] 2026-09-28 12:31 #7901 Alias    Walter Poupore               was 09-28 12:01  ok
+  [ 69/427] 2026-09-28 13:02 #8614 Cory     Tamira  Gilbert              was 09-28 12:02  ok
+  [ 70/427] 2026-09-28 12:28 #8486 Tavis    Phyllis Barbante             was 09-28 12:13  ok
+  [ 71/427] 2026-09-28 12:34 #4515 Robert   Kelly Kunz                   was 09-28 12:14  ok
+  [ 72/427] 2026-09-28 13:16 #8611 Cory     Melissa  Bobbit              was 09-28 12:16  ok
+  [ 73/427] 2026-09-28 12:49 #5531 Alias    Conover Court                was 09-28 12:19  ok
+  [ 74/427] 2026-09-28 12:48 #8524 Tavis    Michael Sobieck              was 09-28 12:33  ok
+  [ 75/427] 2026-09-28 12:53 #6900 Robert   Jeff Hunter                  was 09-28 12:33  ok
+  [ 76/427] 2026-09-28 13:33 #5727 Cory     Eric Crossley                was 09-28 12:33  ok
+  [ 77/427] 2026-09-28 13:13 #7626 Robert   Jonelle Loranger             was 09-28 12:53  ok
+  [ 78/427] 2026-09-28 13:23 #7470 Tavis    Dawn St Clair                was 09-28 12:53  ok
+  [ 79/427] 2026-09-28 13:53 #6064 Cory     Joe  Edmunson                was 09-28 12:53  ok
+  [ 80/427] 2026-09-28 14:09 #5540 Cory     Chris Thornhill              was 09-28 13:09  ok
+  [ 81/427] 2026-09-28 13:34 #8270 Robert   Brian Meadows                was 09-28 13:14  ok
+  [ 82/427] 2026-09-28 14:24 #7747 Cory     Leeroy Perkins               was 09-28 13:24  ok
+  [ 83/427] 2026-09-28 13:41 #8426 Tavis    Chris Kerr                   was 09-28 13:26  ok
+  [ 84/427] 2026-09-28 13:55 #4701 Robert   Thomas Carpinito             was 09-28 13:35  ok
+  [ 85/427] 2026-09-28 13:58 #8461 Tavis    Mary Greco                   was 09-28 13:43  ok
+  [ 86/427] 2026-09-28 14:18 #8629 Robert   Dustin Quaschnik             was 09-28 13:58  ok
+  [ 87/427] 2026-09-28 14:19 #8533 Tavis    Bob Chatalas                 was 09-28 14:04  ok
+  [ 88/427] 2026-09-28 14:42 #8635 Tavis    Amanda Williams              was 09-28 14:27  ok
+  [ 89/427] 2026-09-29 07:15 #5047 Cory     Randy Redding                was 09-29 06:03  ok
+  [ 90/427] 2026-09-29 07:31 #7673 Cory     Nicholas Mayer               was 09-29 06:19  ok
+  [ 91/427] 2026-09-29 07:51 #7657 Cory     Mary Linda Epps              was 09-29 06:39  ok
+  [ 92/427] 2026-09-29 07:25 #8573 Alias    Judy Lee                     was 09-29 06:40  ok
+  [ 93/427] 2026-09-29 07:03 #7684 Robert   Dennis Higashiyama           was 09-29 06:43  ok
+  [ 94/427] 2026-09-29 08:05 #6324 Cory     Matt Cordova                 was 09-29 06:53  ok
+  [ 95/427] 2026-09-29 07:17 #6784 Luke     Adam Kimball                 was 09-29 06:57  ok
+  [ 96/427] 2026-09-29 07:00 #7744 Tavis    GC Bellefield, LLC.          was 09-29 06:59  ok
+  [ 97/427] 2026-09-29 07:48 #8036 Alias    Garett Gowens                was 09-29 07:03  ok
+  [ 98/427] 2026-09-29 07:26 #8561 Robert   Jeremiah Slater              was 09-29 07:06  ok
+  [ 99/427] 2026-09-29 08:21 #8474 Cory     Mike Miller                  was 09-29 07:09  ok
+  [100/427] 2026-09-29 07:40 #8578 Luke     Eric Hill                    was 09-29 07:20  ok
+  [101/427] 2026-09-29 07:25 #8569 Tavis    Tia Avril                    was 09-29 07:24  ok
+  [102/427] 2026-09-29 08:38 #8544 Cory     Kevin Day                    was 09-29 07:26  ok
+  [103/427] 2026-09-29 07:47 #7970 Robert   Darren McAllen               was 09-29 07:27  ok
+  [104/427] 2026-09-29 08:16 #8471 Alias    Rasheed Hammonds             was 09-29 07:31  ok
+  [105/427] 2026-09-29 08:54 #7705 Cory     Tyler Smythe                 was 09-29 07:42  ok
+  [106/427] 2026-09-29 07:44 #8546 Tavis    James Paxton                 was 09-29 07:43  ok
+  [107/427] 2026-09-29 08:11 #7365 Robert   Paul Hwang                   was 09-29 07:51  ok
+  [108/427] 2026-09-29 08:37 #8598 Alias    John Mcinerny                was 09-29 07:52  ok
+  [109/427] 2026-09-29 08:13 #7795 Luke     Kristin Collett              was 09-29 07:53  ok
+  [110/427] 2026-09-29 09:10 #4825 Cory     Trudy Wozeniak               was 09-29 07:58  ok
+  [111/427] 2026-09-29 08:00 #8605 Tavis    Yara Chen                    was 09-29 07:59  ok
+  [112/427] 2026-09-29 09:24 #8396 Cory     Lori  Morin                  was 09-29 08:12  ok
+  [113/427] 2026-09-29 08:32 #8507 Robert   Sheryl Toland                was 09-29 08:12  ok
+  [114/427] 2026-09-29 09:00 #8564 Alias    Jared Schapiro               was 09-29 08:15  ok
+  [115/427] 2026-09-29 08:17 #8638 Tavis    Nik bhogal                   was 09-29 08:16  ok
+  [116/427] 2026-09-29 08:41 #8067 Luke     Gerryann Jurva               was 09-29 08:21  ok
+  [117/427] 2026-09-29 09:38 #4749 Cory     Thomas  Varrelman            was 09-29 08:26  ok
+  [118/427] 2026-09-29 08:51 #8571 Robert   Sue Pennock                  was 09-29 08:31  ok
+  [119/427] 2026-09-29 09:20 #8535 Alias    Dan Dawkins                  was 09-29 08:35  ok
+  [120/427] 2026-09-29 08:58 #5044 Luke     Sandy Blackburn              was 09-29 08:38  ok
+  [121/427] 2026-09-29 09:54 #5148 Cory     Brant Bengston               was 09-29 08:42  ok
+  [122/427] 2026-09-29 08:51 #8501 Tavis    Pia Matsuno                  was 09-29 08:50  ok
+  [123/427] 2026-09-29 09:10 #6083 Robert   Chantal Padilla              was 09-29 08:50  ok
+  [124/427] 2026-09-29 10:08 #8390 Cory     Jane Molenda                 was 09-29 08:56  ok
+  [125/427] 2026-09-29 09:42 #6660 Alias    Craig Knebel                 was 09-29 08:57  ok
+  [126/427] 2026-09-29 09:10 #8550 Tavis    Stella Sun                   was 09-29 09:09  ok
+  [127/427] 2026-09-29 09:29 #8023 Robert   Neil Gokey                   was 09-29 09:09  ok
+  [128/427] 2026-09-29 10:23 #7017 Cory     Steve Lees                   was 09-29 09:11  ok
+  [129/427] 2026-09-29 10:04 #7900 Alias    Michael Shapiro              was 09-29 09:19  ok
+  [130/427] 2026-09-29 09:46 #7805 Luke     Dave Combs                   was 09-29 09:26  ok
+  [131/427] 2026-09-29 09:47 #8452 Robert   Shawna Mobley                was 09-29 09:27  ok
+  [132/427] 2026-09-29 10:39 #8630 Cory     Candy Ford                   was 09-29 09:27  ok
+  [133/427] 2026-09-29 09:30 #8536 Tavis    Wendy Perkins                was 09-29 09:29  ok
+  [134/427] 2026-09-29 10:22 #8534 Alias    Mary Jeffers                 was 09-29 09:37  ok
+  [135/427] 2026-09-29 10:05 #6555 Robert   Matt Coder                   was 09-29 09:45  ok
+  [136/427] 2026-09-29 09:49 #8537 Tavis    Emma Liu                     was 09-29 09:48  ok
+  [137/427] 2026-09-29 11:05 #8490 Cory     Donald Ward                  was 09-29 09:53  ok
+  [138/427] 2026-09-29 10:23 #6568 Robert   Shar Brown                   was 09-29 10:03  ok
+  [139/427] 2026-09-29 10:50 #8482 Alias    Joseph Rollins               was 09-29 10:05  ok
+  [140/427] 2026-09-29 10:06 #7384 Tavis    Kevin Chen                   was 09-29 10:05  ok
+  [141/427] 2026-09-29 10:26 #8436 Luke     Monty Mansfield              was 09-29 10:06  ok
+  [142/427] 2026-09-29 11:20 #7670 Cory     Jessica Rakos                was 09-29 10:08  ok
+  [143/427] 2026-09-29 10:24 #6492 Tavis    Greg Hastings                was 09-29 10:23  ok
+  [144/427] 2026-09-29 10:44 #7857 Robert   Bob Davies                   was 09-29 10:24  ok
+  [145/427] 2026-09-29 11:10 #8481 Alias    Craig Suffian                was 09-29 10:25  ok
+  [146/427] 2026-09-29 11:42 #7725 Cory     Suzanne Gullace              was 09-29 10:30  ok
+  [147/427] 2026-09-29 10:41 #8613 Tavis    Steve Burns                  was 09-29 10:40  ok
+  [148/427] 2026-09-29 11:04 #4492 Robert   Rich Porter                  was 09-29 10:44  ok
+  [149/427] 2026-09-29 11:31 #8570 Alias    Michael Glover               was 09-29 10:46  ok
+  [150/427] 2026-09-29 12:00 #4926 Cory     HyperGreen Landscaping       was 09-29 10:48  ok
+  [151/427] 2026-09-29 10:59 #8584 Tavis    Suma Prasad                  was 09-29 10:58  ok
+  [152/427] 2026-09-29 11:18 #5192 Luke     Candice Storm                was 09-29 10:58  ok
+  [153/427] 2026-09-29 11:23 #6400 Robert   Dave Mcclung                 was 09-29 11:03  ok
+  [154/427] 2026-09-29 11:51 #8557 Alias    Tad Hutchison                was 09-29 11:06  ok
+  [155/427] 2026-09-29 12:28 #8053 Cory     Vicky Dougan                 was 09-29 11:16  ok
+  [156/427] 2026-09-29 11:18 #6545 Tavis    Rosemarie Havranek           was 09-29 11:17  ok
+  [157/427] 2026-09-29 11:38 #6400 Robert   Dave Mcclung                 was 09-29 11:18  ok
+  [158/427] 2026-09-29 12:11 #8238 Alias    Joshua  Chao                 was 09-29 11:26  ok
+  [159/427] 2026-09-29 12:04 #8291 Robert   John & Jasmine Foth          was 09-29 11:44  ok
+  [160/427] 2026-09-29 11:45 #8488 Tavis    Terry Wirth                  was 09-29 11:44  ok
+  [161/427] 2026-09-29 12:33 #8473 Alias    Nate Ceres                   was 09-29 11:48  ok
+  [162/427] 2026-09-29 12:08 #8622 Luke     JT  Wilcox                   was 09-29 11:48  ok
+  [163/427] 2026-09-29 13:01 #7858 Cory     Laura Tallmadge              was 09-29 11:49  ok
+  [164/427] 2026-09-29 12:23 #8495 Robert   Jody Sanders                 was 09-29 12:03  ok
+  [165/427] 2026-09-29 12:07 #6757 Tavis    Ryan Tacher                  was 09-29 12:06  ok
+  [166/427] 2026-09-29 13:26 #8172 Cory     Jean Davis                   was 09-29 12:14  ok
+  [167/427] 2026-09-29 12:40 #6628 Robert   Shana Valencia               was 09-29 12:20  ok
+  [168/427] 2026-09-29 13:06 #4902 Alias    Jane Moore                   was 09-29 12:21  ok
+  [169/427] 2026-09-29 12:44 #4935 Luke     Maja Haloway                 was 09-29 12:24  ok
+  [170/427] 2026-09-29 12:27 #8566 Tavis    Janelle Stewart              was 09-29 12:26  ok
+  [171/427] 2026-09-29 13:43 #7462 Cory     HyperGreen Landscaping       was 09-29 12:31  ok
+  [172/427] 2026-09-29 13:02 #6953 Robert   Jean Brannen                 was 09-29 12:42  ok
+  [173/427] 2026-09-29 12:49 #6303 Tavis    Patrick Tanner               was 09-29 12:48  ok
+  [174/427] 2026-09-29 07:00 #7777 Cory     Cory Ventura                 was 09-29 12:49  ok
+  [175/427] 2026-09-29 13:34 #7624 Alias    Greg Thoreson                was 09-29 12:49  ok
+  [176/427] 2026-09-29 13:18 #5602 Robert   Sandee Smith                 was 09-29 12:58  ok
+  [177/427] 2026-09-29 13:18 #8587 Luke     Mitchell Gasser              was 09-29 12:58  ok
+  [178/427] 2026-09-29 13:10 #8551 Tavis    Liz Silke                    was 09-29 13:09  ok
+  [179/427] 2026-09-29 13:36 #5121 Luke     Bonnee Terrio                was 09-29 13:16  ok
+  [180/427] 2026-09-29 13:27 #8505 Tavis    Roberto Dondisch             was 09-29 13:26  ok
+  [181/427] 2026-09-29 14:04 #7708 Luke     Vernie Dunham                was 09-29 13:44  ok
+  [182/427] 2026-09-29 14:32 #8526 Luke     Jake Fox                     was 09-29 14:12  ok
+  [183/427] 2026-09-29 14:21 #8169 Tavis    Donna Jensen                 was 09-29 14:20  ok
+  [184/427] 2026-09-29 14:57 #4425 Luke     Thomas Spring Estates        was 09-29 14:37  ok
+  [185/427] 2026-09-29 14:48 #5411 Tavis    Paul Klansnic                was 09-29 14:47  ok
+  [186/427] 2026-09-30 07:00 #7633 Cory     Kathleen Coppin              was 09-30 06:11  ok
+  [187/427] 2026-09-30 07:36 #8541 Alias    Aditya Singh                 was 09-30 06:26  ok
+  [188/427] 2026-09-30 07:17 #6162 Cory     Scott Barker                 was 09-30 06:29  ok
+  [189/427] 2026-09-30 07:33 #7757 Cory     Dan Flood                    was 09-30 06:45  ok
+  [190/427] 2026-09-30 07:00 #7459 Tavis    Larry McGowan                was 09-30 06:50  ok
+  [191/427] 2026-09-30 08:02 #7758 Alias    Joe Kelley                   was 09-30 06:52  ok
+  [192/427] 2026-09-30 07:15 #8487 Luke     Ashley Daniel                was 09-30 06:58  ok
+  [193/427] 2026-09-30 07:56 #8419 Cory     Kim Anderson                 was 09-30 07:08  ok
+  [194/427] 2026-09-30 07:23 #5700 Tavis    John Siebenbaum              was 09-30 07:14  ok
+  [195/427] 2026-09-30 07:00 #8111 Luke     Debra Enneking               was 09-30 07:14  ok
+  [196/427] 2026-09-30 08:25 #8406 Alias    Jessica Angel                was 09-30 07:15  ok
+  [197/427] 2026-09-30 08:12 #6418 Cory     Diana Silva                  was 09-30 07:24  ok
+  [198/427] 2026-09-30 07:43 #7751 Tavis    Charles Strauss              was 09-30 07:33  ok
+  [199/427] 2026-09-30 07:38 #7902 Luke     Stratton Felker              was 09-30 07:37  ok
+  [200/427] 2026-09-30 08:33 #5016 Cory     Run Wild Dog Sports          was 09-30 07:45  ok
+  [201/427] 2026-09-30 08:57 #8042 Alias    Dave Parker                  was 09-30 07:47  ok
+  [202/427] 2026-09-30 08:02 #8030 Tavis    Briana Watson                was 09-30 07:53  ok
+  [203/427] 2026-09-30 08:48 #5511 Cory     SLPPLLC                      was 09-30 08:00  ok
+  [204/427] 2026-09-30 09:24 #6270 Alias    Gwen Morton                  was 09-30 08:14  ok
+  [205/427] 2026-09-30 08:26 #8372 Tavis    Travis Bruce                 was 09-30 08:17  ok
+  [206/427] 2026-09-30 09:05 #5503 Cory     Nichole Avila                was 09-30 08:17  ok
+  [207/427] 2026-09-30 08:26 #8365 Luke     Relic Rodrigues              was 09-30 08:25  ok
+  [208/427] 2026-09-30 09:19 #4962 Cory     Maureen Haley                was 09-30 08:30  ok
+  [209/427] 2026-09-30 09:46 #7434 Alias    Linda Lowe                   was 09-30 08:36  ok
+  [210/427] 2026-09-30 08:50 #8470 Tavis    Alice Collins                was 09-30 08:41  ok
+  [211/427] 2026-09-30 09:35 #8269 Cory     Holly Quionez                was 09-30 08:47  ok
+  [212/427] 2026-09-30 09:07 #7608 Tavis    Scott Hamilton               was 09-30 08:58  ok
+  [213/427] 2026-09-30 10:10 #8472 Alias    David Johal                  was 09-30 09:00  ok
+  [214/427] 2026-09-30 09:51 #5713 Cory     Jeff Hudson                  was 09-30 09:03  ok
+  [215/427] 2026-09-30 09:26 #8201 Tavis    Jenna Elberts                was 09-30 09:16  ok
+  [216/427] 2026-09-30 09:17 #8608 Luke     Carol Miller                 was 09-30 09:16  ok
+  [217/427] 2026-09-30 10:28 #8246 Alias    Pia Graves                   was 09-30 09:18  ok
+  [218/427] 2026-09-30 10:10 #7704 Cory     Tyler Smythe                 was 09-30 09:22  ok
+  [219/427] 2026-09-30 09:42 #8345 Tavis    Jennifer Pere                was 09-30 09:33  ok
+  [220/427] 2026-09-30 10:45 #7776 Alias    Marius Ungureanu             was 09-30 09:36  ok
+  [221/427] 2026-09-30 10:29 #6856 Cory     Peter Dale                   was 09-30 09:41  ok
+  [222/427] 2026-09-30 11:02 #6375 Alias    Mike Cushman                 was 09-30 09:52  ok
+  [223/427] 2026-09-30 10:04 #8112 Tavis    Colleen Hunter               was 09-30 09:55  ok
+  [224/427] 2026-09-30 10:45 #8428 Cory     Keith Mathews                was 09-30 09:57  ok
+  [225/427] 2026-09-30 10:05 #8612 Luke     Mike Ruff                    was 09-30 10:04  ok
+  [226/427] 2026-09-30 10:58 #5330 Cory     Maggie Pierotti              was 09-30 10:10  ok
+  [227/427] 2026-09-30 10:22 #8518 Tavis    Leo Coronado                 was 09-30 10:13  ok
+  [228/427] 2026-09-30 11:26 #8217 Alias    Aziz El-solh                 was 09-30 10:16  ok
+  [229/427] 2026-09-30 11:15 #8532 Cory     Elaine Rustvold              was 09-30 10:27  ok
+  [230/427] 2026-09-30 10:39 #8361 Tavis    Erik Guttridge               was 09-30 10:29  ok
+  [231/427] 2026-09-30 11:45 #7208 Alias    Swenbert LLC                 was 09-30 10:35  ok
+  [232/427] 2026-09-30 11:31 #5442 Cory     Jeff Hardman                 was 09-30 10:43  ok
+  [233/427] 2026-09-30 10:54 #4705 Tavis    Pam Northrip                 was 09-30 10:45  ok
+  [234/427] 2026-09-30 12:08 #7504 Alias    Lisa Shaughnessy             was 09-30 10:58  ok
+  [235/427] 2026-09-30 11:47 #8538 Cory     Gina Shields                 was 09-30 10:59  ok
+  [236/427] 2026-09-30 11:05 #8517 Luke     Carolyn Carl                 was 09-30 11:04  ok
+  [237/427] 2026-09-30 11:16 #5114 Tavis    Mike Sewell                  was 09-30 11:06  ok
+  [238/427] 2026-09-30 12:05 #4469 Cory     Yvonne Hall                  was 09-30 11:16  ok
+  [239/427] 2026-09-30 12:34 #7639 Alias    Marla Poor                   was 09-30 11:24  ok
+  [240/427] 2026-09-30 11:35 #8632 Tavis    Karen Kawamoto               was 09-30 11:26  ok
+  [241/427] 2026-09-30 12:23 #5329 Cory     Pat Birkeland                was 09-30 11:35  ok
+  [242/427] 2026-09-30 12:57 #6849 Alias    Michelle  Rasmussen          was 09-30 11:47  ok
+  [243/427] 2026-09-30 12:37 #5328 Cory     Dave Belmont                 was 09-30 11:49  ok
+  [244/427] 2026-09-30 12:08 #8190 Tavis    Kevin Bohnert                was 09-30 11:59  ok
+  [245/427] 2026-09-30 12:04 #8511 Luke     Matthew Young                was 09-30 12:03  ok
+  [246/427] 2026-09-30 13:19 #7202 Alias    Josh Trachtenberg            was 09-30 12:09  ok
+  [247/427] 2026-09-30 12:28 #7317 Tavis    Chris Bartlett               was 09-30 12:18  ok
+  [248/427] 2026-09-30 12:43 #8244 Luke     Nora Beckman                 was 09-30 12:26  ok
+  [249/427] 2026-09-30 13:41 #6323 Alias    Cruz Rodriguez               was 09-30 12:31  ok
+  [250/427] 2026-09-30 12:47 #8636 Tavis    Taegan Kicinski              was 09-30 12:38  ok
+  [251/427] 2026-09-30 12:27 #8417 Luke     Lynn Anderson                was 09-30 12:42  ok
+  [252/427] 2026-09-30 14:03 #8255 Alias    Vishal Jain                  was 09-30 12:53  ok
+  [253/427] 2026-09-30 13:04 #8575 Luke     Robert Sibley                was 09-30 13:03  ok
+  [254/427] 2026-09-30 13:19 #8510 Tavis    Sara Wade                    was 09-30 13:10  ok
+  [255/427] 2026-09-30 14:26 #8563 Alias    Brian Sasville               was 09-30 13:16  ok
+  [256/427] 2026-09-30 13:38 #7475 Tavis    Hannah  Jacobson             was 09-30 13:29  ok
+  [257/427] 2026-09-30 14:53 #8405 Alias    Steve  Mcdonough             was 09-30 13:43  ok
+  [258/427] 2026-09-30 13:48 #8606 Luke     Scott Campbell               was 09-30 13:47  ok
+  [259/427] 2026-09-30 13:58 #7738 Tavis    Liz Hannon                   was 09-30 13:48  ok
+  [260/427] 2026-09-30 14:17 #6567 Tavis    Sharon Da-Dalto              was 09-30 14:07  ok
+  [261/427] 2026-09-30 07:00 #8624 Alias    Tyler Guion                  was 09-30 14:19  ok
+  [262/427] 2026-10-01 14:20 #8402 Cory     Tom & Sarah Long             was 10-01 06:10  ok
+  [263/427] 2026-10-01 09:30 #6454 Cory     Leslie Turner                was 10-01 06:26  ok
+  [264/427] 2026-10-01 14:54 #8577 Alias    Mike Leese                   was 10-01 06:38  ok
+  [265/427] 2026-10-01 10:11 #5433 Cory     Susan Newby                  was 10-01 06:41  ok
+  [266/427] 2026-10-01 15:15 #6144 Robert   Thanhquyen Nguyen            was 10-01 06:53  ok
+  [267/427] 2026-10-01 09:59 #5433 Cory     Susan Newby                  was 10-01 06:53  ok
+  [268/427] 2026-10-01 07:40 #5371 Tavis    Jeff Ostlund                 was 10-01 06:55  ok
+  [269/427] 2026-10-01 14:24 #7802 Alias    Kallin Baumann               was 10-01 07:06  ok
+  [270/427] 2026-10-01 09:45 #7540 Cory     Jennifer Flanegan            was 10-01 07:07  ok
+  [271/427] 2026-10-01 15:36 #4550 Robert   Lee Hansen                   was 10-01 07:13  ok
+  [272/427] 2026-10-01 07:00 #8625 Tavis    Brian Pare                   was 10-01 07:20  ok
+  [273/427] 2026-10-01 14:05 #7731 Cory     Mark Biltz                   was 10-01 07:21  ok
+  [274/427] 2026-10-01 13:59 #8387 Alias    Joydeep Kant                 was 10-01 07:32  ok
+  [275/427] 2026-10-01 07:17 #8599 Tavis    Anne-Marie Jones             was 10-01 07:37  ok
+  [276/427] 2026-10-01 13:47 #4979 Cory     Marcus Andy                  was 10-01 07:38  ok
+  [277/427] 2026-10-01 14:50 #8530 Robert   Phyllis Miller               was 10-01 07:39  ok
+  [278/427] 2026-10-01 13:33 #5150 Alias    Scott Taylor                 was 10-01 07:57  ok
+  [279/427] 2026-10-01 13:28 #8585 Cory     Jan Sterling                 was 10-01 07:57  ok
+  [280/427] 2026-10-01 08:01 #8219 Tavis    Trent Bryan                  was 10-01 07:58  ok
+  [281/427] 2026-10-01 14:30 #7766 Robert   Olivia Sandoval              was 10-01 08:00  ok
+  [282/427] 2026-10-01 13:15 #5227 Cory     Jana Wilson                  was 10-01 08:11  ok
+  [283/427] 2026-10-01 08:21 #5139 Tavis    Aly Mendez                   was 10-01 08:17  ok
+  [284/427] 2026-10-01 13:07 #6990 Alias    Kelly Tivnan                 was 10-01 08:23  ok
+  [285/427] 2026-10-01 14:07 #8478 Robert   Jeffrey Kenyon               was 10-01 08:23  ok
+  [286/427] 2026-10-01 12:58 #6322 Cory     Mark Gagne                   was 10-01 08:27  ok
+  [287/427] 2026-10-01 08:39 #7812 Tavis    Kelly  Scott                 was 10-01 08:35  ok
+  [288/427] 2026-10-01 13:46 #6500 Robert   Sheri Powers                 was 10-01 08:44  ok
+  [289/427] 2026-10-01 12:43 #8466 Cory     Chris Heacox                 was 10-01 08:44  ok
+  [290/427] 2026-10-01 12:41 #5007 Alias    Karen Porter                 was 10-01 08:49  ok
+  [291/427] 2026-10-01 09:01 #8603 Tavis    Mary Hendrickson             was 10-01 08:58  ok
+  [292/427] 2026-10-01 12:26 #8123 Cory     Darin Swan                   was 10-01 09:01  ok
+  [293/427] 2026-10-01 13:29 #8459 Robert   Melody Deisher               was 10-01 09:01  ok
+  [294/427] 2026-10-01 12:19 #5545 Alias    Nichole  Jacobson            was 10-01 09:10  ok
+  [295/427] 2026-10-01 12:10 #8231 Cory     Jenna  Larson                was 10-01 09:17  ok
+  [296/427] 2026-10-01 13:12 #7961 Robert   Kelly Kunz                   was 10-01 09:19  ok
+  [297/427] 2026-10-01 09:25 #8418 Tavis    Dana Dauenhauer              was 10-01 09:21  ok
+  [298/427] 2026-10-01 11:55 #4994 Cory     Liki Estes                   was 10-01 09:32  ok
+  [299/427] 2026-10-01 12:53 #8522 Robert   Gourav Saha                  was 10-01 09:38  ok
+  [300/427] 2026-10-01 11:49 #5489 Alias    Eric Reddy                   was 10-01 09:40  ok
+  [301/427] 2026-10-01 09:46 #7964 Tavis    Barbee Mill HOA              was 10-01 09:42  ok
+  [302/427] 2026-10-01 11:38 #7371 Cory     Clint Bjornson               was 10-01 09:49  ok
+  [303/427] 2026-10-01 10:43 #7981 Tavis    Jeff Nugent                  was 10-01 09:54  ok
+  [304/427] 2026-10-01 12:34 #8442 Robert   Michele Rustvold             was 10-01 09:56  ok
+  [305/427] 2026-10-01 11:30 #5381 Alias    Lindsay Donner               was 10-01 09:59  ok
+  [306/427] 2026-10-01 11:22 #7739 Cory     Joey Deluca                  was 10-01 10:05  ok
+  [307/427] 2026-10-01 10:20 #7967 Tavis    Howard Goodman               was 10-01 10:06  ok
+  [308/427] 2026-10-01 12:14 #7837 Robert   Karen Baker                  was 10-01 10:16  ok
+  [309/427] 2026-10-01 10:31 #7967 Tavis    Howard Goodman               was 10-01 10:17  ok
+  [310/427] 2026-10-01 11:09 #8325 Cory     Maryanne Zukowski            was 10-01 10:18  ok
+  [311/427] 2026-10-01 11:07 #8074 Alias    Lina Bancroft                was 10-01 10:22  ok
+  [312/427] 2026-10-01 09:57 #7979 Tavis    Martha  Dawson               was 10-01 10:28  ok
+  [313/427] 2026-10-01 10:55 #7720 Cory     John Keen                    was 10-01 10:32  ok
+  [314/427] 2026-10-01 11:53 #8200 Robert   GenCare                      was 10-01 10:37  ok
+  [315/427] 2026-10-01 10:08 #7979 Tavis    Martha  Dawson               was 10-01 10:39  ok
+  [316/427] 2026-10-01 09:21 #5084 Alias    Dave Gierok                  was 10-01 10:44  ok
+  [317/427] 2026-10-01 10:41 #7754 Cory     Jared Harman                 was 10-01 10:46  ok
+  [318/427] 2026-10-01 10:55 #8320 Tavis    Jay Hickenbottom             was 10-01 10:51  ok
+  [319/427] 2026-10-01 11:31 #8512 Robert   Raman Mann                   was 10-01 10:59  ok
+  [320/427] 2026-10-01 10:26 #7880 Cory     Scot Lynch                   was 10-01 11:01  ok
+  [321/427] 2026-10-01 09:42 #7454 Alias    John Culbertson              was 10-01 11:05  ok
+  [322/427] 2026-10-01 11:13 #8549 Tavis    Donna Youngblood             was 10-01 11:09  ok
+  [323/427] 2026-10-01 09:14 #8516 Cory     Anthony Cuccia               was 10-01 11:16  ok
+  [324/427] 2026-10-01 11:05 #7672 Robert   Sean Finlayson               was 10-01 11:25  ok
+  [325/427] 2026-10-01 10:03 #8386 Alias    Peter Meechan                was 10-01 11:27  ok
+  [326/427] 2026-10-01 11:32 #8331 Tavis    Belur Shivashankara          was 10-01 11:28  ok
+  [327/427] 2026-10-01 08:46 #8352 Cory     Tyler Donaldson              was 10-01 11:31  ok
+  [328/427] 2026-10-01 08:59 #7793 Cory     Tim Saiz                     was 10-01 11:44  ok
+  [329/427] 2026-10-01 10:44 #4929 Robert   Susanna Suiter               was 10-01 11:46  ok
+  [330/427] 2026-10-01 11:51 #5106 Tavis    Todd Davis                   was 10-01 11:48  ok
+  [331/427] 2026-10-01 10:24 #7869 Alias    Shelley Ryan                 was 10-01 11:48  ok
+  [332/427] 2026-10-01 07:31 #8084 Cory     Larry Brewer                 was 10-01 11:59  ok
+  [333/427] 2026-10-01 10:26 #7406 Robert   Evan Henke                   was 10-01 12:04  ok
+  [334/427] 2026-10-01 12:10 #7823 Tavis    Erik Yang                    was 10-01 12:06  ok
+  [335/427] 2026-10-01 10:46 #6602 Alias    Lynn Wecker                  was 10-01 12:10  ok
+  [336/427] 2026-10-01 07:48 #7664 Cory     April Bower                  was 10-01 12:16  ok
+  [337/427] 2026-10-01 10:08 #5594 Robert   Michael Satran               was 10-01 12:21  ok
+  [338/427] 2026-10-01 12:28 #5751 Tavis    Jane Gallagher               was 10-01 12:24  ok
+  [339/427] 2026-10-01 08:38 #4673 Alias    Nick Miller                  was 10-01 12:31  ok
+  [340/427] 2026-10-01 08:03 #8504 Cory     Todd Allen                   was 10-01 12:31  ok
+  [341/427] 2026-10-01 09:50 #5071 Robert   Jim Nelsen                   was 10-01 12:40  ok
+  [342/427] 2026-10-01 12:47 #8292 Tavis    Terry Yoshimura              was 10-01 12:44  ok
+  [343/427] 2026-10-01 08:17 #8521 Cory     Dennis Shay                  was 10-01 12:45  ok
+  [344/427] 2026-10-01 08:56 #7022 Alias    Seddik Belyamani             was 10-01 12:49  ok
+  [345/427] 2026-10-01 09:31 #4842 Robert   Debbie Griffith              was 10-01 12:58  ok
+  [346/427] 2026-10-01 08:31 #8274 Cory     Alex Stevenson               was 10-01 12:59  ok
+  [347/427] 2026-10-01 13:06 #8338 Tavis    Leena Shah                   was 10-01 13:02  ok
+  [348/427] 2026-10-01 07:00 #8058 Cory     Samantha Sieverling          was 10-01 13:18  ok
+  [349/427] 2026-10-01 09:11 #8513 Robert   Paige Lamb                   was 10-01 13:18  ok
+  [350/427] 2026-10-01 08:10 #7546 Alias    Marymoor Park                was 10-01 13:19  ok
+  [351/427] 2026-10-01 13:27 #7531 Tavis    Rishab Narula                was 10-01 13:24  ok
+  [352/427] 2026-10-01 07:13 #8368 Cory     Cameron Caviezel             was 10-01 13:31  ok
+  [353/427] 2026-10-01 13:46 #7988 Tavis    Aaron Diaz                   was 10-01 13:43  ok
+  [354/427] 2026-10-01 07:46 #8307 Alias    Tanya Parry                  was 10-01 13:44  ok
+  [355/427] 2026-10-01 08:42 #6663 Robert   Don Petricic                 was 10-01 13:47  ok
+  [356/427] 2026-10-01 14:04 #5502 Tavis    Omar Aftab                   was 10-01 14:00  ok
+  [357/427] 2026-10-01 07:21 #6970 Alias    Mary Olin                    was 10-01 14:09  ok
+  [358/427] 2026-10-01 08:14 #8609 Robert   Michael Sexton               was 10-01 14:14  ok
+  [359/427] 2026-10-01 14:27 #6396 Tavis    Deborah Canon                was 10-01 14:24  ok
+  [360/427] 2026-10-01 07:00 #5099 Alias    Buff Nelson                  was 10-01 14:29  ok
+  [361/427] 2026-10-01 07:54 #5152 Robert   Jenny Roy                    was 10-01 14:34  ok
+  [362/427] 2026-10-01 14:47 #8540 Tavis    Kathryn Ngo                  was 10-01 14:44  ok
+  [363/427] 2026-10-01 07:37 #6475 Robert   Amber Owen                   was 10-01 14:52  ok
+  [364/427] 2026-10-01 07:20 #5040 Robert   Priscilla Dendy              was 10-01 15:09  ok
+  [365/427] 2026-10-01 07:00 #8628 Robert   Connie Schlimgen             was 10-01 15:29  ok
+  [366/427] 2026-10-02 13:18 #5178 Luke     Washington Premier Soccer Cl was 10-02 06:37  ok
+  [367/427] 2026-10-02 07:00 #7450 Robert   Amy Thomas                   was 10-02 06:50  ok
+  [368/427] 2026-10-02 14:23 #8233 Alias    Vicky Marxen                 was 10-02 06:52  ok
+  [369/427] 2026-10-02 12:59 #7941 Luke     Tim Lubic                    was 10-02 06:56  ok
+  [370/427] 2026-10-02 07:23 #8463 Robert   Darren Mccullough            was 10-02 07:13  ok
+  [371/427] 2026-10-02 13:59 #8265 Alias    Jepson Fuller                was 10-02 07:15  ok
+  [372/427] 2026-10-02 12:15 #6677 Luke     Wes Rhoten                   was 10-02 07:19  ok
+  [373/427] 2026-10-02 13:43 #8604 Alias    Karen  Horvath               was 10-02 07:31  ok
+  [374/427] 2026-10-02 07:44 #5053 Robert   Dennis Scroggins             was 10-02 07:34  ok
+  [375/427] 2026-10-02 07:00 #8091 Luke     Ron Cronkhite                was 10-02 07:40  ok
+  [376/427] 2026-10-02 13:26 #7817 Alias    Josh Hedrick                 was 10-02 07:49  ok
+  [377/427] 2026-10-02 08:07 #7644 Robert   Elizabeth Kalouner           was 10-02 07:58  ok
+  [378/427] 2026-10-02 07:24 #8545 Luke     Doris Osada                  was 10-02 08:05  ok
+  [379/427] 2026-10-02 12:47 #8497 Alias    Jean Vanwagoner              was 10-02 08:12  ok
+  [380/427] 2026-10-02 08:40 #4754 Tavis    Barry Heimbigner             was 10-02 08:24  ok
+  [381/427] 2026-10-02 08:35 #6409 Robert   Kevin Hoffman                was 10-02 08:25  ok
+  [382/427] 2026-10-02 13:02 #8497 Alias    Jean Vanwagoner              was 10-02 08:27  ok
+  [383/427] 2026-10-02 07:48 #8319 Luke     Jill Robinson                was 10-02 08:29  ok
+  [384/427] 2026-10-02 08:58 #4504 Tavis    Evan Epstein                 was 10-02 08:42  ok
+  [385/427] 2026-10-02 08:57 #8519 Robert   Brad Hickel                  was 10-02 08:47  ok
+  [386/427] 2026-10-02 08:07 #7675 Luke     Charlie  Brown               was 10-02 08:48  ok
+  [387/427] 2026-10-02 12:25 #8288 Alias    Stan Adams                   was 10-02 08:50  ok
+  [388/427] 2026-10-02 08:22 #7295 Tavis    Jeff Taylor                  was 10-02 08:59  ok
+  [389/427] 2026-10-02 08:26 #8542 Luke     Geoff Bentley                was 10-02 09:06  ok
+  [390/427] 2026-10-02 12:07 #8543 Alias    Yuji Xie                     was 10-02 09:08  ok
+  [391/427] 2026-10-02 09:19 #8597 Robert   Jeff Westcott                was 10-02 09:09  ok
+  [392/427] 2026-10-02 09:37 #5829 Robert   Tom Hornberg                 was 10-02 09:27  ok
+  [393/427] 2026-10-02 08:46 #7497 Luke     Bess  Poehlmann              was 10-02 09:27  ok
+  [394/427] 2026-10-02 11:47 #8520 Alias    Richard Depencier            was 10-02 09:28  ok
+  [395/427] 2026-10-02 09:57 #8531 Robert   Lewis Henry                  was 10-02 09:47  ok
+  [396/427] 2026-10-02 11:28 #8556 Alias    William Kearl                was 10-02 09:47  ok
+  [397/427] 2026-10-02 09:10 #8444 Luke     Annette Bunker               was 10-02 09:51  ok
+  [398/427] 2026-10-02 11:10 #8046 Alias    Daniel Bay                   was 10-02 10:05  ok
+  [399/427] 2026-10-02 10:16 #4545 Robert   Randy Stegmeier              was 10-02 10:06  ok
+  [400/427] 2026-10-02 09:33 #8582 Luke     Stacey Ogle                  was 10-02 10:14  ok
+  [401/427] 2026-10-02 10:52 #5441 Alias    Tom Craig                    was 10-02 10:23  ok
+  [402/427] 2026-10-02 10:33 #5458 Robert   Jake Nettleton               was 10-02 10:24  ok
+  [403/427] 2026-10-02 10:02 #5412 Luke     Mike Ahquin                  was 10-02 10:42  ok
+  [404/427] 2026-10-02 10:33 #8594 Alias    Juliet Dixon                 was 10-02 10:42  ok
+  [405/427] 2026-10-02 10:52 #8617 Robert   Phyllis Eakins               was 10-02 10:42  ok
+  [406/427] 2026-10-02 10:14 #8156 Alias    Deborah Berger               was 10-02 11:01  ok
+  [407/427] 2026-10-02 11:13 #6275 Robert   Mike Tonda                   was 10-02 11:04  ok
+  [408/427] 2026-10-02 10:29 #5574 Luke     Ross Parker                  was 10-02 11:10  ok
+  [409/427] 2026-10-02 09:55 #7011 Alias    Sara Houpis                  was 10-02 11:20  ok
+  [410/427] 2026-10-02 11:31 #7306 Robert   Greg Anderson                was 10-02 11:21  ok
+  [411/427] 2026-10-02 10:53 #8430 Luke     Lourdes Orive                was 10-02 11:34  ok
+  [412/427] 2026-10-02 09:38 #6355 Alias    Julie James                  was 10-02 11:36  ok
+  [413/427] 2026-10-02 11:52 #6287 Robert   Charles Hahn                 was 10-02 11:43  ok
+  [414/427] 2026-10-02 09:15 #6919 Alias    Corky Heimbigner             was 10-02 11:59  ok
+  [415/427] 2026-10-02 12:13 #7767 Robert   Jamie Randall                was 10-02 12:03  ok
+  [416/427] 2026-10-02 11:49 #6338 Luke     Barbara Wood                 was 10-02 12:12  ok
+  [417/427] 2026-10-02 08:54 #8256 Alias    Doug Crow                    was 10-02 12:20  ok
+  [418/427] 2026-10-02 12:35 #8484 Robert   Mary Leischow                was 10-02 12:26  ok
+  [419/427] 2026-10-02 11:29 #8276 Luke     Diana Miller                 was 10-02 12:31  ok
+  [420/427] 2026-10-02 08:35 #8547 Alias    Shannon Supple               was 10-02 12:40  ok
+  [421/427] 2026-10-02 12:53 #5982 Robert   David Rosser                 was 10-02 12:43  ok
+  [422/427] 2026-10-02 12:37 #8416 Luke     Sharon Young                 was 10-02 12:57  ok
+  [423/427] 2026-10-02 08:16 #8014 Alias    Paul Latham                  was 10-02 12:58  ok
+  [424/427] 2026-10-02 08:00 #7589 Alias    Rahul Newaskar               was 10-02 13:14  ok
+  [425/427] 2026-10-02 07:38 #4614 Alias    Jennifer Beardall            was 10-02 13:36  ok
+  [426/427] 2026-10-02 07:20 #8321 Alias    Mike Huggins                 was 10-02 13:54  ok
+  [427/427] 2026-10-02 07:00 #8249 Alias    John Shepard                 was 10-02 14:14  ok
+  written 427  failed 0
+
+=== VERIFY === 528 visits match the plan, 0 do not
+
+✅ done 2026-09-27 10:21:08 PT — log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-09-28_week\sync-plan-times.log
+Next: the arrival-window sweep (node projects/tool-jobber/scripts/arrival-window-sweep.mjs) so every visit carries the 3-hour window.
