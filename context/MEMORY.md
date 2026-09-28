@@ -3,8 +3,8 @@
 ## Active Threads
 - ROUTE-ENGINE REDESIGN (09-18/19): ownership register w/ coverage -> route patterns -> obligation ledger -> weekly repair + exceptions -> one writer. Doc artifact/f0ea6c87-f10c-4319-96e1-65243fa7e2fd; redesign/2026-09-19_redesign-plan.md. 7 decisions pending. Seams: redesign/seam-pack.html.
 - TERRITORY TRUTH (30d audit to 09-17): only 4 of 10 v9 handovers executed; Cory & Robert swapped halves. Off-tech 13%, off-day 29%. Ferry doc artifact/7Ai7GUQHnFrJoFHZ3sNtoF.
-- WEEK 09-21 loop: Spencer sets days+techs in Jobber -> ops/2026-09-21_swap/sync-plan-times.mjs --execute [--tw=07:00-21:00] -> arrival-window-sweep -> gate disable. OR shows 27/29 (per-day hours cap); delete lingering END-* anchors.
-- 07:00 FIRST-JOB defaults set (Alias/Tavis 6:15, Cory 6:00, Luke 6:25, Robert/Spencer 6:40); per-day rows override in Plan Routes.
+- WEEK LOOP: Spencer sets days+techs in Jobber -> copy ops/2026-09-28_week/sync-plan-times.mjs (7:00 order window default) --execute --no-times -> check first stops >=7:00 -> --execute --from-saved -> arrival-window-sweep. Replans use --skip-availability. Week 09-28 done.
+- OR driver defaults: Alias 6:35-6:35p, Cory 6:35-4:35p, Luke 6:25, Robert 6:40, Tavis 6:15. Per-day rows freeze old hours (UI-only to change).
 - Fri 12:00 PT: redesign/scripts/snapshot-week.mjs --part=all (from 09-19).
 - COLLECTIONS 09-15: 40 texts/$5,120. Open $18,163/89. UNWORKED 23/$6,633 (data/2026-09-16_call-list.md) — 3 chronic (~107d, $1,115) first. W.Plaza $1,700 on COI/DBA.
 - LINKEDIN (STALE 09-15): Ryan Gordon (Arcis Golf) wants a site visit, offer lapsed. READ INBOX FIRST. 12 invites pending. Golf >> HOA.
