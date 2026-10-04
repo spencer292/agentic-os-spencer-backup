@@ -1,60 +1,62 @@
 {
  "_comment": "GENERATED — do not hand-edit. Zip route days derived from real Jobber visit history by build-zip-day-lookup.mjs, replacing the hand-kept territory-grid-v*.json line (spec v2 defect D1). Scored against real visits the hand-kept grid was 90% and territories.json v8 was 73%; this is the board as it actually ran. Rebuilt every morning by the service-day-sheet-refresh cron.",
- "generated": "2026-08-21T19:58:55.786Z",
- "basedOn": "1457 real Jobber visits, 2026-08-17..2026-09-04",
+ "generated": "2026-09-28T20:45:43.077Z",
+ "basedOn": "3159 real Jobber visits, 2026-08-31..2026-10-12",
  "inactiveTechsExcluded": [],
  "zips": {
   "98001": {
    "days": [
-    "thu"
+    "thu",
+    "wed"
    ],
    "tech": "Robert Norton",
    "cities": "Auburn",
-   "visits": 3,
-   "confidence": "low",
-   "note": "Derived from 3 real visits in 2026-08-17..2026-09-04"
+   "visits": 20,
+   "confidence": "high",
+   "note": "Derived from 20 real visits in 2026-08-31..2026-10-12"
   },
   "98002": {
    "days": [
-    "tue",
     "mon"
    ],
    "tech": "Cory Ventura",
    "cities": "Auburn",
-   "visits": 2,
-   "confidence": "low",
-   "note": "Derived from 2 real visits in 2026-08-17..2026-09-04"
+   "visits": 5,
+   "confidence": "medium",
+   "note": "Derived from 5 real visits in 2026-08-31..2026-10-12"
   },
   "98003": {
    "days": [
-    "thu"
+    "thu",
+    "wed"
    ],
    "tech": "Robert Norton",
    "cities": "Federal Way",
-   "visits": 4,
-   "confidence": "medium",
-   "note": "Derived from 4 real visits in 2026-08-17..2026-09-04"
+   "visits": 16,
+   "confidence": "high",
+   "note": "Derived from 16 real visits in 2026-08-31..2026-10-12"
   },
   "98004": {
+   "days": [
+    "thu",
+    "mon"
+   ],
+   "tech": "Tavis Alexander",
+   "cities": "Bellevue/Clyde Hill/Yarrow Point",
+   "visits": 27,
+   "confidence": "high",
+   "note": "Derived from 27 real visits in 2026-08-31..2026-10-12 — WARNING: bellevue-ne8th runs through this zip, so a zip-level answer is wrong here; use the address lookup"
+  },
+  "98005": {
    "days": [
     "mon",
     "thu"
    ],
    "tech": "Alias Franks",
-   "cities": "Bellevue/Clyde Hill",
-   "visits": 8,
-   "confidence": "high",
-   "note": "Derived from 8 real visits in 2026-08-17..2026-09-04 — WARNING: bellevue-ne8th runs through this zip, so a zip-level answer is wrong here; use the address lookup"
-  },
-  "98005": {
-   "days": [
-    "mon"
-   ],
-   "tech": "Alias Franks",
    "cities": "Bellevue",
-   "visits": 8,
+   "visits": 30,
    "confidence": "high",
-   "note": "Derived from 8 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 30 real visits in 2026-08-31..2026-10-12"
   },
   "98006": {
    "days": [
@@ -62,50 +64,61 @@
    ],
    "tech": "Tavis Alexander",
    "cities": "Bellevue",
-   "visits": 12,
+   "visits": 30,
    "confidence": "high",
-   "note": "Derived from 12 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 30 real visits in 2026-08-31..2026-10-12"
   },
   "98007": {
    "days": [
-    "mon"
+    "thu"
    ],
-   "tech": "Alias Franks",
+   "tech": "Tavis Alexander",
    "cities": "Bellevue",
-   "visits": 1,
-   "confidence": "provisional",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "visits": 2,
+   "confidence": "low",
+   "note": "Derived from 2 real visits in 2026-08-31..2026-10-12"
   },
   "98008": {
    "days": [
-    "mon",
-    "thu"
+    "thu",
+    "mon"
    ],
-   "tech": "Alias Franks",
+   "tech": "Tavis Alexander",
    "cities": "Bellevue",
-   "visits": 4,
-   "confidence": "medium",
-   "note": "Derived from 4 real visits in 2026-08-17..2026-09-04"
+   "visits": 16,
+   "confidence": "high",
+   "note": "Derived from 16 real visits in 2026-08-31..2026-10-12"
   },
   "98010": {
    "days": [
-    "mon"
+    "tue"
    ],
    "tech": "Robert Norton",
    "cities": "Black Diamond",
-   "visits": 4,
-   "confidence": "medium",
-   "note": "Derived from 4 real visits in 2026-08-17..2026-09-04"
+   "visits": 19,
+   "confidence": "high",
+   "note": "Derived from 19 real visits in 2026-08-31..2026-10-12"
   },
   "98011": {
+   "days": [
+    "wed",
+    "tue"
+   ],
+   "tech": "Alias Franks",
+   "cities": "Bothell",
+   "visits": 4,
+   "confidence": "medium",
+   "note": "Derived from 4 real visits in 2026-08-31..2026-10-12"
+  },
+  "98012": {
    "days": [
     "wed"
    ],
    "tech": "Alias Franks",
    "cities": "Bothell",
-   "visits": 1,
+   "visits": 2,
    "confidence": "low",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 2 real visits in 2026-08-31..2026-10-12"
   },
   "98014": {
    "days": [
@@ -113,9 +126,9 @@
    ],
    "tech": "Alias Franks",
    "cities": "Carnation",
-   "visits": 3,
-   "confidence": "low",
-   "note": "Derived from 3 real visits in 2026-08-17..2026-09-04"
+   "visits": 11,
+   "confidence": "high",
+   "note": "Derived from 11 real visits in 2026-08-31..2026-10-12"
   },
   "98019": {
    "days": [
@@ -123,29 +136,31 @@
    ],
    "tech": "Alias Franks",
    "cities": "Duvall",
-   "visits": 3,
-   "confidence": "low",
-   "note": "Derived from 3 real visits in 2026-08-17..2026-09-04"
+   "visits": 11,
+   "confidence": "high",
+   "note": "Derived from 11 real visits in 2026-08-31..2026-10-12"
   },
   "98021": {
    "days": [
-    "wed"
+    "wed",
+    "tue"
    ],
    "tech": "Alias Franks",
    "cities": "Bothell",
-   "visits": 1,
-   "confidence": "low",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "visits": 4,
+   "confidence": "medium",
+   "note": "Derived from 4 real visits in 2026-08-31..2026-10-12"
   },
   "98022": {
    "days": [
-    "tue"
+    "tue",
+    "thu"
    ],
    "tech": "Robert Norton",
    "cities": "Enumclaw",
-   "visits": 19,
+   "visits": 86,
    "confidence": "high",
-   "note": "Derived from 19 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 86 real visits in 2026-08-31..2026-10-12"
   },
   "98023": {
    "days": [
@@ -153,31 +168,30 @@
    ],
    "tech": "Robert Norton",
    "cities": "Federal Way",
-   "visits": 8,
+   "visits": 24,
    "confidence": "high",
-   "note": "Derived from 8 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 24 real visits in 2026-08-31..2026-10-12"
   },
   "98024": {
    "days": [
-    "fri",
-    "thu"
+    "fri"
    ],
    "tech": "Tavis Alexander",
    "cities": "Fall City",
-   "visits": 8,
+   "visits": 13,
    "confidence": "high",
-   "note": "Derived from 8 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 13 real visits in 2026-08-31..2026-10-12"
   },
   "98027": {
    "days": [
-    "wed",
-    "thu"
+    "thu",
+    "fri"
    ],
-   "tech": "Tavis Alexander",
+   "tech": "Cory Ventura",
    "cities": "Issaquah",
-   "visits": 11,
+   "visits": 34,
    "confidence": "high",
-   "note": "Derived from 11 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 34 real visits in 2026-08-31..2026-10-12"
   },
   "98028": {
    "days": [
@@ -186,48 +200,52 @@
    "tech": "Alias Franks",
    "cities": "Kenmore",
    "visits": 1,
-   "confidence": "provisional",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "confidence": "low",
+   "note": "Derived from 1 real visits in 2026-08-31..2026-10-12"
   },
   "98029": {
    "days": [
-    "fri"
+    "fri",
+    "wed"
    ],
    "tech": "Tavis Alexander",
    "cities": "Issaquah",
-   "visits": 1,
-   "confidence": "low",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "visits": 26,
+   "confidence": "high",
+   "note": "Derived from 26 real visits in 2026-08-31..2026-10-12"
   },
   "98030": {
    "days": [
-    "tue"
+    "mon",
+    "thu"
    ],
    "tech": "Cory Ventura",
    "cities": "Kent",
-   "visits": 5,
-   "confidence": "medium",
-   "note": "Derived from 5 real visits in 2026-08-17..2026-09-04 — WARNING: sr-516 runs through this zip, so a zip-level answer is wrong here; use the address lookup"
+   "visits": 8,
+   "confidence": "high",
+   "note": "Derived from 8 real visits in 2026-08-31..2026-10-12 — WARNING: sr-516 runs through this zip, so a zip-level answer is wrong here; use the address lookup"
   },
   "98031": {
    "days": [
-    "tue"
+    "wed",
+    "mon"
    ],
    "tech": "Cory Ventura",
    "cities": "Kent",
-   "visits": 3,
-   "confidence": "low",
-   "note": "Derived from 3 real visits in 2026-08-17..2026-09-04 — WARNING: sr-516 runs through this zip, so a zip-level answer is wrong here; use the address lookup"
+   "visits": 27,
+   "confidence": "high",
+   "note": "Derived from 27 real visits in 2026-08-31..2026-10-12 — WARNING: sr-516 runs through this zip, so a zip-level answer is wrong here; use the address lookup"
   },
   "98032": {
    "days": [
-    "tue"
+    "wed",
+    "mon"
    ],
    "tech": "Cory Ventura",
    "cities": "Kent",
-   "visits": 3,
-   "confidence": "low",
-   "note": "Derived from 3 real visits in 2026-08-17..2026-09-04 — WARNING: sr-516 runs through this zip, so a zip-level answer is wrong here; use the address lookup"
+   "visits": 8,
+   "confidence": "high",
+   "note": "Derived from 8 real visits in 2026-08-31..2026-10-12 — WARNING: sr-516 runs through this zip, so a zip-level answer is wrong here; use the address lookup"
   },
   "98033": {
    "days": [
@@ -235,39 +253,42 @@
    ],
    "tech": "Alias Franks",
    "cities": "Kirkland",
-   "visits": 2,
-   "confidence": "low",
-   "note": "Derived from 2 real visits in 2026-08-17..2026-09-04"
+   "visits": 21,
+   "confidence": "high",
+   "note": "Derived from 21 real visits in 2026-08-31..2026-10-12"
   },
   "98034": {
    "days": [
-    "mon"
+    "mon",
+    "wed"
    ],
    "tech": "Alias Franks",
    "cities": "Kirkland",
-   "visits": 1,
-   "confidence": "low",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "visits": 17,
+   "confidence": "high",
+   "note": "Derived from 17 real visits in 2026-08-31..2026-10-12"
   },
   "98038": {
    "days": [
-    "mon"
+    "fri",
+    "wed"
    ],
    "tech": "Cory Ventura",
    "cities": "Maple Valley/Maple valley",
-   "visits": 20,
+   "visits": 79,
    "confidence": "high",
-   "note": "Derived from 20 real visits in 2026-08-17..2026-09-04 — WARNING: sr-516 runs through this zip, so a zip-level answer is wrong here; use the address lookup"
+   "note": "Derived from 79 real visits in 2026-08-31..2026-10-12 — WARNING: sr-516 runs through this zip, so a zip-level answer is wrong here; use the address lookup"
   },
   "98039": {
    "days": [
-    "mon"
+    "mon",
+    "thu"
    ],
    "tech": "Alias Franks",
    "cities": "Medina",
-   "visits": 3,
-   "confidence": "low",
-   "note": "Derived from 3 real visits in 2026-08-17..2026-09-04"
+   "visits": 18,
+   "confidence": "high",
+   "note": "Derived from 18 real visits in 2026-08-31..2026-10-12"
   },
   "98040": {
    "days": [
@@ -275,30 +296,30 @@
    ],
    "tech": "Tavis Alexander",
    "cities": "Mercer Island",
-   "visits": 2,
-   "confidence": "low",
-   "note": "Derived from 2 real visits in 2026-08-17..2026-09-04"
+   "visits": 19,
+   "confidence": "high",
+   "note": "Derived from 19 real visits in 2026-08-31..2026-10-12"
   },
   "98042": {
    "days": [
-    "mon",
-    "fri"
+    "mon"
    ],
    "tech": "Cory Ventura",
    "cities": "Kent/Covington",
-   "visits": 20,
+   "visits": 64,
    "confidence": "high",
-   "note": "Derived from 20 real visits in 2026-08-17..2026-09-04 — WARNING: sr-516 runs through this zip, so a zip-level answer is wrong here; use the address lookup"
+   "note": "Derived from 64 real visits in 2026-08-31..2026-10-12 — WARNING: sr-516 runs through this zip, so a zip-level answer is wrong here; use the address lookup"
   },
   "98045": {
    "days": [
-    "fri"
+    "fri",
+    "wed"
    ],
    "tech": "Tavis Alexander",
-   "cities": "North Bend",
-   "visits": 3,
-   "confidence": "low",
-   "note": "Derived from 3 real visits in 2026-08-17..2026-09-04"
+   "cities": "North Bend/North bend",
+   "visits": 34,
+   "confidence": "high",
+   "note": "Derived from 34 real visits in 2026-08-31..2026-10-12"
   },
   "98047": {
    "days": [
@@ -306,30 +327,31 @@
    ],
    "tech": "Robert Norton",
    "cities": "Pacific",
-   "visits": 2,
-   "confidence": "low",
-   "note": "Derived from 2 real visits in 2026-08-17..2026-09-04"
+   "visits": 4,
+   "confidence": "medium",
+   "note": "Derived from 4 real visits in 2026-08-31..2026-10-12"
   },
   "98051": {
    "days": [
-    "mon"
+    "fri",
+    "tue"
    ],
-   "tech": "Cory Ventura",
+   "tech": "Robert Norton",
    "cities": "Ravensdale",
-   "visits": 4,
-   "confidence": "medium",
-   "note": "Derived from 4 real visits in 2026-08-17..2026-09-04"
+   "visits": 21,
+   "confidence": "high",
+   "note": "Derived from 21 real visits in 2026-08-31..2026-10-12"
   },
   "98052": {
    "days": [
-    "mon",
-    "wed"
+    "wed",
+    "mon"
    ],
    "tech": "Alias Franks",
    "cities": "Redmond",
-   "visits": 11,
+   "visits": 32,
    "confidence": "high",
-   "note": "Derived from 11 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 32 real visits in 2026-08-31..2026-10-12"
   },
   "98053": {
    "days": [
@@ -337,19 +359,20 @@
    ],
    "tech": "Alias Franks",
    "cities": "Redmond",
-   "visits": 13,
+   "visits": 44,
    "confidence": "high",
-   "note": "Derived from 13 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 44 real visits in 2026-08-31..2026-10-12"
   },
   "98055": {
    "days": [
-    "fri"
+    "mon",
+    "wed"
    ],
    "tech": "Cory Ventura",
    "cities": "Renton",
-   "visits": 2,
-   "confidence": "low",
-   "note": "Derived from 2 real visits in 2026-08-17..2026-09-04"
+   "visits": 6,
+   "confidence": "medium",
+   "note": "Derived from 6 real visits in 2026-08-31..2026-10-12"
   },
   "98056": {
    "days": [
@@ -357,41 +380,41 @@
    ],
    "tech": "Tavis Alexander",
    "cities": "Renton/Newcastle",
-   "visits": 17,
+   "visits": 40,
    "confidence": "high",
-   "note": "Derived from 17 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 40 real visits in 2026-08-31..2026-10-12"
   },
   "98057": {
    "days": [
-    "mon"
+    "mon",
+    "wed"
    ],
-   "tech": "Tavis Alexander",
+   "tech": "Cory Ventura",
    "cities": "Renton",
-   "visits": 1,
-   "confidence": "provisional",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "visits": 6,
+   "confidence": "medium",
+   "note": "Derived from 6 real visits in 2026-08-31..2026-10-12"
   },
   "98058": {
    "days": [
-    "fri",
     "mon"
    ],
    "tech": "Cory Ventura",
    "cities": "Renton",
-   "visits": 8,
+   "visits": 47,
    "confidence": "high",
-   "note": "Derived from 8 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 47 real visits in 2026-08-31..2026-10-12"
   },
   "98059": {
    "days": [
-    "wed",
-    "fri"
+    "thu",
+    "wed"
    ],
    "tech": "Tavis Alexander",
    "cities": "Renton/Newcastle",
-   "visits": 22,
+   "visits": 92,
    "confidence": "high",
-   "note": "Derived from 22 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 92 real visits in 2026-08-31..2026-10-12"
   },
   "98065": {
    "days": [
@@ -399,9 +422,9 @@
    ],
    "tech": "Tavis Alexander",
    "cities": "Snoqualmie",
-   "visits": 2,
-   "confidence": "low",
-   "note": "Derived from 2 real visits in 2026-08-17..2026-09-04"
+   "visits": 8,
+   "confidence": "high",
+   "note": "Derived from 8 real visits in 2026-08-31..2026-10-12"
   },
   "98072": {
    "days": [
@@ -409,9 +432,9 @@
    ],
    "tech": "Alias Franks",
    "cities": "Woodinville",
-   "visits": 6,
-   "confidence": "medium",
-   "note": "Derived from 6 real visits in 2026-08-17..2026-09-04"
+   "visits": 21,
+   "confidence": "high",
+   "note": "Derived from 21 real visits in 2026-08-31..2026-10-12"
   },
   "98074": {
    "days": [
@@ -419,19 +442,19 @@
    ],
    "tech": "Alias Franks",
    "cities": "Sammamish",
-   "visits": 14,
+   "visits": 55,
    "confidence": "high",
-   "note": "Derived from 14 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 55 real visits in 2026-08-31..2026-10-12"
   },
   "98075": {
    "days": [
     "fri"
    ],
    "tech": "Alias Franks",
-   "cities": "Sammamish",
-   "visits": 5,
-   "confidence": "medium",
-   "note": "Derived from 5 real visits in 2026-08-17..2026-09-04"
+   "cities": "Sammamish/Issaquah",
+   "visits": 73,
+   "confidence": "high",
+   "note": "Derived from 73 real visits in 2026-08-31..2026-10-12"
   },
   "98077": {
    "days": [
@@ -439,19 +462,20 @@
    ],
    "tech": "Alias Franks",
    "cities": "Woodinville",
-   "visits": 9,
+   "visits": 32,
    "confidence": "high",
-   "note": "Derived from 9 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 32 real visits in 2026-08-31..2026-10-12"
   },
   "98092": {
    "days": [
-    "mon"
+    "tue",
+    "wed"
    ],
    "tech": "Robert Norton",
    "cities": "Auburn",
-   "visits": 19,
+   "visits": 71,
    "confidence": "high",
-   "note": "Derived from 19 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 71 real visits in 2026-08-31..2026-10-12"
   },
   "98102": {
    "days": [
@@ -459,9 +483,9 @@
    ],
    "tech": "Alias Franks",
    "cities": "Seattle",
-   "visits": 1,
+   "visits": 3,
    "confidence": "low",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 3 real visits in 2026-08-31..2026-10-12"
   },
   "98105": {
    "days": [
@@ -469,39 +493,51 @@
    ],
    "tech": "Alias Franks",
    "cities": "Seattle",
-   "visits": 3,
+   "visits": 4,
+   "confidence": "medium",
+   "note": "Derived from 4 real visits in 2026-08-31..2026-10-12"
+  },
+  "98106": {
+   "days": [
+    "mon"
+   ],
+   "tech": "Spencer Hill",
+   "cities": "Seattle",
+   "visits": 1,
    "confidence": "low",
-   "note": "Derived from 3 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 1 real visits in 2026-08-31..2026-10-12"
   },
   "98108": {
    "days": [
+    "tue",
+    "mon"
+   ],
+   "tech": "Tavis Alexander",
+   "cities": "Seattle",
+   "visits": 19,
+   "confidence": "high",
+   "note": "Derived from 19 real visits in 2026-08-31..2026-10-12"
+  },
+  "98109": {
+   "days": [
+    "mon"
+   ],
+   "tech": "Cory Ventura",
+   "cities": "Seattle",
+   "visits": 1,
+   "confidence": "low",
+   "note": "Derived from 1 real visits in 2026-08-31..2026-10-12"
+  },
+  "98112": {
+   "days": [
+    "tue",
     "mon"
    ],
    "tech": "Tavis Alexander",
    "cities": "Seattle",
    "visits": 7,
    "confidence": "medium",
-   "note": "Derived from 7 real visits in 2026-08-17..2026-09-04"
-  },
-  "98109": {
-   "days": [
-    "tue"
-   ],
-   "tech": "Alias Franks",
-   "cities": "Seattle",
-   "visits": 1,
-   "confidence": "provisional",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
-  },
-  "98112": {
-   "days": [
-    "tue"
-   ],
-   "tech": "Alias Franks",
-   "cities": "Seattle",
-   "visits": 2,
-   "confidence": "low",
-   "note": "Derived from 2 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 7 real visits in 2026-08-31..2026-10-12"
   },
   "98115": {
    "days": [
@@ -509,19 +545,20 @@
    ],
    "tech": "Alias Franks",
    "cities": "Seattle",
-   "visits": 2,
-   "confidence": "low",
-   "note": "Derived from 2 real visits in 2026-08-17..2026-09-04"
+   "visits": 16,
+   "confidence": "high",
+   "note": "Derived from 16 real visits in 2026-08-31..2026-10-12"
   },
   "98116": {
    "days": [
+    "mon",
     "tue"
    ],
    "tech": "Tavis Alexander",
    "cities": "Seattle",
-   "visits": 8,
+   "visits": 33,
    "confidence": "high",
-   "note": "Derived from 8 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 33 real visits in 2026-08-31..2026-10-12"
   },
   "98117": {
    "days": [
@@ -529,90 +566,103 @@
    ],
    "tech": "Alias Franks",
    "cities": "Seattle",
-   "visits": 2,
-   "confidence": "low",
-   "note": "Derived from 2 real visits in 2026-08-17..2026-09-04"
+   "visits": 7,
+   "confidence": "medium",
+   "note": "Derived from 7 real visits in 2026-08-31..2026-10-12"
   },
   "98119": {
    "days": [
-    "tue"
+    "tue",
+    "mon"
    ],
    "tech": "Alias Franks",
    "cities": "Seattle",
-   "visits": 2,
-   "confidence": "provisional",
-   "note": "Derived from 2 real visits in 2026-08-17..2026-09-04"
+   "visits": 9,
+   "confidence": "high",
+   "note": "Derived from 9 real visits in 2026-08-31..2026-10-12"
   },
   "98122": {
    "days": [
     "tue"
    ],
-   "tech": "Alias Franks",
+   "tech": "Tavis Alexander",
    "cities": "Seattle",
    "visits": 1,
    "confidence": "low",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 1 real visits in 2026-08-31..2026-10-12"
   },
   "98125": {
    "days": [
-    "tue",
-    "wed"
+    "tue"
    ],
    "tech": "Alias Franks",
    "cities": "Seattle",
-   "visits": 3,
-   "confidence": "low",
-   "note": "Derived from 3 real visits in 2026-08-17..2026-09-04"
+   "visits": 12,
+   "confidence": "high",
+   "note": "Derived from 12 real visits in 2026-08-31..2026-10-12"
   },
   "98126": {
    "days": [
+    "mon",
     "tue"
    ],
    "tech": "Tavis Alexander",
-   "cities": "Unit A Seattle",
-   "visits": 1,
-   "confidence": "low",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "cities": "Seattle/Unit A Seattle",
+   "visits": 10,
+   "confidence": "high",
+   "note": "Derived from 10 real visits in 2026-08-31..2026-10-12"
   },
   "98133": {
    "days": [
     "tue"
    ],
    "tech": "Alias Franks",
-   "cities": "Shoreline",
-   "visits": 3,
-   "confidence": "low",
-   "note": "Derived from 3 real visits in 2026-08-17..2026-09-04"
+   "cities": "Shoreline/Seattle",
+   "visits": 14,
+   "confidence": "high",
+   "note": "Derived from 14 real visits in 2026-08-31..2026-10-12"
   },
   "98136": {
+   "days": [
+    "mon",
+    "tue"
+   ],
+   "tech": "Tavis Alexander",
+   "cities": "Seattle",
+   "visits": 35,
+   "confidence": "high",
+   "note": "Derived from 35 real visits in 2026-08-31..2026-10-12"
+  },
+  "98144": {
    "days": [
     "tue"
    ],
    "tech": "Tavis Alexander",
    "cities": "Seattle",
-   "visits": 6,
+   "visits": 5,
    "confidence": "medium",
-   "note": "Derived from 6 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 5 real visits in 2026-08-31..2026-10-12"
   },
   "98146": {
-   "days": [
-    "tue"
-   ],
-   "tech": "Tavis Alexander",
-   "cities": "Seattle/Burien",
-   "visits": 10,
-   "confidence": "high",
-   "note": "Derived from 10 real visits in 2026-08-17..2026-09-04"
-  },
-  "98148": {
    "days": [
     "mon"
    ],
    "tech": "Tavis Alexander",
+   "cities": "Seattle/Burien",
+   "visits": 23,
+   "confidence": "high",
+   "note": "Derived from 23 real visits in 2026-08-31..2026-10-12"
+  },
+  "98148": {
+   "days": [
+    "mon",
+    "tue"
+   ],
+   "tech": "Tavis Alexander",
    "cities": "Burien",
-   "visits": 2,
+   "visits": 3,
    "confidence": "low",
-   "note": "Derived from 2 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 3 real visits in 2026-08-31..2026-10-12"
   },
   "98155": {
    "days": [
@@ -620,9 +670,9 @@
    ],
    "tech": "Alias Franks",
    "cities": "Lake Forest Park",
-   "visits": 2,
-   "confidence": "low",
-   "note": "Derived from 2 real visits in 2026-08-17..2026-09-04"
+   "visits": 4,
+   "confidence": "medium",
+   "note": "Derived from 4 real visits in 2026-08-31..2026-10-12"
   },
   "98166": {
    "days": [
@@ -631,20 +681,20 @@
    ],
    "tech": "Tavis Alexander",
    "cities": "Normandy Park/Burien",
-   "visits": 6,
-   "confidence": "medium",
-   "note": "Derived from 6 real visits in 2026-08-17..2026-09-04"
+   "visits": 22,
+   "confidence": "high",
+   "note": "Derived from 22 real visits in 2026-08-31..2026-10-12"
   },
   "98168": {
    "days": [
-    "mon",
-    "fri"
+    "tue",
+    "mon"
    ],
    "tech": "Tavis Alexander",
-   "cities": "Tukwila/Burien",
-   "visits": 4,
-   "confidence": "medium",
-   "note": "Derived from 4 real visits in 2026-08-17..2026-09-04"
+   "cities": "Tukwila/SeaTac/Burien",
+   "visits": 15,
+   "confidence": "high",
+   "note": "Derived from 15 real visits in 2026-08-31..2026-10-12"
   },
   "98177": {
    "days": [
@@ -652,39 +702,75 @@
    ],
    "tech": "Alias Franks",
    "cities": "Shoreline/Seattle",
-   "visits": 7,
-   "confidence": "medium",
-   "note": "Derived from 7 real visits in 2026-08-17..2026-09-04"
+   "visits": 26,
+   "confidence": "high",
+   "note": "Derived from 26 real visits in 2026-08-31..2026-10-12"
   },
   "98178": {
    "days": [
-    "mon"
+    "mon",
+    "tue"
    ],
    "tech": "Tavis Alexander",
    "cities": "Seattle",
-   "visits": 6,
+   "visits": 10,
+   "confidence": "high",
+   "note": "Derived from 10 real visits in 2026-08-31..2026-10-12"
+  },
+  "98188": {
+   "days": [
+    "wed",
+    "tue",
+    "mon"
+   ],
+   "tech": "Tavis Alexander",
+   "cities": "Tukwila/SeaTac",
+   "visits": 4,
    "confidence": "medium",
-   "note": "Derived from 6 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 4 real visits in 2026-08-31..2026-10-12"
   },
   "98198": {
    "days": [
-    "mon"
+    "mon",
+    "wed"
    ],
    "tech": "Tavis Alexander",
-   "cities": "Des Moines/SeaTac/Normandy Park",
-   "visits": 6,
+   "cities": "Des Moines/Normandy Park/SeaTac",
+   "visits": 7,
    "confidence": "medium",
-   "note": "Derived from 6 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 7 real visits in 2026-08-31..2026-10-12"
   },
   "98199": {
    "days": [
-    "tue"
+    "tue",
+    "mon"
+   ],
+   "tech": "Tavis Alexander",
+   "cities": "Seattle",
+   "visits": 14,
+   "confidence": "high",
+   "note": "Derived from 14 real visits in 2026-08-31..2026-10-12"
+  },
+  "98272": {
+   "days": [
+    "wed",
+    "thu"
    ],
    "tech": "Alias Franks",
-   "cities": "Seattle",
-   "visits": 3,
+   "cities": "Monroe",
+   "visits": 2,
    "confidence": "low",
-   "note": "Derived from 3 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 2 real visits in 2026-08-31..2026-10-12"
+  },
+  "98290": {
+   "days": [
+    "wed"
+   ],
+   "tech": "Alias Franks",
+   "cities": "Snohomish",
+   "visits": 1,
+   "confidence": "low",
+   "note": "Derived from 1 real visits in 2026-08-31..2026-10-12"
   },
   "98296": {
    "days": [
@@ -692,9 +778,9 @@
    ],
    "tech": "Alias Franks",
    "cities": "Snohomish",
-   "visits": 4,
-   "confidence": "medium",
-   "note": "Derived from 4 real visits in 2026-08-17..2026-09-04"
+   "visits": 15,
+   "confidence": "high",
+   "note": "Derived from 15 real visits in 2026-08-31..2026-10-12"
   },
   "98310": {
    "days": [
@@ -702,20 +788,50 @@
    ],
    "tech": "Luke LaVergne",
    "cities": "Bremerton",
-   "visits": 2,
+   "visits": 4,
+   "confidence": "medium",
+   "note": "Derived from 4 real visits in 2026-08-31..2026-10-12"
+  },
+  "98311": {
+   "days": [
+    "wed"
+   ],
+   "tech": "Spencer Hill",
+   "cities": "Bremerton",
+   "visits": 1,
    "confidence": "low",
-   "note": "Derived from 2 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 1 real visits in 2026-08-31..2026-10-12"
+  },
+  "98312": {
+   "days": [
+    "wed"
+   ],
+   "tech": "Spencer Hill",
+   "cities": "Bremerton",
+   "visits": 1,
+   "confidence": "low",
+   "note": "Derived from 1 real visits in 2026-08-31..2026-10-12"
   },
   "98321": {
    "days": [
     "fri",
-    "thu"
+    "wed"
    ],
    "tech": "Robert Norton",
    "cities": "Buckley",
-   "visits": 16,
+   "visits": 80,
    "confidence": "high",
-   "note": "Derived from 16 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 80 real visits in 2026-08-31..2026-10-12"
+  },
+  "98327": {
+   "days": [
+    "mon"
+   ],
+   "tech": "Luke LaVergne",
+   "cities": "DuPont",
+   "visits": 5,
+   "confidence": "medium",
+   "note": "Derived from 5 real visits in 2026-08-31..2026-10-12"
   },
   "98328": {
    "days": [
@@ -723,9 +839,9 @@
    ],
    "tech": "Luke LaVergne",
    "cities": "Eatonville",
-   "visits": 5,
-   "confidence": "medium",
-   "note": "Derived from 5 real visits in 2026-08-17..2026-09-04"
+   "visits": 23,
+   "confidence": "high",
+   "note": "Derived from 23 real visits in 2026-08-31..2026-10-12"
   },
   "98329": {
    "days": [
@@ -733,9 +849,9 @@
    ],
    "tech": "Luke LaVergne",
    "cities": "Gig Harbor",
-   "visits": 1,
-   "confidence": "low",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "visits": 5,
+   "confidence": "medium",
+   "note": "Derived from 5 real visits in 2026-08-31..2026-10-12"
   },
   "98332": {
    "days": [
@@ -743,9 +859,9 @@
    ],
    "tech": "Luke LaVergne",
    "cities": "Gig Harbor",
-   "visits": 6,
-   "confidence": "medium",
-   "note": "Derived from 6 real visits in 2026-08-17..2026-09-04"
+   "visits": 24,
+   "confidence": "high",
+   "note": "Derived from 24 real visits in 2026-08-31..2026-10-12"
   },
   "98333": {
    "days": [
@@ -754,8 +870,8 @@
    "tech": "Luke LaVergne",
    "cities": "Fox Island",
    "visits": 1,
-   "confidence": "provisional",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "confidence": "low",
+   "note": "Derived from 1 real visits in 2026-08-31..2026-10-12"
   },
   "98335": {
    "days": [
@@ -763,20 +879,20 @@
    ],
    "tech": "Luke LaVergne",
    "cities": "Gig Harbor",
-   "visits": 4,
-   "confidence": "medium",
-   "note": "Derived from 4 real visits in 2026-08-17..2026-09-04"
+   "visits": 19,
+   "confidence": "high",
+   "note": "Derived from 19 real visits in 2026-08-31..2026-10-12"
   },
   "98338": {
    "days": [
     "tue",
-    "thu"
+    "mon"
    ],
    "tech": "Luke LaVergne",
    "cities": "Graham/graham",
-   "visits": 13,
+   "visits": 58,
    "confidence": "high",
-   "note": "Derived from 13 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 58 real visits in 2026-08-31..2026-10-12"
   },
   "98351": {
    "days": [
@@ -784,50 +900,50 @@
    ],
    "tech": "Luke LaVergne",
    "cities": "Longbranch",
-   "visits": 1,
+   "visits": 3,
    "confidence": "low",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 3 real visits in 2026-08-31..2026-10-12"
   },
   "98354": {
    "days": [
-    "thu"
+    "wed"
    ],
    "tech": "Robert Norton",
    "cities": "Milton",
    "visits": 1,
-   "confidence": "provisional",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "confidence": "low",
+   "note": "Derived from 1 real visits in 2026-08-31..2026-10-12"
   },
   "98359": {
    "days": [
-    "tue"
+    "wed"
    ],
    "tech": "Luke LaVergne",
    "cities": "Olalla",
-   "visits": 1,
-   "confidence": "provisional",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "visits": 4,
+   "confidence": "medium",
+   "note": "Derived from 4 real visits in 2026-08-31..2026-10-12"
   },
   "98360": {
    "days": [
-    "thu",
-    "wed"
+    "tue",
+    "thu"
    ],
    "tech": "Cory Ventura",
    "cities": "Orting/Pierce County",
-   "visits": 8,
+   "visits": 30,
    "confidence": "high",
-   "note": "Derived from 8 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 30 real visits in 2026-08-31..2026-10-12"
   },
   "98363": {
    "days": [
-    "wed"
+    "tue"
    ],
    "tech": "Cory Ventura",
    "cities": "Puyallup",
    "visits": 1,
    "confidence": "low",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 1 real visits in 2026-08-31..2026-10-12"
   },
   "98366": {
    "days": [
@@ -835,60 +951,83 @@
    ],
    "tech": "Luke LaVergne",
    "cities": "Port Orchard",
+   "visits": 4,
+   "confidence": "medium",
+   "note": "Derived from 4 real visits in 2026-08-31..2026-10-12"
+  },
+  "98367": {
+   "days": [
+    "wed"
+   ],
+   "tech": "Spencer Hill",
+   "cities": "Port Orchard",
    "visits": 1,
    "confidence": "low",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 1 real visits in 2026-08-31..2026-10-12"
   },
   "98371": {
    "days": [
-    "wed"
+    "fri"
    ],
-   "tech": "Cory Ventura",
+   "tech": "Luke LaVergne",
    "cities": "Puyallup/Edgewood",
-   "visits": 5,
-   "confidence": "medium",
-   "note": "Derived from 5 real visits in 2026-08-17..2026-09-04"
+   "visits": 14,
+   "confidence": "high",
+   "note": "Derived from 14 real visits in 2026-08-31..2026-10-12"
   },
   "98372": {
    "days": [
-    "wed",
-    "thu"
+    "thu",
+    "wed"
    ],
-   "tech": "Cory Ventura",
+   "tech": "Robert Norton",
    "cities": "Puyallup/Edgewood",
-   "visits": 9,
+   "visits": 33,
    "confidence": "high",
-   "note": "Derived from 9 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 33 real visits in 2026-08-31..2026-10-12"
   },
   "98373": {
    "days": [
-    "wed"
+    "tue",
+    "mon"
    ],
    "tech": "Cory Ventura",
    "cities": "Puyallup",
-   "visits": 2,
-   "confidence": "low",
-   "note": "Derived from 2 real visits in 2026-08-17..2026-09-04"
+   "visits": 11,
+   "confidence": "high",
+   "note": "Derived from 11 real visits in 2026-08-31..2026-10-12"
   },
   "98374": {
    "days": [
-    "wed"
+    "tue",
+    "mon"
    ],
    "tech": "Cory Ventura",
    "cities": "Puyallup",
-   "visits": 7,
-   "confidence": "medium",
-   "note": "Derived from 7 real visits in 2026-08-17..2026-09-04"
+   "visits": 27,
+   "confidence": "high",
+   "note": "Derived from 27 real visits in 2026-08-31..2026-10-12"
   },
   "98375": {
    "days": [
-    "wed"
+    "mon",
+    "tue"
    ],
    "tech": "Cory Ventura",
    "cities": "Puyallup",
-   "visits": 4,
-   "confidence": "medium",
-   "note": "Derived from 4 real visits in 2026-08-17..2026-09-04"
+   "visits": 25,
+   "confidence": "high",
+   "note": "Derived from 25 real visits in 2026-08-31..2026-10-12"
+  },
+  "98385": {
+   "days": [
+    "thu"
+   ],
+   "tech": "Cory Ventura",
+   "cities": "South prairie",
+   "visits": 1,
+   "confidence": "low",
+   "note": "Derived from 1 real visits in 2026-08-31..2026-10-12"
   },
   "98387": {
    "days": [
@@ -896,19 +1035,19 @@
    ],
    "tech": "Luke LaVergne",
    "cities": "Spanaway",
-   "visits": 5,
-   "confidence": "medium",
-   "note": "Derived from 5 real visits in 2026-08-17..2026-09-04"
+   "visits": 14,
+   "confidence": "high",
+   "note": "Derived from 14 real visits in 2026-08-31..2026-10-12"
   },
   "98388": {
    "days": [
-    "mon"
+    "fri"
    ],
    "tech": "Luke LaVergne",
    "cities": "Steilacoom",
-   "visits": 1,
+   "visits": 3,
    "confidence": "low",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 3 real visits in 2026-08-31..2026-10-12"
   },
   "98390": {
    "days": [
@@ -916,19 +1055,20 @@
    ],
    "tech": "Robert Norton",
    "cities": "Sumner",
-   "visits": 9,
+   "visits": 14,
    "confidence": "high",
-   "note": "Derived from 9 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 14 real visits in 2026-08-31..2026-10-12"
   },
   "98391": {
    "days": [
+    "fri",
     "wed"
    ],
    "tech": "Robert Norton",
-   "cities": "Bonney Lake/Lake Tapps/Sumner",
-   "visits": 21,
+   "cities": "Bonney Lake/Lake Tapps/BonneyLake",
+   "visits": 95,
    "confidence": "high",
-   "note": "Derived from 21 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 95 real visits in 2026-08-31..2026-10-12"
   },
   "98394": {
    "days": [
@@ -936,9 +1076,9 @@
    ],
    "tech": "Luke LaVergne",
    "cities": "Vaughn",
-   "visits": 1,
+   "visits": 3,
    "confidence": "low",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 3 real visits in 2026-08-31..2026-10-12"
   },
   "98403": {
    "days": [
@@ -946,9 +1086,9 @@
    ],
    "tech": "Luke LaVergne",
    "cities": "Tacoma",
-   "visits": 1,
-   "confidence": "low",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "visits": 7,
+   "confidence": "medium",
+   "note": "Derived from 7 real visits in 2026-08-31..2026-10-12"
   },
   "98404": {
    "days": [
@@ -956,9 +1096,20 @@
    ],
    "tech": "Luke LaVergne",
    "cities": "Tacoma",
-   "visits": 1,
-   "confidence": "low",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "visits": 4,
+   "confidence": "medium",
+   "note": "Derived from 4 real visits in 2026-08-31..2026-10-12"
+  },
+  "98405": {
+   "days": [
+    "fri",
+    "wed"
+   ],
+   "tech": "Luke LaVergne",
+   "cities": "Tacoma",
+   "visits": 4,
+   "confidence": "medium",
+   "note": "Derived from 4 real visits in 2026-08-31..2026-10-12"
   },
   "98406": {
    "days": [
@@ -966,9 +1117,9 @@
    ],
    "tech": "Luke LaVergne",
    "cities": "Tacoma",
-   "visits": 2,
-   "confidence": "low",
-   "note": "Derived from 2 real visits in 2026-08-17..2026-09-04"
+   "visits": 7,
+   "confidence": "medium",
+   "note": "Derived from 7 real visits in 2026-08-31..2026-10-12"
   },
   "98407": {
    "days": [
@@ -976,29 +1127,30 @@
    ],
    "tech": "Luke LaVergne",
    "cities": "Tacoma",
-   "visits": 5,
-   "confidence": "medium",
-   "note": "Derived from 5 real visits in 2026-08-17..2026-09-04"
+   "visits": 10,
+   "confidence": "high",
+   "note": "Derived from 10 real visits in 2026-08-31..2026-10-12"
   },
   "98422": {
    "days": [
-    "thu"
+    "thu",
+    "wed"
    ],
    "tech": "Robert Norton",
    "cities": "Tacoma",
-   "visits": 2,
-   "confidence": "low",
-   "note": "Derived from 2 real visits in 2026-08-17..2026-09-04"
+   "visits": 14,
+   "confidence": "high",
+   "note": "Derived from 14 real visits in 2026-08-31..2026-10-12"
   },
   "98443": {
    "days": [
-    "wed"
+    "fri"
    ],
-   "tech": "Cory Ventura",
+   "tech": "Luke LaVergne",
    "cities": "Tacoma",
-   "visits": 1,
-   "confidence": "low",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "visits": 4,
+   "confidence": "medium",
+   "note": "Derived from 4 real visits in 2026-08-31..2026-10-12"
   },
   "98444": {
    "days": [
@@ -1006,9 +1158,9 @@
    ],
    "tech": "Luke LaVergne",
    "cities": "Tacoma",
-   "visits": 3,
-   "confidence": "provisional",
-   "note": "Derived from 3 real visits in 2026-08-17..2026-09-04"
+   "visits": 4,
+   "confidence": "medium",
+   "note": "Derived from 4 real visits in 2026-08-31..2026-10-12"
   },
   "98445": {
    "days": [
@@ -1016,19 +1168,19 @@
    ],
    "tech": "Luke LaVergne",
    "cities": "Tacoma",
-   "visits": 1,
-   "confidence": "low",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "visits": 13,
+   "confidence": "high",
+   "note": "Derived from 13 real visits in 2026-08-31..2026-10-12"
   },
   "98446": {
    "days": [
-    "wed"
+    "fri"
    ],
-   "tech": "Cory Ventura",
+   "tech": "Luke LaVergne",
    "cities": "Tacoma",
-   "visits": 4,
+   "visits": 6,
    "confidence": "medium",
-   "note": "Derived from 4 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 6 real visits in 2026-08-31..2026-10-12"
   },
   "98465": {
    "days": [
@@ -1038,59 +1190,57 @@
    "cities": "Tacoma",
    "visits": 1,
    "confidence": "low",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 1 real visits in 2026-08-31..2026-10-12"
   },
   "98466": {
    "days": [
-    "wed"
+    "fri"
    ],
    "tech": "Luke LaVergne",
-   "cities": "Fircrest",
-   "visits": 2,
-   "confidence": "low",
-   "note": "Derived from 2 real visits in 2026-08-17..2026-09-04"
+   "cities": "University Place",
+   "visits": 4,
+   "confidence": "medium",
+   "note": "Derived from 4 real visits in 2026-08-31..2026-10-12"
   },
   "98467": {
    "days": [
-    "mon"
+    "fri"
    ],
    "tech": "Luke LaVergne",
    "cities": "University Place",
    "visits": 1,
-   "confidence": "provisional",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "confidence": "low",
+   "note": "Derived from 1 real visits in 2026-08-31..2026-10-12"
   },
   "98498": {
    "days": [
-    "mon",
     "fri"
    ],
    "tech": "Luke LaVergne",
    "cities": "Tacoma/Lakewood",
-   "visits": 5,
-   "confidence": "medium",
-   "note": "Derived from 5 real visits in 2026-08-17..2026-09-04"
+   "visits": 10,
+   "confidence": "high",
+   "note": "Derived from 10 real visits in 2026-08-31..2026-10-12"
   },
   "98499": {
    "days": [
-    "mon"
+    "fri"
    ],
    "tech": "Luke LaVergne",
-   "cities": "Tacoma",
-   "visits": 2,
-   "confidence": "low",
-   "note": "Derived from 2 real visits in 2026-08-17..2026-09-04"
+   "cities": "Tacoma/Lakewood",
+   "visits": 7,
+   "confidence": "medium",
+   "note": "Derived from 7 real visits in 2026-08-31..2026-10-12"
   },
   "98501": {
    "days": [
-    "thu",
-    "mon"
+    "thu"
    ],
    "tech": "Luke LaVergne",
    "cities": "Olympia/Tumwater",
-   "visits": 5,
-   "confidence": "medium",
-   "note": "Derived from 5 real visits in 2026-08-17..2026-09-04"
+   "visits": 25,
+   "confidence": "high",
+   "note": "Derived from 25 real visits in 2026-08-31..2026-10-12"
   },
   "98502": {
    "days": [
@@ -1098,20 +1248,20 @@
    ],
    "tech": "Luke LaVergne",
    "cities": "Olympia",
-   "visits": 6,
-   "confidence": "medium",
-   "note": "Derived from 6 real visits in 2026-08-17..2026-09-04"
+   "visits": 29,
+   "confidence": "high",
+   "note": "Derived from 29 real visits in 2026-08-31..2026-10-12"
   },
   "98503": {
    "days": [
-    "mon",
-    "thu"
+    "thu",
+    "mon"
    ],
    "tech": "Luke LaVergne",
-   "cities": "Olympia/Lacey",
-   "visits": 3,
-   "confidence": "low",
-   "note": "Derived from 3 real visits in 2026-08-17..2026-09-04"
+   "cities": "Lacey/Olympia",
+   "visits": 8,
+   "confidence": "high",
+   "note": "Derived from 8 real visits in 2026-08-31..2026-10-12"
   },
   "98506": {
    "days": [
@@ -1119,19 +1269,20 @@
    ],
    "tech": "Luke LaVergne",
    "cities": "Olympia",
-   "visits": 1,
-   "confidence": "low",
-   "note": "Derived from 1 real visits in 2026-08-17..2026-09-04"
+   "visits": 5,
+   "confidence": "medium",
+   "note": "Derived from 5 real visits in 2026-08-31..2026-10-12"
   },
   "98512": {
    "days": [
-    "thu"
+    "thu",
+    "mon"
    ],
    "tech": "Luke LaVergne",
    "cities": "Olympia/Tumwater",
-   "visits": 4,
-   "confidence": "medium",
-   "note": "Derived from 4 real visits in 2026-08-17..2026-09-04"
+   "visits": 19,
+   "confidence": "high",
+   "note": "Derived from 19 real visits in 2026-08-31..2026-10-12"
   },
   "98513": {
    "days": [
@@ -1139,9 +1290,9 @@
    ],
    "tech": "Luke LaVergne",
    "cities": "Olympia/Lacey",
-   "visits": 10,
+   "visits": 37,
    "confidence": "high",
-   "note": "Derived from 10 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 37 real visits in 2026-08-31..2026-10-12"
   },
   "98516": {
    "days": [
@@ -1149,29 +1300,41 @@
    ],
    "tech": "Luke LaVergne",
    "cities": "Lacey/Olympia",
-   "visits": 4,
-   "confidence": "medium",
-   "note": "Derived from 4 real visits in 2026-08-17..2026-09-04"
+   "visits": 36,
+   "confidence": "high",
+   "note": "Derived from 36 real visits in 2026-08-31..2026-10-12"
   },
   "98580": {
    "days": [
+    "tue",
     "thu"
    ],
    "tech": "Luke LaVergne",
    "cities": "Roy",
-   "visits": 2,
-   "confidence": "low",
-   "note": "Derived from 2 real visits in 2026-08-17..2026-09-04"
+   "visits": 4,
+   "confidence": "medium",
+   "note": "Derived from 4 real visits in 2026-08-31..2026-10-12"
   },
-  "98597": {
+  "98589": {
    "days": [
     "thu"
    ],
    "tech": "Luke LaVergne",
-   "cities": "Yelm",
-   "visits": 3,
+   "cities": "Tenino",
+   "visits": 1,
    "confidence": "low",
-   "note": "Derived from 3 real visits in 2026-08-17..2026-09-04"
+   "note": "Derived from 1 real visits in 2026-08-31..2026-10-12"
+  },
+  "98597": {
+   "days": [
+    "thu",
+    "tue"
+   ],
+   "tech": "Luke LaVergne",
+   "cities": "Yelm",
+   "visits": 11,
+   "confidence": "high",
+   "note": "Derived from 11 real visits in 2026-08-31..2026-10-12"
   }
  },
  "jobOverrides": {}
