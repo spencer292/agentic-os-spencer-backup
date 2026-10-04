@@ -1,12 +1,824 @@
 {
-  "generatedAt": "2026-09-16T22:01:42.814Z",
+  "generatedAt": "2026-09-29T23:46:08.005Z",
   "start": "2024-07-01T00:00:00.000Z",
-  "count": 10435,
+  "count": 10492,
   "nodes": [
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczNzk0OTgz",
+      "invoiceNumber": "16375",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-29T23:18:26Z",
+      "createdAt": "2026-09-29T23:18:23Z",
+      "amounts": {
+        "total": 150,
+        "invoiceBalance": 0,
+        "paymentsTotal": 0,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczNzk0NzY3",
+      "invoiceNumber": "16374",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-29T23:16:33Z",
+      "createdAt": "2026-09-29T23:16:28Z",
+      "amounts": {
+        "total": 150,
+        "invoiceBalance": 0,
+        "paymentsTotal": 0,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczNzkxMTE3",
+      "invoiceNumber": "16372",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-29T22:45:48Z",
+      "createdAt": "2026-09-29T22:45:48Z",
+      "amounts": {
+        "total": 150,
+        "invoiceBalance": 0,
+        "paymentsTotal": 0,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczNzY5MDQw",
+      "invoiceNumber": "16371",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-29T20:39:43Z",
+      "createdAt": "2026-09-29T20:39:35Z",
+      "amounts": {
+        "total": 150,
+        "invoiceBalance": 0,
+        "paymentsTotal": 0,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczNzQxMTc1",
+      "invoiceNumber": "16370",
+      "invoiceStatus": "awaiting_payment",
+      "issuedDate": "2026-09-29T18:39:09Z",
+      "createdAt": "2026-09-29T18:39:02Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 300,
+        "paymentsTotal": 0,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczNzM5NTk2",
+      "invoiceNumber": "16369",
+      "invoiceStatus": "awaiting_payment",
+      "issuedDate": "2026-09-29T18:32:45Z",
+      "createdAt": "2026-09-29T18:32:33Z",
+      "amounts": {
+        "total": 225,
+        "invoiceBalance": 225,
+        "paymentsTotal": 0,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczNzIyNzY4",
+      "invoiceNumber": "16368",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-29T17:25:32Z",
+      "createdAt": "2026-09-29T17:24:43Z",
+      "amounts": {
+        "total": 405,
+        "invoiceBalance": 0,
+        "paymentsTotal": 255,
+        "depositAmount": 150,
+        "discountAmount": 45
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczNzIwOTEx",
+      "invoiceNumber": "16367",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-29T17:17:23Z",
+      "createdAt": "2026-09-29T17:17:15Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczNjA4MTY2",
+      "invoiceNumber": "16366",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-28T20:57:24Z",
+      "createdAt": "2026-09-28T20:57:16Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczNTgzMDE0",
+      "invoiceNumber": "16365",
+      "invoiceStatus": "past_due",
+      "issuedDate": "2026-09-28T19:04:02Z",
+      "createdAt": "2026-09-28T19:03:41Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 450,
+        "paymentsTotal": 0,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczNTU0NTc1",
+      "invoiceNumber": "16364",
+      "invoiceStatus": "past_due",
+      "issuedDate": "2026-09-28T17:03:09Z",
+      "createdAt": "2026-09-28T17:02:58Z",
+      "amounts": {
+        "total": 375,
+        "invoiceBalance": 375,
+        "paymentsTotal": 0,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczNTUzNzA4",
+      "invoiceNumber": "16363",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-28T17:00:02Z",
+      "createdAt": "2026-09-28T16:59:07Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczNTUwNjA5",
+      "invoiceNumber": "16362",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-28T16:46:00Z",
+      "createdAt": "2026-09-28T16:45:27Z",
+      "amounts": {
+        "total": 325,
+        "invoiceBalance": 0,
+        "paymentsTotal": 325,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczNTQ4OTQ1",
+      "invoiceNumber": "16361",
+      "invoiceStatus": "past_due",
+      "issuedDate": "2026-09-28T16:38:28Z",
+      "createdAt": "2026-09-28T16:38:22Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 300,
+        "paymentsTotal": 0,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczNTM5ODU0",
+      "invoiceNumber": "16360",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-28T15:58:17Z",
+      "createdAt": "2026-09-28T15:57:52Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczMzkwMjcy",
+      "invoiceNumber": "16359",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-25T21:30:35Z",
+      "createdAt": "2026-09-25T21:30:27Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczMzgyNDg5",
+      "invoiceNumber": "16358",
+      "invoiceStatus": "past_due",
+      "issuedDate": "2026-09-25T20:44:25Z",
+      "createdAt": "2026-09-25T20:44:10Z",
+      "amounts": {
+        "total": 375,
+        "invoiceBalance": 375,
+        "paymentsTotal": 0,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczMzc1NjA5",
+      "invoiceNumber": "16357",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-25T20:07:25Z",
+      "createdAt": "2026-09-25T20:07:17Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 450,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczMzU2Mjc3",
+      "invoiceNumber": "16356",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-25T18:35:25Z",
+      "createdAt": "2026-09-25T18:35:09Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczMzM3MjE3",
+      "invoiceNumber": "16355",
+      "invoiceStatus": "past_due",
+      "issuedDate": "2026-09-25T17:05:43Z",
+      "createdAt": "2026-09-25T17:05:33Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 300,
+        "paymentsTotal": 0,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczMzI2NDE5",
+      "invoiceNumber": "16354",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-25T16:16:31Z",
+      "createdAt": "2026-09-25T16:16:23Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczMzA0Mzgx",
+      "invoiceNumber": "16353",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-25T14:51:51Z",
+      "createdAt": "2026-09-25T14:51:36Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczMjE3ODU3",
+      "invoiceNumber": "16352",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-24T19:51:26Z",
+      "createdAt": "2026-09-24T19:51:15Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczMTc3NzA1",
+      "invoiceNumber": "16351",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-24T16:43:16Z",
+      "createdAt": "2026-09-24T16:42:35Z",
+      "amounts": {
+        "total": 375,
+        "invoiceBalance": 0,
+        "paymentsTotal": 375,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczMDc2ODIz",
+      "invoiceNumber": "16350",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-23T20:15:47Z",
+      "createdAt": "2026-09-23T20:15:22Z",
+      "amounts": {
+        "total": 375,
+        "invoiceBalance": 0,
+        "paymentsTotal": 375,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczMDYyNjI3",
+      "invoiceNumber": "16349",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-23T19:09:00Z",
+      "createdAt": "2026-09-23T19:08:46Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczMDMwMTA4",
+      "invoiceNumber": "16348",
+      "invoiceStatus": "past_due",
+      "issuedDate": "2026-09-23T16:37:35Z",
+      "createdAt": "2026-09-23T16:37:12Z",
+      "amounts": {
+        "total": 375,
+        "invoiceBalance": 375,
+        "paymentsTotal": 0,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTczMDE2NDU3",
+      "invoiceNumber": "16347",
+      "invoiceStatus": "past_due",
+      "issuedDate": "2026-09-23T15:31:27Z",
+      "createdAt": "2026-09-23T15:31:04Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 300,
+        "paymentsTotal": 0,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyOTQzNjc1",
+      "invoiceNumber": "16346",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-22T21:10:43Z",
+      "createdAt": "2026-09-22T21:10:35Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyOTE1ODEx",
+      "invoiceNumber": "16345",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-22T18:50:29Z",
+      "createdAt": "2026-09-22T18:50:14Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyODk4Mjgx",
+      "invoiceNumber": "16344",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-22T17:28:37Z",
+      "createdAt": "2026-09-22T17:28:25Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyODcwNzkw",
+      "invoiceNumber": "16343",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-22T15:19:41Z",
+      "createdAt": "2026-09-22T15:19:34Z",
+      "amounts": {
+        "total": 375,
+        "invoiceBalance": 0,
+        "paymentsTotal": 375,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyODMyOTY3",
+      "invoiceNumber": "16342",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-22T04:02:20Z",
+      "createdAt": "2026-09-22T04:01:17Z",
+      "amounts": {
+        "total": 100,
+        "invoiceBalance": 0,
+        "paymentsTotal": 100,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNzkzNzI1",
+      "invoiceNumber": "16341",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-21T20:48:43Z",
+      "createdAt": "2026-09-21T20:48:29Z",
+      "amounts": {
+        "total": 375,
+        "invoiceBalance": 0,
+        "paymentsTotal": 375,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNzgxMjk5",
+      "invoiceNumber": "16340",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-21T19:47:53Z",
+      "createdAt": "2026-09-21T19:47:47Z",
+      "amounts": {
+        "total": 375,
+        "invoiceBalance": 0,
+        "paymentsTotal": 375,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNzc3OTU4",
+      "invoiceNumber": "16339",
+      "invoiceStatus": "past_due",
+      "issuedDate": "2026-09-21T19:32:22Z",
+      "createdAt": "2026-09-21T19:32:15Z",
+      "amounts": {
+        "total": 375,
+        "invoiceBalance": 375,
+        "paymentsTotal": 0,
+        "depositAmount": 0,
+        "discountAmount": 75
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNzY5MTgx",
+      "invoiceNumber": "16338",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-21T18:50:33Z",
+      "createdAt": "2026-09-21T18:50:21Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNzYzMjE4",
+      "invoiceNumber": "16337",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-21T18:23:26Z",
+      "createdAt": "2026-09-21T18:23:17Z",
+      "amounts": {
+        "total": 300,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNzQ1MTg2",
+      "invoiceNumber": "16336",
+      "invoiceStatus": "past_due",
+      "issuedDate": "2026-09-21T16:58:49Z",
+      "createdAt": "2026-09-21T16:58:39Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 300,
+        "paymentsTotal": 0,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNzI0ODQ5",
+      "invoiceNumber": "16335",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-21T15:22:51Z",
+      "createdAt": "2026-09-21T15:22:38Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNzE2NDMz",
+      "invoiceNumber": "16334",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-21T14:39:41Z",
+      "createdAt": "2026-09-21T14:39:20Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNjQwMDk4",
+      "invoiceNumber": "16332",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-19T18:38:14Z",
+      "createdAt": "2026-09-19T18:38:14Z",
+      "amounts": {
+        "total": 150,
+        "invoiceBalance": 0,
+        "paymentsTotal": 0,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNjM2Mjc5",
+      "invoiceNumber": "16331",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-19T17:20:03Z",
+      "createdAt": "2026-09-19T17:20:03Z",
+      "amounts": {
+        "total": 150,
+        "invoiceBalance": 0,
+        "paymentsTotal": 0,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNjM1MjIy",
+      "invoiceNumber": "16330",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-19T16:58:08Z",
+      "createdAt": "2026-09-19T16:58:08Z",
+      "amounts": {
+        "total": 150,
+        "invoiceBalance": 0,
+        "paymentsTotal": 0,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNTc1ODM5",
+      "invoiceNumber": "16329",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-18T19:40:21Z",
+      "createdAt": "2026-09-18T19:38:54Z",
+      "amounts": {
+        "total": 250,
+        "invoiceBalance": 0,
+        "paymentsTotal": 250,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNTc1MzE5",
+      "invoiceNumber": "16328",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-18T19:36:20Z",
+      "createdAt": "2026-09-18T19:36:06Z",
+      "amounts": {
+        "total": 375,
+        "invoiceBalance": 0,
+        "paymentsTotal": 375,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNTM4OTMw",
+      "invoiceNumber": "16327",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-18T16:31:32Z",
+      "createdAt": "2026-09-18T16:31:13Z",
+      "amounts": {
+        "total": 250,
+        "invoiceBalance": 0,
+        "paymentsTotal": 250,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNTE4MDk4",
+      "invoiceNumber": "16326",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-18T14:47:11Z",
+      "createdAt": "2026-09-18T14:46:56Z",
+      "amounts": {
+        "total": 375,
+        "invoiceBalance": 0,
+        "paymentsTotal": 375,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNDY5MzI2",
+      "invoiceNumber": "16325",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-17T22:57:25Z",
+      "createdAt": "2026-09-17T22:57:18Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNDQzNzEw",
+      "invoiceNumber": "16324",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-17T20:14:14Z",
+      "createdAt": "2026-09-17T20:14:07Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNDQwNTM3",
+      "invoiceNumber": "16323",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-17T19:57:31Z",
+      "createdAt": "2026-09-17T19:57:23Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNDI3Nzkx",
+      "invoiceNumber": "16322",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-17T19:00:25Z",
+      "createdAt": "2026-09-17T19:00:14Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNDI2NzQ0",
+      "invoiceNumber": "16321",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-17T18:55:36Z",
+      "createdAt": "2026-09-17T18:55:27Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNDE4MjM5",
+      "invoiceNumber": "16320",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-17T18:16:33Z",
+      "createdAt": "2026-09-17T18:16:09Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 450,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNDE1Mzc2",
+      "invoiceNumber": "16319",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-17T18:02:24Z",
+      "createdAt": "2026-09-17T18:02:16Z",
+      "amounts": {
+        "total": 375,
+        "invoiceBalance": 0,
+        "paymentsTotal": 375,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyNDAzMTQ3",
+      "invoiceNumber": "16318",
+      "invoiceStatus": "past_due",
+      "issuedDate": "2026-09-17T17:03:40Z",
+      "createdAt": "2026-09-17T17:03:30Z",
+      "amounts": {
+        "total": 375,
+        "invoiceBalance": 375,
+        "paymentsTotal": 0,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyMzgwNjA4",
+      "invoiceNumber": "16317",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-17T15:18:37Z",
+      "createdAt": "2026-09-17T15:18:14Z",
+      "amounts": {
+        "total": 450,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
+        "depositAmount": 150,
+        "discountAmount": 0
+      }
+    },
+    {
+      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyMzE1OTgw",
+      "invoiceNumber": "16316",
+      "invoiceStatus": "paid",
+      "issuedDate": "2026-09-16T22:31:23Z",
+      "createdAt": "2026-09-16T22:31:07Z",
+      "amounts": {
+        "total": 225,
+        "invoiceBalance": 0,
+        "paymentsTotal": 225,
+        "depositAmount": 0,
+        "discountAmount": 0
+      }
+    },
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyMzAxNjI3",
       "invoiceNumber": "16315",
-      "invoiceStatus": "awaiting_payment",
+      "invoiceStatus": "past_due",
       "issuedDate": "2026-09-16T20:58:27Z",
       "createdAt": "2026-09-16T20:58:13Z",
       "amounts": {
@@ -20,7 +832,7 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyMjk4ODky",
       "invoiceNumber": "16314",
-      "invoiceStatus": "awaiting_payment",
+      "invoiceStatus": "past_due",
       "issuedDate": "2026-09-16T20:44:30Z",
       "createdAt": "2026-09-16T20:44:20Z",
       "amounts": {
@@ -34,13 +846,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyMjgxMDE5",
       "invoiceNumber": "16313",
-      "invoiceStatus": "awaiting_payment",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-09-16T19:16:18Z",
       "createdAt": "2026-09-16T19:16:09Z",
       "amounts": {
         "total": 450,
-        "invoiceBalance": 300,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
         "depositAmount": 150,
         "discountAmount": 0
       }
@@ -62,13 +874,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyMjY4ODYy",
       "invoiceNumber": "16311",
-      "invoiceStatus": "awaiting_payment",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-09-16T18:18:11Z",
       "createdAt": "2026-09-16T18:18:01Z",
       "amounts": {
         "total": 450,
-        "invoiceBalance": 300,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
         "depositAmount": 150,
         "discountAmount": 0
       }
@@ -216,13 +1028,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyMTE4Nzgx",
       "invoiceNumber": "16300",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-09-15T19:15:36Z",
       "createdAt": "2026-09-15T19:15:20Z",
       "amounts": {
         "total": 450,
-        "invoiceBalance": 300,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
         "depositAmount": 150,
         "discountAmount": 0
       }
@@ -258,13 +1070,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcxOTgyNzMz",
       "invoiceNumber": "16296",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-09-14T20:19:26Z",
       "createdAt": "2026-09-14T20:19:09Z",
       "amounts": {
         "total": 375,
-        "invoiceBalance": 375,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 375,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -300,13 +1112,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcxNzc0NTE3",
       "invoiceNumber": "16292",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-09-11T20:44:26Z",
       "createdAt": "2026-09-11T20:44:20Z",
       "amounts": {
         "total": 450,
-        "invoiceBalance": 300,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
         "depositAmount": 150,
         "discountAmount": 0
       }
@@ -340,20 +1152,6 @@
       }
     },
     {
-      "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcxNzQ1ODg1",
-      "invoiceNumber": "16289",
-      "invoiceStatus": "past_due",
-      "issuedDate": "2026-09-11T18:09:53Z",
-      "createdAt": "2026-09-11T18:09:23Z",
-      "amounts": {
-        "total": 250,
-        "invoiceBalance": 250,
-        "paymentsTotal": 0,
-        "depositAmount": 0,
-        "discountAmount": 0
-      }
-    },
-    {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcxNzIzMjU0",
       "invoiceNumber": "16288",
       "invoiceStatus": "paid",
@@ -384,13 +1182,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcxNjU4MTYw",
       "invoiceNumber": "16286",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-09-11T00:15:47Z",
       "createdAt": "2026-09-11T00:15:40Z",
       "amounts": {
         "total": 375,
-        "invoiceBalance": 375,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 375,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -472,8 +1270,8 @@
       "issuedDate": "2026-09-10T16:41:59Z",
       "createdAt": "2026-09-10T16:41:52Z",
       "amounts": {
-        "total": 450,
-        "invoiceBalance": 450,
+        "total": 375,
+        "invoiceBalance": 375,
         "paymentsTotal": 0,
         "depositAmount": 0,
         "discountAmount": 0
@@ -482,13 +1280,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcxNTYwNjU0",
       "invoiceNumber": "16279",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-09-10T15:22:28Z",
       "createdAt": "2026-09-10T15:22:05Z",
       "amounts": {
-        "total": 450,
-        "invoiceBalance": 450,
-        "paymentsTotal": 0,
+        "total": 375,
+        "invoiceBalance": 0,
+        "paymentsTotal": 375,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -538,13 +1336,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcxNDMxOTQ5",
       "invoiceNumber": "16274",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-09-09T17:37:58Z",
       "createdAt": "2026-09-09T17:37:50Z",
       "amounts": {
         "total": 375,
-        "invoiceBalance": 375,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 375,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -664,13 +1462,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcxMjQzMzg1",
       "invoiceNumber": "16265",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-09-08T15:17:08Z",
       "createdAt": "2026-09-08T15:16:59Z",
       "amounts": {
         "total": 375,
-        "invoiceBalance": 375,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 375,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -930,13 +1728,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcwMzgzNTkz",
       "invoiceNumber": "16245",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-09-01T16:20:07Z",
       "createdAt": "2026-09-01T16:20:00Z",
       "amounts": {
         "total": 450,
-        "invoiceBalance": 300,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 300,
         "depositAmount": 150,
         "discountAmount": 0
       }
@@ -4038,13 +4836,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcyMDEzOTQ4",
       "invoiceNumber": "16297",
-      "invoiceStatus": "awaiting_payment",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-08-31T23:54:49Z",
       "createdAt": "2026-09-14T23:55:08Z",
       "amounts": {
         "total": 100,
-        "invoiceBalance": 100,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 100,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -4150,13 +4948,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcwMDg0NDEz",
       "invoiceNumber": "16019",
-      "invoiceStatus": "awaiting_payment",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-08-31T18:10:44Z",
       "createdAt": "2026-08-31T18:10:34Z",
       "amounts": {
         "total": 1550,
-        "invoiceBalance": 1550,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 1550,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -5018,13 +5816,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcwMDM2ODc1",
       "invoiceNumber": "15681",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-08-31T15:56:10Z",
       "createdAt": "2026-08-31T15:49:48Z",
       "amounts": {
         "total": 90,
-        "invoiceBalance": 90,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 90,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -5186,13 +5984,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcwMDM3NDA4",
       "invoiceNumber": "15859",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-08-31T15:56:03Z",
       "createdAt": "2026-08-31T15:50:47Z",
       "amounts": {
         "total": 100,
-        "invoiceBalance": 100,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 100,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -5816,13 +6614,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcwMDM2Njgz",
       "invoiceNumber": "15618",
-      "invoiceStatus": "awaiting_payment",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-08-31T15:55:44Z",
       "createdAt": "2026-08-31T15:49:27Z",
       "amounts": {
         "total": 2184.75,
-        "invoiceBalance": 2184.75,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 2184.75,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -5830,13 +6628,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcwMDM3NjAz",
       "invoiceNumber": "15919",
-      "invoiceStatus": "awaiting_payment",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-08-31T15:55:43Z",
       "createdAt": "2026-08-31T15:51:09Z",
       "amounts": {
         "total": 375,
-        "invoiceBalance": 375,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 375,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -6138,13 +6936,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcwMDM2ODY2",
       "invoiceNumber": "15676",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-08-31T15:55:35Z",
       "createdAt": "2026-08-31T15:49:46Z",
       "amounts": {
         "total": 90,
-        "invoiceBalance": 90,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 90,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -6796,13 +7594,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcwMDM3MDA2",
       "invoiceNumber": "15722",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-08-31T15:55:16Z",
       "createdAt": "2026-08-31T15:50:01Z",
       "amounts": {
         "total": 100,
-        "invoiceBalance": 100,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 100,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -7860,13 +8658,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcwMDM3MjQx",
       "invoiceNumber": "15798",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-08-31T15:54:37Z",
       "createdAt": "2026-08-31T15:50:27Z",
       "amounts": {
         "total": 100,
-        "invoiceBalance": 100,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 100,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -8257,7 +9055,7 @@
       "createdAt": "2026-08-31T15:50:42Z",
       "amounts": {
         "total": 100,
-        "invoiceBalance": 100,
+        "invoiceBalance": 0,
         "paymentsTotal": 0,
         "depositAmount": 0,
         "discountAmount": 0
@@ -8266,13 +9064,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcwMDM2Njc2",
       "invoiceNumber": "15616",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-08-31T15:54:27Z",
       "createdAt": "2026-08-31T15:49:27Z",
       "amounts": {
         "total": 85,
-        "invoiceBalance": 85,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 85,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -8350,13 +9148,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcwMDM3NjU2",
       "invoiceNumber": "15932",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-08-31T15:54:24Z",
       "createdAt": "2026-08-31T15:51:14Z",
       "amounts": {
         "total": 100,
-        "invoiceBalance": 100,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 100,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -8378,13 +9176,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcwMDM3Mjk4",
       "invoiceNumber": "15823",
-      "invoiceStatus": "awaiting_payment",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-08-31T15:54:23Z",
       "createdAt": "2026-08-31T15:50:34Z",
       "amounts": {
         "total": 1500,
-        "invoiceBalance": 1500,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 1500,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -8406,13 +9204,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcwMDM2NzE0",
       "invoiceNumber": "15629",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-08-31T15:54:22Z",
       "createdAt": "2026-08-31T15:49:32Z",
       "amounts": {
         "total": 50,
-        "invoiceBalance": 50,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 50,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -8644,13 +9442,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcwMDM3NDAy",
       "invoiceNumber": "15857",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-08-31T15:54:14Z",
       "createdAt": "2026-08-31T15:50:47Z",
       "amounts": {
         "total": 100,
-        "invoiceBalance": 100,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 100,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -9372,13 +10170,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcwMDM2NzY5",
       "invoiceNumber": "15648",
-      "invoiceStatus": "awaiting_payment",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-08-31T15:53:46Z",
       "createdAt": "2026-08-31T15:49:37Z",
       "amounts": {
         "total": 175,
-        "invoiceBalance": 175,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 175,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -9708,13 +10506,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcwMDM2NzY0",
       "invoiceNumber": "15646",
-      "invoiceStatus": "awaiting_payment",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-08-31T15:53:35Z",
       "createdAt": "2026-08-31T15:49:36Z",
       "amounts": {
         "total": 309.75,
-        "invoiceBalance": 309.75,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 309.75,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -9946,13 +10744,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcwMDM3NDMx",
       "invoiceNumber": "15868",
-      "invoiceStatus": "awaiting_payment",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-08-31T15:53:24Z",
       "createdAt": "2026-08-31T15:50:49Z",
       "amounts": {
         "total": 100,
-        "invoiceBalance": 100,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 100,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -10254,13 +11052,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTcwMDM3MTUy",
       "invoiceNumber": "15764",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-08-31T15:53:15Z",
       "createdAt": "2026-08-31T15:50:17Z",
       "amounts": {
         "total": 125,
-        "invoiceBalance": 125,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 125,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -10758,13 +11556,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTY4NTU3ODQ5",
       "invoiceNumber": "15542",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-08-18T19:37:48Z",
       "createdAt": "2026-08-18T19:36:19Z",
       "amounts": {
         "total": 375,
-        "invoiceBalance": 375,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 375,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -11318,12 +12116,12 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTY3MjAwMTU3",
       "invoiceNumber": "15497",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-08-06T15:43:12Z",
       "createdAt": "2026-08-06T15:43:05Z",
       "amounts": {
-        "total": 450,
-        "invoiceBalance": 300,
+        "total": 150,
+        "invoiceBalance": 0,
         "paymentsTotal": 0,
         "depositAmount": 150,
         "discountAmount": 0
@@ -11388,13 +12186,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTY3MDUzNDMx",
       "invoiceNumber": "15491",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-08-05T16:50:42Z",
       "createdAt": "2026-08-05T16:50:33Z",
       "amounts": {
-        "total": 375,
-        "invoiceBalance": 375,
-        "paymentsTotal": 0,
+        "total": 100,
+        "invoiceBalance": 0,
+        "paymentsTotal": 100,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -17539,7 +18337,7 @@
       "createdAt": "2026-07-31T14:57:05Z",
       "amounts": {
         "total": 100,
-        "invoiceBalance": 100,
+        "invoiceBalance": 0,
         "paymentsTotal": 0,
         "depositAmount": 0,
         "discountAmount": 0
@@ -17875,7 +18673,7 @@
       "createdAt": "2026-07-31T14:57:19Z",
       "amounts": {
         "total": 100,
-        "invoiceBalance": 100,
+        "invoiceBalance": 0,
         "paymentsTotal": 0,
         "depositAmount": 0,
         "discountAmount": 0
@@ -18360,13 +19158,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTY2MTY2NDIw",
       "invoiceNumber": "15093",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-07-31T15:00:37Z",
       "createdAt": "2026-07-31T14:56:59Z",
       "amounts": {
         "total": 150,
-        "invoiceBalance": 150,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 150,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -19564,13 +20362,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTY2MTY2Mzc3",
       "invoiceNumber": "15078",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-07-31T14:59:44Z",
       "createdAt": "2026-07-31T14:56:54Z",
       "amounts": {
         "total": 125,
-        "invoiceBalance": 125,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 125,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -24170,13 +24968,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTYyMDg5MzIw",
       "invoiceNumber": "14481",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-06-30T13:48:37Z",
       "createdAt": "2026-06-30T13:33:33Z",
       "amounts": {
         "total": 150,
-        "invoiceBalance": 150,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 150,
         "depositAmount": 0,
         "discountAmount": 0
       }
@@ -28524,13 +29322,13 @@
     {
       "id": "Z2lkOi8vSm9iYmVyL0ludm9pY2UvMTU4NDcwMzA2",
       "invoiceNumber": "14252",
-      "invoiceStatus": "past_due",
+      "invoiceStatus": "paid",
       "issuedDate": "2026-06-01T18:17:40Z",
       "createdAt": "2026-06-01T18:17:32Z",
       "amounts": {
         "total": 375,
-        "invoiceBalance": 375,
-        "paymentsTotal": 0,
+        "invoiceBalance": 0,
+        "paymentsTotal": 375,
         "depositAmount": 0,
         "discountAmount": 0
       }

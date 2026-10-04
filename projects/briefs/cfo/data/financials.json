@@ -1,0 +1,145 @@
+{
+  "_note": "Normalized AGGREGATE figures from bookkeeper QBO exports. Raw files live in gitignored cfo-private/. No per-person lines. Owner comp is folded into payroll_total here; the split lives in cfo-private only.",
+  "periods": [
+    {
+      "period": "2025-10..2026-08",
+      "months": 11,
+      "basis": "cash",
+      "granularity": "total only (export was not by month)",
+      "source": "cfo-private/2026-09-29_qbo-pnl-by-month.csv (QBO P&L, exported 2026-09-29)",
+      "reconciled": "through Aug 2026 per Spencer; balance sheet shows unreconciled bank/clearing balances (see findings)",
+      "income": 832837.03,
+      "cogs": {
+        "equipment_lease": 34373.4,
+        "equipment_rental_repairs": -1016.24,
+        "job_supplies_materials": 39124.41,
+        "jobber_transaction_fees": 19651.54,
+        "small_tools": 1000,
+        "fuel": 23667.74,
+        "total": 116800.85
+      },
+      "opex": {
+        "consulting": 8735.15,
+        "advertising_marketing": 57267.27,
+        "insurance": 18043.41,
+        "legal_accounting": 19245,
+        "software_it_subscriptions": 20424.12,
+        "meals": 6530.13,
+        "office_misc_licenses_bank": 5798.78,
+        "payroll_total": 284205.35,
+        "utilities_phone_internet": 16151.27,
+        "vehicle_repairs_washes": 14592.72,
+        "interest": 2454.5,
+        "uniforms_gear": 1934.18,
+        "wa_bo_tax": 3781.47,
+        "total": 459163.35
+      },
+      "net_operating_income": 256872.83,
+      "other_income": 35668.45,
+      "net_income": 292541.28,
+      "completed_visits": 15209,
+      "completed_visits_source": "cfo-private/visits-2025-10..2026-08.json (Jobber)",
+      "other_income_reclass": {
+        "amount": 32560,
+        "finding": "24 ATM cash deposits by Spencer into BECU Mole Checking (2891), 2026-05-07..07-25, booked as Other Income. Per Spencer 2026-09-29: cash withdrawn from a Columbia account and redeposited to pay bills (Columbia blocks transfers). It is an inter-account transfer, not income.",
+        "adjusted_net_income": 259981.28000000003,
+        "status": "bookkeeper to reclass; check how matching Columbia withdrawals were booked"
+      }
+    }
+  ],
+  "monthly": {
+    "_source": "cfo-private/2026-09-29_qbo-pnl-monthly.csv (cash basis)",
+    "months": [
+      "2025-10",
+      "2025-11",
+      "2025-12",
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06",
+      "2026-07",
+      "2026-08"
+    ],
+    "income": [
+      88003.99,
+      80236.49,
+      57954.99,
+      52156.27,
+      59516.29,
+      64946,
+      74822,
+      71236,
+      78135,
+      98939,
+      106891
+    ],
+    "cogs": [
+      7084.39,
+      2171.61,
+      7359.67,
+      4874.76,
+      7004.78,
+      7917.65,
+      8126.24,
+      11200.6,
+      21730.77,
+      20874.69,
+      18455.69
+    ],
+    "opex": [
+      42469.97,
+      35717.79,
+      33016.83,
+      27808.49,
+      31965.9,
+      46420.41,
+      52182.79,
+      33535.52,
+      38422,
+      51214.96,
+      66408.69
+    ],
+    "net_operating_income": [
+      38449.63,
+      42347.09,
+      17578.49,
+      19473.02,
+      20545.61,
+      10607.94,
+      14512.97,
+      26499.88,
+      17982.23,
+      26849.35,
+      22026.62
+    ],
+    "completed_visits": [
+      1697,
+      1104,
+      975,
+      902,
+      938,
+      1001,
+      1002,
+      1111,
+      1614,
+      2366,
+      2499
+    ],
+    "known_gaps": "Fuel ~0 and vehicle repairs 0 in Nov-Feb; phone missing Feb/May/Jul; ads flat 3000 Oct-Jan (likely placeholder). Winter costs understated."
+  },
+  "cash_on_hand": {
+    "as_of": "2026-09-29 (live bank balances, Spencer stated; independent of QBO reconciliation)",
+    "amount": 14000,
+    "tag": "KNOWN (owner-stated, not statement)",
+    "detail": "All BECU accounts 0; Columbia ~14,000. QBO shows 4,343 in Columbia and -170,901 in INCOME (0266): books understate real deposits."
+  },
+  "debt_2026_08_31": {
+    "credit_cards": 97286.11,
+    "becu_loc_in_cards": 13845.98,
+    "kapitus_loan": 35839.61,
+    "cadillac_note": 63110.63,
+    "source": "cfo-private/2026-09-29_qbo-balance-sheet.csv"
+  }
+}

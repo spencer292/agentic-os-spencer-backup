@@ -1,0 +1,142 @@
+# TMCP Price Increase List — to $100/mo
+
+**Generated:** 2026-09-29 · **Status:** DRAFT — nothing changed in Jobber. Spencer approves before any price is edited or any customer is notified.
+
+**Scope:** 129 monthly TMCP jobs on pre-2025 pricing, no discount line item, not flagged as a discount by Spencer, all past their 1-year quote (started before 2025-04-01).
+**Total:** +$1683.25/mo · +$20199/yr.
+
+**What to change per job:** the TMCP line item unit price → $100 on the recurring job (future invoices). Target is the ≤1 acre rate; larger properties may belong at $125/$150 and are not assessed here.
+
+| # | Job | Client | Now | New | +/mo | Started | Visits/yr | Jobber |
+|---:|---:|---|---:|---:|---:|---|---:|---|
+| 1 | 4998 | Bill Langley | $75 | $100 | $25 | 2024-02-26 | 21 | [open](https://secure.getjobber.com/work_orders/84783449) |
+| 2 | 5024 | Brienna Dyberg | $75 | $100 | $25 | 2024-03-06 | 28 | [open](https://secure.getjobber.com/work_orders/85325122) |
+| 3 | 5829 | Tom Hornberg | $75 | $100 | $25 | 2024-08-28 | 27 | [open](https://secure.getjobber.com/work_orders/96575298) |
+| 4 | 6275 | Mike Tonda | $75 | $100 | $25 | 2025-01-12 | 25 | [open](https://secure.getjobber.com/work_orders/105000860) |
+| 5 | 4479 | Charles Bender | $85 | $100 | $15 | 2023-09-01 | 28 | [open](https://secure.getjobber.com/work_orders/75901597) |
+| 6 | 4469 | Yvonne Hall | $85 | $100 | $15 | 2023-09-07 | 31 | [open](https://secure.getjobber.com/work_orders/75798117) |
+| 7 | 4515 | Kelly Kunz | $85 | $100 | $15 | 2023-09-08 | 34 | [open](https://secure.getjobber.com/work_orders/76265711) |
+| 8 | 4550 | Lee Hansen | $85 | $100 | $15 | 2023-09-22 | 28 | [open](https://secure.getjobber.com/work_orders/76671470) |
+| 9 | 4545 | Randy Stegmeier | $85 | $100 | $15 | 2023-10-01 | 32 | [open](https://secure.getjobber.com/work_orders/76627701) |
+| 10 | 4480 | Amanda Willard | $85 | $100 | $15 | 2023-10-03 | 19 | [open](https://secure.getjobber.com/work_orders/75908539) |
+| 11 | 4629 | Mandy Sprague | $85 | $100 | $15 | 2023-10-04 | 18 | [open](https://secure.getjobber.com/work_orders/77682842) |
+| 12 | 4655 | Bruce  Sprague | $85 | $100 | $15 | 2023-10-17 | 21 | [open](https://secure.getjobber.com/work_orders/78505510) |
+| 13 | 4676 | Rick  Fegurgur | $85 | $100 | $15 | 2023-10-26 | 24 | [open](https://secure.getjobber.com/work_orders/79037144) |
+| 14 | 4673 | Nick Miller | $85 | $100 | $15 | 2023-11-01 | 23 | [open](https://secure.getjobber.com/work_orders/78997304) |
+| 15 | 4674 | Noe Cerda | $85 | $100 | $15 | 2023-11-06 | 29 | [open](https://secure.getjobber.com/work_orders/79019218) |
+| 16 | 4707 | Sandy Foster | $85 | $100 | $15 | 2023-11-09 | 28 | [open](https://secure.getjobber.com/work_orders/79826974) |
+| 17 | 4741 | Ron Krebbs | $85 | $100 | $15 | 2023-11-27 | 24 | [open](https://secure.getjobber.com/work_orders/80687161) |
+| 18 | 4705 | Pam Northrip | $85 | $100 | $15 | 2023-12-12 | 27 | [open](https://secure.getjobber.com/work_orders/79698796) |
+| 19 | 4776 | David Bhend | $85 | $100 | $15 | 2023-12-14 | 26 | [open](https://secure.getjobber.com/work_orders/81417596) |
+| 20 | 4825 | Trudy Wozeniak | $85 | $100 | $15 | 2024-01-04 | 24 | [open](https://secure.getjobber.com/work_orders/82229410) |
+| 21 | 4880 | Matt Swank | $85 | $100 | $15 | 2024-01-22 | 25 | [open](https://secure.getjobber.com/work_orders/83034187) |
+| 22 | 4929 | Susanna Suiter | $85 | $100 | $15 | 2024-02-07 | 22 | [open](https://secure.getjobber.com/work_orders/83866706) |
+| 23 | 4962 | Maureen Haley | $85 | $100 | $15 | 2024-02-16 | 21 | [open](https://secure.getjobber.com/work_orders/84318616) |
+| 24 | 4975 | Brian Beans | $85 | $100 | $15 | 2024-02-20 | 15 | [open](https://secure.getjobber.com/work_orders/84450232) |
+| 25 | 4994 | Liki Estes | $85 | $100 | $15 | 2024-02-26 | 37 | [open](https://secure.getjobber.com/work_orders/84769570) |
+| 26 | 5023 | Ryan Palmer | $85 | $100 | $15 | 2024-03-07 | 17 | [open](https://secure.getjobber.com/work_orders/85322915) |
+| 27 | 5044 | Sandy Blackburn | $85 | $100 | $15 | 2024-03-13 | 30 | [open](https://secure.getjobber.com/work_orders/85592443) |
+| 28 | 5047 | Randy Redding | $85 | $100 | $15 | 2024-03-13 | 30 | [open](https://secure.getjobber.com/work_orders/85745343) |
+| 29 | 5053 | Dennis Scroggins | $85 | $100 | $15 | 2024-03-15 | 21 | [open](https://secure.getjobber.com/work_orders/85856179) |
+| 30 | 5066 | Ryan Coffey | $85 | $100 | $15 | 2024-03-20 | 15 | [open](https://secure.getjobber.com/work_orders/86143755) |
+| 31 | 5052 | Tom Weaver | $85 | $100 | $15 | 2024-03-22 | 21 | [open](https://secure.getjobber.com/work_orders/85855366) |
+| 32 | 5087 | Ganesh   Thirumalai | $85 | $100 | $15 | 2024-03-29 | 27 | [open](https://secure.getjobber.com/work_orders/86734708) |
+| 33 | 5104 | Nathan Barness | $85 | $100 | $15 | 2024-04-03 | 32 | [open](https://secure.getjobber.com/work_orders/87045005) |
+| 34 | 5040 | Priscilla Dendy | $85 | $100 | $15 | 2024-04-04 | 15 | [open](https://secure.getjobber.com/work_orders/85571897) |
+| 35 | 5106 | Todd Davis | $85 | $100 | $15 | 2024-04-04 | 23 | [open](https://secure.getjobber.com/work_orders/87047471) |
+| 36 | 5114 | Mike Sewell | $85 | $100 | $15 | 2024-04-09 | 17 | [open](https://secure.getjobber.com/work_orders/87402681) |
+| 37 | 5147 | Rita Gray | $85 | $100 | $15 | 2024-04-24 | 23 | [open](https://secure.getjobber.com/work_orders/88506397) |
+| 38 | 5152 | Jenny Roy | $85 | $100 | $15 | 2024-04-26 | 30 | [open](https://secure.getjobber.com/work_orders/88570639) |
+| 39 | 5184 | Gail Jones | $85 | $100 | $15 | 2024-05-09 | 19 | [open](https://secure.getjobber.com/work_orders/89583478) |
+| 40 | 5260 | Kathy Lewis | $85 | $100 | $15 | 2024-06-07 | 29 | [open](https://secure.getjobber.com/work_orders/91026628) |
+| 41 | 5298 | Zach Usher | $85 | $100 | $15 | 2024-06-09 | 15 | [open](https://secure.getjobber.com/work_orders/91551435) |
+| 42 | 5322 | Jason Gomez | $85 | $100 | $15 | 2024-06-13 | 13 | [open](https://secure.getjobber.com/work_orders/91866522) |
+| 43 | 5328 | Dave Belmont | $85 | $100 | $15 | 2024-06-14 | 33 | [open](https://secure.getjobber.com/work_orders/91945637) |
+| 44 | 5330 | Maggie Pierotti | $85 | $100 | $15 | 2024-06-14 | 20 | [open](https://secure.getjobber.com/work_orders/91949013) |
+| 45 | 5335 | Amy Shick | $85 | $100 | $15 | 2024-06-14 | 12 | [open](https://secure.getjobber.com/work_orders/91972676) |
+| 46 | 5369 | Chris Doll | $85 | $100 | $15 | 2024-06-20 | 32 | [open](https://secure.getjobber.com/work_orders/92365001) |
+| 47 | 5381 | Lindsay Donner | $85 | $100 | $15 | 2024-06-21 | 18 | [open](https://secure.getjobber.com/work_orders/92438366) |
+| 48 | 5382 | Harsh Nanchahal | $85 | $100 | $15 | 2024-06-21 | 18 | [open](https://secure.getjobber.com/work_orders/92439478) |
+| 49 | 5355 | Debra Chrapaty | $85 | $100 | $15 | 2024-06-24 | 25 | [open](https://secure.getjobber.com/work_orders/92212576) |
+| 50 | 5344 | Rick Ternosky | $85 | $100 | $15 | 2024-06-26 | 27 | [open](https://secure.getjobber.com/work_orders/92108198) |
+| 51 | 5409 | Rob Goolsby | $85 | $100 | $15 | 2024-06-26 | 21 | [open](https://secure.getjobber.com/work_orders/92715786) |
+| 52 | 5424 | Martha Copeland | $85 | $100 | $15 | 2024-06-27 | 21 | [open](https://secure.getjobber.com/work_orders/92852650) |
+| 53 | 5427 | Dave Wilson | $85 | $100 | $15 | 2024-06-28 | 24 | [open](https://secure.getjobber.com/work_orders/92890073) |
+| 54 | 5438 | Jan Stanfield | $85 | $100 | $15 | 2024-07-01 | 25 | [open](https://secure.getjobber.com/work_orders/92931836) |
+| 55 | 5439 | Jacque Coffey | $85 | $100 | $15 | 2024-07-01 | 22 | [open](https://secure.getjobber.com/work_orders/92986935) |
+| 56 | 5441 | Tom Craig | $85 | $100 | $15 | 2024-07-01 | 25 | [open](https://secure.getjobber.com/work_orders/92989217) |
+| 57 | 5442 | Jeff Hardman | $85 | $100 | $15 | 2024-07-01 | 25 | [open](https://secure.getjobber.com/work_orders/92999493) |
+| 58 | 5458 | Jake Nettleton | $85 | $100 | $15 | 2024-07-05 | 23 | [open](https://secure.getjobber.com/work_orders/93203879) |
+| 59 | 5502 | Omar Aftab | $85 | $100 | $15 | 2024-07-11 | 19 | [open](https://secure.getjobber.com/work_orders/93699298) |
+| 60 | 5515 | Dale Bundy | $85 | $100 | $15 | 2024-07-12 | 24 | [open](https://secure.getjobber.com/work_orders/93786295) |
+| 61 | 5536 | Clark Potter | $85 | $100 | $15 | 2024-07-16 | 26 | [open](https://secure.getjobber.com/work_orders/94005238) |
+| 62 | 5529 | Christina McDougall | $85 | $100 | $15 | 2024-07-22 | 12 | [open](https://secure.getjobber.com/work_orders/93963898) |
+| 63 | 5565 | Mike Baril | $85 | $100 | $15 | 2024-07-22 | 16 | [open](https://secure.getjobber.com/work_orders/94362459) |
+| 64 | 5574 | Ross Parker | $85 | $100 | $15 | 2024-07-23 | 16 | [open](https://secure.getjobber.com/work_orders/94418502) |
+| 65 | 5668 | Tim Cho | $85 | $100 | $15 | 2024-07-31 | 19 | [open](https://secure.getjobber.com/work_orders/94988021) |
+| 66 | 5602 | Sandee Smith | $85 | $100 | $15 | 2024-08-01 | 26 | [open](https://secure.getjobber.com/work_orders/94580915) |
+| 67 | 5676 | Clark Potter | $85 | $100 | $15 | 2024-08-01 | 31 | [open](https://secure.getjobber.com/work_orders/95058739) |
+| 68 | 4502 | Doreen Rigos | $85 | $100 | $15 | 2024-08-06 | 15 | [open](https://secure.getjobber.com/work_orders/76122570) |
+| 69 | 5672 | Rachel Brouhard | $85 | $100 | $15 | 2024-08-07 | 24 | [open](https://secure.getjobber.com/work_orders/95021466) |
+| 70 | 5726 | Faye Houshyari | $85 | $100 | $15 | 2024-08-13 | 28 | [open](https://secure.getjobber.com/work_orders/95427233) |
+| 71 | 5700 | John Siebenbaum | $85 | $100 | $15 | 2024-08-19 | 24 | [open](https://secure.getjobber.com/work_orders/95259943) |
+| 72 | 5622 | Carrie Cummings | $85 | $100 | $15 | 2024-08-22 | 17 | [open](https://secure.getjobber.com/work_orders/94699907) |
+| 73 | 5818 | Blaine Wright | $85 | $100 | $15 | 2024-08-29 | 20 | [open](https://secure.getjobber.com/work_orders/96475626) |
+| 74 | 5727 | Eric Crossley | $85 | $100 | $15 | 2024-09-04 | 27 | [open](https://secure.getjobber.com/work_orders/95427305) |
+| 75 | 5780 | Susy Bevans | $85 | $100 | $15 | 2024-09-04 | 17 | [open](https://secure.getjobber.com/work_orders/96013074) |
+| 76 | 5948 | Tom Rebek | $85 | $100 | $15 | 2024-09-26 | 21 | [open](https://secure.getjobber.com/work_orders/98374068) |
+| 77 | 5982 | David Rosser | $85 | $100 | $15 | 2024-10-03 | 28 | [open](https://secure.getjobber.com/work_orders/98854079) |
+| 78 | 6083 | Chantal Padilla | $85 | $100 | $15 | 2024-10-31 | 22 | [open](https://secure.getjobber.com/work_orders/100548614) |
+| 79 | 6162 | Scott Barker | $85 | $100 | $15 | 2024-12-06 | 38 | [open](https://secure.getjobber.com/work_orders/103082747) |
+| 80 | 4874 | Jon Foster | $85 | $100 | $15 | 2025-01-15 | 13 | [open](https://secure.getjobber.com/work_orders/82944500) |
+| 81 | 5594 | Michael Satran | $85 | $100 | $15 | 2025-01-16 | 23 | [open](https://secure.getjobber.com/work_orders/94521436) |
+| 82 | 6322 | Mark Gagne | $85 | $100 | $15 | 2025-01-31 | 24 | [open](https://secure.getjobber.com/work_orders/106018978) |
+| 83 | 6356 | Jason Wittenberger | $85 | $100 | $15 | 2025-02-14 | 19 | [open](https://secure.getjobber.com/work_orders/107211198) |
+| 84 | 6382 | Jared Haines | $85 | $100 | $15 | 2025-02-26 | 33 | [open](https://secure.getjobber.com/work_orders/107731741) |
+| 85 | 6400 | Dave Mcclung | $85 | $100 | $15 | 2025-03-06 | 20 | [open](https://secure.getjobber.com/work_orders/107993577) |
+| 86 | 6440 | Marta Dickerson | $85 | $100 | $15 | 2025-03-11 | 26 | [open](https://secure.getjobber.com/work_orders/108901752) |
+| 87 | 6454 | Leslie Turner | $85 | $100 | $15 | 2025-03-25 | 24 | [open](https://secure.getjobber.com/work_orders/109326407) |
+| 88 | 5015 | Brian Muirhead | $86.25 | $100 | $13.75 | 2024-03-04 | 36 | [open](https://secure.getjobber.com/work_orders/85146865) |
+| 89 | 5280 | Tim Flood | $86.25 | $100 | $13.75 | 2024-06-18 | 12 | [open](https://secure.getjobber.com/work_orders/91271174) |
+| 90 | 5411 | Paul Klansnic | $89 | $100 | $11 | 2024-06-26 | 15 | [open](https://secure.getjobber.com/work_orders/92725332) |
+| 91 | 5503 | Nichole Avila | $89 | $100 | $11 | 2024-07-11 | 32 | [open](https://secure.getjobber.com/work_orders/93708253) |
+| 92 | 4608 | Kristi Rice | $89.25 | $100 | $10.75 | 2023-09-26 | 22 | [open](https://secure.getjobber.com/work_orders/77254535) |
+| 93 | 4644 | Eric Fraumeni | $89.25 | $100 | $10.75 | 2023-10-09 | 16 | [open](https://secure.getjobber.com/work_orders/78018036) |
+| 94 | 5413 | Ron Houlihan | $89.25 | $100 | $10.75 | 2024-06-26 | 26 | [open](https://secure.getjobber.com/work_orders/92728160) |
+| 95 | 5432 | Nancy  Price | $89.25 | $100 | $10.75 | 2024-06-28 | 48 | [open](https://secure.getjobber.com/work_orders/92905280) |
+| 96 | 5593 | Steve Smith | $89.25 | $100 | $10.75 | 2024-07-24 | 13 | [open](https://secure.getjobber.com/work_orders/94520733) |
+| 97 | 4953 | Steve Herbst | $89.25 | $100 | $10.75 | 2025-01-15 | 19 | [open](https://secure.getjobber.com/work_orders/84197722) |
+| 98 | 4749 | Thomas  Varrelman | $90 | $100 | $10 | 2023-11-30 | 24 | [open](https://secure.getjobber.com/work_orders/80796247) |
+| 99 | 4902 | Jane Moore | $90 | $100 | $10 | 2024-02-01 | 20 | [open](https://secure.getjobber.com/work_orders/83525475) |
+| 100 | 4905 | Ashley Clark | $90 | $100 | $10 | 2024-02-07 | 17 | [open](https://secure.getjobber.com/work_orders/83568423) |
+| 101 | 5109 | Joe Crecca | $90 | $100 | $10 | 2024-04-05 | 19 | [open](https://secure.getjobber.com/work_orders/87162206) |
+| 102 | 5138 | Shelley Bensussen | $90 | $100 | $10 | 2024-04-24 | 20 | [open](https://secure.getjobber.com/work_orders/88143783) |
+| 103 | 5139 | Aly Mendez | $90 | $100 | $10 | 2024-04-24 | 29 | [open](https://secure.getjobber.com/work_orders/88144413) |
+| 104 | 5150 | Scott Taylor | $90 | $100 | $10 | 2024-04-25 | 28 | [open](https://secure.getjobber.com/work_orders/88508626) |
+| 105 | 5390 | Mike Kaiser | $90 | $100 | $10 | 2024-06-24 | 13 | [open](https://secure.getjobber.com/work_orders/92510004) |
+| 106 | 5696 | Amber John | $90 | $100 | $10 | 2024-08-12 | 23 | [open](https://secure.getjobber.com/work_orders/95150406) |
+| 107 | 5940 | Don Severide | $90 | $100 | $10 | 2024-09-22 | 19 | [open](https://secure.getjobber.com/work_orders/98273489) |
+| 108 | 6028 | BIll Sweatman | $90 | $100 | $10 | 2024-10-18 | 32 | [open](https://secure.getjobber.com/work_orders/99641927) |
+| 109 | 6198 | Jeff Boyd | $90 | $100 | $10 | 2024-12-19 | 27 | [open](https://secure.getjobber.com/work_orders/103820025) |
+| 110 | 6339 | John Trian | $90 | $100 | $10 | 2025-02-10 | 13 | [open](https://secure.getjobber.com/work_orders/106589737) |
+| 111 | 5071 | Jim Nelsen | $93 | $100 | $7 | 2024-04-18 | 30 | [open](https://secure.getjobber.com/work_orders/86252432) |
+| 112 | 4504 | Evan Epstein | $95 | $100 | $5 | 2023-09-06 | 34 | [open](https://secure.getjobber.com/work_orders/76146785) |
+| 113 | 4581 | Al Nettles | $95 | $100 | $5 | 2023-09-21 | 15 | [open](https://secure.getjobber.com/work_orders/77005043) |
+| 114 | 4614 | Jennifer Beardall | $95 | $100 | $5 | 2023-10-04 | 33 | [open](https://secure.getjobber.com/work_orders/77360286) |
+| 115 | 4703 | Joel Glass | $95 | $100 | $5 | 2023-11-06 | 35 | [open](https://secure.getjobber.com/work_orders/79571287) |
+| 116 | 4701 | Thomas Carpinito | $95 | $100 | $5 | 2023-11-16 | 29 | [open](https://secure.getjobber.com/work_orders/79495855) |
+| 117 | 4771 | Nancy Krossa | $95 | $100 | $5 | 2023-12-12 | 21 | [open](https://secure.getjobber.com/work_orders/81300518) |
+| 118 | 4777 | Al Chappell | $95 | $100 | $5 | 2023-12-13 | 17 | [open](https://secure.getjobber.com/work_orders/81426439) |
+| 119 | 5099 | Buff Nelson | $95 | $100 | $5 | 2024-04-03 | 19 | [open](https://secure.getjobber.com/work_orders/87004721) |
+| 120 | 5148 | Brant Bengston | $95 | $100 | $5 | 2024-04-24 | 28 | [open](https://secure.getjobber.com/work_orders/88506630) |
+| 121 | 5324 | Scott  Moser | $95 | $100 | $5 | 2024-06-13 | 24 | [open](https://secure.getjobber.com/work_orders/91895986) |
+| 122 | 5667 | Ron Short | $95 | $100 | $5 | 2024-08-01 | 18 | [open](https://secure.getjobber.com/work_orders/94986356) |
+| 123 | 5751 | Jane Gallagher | $95 | $100 | $5 | 2024-08-13 | 22 | [open](https://secure.getjobber.com/work_orders/95702217) |
+| 124 | 5947 | Neil Kanungo | $95 | $100 | $5 | 2024-09-24 | 24 | [open](https://secure.getjobber.com/work_orders/98373849) |
+| 125 | 6064 | Joe  Edmunson | $95 | $100 | $5 | 2024-10-29 | 23 | [open](https://secure.getjobber.com/work_orders/100285419) |
+| 126 | 6355 | Julie James | $95 | $100 | $5 | 2025-02-12 | 29 | [open](https://secure.getjobber.com/work_orders/107136186) |
+| 127 | 6392 | Dan Hazen | $95 | $100 | $5 | 2025-02-25 | 24 | [open](https://secure.getjobber.com/work_orders/107906201) |
+| 128 | 6396 | Deborah Canon | $95 | $100 | $5 | 2025-02-26 | 21 | [open](https://secure.getjobber.com/work_orders/107908960) |
+| 129 | 5227 | Jana Wilson | $97.75 | $100 | $2.25 | 2024-05-23 | 27 | [open](https://secure.getjobber.com/work_orders/90518385) |
+
+**By current price:** $75 × 4 · $85 × 83 · $89 × 2 · $90 × 13 · $93 × 1 · $95 × 17 · $86.25 × 2 · $89.25 × 6 · $97.75 × 1
