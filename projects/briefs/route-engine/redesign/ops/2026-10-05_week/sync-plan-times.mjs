@@ -148,6 +148,9 @@ const TW_OVERRIDE = {
   const rt = fs.existsSync(f) ? (JSON.parse(fs.readFileSync(f, 'utf8')).routes || []).find(r => r.driverName === 'Robert Norton') : null;
   for (const s of rt?.stops || []) TW_OVERRIDE[`${String(s.orderNo).split('-')[0]}|2026-10-07`] = s.latitude >= 47.25 ? [{ twFrom: '07:00', twTo: '12:00' }] : [{ twFrom: '11:00', twTo: '21:00' }];
 }
+// Spencer 2026-10-04: Robert has an end-of-day meeting in Fife on Wed 10-07, so his day ends in Fife.
+// #8654 Cruz Rodriguez is his only Fife stop — push it last.
+TW_OVERRIDE['8654|2026-10-07'] = [{ twFrom: '15:30', twTo: '21:00' }];
 const liveNos = new Set(active.map(orderNoOf));
 const creates = [], updates = [], deletes = [];
 for (const v of active) {
