@@ -1,0 +1,92 @@
+[write-gate] WRITES ENABLED until 2026-10-04T19:40:07.838Z (spenc@Got-Moles: Spencer 10-04: final replan week 10-05 (Cory edits, Barbee Mill 60 min), write times back) — ceiling 700/run — run 62ef3e56
+=== SYNC + PLAN + TIMES 2026-10-04 11:55:07 PT ===
+mode: LIVE (--execute)   window: 2026-10-05..2026-10-09
+live Jobber: 551 visits, 551 not complete, 551 on a routed driver, 0 skipped (no tech / not a driver)
+  2026-10-05  Tavis 22  Alias 20  Robert 22  Luke 18  Cory 1
+  2026-10-06  Cory 24  Robert 29  Tavis 25  Luke 17  Alias 20
+  2026-10-07  Cory 35  Luke 14  Alias 20  Tavis 25  Robert 28
+  2026-10-08  Tavis 36  Alias 17  Cory 34  Robert 27  Luke 17
+  2026-10-09  Cory 22  Robert 21  Luke 18  Tavis 19  Alias 20
+
+OptimoRoute: 551 orders in the window
+  CREATE 0   UPDATE 17   DELETE 0   unchanged 534
+    UPDATE 8067-2232219538 2026-10-06 Cory Ventura  date 2026-10-09->2026-10-06
+    UPDATE 6784-1810350516 2026-10-06 Cory Ventura  date 2026-10-09->2026-10-06
+    UPDATE 8082-2234970249 2026-10-06 Cory Ventura  tech Luke LaVergne->Cory Ventura, dur 15->12
+    UPDATE 7858-2347465352 2026-10-07 Cory Ventura  date 2026-10-09->2026-10-07
+    UPDATE 7637-2021592858 2026-10-07 Cory Ventura  date 2026-10-09->2026-10-07
+    UPDATE 8630-2341476406 2026-10-07 Cory Ventura  date 2026-10-09->2026-10-07
+    UPDATE 8289-2273495888 2026-10-07 Tavis Alexander  date 2026-10-06->2026-10-07
+    UPDATE 7570-2001256104 2026-10-07 Cory Ventura  date 2026-10-09->2026-10-07
+    UPDATE 7677-2038950865 2026-10-07 Cory Ventura  date 2026-10-09->2026-10-07
+    UPDATE 7673-2347544150 2026-10-07 Cory Ventura  date 2026-10-09->2026-10-07
+    UPDATE 8146-2247871546 2026-10-08 Tavis Alexander  dur 11->9
+    UPDATE 7964-2350229882 2026-10-08 Tavis Alexander  dur 11->9
+    UPDATE 8016-2219811743 2026-10-08 Tavis Alexander  dur 11->9
+    UPDATE 7980-2207214363 2026-10-08 Tavis Alexander  dur 11->9
+    UPDATE 8019-2220616487 2026-10-08 Tavis Alexander  dur 11->9
+    UPDATE 8320-2350210083 2026-10-08 Tavis Alexander  dur 11->9
+    UPDATE 8147-2350196270 2026-10-08 Tavis Alexander  dur 11->9
+
+driver availability: 10-05: Alias/Cory/Luke/Robert/Tavis   10-06: Alias/Cory/Luke/Robert/Tavis   10-07: Alias/Cory/Luke/Robert/Tavis   10-08: Alias/Cory/Luke/Robert/Tavis   10-09: Alias/Cory/Luke/Robert/Tavis
+
+=== OPTIMOROUTE: 0 CREATE ===
+=== OPTIMOROUTE: 17 UPDATE ===
+  UPDATE 8067-2232219538 date 2026-10-09->2026-10-06  ok
+  UPDATE 6784-1810350516 date 2026-10-09->2026-10-06  ok
+  UPDATE 8082-2234970249 tech Luke LaVergne->Cory Ventura, dur 15->12  ok
+  UPDATE 7858-2347465352 date 2026-10-09->2026-10-07  ok
+  UPDATE 7637-2021592858 date 2026-10-09->2026-10-07  ok
+  UPDATE 8630-2341476406 date 2026-10-09->2026-10-07  ok
+  UPDATE 8289-2273495888 date 2026-10-06->2026-10-07  ok
+  UPDATE 7570-2001256104 date 2026-10-09->2026-10-07  ok
+  UPDATE 7677-2038950865 date 2026-10-09->2026-10-07  ok
+  UPDATE 7673-2347544150 date 2026-10-09->2026-10-07  ok
+  UPDATE 8146-2247871546 dur 11->9  ok
+  UPDATE 7964-2350229882 dur 11->9  ok
+  UPDATE 8016-2219811743 dur 11->9  ok
+  UPDATE 7980-2207214363 dur 11->9  ok
+  UPDATE 8019-2220616487 dur 11->9  ok
+  UPDATE 8320-2350210083 dur 11->9  ok
+  UPDATE 8147-2350196270 dur 11->9  ok
+=== OPTIMOROUTE: 0 DELETE ===
+
+=== PLAN 2026-10-05 (balancing OFF) ===
+  Alias Franks        20 stops   467 min   118 km  first 07:00  last 13:40
+  Cory Ventura         1 stops    98 min   119 km  first 07:18  last 07:18
+  Luke LaVergne       18 stops   537 min   229 km  first 07:04  last 14:33
+  Robert Norton       22 stops   481 min    76 km  first 07:00  last 14:17
+  Tavis Alexander     22 stops   546 min   150 km  first 07:00  last 14:26
+
+=== PLAN 2026-10-06 (balancing OFF) ===
+  Robert Norton       29 stops   616 min   106 km  first 07:00  last 16:36
+  Tavis Alexander     25 stops   611 min   177 km  first 07:02  last 15:26
+  Alias Franks        20 stops   503 min   124 km  first 07:09  last 14:11
+  Cory Ventura        24 stops   450 min   150 km  first 07:00  last 13:33
+  Luke LaVergne       17 stops   567 min   240 km  first 07:07  last 14:54
+
+=== PLAN 2026-10-07 (balancing OFF) ===
+  Alias Franks        20 stops   511 min   149 km  first 07:00  last 14:39
+  Cory Ventura        35 stops   637 min   156 km  first 07:00  last 16:53
+  Luke LaVergne       14 stops   553 min   289 km  first 07:00  last 14:44
+  Robert Norton       28 stops   618 min   145 km  first 07:03  last 16:19
+  Tavis Alexander     25 stops   595 min   148 km  first 07:00  last 15:35
+
+=== PLAN 2026-10-08 (balancing OFF) ===
+  Alias Franks        17 stops   457 min   156 km  first 07:00  last 13:20
+  Cory Ventura        34 stops   552 min   100 km  first 07:00  last 15:31
+  Luke LaVergne       17 stops   465 min   203 km  first 07:10  last 13:09
+  Robert Norton       27 stops   599 min   116 km  first 07:00  last 16:14
+  Tavis Alexander     36 stops   746 min   143 km  first 07:00  last 17:52
+
+=== PLAN 2026-10-09 (balancing OFF) ===
+  Alias Franks        20 stops   480 min   137 km  first 07:16  last 13:37
+  Cory Ventura        22 stops   486 min   202 km  first 07:00  last 14:15
+  Luke LaVergne       18 stops   446 min    96 km  first 07:00  last 13:18
+  Robert Norton       21 stops   464 min    87 km  first 07:00  last 14:05
+  Tavis Alexander     19 stops   516 min   188 km  first 07:01  last 13:51
+
+--no-times: planned times NOT written to Jobber.
+
+✅ done 2026-10-04 11:55:57 PT — log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-05_week\sync-plan-times.log
+Next: the arrival-window sweep (node projects/tool-jobber/scripts/arrival-window-sweep.mjs) so every visit carries the 3-hour window.

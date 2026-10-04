@@ -1,0 +1,208 @@
+[write-gate] WRITES ENABLED until 2026-10-04T18:19:10.339Z (spenc@Got-Moles: Spencer 10-04: replan week 10-05 after his Jobber adjustments, write times back) — ceiling 700/run — run 578b55b7
+=== SYNC + PLAN + TIMES 2026-10-04 10:35:38 PT ===
+mode: LIVE (--execute)   window: 2026-10-05..2026-10-09
+live Jobber: 551 visits, 551 not complete, 551 on a routed driver, 0 skipped (no tech / not a driver)
+  2026-10-05  Tavis 22  Alias 20  Robert 22  Luke 22
+  2026-10-06  Cory 22  Robert 27  Luke 25  Tavis 26  Alias 20
+  2026-10-07  Luke 15  Alias 20  Tavis 24  Cory 29  Robert 25
+  2026-10-08  Alias 17  Cory 29  Tavis 25  Robert 30  Luke 23
+  2026-10-09  Robert 27  Cory 20  Luke 22  Tavis 19  Alias 20
+
+OptimoRoute: 551 orders in the window
+  CREATE 0   UPDATE 0   DELETE 0   unchanged 551
+
+driver availability: 10-05: Alias/Luke/Robert/Tavis   10-06: Alias/Cory/Luke/Robert/Tavis   10-07: Alias/Cory/Luke/Robert/Tavis   10-08: Alias/Cory/Luke/Robert/Tavis   10-09: Alias/Cory/Luke/Robert/Tavis
+
+=== OPTIMOROUTE: 0 CREATE ===
+=== OPTIMOROUTE: 0 UPDATE ===
+=== OPTIMOROUTE: 0 DELETE ===
+
+--from-saved: 551 planned stops loaded from routes-*.json
+
+=== JOBBER: write planned times (startAt = arrival, endAt = +3 h) ===
+  to write 179   already correct 372   not on a route 0
+  [  1/179] 2026-10-05 13:27 #7682 Luke     Brad Smallwood               was 10-05 15:33  ok
+  [  2/179] 2026-10-05 13:55 #8633 Luke     Rebecca Sweetlove            was 10-05 16:01  ok
+  [  3/179] 2026-10-05 14:17 #8210 Luke     David Preston                was 10-05 16:23  ok
+  [  4/179] 2026-10-05 14:38 #8332 Luke     Nancy Collinsworth           was 10-05 16:45  ok
+  [  5/179] 2026-10-05 15:33 #7996 Luke     Robert Davis                 was 10-05 17:16  ok
+  [  6/179] 2026-10-05 15:10 #7804 Luke     Ron Bramlett                 was 10-05 17:39  ok
+  [  7/179] 2026-10-05 16:01 #8589 Luke     Judy Brown                   was 10-05 18:08  ok
+  [  8/179] 2026-10-06 14:27 #7496 Cory     Vince Preece                 was 10-06 07:00  ok
+  [  9/179] 2026-10-06 10:59 #8578 Cory     Eric Hill                    was 10-06 07:00  ok
+  [ 10/179] 2026-10-06 08:59 #4674 Luke     Noe Cerda                    was 10-06 07:03  ok
+  [ 11/179] 2026-10-06 10:40 #6784 Cory     Adam Kimball                 was 10-06 07:25  ok
+  [ 12/179] 2026-10-06 08:33 #4935 Luke     Maja Haloway                 was 10-06 07:28  ok
+  [ 13/179] 2026-10-06 07:52 #8641 Cory     Stas                         was 10-06 07:55  ok
+  [ 14/179] 2026-10-06 11:50 #8622 Luke     JT  Wilcox                   was 10-06 08:05  ok
+  [ 15/179] 2026-10-06 08:13 #6619 Cory     Pam Griffin                  was 10-06 08:22  ok
+  [ 16/179] 2026-10-06 08:44 #4777 Robert   Al Chappell                  was 10-06 08:28  ok
+  [ 17/179] 2026-10-06 08:27 #8579 Robert   Gurwinder Sandhu             was 10-06 08:44  ok
+  [ 18/179] 2026-10-06 14:08 #4425 Luke     Thomas Spring Estates        was 10-06 08:46  ok
+  [ 19/179] 2026-10-06 08:39 #7805 Cory     Dave Combs                   was 10-06 08:56  ok
+  [ 20/179] 2026-10-06 10:56 #7728 Luke     Sam Williams                 was 10-06 08:58  ok
+  [ 21/179] 2026-10-06 14:33 #8431 Luke     Julie Woods                  was 10-06 09:06  ok
+  [ 22/179] 2026-10-06 14:54 #5024 Luke     Brienna Dyberg               was 10-06 09:22  ok
+  [ 23/179] 2026-10-06 09:10 #8436 Cory     Monty Mansfield              was 10-06 09:36  ok
+  [ 24/179] 2026-10-06 15:12 #8560 Luke     Patty  Ring                  was 10-06 09:36  ok
+  [ 25/179] 2026-10-06 10:17 #8647 Luke     Michelle  Savigny            was 10-06 09:37  ok
+  [ 26/179] 2026-10-06 15:31 #8133 Luke     Shane Taylor                 was 10-06 09:51  ok
+  [ 27/179] 2026-10-06 09:28 #7829 Luke     Joey Russo                   was 10-06 10:04  ok
+  [ 28/179] 2026-10-06 15:51 #7839 Luke     Jason Andrews                was 10-06 10:07  ok
+  [ 29/179] 2026-10-06 09:42 #5639 Cory     Larry Lemmon                 was 10-06 10:16  ok
+  [ 30/179] 2026-10-06 16:11 #4608 Luke     Kristi Rice                  was 10-06 10:23  ok
+  [ 31/179] 2026-10-06 09:51 #6246 Luke     Lisa Miles                   was 10-06 10:26  ok
+  [ 32/179] 2026-10-06 16:29 #7723 Luke     Chad Peterson                was 10-06 10:37  ok
+  [ 33/179] 2026-10-06 10:07 #5192 Cory     Candice Storm                was 10-06 10:49  ok
+  [ 34/179] 2026-10-06 16:49 #7764 Luke     Michallea Schuelke           was 10-06 10:53  ok
+  [ 35/179] 2026-10-06 17:07 #8619 Luke     Amy Crenshaw-Burns           was 10-06 11:08  ok
+  [ 36/179] 2026-10-06 12:23 #8659 Luke     Dennis Gentele               was 10-06 11:22  ok
+  [ 37/179] 2026-10-06 13:14 #8610 Cory     Chris Gregg                  was 10-06 11:24  ok
+  [ 38/179] 2026-10-06 12:57 #8375 Cory     Johnny Evans                 was 10-06 11:40  ok
+  [ 39/179] 2026-10-06 12:51 #8587 Luke     Mitchell Gasser              was 10-06 11:50  ok
+  [ 40/179] 2026-10-06 13:17 #8067 Luke     Gerryann Jurva               was 10-06 12:16  ok
+  [ 41/179] 2026-10-06 07:24 #7795 Cory     Kristin Collett              was 10-06 12:44  ok
+  [ 42/179] 2026-10-06 13:33 #5597 Cory     Jim McGowan                  was 10-06 13:09  ok
+  [ 43/179] 2026-10-06 13:49 #8593 Cory     Kevin Milliren               was 10-06 13:25  ok
+  [ 44/179] 2026-10-06 07:00 #5077 Cory     Ruth  Edwards                was 10-06 13:35  ok
+  [ 45/179] 2026-10-06 14:04 #7853 Cory     Jim Vaughn                   was 10-06 13:40  ok
+  [ 46/179] 2026-10-06 11:18 #7457 Cory     Chris Sita                   was 10-06 13:56  ok
+  [ 47/179] 2026-10-06 14:26 #7494 Robert   Gary Smart                   was 10-06 14:08  ok
+  [ 48/179] 2026-10-06 11:31 #5413 Cory     Ron Houlihan                 was 10-06 14:12  ok
+  [ 49/179] 2026-10-06 08:02 #8529 Luke     Hui Evans                    was 10-06 14:18  ok
+  [ 50/179] 2026-10-06 14:09 #7489 Robert   Cheryl Davis                 was 10-06 14:25  ok
+  [ 51/179] 2026-10-06 11:45 #5954 Cory     Loren Vail                   was 10-06 14:30  ok
+  [ 52/179] 2026-10-06 07:37 #8083 Luke     Mark Baughman                was 10-06 14:42  ok
+  [ 53/179] 2026-10-06 12:01 #8614 Cory     Tamira  Gilbert              was 10-06 14:49  ok
+  [ 54/179] 2026-10-06 07:21 #8082 Luke     Pauline Kabue                was 10-06 14:57  ok
+  [ 55/179] 2026-10-06 12:15 #8611 Cory     Melissa  Bobbit              was 10-06 15:08  ok
+  [ 56/179] 2026-10-06 07:00 #6338 Luke     Barbara Wood                 was 10-06 15:19  ok
+  [ 57/179] 2026-10-06 13:43 #8526 Luke     Jake Fox                     was 10-06 15:33  ok
+  [ 58/179] 2026-10-06 12:35 #7740 Cory     Marnee Humphrey              was 10-06 15:53  ok
+  [ 59/179] 2026-10-07 14:47 #8637 Tavis    Diane Lucas                  was 10-07 07:02  ok
+  [ 60/179] 2026-10-07 15:17 #7623 Tavis    Pao Lor                      was 10-07 07:23  ok
+  [ 61/179] 2026-10-07 14:25 #8616 Tavis    Jennifer Nguyen              was 10-07 07:24  ok
+  [ 62/179] 2026-10-07 12:48 #6418 Cory     Diana Silva                  was 10-07 07:42  ok
+  [ 63/179] 2026-10-07 15:19 #7820 Robert   David Sprague                was 10-07 07:50  ok
+  [ 64/179] 2026-10-07 12:30 #5440 Cory     Steve Hewitt                 was 10-07 08:00  ok
+  [ 65/179] 2026-10-07 12:23 #8218 Robert   Tim Wickland                 was 10-07 08:17  ok
+  [ 66/179] 2026-10-07 12:12 #5260 Cory     Kathy Lewis                  was 10-07 08:18  ok
+  [ 67/179] 2026-10-07 12:05 #5438 Robert   Jan Stanfield                was 10-07 08:35  ok
+  [ 68/179] 2026-10-07 10:48 #5503 Cory     Nichole Avila                was 10-07 08:36  ok
+  [ 69/179] 2026-10-07 10:31 #8269 Cory     Holly Quionez                was 10-07 08:53  ok
+  [ 70/179] 2026-10-07 11:46 #5369 Robert   Chris Doll                   was 10-07 08:54  ok
+  [ 71/179] 2026-10-07 10:15 #5713 Cory     Jeff Hudson                  was 10-07 09:10  ok
+  [ 72/179] 2026-10-07 11:28 #8626 Robert   Isabella Kestner             was 10-07 09:11  ok
+  [ 73/179] 2026-10-07 09:13 #7704 Cory     Tyler Smythe                 was 10-07 09:28  ok
+  [ 74/179] 2026-10-07 13:09 #4741 Robert   Ron Krebbs                   was 10-07 09:32  ok
+  [ 75/179] 2026-10-07 09:28 #7765 Cory     Brenton Unger                was 10-07 09:43  ok
+  [ 76/179] 2026-10-07 13:26 #5672 Robert   Rachel Brouhard              was 10-07 09:49  ok
+  [ 77/179] 2026-10-07 09:52 #8658 Cory     Russ Crawford                was 10-07 10:07  ok
+  [ 78/179] 2026-10-07 13:46 #7617 Robert   Prologis - Sumner Landing    was 10-07 10:09  ok
+  [ 79/179] 2026-10-07 08:55 #8428 Cory     Keith Mathews                was 10-07 10:30  ok
+  [ 80/179] 2026-10-07 08:42 #5330 Cory     Maggie Pierotti              was 10-07 10:43  ok
+  [ 81/179] 2026-10-07 09:43 #6649 Robert   Theresa  Hall                was 10-07 10:44  ok
+  [ 82/179] 2026-10-07 11:09 #8251 Cory     Mike Malgarini               was 10-07 11:00  ok
+  [ 83/179] 2026-10-07 09:25 #7247 Robert   Lynn Clapp                   was 10-07 11:02  ok
+  [ 84/179] 2026-10-07 11:27 #5818 Cory     Blaine Wright                was 10-07 11:18  ok
+  [ 85/179] 2026-10-07 08:49 #8596 Robert   Barbara Kupietz              was 10-07 11:22  ok
+  [ 86/179] 2026-10-07 11:55 #7757 Cory     Dan Flood                    was 10-07 11:33  ok
+  [ 87/179] 2026-10-07 09:06 #8489 Robert   Jason Kjellesvik             was 10-07 11:39  ok
+  [ 88/179] 2026-10-07 11:42 #7482 Cory     Mark Dumler                  was 10-07 11:46  ok
+  [ 89/179] 2026-10-07 14:50 #4549 Robert   Carrie Williamson            was 10-07 12:00  ok
+  [ 90/179] 2026-10-07 08:26 #7872 Robert   Sophia Chang                 was 10-07 12:00  ok
+  [ 91/179] 2026-10-07 13:23 #6162 Cory     Scott Barker                 was 10-07 12:04  ok
+  [ 92/179] 2026-10-07 14:11 #5780 Robert   Susy Bevans                  was 10-07 12:14  ok
+  [ 93/179] 2026-10-07 13:09 #4479 Cory     Charles Bender               was 10-07 12:18  ok
+  [ 94/179] 2026-10-07 08:04 #8056 Robert   Madera West Condos           was 10-07 12:22  ok
+  [ 95/179] 2026-10-07 12:48 #4941 Robert   Daniel Hoffman               was 10-07 12:33  ok
+  [ 96/179] 2026-10-07 13:42 #5035 Cory     Kathy Wilson                 was 10-07 12:38  ok
+  [ 97/179] 2026-10-07 07:43 #8576 Robert   Kevin Voelker                was 10-07 12:44  ok
+  [ 98/179] 2026-10-07 14:31 #4480 Robert   Amanda Willard               was 10-07 12:52  ok
+  [ 99/179] 2026-10-07 14:02 #6449 Cory     Daniel Issacs                was 10-07 12:57  ok
+  [100/179] 2026-10-07 07:24 #8656 Robert   Dean Shull                   was 10-07 13:03  ok
+  [101/179] 2026-10-07 14:19 #7818 Cory     Michelle Pavlovich           was 10-07 13:14  ok
+  [102/179] 2026-10-07 07:03 #7476 Robert   Craig Koester                was 10-07 13:24  ok
+  [103/179] 2026-10-07 14:32 #7806 Cory     Jean Hamilton                was 10-07 13:27  ok
+  [104/179] 2026-10-07 08:25 #8532 Cory     Elaine Rustvold              was 10-07 13:44  ok
+  [105/179] 2026-10-07 10:09 #8568 Robert   Dorthya Dunford              was 10-07 13:44  ok
+  [106/179] 2026-10-07 08:09 #8618 Cory     Shawn Tobius                 was 10-07 13:59  ok
+  [107/179] 2026-10-07 10:28 #6382 Robert   Jared Haines                 was 10-07 14:03  ok
+  [108/179] 2026-10-07 07:56 #4821 Cory     David Ballestrasse           was 10-07 14:13  ok
+  [109/179] 2026-10-07 11:07 #8395 Robert   Beverly Worthen              was 10-07 14:23  ok
+  [110/179] 2026-10-07 07:42 #8538 Cory     Gina Shields                 was 10-07 14:27  ok
+  [111/179] 2026-10-07 10:48 #7548 Robert   HyperGreen Landscaping       was 10-07 14:41  ok
+  [112/179] 2026-10-07 07:28 #5432 Cory     Nancy  Price                 was 10-07 14:42  ok
+  [113/179] 2026-10-07 07:00 #5329 Cory     Pat Birkeland                was 10-07 14:56  ok
+  [114/179] 2026-10-07 14:03 #7713 Tavis    Scott Fritschle              was 10-07 15:01  ok
+  [115/179] 2026-10-07 07:13 #5328 Cory     Dave Belmont                 was 10-07 15:10  ok
+  [116/179] 2026-10-07 13:42 #8586 Tavis    Deidre Moore                 was 10-07 15:23  ok
+  [117/179] 2026-10-07 14:49 #8653 Cory     Jon Buss                     was 10-07 15:29  ok
+  [118/179] 2026-10-07 13:20 #7517 Tavis    Balbir Houthi                was 10-07 15:45  ok
+  [119/179] 2026-10-07 13:01 #8155 Tavis    Bac Walker                   was 10-07 16:04  ok
+  [120/179] 2026-10-08 10:53 #8585 Cory     Jan Sterling                 was 10-08 07:00  ok
+  [121/179] 2026-10-08 11:23 #4979 Cory     Marcus Andy                  was 10-08 10:57  ok
+  [122/179] 2026-10-08 08:58 #8620 Luke     Julie Penrod                 was 10-08 11:06  ok
+  [123/179] 2026-10-08 11:11 #4979 Cory     Marcus Andy                  was 10-08 11:09  ok
+  [124/179] 2026-10-08 11:41 #4882 Cory     Jim Benham                   was 10-08 11:27  ok
+  [125/179] 2026-10-08 09:22 #8203 Luke     Richard Henegan              was 10-08 11:30  ok
+  [126/179] 2026-10-08 11:56 #7671 Cory     Marcus  Hoff                 was 10-08 11:42  ok
+  [127/179] 2026-10-08 12:09 #5915 Cory     Dee Lewis                    was 10-08 11:55  ok
+  [128/179] 2026-10-08 09:48 #7337 Luke     Deschutes Storage            was 10-08 11:55  ok
+  [129/179] 2026-10-08 12:23 #8402 Cory     Tom & Sarah Long             was 10-08 12:08  ok
+  [130/179] 2026-10-08 10:14 #7618 Luke     Kathleen Nurmi               was 10-08 12:22  ok
+  [131/179] 2026-10-08 12:37 #6300 Cory     Dave Koshork                 was 10-08 12:23  ok
+  [132/179] 2026-10-08 12:53 #6454 Cory     Leslie Turner                was 10-08 12:39  ok
+  [133/179] 2026-10-08 11:24 #7461 Luke     Rachel Decker                was 10-08 12:53  ok
+  [134/179] 2026-10-08 13:09 #6985 Cory     Melisa Shryock               was 10-08 12:55  ok
+  [135/179] 2026-10-08 13:26 #7816 Cory     Derek Smith                  was 10-08 13:12  ok
+  [136/179] 2026-10-08 10:40 #7977 Luke     Western Plaza                was 10-08 13:18  ok
+  [137/179] 2026-10-08 13:40 #7430 Cory     Darren Bartels               was 10-08 13:25  ok
+  [138/179] 2026-10-08 12:36 #8588 Luke     Dean Adamo                   was 10-08 13:26  ok
+  [139/179] 2026-10-08 13:53 #8390 Cory     Jane Molenda                 was 10-08 13:39  ok
+  [140/179] 2026-10-08 13:31 #8643 Luke     Fran Huntington              was 10-08 13:41  ok
+  [141/179] 2026-10-08 14:07 #5148 Cory     Brant Bengston               was 10-08 13:53  ok
+  [142/179] 2026-10-08 12:03 #7936 Luke     Dennis Tuomi                 was 10-08 13:58  ok
+  [143/179] 2026-10-08 13:50 #7527 Luke     Katherine Cavanaugh          was 10-08 14:00  ok
+  [144/179] 2026-10-08 14:08 #8591 Luke     Briggs Village HOA           was 10-08 14:18  ok
+  [145/179] 2026-10-08 11:40 #7815 Luke     Columbus Candies             was 10-08 14:21  ok
+  [146/179] 2026-10-08 15:23 #7897 Luke     Anne Gallagher               was 10-08 14:40  ok
+  [147/179] 2026-10-08 11:01 #8404 Luke     Simmons Mill HOA             was 10-08 14:45  ok
+  [148/179] 2026-10-08 15:39 #7529 Luke     Leslie Griswold              was 10-08 14:56  ok
+  [149/179] 2026-10-08 13:11 #8437 Luke     Jonah Pickens                was 10-08 15:06  ok
+  [150/179] 2026-10-08 15:03 #8621 Luke     Vicki Harrod                 was 10-08 15:15  ok
+  [151/179] 2026-10-08 14:45 #8581 Luke     Rachel Hanes                 was 10-08 15:33  ok
+  [152/179] 2026-10-08 14:27 #7937 Luke     Dave Kenney                  was 10-08 15:53  ok
+  [153/179] 2026-10-08 07:57 #8412 Luke     Bill Henshaw                 was 10-08 16:19  ok
+  [154/179] 2026-10-08 07:35 #5015 Luke     Brian Muirhead               was 10-08 16:41  ok
+  [155/179] 2026-10-08 08:24 #7832 Luke     Ann Sargent                  was 10-08 17:06  ok
+  [156/179] 2026-10-08 07:08 #8232 Luke     Stephen  Douglas             was 10-08 17:38  ok
+  [157/179] 2026-10-09 08:42 #7670 Cory     Jessica Rakos                was 10-09 07:00  ok
+  [158/179] 2026-10-09 09:00 #4926 Cory     HyperGreen Landscaping       was 10-09 07:18  ok
+  [159/179] 2026-10-09 07:00 #6389 Cory     Clint Bjornson               was 10-09 07:24  ok
+  [160/179] 2026-10-09 07:15 #6064 Cory     Joe  Edmunson                was 10-09 07:39  ok
+  [161/179] 2026-10-09 09:24 #7858 Cory     Laura Tallmadge              was 10-09 07:42  ok
+  [162/179] 2026-10-09 07:31 #5540 Cory     Chris Thornhill              was 10-09 07:55  ok
+  [163/179] 2026-10-09 09:45 #7637 Cory     Tommy Marshall               was 10-09 08:03  ok
+  [164/179] 2026-10-09 08:01 #8318 Cory     Dave Sinner                  was 10-09 08:11  ok
+  [165/179] 2026-10-09 10:03 #8630 Cory     Candy Ford                   was 10-09 08:20  ok
+  [166/179] 2026-10-09 07:46 #7747 Cory     Leeroy Perkins               was 10-09 08:26  ok
+  [167/179] 2026-10-09 10:19 #7570 Cory     Della Crossley               was 10-09 08:37  ok
+  [168/179] 2026-10-09 10:39 #7462 Cory     HyperGreen Landscaping       was 10-09 08:57  ok
+  [169/179] 2026-10-09 10:54 #7677 Cory     Josh Duschel                 was 10-09 09:12  ok
+  [170/179] 2026-10-09 11:10 #8137 Cory     Brenda Vonderahe             was 10-09 09:28  ok
+  [171/179] 2026-10-09 11:24 #8666 Cory     Kalen Radford                was 10-09 09:42  ok
+  [172/179] 2026-10-09 11:49 #7657 Cory     Mary Linda Epps              was 10-09 10:07  ok
+  [173/179] 2026-10-09 12:04 #6324 Cory     Matt Cordova                 was 10-09 10:22  ok
+  [174/179] 2026-10-09 12:19 #7705 Cory     Tyler Smythe                 was 10-09 10:36  ok
+  [175/179] 2026-10-09 12:41 #7673 Cory     Nicholas Mayer               was 10-09 10:59  ok
+  [176/179] 2026-10-09 08:21 #7725 Cory     Suzanne Gullace              was 10-09 13:14  ok
+  [177/179] 2026-10-09 14:11 #8085 Luke     Timothy Vanstrien            was 10-09 15:41  ok
+  [178/179] 2026-10-09 14:30 #6677 Luke     Wes Rhoten                   was 10-09 16:00  ok
+  [179/179] 2026-10-09 14:53 #7941 Luke     Tim Lubic                    was 10-09 16:23  ok
+  written 179  failed 0
+
+=== VERIFY === 551 visits match the plan, 0 do not
+
+✅ done 2026-10-04 10:37:55 PT — log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-05_week\sync-plan-times.log
+Next: the arrival-window sweep (node projects/tool-jobber/scripts/arrival-window-sweep.mjs) so every visit carries the 3-hour window.

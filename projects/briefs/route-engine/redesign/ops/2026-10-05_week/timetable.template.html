@@ -1,0 +1,105 @@
+<title>Route Timetable, Oct 5–9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: dispatch board. Day tabs on top, one summary strip, then one timetable block per tech. */
+:root{
+  --bg:#f6f7f4; --panel:#ffffff; --fg:#1c2421; --muted:#5f6b66; --line:#dde2dc;
+  --accent:#2f6b3f; --accent-soft:#e3efe5; --warn:#a4501a; --warn-soft:#fbe9dc; --row:#f1f3ef;
+  --display:"Archivo",system-ui,sans-serif; --body:"Source Sans 3",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141917; --panel:#1b211e; --fg:#e4e9e5; --muted:#99a59f; --line:#2c3531;
+  --accent:#7cc28d; --accent-soft:#213328; --warn:#f0a26b; --warn-soft:#3a2619; --row:#1f2622; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141917; --panel:#1b211e; --fg:#e4e9e5; --muted:#99a59f; --line:#2c3531;
+  --accent:#7cc28d; --accent-soft:#213328; --warn:#f0a26b; --warn-soft:#3a2619; --row:#1f2622; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.45}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:24px 48px;display:grid;gap:16px}
+header{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px}
+h1{font-family:var(--display);font-weight:800;font-size:1.75rem;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:4px 0 0}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tabs{display:flex;flex-wrap:wrap;gap:6px}
+.tab,.chip{font:600 .9rem var(--body);border:1px solid var(--line);background:var(--panel);color:var(--fg);padding:7px 12px;border-radius:6px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.chip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--fg)}
+.tab:focus-visible,.chip:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+input[type=search]{font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--fg);min-width:0;width:240px;max-width:100%}
+.summary{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th{font:600 .72rem var(--body);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+.num{text-align:right;font-family:var(--mono);font-size:.85rem}
+.mono{font-family:var(--mono);font-size:.85rem;white-space:nowrap}
+.pill{display:inline-block;font:600 .72rem var(--body);padding:2px 7px;border-radius:99px;background:var(--warn-soft);color:var(--warn);margin-left:6px}
+.techs{display:grid;gap:16px}
+.tech{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.tech h2{font-family:var(--display);font-weight:700;font-size:1.1rem;margin:0;padding:12px 14px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;border-bottom:1px solid var(--line)}
+.tech h2 .meta{font:400 .85rem var(--body);color:var(--muted)}
+.scroll{overflow-x:auto}
+.tech tbody tr:nth-child(even){background:var(--row)}
+.client{font-weight:600}
+.street{color:var(--muted);font-size:.85rem}
+.empty{color:var(--muted);padding:16px}
+@media (max-width:640px){.hide-sm{display:none}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Route Timetable · Oct 5–9, 2026</h1>
+      <p class="sub">Planned arrival times from OptimoRoute, as written to Jobber on Oct 4. Customer window is arrival + 3 h. Tap a tech to show only them.</p>
+    </div>
+    <div class="controls">
+      <input type="search" id="q" placeholder="Search client, job #, city" aria-label="Search">
+    </div>
+  </header>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="controls" id="chips"></div>
+  <section class="summary" id="summary"></section>
+  <section class="techs" id="techs"></section>
+</div>
+
+<script>
+const DATA = __DATA__;
+const DOW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const label = d => { const dt = new Date(d + 'T12:00:00'); return DOW[dt.getDay()] + ' ' + (dt.getMonth()+1) + '/' + dt.getDate(); };
+const fmtH = m => Math.floor(m/60) + 'h ' + String(m%60).padStart(2,'0') + 'm';
+const ampm = t => { let [h,m] = t.split(':').map(Number); const s = h >= 12 ? 'pm' : 'am'; h = h % 12 || 12; return h + ':' + String(m).padStart(2,'0') + ' ' + s; };
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const TECHS = [...new Set(DATA.flatMap(d => d.routes.map(r => r.tech)))].sort();
+let day = 0, q = '', on = new Set(TECHS);
+try { const i = ['mon','tue','wed','thu','fri','week'].indexOf(location.hash.slice(1)); if (i >= 0) day = i; } catch (e) {}
+
+function renderTabs(){
+  document.getElementById('tabs').innerHTML = DATA.map((d,i) => `<button class="tab" role="tab" aria-selected="${i===day}" data-i="${i}">${label(d.date)}</button>`).join('')
+    + `<button class="tab" role="tab" aria-selected="${day===5}" data-i="5">Whole week</button>`;
+  document.getElementById('chips').innerHTML = TECHS.map(t => `<button class="chip" aria-pressed="${on.has(t)}" data-t="${esc(t)}">${esc(t.split(' ')[0])}</button>`).join('');
+}
+function match(s){ if (!q) return true; return (s.client + ' ' + s.job + ' ' + s.city + ' ' + s.street).toLowerCase().includes(q.toLowerCase()); }
+function render(){
+  renderTabs();
+  const days = day === 5 ? DATA : [DATA[day]];
+  let rows = '';
+  for (const d of days) for (const r of d.routes) if (on.has(r.tech)) {
+    const f = r.stops[0], l = r.stops[r.stops.length-1];
+    rows += `<tr><td>${label(d.date)}</td><td>${esc(r.tech)}${r.min > 600 ? '<span class="pill">over 10 h</span>' : ''}</td><td class="num">${r.stops.length}</td><td class="num">${fmtH(r.min)}</td><td class="num hide-sm">${r.km}</td><td class="mono">${f ? ampm(f.t) : ''}</td><td class="mono">${l ? ampm(l.t) : ''}</td></tr>`;
+  }
+  document.getElementById('summary').innerHTML = `<table><thead><tr><th>Day</th><th>Tech</th><th class="num">Stops</th><th class="num">Route time</th><th class="num hide-sm">km</th><th>First stop</th><th>Last stop</th></tr></thead><tbody>${rows}</tbody></table>`;
+  let html = '';
+  for (const d of days) for (const r of d.routes) {
+    if (!on.has(r.tech)) continue;
+    const st = r.stops.filter(match); if (q && !st.length) continue;
+    html += `<article class="tech"><h2>${esc(r.tech)}<span class="meta">${label(d.date)} · ${r.stops.length} stops · ${fmtH(r.min)} · ${r.km} km</span></h2><div class="scroll"><table><thead><tr><th class="num">#</th><th>Arrival</th><th class="hide-sm">Window</th><th>Client</th><th>Job</th><th>City</th><th class="num hide-sm">Drive</th></tr></thead><tbody>`
+      + st.map(s => `<tr><td class="num">${s.n}</td><td class="mono">${ampm(s.t)}</td><td class="mono hide-sm">${ampm(s.t)}–${ampm(s.end)}</td><td><div class="client">${esc(s.client)}</div><div class="street">${esc(s.street)}</div></td><td class="mono">#${esc(s.job)}</td><td>${esc(s.city)}</td><td class="num hide-sm">${s.drive}m</td></tr>`).join('')
+      + `</tbody></table></div></article>`;
+  }
+  document.getElementById('techs').innerHTML = html || '<p class="empty">No stops match that search.</p>';
+}
+document.getElementById('tabs').addEventListener('click', e => { const b = e.target.closest('.tab'); if (!b) return; day = +b.dataset.i; render(); });
+document.getElementById('chips').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; const t = b.dataset.t; if (on.size === TECHS.length) on = new Set([t]); else if (on.has(t)) { on.delete(t); if (!on.size) on = new Set(TECHS); } else on.add(t); render(); });
+document.getElementById('q').addEventListener('input', e => { q = e.target.value.trim(); render(); });
+render();
+</script>

@@ -1,0 +1,61 @@
+=== SYNC + PLAN + TIMES 2026-10-04 12:01:00 PT ===
+mode: LIVE (--execute)   window: 2026-10-05..2026-10-09
+live Jobber: 551 visits, 551 not complete, 551 on a routed driver, 0 skipped (no tech / not a driver)
+  2026-10-05  Tavis 22  Alias 20  Robert 22  Luke 18  Cory 1
+  2026-10-06  Cory 24  Robert 29  Tavis 25  Luke 17  Alias 20
+  2026-10-07  Cory 35  Luke 14  Alias 20  Tavis 25  Robert 28
+  2026-10-08  Tavis 36  Alias 17  Cory 34  Robert 27  Luke 17
+  2026-10-09  Cory 22  Robert 21  Luke 18  Tavis 19  Alias 20
+
+OptimoRoute: 551 orders in the window
+  CREATE 0   UPDATE 0   DELETE 0   unchanged 551
+
+driver availability: 10-05: Alias/Cory/Luke/Robert/Tavis   10-06: Alias/Cory/Luke/Robert/Tavis   10-07: Alias/Cory/Luke/Robert/Tavis   10-08: Alias/Cory/Luke/Robert/Tavis   10-09: Alias/Cory/Luke/Robert/Tavis
+
+=== OPTIMOROUTE: 0 CREATE ===
+=== OPTIMOROUTE: 0 UPDATE ===
+=== OPTIMOROUTE: 0 DELETE ===
+
+--from-saved: 551 planned stops loaded from routes-*.json
+
+=== JOBBER: write planned times (startAt = arrival, endAt = +3 h) ===
+  to write 33   already correct 518   not on a route 0
+  [  1/33] 2026-10-05 15:00 #7594 Cory     Dalveer Josan                was 10-05 07:18  ok
+  [  2/33] 2026-10-05 08:57 #7736 Robert   Rita Conger                  was 10-05 08:42  ok
+  [  3/33] 2026-10-05 08:42 #7736 Robert   Rita Conger                  was 10-05 08:57  ok
+  [  4/33] 2026-10-07 08:47 #7476 Robert   Craig Koester                was 10-07 07:03  ok
+  [  5/33] 2026-10-07 09:08 #8656 Robert   Dean Shull                   was 10-07 07:24  ok
+  [  6/33] 2026-10-07 09:27 #8576 Robert   Kevin Voelker                was 10-07 07:43  ok
+  [  7/33] 2026-10-07 09:48 #8056 Robert   Madera West Condos           was 10-07 08:04  ok
+  [  8/33] 2026-10-07 10:10 #7872 Robert   Sophia Chang                 was 10-07 08:26  ok
+  [  9/33] 2026-10-07 10:33 #8596 Robert   Barbara Kupietz              was 10-07 08:49  ok
+  [ 10/33] 2026-10-07 10:50 #8489 Robert   Jason Kjellesvik             was 10-07 09:06  ok
+  [ 11/33] 2026-10-07 11:09 #7247 Robert   Lynn Clapp                   was 10-07 09:25  ok
+  [ 12/33] 2026-10-07 11:27 #6649 Robert   Theresa  Hall                was 10-07 09:43  ok
+  [ 13/33] 2026-10-07 08:27 #8568 Robert   Dorthya Dunford              was 10-07 10:09  ok
+  [ 14/33] 2026-10-07 08:08 #6382 Robert   Jared Haines                 was 10-07 10:28  ok
+  [ 15/33] 2026-10-07 07:47 #7548 Robert   HyperGreen Landscaping       was 10-07 10:48  ok
+  [ 16/33] 2026-10-07 07:29 #8395 Robert   Beverly Worthen              was 10-07 11:07  ok
+  [ 17/33] 2026-10-07 15:27 #8626 Robert   Isabella Kestner             was 10-07 11:28  ok
+  [ 18/33] 2026-10-07 11:55 #7757 Cory     Dan Flood                    was 10-07 11:41  ok
+  [ 19/33] 2026-10-07 15:44 #5369 Robert   Chris Doll                   was 10-07 11:46  ok
+  [ 20/33] 2026-10-07 11:42 #7482 Cory     Mark Dumler                  was 10-07 11:55  ok
+  [ 21/33] 2026-10-07 16:03 #5438 Robert   Jan Stanfield                was 10-07 12:05  ok
+  [ 22/33] 2026-10-07 16:22 #8218 Robert   Tim Wickland                 was 10-07 12:23  ok
+  [ 23/33] 2026-10-07 14:28 #4941 Robert   Daniel Hoffman               was 10-07 12:48  ok
+  [ 24/33] 2026-10-07 14:50 #4741 Robert   Ron Krebbs                   was 10-07 13:09  ok
+  [ 25/33] 2026-10-07 15:06 #5672 Robert   Rachel Brouhard              was 10-07 13:26  ok
+  [ 26/33] 2026-10-07 13:01 #7617 Robert   Prologis - Sumner Landing    was 10-07 13:46  ok
+  [ 27/33] 2026-10-07 11:58 #8654 Robert   Cruz Rodriguez               was 10-07 14:07  ok
+  [ 28/33] 2026-10-07 12:20 #5178 Robert   Washington Premier Soccer Cl was 10-07 14:28  ok
+  [ 29/33] 2026-10-07 12:39 #7941 Robert   Tim Lubic                    was 10-07 14:47  ok
+  [ 30/33] 2026-10-07 13:27 #5780 Robert   Susy Bevans                  was 10-07 15:12  ok
+  [ 31/33] 2026-10-07 14:03 #4480 Robert   Amanda Willard               was 10-07 15:32  ok
+  [ 32/33] 2026-10-07 13:45 #4549 Robert   Carrie Williamson            was 10-07 15:51  ok
+  [ 33/33] 2026-10-07 07:04 #7820 Robert   David Sprague                was 10-07 16:19  ok
+  written 33  failed 0
+
+=== VERIFY === 551 visits match the plan, 0 do not
+
+✅ done 2026-10-04 12:01:50 PT — log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-05_week\sync-plan-times.log
+Next: the arrival-window sweep (node projects/tool-jobber/scripts/arrival-window-sweep.mjs) so every visit carries the 3-hour window.

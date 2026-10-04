@@ -1,0 +1,28 @@
+[write-gate] WRITES ENABLED until 2026-10-04T19:29:48.926Z (spenc@Got-Moles: Spencer 10-04: Dalveer end of Cory Mon, Robert Wed north->south; replan 10-05 and 10-07) — ceiling 700/run — run 195b67fd
+=== SYNC + PLAN + TIMES 2026-10-04 12:00:01 PT ===
+mode: LIVE (--execute)   window: 2026-10-05..2026-10-05
+live Jobber: 83 visits, 83 not complete, 83 on a routed driver, 0 skipped (no tech / not a driver)
+  2026-10-05  Tavis 22  Alias 20  Robert 22  Luke 18  Cory 1
+
+OptimoRoute: 83 orders in the window
+  CREATE 0   UPDATE 1   DELETE 0   unchanged 82
+    UPDATE 7594-2010512860 2026-10-05 Cory Ventura  tw -> 15:00-16:00
+
+driver availability: 10-05: Alias/Cory/Luke/Robert/Tavis
+
+=== OPTIMOROUTE: 0 CREATE ===
+=== OPTIMOROUTE: 1 UPDATE ===
+  UPDATE 7594-2010512860 tw -> 15:00-16:00  ok
+=== OPTIMOROUTE: 0 DELETE ===
+
+=== PLAN 2026-10-05 (balancing OFF) ===
+  Alias Franks        20 stops   467 min   118 km  first 07:00  last 13:40
+  Cory Ventura         1 stops   559 min   119 km  first 15:00  last 15:00
+  Luke LaVergne       18 stops   537 min   229 km  first 07:04  last 14:33
+  Robert Norton       22 stops   481 min    76 km  first 07:00  last 14:17
+  Tavis Alexander     22 stops   546 min   150 km  first 07:00  last 14:26
+
+--no-times: planned times NOT written to Jobber.
+
+✅ done 2026-10-04 12:00:09 PT — log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-05_week\sync-plan-times.log
+Next: the arrival-window sweep (node projects/tool-jobber/scripts/arrival-window-sweep.mjs) so every visit carries the 3-hour window.

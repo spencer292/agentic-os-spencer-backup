@@ -1,0 +1,82 @@
+[write-gate] WRITES ENABLED until 2026-10-04T19:29:48.926Z (spenc@Got-Moles: Spencer 10-04: Dalveer end of Cory Mon, Robert Wed north->south; replan 10-05 and 10-07) — ceiling 700/run — run 9df1e6ac
+=== SYNC + PLAN + TIMES 2026-10-04 12:00:32 PT ===
+mode: LIVE (--execute)   window: 2026-10-07..2026-10-07
+live Jobber: 122 visits, 122 not complete, 122 on a routed driver, 0 skipped (no tech / not a driver)
+  2026-10-07  Cory 35  Luke 14  Alias 20  Tavis 25  Robert 28
+
+OptimoRoute: 122 orders in the window
+  CREATE 0   UPDATE 28   DELETE 0   unchanged 94
+    UPDATE 7476-1950305905 2026-10-07 Robert Norton  tw -> 07:00-12:00
+    UPDATE 8656-2349289053 2026-10-07 Robert Norton  tw -> 07:00-12:00
+    UPDATE 8576-2326325468 2026-10-07 Robert Norton  tw -> 07:00-12:00
+    UPDATE 8056-2229566962 2026-10-07 Robert Norton  tw -> 07:00-12:00
+    UPDATE 7872-2149985702 2026-10-07 Robert Norton  tw -> 07:00-12:00
+    UPDATE 8596-2336530136 2026-10-07 Robert Norton  tw -> 07:00-12:00
+    UPDATE 8489-2348996052 2026-10-07 Robert Norton  tw -> 07:00-12:00
+    UPDATE 7247-1899450461 2026-10-07 Robert Norton  tw -> 07:00-12:00
+    UPDATE 6649-1783833894 2026-10-07 Robert Norton  tw -> 07:00-12:00
+    UPDATE 8568-2325548239 2026-10-07 Robert Norton  tw -> 07:00-12:00
+    UPDATE 6382-1647598856 2026-10-07 Robert Norton  tw -> 07:00-12:00
+    UPDATE 7548-1990402337 2026-10-07 Robert Norton  tw -> 07:00-12:00
+    UPDATE 8395-2293212666 2026-10-07 Robert Norton  tw -> 07:00-12:00
+    UPDATE 8626-2339788279 2026-10-07 Robert Norton  tw -> 11:00-21:00
+    UPDATE 5369-1691901970 2026-10-07 Robert Norton  tw -> 11:00-21:00
+    UPDATE 5438-1660629058 2026-10-07 Robert Norton  tw -> 11:00-21:00
+    UPDATE 8218-2261194908 2026-10-07 Robert Norton  tw -> 11:00-21:00
+    UPDATE 4941-1757851597 2026-10-07 Robert Norton  tw -> 11:00-21:00
+    UPDATE 4741-1912554437 2026-10-07 Robert Norton  tw -> 11:00-21:00
+    UPDATE 5672-1798664551 2026-10-07 Robert Norton  tw -> 11:00-21:00
+    UPDATE 7617-2340791496 2026-10-07 Robert Norton  tw -> 11:00-21:00
+    UPDATE 8654-2349260124 2026-10-07 Robert Norton  tw -> 11:00-21:00
+    UPDATE 5178-1770741184 2026-10-07 Robert Norton  tw -> 11:00-21:00
+    UPDATE 7941-2352280520 2026-10-07 Robert Norton  tw -> 11:00-21:00
+    UPDATE 5780-1880520515 2026-10-07 Robert Norton  tw -> 11:00-21:00
+    UPDATE 4480-2345354487 2026-10-07 Robert Norton  tw -> 11:00-21:00
+    UPDATE 4549-1880518956 2026-10-07 Robert Norton  tw -> 11:00-21:00
+    UPDATE 7820-2107059593 2026-10-07 Robert Norton  tw -> 07:00-12:00
+
+driver availability: 10-07: Alias/Cory/Luke/Robert/Tavis
+
+=== OPTIMOROUTE: 0 CREATE ===
+=== OPTIMOROUTE: 28 UPDATE ===
+  UPDATE 7476-1950305905 tw -> 07:00-12:00  ok
+  UPDATE 8656-2349289053 tw -> 07:00-12:00  ok
+  UPDATE 8576-2326325468 tw -> 07:00-12:00  ok
+  UPDATE 8056-2229566962 tw -> 07:00-12:00  ok
+  UPDATE 7872-2149985702 tw -> 07:00-12:00  ok
+  UPDATE 8596-2336530136 tw -> 07:00-12:00  ok
+  UPDATE 8489-2348996052 tw -> 07:00-12:00  ok
+  UPDATE 7247-1899450461 tw -> 07:00-12:00  ok
+  UPDATE 6649-1783833894 tw -> 07:00-12:00  ok
+  UPDATE 8568-2325548239 tw -> 07:00-12:00  ok
+  UPDATE 6382-1647598856 tw -> 07:00-12:00  ok
+  UPDATE 7548-1990402337 tw -> 07:00-12:00  ok
+  UPDATE 8395-2293212666 tw -> 07:00-12:00  ok
+  UPDATE 8626-2339788279 tw -> 11:00-21:00  ok
+  UPDATE 5369-1691901970 tw -> 11:00-21:00  ok
+  UPDATE 5438-1660629058 tw -> 11:00-21:00  ok
+  UPDATE 8218-2261194908 tw -> 11:00-21:00  ok
+  UPDATE 4941-1757851597 tw -> 11:00-21:00  ok
+  UPDATE 4741-1912554437 tw -> 11:00-21:00  ok
+  UPDATE 5672-1798664551 tw -> 11:00-21:00  ok
+  UPDATE 7617-2340791496 tw -> 11:00-21:00  ok
+  UPDATE 8654-2349260124 tw -> 11:00-21:00  ok
+  UPDATE 5178-1770741184 tw -> 11:00-21:00  ok
+  UPDATE 7941-2352280520 tw -> 11:00-21:00  ok
+  UPDATE 5780-1880520515 tw -> 11:00-21:00  ok
+  UPDATE 4480-2345354487 tw -> 11:00-21:00  ok
+  UPDATE 4549-1880518956 tw -> 11:00-21:00  ok
+  UPDATE 7820-2107059593 tw -> 07:00-12:00  ok
+=== OPTIMOROUTE: 0 DELETE ===
+
+=== PLAN 2026-10-07 (balancing OFF) ===
+  Alias Franks        20 stops   511 min   149 km  first 07:00  last 14:39
+  Cory Ventura        35 stops   637 min   156 km  first 07:00  last 16:53
+  Luke LaVergne       14 stops   553 min   289 km  first 07:00  last 14:44
+  Robert Norton       28 stops   627 min   148 km  first 07:04  last 16:22
+  Tavis Alexander     25 stops   595 min   148 km  first 07:00  last 15:35
+
+--no-times: planned times NOT written to Jobber.
+
+✅ done 2026-10-04 12:00:51 PT — log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-05_week\sync-plan-times.log
+Next: the arrival-window sweep (node projects/tool-jobber/scripts/arrival-window-sweep.mjs) so every visit carries the 3-hour window.

@@ -1,0 +1,130 @@
+[write-gate] WRITES ENABLED until 2026-10-04T19:40:07.838Z (spenc@Got-Moles: Spencer 10-04: final replan week 10-05 (Cory edits, Barbee Mill 60 min), write times back) — ceiling 700/run — run ceace745
+=== SYNC + PLAN + TIMES 2026-10-04 11:56:08 PT ===
+mode: LIVE (--execute)   window: 2026-10-05..2026-10-09
+live Jobber: 551 visits, 551 not complete, 551 on a routed driver, 0 skipped (no tech / not a driver)
+  2026-10-05  Tavis 22  Alias 20  Robert 22  Luke 18  Cory 1
+  2026-10-06  Cory 24  Robert 29  Tavis 25  Luke 17  Alias 20
+  2026-10-07  Cory 35  Luke 14  Alias 20  Tavis 25  Robert 28
+  2026-10-08  Tavis 36  Alias 17  Cory 34  Robert 27  Luke 17
+  2026-10-09  Cory 22  Robert 21  Luke 18  Tavis 19  Alias 20
+
+OptimoRoute: 551 orders in the window
+  CREATE 0   UPDATE 0   DELETE 0   unchanged 551
+
+driver availability: 10-05: Alias/Cory/Luke/Robert/Tavis   10-06: Alias/Cory/Luke/Robert/Tavis   10-07: Alias/Cory/Luke/Robert/Tavis   10-08: Alias/Cory/Luke/Robert/Tavis   10-09: Alias/Cory/Luke/Robert/Tavis
+
+=== OPTIMOROUTE: 0 CREATE ===
+=== OPTIMOROUTE: 0 UPDATE ===
+=== OPTIMOROUTE: 0 DELETE ===
+
+--from-saved: 551 planned stops loaded from routes-*.json
+
+=== JOBBER: write planned times (startAt = arrival, endAt = +3 h) ===
+  to write 101   already correct 450   not on a route 0
+  [  1/101] 2026-10-06 07:39 #7740 Cory     Marnee Humphrey              was 10-06 07:00  ok
+  [  2/101] 2026-10-06 14:46 #8113 Tavis    Max Ye                       was 10-06 07:04  ok
+  [  3/101] 2026-10-06 07:31 #7804 Luke     Ron Bramlett                 was 10-06 07:08  ok
+  [  4/101] 2026-10-06 07:55 #8526 Cory     Jake Fox                     was 10-06 07:15  ok
+  [  5/101] 2026-10-06 15:04 #5411 Tavis    Paul Klansnic                was 10-06 07:22  ok
+  [  6/101] 2026-10-06 07:07 #7996 Luke     Robert Davis                 was 10-06 07:31  ok
+  [  7/101] 2026-10-06 08:15 #4425 Cory     Thomas Spring Estates        was 10-06 07:36  ok
+  [  8/101] 2026-10-06 15:26 #5940 Tavis    Don Severide                 was 10-06 07:44  ok
+  [  9/101] 2026-10-06 08:35 #8431 Cory     Julie Woods                  was 10-06 07:55  ok
+  [ 10/101] 2026-10-06 14:20 #7960 Tavis    Danielle Steele              was 10-06 08:07  ok
+  [ 11/101] 2026-10-06 08:51 #5024 Cory     Brienna Dyberg               was 10-06 08:12  ok
+  [ 12/101] 2026-10-06 09:05 #8560 Cory     Patty  Ring                  was 10-06 08:26  ok
+  [ 13/101] 2026-10-06 13:56 #8169 Tavis    Donna Jensen                 was 10-06 08:29  ok
+  [ 14/101] 2026-10-06 09:20 #8133 Cory     Shane Taylor                 was 10-06 08:41  ok
+  [ 15/101] 2026-10-06 13:32 #7267 Tavis    Dennis Mccreery              was 10-06 08:54  ok
+  [ 16/101] 2026-10-06 09:41 #8529 Cory     Hui Evans                    was 10-06 09:01  ok
+  [ 17/101] 2026-10-06 13:07 #7183 Tavis    Eric Dworkis                 was 10-06 09:18  ok
+  [ 18/101] 2026-10-06 09:59 #8083 Cory     Mark Baughman                was 10-06 09:20  ok
+  [ 19/101] 2026-10-06 10:29 #6338 Cory     Barbara Wood                 was 10-06 09:37  ok
+  [ 20/101] 2026-10-06 12:46 #7744 Tavis    GC Bellefield, LLC.          was 10-06 09:39  ok
+  [ 21/101] 2026-10-06 10:47 #7839 Cory     Jason Andrews                was 10-06 09:55  ok
+  [ 22/101] 2026-10-06 09:30 #8569 Tavis    Tia Avril                    was 10-06 10:05  ok
+  [ 23/101] 2026-10-06 11:03 #4608 Cory     Kristi Rice                  was 10-06 10:11  ok
+  [ 24/101] 2026-10-06 09:49 #8638 Tavis    Nik bhogal                   was 10-06 10:23  ok
+  [ 25/101] 2026-10-06 11:17 #7723 Cory     Chad Peterson                was 10-06 10:25  ok
+  [ 26/101] 2026-10-06 11:33 #7764 Cory     Michallea Schuelke           was 10-06 10:41  ok
+  [ 27/101] 2026-10-06 10:07 #8605 Tavis    Yara Chen                    was 10-06 10:41  ok
+  [ 28/101] 2026-10-06 11:47 #8619 Cory     Amy Crenshaw-Burns           was 10-06 10:55  ok
+  [ 29/101] 2026-10-06 10:25 #8639 Tavis    Louise Gordon                was 10-06 11:00  ok
+  [ 30/101] 2026-10-06 12:03 #8610 Cory     Chris Gregg                  was 10-06 11:11  ok
+  [ 31/101] 2026-10-06 10:44 #8649 Tavis    Stella Sun                   was 10-06 11:18  ok
+  [ 32/101] 2026-10-06 12:20 #8375 Cory     Johnny Evans                 was 10-06 11:28  ok
+  [ 33/101] 2026-10-06 11:04 #8536 Tavis    Wendy Perkins                was 10-06 11:39  ok
+  [ 34/101] 2026-10-06 12:39 #5597 Cory     Jim McGowan                  was 10-06 11:47  ok
+  [ 35/101] 2026-10-06 11:23 #8537 Tavis    Emma Liu                     was 10-06 11:58  ok
+  [ 36/101] 2026-10-06 12:55 #8593 Cory     Kevin Milliren               was 10-06 12:03  ok
+  [ 37/101] 2026-10-06 11:43 #8613 Tavis    Steve Burns                  was 10-06 12:17  ok
+  [ 38/101] 2026-10-06 13:10 #7853 Cory     Jim Vaughn                   was 10-06 12:18  ok
+  [ 39/101] 2026-10-06 12:01 #8584 Tavis    Suma Prasad                  was 10-06 12:35  ok
+  [ 40/101] 2026-10-06 13:33 #7496 Cory     Vince Preece                 was 10-06 12:41  ok
+  [ 41/101] 2026-10-06 07:19 #8067 Cory     Gerryann Jurva               was 10-06 12:51  ok
+  [ 42/101] 2026-10-06 12:19 #6545 Tavis    Rosemarie Havranek           was 10-06 12:54  ok
+  [ 43/101] 2026-10-06 07:00 #6784 Cory     Adam Kimball                 was 10-06 13:09  ok
+  [ 44/101] 2026-10-06 09:05 #6116 Tavis    Noel Murphy                  was 10-06 13:20  ok
+  [ 45/101] 2026-10-06 08:47 #8488 Tavis    Terry Wirth                  was 10-06 13:38  ok
+  [ 46/101] 2026-10-06 07:02 #8566 Tavis    Janelle Stewart              was 10-06 14:03  ok
+  [ 47/101] 2026-10-06 07:24 #6303 Tavis    Patrick Tanner               was 10-06 14:25  ok
+  [ 48/101] 2026-10-06 07:46 #8551 Tavis    Liz Silke                    was 10-06 14:47  ok
+  [ 49/101] 2026-10-06 08:02 #8505 Tavis    Roberto Dondisch             was 10-06 15:03  ok
+  [ 50/101] 2026-10-06 08:17 #8652 Tavis    Roberto Dondisch             was 10-06 15:18  ok
+  [ 51/101] 2026-10-06 10:12 #8082 Cory     Pauline Kabue                was 10-06 15:36  ok
+  [ 52/101] 2026-10-06 16:36 #7685 Robert   Mark Fisher                  was 10-06 16:20  ok
+  [ 53/101] 2026-10-06 16:21 #7684 Robert   Dennis Higashiyama           was 10-06 16:36  ok
+  [ 54/101] 2026-10-07 08:00 #7459 Tavis    Larry McGowan                was 10-07 07:42  ok
+  [ 55/101] 2026-10-07 08:23 #5700 Tavis    John Siebenbaum              was 10-07 08:05  ok
+  [ 56/101] 2026-10-07 08:43 #7751 Tavis    Charles Strauss              was 10-07 08:25  ok
+  [ 57/101] 2026-10-07 09:02 #8030 Tavis    Briana Watson                was 10-07 08:44  ok
+  [ 58/101] 2026-10-07 09:22 #8645 Tavis    Faisal Mahmood               was 10-07 09:04  ok
+  [ 59/101] 2026-10-07 09:43 #8372 Tavis    Travis Bruce                 was 10-07 09:25  ok
+  [ 60/101] 2026-10-07 10:07 #7608 Tavis    Scott Hamilton               was 10-07 09:49  ok
+  [ 61/101] 2026-10-07 10:27 #8345 Tavis    Jennifer Pere                was 10-07 10:09  ok
+  [ 62/101] 2026-10-07 10:49 #8112 Tavis    Colleen Hunter               was 10-07 10:31  ok
+  [ 63/101] 2026-10-07 11:07 #8361 Tavis    Erik Guttridge               was 10-07 10:49  ok
+  [ 64/101] 2026-10-07 11:32 #8632 Tavis    Karen Kawamoto               was 10-07 11:14  ok
+  [ 65/101] 2026-10-07 11:53 #7317 Tavis    Chris Bartlett               was 10-07 11:35  ok
+  [ 66/101] 2026-10-07 12:13 #8636 Tavis    Taegan Kicinski              was 10-07 11:55  ok
+  [ 67/101] 2026-10-07 12:32 #7475 Tavis    Hannah  Jacobson             was 10-07 12:14  ok
+  [ 68/101] 2026-10-07 12:57 #8305 Tavis    Douglas  Kelly               was 10-07 12:39  ok
+  [ 69/101] 2026-10-07 13:19 #8155 Tavis    Bac Walker                   was 10-07 13:01  ok
+  [ 70/101] 2026-10-07 13:38 #7517 Tavis    Balbir Houthi                was 10-07 13:20  ok
+  [ 71/101] 2026-10-07 14:00 #8586 Tavis    Deidre Moore                 was 10-07 13:42  ok
+  [ 72/101] 2026-10-07 14:21 #7713 Tavis    Scott Fritschle              was 10-07 14:03  ok
+  [ 73/101] 2026-10-07 14:43 #8616 Tavis    Jennifer Nguyen              was 10-07 14:25  ok
+  [ 74/101] 2026-10-07 15:05 #8637 Tavis    Diane Lucas                  was 10-07 14:47  ok
+  [ 75/101] 2026-10-07 15:32 #7858 Cory     Laura Tallmadge              was 10-07 15:07  ok
+  [ 76/101] 2026-10-07 15:35 #7623 Tavis    Pao Lor                      was 10-07 15:17  ok
+  [ 77/101] 2026-10-07 15:53 #7637 Cory     Tommy Marshall               was 10-07 15:28  ok
+  [ 78/101] 2026-10-07 15:10 #8630 Cory     Candy Ford                   was 10-07 15:46  ok
+  [ 79/101] 2026-10-07 07:42 #8289 Tavis    Chad Vetter                  was 10-07 16:01  ok
+  [ 80/101] 2026-10-07 16:15 #7570 Cory     Della Crossley               was 10-07 16:03  ok
+  [ 81/101] 2026-10-07 16:33 #7677 Cory     Josh Duschel                 was 10-07 16:21  ok
+  [ 82/101] 2026-10-07 16:53 #7673 Cory     Nicholas Mayer               was 10-07 16:41  ok
+  [ 83/101] 2026-10-08 14:53 #7964 Tavis    Barbee Mill HOA              was 10-08 14:55  ok
+  [ 84/101] 2026-10-08 15:02 #8016 Tavis    Nasima Vira                  was 10-08 15:06  ok
+  [ 85/101] 2026-10-08 15:12 #7980 Tavis    Marianne Parasida            was 10-08 15:18  ok
+  [ 86/101] 2026-10-08 15:22 #8019 Tavis    John Wohlfarth               was 10-08 15:30  ok
+  [ 87/101] 2026-10-08 15:31 #8320 Tavis    Jay Hickenbottom             was 10-08 15:41  ok
+  [ 88/101] 2026-10-08 15:41 #8147 Tavis    Laura Zarro                  was 10-08 15:53  ok
+  [ 89/101] 2026-10-08 15:57 #8418 Tavis    Dana Dauenhauer              was 10-08 16:11  ok
+  [ 90/101] 2026-10-08 16:14 #5667 Tavis    Ron Short                    was 10-08 16:28  ok
+  [ 91/101] 2026-10-08 16:34 #8603 Tavis    Mary Hendrickson             was 10-08 16:48  ok
+  [ 92/101] 2026-10-08 16:56 #8664 Tavis    Eugene Wong                  was 10-08 17:10  ok
+  [ 93/101] 2026-10-08 17:33 #7672 Tavis    Sean Finlayson               was 10-08 17:47  ok
+  [ 94/101] 2026-10-08 17:52 #8160 Tavis    Sharry Kim                   was 10-08 18:06  ok
+  [ 95/101] 2026-10-09 09:49 #6409 Robert   Kevin Hoffman                was 10-09 09:30  ok
+  [ 96/101] 2026-10-09 09:27 #8519 Robert   Brad Hickel                  was 10-09 09:52  ok
+  [ 97/101] 2026-10-09 12:59 #8578 Cory     Eric Hill                    was 10-09 13:27  ok
+  [ 98/101] 2026-10-09 13:19 #5077 Cory     Ruth  Edwards                was 10-09 13:48  ok
+  [ 99/101] 2026-10-09 13:35 #7725 Cory     Suzanne Gullace              was 10-09 14:04  ok
+  [100/101] 2026-10-09 13:56 #7670 Cory     Jessica Rakos                was 10-09 14:25  ok
+  [101/101] 2026-10-09 14:15 #4926 Cory     HyperGreen Landscaping       was 10-09 14:44  ok
+  written 101  failed 0
+
+=== VERIFY === 551 visits match the plan, 0 do not
+
+✅ done 2026-10-04 11:57:39 PT — log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-05_week\sync-plan-times.log
+Next: the arrival-window sweep (node projects/tool-jobber/scripts/arrival-window-sweep.mjs) so every visit carries the 3-hour window.

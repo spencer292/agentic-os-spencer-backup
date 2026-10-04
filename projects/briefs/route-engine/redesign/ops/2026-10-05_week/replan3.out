@@ -1,0 +1,223 @@
+[write-gate] WRITES ENABLED until 2026-10-04T19:26:23.575Z (spenc@Got-Moles: Spencer 10-04: replan week 10-05 after third round of Jobber adjustments, write times back) — ceiling 700/run — run 958e78bc
+=== SYNC + PLAN + TIMES 2026-10-04 11:41:23 PT ===
+mode: LIVE (--execute)   window: 2026-10-05..2026-10-09
+live Jobber: 551 visits, 551 not complete, 551 on a routed driver, 0 skipped (no tech / not a driver)
+  2026-10-05  Tavis 22  Alias 20  Cory 1  Luke 18  Robert 22
+  2026-10-06  Robert 29  Cory 21  Tavis 26  Luke 18  Alias 20
+  2026-10-07  Cory 29  Luke 14  Alias 20  Tavis 24  Robert 28
+  2026-10-08  Alias 17  Tavis 36  Robert 27  Cory 34  Luke 17
+  2026-10-09  Cory 30  Robert 21  Tavis 19  Alias 20  Luke 18
+
+OptimoRoute: 551 orders in the window
+  CREATE 6   UPDATE 69   DELETE 6   unchanged 476
+    CREATE 7594-2010512860 2026-10-05 Cory Ventura 12m  Dalveer Josan  10416 148th Avenue Southeast, Renton, Washington, 98059
+    CREATE 7974-2206929200 2026-10-05 Luke LaVergne 15m  Sandy Pearson  1410 Hummingbird Lane Northwest, Olympia, Washington, 98502
+    CREATE 5511-1789419945 2026-10-06 Robert Norton 15m  SLPPLLC  21323 Southeast 351st Street, Auburn, Washington, 98092
+    CREATE 7970-2346992140 2026-10-06 Robert Norton 15m  Darren McAllen  29121 236th Avenue Southeast, Black Diamond, Washington, 98010
+    CREATE 5594-2350119077 2026-10-08 Tavis Alexander 15m  Michael Satran  13840 169th Avenue Southeast, Renton, Washington, 98059
+    CREATE 5458-2352015908 2026-10-08 Robert Norton 15m  Jake Nettleton  23308 Southeast 218th Street, Maple Valley, Washington, 98038
+    UPDATE 6338-2352312400 2026-10-06 Cory Ventura  tech Luke LaVergne->Cory Ventura, dur 15->12
+    UPDATE 8232-2289334131 2026-10-06 Luke LaVergne  date 2026-10-08->2026-10-06
+    UPDATE 5015-1671989022 2026-10-06 Luke LaVergne  date 2026-10-08->2026-10-06
+    UPDATE 8083-2234973686 2026-10-06 Cory Ventura  tech Luke LaVergne->Cory Ventura, dur 15->12
+    UPDATE 8412-2350679975 2026-10-06 Luke LaVergne  date 2026-10-08->2026-10-06
+    UPDATE 8529-2319334237 2026-10-06 Cory Ventura  tech Luke LaVergne->Cory Ventura, dur 15->12
+    UPDATE 7832-2350697969 2026-10-06 Luke LaVergne  date 2026-10-08->2026-10-06
+    UPDATE 8620-2338513134 2026-10-06 Luke LaVergne  date 2026-10-08->2026-10-06
+    UPDATE 8526-2317027130 2026-10-06 Cory Ventura  tech Luke LaVergne->Cory Ventura, dur 15->12
+    UPDATE 4425-1850020032 2026-10-06 Cory Ventura  tech Luke LaVergne->Cory Ventura, dur 15->12
+    UPDATE 8210-2261152094 2026-10-06 Luke LaVergne  date 2026-10-05->2026-10-06
+    UPDATE 8431-2297635823 2026-10-06 Cory Ventura  tech Luke LaVergne->Cory Ventura, dur 15->12
+    UPDATE 8332-2280671491 2026-10-06 Luke LaVergne  date 2026-10-05->2026-10-06
+    UPDATE 5024-1702511847 2026-10-06 Cory Ventura  tech Luke LaVergne->Cory Ventura, dur 15->12
+    UPDATE 7804-2099659408 2026-10-06 Luke LaVergne  date 2026-10-05->2026-10-06
+    UPDATE 8560-2323384858 2026-10-06 Cory Ventura  tech Luke LaVergne->Cory Ventura, dur 15->12
+    UPDATE 8627-2341461390 2026-10-06 Robert Norton  date 2026-10-09->2026-10-06
+    UPDATE 8133-2244933523 2026-10-06 Cory Ventura  tech Luke LaVergne->Cory Ventura, dur 15->12
+    UPDATE 7996-2216280502 2026-10-06 Luke LaVergne  date 2026-10-05->2026-10-06
+    UPDATE 6653-1784920794 2026-10-06 Robert Norton  date 2026-10-09->2026-10-06
+    UPDATE 7839-2117235408 2026-10-06 Cory Ventura  tech Luke LaVergne->Cory Ventura, dur 15->12
+    UPDATE 4707-1912560950 2026-10-06 Robert Norton  date 2026-10-09->2026-10-06
+    UPDATE 4608-1912588278 2026-10-06 Cory Ventura  tech Luke LaVergne->Cory Ventura, dur 15->12
+    UPDATE 7723-2056042317 2026-10-06 Cory Ventura  tech Luke LaVergne->Cory Ventura, dur 15->12
+    UPDATE 7764-2071869406 2026-10-06 Cory Ventura  tech Luke LaVergne->Cory Ventura, dur 15->12
+    UPDATE 8619-2338506919 2026-10-06 Cory Ventura  tech Luke LaVergne->Cory Ventura, dur 15->12
+    UPDATE 8654-2349260124 2026-10-07 Robert Norton  date 2026-10-09->2026-10-07, tech Luke LaVergne->Robert Norton
+    UPDATE 5178-1770741184 2026-10-07 Robert Norton  date 2026-10-09->2026-10-07, tech Luke LaVergne->Robert Norton
+    UPDATE 7941-2352280520 2026-10-07 Robert Norton  date 2026-10-09->2026-10-07, tech Luke LaVergne->Robert Norton
+    UPDATE 8629-2341471077 2026-10-08 Robert Norton  date 2026-10-09->2026-10-08
+    UPDATE 7306-2352110947 2026-10-08 Robert Norton  date 2026-10-09->2026-10-08
+    UPDATE 8513-2350048154 2026-10-08 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 4545-2351988768 2026-10-08 Robert Norton  date 2026-10-09->2026-10-08
+    UPDATE 8350-2284967403 2026-10-08 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 8617-2338499452 2026-10-08 Robert Norton  date 2026-10-09->2026-10-08
+    UPDATE 8137-2246402531 2026-10-08 Cory Ventura  date 2026-10-09->2026-10-08
+    UPDATE 4842-1986405964 2026-10-08 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 8666-2353261867 2026-10-08 Cory Ventura  date 2026-10-09->2026-10-08
+    UPDATE 5071-2350110673 2026-10-08 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 7657-2347088814 2026-10-08 Cory Ventura  date 2026-10-09->2026-10-08
+    UPDATE 4929-2350153957 2026-10-08 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 6324-2347094650 2026-10-08 Cory Ventura  date 2026-10-09->2026-10-08
+    UPDATE 7406-2350135159 2026-10-08 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 7705-2347076480 2026-10-08 Cory Ventura  date 2026-10-09->2026-10-08
+    UPDATE 5034-2350186670 2026-10-08 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 8214-2261162882 2026-10-08 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 7672-2350203515 2026-10-08 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 8160-2250473089 2026-10-08 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 6287-2352150447 2026-10-08 Robert Norton  date 2026-10-09->2026-10-08
+    UPDATE 7767-2075253894 2026-10-08 Robert Norton  date 2026-10-09->2026-10-08
+    UPDATE 5077-1691585429 2026-10-09 Cory Ventura  date 2026-10-06->2026-10-09
+    UPDATE 6953-2347490158 2026-10-09 Robert Norton  date 2026-10-06->2026-10-09
+    UPDATE 5602-2347502368 2026-10-09 Robert Norton  date 2026-10-06->2026-10-09
+    UPDATE 7795-2090045627 2026-10-09 Cory Ventura  date 2026-10-06->2026-10-09
+    UPDATE 8641-2346390672 2026-10-09 Cory Ventura  date 2026-10-06->2026-10-09
+    UPDATE 6619-1776930418 2026-10-09 Cory Ventura  date 2026-10-06->2026-10-09
+    UPDATE 7805-2099670569 2026-10-09 Cory Ventura  date 2026-10-06->2026-10-09
+    UPDATE 8436-2298658371 2026-10-09 Cory Ventura  date 2026-10-06->2026-10-09
+    UPDATE 5639-2278337088 2026-10-09 Cory Ventura  date 2026-10-06->2026-10-09
+    UPDATE 5192-1702508284 2026-10-09 Cory Ventura  date 2026-10-06->2026-10-09
+    UPDATE 6784-1810350516 2026-10-09 Cory Ventura  date 2026-10-06->2026-10-09
+    UPDATE 8578-2326351277 2026-10-09 Cory Ventura  date 2026-10-06->2026-10-09
+    UPDATE 7457-1939839681 2026-10-09 Cory Ventura  date 2026-10-06->2026-10-09
+    UPDATE 5413-1718745014 2026-10-09 Cory Ventura  date 2026-10-06->2026-10-09
+    UPDATE 5954-1912197348 2026-10-09 Cory Ventura  date 2026-10-06->2026-10-09
+    UPDATE 8614-2338493379 2026-10-09 Cory Ventura  date 2026-10-06->2026-10-09
+    UPDATE 8611-2336588204 2026-10-09 Cory Ventura  date 2026-10-06->2026-10-09
+    UPDATE 8067-2232219538 2026-10-09 Cory Ventura  date 2026-10-06->2026-10-09, tech Luke LaVergne->Cory Ventura, dur 15->12
+    UPDATE 7819-2106927246 2026-10-09 Robert Norton  date 2026-10-06->2026-10-09
+    DELETE 7810-2102497685 2026-10-05 Luke LaVergne  Jason Noahr · #7810
+    DELETE 8417-2295922373 2026-10-07 Luke LaVergne  Lynn Anderson · #8417
+    DELETE 8203-2350146968 2026-10-08 Luke LaVergne  Richard Henegan · #8203
+    DELETE 4935-1779399730 2026-10-06 Luke LaVergne  Maja Haloway · #4935
+    DELETE 7462-1944751846 2026-10-09 Cory Ventura  HyperGreen Landscaping · #7462
+    DELETE 8545-2321158415 2026-10-09 Luke LaVergne  Doris Osada · #8545
+
+driver availability: 10-05: Alias/Cory/Luke/Robert/Tavis   10-06: Alias/Cory/Luke/Robert/Tavis   10-07: Alias/Cory/Luke/Robert/Tavis   10-08: Alias/Cory/Luke/Robert/Tavis   10-09: Alias/Cory/Luke/Robert/Tavis
+
+=== OPTIMOROUTE: 6 CREATE ===
+  CREATE 7594-2010512860 2026-10-05 Cory Ventura  ok
+  CREATE 7974-2206929200 2026-10-05 Luke LaVergne  ok
+  CREATE 5511-1789419945 2026-10-06 Robert Norton  ok
+  CREATE 7970-2346992140 2026-10-06 Robert Norton  ok
+  CREATE 5594-2350119077 2026-10-08 Tavis Alexander  ok
+  CREATE 5458-2352015908 2026-10-08 Robert Norton  ok
+=== OPTIMOROUTE: 69 UPDATE ===
+  UPDATE 6338-2352312400 tech Luke LaVergne->Cory Ventura, dur 15->12  ok
+  UPDATE 8232-2289334131 date 2026-10-08->2026-10-06  ok
+  UPDATE 5015-1671989022 date 2026-10-08->2026-10-06  ok
+  UPDATE 8083-2234973686 tech Luke LaVergne->Cory Ventura, dur 15->12  ok
+  UPDATE 8412-2350679975 date 2026-10-08->2026-10-06  ok
+  UPDATE 8529-2319334237 tech Luke LaVergne->Cory Ventura, dur 15->12  ok
+  UPDATE 7832-2350697969 date 2026-10-08->2026-10-06  ok
+  UPDATE 8620-2338513134 date 2026-10-08->2026-10-06  ok
+  UPDATE 8526-2317027130 tech Luke LaVergne->Cory Ventura, dur 15->12  ok
+  UPDATE 4425-1850020032 tech Luke LaVergne->Cory Ventura, dur 15->12  ok
+  UPDATE 8210-2261152094 date 2026-10-05->2026-10-06  ok
+  UPDATE 8431-2297635823 tech Luke LaVergne->Cory Ventura, dur 15->12  ok
+  UPDATE 8332-2280671491 date 2026-10-05->2026-10-06  ok
+  UPDATE 5024-1702511847 tech Luke LaVergne->Cory Ventura, dur 15->12  ok
+  UPDATE 7804-2099659408 date 2026-10-05->2026-10-06  ok
+  UPDATE 8560-2323384858 tech Luke LaVergne->Cory Ventura, dur 15->12  ok
+  UPDATE 8627-2341461390 date 2026-10-09->2026-10-06  ok
+  UPDATE 8133-2244933523 tech Luke LaVergne->Cory Ventura, dur 15->12  ok
+  UPDATE 7996-2216280502 date 2026-10-05->2026-10-06  ok
+  UPDATE 6653-1784920794 date 2026-10-09->2026-10-06  ok
+  UPDATE 7839-2117235408 tech Luke LaVergne->Cory Ventura, dur 15->12  ok
+  UPDATE 4707-1912560950 date 2026-10-09->2026-10-06  ok
+  UPDATE 4608-1912588278 tech Luke LaVergne->Cory Ventura, dur 15->12  ok
+  UPDATE 7723-2056042317 tech Luke LaVergne->Cory Ventura, dur 15->12  ok
+  UPDATE 7764-2071869406 tech Luke LaVergne->Cory Ventura, dur 15->12  ok
+  UPDATE 8619-2338506919 tech Luke LaVergne->Cory Ventura, dur 15->12  ok
+  UPDATE 8654-2349260124 date 2026-10-09->2026-10-07, tech Luke LaVergne->Robert Norton  ok
+  UPDATE 5178-1770741184 date 2026-10-09->2026-10-07, tech Luke LaVergne->Robert Norton  ok
+  UPDATE 7941-2352280520 date 2026-10-09->2026-10-07, tech Luke LaVergne->Robert Norton  ok
+  UPDATE 8629-2341471077 date 2026-10-09->2026-10-08  ok
+  UPDATE 7306-2352110947 date 2026-10-09->2026-10-08  ok
+  UPDATE 8513-2350048154 tech Robert Norton->Tavis Alexander  ok
+  UPDATE 4545-2351988768 date 2026-10-09->2026-10-08  ok
+  UPDATE 8350-2284967403 tech Robert Norton->Tavis Alexander  ok
+  UPDATE 8617-2338499452 date 2026-10-09->2026-10-08  ok
+  UPDATE 8137-2246402531 date 2026-10-09->2026-10-08  ok
+  UPDATE 4842-1986405964 tech Robert Norton->Tavis Alexander  ok
+  UPDATE 8666-2353261867 date 2026-10-09->2026-10-08  ok
+  UPDATE 5071-2350110673 tech Robert Norton->Tavis Alexander  ok
+  UPDATE 7657-2347088814 date 2026-10-09->2026-10-08  ok
+  UPDATE 4929-2350153957 tech Robert Norton->Tavis Alexander  ok
+  UPDATE 6324-2347094650 date 2026-10-09->2026-10-08  ok
+  UPDATE 7406-2350135159 tech Robert Norton->Tavis Alexander  ok
+  UPDATE 7705-2347076480 date 2026-10-09->2026-10-08  ok
+  UPDATE 5034-2350186670 tech Robert Norton->Tavis Alexander  ok
+  UPDATE 8214-2261162882 tech Robert Norton->Tavis Alexander  ok
+  UPDATE 7672-2350203515 tech Robert Norton->Tavis Alexander  ok
+  UPDATE 8160-2250473089 tech Robert Norton->Tavis Alexander  ok
+  UPDATE 6287-2352150447 date 2026-10-09->2026-10-08  ok
+  UPDATE 7767-2075253894 date 2026-10-09->2026-10-08  ok
+  UPDATE 5077-1691585429 date 2026-10-06->2026-10-09  ok
+  UPDATE 6953-2347490158 date 2026-10-06->2026-10-09  ok
+  UPDATE 5602-2347502368 date 2026-10-06->2026-10-09  ok
+  UPDATE 7795-2090045627 date 2026-10-06->2026-10-09  ok
+  UPDATE 8641-2346390672 date 2026-10-06->2026-10-09  ok
+  UPDATE 6619-1776930418 date 2026-10-06->2026-10-09  ok
+  UPDATE 7805-2099670569 date 2026-10-06->2026-10-09  ok
+  UPDATE 8436-2298658371 date 2026-10-06->2026-10-09  ok
+  UPDATE 5639-2278337088 date 2026-10-06->2026-10-09  ok
+  UPDATE 5192-1702508284 date 2026-10-06->2026-10-09  ok
+  UPDATE 6784-1810350516 date 2026-10-06->2026-10-09  ok
+  UPDATE 8578-2326351277 date 2026-10-06->2026-10-09  ok
+  UPDATE 7457-1939839681 date 2026-10-06->2026-10-09  ok
+  UPDATE 5413-1718745014 date 2026-10-06->2026-10-09  ok
+  UPDATE 5954-1912197348 date 2026-10-06->2026-10-09  ok
+  UPDATE 8614-2338493379 date 2026-10-06->2026-10-09  ok
+  UPDATE 8611-2336588204 date 2026-10-06->2026-10-09  ok
+  UPDATE 8067-2232219538 date 2026-10-06->2026-10-09, tech Luke LaVergne->Cory Ventura, dur 15->12  ok
+  UPDATE 7819-2106927246 date 2026-10-06->2026-10-09  ok
+=== OPTIMOROUTE: 6 DELETE ===
+  DELETE 7810-2102497685 2026-10-05  ok
+  DELETE 8417-2295922373 2026-10-07  ok
+  DELETE 8203-2350146968 2026-10-08  ok
+  DELETE 4935-1779399730 2026-10-06  ok
+  DELETE 7462-1944751846 2026-10-09  ok
+  DELETE 8545-2321158415 2026-10-09  ok
+
+=== OPTIMOROUTE: driver availability ===
+  30/30 succeeded
+
+=== PLAN 2026-10-05 (balancing OFF) ===
+  Alias Franks        20 stops   467 min   118 km  first 07:00  last 13:40
+  Cory Ventura         1 stops    98 min   119 km  first 07:18  last 07:18
+  Luke LaVergne       18 stops   537 min   229 km  first 07:04  last 14:33
+  Robert Norton       22 stops   481 min    76 km  first 07:00  last 14:17
+  Tavis Alexander     22 stops   546 min   150 km  first 07:00  last 14:26
+
+=== PLAN 2026-10-06 (balancing OFF) ===
+  Robert Norton       29 stops   616 min   106 km  first 07:00  last 16:36
+  Tavis Alexander     26 stops   639 min   187 km  first 07:04  last 16:01
+  Alias Franks        20 stops   503 min   124 km  first 07:09  last 14:11
+  Cory Ventura        21 stops   398 min   131 km  first 07:00  last 12:41
+  Luke LaVergne       18 stops   592 min   249 km  first 07:08  last 15:36
+
+=== PLAN 2026-10-07 (balancing OFF) ===
+  Alias Franks        20 stops   511 min   149 km  first 07:00  last 14:39
+  Cory Ventura        29 stops   517 min   124 km  first 07:00  last 14:49
+  Luke LaVergne       14 stops   553 min   289 km  first 07:00  last 14:44
+  Robert Norton       28 stops   618 min   145 km  first 07:03  last 16:19
+  Tavis Alexander     24 stops   577 min   146 km  first 07:00  last 15:17
+
+=== PLAN 2026-10-08 (balancing OFF) ===
+  Alias Franks        17 stops   457 min   156 km  first 07:00  last 13:20
+  Cory Ventura        34 stops   552 min   100 km  first 07:00  last 15:31
+  Luke LaVergne       17 stops   465 min   203 km  first 07:10  last 13:09
+  Robert Norton       27 stops   599 min   116 km  first 07:00  last 16:14
+  Tavis Alexander     36 stops   760 min   143 km  first 07:00  last 18:06
+
+=== PLAN 2026-10-09 (balancing OFF) ===
+  Alias Franks        20 stops   480 min   137 km  first 07:16  last 13:37
+  Cory Ventura        30 stops   624 min   221 km  first 07:00  last 16:41
+  Luke LaVergne       18 stops   446 min    96 km  first 07:00  last 13:18
+  Robert Norton       21 stops   464 min    87 km  first 07:00  last 14:05
+  Tavis Alexander     19 stops   516 min   188 km  first 07:01  last 13:51
+
+--no-times: planned times NOT written to Jobber.
+
+✅ done 2026-10-04 11:42:42 PT — log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-05_week\sync-plan-times.log
+Next: the arrival-window sweep (node projects/tool-jobber/scripts/arrival-window-sweep.mjs) so every visit carries the 3-hour window.

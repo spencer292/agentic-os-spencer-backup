@@ -1,0 +1,26 @@
+[write-gate] writes BLOCKED — writes disabled: Revoked. — run 995fa52a
+=== SYNC + PLAN + TIMES 2026-10-04 11:54:39 PT ===
+mode: DRY (default) — queries only   window: 2026-10-05..2026-10-09
+live Jobber: 551 visits, 551 not complete, 551 on a routed driver, 0 skipped (no tech / not a driver)
+  2026-10-05  Tavis 22  Alias 20  Robert 22  Luke 18  Cory 1
+  2026-10-06  Cory 24  Robert 29  Tavis 25  Luke 17  Alias 20
+  2026-10-07  Cory 35  Luke 14  Alias 20  Tavis 25  Robert 28
+  2026-10-08  Tavis 36  Alias 17  Cory 34  Robert 27  Luke 17
+  2026-10-09  Cory 22  Robert 21  Luke 18  Tavis 19  Alias 20
+
+OptimoRoute: 551 orders in the window
+  CREATE 0   UPDATE 10   DELETE 0   unchanged 541
+    UPDATE 8067-2232219538 2026-10-06 Cory Ventura  date 2026-10-09->2026-10-06
+    UPDATE 6784-1810350516 2026-10-06 Cory Ventura  date 2026-10-09->2026-10-06
+    UPDATE 8082-2234970249 2026-10-06 Cory Ventura  tech Luke LaVergne->Cory Ventura, dur 15->12
+    UPDATE 7858-2347465352 2026-10-07 Cory Ventura  date 2026-10-09->2026-10-07
+    UPDATE 7637-2021592858 2026-10-07 Cory Ventura  date 2026-10-09->2026-10-07
+    UPDATE 8630-2341476406 2026-10-07 Cory Ventura  date 2026-10-09->2026-10-07
+    UPDATE 8289-2273495888 2026-10-07 Tavis Alexander  date 2026-10-06->2026-10-07
+    UPDATE 7570-2001256104 2026-10-07 Cory Ventura  date 2026-10-09->2026-10-07
+    UPDATE 7677-2038950865 2026-10-07 Cory Ventura  date 2026-10-09->2026-10-07
+    UPDATE 7673-2347544150 2026-10-07 Cory Ventura  date 2026-10-09->2026-10-07
+
+driver availability: 10-05: Alias/Cory/Luke/Robert/Tavis   10-06: Alias/Cory/Luke/Robert/Tavis   10-07: Alias/Cory/Luke/Robert/Tavis   10-08: Alias/Cory/Luke/Robert/Tavis   10-09: Alias/Cory/Luke/Robert/Tavis
+
+DRY RUN — nothing written. Planning and time write-back happen only with --execute. Log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-05_week\sync-plan-times.log
