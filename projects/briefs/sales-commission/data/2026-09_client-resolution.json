@@ -1,6 +1,6 @@
 {
   "month": "2026-09",
-  "resolvedAt": "2026-09-10T20:14:31.613Z",
+  "resolvedAt": "2026-10-01T21:06:58.393Z",
   "resolution": {
     "15493": {
       "seller": "Spencer Hill",
@@ -52,9 +52,9 @@
     },
     "16265": {
       "seller": "Spencer Hill",
-      "basis": "CLIENT_HISTORY",
+      "basis": "CLIENT_HISTORY_AMBIGUOUS",
       "client": "Shawn Tobius",
-      "evidence": "earliest seller on record: quote 12941 (2025-09-20) = Spencer Hill"
+      "evidence": "earliest seller on record: quote 12941 (2025-09-20) = Spencer Hill | client also shows: Cory Ventura"
     },
     "16266": {
       "seller": "Tavis Alexander",
@@ -67,12 +67,6 @@
       "basis": "CLIENT_HISTORY",
       "client": "Richard Kaumans",
       "evidence": "earliest seller on record: quote 12966 (2025-09-26) = Courtney"
-    },
-    "16273": {
-      "seller": "Robert Norton",
-      "basis": "CLIENT_HISTORY",
-      "client": "Scott Jennings",
-      "evidence": "earliest seller on record: quote 13879 (2026-07-31) = Robert Norton"
     },
     "16274": {
       "seller": "Courtney",
@@ -136,32 +130,6 @@
         }
       ]
     },
-    "Z2lkOi8vSm9iYmVyL0NsaWVudC8zMjg0ODc3OQ==": {
-      "name": "Drew Culver",
-      "quotes": [],
-      "jobs": [
-        {
-          "n": 8378,
-          "at": "2026-08-14T02:15:30Z",
-          "seller": null
-        },
-        {
-          "n": 7602,
-          "at": "2026-01-16T16:42:42Z",
-          "seller": null
-        },
-        {
-          "n": 721,
-          "at": "2020-11-16T03:17:40Z",
-          "seller": null
-        },
-        {
-          "n": 4731,
-          "at": "2023-11-26T18:36:47Z",
-          "seller": null
-        }
-      ]
-    },
     "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTg3NDY1MzA=": {
       "name": "Tai Tran",
       "quotes": [
@@ -189,71 +157,76 @@
         }
       ]
     },
-    "Z2lkOi8vSm9iYmVyL0NsaWVudC81MzkxNTIzMA==": {
-      "name": "Scott Jennings",
+    "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTg4ODM4MTY=": {
+      "name": "Shawn Tobius",
       "quotes": [
         {
-          "n": "13879",
-          "at": "2026-07-31T20:42:58Z",
-          "seller": "Robert Norton"
+          "n": "14224",
+          "at": "2026-09-15T16:51:57Z",
+          "seller": "Cory Ventura"
+        },
+        {
+          "n": "12941",
+          "at": "2025-09-20T18:01:38Z",
+          "seller": "Spencer Hill"
         }
       ],
       "jobs": [
         {
-          "n": 8230,
-          "at": "2026-07-25T00:33:16Z",
+          "n": 8618,
+          "at": "2026-09-22T00:46:05Z",
+          "seller": "Cory Ventura"
+        },
+        {
+          "n": 8370,
+          "at": "2026-08-13T16:08:34Z",
           "seller": null
         },
         {
-          "n": 2065,
-          "at": "2022-06-02T19:52:07Z",
-          "seller": null
-        },
-        {
-          "n": 2622,
-          "at": "2022-08-24T04:03:01Z",
-          "seller": null
-        },
-        {
-          "n": 2946,
-          "at": "2022-10-13T06:41:27Z",
-          "seller": null
-        },
-        {
-          "n": 3180,
-          "at": "2022-12-09T01:10:44Z",
-          "seller": null
-        },
-        {
-          "n": 4646,
-          "at": "2023-10-10T21:25:42Z",
-          "seller": null
-        },
-        {
-          "n": 4748,
-          "at": "2023-11-30T00:53:50Z",
-          "seller": null
+          "n": 7203,
+          "at": "2025-09-21T17:23:53Z",
+          "seller": "Spencer Hill"
         }
       ]
     },
-    "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTkzNzM1NTc=": {
-      "name": "Richard Kaumans",
+    "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTg0Mjg4MTU=": {
+      "name": "Donna Youngblood",
       "quotes": [
         {
-          "n": "12966",
-          "at": "2025-09-26T19:50:52Z",
+          "n": "14146",
+          "at": "2026-09-03T15:24:47Z",
+          "seller": "Tavis Alexander"
+        },
+        {
+          "n": "13407",
+          "at": "2026-03-24T19:45:30Z",
+          "seller": "Cory Ventura"
+        },
+        {
+          "n": "13017",
+          "at": "2025-10-07T16:52:37Z",
+          "seller": "Tavis Alexander"
+        },
+        {
+          "n": "12915",
+          "at": "2025-09-15T16:29:26Z",
           "seller": "Courtney"
         }
       ],
       "jobs": [
         {
-          "n": 8374,
-          "at": "2026-08-13T18:07:20Z",
+          "n": 8549,
+          "at": "2026-09-10T03:25:48Z",
+          "seller": "Tavis Alexander"
+        },
+        {
+          "n": 8250,
+          "at": "2026-07-28T16:34:43Z",
           "seller": null
         },
         {
-          "n": 7241,
-          "at": "2025-09-26T19:53:19Z",
+          "n": 7280,
+          "at": "2025-09-30T22:55:42Z",
           "seller": "Courtney"
         }
       ]
@@ -295,30 +268,83 @@
         }
       ]
     },
-    "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTg4ODM4MTY=": {
-      "name": "Shawn Tobius",
+    "Z2lkOi8vSm9iYmVyL0NsaWVudC82MzIwNDc1MQ==": {
+      "name": "Plemmons Industries",
       "quotes": [
         {
-          "n": "12941",
-          "at": "2025-09-20T18:01:38Z",
-          "seller": "Spencer Hill"
+          "n": "11717",
+          "at": "2024-02-06T17:47:04Z",
+          "seller": null
+        },
+        {
+          "n": "11022",
+          "at": "2023-02-13T05:10:43Z",
+          "seller": null
         }
       ],
       "jobs": [
         {
-          "n": 8539,
-          "at": "2026-09-08T23:05:54Z",
+          "n": 4930,
+          "at": "2024-02-08T18:24:24Z",
           "seller": null
         },
         {
-          "n": 8370,
-          "at": "2026-08-13T16:08:34Z",
+          "n": 3681,
+          "at": "2023-03-02T04:16:43Z",
           "seller": null
         },
         {
-          "n": 7203,
-          "at": "2025-09-21T17:23:53Z",
-          "seller": "Spencer Hill"
+          "n": 4166,
+          "at": "2023-07-14T21:15:10Z",
+          "seller": null
+        }
+      ]
+    },
+    "Z2lkOi8vSm9iYmVyL0NsaWVudC8zMjg0ODc3OQ==": {
+      "name": "Drew Culver",
+      "quotes": [],
+      "jobs": [
+        {
+          "n": 8378,
+          "at": "2026-08-14T02:15:30Z",
+          "seller": null
+        },
+        {
+          "n": 7602,
+          "at": "2026-01-16T16:42:42Z",
+          "seller": null
+        },
+        {
+          "n": 721,
+          "at": "2020-11-16T03:17:40Z",
+          "seller": null
+        },
+        {
+          "n": 4731,
+          "at": "2023-11-26T18:36:47Z",
+          "seller": null
+        }
+      ]
+    },
+    "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTkzNzM1NTc=": {
+      "name": "Richard Kaumans",
+      "quotes": [
+        {
+          "n": "12966",
+          "at": "2025-09-26T19:50:52Z",
+          "seller": "Courtney"
+        }
+      ],
+      "jobs": [
+        {
+          "n": 8374,
+          "at": "2026-08-13T18:07:20Z",
+          "seller": null
+        },
+        {
+          "n": 7241,
+          "at": "2025-09-26T19:53:19Z",
+          "seller": "Courtney"
         }
       ]
     },
@@ -462,48 +488,6 @@
         }
       ]
     },
-    "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMTg0Mjg4MTU=": {
-      "name": "Donna Youngblood",
-      "quotes": [
-        {
-          "n": "14146",
-          "at": "2026-09-03T15:24:47Z",
-          "seller": "Tavis Alexander"
-        },
-        {
-          "n": "13407",
-          "at": "2026-03-24T19:45:30Z",
-          "seller": "Cory Ventura"
-        },
-        {
-          "n": "13017",
-          "at": "2025-10-07T16:52:37Z",
-          "seller": "Tavis Alexander"
-        },
-        {
-          "n": "12915",
-          "at": "2025-09-15T16:29:26Z",
-          "seller": "Courtney"
-        }
-      ],
-      "jobs": [
-        {
-          "n": 8549,
-          "at": "2026-09-10T03:25:48Z",
-          "seller": "Tavis Alexander"
-        },
-        {
-          "n": 8250,
-          "at": "2026-07-28T16:34:43Z",
-          "seller": null
-        },
-        {
-          "n": 7280,
-          "at": "2025-09-30T22:55:42Z",
-          "seller": "Courtney"
-        }
-      ]
-    },
     "Z2lkOi8vSm9iYmVyL0NsaWVudC81ODQ0MTA3OQ==": {
       "name": "Chad Erickson",
       "quotes": [
@@ -549,38 +533,6 @@
         {
           "n": 2769,
           "at": "2022-09-13T02:32:02Z",
-          "seller": null
-        }
-      ]
-    },
-    "Z2lkOi8vSm9iYmVyL0NsaWVudC82MzIwNDc1MQ==": {
-      "name": "Plemmons Industries",
-      "quotes": [
-        {
-          "n": "11717",
-          "at": "2024-02-06T17:47:04Z",
-          "seller": null
-        },
-        {
-          "n": "11022",
-          "at": "2023-02-13T05:10:43Z",
-          "seller": null
-        }
-      ],
-      "jobs": [
-        {
-          "n": 4930,
-          "at": "2024-02-08T18:24:24Z",
-          "seller": null
-        },
-        {
-          "n": 3681,
-          "at": "2023-03-02T04:16:43Z",
-          "seller": null
-        },
-        {
-          "n": 4166,
-          "at": "2023-07-14T21:15:10Z",
           "seller": null
         }
       ]

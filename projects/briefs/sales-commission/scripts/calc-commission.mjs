@@ -52,12 +52,27 @@ for (const r of rows) {
 const tipsByInvoice = new Map(raw.invoices.nodes.map(i => [i.invoiceNumber, i.amounts?.tipsTotal ?? 0]));
 for (const r of rows) r.tips = tipsByInvoice.get(r.invoiceNumber) ?? 0;
 
+// ---- TMCP pay window: a person with tmcpPayMonths earns on a TMCP invoice only while it is
+// issued within that many months of the sale. Sale date = the invoice's job createdAt (earliest
+// if several). Unlike the technicians' life-of-customer 5%, this stops while the customer stays.
+const saleDateByInvoice = new Map(raw.invoices.nodes.map(i => [i.invoiceNumber,
+  (i.jobs?.nodes || []).map(j => j.createdAt).filter(Boolean).sort()[0]?.slice(0, 10) || null]));
+const addMonths = (ymd, n) => { const [y, m, d] = ymd.split('-').map(Number); return new Date(Date.UTC(y, m - 1 + n, d)).toISOString().slice(0, 10); };
+for (const r of rows) {
+  r.saleDate = saleDateByInvoice.get(r.invoiceNumber) || null;
+  const months = ruleFor(r.creditedTo || '').tmcpPayMonths;
+  if (!months || r.product !== 'TMCP') continue;
+  r.payUntil = r.saleDate ? addMonths(r.saleDate, months) : null;
+  r.capped = !!r.payUntil && r.issuedDate >= r.payUntil;
+}
+
 // ---- commission base by person, split by product ----
 const book = {};
 for (const r of rows) {
   const k = r.creditedTo || '(UNATTRIBUTABLE)';
-  const b = (book[k] ??= { invoices: 0, invoiced: 0, tmcpInvoiced: 0, collected: 0, viaChain: 0, viaChainAmt: 0, viaHistory: 0, viaHistoryAmt: 0, byProduct: {} });
+  const b = (book[k] ??= { invoices: 0, invoiced: 0, tmcpInvoiced: 0, collected: 0, cappedOut: 0, cappedN: 0, viaChain: 0, viaChainAmt: 0, viaHistory: 0, viaHistoryAmt: 0, byProduct: {} });
   b.invoices++; b.invoiced += r.total; b.collected += r.collected;
+  if (r.capped) { b.cappedOut += r.total; b.cappedN++; }
   if (r.product === 'TMCP') b.tmcpInvoiced += r.total;
   if (['QUOTE', 'JOB', 'INVOICE'].includes(r.creditBasis)) { b.viaChain++; b.viaChainAmt += r.total; }
   else if (r.creditedTo) { b.viaHistory++; b.viaHistoryAmt += r.total; }
@@ -68,7 +83,7 @@ const commissionBase = (name) => {
   const rule = ruleFor(name);
   const b = book[name];
   if (!b) return 0;
-  return rule.commissionAppliesTo === 'TMCP' ? b.tmcpInvoiced : b.invoiced;
+  return (rule.commissionAppliesTo === 'TMCP' ? b.tmcpInvoiced : b.invoiced) - b.cappedOut;
 };
 
 // ---- new TMCP conversions in the month, at contracted annual value ----
@@ -167,6 +182,14 @@ if (un) L.push(`| _(unattributable)_ | — | ${money(un.invoiced)} | — | — |
 L.push(`| **TOTAL** | | | **${money(lines.reduce((a, l) => a + l.commission, 0))}** | | **${money(lines.reduce((a, l) => a + l.bonus, 0))}** | **${money(tipPool)}** | **${money(grand)}** |`);
 L.push('');
 
+for (const l of lines.filter(x => x.rule.tmcpPayMonths)) {
+  const capRows = rows.filter(r => r.creditedTo === l.name && r.product === 'TMCP');
+  const noDate = capRows.filter(r => !r.saleDate).length;
+  const nextOff = capRows.filter(r => !r.capped && r.payUntil).map(r => r.payUntil).sort()[0];
+  L.push(`**${l.name}: TMCP pays ${l.rule.tmcpPayMonths} months from the sale.** ${l.b?.cappedN || 0} TMCP invoice${l.b?.cappedN === 1 ? '' : 's'} (${money(l.b?.cappedOut || 0)}) past the window this month and excluded; ${capRows.length - (l.b?.cappedN || 0)} still inside it.${nextOff ? ` Earliest roll-off: ${nextOff}.` : ''}${noDate ? ` ${noDate} TMCP invoice${noDate === 1 ? ' has' : 's have'} no job date and stay counted — check by hand.` : ''}`);
+  L.push('');
+}
+
 if (suspectValues.length) {
   L.push(`**Annual prepay${suspectValues.length > 1 ? 's' : ''} counted at face value** (not ×12): ${suspectValues.map(v => `#${v.jobNumber} ${v.client} ${money(v.total)} — credited to ${v.seller}`).join('; ')}.`);
   L.push('');
@@ -262,7 +285,8 @@ fs.writeFileSync(outMd, L.join('\n'));
 const csv = ['person,invoice,date,client,product,invoiced,collected,tip,counts_for_commission,credit_basis,evidence,url'];
 for (const r of rows) {
   const rule = ruleFor(r.creditedTo || '');
-  const counts = rule.eligible && (rule.commissionAppliesTo !== 'TMCP' || r.product === 'TMCP') ? 'yes' : 'no';
+  const counts = r.capped ? `no (past ${rule.tmcpPayMonths} mo; sold ${r.saleDate})`
+    : rule.eligible && (rule.commissionAppliesTo !== 'TMCP' || r.product === 'TMCP') ? 'yes' : 'no';
   csv.push([`"${r.creditedTo || '(UNATTRIBUTABLE)'}"`, r.invoiceNumber, r.issuedDate, `"${r.client.replace(/"/g, '""')}"`,
     r.product, r.total, r.collected, r.tips || 0, counts, r.creditBasis,
     `"${(r.creditEvidence || '').replace(/"/g, '""')}"`, r.invoiceUrl].join(','));
