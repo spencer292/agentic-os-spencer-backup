@@ -11,7 +11,7 @@
 - LINKEDIN (STALE 09-15): Ryan Gordon (Arcis Golf) wants a site visit, offer lapsed. READ INBOX FIRST. 12 invites pending. Golf >> HOA.
 - TMCP: 11 clients tagged Autopay w/ card on file but autopay OFF = $983/mo, one switch each (09-15 audit §3).
 - COFFEE (personal): projects/briefs/coffee-roasting/. Bullet after 4 sold-out wks
-- REVIEWS 10-07: 342 Google total (SeaTac 194, Tacoma 117, Enumclaw 31); 4.9/5.0/4.9 so "5.0 across three" is dead. 5-star count unmeasured (scraper caps 10/listing). Reply backlog 0.
+- REVIEWS 10-07: 342 Google total (SeaTac 194, Tacoma 117, Enumclaw 31); 4.9/5.0/4.9 so "5.0 across three" is dead. 5-star count unmeasured (scraper caps 10/listing). Backlog 0.
 
 ## Environment Notes
 - OptimoRoute: no actual times; per-date driver hours API-immutable; SYNC unschedules, UPDATE safe; balancing OFF.
