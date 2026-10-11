@@ -1,0 +1,15 @@
+=== SYNC + PLAN + TIMES 2026-10-11 11:47:38 PT ===
+mode: DRY (default) — queries only   window: 2026-10-12..2026-10-16
+live Jobber: 570 visits, 570 not complete, 570 on a routed driver, 0 skipped (no tech / not a driver)
+  2026-10-12  Luke 17  Tavis 29  Alias 23  Robert 27
+  2026-10-13  Robert 27  Tavis 20  Alias 22  Cory 30  Luke 21
+  2026-10-14  Tavis 25  Alias 22  Cory 29  Luke 18  Robert 34
+  2026-10-15  Robert 27  Tavis 29  Cory 27  Alias 21  Luke 23
+  2026-10-16  Cory 12  Robert 19  Tavis 20  Luke 24  Alias 24
+
+OptimoRoute: 570 orders in the window
+  CREATE 0   UPDATE 0   DELETE 0   unchanged 570
+
+driver availability: 10-12: Alias/Luke/Robert/Tavis   10-13: Alias/Cory/Luke/Robert/Tavis   10-14: Alias/Cory/Luke/Robert/Tavis   10-15: Alias/Cory/Luke/Robert/Tavis   10-16: Alias/Cory/Luke/Robert/Tavis
+
+DRY RUN — nothing written. Planning and time write-back happen only with --execute. Log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-12_week\sync-plan-times.log

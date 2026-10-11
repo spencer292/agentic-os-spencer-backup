@@ -1,0 +1,39 @@
+[write-gate] writes BLOCKED — writes disabled: Revoked. — run 2a3a15a3
+=== SYNC + PLAN + TIMES 2026-10-11 11:43:23 PT ===
+mode: DRY (default) — queries only   window: 2026-10-12..2026-10-12
+live Jobber: 96 visits, 96 not complete, 96 on a routed driver, 0 skipped (no tech / not a driver)
+  2026-10-12  Luke 17  Robert 27  Tavis 29  Alias 23
+
+OptimoRoute: 96 orders in the window
+  CREATE 0   UPDATE 27   DELETE 0   unchanged 69
+    UPDATE 8627-2341461393 2026-10-12 Robert Norton  tw -> 15:54-16:07
+    UPDATE 7697-2354032519 2026-10-12 Robert Norton  tw -> 15:33-15:46
+    UPDATE 7917-2354060309 2026-10-12 Robert Norton  tw -> 15:13-15:26
+    UPDATE 4930-2354130392 2026-10-12 Robert Norton  tw -> 14:56-15:09
+    UPDATE 8670-2354635262 2026-10-12 Robert Norton  tw -> 14:39-14:52
+    UPDATE 6674-1792251401 2026-10-12 Robert Norton  tw -> 14:17-14:30
+    UPDATE 7797-2345283064 2026-10-12 Robert Norton  tw -> 13:57-14:10
+    UPDATE 6440-1665890204 2026-10-12 Robert Norton  tw -> 13:35-13:48
+    UPDATE 7736-2062850408 2026-10-12 Robert Norton  tw -> 13:16-13:29
+    UPDATE 8072-2354307817 2026-10-12 Robert Norton  tw -> 12:53-13:06
+    UPDATE 5324-2354362383 2026-10-12 Robert Norton  tw -> 12:31-12:44
+    UPDATE 8650-2354406916 2026-10-12 Robert Norton  tw -> 12:11-12:24
+    UPDATE 7753-2067997306 2026-10-12 Robert Norton  tw -> 11:55-12:08
+    UPDATE 8714-2361046074 2026-10-12 Robert Norton  tw -> 11:22-11:35
+    UPDATE 7971-2354624195 2026-10-12 Robert Norton  tw -> 11:03-11:16
+    UPDATE 8662-2353251751 2026-10-12 Robert Norton  tw -> 10:42-10:55
+    UPDATE 5087-2354496573 2026-10-12 Robert Norton  tw -> 10:22-10:35
+    UPDATE 8522-2354449457 2026-10-12 Robert Norton  tw -> 10:01-10:14
+    UPDATE 7920-2178139760 2026-10-12 Robert Norton  tw -> 09:39-09:52
+    UPDATE 8122-2354641102 2026-10-12 Robert Norton  tw -> 09:20-09:33
+    UPDATE 4711-1912558167 2026-10-12 Robert Norton  tw -> 09:02-09:15
+    UPDATE 6354-1636536637 2026-10-12 Robert Norton  tw -> 08:44-08:57
+    UPDATE 6900-2354721767 2026-10-12 Robert Norton  tw -> 08:25-08:38
+    UPDATE 7626-2354746916 2026-10-12 Robert Norton  tw -> 08:05-08:18
+    UPDATE 8270-2354768050 2026-10-12 Robert Norton  tw -> 07:44-07:57
+    UPDATE 7117-1876750906 2026-10-12 Robert Norton  tw -> 07:22-07:35
+    UPDATE 4701-2354800970 2026-10-12 Robert Norton  tw -> 07:00-07:10
+
+driver availability: 10-12: Alias/Luke/Robert/Tavis
+
+DRY RUN — nothing written. Planning and time write-back happen only with --execute. Log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-12_week\sync-plan-times.log

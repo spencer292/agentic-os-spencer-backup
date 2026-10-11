@@ -1,0 +1,109 @@
+[write-gate] WRITES ENABLED until 2026-10-11T19:14:36.602Z (spenc@Got-Moles: Spencer 10-11: Robert Mon 10-12 reverse, retry with block windows) — ceiling 200/run — run 5a25846a
+=== SYNC + PLAN + TIMES 2026-10-11 11:44:36 PT ===
+mode: LIVE (--execute)   window: 2026-10-12..2026-10-12
+live Jobber: 96 visits, 96 not complete, 96 on a routed driver, 0 skipped (no tech / not a driver)
+  2026-10-12  Luke 17  Tavis 29  Robert 27  Alias 23
+
+OptimoRoute: 96 orders in the window
+  CREATE 0   UPDATE 27   DELETE 0   unchanged 69
+    UPDATE 8627-2341461393 2026-10-12 Robert Norton  tw -> 15:21-21:00
+    UPDATE 4701-2354800970 2026-10-12 Robert Norton  tw -> 07:00-08:58
+    UPDATE 8270-2354768050 2026-10-12 Robert Norton  tw -> 07:00-08:58
+    UPDATE 4930-2354130392 2026-10-12 Robert Norton  tw -> 13:45-15:46
+    UPDATE 6900-2354721767 2026-10-12 Robert Norton  tw -> 07:00-08:58
+    UPDATE 6674-1792251401 2026-10-12 Robert Norton  tw -> 13:45-15:46
+    UPDATE 4711-1912558167 2026-10-12 Robert Norton  tw -> 08:32-10:34
+    UPDATE 7736-2062850408 2026-10-12 Robert Norton  tw -> 11:59-14:08
+    UPDATE 7920-2178139760 2026-10-12 Robert Norton  tw -> 08:32-10:34
+    UPDATE 8072-2354307817 2026-10-12 Robert Norton  tw -> 11:59-14:08
+    UPDATE 8522-2354449457 2026-10-12 Robert Norton  tw -> 08:32-10:34
+    UPDATE 7753-2067997306 2026-10-12 Robert Norton  tw -> 10:10-12:28
+    UPDATE 7971-2354624195 2026-10-12 Robert Norton  tw -> 10:10-12:28
+    UPDATE 8714-2361046074 2026-10-12 Robert Norton  tw -> 10:10-12:28
+    UPDATE 8650-2354406916 2026-10-12 Robert Norton  tw -> 11:59-14:08
+    UPDATE 8662-2353251751 2026-10-12 Robert Norton  tw -> 10:10-12:28
+    UPDATE 5324-2354362383 2026-10-12 Robert Norton  tw -> 11:59-14:08
+    UPDATE 5087-2354496573 2026-10-12 Robert Norton  tw -> 10:10-12:28
+    UPDATE 8122-2354641102 2026-10-12 Robert Norton  tw -> 08:32-10:34
+    UPDATE 6440-1665890204 2026-10-12 Robert Norton  tw -> 11:59-14:08
+    UPDATE 7797-2345283064 2026-10-12 Robert Norton  tw -> 13:45-15:46
+    UPDATE 6354-1636536637 2026-10-12 Robert Norton  tw -> 08:32-10:34
+    UPDATE 8670-2354635262 2026-10-12 Robert Norton  tw -> 13:45-15:46
+    UPDATE 7626-2354746916 2026-10-12 Robert Norton  tw -> 07:00-08:58
+    UPDATE 7917-2354060309 2026-10-12 Robert Norton  tw -> 13:45-15:46
+    UPDATE 7697-2354032519 2026-10-12 Robert Norton  tw -> 15:21-21:00
+    UPDATE 7117-1876750906 2026-10-12 Robert Norton  tw -> 07:00-08:58
+
+driver availability: 10-12: Alias/Luke/Robert/Tavis
+
+=== OPTIMOROUTE: 0 CREATE ===
+=== OPTIMOROUTE: 27 UPDATE ===
+  UPDATE 8627-2341461393 tw -> 15:21-21:00  ok
+  UPDATE 4701-2354800970 tw -> 07:00-08:58  ok
+  UPDATE 8270-2354768050 tw -> 07:00-08:58  ok
+  UPDATE 4930-2354130392 tw -> 13:45-15:46  ok
+  UPDATE 6900-2354721767 tw -> 07:00-08:58  ok
+  UPDATE 6674-1792251401 tw -> 13:45-15:46  ok
+  UPDATE 4711-1912558167 tw -> 08:32-10:34  ok
+  UPDATE 7736-2062850408 tw -> 11:59-14:08  ok
+  UPDATE 7920-2178139760 tw -> 08:32-10:34  ok
+  UPDATE 8072-2354307817 tw -> 11:59-14:08  ok
+  UPDATE 8522-2354449457 tw -> 08:32-10:34  ok
+  UPDATE 7753-2067997306 tw -> 10:10-12:28  ok
+  UPDATE 7971-2354624195 tw -> 10:10-12:28  ok
+  UPDATE 8714-2361046074 tw -> 10:10-12:28  ok
+  UPDATE 8650-2354406916 tw -> 11:59-14:08  ok
+  UPDATE 8662-2353251751 tw -> 10:10-12:28  ok
+  UPDATE 5324-2354362383 tw -> 11:59-14:08  ok
+  UPDATE 5087-2354496573 tw -> 10:10-12:28  ok
+  UPDATE 8122-2354641102 tw -> 08:32-10:34  ok
+  UPDATE 6440-1665890204 tw -> 11:59-14:08  ok
+  UPDATE 7797-2345283064 tw -> 13:45-15:46  ok
+  UPDATE 6354-1636536637 tw -> 08:32-10:34  ok
+  UPDATE 8670-2354635262 tw -> 13:45-15:46  ok
+  UPDATE 7626-2354746916 tw -> 07:00-08:58  ok
+  UPDATE 7917-2354060309 tw -> 13:45-15:46  ok
+  UPDATE 7697-2354032519 tw -> 15:21-21:00  ok
+  UPDATE 7117-1876750906 tw -> 07:00-08:58  ok
+=== OPTIMOROUTE: 0 DELETE ===
+
+=== PLAN 2026-10-12 (balancing OFF) ===
+  Robert Norton       27 stops   592 min    91 km  first 07:00  last 16:04
+  Tavis Alexander     29 stops   690 min   165 km  first 07:00  last 16:54
+  Luke LaVergne       17 stops   511 min   225 km  first 07:00  last 14:04
+  Alias Franks        23 stops   527 min   126 km  first 07:00  last 14:40
+
+=== JOBBER: write planned times (startAt = arrival, endAt = +3 h) ===
+  to write 26   already correct 70   not on a route 0
+  [  1/26] 2026-10-12 16:04 #8627 Robert   Michelle Johnson             was 10-12 07:00  ok
+  [  2/26] 2026-10-12 07:47 #8270 Robert   Brian Meadows                was 10-12 07:44  ok
+  [  3/26] 2026-10-12 15:06 #4930 Robert   Plemmons Industries          was 10-12 07:57  ok
+  [  4/26] 2026-10-12 08:30 #6900 Robert   Jeff Hunter                  was 10-12 08:25  ok
+  [  5/26] 2026-10-12 14:27 #6674 Robert   Larry Desmet                 was 10-12 08:36  ok
+  [  6/26] 2026-10-12 09:08 #4711 Robert   Jeff  Boggs                  was 10-12 09:02  ok
+  [  7/26] 2026-10-12 13:25 #7736 Robert   Rita Conger                  was 10-12 09:38  ok
+  [  8/26] 2026-10-12 09:45 #7920 Robert   Vickie Haupt                 was 10-12 09:39  ok
+  [  9/26] 2026-10-12 13:02 #8072 Robert   Prologis                     was 10-12 10:01  ok
+  [ 10/26] 2026-10-12 10:07 #8522 Robert   Gourav Saha                  was 10-12 10:01  ok
+  [ 11/26] 2026-10-12 12:02 #7753 Robert   Galilee Baptist Church       was 10-12 10:59  ok
+  [ 12/26] 2026-10-12 11:09 #7971 Robert   David Marsh                  was 10-12 11:03  ok
+  [ 13/26] 2026-10-12 11:28 #8714 Robert   John Kim                     was 10-12 11:22  ok
+  [ 14/26] 2026-10-12 12:18 #8650 Robert   Munene Peter                 was 10-12 12:11  ok
+  [ 15/26] 2026-10-12 10:48 #8662 Robert   Dan Rystrom                  was 10-12 12:12  ok
+  [ 16/26] 2026-10-12 12:38 #5324 Robert   Scott  Moser                 was 10-12 12:31  ok
+  [ 17/26] 2026-10-12 10:28 #5087 Robert   Ganesh   Thirumalai          was 10-12 12:32  ok
+  [ 18/26] 2026-10-12 09:26 #8122 Robert   Bob Roggenbach               was 10-12 13:34  ok
+  [ 19/26] 2026-10-12 13:45 #6440 Robert   Marta Dickerson              was 10-12 13:35  ok
+  [ 20/26] 2026-10-12 14:07 #7797 Robert   Gary Fredericks              was 10-12 13:57  ok
+  [ 21/26] 2026-10-12 08:49 #6354 Robert   Duncan Kariuki               was 10-12 14:11  ok
+  [ 22/26] 2026-10-12 14:49 #8670 Robert   Nick Vikari                  was 10-12 14:39  ok
+  [ 23/26] 2026-10-12 08:10 #7626 Robert   Jonelle Loranger             was 10-12 14:51  ok
+  [ 24/26] 2026-10-12 15:23 #7917 Robert   Larry Kauzlarich             was 10-12 15:13  ok
+  [ 25/26] 2026-10-12 15:43 #7697 Robert   Jennifer Cramer              was 10-12 15:33  ok
+  [ 26/26] 2026-10-12 07:25 #7117 Robert   Tom Feldman                  was 10-12 15:34  ok
+  written 26  failed 0
+
+=== VERIFY === 96 visits match the plan, 0 do not
+
+✅ done 2026-10-11 11:45:09 PT — log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-12_week\sync-plan-times.log
+Next: the arrival-window sweep (node projects/tool-jobber/scripts/arrival-window-sweep.mjs) so every visit carries the 3-hour window.

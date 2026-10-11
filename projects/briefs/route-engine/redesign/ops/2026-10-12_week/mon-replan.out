@@ -1,0 +1,127 @@
+[write-gate] WRITES ENABLED until 2026-10-11T19:13:31.499Z (spenc@Got-Moles: Spencer 10-11: run Robert Mon 10-12 route backwards) — ceiling 200/run — run ae87d511
+=== SYNC + PLAN + TIMES 2026-10-11 11:43:31 PT ===
+mode: LIVE (--execute)   window: 2026-10-12..2026-10-12
+live Jobber: 96 visits, 96 not complete, 96 on a routed driver, 0 skipped (no tech / not a driver)
+  2026-10-12  Luke 17  Robert 27  Tavis 29  Alias 23
+
+OptimoRoute: 96 orders in the window
+  CREATE 0   UPDATE 27   DELETE 0   unchanged 69
+    UPDATE 8627-2341461393 2026-10-12 Robert Norton  tw -> 15:54-16:07
+    UPDATE 7697-2354032519 2026-10-12 Robert Norton  tw -> 15:33-15:46
+    UPDATE 7917-2354060309 2026-10-12 Robert Norton  tw -> 15:13-15:26
+    UPDATE 4930-2354130392 2026-10-12 Robert Norton  tw -> 14:56-15:09
+    UPDATE 8670-2354635262 2026-10-12 Robert Norton  tw -> 14:39-14:52
+    UPDATE 6674-1792251401 2026-10-12 Robert Norton  tw -> 14:17-14:30
+    UPDATE 7797-2345283064 2026-10-12 Robert Norton  tw -> 13:57-14:10
+    UPDATE 6440-1665890204 2026-10-12 Robert Norton  tw -> 13:35-13:48
+    UPDATE 7736-2062850408 2026-10-12 Robert Norton  tw -> 13:16-13:29
+    UPDATE 8072-2354307817 2026-10-12 Robert Norton  tw -> 12:53-13:06
+    UPDATE 5324-2354362383 2026-10-12 Robert Norton  tw -> 12:31-12:44
+    UPDATE 8650-2354406916 2026-10-12 Robert Norton  tw -> 12:11-12:24
+    UPDATE 7753-2067997306 2026-10-12 Robert Norton  tw -> 11:55-12:08
+    UPDATE 8714-2361046074 2026-10-12 Robert Norton  tw -> 11:22-11:35
+    UPDATE 7971-2354624195 2026-10-12 Robert Norton  tw -> 11:03-11:16
+    UPDATE 8662-2353251751 2026-10-12 Robert Norton  tw -> 10:42-10:55
+    UPDATE 5087-2354496573 2026-10-12 Robert Norton  tw -> 10:22-10:35
+    UPDATE 8522-2354449457 2026-10-12 Robert Norton  tw -> 10:01-10:14
+    UPDATE 7920-2178139760 2026-10-12 Robert Norton  tw -> 09:39-09:52
+    UPDATE 8122-2354641102 2026-10-12 Robert Norton  tw -> 09:20-09:33
+    UPDATE 4711-1912558167 2026-10-12 Robert Norton  tw -> 09:02-09:15
+    UPDATE 6354-1636536637 2026-10-12 Robert Norton  tw -> 08:44-08:57
+    UPDATE 6900-2354721767 2026-10-12 Robert Norton  tw -> 08:25-08:38
+    UPDATE 7626-2354746916 2026-10-12 Robert Norton  tw -> 08:05-08:18
+    UPDATE 8270-2354768050 2026-10-12 Robert Norton  tw -> 07:44-07:57
+    UPDATE 7117-1876750906 2026-10-12 Robert Norton  tw -> 07:22-07:35
+    UPDATE 4701-2354800970 2026-10-12 Robert Norton  tw -> 07:00-07:10
+
+driver availability: 10-12: Alias/Luke/Robert/Tavis
+
+=== OPTIMOROUTE: 0 CREATE ===
+=== OPTIMOROUTE: 27 UPDATE ===
+  UPDATE 8627-2341461393 tw -> 15:54-16:07  ok
+  UPDATE 7697-2354032519 tw -> 15:33-15:46  ok
+  UPDATE 7917-2354060309 tw -> 15:13-15:26  ok
+  UPDATE 4930-2354130392 tw -> 14:56-15:09  ok
+  UPDATE 8670-2354635262 tw -> 14:39-14:52  ok
+  UPDATE 6674-1792251401 tw -> 14:17-14:30  ok
+  UPDATE 7797-2345283064 tw -> 13:57-14:10  ok
+  UPDATE 6440-1665890204 tw -> 13:35-13:48  ok
+  UPDATE 7736-2062850408 tw -> 13:16-13:29  ok
+  UPDATE 8072-2354307817 tw -> 12:53-13:06  ok
+  UPDATE 5324-2354362383 tw -> 12:31-12:44  ok
+  UPDATE 8650-2354406916 tw -> 12:11-12:24  ok
+  UPDATE 7753-2067997306 tw -> 11:55-12:08  ok
+  UPDATE 8714-2361046074 tw -> 11:22-11:35  ok
+  UPDATE 7971-2354624195 tw -> 11:03-11:16  ok
+  UPDATE 8662-2353251751 tw -> 10:42-10:55  ok
+  UPDATE 5087-2354496573 tw -> 10:22-10:35  ok
+  UPDATE 8522-2354449457 tw -> 10:01-10:14  ok
+  UPDATE 7920-2178139760 tw -> 09:39-09:52  ok
+  UPDATE 8122-2354641102 tw -> 09:20-09:33  ok
+  UPDATE 4711-1912558167 tw -> 09:02-09:15  ok
+  UPDATE 6354-1636536637 tw -> 08:44-08:57  ok
+  UPDATE 6900-2354721767 tw -> 08:25-08:38  ok
+  UPDATE 7626-2354746916 tw -> 08:05-08:18  ok
+  UPDATE 8270-2354768050 tw -> 07:44-07:57  ok
+  UPDATE 7117-1876750906 tw -> 07:22-07:35  ok
+  UPDATE 4701-2354800970 tw -> 07:00-07:10  ok
+=== OPTIMOROUTE: 0 DELETE ===
+
+=== PLAN 2026-10-12 (balancing OFF) ===
+  Robert Norton       15 stops   562 min    59 km  first 07:00  last 15:33
+  Tavis Alexander     29 stops   690 min   165 km  first 07:00  last 16:54
+  Luke LaVergne       17 stops   511 min   225 km  first 07:00  last 14:04
+  Alias Franks        23 stops   527 min   126 km  first 07:00  last 14:40
+  ⚠ 12 unscheduled on 2026-10-12: Robert #8627, Robert #4930, Robert #6674, Robert #7736, Robert #8072, Robert #7753, Robert #8662, Robert #5087, Robert #8122, Robert #6354, Robert #7626, Robert #7117
+
+=== JOBBER: write planned times (startAt = arrival, endAt = +3 h) ===
+  to write 43   already correct 41   not on a route 12
+  [  1/43] 2026-10-12 16:29 #5055 Tavis    City of Burien               was 10-12 07:00  ok
+  [  2/43] 2026-10-12 16:10 #6239 Tavis    Lauren Kenyon                was 10-12 07:19  ok
+  [  3/43] 2026-10-12 15:33 #7697 Robert   Jennifer Cramer              was 10-12 07:21  ok
+  [  4/43] 2026-10-12 15:49 #8361 Tavis    Erik Guttridge               was 10-12 07:40  ok
+  [  5/43] 2026-10-12 15:13 #7917 Robert   Larry Kauzlarich             was 10-12 07:41  ok
+  [  6/43] 2026-10-12 15:31 #8112 Tavis    Colleen Hunter               was 10-12 07:58  ok
+  [  7/43] 2026-10-12 14:39 #8670 Robert   Nick Vikari                  was 10-12 08:14  ok
+  [  8/43] 2026-10-12 15:12 #7608 Tavis    Scott Hamilton               was 10-12 08:17  ok
+  [  9/43] 2026-10-12 14:56 #6447 Tavis    Larena Walshe                was 10-12 08:33  ok
+  [ 10/43] 2026-10-12 14:38 #8635 Tavis    Amanda Williams              was 10-12 08:51  ok
+  [ 11/43] 2026-10-12 13:57 #7797 Robert   Gary Fredericks              was 10-12 08:56  ok
+  [ 12/43] 2026-10-12 14:18 #8345 Tavis    Jennifer Pere                was 10-12 09:11  ok
+  [ 13/43] 2026-10-12 13:35 #6440 Robert   Marta Dickerson              was 10-12 09:19  ok
+  [ 14/43] 2026-10-12 13:55 #8025 Tavis    Christina Long               was 10-12 09:33  ok
+  [ 15/43] 2026-10-12 12:45 #7574 Tavis    Steve  Huling                was 10-12 09:53  ok
+  [ 16/43] 2026-10-12 13:01 #7470 Tavis    Dawn St Clair                was 10-12 10:08  ok
+  [ 17/43] 2026-10-12 12:31 #5324 Robert   Scott  Moser                 was 10-12 10:23  ok
+  [ 18/43] 2026-10-12 13:18 #8648 Tavis    Chris Kerr                   was 10-12 10:25  ok
+  [ 19/43] 2026-10-12 12:11 #8650 Robert   Munene Peter                 was 10-12 10:42  ok
+  [ 20/43] 2026-10-12 13:36 #8461 Tavis    Mary Greco                   was 10-12 10:43  ok
+  [ 21/43] 2026-10-12 12:25 #8524 Tavis    Michael Sobieck              was 10-12 11:04  ok
+  [ 22/43] 2026-10-12 11:22 #8714 Robert   John Kim                     was 10-12 11:17  ok
+  [ 23/43] 2026-10-12 11:50 #8716 Tavis    Kristian Hatch               was 10-12 11:24  ok
+  [ 24/43] 2026-10-12 11:03 #7971 Robert   David Marsh                  was 10-12 11:51  ok
+  [ 25/43] 2026-10-12 11:33 #8674 Tavis    Mike Quinn                   was 10-12 11:57  ok
+  [ 26/43] 2026-10-12 10:58 #8600 Tavis    Sam Leonard                  was 10-12 12:16  ok
+  [ 27/43] 2026-10-12 11:15 #8623 Tavis    James Willis                 was 10-12 12:33  ok
+  [ 28/43] 2026-10-12 10:37 #8607 Tavis    Ben Mathes                   was 10-12 12:53  ok
+  [ 29/43] 2026-10-12 10:01 #8522 Robert   Gourav Saha                  was 10-12 12:54  ok
+  [ 30/43] 2026-10-12 10:18 #8688 Tavis    Point Nautica                was 10-12 13:12  ok
+  [ 31/43] 2026-10-12 09:39 #7920 Robert   Vickie Haupt                 was 10-12 13:16  ok
+  [ 32/43] 2026-10-12 09:56 #8583 Tavis    Timothy Hoover               was 10-12 13:34  ok
+  [ 33/43] 2026-10-12 09:02 #4711 Robert   Jeff  Boggs                  was 10-12 13:52  ok
+  [ 34/43] 2026-10-12 09:21 #6436 Tavis    Bobby  Holt                  was 10-12 14:08  ok
+  [ 35/43] 2026-10-12 08:59 #4502 Tavis    Doreen Rigos                 was 10-12 14:29  ok
+  [ 36/43] 2026-10-12 08:25 #6900 Robert   Jeff Hunter                  was 10-12 14:30  ok
+  [ 37/43] 2026-10-12 08:31 #7362 Tavis    Velena Bryant                was 10-12 14:56  ok
+  [ 38/43] 2026-10-12 07:44 #8270 Robert   Brian Meadows                was 10-12 15:12  ok
+  [ 39/43] 2026-10-12 08:11 #8409 Tavis    Chris Higgs                  was 10-12 15:16  ok
+  [ 40/43] 2026-10-12 07:51 #7715 Tavis    Elizabeth Duroe              was 10-12 15:36  ok
+  [ 41/43] 2026-10-12 07:00 #4701 Robert   Thomas Carpinito             was 10-12 15:59  ok
+  [ 42/43] 2026-10-12 07:26 #8372 Tavis    Travis Bruce                 was 10-12 16:01  ok
+  [ 43/43] 2026-10-12 07:00 #8098 Tavis    Gyasi Ross                   was 10-12 16:29  ok
+  written 43  failed 0
+
+=== VERIFY === 84 visits match the plan, 0 do not
+
+✅ done 2026-10-11 11:44:15 PT — log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-12_week\sync-plan-times.log
+Next: the arrival-window sweep (node projects/tool-jobber/scripts/arrival-window-sweep.mjs) so every visit carries the 3-hour window.
