@@ -258,6 +258,7 @@
   ```
   Two "Send" buttons exist in that shadow root - the messaging overlay owns the other one. Disambiguate on ```aria-label="Send invitation"```, never on innerText. Use the native value setter, not ```t.value=```, or Send stays disabled.
   **Always build a name guard into the automation and abort on mismatch.** It fired correctly when a CGCS suffix broke a name regex, preventing a misdirected invite.
+- 2026-10-14: **Commenting on a post from a profile's recent-activity page.** Posts there carry no `data-urn`. Find the post by walking up from a text node in its body until the element contains exactly one `Comment` control (aria-label or innerText), then click it. The editor that opens (`[contenteditable=true]`, aria-label "Text editor for creating comment") renders OUTSIDE that post container, so screenshot to confirm it sits under the right post and that it is the only editor on the page. Type with `execCommand('insertText')`. The submit `Comment` button is ~6 parents up from the editor and appears only after text is entered. Verify: editor empties and the text appears under Spencer's headline with "now".
 - 2026-09-15: Verify an invite landed by re-reading ```/mynetwork/invitation-manager/sent/``` and matching profile slugs, not by trusting the click. The profile page flipping to "Pending" is a good immediate signal; the sent list is the authoritative one.
 
 ## tool-jobber
@@ -535,6 +536,8 @@
 
 ## mkt-linkedin-nurture
 
+- 2026-10-14 (session 4): **Notes still work after the Sales Nav trial ended 09-21.** A 281-character note went through with no upsell; 16 notes since 08-31, zero refusals. A regex for "limit" in the invite dialog false-matches LinkedIn's "Please limit personal note to 300 characters" hint, so read the dialog text before treating it as a paywall.
+- 2026-10-14: **The in-area golf superintendent pool is nearly worked out.** 14 of 30 WA results were already in the pipeline and most of the rest were outside the service area. "director of agronomy golf" surfaced the one strong new lead (Eric Johnson, KemperSports regional). Next sourcing: landscape owners as referral partners.
 - 2026-09-15 (session 3): **The LinkedIn inbox is ground truth; `pipeline.json` is always behind.**
   Spencer messages prospects between sessions, so the file lags reality. The file said Ryan Gordon
   was a pending invite; he had accepted two days earlier, been messaged by Spencer at 6:42 PM and
@@ -716,6 +719,8 @@ Carried in from the 2026-07-06 research session that preceded the skill:
 - 2026-10-04: **sync-plan-times `--dates` must be CONTIGUOUS.** search_orders takes a from..to range, so `--dates=10-05,10-07` pulled Tuesday's orders while the Jobber pull skipped Tuesday — 115 false DELETEs. The 80-delete guard aborted before any write. Run non-adjacent days as separate invocations.
 - 2026-10-04: **A partial cluster is over-priced, and the cluster is rarely the cause of a long day.** service-time.mjs gives each Barbee Mill job its 11-min share even when only 7 of 11 are on the board (77 min vs Spencer's "7 doors in 1 hour"). Re-pricing to 60 min cut Tavis's 36-stop Thursday by only 14 min — the other 29 stops were the length. Quote the paid day (first job to last job + on-site), not OR route duration, which includes the home commute both ways (12h26 route = ~11h07 paid).
 - 2026-10-11: **To REVERSE a route, window blocks of ~5 stops, not each stop.** Reversed Robert Mon 10-12 by replaying the old plan backwards with its own drive legs (robert-mon-reverse.json). Per-stop windows (t-3..t+10) left 12 of 27 UNSCHEDULED: OR drive times are not symmetric enough for 13-min slots. Blocks of 5 with [first-15, last+30], last block open to 21:00, gave the exact reverse order in one pass. Also: a day-level pace override in tech-service-times.json dayOverrides (Robert 13/26 on Wed 10-14) is the clean way to make a long day absorb one more stop.
+- 2026-10-18: **A visit Spencer reassigns in Jobber can show up as CREATE + DELETE, not UPDATE.** Yara Chen #8605 moved Alias to Tavis and came back with a new visit id, so the dry run listed a CREATE on Tavis and a DELETE of the old Alias order. That pair is a normal edit, not a ghost. Check that the two share a job number before treating the DELETE as a removal.
+- 2026-10-17: **Stopping the crons silently froze every page they rebuild.** Muhammad's service-day lookup stayed at 09-28 for three weeks and he quoted wrong days off it. Anything customer-facing that a cron rebuilds needs a path that does not depend on the daemon. The lookup now has a Task Scheduler wrapper (scripts/run-service-day-refresh.ps1: builders run as plain node, a Claude limited to Artifact+Read republishes).
 
 ## tool-jobber
 - 2026-09-18: Jobber DOES return property coordinates (PropertyAddress.coordinates, geoStatus) on every job/visit — the "only OptimoRoute geocodes" rule was wrong. visitEditSchedule with endAt = start + 3 h is the customer-facing window convention; write times only after the plan is approved.

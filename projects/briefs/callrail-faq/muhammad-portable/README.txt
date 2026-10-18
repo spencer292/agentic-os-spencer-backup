@@ -132,9 +132,9 @@ WATCH FOR THE COLORED BOXES
   "Routes for that week are not planned yet" -> normal for anything past
       this Friday. The date is fine to give.
 
-IT IS A SNAPSHOT, NOT LIVE. Rebuilt every morning at 6:45, so something
-booked at 10am shows up tomorrow, not today. Check the build time in the
-footer. Using the link? Just reload - if the footer still isn't today's
+IT IS A SNAPSHOT, NOT LIVE. Rebuilt every Monday at 6:30am, so something
+booked mid-week shows up the next Monday. Check the build time in the
+footer. Using the link? Just reload - if the footer is older than this Monday's
 date, tell Spencer. Using the file? It is frozen at the day it was sent
 to you; ask Spencer for a fresh one.
 

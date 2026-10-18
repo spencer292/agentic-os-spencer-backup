@@ -425,7 +425,7 @@ real next visit date. Not on file? You get the route day for the zip.</div>
   (grid last changed ${payload.gridModified}).<br>
   ${payload.props.length} addresses on file &middot; scheduled visits read through ${payload.horizonEnd}
   &middot; routes planned through ${payload.plannedThrough || 'n/a'}.<br>
-  This is a snapshot. It is rebuilt every morning — if the date above is not today's, get a fresh copy before quoting.
+  This is a snapshot. It is rebuilt every Monday at 6:30am — if the date above is older than this Monday, tell Spencer before quoting.
 </footer>
 
 <script>

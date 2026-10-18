@@ -340,7 +340,7 @@ const html = `<title>Got Moles Service Days</title>
       <li>Never promise a technician by name. Assignments move; the name here is internal only.</li>
       <li>Low confidence means we have barely worked that zip since the re-cut &mdash; say the day as <i>&ldquo;usually&rdquo;</i>.</li>
       <li>A red <b>&ldquo;no truck has been to this zip&rdquo;</b> flag means the day is a booking, not a fact. Confirm and call back &mdash; do not promise it.</li>
-      <li>This page rebuilds from Jobber. If the date above is more than 2 days old, ask Spencer to re-run it.</li>
+      <li>This page rebuilds from Jobber every Monday at 6:30am. If the date above is older than this Monday, tell Spencer before quoting.</li>
     </ol>
   </div>
 </div>

@@ -7,7 +7,7 @@ Open the lookup before your first call of the day and leave it open:
 **https://claude.ai/code/artifact/20e073bc-db4d-4f9c-b49e-9adc55725fba**
 
 **Type the address.** If they're already on our books you get their real next visit date; if they're
-not, you get the route day for their zip. It's rebuilt every morning at 6:45.
+not, you get the route day for their zip. It's rebuilt every Monday at 6:30am, after the week's routes are set.
 
 `address-day-lookup.html` is the same tool as a file, for when you have no internet. It goes stale
 the moment it's saved, so use the link unless you have to.
@@ -172,13 +172,11 @@ $150 setup fee and the no-catch guarantee apply at every size.
 ## When the lookup is stale
 
 Both files carry their build time in the footer. **The address lookup is a snapshot, not a live
-window into Jobber** — it is rebuilt every morning at 6:45, so a visit booked at 10am won't be in
-your copy until tomorrow.
+window into Jobber** — it is rebuilt every Monday at 6:30am, so a visit booked mid-week won't be in
+your copy until the next Monday.
 
-- **Footer says today?** Trust it.
-- **Footer says yesterday or older?** Route days change when the territory is re-cut, and it has
-  been re-cut three times in two weeks — the four-truck split (Alias north, Cory South King,
-  Cammeron and Luke splitting the south) only went live this week. Get a fresh copy before quoting.
+- **Footer says this Monday?** Trust it.
+- **Footer older than this Monday?** Tell Spencer — the weekly rebuild didn't run, and route days move when Spencer re-sets the week. Don't quote a day off an old copy.
 - **You just booked something yourself?** You already know the date — don't go looking for it in the
   lookup and get confused when it isn't there yet.
 

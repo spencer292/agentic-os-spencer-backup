@@ -1,0 +1,85 @@
+[write-gate] writes BLOCKED — writes disabled: Revoked. — run ccf326a3
+=== SYNC + PLAN + TIMES 2026-10-18 12:12:54 PT ===
+mode: DRY (default) — queries only   window: 2026-10-19..2026-10-23
+live Jobber: 563 visits, 563 not complete, 563 on a routed driver, 0 skipped (no tech / not a driver)
+  2026-10-19  Tavis 22  Alias 24  Robert 25  Cory 35  Luke 20
+  2026-10-20  Tavis 23  Robert 26  Cory 29  Luke 21  Alias 18
+  2026-10-21  Cory 33  Alias 21  Tavis 25  Robert 27  Luke 19
+  2026-10-22  Robert 25  Tavis 31  Luke 24  Alias 21
+  2026-10-23  Luke 26  Robert 21  Tavis 22  Alias 25
+
+OptimoRoute: 562 orders in the window
+  CREATE 2   UPDATE 66   DELETE 1   unchanged 495
+    CREATE 8605-2368613901 2026-10-19 Tavis Alexander 15m  Yara Chen  9812 Northeast 31st Street, Bellevue, Washington, 98004
+    CREATE 8748-2368613280 2026-10-21 Alias Franks 30m  Drew Culver  15212 216th Avenue Northeast, Woodinville, Washington, 98077
+    UPDATE 5531-2361795722 2026-10-19 Alias Franks  date 2026-10-20->2026-10-19
+    UPDATE 8691-2357986391 2026-10-19 Alias Franks  date 2026-10-20->2026-10-19
+    UPDATE 7546-2362318010 2026-10-19 Alias Franks  date 2026-10-20->2026-10-19
+    UPDATE 8138-2246405672 2026-10-19 Alias Franks  date 2026-10-20->2026-10-19
+    UPDATE 8294-2273536722 2026-10-19 Alias Franks  date 2026-10-20->2026-10-19
+    UPDATE 5322-1714985003 2026-10-20 Alias Franks  date 2026-10-19->2026-10-20, tech Tavis Alexander->Alias Franks
+    UPDATE 8409-2361867636 2026-10-20 Alias Franks  date 2026-10-19->2026-10-20, tech Tavis Alexander->Alias Franks
+    UPDATE 7362-2361898759 2026-10-20 Alias Franks  date 2026-10-19->2026-10-20, tech Tavis Alexander->Alias Franks
+    UPDATE 8614-2338493381 2026-10-20 Luke LaVergne  tech Cory Ventura->Luke LaVergne, dur 12->15
+    UPDATE 8611-2336588206 2026-10-20 Luke LaVergne  tech Cory Ventura->Luke LaVergne, dur 12->15
+    UPDATE 7457-2363987165 2026-10-20 Luke LaVergne  tech Cory Ventura->Luke LaVergne, dur 12->15
+    UPDATE 5413-2363988292 2026-10-20 Luke LaVergne  tech Cory Ventura->Luke LaVergne, dur 12->15
+    UPDATE 7728-2355909667 2026-10-20 Luke LaVergne  date 2026-10-19->2026-10-20
+    UPDATE 4979-2366593432 2026-10-21 Cory Ventura  date 2026-10-22->2026-10-21
+    UPDATE 7671-2366591258 2026-10-21 Cory Ventura  date 2026-10-22->2026-10-21
+    UPDATE 5915-2366592738 2026-10-21 Cory Ventura  date 2026-10-22->2026-10-21
+    UPDATE 6356-1797444105 2026-10-21 Cory Ventura  date 2026-10-22->2026-10-21
+    UPDATE 5409-1717149119 2026-10-21 Cory Ventura  date 2026-10-22->2026-10-21
+    UPDATE 6890-2365578220 2026-10-21 Robert Norton  tech Cory Ventura->Robert Norton, dur 12->15
+    UPDATE 5147-1689550272 2026-10-21 Cory Ventura  date 2026-10-22->2026-10-21
+    UPDATE 8672-2354649380 2026-10-21 Cory Ventura  date 2026-10-22->2026-10-21
+    UPDATE 7017-2347216411 2026-10-21 Cory Ventura  date 2026-10-22->2026-10-21
+    UPDATE 8390-2359054760 2026-10-21 Cory Ventura  date 2026-10-22->2026-10-21
+    UPDATE 5148-2366716306 2026-10-21 Cory Ventura  date 2026-10-22->2026-10-21
+    UPDATE 8233-2367259707 2026-10-22 Alias Franks  date 2026-10-23->2026-10-22
+    UPDATE 8044-2367432096 2026-10-22 Alias Franks  date 2026-10-23->2026-10-22, tech Tavis Alexander->Alias Franks
+    UPDATE 7388-2367400834 2026-10-22 Alias Franks  date 2026-10-23->2026-10-22, tech Tavis Alexander->Alias Franks
+    UPDATE 7477-2367519923 2026-10-22 Alias Franks  date 2026-10-23->2026-10-22, tech Tavis Alexander->Alias Franks
+    UPDATE 8258-2367557492 2026-10-22 Alias Franks  date 2026-10-23->2026-10-22, tech Tavis Alexander->Alias Franks
+    UPDATE 6475-2366575587 2026-10-22 Robert Norton  tech Alias Franks->Robert Norton
+    UPDATE 5022-2366552886 2026-10-22 Robert Norton  tech Alias Franks->Robert Norton
+    UPDATE 5152-2366639935 2026-10-22 Robert Norton  tech Alias Franks->Robert Norton
+    UPDATE 5726-1813470626 2026-10-22 Tavis Alexander  date 2026-10-23->2026-10-22
+    UPDATE 8064-2232044728 2026-10-22 Alias Franks  date 2026-10-23->2026-10-22
+    UPDATE 7964-2366748959 2026-10-22 Tavis Alexander  date 2026-10-23->2026-10-22
+    UPDATE 8176-2366743320 2026-10-22 Tavis Alexander  date 2026-10-23->2026-10-22
+    UPDATE 8320-2366745664 2026-10-22 Tavis Alexander  date 2026-10-23->2026-10-22
+    UPDATE 8054-2230960553 2026-10-22 Tavis Alexander  date 2026-10-23->2026-10-22
+    UPDATE 7623-2357921703 2026-10-23 Robert Norton  date 2026-10-21->2026-10-23, tech Cory Ventura->Robert Norton, dur 12->15
+    UPDATE 8419-2348620682 2026-10-23 Robert Norton  date 2026-10-21->2026-10-23, tech Cory Ventura->Robert Norton, dur 12->15
+    UPDATE 6418-2357497952 2026-10-23 Robert Norton  date 2026-10-21->2026-10-23, tech Cory Ventura->Robert Norton, dur 12->15
+    UPDATE 6720-1802301381 2026-10-23 Robert Norton  date 2026-10-21->2026-10-23, tech Cory Ventura->Robert Norton, dur 12->15
+    UPDATE 5440-2364872372 2026-10-23 Robert Norton  date 2026-10-21->2026-10-23, tech Cory Ventura->Robert Norton, dur 12->15
+    UPDATE 4880-2367786235 2026-10-23 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 8718-2367813022 2026-10-23 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 8699-2358941353 2026-10-23 Robert Norton  date 2026-10-21->2026-10-23, tech Cory Ventura->Robert Norton, dur 12->15
+    UPDATE 6409-2367639861 2026-10-23 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 8731-2365438126 2026-10-23 Robert Norton  date 2026-10-21->2026-10-23, tech Cory Ventura->Robert Norton, dur 12->15
+    UPDATE 8519-2367661431 2026-10-23 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 5503-2364964992 2026-10-23 Robert Norton  date 2026-10-21->2026-10-23, tech Cory Ventura->Robert Norton, dur 12->15
+    UPDATE 4962-1615018817 2026-10-23 Robert Norton  date 2026-10-21->2026-10-23, tech Cory Ventura->Robert Norton, dur 12->15
+    UPDATE 8597-2336532288 2026-10-23 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 5829-2367766512 2026-10-23 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 6371-1643441826 2026-10-23 Alias Franks  tech Tavis Alexander->Alias Franks
+    UPDATE 8658-2349425109 2026-10-23 Robert Norton  date 2026-10-21->2026-10-23, tech Cory Ventura->Robert Norton, dur 12->15
+    UPDATE 8531-2367679731 2026-10-23 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 8460-2367638529 2026-10-23 Alias Franks  tech Tavis Alexander->Alias Franks
+    UPDATE 7306-2366754693 2026-10-23 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 4545-2366777742 2026-10-23 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 8497-2367691177 2026-10-23 Alias Franks  tech Tavis Alexander->Alias Franks
+    UPDATE 5458-2366787232 2026-10-23 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 8528-2367296733 2026-10-23 Alias Franks  tech Tavis Alexander->Alias Franks
+    UPDATE 8617-2338499461 2026-10-23 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 4953-1613400784 2026-10-23 Alias Franks  tech Tavis Alexander->Alias Franks
+    UPDATE 6275-2367860935 2026-10-23 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    UPDATE 8660-2350730997 2026-10-23 Tavis Alexander  tech Robert Norton->Tavis Alexander
+    DELETE 8605-2336569215 2026-10-19 Alias Franks  Yara Chen · #8605
+
+driver availability: 10-19: Alias/Cory/Luke/Robert/Tavis   10-20: Alias/Cory/Luke/Robert/Tavis   10-21: Alias/Cory/Luke/Robert/Tavis   10-22: Alias/Luke/Robert/Tavis   10-23: Alias/Luke/Robert/Tavis
+
+DRY RUN — nothing written. Planning and time write-back happen only with --execute. Log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-19_week\sync-plan-times.log
