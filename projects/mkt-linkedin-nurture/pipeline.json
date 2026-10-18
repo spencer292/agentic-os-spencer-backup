@@ -1,8 +1,8 @@
 {
-  "updated": "2026-09-28",
-  "sessions_run": 3,
+  "updated": "2026-10-14",
+  "sessions_run": 4,
   "account": {
-    "tier": "Sales Navigator Core (trial to 2026-09-21)",
+    "tier": "UNCONFIRMED - Sales Nav Core trial was due to end 2026-09-21; Sales Nav link still in the nav bar 10-14. Ask Spencer whether he kept it.",
     "invites_pending_at_session_1": 0,
     "warnings_seen": "none through 2026-09-09 — no banner, no captcha, no interface change across 2 DMs and 3 noted invites",
     "searches_used_session_1": 4,
@@ -34,7 +34,19 @@
     "sales_nav_trial_ends": "2026-09-21 - DECISION DUE. Calendar reminder set for the 20th.",
     "notes_spent_session_3": 4,
     "invites_pending_after_session_3": 12,
-    "note_allowance_running_total": "14 notes since 2026-08-31, still ZERO refusals. The ~5/month benchmark is wrong for this account. Sales Nav Core trial ends 2026-09-21 - RE-TEST the allowance immediately after, since the trial may be what is buying it."
+    "note_allowance_running_total": "14 notes since 2026-08-31, still ZERO refusals. The ~5/month benchmark is wrong for this account. Sales Nav Core trial ends 2026-09-21 - RE-TEST the allowance immediately after, since the trial may be what is buying it.",
+    "session_4": {
+      "date": "2026-10-14",
+      "invites_pending": 11,
+      "messages_sent": 5,
+      "searches_used": 2,
+      "warnings_seen": "none",
+      "invites_sent": 2,
+      "notes_spent": 2,
+      "comments": 1,
+      "invites_pending_after": 13,
+      "note_allowance": "Notes still accepted after the Sales Nav trial ended 09-21 - 281-char note went through with no upsell on 2026-10-14. Running total 16 notes since 08-31, zero refusals."
+    }
   },
   "hubs": [
     {
@@ -47,8 +59,8 @@
       "degree": "1st",
       "why_hub": "Shared connection on 7 of the 10 HOA prospects. LandCare is a national commercial landscape maintenance firm whose own clients are HOAs and commercial property managers — he is a subcontract/referral partner, not just an intro route.",
       "recent_activity": "No recent posts (1,184 followers)",
-      "stage": "messaged_touch_2",
-      "next_action": "Await reply. Touch 3 (~day 9, the rung where the data says lift appears) due 2026-09-18 if still quiet.",
+      "stage": "messaged_touch_3",
+      "next_action": "Touch 4 (final) ~2026-10-23 if quiet, then dormant/engagement-only.",
       "touches": [
         {
           "date": "2026-08-31",
@@ -65,9 +77,17 @@
           "chars": 465,
           "response": null,
           "note": "Gives, does not ask. Seasonal fall-push angle. SENT and confirmed in thread."
+        },
+        {
+          "date": "2026-10-14",
+          "type": "dm",
+          "text": "Hey Patrick! The rain's back and the mounds are showing up right on schedule. Offer still stands, if any of your accounts get hit just send me the address and we'll take care of it.",
+          "response": null,
+          "note": "Approved by Spencer and sent in session 4, confirmed in thread.",
+          "touch": 3
         }
       ],
-      "next_action_due": "2026-09-18",
+      "next_action_due": "2026-10-23",
       "touch_3_due": "~2026-09-18 if still quiet"
     },
     {
@@ -205,6 +225,10 @@
         {
           "date": "2026-04-03",
           "event": "Adam: on PTO next week, available Wednesday or Thursday the week after. Spencer: 'shoot me some dates when you are back'. Adam: 'Will do, Spencer!' - THEN NOTHING FOR FIVE MONTHS."
+        },
+        {
+          "date": "2026-10-14",
+          "event": "Nudge sent (approved): 'Hey Adam! Still up for that lunch? October's pretty open on my end, just pick a day and I'll come to you in Kent.' This is the one allowed nudge - STOP after this if silent."
         }
       ],
       "touches": [
@@ -221,7 +245,7 @@
         "The Malone's introduction ask - he already offered it once in March. Asking again in writing turns a friendly re-open into a transaction. Raise it AT the lunch, in person.",
         "A free fall property check at his Maple Valley home - drafted, then cut when Spencer scoped the message to lunch only. Still a good idea and still uncommitted."
       ],
-      "next_action": "Await his pick of the 24th or 25th. If quiet by 2026-09-16, one short nudge - then stop. Three unanswered lunch attempts is the ceiling on a friendly contact.",
+      "next_action": "Final nudge sent 2026-10-14. If no reply, stop chasing the lunch; he is a friendly contact, not a ladder.",
       "next_action_due": "2026-09-16",
       "at_the_lunch": [
         "Ask for the Malone's team introduction he offered in March",
@@ -296,9 +320,9 @@
         "Nick Granberg"
       ],
       "hook": "Profile states he oversees vendor contracts across a portfolio of condo and homeowner associations — the buying function named explicitly. Two hub mutuals. Stable in role since Jun 2024.",
-      "stage": "invited_pending",
+      "stage": "not_connected",
       "verified": "Confirmed 2026-09-09 — Agynbyte, Issaquah, CMCA/AMS, 389 connections. Patrick + Nick both still mutuals. No recent posts.",
-      "next_action": "Await accept. Send the drafted follow-up the moment they accept (full text in 2026-09-09_session-2.md). If no accept by 2026-09-23, leave it — a bare pending invite is not a touch to chase.",
+      "next_action": "Invite no longer pending and not a connection as of 2026-10-14 (declined or withdrawn). Do not re-invite.",
       "touches": [
         {
           "date": "2026-09-09",
@@ -470,10 +494,10 @@
         "Brandon Sechrist"
       ],
       "hook": "Brandon Sechrist referred him by name 2026-08-31. Army OIF veteran; Spencer is Army. TruGreen Puyallup sits in the service area.",
-      "stage": "nudged_awaiting_reply",
+      "stage": "awaiting_call_time",
       "verified": "2026-08-31",
       "caveat": "CORRECTED 2026-09-01: the earlier note that his profile showed no lawn-care sales role was wrong — the Experience section renders Business Development Representative at TruGreen, Puyallup, Apr 2022 to present. He is in sales, in Territory 3 (Robert Norton). Brandon Sechrist referred him and sent him a recommendation link 2026-09-01. Invite from 08-31 still shows Pending as of 09-01.",
-      "next_action": "Touch 2 of 4 sent. If quiet by ~2026-09-22, touch 3 (day 9). Hard stop at 4. REFERRAL PARTNER - never pitch TruGreen as a customer.",
+      "next_action": "He has promised a call twice (09-10, 09-29) and not called (Spencer confirmed 10-14). Ball is his. One more touch at most after ~10-23, then stop.",
       "next_action_due": "2026-09-10",
       "checked": "Jobber: no TruGreen or Alfredo Gomez record. Gmail: no results. LinkedIn: no existing thread.",
       "touches": [
@@ -501,6 +525,24 @@
           "type": "dm",
           "text": "Alfredo - no worries at all, I know how a week gets away. Still keen to connect when you've got fifteen minutes. Easiest thing is probably you text me a time that works and I'll call you - (253) 326-1740.\n\nBrandon spoke highly of you, and I think the fit here is a simple one: moles are the only thing we do, so we're never competing with what TruGreen is selling.",
           "note": "SENT 11:37 AM, confirmed in thread. Spencer confirmed the 09-10 call NEVER HAPPENED and that he still wants to connect. Touch 2 of 4. Deliberately commits nothing operational per the 2026-09-10 rule."
+        },
+        {
+          "date": "2026-09-29",
+          "type": "reply_received",
+          "text": "Spencer, I am sorry for not calling. I will call you tomorrow after my 8:30am meeting."
+        },
+        {
+          "date": "2026-10-01",
+          "type": "dm",
+          "text": "Hey Alfredo! I look forward to speaking with you!",
+          "note": "Sent by Spencer; back-filled."
+        },
+        {
+          "date": "2026-10-14",
+          "type": "dm",
+          "text": "Hey Alfredo! No worries at all, I know how the week goes. If it's easier, just send me a time that works and I'll give you a call.",
+          "response": null,
+          "note": "Approved by Spencer and sent in session 4, confirmed in thread."
         }
       ],
       "queued_message": "Alfredo — thanks for connecting! Brandon Sechrist speaks very highly of you, and said he sent you a note about me.\n\nI run Got Moles out of Buckley. Moles are the only thing we do, going on seven years now. Army too, so we've got that in common.\n\nSaw you're doing business development for TruGreen in Puyallup, which is right in our backyard. Figured there might be something here — when moles tear up a property you're maintaining, it's your turf work that takes the hit, and we're not after lawn care accounts. Happy to be the guy you hand mole calls off to. And anything I run into that needs lawn care, I'll send your way.\n\nAny interest in grabbing coffee or lunch sometime? You're right down the road from me, so easy either way."
@@ -555,7 +597,7 @@
       "degree": "1st",
       "warm_route": [],
       "hook": "THE PORTFOLIO PLAY of this segment. Employer field is ARCIS GOLF, a multi-course operator, and his title is REGIONAL - so he is the golf equivalent of landing a management company rather than one course. Oregon State, 410 connections. Followed by Brandon.",
-      "stage": "in_conversation",
+      "stage": "quiet_final_touch_sent",
       "verified": "2026-09-09 - profile opened and read",
       "touches": [
         {
@@ -594,9 +636,31 @@
           "type": "dm",
           "text": "Hey Ryan! Circling back on the visit. Fall is when the moles really get going, so it'd be good to get out there before the rain settles in. I'm open most mornings next week, just pick a day and I'll come to you at the Ridge!",
           "note": "Nudge after 13 days quiet on the Wed/Fri offer. Approved session 4, sent 3:49 PM, confirmed in thread."
+        },
+        {
+          "date": "2026-09-15",
+          "type": "dm",
+          "text": "Proposed Wed/Fri visit, Snoqualmie density, Arcis portfolio question (full text in thread).",
+          "response": null,
+          "note": "Back-filled in session 4."
+        },
+        {
+          "date": "2026-09-28",
+          "type": "dm",
+          "text": "Hey Ryan! Circling back on the visit. Fall is when the moles really get going... pick a day and I will come to you at the Ridge!",
+          "response": null,
+          "note": "Sent by Spencer outside a session; back-filled in session 4."
+        },
+        {
+          "date": "2026-10-14",
+          "type": "dm",
+          "text": "Hey Ryan! I know fall gets busy out there so no pressure on the visit. If mounds start showing up on the course, just text me at (253) 326-1740 and I'll come out to the Ridge.",
+          "response": null,
+          "note": "Approved by Spencer and sent in session 4, confirmed in thread.",
+          "touch": "3rd unanswered since his visit request - LAST"
         }
       ],
-      "next_action": "Nudged 2026-09-28. Await a day. If quiet by ~2026-10-02, ask Spencer before any further touch.",
+      "next_action": "No more chasers. If silent, mark dormant ~2026-10-28 and switch to engagement-only. Spencer confirmed 10-14: no call or contact off LinkedIn.",
       "next_action_due": "2026-09-23"
     },
     {
@@ -653,7 +717,7 @@
           "note": "Spencer: has not spoken to Patrick since the initial call (~09-10/15). Killed the LinkedIn check-in - Spencer will call him on his cell (651-587-3752) himself."
         }
       ],
-      "next_action": "SPENCER CALLS HIM directly. No LinkedIn touches. Ask Spencer for the outcome next session.",
+      "next_action": "Spencer has spoken with him (confirmed 2026-10-14). Status lives with Spencer - ask, never nudge.",
       "next_action_due": "2026-09-15",
       "phone": "651-587-3752",
       "club_address": "21200 NE Sahalee Country Dr, Sammamish WA 98074 (verified from LinkedIn company page). 51-200 employees, 73 staff on LinkedIn. Territory 1, Alias Franks."
@@ -849,8 +913,8 @@
         "Patrick Oien"
       ],
       "hook": "STRONGEST ANCHOR IN THE BATCH. Sand Point Country Club sits on 55th Ave NE, Seattle 98115. Got Moles has 24 live clients in 98115 including 6914 56th Ave NE and 7302 58th Ave NE - literally the adjacent streets. Territory 1, Alias Franks ground.",
-      "stage": "invited_pending",
-      "next_action": "Await accept. Highest-probability anchor of the four - if the street-proof theory holds, this is the one that replies fastest. On accept: turf language, member-facing presentation, annual agreement. Spencer is taking site visits himself for now.",
+      "stage": "messaged_touch_2",
+      "next_action": "Touch 3 ~2026-10-23 if quiet, touch 4 ~10-28, then dormant.",
       "touches": [
         {
           "date": "2026-09-15",
@@ -859,6 +923,25 @@
           "chars": 264,
           "response": null,
           "note": "SENT, confirmed Pending. Anchor verified live in Jobber 2026-09-15 before drafting - the reproducible technique from the Patrick Oien conversion."
+        },
+        {
+          "date": "2026-09-21",
+          "type": "accept"
+        },
+        {
+          "date": "2026-09-21",
+          "type": "dm",
+          "text": "Same text as the connection note (street anchor 56th/58th NE).",
+          "response": null,
+          "note": "Sent by Spencer; back-filled."
+        },
+        {
+          "date": "2026-10-14",
+          "type": "dm",
+          "text": "Hey Marcus! Following up on this one. Now that the rain's back we're seeing a lot more activity around Sand Point. If it's showing up on the course, I'd be glad to come take a look.",
+          "response": null,
+          "note": "Approved by Spencer and sent in session 4, confirmed in thread.",
+          "touch": 2
         }
       ]
     },
@@ -915,6 +998,89 @@
           "note": "SENT, confirmed Pending. Anchor verified live in Jobber 2026-09-15 before drafting - the reproducible technique from the Patrick Oien conversion."
         }
       ]
+    },
+    {
+      "id": "eric-johnson-kempersports",
+      "name": "Eric Johnson",
+      "linkedin": "/in/eric-johnson-25568b12/",
+      "title": "Regional Agronomist",
+      "company": "KemperSports",
+      "location": "University Place, WA",
+      "profile": "golf-superintendent",
+      "degree": "2nd",
+      "warm_route": [
+        "Patrick Oien",
+        "Ryan Gordon"
+      ],
+      "hook": "PORTFOLIO PLAY - regional agronomist at a multi-course operator (Chambers Bay in University Place; Gamble Sands; River Ranch pre-opening in Pasco). Same logic as Ryan Gordon/Arcis. Anchor: 12 active Got Moles clients in University Place (98466/98467). No own posts, reposts only - nothing to comment on.",
+      "checked": "Jobber: no client record for the person or firm. Gmail (browser search, positive control returned 50 rows): no hits. LinkedIn: no thread, no prior invite. Pipeline: new.",
+      "stage": "invited_pending",
+      "touches": [
+        {
+          "date": "2026-10-14",
+          "type": "connection_note",
+          "chars": 281,
+          "text": "Hey Eric! I run Got Moles, moles are all we do. Saw you're regional for KemperSports, so you're probably looking after more than one course. We take care of a dozen homes in University Place, so we're out by Chambers Bay every week. Curious what you're seeing. Up for a quick call?",
+          "response": null,
+          "note": "Approved and sent session 4; confirmed on sent list. First note after the Sales Nav trial ended - accepted without upsell."
+        }
+      ],
+      "next_action": "On accept: ask which courses he covers; site visit at Chambers Bay. Note Chambers Bay is county-owned, Kemper-managed."
+    },
+    {
+      "id": "ryan-rosevear-foster",
+      "name": "Ryan Rosevear",
+      "linkedin": "/in/ryan-rosevear-347993109/",
+      "title": "Golf Course Superintendent",
+      "company": "Foster Golf Links (City of Tukwila)",
+      "location": "Tukwila, WA (T2)",
+      "profile": "golf-superintendent",
+      "degree": "2nd",
+      "warm_route": [
+        "Marcus Harness"
+      ],
+      "hook": "Street anchor: active clients at 14445 56th Ave S, 14448 57th Ave S, 14439 58th Ave S (98168), up the hill from the course. 19 active Tukwila clients. Municipal course - contract likely via City of Tukwila. No posts.",
+      "checked": "Jobber: no client record for the person or firm. Gmail (browser search, positive control returned 50 rows): no hits. LinkedIn: no thread, no prior invite. Pipeline: new.",
+      "stage": "invited_pending",
+      "touches": [
+        {
+          "date": "2026-10-14",
+          "type": "connection_note",
+          "chars": 234,
+          "text": "Hey Ryan! I run Got Moles, moles are the only thing we do. We've got customers on 56th and 57th Ave S, just up the hill from Foster, so we're in Tukwila every week. Curious how the moles are treating the course. Free for a quick call?",
+          "response": null,
+          "note": "Approved and sent session 4; confirmed on sent list."
+        }
+      ],
+      "next_action": "On accept: site visit; ask how the city handles grounds contracts."
+    },
+    {
+      "id": "robert-boyker-avid",
+      "name": "Robert Boyker",
+      "linkedin": "/in/robert-boyker-374143a9/",
+      "title": "Owner",
+      "company": "Avid Landscape Management LLC",
+      "location": "Seattle, WA",
+      "profile": "landscaping-lawn-care (REFERRAL PARTNER, never pitch as a buyer)",
+      "degree": "2nd",
+      "warm_route": [
+        "Patrick LaCroix",
+        "Brandon Sechrist"
+      ],
+      "hook": "Commercial landscape owner, posts personal stories (West Africa tree planting, Seattle/Soundgarden, baseball, plant-nerd WSU event). Hiring an irrigation tech (10-12).",
+      "checked": "Jobber: no client record for the person or firm. Gmail (browser search, positive control returned 50 rows): no hits. LinkedIn: no thread, no prior invite. Pipeline: new.",
+      "stage": "engaged_pre_invite",
+      "touches": [
+        {
+          "date": "2026-10-14",
+          "type": "comment",
+          "text": "Love this. Thirty years from a seed in your hand to that! And being thankful for the 2.5% instead of dwelling on the rest is a great way to look at it.",
+          "on": "His ~3-week-old Acacia albida / 2.5% tree-survival post",
+          "response": null,
+          "note": "Approved and posted session 4; confirmed live under Spencer."
+        }
+      ],
+      "next_action": "NEXT SESSION: bare invite (no note). First message after accept = referral angle: his crews see mounds on properties they maintain; moles are all we do so we never compete with what Avid sells. Do not name LaCroix (unresponsive)."
     }
   ],
   "held": [
@@ -1023,7 +1189,16 @@
       "Sarah Teriele"
     ],
     "limits": "This check cannot see calls Spencer took, trade-event conversations, or anything outside pipeline.json, LinkedIn, Gmail and Jobber.",
-    "checked": "2026-08-31"
+    "checked": "2026-08-31",
+    "2026-10-14_dropped": [
+      "Greg Matz - Open to Work, no current club",
+      "Jeff Clark - American Lake Veterans GC (VA/federal procurement), thin profile, inflammatory comments",
+      "Tyler Chaloupka - asst at Sand Point (Marcus live)",
+      "Reece Johnson - asst at Tacoma C&GC (Joel pending)",
+      "Trevor Kiunke - asst at Inglewood (assistant, revisit for the head super)",
+      "Matt Wagenhoffer - Cedarcrest/Troon, Snohomish County (outside area)",
+      "Out of area: Dan F. (Spokane), greg wadden (Bellingham), Jeff Blanc (Walla Walla), Trevor Thorp (Friday Harbor), Ryan Semritc (Burlington), Seth Orr (Cle Elum), Bobby Holtzinger (Walla Walla)"
+    ]
   },
   "inbound": [
     {
@@ -1048,6 +1223,19 @@
       "type": "pending connection request",
       "recommendation": "Appeared after the session-1 check. Not reviewed, not accepted — Spencer's call.",
       "seen": "2026-08-31"
+    },
+    {
+      "name": "Rick Spinos",
+      "headline": "Profit Acceleration Coach for contractors",
+      "type": "Connected 2026-10-01; welcome message 10-02. Vendor, not a prospect.",
+      "do_not_contact": true,
+      "seen": "2026-10-14"
+    },
+    {
+      "name": "Vicente Rodas Rafael",
+      "headline": "American Landscaping & Tree Service LLC - Port Orchard, Tacoma, Gig Harbor",
+      "type": "Connected 2026-10-01. Possible referral partner but mostly peninsula (excluded ground).",
+      "seen": "2026-10-14"
     }
   ],
   "discovered_free": [
@@ -1167,7 +1355,8 @@
     "insight": "THREE of the golf prospects work for MULTI-COURSE OPERATORS, not single clubs: Ryan Gordon (Arcis Golf, Regional), Justin Kochevar (Oki Golf), and Matt Wagenhoffer (Troon, dropped - Snohomish). Oki Golf alone runs several Puget Sound courses. This is the same portfolio logic as targeting an HOA management company instead of one association: one superintendent relationship can cover many courses.",
     "action": "When qualifying a golf prospect, read the EMPLOYER field, not the course in the headline. An operator name there (Arcis, Oki, Troon, Billy Casper, KemperSports) upgrades the prospect substantially.",
     "also": "Kochevar profile sidebar surfaced David Uchida, Director of Operations at Oki Golf, and Kevin Cohrs PGA, General Manager - an Oki cluster worth mapping if Kochevar accepts.",
-    "update_2026_09_15": "Oien and Gordon accepting turned the WHOLE SEGMENT warm. Both now show as mutual connections on most WA golf superintendents in search, upgrading every future golf prospect from cold to 2nd-degree-with-mutuals. Deliberately NOT name-dropped in the 09-15 notes: LinkedIn surfaces the mutual on the invite anyway, and neither man has signed yet, so naming them borrows credibility not yet earned in an industry where everyone knows everyone. Revisit once one is a customer."
+    "update_2026_09_15": "Oien and Gordon accepting turned the WHOLE SEGMENT warm. Both now show as mutual connections on most WA golf superintendents in search, upgrading every future golf prospect from cold to 2nd-degree-with-mutuals. Deliberately NOT name-dropped in the 09-15 notes: LinkedIn surfaces the mutual on the invite anyway, and neither man has signed yet, so naming them borrows credibility not yet earned in an industry where everyone knows everyone. Revisit once one is a customer.",
+    "exhausted_2026_10_14": "In-area golf superintendent pool on standard search is nearly worked through: 30 results, 14 already in pipeline. Next sourcing: landscape firm owners/branch managers (referral partners), and the head super at Inglewood."
   },
   "segment_performance_2026_09_15": {
     "golf": "2 of 7 cold notes converted to live conversations within 6 days (Oien and Gordon, BOTH replying inside one minute). 4 more sent 09-15.",
