@@ -146,7 +146,13 @@ function defects(j) {
   else if (j.total < 75 && !hasDiscountItem) d.push('BELOW_FLOOR_NO_DISCOUNT');
 
   // Past its first cycle and still nothing invoiced = the schedule is not actually firing.
-  if (age !== null && age >= 45 && !(j.invoicedTotal > 0)) d.push('NEVER_INVOICED');
+  // Spencer-confirmed first-invoice deferrals: jobs where a /usr/bin/bash-invoiced history is deliberate.
+  // Each carries the date its first invoice is due; after that date the flag comes back.
+  // #8358 Paul Watson: Quick Fix deposit + first month waived, first bill 2026-10-31 (set 2026-10-17).
+  const FIRST_INVOICE_DEFERRED = { 8358: '2026-11-01' };
+  const deferredUntil = FIRST_INVOICE_DEFERRED[j.jobNumber];
+  const deferred = deferredUntil && TODAY < new Date(deferredUntil + 'T12:00:00Z');
+  if (age !== null && age >= 45 && !(j.invoicedTotal > 0) && !deferred) d.push('NEVER_INVOICED');
 
   if (j.endAt && days(j.endAt) > 0) d.push('PAST_END_DATE');
 
