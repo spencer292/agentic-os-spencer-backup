@@ -4,6 +4,7 @@
 //
 //   node browser/launch.mjs                       # window must be up + signed in
 //   node scripts/gbp-pull-review-feed.mjs --pages 6 --out path.json
+//   node scripts/gbp-pull-review-feed.mjs --pages 60 --out <date>_review-feed-full.json   # full walk + five-star count
 //
 // Flags:
 //   --pages N   how many pages of 10 to walk (default 6)
@@ -132,10 +133,23 @@ const NEXT = `(() => {
     }
 
     const all = [...seen.values()];
+    // Star tally per listing. Only meaningful on a full walk (--pages 60 reaches the end of
+    // the feed): this is the ONLY source of the five-star count — the public Maps panes that
+    // gbp-scrape-reviews.mjs reads stop at 10 reviews per listing.
+    const LOC = (a) => (/Interurban/.test(a) ? 'seatac' : /Tacoma Ave/.test(a) ? 'tacoma' : /Griffin/.test(a) ? 'enumclaw' : 'other');
+    const tally = {};
+    for (const r of all) {
+      for (const k of [LOC(r.address), 'total']) {
+        tally[k] ??= { reviews: 0, 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
+        tally[k].reviews++;
+        if (r.stars) tally[k][r.stars]++;
+      }
+    }
     fs.mkdirSync(path.dirname(OUT), { recursive: true });
-    fs.writeFileSync(OUT, JSON.stringify({ scrapedAt: new Date().toISOString(), authuser: AUTHUSER, count: all.length, reviews: all }, null, 2));
+    fs.writeFileSync(OUT, JSON.stringify({ scrapedAt: new Date().toISOString(), authuser: AUTHUSER, count: all.length, tally, reviews: all }, null, 2));
     const open = all.filter((r) => r.unreplied);
     console.error(`\n${all.length} reviews pulled, ${open.length} unreplied -> ${OUT}`);
+    for (const [k, t] of Object.entries(tally)) console.error(`  ${k.padEnd(8)} ${t.reviews} reviews, ${t[5]} five-star (4★ ${t[4]}, 3★ ${t[3]}, 2★ ${t[2]}, 1★ ${t[1]})`);
   } finally {
     cdp.close();
   }

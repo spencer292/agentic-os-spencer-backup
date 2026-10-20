@@ -5,6 +5,10 @@
 //   node scripts/gbp-scrape-reviews.mjs
 //
 // Writes projects/str-gbp-optimization/reviews/<date>_google-reviews.json
+//
+// LIMIT: the public Maps panes now stop at 10 reviews per listing, so this script gives the
+// listing totals and ratings only. For the five-star count and every review, walk the signed-in
+// owner feed instead: node scripts/gbp-pull-review-feed.mjs --pages 60 --out <file>
 
 import fs from 'node:fs';
 import path from 'node:path';
