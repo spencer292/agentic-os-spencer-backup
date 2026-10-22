@@ -96,7 +96,7 @@ Social doesn't depend on Sean's accounts, as long as you're admin on the Page an
 
 **Rules on camera:** lead with "chemical-free and safe mole control". Explaining the method is fine
 when someone asks how it works. No dead moles, no kill/trap close-ups, no I-713 claims, no
-"WA's #1". Review count: "283+ five-star reviews", re-checked before it's used. Get the
+"WA's #1". Review count: "340+ five-star reviews" (10-19 pull), re-checked before it's used. Get the
 customer's OK before showing their house or address.
 
 ## Step 6 — Parallel run, then cut
