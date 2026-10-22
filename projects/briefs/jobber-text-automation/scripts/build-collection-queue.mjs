@@ -187,6 +187,23 @@ for (let i = 0; i < ids.length; i += 20) {
   if (i + 20 < ids.length) await sleep(700);
 }
 
+// ---- autopay invite eligibility: TMCP and autopay not already on (Spencer, 2026-10-20) ----
+// The invite only asks for a reply. Enrolment needs a separate YES to the full terms
+// (data/autopay-consent-reply.md) — a reply of AUTOPAY is interest, not consent (brief, Lane 3).
+const autopayInvite = {};
+for (let i = 0; i < ids.length; i += 10) {
+  const s = ids.slice(i, i + 10);
+  const q = 'query {\n' + s.map((id, n) => `  c${n}: client(id:"${id}") { jobs(first:25) { nodes { jobStatus willClientBeAutomaticallyCharged lineItems(first:5) { nodes { name } } } } }`).join('\n') + '\n}';
+  const d = await gql(q);
+  s.forEach((id, n) => {
+    const jobs = d[`c${n}`]?.jobs?.nodes || [];
+    const tmcp = jobs.some(j => j.lineItems.nodes.some(li => /total mole control/i.test(li.name)));
+    const on = jobs.some(j => j.willClientBeAutomaticallyCharged);
+    autopayInvite[id] = tmcp && !on;
+  });
+  if (i + 10 < ids.length) await sleep(700);
+}
+
 const state = fs.existsSync(STATE_FILE) ? JSON.parse(fs.readFileSync(STATE_FILE, 'utf8')) : { sent: {} };
 const usd = n => '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
@@ -198,7 +215,10 @@ function compose(c) {
   const hi = first ? `Hi ${first}, this is` : 'Hello, this is';
   const link = c.link;
   const amt = usd(c.total);
-  const charge = c.hasCard ? ` If you'd like us to run the card we have on file, just reply CHARGE.` : '';
+  const autopay = !c.autopayInvite ? ''
+    : c.hasCard ? ` Want to skip these invoices going forward? We can bill that card automatically each month. Reply AUTOPAY and we'll send the details.`
+    : ` Want to skip these invoices going forward? Reply AUTOPAY and we'll help you set up automatic monthly payments.`;
+  const charge = (c.hasCard ? ` If you'd like us to run the card we have on file, just reply CHARGE.` : '') + autopay;
 
   if (c.count > 1) {
     return `${hi} Got Moles. You have ${c.count} open invoices totaling ${amt}. `
@@ -250,6 +270,7 @@ for (const [clientId, invs] of byClient) {
     clientId, stage, maxDays, total, count: invs.length,
     name: c.name, firstName: c.firstName, phone: invs[0].phone, smsPhones: invs[0].smsPhones,
     hasCard: (cards[clientId] || 0) > 0,
+    autopayInvite: !!autopayInvite[clientId],
     link: invs[0].clientHubUri,
     neverViewed: invs.every(i => !i.dateViewedInClientHub),
     invoices: invs.map(i => ({ number: i.invoiceNumber, balance: i.bal, days: i.days })),
