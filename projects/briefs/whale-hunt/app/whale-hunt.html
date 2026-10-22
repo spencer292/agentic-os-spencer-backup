@@ -1,0 +1,351 @@
+<title>Whale Hunt</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: single phone column, sticky header with week gauge, list of whale cards -> full-screen detail sheet */
+:root{
+  --bg:#EEF3F6; --card:#FFFFFF; --fg:#0E2233; --muted:#5A6C7A; --line:#D5DFE6;
+  --accent:#D9551F; --accent-ink:#FFFFFF; --sea:#1F4E6B; --ok:#2C8A57; --warn:#B7790C; --soft:#E3ECF2;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0A1620; --card:#11212E; --fg:#E4EDF3; --muted:#8EA3B2; --line:#203545;
+  --accent:#F07A45; --accent-ink:#1A0E07; --sea:#7FB3D3; --ok:#5BC48A; --warn:#E3AE48; --soft:#172C3B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0A1620; --card:#11212E; --fg:#E4EDF3; --muted:#8EA3B2; --line:#203545;
+  --accent:#F07A45; --accent-ink:#1A0E07; --sea:#7FB3D3; --ok:#5BC48A; --warn:#E3AE48; --soft:#172C3B; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.45;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 40px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:640px;margin:0 auto}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:14px 10px;border-bottom:1px solid var(--line)}
+.top{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+h1{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.01em;margin:0}
+.wk{font-family:var(--mono);font-size:13px;color:var(--muted);white-space:nowrap}
+.gauge{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin-top:10px}
+.gauge i{height:6px;border-radius:3px;background:var(--line)}
+.gauge i.on{background:var(--sea)} .gauge i.now{background:var(--accent)}
+.tabs{display:flex;gap:6px;margin-top:12px;overflow-x:auto}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--fg);font:500 14px var(--body);padding:7px 12px;border-radius:999px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.tab b{font-family:var(--mono);font-weight:500;margin-left:4px;opacity:.75}
+.summary{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin:14px 0 8px}
+.summary strong{color:var(--fg);font-family:var(--mono);font-weight:500}
+.list{display:flex;flex-direction:column;gap:10px}
+.whale{display:grid;grid-template-columns:1fr auto;gap:4px 12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;cursor:pointer;text-align:left;color:inherit;font:inherit;width:100%}
+.whale:focus-visible,.btn:focus-visible,.tab:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.co{font-family:var(--display);font-weight:600;font-size:18px;min-width:0}
+.who{color:var(--muted);font-size:14px;grid-column:1;min-width:0}
+.meta{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:6px}
+.chip{font-size:12px;font-weight:500;padding:2px 8px;border-radius:999px;background:var(--soft);color:var(--fg)}
+.chip.due{background:var(--accent);color:var(--accent-ink)}
+.chip.ok{background:color-mix(in srgb,var(--ok) 18%,transparent);color:var(--ok)}
+.chip.warn{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
+.last{font-family:var(--mono);font-size:12px;color:var(--muted);text-align:right;grid-row:1/3;grid-column:2;align-self:start}
+.dots{display:flex;gap:3px;margin-left:auto}
+.dots i{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--line)}
+.dots i.hit{background:var(--sea);border-color:var(--sea)}
+.empty{background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:22px;color:var(--muted)}
+.empty h2{font-family:var(--display);color:var(--fg);font-size:18px;margin:0 0 6px}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--fg);font:500 14px var(--body);padding:9px 14px;border-radius:10px;cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent}
+.btn.small{padding:5px 10px;font-size:13px}
+.addrow{margin-top:14px;display:flex;justify-content:flex-end}
+/* detail */
+#detail{display:flex;flex-direction:column;gap:14px;padding-top:14px}
+.back{align-self:flex-start}
+.hero h2{font-family:var(--display);font-weight:800;font-size:24px;margin:0;text-wrap:balance}
+.hero p{margin:2px 0 0;color:var(--muted)}
+section.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px}
+section.box h3{margin:0;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
+.kv{display:grid;grid-template-columns:88px 1fr auto;gap:8px 10px;align-items:center}
+.kv dt{color:var(--muted);font-size:13px}
+.kv dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.kv dd.na{color:var(--muted);font-style:italic}
+a{color:var(--sea)}
+ul.plain{margin:0;padding-left:18px}
+.log{display:flex;flex-direction:column;gap:10px}
+.entry{border-left:3px solid var(--sea);padding-left:10px}
+.entry .d{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.entry .r{color:var(--ok);font-size:14px}
+form{display:flex;flex-direction:column;gap:10px}
+label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--muted)}
+input,select,textarea{font:15px var(--body);color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 10px;width:100%}
+textarea{min-height:70px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);padding:9px 14px;border-radius:999px;font-size:14px;z-index:20}
+.note{font-size:13px;color:var(--muted)}
+@media (max-width:420px){.kv{grid-template-columns:72px 1fr auto}.row2{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:no-preference){.whale{transition:transform .12s}.whale:active{transform:scale(.99)}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="top"><h1>Whale Hunt</h1><span class="wk" id="wk"></span></div>
+    <div class="gauge" id="gauge" aria-hidden="true"></div>
+    <div class="tabs" role="tablist" id="tabs"></div>
+  </header>
+  <main id="listView">
+    <div class="summary" id="summary"></div>
+    <div class="list" id="list">
+      <div class="empty"><h2>Loading your whales…</h2>Each whale shows its contact details, last touch and this week's suggested touch. Tap one to log a touch.</div>
+    </div>
+    <div class="addrow"><button class="btn" id="addBtn" type="button">+ Add a whale</button></div>
+  </main>
+  <main id="detail" hidden></main>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const START = new Date("2026-10-26T00:00:00");
+const WEEKS = 10;
+const TRACKS = [
+  {id:"hunt", label:"Hunt"},
+  {id:"maintain", label:"Maintain"},
+  {id:"bench", label:"Bench"},
+  {id:"closed", label:"Closed"}
+];
+const STATUS = {
+  active:"Active", lunch_scheduled:"Lunch set", graduated:"Graduated", fell_off:"Fell off", paused:"Paused"
+};
+const CHANNELS = ["LinkedIn comment","LinkedIn DM","Email","Phone call","Text","Introduction","Card / mail","Drop-by","Lunch / coffee","Event","Other"];
+
+let db = null, whales = [], tab = "hunt", openId = null, readOnly = false;
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const today = () => { const d = new Date(); d.setHours(0,0,0,0); return d; };
+const iso = d => d.toISOString().slice(0,10);
+const parse = s => { const d = new Date(s + "T00:00:00"); return isNaN(d) ? null : d; };
+const weekOf = d => Math.floor((d - START) / 864e5 / 7) + 1;
+const curWeek = () => weekOf(today());
+const weekStart = w => new Date(START.getTime() + (w-1)*7*864e5);
+const daysAgo = s => { const d = parse(s); return d ? Math.round((today() - d)/864e5) : null; };
+
+function trackOf(w){
+  if (["graduated","fell_off"].includes(w.status)) return "closed";
+  return w.track || "hunt";
+}
+function lastTouch(w){
+  const t = (w.touches || []).slice().sort((a,b) => (b.date||"").localeCompare(a.date||""));
+  return t[0] || null;
+}
+function touchedWeeks(w){
+  const s = new Set();
+  for (const t of w.touches || []) { const d = parse(t.date); if (d) { const k = weekOf(d); if (k>=1 && k<=WEEKS) s.add(k); } }
+  return s;
+}
+function toast(msg){ const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(() => t.hidden = true, 2200); }
+
+function renderHeader(){
+  const w = curWeek();
+  $("#wk").textContent = w < 1 ? "Starts Mon Oct 26" : w > WEEKS ? "Program complete" : `Week ${w} of ${WEEKS}`;
+  $("#gauge").innerHTML = Array.from({length:WEEKS}, (_,i) => `<i class="${i+1 < w ? "on" : i+1 === w ? "now" : ""}"></i>`).join("");
+  $("#tabs").innerHTML = TRACKS.map(t => {
+    const n = whales.filter(x => trackOf(x) === t.id).length;
+    return `<button class="tab" role="tab" type="button" data-tab="${t.id}" aria-selected="${tab===t.id}">${t.label}<b>${n}</b></button>`;
+  }).join("");
+}
+
+function renderList(){
+  renderHeader();
+  const rows = whales.filter(x => trackOf(x) === tab).sort((a,b) => {
+    const la = lastTouch(a)?.date || "", lb = lastTouch(b)?.date || "";
+    return la.localeCompare(lb) || (a.company||"").localeCompare(b.company||"");
+  });
+  const w = curWeek(), ws = w >= 1 ? weekStart(Math.min(w, WEEKS)) : null;
+  const due = rows.filter(x => x.status !== "paused" && !(ws && lastTouch(x) && parse(lastTouch(x).date) >= ws)).length;
+  const lunches = whales.filter(x => x.status === "lunch_scheduled" || x.status === "graduated").length;
+  $("#summary").innerHTML = tab === "hunt"
+    ? `<span><strong>${rows.length}</strong> / 10 whales</span><span><strong>${due}</strong> need a touch this week</span><span><strong>${lunches}</strong> lunches set or held</span>`
+    : `<span><strong>${rows.length}</strong> in ${TRACKS.find(t=>t.id===tab).label}</span>`;
+  if (!rows.length) {
+    $("#list").innerHTML = whales.length
+      ? `<div class="empty">Nothing in ${TRACKS.find(t=>t.id===tab).label} yet.</div>`
+      : `<div class="empty"><h2>No whales yet</h2>Claude loads the researched whales here. You can also add one with the button below.</div>`;
+    return;
+  }
+  $("#list").innerHTML = rows.map(x => {
+    const lt = lastTouch(x), da = lt ? daysAgo(lt.date) : null;
+    const touchedNow = ws && lt && parse(lt.date) >= ws;
+    const hit = touchedWeeks(x);
+    let chip = "";
+    if (x.status && x.status !== "active") chip = `<span class="chip ${x.status==="lunch_scheduled"||x.status==="graduated"?"ok":"warn"}">${esc(STATUS[x.status]||x.status)}</span>`;
+    else if (tab === "hunt" && w >= 1 && w <= WEEKS) chip = touchedNow ? `<span class="chip ok">Touched this week</span>` : `<span class="chip due">Due this week</span>`;
+    const p = x.primary || {};
+    return `<button class="whale" type="button" data-id="${esc(x.id)}">
+      <span class="co">${esc(x.company)}</span>
+      <span class="last">${lt ? (da===0?"today":da+"d ago") : "no touch"}<br>${esc(lt?.channel||"")}</span>
+      <span class="who">${esc(p.name||"Primary contact TBD")}${p.title?" · "+esc(p.title):""}</span>
+      <span class="meta"><span class="chip">${esc(x.segment||"")}</span>${chip}
+        ${tab==="hunt"?`<span class="dots" aria-label="${hit.size} of 10 weeks touched">${Array.from({length:WEEKS},(_,i)=>`<i class="${hit.has(i+1)?"hit":""}"></i>`).join("")}</span>`:""}
+      </span></button>`;
+  }).join("");
+}
+
+function field(label, val, kind){
+  if (!val) return `<dt>${label}</dt><dd class="na">not found yet</dd><span></span>`;
+  let shown = esc(val);
+  if (kind === "url") shown = `<a href="${esc(val.startsWith("http")?val:"https://"+val)}" target="_blank" rel="noopener">${esc(val.replace(/^https?:\/\/(www\.)?/,""))}</a>`;
+  const copy = (kind==="email"||kind==="phone") ? `<button class="btn small ghost" type="button" data-copy="${esc(val)}">Copy</button>` : "<span></span>";
+  return `<dt>${label}</dt><dd>${shown}</dd>${copy}`;
+}
+
+function renderDetail(){
+  const x = whales.find(w => w.id === openId);
+  if (!x) { closeDetail(); return; }
+  const p = x.primary || {};
+  const touches = (x.touches||[]).slice().sort((a,b)=>(b.date||"").localeCompare(a.date||""));
+  const nt = x.next_touch || {};
+  $("#detail").innerHTML = `
+    <button class="btn ghost back" type="button" id="backBtn">← All whales</button>
+    <div class="hero"><h2>${esc(x.company)}</h2><p>${esc(x.segment||"")} · ${esc(STATUS[x.status]||"Active")} · ${esc(TRACKS.find(t=>t.id===trackOf(x))?.label)}</p>
+      ${x.why_whale?`<p>${esc(x.why_whale)}</p>`:""}</div>
+
+    <section class="box"><h3>Next touch</h3>
+      ${nt.idea?`<div><strong>${esc(nt.channel||"")}</strong>${nt.week?` · week ${esc(nt.week)}`:""}</div><div>${esc(nt.idea)}</div>`:`<div class="note">Claude drafts this in the weekly whale hour.</div>`}
+    </section>
+
+    <section class="box"><h3>${esc(p.name||"Primary contact")}</h3>
+      <dl class="kv">
+        ${field("Title", p.title)}${field("Email", p.email, "email")}${field("Phone", p.phone, "phone")}
+        ${field("LinkedIn", p.linkedin, "url")}${field("Birthday", p.birthday)}${field("Where", p.location)}
+        ${(p.socials||[]).filter(s=>s&&s.url).map(s=>field(esc(s.label||"Social"), s.url, "url")).join("")}
+      </dl>
+      ${p.notes?`<div class="note">${esc(p.notes)}</div>`:""}
+      <div class="actions"><button class="btn small" type="button" id="editBtn">Edit details</button></div>
+    </section>
+
+    ${(x.others||[]).filter(o=>o&&o.name).length?`<section class="box"><h3>Other contacts</h3>${x.others.filter(o=>o&&o.name).map(o=>`
+      <div><strong>${esc(o.name)}</strong>${o.title?" · "+esc(o.title):""}
+      <div class="note">${[o.email,o.phone].filter(Boolean).map(esc).join(" · ")}${o.linkedin?` · <a href="${esc(o.linkedin.startsWith("http")?o.linkedin:"https://"+o.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>`:""}</div></div>`).join("")}</section>`:""}
+
+    <section class="box"><h3>Log a touch</h3>
+      <form id="touchForm">
+        <div class="row2">
+          <label>Date<input type="date" id="tDate" value="${iso(today())}" required></label>
+          <label>Channel<select id="tChan">${CHANNELS.map(c=>`<option>${c}</option>`).join("")}</select></label>
+        </div>
+        <label>What you did<textarea id="tWhat" placeholder="e.g. Commented on his post about the Boeing Classic" required></textarea></label>
+        <label>Their response (optional)<input id="tResp" placeholder="e.g. Replied, said call in November"></label>
+        <div class="actions"><button class="btn primary" type="submit">Save touch</button></div>
+      </form>
+    </section>
+
+    <section class="box"><h3>Touch log · ${touches.length}</h3>
+      <div class="log">${touches.length?touches.map((t,i)=>`<div class="entry"><div class="d">${esc(t.date)} · ${esc(t.channel||"")}${t.week?` · wk ${esc(t.week)}`:""}</div><div>${esc(t.summary||"")}</div>${t.response?`<div class="r">↳ ${esc(t.response)}</div>`:""}</div>`).join(""):`<div class="note">No touches logged yet.</div>`}</div>
+    </section>
+
+    <section class="box"><h3>Lunch angle</h3><div>${esc(x.lunch_angle||"—")}</div>
+      ${(x.gives||[]).filter(Boolean).length?`<h3>Gives</h3><ul class="plain">${x.gives.filter(Boolean).map(g=>`<li>${esc(g)}</li>`).join("")}</ul>`:""}
+      ${x.warm_paths?`<h3>Warm paths</h3><div>${esc(x.warm_paths)}</div>`:""}
+    </section>
+
+    <section class="box"><h3>Status</h3>
+      <div class="actions">
+        ${Object.entries(STATUS).map(([k,v])=>`<button class="btn small ${x.status===k?"primary":""}" type="button" data-status="${k}">${v}</button>`).join("")}
+      </div>
+      <div class="actions">
+        ${["hunt","maintain","bench"].filter(t=>t!==x.track).map(t=>`<button class="btn small ghost" type="button" data-track="${t}">Move to ${TRACKS.find(z=>z.id===t).label}</button>`).join("")}
+      </div>
+    </section>`;
+}
+
+function renderEdit(){
+  const x = whales.find(w => w.id === openId); if (!x) return;
+  const p = x.primary || {};
+  const soc = (p.socials||[]).map(s => `${s.label||""} | ${s.url||""}`).join("\n");
+  $("#detail").innerHTML = `
+    <button class="btn ghost back" type="button" id="cancelEdit">← Cancel</button>
+    <div class="hero"><h2>Edit ${esc(x.company)}</h2></div>
+    <section class="box"><form id="editForm">
+      <label>Company<input id="eCo" value="${esc(x.company)}" required></label>
+      <label>Segment<input id="eSeg" value="${esc(x.segment||"")}"></label>
+      <label>Name<input id="eName" value="${esc(p.name||"")}"></label>
+      <label>Title<input id="eTitle" value="${esc(p.title||"")}"></label>
+      <div class="row2"><label>Email<input id="eEmail" type="email" value="${esc(p.email||"")}"></label>
+      <label>Phone<input id="ePhone" type="tel" value="${esc(p.phone||"")}"></label></div>
+      <label>LinkedIn<input id="eLi" value="${esc(p.linkedin||"")}"></label>
+      <div class="row2"><label>Birthday<input id="eBday" value="${esc(p.birthday||"")}" placeholder="e.g. March 14"></label>
+      <label>Where<input id="eLoc" value="${esc(p.location||"")}"></label></div>
+      <label>Other social profiles (one per line: label | url)<textarea id="eSoc">${esc(soc)}</textarea></label>
+      <label>Notes (family names you've been told, interests, things to remember)<textarea id="eNotes">${esc(p.notes||"")}</textarea></label>
+      <label>Lunch angle<textarea id="eLunch">${esc(x.lunch_angle||"")}</textarea></label>
+      <div class="actions"><button class="btn primary" type="submit">Save details</button></div>
+    </form></section>`;
+}
+
+async function save(id, patch, msg){
+  if (!db) { toast("Can't save here — open the page in claude.ai"); return false; }
+  try { await db.doc("whales/" + id).update(patch); if (msg) toast(msg); return true; }
+  catch (e) {
+    if (e && e.code === "invalid_argument") { readOnly = true; toast("You can view these whales but not change them"); }
+    else toast("Didn't save — check your connection and try again");
+    return false;
+  }
+}
+
+function openDetail(id){ openId = id; $("#listView").hidden = true; $("#detail").hidden = false; renderDetail(); window.scrollTo(0,0); }
+function closeDetail(){ openId = null; $("#detail").hidden = true; $("#listView").hidden = false; renderList(); }
+
+document.addEventListener("click", async e => {
+  const t = e.target.closest("button"); if (!t) return;
+  if (t.dataset.tab) { tab = t.dataset.tab; renderList(); return; }
+  if (t.dataset.id) { openDetail(t.dataset.id); return; }
+  if (t.id === "backBtn") { closeDetail(); return; }
+  if (t.id === "editBtn") { renderEdit(); return; }
+  if (t.id === "cancelEdit") { renderDetail(); return; }
+  if (t.dataset.copy) {
+    try { await navigator.clipboard.writeText(t.dataset.copy); toast("Copied"); }
+    catch { toast(t.dataset.copy); }
+    return;
+  }
+  if (t.dataset.status) { await save(openId, {status:t.dataset.status}, "Status updated"); return; }
+  if (t.dataset.track) { await save(openId, {track:t.dataset.track, status:"active"}, "Moved"); return; }
+  if (t.id === "addBtn") {
+    if (!db) { toast("Can't add here — open the page in claude.ai"); return; }
+    const id = "w-" + Date.now().toString(36);
+    try {
+      await db.doc("whales/" + id).set({id, company:"New whale", track:tab==="closed"?"hunt":tab, status:"active", segment:"", primary:{}, touches:[], others:[], gives:[], created:iso(today())});
+      openId = id; $("#listView").hidden = true; $("#detail").hidden = false;
+      setTimeout(renderEdit, 50);
+    } catch { toast("Couldn't add a whale — try again"); }
+  }
+});
+
+document.addEventListener("submit", async e => {
+  e.preventDefault();
+  const x = whales.find(w => w.id === openId); if (!x) return;
+  if (e.target.id === "touchForm") {
+    const date = $("#tDate").value, d = parse(date);
+    const entry = {date, channel:$("#tChan").value, summary:$("#tWhat").value.trim(), response:$("#tResp").value.trim()};
+    if (d) { const k = weekOf(d); if (k>=1 && k<=WEEKS) entry.week = k; }
+    if (!entry.summary) return;
+    await save(openId, {touches:[...(x.touches||[]), entry]}, "Touch logged");
+  }
+  if (e.target.id === "editForm") {
+    const socials = $("#eSoc").value.split("\n").map(l => l.split("|").map(s=>s.trim())).filter(a => a[1] || a[0]).map(([label,url]) => ({label: url?label:"Link", url: url||label}));
+    const primary = {...(x.primary||{}), name:$("#eName").value.trim(), title:$("#eTitle").value.trim(), email:$("#eEmail").value.trim(), phone:$("#ePhone").value.trim(),
+      linkedin:$("#eLi").value.trim(), birthday:$("#eBday").value.trim(), location:$("#eLoc").value.trim(), socials, notes:$("#eNotes").value.trim()};
+    if (await save(openId, {company:$("#eCo").value.trim()||x.company, segment:$("#eSeg").value.trim(), lunch_angle:$("#eLunch").value.trim(), primary}, "Saved")) renderDetail();
+  }
+});
+
+renderList();
+(async () => {
+  db = window.claude ? await window.claude.use("db") : null;
+  if (!db) {
+    $("#list").innerHTML = `<div class="empty"><h2>Whales can't load here</h2>Open this page in claude.ai while signed in to see and update your whales.</div>`;
+    return;
+  }
+  db.collection("whales").onSnapshot(snap => {
+    whales = snap.docs.map(d => ({id:d.id, ...d.data()}));
+    if (openId) { if (!document.getElementById("editForm")) renderDetail(); } else renderList();
+  }, () => { $("#list").innerHTML = `<div class="empty"><h2>Lost the connection</h2>Reload the page to see your whales again.</div>`; });
+})();
+</script>

@@ -7,8 +7,8 @@
 - LOOKUP: Muhammad lookup needs weekly rebuild; Spencer to run scripts/run-service-day-refresh.ps1 -Install.
 - OR driver defaults: Alias 6:35-6:35p, Cory 6:35-4:35p, Luke 6:25, Robert 6:40, Tavis 6:15. Per-day rows freeze old hours.
 - Fri 12:00 PT: redesign/scripts/snapshot-week.mjs --part=all.
-- COLLECTIONS 09-15: open $18,163/89; 23 unworked $6,633 (data/2026-09-16_call-list.md), 3 chronic first. W.Plaza $1,700 COI/DBA.
-- LINKEDIN (STALE 09-15): Ryan Gordon (Arcis) site visit lapsed. READ INBOX FIRST. 12 invites pending. Golf >> HOA.
+- COLLECTIONS 10-20: 38 texted $4,820 w/ AUTOPAY invite (consent: data/autopay-consent-reply.md). 14 texted-unpaid + 6 commercial need calls; W.Plaza $1,700.
+- WHALE HUNT: starts 10-26, 10 wks. App artifact/AjQJM8aYF9YeixRFMcdLmA Wk1 touches + Kidder call await Spencer.
 - TMCP: 11 clients tagged Autopay w/ card on file but autopay OFF = $983/mo, one switch each (09-15 audit §3).
 - MO GRADING 10-17: avg 69.9 (Aug 76.2), 0/92 beats pre-price. callrail-faq/call-grading/2026-10-16_month.md
 - COFFEE (personal): projects/briefs/coffee-roasting/.
