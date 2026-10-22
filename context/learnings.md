@@ -700,6 +700,14 @@ Carried in from the 2026-07-06 research session that preceded the skill:
   job inside 24 months). They have already proved by their own behavior that the problem recurs,
   which is the entire TMCP argument. Reaching them costs an email, and it converts transaction
   revenue into recurring revenue — the mix effect at its strongest.
+- 2026-10-20: DigiHammer facts from Spencer: retainer $300/mo, ad spend billed separately, and
+  Spencer owns the Meta assets, so the pixel/audience loss risk (B1–B5) is gone. The remaining
+  exit risk sits in HighLevel: the unsubscribe record, sub-account ownership, the sending domain.
+  Phase 0 sat untouched from 08-26 to 10-20; `2026-10-20_digihammer-exit-plan.md` puts it first.
+  Social video does not depend on Sean and can start immediately.
+- 2026-10-20: The shared Chrome profile can have another session's LinkedIn tab active, and
+  `cdp.mjs goto` did not take it over. Open a new tab for a vendor sweep instead of driving a tab
+  another session is using.
 
 ## mkt-syp-trust-copy
 
