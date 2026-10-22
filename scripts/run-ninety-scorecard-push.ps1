@@ -29,5 +29,6 @@ New-Item -ItemType Directory -Force -Path $LogDir | Out-Null
 $log = Join-Path $LogDir ("ninety-scorecard-push-{0}.log" -f (Get-Date -Format 'yyyy-MM-dd_HHmm'))
 Set-Location $Root
 
-& node projects/briefs/got-moles-scale/scripts/ninety-weekly-push.mjs *>> $log
-if ($LASTEXITCODE -ne 0) { "PUSH FAILED (exit $LASTEXITCODE) - see above" >> $log; exit 1 }
+# Out-File utf8, not *>> — Windows PowerShell's redirect writes UTF-16, which grep reads as binary.
+& node projects/briefs/got-moles-scale/scripts/ninety-weekly-push.mjs *>&1 | Out-File -Append -Encoding utf8 $log
+if ($LASTEXITCODE -ne 0) { "PUSH FAILED (exit $LASTEXITCODE) - see above" | Out-File -Append -Encoding utf8 $log; exit 1 }
