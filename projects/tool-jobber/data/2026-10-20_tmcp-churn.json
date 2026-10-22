@@ -1,0 +1,404 @@
+{
+  "window": {
+    "start": "2026-08-19",
+    "end": "2026-10-20",
+    "days": 62
+  },
+  "startClients": 673,
+  "endClients": 776,
+  "departed": 16,
+  "newClients": 119,
+  "periodChurnPct": 2.38,
+  "monthlyChurnPct": 1.17,
+  "annualizedChurnPct": 13.2,
+  "startMrr": 76192.18,
+  "lostMrr": 1490,
+  "monthlyRevenueChurnPct": 0.96,
+  "departedTagHygiene": {
+    "taggedChurned": 14,
+    "stillTaggedActive": 1,
+    "untagged": 1
+  },
+  "intervals": [
+    {
+      "from": "2026-08-19",
+      "to": "2026-08-25",
+      "days": 6,
+      "startClients": 673,
+      "endClients": 687,
+      "lost": 1,
+      "gained": 15,
+      "lostMrr": 100
+    },
+    {
+      "from": "2026-08-25",
+      "to": "2026-09-09",
+      "days": 15,
+      "startClients": 687,
+      "endClients": 713,
+      "lost": 3,
+      "gained": 29,
+      "lostMrr": 285
+    },
+    {
+      "from": "2026-09-09",
+      "to": "2026-09-15",
+      "days": 6,
+      "startClients": 713,
+      "endClients": 724,
+      "lost": 0,
+      "gained": 11,
+      "lostMrr": 0
+    },
+    {
+      "from": "2026-09-15",
+      "to": "2026-09-25",
+      "days": 10,
+      "startClients": 724,
+      "endClients": 738,
+      "lost": 3,
+      "gained": 17,
+      "lostMrr": 300
+    },
+    {
+      "from": "2026-09-25",
+      "to": "2026-09-29",
+      "days": 4,
+      "startClients": 738,
+      "endClients": 746,
+      "lost": 0,
+      "gained": 8,
+      "lostMrr": 0
+    },
+    {
+      "from": "2026-09-29",
+      "to": "2026-09-30",
+      "days": 1,
+      "startClients": 746,
+      "endClients": 747,
+      "lost": 0,
+      "gained": 1,
+      "lostMrr": 0
+    },
+    {
+      "from": "2026-09-30",
+      "to": "2026-10-14",
+      "days": 14,
+      "startClients": 747,
+      "endClients": 766,
+      "lost": 7,
+      "gained": 26,
+      "lostMrr": 620
+    },
+    {
+      "from": "2026-10-14",
+      "to": "2026-10-17",
+      "days": 3,
+      "startClients": 766,
+      "endClients": 770,
+      "lost": 0,
+      "gained": 4,
+      "lostMrr": 0
+    },
+    {
+      "from": "2026-10-17",
+      "to": "2026-10-20",
+      "days": 3,
+      "startClients": 770,
+      "endClients": 776,
+      "lost": 3,
+      "gained": 9,
+      "lostMrr": 285
+    }
+  ],
+  "departedDetail": [
+    {
+      "client": "Sue Eastman",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC85NTMyMTk3OA==",
+      "jobs": [
+        7352
+      ],
+      "monthly": 100,
+      "jobState": [
+        "#7352 archived closed 2026-08-20"
+      ],
+      "clientArchived": false,
+      "taggedChurned": true,
+      "taggedActive": false,
+      "tags": [
+        "Schedule requested",
+        "TMCP Churned",
+        "Voice Assist - Call Answered",
+        "Voice Assist - Message Taken"
+      ]
+    },
+    {
+      "client": "Hector Soto-Garcia",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMjg5OTU0OTU=",
+      "jobs": [
+        7745
+      ],
+      "monthly": 100,
+      "jobState": [
+        "#7745 archived closed 2026-09-21"
+      ],
+      "clientArchived": false,
+      "taggedChurned": false,
+      "taggedActive": true,
+      "tags": [
+        "TMCP - Active"
+      ]
+    },
+    {
+      "client": "Rob Chadek",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC85MjM1Njk4Mw==",
+      "jobs": [
+        6380
+      ],
+      "monthly": 100,
+      "jobState": [
+        "#6380 archived closed 2026-09-24"
+      ],
+      "clientArchived": false,
+      "taggedChurned": true,
+      "taggedActive": false,
+      "tags": [
+        "TMCP Churned"
+      ]
+    },
+    {
+      "client": "John and Tessa Woodyard",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC80MDQ1NzAyMA==",
+      "jobs": [
+        6411
+      ],
+      "monthly": 100,
+      "jobState": [
+        "#6411 archived closed 2026-09-01"
+      ],
+      "clientArchived": false,
+      "taggedChurned": true,
+      "taggedActive": false,
+      "tags": [
+        "Autopay",
+        "LARGE PROPERTY",
+        "TMCP Churned",
+        "Voice Assist - Call Answered"
+      ]
+    },
+    {
+      "client": "Eileen Petralia",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMjc1OTc5NTQ=",
+      "jobs": [
+        7606
+      ],
+      "monthly": 100,
+      "jobState": [
+        "#7606 archived closed 2026-09-18"
+      ],
+      "clientArchived": false,
+      "taggedChurned": true,
+      "taggedActive": false,
+      "tags": [
+        "TMCP Churned"
+      ]
+    },
+    {
+      "client": "Anne Nguyen",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDE1MDI1MTQ=",
+      "jobs": [
+        8069
+      ],
+      "monthly": 100,
+      "jobState": [
+        "#8069 archived closed 2026-08-26"
+      ],
+      "clientArchived": true,
+      "taggedChurned": false,
+      "taggedActive": false,
+      "tags": [
+        "DO NOT SERVICE",
+        "noreview",
+        "Schedule requested",
+        "Voice Assist - Call Answered",
+        "Voice Assist - Message Taken"
+      ]
+    },
+    {
+      "client": "Eric Dworkis",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC83OTA1OTc1Mw==",
+      "jobs": [
+        7183
+      ],
+      "monthly": 100,
+      "jobState": [
+        "#7183 archived closed 2026-10-17"
+      ],
+      "clientArchived": false,
+      "taggedChurned": true,
+      "taggedActive": false,
+      "tags": [
+        "TMCP Churned"
+      ]
+    },
+    {
+      "client": "Deborah Canon",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC83MDc2NTc0NQ==",
+      "jobs": [
+        6396
+      ],
+      "monthly": 95,
+      "jobState": [
+        "#6396 archived closed 2026-10-01"
+      ],
+      "clientArchived": false,
+      "taggedChurned": true,
+      "taggedActive": false,
+      "tags": [
+        "TMCP Churned"
+      ]
+    },
+    {
+      "client": "Bryce Murphy",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC81MDY2ODU5NQ==",
+      "jobs": [
+        7303
+      ],
+      "monthly": 90,
+      "jobState": [
+        "#7303 archived closed 2026-09-30"
+      ],
+      "clientArchived": false,
+      "taggedChurned": true,
+      "taggedActive": false,
+      "tags": [
+        "TMCP Churned"
+      ]
+    },
+    {
+      "client": "Ashley Clark",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC80ODI1NDYxMw==",
+      "jobs": [
+        4905
+      ],
+      "monthly": 90,
+      "jobState": [
+        "#4905 archived closed 2026-10-01"
+      ],
+      "clientArchived": false,
+      "taggedChurned": true,
+      "taggedActive": false,
+      "tags": [
+        "TMCP Churned"
+      ]
+    },
+    {
+      "client": "Pam Griffin",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC84Njk1NjczMw==",
+      "jobs": [
+        6619
+      ],
+      "monthly": 90,
+      "jobState": [
+        "#6619 archived closed 2026-10-11"
+      ],
+      "clientArchived": false,
+      "taggedChurned": true,
+      "taggedActive": false,
+      "tags": [
+        "Schedule requested",
+        "TMCP Churned",
+        "Voice Assist - Call Answered",
+        "Voice Assist - Message Taken"
+      ]
+    },
+    {
+      "client": "Terry Williams",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC84MzI0MDYxMw==",
+      "jobs": [
+        5300
+      ],
+      "monthly": 85,
+      "jobState": [
+        "#5300 archived closed 2026-09-04"
+      ],
+      "clientArchived": false,
+      "taggedChurned": true,
+      "taggedActive": false,
+      "tags": [
+        "Autopay",
+        "TMCP Churned"
+      ]
+    },
+    {
+      "client": "Jon Foster",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC82NTM3MzU2MA==",
+      "jobs": [
+        4874
+      ],
+      "monthly": 85,
+      "jobState": [
+        "#4874 archived closed 2026-10-07"
+      ],
+      "clientArchived": false,
+      "taggedChurned": true,
+      "taggedActive": false,
+      "tags": [
+        "TMCP Churned"
+      ]
+    },
+    {
+      "client": "Anne Gallagher",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMzg4ODI2NTg=",
+      "jobs": [
+        7897
+      ],
+      "monthly": 85,
+      "jobState": [
+        "#7897 archived closed 2026-10-17"
+      ],
+      "clientArchived": false,
+      "taggedChurned": true,
+      "taggedActive": false,
+      "tags": [
+        "DO NOT SERVICE",
+        "noreview",
+        "TMCP Churned"
+      ]
+    },
+    {
+      "client": "David Rosser",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC83MzA0NzU3NA==",
+      "jobs": [
+        5982
+      ],
+      "monthly": 85,
+      "jobState": [
+        "#5982 archived closed 2026-10-11"
+      ],
+      "clientArchived": false,
+      "taggedChurned": true,
+      "taggedActive": false,
+      "tags": [
+        "TMCP Churned"
+      ]
+    },
+    {
+      "client": "Ryan Coffey",
+      "clientId": "Z2lkOi8vSm9iYmVyL0NsaWVudC82ODc5NTI4Mw==",
+      "jobs": [
+        5066
+      ],
+      "monthly": 85,
+      "jobState": [
+        "#5066 archived closed 2026-10-02"
+      ],
+      "clientArchived": false,
+      "taggedChurned": true,
+      "taggedActive": false,
+      "tags": [
+        "TMCP Churned"
+      ]
+    }
+  ]
+}
