@@ -18,6 +18,13 @@ is the entire value of doing this by hand twice a week rather than buying an aut
 Spencer has stated this requirement directly: every single thing unique to each person. It is
 the reason this skill exists in supervised form.
 
+**Revised 2026-10-20 (volume pivot, Spencer approved).** The above now governs **tier A only**
+(about 10%: multi-site buyers). **Tier B** (about 90%) gets a bare invite, then after acceptance
+a segment message that Spencer approved once, with one true local anchor dropped in: Jobber
+client density in their city, or a street near their site. The no-fabrication rule still holds.
+The anchor must be real, and the rest of the message must be true of the segment. Every first
+message ends with one concrete ask: a 15-minute call, or a grounds walk with a commercial quote.
+
 ---
 
 ## The three-part structure

@@ -83,7 +83,7 @@ Many cemetery sextons and school grounds leads aren't on LinkedIn. Their contact
 ## Decisions (Spencer, 2026-10-20)
 
 1. **Tiered personalization:** yes.
-2. **Volume:** 100 a week, the full cap. Sent across three sessions of about 33 each, not two of 50, to keep the pacing human. At the cap, the planned monthly figures double to roughly 400 invites, 120 accepts, about 14 replies and 4–6 bookings (ESTIMATE).
+2. **Volume:** 80 a week. Spencer first set it at 100, then lowered it to leave headroom under the ~100 cap. Two sessions of about 40 each. Monthly figures: about 320 invites, about 95 accepts, about 11 replies, 3–5 bookings (ESTIMATE).
 3. **Sales Navigator:** kept. Notes aren't rationed and the search budget is about 2,500 a month. Sales Nav's "Changed jobs" and "Posted on LinkedIn" filters pick the tier A prospects and the people worth commenting on first.
 4. **Email lane:** yes, about 10 a week. Each email includes the physical address and a way to opt out.
 
@@ -92,6 +92,7 @@ Many cemetery sextons and school grounds leads aren't on LinkedIn. Their contact
 Content supports the outreach. A prospect who gets an invite clicks Spencer's profile, and what they find there decides whether they accept. Recent field posts from a mole specialist do more than an empty profile with a good note.
 
 - **2 posts a week**, photo-led, in Spencer's voice. Rotate the posts through the segments being worked that week, so a prospect who gets an invite sees a recent post about a property like theirs.
+- **Photo source:** a Google Drive folder that Spencer is setting up (2026-10-20). Folder link: _pending_.
 - **Raw material:** real jobs. Commercial grounds, HOA common areas, a field with a mound hazard, a catch photo where it's appropriate, before and after. Phone photos beat designed graphics on LinkedIn.
 - **Post ideas by segment:**
   - Golf: "what a mound does to a green collar"

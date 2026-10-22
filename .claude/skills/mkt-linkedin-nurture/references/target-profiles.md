@@ -227,6 +227,72 @@ subcontract arrangement. Never anything that sounds like competing for the same 
 
 ---
 
+## Volume-pivot segments (added 2026-10-20)
+
+Built for the 80-a-week pivot (`projects/mkt-linkedin-nurture/2026-10-20_volume-plan.md`). Most of
+these are tier B: bare invite, then a segment message plus one local anchor after they accept.
+
+### 4a. School districts: the athletic director route
+
+Profile 4 targets grounds and M&O leads, who hold the budget. Athletic directors are a second
+door: they feel the problem (a field taken out of use, a rolled ankle, a parent complaint) but
+rarely sign the contract. **Message the AD with the field-safety angle and ask who handles grounds.
+Don't ask the AD to buy.** Rule 2026-09-15 applies here too: one approach per district, so pick
+grounds OR the AD, not both.
+
+**Search strings:** `grounds supervisor school district` · `director of maintenance and operations school district` · `athletic director high school <city>`
+
+### 8. Sports fields & turf managers
+
+**Who:** sports turf manager, field maintenance supervisor, athletic field coordinator,
+sports complex operations manager. They work at a city parks department, a college, a private
+sports complex, or a pro or semi-pro venue.
+
+**Why they buy:** mounds on a playing surface are an injury and liability problem, and fields
+are booked on a calendar that doesn't move. Natural grass fields are the target. Synthetic turf
+has no mole problem, so drop anyone whose complex is all synthetic.
+
+**Qualifying signals:** "sports turf" or "fields" in the title; STMA or CSFM (Certified Sports Field Manager); a named complex with natural grass.
+
+**Search strings:** `sports turf manager` · `sports complex operations manager` · `athletic fields supervisor parks`
+
+**Angle:** playability and injury risk, not pest control. Get the field clean before the season
+opens. Chemical-free around players and kids.
+
+### 9. Youth & amateur sports clubs (soccer, baseball, lacrosse)
+
+**Qualify hard.** Most clubs play on city or school fields and have no say over the turf. They
+only qualify if they **own or lease their own complex**. Otherwise their value is pointing us to
+whoever owns the field, and the message asks for exactly that.
+
+**Who:** executive director, director of operations, facilities or fields director.
+
+**Search strings:** `soccer club executive director` · `youth soccer director of operations` · `baseball club facilities`
+
+**Angle:** "your kids play on it." Safety and chemical-free come first. Then ask: "Is that field
+yours, or does the city or district handle it?"
+
+### 10. Cemeteries & funeral homes
+
+**Who:** cemetery superintendent, sexton, grounds manager, memorial park manager, and the GM of
+a funeral home **only where the home owns a cemetery** (combination operators, e.g. Dignity/SCI
+memorial parks, independent family-owned parks). A funeral director with no grounds is not a
+buyer. Include municipal cemeteries run by city parks (overlaps profile 5).
+
+**Why they buy:** mounds on graves draw some of the most emotional complaints any grounds team
+gets. Families notice, and the complaint lands on the manager. A trap or chemical method visible
+on a grave is unacceptable. That makes chemical-free and discreet service the whole sale.
+
+**Search strings:** `cemetery superintendent` · `sexton` · `memorial park manager` · `funeral home cemetery general manager`
+
+**Watch for:** thin on LinkedIn. Many sextons have no profile. This segment is the main target
+of the email lane (about 10 a week, contacts from public cemetery and city websites).
+
+**Angle:** families and dignity, in plain words. Discreet, scheduled, chemical-free, never
+during services. No mechanism language at all; Posture-A applies here more than anywhere else.
+
+---
+
 ## Warm-route hubs
 
 The July pull surfaced four of Spencer's own first-degree connections who appeared as the mutual
