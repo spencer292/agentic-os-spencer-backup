@@ -153,7 +153,7 @@ async function pullAll() {
        nodes{ createdAt isLead }
        pageInfo{ hasNextPage endCursor } } }`, { after }), 'clients (in window)');
 
-  const JOB_FIELDS = 'jobNumber title createdAt startAt endAt completedAt jobStatus jobType lineItems(first:15){ nodes{ name totalPrice } }';
+  const JOB_FIELDS = 'jobNumber title createdAt startAt endAt completedAt jobStatus jobType total invoiceSchedule{ billingFrequency scheduleSummary } lineItems(first:15){ nodes{ name totalPrice } }';
   const jobsRecurring = await sweep('jobs', (after) => gql(
     `query($after:String){ jobs(first:50, after:$after, filter:{ jobType: RECURRING, endAt:{ after:"${rangeStartISO}" } }){
        nodes{ ${JOB_FIELDS} }
@@ -199,7 +199,10 @@ const crAcct = (await crApi('a.json', {})).accounts[0].id;
 
 const cacheFile = path.join(briefDir, 'data', `_pull-cache_${from}_${lastWeekStart}.json`);
 let raw;
-if (USE_CACHE && existsSync(cacheFile)) {
+// A cache written before the 2026-10-26 MRR fix has no invoiceSchedule and would score every job $0.
+const cacheUsable = () => { try { return 'invoiceSchedule' in (JSON.parse(readFileSync(cacheFile, 'utf8')).jobsRecurring[0] || {}); } catch { return false; } };
+if (USE_CACHE && existsSync(cacheFile) && !cacheUsable()) console.log('Cache predates the MRR fix (no invoiceSchedule) — pulling fresh.');
+if (USE_CACHE && existsSync(cacheFile) && cacheUsable()) {
   raw = JSON.parse(readFileSync(cacheFile, 'utf8'));
   console.log(`Using cached pull: ${path.relative(root, cacheFile)}`);
 } else {
@@ -253,10 +256,28 @@ const QF_RE = /quick fix/i;
 const hasLine = (obj, re) => (obj.lineItems?.nodes || []).some((li) => re.test(li.name || '')) || re.test(obj.title || '');
 
 const tmcRecurring = jobsRecurring.filter((j) => hasLine(j, TMC_RE) && j.startAt && j.endAt && (new Date(j.endAt) - new Date(j.startAt)) > 45 * 86400000);
-// monthly $ for a TMC job: max line price that looks like a monthly rate (25..400)
+// monthly $ for a TMC job: the job's billed amount normalised by its invoice schedule — the same
+// rule as projects/tool-jobber/scripts/tmcp-billing-audit.mjs, so Ninety and the audit agree.
+// Replaced 2026-10-26 the old "max line price in $25..400" guess, which scored every commercial,
+// quarterly and annual account (Madera West $3,825/qtr, Clayton Scott Field, Mosier Park…) as $0
+// and understated MRR by ~$8K. All weeks were restated with it. Uses CURRENT prices for every week:
+// Jobber keeps no price history, so past weeks read at today's rates (true of the old rule too).
+const cadenceOf = (j) => {
+  const f = j.invoiceSchedule?.billingFrequency, s = (j.invoiceSchedule?.scheduleSummary || '').toLowerCase();
+  if (f !== 'PERIODIC') return f;
+  if (s.includes('year')) return 'PERIODIC_YEARLY';
+  if (s.includes('90 days') || s.includes('3 month') || s.includes('quarter')) return 'PERIODIC_QUARTERLY';
+  if (s.includes('month')) return 'PERIODIC_MONTHLY';
+  return 'PERIODIC_OTHER';
+};
 const monthlyOf = (j) => {
-  const prices = (j.lineItems?.nodes || []).map((li) => li.totalPrice).filter((p) => p >= 25 && p <= 400);
-  return prices.length ? Math.max(...prices) : 0;
+  const t = j.total || 0;
+  switch (cadenceOf(j)) {
+    case 'PERIODIC_MONTHLY': return t;
+    case 'PERIODIC_YEARLY': return t / 12;
+    case 'PERIODIC_QUARTERLY': return t / 3;
+    default: return 0;
+  }
 };
 const cancelStatuses = new Set(['archived']);
 // Archived TMCP jobs used to ride the scorecard forever. The old guard only dropped an archived

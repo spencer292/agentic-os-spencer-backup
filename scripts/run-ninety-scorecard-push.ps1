@@ -19,10 +19,20 @@ $Root = Split-Path -Parent $PSScriptRoot
 $LogDir = Join-Path $Root 'cron\logs'
 
 if ($Install) {
+  # Register-ScheduledTask, not schtasks: schtasks can't clear the default "No Start On Batteries",
+  # which refused the 2026-10-26 run (0x800710E0) on a laptop. StartWhenAvailable catches up a run
+  # missed while the machine was asleep.
   $self = Join-Path $PSScriptRoot 'run-ninety-scorecard-push.ps1'
-  schtasks /Create /TN "GotMoles Ninety Scorecard Push" /SC WEEKLY /D MON /ST 05:30 /F `
-    /TR "powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$self`""
-  exit $LASTEXITCODE
+  $action = New-ScheduledTaskAction -Execute 'powershell.exe' `
+    -Argument "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$self`""
+  $trigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Monday -At 05:30
+  # Drop the UTC offset New-ScheduledTaskTrigger bakes in, or the run slides an hour at DST changes.
+  $trigger.StartBoundary = (Get-Date '05:30').ToString('s')
+  $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries `
+    -StartWhenAvailable -ExecutionTimeLimit (New-TimeSpan -Hours 1)
+  Register-ScheduledTask -TaskName "GotMoles Ninety Scorecard Push" -Action $action -Trigger $trigger `
+    -Settings $settings -Force | Out-Null
+  exit 0
 }
 
 New-Item -ItemType Directory -Force -Path $LogDir | Out-Null
