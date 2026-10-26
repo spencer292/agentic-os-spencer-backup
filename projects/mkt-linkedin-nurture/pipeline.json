@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-20",
-  "sessions_run": 5,
+  "updated": "2026-10-22",
+  "sessions_run": 6,
   "account": {
     "tier": "UNCONFIRMED - Sales Nav Core trial was due to end 2026-09-21; Sales Nav link still in the nav bar 10-14. Ask Spencer whether he kept it.",
     "invites_pending_at_session_1": 0,
@@ -65,6 +65,16 @@
       "tier": "Sales Navigator kept (Spencer confirmed 10-20)",
       "pending_after": 65,
       "parks_invites": 16
+    },
+    "session_6": {
+      "date": "2026-10-22",
+      "pending_at_start": 58,
+      "warnings": "none",
+      "invites_sent": 11,
+      "notes": 3,
+      "messages_sent": 7,
+      "searches": 9,
+      "week_total_invites": 65
     }
   },
   "hubs": [
@@ -1152,7 +1162,7 @@
       "profile": "schools-campuses-athletic-fields",
       "tier": "A",
       "degree": "",
-      "stage": "invited_pending",
+      "stage": "accepted",
       "touches": [
         {
           "date": "2026-10-20",
@@ -1161,12 +1171,13 @@
           "response": null
         }
       ],
-      "next_action": "on accept: personal first message (tier A)",
+      "next_action": "WHALE: next touch via mkt-whale-hunt, not this skill",
       "next_action_due": null,
       "notes": "Session 5 volume pivot.",
       "whale": true,
       "whale_track": "hunt",
-      "whale_note": "Whale Hunt (hunt) since 2026-10-21 - skip in volume batches; touches run through mkt-whale-hunt and the Whale Hunt app."
+      "whale_note": "Whale Hunt (hunt) since 2026-10-21 - skip in volume batches; touches run through mkt-whale-hunt and the Whale Hunt app.",
+      "accepted": "2026-10-22"
     },
     {
       "id": "david-coutts-850a229b",
@@ -1224,18 +1235,25 @@
       "profile": "landscaping-lawn-care (REFERRAL PARTNER, never pitch as a buyer)",
       "tier": "B",
       "degree": "",
-      "stage": "invited_pending",
+      "stage": "messaged_awaiting_reply",
       "touches": [
         {
           "date": "2026-10-20",
           "type": "connection_request_bare",
           "text": null,
           "response": null
+        },
+        {
+          "date": "2026-10-22",
+          "type": "first_message",
+          "text": "Hey Eddie! Thanks for connecting. I run Got Moles, we do moles and nothing else. Your crews are on these properties every week, so you're the first ones the client asks about mounds. We don't do lawn, landscape or maintenance work, so your accounts stay yours. We've worked more than 200 properties in Renton, so we're right there with you. Send the mole problems our way and your turf keeps looking good. Up for a quick call to see if it's a fit?",
+          "response": null
         }
       ],
-      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor",
+      "next_action": "touch 2 due 2026-10-27 if no reply",
       "next_action_due": null,
-      "notes": "Session 5 volume pivot."
+      "notes": "Session 5 volume pivot.",
+      "accepted": "2026-10-20"
     },
     {
       "id": "michaelbenzien",
@@ -1316,18 +1334,29 @@
       "profile": "cemeteries-funeral (10)",
       "tier": "A",
       "degree": "",
-      "stage": "invited_pending",
+      "stage": "replied",
       "touches": [
         {
           "date": "2026-10-20",
           "type": "connection_note",
           "text": "Hey Aaron! Read the piece on the bees at Washelli, very cool. I run Got Moles, moles are the only thing we do, and all of it is chemical-free, so it sits fine next to a program like that. Would be glad to be connected in case moles ever show up on the grounds.",
           "response": null
+        },
+        {
+          "date": "2026-10-20",
+          "type": "reply",
+          "text": "Not many moles; big problem with schafer beetle larvae. Referred sister cemetery AbbeyView Memorial Park (Brier): Chris Mirenda or Jake Messer, struggled with moles for years."
+        },
+        {
+          "date": "2026-10-22",
+          "type": "reply_by_spencer",
+          "text": "Moles only, no beetle solution; will reach out to Chris and Jake."
         }
       ],
-      "next_action": "on accept: personal first message (tier A)",
+      "next_action": "Referral hub. Thank him again once AbbeyView converts. No further pitch.",
       "next_action_due": null,
-      "notes": "Session 5 volume pivot."
+      "notes": "Session 5 volume pivot.",
+      "accepted": "2026-10-20"
     },
     {
       "id": "tim-buiten-05849118",
@@ -1339,18 +1368,25 @@
       "profile": "landscaping-lawn-care (REFERRAL PARTNER, never pitch as a buyer)",
       "tier": "B",
       "degree": "",
-      "stage": "invited_pending",
+      "stage": "messaged_awaiting_reply",
       "touches": [
         {
           "date": "2026-10-20",
           "type": "connection_request_bare",
           "text": null,
           "response": null
+        },
+        {
+          "date": "2026-10-22",
+          "type": "first_message",
+          "text": "Hey Tim! Thanks for connecting. I run Got Moles, we do moles and nothing else. Your crews are on these properties every week, so you're the first ones the client asks about mounds. We don't do lawn, landscape or maintenance work, so your accounts stay yours. We've worked more than 150 properties in Kent, so we're close by. Send the mole problems our way and your turf keeps looking good. Up for a quick call to see if it's a fit?",
+          "response": null
         }
       ],
-      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor",
+      "next_action": "touch 2 due 2026-10-27 if no reply",
       "next_action_due": null,
-      "notes": "Session 5 volume pivot."
+      "notes": "Session 5 volume pivot.",
+      "accepted": "2026-10-20"
     },
     {
       "id": "andrew-westmark-1b660a29",
@@ -1454,18 +1490,25 @@
       "profile": "cemeteries-funeral (10)",
       "tier": "A",
       "degree": "",
-      "stage": "invited_pending",
+      "stage": "messaged_awaiting_reply",
       "touches": [
         {
           "date": "2026-10-20",
           "type": "connection_note",
           "text": "Hey Russell! Neighbor here, I run Got Moles out of Buckley and Enumclaw is where we got started. Moles are the only thing we do, all chemical-free. Do you look after any cemetery grounds along with the funeral homes? Either way, glad to be connected.",
           "response": null
+        },
+        {
+          "date": "2026-10-22",
+          "type": "first_message",
+          "text": "Thanks for connecting, Russell! Following up on my question: do any of the Weeks' locations come with cemetery grounds, or is that handled by the cemeteries you work with? Cemeteries are where moles cause the most grief, since a mound near a grave is the first thing families notice. If you've got grounds with activity, we can walk them with you and put a quote together.",
+          "response": null
         }
       ],
-      "next_action": "on accept: personal first message (tier A)",
+      "next_action": "touch 2 due 2026-10-26 if no reply",
       "next_action_due": null,
-      "notes": "Session 5 volume pivot."
+      "notes": "Session 5 volume pivot.",
+      "accepted": "2026-10-20"
     },
     {
       "id": "jordan-sauvage-8a9a6366",
@@ -2040,16 +2083,22 @@
       "location": "Puyallup",
       "profile": "schools-campuses-athletic-fields",
       "tier": "A",
-      "stage": "engaged_pre_invite",
+      "stage": "invited_pending",
       "touches": [
         {
           "date": "2026-10-20",
           "type": "engagement",
           "text": "Congrats on Ballou! Five more to go is a big run for one levy. Good to see it turn into something the kids use every day.",
           "response": null
+        },
+        {
+          "date": "2026-10-22",
+          "type": "connection_request_note",
+          "text": "Hey Brady! Saw the Ballou track post, nice work. I run Got Moles, moles are all we do, and Puyallup is our biggest area at 170+ properties. Would be good to be connected in case moles show up on any of your grass fields.",
+          "response": null
         }
       ],
-      "next_action": "send noted invite (approved 10-20): Hey Brady! Saw the Ballou track post, nice work. I run Got Moles, moles are all we do, and Puyallup is our biggest area at 170+ properties. Would be good to be connected in case moles show up on any of your grass fields.",
+      "next_action": "on accept: personal first message (tier A)",
       "next_action_due": "2026-10-22",
       "notes": "Comment-first per skill rule."
     },
@@ -2069,7 +2118,7 @@
           "response": null
         }
       ],
-      "next_action": "on accept: parks message (2026-10-20_parks-list.md), proof = Burien/Moshier + King County/Marymoor",
+      "next_action": "HOLD: Nick Lagunas is the Tukwila approach (10-22). If Matthew accepts, do not message.",
       "notes": "Session 5 parks batch."
     },
     {
@@ -2180,17 +2229,24 @@
       "company": "City of Sammamish Parks",
       "profile": "municipal-parks (PRIMARY 2026-10-20)",
       "tier": "B",
-      "stage": "invited_pending",
+      "stage": "messaged_awaiting_reply",
       "touches": [
         {
           "date": "2026-10-20",
           "type": "connection_request_bare",
           "text": null,
           "response": null
+        },
+        {
+          "date": "2026-10-22",
+          "type": "first_message",
+          "text": "Hey Anjali! Thanks for connecting. I run Got Moles, moles are the only thing we do. We already handle mole control for the City of Burien at Moshier and King County at Marymoor, so we know how public grounds work, from scheduling around field use to the paperwork. We've also worked more than 100 properties in Sammamish, so we're in town every week. It's all chemical-free, safe around kids, pets and players. If moles are showing up on any of your parks or fields, we can walk a site with you and put a quote together. Worth a quick call?",
+          "response": null
         }
       ],
-      "next_action": "on accept: parks message (2026-10-20_parks-list.md), proof = Burien/Moshier + King County/Marymoor",
-      "notes": "Session 5 parks batch."
+      "next_action": "touch 2 due 2026-10-27 if no reply",
+      "notes": "Session 5 parks batch.",
+      "accepted": "2026-10-21"
     },
     {
       "id": "carson-jones-ab533312",
@@ -2218,17 +2274,24 @@
       "company": "City of Olympia Parks (prior Yauger Park bid - ask Spencer before warm framing)",
       "profile": "municipal-parks (PRIMARY 2026-10-20)",
       "tier": "B",
-      "stage": "invited_pending",
+      "stage": "messaged_awaiting_reply",
       "touches": [
         {
           "date": "2026-10-20",
           "type": "connection_request_bare",
           "text": null,
           "response": null
+        },
+        {
+          "date": "2026-10-22",
+          "type": "first_message",
+          "text": "Hey Sylvana! Thanks for connecting. I run Got Moles, moles are the only thing we do. We already handle mole control for the City of Burien at Moshier and King County at Marymoor, so we know how public grounds work, from scheduling around field use to the paperwork. We've also worked more than 80 properties in Olympia, so we're down there every week. It's all chemical-free, safe around kids, pets and players. If moles are showing up on any of your parks or fields, we can walk a site with you and put a quote together. Worth a quick call?",
+          "response": null
         }
       ],
-      "next_action": "on accept: parks message (2026-10-20_parks-list.md), proof = Burien/Moshier + King County/Marymoor",
-      "notes": "Session 5 parks batch."
+      "next_action": "touch 2 due 2026-10-27 if no reply",
+      "notes": "Session 5 parks batch. Olympia/Yauger: Spencer sent a bid, never approved (10-22). Treated as cold.",
+      "accepted": "2026-10-20"
     },
     {
       "id": "stan-osborn-46b6791a8",
@@ -2354,17 +2417,256 @@
       "company": "City of Buckley Parks & Rec",
       "profile": "municipal-parks (PRIMARY 2026-10-20)",
       "tier": "A",
-      "stage": "invited_pending",
+      "stage": "messaged_awaiting_reply",
       "touches": [
         {
           "date": "2026-10-20",
           "type": "connection_note",
           "text": "Hey Erin! Spencer here, I live in Buckley and run Got Moles. Moles are the only thing we do, all chemical-free. If moles ever show up in our parks or ball fields, I'd be glad to help out. Good to connect with a neighbor either way!",
           "response": null
+        },
+        {
+          "date": "2026-10-22",
+          "type": "first_message",
+          "text": "Thanks for connecting, Erin! On the parks side, we already do the mole work for the City of Burien at Moshier and King County at Marymoor, so ball fields and public grounds are familiar ground for us. Are moles showing up at any of Buckley's parks or fields right now? If so, we can walk it with you and put a quote together.",
+          "response": null
         }
       ],
-      "next_action": "on accept: parks message (2026-10-20_parks-list.md), proof = Burien/Moshier + King County/Marymoor",
-      "notes": "Session 5 parks batch."
+      "next_action": "touch 2 due 2026-10-26 if no reply",
+      "notes": "Session 5 parks batch.",
+      "accepted": "2026-10-20"
+    },
+    {
+      "id": "nickolas-lagunas",
+      "name": "Nick Lagunas",
+      "linkedin": "/in/nickolas-lagunas/",
+      "company": "City of Tukwila (Facilities Superintendent)",
+      "profile": "municipal-parks (PRIMARY 2026-10-20)",
+      "tier": "B",
+      "touches": [
+        {
+          "date": "2026-10-22",
+          "type": "first_message",
+          "text": "Hey Nick! Thanks for connecting. I run Got Moles, moles are the only thing we do. We already handle mole control for the City of Burien at Moshier and King County at Marymoor, and we're in Burien and Renton every week, so Tukwila's right on the way. All chemical-free, safe around kids, pets and players. If moles are showing up at any of the city's parks or facility grounds, we can walk a site with you and put a quote together. Worth a quick call?",
+          "response": null
+        }
+      ],
+      "notes": "Connected 10-22, not sourced by us (likely inbound). Chosen over Matthew Austin for Tukwila (Spencer 10-22): do NOT message Matthew if he accepts.",
+      "stage": "messaged_awaiting_reply",
+      "accepted": "2026-10-22",
+      "next_action": "touch 2 due 2026-10-27 if no reply"
+    },
+    {
+      "id": "abbeyview-memorial-park",
+      "name": "Chris Mirenda / Jake Messer",
+      "company": "AbbeyView Memorial Park, 3601 Alaska Rd, Brier (Washelli sister park, ~82 ac)",
+      "profile": "cemeteries-funeral (10)",
+      "tier": "A",
+      "stage": "referral_offline",
+      "touches": [],
+      "source": "Aaron Sholes referral 2026-10-20",
+      "next_action": "Spencer calls the office and asks for Chris or Jake, naming Aaron (script in 2026-10-22_session-6-batch.md). Neither is on LinkedIn. Backup: ask Aaron for an email.",
+      "notes": "Territory 1 (Alias); thin density there (Bothell 15, Lynnwood 4)."
+    },
+    {
+      "id": "corey-gaffney",
+      "name": "Corey Gaffney",
+      "linkedin": "/in/corey-gaffney/",
+      "company": "Gaffney Group LLC (Woodlawn Abbey, Oakwood Hill, Powers, Sumner Voiles)",
+      "profile": "cemeteries-funeral (10)",
+      "tier": "A",
+      "location": "Tacoma",
+      "touches": [
+        {
+          "date": "2026-10-22",
+          "type": "connection_request_note",
+          "text": "Hey Corey! I run Got Moles out of Buckley, moles are the only thing we do, all chemical-free and scheduled around services. We work a lot of ground around Tacoma and Sumner, close to your locations. Would be good to be connected in case moles ever show up on the grounds.",
+          "response": null
+        }
+      ],
+      "notes": "Session 6.",
+      "stage": "invited_pending",
+      "next_action": "on accept: personal first message (tier A)"
+    },
+    {
+      "id": "jacqueline-socha-20328a27",
+      "name": "Jacqueline Socha",
+      "linkedin": "/in/jacqueline-socha-20328a27/",
+      "company": "JLL (Google Kirkland campus)",
+      "profile": "commercial-campus",
+      "tier": "A",
+      "location": "Kirkland",
+      "touches": [
+        {
+          "date": "2026-10-22",
+          "type": "connection_request_note",
+          "text": "Hey Jacqueline! I run Got Moles, moles are the only thing we do, all chemical-free. Big campuses with a lot of lawn are where they cause the most trouble, and we work the Eastside every week. Would be good to be connected in case they ever show up on the grounds.",
+          "response": null
+        }
+      ],
+      "notes": "Session 6.",
+      "stage": "invited_pending",
+      "next_action": "on accept: personal first message (tier A)"
+    },
+    {
+      "id": "thomas-sullivan-15214698",
+      "name": "Thomas Sullivan",
+      "linkedin": "/in/thomas-sullivan-15214698/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-22",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 6.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "dan-materi-8b25aba",
+      "name": "Dan Materi",
+      "linkedin": "/in/dan-materi-8b25aba/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-22",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 6.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "jacob-cornwall-b49bb889",
+      "name": "Jacob Cornwall",
+      "linkedin": "/in/jacob-cornwall-b49bb889/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-22",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 6.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "corey-sorenson-49a8b5102",
+      "name": "Corey Sorenson",
+      "linkedin": "/in/corey-sorenson-49a8b5102/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-22",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 6.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "kenneth-loetscher-9a3b9b37",
+      "name": "Kenneth Loetscher",
+      "linkedin": "/in/kenneth-loetscher-9a3b9b37/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-22",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 6.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "jeff-lind-17a95829",
+      "name": "Jeff Lind",
+      "linkedin": "/in/jeff-lind-17a95829/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-22",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 6.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "harrison-shrader-1a2827101",
+      "name": "Harrison Shrader",
+      "linkedin": "/in/harrison-shrader-1a2827101/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-22",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 6.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "sally-eastey-a9293214",
+      "name": "Sally Eastey",
+      "linkedin": "/in/sally-eastey-a9293214/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-22",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 6.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
     }
   ],
   "held": [
@@ -2387,54 +2689,16 @@
       "revisit": "VIS Group is a reactivation target through the existing Jobber record, not a cold LinkedIn approach"
     },
     {
-      "name": "Thomas Sullivan (Shoreline SD M&O)",
-      "reason": "session 5 reserve for Thursday batch",
-      "date": "2026-10-20"
-    },
-    {
-      "name": "Jacob Cornwall (North Thurston PS grounds)",
-      "reason": "session 5 reserve for Thursday batch",
-      "date": "2026-10-20"
-    },
-    {
-      "name": "Dan Materi (Riverview SD M&O)",
-      "reason": "session 5 reserve for Thursday batch",
-      "date": "2026-10-20"
-    },
-    {
-      "name": "Corey Sorenson (West Seattle HS AD)",
-      "reason": "session 5 reserve for Thursday batch",
-      "date": "2026-10-20"
-    },
-    {
-      "name": "Jeff Lind (Natural Concept Landscape)",
-      "reason": "session 5 reserve for Thursday batch",
-      "date": "2026-10-20"
-    },
-    {
-      "name": "Kenneth Loetscher (Country Club Landscape)",
-      "reason": "session 5 reserve for Thursday batch",
-      "date": "2026-10-20"
-    },
-    {
-      "name": "Harrison Shrader (CPM, Maple Valley)",
-      "reason": "session 5 reserve for Thursday batch",
-      "date": "2026-10-20"
-    },
-    {
-      "name": "Sally Eastey (Sr PM, Bellevue)",
-      "reason": "session 5 reserve for Thursday batch",
-      "date": "2026-10-20"
-    },
-    {
       "name": "Nichole Street (CAM - check firm vs Trestle)",
-      "reason": "session 5 reserve for Thursday batch",
-      "date": "2026-10-20"
+      "reason": "Associa-EMB = whale firm. Do not approach.",
+      "date": "2026-10-22"
     },
     {
-      "name": "Jacqueline Socha (JLL / Google Kirkland - profile failed to load)",
-      "reason": "session 5 reserve for Thursday batch",
-      "date": "2026-10-20"
+      "name": "Albert Ocoma",
+      "linkedin": "/in/albert-ocoma-21169ba5/",
+      "company": "Associated Catholic Cemeteries (GM Gethsemane / St Patrick)",
+      "reason": "Open to Work 2026-10-22. Source another contact at Associated Catholic Cemeteries.",
+      "date": "2026-10-22"
     }
   ],
   "excluded": [
