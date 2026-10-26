@@ -803,3 +803,4 @@ Carried in from the 2026-07-06 research session that preceded the skill:
 
 ## meta-wrap-up
 - 2026-09-15: Wrapped ten days late (session ran 09-15, wrap-up on 09-25) and another session had already run the 09-25 audit, which compares against this one. Checked disk before reporting rather than presenting the 09-15 numbers as current. With 500+ dirty files from intervening sessions, staged explicit paths only.
+- 2026-10-26: Routine session, no feedback. Machine config only: VS Code dictation fix (Wispr Flow -> Claude Code in the integrated terminal) applied to %APPDATA%\Code\User — `terminal.integrated.enableKittyKeyboardProtocol: false` + Shift+Insert -> `workbench.action.terminal.paste` keybinding (claude-code issue #93782, VS Code 1.140, Claude Code 2.1.310). Spencer confirmed dictation works. If it breaks after a VS Code/Claude update, check those two entries first.
