@@ -1,11 +1,11 @@
 {
   "_comment": "STEP 1 of route-engine spec v2 Part 7 — contain write authority. This file is the single global kill switch for every script that can write to Jobber or OptimoRoute. It is enforced at the HTTP transport by lib/write-gate.mjs, not at the call-site, so a script cannot bypass it by adding a new mutation. Default is OFF and enabling is time-boxed: an enable that is never explicitly revoked expires on its own, so writes can never be left switched on by accident. Flip it with scripts/write-authority.mjs, never by hand-editing.",
-  "writesEnabled": true,
-  "enabledUntil": "2026-10-26T14:59:51.984Z",
-  "enabledBy": "spenc@Got-Moles",
-  "reason": "Spencer 10-26: push + time Tue-Fri 10-27..10-30",
+  "writesEnabled": false,
+  "enabledUntil": null,
+  "enabledBy": null,
+  "reason": "Revoked.",
   "ceilingPerRun": 700,
-  "updatedAt": "2026-10-26T14:19:51.987Z",
+  "updatedAt": "2026-10-26T14:28:37.754Z",
   "standingGrants": [
     {
       "script": "arrival-window-sweep.mjs",
