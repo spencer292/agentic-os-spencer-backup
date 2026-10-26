@@ -47,6 +47,13 @@ const END = localMidnightUTC(M === 12 ? Y + 1 : Y, M === 12 ? 1 : M + 1, 1);
 process.stderr.write(`${MONTH} in ${TZ}: ${START} -> ${END}
 `);
 
+// A sale is dated by its QUOTE APPROVAL (Spencer, 2026-10-22), not by when the quote was
+// drafted or the job created. Jobber cannot filter jobs or quotes by approval date, and a
+// quote approved late in the month can be converted to a job days later, so the jobs sweep
+// runs past month end and calc-commission.mjs keeps only sales approved inside the month.
+const SOLD_GRACE_DAYS = 45;
+const SOLD_END = new Date(Math.min(Date.parse(END) + SOLD_GRACE_DAYS * 86400000, Date.now())).toISOString();
+
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // Jobber enforces a leaky-bucket query-COST budget on top of request count, so a
@@ -91,7 +98,7 @@ const INVOICE_PAGE = (after) => `{
           salesperson { id name { full } }
           lineItems(first: 5) { nodes { name } }
           quote {
-            id quoteNumber quoteStatus createdAt
+            id quoteNumber quoteStatus createdAt lastTransitioned { approvedAt }
             salesperson { id name { full } }
           }
         }
@@ -117,10 +124,11 @@ const QUOTE_PAGE = (after) => `{
 }`;
 
 
-// Jobs CREATED in the month — the "sold this month" number the bonus tiers key off.
-// An invoice sweep alone misses a job sold in the month that has not billed yet.
+// Jobs created from month start to SOLD_END — the candidates for "sold this month". The bonus
+// keys off the quote approval date (job createdAt when there is no quote), filtered in
+// calc-commission.mjs. An invoice sweep alone misses a job sold in the month that has not billed yet.
 const JOB_PAGE = (after) => `{
-  jobs(first: 20${after ? `, after: "${after}"` : ''}, filter: {createdAt: {after: "${START}", before: "${END}"}}) {
+  jobs(first: 20${after ? `, after: "${after}"` : ''}, filter: {createdAt: {after: "${START}", before: "${SOLD_END}"}}) {
     totalCount
     pageInfo { hasNextPage endCursor }
     nodes {
@@ -128,7 +136,7 @@ const JOB_PAGE = (after) => `{
       salesperson { id name { full } }
       client { id name }
       lineItems(first: 5) { nodes { name } }
-      quote { id quoteNumber salesperson { id name { full } } }
+      quote { id quoteNumber createdAt lastTransitioned { approvedAt } salesperson { id name { full } } }
     }
   }
 }`;
@@ -194,5 +202,5 @@ if (JOBS_ONLY) {
   quotes = await pageAll('quotes', 'quotes', QUOTE_PAGE);
 }
 const jobsSold = await pageAll('jobs created', 'jobs', JOB_PAGE);
-fs.writeFileSync(file, JSON.stringify({ month: MONTH, pulledAt: new Date().toISOString(), invoices, quotes, jobsSold }, null, 2));
+fs.writeFileSync(file, JSON.stringify({ month: MONTH, start: START, end: END, pulledAt: new Date().toISOString(), invoices, quotes, jobsSold }, null, 2));
 console.log(`\nSaved ${invoices.nodes.length} invoices + ${quotes.nodes.length} quotes + ${jobsSold.nodes.length} jobs created -> ${file}`);

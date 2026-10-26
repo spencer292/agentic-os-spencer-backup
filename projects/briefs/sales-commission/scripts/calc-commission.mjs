@@ -53,10 +53,15 @@ const tipsByInvoice = new Map(raw.invoices.nodes.map(i => [i.invoiceNumber, i.am
 for (const r of rows) r.tips = tipsByInvoice.get(r.invoiceNumber) ?? 0;
 
 // ---- TMCP pay window: a person with tmcpPayMonths earns on a TMCP invoice only while it is
-// issued within that many months of the sale. Sale date = the invoice's job createdAt (earliest
-// if several). Unlike the technicians' life-of-customer 5%, this stops while the customer stays.
+// issued within that many months of the sale. Unlike the technicians' life-of-customer 5%,
+// this stops while the customer stays.
+//
+// The sale is dated by the QUOTE APPROVAL (Spencer, 2026-10-22) — not the quote's draft date,
+// not the job's creation. A job with no quote, or a pull made before approvedAt was requested,
+// falls back to the job's createdAt. Earliest sale if an invoice spans several jobs.
+const saleAt = (j) => j.quote?.lastTransitioned?.approvedAt || j.createdAt || null;
 const saleDateByInvoice = new Map(raw.invoices.nodes.map(i => [i.invoiceNumber,
-  (i.jobs?.nodes || []).map(j => j.createdAt).filter(Boolean).sort()[0]?.slice(0, 10) || null]));
+  (i.jobs?.nodes || []).map(saleAt).filter(Boolean).sort()[0]?.slice(0, 10) || null]));
 const addMonths = (ymd, n) => { const [y, m, d] = ymd.split('-').map(Number); return new Date(Date.UTC(y, m - 1 + n, d)).toISOString().slice(0, 10); };
 for (const r of rows) {
   r.saleDate = saleDateByInvoice.get(r.invoiceNumber) || null;
@@ -102,9 +107,17 @@ const sellerOf = (j) => (j.quote?.salesperson?.name?.full || j.salesperson?.name
 // cheapest plan is treated as already-annual and counted at face value. Confirmed against
 // #8331 Belur Shivashankara, who genuinely prepaid a year (Spencer, 2026-09-09).
 const ANNUAL_PREPAY_FLOOR = 600; // no monthly TMCP plan comes near this
+// Sold this month = quote approved inside the Pacific month. The jobs sweep runs past month
+// end to catch late conversions, so filter here. Older pulls carry no window: keep them all.
+const inSoldWindow = (j) => {
+  if (!raw.start || !raw.end) return true;
+  const t = Date.parse(saleAt(j));
+  return t >= Date.parse(raw.start) && t < Date.parse(raw.end);
+};
+const soldThisMonth = (raw.jobsSold?.nodes || []).filter(inSoldWindow);
 const newTmcp = {};
 const suspectValues = [];
-for (const j of (raw.jobsSold?.nodes || [])) {
+for (const j of soldThisMonth) {
   if (productOf(j.lineItems?.nodes) !== 'TMCP') continue;
   const seller = sellerOf(j);
   if (!seller) continue;
@@ -265,7 +278,7 @@ L.push('');
 L.push('"Recovered from client history" means the invoice itself named nobody and the credit came from the earliest seller on that customer\'s record. That is the right answer for a recurring TMCP bill, but it is an inference — spot-check these before a first payout.');
 L.push('');
 
-const unsold = (raw.jobsSold?.nodes || []).filter(j => !sellerOf(j));
+const unsold = soldThisMonth.filter(j => !sellerOf(j));
 if (unsold.length) {
   L.push(`## ${unsold.length} jobs sold this month carry no salesperson`);
   L.push('');

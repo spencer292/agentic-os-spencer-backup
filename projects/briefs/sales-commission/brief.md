@@ -98,6 +98,16 @@ the current month's batch out. Measured on August 2026 while the bug was live: 2
 issued 31 August ~10 PM PT were dropped. The boundary helper handles PDT and PST, so a
 January run is correct too.
 
+**A sale is dated by its quote approval** (Spencer, 2026-10-22) — Jobber’s `lastTransitioned.approvedAt`,
+not the date the quote was drafted or the job created. It sets which month a new TMCP counts toward
+the bonus, and when Muhammad’s 12-month TMCP window starts. A job with no quote falls back to its
+creation date. Jobber cannot filter on approval, so the pull sweeps jobs created up to 45 days past
+month end and the calc keeps only those approved inside the month.
+
+Switched 2026-10-22, after September was paid. The only technician sale it moved was #8500 Mary Yu
+(Luke, approved Aug 31, job Sept 1): his September bonus would have been $200, not the $250 paid.
+Spencer let the $50 stand (2026-10-23) — do not claw it back or restate September.
+
 ### Known limitation: a late tip rewrites a closed month
 
 A tip is recorded when the customer pays, but it attaches to the **invoice**, and the
