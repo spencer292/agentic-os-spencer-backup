@@ -1,0 +1,114 @@
+[write-gate] WRITES ENABLED until 2026-10-23T18:10:11.740Z (spenc@Got-Moles: Spencer 10-23: first stop 7:30, re-plan wk 10-26 in OR) — ceiling 700/run — run 563eb22d
+=== SYNC + PLAN + TIMES 2026-10-23 10:44:26 PT ===
+mode: LIVE (--execute)   window: 2026-10-26..2026-10-26
+live Jobber: 89 visits, 89 not complete, 89 on a routed driver, 0 skipped (no tech / not a driver)
+  2026-10-26  Robert 26  Tavis 25  Alias 22  Luke 16
+
+OptimoRoute: 89 orders in the window
+  CREATE 0   UPDATE 0   DELETE 0   unchanged 89
+
+driver availability: 10-26: Alias/Luke/Robert/Tavis
+
+=== OPTIMOROUTE: 0 CREATE ===
+=== OPTIMOROUTE: 0 UPDATE ===
+=== OPTIMOROUTE: 0 DELETE ===
+
+--from-saved: 89 planned stops loaded from routes-*.json
+
+=== JOBBER: write planned times (startAt = arrival, endAt = +3 h) ===
+  to write 89   already correct 0   not on a route 0
+  [  1/89] 2026-10-26 07:30 #8670 Robert   Nick Vikari                  was 10-26 07:00  ok
+  [  2/89] 2026-10-26 07:30 #8112 Tavis    Colleen Hunter               was 10-26 07:00  ok
+  [  3/89] 2026-10-26 11:46 #5531 Alias    Conover Court                was 10-26 07:00  ok
+  [  4/89] 2026-10-26 07:30 #8615 Luke     Jim Killgore                 was 10-26 07:06  ok
+  [  5/89] 2026-10-26 11:30 #8691 Alias    Souvik Choudhury             was 10-26 07:16  ok
+  [  6/89] 2026-10-26 07:47 #4930 Robert   Plemmons Industries          was 10-26 07:17  ok
+  [  7/89] 2026-10-26 07:48 #7608 Tavis    Scott Hamilton               was 10-26 07:18  ok
+  [  8/89] 2026-10-26 07:49 #7810 Luke     Jason Noahr                  was 10-26 07:26  ok
+  [  9/89] 2026-10-26 08:04 #6447 Tavis    Larena Walshe                was 10-26 07:34  ok
+  [ 10/89] 2026-10-26 08:04 #7917 Robert   Larry Kauzlarich             was 10-26 07:34  ok
+  [ 11/89] 2026-10-26 11:11 #7901 Alias    Walter Poupore               was 10-26 07:35  ok
+  [ 12/89] 2026-10-26 08:09 #5801 Luke     Ari Anthony                  was 10-26 07:45  ok
+  [ 13/89] 2026-10-26 08:22 #8635 Tavis    Amanda Williams              was 10-26 07:52  ok
+  [ 14/89] 2026-10-26 08:24 #8761 Robert   Richard Pierotti             was 10-26 07:54  ok
+  [ 15/89] 2026-10-26 08:10 #8296 Alias    Prasad Thiruveedu            was 10-26 08:00  ok
+  [ 16/89] 2026-10-26 08:41 #8201 Tavis    Jenna Elberts                was 10-26 08:11  ok
+  [ 17/89] 2026-10-26 08:37 #7824 Luke     Carl Iverson                 was 10-26 08:14  ok
+  [ 18/89] 2026-10-26 08:45 #8755 Robert   Lori Carroll                 was 10-26 08:15  ok
+  [ 19/89] 2026-10-26 07:54 #8294 Alias    ChittiBabu  Pacharu          was 10-26 08:16  ok
+  [ 20/89] 2026-10-26 08:58 #8345 Tavis    Jennifer Pere                was 10-26 08:28  ok
+  [ 21/89] 2026-10-26 09:02 #7712 Robert   Nancy Hawkins                was 10-26 08:32  ok
+  [ 22/89] 2026-10-26 07:30 #7546 Alias    Marymoor Park                was 10-26 08:40  ok
+  [ 23/89] 2026-10-26 09:03 #8753 Luke     Gary Murrow                  was 10-26 08:40  ok
+  [ 24/89] 2026-10-26 09:14 #6581 Tavis    Greg Flynn                   was 10-26 08:44  ok
+  [ 25/89] 2026-10-26 09:21 #8735 Robert   Jennifer Yarington           was 10-26 08:51  ok
+  [ 26/89] 2026-10-26 09:33 #8601 Tavis    Kevin Shaver                 was 10-26 09:03  ok
+  [ 27/89] 2026-10-26 09:29 #7809 Luke     Nick Pillon                  was 10-26 09:06  ok
+  [ 28/89] 2026-10-26 08:32 #8138 Alias    Kalhan Ajay                  was 10-26 09:08  ok
+  [ 29/89] 2026-10-26 09:42 #8714 Robert   John Kim                     was 10-26 09:12  ok
+  [ 30/89] 2026-10-26 09:56 #8025 Tavis    Christina Long               was 10-26 09:26  ok
+  [ 31/89] 2026-10-26 08:52 #8744 Alias    Carl Kester                  was 10-26 09:28  ok
+  [ 32/89] 2026-10-26 09:54 #7822 Luke     Ellie Karl                   was 10-26 09:30  ok
+  [ 33/89] 2026-10-26 10:01 #8650 Robert   Munene Peter                 was 10-26 09:31  ok
+  [ 34/89] 2026-10-26 10:16 #8648 Tavis    Chris Kerr                   was 10-26 09:46  ok
+  [ 35/89] 2026-10-26 10:17 #7753 Robert   Galilee Baptist Church       was 10-26 09:47  ok
+  [ 36/89] 2026-10-26 09:13 #8717 Alias    Tia Gong                     was 10-26 09:49  ok
+  [ 37/89] 2026-10-26 10:33 #8461 Tavis    Mary Greco                   was 10-26 10:03  ok
+  [ 38/89] 2026-10-26 10:30 #8745 Luke     Nicole Calloway              was 10-26 10:06  ok
+  [ 39/89] 2026-10-26 10:38 #8072 Robert   Prologis                     was 10-26 10:08  ok
+  [ 40/89] 2026-10-26 09:35 #4581 Alias    Al Nettles                   was 10-26 10:10  ok
+  [ 41/89] 2026-10-26 10:54 #8524 Tavis    Michael Sobieck              was 10-26 10:24  ok
+  [ 42/89] 2026-10-26 09:52 #7834 Alias    Ganesh   Thirumalai          was 10-26 10:27  ok
+  [ 43/89] 2026-10-26 11:01 #7736 Robert   Rita Conger                  was 10-26 10:31  ok
+  [ 44/89] 2026-10-26 10:55 #7803 Luke     Faith Trimble                was 10-26 10:32  ok
+  [ 45/89] 2026-10-26 11:14 #8716 Tavis    Kristian Hatch               was 10-26 10:44  ok
+  [ 46/89] 2026-10-26 10:12 #6735 Alias    Joe Gross                    was 10-26 10:47  ok
+  [ 47/89] 2026-10-26 11:17 #7936 Luke     Dennis Tuomi                 was 10-26 10:54  ok
+  [ 48/89] 2026-10-26 11:24 #8202 Robert   Amy  Collins                 was 10-26 10:54  ok
+  [ 49/89] 2026-10-26 11:32 #8674 Tavis    Mike Quinn                   was 10-26 11:02  ok
+  [ 50/89] 2026-10-26 10:29 #8746 Alias    Ramit Malhotra               was 10-26 11:05  ok
+  [ 51/89] 2026-10-26 11:43 #5324 Robert   Scott  Moser                 was 10-26 11:13  ok
+  [ 52/89] 2026-10-26 11:44 #7977 Luke     Western Plaza                was 10-26 11:21  ok
+  [ 53/89] 2026-10-26 11:52 #8688 Tavis    Point Nautica                was 10-26 11:22  ok
+  [ 54/89] 2026-10-26 10:48 #4771 Alias    Nancy Krossa                 was 10-26 11:23  ok
+  [ 55/89] 2026-10-26 12:05 #8729 Robert   Sam Needhem                  was 10-26 11:35  ok
+  [ 56/89] 2026-10-26 12:11 #8607 Tavis    Ben Mathes                   was 10-26 11:41  ok
+  [ 57/89] 2026-10-26 12:07 #8643 Luke     Fran Huntington              was 10-26 11:44  ok
+  [ 58/89] 2026-10-26 12:11 #8640 Alias    Linda Devitis                was 10-26 11:48  ok
+  [ 59/89] 2026-10-26 12:26 #8442 Robert   Michele Rustvold             was 10-26 11:56  ok
+  [ 60/89] 2026-10-26 12:32 #8340 Tavis    Ken Lohse                    was 10-26 12:02  ok
+  [ 61/89] 2026-10-26 12:31 #8777 Luke     Elliott Carlson              was 10-26 12:08  ok
+  [ 62/89] 2026-10-26 12:33 #8634 Alias    Colleen Rasmussen            was 10-26 12:11  ok
+  [ 63/89] 2026-10-26 12:45 #5087 Robert   Ganesh   Thirumalai          was 10-26 12:15  ok
+  [ 64/89] 2026-10-26 12:48 #8770 Tavis    Amanda Goss                  was 10-26 12:18  ok
+  [ 65/89] 2026-10-26 12:54 #8491 Alias    Scott Owens                  was 10-26 12:32  ok
+  [ 66/89] 2026-10-26 13:04 #8771 Robert   Jim Poff                     was 10-26 12:34  ok
+  [ 67/89] 2026-10-26 13:08 #8583 Tavis    Timothy Hoover               was 10-26 12:38  ok
+  [ 68/89] 2026-10-26 13:04 #7792 Luke     Janet Medrud                 was 10-26 12:40  ok
+  [ 69/89] 2026-10-26 13:15 #8060 Alias    Blake Diers                  was 10-26 12:52  ok
+  [ 70/89] 2026-10-26 13:25 #7943 Robert   Stephen Van Ingen            was 10-26 12:55  ok
+  [ 71/89] 2026-10-26 13:30 #5947 Tavis    Neil Kanungo                 was 10-26 13:00  ok
+  [ 72/89] 2026-10-26 13:24 #7682 Luke     Brad Smallwood               was 10-26 13:00  ok
+  [ 73/89] 2026-10-26 13:33 #8704 Alias    Robin  Parsons               was 10-26 13:10  ok
+  [ 74/89] 2026-10-26 13:42 #8662 Robert   Dan Rystrom                  was 10-26 13:12  ok
+  [ 75/89] 2026-10-26 13:56 #7362 Tavis    Velena Bryant                was 10-26 13:26  ok
+  [ 76/89] 2026-10-26 13:52 #8633 Luke     Rebecca Sweetlove            was 10-26 13:28  ok
+  [ 77/89] 2026-10-26 13:52 #4902 Alias    Jane Moore                   was 10-26 13:30  ok
+  [ 78/89] 2026-10-26 14:01 #6500 Robert   Sheri Powers                 was 10-26 13:31  ok
+  [ 79/89] 2026-10-26 14:16 #8409 Tavis    Chris Higgs                  was 10-26 13:46  ok
+  [ 80/89] 2026-10-26 14:19 #7961 Robert   Kelly Kunz                   was 10-26 13:49  ok
+  [ 81/89] 2026-10-26 14:13 #8685 Alias    Anne Dinwiddie               was 10-26 13:51  ok
+  [ 82/89] 2026-10-26 14:36 #7715 Tavis    Elizabeth Duroe              was 10-26 14:06  ok
+  [ 83/89] 2026-10-26 14:38 #7971 Robert   David Marsh                  was 10-26 14:08  ok
+  [ 84/89] 2026-10-26 14:38 #7624 Alias    Greg Thoreson                was 10-26 14:16  ok
+  [ 85/89] 2026-10-26 14:57 #7920 Robert   Vickie Haupt                 was 10-26 14:27  ok
+  [ 86/89] 2026-10-26 15:03 #7825 Tavis    David Bennett                was 10-26 14:33  ok
+  [ 87/89] 2026-10-26 15:16 #8122 Robert   Bob Roggenbach               was 10-26 14:46  ok
+  [ 88/89] 2026-10-26 15:22 #7702 Tavis    Joe Tate                     was 10-26 14:52  ok
+  [ 89/89] 2026-10-26 15:34 #4711 Robert   Jeff  Boggs                  was 10-26 15:04  ok
+  written 89  failed 0
+
+=== VERIFY === 89 visits match the plan, 0 do not
+
+✅ done 2026-10-23 10:45:33 PT — log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-26_week\sync-plan-times.log
+Next: the arrival-window sweep (node projects/tool-jobber/scripts/arrival-window-sweep.mjs) so every visit carries the 3-hour window.
