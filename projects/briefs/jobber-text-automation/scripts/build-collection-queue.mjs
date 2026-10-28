@@ -39,6 +39,12 @@ const argNum = (flag, dflt) => {
 const MIN_DAYS = argNum('min-days', 7);
 const MAX_DAYS = argNum('max-days', Infinity);
 
+// Second nudge (Spencer, 2026-10-28): a client texted once about an invoice who still has not
+// paid gets ONE firmer follow-up, at least SECOND_GAP days after the first. Past SECOND_MAX_DAYS
+// the account is a phone call, not another text — those stay held and belong on the call list.
+const SECOND_GAP = argNum('second-gap', 7);
+const SECOND_MAX_DAYS = argNum('second-max-days', 45);
+
 function findEnvPath() {
   let dir = process.cwd();
   for (let i = 0; i < 8; i++) {
@@ -220,6 +226,17 @@ function compose(c) {
     : ` Want to skip these invoices going forward? Reply AUTOPAY and we'll help you set up automatic monthly payments.`;
   const charge = (c.hasCard ? ` If you'd like us to run the card we have on file, just reply CHARGE.` : '') + autopay;
 
+  // Second nudge: firmer, names the earlier text, and offers a way out other than silence.
+  // No autopay invite — this message is about getting the open balance paid.
+  if (c.stage === 'second') {
+    const card = c.hasCard ? ` If you'd like us to run the card we have on file, just reply CHARGE.` : '';
+    const what = c.count > 1
+      ? `your ${c.count} open invoices totaling ${amt}, the oldest now ${c.maxDays} days past due`
+      : `your invoice for ${amt}, now ${c.maxDays} days past due`;
+    return `${hi} Got Moles again about ${what}. We texted on ${c.firstSentOn} and haven't seen a payment yet. `
+      + `You can pay here: ${link}${card} If something's wrong with the bill or you need to split the payment, reply here and we'll work it out. Thanks!`;
+  }
+
   if (c.count > 1) {
     return `${hi} Got Moles. You have ${c.count} open invoices totaling ${amt}. `
       + `You can view and pay here: ${link}${charge} If you've already paid or have any questions, just reply here. Thanks!`;
@@ -239,7 +256,8 @@ for (const [clientId, invs] of byClient) {
   const c = invs[0].client;
   const total = invs.reduce((s, x) => s + x.bal, 0);
   const maxDays = invs[0].days;
-  const stage = maxDays <= 10 ? 'day7' : 'day11';
+  let stage = maxDays <= 10 ? 'day7' : 'day11';
+  let firstSentOn = null;
 
   // Age band, client level: the client's OLDEST open invoice decides whether they belong in
   // this run, and the message then covers everything they owe.
@@ -254,20 +272,32 @@ for (const [clientId, invs] of byClient) {
   // ($1,640) on the September batch had been texted about a now-PAID August invoice and would
   // never have been chased again (found 2026-09-15).
   const oldest = invs[0];
-  const key = `${clientId}:${stage}:${oldest.invoiceNumber}`;
-  if (state.sent[key]) { heldByState.push({ client: c.name, stage, invoice: oldest.invoiceNumber, sentAt: state.sent[key], via: 'invoice' }); continue; }
+  let key = `${clientId}:${stage}:${oldest.invoiceNumber}`;
+  if (state.sent[key]) {
+    const firstAt = state.sent[key];
+    const gap = Math.floor((now - new Date(firstAt)) / 864e5);
+    const secondKey = `${clientId}:second:${oldest.invoiceNumber}`;
+    const why = state.sent[secondKey] ? 'second nudge already sent'
+      : maxDays > SECOND_MAX_DAYS ? `over ${SECOND_MAX_DAYS}d — call, don't text`
+      : gap < SECOND_GAP ? `first text only ${gap}d ago`
+      : null;
+    if (why) { heldByState.push({ client: c.name, stage, invoice: oldest.invoiceNumber, sentAt: firstAt, via: 'invoice', why }); continue; }
+    stage = 'second';
+    key = secondKey;
+    firstSentOn = new Date(firstAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'America/Los_Angeles' });
+  }
 
   // Legacy keys (pre-2026-09-15) carry no invoice number, so they can only be honoured by date:
   // a send is about this invoice only if it happened at or after the invoice was issued.
   // An invoice issued after the last text is one the customer has demonstrably never been told about.
-  const legacy = state.sent[`${clientId}:${stage}`];
+  const legacy = stage !== 'second' && state.sent[`${clientId}:${stage}`];
   if (legacy && new Date(legacy) >= new Date(oldest.issuedDate)) {
     heldByState.push({ client: c.name, stage, invoice: oldest.invoiceNumber, sentAt: legacy, via: 'legacy-key, sent after invoice issued' });
     continue;
   }
 
   const row = {
-    clientId, stage, maxDays, total, count: invs.length,
+    clientId, stage, firstSentOn, maxDays, total, count: invs.length,
     name: c.name, firstName: c.firstName, phone: invs[0].phone, smsPhones: invs[0].smsPhones,
     hasCard: (cards[clientId] || 0) > 0,
     autopayInvite: !!autopayInvite[clientId],
@@ -299,11 +329,16 @@ L.push(`- sending this run: **${send.length}**  (${usd(send.reduce((s, x) => s +
 L.push(`- rolling to next run: ${rolled.length}`);
 L.push(`- suppressed: ${skipped.length} · already texted at this stage: ${heldByState.length}`);
 L.push('');
-L.push('| # | Client | Days | Owed | Card | Message |');
-L.push('|---|---|---:|---:|:---:|---|');
+L.push('| # | Client | Stage | Days | Owed | Card | Message |');
+L.push('|---|---|---|---:|---:|:---:|---|');
 send.forEach((r, i) => {
-  L.push(`| ${i + 1} | ${r.name} | ${r.maxDays} | ${usd(r.total)} | ${r.hasCard ? 'Y' : '—'} | ${r.message.replace(/\|/g, '\\|')} |`);
+  L.push(`| ${i + 1} | ${r.name} | ${r.stage === 'second' ? '2nd' : '1st'} | ${r.maxDays} | ${usd(r.total)} | ${r.hasCard ? 'Y' : '—'} | ${r.message.replace(/\|/g, '\\|')} |`);
 });
+L.push('');
+L.push('## Held — already texted, no second nudge this run');
+L.push('');
+if (!heldByState.length) L.push('_none_');
+else for (const h of heldByState) L.push(`- ${h.client} — #${h.invoice}, texted ${h.sentAt.slice(0, 10)} — ${h.why || h.via}`);
 L.push('');
 L.push('## Commercial / HOA / municipal — NOT texted, handle by phone or email');
 L.push('');
