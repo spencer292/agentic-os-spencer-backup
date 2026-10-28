@@ -663,6 +663,7 @@ Carried in from the 2026-07-06 research session that preceded the skill:
   $80,168.40 and applies at every employer size, which puts the salaried Operator seat at risk of
   misclassification. This is exactly the kind of thing an HR retainer exists to catch, so whether it
   was flagged is the honest test of the retainer's value.
+- 2026-10-27: Cascade exit executed. Sent notice + records request in ONE email (handover asked while still paid), cc the second consultant. Gusto check order that worked: activity logs (Pay > View pay history > View activity log, timesheet Version history, expense log) then Settings > Permissions to confirm Spencer is Account owner. Gusto has NO log for permission/role changes. An outside firm name at the top of Gusto is the account switcher, not ownership. Search Gmail for Gusto notices to find every outside party with access (found two unknown addresses). Weekday check: I called Nov 26 a Wednesday; it is Thursday/Thanksgiving. Compute weekdays, never guess.
 
 ## syperformance-redesign
 
