@@ -10,7 +10,7 @@
 - COLLECTIONS 10-20: 38 texted $4,820 + AUTOPAY invite (consent: data/autopay-consent-reply.md). 14 texted-unpaid + 6 commercial need calls.
 - PRICE RESET: 121 grandfathered->$100 Feb 1, +10% on 495 Mar 1 (cfo/2026-10-20_*). Next: Jan 5 notice. 2027 plan in got-moles-scale/, 5 decisions open.
 - WHALE HUNT: starts 10-26, 10 wks. App artifact/AjQJM8aYF9YeixRFMcdLmA Wk1 + Kidder call await Spencer.
-- LINKEDIN: 80 invites/wk, parks primary; 10-22 queue in 2026-10-20_session-5.md.
+- LINKEDIN: 80 inv/wk, holds lifted 10-27. S7 sent 10-28. Russell Weeks hot: coffee after 10-29, no walk first.
 - MO GRADING 10-17: avg 69.9 (Aug 76.2). callrail-faq/call-grading/2026-10-16_month.md
 - DIGIHAMMER EXIT: $300/mo, ads extra. Next: read-only HighLevel sweep + DND export. marketing-in-house/
 - CLINCHER: C:\clincher Sprint 1 built. Spencer: Supabase project + .env.local + seed. Next: voice.

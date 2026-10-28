@@ -269,6 +269,7 @@ frozen at the July 2026 batch.
 
 ## Rules
 
+- 2026-10-27: **HOLDS LIFTED (Spencer): "Don't hold on Brenda McCoy or any of the others either. There's no point in holding back. I'm not married to any of these whales at this point. We haven't even made a connection yet."** This overrides the one-per-firm hold below and the whale skip in volume batches. Second contacts at an agency we're already approaching get invited too, and so do people at whale firms. Still applies: one first message per person, the service area, and the existing-customer check. If a named whale contact accepts, ask Spencer whether the first message comes from the Whale Hunt or the segment message, so the same person never gets both.
 - 2026-10-21: Skip anyone with `whale: true` in `pipeline.json`, and anyone else at a whale firm (see `projects/briefs/whale-hunt/whales.json`): no invites, segment messages or ladder touches. Those relationships run through `mkt-whale-hunt`, so each whale hears from one source. Treat any reply from them as a whale reply and log it there.
 - 2026-08-21: Nothing sends without Spencer's explicit approval of that specific batch. Approval never carries forward to the next batch or the next session.
 - 2026-08-21: No background or scheduled sending, ever. This skill only runs when Spencer is at the keyboard. If he asks for automation, the answer is that the pipeline surfaces what's due — a human still clicks.

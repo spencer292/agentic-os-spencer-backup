@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-22",
-  "sessions_run": 6,
+  "updated": "2026-10-28",
+  "sessions_run": 7,
   "account": {
     "tier": "UNCONFIRMED - Sales Nav Core trial was due to end 2026-09-21; Sales Nav link still in the nav bar 10-14. Ask Spencer whether he kept it.",
     "invites_pending_at_session_1": 0,
@@ -75,6 +75,16 @@
       "messages_sent": 7,
       "searches": 9,
       "week_total_invites": 65
+    },
+    "session_7": {
+      "date": "2026-10-27/28",
+      "pending_at_start": 62,
+      "warnings": "none",
+      "invites_sent": 37,
+      "notes": 1,
+      "messages_sent": 11,
+      "week_total_invites": 37,
+      "incident": "PC slept overnight; msg run crashed, invites ran 10-28 AM. Re-run killed for low memory; Laura Carver confirmed in sent list."
     }
   },
   "hubs": [
@@ -972,8 +982,8 @@
         "Patrick Oien"
       ],
       "hook": "STRONGEST ANCHOR IN THE BATCH. Sand Point Country Club sits on 55th Ave NE, Seattle 98115. Got Moles has 24 live clients in 98115 including 6914 56th Ave NE and 7302 58th Ave NE - literally the adjacent streets. Territory 1, Alias Franks ground.",
-      "stage": "messaged_touch_2",
-      "next_action": "Touch 3 ~2026-10-23 if quiet, touch 4 ~10-28, then dormant.",
+      "stage": "messaged_awaiting_reply",
+      "next_action": "touch 4 (final) ~2026-11-02 if no reply, then dormant",
       "touches": [
         {
           "date": "2026-09-15",
@@ -1001,6 +1011,12 @@
           "response": null,
           "note": "Approved by Spencer and sent in session 4, confirmed in thread.",
           "touch": 2
+        },
+        {
+          "date": "2026-10-28",
+          "type": "follow_up_3",
+          "text": "Hey Marcus, one more from me. If moles become a problem on the course this fall, our commercial lead can walk it with you and put a quote together. Either way, glad to be connected.",
+          "response": null
         }
       ]
     },
@@ -1248,9 +1264,15 @@
           "type": "first_message",
           "text": "Hey Eddie! Thanks for connecting. I run Got Moles, we do moles and nothing else. Your crews are on these properties every week, so you're the first ones the client asks about mounds. We don't do lawn, landscape or maintenance work, so your accounts stay yours. We've worked more than 200 properties in Renton, so we're right there with you. Send the mole problems our way and your turf keeps looking good. Up for a quick call to see if it's a fit?",
           "response": null
+        },
+        {
+          "date": "2026-10-28",
+          "type": "follow_up_2",
+          "text": "Hey Eddie, following up on this. If any of your clients are dealing with mounds, we'd be glad to take those off your plate. Want to grab 15 minutes this week?",
+          "response": null
         }
       ],
-      "next_action": "touch 2 due 2026-10-27 if no reply",
+      "next_action": "touch 3 ~2026-11-02 if no reply",
       "next_action_due": null,
       "notes": "Session 5 volume pivot.",
       "accepted": "2026-10-20"
@@ -1311,18 +1333,25 @@
       "profile": "sports-fields-turf (8)",
       "tier": "B",
       "degree": "",
-      "stage": "invited_pending",
+      "stage": "messaged_awaiting_reply",
       "touches": [
         {
           "date": "2026-10-20",
           "type": "connection_request_bare",
           "text": null,
           "response": null
+        },
+        {
+          "date": "2026-10-28",
+          "type": "first_message",
+          "text": "Hey Gabe! Thanks for connecting. I run Got Moles, we only do moles. A mound on a playing surface is a rolled ankle waiting to happen, and fall is when they show up. We're in Seattle every week. Everything we do is chemical-free, so it's fine around players. If any of your fields are getting hit, our commercial lead can walk them with you. Got 15 minutes this week?",
+          "response": null
         }
       ],
-      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor",
+      "next_action": "touch 2 ~2026-11-01 if no reply",
       "next_action_due": null,
-      "notes": "Session 5 volume pivot."
+      "notes": "Session 5 volume pivot.",
+      "accepted": "2026-10-27"
     },
     {
       "id": "aaron-sholes-002568235",
@@ -1368,7 +1397,7 @@
       "profile": "landscaping-lawn-care (REFERRAL PARTNER, never pitch as a buyer)",
       "tier": "B",
       "degree": "",
-      "stage": "messaged_awaiting_reply",
+      "stage": "replied",
       "touches": [
         {
           "date": "2026-10-20",
@@ -1380,10 +1409,16 @@
           "date": "2026-10-22",
           "type": "first_message",
           "text": "Hey Tim! Thanks for connecting. I run Got Moles, we do moles and nothing else. Your crews are on these properties every week, so you're the first ones the client asks about mounds. We don't do lawn, landscape or maintenance work, so your accounts stay yours. We've worked more than 150 properties in Kent, so we're close by. Send the mole problems our way and your turf keeps looking good. Up for a quick call to see if it's a fit?",
+          "response": "How do you do your pricing?"
+        },
+        {
+          "date": "2026-10-22",
+          "type": "reply_by_spencer",
+          "text": "Residential programs quoted (QF from $450, TMCP from $100/mo) plus a coffee ask.",
           "response": null
         }
       ],
-      "next_action": "touch 2 due 2026-10-27 if no reply",
+      "next_action": "awaiting reply to coffee ask",
       "next_action_due": null,
       "notes": "Session 5 volume pivot.",
       "accepted": "2026-10-20"
@@ -1444,18 +1479,25 @@
       "profile": "schools-campuses-athletic-fields",
       "tier": "B",
       "degree": "",
-      "stage": "invited_pending",
+      "stage": "messaged_awaiting_reply",
       "touches": [
         {
           "date": "2026-10-20",
           "type": "connection_request_bare",
           "text": null,
           "response": null
+        },
+        {
+          "date": "2026-10-28",
+          "type": "first_message",
+          "text": "Hey Jordan! Thanks for connecting. I run Got Moles, moles are all we do. We've worked more than 50 properties around Kirkland, so we're near campus every week. For schools it comes down to two things: chemical-free around kids, and fields that are safe to play on. We handle both on a set schedule with a written report after each visit. If moles are showing up on your fields or grounds, we can walk it with you and put a quote together. Worth a quick call?",
+          "response": null
         }
       ],
-      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor",
+      "next_action": "touch 2 ~2026-11-01 if no reply",
       "next_action_due": null,
-      "notes": "Session 5 volume pivot."
+      "notes": "Session 5 volume pivot.",
+      "accepted": "2026-10-27"
     },
     {
       "id": "kevin-white-035350266",
@@ -1467,18 +1509,25 @@
       "profile": "sports-fields-turf (8)",
       "tier": "B",
       "degree": "",
-      "stage": "invited_pending",
+      "stage": "messaged_awaiting_reply",
       "touches": [
         {
           "date": "2026-10-20",
           "type": "connection_request_bare",
           "text": null,
           "response": null
+        },
+        {
+          "date": "2026-10-28",
+          "type": "first_message",
+          "text": "Hey Kevin! Thanks for connecting. I run Got Moles, we only do moles. A mound on a playing surface is a rolled ankle waiting to happen, and fall is when they show up. We're in Renton every week. Everything we do is chemical-free, so it's fine around players. If any of the fields you look after are getting hit, our commercial lead can walk them with you. Got 15 minutes this week?",
+          "response": null
         }
       ],
-      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor",
+      "next_action": "touch 2 ~2026-11-01 if no reply",
       "next_action_due": null,
-      "notes": "Session 5 volume pivot."
+      "notes": "Session 5 volume pivot.",
+      "accepted": "2026-10-27"
     },
     {
       "id": "russell-weeks-3957553",
@@ -1490,7 +1539,7 @@
       "profile": "cemeteries-funeral (10)",
       "tier": "A",
       "degree": "",
-      "stage": "messaged_awaiting_reply",
+      "stage": "replied",
       "touches": [
         {
           "date": "2026-10-20",
@@ -1502,13 +1551,20 @@
           "date": "2026-10-22",
           "type": "first_message",
           "text": "Thanks for connecting, Russell! Following up on my question: do any of the Weeks' locations come with cemetery grounds, or is that handled by the cemeteries you work with? Cemeteries are where moles cause the most grief, since a mound near a grave is the first thing families notice. If you've got grounds with activity, we can walk them with you and put a quote together.",
+          "response": "2026-10-22 7:00 PM: has moles at Enumclaw Funeral Home, 1810 Wells St; Weeks runs Enumclaw and Buckley Cemeteries. Wants cost. Out of town until Thu 10-29. Offered self-guided site visits."
+        },
+        {
+          "date": "2026-10-22",
+          "type": "reply_by_spencer",
+          "text": "I can wait until next week, I see the moles out by the log show grounds all the time. I called and left a message years ago about it. Do you have time to grab coffee next week?",
           "response": null
         }
       ],
-      "next_action": "touch 2 due 2026-10-26 if no reply",
-      "next_action_due": null,
+      "next_action": "Spencer meets Russell (coffee) after he returns 10-29. NO site walk until Spencer meets him (Spencer 10-27), at least not before next week. Then Cory bids the three sites.",
+      "next_action_due": "2026-10-30",
       "notes": "Session 5 volume pivot.",
-      "accepted": "2026-10-20"
+      "accepted": "2026-10-20",
+      "hot": true
     },
     {
       "id": "jordan-sauvage-8a9a6366",
@@ -2083,7 +2139,7 @@
       "location": "Puyallup",
       "profile": "schools-campuses-athletic-fields",
       "tier": "A",
-      "stage": "invited_pending",
+      "stage": "messaged_awaiting_reply",
       "touches": [
         {
           "date": "2026-10-20",
@@ -2096,11 +2152,18 @@
           "type": "connection_request_note",
           "text": "Hey Brady! Saw the Ballou track post, nice work. I run Got Moles, moles are all we do, and Puyallup is our biggest area at 170+ properties. Would be good to be connected in case moles show up on any of your grass fields.",
           "response": null
+        },
+        {
+          "date": "2026-10-28",
+          "type": "first_message",
+          "text": "Thanks for connecting, Brady! Puyallup's the busiest area we work, more than 170 properties, so we're in the district every week. For schools it comes down to fields that are safe to play on and nothing chemical around kids, and that's how we run it: a set schedule and a written report after each visit. We already do this for the City of Burien at Moshier and King County at Marymoor. If any of the district's fields or grounds are getting hit this fall, our commercial lead can walk a site with you and put a quote together. Worth a quick call?",
+          "response": null
         }
       ],
-      "next_action": "on accept: personal first message (tier A)",
+      "next_action": "touch 2 ~2026-11-01 if no reply",
       "next_action_due": "2026-10-22",
-      "notes": "Comment-first per skill rule."
+      "notes": "Comment-first per skill rule.",
+      "accepted": "2026-10-27"
     },
     {
       "id": "matthew-austin-1b581913",
@@ -2242,9 +2305,15 @@
           "type": "first_message",
           "text": "Hey Anjali! Thanks for connecting. I run Got Moles, moles are the only thing we do. We already handle mole control for the City of Burien at Moshier and King County at Marymoor, so we know how public grounds work, from scheduling around field use to the paperwork. We've also worked more than 100 properties in Sammamish, so we're in town every week. It's all chemical-free, safe around kids, pets and players. If moles are showing up on any of your parks or fields, we can walk a site with you and put a quote together. Worth a quick call?",
           "response": null
+        },
+        {
+          "date": "2026-10-28",
+          "type": "follow_up_2",
+          "text": "Hey Anjali, quick follow-up. Fall rain is when mounds start showing up on fields and park lawns. If any of Sammamish's parks are getting hit, happy to set up a site walk whenever works for you.",
+          "response": null
         }
       ],
-      "next_action": "touch 2 due 2026-10-27 if no reply",
+      "next_action": "touch 3 ~2026-11-02 if no reply",
       "notes": "Session 5 parks batch.",
       "accepted": "2026-10-21"
     },
@@ -2287,9 +2356,15 @@
           "type": "first_message",
           "text": "Hey Sylvana! Thanks for connecting. I run Got Moles, moles are the only thing we do. We already handle mole control for the City of Burien at Moshier and King County at Marymoor, so we know how public grounds work, from scheduling around field use to the paperwork. We've also worked more than 80 properties in Olympia, so we're down there every week. It's all chemical-free, safe around kids, pets and players. If moles are showing up on any of your parks or fields, we can walk a site with you and put a quote together. Worth a quick call?",
           "response": null
+        },
+        {
+          "date": "2026-10-28",
+          "type": "follow_up_2",
+          "text": "Hi Sylvana, quick follow-up. If moles are showing up on any of Olympia's parks or fields, we can walk a site with your team and put a quote together. Is there someone on the maintenance side I should connect with?",
+          "response": null
         }
       ],
-      "next_action": "touch 2 due 2026-10-27 if no reply",
+      "next_action": "touch 3 ~2026-11-02 if no reply",
       "notes": "Session 5 parks batch. Olympia/Yauger: Spencer sent a bid, never approved (10-22). Treated as cold.",
       "accepted": "2026-10-20"
     },
@@ -2430,9 +2505,15 @@
           "type": "first_message",
           "text": "Thanks for connecting, Erin! On the parks side, we already do the mole work for the City of Burien at Moshier and King County at Marymoor, so ball fields and public grounds are familiar ground for us. Are moles showing up at any of Buckley's parks or fields right now? If so, we can walk it with you and put a quote together.",
           "response": null
+        },
+        {
+          "date": "2026-10-28",
+          "type": "follow_up_2",
+          "text": "Hi Erin, just circling back. If moles are showing up at any of Buckley's parks, we're right here in town and can walk it with you whenever works.",
+          "response": null
         }
       ],
-      "next_action": "touch 2 due 2026-10-26 if no reply",
+      "next_action": "touch 3 ~2026-11-02 if no reply",
       "notes": "Session 5 parks batch.",
       "accepted": "2026-10-20"
     },
@@ -2449,12 +2530,18 @@
           "type": "first_message",
           "text": "Hey Nick! Thanks for connecting. I run Got Moles, moles are the only thing we do. We already handle mole control for the City of Burien at Moshier and King County at Marymoor, and we're in Burien and Renton every week, so Tukwila's right on the way. All chemical-free, safe around kids, pets and players. If moles are showing up at any of the city's parks or facility grounds, we can walk a site with you and put a quote together. Worth a quick call?",
           "response": null
+        },
+        {
+          "date": "2026-10-28",
+          "type": "follow_up_2",
+          "text": "Hey Nick, following up. If the city's seeing mounds at any parks or facility grounds this fall, we can set up a quick site walk. Who's the best person on your end for that?",
+          "response": null
         }
       ],
       "notes": "Connected 10-22, not sourced by us (likely inbound). Chosen over Matthew Austin for Tukwila (Spencer 10-22): do NOT message Matthew if he accepts.",
       "stage": "messaged_awaiting_reply",
       "accepted": "2026-10-22",
-      "next_action": "touch 2 due 2026-10-27 if no reply"
+      "next_action": "touch 3 ~2026-11-02 if no reply"
     },
     {
       "id": "abbeyview-memorial-park",
@@ -2481,12 +2568,18 @@
           "date": "2026-10-22",
           "type": "connection_request_note",
           "text": "Hey Corey! I run Got Moles out of Buckley, moles are the only thing we do, all chemical-free and scheduled around services. We work a lot of ground around Tacoma and Sumner, close to your locations. Would be good to be connected in case moles ever show up on the grounds.",
+          "response": "i’ll keep you in mind"
+        },
+        {
+          "date": "2026-10-22",
+          "type": "reply_by_spencer",
+          "text": "Thanks Corey that would be great! If you have time to meet I would love to buy you a cup of coffee and tell you a little about how we do things.",
           "response": null
         }
       ],
       "notes": "Session 6.",
-      "stage": "invited_pending",
-      "next_action": "on accept: personal first message (tier A)"
+      "stage": "replied",
+      "next_action": "awaiting reply to coffee ask"
     },
     {
       "id": "jacqueline-socha-20328a27",
@@ -2502,11 +2595,18 @@
           "type": "connection_request_note",
           "text": "Hey Jacqueline! I run Got Moles, moles are the only thing we do, all chemical-free. Big campuses with a lot of lawn are where they cause the most trouble, and we work the Eastside every week. Would be good to be connected in case they ever show up on the grounds.",
           "response": null
+        },
+        {
+          "date": "2026-10-28",
+          "type": "first_message",
+          "text": "Thanks for connecting, Jacqueline! Campuses with a lot of open lawn are where moles get noticed fastest, since there are people walking it all day. We already handle public grounds like King County's Marymoor Park and the City of Burien's Moshier sports complex, on a set schedule with a written report after each visit that you can pass along. All chemical-free. If moles are showing up at any of the sites you look after, we can walk it with you and put a quote together. Worth a quick call?",
+          "response": null
         }
       ],
       "notes": "Session 6.",
-      "stage": "invited_pending",
-      "next_action": "on accept: personal first message (tier A)"
+      "stage": "messaged_awaiting_reply",
+      "next_action": "touch 2 ~2026-11-01 if no reply",
+      "accepted": "2026-10-27"
     },
     {
       "id": "thomas-sullivan-15214698",
@@ -2665,6 +2765,746 @@
         }
       ],
       "notes": "Session 6.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "tina-rodriguez-44976688",
+      "name": "Tina Rodriguez",
+      "linkedin": "/in/tina-rodriguez-44976688/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_note",
+          "text": "Hey Tina! I run Got Moles, moles are the only thing we do, all chemical-free and scheduled around services. We've worked more than 200 properties in Renton, so Greenwood is right on our route. Would be good to be connected in case moles ever show up on the grounds.",
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "loreen-hamilton-b3158957",
+      "name": "Loreen Hamilton",
+      "linkedin": "/in/loreen-hamilton-b3158957/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "phil-bennett-30852068",
+      "name": "Phil Bennett",
+      "linkedin": "/in/phil-bennett-30852068/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "stacey-reding-2124432b",
+      "name": "Stacey Reding",
+      "linkedin": "/in/stacey-reding-2124432b/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "rachiah-whipple-47237a26",
+      "name": "Rachiah Whipple",
+      "linkedin": "/in/rachiah-whipple-47237a26/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "alan-haywood-36b02073",
+      "name": "Alan Haywood",
+      "linkedin": "/in/alan-haywood-36b02073/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "mary-tuttle-cprp-b3b6371a",
+      "name": "Mary Tuttle",
+      "linkedin": "/in/mary-tuttle-cprp-b3b6371a/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "dave-bussard-7ba83abb",
+      "name": "Dave Bussard",
+      "linkedin": "/in/dave-bussard-7ba83abb/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "elliott-traweek-3ba1175b",
+      "name": "Elliott Traweek",
+      "linkedin": "/in/elliott-traweek-3ba1175b/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "angel-cuenca-513a0b14b",
+      "name": "Angel Cuenca",
+      "linkedin": "/in/angel-cuenca-513a0b14b/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "mike-huie-a32b3960",
+      "name": "Mike Huie",
+      "linkedin": "/in/mike-huie-a32b3960/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "sean-v-b19b0888",
+      "name": "Sean V",
+      "linkedin": "/in/sean-v-b19b0888/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "mason-graves-5a1382243",
+      "name": "Mason Graves",
+      "linkedin": "/in/mason-graves-5a1382243/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "jody-kneupper-a191a313",
+      "name": "Jody Kneupper",
+      "linkedin": "/in/jody-kneupper-a191a313/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "mark-gilmore-5170232a",
+      "name": "Mark Gilmore",
+      "linkedin": "/in/mark-gilmore-5170232a/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "chris-t-484322138",
+      "name": "Chris T",
+      "linkedin": "/in/chris-t-484322138/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "seandohertyr",
+      "name": "Sean Doherty",
+      "linkedin": "/in/seandohertyr/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "ben-beasley-7a8b8077",
+      "name": "Ben Beasley",
+      "linkedin": "/in/ben-beasley-7a8b8077/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "lauren-oster-46500895",
+      "name": "Lauren Oster",
+      "linkedin": "/in/lauren-oster-46500895/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "christopherjaybean",
+      "name": "Christopher Bean",
+      "linkedin": "/in/christopherjaybean/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "allegra-selfaison-56714882",
+      "name": "Allegra Selfaison",
+      "linkedin": "/in/allegra-selfaison-56714882/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "david-aldous-05776113",
+      "name": "David Aldous",
+      "linkedin": "/in/david-aldous-05776113/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "brenda-mccoy-b2885b365",
+      "name": "Brenda McCoy",
+      "linkedin": "/in/brenda-mccoy-b2885b365/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7. Formerly held; invited under the 2026-10-27 holds-lifted rule.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "barb-wade-cpre-ba524b102",
+      "name": "Barb Wade",
+      "linkedin": "/in/barb-wade-cpre-ba524b102/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7. Formerly held; invited under the 2026-10-27 holds-lifted rule.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "charles-ng-0004b47b",
+      "name": "Charles Ng",
+      "linkedin": "/in/charles-ng-0004b47b/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7. Formerly held; invited under the 2026-10-27 holds-lifted rule.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "larry-glaser-52589520",
+      "name": "Larry Glaser",
+      "linkedin": "/in/larry-glaser-52589520/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7. Formerly held; invited under the 2026-10-27 holds-lifted rule.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "john-wolfe-6252a5104",
+      "name": "John Wolfe",
+      "linkedin": "/in/john-wolfe-6252a5104/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7. Formerly held; invited under the 2026-10-27 holds-lifted rule.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "roth-leahy-18145a97",
+      "name": "Roth Leahy",
+      "linkedin": "/in/roth-leahy-18145a97/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7. Formerly held; invited under the 2026-10-27 holds-lifted rule.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "jon-crimmins-4376a841",
+      "name": "Jon Crimmins",
+      "linkedin": "/in/jon-crimmins-4376a841/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7. Formerly held; invited under the 2026-10-27 holds-lifted rule.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "brian-smith-14519418",
+      "name": "Brian Smith",
+      "linkedin": "/in/brian-smith-14519418/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7. Formerly held; invited under the 2026-10-27 holds-lifted rule.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "laura-carver-cmca-ams-pcam-81893711",
+      "name": "Laura Carver",
+      "linkedin": "/in/laura-carver-cmca-ams-pcam-81893711/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7. Formerly held; invited under the 2026-10-27 holds-lifted rule.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "chanel-merritt-cmca",
+      "name": "Chanel Merritt",
+      "linkedin": "/in/chanel-merritt-cmca/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7. Formerly held; invited under the 2026-10-27 holds-lifted rule.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "reece-johnson",
+      "name": "Reece Johnson",
+      "linkedin": "/in/reece-johnson/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7. Formerly held; invited under the 2026-10-27 holds-lifted rule.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "marc-mulholland",
+      "name": "Marc Mulholland",
+      "linkedin": "/in/marc-mulholland/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7. Formerly held; invited under the 2026-10-27 holds-lifted rule.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "corey-tapp-2537b3181",
+      "name": "Corey Tapp",
+      "linkedin": "/in/corey-tapp-2537b3181/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7. Formerly held; invited under the 2026-10-27 holds-lifted rule.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "adrienne-corcoran-baa4a173",
+      "name": "Adrienne Corcoran",
+      "linkedin": "/in/adrienne-corcoran-baa4a173/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7. Formerly held; invited under the 2026-10-27 holds-lifted rule.",
+      "stage": "invited_pending",
+      "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
+    },
+    {
+      "id": "tim-dickinson-6213a5128",
+      "name": "Tim Dickinson",
+      "linkedin": "/in/tim-dickinson-6213a5128/",
+      "company": "?",
+      "profile": "?",
+      "tier": "B",
+      "location": "?",
+      "touches": [
+        {
+          "date": "2026-10-28",
+          "type": "connection_request_bare",
+          "text": null,
+          "response": null
+        }
+      ],
+      "notes": "Session 7. Formerly held; invited under the 2026-10-27 holds-lifted rule.",
       "stage": "invited_pending",
       "next_action": "on accept: send tier B segment message from segment-messages.md + local anchor"
     }
