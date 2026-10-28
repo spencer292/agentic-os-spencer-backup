@@ -3,7 +3,7 @@
 ## Active Threads
 - ROUTE-ENGINE REDESIGN: register -> patterns -> ledger -> weekly repair -> one writer. Doc artifact/f0ea6c87-f10c-4319-96e1-65243fa7e2fd; redesign/2026-09-19_redesign-plan.md. 7 decisions pending.
 - TERRITORY TRUTH (09-17): 4/10 v9 handovers done; off-tech 13%, off-day 29%. Ferry doc artifact/7Ai7GUQHnFrJoFHZ3sNtoF.
-- WEEK LOOP: Spencer sets Jobber -> copy ops/2026-10-05_week/sync-plan-times.mjs --execute --no-times -> first stops >=7:00 -> --from-saved -> arrival-window-sweep -> build-timetable.mjs, republish artifact/1nAEZLZxLiwR9VTQT2X8nS. Wk 10-19 done.
+- WEEK LOOP: Spencer sets Jobber -> ops/2026-10-05_week/sync-plan-times.mjs --execute --no-times -> first stops >=7:00 -> --from-saved -> arrival-window-sweep -> build-timetable.mjs -> artifact/1nAEZLZxLiwR9VTQT2X8nS.
 - LOOKUP: weekly rebuild, Spencer runs scripts/run-service-day-refresh.ps1 -Install.
 - OR driver defaults: Alias 6:35-6:35p, Cory 6:35-4:35p, Luke 6:25, Robert 6:40, Tavis 6:15.
 - Fri 12:00 PT: redesign/scripts/snapshot-week.mjs --part=all.
@@ -12,7 +12,8 @@
 - WHALE HUNT: starts 10-26, 10 wks. App artifact/AjQJM8aYF9YeixRFMcdLmA Wk1 + Kidder call await Spencer.
 - LINKEDIN: 80 invites/wk, parks primary; 10-22 queue in 2026-10-20_session-5.md.
 - MO GRADING 10-17: avg 69.9 (Aug 76.2). callrail-faq/call-grading/2026-10-16_month.md
-- DIGIHAMMER EXIT: $300/mo, ads extra, Spencer owns Meta. Next: read-only HighLevel sweep + DND export. Plan in marketing-in-house/
+- DIGIHAMMER EXIT: $300/mo, ads extra. Next: read-only HighLevel sweep + DND export. marketing-in-house/
+- CLINCHER: C:\clincher Sprint 1 built. Spencer: Supabase project + .env.local + seed. Next: voice.
 - REVIEWS 10-19: 350 total/340 five-star (pull-review-feed --pages 60). CLAUDE.local still 289/283, update awaits OK.
 
 ## Environment Notes
