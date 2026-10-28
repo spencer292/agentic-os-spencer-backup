@@ -109,3 +109,14 @@ folder. Confirm the final invoice and that no auto-renewal has triggered.
 
 Fill in the first line from the invoices and this project has a measured result rather than an
 assumption.
+
+---
+
+## Status log
+
+- 2026-10-27: Notice sent to cheyanne@cascade-hr.com (cc ethan@cascade-hr.com). Last day of service
+  2026-11-26 (30 days, agreement not checked). Records + background-check reports + deletion
+  confirmation requested in the same email (`2026-10-27_cascade-notice-draft.md`). Gusto: Spencer is
+  account owner and holds billing; Cheyanne and Ethan are individual admins, no payroll/timesheet/
+  expense log entries by either. Remove both on 11-26. Unverified: ellaine@ironwoodstrategies.net and
+  kellen@jemeysonllc.com received a Gusto notice, so they may also have access.

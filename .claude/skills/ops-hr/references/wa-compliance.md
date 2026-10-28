@@ -183,6 +183,13 @@ hold the job open for. Decide that deliberately and in writing, before it happen
 - **WA new-hire reporting:** report every new hire to the state within **20 days**. Most payroll
   providers do this automatically — get that in writing from yours and file the confirmation.
   Assuming it happens is how it stops happening.
+- **Working interviews / ride-alongs are paid.** An applicant who does the job's work for hours
+  while being evaluated is working, and federal DOL treats an unpaid "working interview" as a
+  minimum-wage violation. WA L&I follows the FLSA hours-worked test (Admin Policy ES.C.2). Pay at
+  least WA minimum wage for every hour through payroll, which also puts the person under L&I
+  workers' comp for the day. Unpaid observation only, with no productive work, is a gray zone; paying
+  is cheaper than arguing it. The applicant does not drive a company vehicle before an MVR clears.
+  Source: DOL WHD working-interview enforcement; L&I F700-173-000 / ES.C.2. Verify by: 2027-01-31.
 
 ---
 
