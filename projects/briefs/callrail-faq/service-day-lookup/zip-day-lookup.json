@@ -1,15 +1,16 @@
 {
- "generated": "2026-10-17T17:17:11.741Z",
+ "generated": "2026-10-27T00:26:19.740Z",
  "window": {
-  "from": "2026-09-19T17:17:11.739Z",
-  "to": "2026-10-31T17:17:11.739Z"
+  "from": "2026-09-29T00:22:49.510Z",
+  "to": "2026-11-10T00:22:49.510Z"
  },
- "visitsScanned": 3078,
+ "visitsScanned": 3172,
  "records": [
   {
    "zip": "98001",
    "cities": [
-    "Auburn"
+    "Auburn",
+    "Algona"
    ],
    "n": 31,
    "days": [
@@ -18,22 +19,22 @@
    "confidence": "high",
    "provisional": false,
    "tech": "Robert Norton",
-   "techShare": 74
+   "techShare": 71
   },
   {
    "zip": "98002",
    "cities": [
     "Auburn"
    ],
-   "n": 6,
+   "n": 5,
    "days": [
-    "mon",
-    "tue"
+    "tue",
+    "wed"
    ],
    "confidence": "medium",
    "provisional": false,
    "tech": "Robert Norton",
-   "techShare": 67
+   "techShare": 80
   },
   {
    "zip": "98003",
@@ -56,7 +57,7 @@
     "Clyde Hill",
     "Yarrow Point"
    ],
-   "n": 31,
+   "n": 33,
    "days": [
     "tue",
     "mon"
@@ -64,21 +65,21 @@
    "confidence": "high",
    "provisional": false,
    "tech": "Tavis Alexander",
-   "techShare": 58
+   "techShare": 67
   },
   {
    "zip": "98005",
    "cities": [
     "Bellevue"
    ],
-   "n": 26,
+   "n": 19,
    "days": [
     "mon"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Alias Franks",
-   "techShare": 92
+   "techShare": 84
   },
   {
    "zip": "98006",
@@ -93,45 +94,43 @@
    "confidence": "high",
    "provisional": false,
    "tech": "Tavis Alexander",
-   "techShare": 82
+   "techShare": 100
   },
   {
    "zip": "98007",
    "cities": [
     "Bellevue"
    ],
-   "n": 3,
+   "n": 2,
    "days": [
-    "tue",
-    "thu"
+    "tue"
    ],
    "confidence": "low",
    "provisional": false,
    "tech": "Tavis Alexander",
-   "techShare": 67
+   "techShare": 100
   },
   {
    "zip": "98008",
    "cities": [
     "Bellevue"
    ],
-   "n": 11,
+   "n": 14,
    "days": [
-    "mon",
     "tue",
-    "thu"
+    "mon"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Tavis Alexander",
-   "techShare": 45
+   "techShare": 57
   },
   {
    "zip": "98010",
    "cities": [
     "Black Diamond"
    ],
-   "n": 20,
+   "n": 19,
    "days": [
     "tue"
    ],
@@ -145,11 +144,9 @@
    "cities": [
     "Bothell"
    ],
-   "n": 4,
+   "n": 5,
    "days": [
-    "tue",
-    "mon",
-    "wed"
+    "mon"
    ],
    "confidence": "medium",
    "provisional": false,
@@ -159,13 +156,14 @@
   {
    "zip": "98012",
    "cities": [
-    "Bothell"
+    "Bothell",
+    "Mill Creek"
    ],
-   "n": 4,
+   "n": 3,
    "days": [
     "wed"
    ],
-   "confidence": "medium",
+   "confidence": "low",
    "provisional": false,
    "tech": "Alias Franks",
    "techShare": 100
@@ -175,6 +173,20 @@
    "cities": [
     "Carnation"
    ],
+   "n": 14,
+   "days": [
+    "thu"
+   ],
+   "confidence": "high",
+   "provisional": false,
+   "tech": "Alias Franks",
+   "techShare": 93
+  },
+  {
+   "zip": "98019",
+   "cities": [
+    "Duvall"
+   ],
    "n": 16,
    "days": [
     "thu"
@@ -182,21 +194,19 @@
    "confidence": "high",
    "provisional": false,
    "tech": "Alias Franks",
-   "techShare": 94
+   "techShare": 100
   },
   {
-   "zip": "98019",
+   "zip": "98020",
    "cities": [
-    "Duvall"
+    "Edmonds"
    ],
-   "n": 15,
-   "days": [
-    "thu"
-   ],
-   "confidence": "high",
-   "provisional": false,
-   "tech": "Alias Franks",
-   "techShare": 100
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
   },
   {
    "zip": "98021",
@@ -218,22 +228,21 @@
    "cities": [
     "Enumclaw"
    ],
-   "n": 94,
+   "n": 85,
    "days": [
-    "wed",
-    "thu"
+    "wed"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Cory Ventura",
-   "techShare": 70
+   "techShare": 96
   },
   {
    "zip": "98023",
    "cities": [
     "Federal Way"
    ],
-   "n": 23,
+   "n": 25,
    "days": [
     "wed"
    ],
@@ -247,29 +256,40 @@
    "cities": [
     "Fall City"
    ],
-   "n": 16,
+   "n": 19,
    "days": [
     "fri"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Tavis Alexander",
-   "techShare": 63
+   "techShare": 53
+  },
+  {
+   "zip": "98026",
+   "cities": [
+    "Edmonds"
+   ],
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
   },
   {
    "zip": "98027",
    "cities": [
     "Issaquah"
    ],
-   "n": 31,
+   "n": 32,
    "days": [
-    "thu",
-    "fri"
+    "thu"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Robert Norton",
-   "techShare": 81
+   "techShare": 75
   },
   {
    "zip": "98028",
@@ -290,22 +310,21 @@
    "cities": [
     "Issaquah"
    ],
-   "n": 23,
+   "n": 21,
    "days": [
-    "fri",
-    "wed"
+    "fri"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Alias Franks",
-   "techShare": 48
+   "techShare": 76
   },
   {
    "zip": "98030",
    "cities": [
     "Kent"
    ],
-   "n": 7,
+   "n": 5,
    "days": [
     "mon"
    ],
@@ -319,7 +338,7 @@
    "cities": [
     "Kent"
    ],
-   "n": 25,
+   "n": 27,
    "days": [
     "mon"
    ],
@@ -333,22 +352,22 @@
    "cities": [
     "Kent"
    ],
-   "n": 7,
+   "n": 8,
    "days": [
-    "mon",
-    "wed"
+    "wed",
+    "mon"
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "provisional": false,
    "tech": "Robert Norton",
-   "techShare": 86
+   "techShare": 63
   },
   {
    "zip": "98033",
    "cities": [
     "Kirkland"
    ],
-   "n": 21,
+   "n": 20,
    "days": [
     "mon"
    ],
@@ -362,7 +381,7 @@
    "cities": [
     "Kirkland"
    ],
-   "n": 12,
+   "n": 17,
    "days": [
     "mon"
    ],
@@ -372,49 +391,73 @@
    "techShare": 100
   },
   {
+   "zip": "98036",
+   "cities": [
+    "Lynnwood",
+    "Brier"
+   ],
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
+  },
+  {
+   "zip": "98037",
+   "cities": [
+    "Lynnwood"
+   ],
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
+  },
+  {
    "zip": "98038",
    "cities": [
     "Maple Valley",
     "Maple valley"
    ],
-   "n": 90,
+   "n": 92,
    "days": [
-    "fri"
+    "fri",
+    "thu"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Robert Norton",
-   "techShare": 79
+   "techShare": 87
   },
   {
    "zip": "98039",
    "cities": [
     "Medina"
    ],
-   "n": 26,
+   "n": 23,
    "days": [
-    "tue",
-    "mon"
+    "tue"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Tavis Alexander",
-   "techShare": 65
+   "techShare": 78
   },
   {
    "zip": "98040",
    "cities": [
     "Mercer Island"
    ],
-   "n": 24,
+   "n": 25,
    "days": [
-    "tue",
-    "thu"
+    "tue"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Tavis Alexander",
-   "techShare": 75
+   "techShare": 100
   },
   {
    "zip": "98042",
@@ -422,7 +465,7 @@
     "Kent",
     "Covington"
    ],
-   "n": 66,
+   "n": 76,
    "days": [
     "mon",
     "tue"
@@ -430,32 +473,45 @@
    "confidence": "high",
    "provisional": false,
    "tech": "Robert Norton",
-   "techShare": 91
+   "techShare": 100
+  },
+  {
+   "zip": "98043",
+   "cities": [
+    "Mountlake Terrace"
+   ],
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
   },
   {
    "zip": "98045",
    "cities": [
-    "North Bend"
+    "North Bend",
+    "North bend"
    ],
-   "n": 42,
+   "n": 40,
    "days": [
     "fri"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Tavis Alexander",
-   "techShare": 79
+   "techShare": 100
   },
   {
    "zip": "98047",
    "cities": [
     "Pacific"
    ],
-   "n": 3,
+   "n": 5,
    "days": [
     "wed"
    ],
-   "confidence": "low",
+   "confidence": "medium",
    "provisional": false,
    "tech": "Robert Norton",
    "techShare": 100
@@ -467,8 +523,7 @@
    ],
    "n": 18,
    "days": [
-    "fri",
-    "tue"
+    "fri"
    ],
    "confidence": "high",
    "provisional": false,
@@ -482,8 +537,7 @@
    ],
    "n": 27,
    "days": [
-    "mon",
-    "thu"
+    "mon"
    ],
    "confidence": "high",
    "provisional": false,
@@ -495,7 +549,7 @@
    "cities": [
     "Redmond"
    ],
-   "n": 34,
+   "n": 33,
    "days": [
     "thu"
    ],
@@ -509,50 +563,7 @@
    "cities": [
     "Renton"
    ],
-   "n": 6,
-   "days": [
-    "thu"
-   ],
-   "confidence": "medium",
-   "provisional": false,
-   "tech": "Robert Norton",
-   "techShare": 100
-  },
-  {
-   "zip": "98056",
-   "cities": [
-    "Renton"
-   ],
-   "n": 35,
-   "days": [
-    "thu"
-   ],
-   "confidence": "high",
-   "provisional": false,
-   "tech": "Tavis Alexander",
-   "techShare": 86
-  },
-  {
-   "zip": "98057",
-   "cities": [
-    "Renton"
-   ],
-   "n": 5,
-   "days": [
-    "mon",
-    "wed"
-   ],
-   "confidence": "medium",
-   "provisional": false,
-   "tech": "Cory Ventura",
-   "techShare": 40
-  },
-  {
-   "zip": "98058",
-   "cities": [
-    "Renton"
-   ],
-   "n": 54,
+   "n": 9,
    "days": [
     "thu",
     "mon"
@@ -560,7 +571,53 @@
    "confidence": "high",
    "provisional": false,
    "tech": "Robert Norton",
-   "techShare": 87
+   "techShare": 89
+  },
+  {
+   "zip": "98056",
+   "cities": [
+    "Renton"
+   ],
+   "n": 40,
+   "days": [
+    "thu"
+   ],
+   "confidence": "high",
+   "provisional": false,
+   "tech": "Tavis Alexander",
+   "techShare": 98
+  },
+  {
+   "zip": "98057",
+   "cities": [
+    "Renton"
+   ],
+   "n": 4,
+   "days": [
+    "wed",
+    "thu",
+    "mon"
+   ],
+   "confidence": "medium",
+   "provisional": false,
+   "tech": "Tavis Alexander",
+   "techShare": 75
+  },
+  {
+   "zip": "98058",
+   "cities": [
+    "Renton",
+    "Fairwood"
+   ],
+   "n": 63,
+   "days": [
+    "thu",
+    "mon"
+   ],
+   "confidence": "high",
+   "provisional": false,
+   "tech": "Robert Norton",
+   "techShare": 98
   },
   {
    "zip": "98059",
@@ -568,35 +625,35 @@
     "Renton",
     "Newcastle"
    ],
-   "n": 78,
+   "n": 82,
    "days": [
     "thu"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Tavis Alexander",
-   "techShare": 65
+   "techShare": 89
   },
   {
    "zip": "98065",
    "cities": [
     "Snoqualmie"
    ],
-   "n": 11,
+   "n": 13,
    "days": [
     "fri"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Tavis Alexander",
-   "techShare": 91
+   "techShare": 100
   },
   {
    "zip": "98072",
    "cities": [
     "Woodinville"
    ],
-   "n": 23,
+   "n": 22,
    "days": [
     "wed"
    ],
@@ -610,9 +667,10 @@
    "cities": [
     "Sammamish"
    ],
-   "n": 33,
+   "n": 30,
    "days": [
-    "fri"
+    "fri",
+    "thu"
    ],
    "confidence": "high",
    "provisional": false,
@@ -625,21 +683,21 @@
     "Sammamish",
     "Issaquah"
    ],
-   "n": 60,
+   "n": 53,
    "days": [
     "fri"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Alias Franks",
-   "techShare": 93
+   "techShare": 100
   },
   {
    "zip": "98077",
    "cities": [
     "Woodinville"
    ],
-   "n": 30,
+   "n": 31,
    "days": [
     "wed"
    ],
@@ -649,29 +707,42 @@
    "techShare": 100
   },
   {
+   "zip": "98087",
+   "cities": [
+    "Lynnwood"
+   ],
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
+  },
+  {
    "zip": "98092",
    "cities": [
-    "Auburn"
+    "Auburn",
+    "Green River"
    ],
-   "n": 74,
+   "n": 73,
    "days": [
     "tue"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Robert Norton",
-   "techShare": 76
+   "techShare": 81
   },
   {
    "zip": "98105",
    "cities": [
     "Seattle"
    ],
-   "n": 3,
+   "n": 6,
    "days": [
     "tue"
    ],
-   "confidence": "low",
+   "confidence": "medium",
    "provisional": false,
    "tech": "Alias Franks",
    "techShare": 100
@@ -679,15 +750,16 @@
   {
    "zip": "98106",
    "cities": [
-    "Seattle"
+    "Seattle",
+    "White Center"
    ],
-   "n": 1,
+   "n": 2,
    "days": [
     "mon"
    ],
    "confidence": "low",
    "provisional": false,
-   "tech": "Spencer Hill",
+   "tech": "Tavis Alexander",
    "techShare": 100
   },
   {
@@ -702,7 +774,7 @@
    "confidence": "high",
    "provisional": false,
    "tech": "Tavis Alexander",
-   "techShare": 75
+   "techShare": 83
   },
   {
    "zip": "98109",
@@ -711,33 +783,46 @@
    ],
    "n": 1,
    "days": [
-    "mon"
+    "tue"
    ],
-   "confidence": "low",
-   "provisional": false,
-   "tech": "Cory Ventura",
+   "confidence": "provisional",
+   "provisional": true,
+   "tech": "Alias Franks",
    "techShare": 100
+  },
+  {
+   "zip": "98110",
+   "cities": [
+    "Bainbridge Island"
+   ],
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
   },
   {
    "zip": "98112",
    "cities": [
     "Seattle"
    ],
-   "n": 10,
+   "n": 9,
    "days": [
+    "tue",
     "mon"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Tavis Alexander",
-   "techShare": 60
+   "techShare": 56
   },
   {
    "zip": "98115",
    "cities": [
     "Seattle"
    ],
-   "n": 16,
+   "n": 13,
    "days": [
     "tue"
    ],
@@ -751,54 +836,54 @@
    "cities": [
     "Seattle"
    ],
-   "n": 26,
+   "n": 29,
    "days": [
     "mon"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Tavis Alexander",
-   "techShare": 81
+   "techShare": 100
   },
   {
    "zip": "98117",
    "cities": [
     "Seattle"
    ],
-   "n": 4,
+   "n": 6,
    "days": [
     "tue"
    ],
    "confidence": "medium",
    "provisional": false,
    "tech": "Alias Franks",
-   "techShare": 100
+   "techShare": 83
   },
   {
    "zip": "98119",
    "cities": [
     "Seattle"
    ],
-   "n": 4,
+   "n": 1,
    "days": [
-    "mon",
     "tue"
    ],
-   "confidence": "medium",
+   "confidence": "low",
    "provisional": false,
-   "tech": "Cory Ventura",
-   "techShare": 50
+   "tech": "Alias Franks",
+   "techShare": 100
   },
   {
    "zip": "98125",
    "cities": [
-    "Seattle"
+    "Seattle",
+    "Lake City"
    ],
-   "n": 10,
+   "n": 7,
    "days": [
     "tue"
    ],
-   "confidence": "high",
+   "confidence": "medium",
    "provisional": false,
    "tech": "Alias Franks",
    "techShare": 100
@@ -808,14 +893,14 @@
    "cities": [
     "Seattle"
    ],
-   "n": 5,
+   "n": 4,
    "days": [
     "mon"
    ],
    "confidence": "medium",
    "provisional": false,
    "tech": "Tavis Alexander",
-   "techShare": 60
+   "techShare": 100
   },
   {
    "zip": "98133",
@@ -823,7 +908,7 @@
     "Shoreline",
     "Seattle"
    ],
-   "n": 12,
+   "n": 9,
    "days": [
     "tue"
    ],
@@ -837,37 +922,37 @@
    "cities": [
     "Seattle"
    ],
-   "n": 22,
+   "n": 18,
    "days": [
     "mon"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Tavis Alexander",
-   "techShare": 73
+   "techShare": 100
   },
   {
    "zip": "98144",
    "cities": [
     "Seattle"
    ],
-   "n": 4,
+   "n": 6,
    "days": [
-    "mon",
-    "wed"
+    "mon"
    ],
    "confidence": "medium",
    "provisional": false,
    "tech": "Tavis Alexander",
-   "techShare": 75
+   "techShare": 83
   },
   {
    "zip": "98146",
    "cities": [
     "Seattle",
-    "Burien"
+    "Burien",
+    "White Center"
    ],
-   "n": 31,
+   "n": 35,
    "days": [
     "mon",
     "wed"
@@ -875,29 +960,29 @@
    "confidence": "high",
    "provisional": false,
    "tech": "Tavis Alexander",
-   "techShare": 77
+   "techShare": 100
   },
   {
    "zip": "98148",
    "cities": [
     "Burien"
    ],
-   "n": 7,
+   "n": 9,
    "days": [
-    "mon",
-    "wed"
+    "wed",
+    "mon"
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "provisional": false,
    "tech": "Tavis Alexander",
-   "techShare": 86
+   "techShare": 100
   },
   {
    "zip": "98155",
    "cities": [
     "Lake Forest Park"
    ],
-   "n": 3,
+   "n": 2,
    "days": [
     "tue"
    ],
@@ -912,21 +997,20 @@
     "Normandy Park",
     "Burien"
    ],
-   "n": 18,
+   "n": 22,
    "days": [
-    "wed",
-    "mon"
+    "wed"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Tavis Alexander",
-   "techShare": 72
+   "techShare": 100
   },
   {
    "zip": "98168",
    "cities": [
-    "Tukwila",
     "Burien",
+    "Tukwila",
     "SeaTac"
    ],
    "n": 24,
@@ -937,7 +1021,7 @@
    "confidence": "high",
    "provisional": false,
    "tech": "Tavis Alexander",
-   "techShare": 75
+   "techShare": 100
   },
   {
    "zip": "98177",
@@ -945,7 +1029,7 @@
     "Shoreline",
     "Seattle"
    ],
-   "n": 16,
+   "n": 14,
    "days": [
     "tue"
    ],
@@ -959,31 +1043,28 @@
    "cities": [
     "Seattle"
    ],
-   "n": 14,
+   "n": 15,
    "days": [
-    "wed",
-    "mon"
+    "wed"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Tavis Alexander",
-   "techShare": 64
+   "techShare": 100
   },
   {
    "zip": "98188",
    "cities": [
-    "Tukwila",
     "SeaTac"
    ],
-   "n": 2,
+   "n": 1,
    "days": [
-    "mon",
     "wed"
    ],
    "confidence": "low",
    "provisional": false,
-   "tech": "Cory Ventura",
-   "techShare": 50
+   "tech": "Tavis Alexander",
+   "techShare": 100
   },
   {
    "zip": "98198",
@@ -992,11 +1073,11 @@
     "Normandy Park",
     "Des Moines"
    ],
-   "n": 7,
+   "n": 10,
    "days": [
     "wed"
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "provisional": false,
    "tech": "Tavis Alexander",
    "techShare": 100
@@ -1006,30 +1087,149 @@
    "cities": [
     "Seattle"
    ],
-   "n": 14,
+   "n": 9,
    "days": [
-    "mon",
     "tue"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Alias Franks",
-   "techShare": 50
+   "techShare": 100
+  },
+  {
+   "zip": "98201",
+   "cities": [
+    "Everett"
+   ],
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
+  },
+  {
+   "zip": "98203",
+   "cities": [
+    "Everett"
+   ],
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
+  },
+  {
+   "zip": "98204",
+   "cities": [
+    "Everett"
+   ],
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
+  },
+  {
+   "zip": "98208",
+   "cities": [
+    "Everett"
+   ],
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
+  },
+  {
+   "zip": "98223",
+   "cities": [
+    "Arlington"
+   ],
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
+  },
+  {
+   "zip": "98252",
+   "cities": [
+    "Granite Falls"
+   ],
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
+  },
+  {
+   "zip": "98258",
+   "cities": [
+    "Lake Stevens"
+   ],
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
+  },
+  {
+   "zip": "98270",
+   "cities": [
+    "Marysville"
+   ],
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
+  },
+  {
+   "zip": "98271",
+   "cities": [
+    "Marysville"
+   ],
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
   },
   {
    "zip": "98272",
    "cities": [
     "Monroe"
    ],
-   "n": 4,
+   "n": 3,
    "days": [
     "thu",
     "wed"
    ],
-   "confidence": "medium",
+   "confidence": "low",
    "provisional": false,
    "tech": "Alias Franks",
    "techShare": 100
+  },
+  {
+   "zip": "98275",
+   "cities": [
+    "Mukilteo"
+   ],
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
   },
   {
    "zip": "98290",
@@ -1046,11 +1246,35 @@
    "techShare": 100
   },
   {
+   "zip": "98292",
+   "cities": [
+    "Stanwood"
+   ],
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
+  },
+  {
+   "zip": "98294",
+   "cities": [
+    "Sultan"
+   ],
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
+  },
+  {
    "zip": "98296",
    "cities": [
     "Snohomish"
    ],
-   "n": 14,
+   "n": 13,
    "days": [
     "wed"
    ],
@@ -1070,8 +1294,8 @@
    ],
    "confidence": "low",
    "provisional": false,
-   "tech": "Spencer Hill",
-   "techShare": 50
+   "tech": "Luke LaVergne",
+   "techShare": 100
   },
   {
    "zip": "98311",
@@ -1085,7 +1309,7 @@
    "confidence": "medium",
    "provisional": false,
    "tech": "Luke LaVergne",
-   "techShare": 75
+   "techShare": 100
   },
   {
    "zip": "98312",
@@ -1096,9 +1320,9 @@
    "days": [
     "wed"
    ],
-   "confidence": "low",
-   "provisional": false,
-   "tech": "Spencer Hill",
+   "confidence": "provisional",
+   "provisional": true,
+   "tech": "Luke LaVergne",
    "techShare": 100
   },
   {
@@ -1106,26 +1330,27 @@
    "cities": [
     "Buckley"
    ],
-   "n": 74,
+   "n": 70,
    "days": [
     "thu",
-    "fri"
+    "tue",
+    "wed"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Cory Ventura",
-   "techShare": 78
+   "techShare": 100
   },
   {
    "zip": "98327",
    "cities": [
     "DuPont"
    ],
-   "n": 6,
+   "n": 3,
    "days": [
     "mon"
    ],
-   "confidence": "medium",
+   "confidence": "low",
    "provisional": false,
    "tech": "Luke LaVergne",
    "techShare": 100
@@ -1135,7 +1360,7 @@
    "cities": [
     "Eatonville"
    ],
-   "n": 25,
+   "n": 24,
    "days": [
     "tue",
     "fri"
@@ -1143,7 +1368,7 @@
    "confidence": "high",
    "provisional": false,
    "tech": "Luke LaVergne",
-   "techShare": 72
+   "techShare": 71
   },
   {
    "zip": "98329",
@@ -1157,28 +1382,28 @@
    "confidence": "medium",
    "provisional": false,
    "tech": "Luke LaVergne",
-   "techShare": 75
+   "techShare": 100
   },
   {
    "zip": "98332",
    "cities": [
     "Gig Harbor"
    ],
-   "n": 21,
+   "n": 18,
    "days": [
     "wed"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Luke LaVergne",
-   "techShare": 67
+   "techShare": 100
   },
   {
    "zip": "98333",
    "cities": [
     "Fox Island"
    ],
-   "n": 2,
+   "n": 3,
    "days": [
     "wed"
    ],
@@ -1192,14 +1417,14 @@
    "cities": [
     "Gig Harbor"
    ],
-   "n": 18,
+   "n": 19,
    "days": [
     "wed"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Luke LaVergne",
-   "techShare": 78
+   "techShare": 100
   },
   {
    "zip": "98338",
@@ -1207,14 +1432,14 @@
     "Graham",
     "graham"
    ],
-   "n": 64,
+   "n": 57,
    "days": [
     "tue"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Cory Ventura",
-   "techShare": 69
+   "techShare": 56
   },
   {
    "zip": "98351",
@@ -1228,7 +1453,7 @@
    "confidence": "medium",
    "provisional": false,
    "tech": "Luke LaVergne",
-   "techShare": 75
+   "techShare": 100
   },
   {
    "zip": "98354",
@@ -1256,7 +1481,7 @@
    "confidence": "low",
    "provisional": false,
    "tech": "Luke LaVergne",
-   "techShare": 67
+   "techShare": 100
   },
   {
    "zip": "98360",
@@ -1264,10 +1489,9 @@
     "Orting",
     "Pierce County"
    ],
-   "n": 34,
+   "n": 27,
    "days": [
-    "tue",
-    "thu"
+    "tue"
    ],
    "confidence": "high",
    "provisional": false,
@@ -1300,21 +1524,33 @@
    "confidence": "medium",
    "provisional": false,
    "tech": "Luke LaVergne",
-   "techShare": 75
+   "techShare": 100
   },
   {
    "zip": "98367",
    "cities": [
     "Port Orchard"
    ],
-   "n": 6,
+   "n": 8,
    "days": [
     "wed"
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "provisional": false,
    "tech": "Luke LaVergne",
-   "techShare": 83
+   "techShare": 100
+  },
+  {
+   "zip": "98370",
+   "cities": [
+    "Poulsbo"
+   ],
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
   },
   {
    "zip": "98371",
@@ -1335,41 +1571,43 @@
   {
    "zip": "98372",
    "cities": [
-    "Puyallup",
-    "Edgewood"
+    "Edgewood",
+    "Puyallup"
    ],
-   "n": 38,
+   "n": 36,
    "days": [
-    "wed"
+    "wed",
+    "mon"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Robert Norton",
-   "techShare": 74
+   "techShare": 61
   },
   {
    "zip": "98373",
    "cities": [
-    "Puyallup"
+    "Puyallup",
+    "South Hill"
    ],
-   "n": 12,
+   "n": 10,
    "days": [
     "tue"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Cory Ventura",
-   "techShare": 92
+   "techShare": 80
   },
   {
    "zip": "98374",
    "cities": [
-    "Puyallup"
+    "Puyallup",
+    "South Hill"
    ],
-   "n": 20,
+   "n": 12,
    "days": [
-    "tue",
-    "mon"
+    "tue"
    ],
    "confidence": "high",
    "provisional": false,
@@ -1379,17 +1617,29 @@
   {
    "zip": "98375",
    "cities": [
-    "Puyallup"
+    "Puyallup",
+    "South Hill"
    ],
-   "n": 17,
+   "n": 13,
    "days": [
-    "tue",
-    "mon"
+    "tue"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Cory Ventura",
-   "techShare": 100
+   "techShare": 85
+  },
+  {
+   "zip": "98383",
+   "cities": [
+    "Silverdale"
+   ],
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
   },
   {
    "zip": "98385",
@@ -1398,9 +1648,8 @@
    ],
    "n": 4,
    "days": [
-    "thu",
-    "tue",
     "wed",
+    "tue",
     "fri"
    ],
    "confidence": "medium",
@@ -1411,16 +1660,17 @@
   {
    "zip": "98387",
    "cities": [
-    "Spanaway"
+    "Spanaway",
+    "Elk Plain"
    ],
-   "n": 12,
+   "n": 10,
    "days": [
     "tue"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Luke LaVergne",
-   "techShare": 75
+   "techShare": 60
   },
   {
    "zip": "98388",
@@ -1441,32 +1691,32 @@
    "cities": [
     "Sumner"
    ],
-   "n": 8,
+   "n": 14,
    "days": [
-    "thu",
-    "wed"
+    "mon",
+    "thu"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Cory Ventura",
-   "techShare": 63
+   "techShare": 79
   },
   {
    "zip": "98391",
    "cities": [
     "Bonney Lake",
     "Lake Tapps",
-    "Sumner"
+    "Tehaleh",
+    "Prairie Ridge"
    ],
-   "n": 89,
+   "n": 86,
    "days": [
-    "thu",
-    "fri"
+    "thu"
    ],
    "confidence": "high",
    "provisional": false,
    "tech": "Cory Ventura",
-   "techShare": 73
+   "techShare": 100
   },
   {
    "zip": "98394",
@@ -1477,9 +1727,9 @@
    "days": [
     "wed"
    ],
-   "confidence": "low",
-   "provisional": false,
-   "tech": "Spencer Hill",
+   "confidence": "provisional",
+   "provisional": true,
+   "tech": "Luke LaVergne",
    "techShare": 100
   },
   {
@@ -1487,10 +1737,11 @@
    "cities": [
     "Wilkeson"
    ],
-   "n": 2,
+   "n": 3,
    "days": [
     "wed",
-    "fri"
+    "fri",
+    "tue"
    ],
    "confidence": "low",
    "provisional": false,
@@ -1516,7 +1767,7 @@
    "cities": [
     "Tacoma"
    ],
-   "n": 3,
+   "n": 2,
    "days": [
     "fri"
    ],
@@ -1530,7 +1781,7 @@
    "cities": [
     "Tacoma"
    ],
-   "n": 3,
+   "n": 2,
    "days": [
     "fri"
    ],
@@ -1544,7 +1795,7 @@
    "cities": [
     "Tacoma"
    ],
-   "n": 9,
+   "n": 8,
    "days": [
     "fri"
    ],
@@ -1558,7 +1809,7 @@
    "cities": [
     "Tacoma"
    ],
-   "n": 7,
+   "n": 6,
    "days": [
     "fri"
    ],
@@ -1586,15 +1837,15 @@
    "cities": [
     "Fife"
    ],
-   "n": 3,
+   "n": 4,
    "days": [
     "fri",
     "wed"
    ],
-   "confidence": "low",
+   "confidence": "medium",
    "provisional": false,
    "tech": "Luke LaVergne",
-   "techShare": 67
+   "techShare": 75
   },
   {
    "zip": "98443",
@@ -1611,23 +1862,10 @@
    "techShare": 100
   },
   {
-   "zip": "98444",
-   "cities": [
-    "Tacoma"
-   ],
-   "n": 1,
-   "days": [
-    "fri"
-   ],
-   "confidence": "low",
-   "provisional": false,
-   "tech": "Luke LaVergne",
-   "techShare": 100
-  },
-  {
    "zip": "98445",
    "cities": [
-    "Tacoma"
+    "Tacoma",
+    "Parkland"
    ],
    "n": 13,
    "days": [
@@ -1642,17 +1880,18 @@
   {
    "zip": "98446",
    "cities": [
-    "Tacoma"
+    "Tacoma",
+    "Frederickson"
    ],
-   "n": 4,
+   "n": 3,
    "days": [
-    "fri",
-    "tue"
+    "tue",
+    "fri"
    ],
-   "confidence": "medium",
+   "confidence": "low",
    "provisional": false,
-   "tech": "Luke LaVergne",
-   "techShare": 50
+   "tech": "Cory Ventura",
+   "techShare": 67
   },
   {
    "zip": "98465",
@@ -1671,13 +1910,14 @@
   {
    "zip": "98466",
    "cities": [
-    "University Place"
+    "University Place",
+    "Fircrest"
    ],
-   "n": 4,
+   "n": 2,
    "days": [
     "fri"
    ],
-   "confidence": "medium",
+   "confidence": "low",
    "provisional": false,
    "tech": "Luke LaVergne",
    "techShare": 100
@@ -1702,7 +1942,7 @@
     "Tacoma",
     "Lakewood"
    ],
-   "n": 13,
+   "n": 16,
    "days": [
     "fri"
    ],
@@ -1716,11 +1956,11 @@
    "cities": [
     "Tacoma"
    ],
-   "n": 4,
+   "n": 3,
    "days": [
     "fri"
    ],
-   "confidence": "medium",
+   "confidence": "low",
    "provisional": false,
    "tech": "Luke LaVergne",
    "techShare": 100
@@ -1731,7 +1971,7 @@
     "Olympia",
     "Tumwater"
    ],
-   "n": 38,
+   "n": 41,
    "days": [
     "thu"
    ],
@@ -1745,7 +1985,7 @@
    "cities": [
     "Olympia"
    ],
-   "n": 30,
+   "n": 23,
    "days": [
     "mon"
    ],
@@ -1760,10 +2000,10 @@
     "Olympia",
     "Lacey"
    ],
-   "n": 9,
+   "n": 8,
    "days": [
-    "mon",
-    "thu"
+    "thu",
+    "mon"
    ],
    "confidence": "high",
    "provisional": false,
@@ -1775,11 +2015,11 @@
    "cities": [
     "Olympia"
    ],
-   "n": 7,
+   "n": 8,
    "days": [
     "mon"
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "provisional": false,
    "tech": "Luke LaVergne",
    "techShare": 100
@@ -1787,10 +2027,10 @@
   {
    "zip": "98512",
    "cities": [
-    "Olympia",
-    "Tumwater"
+    "Tumwater",
+    "Olympia"
    ],
-   "n": 19,
+   "n": 17,
    "days": [
     "thu"
    ],
@@ -1805,9 +2045,10 @@
     "Olympia",
     "Lacey"
    ],
-   "n": 31,
+   "n": 28,
    "days": [
-    "thu"
+    "thu",
+    "tue"
    ],
    "confidence": "high",
    "provisional": false,
@@ -1820,7 +2061,7 @@
     "Olympia",
     "Lacey"
    ],
-   "n": 31,
+   "n": 25,
    "days": [
     "mon"
    ],
@@ -1830,13 +2071,26 @@
    "techShare": 100
   },
   {
+   "zip": "98531",
+   "cities": [
+    "Centralia"
+   ],
+   "n": 0,
+   "days": [],
+   "confidence": "new",
+   "newArea": true,
+   "tech": "",
+   "techShare": 0
+  },
+  {
    "zip": "98576",
    "cities": [
     "Rainier"
    ],
-   "n": 1,
+   "n": 2,
    "days": [
-    "thu"
+    "thu",
+    "mon"
    ],
    "confidence": "low",
    "provisional": false,
@@ -1848,7 +2102,7 @@
    "cities": [
     "Roy"
    ],
-   "n": 11,
+   "n": 13,
    "days": [
     "tue"
    ],
@@ -1877,7 +2131,7 @@
    "cities": [
     "Yelm"
    ],
-   "n": 16,
+   "n": 17,
    "days": [
     "thu"
    ],

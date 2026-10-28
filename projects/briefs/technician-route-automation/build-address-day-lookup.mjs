@@ -335,11 +335,24 @@ const zipRows = Object.entries(grid.zips || {}).map(([zip, v]) => {
   return { zip, days, cities: [...seen.values()], tech: String(v.tech || '').split(' ')[0] };
 }).sort((a, b) => a.zip.localeCompare(b.zip));
 
+// Website-listed areas with no route history yet (new-service-areas.json, beside the grid): new zips
+// answer YES with no promised day; aliases are neighborhood names inside zips the grid already has.
+let extraAreas = {};
+try { extraAreas = JSON.parse(fs.readFileSync(path.join(path.dirname(gridPath), 'new-service-areas.json'), 'utf8')); } catch { /* optional */ }
+for (const [zip, city] of Object.entries(extraAreas.newZips || {})) {
+  if (!zipRows.some(r => r.zip === zip)) zipRows.push({ zip, days: [], cities: city.split('/'), tech: '', newArea: true });
+}
+zipRows.sort((a, b) => a.zip.localeCompare(b.zip));
+
 const cityIndex = new Map();
 for (const r of zipRows) for (const c of r.cities) {
   const k = c.toLowerCase();
   if (!cityIndex.has(k)) cityIndex.set(k, { label: c, zips: [] });
   cityIndex.get(k).zips.push(r.zip);
+}
+for (const [name, zips] of Object.entries(extraAreas.aliases || {})) {
+  const known = zips.filter(z => zipRows.some(r => r.zip === z));
+  if (known.length && !cityIndex.has(name.toLowerCase())) cityIndex.set(name.toLowerCase(), { label: name, zips: known });
 }
 const cities = [...cityIndex.values()].map(({ label, zips }) => {
   const rows = zips.map(z => zipRows.find(r => r.zip === z));
@@ -542,6 +555,11 @@ function propCard(p) {
 }
 
 function zipCard(r) {
+  if (r.newArea) return '<div class="card"><div class="day">Yes, we service this area</div>' +
+    '<div class="where">' + esc(r.zip) + ' — ' + esc(r.cities.join(', ')) + '</div>' +
+    '<div class="row">Say: "Yes, we cover ' + esc(r.cities[0]) + '. Let me get you on the schedule and we\\'ll confirm your day."</div>' +
+    '<span class="flag">New service area — no regular route day here yet. Book it, take the full address, and do not promise a day. The day gets set when it is routed.</span>' +
+    '<div class="meta">New area from the website service-areas list.</div></div>';
   const dates = r.days.flatMap(d => nextDates(d, 2)).sort((a,b)=>a-b).slice(0,3).map(fmtD).join(' · ');
   return '<div class="card"><div class="day">' + esc(daysPhrase(r.days)) + '</div>' +
     '<div class="where">' + esc(r.zip) + ' — ' + esc(r.cities.join(', ')) + '</div>' +
@@ -553,6 +571,7 @@ function zipCard(r) {
 function cityCard(c) {
   if (!c.ambiguous) {
     const r = D.zipRows.find(x => x.zip === c.zips[0]);
+    if (r.newArea) return zipCard({ ...r, cities: [c.label + (c.zips.length > 1 ? ' (' + c.zips.join(', ') + ')' : '')] });
     return zipCard({ ...r, zip: c.label, cities: [c.zips.length > 1 ? 'all ' + c.zips.length + ' zips on the same day' : c.zips[0]] });
   }
   const rows = c.zips.map(z => D.zipRows.find(x => x.zip === z)).sort((a,b) => a.zip.localeCompare(b.zip))

@@ -215,6 +215,20 @@ if (!RENDER_ONLY) {
   } catch { /* advisory only; the visit data stands on its own */ }
 }
 
+// Website-listed areas the visit history cannot know about (new-service-areas.json). A new zip is
+// answered YES with no promised day; once real visits exist for it, the visit record wins and the
+// list entry is ignored. Aliases add neighborhood names to zips we already run.
+try {
+  const extra = JSON.parse(fs.readFileSync(path.join(HERE, 'new-service-areas.json'), 'utf8'));
+  for (const [zip, city] of Object.entries(extra.newZips || {})) {
+    if (records.some((r) => r.zip === zip)) continue;
+    records.push({ zip, cities: city.split('/'), n: 0, days: [], confidence: 'new', newArea: true, tech: '', techShare: 0 });
+  }
+  for (const [name, zips] of Object.entries(extra.aliases || {}))
+    for (const z of zips) { const r = records.find((x) => x.zip === z); if (r && !r.cities.includes(name)) r.cities.push(name); }
+  records.sort((x, y) => x.zip.localeCompare(y.zip));
+} catch { /* no list = visit data only */ }
+
 const out = { generated: new Date().toISOString(), window: { from, to }, visitsScanned: visits.length, records, splitZips, departed };
 fs.writeFileSync(path.join(HERE, 'zip-day-lookup.json'), JSON.stringify(out, null, 1));
 
@@ -227,6 +241,7 @@ fs.writeFileSync(path.join(HERE, 'zip-day-lookup.json'), JSON.stringify(out, nul
 if (!RENDER_ONLY) {
   const gridZips = {};
   for (const r of records) {
+    if (r.newArea) continue;   // no route day to give the address lookup's grid
     gridZips[r.zip] = {
       days: r.days,
       tech: r.tech,
@@ -365,6 +380,14 @@ function render(){
     return;
   }
   out.innerHTML=hits.map(function(r){
+    if(r.newArea) return '<div class="card">'+
+      '<div class="zip">'+r.zip+'</div>'+
+      '<div class="city">'+r.cities.join(' &middot; ')+'</div>'+
+      '<div class="day">Yes, we service this area</div>'+
+      '<div class="say"><span class="lead">Say this</span>Yes, we cover '+r.cities[0]+'. Let me get you on the schedule and we&rsquo;ll confirm your day.</div>'+
+      '<div class="flag caution"><b>New service area &mdash; no regular day here yet.</b> Book it, take the full address, and do not promise a day. The day gets set when it is routed.</div>'+
+      '<div class="meta">New area from the website service-areas list</div>'+
+    '</div>';
     var split=DATA.splitZips[r.zip];
     var flags='';
     if(split) flags+='<div class="flag critical"><b>This zip is split by a highway ('+split+').</b> The day depends which side of the line the address sits on. Get the full street address and confirm before promising a day.</div>';
