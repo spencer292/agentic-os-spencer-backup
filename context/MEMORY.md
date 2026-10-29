@@ -9,13 +9,14 @@
 - COLLECTIONS 10-20: 38 texted $4,820 + AUTOPAY invite (data/autopay-consent-reply.md). 14 texted-unpaid + 6 commercial need calls.
 - PRICE RESET: 121 grandfathered->$100 Feb 1, +10% on 495 Mar 1 (cfo/2026-10-20_*); Jan 5 notice. 2027 plan in got-moles-scale/, 5 decisions open.
 - WHALE HUNT: 10-26 +10 wks, artifact/AjQJM8aYF9YeixRFMcdLmA; Wk1 + Kidder await Spencer.
-- LINKEDIN: 80 inv/wk, holds lifted 10-27. S7 sent 10-28. Russell Weeks hot: coffee after 10-29, no walk first.
+- LINKEDIN: 80 inv/wk; S7 sent 10-28. Russell Weeks: coffee after 10-29, no walk first.
 - MO GRADING 10-17: avg 69.9 (Aug 76.2).
 - DIGIHAMMER EXIT: $300/mo, ads extra. Next: HighLevel sweep + DND export.
 - CHATGPT ADS 10-22: pixel 6LdF4rw8Se8vGF3Eo12gip. Gaps: $25/day, no cap, homepage LP, no CallRail #.
 - CLINCHER: C:\clincher Sprint 1 built. Spencer: Supabase project + .env.local + seed. Next: voice.
 - REVIEWS 10-19: 350/340 five-star; CLAUDE.local 289/283 update awaits OK.
-- CASCADE HR EXIT: notice sent 10-27, last day 11-26 (cal reminder). Remove Cheyanne+Ethan from Gusto; ID ellaine@/kellen@ (Gusto cc).
+- CASCADE HR EXIT: notice 10-27, last day 11-26. Remove Cheyanne+Ethan from Gusto; ID ellaine@/kellen@ (Gusto cc).
+- COMMISSION: Oct final run after Nov 1 (10-31 TMCP batch).
 
 ## Environment Notes
 - OptimoRoute: no actual times; per-date driver hours API-immutable; SYNC unschedules, UPDATE safe; balancing OFF.
