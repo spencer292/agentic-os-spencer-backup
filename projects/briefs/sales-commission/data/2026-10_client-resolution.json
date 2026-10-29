@@ -1,6 +1,6 @@
 {
   "month": "2026-10",
-  "resolvedAt": "2026-10-23T00:07:46.533Z",
+  "resolvedAt": "2026-10-29T00:09:41.841Z",
   "resolution": {
     "17094": {
       "seller": "Robert Norton",
@@ -15,10 +15,10 @@
       "evidence": "0 quotes, 3 jobs, none carry a salesperson"
     },
     "17097": {
-      "seller": null,
-      "basis": "NO_SELLER_IN_CLIENT_HISTORY",
+      "seller": "Spencer Hill",
+      "basis": "CLIENT_HISTORY",
       "client": "Chris Heacox",
-      "evidence": "0 quotes, 6 jobs, none carry a salesperson"
+      "evidence": "earliest seller on record: quote 14487 (2026-10-26) = Spencer Hill"
     },
     "17100": {
       "seller": "Tavis Alexander",
@@ -142,6 +142,168 @@
     }
   },
   "history": {
+    "Z2lkOi8vSm9iYmVyL0NsaWVudC82OTk4MTYxMg==": {
+      "name": "Tia Avril",
+      "quotes": [
+        {
+          "n": "14301",
+          "at": "2026-09-29T15:58:58Z",
+          "seller": "Tavis Alexander"
+        },
+        {
+          "n": "13533",
+          "at": "2026-05-04T22:05:50Z",
+          "seller": "Tavis Alexander"
+        },
+        {
+          "n": "11211",
+          "at": "2023-07-06T17:07:30Z",
+          "seller": null
+        }
+      ],
+      "jobs": [
+        {
+          "n": 8569,
+          "at": "2026-09-14T17:29:35Z",
+          "seller": null
+        },
+        {
+          "n": 7883,
+          "at": "2026-04-28T23:07:19Z",
+          "seller": null
+        },
+        {
+          "n": 7099,
+          "at": "2025-09-01T18:00:39Z",
+          "seller": null
+        },
+        {
+          "n": 4158,
+          "at": "2023-07-13T19:15:56Z",
+          "seller": null
+        }
+      ]
+    },
+    "Z2lkOi8vSm9iYmVyL0NsaWVudC83MTQ3NzA0NQ==": {
+      "name": "Amy Crenshaw-Burns",
+      "quotes": [
+        {
+          "n": "13944",
+          "at": "2026-08-10T23:13:36Z",
+          "seller": "Muhammad Javed"
+        },
+        {
+          "n": "11343",
+          "at": "2023-08-11T16:02:27Z",
+          "seller": null
+        }
+      ],
+      "jobs": [
+        {
+          "n": 8619,
+          "at": "2026-09-22T00:49:36Z",
+          "seller": null
+        },
+        {
+          "n": 4356,
+          "at": "2023-08-11T18:35:05Z",
+          "seller": null
+        },
+        {
+          "n": 5353,
+          "at": "2024-06-18T22:16:04Z",
+          "seller": null
+        }
+      ]
+    },
+    "Z2lkOi8vSm9iYmVyL0NsaWVudC80NzM1NzQ1NQ==": {
+      "name": "Melissa  Bobbit",
+      "quotes": [],
+      "jobs": [
+        {
+          "n": 8611,
+          "at": "2026-09-19T18:50:17Z",
+          "seller": null
+        },
+        {
+          "n": 8004,
+          "at": "2026-06-16T04:23:37Z",
+          "seller": null
+        },
+        {
+          "n": 2312,
+          "at": "2022-06-30T05:16:08Z",
+          "seller": null
+        },
+        {
+          "n": 2539,
+          "at": "2022-08-10T04:09:45Z",
+          "seller": null
+        },
+        {
+          "n": 5331,
+          "at": "2024-06-14T16:59:57Z",
+          "seller": null
+        },
+        {
+          "n": 5539,
+          "at": "2024-07-17T18:44:59Z",
+          "seller": null
+        },
+        {
+          "n": 5844,
+          "at": "2024-08-28T22:54:48Z",
+          "seller": null
+        }
+      ]
+    },
+    "Z2lkOi8vSm9iYmVyL0NsaWVudC8zMDIzMTM4Mw==": {
+      "name": "Michael Glover",
+      "quotes": [
+        {
+          "n": "14347",
+          "at": "2026-10-06T17:53:20Z",
+          "seller": "Alias Franks"
+        },
+        {
+          "n": "10073",
+          "at": "2020-06-08T20:49:50Z",
+          "seller": null
+        }
+      ],
+      "jobs": [
+        {
+          "n": 8570,
+          "at": "2026-09-14T18:48:39Z",
+          "seller": null
+        },
+        {
+          "n": 434,
+          "at": "2020-06-08T20:53:30Z",
+          "seller": null
+        },
+        {
+          "n": 1420,
+          "at": "2021-12-21T18:59:53Z",
+          "seller": null
+        },
+        {
+          "n": 2047,
+          "at": "2022-05-24T02:18:49Z",
+          "seller": null
+        },
+        {
+          "n": 2595,
+          "at": "2022-08-18T18:08:04Z",
+          "seller": null
+        },
+        {
+          "n": 4412,
+          "at": "2023-08-21T16:21:12Z",
+          "seller": null
+        }
+      ]
+    },
     "Z2lkOi8vSm9iYmVyL0NsaWVudC8xMjIxMzkwNjI=": {
       "name": "Chris Sita",
       "quotes": [
@@ -262,38 +424,6 @@
           "n": 7466,
           "at": "2025-11-09T19:14:16Z",
           "seller": "Courtney"
-        }
-      ]
-    },
-    "Z2lkOi8vSm9iYmVyL0NsaWVudC83MTQ3NzA0NQ==": {
-      "name": "Amy Crenshaw-Burns",
-      "quotes": [
-        {
-          "n": "13944",
-          "at": "2026-08-10T23:13:36Z",
-          "seller": "Muhammad Javed"
-        },
-        {
-          "n": "11343",
-          "at": "2023-08-11T16:02:27Z",
-          "seller": null
-        }
-      ],
-      "jobs": [
-        {
-          "n": 8619,
-          "at": "2026-09-22T00:49:36Z",
-          "seller": null
-        },
-        {
-          "n": 4356,
-          "at": "2023-08-11T18:35:05Z",
-          "seller": null
-        },
-        {
-          "n": 5353,
-          "at": "2024-06-18T22:16:04Z",
-          "seller": null
         }
       ]
     },
@@ -426,47 +556,6 @@
         {
           "n": 1064,
           "at": "2021-07-15T00:16:40Z",
-          "seller": null
-        }
-      ]
-    },
-    "Z2lkOi8vSm9iYmVyL0NsaWVudC80NzM1NzQ1NQ==": {
-      "name": "Melissa  Bobbit",
-      "quotes": [],
-      "jobs": [
-        {
-          "n": 8611,
-          "at": "2026-09-19T18:50:17Z",
-          "seller": null
-        },
-        {
-          "n": 8004,
-          "at": "2026-06-16T04:23:37Z",
-          "seller": null
-        },
-        {
-          "n": 2312,
-          "at": "2022-06-30T05:16:08Z",
-          "seller": null
-        },
-        {
-          "n": 2539,
-          "at": "2022-08-10T04:09:45Z",
-          "seller": null
-        },
-        {
-          "n": 5331,
-          "at": "2024-06-14T16:59:57Z",
-          "seller": null
-        },
-        {
-          "n": 5539,
-          "at": "2024-07-17T18:44:59Z",
-          "seller": null
-        },
-        {
-          "n": 5844,
-          "at": "2024-08-28T22:54:48Z",
           "seller": null
         }
       ]
@@ -629,53 +718,6 @@
         }
       ]
     },
-    "Z2lkOi8vSm9iYmVyL0NsaWVudC8zMDIzMTM4Mw==": {
-      "name": "Michael Glover",
-      "quotes": [
-        {
-          "n": "14347",
-          "at": "2026-10-06T17:53:20Z",
-          "seller": "Alias Franks"
-        },
-        {
-          "n": "10073",
-          "at": "2020-06-08T20:49:50Z",
-          "seller": null
-        }
-      ],
-      "jobs": [
-        {
-          "n": 8570,
-          "at": "2026-09-14T18:48:39Z",
-          "seller": null
-        },
-        {
-          "n": 434,
-          "at": "2020-06-08T20:53:30Z",
-          "seller": null
-        },
-        {
-          "n": 1420,
-          "at": "2021-12-21T18:59:53Z",
-          "seller": null
-        },
-        {
-          "n": 2047,
-          "at": "2022-05-24T02:18:49Z",
-          "seller": null
-        },
-        {
-          "n": 2595,
-          "at": "2022-08-18T18:08:04Z",
-          "seller": null
-        },
-        {
-          "n": 4412,
-          "at": "2023-08-21T16:21:12Z",
-          "seller": null
-        }
-      ]
-    },
     "Z2lkOi8vSm9iYmVyL0NsaWVudC8xNDczODMzMzk=": {
       "name": "Tad Hutchison",
       "quotes": [
@@ -695,48 +737,6 @@
           "n": 8245,
           "at": "2026-07-28T04:31:32Z",
           "seller": "Spencer Hill"
-        }
-      ]
-    },
-    "Z2lkOi8vSm9iYmVyL0NsaWVudC82OTk4MTYxMg==": {
-      "name": "Tia Avril",
-      "quotes": [
-        {
-          "n": "14301",
-          "at": "2026-09-29T15:58:58Z",
-          "seller": "Tavis Alexander"
-        },
-        {
-          "n": "13533",
-          "at": "2026-05-04T22:05:50Z",
-          "seller": "Tavis Alexander"
-        },
-        {
-          "n": "11211",
-          "at": "2023-07-06T17:07:30Z",
-          "seller": null
-        }
-      ],
-      "jobs": [
-        {
-          "n": 8569,
-          "at": "2026-09-14T17:29:35Z",
-          "seller": null
-        },
-        {
-          "n": 7883,
-          "at": "2026-04-28T23:07:19Z",
-          "seller": null
-        },
-        {
-          "n": 7099,
-          "at": "2025-09-01T18:00:39Z",
-          "seller": null
-        },
-        {
-          "n": 4158,
-          "at": "2023-07-13T19:15:56Z",
-          "seller": null
         }
       ]
     },
@@ -858,8 +858,19 @@
     },
     "Z2lkOi8vSm9iYmVyL0NsaWVudC8yMTM0NTI4Mg==": {
       "name": "Chris Heacox",
-      "quotes": [],
+      "quotes": [
+        {
+          "n": "14487",
+          "at": "2026-10-26T18:57:53Z",
+          "seller": "Spencer Hill"
+        }
+      ],
       "jobs": [
+        {
+          "n": 8801,
+          "at": "2026-10-27T21:14:06Z",
+          "seller": "Spencer Hill"
+        },
         {
           "n": 8466,
           "at": "2026-08-26T18:47:48Z",
