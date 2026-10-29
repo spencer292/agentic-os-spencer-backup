@@ -1,0 +1,94 @@
+{
+ "window": {
+  "from": "2026-10-01",
+  "to": "2026-10-28"
+ },
+ "totals": {
+  "visits": 2298,
+  "jobs": 1002,
+  "notes": 2305,
+  "moles": 682
+ },
+ "byTech": [
+  {
+   "tech": "Tavis Alexander",
+   "moles": 173,
+   "notes": 530,
+   "notesWithCatch": 143,
+   "completedVisits": 526,
+   "molesPerNote": 0.33,
+   "catchRate": 27
+  },
+  {
+   "tech": "Robert Norton",
+   "moles": 157,
+   "notes": 515,
+   "notesWithCatch": 140,
+   "completedVisits": 515,
+   "molesPerNote": 0.3,
+   "catchRate": 27.2
+  },
+  {
+   "tech": "Alias Franks",
+   "moles": 124,
+   "notes": 445,
+   "notesWithCatch": 104,
+   "completedVisits": 444,
+   "molesPerNote": 0.28,
+   "catchRate": 23.4
+  },
+  {
+   "tech": "Cory Ventura",
+   "moles": 117,
+   "notes": 403,
+   "notesWithCatch": 99,
+   "completedVisits": 404,
+   "molesPerNote": 0.29,
+   "catchRate": 24.6
+  },
+  {
+   "tech": "Luke LaVergne",
+   "moles": 108,
+   "notes": 403,
+   "notesWithCatch": 96,
+   "completedVisits": 403,
+   "molesPerNote": 0.27,
+   "catchRate": 23.8
+  },
+  {
+   "tech": "Spencer Hill",
+   "moles": 3,
+   "notes": 9,
+   "notesWithCatch": 3,
+   "completedVisits": 4,
+   "molesPerNote": 0.33,
+   "catchRate": 33.3
+  }
+ ],
+ "visitsByTech": [
+  [
+   "Tavis Alexander",
+   526
+  ],
+  [
+   "Robert Norton",
+   515
+  ],
+  [
+   "Alias Franks",
+   444
+  ],
+  [
+   "Cory Ventura",
+   404
+  ],
+  [
+   "Luke LaVergne",
+   403
+  ],
+  [
+   "Spencer Hill",
+   4
+  ]
+ ]
+}

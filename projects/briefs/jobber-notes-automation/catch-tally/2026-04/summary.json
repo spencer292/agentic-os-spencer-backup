@@ -1,0 +1,72 @@
+{
+ "window": {
+  "from": "2026-04-01",
+  "to": "2026-04-30"
+ },
+ "totals": {
+  "visits": 1046,
+  "jobs": 568,
+  "notes": 1021,
+  "moles": 271
+ },
+ "byTech": [
+  {
+   "tech": "Tavis Alexander",
+   "moles": 133,
+   "notes": 543,
+   "notesWithCatch": 111,
+   "completedVisits": 566,
+   "molesPerNote": 0.24,
+   "catchRate": 20.4
+  },
+  {
+   "tech": "Brayden Rich",
+   "moles": 77,
+   "notes": 268,
+   "notesWithCatch": 66,
+   "completedVisits": 262,
+   "molesPerNote": 0.29,
+   "catchRate": 24.6
+  },
+  {
+   "tech": "Luke LaVergne",
+   "moles": 57,
+   "notes": 200,
+   "notesWithCatch": 49,
+   "completedVisits": 212,
+   "molesPerNote": 0.28,
+   "catchRate": 24.5
+  },
+  {
+   "tech": "Cory Ventura",
+   "moles": 4,
+   "notes": 10,
+   "notesWithCatch": 3,
+   "completedVisits": 5,
+   "molesPerNote": 0.4,
+   "catchRate": 30
+  }
+ ],
+ "visitsByTech": [
+  [
+   "Tavis Alexander",
+   566
+  ],
+  [
+   "Brayden Rich",
+   262
+  ],
+  [
+   "Luke LaVergne",
+   212
+  ],
+  [
+   "Cory Ventura",
+   5
+  ],
+  [
+   "Spencer Hill",
+   1
+  ]
+ ]
+}

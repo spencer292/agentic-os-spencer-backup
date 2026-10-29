@@ -1,0 +1,55 @@
+{
+ "window": {
+  "from": "2026-01-01",
+  "to": "2026-01-31"
+ },
+ "totals": {
+  "visits": 902,
+  "jobs": 492,
+  "notes": 916,
+  "moles": 364
+ },
+ "byTech": [
+  {
+   "tech": "Brayden Rich",
+   "moles": 215,
+   "notes": 424,
+   "notesWithCatch": 167,
+   "completedVisits": 424,
+   "molesPerNote": 0.51,
+   "catchRate": 39.4
+  },
+  {
+   "tech": "Tavis Alexander",
+   "moles": 140,
+   "notes": 449,
+   "notesWithCatch": 112,
+   "completedVisits": 444,
+   "molesPerNote": 0.31,
+   "catchRate": 24.9
+  },
+  {
+   "tech": "Cory Ventura",
+   "moles": 9,
+   "notes": 43,
+   "notesWithCatch": 9,
+   "completedVisits": 34,
+   "molesPerNote": 0.21,
+   "catchRate": 20.9
+  }
+ ],
+ "visitsByTech": [
+  [
+   "Tavis Alexander",
+   444
+  ],
+  [
+   "Brayden Rich",
+   424
+  ],
+  [
+   "Cory Ventura",
+   34
+  ]
+ ]
+}

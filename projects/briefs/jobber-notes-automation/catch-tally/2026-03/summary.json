@@ -1,0 +1,81 @@
+{
+ "window": {
+  "from": "2026-03-01",
+  "to": "2026-03-31"
+ },
+ "totals": {
+  "visits": 1043,
+  "jobs": 552,
+  "notes": 1017,
+  "moles": 313
+ },
+ "byTech": [
+  {
+   "tech": "Brayden Rich",
+   "moles": 187,
+   "notes": 464,
+   "notesWithCatch": 161,
+   "completedVisits": 468,
+   "molesPerNote": 0.4,
+   "catchRate": 34.7
+  },
+  {
+   "tech": "Tavis Alexander",
+   "moles": 89,
+   "notes": 390,
+   "notesWithCatch": 74,
+   "completedVisits": 412,
+   "molesPerNote": 0.23,
+   "catchRate": 19
+  },
+  {
+   "tech": "Luke LaVergne",
+   "moles": 28,
+   "notes": 124,
+   "notesWithCatch": 25,
+   "completedVisits": 128,
+   "molesPerNote": 0.23,
+   "catchRate": 20.2
+  },
+  {
+   "tech": "Cory Ventura",
+   "moles": 9,
+   "notes": 38,
+   "notesWithCatch": 7,
+   "completedVisits": 34,
+   "molesPerNote": 0.24,
+   "catchRate": 18.4
+  },
+  {
+   "tech": "Spencer Hill",
+   "moles": 0,
+   "notes": 1,
+   "notesWithCatch": 0,
+   "completedVisits": 1,
+   "molesPerNote": 0,
+   "catchRate": 0
+  }
+ ],
+ "visitsByTech": [
+  [
+   "Brayden Rich",
+   468
+  ],
+  [
+   "Tavis Alexander",
+   412
+  ],
+  [
+   "Luke LaVergne",
+   128
+  ],
+  [
+   "Cory Ventura",
+   34
+  ],
+  [
+   "Spencer Hill",
+   1
+  ]
+ ]
+}

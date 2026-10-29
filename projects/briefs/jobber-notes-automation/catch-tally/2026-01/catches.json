@@ -1,0 +1,3225 @@
+{
+ "window": {
+  "from": "2026-01-01",
+  "to": "2026-01-31"
+ },
+ "totals": {
+  "visits": 902,
+  "jobs": 492,
+  "notes": 916,
+  "moles": 364
+ },
+ "byTech": [
+  {
+   "tech": "Brayden Rich",
+   "moles": 215,
+   "notes": 424,
+   "notesWithCatch": 167,
+   "completedVisits": 424,
+   "molesPerNote": 0.51,
+   "catchRate": 39.4
+  },
+  {
+   "tech": "Tavis Alexander",
+   "moles": 140,
+   "notes": 449,
+   "notesWithCatch": 112,
+   "completedVisits": 444,
+   "molesPerNote": 0.31,
+   "catchRate": 24.9
+  },
+  {
+   "tech": "Cory Ventura",
+   "moles": 9,
+   "notes": 43,
+   "notesWithCatch": 9,
+   "completedVisits": 34,
+   "molesPerNote": 0.21,
+   "catchRate": 20.9
+  }
+ ],
+ "visitsByTech": [
+  [
+   "Tavis Alexander",
+   444
+  ],
+  [
+   "Brayden Rich",
+   424
+  ],
+  [
+   "Cory Ventura",
+   34
+  ]
+ ],
+ "catches": [
+  {
+   "msg": "7 moles\n2 miss\nMoved 2\nAdded 2\nMA\n13 tl onX\nAdd visit",
+   "at": "2026-01-12T19:40:29Z",
+   "by": "Tavis Alexander",
+   "job": 7546,
+   "client": "Marymoor Park",
+   "moles": 7,
+   "hits": [
+    "7 moles => 7"
+   ]
+  },
+  {
+   "msg": "4 moles \n1 miss \nL/a \n2 voos shiftee \n1 voos 1 tl foh \n6 voos boh",
+   "at": "2026-01-16T16:43:57Z",
+   "by": "Brayden Rich",
+   "job": 7579,
+   "client": "Nicholas Mayer",
+   "moles": 4,
+   "hits": [
+    "4 moles => 4"
+   ]
+  },
+  {
+   "msg": "4 moles\nNo miss \nN/a \n1 tl pulled\n1 voos added \n5 voos 1 tl",
+   "at": "2026-01-26T19:25:50Z",
+   "by": "Brayden Rich",
+   "job": 7618,
+   "client": "Kathleen Nurmi",
+   "moles": 4,
+   "hits": [
+    "4 moles => 4"
+   ]
+  },
+  {
+   "msg": "4 moles\nNo miss \nN/a \n1 tl pulled\n1 voos added \n5 voos 1 tl",
+   "at": "2026-01-26T20:09:02Z",
+   "by": "Brayden Rich",
+   "job": 7618,
+   "client": "Kathleen Nurmi",
+   "moles": 4,
+   "hits": [
+    "4 moles => 4"
+   ]
+  },
+  {
+   "msg": "3 moles\nPulled 1\nMoved 4\nLA\n12 tl onX\nAdd visit",
+   "at": "2026-01-19T19:20:24Z",
+   "by": "Tavis Alexander",
+   "job": 7546,
+   "client": "Marymoor Park",
+   "moles": 3,
+   "hits": [
+    "3 moles => 3"
+   ]
+  },
+  {
+   "msg": "3 moles\nPulled 1\nMoved 3\nLA\n11 tl onX\nAdd visit",
+   "at": "2026-01-26T18:23:36Z",
+   "by": "Tavis Alexander",
+   "job": 7546,
+   "client": "Marymoor Park",
+   "moles": 3,
+   "hits": [
+    "3 moles => 3"
+   ]
+  },
+  {
+   "msg": "3 moles \n2 miss 1 u 1 t \nL/a \n1 tl sjifted \n3 voos 2 tl boh \nAdd visit",
+   "at": "2026-01-13T19:22:30Z",
+   "by": "Brayden Rich",
+   "job": 7555,
+   "client": "Nora Hennecken",
+   "moles": 3,
+   "hits": [
+    "3 moles => 3"
+   ]
+  },
+  {
+   "msg": "3 moles \n3 miss 2 T 1 u \nL/a \n4 voos shifted \n1 voos pulled \n1 tl concrete stairs rsoh 1 tl seasaw \n8 voos 2 tl",
+   "at": "2026-01-16T21:01:29Z",
+   "by": "Brayden Rich",
+   "job": 7569,
+   "client": "Marcus  Hoff",
+   "moles": 3,
+   "hits": [
+    "3 moles => 3"
+   ]
+  },
+  {
+   "msg": "3 moles \nNo miss \nN/a \n1 voos pulled \n1 voos driveway \n2 voos house \nMonthly",
+   "at": "2026-01-22T23:04:10Z",
+   "by": "Brayden Rich",
+   "job": 5035,
+   "client": "Kathy Wilson",
+   "moles": 3,
+   "hits": [
+    "3 moles => 3"
+   ]
+  },
+  {
+   "msg": "3 moles \n2 miss u \nM/a \n1 voos pulled \n2 voos 3 tl shifted \n1 tl added \n3 tl onx (rest are under buckets) \n3 voos 5 tl \nAdd visit",
+   "at": "2026-01-22T20:58:35Z",
+   "by": "Brayden Rich",
+   "job": 7482,
+   "client": "Mark Dumler",
+   "moles": 3,
+   "hits": [
+    "3 moles => 3"
+   ]
+  },
+  {
+   "msg": "3 moles \n1 miss u \nL/a \n2 voos shifted \n7 voos",
+   "at": "2026-01-30T18:04:57Z",
+   "by": "Brayden Rich",
+   "job": 7579,
+   "client": "Nicholas Mayer",
+   "moles": 3,
+   "hits": [
+    "3 moles => 3"
+   ]
+  },
+  {
+   "msg": "3 moles\nMoved 1 v\nPossible LA\n3 v onX \nVisit 2 weeks",
+   "at": "2026-01-29T21:59:33Z",
+   "by": "Tavis Alexander",
+   "job": 5022,
+   "client": "Liz Jones",
+   "moles": 3,
+   "hits": [
+    "3 moles => 3"
+   ]
+  },
+  {
+   "msg": "2 moles \nPulled 2 tl\nPossible LA\n2 tl OnX\nAdd visit",
+   "at": "2026-01-02T16:55:18Z",
+   "by": "Tavis Alexander",
+   "job": 7477,
+   "client": "Melissa  Osvaldik",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles\nNo miss \nL/a \n1 voos 1 tl pulled \n1 voos shifted \n5 voos \nAdd visit",
+   "at": "2026-01-16T23:04:42Z",
+   "by": "Brayden Rich",
+   "job": 7430,
+   "client": "Darren Bartels",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \nNo miss \nN/a \n1 voos pulled\n2 voos boh \n1 voos foh \nMonthly",
+   "at": "2026-01-23T23:15:49Z",
+   "by": "Brayden Rich",
+   "job": 5915,
+   "client": "Dee Lewis",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \n2 miss u \nL/a \n2 tl pulled 1 voos pulled \n6 voos 1 tl (next to voos) \nAdd visit",
+   "at": "2026-01-09T22:48:53Z",
+   "by": "Brayden Rich",
+   "job": 7430,
+   "client": "Darren Bartels",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 mole\n2 miss u \nM/a \n3 voos shifted \n1 voos added \n7 voos \nAdd visit",
+   "at": "2026-01-14T00:03:45Z",
+   "by": "Brayden Rich",
+   "job": 6241,
+   "client": "Mickey Boerner",
+   "moles": 2,
+   "hits": [
+    "2 mole => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \n3 miss \n2 voos shifted \n7 voos \nM/a \nAdd visit",
+   "at": "2026-01-20T23:25:37Z",
+   "by": "Brayden Rich",
+   "job": 6241,
+   "client": "Mickey Boerner",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \n2 miss 1 u 1 t \nH/a\nTraps shifted\n2 voos added\n9 voos \nAdd visit",
+   "at": "2026-01-28T00:44:38Z",
+   "by": "Brayden Rich",
+   "job": 6241,
+   "client": "Mickey Boerner",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \n1 miss u \nL/a \n3 voos shifted \n1 voos swapped for tl \n4 voos 2 tl",
+   "at": "2026-01-05T22:48:55Z",
+   "by": "Brayden Rich",
+   "job": 7554,
+   "client": "Westly Wright",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \n1 miss u \nL/a \n1 voos added \n1 voos shiftee \n4 voos boh \nAdd visit",
+   "at": "2026-01-14T17:16:59Z",
+   "by": "Brayden Rich",
+   "job": 5184,
+   "client": "Gail Jones",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \nNo miss \nL/a \n4 voos foh \n1 voos boh \n2 voos shifted \nAdd visit",
+   "at": "2026-01-13T23:25:45Z",
+   "by": "Brayden Rich",
+   "job": 6389,
+   "client": "Clint Bjornson",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \nNo miss \nN/@ \nTraps pulled",
+   "at": "2026-01-20T19:31:42Z",
+   "by": "Brayden Rich",
+   "job": 7544,
+   "client": "Peak Landscape INC",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \n2 miss u \nL/a \n2 voos 2 tl shifted \n2 voos pulled \n1 tl front beds \n1 tl rsoh steps \n6 voos 2 tl",
+   "at": "2026-01-23T22:35:52Z",
+   "by": "Brayden Rich",
+   "job": 7569,
+   "client": "Marcus  Hoff",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \n1 miss t\nLA\n2 v 2 tl back",
+   "at": "2026-01-13T16:25:53Z",
+   "by": "Tavis Alexander",
+   "job": 7571,
+   "client": "Barbara Premo",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles field & 12804\nNo miss\nMoved 1 v\nLA\n5 v 1 tl onX\nAdd visit",
+   "at": "2026-01-14T18:49:34Z",
+   "by": "Tavis Alexander",
+   "job": 4930,
+   "client": "Plemmons Industries",
+   "moles": 2,
+   "hits": [
+    "2 moles field & 12804 => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \n1 miss u \nL/a \n1 voos shifted \n4 voos boh",
+   "at": "2026-01-14T19:11:48Z",
+   "by": "Brayden Rich",
+   "job": 7558,
+   "client": "David Radchuk",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles\nNo miss \nN/a \n1 voos shifted \n4 voos",
+   "at": "2026-01-28T19:01:19Z",
+   "by": "Brayden Rich",
+   "job": 7558,
+   "client": "David Radchuk",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \n2 miss 1 u 1 t \nM/a \n1 voos shifted \n1 voos swapped for tl \n3 voos 1 tl foh",
+   "at": "2026-01-14T19:28:06Z",
+   "by": "Brayden Rich",
+   "job": 7548,
+   "client": "HyperGreen Landscaping",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles\nNo miss\nMoved 1\nLA\n5 v set\nAdd visit",
+   "at": "2026-01-16T00:12:16Z",
+   "by": "Tavis Alexander",
+   "job": 6144,
+   "client": "Thanhquyen Nguyen",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles\nNo miss\nPulled 1 v\nLA\n2 tl front \n2 v back",
+   "at": "2026-01-22T00:26:54Z",
+   "by": "Tavis Alexander",
+   "job": 7564,
+   "client": "Chris Sargent",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles told customer \n1 miss u\nLA\n6 v 1 tl set",
+   "at": "2026-01-14T17:36:44Z",
+   "by": "Tavis Alexander",
+   "job": 7573,
+   "client": "James Harnish",
+   "moles": 2,
+   "hits": [
+    "2 moles told customer => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \n1 miss \nN/a\n2 voos pulled \n1 voos shifted \n5 voos \nAdd visit",
+   "at": "2026-01-29T17:00:25Z",
+   "by": "Brayden Rich",
+   "job": 6449,
+   "client": "Daniel Issacs",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \n1 miss u \n2 voos shifted \n1 tl pulled \nL/a\n4 voos \nAdd visit",
+   "at": "2026-01-29T20:56:04Z",
+   "by": "Brayden Rich",
+   "job": 6465,
+   "client": "Jeremy Issacs",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \nNo miss \nN/a \n4 voos \nMonthly\nRenew",
+   "at": "2026-01-22T21:31:46Z",
+   "by": "Brayden Rich",
+   "job": 5440,
+   "client": "Steve Hewitt",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles\nNo miss\nNa\n3v back",
+   "at": "2026-01-08T21:52:34Z",
+   "by": "Tavis Alexander",
+   "job": 7549,
+   "client": "Glen Larsen",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles\nNo miss\nNa\n2v trail 1v front\nAdd visit",
+   "at": "2026-01-08T20:59:20Z",
+   "by": "Tavis Alexander",
+   "job": 6450,
+   "client": "Ray Spencer",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles\nNo miss\n4v set\nNa\nAdd visit\nOnx",
+   "at": "2026-01-08T22:49:51Z",
+   "by": "Tavis Alexander",
+   "job": 6663,
+   "client": "Don Petricic",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \n2 miss 1 T 1 u \nL/a \n3 voos 1 tl shifted \n1 voos 1 tl behind barn \n3 voos foh\n1 tl 1 voos boh \n5 voos 2 tl (tl under bucket)",
+   "at": "2026-01-15T00:08:54Z",
+   "by": "Brayden Rich",
+   "job": 7577,
+   "client": "Laura Tallmadge",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \n1 miss u \nN/a \n1 voos pulled \n1 tl shifted \n4 voos 2 tl under bucket",
+   "at": "2026-01-21T00:32:15Z",
+   "by": "Brayden Rich",
+   "job": 7577,
+   "client": "Laura Tallmadge",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \n2 miss T 1 miss u \nL/a \n2 voos shifted \n1 voos swapped for tl \n4 voos 1 tl foh \n1 voos boh",
+   "at": "2026-01-16T23:55:09Z",
+   "by": "Brayden Rich",
+   "job": 7581,
+   "client": "Lori  Morin",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \n2 miss\nLA \n1 v 1 tl front \n3 v back",
+   "at": "2026-01-19T23:56:50Z",
+   "by": "Tavis Alexander",
+   "job": 7580,
+   "client": "Ryan Smith",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \nL/a \n2 voos added \n1 voos shifted \n6 voos \nAdd visit",
+   "at": "2026-01-13T22:07:25Z",
+   "by": "Brayden Rich",
+   "job": 6784,
+   "client": "Adam Kimball",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \nNo miss \n1 voos pulled \nN/a \n5 voos \nAdd visit",
+   "at": "2026-01-20T00:10:57Z",
+   "by": "Brayden Rich",
+   "job": 6784,
+   "client": "Adam Kimball",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles\nNA\n1 v 1v tl back \nAdd visit",
+   "at": "2026-01-28T22:39:10Z",
+   "by": "Tavis Alexander",
+   "job": 5324,
+   "client": "Scott  Moser",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles\nNo miss\nNA\n1 v front 2 v back \nAdd visit",
+   "at": "2026-01-27T00:15:25Z",
+   "by": "Tavis Alexander",
+   "job": 7593,
+   "client": "Thanh Tran",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \nNo miss \nNA\n1 v 1 tl back \nAdd visit",
+   "at": "2026-01-27T00:16:52Z",
+   "by": "Tavis Alexander",
+   "job": 7594,
+   "client": "Dalveer Josan",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \nNo miss \nN/a \n1 tl pulled \n4 voos \nVisit 2 weeks",
+   "at": "2026-01-23T00:36:17Z",
+   "by": "Brayden Rich",
+   "job": 4997,
+   "client": "Josh Mckee",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles\nNo miss \nFound tl\nNA\n1 tl coop\n2 v front 1 v back \nMonthly visits \nOnx",
+   "at": "2026-01-15T20:33:52Z",
+   "by": "Tavis Alexander",
+   "job": 5084,
+   "client": "Dave Gierok",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \n2 miss u \nN/a \n1 voos 1 tl pulled \n3 voos boh \nAdd visit",
+   "at": "2026-01-29T20:01:24Z",
+   "by": "Brayden Rich",
+   "job": 7449,
+   "client": "Sally  Gasser",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles\nNo miss\nNA\n1 tl retaining wall L\n2 v back \nonX",
+   "at": "2026-01-22T20:40:25Z",
+   "by": "Tavis Alexander",
+   "job": 7589,
+   "client": "Rahul Newaskar",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \nNo miss \nL/a \n3 voos shifted \n1 tl shifted 1 tl added \n4 voos 2 tl",
+   "at": "2026-01-26T22:42:48Z",
+   "by": "Brayden Rich",
+   "job": 7599,
+   "client": "Vernie Dunham",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \n1 miss \n1 tl pulled \n2 coos shifted \nL/a \n4 voos",
+   "at": "2026-01-27T18:35:53Z",
+   "by": "Brayden Rich",
+   "job": 7598,
+   "client": "Carolyn Carl",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \n2 miss t \nL/a \n2 voos shifted \n1 voos added \nSee onx 6 voos \nAdd visit",
+   "at": "2026-01-27T16:23:16Z",
+   "by": "Brayden Rich",
+   "job": 7617,
+   "client": "Prologis - Sumner Landing",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \nNo miss \nL/a \n3 tl shifted \nSee onx \nAdd visit",
+   "at": "2026-01-28T17:07:47Z",
+   "by": "Brayden Rich",
+   "job": 7613,
+   "client": "Prologis - Sumner Landing",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles \nNo miss \nL/a \n1 voos 1 tl shifted \n1 tl foh fencline \n5 voos \nAdd visit",
+   "at": "2026-01-29T16:44:02Z",
+   "by": "Brayden Rich",
+   "job": 7633,
+   "client": "Kathleen Coppin",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "2 moles\nNA\n1 v front 1 v front\nAdd visit",
+   "at": "2026-01-30T19:18:12Z",
+   "by": "Tavis Alexander",
+   "job": 5150,
+   "client": "Scott Taylor",
+   "moles": 2,
+   "hits": [
+    "2 moles => 2"
+   ]
+  },
+  {
+   "msg": "1 mole told customer\nNo miss\nNa\n2v 1tl set\nVisit 2 weeks",
+   "at": "2026-01-16T23:34:22Z",
+   "by": "Tavis Alexander",
+   "job": 4776,
+   "client": "David Bhend",
+   "moles": 1,
+   "hits": [
+    "1 mole told customer => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \nN/a \n2 voos 1 tl under bucket \nVisit 2 weeks",
+   "at": "2026-01-23T20:45:29Z",
+   "by": "Brayden Rich",
+   "job": 4994,
+   "client": "Liki Estes",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\n1 miss u\nMoved 2 v\nLA\n6 v set \nVisit 2 weeks",
+   "at": "2026-01-02T19:14:54Z",
+   "by": "Tavis Alexander",
+   "job": 5004,
+   "client": "Wanda Neste",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\nNo miss\nMoved 1\nLA\n2 v onX \nAdd visit",
+   "at": "2026-01-02T17:23:37Z",
+   "by": "Tavis Alexander",
+   "job": 5007,
+   "client": "Karen Porter",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\n1 miss u\nShifted 1v\nLa\n2v set\nAdd visit",
+   "at": "2026-01-16T21:48:54Z",
+   "by": "Tavis Alexander",
+   "job": 5007,
+   "client": "Karen Porter",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 moles\nNo miss \nL/a \n1 tl shifted under tree \n1 tl added left fenceline boh \n2 voos 2 tl \nAdd visit",
+   "at": "2026-01-09T19:05:11Z",
+   "by": "Brayden Rich",
+   "job": 5147,
+   "client": "Rita Gray",
+   "moles": 1,
+   "hits": [
+    "1 moles => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \n1 voos pulled \n2 voos \nMonthly",
+   "at": "2026-01-16T23:38:21Z",
+   "by": "Brayden Rich",
+   "job": 4825,
+   "client": "Trudy Wozeniak",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n2 voos boh \nVisit 2 weeks",
+   "at": "2026-01-16T19:55:24Z",
+   "by": "Brayden Rich",
+   "job": 5433,
+   "client": "Susan Newby",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\nPulled 2\nNA\n1 v back\nMonthly visit",
+   "at": "2026-01-02T19:28:27Z",
+   "by": "Tavis Alexander",
+   "job": 4760,
+   "client": "Mike Rohan",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \nN/a \nTraps pulled",
+   "at": "2026-01-16T21:42:21Z",
+   "by": "Brayden Rich",
+   "job": 7502,
+   "client": "Nyla  Poser",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nTraps pulled",
+   "at": "2026-01-23T16:32:43Z",
+   "by": "Brayden Rich",
+   "job": 7530,
+   "client": "Ryan Wiegand",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\nNo miss\nMoved 1\nLa\n3v set \nAdd visit",
+   "at": "2026-01-08T17:42:42Z",
+   "by": "Tavis Alexander",
+   "job": 7388,
+   "client": "MT Landscape",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\nNo miss\nNa\n3v set \nVisit 2 weeks",
+   "at": "2026-01-16T23:24:49Z",
+   "by": "Tavis Alexander",
+   "job": 7388,
+   "client": "MT Landscape",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 caught \nMissed 1\nMoved 1\nLA\n1 VOOS 2 TL foh (didn’t find 1 TL)\n2 VOOS boh\nAdd visit",
+   "at": "2026-01-02T18:58:44Z",
+   "by": "Cory Ventura",
+   "job": 4994,
+   "client": "Liki Estes",
+   "moles": 1,
+   "hits": [
+    "1 caught => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nL/a \n1 voos swapped with tl \n1 tl pulled \n1 tl under bucket \n1 voos foh \n1 tl 1 voos boh \nAdd visit",
+   "at": "2026-01-09T20:11:16Z",
+   "by": "Brayden Rich",
+   "job": 4994,
+   "client": "Liki Estes",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\n1 miss u\nMoved 2 v\nLA\n6 v set \nVisit 2 weeks",
+   "at": "2026-01-02T19:13:53Z",
+   "by": "Tavis Alexander",
+   "job": 5004,
+   "client": "Wanda Neste",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\n1 miss t\nPossible La\n4v set \nVisit 2 weeks",
+   "at": "2026-01-16T21:04:21Z",
+   "by": "Tavis Alexander",
+   "job": 7472,
+   "client": "Tino Perrina",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u\nPulled 1 \nLA\n2 v front \nVisit 2 weeks",
+   "at": "2026-01-02T20:41:10Z",
+   "by": "Tavis Alexander",
+   "job": 5201,
+   "client": "Michelle  Mueller",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\nNo miss\nNa\n2v front\nMonthly visits",
+   "at": "2026-01-16T17:40:31Z",
+   "by": "Tavis Alexander",
+   "job": 5201,
+   "client": "Michelle  Mueller",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \nPulled traps",
+   "at": "2026-01-16T15:57:40Z",
+   "by": "Brayden Rich",
+   "job": 7537,
+   "client": "Kalen Radford",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n1 voos pulled \n3 voos boh \nMonthly",
+   "at": "2026-01-23T17:36:46Z",
+   "by": "Brayden Rich",
+   "job": 5047,
+   "client": "Randy Redding",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 moles\n3 miss T \nM/a \n1 voos added \n2 tl shifted \n2 tl foundation \n2 voos 5 tl",
+   "at": "2026-01-09T19:30:04Z",
+   "by": "Brayden Rich",
+   "job": 7540,
+   "client": "Jennifer Flanegan",
+   "moles": 1,
+   "hits": [
+    "1 moles => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss T \n1 tl pulled \n1 voos added \n3 tl 1 voos shifted\nM/a \n3 voos 3 tl",
+   "at": "2026-01-16T20:24:43Z",
+   "by": "Brayden Rich",
+   "job": 7540,
+   "client": "Jennifer Flanegan",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\n2 miss u \n2 voos 2 tl shifted \n3 voos 3 tl \nL/a\nAdd visit",
+   "at": "2026-01-23T22:11:27Z",
+   "by": "Brayden Rich",
+   "job": 7540,
+   "client": "Jennifer Flanegan",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n2 tl pulled \n1 tl shifted driveway \n4 voos 1 tl\nVisit 2 weeks",
+   "at": "2026-01-30T19:48:30Z",
+   "by": "Brayden Rich",
+   "job": 7540,
+   "client": "Jennifer Flanegan",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nL/a \n2 tl 1 voos foh \n1 tl boh",
+   "at": "2026-01-09T20:37:35Z",
+   "by": "Brayden Rich",
+   "job": 7542,
+   "client": "Brian Bowie",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \nL/a \n2 tl 1 voos shifted \n2 voos 2 tl foh \n1 tl boh",
+   "at": "2026-01-16T18:22:03Z",
+   "by": "Brayden Rich",
+   "job": 7542,
+   "client": "Brian Bowie",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \nTraps pulled",
+   "at": "2026-01-30T19:25:10Z",
+   "by": "Brayden Rich",
+   "job": 7542,
+   "client": "Brian Bowie",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole told customer\nPulled traps\nClosed",
+   "at": "2026-01-02T19:48:12Z",
+   "by": "Tavis Alexander",
+   "job": 7545,
+   "client": "Vishal Nanda",
+   "moles": 1,
+   "hits": [
+    "1 mole told customer => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n5 voos \nVisit 2 weeks",
+   "at": "2026-01-30T23:20:19Z",
+   "by": "Brayden Rich",
+   "job": 7430,
+   "client": "Darren Bartels",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 caught \nMissed 1\nLA\n1 TL driveway\n4 VOOS\nAdd visit",
+   "at": "2026-01-02T17:58:41Z",
+   "by": "Cory Ventura",
+   "job": 6300,
+   "client": "Dave Koshork",
+   "moles": 1,
+   "hits": [
+    "1 caught => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \nN/a \n1 tl pulled \n1 tl shifted front yard in between retaining wall and garden bed \n3 voos 1 tl \nAdd visit",
+   "at": "2026-01-09T18:31:10Z",
+   "by": "Brayden Rich",
+   "job": 6300,
+   "client": "Dave Koshork",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n3 voos boh \n1 tl foh by garden bed \nVisit 2 weeks",
+   "at": "2026-01-16T21:54:18Z",
+   "by": "Brayden Rich",
+   "job": 6300,
+   "client": "Dave Koshork",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \nN/a \n3 voos boh \n2 weeks",
+   "at": "2026-01-23T23:01:29Z",
+   "by": "Brayden Rich",
+   "job": 6356,
+   "client": "Jason Wittenberger",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n3 miss 2 T 1 u \nL/a \n2 voos shifted \n3 voos boh \n1 voos foh \nAdd visit",
+   "at": "2026-01-16T21:20:50Z",
+   "by": "Brayden Rich",
+   "job": 5915,
+   "client": "Dee Lewis",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nMoved 3 \nLA\n3 v set\nAdd visit \nonX",
+   "at": "2026-01-05T23:28:13Z",
+   "by": "Tavis Alexander",
+   "job": 5139,
+   "client": "Aly Mendez",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u 1 miss T \nL/a \n1 voos pulled \n2 tl sjifted \n2 voos 1 tl playground \n1 voos 1 tl boh \nAdd visit",
+   "at": "2026-01-12T22:37:02Z",
+   "by": "Brayden Rich",
+   "job": 5015,
+   "client": "Brian Muirhead",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 caught \nMissed 4\nShifted 1\nMA\n7 VOOS 3 TL (didn’t find 2 TL)\nAdd visit",
+   "at": "2026-01-02T20:41:51Z",
+   "by": "Cory Ventura",
+   "job": 7430,
+   "client": "Darren Bartels",
+   "moles": 1,
+   "hits": [
+    "1 caught => 1"
+   ]
+  },
+  {
+   "msg": "1 caught \nMoved 1\nLA\n4 VOOS \nAdd visit",
+   "at": "2026-01-02T20:19:11Z",
+   "by": "Cory Ventura",
+   "job": 7017,
+   "client": "Steve Lees",
+   "moles": 1,
+   "hits": [
+    "1 caught => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nNA\n2 v back\nVisit 2 weeks",
+   "at": "2026-01-05T21:51:09Z",
+   "by": "Tavis Alexander",
+   "job": 7525,
+   "client": "Denica Bucklin",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole told customer \n1 miss u\nLA\n2 v front 2 v back",
+   "at": "2026-01-05T18:20:02Z",
+   "by": "Tavis Alexander",
+   "job": 7550,
+   "client": "Bob Gowing",
+   "moles": 1,
+   "hits": [
+    "1 mole told customer => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nNA\n2 v front 2 v back",
+   "at": "2026-01-12T21:32:51Z",
+   "by": "Tavis Alexander",
+   "job": 7550,
+   "client": "Bob Gowing",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nNA\n3 tl front 1 tl back \nVisit 2 weeks",
+   "at": "2026-01-19T17:31:03Z",
+   "by": "Tavis Alexander",
+   "job": 6545,
+   "client": "Rosemarie Havranek",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nL/a \n1 tl shifted \n1 tl pulled \n2 voos 1 tl \nAdd visit",
+   "at": "2026-01-05T21:32:20Z",
+   "by": "Brayden Rich",
+   "job": 7337,
+   "client": "Deschutes Storage",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nPulled 4\nNA\n1 v front \nAdd visit",
+   "at": "2026-01-05T21:35:54Z",
+   "by": "Tavis Alexander",
+   "job": 7523,
+   "client": "Ron Stewart",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n4 voos foh \n1 voos boh \nAdd visit",
+   "at": "2026-01-05T17:46:27Z",
+   "by": "Brayden Rich",
+   "job": 5044,
+   "client": "Sandy Blackburn",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n4 voos foh \n1 voos boh \nAdd visit",
+   "at": "2026-01-05T17:47:19Z",
+   "by": "Brayden Rich",
+   "job": 5044,
+   "client": "Sandy Blackburn",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \n1 tl shifted \n1 tl pulled \n3 voos 1 tl boh \n1 tl foh \nAdd visit",
+   "at": "2026-01-05T20:02:47Z",
+   "by": "Brayden Rich",
+   "job": 7445,
+   "client": "Marc Abraham",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss \nN/a \n3 voos 1 tl foh \nAdd visit",
+   "at": "2026-01-05T22:04:20Z",
+   "by": "Brayden Rich",
+   "job": 7461,
+   "client": "Rachel Decker",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n1 tl sjifted \n2 tl 4 voos",
+   "at": "2026-01-12T20:36:25Z",
+   "by": "Brayden Rich",
+   "job": 7554,
+   "client": "Westly Wright",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/@ \n1tl pulled \n4 voos 1 tl",
+   "at": "2026-01-19T18:50:11Z",
+   "by": "Brayden Rich",
+   "job": 7554,
+   "client": "Westly Wright",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\nNA\n1 v 1 tl back\nMonthly visits",
+   "at": "2026-01-27T20:26:10Z",
+   "by": "Tavis Alexander",
+   "job": 6297,
+   "client": "Lauren Tomala",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \nN/a \n2 voos foh \n1 voos boh \nAdd visit",
+   "at": "2026-01-06T20:24:38Z",
+   "by": "Brayden Rich",
+   "job": 5024,
+   "client": "Brienna Dyberg",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n2 voos 1 tl foh \n1 voos boh \nMonthly",
+   "at": "2026-01-27T21:54:08Z",
+   "by": "Brayden Rich",
+   "job": 5024,
+   "client": "Brienna Dyberg",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n2 voos topside foh \nMonthly",
+   "at": "2026-01-06T22:20:12Z",
+   "by": "Brayden Rich",
+   "job": 5413,
+   "client": "Ron Houlihan",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n1 voos pulled \n3 voos foh \n1 voos boh \nVisit 2 weeks",
+   "at": "2026-01-20T00:55:06Z",
+   "by": "Brayden Rich",
+   "job": 6389,
+   "client": "Clint Bjornson",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nL/a \n1 voos added \n3 voos \nAdd visit",
+   "at": "2026-01-27T00:16:25Z",
+   "by": "Brayden Rich",
+   "job": 5727,
+   "client": "Eric Crossley",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a\n1 tl pulled \n4 voos \nAdd visit",
+   "at": "2026-01-05T20:25:37Z",
+   "by": "Brayden Rich",
+   "job": 7488,
+   "client": "Eric Tilton",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n2 tl main yard \n3 voos \nVisit 2 weeks",
+   "at": "2026-01-06T19:56:58Z",
+   "by": "Brayden Rich",
+   "job": 4608,
+   "client": "Kristi Rice",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \n1 voos swapped for tl \n1 voos pulled \n1 tl main yard the other is under bucket \n2 voos 2 tl \nN/a \nAdd visit",
+   "at": "2026-01-13T20:00:36Z",
+   "by": "Brayden Rich",
+   "job": 4608,
+   "client": "Kristi Rice",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n2 voos 2 tl \n1 tl main yard 1 tl under bucket \nVisit 2 weeks",
+   "at": "2026-01-20T21:36:18Z",
+   "by": "Brayden Rich",
+   "job": 4608,
+   "client": "Kristi Rice",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n1 tl foh \n2 tl boh \nMonthly",
+   "at": "2026-01-06T18:49:08Z",
+   "by": "Brayden Rich",
+   "job": 7528,
+   "client": "George Decker",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nNA\n1 v front 2 v back \nVisit 2 weeks",
+   "at": "2026-01-06T22:05:48Z",
+   "by": "Tavis Alexander",
+   "job": 7459,
+   "client": "Larry McGowan",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n4 voos",
+   "at": "2026-01-13T20:51:58Z",
+   "by": "Brayden Rich",
+   "job": 7538,
+   "client": "Martha Castro Aguilera",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole told customer \n1 miss u\nLA\n4 v set\nAdd visit",
+   "at": "2026-01-06T20:16:40Z",
+   "by": "Tavis Alexander",
+   "job": 7543,
+   "client": "Edward Yang",
+   "moles": 1,
+   "hits": [
+    "1 mole told customer => 1"
+   ]
+  },
+  {
+   "msg": "1 mole told customer \nNo miss\nPulled 2 v\nNA\n2 v set\nVisit 2 weeks",
+   "at": "2026-01-27T18:28:08Z",
+   "by": "Tavis Alexander",
+   "job": 7543,
+   "client": "Edward Yang",
+   "moles": 1,
+   "hits": [
+    "1 mole told customer => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n2 miss buckets filled \n2 voos pulled \n1 tl added \n2 voos 1 tl sjifted \nL/a \n3 voos 2 tl",
+   "at": "2026-01-13T18:37:53Z",
+   "by": "Brayden Rich",
+   "job": 7544,
+   "client": "Peak Landscape INC",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n4 voos boh \nMonthly",
+   "at": "2026-01-06T20:43:31Z",
+   "by": "Brayden Rich",
+   "job": 6410,
+   "client": "Eric Urabe",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nNA \n1 tl sidewalk \n1 v front \n2 v back",
+   "at": "2026-01-06T18:16:34Z",
+   "by": "Tavis Alexander",
+   "job": 7556,
+   "client": "Michael Williams",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nPulled 1 v\nNA\n2 v back",
+   "at": "2026-01-20T18:02:50Z",
+   "by": "Tavis Alexander",
+   "job": 7556,
+   "client": "Michael Williams",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n2 miss 1 T 1 u \nN/a \n1 tl sjifted \n1 voos pulled \n2 voos 2 tl",
+   "at": "2026-01-13T21:30:39Z",
+   "by": "Brayden Rich",
+   "job": 7557,
+   "client": "Chris Hughes",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n1 voos pulled \n1 voos foh \n2 voos 1 tl boh \nVisit 2 weeks",
+   "at": "2026-01-13T18:03:29Z",
+   "by": "Brayden Rich",
+   "job": 7560,
+   "client": "Alex Alexeev",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n1 tl pulled \n3 voos boh \n1 voos foh \nMonthly",
+   "at": "2026-01-27T17:45:05Z",
+   "by": "Brayden Rich",
+   "job": 7560,
+   "client": "Alex Alexeev",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "note from previous visit per Tavis:\r\n\r\n1 mole \r\nNo miss \r\nNA\r\n5 v front 2 v back \r\nAdd visit",
+   "at": "2026-01-03T21:03:45Z",
+   "by": "Cory Ventura",
+   "job": 7561,
+   "client": "Tim Banning",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole told customer \nNo miss \nNA\n4 v set",
+   "at": "2026-01-13T16:40:53Z",
+   "by": "Tavis Alexander",
+   "job": 7563,
+   "client": "Ross Kubasta",
+   "moles": 1,
+   "hits": [
+    "1 mole told customer => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss t\nMoved 3 v\nLA\n3 v 1 tl front 1 tl back \nAdd visit",
+   "at": "2026-01-06T17:01:58Z",
+   "by": "Tavis Alexander",
+   "job": 7517,
+   "client": "Balbir Houthi",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole told customer \nNo miss \nMoved 1 v\nMA\n3 v front 1 v back",
+   "at": "2026-01-13T16:59:57Z",
+   "by": "Tavis Alexander",
+   "job": 7566,
+   "client": "Jody Willhelm",
+   "moles": 1,
+   "hits": [
+    "1 mole told customer => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nMoved 1 v\nNA \n1 tl front \n3 v back",
+   "at": "2026-01-13T19:31:04Z",
+   "by": "Tavis Alexander",
+   "job": 7567,
+   "client": "Michael Shapiro",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\nPulled tl\nAdded 1 v neighbor foh\nNA\n1v neighbor 3 v back",
+   "at": "2026-01-27T19:02:32Z",
+   "by": "Tavis Alexander",
+   "job": 7567,
+   "client": "Michael Shapiro",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole told customer \nNo miss \nPulled 1 tl\nMoved 1 v\nLA\n2 tl front 1 v back",
+   "at": "2026-01-13T20:41:27Z",
+   "by": "Tavis Alexander",
+   "job": 7568,
+   "client": "Terry Thomas",
+   "moles": 1,
+   "hits": [
+    "1 mole told customer => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nPulled 1 tl\nLA\n1 tl front 1 v back",
+   "at": "2026-01-20T20:02:59Z",
+   "by": "Tavis Alexander",
+   "job": 7568,
+   "client": "Terry Thomas",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n2 tl pulled \n6 voos",
+   "at": "2026-01-30T21:36:46Z",
+   "by": "Brayden Rich",
+   "job": 7569,
+   "client": "Marcus  Hoff",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole told customer \nNo miss\nPulled 1v\nNA\n2 v set\nMonthly visits\nonX",
+   "at": "2026-01-14T18:29:08Z",
+   "by": "Tavis Alexander",
+   "job": 6334,
+   "client": "Alexandra Daley",
+   "moles": 1,
+   "hits": [
+    "1 mole told customer => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nNA\n2 tl house R\n1 tl lost\nVisit 2 weeks",
+   "at": "2026-01-07T22:55:35Z",
+   "by": "Tavis Alexander",
+   "job": 5052,
+   "client": "Tom Weaver",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 caught \nNA\n2 TL foh\nMonthly",
+   "at": "2026-01-23T23:32:25Z",
+   "by": "Cory Ventura",
+   "job": 5052,
+   "client": "Tom Weaver",
+   "moles": 1,
+   "hits": [
+    "1 caught => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss t \nN/@ \n1 tl pulled\n2 tl \nAdd visit\nSee onx",
+   "at": "2026-01-20T17:27:36Z",
+   "by": "Brayden Rich",
+   "job": 5178,
+   "client": "Washington Premier Soccer Club",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nPulled tl\nNA\n3 v set\nVisit 2 weeks",
+   "at": "2026-01-14T17:04:18Z",
+   "by": "Tavis Alexander",
+   "job": 6653,
+   "client": "SLPPLLC",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nL/a \n2 voos shifted \nSee onx \nAdd visit",
+   "at": "2026-01-14T21:27:03Z",
+   "by": "Brayden Rich",
+   "job": 4335,
+   "client": "Prologis - Sumner Landing",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nMoved 2\nNA\n6 tl onX \nVisit 2 weeks",
+   "at": "2026-01-14T22:15:56Z",
+   "by": "Tavis Alexander",
+   "job": 4515,
+   "client": "Kelly Kunz",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nMoved 1\nNA\n6 tl onX \nVisit 2 weeks",
+   "at": "2026-01-28T18:49:17Z",
+   "by": "Tavis Alexander",
+   "job": 4515,
+   "client": "Kelly Kunz",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole 25206\nNo miss\nMoved 1 v\nAdded 1 v\nLA\n5 v 1 tl onX\nAdd visit",
+   "at": "2026-01-07T18:47:19Z",
+   "by": "Tavis Alexander",
+   "job": 4930,
+   "client": "Plemmons Industries",
+   "moles": 1,
+   "hits": [
+    "1 mole 25206 => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nL/a \n1 tl pulled \n1 tl shifted \n3 tl \nSee onx \nAdd visit",
+   "at": "2026-01-13T17:11:34Z",
+   "by": "Brayden Rich",
+   "job": 5178,
+   "client": "Washington Premier Soccer Club",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nPulled 2 \nMoved 3\nLA\n6 tl onX \nAdd visit",
+   "at": "2026-01-07T19:54:55Z",
+   "by": "Tavis Alexander",
+   "job": 4515,
+   "client": "Kelly Kunz",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nL/a \n1 tl shifted foh \n1 voos added \n2 voos boh \n1 voos 1 tl foh \nAdd visit",
+   "at": "2026-01-07T19:34:08Z",
+   "by": "Brayden Rich",
+   "job": 7247,
+   "client": "Lynn Clapp",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n1 tl pulled \n2 voos boh \n1 voos foh \nVisit 2 weeks",
+   "at": "2026-01-21T19:12:40Z",
+   "by": "Brayden Rich",
+   "job": 7247,
+   "client": "Lynn Clapp",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nL;a \n1 voos added \n2 voos rsoh \n1 voos foh \nAdd visit",
+   "at": "2026-01-14T20:31:06Z",
+   "by": "Brayden Rich",
+   "job": 4741,
+   "client": "Ron Krebbs",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n1 voos pulled \n2 voos \nVisit 2 weeks",
+   "at": "2026-01-21T22:28:01Z",
+   "by": "Brayden Rich",
+   "job": 4741,
+   "client": "Ron Krebbs",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss\nNA\n5 v set\nVisit 2 weeks",
+   "at": "2026-01-07T19:32:57Z",
+   "by": "Tavis Alexander",
+   "job": 4711,
+   "client": "Jeff  Boggs",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n3 tl \nSee onx \nMonthly",
+   "at": "2026-01-07T19:05:38Z",
+   "by": "Brayden Rich",
+   "job": 7476,
+   "client": "Craig Koester",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole tl\n2 miss u\nLA\n4 v 1 tl set",
+   "at": "2026-01-07T20:19:00Z",
+   "by": "Tavis Alexander",
+   "job": 7547,
+   "client": "Phyllis Miller",
+   "moles": 1,
+   "hits": [
+    "1 mole tl => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nL/a \n2 voos shifted 1 voos added \n1 tl pulled \n4 voos boh",
+   "at": "2026-01-22T00:57:54Z",
+   "by": "Brayden Rich",
+   "job": 7551,
+   "client": "Kevin Milliren",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss\n Moved 1v \nLa \n4v set \nAdd visit",
+   "at": "2026-01-17T00:23:35Z",
+   "by": "Tavis Alexander",
+   "job": 7450,
+   "client": "Amy Thomas",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 caught \nAdded 1 TL foh hill side\nLA\n4 VOOS 1 TL\nAdd visit",
+   "at": "2026-01-23T23:50:54Z",
+   "by": "Cory Ventura",
+   "job": 7450,
+   "client": "Amy Thomas",
+   "moles": 1,
+   "hits": [
+    "1 caught => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \n2 voos shifted \nL/a \n4 voos",
+   "at": "2026-01-21T20:45:43Z",
+   "by": "Brayden Rich",
+   "job": 7558,
+   "client": "David Radchuk",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss \nN/a \n3 voos 1 tl foh\nAdd visit",
+   "at": "2026-01-21T21:14:57Z",
+   "by": "Brayden Rich",
+   "job": 7548,
+   "client": "HyperGreen Landscaping",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nPulled 1 v \nMoved 2 v\nNA\n4 v set\nVisit 2 weeks",
+   "at": "2026-01-21T18:58:27Z",
+   "by": "Tavis Alexander",
+   "job": 6144,
+   "client": "Thanhquyen Nguyen",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nPulled 1 tl\nMoved 2 v\nNA\n2 v back 1 tl front \nAdd visit",
+   "at": "2026-01-28T23:02:36Z",
+   "by": "Tavis Alexander",
+   "job": 6674,
+   "client": "Larry Desmet",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n1 voos pulled \n2 voos \nVisit 2 weeks",
+   "at": "2026-01-28T19:27:18Z",
+   "by": "Brayden Rich",
+   "job": 6382,
+   "client": "Jared Haines",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n2 miss 1 u 1 t\nMoved 1 v\nLA\n2 tl 1 v front \n2 v back",
+   "at": "2026-01-14T16:45:51Z",
+   "by": "Tavis Alexander",
+   "job": 7564,
+   "client": "Chris Sargent",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \n1 voos added boh \nL/a \n2 voos shifted\n3 voos foh \n2 voos boh",
+   "at": "2026-01-14T18:57:50Z",
+   "by": "Brayden Rich",
+   "job": 7565,
+   "client": "Scott Fritschle",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss boh \nL/a \n3 voos shifted\n1 voos pulled \n3 voos boh \n1 voos foh",
+   "at": "2026-01-21T21:01:57Z",
+   "by": "Brayden Rich",
+   "job": 7565,
+   "client": "Scott Fritschle",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \nN/a \n3 voos boh \n1 voos foh",
+   "at": "2026-01-28T18:50:34Z",
+   "by": "Brayden Rich",
+   "job": 7565,
+   "client": "Scott Fritschle",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss o\nMoved 2 v\nLA\n1 v 1 tl front \n3 v back",
+   "at": "2026-01-14T22:53:07Z",
+   "by": "Tavis Alexander",
+   "job": 7572,
+   "client": "Margaret Kump",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n2 miss u\nLA\n1 v 1 tl front \n3 v back",
+   "at": "2026-01-21T17:08:30Z",
+   "by": "Tavis Alexander",
+   "job": 7572,
+   "client": "Margaret Kump",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole told customer \n1 miss u\nPulled 1 v\nMoved 1 tl\nLA\n5 v 1 tl set",
+   "at": "2026-01-21T21:28:45Z",
+   "by": "Tavis Alexander",
+   "job": 7573,
+   "client": "James Harnish",
+   "moles": 1,
+   "hits": [
+    "1 mole told customer => 1"
+   ]
+  },
+  {
+   "msg": "1 mole told customer \nNo miss \nFound 1 tl\nNA\n2 voos 1 tl foh \n1 voos 1 tl boh",
+   "at": "2026-01-13T23:09:32Z",
+   "by": "Tavis Alexander",
+   "job": 7575,
+   "client": "Eliav Coen",
+   "moles": 1,
+   "hits": [
+    "1 mole told customer => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\nNo miss\nMoved 1\nPossible La\n3v set\nVisit 2 weeks",
+   "at": "2026-01-08T16:12:47Z",
+   "by": "Tavis Alexander",
+   "job": 5053,
+   "client": "Dennis Scroggins",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \n2 voos shifted \nN.a\n4 voos \nVisit 2 weeks",
+   "at": "2026-01-29T17:39:03Z",
+   "by": "Brayden Rich",
+   "job": 6418,
+   "client": "Diana Silva",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n3 miss \n3 voos shifted \n1 voos added \n7 voos \nH/a\nAdd visit",
+   "at": "2026-01-22T23:30:04Z",
+   "by": "Brayden Rich",
+   "job": 6449,
+   "client": "Daniel Issacs",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss\nNa\n3v set\nMonthly visit",
+   "at": "2026-01-08T18:14:43Z",
+   "by": "Tavis Alexander",
+   "job": 5241,
+   "client": "Robin Sofola",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nMoved 2\nLA\n1 v 1 tl back \nAdd visit \nonX",
+   "at": "2026-01-14T22:33:28Z",
+   "by": "Tavis Alexander",
+   "job": 4701,
+   "client": "Thomas Carpinito",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole told customer \nNo miss \nNA\n1 v 1 tl back \nVisit 2 weeks \nonX",
+   "at": "2026-01-21T23:34:20Z",
+   "by": "Tavis Alexander",
+   "job": 4701,
+   "client": "Thomas Carpinito",
+   "moles": 1,
+   "hits": [
+    "1 mole told customer => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss\nMoved 1\nAdded 1v\nLA\n5 v set\nAdd visit",
+   "at": "2026-01-07T20:54:17Z",
+   "by": "Tavis Alexander",
+   "job": 6144,
+   "client": "Thanhquyen Nguyen",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n3 voos \nVisit 2 weeks",
+   "at": "2026-01-07T18:23:50Z",
+   "by": "Brayden Rich",
+   "job": 6382,
+   "client": "Jared Haines",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n3 voos \nVisit 2 weeks",
+   "at": "2026-01-21T20:33:11Z",
+   "by": "Brayden Rich",
+   "job": 6382,
+   "client": "Jared Haines",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\nNo miss\nNA\n1 v 1 tl back \nMonthly visits",
+   "at": "2026-01-08T21:40:12Z",
+   "by": "Tavis Alexander",
+   "job": 6355,
+   "client": "Julie James",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss T \nL/a \n1 voos added \n3 voos boh \nAdd visit",
+   "at": "2026-01-08T18:59:36Z",
+   "by": "Brayden Rich",
+   "job": 5713,
+   "client": "Jeff Hudson",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n2 miss 1 u 1 t \nM/a \n1 voos added \n2 voos shifted \n3 voos foh \n1 voos noh \nAdd visit",
+   "at": "2026-01-15T23:05:21Z",
+   "by": "Brayden Rich",
+   "job": 5713,
+   "client": "Jeff Hudson",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u\n1 voos shifted \nN/a \n3 voos \nVisit 2 weeks",
+   "at": "2026-01-08T21:33:29Z",
+   "by": "Brayden Rich",
+   "job": 4479,
+   "client": "Charles Bender",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 moles \nNo miss \nN/a \n3 voos \nVisit 2 weeks",
+   "at": "2026-01-22T21:30:54Z",
+   "by": "Brayden Rich",
+   "job": 4479,
+   "client": "Charles Bender",
+   "moles": 1,
+   "hits": [
+    "1 moles => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\nPulled 1tl 1v\nNa\n1v onX\nMonthly visits",
+   "at": "2026-01-08T19:06:42Z",
+   "by": "Tavis Alexander",
+   "job": 7454,
+   "client": "John Culbertson",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nL/a \n2 voos shifted \n4 voos total \n(Maybe have a conversation about service areas, it’s starting to get excessive) \nAdd visit",
+   "at": "2026-01-08T20:21:01Z",
+   "by": "Brayden Rich",
+   "job": 5440,
+   "client": "Steve Hewitt",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss T\nL/a \n1 voos shifted \n4 voos \nAdd visit\nRenew",
+   "at": "2026-01-15T19:24:54Z",
+   "by": "Brayden Rich",
+   "job": 5440,
+   "client": "Steve Hewitt",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\nNo miss\nNa \n3 v back",
+   "at": "2026-01-22T16:58:37Z",
+   "by": "Tavis Alexander",
+   "job": 7549,
+   "client": "Glen Larsen",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n2 miss \nL/a \n1 voos added \n1 voos shifted \n5 voos",
+   "at": "2026-01-08T18:10:35Z",
+   "by": "Brayden Rich",
+   "job": 7553,
+   "client": "Jim Schauers",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n2 miss 1 u 1 t \n2 voos shifted \nL/a \n5 voos",
+   "at": "2026-01-15T22:48:47Z",
+   "by": "Brayden Rich",
+   "job": 7553,
+   "client": "Jim Schauers",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n2 miss 1 u 1 t \n2 voos shifted \nL/a \n5 voos",
+   "at": "2026-01-15T22:49:12Z",
+   "by": "Brayden Rich",
+   "job": 7553,
+   "client": "Jim Schauers",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n2 miss \nL/a traps pulled",
+   "at": "2026-01-29T19:22:10Z",
+   "by": "Brayden Rich",
+   "job": 7553,
+   "client": "Jim Schauers",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\n2 miss t\nLA\n3 v set\nAdd visit",
+   "at": "2026-01-14T23:30:08Z",
+   "by": "Tavis Alexander",
+   "job": 4880,
+   "client": "Matt Swank",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n1 voos pulled\n3 voos 1 tl under bucket \nVisit 2 weeks",
+   "at": "2026-01-15T19:52:20Z",
+   "by": "Brayden Rich",
+   "job": 6427,
+   "client": "Ally Sharp",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \nL/a \n1 voos shifted \n4 voos house \n1 voos drive \nAdd visit",
+   "at": "2026-01-08T22:14:55Z",
+   "by": "Brayden Rich",
+   "job": 5035,
+   "client": "Kathy Wilson",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n3 miss \n3 voos shifted \nM/a \n6 voos foh \n1 voos boh \nAdd visit",
+   "at": "2026-01-22T16:58:17Z",
+   "by": "Brayden Rich",
+   "job": 5432,
+   "client": "Nancy  Price",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n1 voos pulled \n4 voos \nVisit 2 weeks",
+   "at": "2026-01-15T22:27:38Z",
+   "by": "Brayden Rich",
+   "job": 6856,
+   "client": "Peter Dale",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \nL/a \n1 voos added \n2 voos shifted \n5 voos \nAdd fist",
+   "at": "2026-01-29T20:33:48Z",
+   "by": "Brayden Rich",
+   "job": 6856,
+   "client": "Peter Dale",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole told customer\nNo miss\nNa\n3v back\nAdd visit",
+   "at": "2026-01-16T22:36:35Z",
+   "by": "Tavis Alexander",
+   "job": 7434,
+   "client": "Linda Lowe",
+   "moles": 1,
+   "hits": [
+    "1 mole told customer => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n4 miss \nM/a \nTraps shifted \n3 voos added\n2 voos 3 tl shifted \nTl under bucket \n6 voos 4 tl \nAdd visit",
+   "at": "2026-01-15T20:34:04Z",
+   "by": "Brayden Rich",
+   "job": 7482,
+   "client": "Mark Dumler",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n2 miss u \n1 tl pulled \n2 tl shifted \n2 voos shifted \nL/a \n4 tl 2 in horse pen 2 under bucket \n3 voos \nAdd visit",
+   "at": "2026-01-29T18:42:00Z",
+   "by": "Brayden Rich",
+   "job": 7482,
+   "client": "Mark Dumler",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss\nN/a \n1 tl pulled \n4 voos \nVisit 2 weeks",
+   "at": "2026-01-23T00:19:23Z",
+   "by": "Brayden Rich",
+   "job": 7515,
+   "client": "Jean Hamilton",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \nL/a \n1 voos added \n1 voos sjifted \n3 voos boh \nAdd visit",
+   "at": "2026-01-08T19:19:53Z",
+   "by": "Brayden Rich",
+   "job": 5818,
+   "client": "Blaine Wright",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a\n3 coos\n1 voos shifted \nVisit 2 weeks",
+   "at": "2026-01-22T20:20:29Z",
+   "by": "Brayden Rich",
+   "job": 5818,
+   "client": "Blaine Wright",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n3 miss \nL/a \n2 voos 1 tl shifted \n4 voos 2 tl under bucket",
+   "at": "2026-01-28T22:30:31Z",
+   "by": "Brayden Rich",
+   "job": 7577,
+   "client": "Laura Tallmadge",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss\nN/a \n1 voos pulled \n3 voos boh \n2 voos foh \nVisit 2 weeks",
+   "at": "2026-01-16T23:15:18Z",
+   "by": "Brayden Rich",
+   "job": 5148,
+   "client": "Brant Bengston",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nL/a \n1 voos added foh \n1 tl shifted boh below gutter downspout \nAdd visit",
+   "at": "2026-01-09T20:52:35Z",
+   "by": "Brayden Rich",
+   "job": 5300,
+   "client": "Terry Williams",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n1 voos foh \n1 tl noh below gutter \nMonthly",
+   "at": "2026-01-16T18:00:54Z",
+   "by": "Brayden Rich",
+   "job": 5300,
+   "client": "Terry Williams",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \nL/a \n1 voos added \n3 voos shifted \n7 voos",
+   "at": "2026-01-23T18:02:57Z",
+   "by": "Brayden Rich",
+   "job": 7579,
+   "client": "Nicholas Mayer",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n2 voos 2 tl boh",
+   "at": "2026-01-16T17:39:42Z",
+   "by": "Brayden Rich",
+   "job": 7583,
+   "client": "April Bower",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \n1 tl shifted \n2 voos 2 tl boh \nN/a",
+   "at": "2026-01-23T19:33:52Z",
+   "by": "Brayden Rich",
+   "job": 7583,
+   "client": "April Bower",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss \nN/a \n2 voos 2 tl boh",
+   "at": "2026-01-30T19:02:17Z",
+   "by": "Brayden Rich",
+   "job": 7583,
+   "client": "April Bower",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nPulled 1\nNA\n1 v Onx\nMonthly visits",
+   "at": "2026-01-12T21:11:34Z",
+   "by": "Tavis Alexander",
+   "job": 6325,
+   "client": "Cruz Rodriguez",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n3 miss 2 u 1 t \nL/a \n1 voos pulled \n2 voos shifted\n1 voos boh \n3 voos field \n1 tl foh \nAdd visit",
+   "at": "2026-01-15T19:03:08Z",
+   "by": "Brayden Rich",
+   "job": 6162,
+   "client": "Scott Barker",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n3 voos field \n1 to foh little yard \n1 voos boh\n2 weeks",
+   "at": "2026-01-22T22:47:00Z",
+   "by": "Brayden Rich",
+   "job": 6162,
+   "client": "Scott Barker",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nPulled 1 v\nNA\n1 v front \nVisit 2 weeks",
+   "at": "2026-01-15T21:11:49Z",
+   "by": "Tavis Alexander",
+   "job": 4614,
+   "client": "Jennifer Beardall",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nPulled tl\nMoved 1 v\nNA\n2 v back \nMonthly visits \nonX",
+   "at": "2026-01-12T22:00:38Z",
+   "by": "Tavis Alexander",
+   "job": 6926,
+   "client": "Chris Mckenzie",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nNA\n1 v front \nMonthly visits \nOnx",
+   "at": "2026-01-12T18:45:42Z",
+   "by": "Tavis Alexander",
+   "job": 7267,
+   "client": "Dennis Mccreery",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole told customer\nNo miss \nNA\n1 v front \nMonthly visits \nOnx",
+   "at": "2026-01-22T19:22:53Z",
+   "by": "Tavis Alexander",
+   "job": 7267,
+   "client": "Dennis Mccreery",
+   "moles": 1,
+   "hits": [
+    "1 mole told customer => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nMoved 1 v\nLA\n1 tl roadside 1 v front \nAdd visit \nonX",
+   "at": "2026-01-19T17:42:19Z",
+   "by": "Tavis Alexander",
+   "job": 6492,
+   "client": "Greg Hastings",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss\nMoved 3 v\nMA\n3 tl 5 v front \nAdd visit",
+   "at": "2026-01-26T17:17:22Z",
+   "by": "Tavis Alexander",
+   "job": 7384,
+   "client": "Kevin Chen",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \nL/a \n1 voos pulled 2 tl shifted \n1 tl foh ditch \n1 tl boh below gate \n2 voos 1 tl noh \n1 tl foh \nAdd visit",
+   "at": "2026-01-12T23:10:42Z",
+   "by": "Brayden Rich",
+   "job": 7478,
+   "client": "Marc Abraham",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss\nPossible LA\n1 v 1 tl front \n3 v back",
+   "at": "2026-01-26T23:05:53Z",
+   "by": "Tavis Alexander",
+   "job": 7580,
+   "client": "Ryan Smith",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/@ \n1 voos pulled \n3 voos 1 tl",
+   "at": "2026-01-19T20:14:24Z",
+   "by": "Brayden Rich",
+   "job": 7582,
+   "client": "Simmons Mill HOA",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n2 vood foh \nMonthly",
+   "at": "2026-01-27T22:04:49Z",
+   "by": "Brayden Rich",
+   "job": 7474,
+   "client": "Shari Butt",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss t\nLA\n4 v front",
+   "at": "2026-01-21T00:42:31Z",
+   "by": "Tavis Alexander",
+   "job": 7590,
+   "client": "Roy Restad",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/@ \n2 voos boh \nMonthly",
+   "at": "2026-01-14T21:10:06Z",
+   "by": "Brayden Rich",
+   "job": 5424,
+   "client": "Martha Copeland",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nMoved 1 v\nLA\n1 v front 1 v back \nAdd visit \nonX",
+   "at": "2026-01-13T23:25:24Z",
+   "by": "Tavis Alexander",
+   "job": 7317,
+   "client": "Chris Bartlett",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n2 miss u \nL/a \n2 voos shifted \n5 voos \nAdd visit",
+   "at": "2026-01-22T00:20:21Z",
+   "by": "Brayden Rich",
+   "job": 7058,
+   "client": "Skookum Archers",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n3 miss u \nL/a \n1 voos added \n2 voos shifted \n6 voos \nAdd visit",
+   "at": "2026-01-28T21:18:06Z",
+   "by": "Brayden Rich",
+   "job": 7058,
+   "client": "Skookum Archers",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nPulled 1 v\nMoved 3 v\nMA\n2 v front 1 v back \nAdd visit",
+   "at": "2026-01-14T23:11:27Z",
+   "by": "Tavis Alexander",
+   "job": 7306,
+   "client": "Greg Anderson",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nL/a \n1 voos shifted \n2 voos \nAdd visit",
+   "at": "2026-01-14T19:45:06Z",
+   "by": "Brayden Rich",
+   "job": 4629,
+   "client": "Mandy Sprague",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n3 voos \nMonthly",
+   "at": "2026-01-15T23:27:24Z",
+   "by": "Brayden Rich",
+   "job": 5330,
+   "client": "Maggie Pierotti",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \n1 voos shifted \nN/a \n1 tl pulled \n2 voos foh \n1 voos boh \nAdd visit",
+   "at": "2026-01-22T17:11:24Z",
+   "by": "Brayden Rich",
+   "job": 7588,
+   "client": "Cheryl Rook",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\nNo miss\nNA\n1 tl retaining wall L\n2 v back \nAdd visit \nonX",
+   "at": "2026-01-29T20:57:33Z",
+   "by": "Tavis Alexander",
+   "job": 7589,
+   "client": "Rahul Newaskar",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\nNo miss\nNa\n1 v front\n2 v back",
+   "at": "2026-01-22T16:44:04Z",
+   "by": "Tavis Alexander",
+   "job": 7591,
+   "client": "Ray Nath",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nMoved 1 v\nNA\n2 v front 1 v back",
+   "at": "2026-01-29T17:10:29Z",
+   "by": "Tavis Alexander",
+   "job": 7591,
+   "client": "Ray Nath",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\nNa\n1v back\nMonthly visits",
+   "at": "2026-01-16T17:24:45Z",
+   "by": "Tavis Alexander",
+   "job": 6481,
+   "client": "Mike  Magnusson",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n2 voos boh \n1 voos foh \n2 weeks",
+   "at": "2026-01-24T00:32:04Z",
+   "by": "Brayden Rich",
+   "job": 5515,
+   "client": "Dale Bundy",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss T \nL/a \n1 voos added \n1 voos sjifted \n4 voos boh \nAdd visit",
+   "at": "2026-01-15T22:04:20Z",
+   "by": "Brayden Rich",
+   "job": 7449,
+   "client": "Sally  Gasser",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss\nPulled 1 tl\nNa\n2v set \nMonthly visits",
+   "at": "2026-01-16T22:25:57Z",
+   "by": "Tavis Alexander",
+   "job": 6270,
+   "client": "Gwen Morton",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n1 voos 1 tl boh \nVisit 2 weeks",
+   "at": "2026-01-23T20:28:24Z",
+   "by": "Brayden Rich",
+   "job": 6028,
+   "client": "BIll Sweatman",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u\nNA\n4 v onX\nVisit 2 weeks",
+   "at": "2026-01-30T17:04:09Z",
+   "by": "Tavis Alexander",
+   "job": 5829,
+   "client": "Tom Hornberg",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n3 voos boh",
+   "at": "2026-01-23T21:00:18Z",
+   "by": "Brayden Rich",
+   "job": 7595,
+   "client": "Chelsea Scott",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 caught\nMissed 3\nHA\n3 voos 1 tl set foh",
+   "at": "2026-01-23T20:52:09Z",
+   "by": "Tavis Alexander",
+   "job": 7601,
+   "client": "Loren Sanchez",
+   "moles": 1,
+   "hits": [
+    "1 caught => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\nNo miss\nLA\nMoved 1 v 1 tl\n4 v & 1 tl front",
+   "at": "2026-01-30T18:45:54Z",
+   "by": "Tavis Alexander",
+   "job": 7601,
+   "client": "Loren Sanchez",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 caught \nLA\n1 VOOS boh\n3 VOOS 1 TL foh\nAdd visit",
+   "at": "2026-01-23T22:21:53Z",
+   "by": "Cory Ventura",
+   "job": 7606,
+   "client": "Eileen Petralia",
+   "moles": 1,
+   "hits": [
+    "1 caught => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nNA\n1 v front 1 v back \nMonthly visits",
+   "at": "2026-01-19T23:19:39Z",
+   "by": "Tavis Alexander",
+   "job": 7285,
+   "client": "Andrea Estes",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/@ \n1 tl pulled \n1 voos boh \nMonthly",
+   "at": "2026-01-19T21:02:37Z",
+   "by": "Brayden Rich",
+   "job": 6181,
+   "client": "Diana  Kutok",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\nPulled traps \nNA\nClosed and invoiced",
+   "at": "2026-01-19T23:36:43Z",
+   "by": "Tavis Alexander",
+   "job": 7587,
+   "client": "Ron Stewart",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nPulled 1 v\nNA\n1 tl driveway \n1 v front 1 v back",
+   "at": "2026-01-26T20:16:22Z",
+   "by": "Tavis Alexander",
+   "job": 7596,
+   "client": "Kimberley  Weaver",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\n1 miss u\nMoved 1 v\nLA\n4 v front",
+   "at": "2026-01-29T19:22:16Z",
+   "by": "Tavis Alexander",
+   "job": 7602,
+   "client": "Drew Culver",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n2 miss \n1 coos added \n2 coos shifted \nL/a \n5 voos",
+   "at": "2026-01-26T17:23:00Z",
+   "by": "Brayden Rich",
+   "job": 7605,
+   "client": "Mark Kennedy",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nPulled 1 v 1 tl\nNA\n1 v back \nMonthly visits \nonX",
+   "at": "2026-01-20T22:03:38Z",
+   "by": "Tavis Alexander",
+   "job": 6581,
+   "client": "Greg Flynn",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/@ \n1 tl under bucket \n1 voos \nMonthly",
+   "at": "2026-01-20T20:05:10Z",
+   "by": "Brayden Rich",
+   "job": 5412,
+   "client": "Mike Ahquin",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nL/a \n1 voos shifted \n1 voos added \n4 voos \nAdd visit",
+   "at": "2026-01-27T21:16:59Z",
+   "by": "Brayden Rich",
+   "job": 6338,
+   "client": "Barbara Wood",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "Park 1 \n1 mole \nNo miss \nL/a 1 tl added \n1 tl shifted \n2 tl \nAdd visit \n\nPark 2 \nNo mole \nNo miss \nN/a \nNo traps \nAdd visit",
+   "at": "2026-01-27T23:21:24Z",
+   "by": "Brayden Rich",
+   "job": 4425,
+   "client": "Thomas Spring Estates",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\nNo miss\nNA\nPulled & closed",
+   "at": "2026-01-27T22:08:42Z",
+   "by": "Tavis Alexander",
+   "job": 7607,
+   "client": "Janelle Henderson",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n4 voos 1 tl",
+   "at": "2026-01-28T22:42:46Z",
+   "by": "Brayden Rich",
+   "job": 7619,
+   "client": "Mike Willis",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNA\n1 tl set\nAdd visit",
+   "at": "2026-01-28T23:16:22Z",
+   "by": "Tavis Alexander",
+   "job": 6463,
+   "client": "Jerry Wilkinson",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nPulled 1 v\nNA\n1 v R\nMonthly visits",
+   "at": "2026-01-21T17:17:54Z",
+   "by": "Tavis Alexander",
+   "job": 5458,
+   "client": "Jake Nettleton",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n1 tl pulled \n2 voos foh \nMonthly",
+   "at": "2026-01-21T16:34:25Z",
+   "by": "Brayden Rich",
+   "job": 6890,
+   "client": "Tom Schlimme",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNA\n2 v back \nMonthly visits",
+   "at": "2026-01-21T18:30:26Z",
+   "by": "Tavis Alexander",
+   "job": 4550,
+   "client": "Lee Hansen",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n1 voos shifted \n3 Voos \nAdd visit 2 weeks",
+   "at": "2026-01-28T20:38:21Z",
+   "by": "Brayden Rich",
+   "job": 5438,
+   "client": "Jan Stanfield",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nL/a \n1 tl shifted \n1 tl added \n3 tl \nSee onx",
+   "at": "2026-01-28T16:52:40Z",
+   "by": "Brayden Rich",
+   "job": 7611,
+   "client": "Prologis - Sumner Landing",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nL/a \n1 tl added \n1 tl shifted \n2 tl \nSee onx",
+   "at": "2026-01-28T17:24:03Z",
+   "by": "Brayden Rich",
+   "job": 7614,
+   "client": "Prologis - Sumner Landing",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \n1 tl pulled \nN/a \n2 voos \nMonthly",
+   "at": "2026-01-22T16:13:56Z",
+   "by": "Brayden Rich",
+   "job": 5329,
+   "client": "Pat Birkeland",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss t\nMoved 1 v\nAdded 1 v driveway \nLA\n5 v 1 tl set\nAdd visit",
+   "at": "2026-01-28T19:05:51Z",
+   "by": "Tavis Alexander",
+   "job": 7626,
+   "client": "Jonelle Loranger",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n2 miss \n1 voos shifted \n3 voos boh \n1 tl foh \nAdd visit",
+   "at": "2026-01-28T19:44:53Z",
+   "by": "Brayden Rich",
+   "job": 7629,
+   "client": "Stephen Champion",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \nL/a \n1 voos swapped for tl foh curb \n1 voos shifted boh \n2 voos 1 tl \nAdd visit",
+   "at": "2026-01-29T17:22:23Z",
+   "by": "Brayden Rich",
+   "job": 6720,
+   "client": "Tom Schlimme",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole\n1 miss u\nPulled traps\nLA\nClosed",
+   "at": "2026-01-22T22:44:11Z",
+   "by": "Tavis Alexander",
+   "job": 6831,
+   "client": "Janet Pluntze",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n4 voos \n2 week visit",
+   "at": "2026-01-29T19:00:40Z",
+   "by": "Brayden Rich",
+   "job": 6873,
+   "client": "Jessica Locke",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \nL/a \n1 voos shifted \n1 voos added \n4 voos boy \nAdd visit",
+   "at": "2026-01-30T20:20:01Z",
+   "by": "Brayden Rich",
+   "job": 6322,
+   "client": "Mark Gagne",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 caught \nNA\n1 TL foh driveway\nMonthly",
+   "at": "2026-01-23T22:08:15Z",
+   "by": "Cory Ventura",
+   "job": 5066,
+   "client": "Ryan Coffey",
+   "moles": 1,
+   "hits": [
+    "1 caught => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \n3 voos 1 tl shifted\n1 voos added \n5 voos 1 tl",
+   "at": "2026-01-30T18:39:34Z",
+   "by": "Brayden Rich",
+   "job": 7625,
+   "client": "Jeff Straughn",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u\nPulled 1 v\nLA\n4 v set (1 tl with v)\nAdd visit",
+   "at": "2026-01-30T21:09:54Z",
+   "by": "Tavis Alexander",
+   "job": 7632,
+   "client": "Joel Coons",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole told customer \nFound & moved 1 tl \nLA\n1 tl courtyard\n1 tl lower trail\nAdd visit \nonX",
+   "at": "2026-01-29T20:14:16Z",
+   "by": "Tavis Alexander",
+   "job": 5531,
+   "client": "Conover Court",
+   "moles": 1,
+   "hits": [
+    "1 mole told customer => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a\n2 voos \nMonthly",
+   "at": "2026-01-27T00:18:00Z",
+   "by": "Brayden Rich",
+   "job": 6064,
+   "client": "Joe  Edmunson",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n1 voos \nMonthly",
+   "at": "2026-01-27T23:40:28Z",
+   "by": "Brayden Rich",
+   "job": 4998,
+   "client": "Bill Langley",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n3 miss \nH/a\n3 voos added \n2 tl pulled 3 voos 2 tl shifted \n6 voos 2 tl\n(Tl onx) \nAdd visit",
+   "at": "2026-01-28T00:15:39Z",
+   "by": "Brayden Rich",
+   "job": 5540,
+   "client": "Chris Thornhill",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nN/a \n1 tl foh\n2 voos boh \nMonthly",
+   "at": "2026-01-28T20:57:58Z",
+   "by": "Brayden Rich",
+   "job": 5565,
+   "client": "Mike Baril",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \nNo miss \nNA\n1 v front 1 v back \nMonthly visits",
+   "at": "2026-01-28T20:34:20Z",
+   "by": "Tavis Alexander",
+   "job": 7406,
+   "client": "Evan Henke",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n2 miss 1 u 1 t \nL/a \n2 voos shifted \n1 tl added \n1 tl driveway \n1 tl stairs \n4 voos \nAdd visit",
+   "at": "2026-01-28T23:06:55Z",
+   "by": "Brayden Rich",
+   "job": 7637,
+   "client": "Tommy Marshall",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1/22 \n1 mole\nNo miss\nNa \n3 v back",
+   "at": "2026-01-29T17:24:32Z",
+   "by": "Tavis Alexander",
+   "job": 7630,
+   "client": "Glen Larsen",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  },
+  {
+   "msg": "1 mole \n1 miss u \nL/a \n1 voos added \n1 voos shifted \n3 voos foh \n1 voos boh \nAdd visit",
+   "at": "2026-01-30T22:28:08Z",
+   "by": "Brayden Rich",
+   "job": 6454,
+   "client": "Leslie Turner",
+   "moles": 1,
+   "hits": [
+    "1 mole => 1"
+   ]
+  }
+ ]
+}

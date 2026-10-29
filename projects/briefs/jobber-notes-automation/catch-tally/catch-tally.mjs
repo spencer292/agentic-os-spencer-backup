@@ -52,16 +52,29 @@ if (fs.existsSync('notes.json')) {
 const todo = jobIds.filter(id => !doneJobs.has(id));
 for (let i = 0; i < todo.length; i += CHUNK) {
   const chunk = todo.slice(i, i + CHUNK);
-  const q = `query { ${chunk.map((id, k) => `j${k}: job(id: ${JSON.stringify(id)}) { jobNumber client { name }
-    notes(last: 8) { nodes { __typename ... on JobNote { id message createdAt createdBy { __typename ... on User { name { full } } } } } } }`).join(' ')} }`;
-  const d = await gql(q);
-  for (const key of Object.keys(d)) {
-    const job = d[key]; if (!job) continue;
-    for (const n of (job.notes?.nodes || [])) {
-      if (n.__typename !== 'JobNote' || !n.id) continue;
-      if (n.createdAt < after || n.createdAt >= before) continue;
-      notes[n.id] = { msg: n.message || '', at: n.createdAt, by: n.createdBy?.name?.full || 'Unknown', job: job.jobNumber, client: job.client?.name };
-    }
+  // Page each job's notes backwards (newest first) until we pass the window start. A flat
+  // last:8 silently dropped old months: a weekly job has 8+ newer notes within two months.
+  let pending = chunk.map(id => ({ id, cursor: null }));
+  while (pending.length) {
+    const q = `query { ${pending.map((p, k) => `j${k}: job(id: ${JSON.stringify(p.id)}) { jobNumber client { name }
+      notes(last: 25${p.cursor ? `, before: ${JSON.stringify(p.cursor)}` : ''}) { pageInfo { hasPreviousPage startCursor }
+        nodes { __typename ... on JobNote { id message createdAt createdBy { __typename ... on User { name { full } } } } } } }`).join(' ')} }`;
+    const d = await gql(q);
+    const next = [];
+    pending.forEach((p, k) => {
+      const job = d[`j${k}`]; if (!job) return;
+      let oldest = null;
+      for (const n of (job.notes?.nodes || [])) {
+        if (n.createdAt && (!oldest || n.createdAt < oldest)) oldest = n.createdAt;
+        if (n.__typename !== 'JobNote' || !n.id) continue;
+        if (n.createdAt < after || n.createdAt >= before) continue;
+        notes[n.id] = { msg: n.message || '', at: n.createdAt, by: n.createdBy?.name?.full || 'Unknown', job: job.jobNumber, client: job.client?.name };
+      }
+      const pi = job.notes?.pageInfo;
+      if (pi?.hasPreviousPage && oldest && oldest >= after) next.push({ id: p.id, cursor: pi.startCursor });
+    });
+    pending = next;
+    if (pending.length) await sleep(120);
   }
   for (const id of chunk) doneJobs.add(id);
   fs.writeFileSync('notes.json', JSON.stringify({ notes, doneJobs: [...doneJobs] }));

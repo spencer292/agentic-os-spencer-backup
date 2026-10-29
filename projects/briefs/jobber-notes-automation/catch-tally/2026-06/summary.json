@@ -1,0 +1,81 @@
+{
+ "window": {
+  "from": "2026-06-01",
+  "to": "2026-06-30"
+ },
+ "totals": {
+  "visits": 1614,
+  "jobs": 690,
+  "notes": 1601,
+  "moles": 497
+ },
+ "byTech": [
+  {
+   "tech": "Luke LaVergne",
+   "moles": 196,
+   "notes": 558,
+   "notesWithCatch": 157,
+   "completedVisits": 559,
+   "molesPerNote": 0.35,
+   "catchRate": 28.1
+  },
+  {
+   "tech": "Cammeron Anderson",
+   "moles": 131,
+   "notes": 441,
+   "notesWithCatch": 110,
+   "completedVisits": 443,
+   "molesPerNote": 0.3,
+   "catchRate": 24.9
+  },
+  {
+   "tech": "Cory Ventura",
+   "moles": 125,
+   "notes": 418,
+   "notesWithCatch": 104,
+   "completedVisits": 414,
+   "molesPerNote": 0.3,
+   "catchRate": 24.9
+  },
+  {
+   "tech": "Spencer Hill",
+   "moles": 45,
+   "notes": 182,
+   "notesWithCatch": 38,
+   "completedVisits": 196,
+   "molesPerNote": 0.25,
+   "catchRate": 20.9
+  },
+  {
+   "tech": "Courtney ",
+   "moles": 0,
+   "notes": 2,
+   "notesWithCatch": 0,
+   "completedVisits": 2,
+   "molesPerNote": 0,
+   "catchRate": 0
+  }
+ ],
+ "visitsByTech": [
+  [
+   "Luke LaVergne",
+   559
+  ],
+  [
+   "Cammeron Anderson",
+   443
+  ],
+  [
+   "Cory Ventura",
+   414
+  ],
+  [
+   "Spencer Hill",
+   196
+  ],
+  [
+   "Courtney ",
+   2
+  ]
+ ]
+}
