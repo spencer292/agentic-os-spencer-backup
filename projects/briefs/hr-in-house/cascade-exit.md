@@ -120,3 +120,9 @@ assumption.
   account owner and holds billing; Cheyanne and Ethan are individual admins, no payroll/timesheet/
   expense log entries by either. Remove both on 11-26. Unverified: ellaine@ironwoodstrategies.net and
   kellen@jemeysonllc.com received a Gusto notice, so they may also have access.
+- 2026-10-29: Cheyanne confirmed. Final membership payment 11-01; she says Sept + Oct payments
+  "had not processed" and ran both retroactively (verify against bank). Work through 11-30 bills at
+  $175/hr, so ask them for nothing more. Docs in the Cascade client portal, download before 11-30.
+  They close on Mon 11-30 (11-26 is Thanksgiving). Remove their access to Gusto, Indeed and
+  LinkedIn; check the Indeed employer account is ours, since current hiring runs through it.
+  Deletion confirmation not yet given. Calendar reminder moved to 11-30 (email 7 days before).
