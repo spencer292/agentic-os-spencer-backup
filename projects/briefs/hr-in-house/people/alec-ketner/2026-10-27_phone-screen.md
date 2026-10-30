@@ -5,6 +5,7 @@ Source: Indeed, "Pest Control Technician, Enumclaw, WA" — applied 2026-10-27
 Lives: Lake Tapps (in territory)
 Call date: ________  Length: 15 min
 Working interview: Fri 2026-10-30, riding with Cory (paid, through payroll; passenger only, no driving)
+Gusto: added 2026-10-29, W-2 hourly $22.50, L&I risk class 6602-10 (matches Cory). I-9 §2 due Wed 11-04.
 
 Contact details are on the Indeed profile. Keep them out of this file (`references/data-handling.md`).
 

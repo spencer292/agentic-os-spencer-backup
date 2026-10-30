@@ -3,7 +3,7 @@
 Role: Field Technician — Enumclaw / Buckley / Bonney Lake / Lake Tapps (+ possibly Puyallup)
 Source: Indeed, "Pest Control Technician, Enumclaw, WA" — applied 2026-10-28
 Lives: Bonney Lake (in territory)
-Call date: ________  Length: 15 min
+Call date: Fri 2026-10-30 10:00 PT  Length: 15 min
 
 Contact details are on the Indeed profile and resume. Keep them out of this file (`references/data-handling.md`).
 

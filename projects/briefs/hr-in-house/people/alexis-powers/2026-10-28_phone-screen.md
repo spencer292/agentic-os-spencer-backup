@@ -1,4 +1,4 @@
-# Phone Screen — Alexis Powers
+# Phone Screen — Alexis Powers (goes by Lexie)
 
 Role: Field Technician — Enumclaw / Buckley / Bonney Lake / Lake Tapps (+ possibly Puyallup)
 Source: Indeed, "Pest Control Technician, Enumclaw, WA" — applied 2026-10-28
