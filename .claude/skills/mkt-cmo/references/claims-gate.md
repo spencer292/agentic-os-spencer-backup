@@ -24,7 +24,7 @@ actively dangerous to the ad accounts.
 
 | Claim | Publish this | Never publish |
 |---|---|---|
-| **Reviews** | "283+ five-star reviews", "289 Google reviews", "5.0 across three locations". Measured live 2026-08-21 across all three GBP listings: 283×5★, 4×4★, 1×3★, 1×1★ | **"219+ five-star reviews"** — stale, superseded. And never state the *total* (289) as a *five-star* count. They are different numbers and the gap is the whole point |
+| **Reviews** | "283+ five-star reviews", "289 Google reviews". Measured live 2026-08-21 across all three GBP listings: 283×5★, 4×4★, 1×3★, 1×1★ | **"219+ five-star reviews"** — stale, superseded. **"5.0 on all three listings"** — false, Spencer 2026-10-30: not every listing is 5.0. Never claim a star rating without checking each listing live. And never state the *total* (289) as a *five-star* count. They are different numbers and the gap is the whole point |
 | **Locations** | 3 Google Business Profile locations | — |
 | **Clients served** | See the conflict in §3 before publishing any client count | "Nearly 5,000 clients" — not until §3 resolves |
 | **Veteran-owned** | True and usable. Spencer served in the Army 2011–2014. Strong E-E-A-T signal, safe to lead with | — |
@@ -119,5 +119,4 @@ Before any customer-facing copy ships, confirm in one line each:
 6. Any price shown is residential and inside the published tiers; anything else routes to a bid.
 
 If a claim cannot clear the gate, the answer is not to soften it into vagueness — it is to find the
-true claim that is just as strong. Got Moles has plenty: 283 five-star reviews, 5.0 across three
-locations, veteran-owned, mole-exclusive, chemical-free, and a guarantee competitors do not offer.
+true claim that is just as strong. Got Moles has plenty: 283 five-star reviews, veteran-owned, mole-exclusive, chemical-free, and a guarantee competitors do not offer.

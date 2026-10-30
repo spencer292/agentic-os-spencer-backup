@@ -113,3 +113,18 @@ later on feel:
 - **Cut criterion:** in-house holds CPBJ at or below {$X} for {N weeks} with the newsletter
   shipping on schedule.
 - **Reviewed on:** {date}
+
+---
+
+## B — Live sweep, 2026-10-30 (`tool-browser`, read-only, logged in as Spencer)
+
+| # | Asset | Finding | Tag |
+|---|---|---|---|
+| B6 | HighLevel sub-account | "Got Moles" (location `WpAGQdDIK16AtBQZbzBo`) sits under **DigiHammer's agency** (white-label "Digi Hammer Social Media Marketing / Growth Systems"). Users: **Sean Stewart, seans@digihammer.com — Agency Owner**; Spencer Hill and Roy Castleman (roy@atpbos.com) — Account admin. Spencer logs in independently, but the account lives on Sean's agency plan and billing | KNOWN |
+| B7 | Contact list | **3,004 contacts.** A workflow "Assign Contacts to Spencer Hill" (Sean, 2026-05-28) enrolled all 3,004. A "Jobber Snapshot Workflows" folder suggests the list came from Jobber. Not yet exported | KNOWN |
+| B8 | Sending domain | Newsletter sends on **got-moles.net** via HighLevel's Mailgun (MX mxa/mxb.mailgun.org; SPF `include:spf.leadconnectorhq.com include:mailgun.org`; **no DMARC record**). Domain was **bought inside HighLevel** (renews 2027-04-28, auto-renew on), so it's registered through the agency, and DNS is on Cloudflare nameservers (braden/love) that Got Moles doesn't control. got-moles.com is separate (GoDaddy NS, Google Workspace SPF) and untouched | KNOWN |
+| — | Newsletter history | Only **2 sends ever**, both by Sean via bulk action: "Campaign May" (2026-05-25) and "Campaign August 2026" (sent **2026-09-29**). Sep send: 3K targeted, 2.4K delivered, 848 opened (35%), **20 clicks (0.83%)**, 5 replies, 13 unsubscribes, 0 complaints, 17 bounced, 590 skipped. The Email Marketing dashboard shows HighLevel sample data, not real campaigns | KNOWN |
+| — | Social | Social Planner: **no accounts connected**. Sean does not post through this account | KNOWN |
+| — | Websites / phone | One site, "Got Moles Privacy Policy" (1 page, 2025-06-05), on got-moles.net. No phone numbers ("phone system requires configuration") | KNOWN |
+| — | Workflows | 3 total: Assign Contacts to Spencer Hill (published), Forward Inbound Emails (draft, 9 enrolled), Forward Inbound Emails 2 (published, 21 enrolled). Inbound replies to got-moles.net are forwarded — check where before the cut | KNOWN |
+| — | Billing | Page does not render for an account admin; it's on Sean's agency | KNOWN |

@@ -96,6 +96,7 @@ Load the row that matches the mode. Do not load all of them.
 | `references/paid-playbook.md` | Google, LSA, Bing or Meta work — carries the mandatory ad-policy posture |
 | `references/email-playbook.md` | Newsletter, sequences, list handling, the send gate |
 | `references/vendor-transition.md` | Anything DigiHammer, HighLevel, or vendor handover |
+| `references/local-growth-playbook.md` | Neighbor marketing (door hangers, yard signs), referrals, speed-to-lead and winback texts, review velocity, commercial gift drops |
 | `projects/briefs/marketing-in-house/open-findings.md` | **Read at the start of every session** — live gaps and risks |
 | `projects/briefs/marketing-in-house/data/channels.json` | Current channel state: spend, ownership, status |
 | `brand_context/positioning.md`, `voice-profile.md`, `icp.md` | Any campaign or copy work |
