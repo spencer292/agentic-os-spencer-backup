@@ -92,6 +92,10 @@ never let it run as an unattended mirror.
 Currently run by DigiHammer and rated poor by Spencer. Rebuild in-house, gated, per the
 2026-08-26 decision. Keep the existing spend running until the replacement beats it.
 
+**Execution lives in `ops-meta-ads`** (built 2026-10-29 from The Meta Ads Arena course): setup,
+campaign builds, the weekly kill/hold/scale review, reporting and account rescue. This seat decides
+whether, how much and which offer; that skill builds and runs it.
+
 ### Before creative: get ownership right
 
 This is the part that cannot be undone later. Do it first — details and the full checklist in
