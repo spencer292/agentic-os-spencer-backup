@@ -1,0 +1,29 @@
+[write-gate] writes BLOCKED — writes disabled: Revoked. — run 3b54038b
+=== SYNC + PLAN + TIMES 2026-10-29 11:18:38 PT ===
+mode: DRY (default) — queries only   window: 2026-10-30..2026-10-30
+live Jobber: 106 visits, 106 not complete, 106 on a routed driver, 0 skipped (no tech / not a driver)
+  2026-10-30  Cory 14  Alias 20  Robert 24  Tavis 21  Luke 27
+
+OptimoRoute: 89 orders in the window
+  CREATE 17   UPDATE 0   DELETE 0   unchanged 89
+    CREATE 8816-2381762510 2026-10-30 Cory Ventura 24m  Chad Erickson  6751 Montevista Drive Southeast, Auburn, Washington, 98092
+    CREATE 8803-2379480909 2026-10-30 Tavis Alexander 30m  Michael O’Dell  1806 Canyon Avenue Southeast, North Bend, Washington, 98045
+    CREATE 8804-2379483733 2026-10-30 Luke LaVergne 30m  Jim Spore  1305 Boise Street, Fircrest, Washington, 98466
+    CREATE 5515-2372772250 2026-10-30 Cory Ventura 12m  Dale Bundy  25206 96th Street East, Buckley, Washington, 98321
+    CREATE 8402-2366603270 2026-10-30 Cory Ventura 12m  Tom & Sarah Long  24211 Sumner Buckley Hwy, Buckley, Wa, 98321
+    CREATE 5915-2372728718 2026-10-30 Cory Ventura 12m  Dee Lewis  22815 Connells Prairie Road, Buckley, Washington, 98321
+    CREATE 8805-2379486329 2026-10-30 Robert Norton 30m  Vernon Loveless  26619 292nd Avenue Southeast, Ravensdale, Washington, 98051
+    CREATE 7671-2372696702 2026-10-30 Cory Ventura 12m  Marcus  Hoff  22518 Connells Prairie Road, Buckley, Washington, 98321
+    CREATE 8672-2354649381 2026-10-30 Cory Ventura 12m  James Maynard  8902 217th Avenue Court East, Buckley, Washington, 98321
+    CREATE 5147-2372679323 2026-10-30 Cory Ventura 12m  Rita Gray  22302 Sumner Buckley Highway, Buckley, Washington, 98321
+    CREATE 8774-2374123225 2026-10-30 Cory Ventura 24m  Nyla  Poser  8209 224th Avenue East, Buckley, Washington, 98321
+    CREATE 7017-2372913574 2026-10-30 Cory Ventura 12m  Steve Lees  10806 234th Avenue East, Buckley, Washington, 98321
+    CREATE 8759-2371461885 2026-10-30 Cory Ventura 12m  Paul Stratford  23816 South Prairie Road East, Buckley, Washington, 98321
+    CREATE 7430-2372843682 2026-10-30 Cory Ventura 12m  Darren Bartels  12126 243rd Avenue East, Buckley, Washington, 98321
+    CREATE 5148-2366716306 2026-10-30 Cory Ventura 12m  Brant Bengston  25017 112th Street East, Buckley, Washington, 98321
+    CREATE 8666-2353261877 2026-10-30 Cory Ventura 12m  Kalen Radford  14121 St. Rt. 165, Buckley, Washington, 98321
+    CREATE 8677-2354692346 2026-10-30 Cory Ventura 12m  James Dale  28003 163rd Street, Wilkeson, Washington, 98396
+
+driver availability: 10-30: Alias/Cory/Luke/Robert/Tavis
+
+DRY RUN — nothing written. Planning and time write-back happen only with --execute. Log: C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-26_week\sync-plan-times.log

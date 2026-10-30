@@ -1,0 +1,352 @@
+
+=== CORY-ONLY 2026-10-29 11:20:24 PT === Cory Ventura 2026-10-30 floor 09:00  mode DRY
+Jobber: 14 open visits on Cory Ventura
+OptimoRoute: CREATE 14  UPDATE 0  unchanged 0  stray Cory Ventura orders 0
+  CREATE 8816-2381762510 24m Chad Erickson  6751 Montevista Drive Southeast, Auburn, Washington, 98092
+  CREATE 5515-2372772250 12m Dale Bundy  25206 96th Street East, Buckley, Washington, 98321
+  CREATE 8402-2366603270 12m Tom & Sarah Long  24211 Sumner Buckley Hwy, Buckley, Wa, 98321
+  CREATE 5915-2372728718 12m Dee Lewis  22815 Connells Prairie Road, Buckley, Washington, 98321
+  CREATE 7671-2372696702 12m Marcus  Hoff  22518 Connells Prairie Road, Buckley, Washington, 98321
+  CREATE 8672-2354649381 12m James Maynard  8902 217th Avenue Court East, Buckley, Washington, 98321
+  CREATE 5147-2372679323 12m Rita Gray  22302 Sumner Buckley Highway, Buckley, Washington, 98321
+  CREATE 8774-2374123225 24m Nyla  Poser  8209 224th Avenue East, Buckley, Washington, 98321
+  CREATE 7017-2372913574 12m Steve Lees  10806 234th Avenue East, Buckley, Washington, 98321
+  CREATE 8759-2371461885 12m Paul Stratford  23816 South Prairie Road East, Buckley, Washington, 98321
+  CREATE 7430-2372843682 12m Darren Bartels  12126 243rd Avenue East, Buckley, Washington, 98321
+  CREATE 5148-2366716306 12m Brant Bengston  25017 112th Street East, Buckley, Washington, 98321
+  CREATE 8666-2353261877 12m Kalen Radford  14121 St. Rt. 165, Buckley, Washington, 98321
+  CREATE 8677-2354692346 12m James Dale  28003 163rd Street, Wilkeson, Washington, 98396
+DRY — nothing written.
+
+=== CORY-ONLY 2026-10-29 11:20:54 PT === Cory Ventura 2026-10-30 floor 09:00  mode LIVE
+Jobber: 14 open visits on Cory Ventura
+OptimoRoute: CREATE 14  UPDATE 0  unchanged 0  stray Cory Ventura orders 0
+  CREATE 8816-2381762510 24m Chad Erickson  6751 Montevista Drive Southeast, Auburn, Washington, 98092
+  CREATE 5515-2372772250 12m Dale Bundy  25206 96th Street East, Buckley, Washington, 98321
+  CREATE 8402-2366603270 12m Tom & Sarah Long  24211 Sumner Buckley Hwy, Buckley, Wa, 98321
+  CREATE 5915-2372728718 12m Dee Lewis  22815 Connells Prairie Road, Buckley, Washington, 98321
+  CREATE 7671-2372696702 12m Marcus  Hoff  22518 Connells Prairie Road, Buckley, Washington, 98321
+  CREATE 8672-2354649381 12m James Maynard  8902 217th Avenue Court East, Buckley, Washington, 98321
+  CREATE 5147-2372679323 12m Rita Gray  22302 Sumner Buckley Highway, Buckley, Washington, 98321
+  CREATE 8774-2374123225 24m Nyla  Poser  8209 224th Avenue East, Buckley, Washington, 98321
+  CREATE 7017-2372913574 12m Steve Lees  10806 234th Avenue East, Buckley, Washington, 98321
+  CREATE 8759-2371461885 12m Paul Stratford  23816 South Prairie Road East, Buckley, Washington, 98321
+  CREATE 7430-2372843682 12m Darren Bartels  12126 243rd Avenue East, Buckley, Washington, 98321
+  CREATE 5148-2366716306 12m Brant Bengston  25017 112th Street East, Buckley, Washington, 98321
+  CREATE 8666-2353261877 12m Kalen Radford  14121 St. Rt. 165, Buckley, Washington, 98321
+  CREATE 8677-2354692346 12m James Dale  28003 163rd Street, Wilkeson, Washington, 98396
+  CREATE 8816-2381762510 ok
+  CREATE 5515-2372772250 ok
+  CREATE 8402-2366603270 ok
+  CREATE 5915-2372728718 ok
+  CREATE 7671-2372696702 ok
+  CREATE 8672-2354649381 ok
+  CREATE 5147-2372679323 ok
+  CREATE 8774-2374123225 ok
+  CREATE 7017-2372913574 ok
+  CREATE 8759-2371461885 ok
+  CREATE 7430-2372843682 ok
+  CREATE 5148-2366716306 ok
+  CREATE 8666-2353261877 ok
+  CREATE 8677-2354692346 ok
+start_planning: {"success":false,"code":"ERR_INVALID_PARAM_FORMAT","message":"{'orderNo': '8816-2381762510'} is not of type 'string'"}
+
+🛑 ABORT 2026-10-29 11:21:08 — start_planning failed
+
+=== CORY-ONLY 2026-10-29 11:21:23 PT === Cory Ventura 2026-10-30 floor 09:00  mode LIVE
+Jobber: 14 open visits on Cory Ventura
+OptimoRoute: CREATE 0  UPDATE 0  unchanged 14  stray Cory Ventura orders 0
+start_planning: {"success":false,"code":"ERR_OPT_NO_RESOURCES","planningId":null}
+
+🛑 ABORT 2026-10-29 11:21:26 — start_planning failed
+
+=== CORY-ONLY 2026-10-29 11:21:49 PT === Cory Ventura 2026-10-30 floor 09:00  mode LIVE
+Jobber: 14 open visits on Cory Ventura
+OptimoRoute: CREATE 0  UPDATE 0  unchanged 14  stray Cory Ventura orders 0
+start_planning: {"planningId":30121157,"success":true}
+other drivers: 4 routes before, 4 after, 0 changed (none — isolated)
+Cory Ventura: 14 stops  393 min  71 km  first-leg drive 22 min
+  1. 09:00  Chad Erickson (SET) · #8816  (22 min drive)
+  2. 09:37  James Maynard · #8672  (13 min drive)
+  3. 09:50  Rita Gray · #5147  (1 min drive)
+  4. 10:04  Nyla Poser (SET) · #8774  (2 min drive)
+  5. 10:32  Marcus Hoff · #7671  (4 min drive)
+  6. 10:45  Dee Lewis · #5915  (1 min drive)
+  7. 10:59  Tom & Sarah Long · #8402  (2 min drive)
+  8. 11:14  Dale Bundy · #5515  (4 min drive)
+  9. 11:30  Brant Bengston · #5148  (4 min drive)
+  10. 11:45  Darren Bartels · #7430  (3 min drive)
+  11. 12:01  Steve Lees · #7017  (4 min drive)
+  12. 12:16  Paul Stratford · #8759  (3 min drive)
+  13. 12:34  Kalen Radford · #8666  (6 min drive)
+  14. 12:51  James Dale · #8677  (4 min drive)
+Saved C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-26_week\routes-2026-10-30-cory.json. Next: --times writes these to Jobber.
+
+=== CORY-ONLY 2026-10-29 11:22:43 PT === Cory Ventura 2026-10-30 floor 09:00  mode LIVE
+Jobber: 14 open visits on Cory Ventura
+OptimoRoute: CREATE 0  UPDATE 1  unchanged 13  stray Cory Ventura orders 0
+  UPDATE 8816-2381762510 tw -> 12:00-21:00
+  UPDATE 8816-2381762510 ok
+start_planning: {"planningId":30121170,"success":true}
+other drivers: 4 routes before, 4 after, 0 changed (none — isolated)
+Cory Ventura: 14 stops  408 min  71 km  first-leg drive 9 min
+  1. 09:00  Paul Stratford · #8759  (9 min drive)
+  2. 09:15  Steve Lees · #7017  (3 min drive)
+  3. 09:31  Darren Bartels · #7430  (4 min drive)
+  4. 09:46  Brant Bengston · #5148  (3 min drive)
+  5. 10:01  Dale Bundy · #5515  (3 min drive)
+  6. 10:18  Tom & Sarah Long · #8402  (4 min drive)
+  7. 10:32  Marcus Hoff · #7671  (3 min drive)
+  8. 10:45  Dee Lewis · #5915  (1 min drive)
+  9. 11:00  Nyla Poser (SET) · #8774  (3 min drive)
+  10. 11:26  Rita Gray · #5147  (2 min drive)
+  11. 11:39  James Maynard · #8672  (1 min drive)
+  12. 12:05  Chad Erickson (SET) · #8816  (14 min drive)
+  13. 12:49  Kalen Radford · #8666  (20 min drive)
+  14. 13:05  James Dale · #8677  (4 min drive)
+Saved C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-26_week\routes-2026-10-30-cory.json. Next: --times writes these to Jobber.
+
+=== CORY-ONLY 2026-10-29 11:23:06 PT === Cory Ventura 2026-10-30 floor 09:00  mode LIVE
+Jobber: 14 open visits on Cory Ventura
+OptimoRoute: CREATE 0  UPDATE 2  unchanged 12  stray Cory Ventura orders 0
+  UPDATE 8666-2353261877 tw -> 09:10-09:35
+  UPDATE 8677-2354692346 tw -> 09:05-09:15
+  UPDATE 8666-2353261877 ok
+  UPDATE 8677-2354692346 ok
+start_planning: {"planningId":30121176,"success":true}
+other drivers: 4 routes before, 4 after, 0 changed (none — isolated)
+Cory Ventura: 14 stops  416 min  70 km  first-leg drive 5 min
+  1. 09:05  James Dale · #8677  (5 min drive)
+  2. 09:21  Kalen Radford · #8666  (4 min drive)
+  3. 09:41  Darren Bartels · #7430  (8 min drive)
+  4. 09:56  Brant Bengston · #5148  (3 min drive)
+  5. 10:11  Dale Bundy · #5515  (3 min drive)
+  6. 10:28  Tom & Sarah Long · #8402  (4 min drive)
+  7. 10:42  Marcus Hoff · #7671  (3 min drive)
+  8. 10:55  Dee Lewis · #5915  (1 min drive)
+  9. 11:10  Nyla Poser (SET) · #8774  (3 min drive)
+  10. 11:36  Rita Gray · #5147  (2 min drive)
+  11. 11:49  James Maynard · #8672  (1 min drive)
+  12. 12:15  Chad Erickson (SET) · #8816  (14 min drive)
+  13. 12:54  Steve Lees · #7017  (15 min drive)
+  14. 13:09  Paul Stratford · #8759  (3 min drive)
+Saved C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-26_week\routes-2026-10-30-cory.json. Next: --times writes these to Jobber.
+
+=== CORY-ONLY 2026-10-29 11:23:29 PT === Cory Ventura 2026-10-30 floor 09:00  mode LIVE
+Jobber: 14 open visits on Cory Ventura
+OptimoRoute: CREATE 0  UPDATE 2  unchanged 12  stray Cory Ventura orders 0
+  UPDATE 7017-2372913574 tw -> 09:00-10:30
+  UPDATE 8759-2371461885 tw -> 09:00-10:30
+  UPDATE 7017-2372913574 ok
+  UPDATE 8759-2371461885 ok
+start_planning: {"planningId":30121188,"success":true}
+other drivers: 4 routes before, 4 after, 0 changed (none — isolated)
+Cory Ventura: 14 stops  418 min  70 km  first-leg drive 5 min
+  1. 09:05  James Dale · #8677  (5 min drive)
+  2. 09:21  Kalen Radford · #8666  (4 min drive)
+  3. 09:39  Paul Stratford · #8759  (6 min drive)
+  4. 09:55  Steve Lees · #7017  (3 min drive)
+  5. 10:10  Darren Bartels · #7430  (4 min drive)
+  6. 10:26  Brant Bengston · #5148  (3 min drive)
+  7. 10:41  Dale Bundy · #5515  (3 min drive)
+  8. 10:57  Tom & Sarah Long · #8402  (4 min drive)
+  9. 11:12  Nyla Poser (SET) · #8774  (3 min drive)
+  10. 11:38  Rita Gray · #5147  (2 min drive)
+  11. 11:51  James Maynard · #8672  (1 min drive)
+  12. 12:17  Chad Erickson (SET) · #8816  (14 min drive)
+  13. 12:55  Marcus Hoff · #7671  (13 min drive)
+  14. 13:08  Dee Lewis · #5915  (1 min drive)
+Saved C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-26_week\routes-2026-10-30-cory.json. Next: --times writes these to Jobber.
+
+=== CORY-ONLY 2026-10-29 11:23:46 PT === Cory Ventura 2026-10-30 floor 09:00  mode LIVE
+Jobber: 14 open visits on Cory Ventura
+OptimoRoute: CREATE 0  UPDATE 11  unchanged 3  stray Cory Ventura orders 0
+  UPDATE 5515-2372772250 tw -> 09:00-12:00
+  UPDATE 8402-2366603270 tw -> 09:00-12:00
+  UPDATE 5915-2372728718 tw -> 09:00-12:00
+  UPDATE 7671-2372696702 tw -> 09:00-12:00
+  UPDATE 8672-2354649381 tw -> 09:00-12:00
+  UPDATE 5147-2372679323 tw -> 09:00-12:00
+  UPDATE 8774-2374123225 tw -> 09:00-12:00
+  UPDATE 7017-2372913574 tw -> 09:00-12:00
+  UPDATE 8759-2371461885 tw -> 09:00-12:00
+  UPDATE 7430-2372843682 tw -> 09:00-12:00
+  UPDATE 5148-2366716306 tw -> 09:00-12:00
+  UPDATE 5515-2372772250 ok
+  UPDATE 8402-2366603270 ok
+  UPDATE 5915-2372728718 ok
+  UPDATE 7671-2372696702 ok
+  UPDATE 8672-2354649381 ok
+  UPDATE 5147-2372679323 ok
+  UPDATE 8774-2374123225 ok
+  UPDATE 7017-2372913574 ok
+  UPDATE 8759-2371461885 ok
+  UPDATE 7430-2372843682 ok
+  UPDATE 5148-2366716306 ok
+start_planning: {"planningId":30121193,"success":true}
+other drivers: 4 routes before, 4 after, 0 changed (none — isolated)
+Cory Ventura: 12 stops  374 min  68 km  first-leg drive 5 min
+  1. 09:05  James Dale · #8677  (5 min drive)
+  2. 09:21  Kalen Radford · #8666  (4 min drive)
+  3. 09:39  Paul Stratford · #8759  (6 min drive)
+  4. 09:55  Steve Lees · #7017  (3 min drive)
+  5. 10:09  Brant Bengston · #5148  (2 min drive)
+  6. 10:24  Dale Bundy · #5515  (3 min drive)
+  7. 10:41  Tom & Sarah Long · #8402  (4 min drive)
+  8. 10:55  Marcus Hoff · #7671  (3 min drive)
+  9. 11:08  Dee Lewis · #5915  (1 min drive)
+  10. 11:23  Rita Gray · #5147  (2 min drive)
+  11. 11:36  James Maynard · #8672  (1 min drive)
+  12. 12:02  Chad Erickson (SET) · #8816  (14 min drive)
+⚠ 2 unscheduled: #8774, #7430
+Saved C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-26_week\routes-2026-10-30-cory.json. Next: --times writes these to Jobber.
+
+=== CORY-ONLY 2026-10-29 11:24:05 PT === Cory Ventura 2026-10-30 floor 09:00  mode LIVE
+Jobber: 14 open visits on Cory Ventura
+OptimoRoute: CREATE 0  UPDATE 12  unchanged 2  stray Cory Ventura orders 0
+  UPDATE 8816-2381762510 tw -> 12:15-21:00
+  UPDATE 5515-2372772250 tw -> 09:00-12:30
+  UPDATE 8402-2366603270 tw -> 09:00-12:30
+  UPDATE 5915-2372728718 tw -> 09:00-12:30
+  UPDATE 7671-2372696702 tw -> 09:00-12:30
+  UPDATE 8672-2354649381 tw -> 09:00-12:30
+  UPDATE 5147-2372679323 tw -> 09:00-12:30
+  UPDATE 8774-2374123225 tw -> 09:00-12:30
+  UPDATE 7017-2372913574 tw -> 09:00-12:30
+  UPDATE 8759-2371461885 tw -> 09:00-12:30
+  UPDATE 7430-2372843682 tw -> 09:00-12:30
+  UPDATE 5148-2366716306 tw -> 09:00-12:30
+  UPDATE 8816-2381762510 ok
+  UPDATE 5515-2372772250 ok
+  UPDATE 8402-2366603270 ok
+  UPDATE 5915-2372728718 ok
+  UPDATE 7671-2372696702 ok
+  UPDATE 8672-2354649381 ok
+  UPDATE 5147-2372679323 ok
+  UPDATE 8774-2374123225 ok
+  UPDATE 7017-2372913574 ok
+  UPDATE 8759-2371461885 ok
+  UPDATE 7430-2372843682 ok
+  UPDATE 5148-2366716306 ok
+start_planning: {"planningId":30121198,"success":true}
+other drivers: 4 routes before, 4 after, 0 changed (none — isolated)
+Cory Ventura: 13 stops  391 min  70 km  first-leg drive 5 min
+  1. 09:05  James Dale · #8677  (5 min drive)
+  2. 09:21  Kalen Radford · #8666  (4 min drive)
+  3. 09:39  Paul Stratford · #8759  (6 min drive)
+  4. 09:55  Steve Lees · #7017  (3 min drive)
+  5. 10:10  Darren Bartels · #7430  (4 min drive)
+  6. 10:26  Brant Bengston · #5148  (3 min drive)
+  7. 10:41  Dale Bundy · #5515  (3 min drive)
+  8. 10:57  Tom & Sarah Long · #8402  (4 min drive)
+  9. 11:12  Marcus Hoff · #7671  (3 min drive)
+  10. 11:25  Dee Lewis · #5915  (1 min drive)
+  11. 11:39  Rita Gray · #5147  (2 min drive)
+  12. 11:52  James Maynard · #8672  (1 min drive)
+  13. 12:18  Chad Erickson (SET) · #8816  (14 min drive)
+⚠ 1 unscheduled: #8774
+Saved C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-26_week\routes-2026-10-30-cory.json. Next: --times writes these to Jobber.
+
+=== CORY-ONLY 2026-10-29 11:24:33 PT === Cory Ventura 2026-10-30 floor 09:00  mode LIVE
+Jobber: 14 open visits on Cory Ventura
+OptimoRoute: CREATE 0  UPDATE 0  unchanged 14  stray Cory Ventura orders 0
+start_planning: {"planningId":30121212,"success":true}
+other drivers: 4 routes before, 4 after, 0 changed (none — isolated)
+Cory Ventura: 13 stops  391 min  70 km  first-leg drive 5 min
+  1. 09:05  James Dale · #8677  (5 min drive)
+  2. 09:21  Kalen Radford · #8666  (4 min drive)
+  3. 09:39  Paul Stratford · #8759  (6 min drive)
+  4. 09:55  Steve Lees · #7017  (3 min drive)
+  5. 10:10  Darren Bartels · #7430  (4 min drive)
+  6. 10:26  Brant Bengston · #5148  (3 min drive)
+  7. 10:41  Dale Bundy · #5515  (3 min drive)
+  8. 10:57  Tom & Sarah Long · #8402  (4 min drive)
+  9. 11:12  Marcus Hoff · #7671  (3 min drive)
+  10. 11:25  Dee Lewis · #5915  (1 min drive)
+  11. 11:39  Rita Gray · #5147  (2 min drive)
+  12. 11:52  James Maynard · #8672  (1 min drive)
+  13. 12:18  Chad Erickson (SET) · #8816  (14 min drive)
+⚠ 1 unscheduled: #8774
+Saved C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-26_week\routes-2026-10-30-cory.json. Next: --times writes these to Jobber.
+
+=== CORY-ONLY 2026-10-29 11:25:15 PT === Cory Ventura 2026-10-30 floor 09:00  mode LIVE
+Jobber: 14 open visits on Cory Ventura
+OptimoRoute: CREATE 0  UPDATE 12  unchanged 2  stray Cory Ventura orders 0
+  UPDATE 8816-2381762510 tw -> 12:30-21:00
+  UPDATE 5515-2372772250 tw -> 09:00-12:45
+  UPDATE 8402-2366603270 tw -> 09:00-12:45
+  UPDATE 5915-2372728718 tw -> 09:00-12:45
+  UPDATE 7671-2372696702 tw -> 09:00-12:45
+  UPDATE 8672-2354649381 tw -> 09:00-12:45
+  UPDATE 5147-2372679323 tw -> 09:00-12:45
+  UPDATE 8774-2374123225 tw -> 09:00-12:45
+  UPDATE 7017-2372913574 tw -> 09:00-12:45
+  UPDATE 8759-2371461885 tw -> 09:00-12:45
+  UPDATE 7430-2372843682 tw -> 09:00-12:45
+  UPDATE 5148-2366716306 tw -> 09:00-12:45
+  UPDATE 8816-2381762510 ok
+  UPDATE 5515-2372772250 ok
+  UPDATE 8402-2366603270 ok
+  UPDATE 5915-2372728718 ok
+  UPDATE 7671-2372696702 ok
+  UPDATE 8672-2354649381 ok
+  UPDATE 5147-2372679323 ok
+  UPDATE 8774-2374123225 ok
+  UPDATE 7017-2372913574 ok
+  UPDATE 8759-2371461885 ok
+  UPDATE 7430-2372843682 ok
+  UPDATE 5148-2366716306 ok
+start_planning: {"planningId":30121229,"success":true}
+other drivers: 4 routes before, 4 after, 0 changed (none — isolated)
+Cory Ventura: 14 stops  417 min  71 km  first-leg drive 5 min
+  1. 09:05  James Dale · #8677  (5 min drive)
+  2. 09:21  Kalen Radford · #8666  (4 min drive)
+  3. 09:39  Paul Stratford · #8759  (6 min drive)
+  4. 09:55  Steve Lees · #7017  (3 min drive)
+  5. 10:10  Darren Bartels · #7430  (4 min drive)
+  6. 10:26  Brant Bengston · #5148  (3 min drive)
+  7. 10:41  Dale Bundy · #5515  (3 min drive)
+  8. 10:57  Tom & Sarah Long · #8402  (4 min drive)
+  9. 11:12  Marcus Hoff · #7671  (3 min drive)
+  10. 11:25  Dee Lewis · #5915  (1 min drive)
+  11. 11:40  Nyla Poser (SET) · #8774  (3 min drive)
+  12. 12:06  Rita Gray · #5147  (2 min drive)
+  13. 12:19  James Maynard · #8672  (1 min drive)
+  14. 12:45  Chad Erickson (SET) · #8816  (14 min drive)
+Saved C:\Agentic-os-got-moles\projects\briefs\route-engine\redesign\ops\2026-10-26_week\routes-2026-10-30-cory.json. Next: --times writes these to Jobber.
+
+=== CORY-ONLY 2026-10-29 11:25:41 PT === Cory Ventura 2026-10-30 floor 09:00  mode TIMES
+Jobber: 14 open visits on Cory Ventura
+  write 12:45 #8816 Chad Erickson              was 07:00  ok
+  write 10:41 #5515 Dale Bundy                 was 12:25  ok
+  write 10:57 #8402 Tom & Sarah Long           was 12:41  ok
+  write 11:25 #5915 Dee Lewis                  was 12:55  ok
+  write 11:12 #7671 Marcus  Hoff               was 13:08  ok
+  write 12:19 #8672 James Maynard              was 13:24  ok
+  write 12:06 #5147 Rita Gray                  was 13:37  ok
+  write 11:40 #8774 Nyla  Poser                was 13:51  ok
+  write 09:55 #7017 Steve Lees                 was 14:20  ok
+  write 09:39 #8759 Paul Stratford             was 14:36  ok
+  write 10:10 #7430 Darren Bartels             was 14:53  ok
+  write 10:26 #5148 Brant Bengston             was 15:08  ok
+  write 09:21 #8666 Kalen Radford              was 15:26  ok
+  write 09:05 #8677 James Dale                 was 15:42  ok
+VERIFY: 1/14 Jobber visits match the plan (14 written)
+
+=== CORY-ONLY 2026-10-29 11:26:05 PT === Cory Ventura 2026-10-30 floor 09:00  mode TIMES
+Jobber: 14 open visits on Cory Ventura
+  same  09:05 #8677 James Dale
+  same  09:21 #8666 Kalen Radford
+  same  09:39 #8759 Paul Stratford
+  same  09:55 #7017 Steve Lees
+  same  10:10 #7430 Darren Bartels
+  same  10:26 #5148 Brant Bengston
+  same  10:41 #5515 Dale Bundy
+  same  10:57 #8402 Tom & Sarah Long
+  same  11:12 #7671 Marcus  Hoff
+  same  11:25 #5915 Dee Lewis
+  same  11:40 #8774 Nyla  Poser
+  same  12:06 #5147 Rita Gray
+  same  12:19 #8672 James Maynard
+  same  12:45 #8816 Chad Erickson
+VERIFY: 1/14 Jobber visits match the plan (0 written)
